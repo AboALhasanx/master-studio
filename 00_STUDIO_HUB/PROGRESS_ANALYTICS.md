@@ -30,7 +30,7 @@
 
 ## 2. Subject-by-Subject Cognitive Breakdown
 
-### 🏗️ 04_Advanced_Software_Eng (CS603) — Dr. Ali Fahim
+### 04_Advanced_Software_Eng (CS603) — Dr. Ali Fahim
 * **Target Units:** 16 Weeks
 * **Mastered Competencies ($\ge 80\%$ Score):**
   - [x] Dhahran Patriot Missile 24-bit truncation drift kinematics ($0.3433\text{s} \rightarrow 687\text{m}$)

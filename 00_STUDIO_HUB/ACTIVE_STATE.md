@@ -3,10 +3,10 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "Establish baseline syllabus and literature pipeline"
-next_session_focus: "Ingest Week 01 architecture tactics and standards"
+immediate_todo: "Review Week 01 viva defense questions before Monday 10:30 AM lecture"
+next_session_focus: "Oral exam drill on Patriot Missile drift math & Brooks essential complexity"
 last_updated: "2026-09-16"
-status: "INITIALIZED"
+status: "WEEK_01_ACTIVE"
 ---
 
 # Master Studio: Active Session State

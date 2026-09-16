@@ -16,7 +16,7 @@ This flagship 3-credit course prepares master candidates for high-level software
 +=======================================================================================================+
 |                                    16-WEEK PROGRESS TRACKER OVERVIEW                                  |
 +=======================================================================================================+
-| Completed Weeks: [ 0 / 16 ] | Progress: 0.0% | Status: Initializing Semester 1                        |
+| Completed Weeks: [ 1 / 16 ] | Progress: 6.25% | Status: Week 01 Lecture 01 Completed                  |
 +=======================================================================================================+
 ```
 
@@ -26,7 +26,7 @@ This flagship 3-credit course prepares master candidates for high-level software
 
 ### 🏛️ Phase 1: Architecture Foundations & Quality Scenarios (Weeks 1–4)
 
-- [ ] **Week 01: Evolving Role of Software, Software Crisis & Documented Failures**
+- [x] **Week 01: Evolving Role of Software, Software Crisis & Documented Failures**
   - **Official Syllabus (Dr. Ali Fahim):**
     1. Evolving role and changing nature of software (ubiquitous, mission-critical, socio-technical).
     2. Documented failures: The Patriot Missile timing truncation catastrophe (1991) & Brooks' "No Silver Bullet" (Essential vs. Accidental complexity).

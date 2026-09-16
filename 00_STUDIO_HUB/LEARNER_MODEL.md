@@ -69,11 +69,10 @@ graph TD
 
 > Concepts validated through $\ge 80\%$ score in `@examiner` scenario drills and oral defense simulations.
 
-*(Initialized fresh — No entries yet)*
-
-| Subject | Topic / Concept | Date Mastered | Validation Score | Verifying Agent |
-|:---|:---|:---:|:---:|:---:|
-| *Pending* | *Initial baseline calibration in progress* | — | — | — |
+| `04_Advanced_Software_Eng` | Dhahran Patriot Missile 24-bit fixed-point clock drift kinematics | 2026-09-16 | 100% | @examiner |
+| `04_Advanced_Software_Eng` | Brooks' "No Silver Bullet" (Essential vs. Accidental complexity) | 2026-09-16 | 100% | @examiner |
+| `04_Advanced_Software_Eng` | Tripartite Software Asset (Programs + Data Structures + Documentation) | 2026-09-16 | 100% | @tutor |
+| `04_Advanced_Software_Eng` | Dependability Chain Taxonomy (Error -> Fault -> Error State -> Failure) | 2026-09-16 | 100% | @examiner |
 
 ---
 
@@ -81,17 +80,14 @@ graph TD
 
 > Concepts requiring active reinforcement due to missed exam questions or identified conceptual ambiguity.
 
-*(Initialized fresh — No active gaps recorded)*
-
-| Subject | Concept / Sub-topic | Last Tested | Error Pattern / Difficulty | Priority | Next Review Due |
-|:---|:---|:---:|:---|:---:|:---:|
-| *None* | *Queue clear — ready for Week 01 intake* | — | — | — | — |
+| `04_Advanced_Software_Eng` | ACM/IEEE 8 Code of Ethics Principles (Scenario Trade-offs) | 2026-09-16 | Needs application drills | High | 2026-09-20 |
+| `04_Advanced_Software_Eng` | Brooks' Law Quadratic Communication Growth (C = N(N-1)/2) | 2026-09-16 | Calculation memorization | Medium | 2026-09-20 |
 
 ---
 
 ## 5. Retention & Examination History
 
-- **Total Quizzes Attempted:** 0
-- **Overall Scenario Accuracy:** — %
-- **Oral Defense Confidence Rating:** Initializing
-- **Anki Card Generation State:** Clean / Awaiting first week batch
+- **Total Quizzes Attempted:** 1 (`Quiz_01_Software_Crisis.json`)
+- **Overall Scenario Accuracy:** 80% (Safe Master's Floor)
+- **Oral Defense Confidence Rating:** 4.0 / 5.0
+- **Anki Card Generation State:** 6 Flashcards generated in `Week_01_Lecture01_Software_Foundations_and_Crisis.md`
