@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Studio Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <h1>Master Studio</h1>
+        <p class="subtitle">{{ active.semester }} &middot; Week {{ active.week }} &middot; {{ active.status }}</p>
+      </div>
+      <div class="header-right">
+        <span class="badge badge-live">LIVE</span>
+        <span class="updated">Updated: {{ active.updated }}</span>
+      </div>
+    </header>
+
+    <!-- Top Stats Row -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">{{ learner.quizzes_taken }}</div>
+        <div class="stat-label">Quizzes Taken</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ learner.accuracy }}%</div>
+        <div class="stat-label">Scenario Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ learner.confidence }}/5</div>
+        <div class="stat-label">Oral Defense</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ progress.readiness }}%</div>
+        <div class="stat-label">Semester Readiness</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ total_content }}</div>
+        <div class="stat-label">Content Files</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ total_raw }}</div>
+        <div class="stat-label">Raw Materials</div>
+      </div>
+    </section>
+
+    <!-- Active Session -->
+    <section class="panel">
+      <h2>Active Session</h2>
+      <div class="active-grid">
+        <div class="active-item">
+          <span class="active-label">Subject</span>
+          <span class="active-value highlight">{{ active.subject }}</span>
+        </div>
+        <div class="active-item">
+          <span class="active-label">Immediate Todo</span>
+          <span class="active-value">{{ active.todo }}</span>
+        </div>
+        <div class="active-item">
+          <span class="active-label">Next Focus</span>
+          <span class="active-value">{{ active.next_focus }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subject Mastery -->
+    <section class="panel">
+      <h2>Subject Mastery Radar</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Credits</th>
+            <th>Quizzes</th>
+            <th>Avg Score</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in progress.subjects %}
+          <tr>
+            <td class="mono">{{ s.name }}</td>
+            <td>{{ s.credits }}</td>
+            <td>{{ s.quizzes }}</td>
+            <td>
+              {% if s.score is not none %}
+                <span class="score {% if s.score >= 80 %}score-high{% elif s.score >= 60 %}score-mid{% else %}score-low{% endif %}">{{ s.score }}%</span>
+              {% else %}
+                <span class="score score-none">--</span>
+              {% endif %}
+            </td>
+            <td><span class="status-badge">{{ s.status }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Two Column: Content + Quiz Log -->
+    <div class="two-col">
+      <section class="panel">
+        <h2>Content per Subject</h2>
+        <div class="content-bars">
+          {% for name, stats in folder_stats.items() %}
+          <div class="content-row">
+            <span class="content-name mono">{{ name }}</span>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: {{ (stats.total_content / 8 * 100) | round }}%"></div>
+            </div>
+            <span class="content-count">{{ stats.total_content }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="legend">
+          <span>Notes: md files</span>
+          <span>Slides: seminar decks</span>
+          <span>Diagrams: PNG</span>
+          <span>Quizzes: JSON</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Quiz History</h2>
+        {% if progress.quiz_log %}
+        <table class="data-table compact">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Topic</th>
+              <th>Score</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for q in progress.quiz_log %}
+            <tr>
+              <td>{{ q.id }}</td>
+              <td>{{ q.date }}</td>
+              <td>{{ q.topic }}</td>
+              <td>
+                <span class="score {% if q.score >= 80 %}score-high{% elif q.score >= 60 %}score-mid{% else %}score-low{% endif %}">
+                  {{ q.correct }}/{{ q.total }} ({{ q.score }}%)
+                </span>
+              </td>
+              <td>
+                <span class="result {% if q.result == 'PASS' %}result-pass{% else %}result-fail{% endif %}">{{ q.result }}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="empty">No quizzes recorded yet.</p>
+        {% endif %}
+      </section>
+    </div>
+
+    <!-- Two Column: Mastered + Review Queue -->
+    <div class="two-col">
+      <section class="panel">
+        <h2>Mastered Concepts</h2>
+        {% if learner.mastered %}
+        <ul class="concept-list">
+          {% for c in learner.mastered %}
+          <li class="concept-item mastered">
+            <span class="concept-score">{{ c.score }}%</span>
+            <span class="concept-text">{{ c.concept }}</span>
+            <span class="concept-meta">{{ c.date }} &middot; @{{ c.agent }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">No mastered concepts yet.</p>
+        {% endif %}
+      </section>
+
+      <section class="panel">
+        <h2>Review Queue</h2>
+        {% if learner.review %}
+        <ul class="concept-list">
+          {% for c in learner.review %}
+          <li class="concept-item review priority-{{ c.priority | lower }}">
+            <span class="concept-priority">{{ c.priority }}</span>
+            <span class="concept-text">{{ c.concept }}</span>
+            <span class="concept-meta">Due: {{ c.due }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">Review queue is clear.</p>
+        {% endif %}
+      </section>
+    </div>
+
+    <!-- GPA Tracker -->
+    <section class="panel">
+      <h2>GPA Tracker &mdash; Semester 1</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Subject</th>
+            <th>Credits</th>
+            <th>Instructor</th>
+            <th>Target</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in gpa.courses %}
+          <tr>
+            <td class="mono">{{ c.code }}</td>
+            <td class="mono">{{ c.name }}</td>
+            <td>{{ c.credits }}</td>
+            <td>{{ c.instructor }}</td>
+            <td><span class="score score-target">{{ c.target }}%</span></td>
+            <td><span class="status-badge status-{{ c.status | lower }}">{{ c.status }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Grading Scale -->
+    <section class="panel">
+      <h2>Grading Thresholds</h2>
+      <div class="threshold-bar">
+        <div class="threshold-segment seg-fail" style="flex: 60">
+          <span>0&ndash;59% FAIL</span>
+        </div>
+        <div class="threshold-segment seg-danger" style="flex: 10">
+          <span>60&ndash;69%</span>
+        </div>
+        <div class="threshold-segment seg-border" style="flex: 5">
+          <span>70&ndash;74%</span>
+        </div>
+        <div class="threshold-segment seg-safe" style="flex: 10">
+          <span>75&ndash;84%</span>
+        </div>
+        <div class="threshold-segment seg-distinct" style="flex: 15">
+          <span>85&ndash;100%</span>
+        </div>
+      </div>
+      <div class="threshold-labels">
+        <span>Ministerial Fail</span>
+        <span>Danger</span>
+        <span>Borderline</span>
+        <span>Safe (Target)</span>
+        <span>Distinction</span>
+      </div>
+    </section>
+
+    <footer>
+      <p>Master Studio &mdash; University of Wasit &middot; College of CS &amp; IT</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
