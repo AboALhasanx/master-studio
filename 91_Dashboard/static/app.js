@@ -3,11 +3,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Animate stat values on load
   document.querySelectorAll('.stat-value').forEach(el => {
-    const text = el.textContent;
-    const num = parseFloat(text);
-    if (isNaN(num)) return;
-
-    const suffix = text.replace(/[\d.]/g, '');
+    const text = el.textContent || '';
+    const match = text.trim().match(/^([\d.]+)(.*)$/);
+    if (!match) return;
+    const num = parseFloat(match[1]);
+    const suffix = match[2];
     const duration = 600;
     const start = performance.now();
 
