@@ -81,10 +81,17 @@ All agents implement the open [Agent Skills specification](https://agentskills.i
 
 ## 🛠️ Toolchains (Zero Paid SaaS)
 
-* **Slides & Seminars:** Markdown $\rightarrow$ PDF via `@marp-team/marp-cli`:
-  ```bash
-  npx @marp-team/marp-cli seminar.md -o seminar.pdf --allow-local-files
-  ```
+* **Slides & Seminars (PDF & PPTX):**
+  - **PDF Export:** `npx @marp-team/marp-cli seminar.md -o seminar.pdf --allow-local-files`
+  - **PowerPoint (.pptx for OnlyOffice / MS Office):**
+    ```bash
+    python "90_Shared_Toolbox/tools/office_exporter.py" pptx seminar.md
+    ```
+* **Word Documents (.docx for OnlyOffice / MS Office):**
+  - Compile study notes or research reports directly to styled Word documents:
+    ```bash
+    python "90_Shared_Toolbox/tools/office_exporter.py" docx note.md
+    ```
 * **Architectural Diagrams:** Rendered natively via **Mermaid.js** C4 blocks.
 * **Concept Mindmaps:** Interactive trees rendered with **Markmap**.
 * **Spaced Repetition:** Flashcard blocks structured for direct Anki import.

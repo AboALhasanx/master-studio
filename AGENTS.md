@@ -120,3 +120,21 @@ When specialized tasks are triggered, agents must adopt the corresponding person
 - **Slide Decks:** Use valid Marp frontmatter (`marp: true`, `theme: gaia`, `paginate: true`, `header`, `footer`).
 - **Math & Notation:** Use standard LaTeX syntax (`$x_i$`, `$$\sum ...$$`).
 - **Zero SaaS Bloat:** Rely exclusively on open formats (Markdown, SVG, PDF via Marp CLI). Never introduce proprietary cloud locks.
+
+---
+
+## 6. Zero Paid SaaS Toolchains & Office Exports (.docx & .pptx)
+
+When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions instead of PDF/Markdown:
+
+- **Word Documents (.docx for OnlyOffice / MS Office 2016+):**
+  ```bash
+  python "90_Shared_Toolbox/tools/office_exporter.py" docx "<path-to-note>.md"
+  ```
+  Produces formatted Word documents with styled headings, alternating table rows, and shaded code blocks compatible with OnlyOffice and MS Word.
+
+- **PowerPoint Slides (.pptx for OnlyOffice / MS PowerPoint):**
+  ```bash
+  python "90_Shared_Toolbox/tools/office_exporter.py" pptx "<path-to-slides>.md"
+  ```
+  Compiles 16:9 Marp presentations into native `.pptx` slide presentations.
