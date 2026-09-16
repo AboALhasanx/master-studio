@@ -26,12 +26,24 @@ This flagship 3-credit course prepares master candidates for high-level software
 
 ### 🏛️ Phase 1: Architecture Foundations & Quality Scenarios (Weeks 1–4)
 
-- [ ] **Week 01: Foundations of Software Architecture & SWEBOK Knowledge Areas**
-  - **Topics:** What is Software Architecture? Architecture as the bridge between requirements and implementation. IEEE 42010 Architecture Description standard (Architectural Views, Viewpoints, Stakeholders, Concerns). SWEBOK v3/v4 Knowledge Areas overview. Why software architecture matters (communication, early design decisions, transferable abstraction).
-  - **Literature & Standards:** SWEBOK v3 (Chapter 2: Software Design, Chapter 10: Software Quality) + IEEE Std 42010-2011 (`https://doi.org/10.1109/IEEESTD.2011.6129467`).
-  - **Deliverables:** Architectural Foundations Note in `03_Study_Notes/Week_01_Architecture_Foundations.md`.
-  - **Self-Assessment:** Contrast an Architectural Pattern vs. an Architectural Tactic vs. a Design Pattern with concrete examples.
-
+- [ ] **Week 01: Evolving Role of Software, Software Crisis & Documented Failures**
+  - **Official Syllabus (Dr. Ali Fahim):**
+    1. Evolving role and changing nature of software (ubiquitous, mission-critical, socio-technical).
+    2. Documented failures: The Patriot Missile timing truncation catastrophe (1991) & Brooks' "No Silver Bullet" (Essential vs. Accidental complexity).
+    3. What software is: Programs (Code) + Data Structures + Complete Documentation.
+    4. Definition of Software Engineering (IEEE Std 610.12) and the fundamental Software Process (Specification, Design, Validation, Evolution).
+    5. The Software Crisis (NATO 1968, IBM OS/360 metrics, Standish Group data, maintenance cost escalation).
+    6. Software Myths: Management myths, Customer myths, and Practitioner/Developer myths.
+    7. Core Terminology Taxonomy: Rigorous distinctions between Error, Fault, Defect, and Failure (Avizienis / IEEE).
+    8. Professional Ethics: ACM/IEEE Software Engineering Code of Ethics & Professional Practice (8 Core Principles).
+  - **Primary Literature & Textbooks:**
+    - Ian Sommerville — *Software Engineering* (9th Edition), Chapters 1 & 2.
+    - Roger Pressman — *Software Engineering: A Practitioner's Approach*, Chapter 1.
+    - Rajib Mall — *Fundamentals of Software Engineering* (4th Edition), Chapters 1 & 2.
+    - B.B. Agarwal et al. — *Software Engineering and Testing: An Introduction* (2010), Chapter 1.
+    - Frederick P. Brooks — "No Silver Bullet: Essence and Accidents of Software Engineering", *IEEE Computer*, 1987 (`https://doi.org/10.1109/MC.1987.1663532`).
+  - **Deliverables:** Complete Bilingual Study Note in `03_Study_Notes/Week_01_Lecture01_Software_Foundations_and_Crisis.md`.
+  - **Self-Assessment:** Mathematically model the 24-bit fixed-point clock drift in the Patriot missile battery and explain why rebooting was a temporary operational mitigation.
 - [ ] **Week 02: Quality Attributes Taxonomy & The ISO/IEC 25010 Quality Model**
   - **Topics:** Functional vs. Non-Functional Requirements, The ISO/IEC 25010 Product Quality Model (Functional Suitability, Performance Efficiency, Compatibility, Usability, Reliability, Security, Maintainability, Portability). Quality attribute sub-characteristics and operational definitions.
   - **Literature & Standards:** ISO/IEC 25010:2011 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE).

@@ -12,12 +12,14 @@
 
 Asst. Prof. Dr. Ali Fahim Ni'ma is a senior faculty member and software engineering authority specializing in software architecture, quality attribute engineering, systems modeling, and empirical software engineering methodologies.
 
-His course represents the **flagship 3-hour theoretical core** of Semester 1. Dr. Ali Fahim enforces a **purely syllabus-driven, primary literature-anchored pedagogy**:
-- **No Pre-packaged Slides:** Students are not provided with canned PowerPoint decks or elementary summary handouts.
-- **Primary Source Immersion:** Students are required to read, synthesize, and critique primary academic literature (IEEE Transactions on Software Engineering, ACM TOSEM, ICSE proceedings), SEI (Software Engineering Institute) technical reports, and international standards (ISO/IEC 25010, SWEBOK v3/v4, IEEE 42010).
-- **Architectural Trade-offs as the Core Philosophy:** To Dr. Ali Fahim, software architecture is fundamentally the *science of trade-offs*. An architecture cannot maximize all quality attributes simultaneously; promoting one attribute inevitably penalizes another.
-
----
+- **Canonical Textbooks (Distributed 2026-09-16):**
+  1. Ian Sommerville — *Software Engineering* (9th Edition)
+  2. Roger Pressman — *Software Engineering: A Practitioner's Approach*
+  3. Rajib Mall — *Fundamentals of Software Engineering* (4th Edition)
+  4. B.B. Agarwal, S.P. Tayal, M. Gupta — *Software Engineering and Testing: An Introduction* (2010)
+- **Policy on Proposing External Sources:** Dr. Ali explicitly stated: *"و ممكن ان يعتمد مصدر اخر بعد ان تعرضوه عليه اشوفه"* (Students are permitted to adopt external literature or books after presenting them to him for review and approval).
+- **Primary Source Immersion:** In addition to the four canonical textbooks, students are required to read, synthesize, and critique primary academic literature (IEEE TSE, ACM TOSEM, ICSE), SEI technical reports, and international standards (ISO/IEC 25010, SWEBOK, IEEE 42010).
+- **Architectural Trade-offs as Core Philosophy:** Software architecture is fundamentally the *science of trade-offs*.
 
 ## 2. Core Theoretical Foundations & High-Yield Domains
 
