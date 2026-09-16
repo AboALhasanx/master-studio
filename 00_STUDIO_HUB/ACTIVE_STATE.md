@@ -37,15 +37,14 @@ status: "INITIALIZED"
 ## 2. Immediate Tasks & Roadmap
 
 ### Active Work Queue
-- [ ] **Establish baseline syllabus and literature pipeline for `04_Advanced_Software_Eng`**
-- [ ] Ingest foundational architectural tactics, quality attributes, and IEEE/ISO standards
-- [ ] Generate bilingual study note prototype for Week 01 in `03_Study_Notes/`
-- [ ] Prepare initial Marp seminar deck prototype for software architecture patterns
+- [x] **Ingest 4 Canonical Textbooks for `04_Advanced_Software_Eng`** (Sommerville, Pressman, Mall, Agarwal)
+- [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
+- [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
+- [ ] Review Week 01 viva defense questions before Monday 10:30 AM lecture with Dr. Ali Fahim
 
 ### Next Session Focus
-- **Topic:** Architecture Tactics, SWEBOK v4 alignment, and ISO/IEC/IEEE 42010 Architecture Description standard.
-- **Deliverable:** Week 01 study note + literature dossier.
-
+- **Topic:** Rehearse the Patriot Missile 24-bit truncation drift math and Brooks' "No Silver Bullet" essential complexity arguments.
+- **Deliverables Ready:** `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` & `seminar_lecture01_software_crisis.pptx`.
 ---
 
 ## 3. Weekly Course Schedule Quick-Reference
