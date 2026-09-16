@@ -23,6 +23,31 @@ Master Studio is deliberately built to have **zero lock-in** to any proprietary 
 
 Every prompt in this vault uses **strict markdown structural contracts**, tables, and code blocks rather than vendor-specific tags. This guarantees that fast, free, open-weights models (DeepSeek, Qwen, MiMo, LLaMA) generate accurate notes, diagrams, and slide decks without hallucinations.
 
+### 🌐 Studying on the Go with Free Web/Mobile Chatbots (ChatGPT, Qwen, DeepSeek, Gemini)
+
+If you are away from your PC and using free web/mobile chatbots on your phone, you can feed your Master Studio context into any chatbot in seconds:
+
+1. **Instant Repository Ingestion via GitIngest (Zero Install):**
+   * Replace `github.com` with `gitingest.com` in your browser:  
+     👉 **[https://gitingest.com/AboALhasanx/master-studio](https://gitingest.com/AboALhasanx/master-studio)**
+   * Or ingest a specific course:  
+     👉 **[https://gitingest.com/AboALhasanx/master-studio/tree/master/01_Semester_1/04_Advanced_Software_Eng](https://gitingest.com/AboALhasanx/master-studio/tree/master/01_Semester_1/04_Advanced_Software_Eng)**
+   * Click **"Copy"** and paste the entire structured course context directly into **ChatGPT Free**, **Qwen Chat**, **DeepSeek**, or **Gemini**.
+
+2. **Direct Web Browsing via Raw GitHub URLs:**
+   * Paste the public raw URL of any study note directly into the chat:
+     ```text
+     https://raw.githubusercontent.com/AboALhasanx/master-studio/master/01_Semester_1/04_Advanced_Software_Eng/03_Study_Notes/Week_01_Architecture_Tactics.md
+     ```
+   * Prompt: *"Read this URL and quiz me on the architecture tactics as my academic examiner."*
+
+3. **Local Subject Packer (`pack_subject.py`):**
+   * Bundle an entire course into a single compact file (< 20k tokens):
+     ```bash
+     python "90_Shared_Toolbox/tools/pack_subject.py" 04
+     ```
+   * Drag-and-drop the generated `chatbot_digest.md` into ChatGPT or Qwen!
+
 ---
 
 ## 🏛️ Academic Framework & Regulations
