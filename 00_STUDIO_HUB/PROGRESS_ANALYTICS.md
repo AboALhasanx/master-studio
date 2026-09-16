@@ -16,13 +16,13 @@
 | Subject                    | Credits | Quizzes Taken | Average Score | Exam Readiness Status  |
 |----------------------------|:-------:|:-------------:|:-------------:|:----------------------:|
 | 01_Cyber_Security          |    2    |       0       |      --       | 🟡 Staged (W1-15 ready)|
-| 02_English_Language        |    1    |       0       |      --       | 🟡 Staged (Units ready)|
+| 02_English_Language        |    1    |       1       |     100%      | 🟢 Active / Unit 1 Done|
 | 03_Data_Mining             |    2    |       0       |      --       | 🟡 Staged (Han & Kamber)|
 | 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 Active / On Track   |
 | 05_Soft_Computing          |    2    |       0       |      --       | 🟡 Staged (Jang ready) |
 | 06_Artificial_Intelligence |    3    |       0       |      --       | ⚪ Pending Lecture 1   |
 +-----------------------------------------------------------------------------------------------+
-| Overall Semester Readiness: 16.7% | Target Benchmark: >= 80% across all 6 courses             |
+| Overall Semester Readiness: 33.3% | Target Benchmark: >= 80% across all 6 courses             |
 +-----------------------------------------------------------------------------------------------+
 ```
 
@@ -41,6 +41,14 @@
   - [ ] ACM/IEEE 8 Code of Ethics Principles (scenario-based application)
   - [ ] Brooks' Law quadratic communication channels equation ($C = \frac{N(N-1)}{2}$)
 
+### 02_English_Language (CS502) — Asst. Prof. Dr. Haidar Akab Alwan
+* **Target Units:** 16 Weeks
+* **Mastered Competencies ($\ge 80\%$ Score):**
+  - [x] English Tense Matrix (Simple vs. Continuous vs. Perfect Aspect)
+  - [x] Time Adverbials Syntax & Bounded Past Compatibility Rules (10 Diagnostic Sentences)
+  - [x] Register Translation (Informal Ellipsis to Formal Academic Publishing)
+  - [x] Compound Word Morphosemantics (House vs. Home Semantic Contrast)
+
 ---
 
 ## 3. Longitudinal Quiz Log & Evaluation History
@@ -51,6 +59,7 @@ Every interactive quiz taken via `quiz_runner.py` or logged from mobile chatbots
 |:---:|:---:|:---|:---|:---:|:---:|:---:|
 | #001 | 2026-09-16 | `04_Advanced_Software_Eng` | Lecture 01 Foundations & Crisis | 4 / 5 (80%) | PASS | 🟢 Mastered |
 
+| #002 | 2026-09-17 | `02_English_Language` | Unit 01 Grammar & Tenses | 5 / 5 (100%) | PASS | 🟢 Mastered |
 ---
 
 ## 4. Assessment Strategy & Grading Thresholds

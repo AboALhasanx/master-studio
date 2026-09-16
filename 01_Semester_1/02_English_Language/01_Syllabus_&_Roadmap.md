@@ -16,7 +16,7 @@ This course elevates the postgraduate student's language capability to the level
 +=======================================================================================================+
 |                                    16-WEEK PROGRESS TRACKER OVERVIEW                                  |
 +=======================================================================================================+
-| Completed Weeks: [ 0 / 16 ] | Progress: 0.0% | Status: Initializing Semester 1                        |
+| Completed Weeks: [ 2 / 16 ] | Progress: 12.5% | Status: Unit 01 Tense System & Vocabulary Mastered   |
 +=======================================================================================================+
 ```
 
@@ -26,13 +26,13 @@ This course elevates the postgraduate student's language capability to the level
 
 ### 📖 Phase 1: Academic Reading, Tenses & Vocabulary Architecture (Weeks 1–4)
 
-- [ ] **Week 01: Course Orientation, Diagnostic Evaluation & EAP Foundations**
+- [x] **Week 01: Course Orientation, Diagnostic Evaluation & EAP Foundations**
   - **Topics:** Academic vs. General English distinctions, Diagnostic reading and grammar assessment, Overview of *Q: Skills for Success 4* and Oxford 3000/5000 academic tiers.
   - **Primary Materials:** Course syllabus + Diagnostic worksheet (`02_Raw_Materials/`).
   - **Deliverables:** Personal error log initialized in `LEARNER_MODEL.md`.
   - **Self-Assessment:** Distinguish between informal, professional, and academic registers across 10 sample sentences.
 
-- [ ] **Week 02: Unit 1 (Q: Skills 4) — Reading Strategies & The English Tense System**
+- [x] **Week 02: Unit 1 (Q: Skills 4) — Reading Strategies & The English Tense System**
   - **Topics:** Unit 1 ("No Place Like Home"), Skimming for the main idea, Scanning for numerical/factual evidence, Diagnostic review of English tense structures (Present Simple, Present Continuous, Past Simple, Present Perfect).
   - **Primary Materials:** `Upper Intermediate - Unit 1 - No Place Like Home.pdf` + Student Book Unit 1.
   - **Deliverables:** Completed reading comprehension questions in `03_Study_Notes/`.

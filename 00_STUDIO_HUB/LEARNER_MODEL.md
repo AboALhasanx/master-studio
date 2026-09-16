@@ -73,6 +73,10 @@ graph TD
 | `04_Advanced_Software_Eng` | Brooks' "No Silver Bullet" (Essential vs. Accidental complexity) | 2026-09-16 | 100% | @examiner |
 | `04_Advanced_Software_Eng` | Tripartite Software Asset (Programs + Data Structures + Documentation) | 2026-09-16 | 100% | @tutor |
 | `04_Advanced_Software_Eng` | Dependability Chain Taxonomy (Error -> Fault -> Error State -> Failure) | 2026-09-16 | 100% | @examiner |
+| `02_English_Language` | English Tense Matrix (Simple vs. Continuous vs. Perfect Aspect) | 2026-09-17 | 100% | @tutor |
+| `02_English_Language` | Time Adverbials Syntax & Bounded Past Compatibility Rules | 2026-09-17 | 100% | @examiner |
+| `02_English_Language` | Register Translation (Informal Ellipsis to Formal Academic Writing) | 2026-09-17 | 100% | @tutor |
+| `02_English_Language` | Compound Word Morphosemantics (House vs. Home Contrast) | 2026-09-17 | 100% | @tutor |
 
 ---
 
@@ -87,7 +91,7 @@ graph TD
 
 ## 5. Retention & Examination History
 
-- **Total Quizzes Attempted:** 1 (`Quiz_01_Software_Crisis.json`)
-- **Overall Scenario Accuracy:** 80% (Safe Master's Floor)
-- **Oral Defense Confidence Rating:** 4.0 / 5.0
-- **Anki Card Generation State:** 6 Flashcards generated in `Week_01_Lecture01_Software_Foundations_and_Crisis.md`
+- **Total Quizzes Attempted:** 2 (`Quiz_01_Software_Crisis.json`, `Quiz_01_Grammar_and_Tenses.json`)
+- **Overall Scenario Accuracy:** 85% (Safe Master's Floor)
+- **Oral Defense Confidence Rating:** 4.2 / 5.0
+- **Anki Card Generation State:** 12 Flashcards generated (6 Software Eng + 6 English Language)

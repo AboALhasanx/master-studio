@@ -5,7 +5,7 @@ active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
 immediate_todo: "Review Week 01 viva defense questions before Monday 10:30 AM lecture"
 next_session_focus: "Oral exam drill on Patriot Missile drift math & Brooks essential complexity"
-last_updated: "2026-09-16"
+last_updated: "2026-09-17"
 status: "WEEK_01_ACTIVE"
 ---
 
@@ -30,7 +30,7 @@ status: "WEEK_01_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-16` | Initial Studio Setup Date |
+| **Last Updated** | `2026-09-17` | English Language Unit 1 Synthesis |
 
 ---
 
@@ -40,6 +40,7 @@ status: "WEEK_01_ACTIVE"
 - [x] **Ingest 4 Canonical Textbooks for `04_Advanced_Software_Eng`** (Sommerville, Pressman, Mall, Agarwal)
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
+- [x] **Ingest Scanned Materials & Synthesize Unit 01 for `02_English_Language`** (Grammar & Tenses Study Note, Clean DOCX, Quiz Bank)
 - [ ] Review Week 01 viva defense questions before Monday 10:30 AM lecture with Dr. Ali Fahim
 
 ### Next Session Focus
