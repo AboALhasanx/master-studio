@@ -1,0 +1,78 @@
+# 🎓 Master Studio — Personal Academic Operating System
+
+[![Academic Year](https://img.shields.io/badge/Academic%20Year-Preparatory%20(1st%20Year)-blue.svg)](#)
+[![Degree](https://img.shields.io/badge/Degree-Master%20of%20Computer%20Science-success.svg)](#)
+[![Institution](https://img.shields.io/badge/Institution-University%20of%20Wasit-orange.svg)](#)
+[![Zero-SaaS](https://img.shields.io/badge/Toolchain-Zero--SaaS%20%2F%20Local-purple.svg)](#)
+
+An agent-native, file-driven personal university knowledge vault designed for the preparatory (coursework) stage of the **Master of Computer Science (MCS)** program at the **College of Computer Science & Information Technology, University of Wasit**.
+
+---
+
+## 🏛️ Academic Framework & Regulations
+
+In accordance with Iraqi Ministry of Higher Education and University of Wasit postgraduate statutes:
+* **Degree Duration:** 2 Years (Year 1: Preparatory Coursework across two 16-week terms; Year 2: Research & Thesis).
+* **Coursework Passing Standard:** Minimum **60%** in every individual subject.
+* **Transition GPA Floor:** Minimum cumulative GPA of **70%** (ministerial baseline) or **75%** (institutional target) required to register the thesis research topic.
+* **Transition Milestone:** Defense of thesis proposal before a 3-member departmental committee (*اللجنة الثلاثية*).
+
+---
+
+## 📂 Architecture Overview
+
+```text
+Master-Studio/
+├── AGENTS.md                            <-- Master directives & anti-hallucination rules
+│
+├── 00_STUDIO_HUB/                       <-- Continuous Memory & Core Governance
+│   ├── ACTIVE_STATE.md                  <-- Fast-boot session state (< 100 lines)
+│   ├── LEARNER_MODEL.md                 <-- Cognitive profile & mastery tracker (< 100 lines)
+│   ├── ACADEMIC_REGULATIONS.md          <-- Full ministerial & university statute dossier
+│   ├── GPA_TRACKER.md                   <-- Live cumulative GPA calculation matrix
+│   ├── templates/                       <-- Standardized templates (Notes, Marp, MCQs)
+│   └── agents/                          <-- Personas (@tutor, @examiner, @seminar, @scout)
+│
+├── 01_Semester_1/                       <-- Current Coursework Term
+│   ├── 00_Semester1_Schedule.md         <-- Official weekly lecture schedule
+│   ├── 01_Cyber_Security/               <-- Dr. Huda Lafta Majeed
+│   ├── 02_English_Language/             <-- Dr. Haidar Akab Alwan
+│   ├── 03_Data_Mining/                  <-- Dr. Ahmed Shakir Abd Al-Rida
+│   ├── 04_Advanced_Software_Eng/        <-- Dr. Ali Fahim Ni'ma (3 credit hours)
+│   ├── 05_Soft_Computing/               <-- Dr. Abdul Hadi Mohammed Adkhil
+│   └── 06_Artificial_Intelligence/      <-- Dr. Saif Ali Al-Saidi (3 credit hours)
+│
+├── 02_Semester_2/                       <-- Spring Term (Scaffolded)
+├── 03_Thesis_&_Research_Transition/     <-- Year 2 Gateway (Committee Guidelines & Topics)
+└── 90_Shared_Toolbox/                   <-- Shared Marp presentation themes & CSL styles
+```
+
+---
+
+## 🤖 Specialized Agent Personas
+
+* **`@tutor` (The Socratic Instructor):** Deconstructs complex topics using a 3-tier progressive delivery: Intuitive Mental Model (Arabic analogy) $\rightarrow$ Undergraduate Foundations $\rightarrow$ Master's-Level Rigor.
+* **`@examiner` (The Rigorous Assessor):** Generates high-discrimination scenario MCQs with nuanced distractors and conducts oral exam simulations.
+* **`@seminar` (The Presentation Architect):** Ingests notes or primary papers and produces structured 10-slide [Marp](https://marp.app) presentations that compile directly to presentation-ready PDFs.
+* **`@scout` (The Academic Literature Scout):** Locates primary literature from IEEE, ACM, and arXiv with verified, clickable DOIs (`https://doi.org/...`).
+
+---
+
+## 🛠️ Toolchains (Zero Paid SaaS)
+
+* **Slides & Seminars:** Markdown $\rightarrow$ PDF via `@marp-team/marp-cli`:
+  ```bash
+  npx @marp-team/marp-cli seminar.md -o seminar.pdf --allow-local-files
+  ```
+* **Architectural Diagrams:** Rendered natively via **Mermaid.js** C4 blocks.
+* **Concept Mindmaps:** Interactive trees rendered with **Markmap**.
+* **Spaced Repetition:** Flashcard blocks structured for direct Anki import.
+
+---
+
+## 📱 Multi-Device Experience
+
+The vault is designed for seamless continuous synchronization:
+1. **Desktop:** Coding agents (`omp`, `opencode`) synthesize notes, search literature, and compile slides.
+2. **Google Drive Sync:** Propagates file changes in near real-time.
+3. **Android Tablet & Phone:** Open the folder directly in **Obsidian Mobile** for offline knowledge graph navigation during lectures, and view compiled seminar PDFs in any native viewer.
