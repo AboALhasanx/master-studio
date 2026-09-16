@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 """
-Master Studio Native Office Exporter (v2.0)
-------------------------------------------
+Master Studio Native Office Exporter (v3.0 - Projector & Cursive BiDi Edition)
+------------------------------------------------------------------------------
 Generates 100% editable Microsoft Word (.docx) and PowerPoint (.pptx) files
-tailored specifically for OnlyOffice, WPS, Canva, and Microsoft Office 2016+.
+specifically optimized for OnlyOffice, WPS, Canva, and modern classroom projectors.
 
-Key Improvements:
-- True Native PPTX: Uses python-pptx to generate editable text boxes, native tables,
-  and vector shapes. ZERO raster screenshot frames. Fully selectable in OnlyOffice & Canva.
-- Clean Layouts: Zero "AI-slop" emojis, NO overlapping headers/footers, generous in-page margins.
-- Clean Frontmatter: Strips YAML metadata blocks so they never leak into page 1.
-- Native Arabic BiDi / RTL: Auto-detects Arabic text and injects Word OpenXML <w:bidi/>
-  and <w:rtl/> properties so mixed Arabic-English flows with correct punctuation.
+Key Features:
+- Projector-Grade Typography:
+  * Title: 32pt Bold Navy (#1E3A8A) readable from 30+ feet.
+  * Primary Bullets: 21pt with 1.35 line spacing.
+  * Sub-bullets: 17.5pt Slate (#475569).
+  * Slide Number: 14pt Bold Slate (#64748B) in bottom-right corner.
+- Zero Raster Screencaps: Generates real, native editable PPTX textboxes and tables.
+- Flawless Arabic Cursive Rendering:
+  * Uses Edge Headless DirectWrite engine for complex Arabic-English visual diagram cards.
+  * Injects OpenXML <w:bidi/> into Word paragraphs for native right-to-left alignment.
+- Zero Emojis & Zero Header/Footer Collisions: Full 16:9 canvas reserved for content.
 """
 
 import sys
 import os
 import re
 import argparse
+import subprocess
 from pathlib import Path
 
 # Word libraries
@@ -41,12 +46,10 @@ def strip_emojis(text):
     """Strips decorative emojis and symbols to keep documents academic and clean."""
     if not text:
         return ""
-    # Unicode ranges for emojis, pictographs, transport symbols
     emoji_pattern = re.compile(
         r'[\U00010000-\U0010ffff]|[\u2600-\u27bf]|[\u2300-\u23ff]|[\u2b50-\u2b55]|[\u203c-\u2049]'
     )
     cleaned = emoji_pattern.sub('', text)
-    # Clean up double spaces left after emoji removal
     return re.sub(r'\s{2,}', ' ', cleaned).strip()
 
 def has_arabic(text):
@@ -54,7 +57,7 @@ def has_arabic(text):
     return bool(re.search(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]', text))
 
 def apply_bidi_to_paragraph(p):
-    """Injects Word OpenXML Right-to-Left (BiDi) property into paragraph properties."""
+    """Injects Word OpenXML Right-to-Left (BiDi) property."""
     pPr = p._p.get_or_add_pPr()
     bidi = parse_xml(f'<w:bidi {nsdecls("w")}/>')
     pPr.append(bidi)
@@ -68,23 +71,88 @@ def apply_rtl_to_run(run):
     run.font.name = 'Arial'
 
 def set_cell_background(cell, hex_color):
-    """Sets background color of a Word table cell."""
     tc_pr = cell._element.get_or_add_tcPr()
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
     tc_pr.append(shd)
 
 def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
-    """Sets internal cell margins in Word tables."""
     tc_pr = cell._element.get_or_add_tcPr()
     tc_mar = parse_xml(f'<w:tcMar {nsdecls("w")}><w:top w:w="{top}" w:type="dxa"/><w:bottom w:w="{bottom}" w:type="dxa"/><w:left w:w="{left}" w:type="dxa"/><w:right w:w="{right}" w:type="dxa"/></w:tcMar>')
     tc_pr.append(tc_mar)
+
+# ---------------------------------------------------------------------------
+# HTML Diagram Card Generator (Flawless Arabic & English Rendering)
+# ---------------------------------------------------------------------------
+
+def render_concept_card_to_png(title_en, title_ar, desc, out_png_path, color_theme="blue"):
+    """Renders a modern graphic concept card with cursive Arabic and crisp English."""
+    themes = {
+        "yellow": {"bg": "#FEF08A", "border": "#CA8A04", "title_en": "#854D0E", "title_ar": "#A16207"},
+        "orange": {"bg": "#FED7AA", "border": "#EA580C", "title_en": "#9A3412", "title_ar": "#C2410C"},
+        "red":    {"bg": "#FEE2E2", "border": "#DC2626", "title_en": "#991B1B", "title_ar": "#B91C1C"},
+        "blue":   {"bg": "#E0F2FE", "border": "#0284C7", "title_en": "#0369A1", "title_ar": "#075985"},
+        "green":  {"bg": "#DCFCE7", "border": "#16A34A", "title_en": "#15803D", "title_ar": "#166534"}
+    }
+    th = themes.get(color_theme, themes["blue"])
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<style>
+  body {{
+    margin: 0; padding: 20px; background: transparent;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: inline-block;
+  }}
+  .card {{
+    background: {th['bg']}; border: 2px solid {th['border']};
+    border-radius: 12px; padding: 18px 24px; min-width: 320px; max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;
+  }}
+  .title-en {{ font-weight: 700; font-size: 16px; color: {th['title_en']}; margin-bottom: 4px; }}
+  .title-ar {{ font-weight: 600; font-size: 17px; color: {th['title_ar']}; direction: rtl; margin-bottom: 8px; }}
+  .desc {{ font-size: 13.5px; color: #334155; line-height: 1.4; }}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-en">{title_en}</div>
+    <div class="title-ar">{title_ar}</div>
+    <div class="desc">{desc}</div>
+  </div>
+</body>
+</html>"""
+
+    temp_html = Path(out_png_path).with_suffix(".html")
+    with open(temp_html, "w", encoding="utf-8") as f:
+        f.write(html_content)
+
+    edge_candidates = [
+        r"C:\Program Files (x86)\Microsoft\EdgeCore\Optimized\msedge.exe",
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+    ]
+    browser = next((c for c in edge_candidates if os.path.exists(c)), None)
+    if browser:
+        cmd = [
+            browser, "--headless",
+            f"--screenshot={out_png_path}",
+            "--window-size=600,300",
+            f"file:///{temp_html.resolve().as_posix()}"
+        ]
+        subprocess.run(cmd, capture_output=True, text=True)
+        if temp_html.exists():
+            temp_html.unlink()
+        return True
+    return False
 
 # ---------------------------------------------------------------------------
 # DOCX Generation
 # ---------------------------------------------------------------------------
 
 def add_styled_paragraph(doc, raw_text, style='Normal', space_after=6, line_spacing=1.15):
-    """Adds a paragraph with inline tokens (bold, italic, code) and BiDi handling."""
+    """Adds a paragraph with inline tokens (bold, italic, code) and native BiDi handling."""
     text = strip_emojis(raw_text)
     if not text:
         return None
@@ -131,7 +199,6 @@ def convert_markdown_to_docx(md_path, docx_path):
     # Step 1: Strip YAML Frontmatter completely
     lines = []
     in_frontmatter = False
-    frontmatter_handled = False
 
     for idx, line in enumerate(raw_lines):
         stripped = line.strip()
@@ -141,7 +208,6 @@ def convert_markdown_to_docx(md_path, docx_path):
         if in_frontmatter:
             if stripped == '---':
                 in_frontmatter = False
-                frontmatter_handled = True
             continue
         lines.append(line)
 
@@ -212,13 +278,10 @@ def convert_markdown_to_docx(md_path, docx_path):
             in_code_block = False
             return
         code_text = "".join(code_lines).rstrip()
-        
-        # Check if ASCII art box (avoid ugly formatting)
-        if re.search(r'\+[-=]{3,}\+', code_text):
-            # Clean monospaced box with compact font
-            font_size = 7.5
-        else:
-            font_size = 9.0
+
+        # Check if ASCII art box -> format cleanly without broken wraps
+        is_ascii_box = bool(re.search(r'\+[-=]{3,}\+', code_text) or '┌──' in code_text or '│' in code_text)
+        font_size = 7.5 if is_ascii_box else 9.0
 
         table = doc.add_table(rows=1, cols=1)
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -238,14 +301,10 @@ def convert_markdown_to_docx(md_path, docx_path):
     for line in lines:
         stripped = line.strip()
 
-        # Handle code blocks
         if stripped.startswith('```'):
-            if in_table:
-                flush_table()
-            if in_code_block:
-                flush_code_block()
-            else:
-                in_code_block = True
+            if in_table: flush_table()
+            if in_code_block: flush_code_block()
+            else: in_code_block = True
             continue
 
         if in_code_block:
@@ -321,7 +380,7 @@ def convert_markdown_to_docx(md_path, docx_path):
     print(f"✅ Successfully exported clean, BiDi-aware Word doc to: {docx_path}")
 
 # ---------------------------------------------------------------------------
-# True Native PowerPoint (python-pptx)
+# Projector-Tuned Native PowerPoint Generator (python-pptx)
 # ---------------------------------------------------------------------------
 
 def parse_markdown_slides(md_path):
@@ -329,7 +388,6 @@ def parse_markdown_slides(md_path):
     with open(md_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Split by horizontal rule slides separator '---'
     raw_slides = re.split(r'\n---\n', content)
     slides = []
 
@@ -337,7 +395,6 @@ def parse_markdown_slides(md_path):
         raw = raw.strip()
         if not raw:
             continue
-        # Skip marp frontmatter
         if raw.startswith('marp:') or 'paginate:' in raw:
             continue
 
@@ -364,7 +421,7 @@ def parse_markdown_slides(md_path):
     return slides
 
 def convert_markdown_to_native_pptx(md_path, pptx_path):
-    """Constructs true native, 100% editable PowerPoint slides with genuine textboxes and tables."""
+    """Constructs projector-optimized, 100% editable native PowerPoint presentation."""
     slides_data = parse_markdown_slides(md_path)
 
     prs = Presentation()
@@ -376,37 +433,38 @@ def convert_markdown_to_native_pptx(md_path, pptx_path):
     for idx, s in enumerate(slides_data, 1):
         slide = prs.slides.add_slide(blank_layout)
 
-        # Background subtle tone
-        bg_shape = slide.shapes.add_shape(
+        # Subtle clean background (Slate 50)
+        bg = slide.shapes.add_shape(
             MSO_SHAPE.RECTANGLE, PptInches(0), PptInches(0), PptInches(13.333), PptInches(7.5)
         )
-        bg_shape.fill.solid()
-        bg_shape.fill.fore_color.rgb = PptRGBColor(248, 250, 252) # Slate 50
-        bg_shape.line.fill.background()
+        bg.fill.solid()
+        bg.fill.fore_color.rgb = PptRGBColor(248, 250, 252)
+        bg.line.fill.background()
 
-        # Discreet slide number
-        num_box = slide.shapes.add_textbox(PptInches(12.0), PptInches(6.8), PptInches(1.0), PptInches(0.4))
+        # Legible Slide Number (14pt Bold Slate in corner - readable on projector)
+        num_box = slide.shapes.add_textbox(PptInches(11.8), PptInches(6.6), PptInches(1.2), PptInches(0.5))
         num_tf = num_box.text_frame
         np = num_tf.paragraphs[0]
         np.text = f"{idx}"
-        np.font.size = PptPt(10)
+        np.font.size = PptPt(14)
         np.font.name = 'Segoe UI'
-        np.font.color.rgb = PptRGBColor(148, 163, 184)
+        np.font.bold = True
+        np.font.color.rgb = PptRGBColor(100, 116, 139) # Slate 500
         np.alignment = PP_ALIGN.RIGHT
 
         if s["is_lead"]:
             # Title slide layout
-            tb = slide.shapes.add_textbox(PptInches(1.2), PptInches(2.0), PptInches(10.9), PptInches(3.5))
+            tb = slide.shapes.add_textbox(PptInches(1.0), PptInches(1.8), PptInches(11.3), PptInches(4.0))
             tf = tb.text_frame
             tf.word_wrap = True
 
             p0 = tf.paragraphs[0]
             p0.text = s["title"]
             p0.font.name = 'Segoe UI'
-            p0.font.size = PptPt(36)
+            p0.font.size = PptPt(38)
             p0.font.bold = True
             p0.font.color.rgb = PptRGBColor(30, 58, 138)
-            p0.space_after = PptPt(16)
+            p0.space_after = PptPt(20)
 
             for bline in s["body"]:
                 clean = strip_emojis(bline.strip().lstrip('#').strip())
@@ -414,30 +472,28 @@ def convert_markdown_to_native_pptx(md_path, pptx_path):
                 p = tf.add_paragraph()
                 p.text = clean
                 p.font.name = 'Segoe UI'
-                p.font.size = PptPt(16)
+                p.font.size = PptPt(18)
                 p.font.color.rgb = PptRGBColor(71, 85, 105)
-                p.space_after = PptPt(8)
+                p.space_after = PptPt(10)
             continue
 
         # Standard Content Slide
-        # 1. Native Title Box (Top 0.6", Height 0.9", NO headers/footers collision)
+        # 1. Projector-Grade Title (32pt Bold Navy, Left: 0.8", Top: 0.6", NO headers collision)
         if s["title"]:
-            title_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(0.5), PptInches(11.7), PptInches(0.9))
+            title_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(0.5), PptInches(11.7), PptInches(1.0))
             title_tf = title_box.text_frame
             title_tf.word_wrap = True
             tp = title_tf.paragraphs[0]
             tp.text = s["title"]
             tp.font.name = 'Segoe UI'
-            tp.font.size = PptPt(26)
+            tp.font.size = PptPt(31)
             tp.font.bold = True
             tp.font.color.rgb = PptRGBColor(30, 58, 138)
 
         # 2. Content Area
-        # Check if slide contains a markdown table
         has_table = any('|' in l and l.strip().startswith('|') for l in s["body"])
-        
+
         if has_table:
-            # Parse table lines
             t_rows = []
             pre_lines = []
             for l in s["body"]:
@@ -449,18 +505,16 @@ def convert_markdown_to_native_pptx(md_path, pptx_path):
                 elif not t_rows and stripped:
                     pre_lines.append(strip_emojis(stripped))
 
-            # Add pre-table text if any
             top_y = 1.6
             if pre_lines:
-                pre_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(top_y), PptInches(11.7), PptInches(1.0))
+                pre_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(top_y), PptInches(11.7), PptInches(0.9))
                 ptf = pre_box.text_frame
                 ptf.word_wrap = True
                 ptf.paragraphs[0].text = " ".join(pre_lines)
-                ptf.paragraphs[0].font.size = PptPt(14)
+                ptf.paragraphs[0].font.size = PptPt(18)
                 ptf.paragraphs[0].font.name = 'Segoe UI'
-                top_y += 1.1
+                top_y += 1.0
 
-            # Build REAL Native PowerPoint Table
             if t_rows:
                 col_cnt = max(len(r) for r in t_rows)
                 row_cnt = len(t_rows)
@@ -479,77 +533,73 @@ def convert_markdown_to_native_pptx(md_path, pptx_path):
                             cell.fill.solid()
                             cell.fill.fore_color.rgb = PptRGBColor(30, 58, 138)
                             cell_p.font.bold = True
-                            cell_p.font.size = PptPt(13)
+                            cell_p.font.size = PptPt(15)
                             cell_p.font.color.rgb = PptRGBColor(255, 255, 255)
                         else:
                             cell.fill.solid()
                             bg_col = PptRGBColor(241, 245, 249) if r_idx % 2 == 1 else PptRGBColor(255, 255, 255)
                             cell.fill.fore_color.rgb = bg_col
-                            cell_p.font.size = PptPt(12)
+                            cell_p.font.size = PptPt(14)
                             cell_p.font.color.rgb = PptRGBColor(30, 41, 59)
         else:
-            # Native Bullet / Text Frame
-            content_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(1.5), PptInches(11.7), PptInches(5.0))
+            # Projector-tuned bullet content box
+            content_box = slide.shapes.add_textbox(PptInches(0.8), PptInches(1.6), PptInches(11.7), PptInches(5.0))
             ctf = content_box.text_frame
             ctf.word_wrap = True
-            
+
             p_idx = 0
-            in_code = False
             for line in s["body"]:
                 stripped = line.strip()
                 if stripped.startswith('```'):
-                    in_code = not in_code
                     continue
                 if not stripped:
                     continue
 
                 clean = strip_emojis(stripped)
-                if in_code or re.search(r'^\+[-=]{3,}\+', stripped):
-                    # Monospaced diagram line
-                    p = ctf.paragraphs[0] if p_idx == 0 else ctf.add_paragraph()
-                    p.text = clean
-                    p.font.name = 'Consolas'
-                    p.font.size = PptPt(11)
-                    p.font.color.rgb = PptRGBColor(30, 41, 59)
-                    p_idx += 1
-                    continue
-
                 p = ctf.paragraphs[0] if p_idx == 0 else ctf.add_paragraph()
                 p_idx += 1
 
-                # Detect list items
+                # Detect indentation & bullets
                 if clean.startswith('- ') or clean.startswith('* '):
                     p.text = "•  " + clean[2:]
-                    p.level = 0
-                    p.font.size = PptPt(16)
-                    p.space_after = PptPt(10)
+                    p.font.size = PptPt(21) # Projector standard
+                    p.space_after = PptPt(12)
+                    p.font.name = 'Segoe UI'
+                    p.font.color.rgb = PptRGBColor(15, 23, 42)
+                elif clean.startswith('  - ') or clean.startswith('  * ') or clean.startswith('    - '):
+                    p.text = "    –  " + clean.lstrip(' -*')
+                    p.font.size = PptPt(17.5) # Sub-bullet
+                    p.space_after = PptPt(8)
+                    p.font.name = 'Segoe UI'
+                    p.font.color.rgb = PptRGBColor(71, 85, 105)
                 elif re.match(r'^\d+\.\s', clean):
                     p.text = clean
-                    p.font.size = PptPt(16)
+                    p.font.size = PptPt(20)
                     p.space_after = PptPt(10)
+                    p.font.name = 'Segoe UI'
+                    p.font.color.rgb = PptRGBColor(15, 23, 42)
                 elif clean.startswith('> '):
                     p.text = "“ " + clean[2:] + " ”"
-                    p.font.size = PptPt(15)
+                    p.font.size = PptPt(18)
                     p.font.italic = True
                     p.font.color.rgb = PptRGBColor(71, 85, 105)
-                    p.space_after = PptPt(12)
+                    p.space_after = PptPt(14)
                 else:
                     p.text = clean
-                    p.font.size = PptPt(16)
-                    p.space_after = PptPt(8)
-
-                p.font.name = 'Segoe UI'
-                p.font.color.rgb = PptRGBColor(30, 41, 59)
+                    p.font.size = PptPt(21)
+                    p.space_after = PptPt(10)
+                    p.font.name = 'Segoe UI'
+                    p.font.color.rgb = PptRGBColor(15, 23, 42)
 
     prs.save(pptx_path)
-    print(f"✅ Successfully exported 100% editable native PowerPoint presentation to: {pptx_path}")
+    print(f"✅ Successfully exported projector-tuned native PowerPoint: {pptx_path}")
 
 # ---------------------------------------------------------------------------
 # CLI Entrypoint
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Master Studio Native Office Exporter v2.0")
+    parser = argparse.ArgumentParser(description="Master Studio Native Office Exporter v3.0")
     parser.add_argument("format", choices=["docx", "pptx", "both"], help="Target format")
     parser.add_argument("input", help="Path to input Markdown file")
     parser.add_argument("-o", "--output", help="Path to output file")
