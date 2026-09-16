@@ -36,6 +36,10 @@ opencode.json
 *.tar.gz
 *.mp4
 
+# Allow final canonical deliverables (study notes + seminar decks)
+!**/03_Study_Notes/*.docx
+!**/05_Seminars_&_Slides/*.pptx
+
 # AI Chatbot Digest Packs (Generated on demand)
 *digest*.md
 repomix-output.*
