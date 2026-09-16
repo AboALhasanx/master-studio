@@ -17,12 +17,17 @@ Agents operating in this vault must function not merely as generic text generato
 |                                                                               |
 |  [Fast-Boot Memory]  <--->  [Agent Directives]  <--->  [Vault Hierarchy]      |
 |  - ACTIVE_STATE.md          - AGENTS.md (Root)         - 01_Semester_1/       |
-|  - LEARNER_MODEL.md         - Specialized Agents       - 02_Semester_2/       |
-|                             - Template Enforcement     - 03_Thesis_Gateway/   |
-+-------------------------------------------------------------------------------+
-```
+## 1.1. Autonomous Execution Contract (Zero-CLI Policy for the Student)
 
----
+> **Golden Rule:** The student will communicate **strictly in plain natural language** (chat). The student must **NEVER** be asked to remember or run command-line commands, python scripts, or CLI flags.
+>
+> **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
+> - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
+> - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
+> - If the student says: *"Quiz me on [topic]"* $\rightarrow$ YOU conduct the quiz interactively in the chat, grade the responses, and YOU update `PROGRESS_ANALYTICS.md` and `LEARNER_MODEL.md` in the background.
+> - If the student says: *"Bundle this for my phone / ChatGPT"* $\rightarrow$ YOU run `pack_subject.py` in the background.
+> - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
+
 
 ## 2. Inviolable Governance Rules
 

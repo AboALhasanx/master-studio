@@ -23,6 +23,17 @@ Master Studio is deliberately built to have **zero lock-in** to any proprietary 
 
 Every prompt in this vault uses **strict markdown structural contracts**, tables, and code blocks rather than vendor-specific tags. This guarantees that fast, free, open-weights models (DeepSeek, Qwen, MiMo, LLaMA) generate accurate notes, diagrams, and slide decks without hallucinations.
 
+### 💬 Talk-Only Student Experience (Zero CLI Memorization)
+
+**You never need to remember command-line commands, python arguments, or tool flags.**
+
+Whenever you launch **Freebuff**, **OpenCode**, or **OMP**, you simply talk in natural conversation. The AI agent automatically detects your intent and executes all tools in the background:
+* *"Read the new lecture PDF Dr. Ali sent"* $\rightarrow$ Agent runs `pdf_reader.py` and produces the note.
+* *"Export my notes to Word / PowerPoint for OnlyOffice"* $\rightarrow$ Agent runs `office_exporter.py` in the background.
+* *"Quiz me on this week"* $\rightarrow$ Agent conducts an interactive oral exam in chat and logs your score to `PROGRESS_ANALYTICS.md`.
+* *"Save and sync to GitHub"* $\rightarrow$ Agent commits and pushes your work automatically.
+
+
 ### 🌐 Studying on the Go with Free Web/Mobile Chatbots (ChatGPT, Qwen, DeepSeek, Gemini)
 
 If you are away from your PC and using free web/mobile chatbots on your phone, you can feed your Master Studio context into any chatbot in seconds:
