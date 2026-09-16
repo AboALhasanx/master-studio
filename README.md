@@ -92,6 +92,12 @@ All agents implement the open [Agent Skills specification](https://agentskills.i
     ```bash
     python "90_Shared_Toolbox/tools/office_exporter.py" docx note.md
     ```
+* **PDF-to-Markdown Extraction (100% Local & Free):**
+  - Convert dense academic PDFs, slides, and textbooks into clean Markdown:
+    ```bash
+    python "90_Shared_Toolbox/tools/pdf_reader.py" path/to/paper.pdf -o path/to/note.md
+    ```
+    Extracts multi-column research papers, tables, and mathematical formulas in milliseconds on CPU with zero cloud APIs.
 * **Architectural Diagrams:** Rendered natively via **Mermaid.js** C4 blocks.
 * **Concept Mindmaps:** Interactive trees rendered with **Markmap**.
 * **Spaced Repetition:** Flashcard blocks structured for direct Anki import.

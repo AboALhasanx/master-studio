@@ -138,3 +138,23 @@ When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions
   python "90_Shared_Toolbox/tools/office_exporter.py" pptx "<path-to-slides>.md"
   ```
   Compiles 16:9 Marp presentations into native `.pptx` slide presentations.
+
+---
+
+## 7. Reading & Ingesting Academic PDFs (100% Local & Free)
+
+To allow agents to read and analyze dense two-column academic papers, textbook chapters, and lecture PDFs as easily as Markdown:
+
+- **Read and print PDF content directly into context:**
+  ```bash
+  python "90_Shared_Toolbox/tools/pdf_reader.py" "path/to/document.pdf"
+  ```
+- **Extract PDF to Markdown file:**
+  ```bash
+  python "90_Shared_Toolbox/tools/pdf_reader.py" "path/to/document.pdf" -o "path/to/output.md"
+  ```
+- **Extract specific pages:**
+  ```bash
+  python "90_Shared_Toolbox/tools/pdf_reader.py" "path/to/document.pdf" --pages 1-5
+  ```
+  Powered by PyMuPDF4LLM: runs 100% locally on CPU in milliseconds, preserving two-column reading order, tables, formulas, and headings.
