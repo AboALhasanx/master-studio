@@ -4,8 +4,24 @@
 [![Degree](https://img.shields.io/badge/Degree-Master%20of%20Computer%20Science-success.svg)](#)
 [![Institution](https://img.shields.io/badge/Institution-University%20of%20Wasit-orange.svg)](#)
 [![Zero-SaaS](https://img.shields.io/badge/Toolchain-Zero--SaaS%20%2F%20Local-purple.svg)](#)
+[![Free-Model Ready](https://img.shields.io/badge/Models-100%25%20Free%20%26%20Open-brightgreen.svg)](#)
 
 An agent-native, file-driven personal university knowledge vault designed for the preparatory (coursework) stage of the **Master of Computer Science (MCS)** program at the **College of Computer Science & Information Technology, University of Wasit**.
+
+---
+
+## 🆓 Free-Model & Vendor-Agnostic Architecture
+
+Master Studio is deliberately built to have **zero lock-in** to any proprietary model or vendor. You can operate this entire studio for $0 using:
+
+| Harness | Command | Default Free Model Engine | Context File |
+|---|---|---|---|
+| **Freebuff** | `freebuff` | DeepSeek V4 Flash / MiMo 2.5 / MiniMax | `knowledge.md` |
+| **OpenCode** | `opencode` | `free-router/free-default` / DeepSeek V4 | `opencode.json` |
+| **OMP** | `omp` | Open / Free endpoints or local models | `AGENTS.md` |
+| **Cursor / Cline** | *(open workspace)* | Local Ollama / Groq / Free API tiers | `skills/` & `AGENTS.md` |
+
+Every prompt in this vault uses **strict markdown structural contracts**, tables, and code blocks rather than vendor-specific tags. This guarantees that fast, free, open-weights models (DeepSeek, Qwen, MiMo, LLaMA) generate accurate notes, diagrams, and slide decks without hallucinations.
 
 ---
 
@@ -24,6 +40,8 @@ In accordance with Iraqi Ministry of Higher Education and University of Wasit po
 ```text
 Master-Studio/
 ├── AGENTS.md                            <-- Master directives & anti-hallucination rules
+├── knowledge.md                         <-- Freebuff / Codebuff project context & routing
+├── opencode.json                        <-- OpenCode free-router configuration
 │
 ├── 00_STUDIO_HUB/                       <-- Continuous Memory & Core Governance
 │   ├── ACTIVE_STATE.md                  <-- Fast-boot session state (< 100 lines)
@@ -44,17 +62,20 @@ Master-Studio/
 │
 ├── 02_Semester_2/                       <-- Spring Term (Scaffolded)
 ├── 03_Thesis_&_Research_Transition/     <-- Year 2 Gateway (Committee Guidelines & Topics)
+├── skills/                              <-- Open Agent Skills standard (tutor, examiner, seminar, scout)
 └── 90_Shared_Toolbox/                   <-- Shared Marp presentation themes & CSL styles
 ```
 
 ---
 
-## 🤖 Specialized Agent Personas
+## 🤖 Specialized Agent Skills (`skills/`)
 
-* **`@tutor` (The Socratic Instructor):** Deconstructs complex topics using a 3-tier progressive delivery: Intuitive Mental Model (Arabic analogy) $\rightarrow$ Undergraduate Foundations $\rightarrow$ Master's-Level Rigor.
-* **`@examiner` (The Rigorous Assessor):** Generates high-discrimination scenario MCQs with nuanced distractors and conducts oral exam simulations.
-* **`@seminar` (The Presentation Architect):** Ingests notes or primary papers and produces structured 10-slide [Marp](https://marp.app) presentations that compile directly to presentation-ready PDFs.
-* **`@scout` (The Academic Literature Scout):** Locates primary literature from IEEE, ACM, and arXiv with verified, clickable DOIs (`https://doi.org/...`).
+All agents implement the open [Agent Skills specification](https://agentskills.io) and run natively in any compatible tool:
+
+* **`tutor` (The Socratic Instructor):** Deconstructs complex topics using a 3-tier progressive delivery: Intuitive Mental Model (Arabic analogy) $\rightarrow$ Formal Undergraduate Foundations $\rightarrow$ Master's-Level Rigor.
+* **`examiner` (The Rigorous Assessor):** Generates high-discrimination scenario MCQs with nuanced distractors and conducts mock viva defense drills.
+* **`seminar` (The Presentation Architect):** Ingests notes or primary papers and produces structured 10-slide [Marp](https://marp.app) presentations that compile directly to presentation-ready PDFs.
+* **`scout` (The Academic Literature Scout):** Locates primary literature from IEEE, ACM, and arXiv with verified, clickable DOIs (`https://doi.org/...`).
 
 ---
 
@@ -73,6 +94,6 @@ Master-Studio/
 ## 📱 Multi-Device Experience
 
 The vault is designed for seamless continuous synchronization:
-1. **Desktop:** Coding agents (`omp`, `opencode`) synthesize notes, search literature, and compile slides.
+1. **Desktop:** Agents (Freebuff, OpenCode, OMP) synthesize notes, search literature, and compile slides.
 2. **Google Drive Sync:** Propagates file changes in near real-time.
 3. **Android Tablet & Phone:** Open the folder directly in **Obsidian Mobile** for offline knowledge graph navigation during lectures, and view compiled seminar PDFs in any native viewer.
