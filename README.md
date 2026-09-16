@@ -123,10 +123,15 @@ All agents implement the open [Agent Skills specification](https://agentskills.i
     python "90_Shared_Toolbox/tools/pdf_reader.py" path/to/paper.pdf -o path/to/note.md
     ```
     Extracts multi-column research papers, tables, and mathematical formulas in milliseconds on CPU with zero cloud APIs.
+* **Interactive Terminal Quizzing & Mastery Analytics:**
+  - Run interactive exam simulations in your terminal with automated score tracking:
+    ```bash
+    python "90_Shared_Toolbox/tools/quiz_runner.py" path/to/quiz.json
+    ```
+    Grades choices live, gives bilingual explanations, and automatically appends your score and weak spots to `00_STUDIO_HUB/PROGRESS_ANALYTICS.md` and `00_STUDIO_HUB/LEARNER_MODEL.md`.
 * **Architectural Diagrams:** Rendered natively via **Mermaid.js** C4 blocks.
 * **Concept Mindmaps:** Interactive trees rendered with **Markmap**.
 * **Spaced Repetition:** Flashcard blocks structured for direct Anki import.
-
 ---
 
 ## 📱 Multi-Device Experience

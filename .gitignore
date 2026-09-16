@@ -17,12 +17,18 @@ opencode.json
 *Application Form*
 *Certificate*
 *National*
-
 # Heavy Raw Materials & Textbooks (Kept in Google Drive, excluded from Git)
 **/02_Raw_Materials/**
 *.zip
 *.rar
 *.7z
+*.tar.gz
+*.mp4
+*.mkv
+*.exe
+*.iso
+*.pptx
+*.docx
 *.tar.gz
 *.mp4
 
@@ -31,9 +37,11 @@ opencode.json
 repomix-output.*
 *.mkv
 *.exe
-*.iso
-*.pptx
-*.docx
+# Obsidian Cache & Local Settings
+.obsidian/
+
+# Cloud Sync Conflicts
+*(conflict*
 
 # Obsidian Cache & Workspace State
 .obsidian/workspace*

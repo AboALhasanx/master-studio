@@ -1,0 +1,62 @@
+{
+  "subject": "04_Advanced_Software_Eng",
+  "topic": "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "questions": [
+    {
+      "question": "During continuous operation of a real-time defense tracking battery, an integer tenth-of-a-second clock counter is multiplied by a 24-bit fixed-point approximation of 1/10. Over 100 hours, what kinematic consequence directly caused the Dhahran Patriot missile failure?",
+      "options": {
+        "A": "The radar transmitter burned out due to CPU clock overclocking.",
+        "B": "A 0.34-second clock drift shifted the radar range gate by ~687 meters, causing the system to track empty airspace.",
+        "C": "The tracking software suffered a stack overflow when converting to 48-bit double precision.",
+        "D": "The missile guidance fin locked up due to an integer division-by-zero exception."
+      },
+      "answer": "B",
+      "explanation": "Truncating 1/10 at bit 24 introduced a negative drift of ~0.000000095s per tick. Over 100 hours (3.6M ticks), the clock lost 0.3433 seconds. At Mach 5 (1,676 m/s), the range gate shifted by ~687 meters, causing the radar to look where the Scud used to be."
+    },
+    {
+      "question": "In his seminal paper 'No Silver Bullet', Fred Brooks distinguishes between Essential and Accidental complexity. Which of the following is an ESSENTIAL complexity inherent to software systems?",
+      "options": {
+        "A": "Managing manual memory allocation and garbage collection in C/C++.",
+        "B": "Slow compilation and linking times on developer workstations.",
+        "C": "Software having no physical geometric spatial representation (Invisibility).",
+        "D": "Syntax verbosity in legacy assembly programming languages."
+      },
+      "answer": "C",
+      "explanation": "Brooks identifies four inherent properties of essential complexity: Complexity, Conformity, Changeability, and Invisibility. Tooling, syntax, and compilation speed are accidental complexities."
+    },
+    {
+      "question": "According to Brooks' Law formulated during the development of IBM OS/360, adding manpower to a late software project makes it later because:",
+      "options": {
+        "A": "Hardware memory limitations prevent additional developers from checking out code branches.",
+        "B": "Onboarding creates training drag on existing experts, and inter-team communication channels grow quadratically (O(N^2)).",
+        "C": "New developers invariably introduce syntax errors that break the automated compiler.",
+        "D": "Operating system schedulers cannot handle multi-threaded development workflows."
+      },
+      "answer": "B",
+      "explanation": "Brooks' Law demonstrates that communication overhead explodes as N(N-1)/2, while senior engineers lose productive time mentoring newcomers."
+    },
+    {
+      "question": "In the formal IEEE 610.12 and Laprie/Avižienis dependability taxonomy, which sequence correctly models how software breakdowns emerge?",
+      "options": {
+        "A": "Human Error -> Static Fault/Defect in Artifact -> Runtime Internal Error State -> Observable Failure",
+        "B": "Observable Failure -> Human Error -> Static Defect -> Bug",
+        "C": "Fault -> Failure -> Error -> Defect",
+        "D": "Bug -> Glitch -> Crash -> Failure"
+      },
+      "answer": "A",
+      "explanation": "A human cognitive mistake (Error) creates a static flaw (Fault/Defect) in code or documentation. When executed, it produces an invalid internal state (Error State), which manifests at the boundary as an observable Failure."
+    },
+    {
+      "question": "Under Principle 1 (PUBLIC) of the ACM/IEEE Software Engineering Code of Ethics, what is a software engineer's primary professional obligation if pressured by management to ship software with known unverified safety risks?",
+      "options": {
+        "A": "Sign off immediately if the contract contains a legal liability disclaimer for the engineer.",
+        "B": "Prioritize the commercial interests of the employer above all external considerations.",
+        "C": "Refuse to approve compromised safety specifications and report the risk to appropriate authorities if unresolved.",
+        "D": "Reduce the test suite coverage so that the CI/CD pipeline turns green before release."
+      },
+      "answer": "C",
+      "explanation": "Principle 1 states that software engineers shall act consistently with the public interest, which supersedes employer loyalty when safety, health, or welfare is threatened."
+    }
+  ]
+}
