@@ -20,7 +20,48 @@ Agents operating in this vault must function not merely as generic text generato
 |  - MEMORY.md                - 00_STUDIO_HUB/           - 90_Shared_Toolbox/   |
 |  - sessions/                - .mimocode/skills/        - 91_Dashboard/        |
 +-------------------------------------------------------------------------------+
+## 1.1. Current Project Situation & Fast-Boot Inventory (Read This First)
 
+> **CRITICAL INSTRUCTION FOR ALL INCOMING AGENTS (OMP / OpenCode / MiMo Studio / FreeBuf / Cursor):**  
+> **DO NOT perform open-ended, slow recursive directory scans across the vault.** Everything you need to know about the current state, active tasks, and available deliverables is summarized below and in `00_STUDIO_HUB/ACTIVE_STATE.md`.
+
+```
++=======================================================================================================+
+|                                  CURRENT MASTER STUDIO RUNTIME STATE                                  |
++=======================================================================================================+
+| Academic Term: Semester 1 (Fall 2026) | Active Week: Week 01 | Overall Readiness: 33.3%               |
+| Active Subject 1: 04_Advanced_Software_Eng (CS504) — Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credits)      |
+| Active Subject 2: 02_English_Language (CS502) — Asst. Prof. Dr. Haidar Akab Alwan (1 Credit)         |
+| Local Services Live: Flask Web Dashboard on http://127.0.0.1:5000 (PID active, 0 database overhead)  |
+| Shared Memory Hub: 00_STUDIO_HUB/MEMORY.md | Sessions Journal: 00_STUDIO_HUB/sessions/               |
++=======================================================================================================+
+```
+
+### Completed Subject Deliverables
+1. **`04_Advanced_Software_Eng` (Week 01 Lecture 01):**
+   - **Study Note:** `03_Study_Notes/Week_01_Lecture01_Software_Foundations_and_Crisis.md` (33.9 KB) & clean BiDi Word document `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` (OnlyOffice ready, no frontmatter leak).
+   - **Presentation Deck:** `05_Seminars_&_Slides/seminar_lecture01_software_crisis.pptx` (Projector-tuned: 31pt/21pt/17.5pt/14pt, 100% native vector OpenXML shapes, zero raster screenshots).
+   - **High-Res Diagrams:** `06_Diagrams_&_Mindmaps/dependability_chain.png`, `patriot_missile_kinematics.png`, `brooks_complexity_tree.png` (Zero scrollbars, connected Arabic cursive, no lines inside boxes).
+   - **Quiz Bank:** `07_Quizzes_&_Anki/Quiz_01_Software_Crisis.json` (5 scenario MCQs with bilingual keys).
+   - **4 Canonical Textbooks Staged:** Sommerville 9th Ed, Pressman, Rajib Mall 4th Ed, Agarwal 2010.
+
+2. **`02_English_Language` (Unit 1 "No Place Like Home"):**
+   - **Study Note:** `03_Study_Notes/Unit_01_No_Place_Like_Home_Grammar_and_Tenses.md` (25.4 KB) & clean Word document `Unit_01_No_Place_Like_Home_Grammar_and_Tenses.docx`.
+   - **Quiz Bank:** `07_Quizzes_&_Anki/Quiz_01_Grammar_and_Tenses.json` (5 scenario MCQs).
+   - **Solved Scanned Worksheets:** `CamScanner Scan - Grammar Worksheet...pdf` fully extracted and solved against the Oxford Teacher's Book answer key (`NH Upper Intermediate - Teacher Book (Answer Key).pdf`).
+
+### Available Local Toolchain (`90_Shared_Toolbox/tools/`)
+- `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`).
+- `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM; **automatically falls back to local RapidOCR** on CPU for scanned PDFs (0 LLM tokens, 0 API calls).
+- `session_memory.py`: Cross-agent memory manager (`boot`, `log`, `remember`, `recall`, `status`).
+- `quiz_runner.py`: Interactive command-line quiz conductor.
+- `pack_subject.py`: Bundles entire subject vaults into single-file digests for mobile LLMs.
+
+### Immediate Action Priorities
+1. **Immediate Task:** Conduct oral viva defense rehearsal for Dr. Ali Fahim's lecture (Patriot missile 24-bit fixed-point clock drift kinematics & Brooks' essential complexity).
+2. **Next Staging Milestone:** Ingest Week 01 lecture materials and canonical textbooks for `01_Cyber_Security` and `03_Data_Mining`.
+
+## 1.2. Autonomous Execution Contract (Zero-CLI Policy for the Student)
 > **Golden Rule:** The student will communicate **strictly in plain natural language** (chat). The student must **NEVER** be asked to remember or run command-line commands, python scripts, or CLI flags.
 >
 > **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
