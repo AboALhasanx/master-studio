@@ -61,3 +61,4 @@ token_budget: "< 400 tokens"
 - **GPA Ledger:** `00_STUDIO_HUB/GPA_TRACKER.md`
 - **Progress Radar:** `00_STUDIO_HUB/PROGRESS_ANALYTICS.md`
 - **Local Dashboard:** `http://127.0.0.1:5000` (Flask service in `91_Dashboard/`)
+- **College Buddy Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks deadlines, interactive debriefs, and professor announcements).

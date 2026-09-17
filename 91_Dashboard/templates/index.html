@@ -66,6 +66,66 @@
       </div>
     </section>
 
+    <!-- College Buddy Reminders & Deadlines -->
+    <section class="panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h2 style="margin-bottom: 0;">College Buddy: Upcoming Dates & Debriefs</h2>
+        <div>
+          {% if buddy.alerts_count > 0 %}
+            <span class="badge" style="background: #eab308; color: #0f172a; font-weight: bold; padding: 4px 8px; border-radius: 4px; margin-right: 6px;">{{ buddy.alerts_count }} URGENT</span>
+          {% endif %}
+          {% if buddy.debriefs_count > 0 %}
+            <span class="badge" style="background: #ef4444; color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px;">{{ buddy.debriefs_count }} CHECK-IN OVERDUE</span>
+          {% endif %}
+        </div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Target Date</th>
+            <th>Subject</th>
+            <th>Event / Topic</th>
+            <th>Professor</th>
+            <th>Status</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for evt in buddy.events %}
+          <tr>
+            <td class="mono" style="font-weight: bold; color: #38bdf8;">{{ evt.id }}</td>
+            <td>{{ evt.date }}</td>
+            <td class="mono">{{ evt.subject }}</td>
+            <td>
+              <strong>{{ evt.event }}</strong>
+              {% if evt.notes %}
+                <div style="font-size: 0.85em; color: #94a3b8; margin-top: 2px;">{{ evt.notes }}</div>
+              {% endif %}
+            </td>
+            <td>{{ evt.professor }}</td>
+            <td>
+              <span class="status-badge {% if evt.is_urgent %}badge-live{% elif evt.is_overdue %}score-low{% endif %}">
+                {{ evt.status }}
+              </span>
+            </td>
+            <td>
+              {% if evt.delta < 0 %}
+                <span class="score score-low">{{ -evt.delta }}d ago</span>
+              {% elif evt.delta == 0 %}
+                <span class="score score-high">TODAY</span>
+              {% elif evt.delta <= 3 %}
+                <span class="score score-mid">in {{ evt.delta }}d</span>
+              {% else %}
+                <span style="color: #94a3b8;">in {{ evt.delta }}d</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
     <!-- Subject Mastery -->
     <section class="panel">
       <h2>Subject Mastery Radar</h2>

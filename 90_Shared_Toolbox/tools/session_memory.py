@@ -24,12 +24,87 @@ HUB = BASE / "00_STUDIO_HUB"
 SESSIONS_DIR = HUB / "sessions"
 ACTIVE_STATE_FILE = HUB / "ACTIVE_STATE.md"
 MEMORY_FILE = HUB / "MEMORY.md"
+BUDDY_FILE = HUB / "COLLEGE_BUDDY.md"
+
+
+def parse_buddy_events(reference_date=None):
+    """
+    Parses active events from COLLEGE_BUDDY.md and categorizes them.
+    Returns (alerts, debriefs, all_active).
+    """
+    if not BUDDY_FILE.exists():
+        return [], [], []
+
+    ref = reference_date or datetime.now().date()
+    if hasattr(ref, "date"):
+        ref = ref.date()
+
+    text = BUDDY_FILE.read_text(encoding="utf-8")
+    lines = text.splitlines()
+
+    alerts = []
+    debriefs = []
+    all_active = []
+
+    in_active_table = False
+    for line in lines:
+        if "## 1. Active Events" in line:
+            in_active_table = True
+            continue
+        elif line.startswith("## ") and in_active_table:
+            break
+
+        if not in_active_table or not line.strip().startswith("|"):
+            continue
+
+        cols = [c.strip() for c in line.strip().split("|")[1:-1]]
+        if not cols or "ID" in cols[0] or "---" in cols[0]:
+            continue
+
+        # Format: ID | Target Date | Subject | Event / Topic | Professor | Status | Urgency | Buddy Notes / Action
+        if len(cols) >= 6:
+            evt_id = cols[0].replace("*", "").strip()
+            date_str = cols[1].strip()
+            subject = cols[2].strip()
+            event = cols[3].strip()
+            prof = cols[4].strip()
+            status = cols[5].strip().upper()
+            urgency = cols[6].strip() if len(cols) > 6 else "MEDIUM"
+            notes = cols[7].strip() if len(cols) > 7 else ""
+
+            if status in ["COMPLETED", "CANCELED"]:
+                continue
+
+            try:
+                evt_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+                delta = (evt_date - ref).days
+            except Exception:
+                delta = 999
+
+            evt_dict = {
+                "id": evt_id,
+                "date": date_str,
+                "subject": subject,
+                "event": event,
+                "professor": prof,
+                "status": status,
+                "urgency": urgency,
+                "notes": notes,
+                "delta": delta,
+            }
+            all_active.append(evt_dict)
+
+            if delta < 0 and status == "UPCOMING":
+                debriefs.append(evt_dict)
+            elif delta <= 3:
+                alerts.append(evt_dict)
+
+    return alerts, debriefs, all_active
 
 
 def get_boot_context():
-    """Generates ultra-compact fast-boot text (< 150 tokens)."""
+    """Generates ultra-compact fast-boot text (< 150 tokens) with active College Buddy alerts."""
     active_text = ACTIVE_STATE_FILE.read_text(encoding="utf-8") if ACTIVE_STATE_FILE.exists() else ""
-    memory_text = MEMORY_FILE.read_text(encoding="utf-8") if MEMORY_FILE.exists() else ""
 
     # Extract Active State values
     sem = re.search(r'current_semester:\s*["\']?(.*?)["\']?\s*$', active_text, re.M)
@@ -37,6 +112,8 @@ def get_boot_context():
     subj = re.search(r'active_subject:\s*["\']?(.*?)["\']?\s*$', active_text, re.M)
     todo = re.search(r'immediate_todo:\s*["\']?(.*?)["\']?\s*$', active_text, re.M)
     focus = re.search(r'next_session_focus:\s*["\']?(.*?)["\']?\s*$', active_text, re.M)
+
+    alerts, debriefs, _ = parse_buddy_events()
 
     lines = [
         "=== MASTER STUDIO FAST-BOOT CONTEXT ===",
@@ -47,11 +124,28 @@ def get_boot_context():
         f"Next Focus: {focus.group(1) if focus else ''}",
         "",
         "Core Directives: Zero emojis, native vector PPTX (31pt/21pt/17.5pt/14pt), BiDi DOCX (<w:bidi/>), code-generated diagrams, local CPU OCR for scans.",
-        "Hub Files: 00_STUDIO_HUB/ACTIVE_STATE.md | 00_STUDIO_HUB/MEMORY.md | http://127.0.0.1:5000",
-        "======================================="
+        "Hub Files: 00_STUDIO_HUB/ACTIVE_STATE.md | 00_STUDIO_HUB/COLLEGE_BUDDY.md | http://127.0.0.1:5000",
     ]
-    return "\n".join(lines)
 
+    if debriefs or alerts:
+        lines.append("")
+        lines.append("--- College Buddy Alerts ---")
+        for d in debriefs:
+            days_ago = abs(d["delta"])
+            lines.append(f"  * [CHECK-IN NEEDED] {d['id']}: {d['subject']} - '{d['event']}' with {d['professor']} was {days_ago}d ago. Ask student how it went!")
+        for a in alerts:
+            if a["delta"] == 0:
+                t_str = "TODAY"
+            elif a["delta"] == 1:
+                t_str = "TOMORROW"
+            else:
+                t_str = f"in {a['delta']} days ({a['date']})"
+            lines.append(f"  * [UPCOMING] {a['id']}: {a['subject']} - '{a['event']}' with {a['professor']} ({t_str})")
+    else:
+        lines.append("College Buddy: All caught up! (No pending deadlines in next 3 days)")
+
+    lines.append("=======================================")
+    return "\n".join(lines)
 
 def get_status():
     """Prints current memory state and session stats."""
@@ -138,6 +232,104 @@ def recall_query(query):
         print(f"  ... and {len(matches) - 15} more matches.")
 
 
+def buddy_list():
+    """Prints a friendly status of all College Buddy events and reminders."""
+    alerts, debriefs, all_active = parse_buddy_events()
+    print("=== College Buddy: Academic Deadlines & Events ===")
+    if not all_active:
+        print("No active events tracked yet. Tell me a date to add one!")
+        return
+
+    for evt in all_active:
+        delta = evt["delta"]
+        if delta < 0:
+            time_tag = f"[OVERDUE {abs(delta)}d ago - NEEDS CHECK-IN]"
+        elif delta == 0:
+            time_tag = "[TODAY!]"
+        elif delta == 1:
+            time_tag = "[TOMORROW]"
+        else:
+            time_tag = f"[{delta} days left]"
+
+        print(f"• {evt['id']} ({evt['date']}) {time_tag}")
+        print(f"  Subject:   {evt['subject']}")
+        print(f"  Event:     {evt['event']} (Prof: {evt['professor']})")
+        print(f"  Status:    {evt['status']} | Urgency: {evt['urgency']}")
+        if evt["notes"]:
+            print(f"  Notes:     {evt['notes']}")
+        print()
+
+    if debriefs:
+        print(f"⚠️  {len(debriefs)} event(s) have passed and need your check-in!")
+
+
+def buddy_add(date_str, subject, event, prof, notes="", urgency="MEDIUM"):
+    """Adds a new event to COLLEGE_BUDDY.md."""
+    if not BUDDY_FILE.exists():
+        print(f"Error: {BUDDY_FILE} not found.", file=sys.stderr)
+        return
+
+    text = BUDDY_FILE.read_text(encoding="utf-8")
+    existing_ids = re.findall(r"EVT-(\d+)", text)
+    next_num = max([int(i) for i in existing_ids], default=0) + 1
+    new_id = f"EVT-{next_num:02d}"
+
+    row = f"| **{new_id}** | {date_str} | {subject} | {event} | {prof} | UPCOMING | {urgency} | {notes} |\n"
+
+    lines = text.splitlines(keepends=True)
+    out_lines = []
+    inserted = False
+    for line in lines:
+        out_lines.append(line)
+        if not inserted and line.strip().startswith("|:---") and "|:---|" in line:
+            out_lines.append(row)
+            inserted = True
+
+    if not inserted:
+        out_lines.append(f"\n{row}")
+
+    BUDDY_FILE.write_text("".join(out_lines), encoding="utf-8")
+    print(f"College Buddy: Added {new_id} ({event} on {date_str})!")
+
+
+def buddy_update(event_id, status, notes="", new_date=None):
+    """Updates an event's status, notes, or shifts date if postponed."""
+    if not BUDDY_FILE.exists():
+        print(f"Error: {BUDDY_FILE} not found.", file=sys.stderr)
+        return
+
+    text = BUDDY_FILE.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    new_lines = []
+    found = False
+
+    clean_id = event_id.replace("*", "").strip()
+
+    for line in lines:
+        if line.strip().startswith("|") and (f"**{clean_id}**" in line or f"| {clean_id} |" in line):
+            cols = [c.strip() for c in line.split("|")[1:-1]]
+            if len(cols) >= 6:
+                found = True
+                if new_date:
+                    cols[1] = new_date
+                cols[5] = status.upper()
+                if notes:
+                    if len(cols) > 7:
+                        cols[7] = notes
+                    else:
+                        cols.append(notes)
+                new_line = "| " + " | ".join(cols) + " |"
+                new_lines.append(new_line)
+                continue
+        new_lines.append(line)
+
+    if found:
+        BUDDY_FILE.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
+        print(f"College Buddy: Updated {clean_id} to status '{status.upper()}'!")
+    else:
+        print(f"Event {clean_id} not found in {BUDDY_FILE.name}.")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Master Studio Session & Memory CLI")
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
@@ -161,6 +353,25 @@ def main():
     rec_parser = subparsers.add_parser("recall", help="Search sessions and memory for a keyword")
     rec_parser.add_argument("query", help="Keyword or topic to search")
 
+    # buddy-list
+    subparsers.add_parser("buddy-list", help="List active College Buddy academic events and reminders")
+
+    # buddy-add
+    b_add = subparsers.add_parser("buddy-add", help="Add a new deadline or event to College Buddy")
+    b_add.add_argument("--date", required=True, help="Target date YYYY-MM-DD")
+    b_add.add_argument("--subject", required=True, help="Subject code/name")
+    b_add.add_argument("--event", required=True, help="Description of event / quiz / assignment")
+    b_add.add_argument("--prof", required=True, help="Professor name")
+    b_add.add_argument("--notes", default="", help="Preparation notes or action")
+    b_add.add_argument("--urgency", default="MEDIUM", choices=["HIGH", "MEDIUM", "LOW"], help="Urgency level")
+
+    # buddy-update
+    b_upd = subparsers.add_parser("buddy-update", help="Update an event's status or record debrief")
+    b_upd.add_argument("--id", required=True, help="Event ID e.g. EVT-01")
+    b_upd.add_argument("--status", required=True, choices=["COMPLETED", "POSTPONED", "CANCELED", "UPCOMING", "NEEDS_CHECKIN"], help="New status")
+    b_upd.add_argument("--notes", default="", help="Debrief reflection or outcome notes")
+    b_upd.add_argument("--new-date", default=None, help="New target date if postponed (YYYY-MM-DD)")
+
     args = parser.parse_args()
 
     if args.command == "boot":
@@ -173,9 +384,14 @@ def main():
         remember_fact(args.fact)
     elif args.command == "recall":
         recall_query(args.query)
+    elif args.command == "buddy-list":
+        buddy_list()
+    elif args.command == "buddy-add":
+        buddy_add(args.date, args.subject, args.event, args.prof, args.notes, args.urgency)
+    elif args.command == "buddy-update":
+        buddy_update(args.id, args.status, args.notes, args.new_date)
     else:
         parser.print_help()
-
 
 if __name__ == "__main__":
     main()

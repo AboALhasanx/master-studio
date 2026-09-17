@@ -203,6 +203,74 @@ def parse_sessions():
             })
     return sessions
 
+def parse_college_buddy():
+    """Parses active events and debriefs from 00_STUDIO_HUB/COLLEGE_BUDDY.md."""
+    buddy_file = HUB / "COLLEGE_BUDDY.md"
+    if not buddy_file.exists():
+        return {"events": [], "alerts_count": 0, "debriefs_count": 0}
+
+    text = read_file(buddy_file)
+    lines = text.splitlines()
+    events = []
+    in_active = False
+
+    from datetime import date, datetime
+    today = date(2026, 9, 17)
+
+    for line in lines:
+        if "## 1. Active Events" in line:
+            in_active = True
+            continue
+        elif line.startswith("## ") and in_active:
+            break
+
+        if not in_active or not line.strip().startswith("|"):
+            continue
+
+        cols = [c.strip() for c in line.strip().split("|")[1:-1]]
+        if not cols or "ID" in cols[0] or "---" in cols[0]:
+            continue
+
+        if len(cols) >= 6:
+            evt_id = cols[0].replace("*", "").strip()
+            date_str = cols[1].strip()
+            subj = cols[2].strip()
+            event = cols[3].strip()
+            prof = cols[4].strip()
+            status = cols[5].strip().upper()
+            urgency = cols[6].strip() if len(cols) > 6 else "MEDIUM"
+            notes = cols[7].strip() if len(cols) > 7 else ""
+
+            if status in ["COMPLETED", "CANCELED"]:
+                continue
+
+            try:
+                evt_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+                delta = (evt_date - today).days
+            except Exception:
+                delta = 999
+
+            events.append({
+                "id": evt_id,
+                "date": date_str,
+                "subject": subj,
+                "event": event,
+                "professor": prof,
+                "status": status,
+                "urgency": urgency,
+                "notes": notes,
+                "delta": delta,
+                "is_urgent": delta <= 3 and delta >= 0,
+                "is_overdue": delta < 0 and status == "UPCOMING"
+            })
+
+    alerts_count = sum(1 for e in events if e["is_urgent"])
+    debriefs_count = sum(1 for e in events if e["is_overdue"])
+    return {
+        "events": events,
+        "alerts_count": alerts_count,
+        "debriefs_count": debriefs_count
+    }
 
 
 @app.route("/")
@@ -213,6 +281,7 @@ def index():
     gpa = parse_gpa_tracker()
     folder_stats = get_folder_stats()
     sessions = parse_sessions()
+    buddy = parse_college_buddy()
     total_content = sum(s["total_content"] for s in folder_stats.values())
     total_raw = sum(s["raw_materials"] for s in folder_stats.values())
 
@@ -226,6 +295,7 @@ def index():
         total_content=total_content,
         total_raw=total_raw,
         sessions=sessions,
+        buddy=buddy,
     )
 
 
@@ -238,6 +308,7 @@ def api_data():
         "gpa": parse_gpa_tracker(),
         "folder_stats": get_folder_stats(),
         "sessions": parse_sessions(),
+        "buddy": parse_college_buddy(),
     })
 
 

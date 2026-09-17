@@ -30,7 +30,7 @@ status: "WEEK_01_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-17` | English Language Unit 1 Synthesis |
+| **Last Updated** | `2026-09-17` | English Language Unit 1 (Q Skills + New Headway) COMPLETE |
 
 ---
 
@@ -41,6 +41,7 @@ status: "WEEK_01_ACTIVE"
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
 - [x] **Ingest Scanned Materials & Synthesize Unit 01 for `02_English_Language`** (Grammar & Tenses Study Note, Clean DOCX, Quiz Bank)
+- [x] **Complete New Headway Unit 1 "No place like home" (SB pp.6–15)** — full walkthrough, TB-verified (ISBN 978-0-19-439300-3), + Exam Index
 - [ ] Review Week 01 viva defense questions before Monday 10:30 AM lecture with Dr. Ali Fahim
 
 ### Next Session Focus
@@ -58,3 +59,8 @@ status: "WEEK_01_ACTIVE"
 | **Monday** | 10:30 – 01:30 | **04_Advanced_Software_Eng** (Active) | Asst. Prof. Dr. Ali Fahim Ni'ma | 3 |
 | **Tuesday** | 08:30 – 10:30 | 05_Soft_Computing | Prof. Dr. Abdul Hadi Mohammed Adkhil | 2 |
 | **Tuesday** | 10:30 – 01:30 | 06_Artificial_Intelligence | Prof. Dr. Saif Ali Al-Saidi | 3 |
+
+---
+
+## 4. College Buddy Pointer
+- **Interactive Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks upcoming professor dates, oral defense rehearsals, and post-event debrief check-ins).
