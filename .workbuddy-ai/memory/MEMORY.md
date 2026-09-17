@@ -6,6 +6,8 @@
 - Therefore: **never** make the repo private, never add blanket ignore rules that hide study notes, and never break raw-file readability. Study `.md` notes are intentionally public — the student has explicitly confirmed that study markdown being public is fine.
 - GitHub Pages is **not** enabled; there is no hosted web UI. Access is file browsing + `raw.githubusercontent.com` links.
 - Digest packs for chatbot ingestion: `90_Shared_Toolbox/tools/pack_subject.py` → `*digest*.md` / `repomix-output.*` are **gitignored** (generated on demand, not committed).
+- **External digest service = [Gitingest](https://gitingest.com).** Trick: replace `hub` with `ingest` in any GitHub URL. Use the **subpath** form for a subject/folder: `https://gitingest.com/AboALhasanx/master-studio/tree/master/01_Semester_1/02_English_Language`. Whole-repo digest is ~141.5k tokens (too big for most free chatbots); a subject is ~31k, a folder ~24k. **Always ingest per subject/folder, never the whole repo.**
+- `gitingest` CLI is installed in the managed venv. Prefer the URL-subpath form; `-i "folder/*"` gets glob-expanded by Git Bash and fails. Alternatives: `repomix.com`, `deepwiki.com/AboALhasanx/master-studio`. Do **not** recommend `uithub.com` (now returns 401).
 - `.workbuddy-ai/memory/` **is tracked and therefore public** — it is an agent work-log, not personal documents. Keep it free of anything private.
 
 ## 2. Pushing to GitHub (non-obvious environment quirk)
