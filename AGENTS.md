@@ -17,7 +17,9 @@ Agents operating in this vault must function not merely as generic text generato
 |                                                                               |
 |  [Fast-Boot Memory]  <--->  [Agent Directives]  <--->  [Vault Hierarchy]      |
 |  - ACTIVE_STATE.md          - AGENTS.md (Root)         - 01_Semester_1/       |
-## 1.1. Autonomous Execution Contract (Zero-CLI Policy for the Student)
+|  - MEMORY.md                - 00_STUDIO_HUB/           - 90_Shared_Toolbox/   |
+|  - sessions/                - .mimocode/skills/        - 91_Dashboard/        |
++-------------------------------------------------------------------------------+
 
 > **Golden Rule:** The student will communicate **strictly in plain natural language** (chat). The student must **NEVER** be asked to remember or run command-line commands, python scripts, or CLI flags.
 >
@@ -163,3 +165,30 @@ To allow agents to read and analyze dense two-column academic papers, textbook c
   python "90_Shared_Toolbox/tools/pdf_reader.py" "path/to/document.pdf" --pages 1-5
   ```
   Powered by PyMuPDF4LLM: runs 100% locally on CPU in milliseconds, preserving two-column reading order, tables, formulas, and headings.
+
+---
+
+## 8. Cross-Agent Persistent Memory & Session Journaling (Zero Token Drag)
+
+To maintain continuous academic context across all agent harnesses (Oh My Pi, OpenCode, MiMo Studio, FreeBuf, Cursor):
+
+1. **Fast-Boot Context Injection (< 150 tokens):**
+   ```bash
+   python "90_Shared_Toolbox/tools/session_memory.py" boot
+   ```
+   Injects active subject, active week, immediate milestone, and core invariants in under 150 tokens.
+
+2. **Log Completed Milestones to Today's Session Journal:**
+   ```bash
+   python "90_Shared_Toolbox/tools/session_memory.py" log "Synthesized English Unit 1 note and quiz" -s "02_English_Language"
+   ```
+
+3. **Persist a Critical Invariant or Doctor Exam Quirk:**
+   ```bash
+   python "90_Shared_Toolbox/tools/session_memory.py" remember "Dr. Ali Fahim emphasizes 24-bit fixed-point truncation drift math."
+   ```
+
+4. **Search Past Sessions and Memory (Zero Tokens / Offline BM25):**
+   ```bash
+   python "90_Shared_Toolbox/tools/session_memory.py" recall "patriot"
+   ```

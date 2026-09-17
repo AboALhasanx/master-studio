@@ -185,6 +185,24 @@ def get_folder_stats():
             "total_content": len(notes) + len(slides) + len(diagrams) + len(quizzes),
         }
     return stats
+def parse_sessions():
+    """Parses session journal files from 00_STUDIO_HUB/sessions."""
+    sessions_dir = HUB / "sessions"
+    sessions = []
+    if sessions_dir.exists():
+        for sf in sorted(sessions_dir.glob("*.md"), reverse=True):
+            text = read_file(sf)
+            title = re.search(r'title:\s*["\']?(.*?)["\']?\s*$', text, re.M)
+            sid = re.search(r'session_id:\s*["\']?(.*?)["\']?\s*$', text, re.M)
+            date_m = re.search(r'date:\s*["\']?(.*?)["\']?\s*$', text, re.M)
+            sessions.append({
+                "id": sid.group(1) if sid else sf.stem,
+                "title": title.group(1) if title else sf.stem,
+                "date": date_m.group(1) if date_m else "",
+                "filename": sf.name
+            })
+    return sessions
+
 
 
 @app.route("/")
@@ -194,7 +212,7 @@ def index():
     progress = parse_progress_analytics()
     gpa = parse_gpa_tracker()
     folder_stats = get_folder_stats()
-
+    sessions = parse_sessions()
     total_content = sum(s["total_content"] for s in folder_stats.values())
     total_raw = sum(s["raw_materials"] for s in folder_stats.values())
 
@@ -207,6 +225,7 @@ def index():
         folder_stats=folder_stats,
         total_content=total_content,
         total_raw=total_raw,
+        sessions=sessions,
     )
 
 
@@ -218,6 +237,7 @@ def api_data():
         "progress": parse_progress_analytics(),
         "gpa": parse_gpa_tracker(),
         "folder_stats": get_folder_stats(),
+        "sessions": parse_sessions(),
     })
 
 
