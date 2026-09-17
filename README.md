@@ -105,3 +105,64 @@ Other subjects are staged with syllabi and doctor profiles; study content is pro
 - **Tracked:** Markdown notes, diagrams (PNG), quizzes (JSON), final `.docx` study notes, final `.pptx` seminar decks
 - **Gitignored:** Textbooks and raw lecture PDFs (`02_Raw_Materials/`), personal archives, OS artifacts
 - Large binary materials live in Google Drive; this repo holds the processed, agent-ready knowledge layer
+
+---
+
+## Feeding the Vault to a Free External Chatbot
+
+This vault is built to be read by **any free web chatbot** — DeepSeek, Qwen, ChatGPT free tier, Gemini free tier — with nothing installed on the student's side. The GitHub repository is the transport layer between the vault and the model.
+
+> **Hard requirement:** the repository must stay **PUBLIC**. A private repository cannot be ingested by a third-party service.
+
+### Option 1 — Gitingest (web, zero install) ⭐ recommended
+
+[Gitingest](https://gitingest.com) turns any Git repository into a single prompt-friendly text digest. Its signature trick is URL rewriting: **replace `hub` with `ingest`** in any GitHub URL.
+
+| What you want to feed the chatbot | URL to open |
+|:---|:---|
+| The whole vault | `https://gitingest.com/AboALhasanx/master-studio` |
+| One subject | `https://gitingest.com/AboALhasanx/master-studio/tree/master/01_Semester_1/02_English_Language` |
+| One folder | `https://gitingest.com/AboALhasanx/master-studio/tree/master/01_Semester_1/02_English_Language/03_Study_Notes` |
+
+Open the link → **Copy** (or *Download*) → paste into the chatbot.
+
+**Measured sizes for this vault** (re-measure as content grows):
+
+| Scope | Files | Digest size | Est. tokens | Practical for a free chatbot? |
+|:---|:---:|:---:|:---:|:---|
+| Whole repository | 71 | ~594 KB | ~141.5k | Only large-context models |
+| One subject (`02_English_Language`) | 10 | ~129 KB | ~31.2k | ✅ Yes |
+| One folder (`03_Study_Notes`) | 6 | ~98 KB | ~24.4k | ✅ Comfortable |
+
+**Rule of thumb: ingest at subject or folder level, never the whole repo at once.**
+
+### Option 2 — Gitingest CLI (local, offline, private)
+
+Identical output, generated on your own machine — nothing is uploaded to a third party. Already installed in this vault's managed Python environment.
+
+```bash
+pip install gitingest
+gitingest https://github.com/AboALhasanx/master-studio -o digest.txt
+gitingest "https://github.com/AboALhasanx/master-studio/tree/master/01_Semester_1/02_English_Language" -o english.txt
+```
+
+Useful flags: `-o -` (print to stdout), `-i/--include-pattern`, `-e/--exclude-pattern`, `-s/--max-size`, `-t/--token` (private repos), `--include-gitignored`. Full list via `gitingest --help`.
+Running it against the **local** folder (`gitingest "G:/My Drive/Master-Studio"`) automatically skips everything in `.gitignore` — so raw textbooks and archives are excluded for free.
+
+### Option 3 — Repomix and DeepWiki (alternatives)
+
+- **[Repomix](https://repomix.com)** — packs a repository into one LLM-friendly file; also runs locally via `npx repomix`. This repo's `.gitignore` already excludes its output (`repomix-output.*`).
+- **[DeepWiki](https://deepwiki.com/AboALhasanx/master-studio)** — auto-generates an explorable wiki with Q&A from the repository. Best when you want to *browse and ask* rather than paste a prompt.
+
+### Option 4 — Per-subject digest pack (built into this vault)
+
+`90_Shared_Toolbox/tools/pack_subject.py` bundles one subject folder into a single self-contained digest tuned to this vault's structure. Generated packs are gitignored (`*digest*.md`).
+
+### The Zero-CLI contract
+
+The student never runs any of the above. In chat, just ask:
+
+> *"Bundle the English subject for a chatbot."*
+> *"Give me a digest of Unit 1 that I can paste into DeepSeek."*
+
+The agent runs the tool in the background and hands back the file or the ready-to-paste text.
