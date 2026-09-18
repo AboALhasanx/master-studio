@@ -48,7 +48,8 @@ status: "WEEK_01_ACTIVE"
 - [x] **Put `06_Artificial_Intelligence` on hold** — the professor has delivered no material
 - [x] **Correct `COLLEGE_BUDDY.md`** — removed two agent-inferred fake deadlines
 - [x] **Add the external free-chatbot ingestion guide to `README.md`** (Gitingest, with measured digest sizes)
-- [ ] **Finish `01_Cyber_Security` Week 01** — Topics 4–6 (threat landscape + $AS$ · risk/vulnerability/exploit + $P(R>r)$ + OCTAVE/FAIR/NIST · evolution & policy + PCI), **then** the scenario drills
+- [x] **`01_Cyber_Security` Week 01 — all theory Topics 1–6 covered** (master note + question bank + formula deep-dives); Chapter 7 excluded by the doctor
+- [ ] **`01_Cyber_Security` Week 01 — scenario drills** — the only thing left before Sunday's quiz
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
 - [ ] **Answer Dr. Ahmed Shakir's Data Mining question** — Week 02 *data representation & preparation*; specifically *"what is the data type of a URL?"* (raised in the previous lecture)
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
