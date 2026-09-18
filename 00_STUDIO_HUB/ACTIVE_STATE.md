@@ -30,7 +30,7 @@ status: "WEEK_01_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-17` | English Language Unit 1 (Q Skills + New Headway) COMPLETE |
+| **Last Updated** | `2026-09-18` | Cyber Security Week 01 drilled (Topics 1–3) · study plan created · AI put on hold |
 
 ---
 
@@ -42,9 +42,17 @@ status: "WEEK_01_ACTIVE"
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
 - [x] **Ingest Scanned Materials & Synthesize Unit 01 for `02_English_Language`** (Grammar & Tenses Study Note, Clean DOCX, Quiz Bank)
 - [x] **Complete New Headway Unit 1 "No place like home" (SB pp.6–15)** — full walkthrough, TB-verified (ISBN 978-0-19-439300-3), + Exam Index
+- [x] **Establish agent identity (Koko) + student profile** — `SOUL.md` / `IDENTITY.md` / `USER.md`
+- [x] **Decode Dr. Huda's exam method + build `01_Cyber_Security` Week 01 master note & question bank**
+- [x] **Build the 6-subject inventory + rolling `STUDY_PLAN.md`**
+- [x] **Put `06_Artificial_Intelligence` on hold** — the professor has delivered no material
+- [x] **Correct `COLLEGE_BUDDY.md`** — removed two agent-inferred fake deadlines
+- [x] **Add the external free-chatbot ingestion guide to `README.md`** (Gitingest, with measured digest sizes)
+- [ ] **Finish `01_Cyber_Security` Week 01** — Topics 4–6 (threat landscape + $AS$ · risk/vulnerability/exploit + $P(R>r)$ + OCTAVE/FAIR/NIST · evolution & policy + PCI), **then** the scenario drills
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
 - [ ] **Answer Dr. Ahmed Shakir's Data Mining question** — Week 02 *data representation & preparation*; specifically *"what is the data type of a URL?"* (raised in the previous lecture)
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
+- [ ] **Check the AI Telegram group each session** — the moment Dr. Saif posts material, AI returns to the plan
 
 ### Next Session Focus
 - **Topic:** Week 01 Cyber Security revision for the Sunday daily quiz, plus the Data Mining "URL data type" question.

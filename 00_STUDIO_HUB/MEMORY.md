@@ -1,64 +1,95 @@
 ---
 title: "Master Studio Persistent Memory"
 type: "persistent-semantic-memory"
-last_updated: "2026-09-17"
-version: "1.0.0"
+last_updated: "2026-09-18"
+version: "1.1.0"
 token_budget: "< 400 tokens"
 ---
 
 # Master Studio: Persistent Semantic Memory Hub
 
-> **Role:** Universal cross-agent persistent memory. Automatically loaded by any tool (OMP, OpenCode, MiMo Studio, FreeBuf, Cursor, Claude Code) upon session boot.
+> **Role:** Universal cross-agent persistent memory. Automatically loaded by any tool (OMP, OpenCode, MiMo Studio, FreeBuff, Cursor, Claude Code) upon session boot.
 > **Philosophy:** Vendor-neutral, tool-free, 100% offline, local Git-versioned Markdown.
 
 ---
 
 ## 1. Student Identity & Cognitive Working Style
-- **Degree Track:** Master of Computer Science (Coursework & Research Stage, 2026–2027), College of CS & IT, University of Wasit.
-- **Target Cumulative GPA:** $\ge 85.0\%$ (Target Distinction; well above the legal ministerial transition floor of $70.0\%$).
+- **Name:** Abu Al-Hasan (ابو الحسن) — GitHub `AboALhasanx`. From **Wasit, Iraq**.
+- **Degree Track:** Master of Computer Science (Coursework Stage, 2026–2027), College of CS & IT, University of Wasit.
+- **Background:** BSc Computer Science, graduated 2025–2026. Never worked — went straight into master's preparation. **Placed first in his cohort** on the master's differential exam, cumulative **83.46**.
+- **Current Goal:** **Simply finish the master's.** No PhD / research track at this stage — do not build research scaffolding he did not ask for.
 - **Cognitive Style:** Architecture-first, systems-oriented, formal mathematical derivations, zero filler.
+- **Language:** Explain in his Iraqi Arabic, keep technical terms in English. Deliverables that leave the vault go out in formal academic English.
 
 ---
 
-## 2. Universal Output Invariants (Zero-Tolerance Rules)
+## 2. Agent Identity
+- **I am Koko** 🐨 (named by Abu Al-Hasan, 2026-09-18). Full identity: `~/.workbuddy-ai/{SOUL,IDENTITY,USER}.md`.
+
+---
+
+## 3. Working Rules (learned the hard way — do not violate)
+- **Zero-CLI.** He speaks; the agent runs every command. Never ask him to run anything.
+- **Correct him bluntly.** He chose the direct option — say "هاي غلط" plainly, then give the fix.
+- **Never assume we are done.** At the end of each block ask: is that it, or is there more?
+- **Recap at every section transition.** What we covered, what is solved, where we are.
+- **Go topic-by-topic, in order.** He will stop you if you jump ahead.
+- **Professor statements are authoritative.** Record them verbatim. Never flag one as "needing clarification" or suggest challenging it.
+- **Only record deadlines he reports.** Never infer one from a syllabus. Reminders stay soft.
+- **Announce before deleting anything**, anywhere — including agent config folders.
+- **Verify before asserting.** He asked for this explicitly and catches real errors.
+- **Don't over-abbreviate.** He wants detail, not compression.
+
+---
+
+## 4. Repository & External Access (standing constraint)
+- Repo `https://github.com/AboALhasanx/master-studio` must stay **PUBLIC** — it is the transport layer for feeding free web chatbots.
+- **Gitingest** is the digest tool: swap `hub` → `ingest`. Per subject/folder only, never the whole repo (~141k tokens).
+- Full details: `.workbuddy-ai/memory/MEMORY.md`.
+
+---
+
+## 5. Universal Output Invariants (Zero-Tolerance Rules)
 - **Emoji Policy:** Strictly zero decorative emojis in academic study notes, seminar slides, diagrams, and technical docs.
 - **PowerPoint Presentation Standard:**
-  - Sizing tuned for 30+ ft projector readability: Titles **31pt–34pt Bold Navy** (`#1E3A8A`), Primary Bullets **21pt** (line spacing 1.35), Sub-bullets **17.5pt Slate**, Slide Numbers **14pt Bold**.
-  - **100% Native Vector Shapes:** Zero raster screenshot slides. All text boxes, titles, and tables must be native OpenXML shapes clickable and editable in OnlyOffice, WPS, and Canva.
-- **Word Document Standard (`.docx`):**
-  - Native OpenXML BiDi support (`<w:bidi/>` and `dir="rtl"`) on all Arabic text to prevent inverted periods and parentheses.
-  - Zero raw YAML frontmatter leaks on Page 1. Clean navy headers and auto-fitting tables.
-- **Visual Diagram Standard:**
-  - Rendered via code (Python Matplotlib / DirectWrite); zero browser screenshot scrollbars (horizontal or vertical rollers).
-  - Arabic script must be reshaped using `arabic_reshaper` + `python-bidi` so letters are connected right-to-left.
-  - Bounding boxes must be padded and solid; zero dashed or connecting lines cutting through the interior of text boxes.
-- **Token & Resource Protection:**
-  - Scanned PDFs (CamScanner, phone scans) must be parsed **locally via CPU RapidOCR (`rapidocr-onnxruntime`)** into Markdown before agent ingestion. Never feed raw multi-page scan images directly to multimodal LLMs to protect token and rate limits.
+  - Titles **31pt–34pt Bold Navy** (`#1E3A8A`), Primary Bullets **21pt** (line spacing 1.35), Sub-bullets **17.5pt Slate**, Slide Numbers **14pt Bold**.
+  - **100% Native Vector Shapes:** zero raster screenshot slides; all shapes native OpenXML, editable in OnlyOffice / WPS / Canva.
+- **Word Document Standard (`.docx`):** native OpenXML BiDi (`<w:bidi/>`, `dir="rtl"`) on Arabic text to prevent inverted punctuation; zero raw YAML frontmatter leaks on page 1.
+- **Visual Diagram Standard:** rendered via code (Matplotlib / DirectWrite); no browser-screenshot scrollbars; Arabic reshaped with `arabic_reshaper` + `python-bidi`; padded solid bounding boxes, no lines cutting through text.
+- **Scanned PDFs — CORRECTED 2026-09-18:** the old instruction to parse scans via `rapidocr-onnxruntime` is **stale — RapidOCR is NOT installed** in the managed venv. The working method is: render pages with `pymupdf` (`page.get_pixmap(dpi=150)`) and read them **as images**. For a PDF that has a text layer, just extract the text — and check `page.annots()` for the student's own annotations, which is often the most valuable content on the page.
 
 ---
 
-## 3. Instructor Dossiers & Exam Focus Points
+## 6. Instructor Dossiers & Exam Focus Points
+- **Asst. Prof. Dr. Huda Lafta Majeed (`01_Cyber_Security` - 2 Credits):** 🔴 **Head of the Postgraduate Studies Department (مقررة القسم)** — her word is the reference; record her statements as given.
+  - **Exam format (student-verified 2026-09-18):** numbers given → apply the formula; no numbers → **analytical scenario** answered as **step → CIA pillar → (techniques in parentheses)**.
+  - **Daily quiz:** written/essay (not MCQ), ~10 min, start of lecture, **soft stakes** — a reading-compliance check.
+  - Case-study chapter (Stuxnet / Colonial Pipeline / GDPR) is **excluded**.
+  - The **CIA Triad + its technique lists must be memorised cold** — they are the vocabulary of every scenario answer.
 - **Asst. Prof. Dr. Ali Fahim Ni'ma (`04_Advanced_Software_Eng` - 3 Credits):**
-  - Demands exact numerical and kinematic modeling of failure case studies (e.g., Dhahran Patriot Missile: 24-bit fixed-point representation of $0.1\text{s}$, losing $0.000000095\text{s}/\text{tick}$, drifting $0.3433\text{s}$ over 100 hours $\rightarrow 687\text{m}$ gate shift at Mach 5).
-  - Rigorous focus on Brooks' *No Silver Bullet* (Essential vs. Accidental complexity), the Dependability chain (Error $\rightarrow$ Fault $\rightarrow$ Failure), and the 8 ACM/IEEE Code of Ethics principles.
+  - Exact numerical/kinematic modelling of failure cases (Dhahran Patriot Missile: 24-bit fixed-point of $0.1\text{s}$ → $0.3433\text{s}$ drift over 100 h → $687\text{m}$ gate shift at Mach 5).
+  - Brooks' *No Silver Bullet* (Essential vs. Accidental complexity), the Dependability chain (Error → Fault → Error State → Failure), the 8 ACM/IEEE Code of Ethics principles.
 - **Asst. Prof. Dr. Haidar Akab Alwan (`02_English_Language` - 1 Credit):**
-  - Emphasizes the Oxford Headway Upper-Intermediate tense matrix (Simple vs. Continuous vs. Perfect aspect).
-  - Strictly penalizes conversational contractions (*'cause*, *I'm*) and ellipsis (*Been here two days*) in formal academic writing.
-  - Focuses on time adverbial constraints (e.g., Present Perfect cannot take closed past time anchors like *in 2024* or *ages ago*).
+  - Oxford Headway Upper-Intermediate tense matrix; time-adverbial constraints (Present Perfect cannot take closed past anchors).
+  - Strictly penalises contractions and ellipsis in formal academic writing.
+- **Prof. Dr. Saif Ali Al-Saidi (`06_Artificial_Intelligence` - 3 Credits):** ⏸️ **Course NOT started** — no material delivered as of 2026-09-18 (only a Telegram group and a request to use real names). He is also **Dean of the College**. AI is excluded from the active study plan until material appears.
+- **Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida (`03_Data_Mining` - 2 Credits):** attribute-type taxonomy (Nominal / Ordinal / Binary / Numerical) and data structures (Record / Transaction / Text / Sequence / Temporal / Spatial / Image / Graph).
 
 ---
 
-## 4. Active Research Vectors (Thesis Candidate Areas)
+## 7. Active Research Vectors (Thesis Candidate Areas — future, not current)
 - **Vector A:** Distributed consensus and fault tolerance under network partitioning.
 - **Vector B:** Local-first, private AI agent architectures and verifiable execution environments.
 - **Vector C:** Autonomous document parsing and semantic synthesis for academic knowledge graphs.
 
 ---
 
-## 5. Hub Navigation Pointers
+## 8. Hub Navigation Pointers
 - **Active State Pointer:** `00_STUDIO_HUB/ACTIVE_STATE.md`
+- **Rolling Study Plan:** `00_STUDIO_HUB/STUDY_PLAN.md`
 - **Cognitive Model:** `00_STUDIO_HUB/LEARNER_MODEL.md`
 - **GPA Ledger:** `00_STUDIO_HUB/GPA_TRACKER.md`
 - **Progress Radar:** `00_STUDIO_HUB/PROGRESS_ANALYTICS.md`
+- **College Buddy Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md`
+- **Session Journal:** `00_STUDIO_HUB/sessions/`
 - **Local Dashboard:** `http://127.0.0.1:5000` (Flask service in `91_Dashboard/`)
-- **College Buddy Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks deadlines, interactive debriefs, and professor announcements).

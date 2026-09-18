@@ -91,10 +91,12 @@ All tools are local, free, and run offline:
 
 ## Current Status
 
-- **Active semester:** Semester 1 (Fall 2026)
-- **Active subject:** Advanced Software Engineering (CS603 / Dr. Ali Fahim Ni'ma)
-- **Week:** 1 — Software Foundations & The Software Crisis
-- **Content produced:** Study notes, seminar deck, diagrams, and quiz for Lecture 01
+- **Active semester:** Semester 1 (Fall 2026) — Week 01
+- **Live work:** `01_Cyber_Security` Week 01 (Dr. Huda Lafta Majeed) — master note + question bank, drilled topic by topic ahead of the Sunday daily quiz
+- **Most complete subject:** `04_Advanced_Software_Eng` (Dr. Ali Fahim Ni'ma) — study notes, seminar deck, diagrams and quiz for Lecture 01
+- **Done:** `02_English_Language` Unit 1, from both sources (Q Skills + New Headway)
+- **On hold:** `06_Artificial_Intelligence` — the professor has not delivered any material yet
+- **Planning:** see `00_STUDIO_HUB/STUDY_PLAN.md` for the rolling schedule, and `00_STUDIO_HUB/ACTIVE_STATE.md` for the fast-boot pointer
 
 Other subjects are staged with syllabi and doctor profiles; study content is produced as lectures are delivered.
 

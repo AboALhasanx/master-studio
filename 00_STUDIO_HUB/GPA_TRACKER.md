@@ -18,6 +18,12 @@
 +-------------------------------------------------------------------------------+
 ```
 
+### Prior Academic Baseline (context, not part of the semester GPA)
+- **BSc Computer Science, graduated 2025–2026.**
+- **Master's differential (qualifying) exam: placed FIRST in his cohort, cumulative 83.46.**
+- He has never worked; he went straight from the bachelor's into master's preparation.
+- **Implication:** the 85% targets above are realistic, not aspirational — he has already performed at this level. Do not lower expectations on his behalf.
+
 ### Key Threshold Indicators
 - **$\ge 75.0\%$ (Green / Safe):** Master Studio Institutional Target. Secures optimal supervisor selection priority and honors standing.
 - **$70.0\% - 74.9\%$ (Yellow / Warning):** Ministerial legal floor for thesis transition. Requires immediate corrective focus.
@@ -45,12 +51,12 @@ $$\text{Weighted Grade Points}_i = \text{Grade}_i \times \text{Credits}_i$$
 
 | Code | Subject Name | Credits | Instructor | Coursework (/50) | Final Exam (/50) | Final Grade (/100) | Weighted Points | Target Grade | Status |
 |:---:|:---|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **CS501** | `01_Cyber_Security` | 2 | Asst. Prof. Dr. Huda Lafta Majeed | — | — | **—** | — | 85.0% | Pending |
-| **CS502** | `02_English_Language` | 1 | Asst. Prof. Dr. Haidar Akab Alwan | — | — | **—** | — | 90.0% | Pending |
+| **CS501** | `01_Cyber_Security` | 2 | Asst. Prof. Dr. Huda Lafta Majeed | — | — | **—** | — | 85.0% | Active (W1) |
+| **CS502** | `02_English_Language` | 1 | Asst. Prof. Dr. Haidar Akab Alwan | — | — | **—** | — | 90.0% | Unit 1 done |
 | **CS503** | `03_Data_Mining` | 2 | Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida | — | — | **—** | — | 85.0% | Pending |
 | **CS504** | `04_Advanced_Software_Eng` | 3 | Asst. Prof. Dr. Ali Fahim Ni'ma | — | — | **—** | — | 88.0% | Active |
 | **CS505** | `05_Soft_Computing` | 2 | Prof. Dr. Abdul Hadi Mohammed Adkhil | — | — | **—** | — | 82.0% | Pending |
-| **CS506** | `06_Artificial_Intelligence` | 3 | Prof. Dr. Saif Ali Al-Saidi | — | — | **—** | — | 85.0% | Pending |
+| **CS506** | `06_Artificial_Intelligence` | 3 | Prof. Dr. Saif Ali Al-Saidi | — | — | **—** | — | 85.0% | ⏸️ Awaiting course start |
 | **TOTAL** | **Semester 1 Cumulative** | **13** | — | — | — | **—** | **—** | **85.5%** | **In Progress** |
 
 ---
