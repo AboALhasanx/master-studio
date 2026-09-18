@@ -51,7 +51,8 @@ status: "WEEK_01_ACTIVE"
 - [x] **`01_Cyber_Security` Week 01 — all theory Topics 1–6 covered** (master note + question bank + formula deep-dives); Chapter 7 excluded by the doctor
 - [ ] **`01_Cyber_Security` Week 01 — scenario drills** — the only thing left before Sunday's quiz
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
-- [ ] **Answer Dr. Ahmed Shakir's Data Mining question** — Week 02 *data representation & preparation*; specifically *"what is the data type of a URL?"* (raised in the previous lecture)
+- [ ] **`03_Data_Mining` — next lecture is Week 03 (Monday): *Feature Extraction and Portability*** — material already in the vault (`02_Raw_Materials/Week 03 - Feature Extraction and Portability.docx`). **Week 01 (Introduction) and Week 02 (Data Types & Representation) are already covered.**
+- [ ] **Answer Dr. Ahmed Shakir's Week 02 question** — *data representation & preparation*; specifically *"what is the data type of a URL?"* → answered as **Nominal** attribute in his taxonomy.
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
 - [ ] **`06_Artificial_Intelligence`** — waiting. **Abu Al-Hasan will report it himself when Dr. Saif posts material — do not proactively check the group.**
 

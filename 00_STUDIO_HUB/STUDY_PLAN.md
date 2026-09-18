@@ -38,7 +38,7 @@
 | **18/9** | **Fri** | — | *today — free* |
 | **19/9** | **Sat** | — | 🎉 **HOLIDAY — free full day** |
 | **20/9** | **Sun** | 🔐 Cyber Security 8:30 · 🇬🇧 English 10:30 | 🔴 **Cyber Security DAILY QUIZ (Week 01)** |
-| **21/9** | **Mon** | ⛏️ Data Mining 8:30 · 🏗️ ASE 10:30–13:30 | 🟡 Dr. Ahmed Shakir's W2 question |
+| **21/9** | **Mon** | ⛏️ Data Mining 8:30 · 🏗️ ASE 10:30–13:30 | 🟡 **Data Mining lecture = Week 03 (Feature Extraction & Portability)** — material already in the vault |
 | **22/9** | **Tue** | 🧠 Soft Computing 8:30 · 🤖 AI 10:30–13:30 | — |
 | **23–25/9** | Wed–Fri | — | Deep work |
 | **26/9** | **Sat** | — | Prep day |
