@@ -90,6 +90,8 @@ graph TD
 | `01_Cyber_Security` | $\min R$ symbol **P = Probability**, not "Portability" | 2026-09-18 | Terminology slip | High | 2026-09-19 |
 | `01_Cyber_Security` | **Arithmetic discipline** — $\min R$ worked example: $0.3\times100=30$ not 90; correct answer 105 → "يوجد استثمار" | 2026-09-18 | Calculation slip under exam pressure | High | 2026-09-19 |
 | `01_Cyber_Security` | Scenario answer format: step → **CIA pillar** → **(techniques in parentheses)** | 2026-09-18 | Format newly learned, needs drilling | High | 2026-09-19 |
+| `01_Cyber_Security` | **English technical spelling in written answers** — Legal · continuity · cross-border · business · financial | 2026-09-18 | Spelling slips (exam is written in English) | Medium | 2026-09-20 |
+| `01_Cyber_Security` | **6 domains — exact technique lists**: Network **firewalls · IDS/IPS** · App **secure coding · OWASP** · Cloud **encryption · IAM · virtualization** · IoT · Mobile · ICS | 2026-09-18 | Missed IPS, OWASP, IAM | High | 2026-09-19 |
 
 ---
 
