@@ -112,11 +112,12 @@ The student's own worked example:
 
 ✅ **Both depths are accepted:** deep step-by-step analysis **or** analysing the whole scenario at once — *"الاجابتين صح"*.
 
-### 6.4 The "100" threshold (page 1)
+### 6.4 The "100" threshold (page 1) — her rule. Accept it as given.
 > *"اذا الناتج ازداد عن ال 100 يعني اكو استثمار واذا اقل من 100 يعني مفيش استثمار"*
 
-✅ **The doctor said this herself** — it is not the student's inference.
-⚠️ *Koko's note:* mathematically $\min R$ is unbounded, so "100" is almost certainly a **baseline / index reference** rather than an output of that sum — possibly a return-on-security-investment style comparison. **Ask the doctor to clarify; do not assume.** Flagged, not guessed.
+✅ **The doctor stated this herself.** The student's instruction is explicit: *"لمن هي تكول فهاهي"* — when she says it, that is the rule. **Do not raise it as a question, and do not challenge it.**
+
+**Why this settles it:** Dr. Huda is the **Head of the Postgraduate Studies Department (مقررة القسم)** at the College. She is the authority on what counts in this course. Her statements are recorded as given, not audited.
 
 ### 6.5 The daily quiz (امتحان يومي) — real format
 | Aspect | Answer |

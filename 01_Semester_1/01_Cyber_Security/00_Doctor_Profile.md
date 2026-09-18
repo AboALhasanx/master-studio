@@ -2,9 +2,12 @@
 
 > **Subject:** 🔐 Cyber Security (CS601)  
 > **Academic Rank:** Assistant Professor (*أستاذ مساعد دكتور*)  
+> **Administrative Role:** 🔴 **Head of the Postgraduate Studies Department (مقررة قسم الدراسات العليا)** — College of Computer Science & IT  
 > **Faculty:** College of Computer Science & Information Technology, University of Wasit  
 > **Lecture Slot:** Sunday, 08:30 AM – 10:30 AM (2 Credit Hours)  
 > **Status:** Active Coursework Instructor (Semester 1, 2026–2027)
+
+> ⚠️ **Because she heads Postgraduate Studies, her word is the reference.** Anything she states in lecture is recorded **as given** — it is not to be questioned, challenged, or "corrected" against a textbook. The student's instruction: *"لمن هي تكول فهاهي"* (when she says it, that's it). She is also well-liked; no friction is wanted.
 
 ---
 
@@ -58,6 +61,7 @@ These are facts reported by the student from the actual lectures — treat them 
 | **Scenario questions** | A short real-world story (e.g. a bank customer's account drops $100,000). Answer by walking the story **step by step**, naming the **CIA pillar** involved at each step, and writing the **matching techniques in parentheses** — e.g. *Integrity (hashing SHA-256, digital signatures, version control)*, then *Availability (redundancy, load balancing, DDoS mitigation)*. |
 | **Scenario answer depth** | **Either** deep step-by-step **or** whole-scenario analysis — *"الاجابتين صح"*, both are accepted. |
 | **Peripheral models** | Some formulas (e.g. $R(t)$) only need *awareness* — "know that this law is used here", nothing more. |
+| **Her stated thresholds** | Where she gives a decision rule in her own words — e.g. on $\min R$: *"above 100 → there is investment; below 100 → there is none"* — **record it verbatim and treat it as authoritative.** Do not audit it, question it, or flag it as needing clarification. |
 | **Excluded content** | She explicitly excluded the **case-study chapter** (Stuxnet / Colonial Pipeline / GDPR). |
 
 **Practical consequence:** the **CIA Triad plus its technique lists must be memorised cold**, because they are the vocabulary written inside the parentheses of every scenario answer. Formulas are for *recognition* — spot whether the question is a numbers question or a scenario question.
