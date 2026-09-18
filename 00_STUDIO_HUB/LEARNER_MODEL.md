@@ -84,6 +84,8 @@ graph TD
 
 > Concepts requiring active reinforcement due to missed exam questions or identified conceptual ambiguity.
 
+| Subject | Concept / Error | Logged | Reason | Priority | Review Due |
+|:---|:---|:---|:---|:---:|:---|
 | `04_Advanced_Software_Eng` | ACM/IEEE 8 Code of Ethics Principles (Scenario Trade-offs) | 2026-09-16 | Needs application drills | High | 2026-09-20 |
 | `04_Advanced_Software_Eng` | Brooks' Law Quadratic Communication Growth (C = N(N-1)/2) | 2026-09-16 | Calculation memorization | Medium | 2026-09-20 |
 | `01_Cyber_Security` | Cyber-security historical timeline — **ARPANET/mainframes = 1960s** (student wrote 1980s) | 2026-09-18 | Date confusion | High | 2026-09-19 |
@@ -92,6 +94,9 @@ graph TD
 | `01_Cyber_Security` | Scenario answer format: step → **CIA pillar** → **(techniques in parentheses)** | 2026-09-18 | Format newly learned, needs drilling | High | 2026-09-19 |
 | `01_Cyber_Security` | **English technical spelling in written answers** — Legal · continuity · cross-border · business · financial | 2026-09-18 | Spelling slips (exam is written in English) | Medium | 2026-09-20 |
 | `01_Cyber_Security` | **6 domains — exact technique lists**: Network **firewalls · IDS/IPS** · App **secure coding · OWASP** · Cloud **encryption · IAM · virtualization** · IoT · Mobile · ICS | 2026-09-18 | Missed IPS, OWASP, IAM | High | 2026-09-19 |
+| `01_Cyber_Security` | **"Integrity" not "Integration"** — the CIA pillar. Student wrote `Integration` twice (Q1 + Q3). Content was right, the term was wrong. | 2026-09-18 | Terminology confusion, repeated | 🔴 **High** | 2026-09-19 |
+| `01_Cyber_Security` | **Banking weighting**: for a bank, **Integrity (β) is the heaviest**, not the lightest — changing an account number or balance is catastrophic. Student argued β was "not that much important" while simultaneously citing account-number integrity. | 2026-09-18 | Reasoning contradiction | Medium | 2026-09-20 |
+| `01_Cyber_Security` | **Firewall belongs to Network Security (Ch.2), not to the CIA-Confidentiality list.** CIA-C = encryption · access controls · VPNs. | 2026-09-18 | List boundary confusion | Medium | 2026-09-20 |
 
 ---
 
