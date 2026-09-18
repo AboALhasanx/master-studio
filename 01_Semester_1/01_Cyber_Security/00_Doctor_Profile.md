@@ -46,6 +46,22 @@ Her pedagogical model is **heavily practical, scenario-driven, and enterprise-or
 
 Dr. Huda’s exams are designed to test **analytical diagnostic competence** rather than rote memorization.
 
+### 3.1 ✅ Confirmed exam mechanics (student-verified, 2026-09-18)
+
+These are facts reported by the student from the actual lectures — treat them as authoritative over the general tendencies below.
+
+| Question | Confirmed answer |
+|:---|:---|
+| **Mathematical models** | If the question **gives numbers**, apply the formula and compute. If there are **no numbers** (or nothing asked as a number), she wants an **analytical scenario** instead. |
+| **Daily quiz (امتحان يومي)** | **Written, essay type (مقالي)** — explicitly *not* MCQ. **~10 minutes**, most likely at the start of the lecture. |
+| **Daily quiz stakes** | **Soft.** Her words: *"if I see you've answered, I won't count it; if I see you haven't answered, I'll count it against you. I'll help you — but I want you to read, even if you're forced to."* It is a **reading-compliance check**. |
+| **Scenario questions** | A short real-world story (e.g. a bank customer's account drops $100,000). Answer by walking the story **step by step**, naming the **CIA pillar** involved at each step, and writing the **matching techniques in parentheses** — e.g. *Integrity (hashing SHA-256, digital signatures, version control)*, then *Availability (redundancy, load balancing, DDoS mitigation)*. |
+| **Scenario answer depth** | **Either** deep step-by-step **or** whole-scenario analysis — *"الاجابتين صح"*, both are accepted. |
+| **Peripheral models** | Some formulas (e.g. $R(t)$) only need *awareness* — "know that this law is used here", nothing more. |
+| **Excluded content** | She explicitly excluded the **case-study chapter** (Stuxnet / Colonial Pipeline / GDPR). |
+
+**Practical consequence:** the **CIA Triad plus its technique lists must be memorised cold**, because they are the vocabulary written inside the parentheses of every scenario answer. Formulas are for *recognition* — spot whether the question is a numbers question or a scenario question.
+
 ### Typical Question Formats
 
 | Format | Description | Example Question Prototype |

@@ -55,7 +55,8 @@ Also in red type in the source (the doctor's own emphasis):
 
 The whole of **Chapter 7** — Stuxnet (2010), Colonial Pipeline Ransomware (2021), GDPR Enforcement — is **struck through with heavy red X marks.**
 
-*Needs confirming: was this the doctor saying "not required", or the student's own call?*
+✅ **Confirmed by the student (2026-09-18):** the doctor said she does not want it — *"هي كالت ما تريده ما داخل"*.
+**→ Chapter 7 is OUT of exam scope. Do not spend time on it.**
 
 ---
 
@@ -78,30 +79,68 @@ The whole of **Chapter 7** — Stuxnet (2010), Colonial Pipeline Ransomware (202
 
 ---
 
-## 6. ⚠️ The gap worth noticing
+## 6. ✅ DECODED — how Dr. Huda actually tests (student-confirmed, 2026-09-18)
 
-`00_Doctor_Profile.md` describes Dr. Huda's exams as **"analytical diagnostic competence rather than rote memorization"** — scenario-driven, enterprise incident triage, mitigation matrices.
+### 6.1 The source document
+This PDF **is the doctor's own lecture material** — *not* the student's summary. His marks were written *during* the lecture, recording what she said. **So these 7 chapters = the official Week 01 content.**
 
-But **this material is formula-heavy**: 6 mathematical models in 5 pages.
+### 6.2 Formulas: numbers → compute. No numbers → scenario.
+> *"مرات مستقبلا تطيك الارقام والسؤال بيه ارقام وانت تعرف هاي معادلة... اذا ماكو ارقام او ماكو مطلوب وياه كرقم يعني تريد سيناريو تحليلي"*
 
-**These two pictures don't match.** Which is exactly why the student said *"طريقة دراستها غريبة"* — the way this subject is studied is strange.
+| Situation | What she wants |
+|:---|:---|
+| The question **contains numbers** | Plug them into the formula and **compute** |
+| **No numbers**, or nothing asked *as a number* | **Analytical scenario** — explain what happened using the concepts |
 
-**The open question that decides everything:**
-> Does Dr. Huda test these formulas **numerically** (give numbers → plug into the equation), or **conceptually** (explain what the model means / use it in a scenario)?
+→ This resolves the page-3 confusion. The formulas are **not** for blind memorisation; they exist so you can tell *"this is a formula question"* apart from *"this is a scenario question"*.
 
-*Pending the student's answers — see §7.*
+### 6.3 The scenario answer format — THE key pattern ⭐
+The student's own worked example:
+
+> A bank customer sees his account drop by **$100,000** at once. He calls the manager. The manager investigates, finds it was just a program crash, fixes it, and returns the money.
+
+**How to answer it:**
+
+| Step | What happened | Label it | In parentheses |
+|:--:|:---|:---|:---|
+| 1 | The user saw his data had changed | **Integrity** | (hashing SHA-256, digital signatures, version control) |
+| 2 | We called, found the system had a problem | **Availability** | (redundancy, load balancing, DDoS mitigation) |
+| 3 | Fixed and restored | — | — |
+
+**The rule:**
+> Walk the scenario **step by step**; at each step name the **CIA pillar** involved — then **in parentheses write the techniques** from the CIA triad that would fix it.
+
+✅ **Both depths are accepted:** deep step-by-step analysis **or** analysing the whole scenario at once — *"الاجابتين صح"*.
+
+### 6.4 The "100" threshold (page 1)
+> *"اذا الناتج ازداد عن ال 100 يعني اكو استثمار واذا اقل من 100 يعني مفيش استثمار"*
+
+✅ **The doctor said this herself** — it is not the student's inference.
+⚠️ *Koko's note:* mathematically $\min R$ is unbounded, so "100" is almost certainly a **baseline / index reference** rather than an output of that sum — possibly a return-on-security-investment style comparison. **Ask the doctor to clarify; do not assume.** Flagged, not guessed.
+
+### 6.5 The daily quiz (امتحان يومي) — real format
+| Aspect | Answer |
+|:---|:---|
+| Format | **Written, with solutions — essay type (مقالي).** *Not* MCQ. |
+| Length | **~10 minutes** |
+| When | Probably **at the start of the lecture** |
+| Stakes | **Soft.** She said: *"if I see you've answered, I won't count it; if I see you haven't answered, I'll count it against you as a grade. I'll help you — but I want you to read, even if you're forced to."* |
+| Real purpose | A **reading-compliance check**, not a hard assessment |
+
+**→ Strategic conclusion: low risk.** Show up having read, write something structured, and you are fine. Don't lose sleep — but don't skip it either.
+
+### 6.6 The $R(t)$ formula
+> *"اي علمود هيج بس نعرف هذا القانون هنا يستخدم"* — she only wants you to know that this law is used here. **Superficial awareness only.** Matches the student's margin note (*"مو مفيد… غير مستخدم"*).
+
+### 6.7 What this means for how we study this subject
+The `00_Doctor_Profile.md` claim ("analytical, not rote memorization") is **correct — but incomplete.** The full picture:
+
+1. **Concept first**, in her own words.
+2. **The CIA Triad and its technique lists must be memorised cold** — they are the *vocabulary* you write inside the parentheses of every scenario answer.
+3. **Formulas: recognise, don't worship.** Compute only when numbers are given.
+4. **Chapter 7 is out.**
+5. **Practice = scenarios**, answered as: step → CIA pillar → (techniques).
 
 ---
 
-## 7. Open questions for the student
-
-1. Where did this PDF come from — the doctor's own slides, or your own summary?
-2. Does she test the formulas numerically, or conceptually?
-3. Why is Chapter 7 crossed out?
-4. Where does the "100" threshold on page 1 come from?
-5. What does the **daily quiz (امتحان يومي)** actually look like?
-6. How does she use **scenarios**?
-
----
-
-*Captured 2026-09-18. Will be updated once the student answers §7.*
+*Captured 2026-09-18 by Koko, from the student's own answers.*
