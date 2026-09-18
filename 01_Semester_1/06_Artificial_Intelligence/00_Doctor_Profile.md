@@ -8,6 +8,17 @@
 
 ---
 
+## 0. ⚠️ Current Delivery Status — as of 2026-09-18
+
+- **The professor has not started delivering the course.** No slides, no lecture notes, no syllabus, no reading list — nothing has been posted.
+- **Course Telegram group:** *"ماجستير برمجيات ١٠٦ Artificial intelligent"* — 14 members, all joined 2026-09-09. The only message from Dr. Saif so far is a request for members to use their real names so he knows who he is speaking to. No academic content has been shared.
+- **Student's position (correct):** this is the instructor's shortfall, not the student's. He is not behind on AI.
+- **Consequence for planning:** AI is **excluded** from the active study plan (`00_STUDIO_HUB/STUDY_PLAN.md`) until material actually appears. The Telegram group should be checked daily; the moment anything is posted, AI moves to the top of the plan.
+- **Student also reports Dr. Saif is the Dean (*العميد*) of the College.** Treat scheduling slippage accordingly — his administrative load is likely the cause.
+- **Everything below this line is pre-existing dossier intelligence** (his research pillars, exam style, textbook) — it is *not* derived from any delivered lecture. It remains a strong starting position if the course begins.
+
+---
+
 ## 1. Professional Background & Academic Persona
 
 Prof. Dr. Saif Ali Al-Saidi is a distinguished Full Professor and leading artificial intelligence authority specializing in state-space heuristic search, intelligent agent paradigms, constraint satisfaction problems (CSP), automated reasoning, and game-theoretic adversarial search.
