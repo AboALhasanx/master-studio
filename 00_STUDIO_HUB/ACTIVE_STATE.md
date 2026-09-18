@@ -3,9 +3,9 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "Review Week 01 viva defense questions before Monday 10:30 AM lecture"
-next_session_focus: "Oral exam drill on Patriot Missile drift math & Brooks essential complexity"
-last_updated: "2026-09-17"
+immediate_todo: "Prepare for the 01_Cyber_Security daily quiz (Week 01 material) — Sunday 2026-09-20 lecture"
+next_session_focus: "Week 01 Cyber Security revision + answer Dr. Ahmed Shakir's Data Mining question on the data type of a URL"
+last_updated: "2026-09-18"
 status: "WEEK_01_ACTIVE"
 ---
 
@@ -42,10 +42,13 @@ status: "WEEK_01_ACTIVE"
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
 - [x] **Ingest Scanned Materials & Synthesize Unit 01 for `02_English_Language`** (Grammar & Tenses Study Note, Clean DOCX, Quiz Bank)
 - [x] **Complete New Headway Unit 1 "No place like home" (SB pp.6–15)** — full walkthrough, TB-verified (ISBN 978-0-19-439300-3), + Exam Index
-- [ ] Review Week 01 viva defense questions before Monday 10:30 AM lecture with Dr. Ali Fahim
+- [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
+- [ ] **Answer Dr. Ahmed Shakir's Data Mining question** — Week 02 *data representation & preparation*; specifically *"what is the data type of a URL?"* (raised in the previous lecture)
+- [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
 
 ### Next Session Focus
-- **Topic:** Rehearse the Patriot Missile 24-bit truncation drift math and Brooks' "No Silver Bullet" essential complexity arguments.
+- **Topic:** Week 01 Cyber Security revision for the Sunday daily quiz, plus the Data Mining "URL data type" question.
+- **Correction 2026-09-18 (student-confirmed):** the previously listed "Week 01 viva defense drill with Dr. Ali Fahim" was **agent-inferred and is not a real event**. The Patriot-drift / Brooks material stays valid *study* content, but it is not tied to any scheduled assessment.
 - **Deliverables Ready:** `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` & `seminar_lecture01_software_crisis.pptx`.
 ---
 
