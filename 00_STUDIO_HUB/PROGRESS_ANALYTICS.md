@@ -17,7 +17,7 @@
 |----------------------------|:-------:|:-------------:|:-------------:|:----------------------:|
 | 01_Cyber_Security          |    2    |       3       |     68%       | 🟢 Active / W1 in drill |
 | 02_English_Language        |    1    |       1       |     100%      | 🟢 Active / Unit 1 Done|
-| 03_Data_Mining             |    2    |       0       |      --       | 🟡 Staged (Han & Kamber)|
+| 03_Data_Mining             |    2    |       0       |      --       | 🟢 Notes W1 written    |
 | 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 Active / On Track   |
 | 05_Soft_Computing          |    2    |       0       |      --       | 🟡 Staged (Jang ready) |
 | 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material)|
@@ -68,7 +68,9 @@
 * **Outstanding:** presentation (~5 min) on 2026-09-27 — low stakes.
 
 ### 03_Data_Mining (CS503) — Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida
-* **Status:** No study notes yet. Week 01–03 raw material staged.
+* **Status:** Week 01 master note **written** → `03_Study_Notes/Week_01_Introduction_to_Data_Mining.md`, built on the student's own smart-memorisation framework (developed with Gemini and preserved as `02_Raw_Materials/Gemini - Smart Memorisation Framework (Data Mining).pdf`).
+* **Covered:** definition + **KDD** · the **7 advantages organised into 3 levels** (Data → Business → Tech) · the **4 disadvantages in 3 levels** (Privacy → Tools → Accuracy, incl. the American Express example) · the **8 application domains** with the **2-Keyword Rule** · the **6 challenges** with the **3-Element Formula** (Nature → Root Cause → Consequence).
+* **Method note:** the lecture text is long and repetitive; the note keeps only the exam-relevant skeleton and the professor's keyword-based marking logic.
 * **Open question from the professor:** Week 02 data representation & preparation — *"what is the data type of a URL?"* → answered as **Nominal** attribute, in his taxonomy.
 
 ### 05_Soft_Computing (CS505) — Prof. Dr. Abdul Hadi Mohammed Adkhil
