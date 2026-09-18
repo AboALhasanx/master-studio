@@ -86,6 +86,10 @@ graph TD
 
 | `04_Advanced_Software_Eng` | ACM/IEEE 8 Code of Ethics Principles (Scenario Trade-offs) | 2026-09-16 | Needs application drills | High | 2026-09-20 |
 | `04_Advanced_Software_Eng` | Brooks' Law Quadratic Communication Growth (C = N(N-1)/2) | 2026-09-16 | Calculation memorization | Medium | 2026-09-20 |
+| `01_Cyber_Security` | Cyber-security historical timeline — **ARPANET/mainframes = 1960s** (student wrote 1980s) | 2026-09-18 | Date confusion | High | 2026-09-19 |
+| `01_Cyber_Security` | $\min R$ symbol **P = Probability**, not "Portability" | 2026-09-18 | Terminology slip | High | 2026-09-19 |
+| `01_Cyber_Security` | **Arithmetic discipline** — $\min R$ worked example: $0.3\times100=30$ not 90; correct answer 105 → "يوجد استثمار" | 2026-09-18 | Calculation slip under exam pressure | High | 2026-09-19 |
+| `01_Cyber_Security` | Scenario answer format: step → **CIA pillar** → **(techniques in parentheses)** | 2026-09-18 | Format newly learned, needs drilling | High | 2026-09-19 |
 
 ---
 
