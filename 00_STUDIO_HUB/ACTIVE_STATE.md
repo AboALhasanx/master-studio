@@ -52,7 +52,7 @@ status: "WEEK_01_ACTIVE"
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
 - [ ] **Answer Dr. Ahmed Shakir's Data Mining question** — Week 02 *data representation & preparation*; specifically *"what is the data type of a URL?"* (raised in the previous lecture)
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
-- [ ] **Check the AI Telegram group each session** — the moment Dr. Saif posts material, AI returns to the plan
+- [ ] **`06_Artificial_Intelligence`** — waiting. **Abu Al-Hasan will report it himself when Dr. Saif posts material — do not proactively check the group.**
 
 ### Next Session Focus
 - **Topic:** Week 01 Cyber Security revision for the Sunday daily quiz, plus the Data Mining "URL data type" question.

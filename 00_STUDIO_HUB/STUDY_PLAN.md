@@ -76,7 +76,7 @@
 
 ### Wed 23/9 – Sat 26/9
 - Deep work: **Soft Computing** notes, **Cyber Security** Week 02+ notes, and start the English presentation.
-- **Check the AI Telegram group daily.** The moment Dr. Saif posts anything, it jumps straight to the top of this plan.
+- **AI:** do **not** proactively check the group — **Abu Al-Hasan will report it himself** when Dr. Saif posts material. The moment he does, AI jumps straight to the top of this plan.
 
 ### Sunday 27/9
 - ⚪ English presentation (~5 min, low stakes).
