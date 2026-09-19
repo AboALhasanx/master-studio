@@ -41,16 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
-  // Auto-refresh data every 30s
+  // Auto-refresh dashboard every 60s
   setInterval(async () => {
     try {
       const res = await fetch('/api/data');
       if (res.ok) {
-        // Data refreshed — could update DOM incrementally if needed
-        // For now, full reload keeps it simple
+        window.location.reload();
       }
     } catch (e) {
       // Server not reachable — ignore
     }
-  }, 30000);
+  }, 60000);
 });
