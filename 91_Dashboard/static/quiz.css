@@ -1380,21 +1380,24 @@ input:focus, textarea:focus {
     top: calc(100% + 6px);
     left: 0;
     right: 0;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-card);
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-focus);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: 0.35rem;
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45);
+    padding: 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    z-index: 50;
+    z-index: 100;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px) scale(0.98);
     transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+}
+
+[data-theme="light"] .custom-select-menu {
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.14), 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-color: #D1D5DB;
 }
 
 .custom-select-wrap.open .custom-select-menu {
@@ -1408,10 +1411,10 @@ input:focus, textarea:focus {
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.6rem 0.85rem;
+    padding: 0.65rem 0.85rem;
     border-radius: var(--radius-sm);
-    color: var(--text-muted);
-    font-size: 0.86rem;
+    color: var(--text-main);
+    font-size: 0.88rem;
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -1427,7 +1430,7 @@ input:focus, textarea:focus {
 .custom-select-item.selected {
     background-color: var(--accent-subtle);
     color: var(--text-main);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .custom-select-item .item-check {
@@ -1437,6 +1440,10 @@ input:focus, textarea:focus {
     color: var(--accent);
     opacity: 0;
     transition: opacity var(--transition-fast);
+}
+
+[data-theme="light"] .custom-select-item .item-check {
+    color: #111827;
 }
 
 .custom-select-item.selected .item-check {
