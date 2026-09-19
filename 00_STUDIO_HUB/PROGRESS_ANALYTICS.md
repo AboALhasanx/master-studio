@@ -19,7 +19,7 @@
 | 02_English_Language        |    1    |       1       |     100%      | 🟢 Unit 1 done · presentation 27/9 |
 | 03_Data_Mining             |    2    |   banks only  |      --       | 🟢 W01–W03 comprehensive notes ready |
 | 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 On track |
-| 05_Soft_Computing          |    2    |       0       |      --       | 🟡 Official syllabus synced · W01 note draft · W2 materials not posted |
+| 05_Soft_Computing          |    2    |   banks only  |      --       | 🟢 W01 note rebuilt (DM method) · 🟡 W2 unposted |
 | 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material from professor) |
 +-----------------------------------------------------------------------------------------------+
 | Content artifacts: Cyber W1 notes · English U1 · DM W1–W3 · ASE W1 · SC syllabus+W01 draft   |
@@ -52,8 +52,8 @@
 
 ### 05_Soft_Computing — Prof. Dr. Abdul Hadi Alaidi
 - **Official source:** alaidi.net Fall 2026 (window 8/9–8/12/2026). Midterm on site **20/10 Weeks 1–6 fuzzy** — **provisional** (professor may renumber; Week 1 was intro only; Week 2 still unposted).
-- **Done:** syllabus rewrite · textbook identity fixed (Mitchell=GA, Ross 2nd) · W01 note **draft** from 32 slides + images.
-- **Pending:** student permission to **rebuild W01 note in Data Mining comprehension style** (no AI-slop compression).
+- **Done:** syllabus rewrite · textbook identity fixed (Mitchell=GA, Ross 2nd) · **W01 note rebuilt** in Data Mining method (full lecture + conceptual Arabic + decoded images + long answers + 35Q).
+- **Open:** oral drill of W01 bank; wait for doctor material before Week 2 official notes.
 - **Gap:** Week 2 class material not on professor site — not student neglect.
 
 ### 06_Artificial_Intelligence — Prof. Dr. Saif Ali Al-Saidi

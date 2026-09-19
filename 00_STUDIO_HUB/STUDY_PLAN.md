@@ -15,7 +15,7 @@
 | 02 | **English Language** | 1 | ✅ Q Skills + Headway U1 | ✅ **Unit 1 COMPLETE** | ✅ 1 | ✅ Presentation 27/9 only |
 | 03 | **Data Mining** | 2 | ✅ W01 pptx · W02 docx×3 · W03 docx + Han + Aggarwal | ✅ **W01 + W02 + W03 comprehensive** | ⚠️ banks inside notes | 🟡 Monday lecture = W03 (note ready) |
 | 04 | **Advanced SE** | 3 | ✅ 4 textbooks | ✅ W01 md+docx | ✅ + diagrams + PPTX | ✅ On track |
-| 05 | **Soft Computing** | 2 | ✅ W01 pptx + books (Mitchell/Ross renamed) + alaidi mirror | ⚠️ W01 note exists — **style rebuild pending permission** | inside note | 🟡 Official syllabus synced; **W2 materials not posted** |
+| 05 | **Soft Computing** | 2 | ✅ W01 pptx + books + alaidi mirror | ✅ **W01 comprehensive rebuilt** (DM method) | banks in note | 🟡 Syllabus synced (provisional) · W2 materials not posted |
 | 06 | **Artificial Intelligence** | 3 | ⏸️ nothing delivered | ❌ | ❌ | ⏸️ **ON HOLD** — not student’s fault |
 
 **Cyber still missing PDFs:** Weeks 10 & 13 (if the doctor uses them later).  

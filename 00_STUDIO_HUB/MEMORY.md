@@ -101,3 +101,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-19:** GitHub push recipe 2026-09-19: if 403 Permission denied, clear Env:GITHUB_TOKEN (fine-grained PAT may lack write), then gh auth switch to keyring account (gho with repo scope) + gh auth setup-git + push. APPDATA still required.
 
 - **Added 2026-09-19:** Soft Computing official Fall 2026: alaidi.net 8/9-8/12/2026; midterm 20/10 Weeks 1-6 fuzzy only; NO chain codes/ANFIS as weekly topics; only Lecture 1 posted online; Week 2 (15/9) materials not uploaded; next class Tue 22/9 Week 3 Fuzzy relations/propositions.
+
+- **Added 2026-09-19:** SC Week 01 note rebuilt 2026-09-19 with student permission: Data Mining style — no AI-slop compression. File Week_01_Introduction_to_Soft_Computing.md. Calendar provisional (W1 intro-only in class; W2 unposted).
