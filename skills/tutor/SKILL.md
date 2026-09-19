@@ -21,3 +21,20 @@ Use this skill whenever the student asks to understand, learn, explain, or decon
 3. **Bilingual Rule:**
    * Technical terms are always written in English (with standard abbreviations).
    * Conceptual explanations and intuitions are delivered bilingually.
+
+4. **Anti-Hallucination:**
+   * Never invent authors, paper titles, journals, years, or DOIs.
+   * Every citation must include a resolvable `https://doi.org/...` link.
+   * Foundational textbook concepts without a specific DOI are tagged `[Foundational Knowledge / Standard Concept]`.
+
+5. **Template Enforcement:**
+   * Written study notes must conform to `00_STUDIO_HUB/templates/template-study-note.md`.
+
+## Session Protocol
+
+1. **Fast-boot:** Read `00_STUDIO_HUB/ACTIVE_STATE.md` and `00_STUDIO_HUB/LEARNER_MODEL.md` before generating content.
+2. **Wrap-up:** Update `ACTIVE_STATE.md` progress and add gaps to `LEARNER_MODEL.md` review queue.
+
+## Full Reference
+
+Detailed persona, pipeline diagram, and complete governance rules: `00_STUDIO_HUB/agents/tutor.md`

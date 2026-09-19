@@ -31,3 +31,20 @@ Use this skill whenever the student needs to prepare a slide deck, seminar prese
 
 3. **100% Formal Academic English:**
    * Slide decks are external deliverables and must be written strictly in professional English.
+
+4. **Native PPTX Export:**
+   * After generating the Marp Markdown, also produce a native editable `.pptx` via:
+     ```bash
+     python 90_Shared_Toolbox/tools/office_exporter.py pptx "<path-to-slide>.md"
+     ```
+
+5. **Template Enforcement:**
+   * Decks must conform to `00_STUDIO_HUB/templates/template-marp-seminar.md`.
+
+## Output Location
+
+Save all seminar artifacts in `01_Semester_1/<Subject>/05_Seminars_&_Slides/`.
+
+## Full Reference
+
+Detailed persona and complete presentation protocols: `00_STUDIO_HUB/agents/seminar.md`
