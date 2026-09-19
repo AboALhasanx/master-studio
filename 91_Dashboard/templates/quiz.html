@@ -20,13 +20,10 @@
         <!-- Top App Bar -->
         <header class="app-header">
             <div class="header-left">
-                <button id="btn-exit" class="icon-btn" aria-label="Exit Quiz" title="Back to Dashboard">
-                    <i data-lucide="arrow-left"></i>
+                <button id="btn-exit" class="icon-btn" aria-label="Exit Quiz" title="العودة">
+                    <i data-lucide="arrow-right"></i>
                 </button>
-                <div class="header-titles">
-                    <h1 id="quiz-title" class="quiz-title">كوز تفاعلي</h1>
-                    <span id="quiz-subtitle" class="quiz-subtitle">جاري التحميل...</span>
-                </div>
+                <span class="app-brand-title">ماستر ستوديو</span>
             </div>
             <div class="header-right">
                 <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="Saved Questions">
@@ -45,6 +42,11 @@
                 </button>
             </div>
         </header>
+        <!-- Topic Banner -->
+        <section class="topic-banner">
+            <span id="quiz-subtitle" class="topic-subject-badge">جاري التحميل...</span>
+            <h1 id="quiz-title" class="topic-title">كوز تفاعلي</h1>
+        </section>
 
         <!-- Progress and Dwell Timer Bar -->
         <section class="progress-section" aria-label="Quiz Progress">

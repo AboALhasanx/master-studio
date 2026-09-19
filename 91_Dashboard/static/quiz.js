@@ -256,6 +256,10 @@ class QuizApp {
         if (this.dom.langIndicator) {
             this.dom.langIndicator.textContent = this.cardLang.toUpperCase();
         }
+        const card = document.getElementById('question-card');
+        if (card) {
+            card.setAttribute('data-card-lang', this.cardLang);
+        }
     }
     /**
      * Bind UI Event Listeners
