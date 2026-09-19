@@ -24,8 +24,8 @@
                     <i data-lucide="arrow-left"></i>
                 </button>
                 <div class="header-titles">
-                    <h1 id="quiz-title" class="quiz-title">Interactive Quiz</h1>
-                    <span id="quiz-subtitle" class="quiz-subtitle">Loading topic...</span>
+                    <h1 id="quiz-title" class="quiz-title">كوز تفاعلي</h1>
+                    <span id="quiz-subtitle" class="quiz-subtitle">جاري التحميل...</span>
                 </div>
             </div>
             <div class="header-right">
@@ -35,6 +35,10 @@
                 </button>
                 <button id="btn-toggle-analytics" class="icon-btn" aria-label="Open Analytics" title="Session Analytics">
                     <i data-lucide="bar-chart-2"></i>
+                </button>
+                <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Language" title="تبديل اللغة (AR / EN)">
+                    <i data-lucide="languages"></i>
+                    <span id="lang-indicator" style="font-size: 11px; font-weight: 700; margin-left: 2px;">AR</span>
                 </button>
                 <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
                     <i data-lucide="moon" id="theme-icon"></i>
@@ -49,7 +53,7 @@
             </div>
             <div class="progress-meta-row">
                 <div class="progress-counter">
-                    <span id="question-index-label">Question 1</span>
+                    <span id="question-index-label">السؤال 1</span>
                     <span class="meta-separator">/</span>
                     <span id="question-total-label">1</span>
                 </div>
@@ -72,7 +76,7 @@
             <!-- Loading Indicator -->
             <div id="quiz-loading" class="state-view">
                 <div class="spinner"></div>
-                <p>Loading Quiz Content...</p>
+                <p>جاري تحميل أسئلة الكوز...</p>
             </div>
 
             <!-- Error State -->
@@ -80,11 +84,11 @@
                 <div class="error-icon-box">
                     <i data-lucide="alert-triangle"></i>
                 </div>
-                <h2>Unable to Load Quiz</h2>
-                <p id="error-message">The requested quiz could not be found or loaded.</p>
+                <h2>تعذر تحميل الكوز</h2>
+                <p id="error-message">لم يتم العثور على الكوز المطلوب.</p>
                 <button id="btn-retry-load" class="action-btn primary-btn">
                     <i data-lucide="refresh-cw"></i>
-                    <span>Retry Loading</span>
+                    <span>إعادة المحاولة</span>
                 </button>
             </div>
 
@@ -116,16 +120,16 @@
                 <!-- Sticky Bottom Navigation -->
                 <nav class="bottom-nav" aria-label="Question Navigation">
                     <button id="btn-prev" class="nav-btn secondary-btn" aria-label="Previous Question">
-                        <i data-lucide="arrow-left"></i>
-                        <span>Previous</span>
+                        <i data-lucide="arrow-right"></i>
+                        <span>السابق</span>
                     </button>
                     <button id="btn-clear" class="nav-btn text-btn" aria-label="Clear Choice">
                         <i data-lucide="rotate-ccw"></i>
-                        <span>Clear</span>
+                        <span>مسح</span>
                     </button>
                     <button id="btn-next" class="nav-btn primary-btn" aria-label="Next Question">
-                        <span id="next-btn-text">Next</span>
-                        <i data-lucide="arrow-right" id="next-btn-icon"></i>
+                        <span id="next-btn-text">التالي</span>
+                        <i data-lucide="arrow-left" id="next-btn-icon"></i>
                     </button>
                 </nav>
             </div>
@@ -137,8 +141,8 @@
                 <div id="sync-status-banner" class="sync-banner hidden">
                     <i data-lucide="check-circle" class="sync-banner-icon"></i>
                     <div class="sync-banner-text">
-                        <strong>Telemetry Recorded</strong>
-                        <span>Performance metrics synced with Master Studio.</span>
+                        <strong>تم تسجيل البيانات</strong>
+                        <span>تمت المزامنة بنجاح مع ماستر ستوديو.</span>
                     </div>
                 </div>
 
@@ -162,8 +166,7 @@
                                 <i data-lucide="check"></i>
                             </div>
                             <div class="stat-info">
-                                <span class="stat-label">Correct</span>
-                                <span id="stat-correct" class="stat-val">0</span>
+                                <span class="stat-label">الصحيحة</span>
                             </div>
                         </div>
 
@@ -172,8 +175,7 @@
                                 <i data-lucide="x"></i>
                             </div>
                             <div class="stat-info">
-                                <span class="stat-label">Wrong</span>
-                                <span id="stat-wrong" class="stat-val">0</span>
+                                <span class="stat-label">الخاطئة</span>
                             </div>
                         </div>
 
@@ -182,8 +184,7 @@
                                 <i data-lucide="clock"></i>
                             </div>
                             <div class="stat-info">
-                                <span class="stat-label">Avg Dwell</span>
-                                <span id="stat-avg-dwell" class="stat-val">0s</span>
+                                <span class="stat-label">متوسط الوقت</span>
                             </div>
                         </div>
 
@@ -192,8 +193,7 @@
                                 <i data-lucide="zap"></i>
                             </div>
                             <div class="stat-info">
-                                <span class="stat-label">Lucky Guesses</span>
-                                <span id="stat-lucky" class="stat-val">0</span>
+                                <span class="stat-label">التخمينات بالحظ</span>
                             </div>
                         </div>
                     </div>
@@ -202,11 +202,11 @@
                     <div class="results-action-row">
                         <button id="btn-retry-quiz" class="action-btn secondary-btn">
                             <i data-lucide="refresh-cw"></i>
-                            <span>Try Again</span>
+                            <span>إعادة المحاولة</span>
                         </button>
                         <button id="btn-submit-telemetry" class="action-btn primary-btn">
                             <i data-lucide="send"></i>
-                            <span>Send to Master Studio</span>
+                            <span>إرسال إلى ماستر ستوديو</span>
                         </button>
                     </div>
                 </div>
@@ -214,12 +214,12 @@
                 <!-- Reflection & Breakdown Section -->
                 <section class="breakdown-section" aria-label="Detailed Review & Metacognitive Reflection">
                     <div class="breakdown-header">
-                        <h2>Detailed Review & Reflection</h2>
+                        <h2>مراجعة الأسئلة والتحليل الذاتي</h2>
                         <div class="filter-pills" role="tablist">
-                            <button class="filter-pill active" data-filter="all" role="tab">All (<span id="filter-count-all">0</span>)</button>
-                            <button class="filter-pill" data-filter="wrong" role="tab">Wrong (<span id="filter-count-wrong">0</span>)</button>
-                            <button class="filter-pill" data-filter="correct" role="tab">Correct (<span id="filter-count-correct">0</span>)</button>
-                            <button class="filter-pill" data-filter="lucky" role="tab">Lucky (<span id="filter-count-lucky">0</span>)</button>
+                            <button class="filter-pill active" data-filter="all" role="tab">الكل (<span id="filter-count-all">0</span>)</button>
+                            <button class="filter-pill" data-filter="wrong" role="tab">الخاطئة (<span id="filter-count-wrong">0</span>)</button>
+                            <button class="filter-pill" data-filter="correct" role="tab">الصحيحة (<span id="filter-count-correct">0</span>)</button>
+                            <button class="filter-pill" data-filter="lucky" role="tab">المحظوظة (<span id="filter-count-lucky">0</span>)</button>
                         </div>
                     </div>
 
@@ -240,8 +240,7 @@
             <div class="drawer-header">
                 <div class="drawer-title-group">
                     <i data-lucide="bookmark" class="drawer-header-icon"></i>
-                    <h2 id="bookmarks-drawer-title">Bookmarked Questions</h2>
-                </div>
+                    <h2 id="bookmarks-drawer-title">الأسئلة المحفوظة</h2>
                 <button id="btn-close-bookmarks" class="icon-btn" aria-label="Close Bookmarks">
                     <i data-lucide="x"></i>
                 </button>
@@ -252,8 +251,8 @@
                 </div>
                 <div id="bookmarks-empty" class="drawer-empty-state">
                     <i data-lucide="bookmark-check" class="empty-state-icon"></i>
-                    <p>No questions bookmarked yet.</p>
-                    <span>Tap the bookmark icon on any question to save it for review.</span>
+                    <p>لا توجد أسئلة محفوظة بعد.</p>
+                    <span>اضغط على أيقونة الحفظ في أي سؤال لحفظه للمراجعة.</span>
                 </div>
             </div>
         </aside>
@@ -263,43 +262,40 @@
             <div class="drawer-header">
                 <div class="drawer-title-group">
                     <i data-lucide="bar-chart-2" class="drawer-header-icon"></i>
-                    <h2 id="analytics-drawer-title">Session Analytics</h2>
-                </div>
+                    <h2 id="analytics-drawer-title">التحليلات والمتابعة المعرفية</h2>
                 <button id="btn-close-analytics" class="icon-btn" aria-label="Close Analytics">
                     <i data-lucide="x"></i>
                 </button>
             </div>
             <div class="drawer-body">
                 <div class="analytics-section">
-                    <h3>Performance by Bloom Level</h3>
+                    <h3>الأداء حسب تصنيف بلوم</h3>
                     <div id="analytics-bloom-bars" class="analytics-bars">
                         <!-- Injected by JS -->
                     </div>
                 </div>
 
                 <div class="analytics-section">
-                    <h3>Concept Mastery</h3>
+                    <h3>التمكن المفاهيمي</h3>
                     <div id="analytics-concept-list" class="analytics-concept-list">
                         <!-- Injected by JS -->
                     </div>
                 </div>
 
                 <div class="analytics-section">
-                    <h3>Pacing & Dwell Times</h3>
+                    <h3>السرعة وأوقات التفكير</h3>
                     <div class="pacing-metrics-grid">
                         <div class="pacing-metric-card">
-                            <span class="pacing-label">Fastest Response</span>
-                            <span id="pacing-fastest" class="pacing-val">--</span>
+                            <span class="pacing-label">أسرع إجابة</span>
                         </div>
                         <div class="pacing-metric-card">
-                            <span class="pacing-label">Slowest Response</span>
-                            <span id="pacing-slowest" class="pacing-val">--</span>
+                            <span class="pacing-label">أبطأ إجابة</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="analytics-section">
-                    <h3>Session ID</h3>
+                    <h3>معرف الجلسة (UUID)</h3>
                     <div class="uuid-badge-box">
                         <span id="analytics-uuid" class="uuid-text">--------</span>
                         <button id="btn-copy-uuid" class="icon-btn-sm" aria-label="Copy UUID" title="Copy UUID">

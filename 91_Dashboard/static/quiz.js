@@ -10,8 +10,68 @@
  * - Light/Dark mode theming
  */
 
+const I18N = {
+    ar: {
+        dir: 'rtl',
+        indicator: 'AR',
+        question: 'السؤال',
+        prev: 'السابق',
+        next: 'التالي',
+        finish: 'إنهاء الكوز',
+        tryAgain: 'إعادة المحاولة',
+        sendStudio: 'إرسال إلى ماستر ستوديو',
+        syncedStudio: 'تمت المزامنة بنجاح مع ماستر ستوديو',
+        syncing: 'جاري إرسال البيانات والمزامنة...',
+        luckyToggle: 'تخمين محظوظ / فلوك (جاوبت بالحظ)',
+        whyPick: 'ما سبب اختيارك لهذا الجواب؟',
+        rootCauseTitle: 'سبب الخطأ والتحليل الذاتي:',
+        reflectionPlaceholder: 'ملاحظة شخصية عن سبب الخطأ (مثل: نسيت القانون أو خلطت بالمصطلح)...',
+        explanation: 'الشرح والتعليل الهندسي:',
+        optionLetters: ['أ', 'ب', 'ج', 'د'],
+        chips: {
+            'Misread Question': 'قراءة غير دقيقة للسؤال',
+            'Calculation Slip': 'خطأ في الحسابات',
+            'Terminology Mix-up': 'خلط في المصطلحات',
+            'Concept Gap': 'فجوة مفهومية في المادة'
+        },
+        correctLabel: 'الإجابة الصحيحة',
+        yourChoiceLabel: 'إجابتك',
+        bookmarksTitle: 'الأسئلة المحفوظة',
+        analyticsTitle: 'التحليلات والمتابعة المعرفية'
+    },
+    en: {
+        dir: 'ltr',
+        indicator: 'EN',
+        question: 'Question',
+        prev: 'Previous',
+        next: 'Next',
+        finish: 'Finish Quiz',
+        tryAgain: 'Try Again',
+        sendStudio: 'Send to Master Studio',
+        syncedStudio: 'Performance metrics synced with Master Studio.',
+        syncing: 'Syncing telemetry...',
+        luckyToggle: 'Lucky Guess / WOW (I guessed this without being sure)',
+        whyPick: 'Why did you pick this?',
+        rootCauseTitle: 'Root Cause & Misconception:',
+        reflectionPlaceholder: 'Reflection notes (e.g. key formula or condition forgotten)...',
+        explanation: 'Explanation:',
+        optionLetters: ['A', 'B', 'C', 'D'],
+        chips: {
+            'Misread Question': 'Misread Question',
+            'Calculation Slip': 'Calculation Slip',
+            'Terminology Mix-up': 'Terminology Mix-up',
+            'Concept Gap': 'Concept Gap'
+        },
+        correctLabel: 'Correct Answer',
+        yourChoiceLabel: 'Your Choice',
+        bookmarksTitle: 'Saved Questions',
+        analyticsTitle: 'Learning Analytics'
+    }
+};
+
 class QuizApp {
     constructor() {
+        this.lang = localStorage.getItem('master_studio_lang') || 'ar';
         this.root = document.getElementById('quiz-root');
         
         // Configuration from dataset or URL query params
@@ -46,11 +106,11 @@ class QuizApp {
             btnExit: document.getElementById('btn-exit'),
             btnBookmarksToggle: document.getElementById('btn-toggle-bookmarks'),
             btnAnalyticsToggle: document.getElementById('btn-toggle-analytics'),
+            btnLangToggle: document.getElementById('btn-lang-toggle'),
+            langIndicator: document.getElementById('lang-indicator'),
             btnThemeToggle: document.getElementById('btn-theme-toggle'),
             themeIcon: document.getElementById('theme-icon'),
             bookmarksBadge: document.getElementById('bookmarks-badge'),
-
-            // Progress & Timers
             progressBarFill: document.getElementById('progress-bar-fill'),
             questionIndexLabel: document.getElementById('question-index-label'),
             questionTotalLabel: document.getElementById('question-total-label'),
@@ -122,6 +182,7 @@ class QuizApp {
      * Initialize App, Events, Theme, and Load Quiz
      */
     async init() {
+        this.initLanguage();
         this.initTheme();
         this.initEvents();
         await this.loadBookmarks();
@@ -168,13 +229,42 @@ class QuizApp {
     }
 
     /**
+     * Language & BiDi Initialization
+     * WebUI shell is 100% Arabic always (dir="rtl").
+     * Language toggle controls ONLY the question card (EN / AR).
+     */
+    initLanguage() {
+        this.cardLang = localStorage.getItem('master_studio_card_lang') || 'en';
+        this.applyLanguage();
+    }
+
+    toggleLanguage() {
+        this.cardLang = this.cardLang === 'en' ? 'ar' : 'en';
+        localStorage.setItem('master_studio_card_lang', this.cardLang);
+        this.applyLanguage();
+        if (this.dom.quizView && !this.dom.quizView.classList.contains('hidden')) {
+            this.renderQuestion(this.currentIndex);
+        } else if (this.dom.resultsView && !this.dom.resultsView.classList.contains('hidden')) {
+            this.renderResults();
+        }
+    }
+
+    applyLanguage() {
+        // Entire WebUI is ALWAYS Arabic & RTL
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        if (this.dom.langIndicator) {
+            this.dom.langIndicator.textContent = this.cardLang.toUpperCase();
+        }
+    }
+    /**
      * Bind UI Event Listeners
      */
     initEvents() {
-        // Theme & Navigation Header
+        // Theme & Language & Navigation Header
+        this.dom.btnLangToggle?.addEventListener('click', () => this.toggleLanguage());
         this.dom.btnThemeToggle?.addEventListener('click', () => this.toggleTheme());
         this.dom.btnExit?.addEventListener('click', () => this.handleExit());
-
         // Question Navigation
         this.dom.btnPrev?.addEventListener('click', () => this.prevQuestion());
         this.dom.btnNext?.addEventListener('click', () => this.nextQuestion());
@@ -446,7 +536,7 @@ class QuizApp {
             this.dom.progressBarFill.style.width = `${progressPercent}%`;
         }
         if (this.dom.questionIndexLabel) {
-            this.dom.questionIndexLabel.textContent = `Question ${index + 1}`;
+            this.dom.questionIndexLabel.textContent = `السؤال ${index + 1}`;
         }
         if (this.dom.questionTotalLabel) {
             this.dom.questionTotalLabel.textContent = total.toString();
@@ -466,28 +556,34 @@ class QuizApp {
             this.dom.btnBookmarkQuestion.classList.toggle('bookmarked', isBookmarked);
         }
 
+        const isCardAr = this.cardLang === 'ar';
+        const cardOptionLetters = isCardAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+
         // Update Question Stem
         if (this.dom.questionText) {
             this.dom.questionText.textContent = q.question;
+            this.dom.questionText.style.direction = isCardAr ? 'rtl' : 'ltr';
+            this.dom.questionText.style.textAlign = isCardAr ? 'right' : 'left';
         }
 
-        // Render Options (A, B, C, D)
+        // Render Options (A, B, C, D or أ, ب, ج, د)
         if (this.dom.optionsContainer) {
             this.dom.optionsContainer.innerHTML = '';
             const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
             
             (q.options || []).forEach((optText, optIdx) => {
                 const isSelected = this.answers[index] === optIdx;
-                
                 const tile = document.createElement('button');
                 tile.className = `option-tile ${isSelected ? 'selected' : ''}`;
                 tile.setAttribute('role', 'radio');
                 tile.setAttribute('aria-checked', isSelected ? 'true' : 'false');
                 tile.setAttribute('data-option-index', optIdx);
+                tile.style.direction = isCardAr ? 'rtl' : 'ltr';
+                tile.style.textAlign = isCardAr ? 'right' : 'left';
 
                 const letter = document.createElement('div');
                 letter.className = 'option-letter';
-                letter.textContent = optionKeys[optIdx] || `${optIdx + 1}`;
+                letter.textContent = cardOptionLetters[optIdx] || optionKeys[optIdx] || `${optIdx + 1}`;
 
                 const content = document.createElement('div');
                 content.className = 'option-content';
@@ -507,11 +603,11 @@ class QuizApp {
         }
         if (this.dom.nextBtnText && this.dom.nextBtnIcon) {
             if (index === total - 1) {
-                this.dom.nextBtnText.textContent = 'Finish Quiz';
+                this.dom.nextBtnText.textContent = 'إنهاء الكوز';
                 this.dom.nextBtnIcon.setAttribute('data-lucide', 'check-circle');
             } else {
-                this.dom.nextBtnText.textContent = 'Next';
-                this.dom.nextBtnIcon.setAttribute('data-lucide', 'arrow-right');
+                this.dom.nextBtnText.textContent = 'التالي';
+                this.dom.nextBtnIcon.setAttribute('data-lucide', 'arrow-left');
             }
         }
 
@@ -640,14 +736,14 @@ class QuizApp {
         this.dom.reviewCardsList.innerHTML = '';
 
         const questions = this.quizData.questions;
-        const optionLetters = ['A', 'B', 'C', 'D'];
+        const t = I18N[this.lang] || I18N.ar;
+        const optionLetters = t.optionLetters;
         const reflectionOptions = [
             'Misread Question',
             'Calculation Slip',
             'Terminology Mix-up',
             'Concept Gap'
         ];
-
         questions.forEach((q, idx) => {
             const userAns = this.answers[idx];
             const isCorrect = userAns !== undefined && userAns === q.correct;
@@ -666,12 +762,13 @@ class QuizApp {
             // Review Card Header
             const header = document.createElement('div');
             header.className = 'review-card-header';
+            const statusLabel = isCorrect ? (this.lang === 'ar' ? 'صحيحة' : 'Correct') : (this.lang === 'ar' ? 'خاطئة' : 'Wrong');
             header.innerHTML = `
                 <div class="review-q-meta">
-                    <span class="review-q-num">Question ${idx + 1}</span>
+                    <span class="review-q-num">${t.question} ${idx + 1}</span>
                     <span class="review-status-tag ${isCorrect ? 'correct' : 'wrong'}">
                         <i data-lucide="${isCorrect ? 'check' : 'x'}"></i>
-                        <span>${isCorrect ? 'Correct' : 'Wrong'}</span>
+                        <span>${statusLabel}</span>
                     </span>
                 </div>
                 <span class="review-dwell-tag">
@@ -706,10 +803,9 @@ class QuizApp {
                 const optItem = document.createElement('div');
                 optItem.className = optClass;
                 optItem.innerHTML = `
-                    <span class="review-option-indicator">${optionKeys[optIdx] || String.fromCharCode(65 + optIdx)}</span>
+                    <span class="review-option-indicator">${optionLetters[optIdx] || optionKeys[optIdx]}</span>
                     <span>${this.escapeHtml(optText)}</span>
                 `;
-                optionsList.appendChild(optItem);
             });
             card.appendChild(optionsList);
 
@@ -718,7 +814,7 @@ class QuizApp {
                 const expBox = document.createElement('div');
                 expBox.className = 'review-explanation-box';
                 expBox.innerHTML = `
-                    <strong>Explanation:</strong>
+                    <strong>${t.explanation}</strong>
                     <span>${q.explanation}</span>
                 `;
                 card.appendChild(expBox);
@@ -736,17 +832,17 @@ class QuizApp {
                 reflectionBox.innerHTML = `
                     <span class="reflection-title">
                         <i data-lucide="help-circle"></i>
-                        <span>Root Cause & Misconception:</span>
+                        <span>${t.rootCauseTitle}</span>
                     </span>
                     <div class="reflection-chips">
                         ${reflectionOptions.map(reason => `
                             <button type="button" class="reflection-chip ${currentReason === reason ? 'selected' : ''}" data-reason="${reason}">
                                 <i data-lucide="target"></i>
-                                <span>${reason}</span>
+                                <span>${t.chips[reason] || reason}</span>
                             </button>
                         `).join('')}
                     </div>
-                    <input type="text" class="reflection-notes-input" placeholder="Reflection notes (e.g. key formula or condition forgotten)..." value="${this.escapeHtml(currentNotes)}">
+                    <input type="text" class="reflection-notes-input" placeholder="${t.reflectionPlaceholder}" value="${this.escapeHtml(currentNotes)}">
                 `;
 
                 // Handle Chip selection
@@ -778,7 +874,7 @@ class QuizApp {
                 luckyBox.innerHTML = `
                     <label class="lucky-guess-label" for="lucky-switch-${idx}">
                         <i data-lucide="zap" class="lucky-guess-icon"></i>
-                        <span>Lucky Guess / Guessed without full certainty</span>
+                        <span>${t.luckyToggle}</span>
                     </label>
                     <label class="switch">
                         <input type="checkbox" id="lucky-switch-${idx}" ${isLucky ? 'checked' : ''}>

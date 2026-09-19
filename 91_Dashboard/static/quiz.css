@@ -406,6 +406,7 @@ input:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    padding-bottom: 120px;
 }
 
 .question-card {
@@ -640,6 +641,7 @@ input:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    padding-bottom: 120px;
 }
 
 /* Telemetry Sync Banner */
@@ -1418,4 +1420,74 @@ input:checked + .slider::before {
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 240px;
+}
+
+/* ==========================================================================
+   BiDi & RTL Support (Arabic-first with English/Code preservation)
+   ========================================================================== */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .app-header {
+    flex-direction: row;
+}
+
+[dir="rtl"] #btn-exit i {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .option-tile {
+    flex-direction: row;
+    text-align: right;
+}
+
+[dir="rtl"] .option-letter {
+    margin-left: 14px;
+    margin-right: 0;
+}
+
+[dir="rtl"] .drawer {
+    right: auto;
+    left: -380px;
+    border-right: 1px solid var(--border-subtle);
+    border-left: none;
+    transition: left var(--transition-normal);
+}
+
+[dir="rtl"] .drawer.open {
+    left: 0;
+    right: auto;
+}
+
+[dir="rtl"] .review-card {
+    border-left: none;
+    border-right: 4px solid var(--border-subtle);
+}
+
+[dir="rtl"] .review-card.correct {
+    border-right-color: var(--success);
+}
+
+[dir="rtl"] .review-card.wrong {
+    border-right-color: var(--error);
+}
+
+[dir="rtl"] .review-option-indicator {
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+[dir="rtl"] .lucky-checkbox {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* English technical terms, formulas, and code remain LTR */
+.ltr-text,
+code,
+pre,
+[data-lang="en"] {
+    direction: ltr !important;
+    text-align: left !important;
 }
