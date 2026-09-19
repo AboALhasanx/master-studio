@@ -97,6 +97,12 @@ graph TD
 | `01_Cyber_Security` | **"Integrity" not "Integration"** — the CIA pillar. Student wrote `Integration` twice (Q1 + Q3). Content was right, the term was wrong. | 2026-09-18 | Terminology confusion, repeated | 🔴 **High** | 2026-09-19 |
 | `01_Cyber_Security` | **Banking weighting**: for a bank, **Integrity (β) is the heaviest**, not the lightest — changing an account number or balance is catastrophic. Student argued β was "not that much important" while simultaneously citing account-number integrity. | 2026-09-18 | Reasoning contradiction | Medium | 2026-09-20 |
 | `01_Cyber_Security` | **Firewall belongs to Network Security (Ch.2), not to the CIA-Confidentiality list.** CIA-C = encryption · access controls · VPNs. | 2026-09-18 | List boundary confusion | Medium | 2026-09-20 |
+| `03_Data_Mining` | Attribute decision path: **order? measurable gap? two values? quantity?** — drill Week 02 taxonomy + URL=Nominal | 2026-09-19 | New comprehensive note ready; needs active recall | High | 2026-09-22 |
+| `03_Data_Mining` | Missing-value mean arithmetic: divide by **observed count** (4 not 5) | 2026-09-19 | Same slip pattern as Cyber min-R | High | 2026-09-22 |
+| `03_Data_Mining` | **Feature Selection = Pick · Feature Extraction = Build** | 2026-09-19 | Exam differentiation | Medium | 2026-09-22 |
+| `03_Data_Mining` | Week 03 conversion matrix: Discretize · One-hot · Vectorize · Extract · Symbolize · Embed · Similarity-graph | 2026-09-19 | New note; Monday lecture | High | 2026-09-22 |
+| `03_Data_Mining` | **Portability = represent · Mining = discover** + info-loss example 21/22/39→Adult | 2026-09-19 | Exam distinction | Medium | 2026-09-22 |
+| `03_Data_Mining` | Doctor pipeline prototype: CT/X-ray → texture/shape/edges → vector → classify | 2026-09-19 | Doctor Profile high-yield | High | 2026-09-22 |
 
 ---
 

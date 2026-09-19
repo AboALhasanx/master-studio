@@ -4,8 +4,8 @@ active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
 immediate_todo: "Prepare for the 01_Cyber_Security daily quiz (Week 01 material) — Sunday 2026-09-20 lecture"
-next_session_focus: "Week 01 Cyber Security revision + answer Dr. Ahmed Shakir's Data Mining question on the data type of a URL"
-last_updated: "2026-09-18"
+next_session_focus: "Cyber Security scenario drills before Sunday quiz; Data Mining Weeks 02–03 comprehensive notes ready for review; Monday lecture is Week 03 Feature Extraction & Portability"
+last_updated: "2026-09-19"
 status: "WEEK_01_ACTIVE"
 ---
 
@@ -30,7 +30,7 @@ status: "WEEK_01_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-18` | Cyber Security Week 01 drilled (Topics 1–3) · study plan created · AI put on hold |
+| **Last Updated** | `2026-09-19` | Data Mining Weeks 02+03 comprehensive notes done (Gemini-style); Cyber Sunday quiz still pending |
 
 ---
 
@@ -51,8 +51,10 @@ status: "WEEK_01_ACTIVE"
 - [x] **`01_Cyber_Security` Week 01 — all theory Topics 1–6 covered** (master note + question bank + formula deep-dives); Chapter 7 excluded by the doctor
 - [ ] **`01_Cyber_Security` Week 01 — scenario drills** — the only thing left before Sunday's quiz
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
-- [ ] **`03_Data_Mining` — next lecture is Week 03 (Monday): *Feature Extraction and Portability*** — material already in the vault (`02_Raw_Materials/Week 03 - Feature Extraction and Portability.docx`). **Week 01 (Introduction) and Week 02 (Data Types & Representation) are already covered.**
-- [ ] **Answer Dr. Ahmed Shakir's Week 02 question** — *data representation & preparation*; specifically *"what is the data type of a URL?"* → answered as **Nominal** attribute in his taxonomy.
+- [x] **`03_Data_Mining` Week 02 comprehensive note built** — `03_Study_Notes/Week_02_Data_Types_and_Preparation.md` (lecture text preserved + Gemini frameworks + Dr. Ahmed formula layer + 50-question bank)
+- [x] **`03_Data_Mining` Week 03 comprehensive note built** — `03_Study_Notes/Week_03_Feature_Extraction_and_Portability.md` (feature extraction + portability matrix + similarity graph + ~35Q; cross-linked to Week 02)
+- [ ] **`03_Data_Mining` — Monday lecture is Week 03: *Feature Extraction and Portability*** — lecture note already prepared in vault. **Weeks 01–03 all have study notes.**
+- [x] **Answer Dr. Ahmed Shakir's Week 02 question** — *"what is the data type of a URL?"* → **Nominal** (recorded in Week 02 comprehensive note §1.2)
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
 - [ ] **`06_Artificial_Intelligence`** — waiting. **Abu Al-Hasan will report it himself when Dr. Saif posts material — do not proactively check the group.**
 

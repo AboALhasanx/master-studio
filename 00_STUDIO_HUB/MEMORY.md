@@ -93,3 +93,7 @@ token_budget: "< 400 tokens"
 - **College Buddy Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md`
 - **Session Journal:** `00_STUDIO_HUB/sessions/`
 - **Local Dashboard:** `http://127.0.0.1:5000` (Flask service in `91_Dashboard/`)
+
+- **Added 2026-09-19:** Data Mining Week 02 note: Week_02_Data_Types_and_Preparation.md — Gemini templates on lecture text, not a re-compression. URL data type = Nominal.
+
+- **Added 2026-09-19:** Week 03 note: Week_03_Feature_Extraction_and_Portability.md — conversion matrix + similarity graph + info loss + doctor CT/X-ray pipeline. Cross-linked to Week 02, not a re-compression.
