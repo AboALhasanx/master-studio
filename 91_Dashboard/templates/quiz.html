@@ -30,9 +30,6 @@
                     <i data-lucide="bookmark"></i>
                     <span id="bookmarks-badge" class="badge">0</span>
                 </button>
-                <button id="btn-toggle-analytics" class="icon-btn" aria-label="Open Analytics" title="Session Analytics">
-                    <i data-lucide="bar-chart-2"></i>
-                </button>
                 <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Question Language" title="ترجمة السؤال والخيارات">
                     <i data-lucide="languages"></i>
                 </button>
@@ -253,51 +250,7 @@
                     <span>اضغط على أيقونة الحفظ في أي سؤال لحفظه للمراجعة.</span>
                 </div>
             </div>
-        </aside>
-
-        <!-- Analytics Drawer -->
-        <aside id="analytics-drawer" class="drawer" aria-labelledby="analytics-drawer-title" aria-hidden="true">
-            <div class="drawer-header">
-                <div class="drawer-title-group">
-                    <i data-lucide="bar-chart-2" class="drawer-header-icon"></i>
-                    <h2 id="analytics-drawer-title">التحليلات والمتابعة المعرفية</h2>
-                <button id="btn-close-analytics" class="icon-btn" aria-label="Close Analytics">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="drawer-body">
-                <div class="analytics-section">
-                    <h3>التمكن المفاهيمي</h3>
-                    <div id="analytics-concept-list" class="analytics-concept-list">
-                        <!-- Injected by JS -->
-                    </div>
-                </div>
-
-                <div class="analytics-section">
-                    <h3>السرعة وأوقات التفكير</h3>
-                    <div class="pacing-metrics-grid">
-                        <div class="pacing-metric-card">
-                            <span class="pacing-label">أسرع إجابة</span>
-                        </div>
-                        <div class="pacing-metric-card">
-                            <span class="pacing-label">أبطأ إجابة</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="analytics-section">
-                    <h3>معرف الجلسة (UUID)</h3>
-                    <div class="uuid-badge-box">
-                        <span id="analytics-uuid" class="uuid-text">--------</span>
-                        <button id="btn-copy-uuid" class="icon-btn-sm" aria-label="Copy UUID" title="Copy UUID">
-                            <i data-lucide="copy"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-    </div>
+        </aside>    </div>
 
     <!-- Application Script -->
     <script src="/static/quiz.js"></script>

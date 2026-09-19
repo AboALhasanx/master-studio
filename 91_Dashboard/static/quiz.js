@@ -36,8 +36,7 @@ const I18N = {
         },
         correctLabel: 'الإجابة الصحيحة',
         yourChoiceLabel: 'إجابتك',
-        bookmarksTitle: 'الأسئلة المحفوظة',
-        analyticsTitle: 'التحليلات والمتابعة المعرفية'
+        bookmarksTitle: 'الأسئلة المحفوظة'
     },
     en: {
         dir: 'ltr',
@@ -64,8 +63,7 @@ const I18N = {
         },
         correctLabel: 'Correct Answer',
         yourChoiceLabel: 'Your Choice',
-        bookmarksTitle: 'Saved Questions',
-        analyticsTitle: 'Learning Analytics'
+        bookmarksTitle: 'Saved Questions'
     }
 };
 const SUBJECT_MAP = {
@@ -149,7 +147,6 @@ class QuizApp {
             quizSubtitle: document.getElementById('quiz-subtitle'),
             btnExit: document.getElementById('btn-exit'),
             btnBookmarksToggle: document.getElementById('btn-toggle-bookmarks'),
-            btnAnalyticsToggle: document.getElementById('btn-toggle-analytics'),
             btnLangToggle: document.getElementById('btn-lang-toggle'),
             langIndicator: document.getElementById('lang-indicator'),
             btnSoundToggle: document.getElementById('btn-sound-toggle'),
@@ -212,14 +209,7 @@ class QuizApp {
             bookmarksDrawer: document.getElementById('bookmarks-drawer'),
             btnCloseBookmarks: document.getElementById('btn-close-bookmarks'),
             bookmarksList: document.getElementById('bookmarks-list'),
-            bookmarksEmpty: document.getElementById('bookmarks-empty'),
-            analyticsDrawer: document.getElementById('analytics-drawer'),
-            btnCloseAnalytics: document.getElementById('btn-close-analytics'),
-            analyticsConceptList: document.getElementById('analytics-concept-list'),
-            pacingFastest: document.getElementById('pacing-fastest'),
-            pacingSlowest: document.getElementById('pacing-slowest'),
-            analyticsUUID: document.getElementById('analytics-uuid'),
-            btnCopyUUID: document.getElementById('btn-copy-uuid')
+            bookmarksEmpty: document.getElementById('bookmarks-empty')
         };
 
         this.init();
@@ -345,21 +335,7 @@ class QuizApp {
         // Drawers
         this.dom.btnBookmarksToggle?.addEventListener('click', () => this.openDrawer(this.dom.bookmarksDrawer));
         this.dom.btnCloseBookmarks?.addEventListener('click', () => this.closeDrawer(this.dom.bookmarksDrawer));
-        this.dom.btnAnalyticsToggle?.addEventListener('click', () => {
-            this.updateAnalyticsDrawer();
-            this.openDrawer(this.dom.analyticsDrawer);
-        });
-        this.dom.btnCloseAnalytics?.addEventListener('click', () => this.closeDrawer(this.dom.analyticsDrawer));
         this.dom.drawerOverlay?.addEventListener('click', () => this.closeAllDrawers());
-
-        // Copy UUID Button
-        this.dom.btnCopyUUID?.addEventListener('click', () => {
-            if (navigator.clipboard && this.submissionUUID) {
-                navigator.clipboard.writeText(this.submissionUUID).then(() => {
-                    this.showTemporaryToast('UUID Copied to Clipboard');
-                });
-            }
-        });
 
         // Filter Pills on Results Page
         document.querySelectorAll('.filter-pill').forEach(pill => {
@@ -548,7 +524,6 @@ class QuizApp {
         // Show Active Quiz
         this.showState('quiz');
         this.renderQuestion(0);
-        this.updateAnalyticsDrawer();
     }
 
     /**
@@ -1290,41 +1265,6 @@ class QuizApp {
         });
 
         this.refreshLucideIcons();
-    }
-
-    /**
-     * Analytics Drawer Updates
-     */
-    updateAnalyticsDrawer() {
-        if (!this.dom.analyticsUUID) return;
-        this.dom.analyticsUUID.textContent = this.submissionUUID;
-
-        if (!this.quizData || !this.quizData.questions) return;
-
-        // Concept Breakdown
-        const concepts = new Set(this.quizData.questions.map(q => q.concept_id || 'general'));
-        if (this.dom.analyticsConceptList) {
-            this.dom.analyticsConceptList.innerHTML = '';
-            concepts.forEach(c => {
-                const count = this.quizData.questions.filter(q => (q.concept_id || 'general') === c).length;
-                const row = document.createElement('div');
-                row.className = 'concept-item-row';
-                row.innerHTML = `
-                    <span class="concept-name">${c}</span>
-                    <span style="color: var(--text-muted);">${count} question${count > 1 ? 's' : ''}</span>
-                `;
-                this.dom.analyticsConceptList.appendChild(row);
-            });
-        }
-
-        // Pacing (Fastest / Slowest)
-        const times = Object.values(this.dwellTimes).filter(t => t > 0);
-        if (times.length > 0) {
-            const min = Math.min(...times).toFixed(1);
-            const max = Math.max(...times).toFixed(1);
-            if (this.dom.pacingFastest) this.dom.pacingFastest.textContent = `${min}s`;
-            if (this.dom.pacingSlowest) this.dom.pacingSlowest.textContent = `${max}s`;
-        }
     }
 
     /**

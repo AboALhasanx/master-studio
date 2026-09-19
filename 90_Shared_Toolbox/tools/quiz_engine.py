@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """
-Master Studio Cognitive Ingestion & Vault Synchronization Engine
------------------------------------------------------------------
-Processes quiz telemetry payloads with Bayesian Knowledge Tracing,
-slip/guess calibration, and idempotent markdown updates.
+Master Studio Quiz Tracking Engine
+-----------------------------------
+Receives quiz telemetry from the WebUI and records a simple "saved"
+marker in the day's session journal (the single artifact surfaced to
+agents). No PROGRESS_ANALYTICS.md / LEARNER_MODEL.md writes happen here —
+analysis is the agent's job at session time, not the UI's.
+
+Also exposes the BKT (Bayesian Knowledge Tracing) update used by agents
+to calibrate mastery from correct/wrong/lucky-guess/reflection signals.
 """
 
 from pathlib import Path
-from datetime import datetime, timedelta
-import json
-import re
+from datetime import datetime
 
 SEEN_UUIDS = set()
 
@@ -59,7 +62,9 @@ def calculate_bkt_update(
 
 def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
     """
-    Ingests telemetry into PROGRESS_ANALYTICS.md, LEARNER_MODEL.md, and sessions/.
+    Records quiz telemetry as a simple "saved" marker in the day's
+    session journal (00_STUDIO_HUB/sessions/YYYY-MM-DD.md). Idempotent
+    per submission UUID, both in-memory and against the journal on disk.
 
     Parameters:
         payload (dict): Structured quiz telemetry payload.
@@ -100,74 +105,10 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
     correct_count = summary.get("correct", 0)
     total_count = summary.get("total", 0)
     score_str = f"{correct_count}/{total_count}"
-    avg_dwell = float(summary.get("avg_dwell_time_seconds", 0.0))
-    questions = payload.get("questions", [])
 
-    # 1. Update PROGRESS_ANALYTICS.md
-    analytics_file = hub_path / "PROGRESS_ANALYTICS.md"
-    if analytics_file.exists():
-        text = analytics_file.read_text(encoding="utf-8")
-        existing_ids = [int(m) for m in re.findall(r"^\|\s*#(\d+)\b", text, re.MULTILINE)]
-        next_num = max(existing_ids) + 1 if existing_ids else 1
-        new_id = f"#{next_num:03d}"
-        now_ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-        status = "🟢 Mastered" if percentage >= 80 else ("🟡 Borderline" if percentage >= 60 else "🔴 Review Needed")
-        result = "PASS" if percentage >= 60 else "FAIL"
-
-        row = f"| {new_id} | {now_ts} | `{subject}` | {topic} | {score_str} ({percentage:.0f}%) | {result} | {status} |\n"
-
-        lines = text.splitlines(keepends=True)
-        new_lines = []
-        appended = False
-        for line in lines:
-            new_lines.append(line)
-            # Match table separator row
-            if line.strip().startswith("|:---:|:---:|:---|:---|:---:|") and not appended:
-                new_lines.append(row)
-                appended = True
-        if not appended:
-            new_lines.append(row)
-        analytics_file.write_text("".join(new_lines), encoding="utf-8")
-
-    # 2. Update LEARNER_MODEL.md
-    learner_file = hub_path / "LEARNER_MODEL.md"
-    if learner_file.exists():
-        l_text = learner_file.read_text(encoding="utf-8")
-        review_entries = []
-        now_date = datetime.now().strftime("%Y-%m-%d")
-        due_date = (datetime.now() + timedelta(days=3)).strftime("%Y-%m-%d")
-
-        for q in questions:
-            if not q.get("is_correct"):
-                ref = q.get("reflection") or {}
-                reason = ref.get("reason", "Concept Gap")
-                note = ref.get("note", "").strip()
-                desc = f"{topic}: Q_{q.get('id', '')} ({reason}{' - ' + note if note else ''})"
-                review_entries.append(f"| `{subject}` | {desc} | {now_date} | Error Reflection | High | {due_date} |\n")
-            elif q.get("is_lucky_guess"):
-                desc = f"{topic}: Q_{q.get('id', '')} (Lucky Guess / Fluke)"
-                review_entries.append(f"| `{subject}` | {desc} | {now_date} | Fluke Confirmation | Medium | {due_date} |\n")
-
-        if review_entries:
-            lines = l_text.splitlines(keepends=True)
-            out_lines = []
-            inserted = False
-            for line in lines:
-                out_lines.append(line)
-                if line.strip().startswith("|:---|:---|:---|:---|:---:|:---|") and not inserted:
-                    out_lines.extend(review_entries)
-                    inserted = True
-            if not inserted:
-                out_lines.extend(review_entries)
-            learner_file.write_text("".join(out_lines), encoding="utf-8")
-
-    # 3. Append to today's session journal
-    lucky_count = sum(1 for q in questions if q.get("is_lucky_guess"))
-    wrong_count = summary.get("wrong", sum(1 for q in questions if not q.get("is_correct")))
+    # Simple "saved" marker in the session journal (agent-facing log)
     journal_entry = (
-        f"\n- **[Quiz WebUI]** Completed `{subject}` - {topic} ({percentage:.0f}%, {score_str}).\n"
-        f"  - Avg Dwell Time: {avg_dwell:.1f}s | UUID: `{sub_uuid}`\n"
-        f"  - Recorded {wrong_count} error reflections and {lucky_count} lucky guesses.\n"
+        f"\n- **[Quiz WebUI]** Saved `{subject}` - {topic} ({percentage:.0f}%, {score_str}) | UUID: `{sub_uuid}`\n"
     )
     with open(today_session, "a", encoding="utf-8") as f:
         f.write(journal_entry)

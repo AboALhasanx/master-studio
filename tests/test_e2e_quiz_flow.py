@@ -200,8 +200,9 @@ def test_e2e_idempotency_on_resubmission(client, isolated_hub):
 
 def test_e2e_vault_update_verification(client, isolated_hub):
     """
-    Test 4: Verify vault synchronization across PROGRESS_ANALYTICS.md,
-    LEARNER_MODEL.md, and sessions/YYYY-MM-DD.md after submission.
+    Test 4: Verify quiz submissions record a journal-only 'Saved' marker
+    (sessions/YYYY-MM-DD.md) without touching PROGRESS_ANALYTICS.md or
+    LEARNER_MODEL.md — analysis is the agent's job, not the WebUI's.
     """
     sub_uuid = f"e2e-vault-{uuid.uuid4()}"
     payload = {
@@ -257,38 +258,21 @@ def test_e2e_vault_update_verification(client, isolated_hub):
     assert res.status_code == 200
     assert res.get_json().get("status") == "success"
 
-    # 1. Verify PROGRESS_ANALYTICS.md
-    analytics_file = isolated_hub / "PROGRESS_ANALYTICS.md"
-    assert analytics_file.exists()
-    analytics_content = analytics_file.read_text(encoding="utf-8")
-    assert "`04_Advanced_Software_Eng`" in analytics_content
-    assert "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics" in analytics_content
-    assert "4/5 (80%)" in analytics_content
-    assert "PASS" in analytics_content
-
-    # 2. Verify LEARNER_MODEL.md
-    learner_file = isolated_hub / "LEARNER_MODEL.md"
-    assert learner_file.exists()
-    learner_content = learner_file.read_text(encoding="utf-8")
-    # Check error reflection row
-    assert "Calculation Slip - Mistook accidental tooling for essential complexity" in learner_content
-    assert "Error Reflection" in learner_content
-    assert "High" in learner_content
-    # Check lucky guess / fluke row
-    assert "Patriot_Drift_Q0 (Lucky Guess / Fluke)" in learner_content
-    assert "Fluke Confirmation" in learner_content
-    assert "Medium" in learner_content
-
-    # 3. Verify today's session journal file
+    # Verify the journal-only "Saved" marker in today's session file
     today_str = datetime.now().strftime("%Y-%m-%d")
     session_file = isolated_hub / "sessions" / f"{today_str}.md"
     assert session_file.exists()
     session_content = session_file.read_text(encoding="utf-8")
-    assert f"**[Quiz WebUI]** Completed `04_Advanced_Software_Eng`" in session_content
+    assert "**[Quiz WebUI]** Saved `04_Advanced_Software_Eng`" in session_content
+    assert "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics" in session_content
     assert "80%, 4/5" in session_content
     assert f"UUID: `{sub_uuid}`" in session_content
-    assert "Recorded 1 error reflections and 1 lucky guesses." in session_content
-    assert "Avg Dwell Time: 16.2s" in session_content
+
+    # Analytics/learner files must remain untouched by the WebUI pipeline
+    for fname in ["PROGRESS_ANALYTICS.md", "LEARNER_MODEL.md"]:
+        f = isolated_hub / fname
+        if f.exists():
+            assert sub_uuid not in f.read_text(encoding="utf-8")
 
 
 def test_e2e_full_lifecycle_journey(client, isolated_hub):
@@ -370,15 +354,15 @@ def test_e2e_full_lifecycle_journey(client, isolated_hub):
     assert resub_res.status_code == 200
     assert resub_res.get_json().get("status") == "already_ingested"
 
-    # Step 5: Verify vault files
-    analytics_text = (isolated_hub / "PROGRESS_ANALYTICS.md").read_text(encoding="utf-8")
-    assert quiz_data["subject"] in analytics_text
-    assert "80%" in analytics_text
-
-    learner_text = (isolated_hub / "LEARNER_MODEL.md").read_text(encoding="utf-8")
-    assert "Re-read question too fast" in learner_text
-    assert "Lucky Guess / Fluke" in learner_text
-
+    # Step 5: Verify journal-only "Saved" marker (agent-facing log)
     today_str = datetime.now().strftime("%Y-%m-%d")
     session_text = (isolated_hub / "sessions" / f"{today_str}.md").read_text(encoding="utf-8")
     assert sub_uuid in session_text
+    assert f"**[Quiz WebUI]** Saved `{quiz_data['subject']}`" in session_text
+    assert "80%, 4/5" in session_text
+
+    # Analytics/learner files must remain untouched by the WebUI pipeline
+    for fname in ["PROGRESS_ANALYTICS.md", "LEARNER_MODEL.md"]:
+        f = isolated_hub / fname
+        if f.exists():
+            assert sub_uuid not in f.read_text(encoding="utf-8")
