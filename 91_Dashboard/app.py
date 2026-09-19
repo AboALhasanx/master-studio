@@ -11,9 +11,17 @@ Usage:
 
 import re
 import json
+import socket
+import sys
 from pathlib import Path
 from datetime import datetime
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+
+# Ensure Shared Toolbox is importable
+_toolbox_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "tools"
+if str(_toolbox_path) not in sys.path:
+    sys.path.insert(0, str(_toolbox_path))
+from quiz_engine import process_quiz_telemetry
 
 app = Flask(__name__)
 
@@ -28,6 +36,17 @@ def read_file(path):
     except FileNotFoundError:
         return ""
 
+
+def get_lan_ip() -> str:
+    """Detect host Wi-Fi/Ethernet LAN IP address, fallback to 127.0.0.1."""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
 
 def parse_frontmatter(text):
     """Extract key: value pairs from YAML frontmatter."""
@@ -214,8 +233,7 @@ def parse_college_buddy():
     events = []
     in_active = False
 
-    from datetime import date, datetime
-    today = date(2026, 9, 17)
+    today = datetime.now().date()
 
     for line in lines:
         if "## 1. Active Events" in line:
@@ -312,7 +330,107 @@ def api_data():
     })
 
 
+@app.route("/quiz")
+def quiz_hub():
+    """Hub landing page for interactive quizzes."""
+    lan_ip = get_lan_ip()
+    return render_template(
+        "quiz.html",
+        direct_mode=False,
+        subject_id=None,
+        quiz_id=None,
+        lan_ip=lan_ip,
+    )
+
+
+@app.route("/quiz/<subject_id>/<quiz_id>")
+def quiz_direct(subject_id, quiz_id):
+    """Direct view for a specific quiz."""
+    lan_ip = get_lan_ip()
+    return render_template(
+        "quiz.html",
+        direct_mode=True,
+        subject_id=subject_id,
+        quiz_id=quiz_id,
+        lan_ip=lan_ip,
+    )
+
+
+@app.route("/api/quiz/<subject_id>/<quiz_id>")
+def api_quiz_get(subject_id, quiz_id):
+    """Returns quiz JSON for a subject and quiz ID."""
+    filename = quiz_id if quiz_id.endswith(".json") else f"{quiz_id}.json"
+    target_dir = (SEM1 / subject_id / "07_Quizzes_&_Anki").resolve()
+    target_file = (target_dir / filename).resolve()
+
+    try:
+        target_file.relative_to(target_dir)
+    except ValueError:
+        return jsonify({"error": "Invalid quiz path"}), 404
+
+    if not target_file.is_file():
+        return jsonify({"error": "Quiz not found"}), 404
+
+    try:
+        content = target_file.read_text(encoding="utf-8")
+        quiz_data = json.loads(content)
+        return jsonify(quiz_data)
+    except Exception as e:
+        return jsonify({"error": f"Failed to load quiz: {str(e)}"}), 500
+
+
+@app.route("/api/quiz/submit", methods=["POST"])
+def api_quiz_submit():
+    """Accepts JSON telemetry, ingests via quiz engine, returns result."""
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"status": "error", "message": "Invalid JSON payload"}), 400
+
+    result = process_quiz_telemetry(payload, HUB)
+    if result.get("status") == "error":
+        return jsonify(result), 400
+
+    return jsonify(result), 200
+
+
+@app.route("/api/quiz/bookmarks", methods=["GET", "POST"])
+def api_quiz_bookmarks():
+    """GET or POST bookmarked question IDs from/to 00_STUDIO_HUB/quiz_bookmarks.json."""
+    bookmarks_file = HUB / "quiz_bookmarks.json"
+    if request.method == "POST":
+        data = request.get_json(silent=True)
+        if data is None:
+            return jsonify({"status": "error", "message": "Invalid JSON"}), 400
+
+        if isinstance(data, list):
+            bookmarks = data
+        elif isinstance(data, dict) and "bookmarks" in data:
+            bookmarks = data["bookmarks"]
+        else:
+            return jsonify({"status": "error", "message": "Expected list or {'bookmarks': [...]}"}), 400
+
+        try:
+            HUB.mkdir(parents=True, exist_ok=True)
+            bookmarks_file.write_text(json.dumps(bookmarks, indent=2), encoding="utf-8")
+            return jsonify({"status": "success", "bookmarks": bookmarks}), 200
+        except Exception as e:
+            return jsonify({"status": "error", "message": str(e)}), 500
+
+    # GET
+    if not bookmarks_file.is_file():
+        return jsonify([]), 200
+
+    try:
+        content = bookmarks_file.read_text(encoding="utf-8")
+        bookmarks = json.loads(content)
+        return jsonify(bookmarks), 200
+    except Exception:
+        return jsonify([]), 200
+
+
 if __name__ == "__main__":
+    lan_ip = get_lan_ip()
     print("Master Studio Dashboard")
-    print("Open http://127.0.0.1:5000")
-    app.run(debug=True, port=5000)
+    print(f"Local:   http://127.0.0.1:5000")
+    print(f"Network: http://{lan_ip}:5000")
+    app.run(host="0.0.0.0", port=5000, debug=True)
