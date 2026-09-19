@@ -346,6 +346,13 @@ class QuizApp {
                 this.setReviewFilter(filter);
             });
         });
+        // Close custom select dropdowns on outside click
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.custom-select-wrap.open').forEach(w => {
+                w.classList.remove('open');
+                w.querySelector('.custom-select-trigger')?.setAttribute('aria-expanded', 'false');
+            });
+        });
 
         // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
@@ -971,22 +978,56 @@ class QuizApp {
                 const currentNotes = this.reflections[idx]?.notes || '';
 
                 reflectionBox.innerHTML = `
-                    <label class="reflection-select-wrap">
-                        <select class="reflection-select" aria-label="${t.rootCauseTitle}">
+                    <div class="custom-select-wrap" data-select-idx="${idx}">
+                        <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="${t.rootCauseTitle}">
+                            <span class="custom-select-label">${t.chips[currentReason] || currentReason}</span>
+                            <i data-lucide="chevron-down" class="custom-select-arrow"></i>
+                        </button>
+                        <div class="custom-select-menu" role="listbox">
                             ${reflectionOptions.map(reason => `
-                                <option value="${reason}" ${currentReason === reason ? 'selected' : ''}>${t.chips[reason] || reason}</option>
+                                <div class="custom-select-item ${currentReason === reason ? 'selected' : ''}" role="option" data-value="${reason}">
+                                    <span class="item-text">${t.chips[reason] || reason}</span>
+                                    <i data-lucide="check" class="item-check"></i>
+                                </div>
                             `).join('')}
-                        </select>
-                        <i data-lucide="chevron-down" class="reflection-caret"></i>
-                    </label>
+                        </div>
+                    </div>
                     <textarea class="reflection-notes-input" rows="1" placeholder="${t.reflectionPlaceholder}">${this.escapeHtml(currentNotes)}</textarea>
                 `;
 
-                // Handle Reason selection (native picker — mobile bottom-sheet)
-                const reasonSelect = reflectionBox.querySelector('.reflection-select');
-                reasonSelect?.addEventListener('change', (e) => {
-                    if (!this.reflections[idx]) this.reflections[idx] = { reason: 'Concept Gap', notes: '' };
-                    this.reflections[idx].reason = e.target.value;
+                // Handle Custom Select interactions
+                const selectWrap = reflectionBox.querySelector('.custom-select-wrap');
+                const trigger = selectWrap.querySelector('.custom-select-trigger');
+                const label = selectWrap.querySelector('.custom-select-label');
+                const items = selectWrap.querySelectorAll('.custom-select-item');
+
+                trigger?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = selectWrap.classList.contains('open');
+                    document.querySelectorAll('.custom-select-wrap.open').forEach(w => {
+                        if (w !== selectWrap) {
+                            w.classList.remove('open');
+                            w.querySelector('.custom-select-trigger')?.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    selectWrap.classList.toggle('open', !isOpen);
+                    trigger.setAttribute('aria-expanded', String(!isOpen));
+                });
+
+                items.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const val = item.getAttribute('data-value');
+                        if (!this.reflections[idx]) this.reflections[idx] = { reason: 'Concept Gap', notes: '' };
+                        this.reflections[idx].reason = val;
+
+                        label.textContent = t.chips[val] || val;
+                        items.forEach(it => it.classList.remove('selected'));
+                        item.classList.add('selected');
+
+                        selectWrap.classList.remove('open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    });
                 });
 
                 // Handle Notes input
