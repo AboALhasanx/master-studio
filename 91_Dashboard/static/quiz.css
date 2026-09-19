@@ -1268,29 +1268,6 @@ input:focus, textarea:focus {
     flex: 1;
 }
 
-.review-option-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.15rem 0.5rem;
-    border-radius: var(--radius-full);
-    font-size: 0.68rem;
-    font-weight: 800;
-    white-space: nowrap;
-    margin-top: 0.1rem;
-}
-
-.review-option-badge.you {
-    background-color: var(--error-bg);
-    color: var(--error);
-    border: 1px solid var(--error-border);
-}
-
-.review-option-badge.correct {
-    background-color: var(--success-bg);
-    color: var(--success);
-    border: 1px solid var(--success-border);
-}
-
 .review-option-item.user-wrong {
     background-color: var(--error-bg);
     border-color: var(--error-border);
@@ -1671,19 +1648,6 @@ input:checked + .slider::before {
         left: 0;
         right: auto;
     }
-}
-
-[dir="rtl"] .review-card {
-    border-left: none;
-    border-right: 4px solid var(--border-subtle);
-}
-
-[dir="rtl"] .review-card.correct {
-    border-right-color: var(--success);
-}
-
-[dir="rtl"] .review-card.wrong {
-    border-right-color: var(--error);
 }
 
 [dir="rtl"] .review-option-indicator {

@@ -796,10 +796,37 @@ class QuizApp {
         const avgDwell = total > 0 ? (totalDwell / total).toFixed(1) : 0;
         const isPassed = percentage >= 75;
 
+        this.renderResults();
+
+        this.soundManager.play('completed');
+    }
+
+    /**
+     * Render the results view from current answers (stats + review cards).
+     * Safe to re-run — e.g. when the card-language toggle flips mid-review.
+     */
+    renderResults() {
+        const questions = this.quizData.questions;
+        let correctCount = 0;
+        let wrongCount = 0;
+        let totalDwell = 0;
+
+        questions.forEach((q, idx) => {
+            const userAns = this.answers[idx];
+            if (userAns !== undefined && userAns === q.correct) correctCount++;
+            else wrongCount++;
+            totalDwell += (this.dwellTimes[idx] || 0);
+        });
+
+        const total = questions.length;
+        const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+        const avgDwell = total > 0 ? (totalDwell / total).toFixed(1) : 0;
+        const isPassed = percentage >= 75;
+
         // Update Overview Cards
         if (this.dom.scorePercentage) this.dom.scorePercentage.textContent = `${percentage}%`;
         if (this.dom.scoreFraction) this.dom.scoreFraction.textContent = `${correctCount} / ${total}`;
-        
+
         if (this.dom.scoreBadge) {
             this.dom.scoreBadge.className = `score-status-badge ${isPassed ? 'pass' : 'fail'}`;
         }
@@ -812,7 +839,7 @@ class QuizApp {
 
         if (this.dom.statCorrect) this.dom.statCorrect.textContent = correctCount.toString();
         if (this.dom.statWrong) this.dom.statWrong.textContent = wrongCount.toString();
-        if (this.dom.statAvgDwell) this.dom.statAvgDwell.textContent = `${avgDwell} ث`;
+        if (this.dom.statAvgDwell) this.dom.statAvgDwell.textContent = `${avgDwell}${this.lang === 'ar' ? ' ث' : 's'}`;
         if (this.dom.statLucky) {
             const luckyCount = Object.values(this.luckyGuesses).filter(Boolean).length;
             this.dom.statLucky.textContent = luckyCount.toString();
@@ -824,7 +851,6 @@ class QuizApp {
 
         // Switch View
         this.showState('results');
-        this.soundManager.play('completed');
         this.refreshLucideIcons();
     }
 
@@ -893,7 +919,7 @@ class QuizApp {
             qStem.style.textAlign = isAr ? 'right' : 'left';
             card.appendChild(qStem);
 
-            // Options List — your pick (red) + correct answer (green) always visible
+            // Options — show ONLY your pick and the correct answer (zero noise)
             const optionsList = document.createElement('div');
             optionsList.className = 'review-options-list';
             const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
@@ -901,17 +927,16 @@ class QuizApp {
             qOptions.forEach((optText, optIdx) => {
                 const isUserChoice = userAns === optIdx;
                 const isCorrectOption = q.correct === optIdx;
-                let optClass = 'review-option-item';
 
+                // Skip distractors entirely
+                if (!isUserChoice && !isCorrectOption) return;
+
+                let optClass = 'review-option-item';
                 if (isUserChoice && !isCorrect) {
                     optClass += ' user-wrong';
                 } else if (isCorrectOption) {
                     optClass += ' correct-answer';
                 }
-
-                const badgeHtml = isUserChoice && !isCorrect
-                    ? `<span class="review-option-badge you">${isAr ? 'إجابتك' : 'You'}</span>`
-                    : (isCorrectOption ? `<span class="review-option-badge correct">${isAr ? 'الصحيحة' : 'Correct'}</span>` : '');
 
                 const optItem = document.createElement('div');
                 optItem.className = optClass;
@@ -920,7 +945,6 @@ class QuizApp {
                 optItem.innerHTML = `
                     <span class="review-option-indicator">${optionLetters[optIdx] || optionKeys[optIdx]}</span>
                     <span class="review-option-text">${this.escapeHtml(optText)}</span>
-                    ${badgeHtml}
                 `;
                 optionsList.appendChild(optItem);
             });
