@@ -68,6 +68,14 @@ const I18N = {
         analyticsTitle: 'Learning Analytics'
     }
 };
+const SUBJECT_MAP = {
+    '01_Cyber_Security': 'الأمن السيبراني',
+    '02_English_Language': 'اللغة الإنجليزية',
+    '03_Data_Mining': 'تنقيب البيانات',
+    '04_Advanced_Software_Eng': 'هندسة البرمجيات المتقدمة',
+    '05_Soft_Computing': 'الحوسبة المرنة',
+    '06_Artificial_Intelligence': 'الذكاء الاصطناعي'
+};
 class SoundManager {
     constructor() {
         this.muted = localStorage.getItem('master_studio_muted') === 'true';
@@ -524,13 +532,14 @@ class QuizApp {
         }
 
         // Update Header Titles
+        const rawSubj = this.quizData.subject || this.quizData.subject_id || this.subjectId || '';
+        const cleanSubj = SUBJECT_MAP[rawSubj] || rawSubj.replace(/^\d+_/, '').replace(/_/g, ' ');
+
         if (this.dom.quizTitle) {
-            this.dom.quizTitle.textContent = this.quizData.topic || 'Interactive Quiz';
+            this.dom.quizTitle.textContent = this.quizData.topic || 'كوز تفاعلي';
         }
         if (this.dom.quizSubtitle) {
-            this.dom.quizSubtitle.textContent = subjectDisplay 
-                ? `${subjectDisplay} • ${this.quizData.questions.length} Questions`
-                : `${this.quizData.questions.length} Questions`;
+            this.dom.quizSubtitle.textContent = cleanSubj;
         }
 
         // Start 1s timer loop
