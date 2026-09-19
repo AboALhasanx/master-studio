@@ -116,8 +116,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
 }
-
 html {
     font-size: 16px;
     height: 100%;
@@ -143,6 +144,48 @@ button {
     background: none;
     color: inherit;
     touch-action: manipulation;
+}
+
+/* Disable mobile tap flash highlight and default browser focus rings */
+button,
+a,
+input,
+select,
+textarea,
+.option-tile,
+.icon-btn,
+.icon-btn-sm,
+.nav-btn,
+.action-btn,
+.filter-pill,
+.chip,
+.reflection-chip,
+.tag-badge,
+[role="button"],
+[role="radio"],
+[tabindex] {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    outline: none !important;
+}
+
+button:focus,
+button:active,
+button:focus-visible,
+.option-tile:focus,
+.option-tile:active,
+.option-tile:focus-visible,
+.icon-btn:focus,
+.icon-btn:active,
+.icon-btn:focus-visible,
+.nav-btn:focus,
+.nav-btn:active,
+.nav-btn:focus-visible,
+.action-btn:focus,
+.action-btn:active,
+.action-btn:focus-visible {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 input, textarea {
@@ -231,15 +274,16 @@ input:focus, textarea:focus {
 
 .quiz-title {
     font-size: 0.95rem;
+.topic-title {
+    font-size: 1.1rem;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.35;
     color: var(--text-main);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: normal;
+    overflow-wrap: break-word;
+    text-align: left;
+    direction: ltr;
 }
-
-.quiz-subtitle {
     font-size: 0.75rem;
     color: var(--text-muted);
     white-space: nowrap;
@@ -534,6 +578,8 @@ input:focus, textarea:focus {
     word-break: normal;
     overflow-wrap: break-word;
     hyphens: none;
+    unicode-bidi: plaintext;
+    text-align: start;
 }
 
 /* Options Grid */
@@ -601,6 +647,10 @@ input:focus, textarea:focus {
     font-weight: 500;
     color: var(--text-main);
     line-height: 1.4;
+    word-break: normal;
+    overflow-wrap: break-word;
+    unicode-bidi: plaintext;
+    text-align: start;
 }
 
 /* --------------------------------------------------------------------------
