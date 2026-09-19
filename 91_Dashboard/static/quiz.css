@@ -1382,16 +1382,26 @@ input:focus, textarea:focus {
 
 .reflection-notes-input {
     width: 100%;
-    min-height: 42px;
-    height: 42px;
+    height: 84px;
     font-size: 0.85rem;
     resize: none;
     overflow-y: auto;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
-.reflection-notes-input.overflow {
-    overflow-y: scroll;
+/* Thin unobtrusive scrollbar */
+.reflection-notes-input::-webkit-scrollbar {
+    width: 6px;
+}
+
+.reflection-notes-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.reflection-notes-input::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--text-subtle);
+    background: color-mix(in srgb, var(--text-subtle) 40%, transparent);
 }
 
 .reflection-notes-input::placeholder {

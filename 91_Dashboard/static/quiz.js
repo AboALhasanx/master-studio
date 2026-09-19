@@ -991,19 +991,10 @@ class QuizApp {
 
                 // Handle Notes input
                 const noteInput = reflectionBox.querySelector('.reflection-notes-input');
-                // Auto-grow while typing, cap and scroll beyond overflow
-                const autosize = () => {
-                    if (!noteInput) return;
-                    noteInput.style.height = 'auto';
-                    noteInput.style.height = Math.min(noteInput.scrollHeight + 2, 120) + 'px';
-                    noteInput.classList.toggle('overflow', noteInput.scrollHeight > 120);
-                };
                 noteInput?.addEventListener('input', (e) => {
                     if (!this.reflections[idx]) this.reflections[idx] = { reason: 'Concept Gap', notes: '' };
                     this.reflections[idx].notes = e.target.value;
-                    autosize();
                 });
-                autosize();
 
                 card.appendChild(reflectionBox);
 
