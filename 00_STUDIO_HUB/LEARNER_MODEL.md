@@ -103,6 +103,11 @@ graph TD
 | `03_Data_Mining` | Week 03 conversion matrix: Discretize · One-hot · Vectorize · Extract · Symbolize · Embed · Similarity-graph | 2026-09-19 | New note; Monday lecture | High | 2026-09-22 |
 | `03_Data_Mining` | **Portability = represent · Mining = discover** + info-loss example 21/22/39→Adult | 2026-09-19 | Exam distinction | Medium | 2026-09-22 |
 | `03_Data_Mining` | Doctor pipeline prototype: CT/X-ray → texture/shape/edges → vector → classify | 2026-09-19 | Doctor Profile high-yield | High | 2026-09-22 |
+| `05_Soft_Computing` | Hard vs Soft matrix (precision/exact/serial vs approximation/noisy/parallel/stochastic) | 2026-09-19 | Lecture 1 core + doctor Q1 | High | 2026-09-22 |
+| `05_Soft_Computing` | Boolean vs Fuzzy: hot water 0.9/0.25/0.1 · Isa tall vs 5'10 · speed intervals | 2026-09-19 | Official W1 fuzzy intro + doctor Q7 | High | 2026-09-22 |
+| `05_Soft_Computing` | Bio neuron map: Dendrites→inputs · Soma→activation · Axon→output | 2026-09-19 | Doctor Q6 | High | 2026-09-22 |
+| `05_Soft_Computing` | SC components: Fuzzy=Uncertainty · NN=Learning · Prob=Reasoning · EC=Search/optimize | 2026-09-19 | Slide 28 / handbook | Medium | 2026-09-25 |
+| `05_Soft_Computing` | Official calendar: Midterm 20/10 Weeks 1–6 fuzzy; SC ends 8/12/2026 | 2026-09-19 | alaidi.net — student confirmed end date | High | 2026-10-20 |
 
 ---
 

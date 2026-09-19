@@ -1,146 +1,156 @@
-# 🗺️ 16-Week Syllabus & Progress Roadmap: Soft Computing
+# Syllabus & Roadmap: Soft Computing (OFFICIAL — alaidi.net)
 
-> **Course Code:** CS604  
-> **Course Title:** Soft Computing & Neuro-Fuzzy Systems / *الحوسبة المرنة والأنظمة العصبية الضبابية*  
-> **Instructor:** Prof. Dr. Abdul Hadi Mohammed Adkhil (*أ.د. عبد الهادي محمد ادخيل*)  
-> **Credit Hours:** 2 Units | Weekly Time: Tuesday 08:30 AM – 10:30 AM  
-> **Repository Directory:** `01_Semester_1/05_Soft_Computing/`
+> **Course Code:** CS505 / listed as Soft Computing & Neuro-Fuzzy Systems in older hub files  
+> **Instructor:** Prof. Dr. Abdul Hadi Mohammed Adkhil / Alaidi  
+> **Faculty:** College of Computer Science & Information Technology, University of Wasit  
+> **Schedule:** Tuesday, 08:30 – 10:30 (2 Credit Hours)  
+> **Official page:** https://alaidi.net/fall-2026/soft-computing/  
+> **Official course window:** **2026-09-08 → 2026-12-08** (student-confirmed end date 8 Dec 2026)  
+> **Last synced from official site:** 2026-09-19  
+> **Confidence:** HIGH — syllabus table + textbooks + Lecture 1 download match the live alaidi.net page and the local HTML mirror `02_Raw_Materials/Soft Computing - alaidi (Web Page).html`
 
 ---
 
-## 1. Course Overview & Master Competency Matrix
+## 1. Official Textbooks (as published on alaidi.net)
 
-This postgraduate course explores computational intelligence paradigms capable of exploiting the tolerance for imprecision, uncertainty, and partial truth to achieve tractability, robustness, and low solution cost. Anchored in the seminal texts of **Jang, Sun, & Mizutani** and **Sivanandam & Deepa**, the curriculum integrates fuzzy logic, neuro-fuzzy modeling (ANFIS), evolutionary computing, and digital shape analysis via Freeman chain codes.
+| # | Citation | In vault? | Notes |
+|:--:|:---|:---:|:---|
+| 1 | Jang, J.-S. R., Sun, C.-T., Mizutani, E. *Neuro-Fuzzy and Soft Computing: A Computational Approach to Learning and Machine Intelligence.* Prentice Hall, 1997. | ✅ | `Neuro-Fuzzy and Soft Computing - Jang Sun Mizutani (Slides).pdf` — **image-based scan (640 pp)**; filename says “Slides” but content is the full book |
+| 2 | Sivanandam, S. N., Deepa, S. N. *Principles of Soft Computing.* **3rd Edition**, Wiley, 2018. | ⚠️ 2nd ed | Vault has **2nd Edition** (356 pp). Concepts align; 3rd preferred if obtained |
+| 3 | Ross, T. J. *Fuzzy Logic with Engineering Applications.* **4th Edition**, Wiley, 2016. | ⚠️ 2nd ed | Vault file renamed **2026-09-19** to `Ross - Fuzzy Logic with Engineering Applications 2nd Ed.pdf` — content is Ross **2nd Edition (2004)** (verified from book copyright page) |
+| 4 | Mitchell, M. *An Introduction to Genetic Algorithms.* MIT Press, 1998. | ✅ | Vault file renamed **2026-09-19** to `Mitchell - An Introduction to Genetic Algorithms.pdf` (was misnamed as Fuzzy Logic). Official for Weeks 8–10 |
+| 5 | *Illustrated Handbook of Soft Computing.* BIBLIOTEX Digital Library, 2021. ISBN 978-1-98465-107-5. | ✅ | 278 pp; Chapter 1 Introduction to Soft Computing used for Week 01 |
+
+### Additional vault materials (NOT on official textbook list)
+
+| File | Status |
+|:---|:---|
+| `Week 01 - Introduction to Soft Computing.pptx` | ✅ Official Lecture 1 (matches alaidi download) |
+| `Digital Recognition - The Power of Chain Code.pdf` | Specialty reading — **not listed in Fall 2026 official weeks** |
+| Haykin NN book | Named on Lecture 1 slide 30 only; **not** on alaidi textbook list; not in vault |
+
+---
+
+## 2. Official Weekly Syllabus (authoritative)
+
+Source: alaidi.net Fall 2026 Soft Computing table. **This replaces any earlier vault roadmap.**
+
+| Week | Date | Covered Topics | Comments / Vault material |
+|:--:|:---|:---|:---|
+| **1** | **8/9/2026** | **Introduction to Soft Computing; Introduction to Fuzzy logic** | Lecture 1 PPTX ✅ in vault + `03_Study_Notes/Week_01_Introduction_to_Soft_Computing.md` |
+| **2** | **15/9/2026** | **Fuzzy membership functions; Operations on Fuzzy sets** | ❌ No PPTX on site yet — study from Ross Ch2 / Sivanandam / Handbook |
+| **3** | **22/9/2026** | **Fuzzy relations; Fuzzy propositions** | Next Tuesday lecture |
+| **4** | **29/9/2026** | **Fuzzy implications; Fuzzy inferences** | |
+| **5** | **6/10/2026** | **Defuzzification Techniques-I; Defuzzification Techniques-II** | |
+| **6** | **13/10/2026** | **Fuzzy logic controller-I; Fuzzy logic controller-II** | |
+| **7** | **20/10/2026** | **Midterm Exam** | **Scope: Weeks 1–6 — fuzzy systems only** |
+| **8** | **27/10/2026** | **Solving optimization problems; Concept of GA** | Mitchell GA book becomes primary |
+| **9** | **3/11/2026** | **GA Operators: Encoding; GA Operators: Selection-I; Selection-II** | |
+| **10** | **10/11/2026** | **GA Operators: Crossover-I; Crossover-II; Mutation** | |
+| **11** | **17/11/2026** | **Ant Colony Optimization-I; Ant Colony Optimization-II** | |
+| **12** | **24/11/2026** | **MOEA Approaches: Non-Pareto; Pareto-I; Pareto-II** | |
+| **13** | **1/12/2026** | **Introduction to ANN; ANN Architecture; ANN Training-I** | |
+| **14** | **8/12/2026** | **ANN Training-II; ANN Training-III; Applications of ANN** | **Last official week on site** — course window ends **8 Dec 2026** |
+
+### What the official plan does **NOT** include (do not study as syllabus core)
+
+These appeared in an **agent-built / research-specialty** roadmap that is **not** on alaidi.net for Fall 2026:
+
+- Freeman **chain codes** / shape numbers (doctor research specialty — optional enrichment only)
+- **ANFIS** 5-layer architecture as a weekly topic
+- Separate **RBFN / SOM** weeks
+- Week 15–16 items (no Weeks 15–16 on official site)
+
+> Doctor Profile still lists chain codes and ANFIS as **research/exam-emphasis areas**. They may appear in oral discussion or later courses. For **this semester’s midterm and official coverage**, follow the table above.
+
+---
+
+## 3. Course Shape (official)
 
 ```
-+=======================================================================================================+
-|                                    16-WEEK PROGRESS TRACKER OVERVIEW                                  |
-+=======================================================================================================+
-| Completed Weeks: [ 0 / 16 ] | Progress: 0.0% | Status: Initializing Semester 1                        |
-+=======================================================================================================+
+Weeks 1–6   FUZZY SYSTEMS
+            Intro SC → membership/ops → relations/propositions
+            → implications/inferences → defuzzification → fuzzy controllers
+
+Week 7      MIDTERM (fuzzy only)
+
+Weeks 8–12  EVOLUTIONARY / METAHEURISTIC OPTIMIZATION
+            Optimization + GA concept → encoding/selection
+            → crossover/mutation → ACO → MOEA (Non-Pareto / Pareto)
+
+Weeks 13–14 ARTIFICIAL NEURAL NETWORKS
+            Intro + architecture + training I–III + applications
 ```
 
----
-
-## 2. Detailed 16-Week Chronological Roadmap
-
-### 🌫️ Phase 1: Fuzzy Mathematics, Relations & Composition (Weeks 1–4)
-
-- [ ] **Week 01: Introduction to Soft Computing Paradigm vs. Hard Computing**
-  - **Topics:** Hard (Classical) Computing vs. Soft (Computational Intelligence) Computing, Key pillars of Soft Computing (Fuzzy Logic, Neural Networks, Evolutionary Algorithms, Probabilistic Reasoning), Tolerance for imprecision and uncertainty, Real-world applications in control systems, pattern recognition, and decision support.
-  - **Primary Materials:** Sivanandam & Deepa Chapter 1 (`02_Raw_Materials/Principles of Soft Computing - S N Sivanandam and Deepa S N.pdf`) + `Week 01 - Introduction to Soft Computing.pptx`.
-  - **Deliverables:** Hard vs. Soft Computing Comparative Matrix in `03_Study_Notes/Week_01_Soft_Computing_Foundations.md`.
-  - **Self-Assessment:** Articulate 4 concrete computer science domains where hard computing fails due to combinatorial explosion or noisy inputs.
-
-- [ ] **Week 02: Classical (Crisp) Sets vs. Fuzzy Sets & Membership Geometries**
-  - **Topics:** Crisp sets, Characteristic functions, Fuzzy sets, Membership functions ($\mu_A(x) \in [0, 1]$), Support, Core, Boundaries, $\alpha$-cuts and Strong $\alpha$-cuts, Convexity, Normal fuzzy sets. Geometries of membership functions: Triangular, Trapezoidal, Gaussian, Generalized Bell, Sigmoidal, S-curve.
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 2 (`02_Raw_Materials/Neuro-Fuzzy and Soft Computing - Jang Sun Mizutani (Slides).pdf`) + Sivanandam Chapter 2.
-  - **Deliverables:** Mathematical definitions and Python plot generators for standard membership functions in `03_Study_Notes/Week_02_Fuzzy_Sets.md`.
-  - **Self-Assessment:** Given a triangular membership function $\text{trimf}(x; 10, 20, 30)$, compute the $\alpha$-cut for $\alpha = 0.4$ and $\alpha = 0.8$.
-
-- [ ] **Week 03: Fuzzy Set Operations (T-Norms, S-Norms, Complements & Aggregations)**
-  - **Topics:** Standard Complement, Standard Union (Max / S-norm), Standard Intersection (Min / T-norm). Generalized T-norms (Algebraic product, Bounded difference, Drastic product) and S-norms (Algebraic sum, Bounded sum, Drastic sum). De Morgan’s Laws, Excluded Middle Law and Contradiction Law (and why they do NOT hold in standard fuzzy logic).
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 2 (Sections 2.3–2.4).
-  - **Deliverables:** Fuzzy operations derivation and solved problem sheets in `03_Study_Notes/Week_03_Fuzzy_Operations.md`.
-  - **Self-Assessment:** Prove algebraically that the Law of Excluded Middle ($A \cup \bar{A} = U$) does not hold for a fuzzy set with $\mu_A(x) = 0.7$.
-
-- [ ] **Week 04: Fuzzy Relations, Cylindrical Extensions & Composition Matrices**
-  - **Topics:** Crisp vs. Fuzzy Relations, Cartesian Product, Projection and Cylindrical Extension of fuzzy sets, Fuzzy Composition operators: Max-Min Composition ($R \circ S$), Max-Product Composition ($R \circ_{prod} S$), Max-Average Composition. Transitivity, Reflexivity, and Symmetry in fuzzy relations.
-  - **Primary Materials:** Sivanandam Chapter 3 + Jang, Sun, Mizutani Chapter 3.
-  - **Deliverables:** Max-Min and Max-Product matrix composition calculation drills in `03_Study_Notes/Week_04_Fuzzy_Relations.md`.
-  - **Self-Assessment:** Compute the $3 \times 3$ Max-Min composition matrix $T = R \circ S$ for two given fuzzy relation matrices.
+**Midterm fact to store:** `2026-10-20 · Weeks 1–6 · Fuzzy systems`
 
 ---
 
-### ⚙️ Phase 2: Fuzzy Inference Systems & Defuzzification (Weeks 5–8)
+## 4. Current Standing (as of 2026-09-19)
 
-- [ ] **Week 05: Linguistic Variables, Fuzzy Propositions & Fuzzy IF-THEN Rules**
-  - **Topics:** Linguistic variables (Name, Term set, Universe of discourse, Base variable, Semantic rule), Linguistic hedges (*very, somewhat, slightly, extremely*), Fuzzy propositions (Canonical forms), Fuzzy IF-THEN Rules (Fuzzy implication operators: Mamdani Minimum, Larsen Product, Zadeh Arithmetic, Gödel implication).
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 3 (Sections 3.2–3.4).
-  - **Deliverables:** Linguistic hedge transformation tables in `03_Study_Notes/Week_05_Fuzzy_Rules.md`.
-  - **Self-Assessment:** Express the rule *"IF Temperature is Very High AND Pressure is Slightly Low THEN Valve is Wide Open"* using formal fuzzy relations.
-
-- [ ] **Week 06: Fuzzy Inference Systems (FIS) — The Mamdani Architecture**
-  - **Topics:** Structure of an FIS (Fuzzification, Rule Base, Database, Inference Engine, Defuzzification), Mamdani FIS: Min/Product rule firing strength, Clipping vs. Scaling aggregation of output membership functions, Multi-input multi-output (MIMO) decomposition into MISO systems.
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 4 (Section 4.2).
-  - **Deliverables:** Step-by-step Mamdani FIS numerical solver in `03_Study_Notes/Week_06_Mamdani_FIS.md`.
-  - **Self-Assessment:** Trace a 2-rule Mamdani FIS for inputs $x_0 = 4, y_0 = 7$ and sketch the aggregated output polygon.
-
-- [ ] **Week 07: Takagi-Sugeno-Kang (TSK) Fuzzy Models & Defuzzification Mathematics**
-  - **Topics:** First-order and zero-order Sugeno fuzzy models: Linear consequence functions ($z = p x + q y + r$), Weighted Average defuzzification. Defuzzification methods for Mamdani models: Centroid / Center of Gravity (COG), Center of Largest Area, Bisector of Area (BOA), Mean of Maxima (MOM), Smallest/Largest of Maxima (SOM/LOM).
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 4 (Section 4.3).
-  - **Deliverables:** Defuzzification methods mathematical comparison matrix in `03_Study_Notes/Week_07_Defuzzification.md`.
-  - **Self-Assessment:** Calculate the defuzzified crisp output using both Centroid (COG) and MOM methods for an asymmetric piecewise linear output set.
-
-- [ ] **Week 08: Midterm Examination & Fuzzy Modeling Synthesis**
-  - **Exam Focus:** Comprehensive examination covering Weeks 1–7 (Fuzzy operations, Max-Min compositions, Mamdani/Sugeno FIS manual execution, Defuzzification derivations).
-  - **Weight:** 30% of coursework grade.
-  - **Deliverables:** Midterm review debrief and error updates in `LEARNER_MODEL.md`.
+| Item | Status |
+|:---|:---|
+| Official lectures posted online | **Only Lecture 1 (Week 1)** |
+| Vault Week 01 PPTX | ✅ present |
+| Vault Week 01 study note | ✅ built 2026-09-19 |
+| Week 2 material online | ❌ empty — **already scheduled 15/9** |
+| Next official class | **Tue 22/9 — Week 3: Fuzzy relations; Fuzzy propositions** |
+| Midterm | **Mon-week slot 20/10 — ~1 month** |
+| Gap | Student may need class notes for Week 2; books cover the topics |
 
 ---
 
-### 🖋️ Phase 3: Digital Contour Chain Codes & Pattern Recognition (Weeks 9–11)
+## 5. Assessment / Grading
 
-- [ ] **Week 09: Digital Pattern Representation — Freeman Chain Codes (4 & 8-Connectivity)**
-  - **Topics:** Boundary representation in digital image processing, Freeman 4-directional and 8-directional chain codes, Coordinate tracking, Grid intersection and boundary quantization algorithms, Chain code storage efficiency compared to raw pixel arrays.
-  - **Primary Materials:** `Digital Recognition - The Power of Chain Code.pdf` + Primary Freeman (1961) papers.
-  - **Deliverables:** Chain code generation guide & trace diagrams in `03_Study_Notes/Week_09_Chain_Codes.md`.
-  - **Self-Assessment:** Trace the 8-directional Freeman chain code for a digital closed binary contour on an $8 \times 8$ grid.
+**Not published on alaidi.net Soft Computing page.**  
+Do **not** invent weights. Use only grades the professor announces in class.
 
-- [ ] **Week 10: Invariant Contour Encoding — First Difference, Derivatives & Shape Numbers**
-  - **Topics:** Rotation invariance of chain codes: Modulo-8 first difference (derivative chain code) $d_i = (c_i - c_{i-1} + 8) \pmod 8$. Scale invariance: Re-sampling grid resolution. Normalization: Finding the minimum magnitude integer sequence (Shape Number). Applications in signature verification, OCR, and medical shape analysis.
-  - **Primary Materials:** Research papers on Freeman Chain Code normalization.
-  - **Deliverables:** Solved chain code normalization drills in `03_Study_Notes/Week_10_Chain_Code_Normalization.md`.
-  - **Self-Assessment:** Compute the First Difference and normalized Shape Number for the chain sequence `01234567`.
-
-- [ ] **Week 11: Foundations of Artificial Neural Networks — Perceptrons & MLP**
-  - **Topics:** Biological neuron analogy, McCulloch-Pitts neuron model, Single-Layer Perceptron and Perceptron Learning Rule, The Linear Separability problem (XOR limitation), Multi-Layer Perceptrons (MLP), Activation functions (Sigmoid, Tanh, ReLU, Softmax).
-  - **Primary Materials:** Sivanandam Chapter 5 + Jang, Sun, Mizutani Chapter 8.
-  - **Deliverables:** Neural network architectures summary in `03_Study_Notes/Week_11_Neural_Networks.md`.
-  - **Self-Assessment:** Prove algebraically why a single-layer perceptron cannot solve the XOR logic function.
+*(Earlier vault file had invented homework/seminar/final percentages — removed as non-authoritative.)*
 
 ---
 
-### 🧬 Phase 4: ANFIS, Neuro-Fuzzy & Evolutionary Hybridization (Weeks 12–16)
+## 6. Exam-Relevant Working Rules (from Doctor Profile + Lecture 1 questions)
 
-- [ ] **Week 12: Backpropagation Learning Algorithm & Feedforward Networks**
-  - **Topics:** Multi-layer feedforward architecture, Error backpropagation algorithm (Gradient Descent on sum of squared errors), Chain rule derivation for output and hidden layer weight updates, Momentum term, Learning rate tuning, Overfitting and regularization.
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 9 + Sivanandam Chapter 6.
-  - **Deliverables:** Backpropagation mathematical derivation step-by-step notes in `03_Study_Notes/Week_12_Backpropagation.md`.
-  - **Self-Assessment:** Derive the weight update formula $\Delta w_{jk} = \eta \delta_k o_j$ for an output neuron with sigmoid activation.
+Lecture 1 slide 31 questions (high value for early quizzes/orals):
 
-- [ ] **Week 13: Radial Basis Function Networks (RBFN) & Self-Organizing Maps (SOM)**
-  - **Topics:** Radial Basis Function Networks: Architecture, Gaussian receptive fields, Exact interpolation vs. Approximate RBFN, Clustering-based center selection. Kohonen Self-Organizing Maps (SOM): Unsupervised competitive learning, Topological neighborhood updates.
-  - **Primary Materials:** Jang, Sun, Mizutani Chapters 10 & 11.
-  - **Deliverables:** RBFN vs. MLP comparative matrix in `03_Study_Notes/Week_13_RBFN_and_SOM.md`.
-  - **Self-Assessment:** Contrast the global approximation property of MLPs with the localized receptive field property of RBFNs.
+1. Soft Computing vs Hard Computing  
+2. How ANN, Fuzzy Logic, and Evolutionary Optimization apply in engineering (outline the three)  
+3. What is Fuzzy Logic?  
+4. What is Artificial Neural Network?  
+5. What is Evolutionary-based Computation/Optimization?  
+6. Biological Neuron vs Artificial Neuron  
+7. Boolean logic vs Fuzzy logic  
 
-- [ ] **Week 14: Adaptive Neuro-Fuzzy Inference Systems (ANFIS) — 5-Layer Blueprint**
-  - **Topics:** Synergy of Neural Networks (learning capability) and Fuzzy Logic (interpretability), Architecture of ANFIS: Layer 1 (Premise membership), Layer 2 (Firing strength / T-norm), Layer 3 (Normalized firing strength), Layer 4 (Consequent first-order Sugeno polynomials), Layer 5 (Summation output).
-  - **Primary Materials:** Jang, Sun, Mizutani Chapter 12.
-  - **Deliverables:** 5-Layer ANFIS Architectural Blueprint Diagram (Mermaid) in `06_Diagrams_&_Mindmaps/`.
-  - **Self-Assessment:** Formulate the mathematical node functions for all 5 layers of a 2-rule, 2-input ANFIS model.
-
-- [ ] **Week 15: ANFIS Hybrid Learning Algorithm & Evolutionary Optimization**
-  - **Topics:** The Hybrid Learning Algorithm: Forward pass (Fix premise parameters, optimize linear consequent parameters via Least Squares Estimation LSE), Backward pass (Fix consequent parameters, optimize nonlinear premise parameters via Gradient Descent / Backpropagation). Genetic Algorithms (GA) overview: Chromosome representation, Selection, Crossover, Mutation for fuzzy parameter optimization.
-  - **Primary Materials:** Jang, Sun, Mizutani Chapters 12 & 15.
-  - **Deliverables:** ANFIS Hybrid Learning & Optimization notes in `03_Study_Notes/Week_15_ANFIS_Hybrid_Learning.md`.
-  - **Self-Assessment:** Explain why combining LSE with Gradient Descent converges orders of magnitude faster than pure backpropagation in ANFIS.
-
-- [ ] **Week 16: Comprehensive Course Review & Final Examination**
-  - **Activities:** Comprehensive mock examination covering all aspects of Fuzzy Logic, Chain Codes, Neural Networks, and ANFIS; Professor exam pattern review.
-  - **Deliverables:** 100-Question Soft Computing Master Anki deck in `07_Quizzes_&_Anki/`.
-  - **Final Target:** Score $\ge 90\%$ (Distinction / *امتياز*).
+Doctor Profile (research depth, still useful later in course): precise mathematical answers, geometric diagrams for fuzzy sets, step-by-step arithmetic for fuzzy composition/defuzzification.
 
 ---
 
-## 3. Assessment & Grading Criteria
+## 7. Recommended Study Materials by Phase
 
-| Component | Weight | Target Score | Description |
-|:---|:---:|:---:|:---|
-| **Homework Problem Sets & Calculation Drills** | 10% | 10% | Weekly manual matrix, chain code, and fuzzy inference exercises |
-| **Applied ANFIS / Chain Code Research Assignment** | 15% | 14% | Technical report on contour recognition or neuro-fuzzy modeling |
-| **Oral Research Seminar Presentation (Marp)** | 15% | 14% | 10-slide presentation on hybrid soft computing architectures |
-| **Midterm Examination (Week 08)** | 20% | 19% | Written examination on Fuzzy Mathematics, Relations & FIS |
-| **Final Semester Examination (Week 16)** | 40% | 36% | Comprehensive written examination |
-| **Total Course Grade** | **100%** | **$\ge 93\%$** | **Grade Target: High Distinction (امتياز مرتفع)** |
+| Phase | Primary vault files |
+|:---|:---|
+| **Now (Weeks 1–3)** | Lecture 1 PPTX + Week 01 note + **Ross 2nd** (fuzzy sets/relations) + Illustrated Handbook Ch1–3 + Sivanandam fuzzy chapters |
+| **Midterm block (Weeks 4–6)** | Ross fuzzy inference/controllers + Sivanandam fuzzy / FIS chapters |
+| **GA block (Weeks 8–12)** | **Mitchell GA** + Sivanandam GA/evolution chapters + Handbook Ch4/8 |
+| **ANN block (Weeks 13–14)** | Sivanandam ANN chapters + Handbook Ch2 + Lecture 1 ANN slides as preview |
+
+---
+
+## 8. Correction Log (what was outdated and why it was changed)
+
+| Old vault claim | Correction | Evidence confidence |
+|:---|:---|:---:|
+| Midterm Week 8 | **Midterm Week 7 · 20/10 · Weeks 1–6 fuzzy** | HIGH — alaidi.net + student |
+| Chain codes Weeks 9–11 as core | **Not in official Fall 2026 syllabus** | HIGH — absent from official table |
+| ANFIS Weeks 14–15 as core | **Not in official weekly topics** | HIGH — absent from official table |
+| Course ends Week 16 mock final | Official site last week **14 (8/12/2026)**; course window ends **8 Dec 2026** | HIGH — alaidi.net + student confirmation |
+| Mitchell file = Fuzzy Logic | **Mitchell = Genetic Algorithms** | HIGH — book copyright page |
+| Ross missing | Ross present but **2nd ed**, filename “Fuzzy Logic for Engineers” | HIGH — book title page |
+| Sivanandam = official 3rd | Vault has **2nd ed** | HIGH |
+| Invented grading weights | **Removed** — not on official page | HIGH — page has no grading table |
+| Jang “slides only” | Full **book scan**, image PDF | HIGH — metadata + page count |
+
+---
+
+*Official syllabus synchronized 2026-09-19 from https://alaidi.net/fall-2026/soft-computing/ by Koko.*
+*Course material shortfalls (missing Week 2+ uploads) are on the source side — not student neglect.*

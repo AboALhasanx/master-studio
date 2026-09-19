@@ -97,3 +97,7 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-19:** Data Mining Week 02 note: Week_02_Data_Types_and_Preparation.md — Gemini templates on lecture text, not a re-compression. URL data type = Nominal.
 
 - **Added 2026-09-19:** Week 03 note: Week_03_Feature_Extraction_and_Portability.md — conversion matrix + similarity graph + info loss + doctor CT/X-ray pipeline. Cross-linked to Week 02, not a re-compression.
+
+- **Added 2026-09-19:** GitHub push recipe 2026-09-19: if 403 Permission denied, clear Env:GITHUB_TOKEN (fine-grained PAT may lack write), then gh auth switch to keyring account (gho with repo scope) + gh auth setup-git + push. APPDATA still required.
+
+- **Added 2026-09-19:** Soft Computing official Fall 2026: alaidi.net 8/9-8/12/2026; midterm 20/10 Weeks 1-6 fuzzy only; NO chain codes/ANFIS as weekly topics; only Lecture 1 posted online; Week 2 (15/9) materials not uploaded; next class Tue 22/9 Week 3 Fuzzy relations/propositions.
