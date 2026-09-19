@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz | Master Studio</title>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/quiz.css">
+</head>
+<body id="quiz-root" 
+      data-direct-mode="{{ 'true' if direct_mode else 'false' }}"
+      data-subject-id="{{ subject_id or '' }}"
+      data-quiz-id="{{ quiz_id or '' }}"
+      data-lan-ip="{{ lan_ip or '' }}">
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        
+        <!-- Top App Bar -->
+        <header class="app-header">
+            <div class="header-left">
+                <button id="btn-exit" class="icon-btn" aria-label="Exit Quiz" title="Back to Dashboard">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+                <div class="header-titles">
+                    <h1 id="quiz-title" class="quiz-title">Interactive Quiz</h1>
+                    <span id="quiz-subtitle" class="quiz-subtitle">Loading topic...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="Saved Questions">
+                    <i data-lucide="bookmark"></i>
+                    <span id="bookmarks-badge" class="badge">0</span>
+                </button>
+                <button id="btn-toggle-analytics" class="icon-btn" aria-label="Open Analytics" title="Session Analytics">
+                    <i data-lucide="bar-chart-2"></i>
+                </button>
+                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress and Dwell Timer Bar -->
+        <section class="progress-section" aria-label="Quiz Progress">
+            <div class="progress-bar-track">
+                <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-meta-row">
+                <div class="progress-counter">
+                    <span id="question-index-label">Question 1</span>
+                    <span class="meta-separator">/</span>
+                    <span id="question-total-label">1</span>
+                </div>
+                <div class="timers-group">
+                    <div class="timer-item" title="Dwell Time for Current Question">
+                        <i data-lucide="clock" class="timer-icon"></i>
+                        <span id="dwell-timer">00:00</span>
+                    </div>
+                    <div class="timer-item" title="Total Session Duration">
+                        <i data-lucide="timer" class="timer-icon"></i>
+                        <span id="session-timer">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Loading Indicator -->
+            <div id="quiz-loading" class="state-view">
+                <div class="spinner"></div>
+                <p>Loading Quiz Content...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="quiz-error" class="state-view hidden">
+                <div class="error-icon-box">
+                    <i data-lucide="alert-triangle"></i>
+                </div>
+                <h2>Unable to Load Quiz</h2>
+                <p id="error-message">The requested quiz could not be found or loaded.</p>
+                <button id="btn-retry-load" class="action-btn primary-btn">
+                    <i data-lucide="refresh-cw"></i>
+                    <span>Retry Loading</span>
+                </button>
+            </div>
+
+            <!-- Active Question View -->
+            <div id="quiz-view" class="quiz-view hidden">
+                <div class="question-card" id="question-card">
+                    <!-- Card Top Header -->
+                    <div class="card-header">
+                        <div class="card-tags">
+                            <span id="bloom-badge" class="tag-badge bloom-tag">Knowledge</span>
+                            <span id="concept-badge" class="tag-badge concept-tag">Concept</span>
+                        </div>
+                        <button id="btn-bookmark-question" class="icon-btn bookmark-btn" aria-label="Bookmark Question" title="Bookmark for review">
+                            <i data-lucide="bookmark" id="bookmark-card-icon"></i>
+                        </button>
+                    </div>
+
+                    <!-- Question Stem -->
+                    <div class="question-body">
+                        <p id="question-text" class="question-text" dir="auto"></p>
+                    </div>
+
+                    <!-- Options Container -->
+                    <div id="options-container" class="options-grid" role="radiogroup" aria-label="Answer Options">
+                        <!-- Rendered by JS: 4 Options (A, B, C, D) -->
+                    </div>
+                </div>
+
+                <!-- Sticky Bottom Navigation -->
+                <nav class="bottom-nav" aria-label="Question Navigation">
+                    <button id="btn-prev" class="nav-btn secondary-btn" aria-label="Previous Question">
+                        <i data-lucide="arrow-left"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button id="btn-clear" class="nav-btn text-btn" aria-label="Clear Choice">
+                        <i data-lucide="rotate-ccw"></i>
+                        <span>Clear</span>
+                    </button>
+                    <button id="btn-next" class="nav-btn primary-btn" aria-label="Next Question">
+                        <span id="next-btn-text">Next</span>
+                        <i data-lucide="arrow-right" id="next-btn-icon"></i>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Results & Review View -->
+            <div id="results-view" class="results-view hidden">
+                
+                <!-- Telemetry Sync Banner (Revealed on submission) -->
+                <div id="sync-status-banner" class="sync-banner hidden">
+                    <i data-lucide="check-circle" class="sync-banner-icon"></i>
+                    <div class="sync-banner-text">
+                        <strong>Telemetry Recorded</strong>
+                        <span>Performance metrics synced with Master Studio.</span>
+                    </div>
+                </div>
+
+                <!-- Score Overview Card -->
+                <div class="results-card">
+                    <div class="score-circle-wrapper">
+                        <div class="score-circle">
+                            <span id="score-percentage" class="score-number">0%</span>
+                            <span class="score-fraction" id="score-fraction">0 / 0</span>
+                        </div>
+                        <div class="score-status-badge" id="score-badge">
+                            <i data-lucide="check-circle-2" id="score-badge-icon"></i>
+                            <span id="score-badge-text">Pass</span>
+                        </div>
+                    </div>
+
+                    <!-- Summary Stats Grid -->
+                    <div class="stats-summary-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper correct-accent">
+                                <i data-lucide="check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Correct</span>
+                                <span id="stat-correct" class="stat-val">0</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper wrong-accent">
+                                <i data-lucide="x"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Wrong</span>
+                                <span id="stat-wrong" class="stat-val">0</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper time-accent">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Avg Dwell</span>
+                                <span id="stat-avg-dwell" class="stat-val">0s</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper lucky-accent">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Lucky Guesses</span>
+                                <span id="stat-lucky" class="stat-val">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Actions -->
+                    <div class="results-action-row">
+                        <button id="btn-retry-quiz" class="action-btn secondary-btn">
+                            <i data-lucide="refresh-cw"></i>
+                            <span>Try Again</span>
+                        </button>
+                        <button id="btn-submit-telemetry" class="action-btn primary-btn">
+                            <i data-lucide="send"></i>
+                            <span>Send to Master Studio</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reflection & Breakdown Section -->
+                <section class="breakdown-section" aria-label="Detailed Review & Metacognitive Reflection">
+                    <div class="breakdown-header">
+                        <h2>Detailed Review & Reflection</h2>
+                        <div class="filter-pills" role="tablist">
+                            <button class="filter-pill active" data-filter="all" role="tab">All (<span id="filter-count-all">0</span>)</button>
+                            <button class="filter-pill" data-filter="wrong" role="tab">Wrong (<span id="filter-count-wrong">0</span>)</button>
+                            <button class="filter-pill" data-filter="correct" role="tab">Correct (<span id="filter-count-correct">0</span>)</button>
+                            <button class="filter-pill" data-filter="lucky" role="tab">Lucky (<span id="filter-count-lucky">0</span>)</button>
+                        </div>
+                    </div>
+
+                    <!-- Question Review Cards Container -->
+                    <div id="review-cards-list" class="review-cards-list">
+                        <!-- Injected via JS -->
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <!-- Slide-Over Drawer Overlay -->
+        <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+
+        <!-- Bookmarks Drawer -->
+        <aside id="bookmarks-drawer" class="drawer" aria-labelledby="bookmarks-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="bookmark" class="drawer-header-icon"></i>
+                    <h2 id="bookmarks-drawer-title">Bookmarked Questions</h2>
+                </div>
+                <button id="btn-close-bookmarks" class="icon-btn" aria-label="Close Bookmarks">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div id="bookmarks-list" class="drawer-list">
+                    <!-- Rendered by JS -->
+                </div>
+                <div id="bookmarks-empty" class="drawer-empty-state">
+                    <i data-lucide="bookmark-check" class="empty-state-icon"></i>
+                    <p>No questions bookmarked yet.</p>
+                    <span>Tap the bookmark icon on any question to save it for review.</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Analytics Drawer -->
+        <aside id="analytics-drawer" class="drawer" aria-labelledby="analytics-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="bar-chart-2" class="drawer-header-icon"></i>
+                    <h2 id="analytics-drawer-title">Session Analytics</h2>
+                </div>
+                <button id="btn-close-analytics" class="icon-btn" aria-label="Close Analytics">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="analytics-section">
+                    <h3>Performance by Bloom Level</h3>
+                    <div id="analytics-bloom-bars" class="analytics-bars">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <div class="analytics-section">
+                    <h3>Concept Mastery</h3>
+                    <div id="analytics-concept-list" class="analytics-concept-list">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <div class="analytics-section">
+                    <h3>Pacing & Dwell Times</h3>
+                    <div class="pacing-metrics-grid">
+                        <div class="pacing-metric-card">
+                            <span class="pacing-label">Fastest Response</span>
+                            <span id="pacing-fastest" class="pacing-val">--</span>
+                        </div>
+                        <div class="pacing-metric-card">
+                            <span class="pacing-label">Slowest Response</span>
+                            <span id="pacing-slowest" class="pacing-val">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-section">
+                    <h3>Session ID</h3>
+                    <div class="uuid-badge-box">
+                        <span id="analytics-uuid" class="uuid-text">--------</span>
+                        <button id="btn-copy-uuid" class="icon-btn-sm" aria-label="Copy UUID" title="Copy UUID">
+                            <i data-lucide="copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/quiz.js"></script>
+</body>
+</html>
