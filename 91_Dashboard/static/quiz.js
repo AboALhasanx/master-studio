@@ -963,7 +963,7 @@ class QuizApp {
 
             // Metacognitive Section
             if (!isCorrect) {
-                // Wrong Answer: 4 Reflection Chips + Note Field
+                // Wrong Answer: compact reason picker + optional note
                 const reflectionBox = document.createElement('div');
                 reflectionBox.className = 'reflection-box';
 
@@ -971,32 +971,23 @@ class QuizApp {
                 const currentNotes = this.reflections[idx]?.notes || '';
 
                 reflectionBox.innerHTML = `
-                    <span class="reflection-title">
+                    <label class="reflection-select-wrap">
                         <i data-lucide="help-circle"></i>
-                        <span>${t.rootCauseTitle}</span>
-                    </span>
-                    <div class="reflection-chips">
-                        ${reflectionOptions.map(reason => `
-                            <button type="button" class="reflection-chip ${currentReason === reason ? 'selected' : ''}" data-reason="${reason}">
-                                <i data-lucide="target"></i>
-                                <span>${t.chips[reason] || reason}</span>
-                            </button>
-                        `).join('')}
-                    </div>
+                        <select class="reflection-select" aria-label="${t.rootCauseTitle}">
+                            ${reflectionOptions.map(reason => `
+                                <option value="${reason}" ${currentReason === reason ? 'selected' : ''}>${t.chips[reason] || reason}</option>
+                            `).join('')}
+                        </select>
+                        <i data-lucide="chevron-down" class="reflection-caret"></i>
+                    </label>
                     <input type="text" class="reflection-notes-input" placeholder="${t.reflectionPlaceholder}" value="${this.escapeHtml(currentNotes)}">
                 `;
 
-                // Handle Chip selection
-                const chips = reflectionBox.querySelectorAll('.reflection-chip');
-                chips.forEach(chip => {
-                    chip.addEventListener('click', (e) => {
-                        const reason = e.currentTarget.getAttribute('data-reason');
-                        chips.forEach(c => c.classList.remove('selected'));
-                        e.currentTarget.classList.add('selected');
-                        
-                        if (!this.reflections[idx]) this.reflections[idx] = { reason: '', notes: '' };
-                        this.reflections[idx].reason = reason;
-                    });
+                // Handle Reason selection (native picker — mobile bottom-sheet)
+                const reasonSelect = reflectionBox.querySelector('.reflection-select');
+                reasonSelect?.addEventListener('change', (e) => {
+                    if (!this.reflections[idx]) this.reflections[idx] = { reason: 'Concept Gap', notes: '' };
+                    this.reflections[idx].reason = e.target.value;
                 });
 
                 // Handle Notes input
