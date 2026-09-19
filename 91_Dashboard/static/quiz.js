@@ -290,13 +290,98 @@ class QuizApp {
         this.sessionStartTime = Date.now();
         this.dwellStartTime = Date.now();
         
+        // Normalize Subject ID & Questions Data
+        const subjectDisplay = this.quizData.subject || this.quizData.subject_id || this.subjectId || '';
+        this.quizData.subject_id = subjectDisplay;
+
+        if (Array.isArray(this.quizData.questions)) {
+            this.quizData.questions.forEach((q, idx) => {
+                if (!q) return;
+
+                // Ensure question id
+                if (!q.id) {
+                    q.id = `q_${idx + 1}`;
+                }
+
+                let optionsArray = [];
+                let optionKeys = [];
+
+                if (Array.isArray(q.options)) {
+                    optionsArray = q.options;
+                    optionKeys = ['A', 'B', 'C', 'D'].slice(0, q.options.length);
+                } else if (q.options && typeof q.options === 'object') {
+                    optionKeys = Object.keys(q.options);
+                    optionsArray = Object.values(q.options);
+                } else {
+                    optionsArray = [];
+                    optionKeys = [];
+                }
+
+                // Resolve correct answer index (0-3) and correct letter ('A'-'D')
+                let correctIdx = 0;
+                let correctLetter = 'A';
+
+                if (q.answer !== undefined && q.answer !== null) {
+                    if (typeof q.answer === 'string') {
+                        const cleanAns = q.answer.trim().toUpperCase();
+                        const keyIdx = optionKeys.indexOf(cleanAns);
+                        if (keyIdx !== -1) {
+                            correctIdx = keyIdx;
+                            correctLetter = cleanAns;
+                        } else {
+                            const parsed = parseInt(cleanAns, 10);
+                            if (!isNaN(parsed) && parsed >= 0 && parsed < optionsArray.length) {
+                                correctIdx = parsed;
+                                correctLetter = optionKeys[parsed] || ['A', 'B', 'C', 'D'][parsed] || 'A';
+                            } else {
+                                correctIdx = 0;
+                                correctLetter = optionKeys[0] || 'A';
+                            }
+                        }
+                    } else if (typeof q.answer === 'number') {
+                        correctIdx = q.answer;
+                        correctLetter = optionKeys[q.answer] || ['A', 'B', 'C', 'D'][q.answer] || 'A';
+                    }
+                } else if (q.correct !== undefined && q.correct !== null) {
+                    if (typeof q.correct === 'number') {
+                        correctIdx = q.correct;
+                        correctLetter = optionKeys[q.correct] || ['A', 'B', 'C', 'D'][q.correct] || 'A';
+                    } else if (typeof q.correct === 'string') {
+                        const cleanCorr = q.correct.trim().toUpperCase();
+                        const keyIdx = optionKeys.indexOf(cleanCorr);
+                        if (keyIdx !== -1) {
+                            correctIdx = keyIdx;
+                            correctLetter = cleanCorr;
+                        } else {
+                            const parsed = parseInt(cleanCorr, 10);
+                            if (!isNaN(parsed) && parsed >= 0 && parsed < optionsArray.length) {
+                                correctIdx = parsed;
+                                correctLetter = optionKeys[parsed] || ['A', 'B', 'C', 'D'][parsed] || 'A';
+                            } else {
+                                correctIdx = 0;
+                                correctLetter = optionKeys[0] || 'A';
+                            }
+                        }
+                    }
+                } else {
+                    correctIdx = 0;
+                    correctLetter = optionKeys[0] || 'A';
+                }
+
+                q.options = optionsArray;
+                q.optionKeys = optionKeys;
+                q.correct = correctIdx;
+                q.correctLetter = correctLetter;
+            });
+        }
+
         // Update Header Titles
         if (this.dom.quizTitle) {
             this.dom.quizTitle.textContent = this.quizData.topic || 'Interactive Quiz';
         }
         if (this.dom.quizSubtitle) {
-            this.dom.quizSubtitle.textContent = this.quizData.subject_id 
-                ? `${this.quizData.subject_id} • ${this.quizData.questions.length} Questions`
+            this.dom.quizSubtitle.textContent = subjectDisplay 
+                ? `${subjectDisplay} • ${this.quizData.questions.length} Questions`
                 : `${this.quizData.questions.length} Questions`;
         }
 
@@ -389,9 +474,9 @@ class QuizApp {
         // Render Options (A, B, C, D)
         if (this.dom.optionsContainer) {
             this.dom.optionsContainer.innerHTML = '';
-            const optionLetters = ['A', 'B', 'C', 'D'];
+            const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
             
-            q.options.forEach((optText, optIdx) => {
+            (q.options || []).forEach((optText, optIdx) => {
                 const isSelected = this.answers[index] === optIdx;
                 
                 const tile = document.createElement('button');
@@ -402,7 +487,7 @@ class QuizApp {
 
                 const letter = document.createElement('div');
                 letter.className = 'option-letter';
-                letter.textContent = optionLetters[optIdx] || `${optIdx + 1}`;
+                letter.textContent = optionKeys[optIdx] || `${optIdx + 1}`;
 
                 const content = document.createElement('div');
                 content.className = 'option-content';
@@ -605,8 +690,9 @@ class QuizApp {
             // Options List with highlights
             const optionsList = document.createElement('div');
             optionsList.className = 'review-options-list';
+            const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
 
-            q.options.forEach((optText, optIdx) => {
+            (q.options || []).forEach((optText, optIdx) => {
                 const isUserChoice = userAns === optIdx;
                 const isCorrectOption = q.correct === optIdx;
                 let optClass = 'review-option-item';
@@ -620,8 +706,8 @@ class QuizApp {
                 const optItem = document.createElement('div');
                 optItem.className = optClass;
                 optItem.innerHTML = `
-                    <span class="review-option-indicator">${optionLetters[optIdx]}</span>
-                    <span>${optText}</span>
+                    <span class="review-option-indicator">${optionKeys[optIdx] || String.fromCharCode(65 + optIdx)}</span>
+                    <span>${this.escapeHtml(optText)}</span>
                 `;
                 optionsList.appendChild(optItem);
             });
@@ -774,14 +860,21 @@ class QuizApp {
 
             const isLucky = !!this.luckyGuesses[idx];
             const reflection = this.reflections[idx];
+            const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
+            const selectedKey = userAns !== undefined ? (optionKeys[userAns] || ['A', 'B', 'C', 'D'][userAns] || null) : null;
+            const correctKey = q.correctLetter || optionKeys[q.correct] || ['A', 'B', 'C', 'D'][q.correct] || 'A';
 
             return {
-                id: q.id || `q_${idx}`,
+                id: q.id || `q_${idx + 1}`,
+                selected: selectedKey,
+                correct: correctKey,
                 concept_id: q.concept_id || 'concept_general',
                 is_correct: isCorrect,
                 is_lucky_guess: isLucky,
-                reflection_reason: !isCorrect ? (reflection?.reason || 'Concept Gap') : null,
-                reflection_notes: !isCorrect ? (reflection?.notes || '') : '',
+                reflection: !isCorrect ? {
+                    reason: reflection?.reason || 'Concept Gap',
+                    note: reflection?.notes || reflection?.note || ''
+                } : null,
                 dwell_time_seconds: parseFloat(dwell.toFixed(1))
             };
         });
@@ -792,7 +885,7 @@ class QuizApp {
 
         const payload = {
             submission_uuid: this.submissionUUID,
-            subject_id: this.quizData.subject_id || this.subjectId || 'CS_GENERAL',
+            subject_id: this.quizData.subject || this.quizData.subject_id || this.subjectId || 'CS_GENERAL',
             topic: this.quizData.topic || 'Interactive Quiz',
             summary: {
                 total,
