@@ -9,6 +9,8 @@
 > **Last synced from official site:** 2026-09-19  
 > **Confidence:** HIGH — syllabus table + textbooks + Lecture 1 download match the live alaidi.net page and the local HTML mirror `02_Raw_Materials/Soft Computing - alaidi (Web Page).html`
 
+> **Student note 2026-09-19:** Week 1 in class was intro/welcome only; Week 2 materials are **still not posted** on the doctor’s site. He may **renumber or slow the official table**. Use alaidi.net as the best public map, but **treat week labels and the midterm date as provisional** until confirmed in class.
+
 ---
 
 ## 1. Official Textbooks (as published on alaidi.net)

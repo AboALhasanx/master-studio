@@ -1,9 +1,9 @@
-# 📊 Master Studio: Longitudinal Progress & Mastery Analytics
+# Master Studio: Longitudinal Progress & Mastery Analytics
 
 > **Student:** Abu Al-Hasan — 1st Year Master of Computer Science  
 > **Institution:** College of Computer Science & IT — University of Wasit  
-> **Academic Target:** Maintain $\ge 80\%$ mastery buffer above the ministerial $60\%$ course minimum and $70\%\text{--}75\%$ GPA transition threshold.  
-> **Last Updated:** 2026-09-18  
+> **Academic Target:** Maintain buffer above ministerial **60%** course minimum and **70–75%** GPA transition floor; Studio excellence target **75%+**  
+> **Last Updated:** 2026-09-19  
 
 ---
 
@@ -15,94 +15,76 @@
 +-----------------------------------------------------------------------------------------------+
 | Subject                    | Credits | Drills Taken  | Average Score | Exam Readiness Status  |
 |----------------------------|:-------:|:-------------:|:-------------:|:----------------------:|
-| 01_Cyber_Security          |    2    |       3       |     68%       | 🟢 Active / W1 in drill |
-| 02_English_Language        |    1    |       1       |     100%      | 🟢 Active / Unit 1 Done|
-| 03_Data_Mining             |    2    |       0       |      --       | 🟢 Notes W1 written    |
-| 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 Active / On Track   |
-| 05_Soft_Computing          |    2    |       0       |      --       | 🟡 Staged (Jang ready) |
-| 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material)|
+| 01_Cyber_Security          |    2    |       3       |     ~68%      | 🟢 Theory done · 🔴 drills before Sun quiz |
+| 02_English_Language        |    1    |       1       |     100%      | 🟢 Unit 1 done · presentation 27/9 |
+| 03_Data_Mining             |    2    |   banks only  |      --       | 🟢 W01–W03 comprehensive notes ready |
+| 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 On track |
+| 05_Soft_Computing          |    2    |       0       |      --       | 🟡 Official syllabus synced · W01 note draft · W2 materials not posted |
+| 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material from professor) |
 +-----------------------------------------------------------------------------------------------+
-| Overall Semester Readiness: 41.6% | Target Benchmark: >= 80% across all 6 courses             |
+| Content artifacts: Cyber W1 notes · English U1 · DM W1–W3 · ASE W1 · SC syllabus+W01 draft   |
+| Overall readiness: improved vs 2026-09-18 — primary remaining risk = Cyber Sunday quiz drills |
 +-----------------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 2. Subject-by-Subject Cognitive Breakdown
+## 2. Subject-by-Subject
 
-### 01_Cyber_Security (CS501) — Asst. Prof. Dr. Huda Lafta Majeed
-* **Target Units:** 16 Weeks
-* **Status:** Week 01 drilled topic-by-topic (3 rounds). Master note + question bank built.
-* **Mastered / Solid:**
-  - [x] Formula application — $\min R$ and $U(C,I,A)$ both computed correctly on the last two attempts
-  - [x] The 4 audience levels and the 6 cyber domains (content correct; detail gaps fixed)
-  - [x] The difference between $\min R$ (optimise) and $R(t)$ (measure)
-  - [x] Reasoning quality — his own domain examples (bank vs paint app, emergency vs streaming) show real understanding
-* **Active Review Queue (Needs Reinforcement):**
-  - [ ] 🔴 **`Integrity` — not `Integration`.** Wrote the wrong term twice (Q1 + Q3). Core CIA vocabulary.
-  - [ ] **Scenario answer format** — step → CIA pillar → (techniques in parentheses). Newly learned, needs drilling.
-  - [ ] **Exact domain technique lists** — missed IPS, OWASP, IAM; added Firewall to the CIA-Confidentiality list (belongs to Network Security).
-  - [ ] **Timeline date** — ARPANET/mainframes = **1960s** (wrote 1980s).
-  - [ ] **$\min R$ symbol P = Probability** (wrote "Portability").
-  - [ ] **Banking weighting** — for a bank, **Integrity (β) is the heaviest**, not the lightest.
-  - [ ] **English technical spelling** in written answers (Legal · continuity · cross-border · financial · Availability · emergency · weight).
+### 01_Cyber_Security — Dr. Huda Lafta Majeed
+- **Done:** Week 01 theory Topics 1–6 master note + question bank + annotation map; Chapter 7 excluded by doctor.
+- **Mastered / solid:** formula path after correction; domain list content; CIA structure once terms fixed.
+- **Open review queue:** Integrity not Integration · scenario format step→CIA→(techniques) · technique lists (IPS/OWASP/IAM) · ARPANET 1960s · P=Probability · min-R arithmetic · banking Integrity weight · English spelling.
+- **Immediate:** scenario drills before **Sunday 2026-09-20** daily quiz (soft stakes, essay ~10 min).
 
-### 04_Advanced_Software_Eng (CS603) — Dr. Ali Fahim
-* **Target Units:** 16 Weeks
-* **Mastered Competencies ($\ge 80\%$ Score):**
-  - [x] Dhahran Patriot Missile 24-bit truncation drift kinematics ($0.3433\text{s} \rightarrow 687\text{m}$)
-  - [x] Brooks' "No Silver Bullet": Essential vs. Accidental complexity breakdown
-  - [x] Tripartite Software Definition ($\text{Code} + \text{Data Structures} + \text{Documentation}$)
-  - [x] Laprie / IEEE Dependability taxonomy ($\text{Error} \rightarrow \text{Fault} \rightarrow \text{Failure}$)
-* **Active Review Queue (Needs Reinforcement):**
-  - [ ] ACM/IEEE 8 Code of Ethics Principles (scenario-based application)
-  - [ ] Brooks' Law quadratic communication channels equation ($C = \frac{N(N-1)}{2}$)
+### 02_English_Language — Dr. Haidar Akab Alwan
+- **Done:** Unit 1 grammar/tenses + Headway U1 solutions + exam index + quiz.
+- **Open:** presentation ~5 min on **2026-09-27** (student-reported, low stakes).
 
-### 02_English_Language (CS502) — Asst. Prof. Dr. Haidar Akab Alwan
-* **Target Units:** 16 Weeks
-* **Mastered Competencies ($\ge 80\%$ Score):**
-  - [x] English Tense Matrix (Simple vs. Continuous vs. Perfect Aspect)
-  - [x] Time Adverbials Syntax & Bounded Past Compatibility Rules (10 Diagnostic Sentences)
-  - [x] Register Translation (Informal Ellipsis to Formal Academic Publishing)
-  - [x] Compound Word Morphosemantics (House vs. Home Semantic Contrast)
-* **Outstanding:** presentation (~5 min) on 2026-09-27 — low stakes.
+### 03_Data_Mining — Dr. Ahmed Shakir
+- **Done:** Week 01 comprehensive (Gemini frameworks preserved) · **Week 02 comprehensive** (types + preparation, 50Q, URL=Nominal) · **Week 03 comprehensive** (feature extraction + portability, 35Q).
+- **Open:** Monday 2026-09-21 lecture W03; optional drill of note question banks.
+- **Professor question:** URL data type → **Nominal** (recorded).
 
-### 03_Data_Mining (CS503) — Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida
-* **Status:** Week 01 master note **written** → `03_Study_Notes/Week_01_Introduction_to_Data_Mining.md`, built on the student's own smart-memorisation framework (developed with Gemini and preserved as `02_Raw_Materials/Gemini - Smart Memorisation Framework (Data Mining).pdf`).
-* **Covered:** definition + **KDD** · the **7 advantages organised into 3 levels** (Data → Business → Tech) · the **4 disadvantages in 3 levels** (Privacy → Tools → Accuracy, incl. the American Express example) · the **8 application domains** with the **2-Keyword Rule** · the **6 challenges** with the **3-Element Formula** (Nature → Root Cause → Consequence).
-* **Method note:** the lecture text is long and repetitive; the note keeps only the exam-relevant skeleton and the professor's keyword-based marking logic.
-* **Open question from the professor:** Week 02 data representation & preparation — *"what is the data type of a URL?"* → answered as **Nominal** attribute, in his taxonomy.
+### 04_Advanced_Software_Eng — Dr. Ali Fahim
+- **Done:** W01 note + DOCX + seminar PPTX + diagrams + quiz.
+- **Open:** ACM/IEEE ethics scenarios · Brooks’ law formula recall (review queue).
 
-### 05_Soft_Computing (CS505) — Prof. Dr. Abdul Hadi Mohammed Adkhil
-* **Status:** No study notes yet. Week 01 pptx + 6 reference books staged.
+### 05_Soft_Computing — Prof. Dr. Abdul Hadi Alaidi
+- **Official source:** alaidi.net Fall 2026 (window 8/9–8/12/2026). Midterm on site **20/10 Weeks 1–6 fuzzy** — **provisional** (professor may renumber; Week 1 was intro only; Week 2 still unposted).
+- **Done:** syllabus rewrite · textbook identity fixed (Mitchell=GA, Ross 2nd) · W01 note **draft** from 32 slides + images.
+- **Pending:** student permission to **rebuild W01 note in Data Mining comprehension style** (no AI-slop compression).
+- **Gap:** Week 2 class material not on professor site — not student neglect.
 
-### 06_Artificial_Intelligence (CS506) — Prof. Dr. Saif Ali Al-Saidi
-* **Status:** ⏸️ **ON HOLD.** The professor has delivered **no material at all** as of 2026-09-18 (course Telegram group exists; only a request to use real names). Not the student's fault. Excluded from the study plan until material appears.
+### 06_Artificial_Intelligence — Prof. Dr. Saif Ali Al-Saidi
+- **Status:** ON HOLD. No slides/syllabus posted. Do not proactively check the Telegram group; Abu Al-Hasan reports when material appears.
 
 ---
 
-## 3. Longitudinal Drill & Evaluation History
+## 3. Drill & Evaluation History
 
-Every interactive drill taken via `quiz_runner.py`, from mobile chatbots, or graded on paper is recorded here:
+| Log ID | Date | Subject | Topic | Score | Result |
+|:---:|:---:|:---|:---|:---:|:---|
+| #001 | 2026-09-16 | ASE | Lecture 01 | 4/5 (80%) | PASS |
+| #002 | 2026-09-17 | English | Unit 01 Grammar | 5/5 (100%) | PASS |
+| #003 | 2026-09-18 | Cyber | W1 Topic 1 min-R etc. | 4/7 | REVISE |
+| #004 | 2026-09-18 | Cyber | W1 Topic 2 domains/R(t) | Content OK | PASS (gaps) |
+| #005 | 2026-09-18 | Cyber | W1 Topic 3 CIA U() | 3.5/5 | PASS (term) |
 
-| Log ID | Date | Subject | Topic / Source | Score | Result | Status |
-|:---:|:---:|:---|:---|:---:|:---:|:---:|
-| #001 | 2026-09-16 | `04_Advanced_Software_Eng` | Lecture 01 Foundations & Crisis | 4 / 5 (80%) | PASS | 🟢 Mastered |
-| #002 | 2026-09-17 | `02_English_Language` | Unit 01 Grammar & Tenses | 5 / 5 (100%) | PASS | 🟢 Mastered |
-| #003 | 2026-09-18 | `01_Cyber_Security` | W1 Topic 1 — definition, scope, evolution, $\min R$ | 4 / 7 | ⚠️ REVISE | 🔴 3 errors |
-| #004 | 2026-09-18 | `01_Cyber_Security` | W1 Topic 2 — levels, domains, $R(t)$ | Content ✅ / detail ⚠️ | PASS | 🟡 Gaps |
-| #005 | 2026-09-18 | `01_Cyber_Security` | W1 Topic 3 — CIA Triad, $U(C,I,A)$ | 3.5 / 5 | PASS | 🟡 Term error |
-
-**Trend note:** arithmetic improved sharply across the session — the $\min R$ attempt failed on a calculation slip, while $R(t)$ and $U(C,I,A)$ were both computed **correctly and cleanly**. Remaining risk is **terminology and spelling**, not comprehension.
+**Trend:** arithmetic improved; remaining Cyber risk = terminology/spelling/format, not concepts.
 
 ---
 
-## 4. Assessment Strategy & Grading Thresholds
+## 4. Assessment Thresholds (regulatory — do not invent course weights)
 
-```
-[0% ──────────── 59%] ──> 🔴 FAILING (Below Ministerial 60% Subject Floor)
-[60% ─────────── 69%] ──> 🟡 DANGER (Passing subject, but below 70% Cumulative GPA Floor)
-[70% ─────────── 74%] ──> 🟠 BORDERLINE (Meets National 70% Floor, below Wasit 75% Target)
-[75% ─────────── 84%] ──> 🟢 SAFE (Meets Institutional Target; qualifies for Thesis)
-[85% ────────── 100%] ──> 🌟 DISTINCTION (High Honors / Excellent preparation)
-```
+| Floor | Meaning |
+|:---|:---|
+| **60%** | Individual course pass minimum (MOHESR) |
+| **70%** | Cumulative legal floor for thesis transition |
+| **75%** | Master Studio institutional target |
+
+Course-level grading schemes are only recorded when the **professor states them**.
+
+---
+
+*Updated 2026-09-19 by Koko.*

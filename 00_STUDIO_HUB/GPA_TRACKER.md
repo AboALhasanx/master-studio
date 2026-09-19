@@ -53,9 +53,9 @@ $$\text{Weighted Grade Points}_i = \text{Grade}_i \times \text{Credits}_i$$
 |:---:|:---|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|
 | **CS501** | `01_Cyber_Security` | 2 | Asst. Prof. Dr. Huda Lafta Majeed | — | — | **—** | — | 85.0% | Active (W1) |
 | **CS502** | `02_English_Language` | 1 | Asst. Prof. Dr. Haidar Akab Alwan | — | — | **—** | — | 90.0% | Unit 1 done |
-| **CS503** | `03_Data_Mining` | 2 | Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida | — | — | **—** | — | 85.0% | Pending |
-| **CS504** | `04_Advanced_Software_Eng` | 3 | Asst. Prof. Dr. Ali Fahim Ni'ma | — | — | **—** | — | 88.0% | Active |
-| **CS505** | `05_Soft_Computing` | 2 | Prof. Dr. Abdul Hadi Mohammed Adkhil | — | — | **—** | — | 82.0% | Pending |
+| **CS503** | `03_Data_Mining` | 2 | Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida | — | — | **—** | — | 85.0% | Notes W1–W3 done |
+| **CS504** | `04_Advanced_Software_Eng` | 3 | Asst. Prof. Dr. Ali Fahim Ni'ma | — | — | **—** | — | 88.0% | Active (W01 done) |
+| **CS505** | `05_Soft_Computing` | 2 | Prof. Dr. Abdul Hadi Mohammed Adkhil | — | — | **—** | — | 82.0% | Syllabus synced · W01 draft |
 | **CS506** | `06_Artificial_Intelligence` | 3 | Prof. Dr. Saif Ali Al-Saidi | — | — | **—** | — | 85.0% | ⏸️ Awaiting course start |
 | **TOTAL** | **Semester 1 Cumulative** | **13** | — | — | — | **—** | **—** | **85.5%** | **In Progress** |
 

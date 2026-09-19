@@ -1,7 +1,7 @@
 ---
 title: "College Buddy: Academic Events & Interactive Deadlines Ledger"
 type: "interactive-buddy-ledger"
-last_updated: "2026-09-18"
+last_updated: "2026-09-19"
 version: "1.1.0"
 ---
 
@@ -21,9 +21,9 @@ version: "1.1.0"
 
 | ID | Target Date | Subject | Event / Topic | Professor | Status | Urgency | Buddy Notes / Action |
 |:---|:---|:---|:---|:---|:---|:---|:---|
-| **EVT-04** | 2026-09-20 (Sun) | 01_Cyber_Security | **Daily quiz (امتحان يومي)** — Week 01 material | Dr. Huda Lafta Majeed | UPCOMING | **HIGH** | Sunday lecture, 08:30–10:30. Revise Week 01 Cyber Security content. |
-| **EVT-05** | 2026-09-27 (Sun) | 02_English_Language | **Presentation (~5 min)** — write a short research-style paper on any computer/software field in English, using field terminology; present it on the Data Show and explain the terms | Dr. Haidar Akab Alwan | UPCOMING | LOW | Purpose: the professor wants to show the class how research papers are written. Student says it is *not* high-stakes. |
-| **EVT-06** | open | 03_Data_Mining | **Standing question** from Dr. Ahmed Shakir: Week 02 *data representation & preparation* (preprocessing before data mining), specifically **"what is the data type of a URL?"** | Dr. Ahmed Shakir Abd Al-Rida | OPEN | MEDIUM | Raised in the previous lecture. Needs an answer. |
+| **EVT-04** | 2026-09-20 (Sun) | 01_Cyber_Security | **Daily quiz (امتحان يومي)** — Week 01 material | Dr. Huda Lafta Majeed | UPCOMING | **HIGH** | Sunday lecture, 08:30–10:30. Essay/soft stakes. Scenario drills still open. |
+| **EVT-05** | 2026-09-27 (Sun) | 02_English_Language | **Presentation (~5 min)** — short research-style paper on any computer/software field in English; present on Data Show | Dr. Haidar Akab Alwan | UPCOMING | LOW | Student: not high-stakes. |
+| **EVT-06** | answered 2026-09-19 | 03_Data_Mining | **Standing question:** data type of a **URL** | Dr. Ahmed Shakir | **ANSWERED** | — | **Nominal** attribute (no natural order, no measurable gap). Recorded in Week 02 comprehensive note §1.2. Still may be asked in class Monday. |
 
 > **Correction — 2026-09-18, confirmed by the student.** The earlier entries `EVT-01` ("Lecture 01 Oral Defense Drill", 2026-09-21) and `EVT-02` ("Unit 01 Grammar & Tenses Submission", 2026-09-20) were **inferred by an agent and are NOT real scheduled events**. The student confirmed no such dated events exist. Both have been moved to §3 Event History as `INVALID`. **Do not present agent-inferred events to the student as deadlines.**
 
