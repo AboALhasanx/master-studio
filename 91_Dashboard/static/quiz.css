@@ -56,6 +56,7 @@
 
     --progress-track: rgba(255, 255, 255, 0.12);
     --progress-fill: #FFFFFF;
+    --progress-glow: rgba(255, 255, 255, 0.4);
 
     --btn-primary-bg: #FFFFFF;
     --btn-primary-text: #0B0D11;
@@ -127,8 +128,9 @@
     --purple: #7C3AED;
     --purple-bg: rgba(124, 58, 237, 0.10);
 
-    --progress-track: #E2E4E9;
+    --progress-track: #CBD2DC;
     --progress-fill: #111827;
+    --progress-glow: rgba(17, 24, 39, 0.25);
 
     --btn-primary-bg: #111827;
     --btn-primary-text: #FFFFFF;
@@ -436,15 +438,15 @@ input:focus, textarea:focus {
 .progress-bar-track {
     width: 100%;
     height: 4px;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: var(--progress-track);
     border-radius: var(--radius-full);
     overflow: hidden;
 }
 
 .progress-bar-fill {
     height: 100%;
-    background: #FFFFFF;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    background: var(--progress-fill);
+    box-shadow: 0 0 8px var(--progress-glow);
     border-radius: var(--radius-full);
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
