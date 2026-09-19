@@ -992,6 +992,8 @@ input:focus, textarea:focus {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-top: 0.25rem;
+    direction: ltr;
+    unicode-bidi: isolate;
 }
 
 .score-status-badge {
@@ -1076,10 +1078,18 @@ input:focus, textarea:focus {
 .stat-info {
     display: flex;
     flex-direction: column;
+    gap: 0.1rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.2;
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
 }
 
@@ -1176,11 +1186,11 @@ input:focus, textarea:focus {
 }
 
 .review-card.correct-border {
-    border-left: 4px solid var(--success);
+    border-inline-start: 4px solid var(--success);
 }
 
 .review-card.wrong-border {
-    border-left: 4px solid var(--error);
+    border-inline-start: 4px solid var(--error);
 }
 
 .review-card-header {
@@ -1254,6 +1264,33 @@ input:focus, textarea:focus {
     font-size: 0.9rem;
 }
 
+.review-option-text {
+    flex: 1;
+}
+
+.review-option-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.68rem;
+    font-weight: 800;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+}
+
+.review-option-badge.you {
+    background-color: var(--error-bg);
+    color: var(--error);
+    border: 1px solid var(--error-border);
+}
+
+.review-option-badge.correct {
+    background-color: var(--success-bg);
+    color: var(--success);
+    border: 1px solid var(--success-border);
+}
+
 .review-option-item.user-wrong {
     background-color: var(--error-bg);
     border-color: var(--error-border);
@@ -1282,7 +1319,7 @@ input:focus, textarea:focus {
 .review-explanation-box {
     padding: 0.875rem 1rem;
     background-color: var(--bg-surface);
-    border-left: 3px solid var(--accent);
+    border-inline-start: 3px solid var(--accent);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-size: 0.875rem;
     color: var(--text-muted);

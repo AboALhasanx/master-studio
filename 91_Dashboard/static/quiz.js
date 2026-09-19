@@ -804,7 +804,7 @@ class QuizApp {
             this.dom.scoreBadge.className = `score-status-badge ${isPassed ? 'pass' : 'fail'}`;
         }
         if (this.dom.scoreBadgeText) {
-            this.dom.scoreBadgeText.textContent = isPassed ? 'Pass' : 'Needs Review';
+            this.dom.scoreBadgeText.textContent = isPassed ? (this.lang === 'ar' ? 'ناجح' : 'Pass') : (this.lang === 'ar' ? 'بحاجة لمراجعة' : 'Needs Review');
         }
         if (this.dom.scoreBadgeIcon) {
             this.dom.scoreBadgeIcon.setAttribute('data-lucide', isPassed ? 'check-circle-2' : 'alert-triangle');
@@ -812,7 +812,7 @@ class QuizApp {
 
         if (this.dom.statCorrect) this.dom.statCorrect.textContent = correctCount.toString();
         if (this.dom.statWrong) this.dom.statWrong.textContent = wrongCount.toString();
-        if (this.dom.statAvgDwell) this.dom.statAvgDwell.textContent = `${avgDwell}s`;
+        if (this.dom.statAvgDwell) this.dom.statAvgDwell.textContent = `${avgDwell} ث`;
         if (this.dom.statLucky) {
             const luckyCount = Object.values(this.luckyGuesses).filter(Boolean).length;
             this.dom.statLucky.textContent = luckyCount.toString();
@@ -837,7 +837,6 @@ class QuizApp {
 
         const questions = this.quizData.questions;
         const t = I18N[this.lang] || I18N.ar;
-        const optionLetters = t.optionLetters;
         const reflectionOptions = [
             'Misread Question',
             'Calculation Slip',
@@ -859,10 +858,18 @@ class QuizApp {
             card.className = `review-card ${isCorrect ? 'correct-border' : 'wrong-border'}`;
             card.setAttribute('data-q-index', idx);
 
+            // Bilingual content — mirrors the live question-card language
+            const isAr = this.cardLang === 'ar';
+            const qText = isAr ? (q.text || q.question_ar || q.question) : (q.text_en || q.question_en || q.question);
+            const qOptions = isAr
+                ? (Array.isArray(q.options_ar) && q.options_ar.length > 0 ? q.options_ar : (q.options || []))
+                : (Array.isArray(q.options_en) && q.options_en.length > 0 ? q.options_en : (q.options || []));
+            const optionLetters = isAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+
             // Review Card Header
             const header = document.createElement('div');
             header.className = 'review-card-header';
-            const statusLabel = isCorrect ? (this.lang === 'ar' ? 'صحيحة' : 'Correct') : (this.lang === 'ar' ? 'خاطئة' : 'Wrong');
+            const statusLabel = isCorrect ? (isAr ? 'صحيحة' : 'Correct') : (isAr ? 'خاطئة' : 'Wrong');
             header.innerHTML = `
                 <div class="review-q-meta">
                     <span class="review-q-num">${t.question} ${idx + 1}</span>
@@ -878,18 +885,20 @@ class QuizApp {
             `;
             card.appendChild(header);
 
-            // Question Stem
+            // Question Stem (direction follows the text language)
             const qStem = document.createElement('p');
             qStem.className = 'review-question-text';
-            qStem.textContent = q.question;
+            qStem.textContent = qText;
+            qStem.style.direction = isAr ? 'rtl' : 'ltr';
+            qStem.style.textAlign = isAr ? 'right' : 'left';
             card.appendChild(qStem);
 
-            // Options List with highlights
+            // Options List — your pick (red) + correct answer (green) always visible
             const optionsList = document.createElement('div');
             optionsList.className = 'review-options-list';
             const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
 
-            (q.options || []).forEach((optText, optIdx) => {
+            qOptions.forEach((optText, optIdx) => {
                 const isUserChoice = userAns === optIdx;
                 const isCorrectOption = q.correct === optIdx;
                 let optClass = 'review-option-item';
@@ -900,12 +909,20 @@ class QuizApp {
                     optClass += ' correct-answer';
                 }
 
+                const badgeHtml = isUserChoice && !isCorrect
+                    ? `<span class="review-option-badge you">${isAr ? 'إجابتك' : 'You'}</span>`
+                    : (isCorrectOption ? `<span class="review-option-badge correct">${isAr ? 'الصحيحة' : 'Correct'}</span>` : '');
+
                 const optItem = document.createElement('div');
                 optItem.className = optClass;
+                optItem.style.direction = isAr ? 'rtl' : 'ltr';
+                optItem.style.textAlign = isAr ? 'right' : 'left';
                 optItem.innerHTML = `
                     <span class="review-option-indicator">${optionLetters[optIdx] || optionKeys[optIdx]}</span>
-                    <span>${this.escapeHtml(optText)}</span>
+                    <span class="review-option-text">${this.escapeHtml(optText)}</span>
+                    ${badgeHtml}
                 `;
+                optionsList.appendChild(optItem);
             });
             card.appendChild(optionsList);
 
