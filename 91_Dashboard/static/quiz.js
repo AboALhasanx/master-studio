@@ -68,9 +68,45 @@ const I18N = {
         analyticsTitle: 'Learning Analytics'
     }
 };
+class SoundManager {
+    constructor() {
+        this.muted = localStorage.getItem('master_studio_muted') === 'true';
+        this.sounds = {
+            correct: new Audio('/static/sounds/correct.mp3'),
+            wrong: new Audio('/static/sounds/wrong.mp3'),
+            completed: new Audio('/static/sounds/completed.mp3')
+        };
+
+        // Preload to eliminate delay and start gaps
+        Object.values(this.sounds).forEach(audio => {
+            audio.preload = 'auto';
+            audio.load();
+        });
+    }
+
+    play(name) {
+        if (this.muted) return;
+        const audio = this.sounds[name];
+        if (!audio) return;
+        try {
+            audio.currentTime = 0;
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
+        } catch (_) {}
+    }
+
+    toggleMute() {
+        this.muted = !this.muted;
+        localStorage.setItem('master_studio_muted', this.muted ? 'true' : 'false');
+        return this.muted;
+    }
+}
 
 class QuizApp {
     constructor() {
+        this.soundManager = new SoundManager();
         this.lang = localStorage.getItem('master_studio_lang') || 'ar';
         this.root = document.getElementById('quiz-root');
         
@@ -108,6 +144,8 @@ class QuizApp {
             btnAnalyticsToggle: document.getElementById('btn-toggle-analytics'),
             btnLangToggle: document.getElementById('btn-lang-toggle'),
             langIndicator: document.getElementById('lang-indicator'),
+            btnSoundToggle: document.getElementById('btn-sound-toggle'),
+            soundIcon: document.getElementById('sound-icon'),
             btnThemeToggle: document.getElementById('btn-theme-toggle'),
             themeIcon: document.getElementById('theme-icon'),
             bookmarksBadge: document.getElementById('bookmarks-badge'),
@@ -184,6 +222,7 @@ class QuizApp {
     async init() {
         this.initLanguage();
         this.initTheme();
+        this.updateSoundIcon();
         this.initEvents();
         await this.loadBookmarks();
         await this.loadQuiz();
@@ -227,6 +266,20 @@ class QuizApp {
             this.refreshLucideIcons();
         }
     }
+    toggleSound() {
+        const isMuted = this.soundManager.toggleMute();
+        this.updateSoundIcon();
+        this.showTemporaryToast(isMuted ? 'تم كتم الصوت' : 'تم تشغيل الصوت');
+    }
+
+    updateSoundIcon() {
+        if (this.dom.btnSoundToggle) {
+            const isMuted = this.soundManager.muted;
+            this.dom.btnSoundToggle.innerHTML = `<i data-lucide="${isMuted ? 'volume-x' : 'volume-2'}"></i>`;
+            this.dom.btnSoundToggle.setAttribute('title', isMuted ? 'تشغيل الصوت' : 'كتم الصوت');
+            this.refreshLucideIcons();
+        }
+    }
 
     /**
      * Language & BiDi Initialization
@@ -265,7 +318,8 @@ class QuizApp {
      * Bind UI Event Listeners
      */
     initEvents() {
-        // Theme & Language & Navigation Header
+        // Theme & Language & Sound Header
+        this.dom.btnSoundToggle?.addEventListener('click', () => this.toggleSound());
         this.dom.btnLangToggle?.addEventListener('click', () => this.toggleLanguage());
         this.dom.btnThemeToggle?.addEventListener('click', () => this.toggleTheme());
         this.dom.btnExit?.addEventListener('click', () => this.handleExit());
@@ -624,6 +678,15 @@ class QuizApp {
     selectOption(optionIndex) {
         this.answers[this.currentIndex] = optionIndex;
 
+        // Play feedback sound
+        const q = this.quizData?.questions[this.currentIndex];
+        if (q) {
+            if (optionIndex === q.correct) {
+                this.soundManager.play('correct');
+            } else {
+                this.soundManager.play('wrong');
+            }
+        }
         // Update DOM classes immediately
         const tiles = this.dom.optionsContainer?.querySelectorAll('.option-tile');
         tiles?.forEach((tile, idx) => {
@@ -729,6 +792,7 @@ class QuizApp {
 
         // Switch View
         this.showState('results');
+        this.soundManager.play('completed');
         this.refreshLucideIcons();
     }
 
