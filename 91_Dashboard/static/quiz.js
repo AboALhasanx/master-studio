@@ -24,9 +24,9 @@ const I18N = {
         syncing: 'جاري إرسال البيانات والمزامنة...',
         luckyToggle: 'تخمين محظوظ / فلوك (جاوبت بالحظ)',
         whyPick: 'ما سبب اختيارك لهذا الجواب؟',
-        rootCauseTitle: 'سبب الخطأ والتحليل الذاتي:',
+        rootCauseTitle: 'سبب الخطأ',
         reflectionPlaceholder: 'ملاحظة شخصية عن سبب الخطأ (مثل: نسيت القانون أو خلطت بالمصطلح)...',
-        explanation: 'الشرح والتعليل الهندسي:',
+        explanation: 'الشرح:',
         optionLetters: ['أ', 'ب', 'ج', 'د'],
         chips: {
             'Misread Question': 'قراءة غير دقيقة للسؤال',
@@ -51,7 +51,7 @@ const I18N = {
         syncing: 'Syncing telemetry...',
         luckyToggle: 'Lucky Guess / WOW (I guessed this without being sure)',
         whyPick: 'Why did you pick this?',
-        rootCauseTitle: 'Root Cause & Misconception:',
+        rootCauseTitle: 'Root Cause',
         reflectionPlaceholder: 'Reflection notes (e.g. key formula or condition forgotten)...',
         explanation: 'Explanation:',
         optionLetters: ['A', 'B', 'C', 'D'],
@@ -972,7 +972,6 @@ class QuizApp {
 
                 reflectionBox.innerHTML = `
                     <label class="reflection-select-wrap">
-                        <i data-lucide="help-circle"></i>
                         <select class="reflection-select" aria-label="${t.rootCauseTitle}">
                             ${reflectionOptions.map(reason => `
                                 <option value="${reason}" ${currentReason === reason ? 'selected' : ''}>${t.chips[reason] || reason}</option>
