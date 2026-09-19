@@ -432,23 +432,43 @@ input:focus, textarea:focus {
 .timers-group {
     display: flex;
     align-items: center;
-    gap: 1rem;
 }
 
-.timer-item {
-    display: flex;
+.timer-unified-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-variant-numeric: tabular-nums;
-    font-weight: 500;
+    gap: 6px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 3px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
-.timer-icon {
-    width: 0.95rem;
-    height: 0.95rem;
+.timer-unified-pill .timer-icon {
+    width: 13px;
+    height: 13px;
     color: var(--accent);
 }
 
+.timer-total {
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-split-dot {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0 4px;
+    opacity: 0.9;
+}
+.timer-dwell {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
 /* --------------------------------------------------------------------------
    Main Content Views
    -------------------------------------------------------------------------- */
@@ -511,9 +531,9 @@ input:focus, textarea:focus {
 .question-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
-    border-radius: var(--radius-xl);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+    padding: 1rem 0.85rem;
+    box-shadow: var(--shadow-sm);
     transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
@@ -592,12 +612,12 @@ input:focus, textarea:focus {
 .option-tile {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    min-height: 52px;
-    padding: 0.875rem 1.125rem;
+    gap: 0.75rem;
+    min-height: 44px;
+    padding: 0.6rem 0.85rem;
     background-color: var(--bg-surface);
     border: 1.5px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     cursor: pointer;
     text-align: left;
     transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
@@ -613,26 +633,49 @@ input:focus, textarea:focus {
     transform: scale(0.99);
 }
 
-.option-tile.selected {
-    background-color: var(--accent-subtle);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 1px var(--accent);
+/* Recitation Mode Feedback */
+.option-tile.correct-answer {
+    background-color: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    box-shadow: 0 0 0 1px var(--success);
+}
+
+.option-tile.user-wrong {
+    background-color: var(--error-bg) !important;
+    border-color: var(--error) !important;
+    box-shadow: 0 0 0 1px var(--error);
+}
+
+.options-grid.locked {
+    pointer-events: none;
 }
 
 .option-letter {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    border-radius: var(--radius-md);
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: var(--radius-sm);
     background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     transition: all var(--transition-fast);
+}
+
+.option-tile.correct-answer .option-letter {
+    background-color: var(--success) !important;
+    border-color: var(--success) !important;
+    color: #FFFFFF !important;
+}
+
+.option-tile.user-wrong .option-letter {
+    background-color: var(--error) !important;
+    border-color: var(--error) !important;
+    color: #FFFFFF !important;
 }
 
 .option-tile.selected .option-letter {
@@ -646,6 +689,58 @@ input:focus, textarea:focus {
     font-size: 0.975rem;
     font-weight: 500;
     color: var(--text-main);
+/* Live Recitation Feedback & Explanation Box */
+.live-feedback-box {
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+.live-feedback-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.live-feedback-banner.correct {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+}
+
+.live-feedback-banner.wrong {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid var(--error-border);
+}
+
+.live-explanation-box {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-right: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.85rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    text-align: right;
+    direction: rtl;
+}
+
+.live-explanation-box strong {
+    display: block;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+    font-size: 0.825rem;
+}
     line-height: 1.4;
     word-break: normal;
     overflow-wrap: break-word;
@@ -672,6 +767,17 @@ input:focus, textarea:focus {
     z-index: 25;
     max-width: 860px;
     margin: 0 auto;
+}
+.bottom-nav.single-btn-nav {
+    justify-content: center !important;
+}
+
+.nav-btn.full-width-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .nav-btn {

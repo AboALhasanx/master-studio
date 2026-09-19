@@ -173,8 +173,12 @@ class QuizApp {
 
             // Navigation
             btnPrev: document.getElementById('btn-prev'),
-            btnClear: document.getElementById('btn-clear'),
             btnNext: document.getElementById('btn-next'),
+            liveFeedbackBox: document.getElementById('live-feedback-box'),
+            liveFeedbackBanner: document.getElementById('live-feedback-banner'),
+            liveFeedbackIcon: document.getElementById('live-feedback-icon'),
+            liveFeedbackText: document.getElementById('live-feedback-text'),
+            liveExplanationText: document.getElementById('live-explanation-text'),
             nextBtnText: document.getElementById('next-btn-text'),
             nextBtnIcon: document.getElementById('next-btn-icon'),
 
@@ -326,7 +330,6 @@ class QuizApp {
         // Question Navigation
         this.dom.btnPrev?.addEventListener('click', () => this.prevQuestion());
         this.dom.btnNext?.addEventListener('click', () => this.nextQuestion());
-        this.dom.btnClear?.addEventListener('click', () => this.clearOption());
         this.dom.btnBookmarkQuestion?.addEventListener('click', () => this.toggleCurrentBookmark());
 
         // Results Actions
@@ -584,17 +587,16 @@ class QuizApp {
     renderQuestion(index) {
         if (!this.quizData || !this.quizData.questions[index]) return;
 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
         this.currentIndex = index;
         const q = this.quizData.questions[index];
         const total = this.quizData.questions.length;
 
         // Update Progress Bar & Counter
         const progressPercent = Math.round(((index + 1) / total) * 100);
-        if (this.dom.progressBarFill) {
-            this.dom.progressBarFill.style.width = `${progressPercent}%`;
-        }
         if (this.dom.questionIndexLabel) {
-            this.dom.questionIndexLabel.textContent = `السؤال ${index + 1}`;
+            this.dom.questionIndexLabel.textContent = (index + 1).toString();
         }
         if (this.dom.questionTotalLabel) {
             this.dom.questionTotalLabel.textContent = total.toString();
@@ -617,22 +619,50 @@ class QuizApp {
         const isCardAr = this.cardLang === 'ar';
         const cardOptionLetters = isCardAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
 
-        // Update Question Stem
+        // Dynamic bilingual question text
+        const qText = isCardAr ? (q.text || q.question_ar || q.question) : (q.text_en || q.question_en || q.question);
         if (this.dom.questionText) {
-            this.dom.questionText.textContent = q.question;
+            this.dom.questionText.textContent = qText;
             this.dom.questionText.style.direction = isCardAr ? 'rtl' : 'ltr';
             this.dom.questionText.style.textAlign = isCardAr ? 'right' : 'left';
         }
 
-        // Render Options (A, B, C, D or أ, ب, ج, د)
+        // Dynamic bilingual options
+        let qOptions = q.options || [];
+        if (isCardAr && Array.isArray(q.options_ar) && q.options_ar.length > 0) {
+            qOptions = q.options_ar;
+        } else if (!isCardAr && Array.isArray(q.options_en) && q.options_en.length > 0) {
+            qOptions = q.options_en;
+        }
+
+        const userAns = this.answers[index];
+        const isAnswered = userAns !== undefined;
+
         if (this.dom.optionsContainer) {
             this.dom.optionsContainer.innerHTML = '';
+            if (isAnswered) {
+                this.dom.optionsContainer.classList.add('locked');
+            } else {
+                this.dom.optionsContainer.classList.remove('locked');
+            }
+
             const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
-            
-            (q.options || []).forEach((optText, optIdx) => {
-                const isSelected = this.answers[index] === optIdx;
+
+            qOptions.forEach((optText, optIdx) => {
+                const isSelected = userAns === optIdx;
+                const isCorrectOpt = q.correct === optIdx;
+
                 const tile = document.createElement('button');
-                tile.className = `option-tile ${isSelected ? 'selected' : ''}`;
+                let tileClass = 'option-tile';
+                if (isAnswered) {
+                    if (isSelected) {
+                        tileClass += (optIdx === q.correct) ? ' correct-answer' : ' user-wrong';
+                    } else if (isCorrectOpt) {
+                        tileClass += ' correct-answer';
+                    }
+                }
+
+                tile.className = tileClass;
                 tile.setAttribute('role', 'radio');
                 tile.setAttribute('aria-checked', isSelected ? 'true' : 'false');
                 tile.setAttribute('data-option-index', optIdx);
@@ -655,6 +685,27 @@ class QuizApp {
             });
         }
 
+        // Live feedback & explanation box (ONLY shown for wrong answers)
+        if (this.dom.liveFeedbackBox) {
+            if (isAnswered && userAns !== q.correct) {
+                this.dom.liveFeedbackBox.classList.remove('hidden');
+                if (this.dom.liveFeedbackBanner) {
+                    this.dom.liveFeedbackBanner.className = 'live-feedback-banner wrong';
+                }
+                if (this.dom.liveFeedbackIcon) {
+                    this.dom.liveFeedbackIcon.setAttribute('data-lucide', 'x-circle');
+                }
+                if (this.dom.liveFeedbackText) {
+                    this.dom.liveFeedbackText.textContent = 'إجابة خاطئة — الإجابة الصحيحة موضحة بالأخضر.';
+                }
+                if (this.dom.liveExplanationText) {
+                    this.dom.liveExplanationText.textContent = q.explanation || '';
+                }
+            } else {
+                this.dom.liveFeedbackBox.classList.add('hidden');
+            }
+        }
+
         // Update Navigation Buttons
         if (this.dom.btnPrev) {
             this.dom.btnPrev.disabled = index === 0;
@@ -672,37 +723,56 @@ class QuizApp {
         this.refreshLucideIcons();
     }
 
-    /**
-     * User Answer Selection
-     */
     selectOption(optionIndex) {
-        this.answers[this.currentIndex] = optionIndex;
+        if (this.answers[this.currentIndex] !== undefined) return; // Locked: no changing answers!
 
-        // Play feedback sound
+        this.answers[this.currentIndex] = optionIndex;
         const q = this.quizData?.questions[this.currentIndex];
-        if (q) {
-            if (optionIndex === q.correct) {
-                this.soundManager.play('correct');
-            } else {
-                this.soundManager.play('wrong');
+        if (!q) return;
+
+        const isCorrect = optionIndex === q.correct;
+        const tiles = this.dom.optionsContainer?.querySelectorAll('.option-tile');
+
+        // Lock options grid
+        this.dom.optionsContainer?.classList.add('locked');
+
+        // Instant visual feedback
+        if (isCorrect) {
+            tiles?.[optionIndex]?.classList.add('correct-answer');
+            this.soundManager.play('correct');
+
+            // Correct Answer: Keep momentum, DO NOT show explanation
+            if (this.dom.liveFeedbackBox) {
+                this.dom.liveFeedbackBox.classList.add('hidden');
+            }
+        } else {
+            tiles?.[optionIndex]?.classList.add('user-wrong');
+            if (q.correct !== undefined && tiles?.[q.correct]) {
+                tiles[q.correct].classList.add('correct-answer');
+            }
+            this.soundManager.play('wrong');
+
+            // Wrong Answer: Show explanation box
+            if (this.dom.liveFeedbackBox) {
+                this.dom.liveFeedbackBox.classList.remove('hidden');
+                if (this.dom.liveFeedbackBanner) {
+                    this.dom.liveFeedbackBanner.className = 'live-feedback-banner wrong';
+                }
+                if (this.dom.liveFeedbackIcon) {
+                    this.dom.liveFeedbackIcon.setAttribute('data-lucide', 'x-circle');
+                }
+                if (this.dom.liveFeedbackText) {
+                    this.dom.liveFeedbackText.textContent = 'إجابة خاطئة — الإجابة الصحيحة موضحة بالأخضر.';
+                }
+                if (this.dom.liveExplanationText) {
+                    this.dom.liveExplanationText.textContent = q.explanation || '';
+                }
+                this.refreshLucideIcons();
+                setTimeout(() => {
+                    this.dom.liveFeedbackBox?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
             }
         }
-        // Update DOM classes immediately
-        const tiles = this.dom.optionsContainer?.querySelectorAll('.option-tile');
-        tiles?.forEach((tile, idx) => {
-            const isSelected = idx === optionIndex;
-            tile.classList.toggle('selected', isSelected);
-            tile.setAttribute('aria-checked', isSelected ? 'true' : 'false');
-        });
-    }
-
-    clearOption() {
-        delete this.answers[this.currentIndex];
-        const tiles = this.dom.optionsContainer?.querySelectorAll('.option-tile');
-        tiles?.forEach(tile => {
-            tile.classList.remove('selected');
-            tile.setAttribute('aria-checked', 'false');
-        });
     }
 
     /**

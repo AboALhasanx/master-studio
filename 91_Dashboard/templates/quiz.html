@@ -33,9 +33,8 @@
                 <button id="btn-toggle-analytics" class="icon-btn" aria-label="Open Analytics" title="Session Analytics">
                     <i data-lucide="bar-chart-2"></i>
                 </button>
-                <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Language" title="تبديل اللغة (AR / EN)">
+                <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Question Language" title="ترجمة السؤال والخيارات">
                     <i data-lucide="languages"></i>
-                    <span id="lang-indicator" style="font-size: 11px; font-weight: 700; margin-left: 2px;">AR</span>
                 </button>
                 <button id="btn-sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="كتم/تشغيل الصوت">
                     <i data-lucide="volume-2" id="sound-icon"></i>
@@ -58,18 +57,16 @@
             </div>
             <div class="progress-meta-row">
                 <div class="progress-counter">
-                    <span id="question-index-label">السؤال 1</span>
-                    <span class="meta-separator">/</span>
-                    <span id="question-total-label">1</span>
+                    <span id="question-index-label">1</span>
+                    <span class="meta-separator">من</span>
+                    <span id="question-total-label">5</span>
                 </div>
                 <div class="timers-group">
-                    <div class="timer-item" title="Dwell Time for Current Question">
+                    <div class="timer-unified-pill" title="الوقت الكلي للجلسة • وقت السؤال الحالي">
                         <i data-lucide="clock" class="timer-icon"></i>
-                        <span id="dwell-timer">00:00</span>
-                    </div>
-                    <div class="timer-item" title="Total Session Duration">
-                        <i data-lucide="timer" class="timer-icon"></i>
-                        <span id="session-timer">00:00</span>
+                        <span id="session-timer" class="timer-total">00:00</span>
+                        <span class="timer-split-dot">•</span>
+                        <span id="dwell-timer" class="timer-dwell">0:00</span>
                     </div>
                 </div>
             </div>
@@ -120,19 +117,23 @@
                     <div id="options-container" class="options-grid" role="radiogroup" aria-label="Answer Options">
                         <!-- Rendered by JS: 4 Options (A, B, C, D) -->
                     </div>
+
+                    <!-- Live Recitation Feedback & Explanation -->
+                    <div id="live-feedback-box" class="live-feedback-box hidden">
+                        <div id="live-feedback-banner" class="live-feedback-banner">
+                            <i id="live-feedback-icon" data-lucide="check-circle-2"></i>
+                            <span id="live-feedback-text">إجابة صحيحة!</span>
+                        </div>
+                        <div class="live-explanation-box">
+                            <strong>الشرح والتعليل الهندسي:</strong>
+                            <p id="live-explanation-text"></p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sticky Bottom Navigation -->
-                <nav class="bottom-nav" aria-label="Question Navigation">
-                    <button id="btn-prev" class="nav-btn secondary-btn" aria-label="Previous Question">
-                        <i data-lucide="arrow-right"></i>
-                        <span>السابق</span>
-                    </button>
-                    <button id="btn-clear" class="nav-btn text-btn" aria-label="Clear Choice">
-                        <i data-lucide="rotate-ccw"></i>
-                        <span>مسح</span>
-                    </button>
-                    <button id="btn-next" class="nav-btn primary-btn" aria-label="Next Question">
+                <nav class="bottom-nav single-btn-nav" aria-label="Question Navigation">
+                    <button id="btn-next" class="nav-btn primary-btn full-width-btn" aria-label="Next Question">
                         <span id="next-btn-text">التالي</span>
                         <i data-lucide="arrow-left" id="next-btn-icon"></i>
                     </button>
