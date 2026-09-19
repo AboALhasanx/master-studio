@@ -58,15 +58,13 @@
             <div class="progress-meta-row">
                 <div class="progress-counter">
                     <span id="question-index-label">1</span>
-                    <span class="meta-separator">من</span>
+                    <span class="meta-separator">/</span>
                     <span id="question-total-label">5</span>
                 </div>
                 <div class="timers-group">
-                    <div class="timer-unified-pill" title="الوقت الكلي للجلسة • وقت السؤال الحالي">
+                    <div class="timer-unified-pill" title="الوقت المنقضي">
                         <i data-lucide="clock" class="timer-icon"></i>
                         <span id="session-timer" class="timer-total">00:00</span>
-                        <span class="timer-split-dot">•</span>
-                        <span id="dwell-timer" class="timer-dwell">0:00</span>
                     </div>
                 </div>
             </div>
@@ -99,11 +97,8 @@
                 <div class="question-card" id="question-card">
                     <!-- Card Top Header -->
                     <div class="card-header">
-                        <div class="card-tags">
-                            <span id="bloom-badge" class="tag-badge bloom-tag">Knowledge</span>
-                            <span id="concept-badge" class="tag-badge concept-tag">Concept</span>
-                        </div>
-                        <button id="btn-bookmark-question" class="icon-btn bookmark-btn" aria-label="Bookmark Question" title="Bookmark for review">
+                        <span class="card-hint">اختر الإجابة الصحيحة</span>
+                        <button id="btn-bookmark-question" class="icon-btn bookmark-btn" aria-label="Bookmark Question" title="حفظ السؤال">
                             <i data-lucide="bookmark" id="bookmark-card-icon"></i>
                         </button>
                     </div>
@@ -118,16 +113,13 @@
                         <!-- Rendered by JS: 4 Options (A, B, C, D) -->
                     </div>
 
-                    <!-- Live Recitation Feedback & Explanation -->
-                    <div id="live-feedback-box" class="live-feedback-box hidden">
-                        <div id="live-feedback-banner" class="live-feedback-banner">
-                            <i id="live-feedback-icon" data-lucide="check-circle-2"></i>
-                            <span id="live-feedback-text">إجابة صحيحة!</span>
+                    <!-- Live Explanation (Shown on wrong answer) -->
+                    <div id="live-feedback-box" class="explanation-card hidden">
+                        <div class="explanation-badge">
+                            <i data-lucide="lightbulb" class="explanation-icon"></i>
+                            <span>الشرح</span>
                         </div>
-                        <div class="live-explanation-box">
-                            <strong>الشرح والتعليل الهندسي:</strong>
-                            <p id="live-explanation-text"></p>
-                        </div>
+                        <p id="live-explanation-text" class="explanation-body"></p>
                     </div>
                 </div>
 
@@ -274,13 +266,6 @@
                 </button>
             </div>
             <div class="drawer-body">
-                <div class="analytics-section">
-                    <h3>الأداء حسب تصنيف بلوم</h3>
-                    <div id="analytics-bloom-bars" class="analytics-bars">
-                        <!-- Injected by JS -->
-                    </div>
-                </div>
-
                 <div class="analytics-section">
                     <h3>التمكن المفاهيمي</h3>
                     <div id="analytics-concept-list" class="analytics-concept-list">

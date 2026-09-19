@@ -164,8 +164,6 @@ class QuizApp {
             resultsView: document.getElementById('results-view'),
 
             // Question Card
-            bloomBadge: document.getElementById('bloom-badge'),
-            conceptBadge: document.getElementById('concept-badge'),
             btnBookmarkQuestion: document.getElementById('btn-bookmark-question'),
             bookmarkCardIcon: document.getElementById('bookmark-card-icon'),
             questionText: document.getElementById('question-text'),
@@ -209,7 +207,6 @@ class QuizApp {
             bookmarksEmpty: document.getElementById('bookmarks-empty'),
             analyticsDrawer: document.getElementById('analytics-drawer'),
             btnCloseAnalytics: document.getElementById('btn-close-analytics'),
-            analyticsBloomBars: document.getElementById('analytics-bloom-bars'),
             analyticsConceptList: document.getElementById('analytics-concept-list'),
             pacingFastest: document.getElementById('pacing-fastest'),
             pacingSlowest: document.getElementById('pacing-slowest'),
@@ -595,19 +592,14 @@ class QuizApp {
 
         // Update Progress Bar & Counter
         const progressPercent = Math.round(((index + 1) / total) * 100);
+        if (this.dom.progressBarFill) {
+            this.dom.progressBarFill.style.width = `${progressPercent}%`;
+        }
         if (this.dom.questionIndexLabel) {
             this.dom.questionIndexLabel.textContent = (index + 1).toString();
         }
         if (this.dom.questionTotalLabel) {
             this.dom.questionTotalLabel.textContent = total.toString();
-        }
-
-        // Update Question Meta Tags
-        if (this.dom.bloomBadge) {
-            this.dom.bloomBadge.textContent = q.bloom_level || 'Understand';
-        }
-        if (this.dom.conceptBadge) {
-            this.dom.conceptBadge.textContent = q.concept_id || 'Core Concept';
         }
 
         // Update Bookmark Button
@@ -685,19 +677,10 @@ class QuizApp {
             });
         }
 
-        // Live feedback & explanation box (ONLY shown for wrong answers)
+        // Sleek explanation card (ONLY shown for wrong answers)
         if (this.dom.liveFeedbackBox) {
             if (isAnswered && userAns !== q.correct) {
                 this.dom.liveFeedbackBox.classList.remove('hidden');
-                if (this.dom.liveFeedbackBanner) {
-                    this.dom.liveFeedbackBanner.className = 'live-feedback-banner wrong';
-                }
-                if (this.dom.liveFeedbackIcon) {
-                    this.dom.liveFeedbackIcon.setAttribute('data-lucide', 'x-circle');
-                }
-                if (this.dom.liveFeedbackText) {
-                    this.dom.liveFeedbackText.textContent = 'إجابة خاطئة — الإجابة الصحيحة موضحة بالأخضر.';
-                }
                 if (this.dom.liveExplanationText) {
                     this.dom.liveExplanationText.textContent = q.explanation || '';
                 }
@@ -752,18 +735,9 @@ class QuizApp {
             }
             this.soundManager.play('wrong');
 
-            // Wrong Answer: Show explanation box
+            // Wrong Answer: Show sleek explanation card
             if (this.dom.liveFeedbackBox) {
                 this.dom.liveFeedbackBox.classList.remove('hidden');
-                if (this.dom.liveFeedbackBanner) {
-                    this.dom.liveFeedbackBanner.className = 'live-feedback-banner wrong';
-                }
-                if (this.dom.liveFeedbackIcon) {
-                    this.dom.liveFeedbackIcon.setAttribute('data-lucide', 'x-circle');
-                }
-                if (this.dom.liveFeedbackText) {
-                    this.dom.liveFeedbackText.textContent = 'إجابة خاطئة — الإجابة الصحيحة موضحة بالأخضر.';
-                }
                 if (this.dom.liveExplanationText) {
                     this.dom.liveExplanationText.textContent = q.explanation || '';
                 }
@@ -1317,33 +1291,6 @@ class QuizApp {
         this.dom.analyticsUUID.textContent = this.submissionUUID;
 
         if (!this.quizData || !this.quizData.questions) return;
-
-        // Bloom Level Breakdown
-        const bloomCounts = {};
-        this.quizData.questions.forEach(q => {
-            const b = q.bloom_level || 'Understand';
-            bloomCounts[b] = (bloomCounts[b] || 0) + 1;
-        });
-
-        if (this.dom.analyticsBloomBars) {
-            this.dom.analyticsBloomBars.innerHTML = '';
-            const total = this.quizData.questions.length;
-            Object.entries(bloomCounts).forEach(([level, count]) => {
-                const pct = Math.round((count / total) * 100);
-                const barRow = document.createElement('div');
-                barRow.className = 'bloom-bar-row';
-                barRow.innerHTML = `
-                    <div class="bloom-bar-header">
-                        <span>${level}</span>
-                        <span>${count} (${pct}%)</span>
-                    </div>
-                    <div class="bloom-bar-track">
-                        <div class="bloom-bar-fill" style="width: ${pct}%;"></div>
-                    </div>
-                `;
-                this.dom.analyticsBloomBars.appendChild(barRow);
-            });
-        }
 
         // Concept Breakdown
         const concepts = new Set(this.quizData.questions.map(q => q.concept_id || 'general'));
