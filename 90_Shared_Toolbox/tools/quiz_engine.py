@@ -100,17 +100,72 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
 
     subject = payload.get("subject_id", "Unknown_Subject")
     topic = payload.get("topic", "Quiz")
+    quiz_id = payload.get("quiz_id") or ""
     summary = payload.get("summary", {})
     percentage = float(summary.get("percentage", 0.0))
     correct_count = summary.get("correct", 0)
     total_count = summary.get("total", 0)
     score_str = f"{correct_count}/{total_count}"
+    avg_dwell = float(summary.get("avg_dwell_time_seconds", 0.0) or 0.0)
+    session_duration = summary.get("session_duration_seconds") or payload.get("session_duration_seconds")
+    finished_at = payload.get("finished_at") or ""
+    questions = payload.get("questions") or []
 
-    # Simple "saved" marker in the session journal (agent-facing log)
-    journal_entry = (
-        f"\n- **[Quiz WebUI]** Saved `{subject}` - {topic} ({percentage:.0f}%, {score_str}) | UUID: `{sub_uuid}`\n"
-    )
+    # Agent-facing diagnostics: wrong answers (with reflections), lucky guesses, Bloom gaps
+    wrong_parts = []
+    bloom_gaps = []
+    for q in questions:
+        if not isinstance(q, dict) or q.get("is_correct"):
+            continue
+        concept = q.get("concept_id") or ""
+        label = str(q.get("id") or "?")
+        if concept and concept != "concept_general":
+            label += f"({concept})"
+        ref = q.get("reflection") or {}
+        reason = ref.get("reason") or "Concept Gap"
+        note = (ref.get("note") or "").strip()
+        label += f" [{reason}]"
+        if note:
+            label += f' "{note}"'
+        wrong_parts.append(label)
+        bloom = q.get("bloom_level")
+        if bloom and bloom not in bloom_gaps:
+            bloom_gaps.append(bloom)
+
+    lucky_ids = [str(q.get("id") or "?") for q in questions if isinstance(q, dict) and q.get("is_lucky_guess")]
+
+    head = f"\n- **[Quiz WebUI]** Saved `{subject}` - {topic} ({percentage:.0f}%, {score_str})"
+    if quiz_id:
+        head += f" | quiz: `{quiz_id}`"
+    head += f" | uuid: `{sub_uuid}`\n"
+
+    lines = [head]
+    if wrong_parts or lucky_ids or bloom_gaps:
+        seg = []
+        if wrong_parts:
+            seg.append("Wrong: " + " \u00b7 ".join(wrong_parts))
+        if lucky_ids:
+            seg.append("Lucky: " + ", ".join(lucky_ids))
+        if bloom_gaps:
+            seg.append("Bloom gaps: " + ", ".join(bloom_gaps))
+        lines.append(f"  - {' | '.join(seg)}\n")
+    elif percentage >= 100.0:
+        lines.append("  - Perfect score \u2014 no gaps\n")
+
+    metrics = []
+    if avg_dwell > 0:
+        metrics.append(f"Avg dwell: {avg_dwell:.1f}s")
+    if session_duration:
+        try:
+            metrics.append(f"Session: {int(float(session_duration))}s")
+        except (TypeError, ValueError):
+            pass
+    if finished_at:
+        metrics.append(f"Finished: {finished_at}")
+    if metrics:
+        lines.append(f"  - {' | '.join(metrics)}\n")
+
     with open(today_session, "a", encoding="utf-8") as f:
-        f.write(journal_entry)
+        f.write("".join(lines))
 
     return {"status": "success", "percentage": percentage}

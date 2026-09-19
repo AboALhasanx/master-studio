@@ -266,7 +266,10 @@ def test_e2e_vault_update_verification(client, isolated_hub):
     assert "**[Quiz WebUI]** Saved `04_Advanced_Software_Eng`" in session_content
     assert "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics" in session_content
     assert "80%, 4/5" in session_content
-    assert f"UUID: `{sub_uuid}`" in session_content
+    assert f"uuid: `{sub_uuid}`" in session_content
+    assert 'Wrong: Brooks_Complexity_Q1 [Calculation Slip] "Mistook accidental tooling for essential complexity"' in session_content
+    assert "Lucky: Patriot_Drift_Q0" in session_content
+    assert "Avg dwell: 16.2s" in session_content
 
     # Analytics/learner files must remain untouched by the WebUI pipeline
     for fname in ["PROGRESS_ANALYTICS.md", "LEARNER_MODEL.md"]:
@@ -360,6 +363,8 @@ def test_e2e_full_lifecycle_journey(client, isolated_hub):
     assert sub_uuid in session_text
     assert f"**[Quiz WebUI]** Saved `{quiz_data['subject']}`" in session_text
     assert "80%, 4/5" in session_text
+    assert 'Wrong: q1 [Calculation Slip] "Re-read question too fast"' in session_text
+    assert "Lucky: q0" in session_text
 
     # Analytics/learner files must remain untouched by the WebUI pipeline
     for fname in ["PROGRESS_ANALYTICS.md", "LEARNER_MODEL.md"]:

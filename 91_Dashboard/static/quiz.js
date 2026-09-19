@@ -135,6 +135,7 @@ class QuizApp {
         // Metacognitive & Telemetry State
         this.reflections = {};       // { [qIndex]: { reason: string, notes: string } }
         this.luckyGuesses = {};      // { [qIndex]: boolean }
+        this.answerTimestamps = {};  // { [qIndex]: epochMs when the option was selected }
         this.bookmarks = new Set();  // Set of question IDs (e.g. "q1")
         this.submissionUUID = this.generateUUID();
         this.isSubmitted = false;
@@ -223,6 +224,7 @@ class QuizApp {
         this.initTheme();
         this.updateSoundIcon();
         this.initEvents();
+        this.flushOfflineQueue();
         await this.loadBookmarks();
         await this.loadQuiz();
         this.refreshLucideIcons();
@@ -415,6 +417,7 @@ class QuizApp {
         this.dwellTimes = {};
         this.reflections = {};
         this.luckyGuesses = {};
+        this.answerTimestamps = {};
         this.isSubmitted = false;
         this.submissionUUID = this.generateUUID();
 
@@ -694,6 +697,7 @@ class QuizApp {
         if (this.answers[this.currentIndex] !== undefined) return; // Locked: no changing answers!
 
         this.answers[this.currentIndex] = optionIndex;
+        this.answerTimestamps[this.currentIndex] = Date.now();
         const q = this.quizData?.questions[this.currentIndex];
         if (!q) return;
 
@@ -1061,13 +1065,17 @@ class QuizApp {
                 selected: selectedKey,
                 correct: correctKey,
                 concept_id: q.concept_id || 'concept_general',
+                bloom_level: q.bloom_level || null,
                 is_correct: isCorrect,
                 is_lucky_guess: isLucky,
                 reflection: !isCorrect ? {
                     reason: reflection?.reason || 'Concept Gap',
                     note: reflection?.notes || reflection?.note || ''
                 } : null,
-                dwell_time_seconds: parseFloat(dwell.toFixed(1))
+                dwell_time_seconds: parseFloat(dwell.toFixed(1)),
+                answered_at: this.answerTimestamps[idx]
+                    ? new Date(this.answerTimestamps[idx]).toISOString()
+                    : null
             };
         });
 
@@ -1075,16 +1083,28 @@ class QuizApp {
         const percentage = total > 0 ? parseFloat(((correctCount / total) * 100).toFixed(1)) : 0.0;
         const avgDwell = total > 0 ? parseFloat((totalDwell / total).toFixed(1)) : 0.0;
 
+        const now = new Date();
+        const pad = (n) => n.toString().padStart(2, '0');
+        const finishedAt = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        const sessionDuration = this.sessionDuration || Math.round((Date.now() - this.sessionStartTime) / 1000);
+
         const payload = {
             submission_uuid: this.submissionUUID,
+            quiz_id: this.quizId || this.quizData.quiz_id || null,
+            instructor: this.quizData.instructor || null,
             subject_id: this.quizData.subject || this.quizData.subject_id || this.subjectId || 'CS_GENERAL',
             topic: this.quizData.topic || 'Interactive Quiz',
+            finished_at: finishedAt,
+            session_duration_seconds: sessionDuration,
             summary: {
                 total,
                 correct: correctCount,
                 wrong: wrongCount,
                 percentage,
-                avg_dwell_time_seconds: avgDwell
+                avg_dwell_time_seconds: avgDwell,
+                total_time_seconds: parseFloat(totalDwell.toFixed(1)),
+                wrong_ids: questionPayloads.filter(p => !p.is_correct).map(p => p.id),
+                lucky_ids: questionPayloads.filter(p => p.is_lucky_guess).map(p => p.id)
             },
             questions: questionPayloads
         };
@@ -1139,6 +1159,41 @@ class QuizApp {
             localStorage.setItem('master_studio_offline_telemetry', JSON.stringify(queue));
         } catch (e) {
             console.error('Failed to save offline telemetry:', e);
+        }
+    }
+
+    /**
+     * Retry any telemetry queued while the server was offline.
+     * Called on page load; successfully synced payloads drain from the queue.
+     */
+    async flushOfflineQueue() {
+        let queue = [];
+        try {
+            queue = JSON.parse(localStorage.getItem('master_studio_offline_telemetry') || '[]');
+        } catch (e) {
+            return;
+        }
+        if (!Array.isArray(queue) || queue.length === 0) return;
+
+        const remaining = [];
+        for (const payload of queue) {
+            try {
+                const res = await fetch('/api/quiz/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) remaining.push(payload);
+            } catch (e) {
+                remaining.push(payload);
+            }
+        }
+        try {
+            localStorage.setItem('master_studio_offline_telemetry', JSON.stringify(remaining));
+        } catch (e) { /* storage unavailable — keep queue intact */ }
+        const flushed = queue.length - remaining.length;
+        if (flushed > 0) {
+            this.showTemporaryToast(`Synced ${flushed} offline quiz result${flushed > 1 ? 's' : ''}`);
         }
     }
 

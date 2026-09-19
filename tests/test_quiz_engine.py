@@ -113,6 +113,9 @@ def test_process_quiz_telemetry_idempotency():
         assert "Week 01 Scenario Drills" in journal_text
         assert "80%, 4/5" in journal_text
         assert "`test-uuid-1234`" in journal_text
+        assert 'Wrong: q2 [Calculation Slip] "Arithmetic error"' in journal_text
+        assert "Lucky: q3" in journal_text
+        assert "Avg dwell: 18.0s" in journal_text
 
         # No analytics/learner writes should happen
         assert not (hub / "PROGRESS_ANALYTICS.md").exists()
@@ -140,7 +143,7 @@ def test_process_quiz_telemetry_journal_idempotency():
         today_str = datetime.now().strftime("%Y-%m-%d")
         today_session = sessions_dir / f"{today_str}.md"
         today_session.write_text(
-            "- **[Quiz WebUI]** Saved `01_Cyber_Security` - Week 01 (80%, 4/5) | UUID: `cold-uuid-9999`\n",
+            "- **[Quiz WebUI]** Saved `01_Cyber_Security` - Week 01 (80%, 4/5) | uuid: `cold-uuid-9999`\n",
             encoding="utf-8",
         )
 
@@ -172,3 +175,92 @@ def test_process_quiz_telemetry_invalid_payload():
         res = process_quiz_telemetry("invalid_payload", hub)
         assert res["status"] == "error"
         assert "Payload must be a dictionary" in res["message"]
+
+
+def test_process_quiz_telemetry_enriched_journal_format():
+    """Agent-facing journal line must carry quiz_id, wrong ids with
+    concepts + reflections, lucky ids, Bloom gaps, and session metrics."""
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        sessions_dir = hub / "sessions"
+        sessions_dir.mkdir()
+
+        payload = {
+            "submission_uuid": "enriched-uuid-777",
+            "subject_id": "04_Advanced_Software_Eng",
+            "quiz_id": "Quiz_01_Software_Crisis",
+            "topic": "Lecture 01: Foundations",
+            "finished_at": "2026-09-19 22:40",
+            "session_duration_seconds": 82,
+            "summary": {
+                "total": 5,
+                "correct": 3,
+                "wrong": 2,
+                "percentage": 60.0,
+                "avg_dwell_time_seconds": 14.5,
+            },
+            "questions": [
+                {
+                    "id": "q1",
+                    "concept_id": "patriot_clock_drift",
+                    "is_correct": True,
+                    "is_lucky_guess": False,
+                    "dwell_time_seconds": 8.0,
+                    "bloom_level": "Apply",
+                },
+                {
+                    "id": "q2",
+                    "concept_id": "brooks_law",
+                    "is_correct": False,
+                    "is_lucky_guess": False,
+                    "dwell_time_seconds": 25.0,
+                    "bloom_level": "Understand",
+                    "reflection": {"reason": "Concept Gap", "note": "Forgot O(N^2) channels"},
+                },
+                {
+                    "id": "q3",
+                    "concept_id": "se_ethics_public",
+                    "is_correct": True,
+                    "is_lucky_guess": True,
+                    "dwell_time_seconds": 6.0,
+                    "bloom_level": "Evaluate",
+                },
+            ],
+        }
+
+        res = process_quiz_telemetry(payload, hub)
+        assert res["status"] == "success"
+
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        text = (sessions_dir / f"{today_str}.md").read_text(encoding="utf-8")
+        assert "**[Quiz WebUI]** Saved `04_Advanced_Software_Eng`" in text
+        assert "60%, 3/5" in text
+        assert "quiz: `Quiz_01_Software_Crisis`" in text
+        assert "uuid: `enriched-uuid-777`" in text
+        assert 'Wrong: q2(brooks_law) [Concept Gap] "Forgot O(N^2) channels"' in text
+        assert "Lucky: q3" in text
+        assert "Bloom gaps: Understand" in text
+        assert "Avg dwell: 14.5s" in text
+        assert "Session: 82s" in text
+        assert "Finished: 2026-09-19 22:40" in text
+
+
+def test_process_quiz_telemetry_perfect_score_marker():
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        (hub / "sessions").mkdir()
+
+        payload = {
+            "submission_uuid": "perfect-uuid-100",
+            "subject_id": "02_English_Language",
+            "topic": "Unit 01 Grammar",
+            "summary": {"percentage": 100.0, "correct": 5, "total": 5},
+            "questions": [],
+        }
+
+        res = process_quiz_telemetry(payload, hub)
+        assert res["status"] == "success"
+
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        text = (hub / "sessions" / f"{today_str}.md").read_text(encoding="utf-8")
+        assert "Perfect score" in text
