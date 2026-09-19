@@ -65,6 +65,7 @@
 
 | Log ID | Date | Subject | Topic | Score | Result |
 |:---:|:---:|:---|:---|:---:|:---|
+| #006 | 2026-09-19 19:23 | `04_Advanced_Software_Eng` | Lecture 01 Simulation Check | 4/5 (80%) | PASS | 🟢 Mastered |
 | #001 | 2026-09-16 | ASE | Lecture 01 | 4/5 (80%) | PASS |
 | #002 | 2026-09-17 | English | Unit 01 Grammar | 5/5 (100%) | PASS |
 | #003 | 2026-09-18 | Cyber | W1 Topic 1 min-R etc. | 4/7 | REVISE |

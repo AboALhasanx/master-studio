@@ -86,6 +86,8 @@ graph TD
 
 | Subject | Concept / Error | Logged | Reason | Priority | Review Due |
 |:---|:---|:---|:---|:---:|:---|
+| `04_Advanced_Software_Eng` | Lecture 01 Simulation Check: Q_q1 (Calculation Slip - Simulation test) | 2026-09-19 | Error Reflection | High | 2026-09-22 |
+| `04_Advanced_Software_Eng` | Lecture 01 Simulation Check: Q_q2 (Lucky Guess / Fluke) | 2026-09-19 | Fluke Confirmation | Medium | 2026-09-22 |
 | `04_Advanced_Software_Eng` | ACM/IEEE 8 Code of Ethics Principles (Scenario Trade-offs) | 2026-09-16 | Needs application drills | High | 2026-09-20 |
 | `04_Advanced_Software_Eng` | Brooks' Law Quadratic Communication Growth (C = N(N-1)/2) | 2026-09-16 | Calculation memorization | Medium | 2026-09-20 |
 | `01_Cyber_Security` | Cyber-security historical timeline — **ARPANET/mainframes = 1960s** (student wrote 1980s) | 2026-09-18 | Date confusion | High | 2026-09-19 |

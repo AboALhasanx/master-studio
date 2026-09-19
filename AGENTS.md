@@ -229,7 +229,7 @@ To maintain continuous academic context across all agent harnesses (Oh My Pi, Op
    python "90_Shared_Toolbox/tools/session_memory.py" remember "Dr. Ali Fahim emphasizes 24-bit fixed-point truncation drift math."
    ```
 
-4. **Search Past Sessions and Memory (Zero Tokens / Offline BM25):**
+4. **Search Past Sessions and Memory (Zero Tokens / Fast Substring Search):**
    ```bash
    python "90_Shared_Toolbox/tools/session_memory.py" recall "patriot"
    ```
