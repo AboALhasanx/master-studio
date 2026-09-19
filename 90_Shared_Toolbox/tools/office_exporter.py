@@ -23,6 +23,7 @@ import os
 import re
 import argparse
 import subprocess
+import shutil
 from pathlib import Path
 
 # Word libraries
@@ -128,12 +129,26 @@ def render_concept_card_to_png(title_en, title_ar, desc, out_png_path, color_the
     with open(temp_html, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    edge_candidates = [
-        r"C:\Program Files (x86)\Microsoft\EdgeCore\Optimized\msedge.exe",
-        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-        r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-    ]
-    browser = next((c for c in edge_candidates if os.path.exists(c)), None)
+    # Dynamically find Chromium/Edge executable across PATH and standard platform locations
+    browser = (
+        shutil.which("msedge") or
+        shutil.which("chrome") or
+        shutil.which("google-chrome") or
+        shutil.which("chromium")
+    )
+    if not browser and sys.platform.startswith("win"):
+        pf = os.environ.get("ProgramFiles", r"C:\Program Files")
+        pf86 = os.environ.get("ProgramFiles(x86)", r"C:\Program Files (x86)")
+        local_app = os.environ.get("LOCALAPPDATA", "")
+        candidates = [
+            Path(pf86) / "Microsoft" / "EdgeCore" / "Optimized" / "msedge.exe",
+            Path(pf86) / "Microsoft" / "Edge" / "Application" / "msedge.exe",
+            Path(pf) / "Microsoft" / "Edge" / "Application" / "msedge.exe",
+            Path(pf) / "Google" / "Chrome" / "Application" / "chrome.exe",
+            Path(pf86) / "Google" / "Chrome" / "Application" / "chrome.exe",
+            Path(local_app) / "Google" / "Chrome" / "Application" / "chrome.exe",
+        ]
+        browser = next((str(c) for c in candidates if c.exists()), None)
     if browser:
         cmd = [
             browser, "--headless",

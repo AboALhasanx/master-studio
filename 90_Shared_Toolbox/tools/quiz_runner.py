@@ -16,7 +16,7 @@ import os
 import re
 import json
 import argparse
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 def parse_markdown_quiz(md_path):
@@ -108,21 +108,48 @@ def update_learner_model(model_path, subject, topic, percentage, weak_items):
         return
 
     with open(model_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+        lines = f.readlines()
 
-    now_str = datetime.now().strftime("%Y-%m-%d")
+    now = datetime.now()
+    now_str = now.strftime("%Y-%m-%d")
+    next_review = (now + timedelta(days=3)).strftime("%Y-%m-%d")
+
+    out_lines = []
+    inserted = False
 
     if percentage >= 80:
-        entry = f"- [x] `{subject}`: {topic} (Score: {percentage:.0f}% on {now_str})\n"
-        if "### 2.1. Mastered Competencies" in content:
-            content = content.replace("### 2.1. Mastered Competencies", f"### 2.1. Mastered Competencies\n{entry}")
+        target_header = "## 3. Mastered Concepts List"
+        row = f"| `{subject}` | {topic} | {now_str} | {percentage:.0f}% | @examiner |\n"
     else:
-        entry = f"- [ ] `{subject}`: {topic} — Review needed ({percentage:.0f}% on {now_str})\n"
-        if "### 2.2. Active Review Queue" in content:
-            content = content.replace("### 2.2. Active Review Queue", f"### 2.2. Active Review Queue\n{entry}")
+        target_header = "## 4. Active Review Queue (Spaced Repetition)"
+        error_note = "; ".join(weak_items) if weak_items else f"Score {percentage:.0f}% (below master floor)"
+        row = f"| `{subject}` | {topic} | {now_str} | {error_note} | High | {next_review} |\n"
+
+    in_target_section = False
+    for line in lines:
+        if target_header in line:
+            in_target_section = True
+            out_lines.append(line)
+            continue
+
+        # Insert after the blockquote / description line in that section
+        if in_target_section and not inserted:
+            if line.startswith("|") and ("---" in line or "Subject" in line):
+                out_lines.append(line)
+                continue
+            # Insert right at the top of the table data
+            out_lines.append(row)
+            inserted = True
+            in_target_section = False
+
+        out_lines.append(line)
+
+    if not inserted:
+        # Fallback if section format changed
+        out_lines.append(f"\n{row}")
 
     with open(model_path, 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.writelines(out_lines)
     print(f"🧠 Cognitive model updated in {model_path.name}")
 
 def run_quiz(questions, subject="General", topic="Quiz"):

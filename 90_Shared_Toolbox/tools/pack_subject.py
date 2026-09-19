@@ -22,19 +22,20 @@ def main():
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parent.parent.parent
-    sem1_path = repo_root / "01_Semester_1"
+    semester_dirs = sorted(repo_root.glob("0*_Semester_*"))
 
     target_dir = None
-    if (sem1_path / args.subject).exists():
-        target_dir = sem1_path / args.subject
-    else:
-        # Match by prefix number
-        matches = list(sem1_path.glob(f"{args.subject}*"))
+    for sem in semester_dirs:
+        if (sem / args.subject).exists():
+            target_dir = sem / args.subject
+            break
+        matches = list(sem.glob(f"{args.subject}*"))
         if matches:
             target_dir = matches[0]
+            break
 
     if not target_dir:
-        print(f"Error: Could not find subject folder matching '{args.subject}' in {sem1_path}", file=sys.stderr)
+        print(f"Error: Could not find subject folder matching '{args.subject}' in any semester directory", file=sys.stderr)
         sys.exit(1)
 
     rel_target = target_dir.relative_to(repo_root)
