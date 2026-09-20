@@ -54,9 +54,10 @@ Agents operating in this vault must function not merely as generic text generato
 - `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`).
 - `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM; **automatically falls back to local RapidOCR** on CPU for scanned PDFs (0 LLM tokens, 0 API calls).
 - `session_memory.py`: Cross-agent memory manager (`boot`, `log`, `remember`, `recall`, `status`).
+- `quiz_engine.py`: Bayesian Knowledge Tracing (BKT) engine, dwell-time analysis, and session telemetry logger.
 - `quiz_runner.py`: Interactive command-line quiz conductor.
+- `quiz_qr.py`: Generates LAN-accessible quiz links and terminal ASCII QR codes for mobile studying.
 - `pack_subject.py`: Bundles entire subject vaults into single-file digests for mobile LLMs.
-
 ### Immediate Action Priorities
 1. **Immediate Task:** Conduct oral viva defense rehearsal for Dr. Ali Fahim's lecture (Patriot missile 24-bit fixed-point clock drift kinematics & Brooks' essential complexity).
 2. **Next Staging Milestone:** Ingest Week 01 lecture materials and canonical textbooks for `01_Cyber_Security` and `03_Data_Mining`.
@@ -67,8 +68,7 @@ Agents operating in this vault must function not merely as generic text generato
 > **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
 > - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
 > - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
-> - If the student says: *"Quiz me on [topic]"* $\rightarrow$ YOU conduct the quiz interactively in the chat, grade the responses, and YOU update `PROGRESS_ANALYTICS.md` and `LEARNER_MODEL.md` in the background.
-> - If the student says: *"Bundle this for my phone / ChatGPT"* $\rightarrow$ YOU run `pack_subject.py` in the background.
+- If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR provide the direct WebUI link (`http://127.0.0.1:5000/quiz/<Subject>/<Quiz>`) in Study or Exam mode (`?mode=exam`), OR generate a mobile-scannable QR code via `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz>`, and YOU update `LEARNER_MODEL.md` based on results.
 > - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
 
 
@@ -187,6 +187,29 @@ When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions
   ```
   Compiles 16:9 Marp presentations into native `.pptx` slide presentations.
 
+
+---
+
+## 6.1. Interactive WebUI Quiz System & Mobile QR Code Generation
+
+The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-database, mobile-optimized assessment drills accessible across your local network:
+
+- **Launch Direct Quiz in Browser:**
+  - **Study Mode (Recitation):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>` (Immediate visual feedback, explanation card, and sound effects).
+  - **Exam Mode (Simulated University Exam):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>?mode=exam` (Silent answer tracking, freely editable choices, score and explanations revealed only upon final submission).
+  - **Question & Option Shuffle:** Append `?shuffle=true` or click the shuffle button in the header to randomize question and option order while preserving telemetry IDs.
+
+- **Generate Terminal QR Code for Mobile Phone:**
+  ```bash
+  python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>"
+  ```
+  Scans your LAN IP (e.g. `http://192.168.100.3:5000/...`) and displays a scannable QR code in the terminal for instant phone studying.
+
+- **Automated Telemetry & Cognitive Model Sync:**
+  When a quiz is submitted in the WebUI:
+  1. Dwell times, lucky guess flags, and metacognitive error reasons (*Misread Question*, *Calculation Slip*, *Terminology Mix-up*, *Concept Gap*) are sent to `/api/quiz/submit`.
+  2. `quiz_engine.py` idempotently logs the result and Bloom taxonomy gaps into today's session journal (`00_STUDIO_HUB/sessions/YYYY-MM-DD.md`).
+  3. The agent ingests these markers during study sessions to calibrate Bayesian Knowledge Tracing (BKT) mastery probabilities in `00_STUDIO_HUB/LEARNER_MODEL.md`.
 ---
 
 ## 7. Reading & Ingesting Academic PDFs (100% Local & Free)

@@ -74,8 +74,9 @@ All tools are local, free, and run offline:
 | `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` (projector-tuned) |
 | `pdf_reader.py` | Extracts academic PDFs to Markdown (preserves two-column layout) |
 | `quiz_runner.py` | Interactive terminal quiz with auto-grading and analytics logging |
+| `quiz_qr.py` | Generates LAN-accessible quiz links and terminal ASCII QR codes for mobile studying |
 | `pack_subject.py` | Bundles a subject folder for mobile / ChatGPT offline study |
-
+| `91_Dashboard/` (Flask) | Local web dashboard with Interactive Quizzes (Study & Exam modes, BKT telemetry) |
 ---
 
 ## Academic Thresholds
@@ -166,5 +167,7 @@ The student never runs any of the above. In chat, just ask:
 
 > *"Bundle the English subject for a chatbot."*
 > *"Give me a digest of Unit 1 that I can paste into DeepSeek."*
+> *"Quiz me on Software Engineering."*
+> *"Open the English quiz on my phone."*
 
-The agent runs the tool in the background and hands back the file or the ready-to-paste text.
+The agent runs the tool in the background and hands back the file, the link, or the QR code.

@@ -41,6 +41,7 @@ status: "WEEK_01_ACTIVE"
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
 - [x] **Ingest Scanned Materials & Synthesize Unit 01 for `02_English_Language`** (Grammar & Tenses Study Note, Clean DOCX, Quiz Bank)
+- [x] **Interactive WebUI Quiz Subsystem Deployed** — Flask web app with Study Mode (recitation) & Exam Mode (simulated exam), question & option shuffle, custom floating reason picker, multi-semester discovery, and telemetry sync into session journals.
 - [x] **Complete New Headway Unit 1 "No place like home" (SB pp.6–15)** — full walkthrough, TB-verified (ISBN 978-0-19-439300-3), + Exam Index
 - [x] **Establish agent identity (Koko) + student profile** — `SOUL.md` / `IDENTITY.md` / `USER.md`
 - [x] **Decode Dr. Huda's exam method + build `01_Cyber_Security` Week 01 master note & question bank**

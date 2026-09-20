@@ -82,12 +82,28 @@ When the student prompts `@examiner` for an oral defense or viva session:
 3. **Cross-Examination:** Find the weakest assumption in the candidate's answer and push back aggressively (e.g., *"What happens if node 3 fails right during the commit phase of your proposal?"*).
 4. **Final Scoring & Feedback:** Grade the candidate out of 100%, break down performance against the 60%/70%/75% rubric, and provide the model answer.
 
-### 3.3. Learner Model Synchronization Protocol
+### 3.3. Mode 3: Interactive WebUI Quiz & Telemetry Engine
+When the student requests practice drills or mobile self-assessment:
+1. **Direct WebUI Execution:**
+   - **Study Mode (Recitation):** `http://127.0.0.1:5000/quiz/<Subject>/Quiz_NN_<Topic>`
+     Immediate recitation feedback, callout explanation card (`الشرح`), and audio cues.
+   - **Exam Mode (Simulated Test):** `http://127.0.0.1:5000/quiz/<Subject>/Quiz_NN_<Topic>?mode=exam`
+     Silent answer selection, neutral highlights, editable answers, and results revealed only upon submission.
+   - **Anti-Memorization Shuffle:** `?shuffle=true` randomizes questions and options via Fisher-Yates while preserving telemetry IDs.
+2. **Mobile LAN QR Code Deployment:**
+   - Execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz>` to display an ASCII QR code in the terminal for instant phone scanning over LAN.
+3. **Bayesian Knowledge Tracing (BKT) Calibration:**
+   - Telemetry from `/api/quiz/submit` logs into `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`.
+   - `@examiner` reads these session markers to update concept masteries using:
+     $$P(L_{t+1}) = P(L_t \mid \text{Obs}) + (1 - P(L_t \mid \text{Obs})) \times P(T)$$
+   - Lucky guesses ($P(G) = 1.0, P(T) = 0.0$) award zero transition learning credit.
+   - Calculation slips and misreads ($P(S) = 0.9$) preserve prior mastery without penalty.
+
+### 3.4. Learner Model Synchronization Protocol
 At the conclusion of an assessment session:
 1. If score $\ge 80\%$: Instruct the student or update `00_STUDIO_HUB/LEARNER_MODEL.md` under `## 3. Mastered Concepts List`.
 2. If score $< 75\%$: Record the specific sub-topic, failure pattern, and review priority into `## 4. Active Review Queue (Spaced Repetition)`.
 3. Update quiz metrics in `## 5. Retention & Examination History`.
-
 ---
 
 ## 4. Input & Output Contract
