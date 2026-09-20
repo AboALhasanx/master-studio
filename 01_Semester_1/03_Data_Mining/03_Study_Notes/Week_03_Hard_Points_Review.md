@@ -4,7 +4,7 @@
 > **Instructor:** Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida  
 > **Lecture:** Week 03 (next class)  
 > **Full note:** `Week_03_Feature_Extraction_and_Portability.md` (comprehensive)  
-> **Diagram:** `06_Diagrams_&_Mindmaps/Week_03_Feature_Extraction_Portability_Map.png`  
+> **Diagram:** `06_Diagrams_&_Mindmaps/w03-feature-extraction-portability-map.png` (English-only map — Arabic detail is in this MD)
 > **Purpose:** morning / pre-lecture map — **not** a compressed replacement for the full note.  
 > **Doctor style:** he often asks the **unclear / easy-to-mix** points, not only definitions.
 
@@ -270,7 +270,7 @@ If distance(P1, P2) < threshold
 |:---|:---|
 | `03_Study_Notes/Week_03_Feature_Extraction_and_Portability.md` | Full comprehensive note (35Q bank) |
 | `03_Study_Notes/Week_02_Data_Types_and_Preparation.md` | Types + prep (linked: discretization, one-hot, selection vs extraction) |
-| `06_Diagrams_&_Mindmaps/Week_03_Feature_Extraction_Portability_Map.png` | Visual map for this review |
+| `06_Diagrams_&_Mindmaps/w03-feature-extraction-portability-map.png` | Visual map for this review (EN) |
 
 ---
 
