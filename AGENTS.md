@@ -247,6 +247,17 @@ When generating quiz banks (`Quiz_NN_<Topic>.json`):
      - General Arabic concepts MUST be written in clean, natural Arabic without appending redundant English words in parentheses.
      - Eliminating parenthetical bloat prevents the "3-line giveaway" tell and eliminates BiDi punctuation jumping in browser viewports.
 
+### 6.2.1. Inviolable Zero-Chance Delivery Gate (MANDATORY FOR ALL AGENTS)
+NO QUIZ ARTIFACT MAY BE DELIVERED, ANNOUNCED, OR COMMITTED WITHOUT PASSING:
+```bash
+python "90_Shared_Toolbox/tools/quiz_balancer.py" "<path_to_quiz.json>" --strict
+```
+**Strict Enforcement Protocol:**
+- If this command exits with **Code 1 (FAILED)**:
+  YOU MUST NOT deliver the quiz to the student or conclude your turn.
+  You MUST read the flagged questions, rewrite and lengthen the short distractors to match the technical depth and character count of the correct answer, re-run the command, and **repeat until it exits with Code 0**.
+- Zero exceptions across all models (whether Claude, GPT, DeepSeek, Qwen, or local LLMs).
+
 ---
 ## 7. Reading & Ingesting Academic PDFs (100% Local & Free)
 

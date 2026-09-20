@@ -179,6 +179,69 @@ def balance_quiz(quiz_data: dict, seed: int = None, clean_bloat: bool = True) ->
         if isinstance(opts_en, list) and len(opts_en) == num_opts:
             q["options_en"] = [opts_en[idx] for idx in indices]
     return quiz_data
+def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_letter_pct: float = 32.0):
+    """
+    Strict psychometric quality gate for AI-generated multiple-choice questions.
+    Returns (is_valid: bool, errors: List[str]).
+
+    Validates:
+      1. Length parity: No correct answer may exceed 1.30x the average length of distractors.
+      2. Positional balance: No single letter (A, B, C, D) may exceed 32% of total questions.
+      3. Zero parenthetical bloat: No options may contain redundant English echoes like 'المعلومات (information)'.
+      4. Schema completeness: concept_id, bloom_level, question_ar, options_ar / options_en.
+    """
+    errors = []
+    questions = quiz_data.get("questions", [])
+    total = len(questions)
+    if total == 0:
+        return False, ["Quiz contains zero questions."]
+
+    # 1. Check length disparity
+    stats = analyze_quiz(quiz_data)
+    for disp in stats.get("length_disparities", []):
+        if disp["ratio"] > max_length_ratio:
+            errors.append(
+                f"Q{disp['question_idx']} ({disp['id']}): Length disparity tell detected! "
+                f"Correct option ({disp['correct_len']} chars) is {disp['ratio']}x longer than distractors ({disp['avg_distractor_len']} chars). "
+                f"Distractors must be expanded to match."
+            )
+
+    # 2. Check positional bias (only for quizzes with >= 4 questions)
+    if total >= 4:
+        dom_letter, dom_count = stats.get("dominant_letter", ("None", 0))
+        dom_pct = (dom_count / total) * 100.0 if total > 0 else 0
+        if dom_pct > max_letter_pct:
+            errors.append(
+                f"Severe positional bias: Option {dom_letter} accounts for {dom_pct:.1f}% of answers ({dom_count}/{total}). "
+                f"Maximum allowed is {max_letter_pct}%. Run balance_quiz to redistribute."
+            )
+
+    # 3. Check for parenthetical bloat in options
+    for i, q in enumerate(questions):
+        qid = q.get("id", f"q{i+1}")
+        opts = q.get("options", [])
+        opts_list = list(opts.values()) if isinstance(opts, dict) else (opts if isinstance(opts, list) else [])
+        for opt in opts_list:
+            matches = re.findall(r'[\u0600-\u06FF\s]+\s*\(([A-Za-z\s\-_/]+)\)', str(opt))
+            for m in matches:
+                if not (m.strip().isupper() and len(m.strip()) <= 6):
+                    errors.append(
+                        f"Q{i+1} ({qid}): Parenthetical translation bloat detected: '({m})'. "
+                        f"Technical terms must be in clean English, or common terms in clean Arabic without brackets."
+                    )
+
+    # 4. Check schema completeness
+    for i, q in enumerate(questions):
+        qid = q.get("id", f"q{i+1}")
+        if not q.get("concept_id"):
+            errors.append(f"Q{i+1} ({qid}): Missing 'concept_id' tag.")
+        if not q.get("bloom_level"):
+            errors.append(f"Q{i+1} ({qid}): Missing 'bloom_level' tag.")
+        if not q.get("question_ar"):
+            errors.append(f"Q{i+1} ({qid}): Missing 'question_ar' translation.")
+
+    is_valid = len(errors) == 0
+    return is_valid, errors
 
 
 def main():
@@ -188,8 +251,8 @@ def main():
     parser.add_argument("quiz_path", help="Path to quiz JSON file")
     parser.add_argument("-o", "--output", help="Output file path (defaults to overwriting input)")
     parser.add_argument("--check", action="store_true", help="Only check psychometric health without modifying")
+    parser.add_argument("--strict", action="store_true", help="Enforce strict psychometric gate (exits with code 1 on any violation)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for deterministic balancing")
-
     args = parser.parse_args()
     path = Path(args.quiz_path)
     if not path.is_file():
@@ -223,6 +286,19 @@ def main():
             print(f"   - Q{d['question_idx']} ({d['id']}): Correct={d['correct_len']} chars vs Distractors={d['avg_distractor_len']} chars ({d['ratio']}x longer)")
         if len(disparities) > 5:
             print(f"   ... and {len(disparities) - 5} more questions.")
+    if args.strict:
+        is_valid, errors = validate_strict_gate(quiz_data)
+        if not is_valid:
+            print("\n" + "!" * 65)
+            print("❌ STRICT PSYCHOMETRIC GATE FAILED:")
+            for err in errors:
+                print(f"  * {err}")
+            print("\nACTION REQUIRED: The agent MUST fix the flagged issues above")
+            print("before delivering or committing this quiz bank.")
+            print("!" * 65)
+            sys.exit(1)
+        else:
+            print("\n✅ STRICT PSYCHOMETRIC GATE PASSED: 100% Psychometrically Compliant.")
 
     if args.check:
         print("\n[Check mode only — no changes made]")

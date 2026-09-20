@@ -7,9 +7,7 @@ import sys
 tools_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "tools"
 if str(tools_path) not in sys.path:
     sys.path.insert(0, str(tools_path))
-
-from quiz_balancer import analyze_quiz, balance_quiz, clean_parenthetical_bloat
-
+from quiz_balancer import analyze_quiz, balance_quiz, clean_parenthetical_bloat, validate_strict_gate
 
 # --------------------------------------------------------------------------
 # 1. Clean Parenthetical Bloat Tests
@@ -158,3 +156,118 @@ def test_balance_quiz_handles_dictionary_options():
     new_ans = q["answer"]
     new_idx = ["A", "B", "C", "D"].index(new_ans)
     assert q["options"][new_idx] == "DICT_CORRECT"
+# --------------------------------------------------------------------------
+# 4. Strict Psychometric Gate Tests (TDD)
+# --------------------------------------------------------------------------
+def test_validate_strict_gate_fails_on_length_disparity():
+    # Quiz with a 3-line correct answer and 1-line distractors
+    quiz = {
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "test_concept",
+                "bloom_level": "Apply",
+                "question": "Test question?",
+                "question_ar": "سؤال تجريبي؟",
+                "options": [
+                    "Short distractor 1",
+                    "This is an excessively long, highly detailed, and thoroughly elaborated correct answer that acts as an obvious tell",
+                    "Short distractor 2",
+                    "Short distractor 3"
+                ],
+                "options_ar": ["مشتت 1", "خيار صحيح طويل جداً ومليء بالتفاصيل ويعتبر علامة واضحة على الجواب", "مشتت 2", "مشتت 3"],
+                "options_en": ["Short 1", "Excessively long correct answer with full details", "Short 2", "Short 3"],
+                "answer": "B"
+            }
+        ]
+    }
+    is_valid, errors = validate_strict_gate(quiz)
+    assert is_valid is False
+    assert any("length disparity" in err.lower() or "longer than distractors" in err.lower() for err in errors)
+
+
+def test_validate_strict_gate_fails_on_positional_bias():
+    # 10 questions, 9 on Option B
+    quiz = {
+        "questions": [
+            {
+                "id": f"q{i}",
+                "concept_id": f"c_{i}",
+                "bloom_level": "Understand",
+                "question": f"Q{i}?",
+                "question_ar": f"سؤال {i}؟",
+                "options": ["Option A of equal length", "Option B of equal length", "Option C of equal length", "Option D of equal length"],
+                "options_ar": ["خيار أ بطول متساوي", "خيار ب بطول متساوي", "خيار ج بطول متساوي", "خيار د بطول متساوي"],
+                "options_en": ["Option A equal", "Option B equal", "Option C equal", "Option D equal"],
+                "answer": "B" if i < 9 else "A"
+            }
+            for i in range(10)
+        ]
+    }
+    is_valid, errors = validate_strict_gate(quiz)
+    assert is_valid is False
+    assert any("positional bias" in err.lower() or "dominant" in err.lower() for err in errors)
+
+
+def test_validate_strict_gate_fails_on_parenthetical_bloat():
+    quiz = {
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "c1",
+                "bloom_level": "Understand",
+                "question": "Q1?",
+                "question_ar": "سؤال؟",
+                "options": [
+                    "المعلومات (information)",
+                    "العتاد المادي فقط (hardware components)",
+                    "البرمجيات (software)",
+                    "الشبكات (networks)"
+                ],
+                "options_ar": ["المعلومات (information)", "العتاد المادي فقط (hardware components)", "البرمجيات (software)", "الشبكات (networks)"],
+                "options_en": ["Information", "Hardware only", "Software", "Networks"],
+                "answer": "A"
+            }
+        ]
+    }
+    is_valid, errors = validate_strict_gate(quiz)
+    assert is_valid is False
+    assert any("parenthetical" in err.lower() or "bloat" in err.lower() for err in errors)
+
+
+def test_validate_strict_gate_passes_on_compliant_quiz():
+    # 4 questions perfectly balanced, equal length, clean terms, full schema
+    quiz = {
+        "questions": [
+            {
+                "id": f"q{i+1}",
+                "concept_id": f"concept_{i+1}",
+                "bloom_level": "Understand",
+                "question": f"Formal English question number {i+1}?",
+                "question_ar": f"سؤال أكاديمي رقم {i+1} بالعربية؟",
+                "options": [
+                    "First option of exactly equal length.",
+                    "Second option of exactly equal length.",
+                    "Third option of exactly equal length.",
+                    "Fourth option of exactly equal length."
+                ],
+                "options_ar": [
+                    "الخيار الأول بطول متساوٍ ودقيق.",
+                    "الخيار الثاني بطول متساوٍ ودقيق.",
+                    "الخيار الثالث بطول متساوٍ ودقيق.",
+                    "الخيار الرابع بطول متساوٍ ودقيق."
+                ],
+                "options_en": [
+                    "First option of exactly equal length.",
+                    "Second option of exactly equal length.",
+                    "Third option of exactly equal length.",
+                    "Fourth option of exactly equal length."
+                ],
+                "answer": ["A", "B", "C", "D"][i]
+            }
+            for i in range(4)
+        ]
+    }
+    is_valid, errors = validate_strict_gate(quiz)
+    assert is_valid is True
+    assert len(errors) == 0

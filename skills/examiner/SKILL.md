@@ -42,10 +42,11 @@ Use this skill whenever the student requests self-assessment, quizzes, MCQs, or 
      `python 90_Shared_Toolbox/tools/quiz_qr.py "<Subject>" "<Quiz>" --open`
      to launch directly in the default browser (Chromium/Chrome) for 1-click device sharing.
    * WebUI submissions automatically record telemetry, dwell times, and Bloom gaps into `00_STUDIO_HUB/sessions/YYYY-MM-DD.md` for BKT calibration.
-7. **Algorithmic Balancer:**
-   * After creating any quiz bank JSON, execute:
-     `python 90_Shared_Toolbox/tools/quiz_balancer.py "<path_to_quiz.json>"`
-     to eliminate LLM positional bias and ensure uniform distribution across A, B, C, D.
+7. **Mandatory Strict Quality Gate (Zero-Chance Policy):**
+   * After creating any quiz bank JSON, the agent MUST execute:
+     `python 90_Shared_Toolbox/tools/quiz_balancer.py "<path_to_quiz.json>" --strict`
+   * If this exits with Code 1, the agent MUST rewrite the short distractors to match the correct answer's length and technical depth until it exits with Code 0.
+   * Delivering the quiz or concluding the turn before passing with Code 0 is strictly forbidden.
 Save quiz banks as JSON in `<Semester>/<Subject>/07_Quizzes_&_Anki/Quiz_NN_<Topic>.json` using the schema in `00_STUDIO_HUB/templates/template-quiz-bank.json`.
 ## Full Reference
 
