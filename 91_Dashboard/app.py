@@ -314,6 +314,7 @@ def index():
         total_raw=total_raw,
         sessions=sessions,
         buddy=buddy,
+        available_quizzes=get_all_quizzes(),
     )
 
 
@@ -329,6 +330,37 @@ def api_data():
         "buddy": parse_college_buddy(),
     })
 
+def get_all_quizzes():
+    """Scans all semester directories for available quizzes."""
+    semester_dirs = sorted([d for d in BASE.glob("0*_Semester_*") if d.is_dir()])
+    if SEM1 not in semester_dirs:
+        semester_dirs.insert(0, SEM1)
+    quizzes = []
+    for sem in semester_dirs:
+        for qf in sorted(sem.glob("*/07_Quizzes_&_Anki/Quiz_*.json")):
+            try:
+                content = json.loads(qf.read_text(encoding="utf-8"))
+                subject_folder = qf.parent.parent.name
+                quiz_name = qf.stem
+                quizzes.append({
+                    "semester": sem.name,
+                    "subject": subject_folder,
+                    "quiz_id": quiz_name,
+                    "topic": content.get("topic", quiz_name),
+                    "instructor": content.get("instructor", ""),
+                    "questions_count": len(content.get("questions", [])),
+                    "url": f"/quiz/{subject_folder}/{quiz_name}"
+                })
+            except Exception:
+                continue
+    return quizzes
+
+
+@app.route("/api/quiz/list")
+def api_quiz_list():
+    """Returns a list of all available quizzes across all semesters."""
+    return jsonify({"quizzes": get_all_quizzes()})
+
 
 @app.route("/quiz")
 def quiz_hub():
@@ -340,6 +372,7 @@ def quiz_hub():
         subject_id=None,
         quiz_id=None,
         lan_ip=lan_ip,
+        available_quizzes=get_all_quizzes(),
     )
 
 
@@ -358,17 +391,24 @@ def quiz_direct(subject_id, quiz_id):
 
 @app.route("/api/quiz/<subject_id>/<quiz_id>")
 def api_quiz_get(subject_id, quiz_id):
-    """Returns quiz JSON for a subject and quiz ID."""
+    """Returns quiz JSON for a subject and quiz ID across any semester."""
     filename = quiz_id if quiz_id.endswith(".json") else f"{quiz_id}.json"
-    target_dir = (SEM1 / subject_id / "07_Quizzes_&_Anki").resolve()
-    target_file = (target_dir / filename).resolve()
+    semester_dirs = sorted([d for d in BASE.glob("0*_Semester_*") if d.is_dir()])
+    if SEM1 not in semester_dirs:
+        semester_dirs.insert(0, SEM1)
+    target_file = None
+    for sem in semester_dirs:
+        candidate_dir = (sem / subject_id / "07_Quizzes_&_Anki").resolve()
+        candidate_file = (candidate_dir / filename).resolve()
+        try:
+            candidate_file.relative_to(candidate_dir)
+            if candidate_file.is_file():
+                target_file = candidate_file
+                break
+        except ValueError:
+            continue
 
-    try:
-        target_file.relative_to(target_dir)
-    except ValueError:
-        return jsonify({"error": "Invalid quiz path"}), 404
-
-    if not target_file.is_file():
+    if not target_file or not target_file.is_file():
         return jsonify({"error": "Quiz not found"}), 404
 
     try:
@@ -377,7 +417,6 @@ def api_quiz_get(subject_id, quiz_id):
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": f"Failed to load quiz: {str(e)}"}), 500
-
 
 @app.route("/api/quiz/submit", methods=["POST"])
 def api_quiz_submit():

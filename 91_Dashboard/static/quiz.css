@@ -338,6 +338,58 @@ input:focus, textarea:focus {
     white-space: nowrap;
 }
 
+/* Mode Pill Button (Study vs Exam) */
+.mode-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    outline: none;
+    user-select: none;
+    margin-right: 0.35rem;
+}
+
+.mode-pill-btn:hover {
+    border-color: var(--border-focus);
+    color: var(--text-main);
+}
+
+.mode-pill-btn.exam-active {
+    background-color: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #818CF8;
+}
+
+[data-theme="light"] .mode-pill-btn.exam-active {
+    background-color: rgba(99, 102, 241, 0.10);
+    border-color: #6366F1;
+    color: #4F46E5;
+}
+
+.mode-pill-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Shuffle Button Active State */
+.icon-btn.shuffle-active {
+    color: #38BDF8 !important;
+    background-color: rgba(56, 189, 248, 0.12) !important;
+}
+
+[data-theme="light"] .icon-btn.shuffle-active {
+    color: #0284C7 !important;
+    background-color: rgba(2, 132, 199, 0.10) !important;
+}
+
 .topic-banner {
     padding: 0.75rem 0.25rem 0.25rem 0.25rem;
     display: flex;

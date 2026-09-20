@@ -121,6 +121,9 @@ class QuizApp {
         this.subjectId = this.root?.dataset?.subjectId || urlParams.get('subject') || '';
         this.quizId = this.root?.dataset?.quizId || urlParams.get('quiz') || '';
         this.directMode = this.root?.dataset?.directMode === 'true' || urlParams.get('direct') === 'true';
+        this.examMode = urlParams.get('mode') === 'exam';
+        this.shuffleMode = urlParams.get('shuffle') === 'true';
+        this.rawQuestions = null;
 
         // Core State
         this.quizData = null;
@@ -147,6 +150,11 @@ class QuizApp {
             quizTitle: document.getElementById('quiz-title'),
             quizSubtitle: document.getElementById('quiz-subtitle'),
             btnExit: document.getElementById('btn-exit'),
+            btnModeToggle: document.getElementById('btn-mode-toggle'),
+            modeIcon: document.getElementById('mode-icon'),
+            modeLabel: document.getElementById('mode-label'),
+            btnShuffleToggle: document.getElementById('btn-shuffle-toggle'),
+            shuffleIcon: document.getElementById('shuffle-icon'),
             btnBookmarksToggle: document.getElementById('btn-toggle-bookmarks'),
             btnLangToggle: document.getElementById('btn-lang-toggle'),
             langIndicator: document.getElementById('lang-indicator'),
@@ -223,6 +231,8 @@ class QuizApp {
         this.initLanguage();
         this.initTheme();
         this.updateSoundIcon();
+        this.updateModeUI();
+        this.updateShuffleUI();
         this.initEvents();
         this.flushOfflineQueue();
         await this.loadBookmarks();
@@ -324,6 +334,8 @@ class QuizApp {
         this.dom.btnLangToggle?.addEventListener('click', () => this.toggleLanguage());
         this.dom.btnThemeToggle?.addEventListener('click', () => this.toggleTheme());
         this.dom.btnExit?.addEventListener('click', () => this.handleExit());
+        this.dom.btnModeToggle?.addEventListener('click', () => this.toggleExamMode());
+        this.dom.btnShuffleToggle?.addEventListener('click', () => this.toggleShuffleMode());
         // Question Navigation
         this.dom.btnPrev?.addEventListener('click', () => this.prevQuestion());
         this.dom.btnNext?.addEventListener('click', () => this.nextQuestion());
@@ -356,6 +368,42 @@ class QuizApp {
 
         // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
+    }
+    toggleExamMode() {
+        this.examMode = !this.examMode;
+        this.updateModeUI();
+        if (this.quizData) {
+            this.renderQuestion(this.currentIndex);
+        }
+    }
+
+    updateModeUI() {
+        if (!this.dom.btnModeToggle) return;
+        this.dom.btnModeToggle.classList.toggle('exam-active', this.examMode);
+        if (this.dom.modeLabel) {
+            this.dom.modeLabel.textContent = this.examMode ? (this.lang === 'ar' ? 'امتحان' : 'Exam') : (this.lang === 'ar' ? 'تدريب' : 'Study');
+        }
+        if (this.dom.modeIcon) {
+            this.dom.modeIcon.setAttribute('data-lucide', this.examMode ? 'graduation-cap' : 'book-open');
+        }
+        this.refreshLucideIcons();
+    }
+
+    toggleShuffleMode() {
+        this.shuffleMode = !this.shuffleMode;
+        this.updateShuffleUI();
+        if (this.quizData) {
+            this.setupQuizSession();
+            this.renderQuestion(0);
+        }
+    }
+
+    updateShuffleUI() {
+        if (!this.dom.btnShuffleToggle) return;
+        this.dom.btnShuffleToggle.classList.toggle('shuffle-active', this.shuffleMode);
+        this.dom.btnShuffleToggle.title = this.shuffleMode 
+            ? (this.lang === 'ar' ? 'الترتيب العشوائي مفعل' : 'Shuffle Enabled')
+            : (this.lang === 'ar' ? 'خلط ترتيب الأسئلة والخيارات' : 'Shuffle Questions & Options');
     }
 
     handleKeyboardShortcuts(e) {
@@ -436,10 +484,25 @@ class QuizApp {
         const subjectDisplay = this.quizData.subject || this.quizData.subject_id || this.subjectId || '';
         this.quizData.subject_id = subjectDisplay;
 
+        if (!this.rawQuestions) {
+            this.rawQuestions = JSON.parse(JSON.stringify(this.quizData.questions || []));
+        }
+
+        let questionsToUse = JSON.parse(JSON.stringify(this.rawQuestions));
+
+        if (this.shuffleMode) {
+            // Fisher-Yates shuffle questions
+            for (let i = questionsToUse.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questionsToUse[i], questionsToUse[j]] = [questionsToUse[j], questionsToUse[i]];
+            }
+        }
+
+        this.quizData.questions = questionsToUse;
+
         if (Array.isArray(this.quizData.questions)) {
             this.quizData.questions.forEach((q, idx) => {
                 if (!q) return;
-
                 // Ensure question id
                 if (!q.id) {
                     q.id = `q_${idx + 1}`;
@@ -626,12 +689,11 @@ class QuizApp {
 
         if (this.dom.optionsContainer) {
             this.dom.optionsContainer.innerHTML = '';
-            if (isAnswered) {
+            if (isAnswered && !this.examMode) {
                 this.dom.optionsContainer.classList.add('locked');
             } else {
                 this.dom.optionsContainer.classList.remove('locked');
             }
-
             const optionKeys = q.optionKeys || ['A', 'B', 'C', 'D'];
 
             qOptions.forEach((optText, optIdx) => {
@@ -641,13 +703,18 @@ class QuizApp {
                 const tile = document.createElement('button');
                 let tileClass = 'option-tile';
                 if (isAnswered) {
-                    if (isSelected) {
-                        tileClass += (optIdx === q.correct) ? ' correct-answer' : ' user-wrong';
-                    } else if (isCorrectOpt) {
-                        tileClass += ' correct-answer';
+                    if (this.examMode) {
+                        if (isSelected) {
+                            tileClass += ' selected';
+                        }
+                    } else {
+                        if (isSelected) {
+                            tileClass += (optIdx === q.correct) ? ' correct-answer' : ' user-wrong';
+                        } else if (isCorrectOpt) {
+                            tileClass += ' correct-answer';
+                        }
                     }
                 }
-
                 tile.className = tileClass;
                 tile.setAttribute('role', 'radio');
                 tile.setAttribute('aria-checked', isSelected ? 'true' : 'false');
@@ -673,7 +740,7 @@ class QuizApp {
 
         // Sleek explanation card (ONLY shown for wrong answers)
         if (this.dom.liveFeedbackBox) {
-            if (isAnswered && userAns !== q.correct) {
+            if (!this.examMode && isAnswered && userAns !== q.correct) {
                 this.dom.liveFeedbackBox.classList.remove('hidden');
                 if (this.dom.liveExplanationText) {
                     this.dom.liveExplanationText.textContent = q.explanation || '';
@@ -701,6 +768,19 @@ class QuizApp {
     }
 
     selectOption(optionIndex) {
+        if (this.examMode) {
+            // Exam Mode: allow changing answer, no green/red, no explanation
+            this.answers[this.currentIndex] = optionIndex;
+            this.answerTimestamps[this.currentIndex] = Date.now();
+
+            const tiles = this.dom.optionsContainer?.querySelectorAll('.option-tile');
+            tiles?.forEach(t => t.classList.remove('selected'));
+            tiles?.[optionIndex]?.classList.add('selected');
+
+            this.soundManager.play('click');
+            return;
+        }
+
         if (this.answers[this.currentIndex] !== undefined) return; // Locked: no changing answers!
 
         this.answers[this.currentIndex] = optionIndex;
@@ -713,8 +793,6 @@ class QuizApp {
 
         // Lock options grid
         this.dom.optionsContainer?.classList.add('locked');
-
-        // Instant visual feedback
         if (isCorrect) {
             tiles?.[optionIndex]?.classList.add('correct-answer');
             this.soundManager.play('correct');

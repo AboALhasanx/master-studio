@@ -178,3 +178,12 @@ def test_api_quiz_bookmarks_get_and_post(client, monkeypatch):
         assert res_after_list.status_code == 200
         data_after_list = res_after_list.get_json()
         assert (data_after_list == bookmarks_list) or (data_after_list.get("bookmarks") == bookmarks_list)
+def test_api_quiz_list(client):
+    res = client.get("/api/quiz/list")
+    assert res.status_code == 200
+    data = res.get_json()
+    assert "quizzes" in data
+    assert isinstance(data["quizzes"], list)
+    assert len(data["quizzes"]) >= 2
+    topics = [q["topic"] for q in data["quizzes"]]
+    assert any("Software" in t or "Crisis" in t or "Foundations" in t for t in topics)
