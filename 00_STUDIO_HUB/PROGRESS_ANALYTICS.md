@@ -17,7 +17,7 @@
 |----------------------------|:-------:|:-------------:|:-------------:|:----------------------:|
 | 01_Cyber_Security          |    2    |       3       |     ~68%      | 🟢 Theory done · 🔴 drills before Sun quiz |
 | 02_English_Language        |    1    |       1       |     100%      | 🟢 Unit 1 done · presentation 27/9 |
-| 03_Data_Mining             |    2    |       1       |      92%      | 🟢 W01 quiz excellence · W01–W03 notes ready |
+| 03_Data_Mining             |    2    |   platform   |   not exam   | 🟢 W01–W03 notes + bilingual W1/W2 packs ready |
 | 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 On track |
 | 05_Soft_Computing          |    2    |   banks only  |      --       | 🟢 W01 note rebuilt (DM method) · 🟡 W2 unposted |
 | 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material from professor) |
@@ -66,7 +66,7 @@
 
 | Log ID | Date | Subject | Topic | Score | Result |
 |:---:|:---:|:---|:---|:---:|:---|
-| #007 | 2026-09-20 21:15 | `03_Data_Mining` | W01 Intro WebUI 25Q | **23/25 (92%)** | PASS | 🟢 Excellence |
+| #007 | 2026-09-20 21:15 | `03_Data_Mining` | W01 Intro **WebUI MCQ platform only** | 23/25 (92%) | **NOT COUNTED as exam** | 🟡 Platform check — student instruction |
 | #006 | 2026-09-19 19:23 | `04_Advanced_Software_Eng` | Lecture 01 Simulation Check | 4/5 (80%) | PASS | 🟢 Mastered |
 | #001 | 2026-09-16 | ASE | Lecture 01 | 4/5 (80%) | PASS |
 | #002 | 2026-09-17 | English | Unit 01 Grammar | 5/5 (100%) | PASS |

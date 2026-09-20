@@ -113,3 +113,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-20:** English paper reminder: REAL published paper only (arXiv/journal free PDF) — do NOT invent topic write-up. Headway Language Focus = TOP of page 7. Monday 21/9: DM W03 note ready + ASE W01 light refresh; no English review tonight.
 
 - **Added 2026-09-20:** DM Week 01 WebUI 2026-09-20: 92% (23/25) excellence. Fix: Market Basket 'buy group A → likely buy group B'; system advantages = cost-efficient/integratable/fast. Student B-answer bias cost 2 marks.
+
+- **Added 2026-09-20:** DM morning packs: Week_01_Data_Mining_Bilingual_EN_AR.pdf + Week_02_Data_Mining_Bilingual_EN_AR.pdf in 03_Study_Notes. Full bilingual, not compressed. WebUI quiz = platform only, not course exam.
