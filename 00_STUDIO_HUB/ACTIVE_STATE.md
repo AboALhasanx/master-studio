@@ -3,8 +3,8 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "Prepare for the 01_Cyber_Security daily quiz (Week 01 material) — Sunday 2026-09-20 lecture"
-next_session_focus: "Sunday Cyber quiz — read Week_01_Cybersecurity_Bilingual_EN_AR.pdf + CIA/arithmetic traps; after quiz: DM W03 Monday; SC note ready"
+immediate_todo: "No quiz today — Dr. Huda postponed Cyber quiz to NEXT WEEK (two booklets; booklet 2 not yet given). Await student materials. English: research-paper talk + academic vocab next week; exam after Unit 1 both sources. Monday = Data Mining W03."
+next_session_focus: "When Abu Al-Hasan provides: (1) Cyber booklet 2 / paper notes / audio → build notes; (2) English research paper + Q Skills p17 / Headway p8 context; (3) Monday DM W03 note already ready; URL=Nominal for Dr. Ahmed."
 last_updated: "2026-09-20"
 status: "WEEK_01_ACTIVE"
 ---
