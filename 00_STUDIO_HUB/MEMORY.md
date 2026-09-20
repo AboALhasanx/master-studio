@@ -107,3 +107,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-20:** Cyber W01 bilingual PDF: Week_01_Cybersecurity_Bilingual_EN_AR.pdf (11pp). Build via HTML + Edge headless print-to-pdf because MIMO_SOFFICE fails with 0xC0000135 missing DLL.
 
 - **Added 2026-09-20:** 2026-09-20 Cyber quiz POSTPONED by Dr. Huda to next week; covers 2 booklets; booklet 2 NOT delivered to students yet (not Week 02); wait for student materials before new Cyber notes. English exam after Unit 1 Q Skills + Headway; research paper talk next week with academic vocabulary questions.
+
+- **Added 2026-09-20:** 2026-09-20 clarifications: Huda booklet 2 still NOT delivered — random notes only; build notes AFTER booklet arrives (together). English research paper = any CS field + rich academic terminology. Headway grammar + Language Focus flagged important by student; today English lecture added little new.
