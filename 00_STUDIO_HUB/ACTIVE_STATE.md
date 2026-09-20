@@ -3,9 +3,9 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "MONDAY 2026-09-21 prep: DM 08:30 W03 note ready — skim conversion matrix + X-ray pipeline + URL=Nominal; ASE 10:30 light W01 refresh; capture new class materials. No English review tonight; no Cyber booklet-2 notes until delivered."
-next_session_focus: "After Monday classes: log what DM W03 and ASE actually covered; stage any new professor files. Cyber booklet 2 WAITING. English paper = real arXiv/published PDF reminder only."
-last_updated: "2026-09-20"
+immediate_todo: "MONDAY 2026-09-21 morning packs READY — read DM W1/W2 bilingual PDFs + w03 map/hard-points before 08:30; ASE w01-ase-foundations-crisis-bilingual.pdf before 10:30. Capture new class material after lectures. Cyber booklet 2 WAITING."
+next_session_focus: "Log what DM W03 and ASE actually taught Monday; stage any new professor files; Cyber booklet 2 still waiting; English paper = real arXiv only when student asks."
+last_updated: "2026-09-21"
 status: "WEEK_01_ACTIVE"
 ---
 
