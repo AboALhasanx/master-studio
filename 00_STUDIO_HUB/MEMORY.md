@@ -109,3 +109,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-20:** 2026-09-20 Cyber quiz POSTPONED by Dr. Huda to next week; covers 2 booklets; booklet 2 NOT delivered to students yet (not Week 02); wait for student materials before new Cyber notes. English exam after Unit 1 Q Skills + Headway; research paper talk next week with academic vocabulary questions.
 
 - **Added 2026-09-20:** 2026-09-20 clarifications: Huda booklet 2 still NOT delivered — random notes only; build notes AFTER booklet arrives (together). English research paper = any CS field + rich academic terminology. Headway grammar + Language Focus flagged important by student; today English lecture added little new.
+
+- **Added 2026-09-20:** English paper reminder: REAL published paper only (arXiv/journal free PDF) — do NOT invent topic write-up. Headway Language Focus = TOP of page 7. Monday 21/9: DM W03 note ready + ASE W01 light refresh; no English review tonight.
