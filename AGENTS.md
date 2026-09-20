@@ -68,7 +68,7 @@ Agents operating in this vault must function not merely as generic text generato
 > **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
 > - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
 > - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
-- If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR provide the direct WebUI link (`http://127.0.0.1:5000/quiz/<Subject>/<Quiz>`) in Study or Exam mode (`?mode=exam`), OR generate a mobile-scannable QR code via `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz>`, and YOU update `LEARNER_MODEL.md` based on results.
+- If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
 > - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
 
 
@@ -233,13 +233,12 @@ When generating quiz banks (`Quiz_NN_<Topic>.json`):
    - Every quiz must strictly follow `00_STUDIO_HUB/templates/template-quiz-bank.json`.
    - Provide `question_ar`, `options_ar`, `options_en`, `concept_id`, and `bloom_level` (`Understand`, `Apply`, `Analyze`, `Evaluate`).
 
-4. **Standalone Desktop QR Window Directive:**
-   - When the student asks to open the quiz on mobile or requests a CMD window (`"افتح المشاركة كنافذة cmd خارجية"`):
+4. **Direct Browser Launch & Chromium Device Sharing:**
+   - When the student asks to open or share the quiz (`"افتح الكوز"`, `"افتح الرابط"`, `"open the quiz"`):
      ```bash
-     python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>" --window
+     python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>" --open
      ```
-     Spawns an independent, persistent Windows CMD console showing the ASCII QR code and LAN links.
-
+     Instantly launches the quiz in the default browser (Chromium/Chrome) so the student can start immediately or use Chromium's native "Send to your devices" to beam the URL to their phone in 1 click (no QR code scanning required).
 ---
 ## 7. Reading & Ingesting Academic PDFs (100% Local & Free)
 

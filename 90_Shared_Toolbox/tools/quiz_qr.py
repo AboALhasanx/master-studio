@@ -80,11 +80,17 @@ if __name__ == "__main__":
     parser.add_argument("subject_id", help="Subject identifier (e.g. EE-201, MATH-101)")
     parser.add_argument("quiz_id", help="Quiz identifier (e.g. quiz-01, ch3-quiz)")
     parser.add_argument("--no-qr", action="store_true", help="Suppress QR code output")
+    parser.add_argument("--open", "--browser", action="store_true", help="Open quiz directly in default browser (Chromium/Chrome)")
     parser.add_argument("--window", action="store_true", help="Launch in a standalone external CMD window on Windows")
 
     args = parser.parse_args()
 
-    if args.window and sys.platform == "win32":
+    if args.open:
+        import webbrowser
+        link, lan_ip = generate_quiz_link(args.subject_id, args.quiz_id, print_qr=not args.no_qr)
+        webbrowser.open(link)
+        print(f"🌐 Opened quiz directly in default browser: {link}")
+    elif args.window and sys.platform == "win32":
         import os
         from pathlib import Path
         script_path = Path(__file__).resolve()
