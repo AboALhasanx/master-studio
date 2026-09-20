@@ -617,6 +617,171 @@ input:focus, textarea:focus {
 }
 
 /* --------------------------------------------------------------------------
+   Start Intro View & Pause Overlay
+   -------------------------------------------------------------------------- */
+.quiz-start-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2.5rem 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 520px;
+    width: 100%;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.start-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--accent-subtle);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.start-icon-box .start-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.start-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.4;
+    margin: 0.5rem 0;
+}
+
+.start-meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+}
+
+.start-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.start-pill svg {
+    width: 14px;
+    height: 14px;
+}
+
+.start-instructions {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0.5rem 0 1.25rem 0;
+}
+
+.start-btn {
+    width: 100%;
+    max-width: 280px;
+    height: 48px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Timer Pause Button & States */
+button.timer-unified-pill {
+    cursor: pointer;
+    border: 1px solid var(--border-subtle);
+    outline: none;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+}
+
+button.timer-unified-pill:hover {
+    border-color: var(--border-focus);
+    background-color: var(--bg-card-hover);
+}
+
+button.timer-unified-pill.is-paused {
+    border-color: var(--warning);
+    color: var(--warning-text);
+    background-color: var(--warning-bg);
+}
+
+/* Pause Overlay */
+.pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-overlay);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.pause-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    text-align: center;
+    max-width: 360px;
+    width: 90%;
+}
+
+.pause-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--warning);
+}
+
+.pause-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.pause-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.resume-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+/* --------------------------------------------------------------------------
    Question Card View
    -------------------------------------------------------------------------- */
 .quiz-view {

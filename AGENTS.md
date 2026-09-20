@@ -212,6 +212,35 @@ The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-dat
   3. The agent ingests these markers during study sessions to calibrate Bayesian Knowledge Tracing (BKT) mastery probabilities in `00_STUDIO_HUB/LEARNER_MODEL.md`.
 ---
 
+## 6.2. Autonomous Quiz Generation Invariants (Psychometric Rigor & Anti-Bias Rules)
+
+When generating quiz banks (`Quiz_NN_<Topic>.json`):
+
+1. **Anti-Positional Bias (Uniform Answer Key Distribution):**
+   - Correct answers MUST be evenly distributed across A, B, C, D (~25% each, maximum 32% on any single letter).
+   - **Zero-Guessing Rule:** Never dump answers into a single letter (e.g. 22/25 in B).
+   - **Algorithmic Balancer Invariant:** After creating any quiz JSON, the agent MUST run:
+     ```bash
+     python "90_Shared_Toolbox/tools/quiz_balancer.py" "<path_to_quiz.json>"
+     ```
+     This automatically permutes option order so the answer distribution is mathematically balanced across A, B, C, D while preserving question mapping.
+
+2. **Anti-Length Bias (Uniform Option Length Invariant):**
+   - Distractor options MUST be within ±25% character length of the correct answer.
+   - **Strict Prohibition:** The correct answer MUST NEVER be visibly longer, more detailed, or more qualified than the distractors (the "longest-option giveaway").
+
+3. **Mandatory Bilingual Schema:**
+   - Every quiz must strictly follow `00_STUDIO_HUB/templates/template-quiz-bank.json`.
+   - Provide `question_ar`, `options_ar`, `options_en`, `concept_id`, and `bloom_level` (`Understand`, `Apply`, `Analyze`, `Evaluate`).
+
+4. **Standalone Desktop QR Window Directive:**
+   - When the student asks to open the quiz on mobile or requests a CMD window (`"افتح المشاركة كنافذة cmd خارجية"`):
+     ```bash
+     python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>" --window
+     ```
+     Spawns an independent, persistent Windows CMD console showing the ASCII QR code and LAN links.
+
+---
 ## 7. Reading & Ingesting Academic PDFs (100% Local & Free)
 
 To allow agents to read and analyze dense two-column academic papers, textbook chapters, and lecture PDFs as easily as Markdown:

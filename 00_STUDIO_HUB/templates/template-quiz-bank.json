@@ -1,0 +1,122 @@
+{
+  "$schema_description": "Master Studio Canonical Quiz Bank Template (Psychometric Rigor & Anti-Bias Standards)",
+  "subject": "{{Subject_Folder_Name}}",
+  "topic": "{{Topic_Title_and_Week}}",
+  "instructor": "{{Professor_Full_Name}}",
+  "_psychometric_invariants": {
+    "rule_1_balanced_answer_keys": "The correct answer MUST be uniformly distributed across A, B, C, D (approx 25% each, max 30% on any single letter). Never dump majority of answers into a single letter like B!",
+    "rule_2_uniform_option_length": "Every distractor option MUST be within ±25% character length of the correct option. The correct answer MUST NEVER be visibly longer, more detailed, or qualified (longest-option tell)!",
+    "rule_3_plausible_distractors": "Distractors must represent real student misconceptions, boundary oversights, or related algorithm conflations. Never write lazy, trivial, or joke options.",
+    "rule_4_bilingual_parity": "Both English and Arabic translations must be provided for questions and options. Explanations must be thorough, citing formal standards or textbooks."
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "concept_identifier_snake_case",
+      "bloom_level": "Understand",
+      "question": "Formal English academic question scenario presenting constraints and failure modes...",
+      "question_ar": "الترجمة المعنوية الدقيقة للسؤال باللغة العربية مع الحفاظ على المصطلحات التقنية...",
+      "options": [
+        "First plausible option of uniform length (~50-80 chars)...",
+        "Second plausible option of uniform length (~50-80 chars)...",
+        "Third plausible option of uniform length (~50-80 chars)...",
+        "Fourth plausible option of uniform length (~50-80 chars)..."
+      ],
+      "options_ar": [
+        "الخيار الأول باللغة العربية بطول متقارب مع بقية الخيارات...",
+        "الخيار الثاني باللغة العربية بطول متقارب مع بقية الخيارات...",
+        "الخيار الثالث باللغة العربية بطول متقارب مع بقية الخيارات...",
+        "الخيار الرابع باللغة العربية بطول متقارب مع بقية الخيارات..."
+      ],
+      "options_en": [
+        "First plausible option of uniform length (~50-80 chars)...",
+        "Second plausible option of uniform length (~50-80 chars)...",
+        "Third plausible option of uniform length (~50-80 chars)...",
+        "Fourth plausible option of uniform length (~50-80 chars)..."
+      ],
+      "answer": "A",
+      "explanation": "Detailed bilingual explanation of why the correct option wins and why each distractor is technically flawed."
+    },
+    {
+      "id": "q2",
+      "concept_id": "second_concept_snake_case",
+      "bloom_level": "Apply",
+      "question": "Second scenario question...",
+      "question_ar": "السؤال الثاني بالعربية...",
+      "options": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "options_ar": [
+        "خيار أ...",
+        "خيار ب...",
+        "خيار ج...",
+        "خيار د..."
+      ],
+      "options_en": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "answer": "B",
+      "explanation": "Technical and conceptual explanation..."
+    },
+    {
+      "id": "q3",
+      "concept_id": "third_concept_snake_case",
+      "bloom_level": "Analyze",
+      "question": "Third scenario question...",
+      "question_ar": "السؤال الثالث بالعربية...",
+      "options": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "options_ar": [
+        "خيار أ...",
+        "خيار ب...",
+        "خيار ج...",
+        "خيار د..."
+      ],
+      "options_en": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "answer": "C",
+      "explanation": "Technical and conceptual explanation..."
+    },
+    {
+      "id": "q4",
+      "concept_id": "fourth_concept_snake_case",
+      "bloom_level": "Evaluate",
+      "question": "Fourth scenario question...",
+      "question_ar": "السؤال الرابع بالعربية...",
+      "options": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "options_ar": [
+        "خيار أ...",
+        "خيار ب...",
+        "خيار ج...",
+        "خيار د..."
+      ],
+      "options_en": [
+        "Option A...",
+        "Option B...",
+        "Option C...",
+        "Option D..."
+      ],
+      "answer": "D",
+      "explanation": "Technical and conceptual explanation..."
+    }
+  ]
+}

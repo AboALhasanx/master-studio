@@ -24,12 +24,11 @@
                     <i data-lucide="home"></i>
                 </button>
                 <span class="app-brand-title">الرئيسية</span>
-                <button id="btn-mode-toggle" class="mode-pill-btn" aria-label="Toggle Exam / Study Mode" title="تبديل بين وضع التدريب ووضع الامتحان">
-                    <i data-lucide="book-open" id="mode-icon"></i>
-                    <span id="mode-label">تدريب</span>
-                </button>
             </div>
             <div class="header-right">
+                <button id="btn-mode-toggle" class="icon-btn" aria-label="Toggle Exam / Study Mode" title="تبديل بين وضع التدريب ووضع الامتحان">
+                    <i data-lucide="book-open" id="mode-icon"></i>
+                </button>
                 <button id="btn-shuffle-toggle" class="icon-btn" aria-label="Shuffle Questions" title="خلط ترتيب الأسئلة والخيارات">
                     <i data-lucide="shuffle" id="shuffle-icon"></i>
                 </button>
@@ -66,10 +65,10 @@
                     <span id="question-total-label">5</span>
                 </div>
                 <div class="timers-group">
-                    <div class="timer-unified-pill" title="الوقت المنقضي">
-                        <i data-lucide="clock" class="timer-icon"></i>
+                    <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
+                        <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
                         <span id="session-timer" class="timer-total">00:00</span>
-                    </div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -95,9 +94,42 @@
                     <span>إعادة المحاولة</span>
                 </button>
             </div>
+            </div>
+
+            <!-- Quiz Start Intro View (Prevents time flying before student is ready) -->
+            <div id="quiz-start-view" class="state-view quiz-start-card hidden">
+                <div class="start-icon-box">
+                    <i data-lucide="sparkles" class="start-icon"></i>
+                </div>
+                <span id="start-subject-badge" class="topic-subject-badge">المادة الدراسية</span>
+                <h2 id="start-quiz-title" class="start-title">عنوان الكوز</h2>
+                <div class="start-meta-pills">
+                    <span class="start-pill"><i data-lucide="help-circle"></i> <span id="start-questions-count">0</span> أسئلة</span>
+                    <span class="start-pill"><i data-lucide="clock"></i> <span id="start-estimated-time">0</span> دقيقة</span>
+                    <span class="start-pill" id="start-mode-pill"><i data-lucide="book-open"></i> وضع التدريب</span>
+                </div>
+                <p class="start-instructions">جاهز للاختبار؟ اضغط ابدأ لبدء احتساب الوقت ومراجعة الأسئلة.</p>
+                <button id="btn-start-quiz" class="nav-btn primary-btn start-btn">
+                    <i data-lucide="play"></i>
+                    <span>ابدأ الكوز الآن</span>
+                </button>
+            </div>
 
             <!-- Active Question View -->
-            <div id="quiz-view" class="quiz-view hidden">
+            <div id="quiz-view" class="quiz-view hidden" style="position: relative;">
+                <!-- Pause Overlay -->
+                <div id="pause-overlay" class="pause-overlay hidden">
+                    <div class="pause-card">
+                        <i data-lucide="pause-circle" class="pause-icon"></i>
+                        <h3>الكوز متوقف مؤقتاً</h3>
+                        <p>تم تجميد الوقت. اضغط استئناف لمتابعة الإجابة.</p>
+                        <button id="btn-resume-quiz" class="nav-btn primary-btn resume-btn">
+                            <i data-lucide="play"></i>
+                            <span>استئناف الكوز</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="question-card" id="question-card">
                     <!-- Card Top Header -->
                     <div class="card-header">

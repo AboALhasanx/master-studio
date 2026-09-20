@@ -124,6 +124,8 @@ class QuizApp {
         this.examMode = urlParams.get('mode') === 'exam';
         this.shuffleMode = urlParams.get('shuffle') === 'true';
         this.rawQuestions = null;
+        this.isPaused = false;
+        this.hasStarted = false;
 
         // Core State
         this.quizData = null;
@@ -168,12 +170,23 @@ class QuizApp {
             questionTotalLabel: document.getElementById('question-total-label'),
             dwellTimer: document.getElementById('dwell-timer'),
             sessionTimer: document.getElementById('session-timer'),
+            btnTimerPause: document.getElementById('btn-timer-pause'),
+            timerIcon: document.getElementById('timer-icon'),
 
             // Views
             quizLoading: document.getElementById('quiz-loading'),
             quizError: document.getElementById('quiz-error'),
             errorMessage: document.getElementById('error-message'),
             btnRetryLoad: document.getElementById('btn-retry-load'),
+            quizStartView: document.getElementById('quiz-start-view'),
+            startSubjectBadge: document.getElementById('start-subject-badge'),
+            startQuizTitle: document.getElementById('start-quiz-title'),
+            startQuestionsCount: document.getElementById('start-questions-count'),
+            startEstimatedTime: document.getElementById('start-estimated-time'),
+            startModePill: document.getElementById('start-mode-pill'),
+            btnStartQuiz: document.getElementById('btn-start-quiz'),
+            pauseOverlay: document.getElementById('pause-overlay'),
+            btnResumeQuiz: document.getElementById('btn-resume-quiz'),
             quizView: document.getElementById('quiz-view'),
             resultsView: document.getElementById('results-view'),
 
@@ -340,7 +353,9 @@ class QuizApp {
         this.dom.btnPrev?.addEventListener('click', () => this.prevQuestion());
         this.dom.btnNext?.addEventListener('click', () => this.nextQuestion());
         this.dom.btnBookmarkQuestion?.addEventListener('click', () => this.toggleCurrentBookmark());
-
+        this.dom.btnStartQuiz?.addEventListener('click', () => this.startQuizSession());
+        this.dom.btnTimerPause?.addEventListener('click', () => this.togglePause());
+        this.dom.btnResumeQuiz?.addEventListener('click', () => this.resumeQuiz());
         // Results Actions
         this.dom.btnRetryQuiz?.addEventListener('click', () => this.restartQuiz());
         this.dom.btnSubmitTelemetry?.addEventListener('click', () => this.submitTelemetry());
@@ -573,6 +588,28 @@ class QuizApp {
                     correctLetter = optionKeys[0] || 'A';
                 }
 
+                // Algorithmic option shuffling: ALWAYS active by default to eliminate LLM positional bias!
+                if (optionsArray.length > 1) {
+                    const originalCorrectText = optionsArray[correctIdx] || optionsArray[0];
+                    const optIndices = optionsArray.map((_, i) => i);
+                    for (let i = optIndices.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [optIndices[i], optIndices[j]] = [optIndices[j], optIndices[i]];
+                    }
+
+                    optionsArray = optIndices.map(i => optionsArray[i]);
+                    if (Array.isArray(q.options_ar) && q.options_ar.length === optIndices.length) {
+                        q.options_ar = optIndices.map(i => q.options_ar[i]);
+                    }
+                    if (Array.isArray(q.options_en) && q.options_en.length === optIndices.length) {
+                        q.options_en = optIndices.map(i => q.options_en[i]);
+                    }
+
+                    correctIdx = optionsArray.indexOf(originalCorrectText);
+                    if (correctIdx === -1) correctIdx = 0;
+                    correctLetter = optionKeys[correctIdx] || ['A', 'B', 'C', 'D'][correctIdx] || 'A';
+                }
+
                 q.options = optionsArray;
                 q.optionKeys = optionKeys;
                 q.correct = correctIdx;
@@ -591,12 +628,69 @@ class QuizApp {
             this.dom.quizSubtitle.textContent = cleanSubj;
         }
 
-        // Start 1s timer loop
-        this.startTimerLoop();
+        // Prepare Pre-Quiz Start Screen (Prevents time flying before student is ready)
+        this.prepareStartScreen();
+        this.showState('start');
+    }
 
-        // Show Active Quiz
+    prepareStartScreen() {
+        const total = this.quizData?.questions?.length || 0;
+        const rawSubj = this.quizData?.subject || this.quizData?.subject_id || this.subjectId || '';
+        const cleanSubj = SUBJECT_MAP[rawSubj] || rawSubj.replace(/^\d+_/, '').replace(/_/g, ' ');
+        const topic = this.quizData?.topic || 'كوز تفاعلي';
+
+        if (this.dom.startSubjectBadge) this.dom.startSubjectBadge.textContent = cleanSubj;
+        if (this.dom.startQuizTitle) this.dom.startQuizTitle.textContent = topic;
+        if (this.dom.startQuestionsCount) this.dom.startQuestionsCount.textContent = total.toString();
+        if (this.dom.startEstimatedTime) this.dom.startEstimatedTime.textContent = Math.ceil(total * 1.5).toString();
+        if (this.dom.startModePill) {
+            this.dom.startModePill.innerHTML = this.examMode 
+                ? '<i data-lucide="graduation-cap"></i> <span>وضع الامتحان (محاكاة)</span>'
+                : '<i data-lucide="book-open"></i> <span>وضع التدريب (شرح فوري)</span>';
+        }
+        if (this.dom.sessionTimer) this.dom.sessionTimer.textContent = "00:00";
+        this.refreshLucideIcons();
+    }
+
+    startQuizSession() {
+        this.hasStarted = true;
+        this.isPaused = false;
+        this.sessionStartTime = Date.now();
+        this.dwellStartTime = Date.now();
+        this.startTimerLoop();
         this.showState('quiz');
         this.renderQuestion(0);
+    }
+
+    togglePause() {
+        if (!this.hasStarted) return;
+        if (this.isPaused) {
+            this.resumeQuiz();
+        } else {
+            this.pauseQuiz();
+        }
+    }
+
+    pauseQuiz() {
+        if (this.isPaused) return;
+        this.isPaused = true;
+        this.flushCurrentDwellTime();
+        if (this.timerInterval) clearInterval(this.timerInterval);
+        this.dom.pauseOverlay?.classList.remove('hidden');
+        this.dom.btnTimerPause?.classList.add('is-paused');
+        this.dom.timerIcon?.setAttribute('data-lucide', 'play');
+        this.refreshLucideIcons();
+    }
+
+    resumeQuiz() {
+        if (!this.isPaused) return;
+        this.isPaused = false;
+        this.dwellStartTime = Date.now();
+        this.startTimerLoop();
+        this.dom.pauseOverlay?.classList.add('hidden');
+        this.dom.btnTimerPause?.classList.remove('is-paused');
+        this.dom.timerIcon?.setAttribute('data-lucide', 'pause');
+        this.refreshLucideIcons();
     }
 
     /**
@@ -1509,6 +1603,7 @@ class QuizApp {
     showState(state) {
         this.dom.quizLoading?.classList.toggle('hidden', state !== 'loading');
         this.dom.quizError?.classList.toggle('hidden', state !== 'error');
+        this.dom.quizStartView?.classList.toggle('hidden', state !== 'start');
         this.dom.quizView?.classList.toggle('hidden', state !== 'quiz');
         this.dom.resultsView?.classList.toggle('hidden', state !== 'results');
     }

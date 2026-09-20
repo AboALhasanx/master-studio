@@ -148,3 +148,16 @@ How does the Single-Writer Pattern (LMAX Disruptor) eliminate lock contention in
 Why cannot basic PN-Counters (CRDTs) enforce a non-negative balance invariant without distributed locks?	Because concurrent decrements executed across independent replicas can independently succeed while their sum exceeds the available balance.	crdt distributed-systems
 What is the time complexity of the Louvain community detection algorithm per iteration?	O(|V| + |E|) — near-linear time proportional to the number of vertices and edges.	algorithms graph-mining
 ```
+
+---
+
+## 5. WebUI JSON Format & Algorithmic Balancer Directive
+
+When exporting quiz banks for the WebUI (`07_Quizzes_&_Anki/Quiz_NN_<Topic>.json`):
+1. Use the canonical JSON schema defined in `00_STUDIO_HUB/templates/template-quiz-bank.json`.
+2. Ensure options are balanced in character length (±25%).
+3. Run the automated algorithmic balancer after generation:
+   ```bash
+   python "90_Shared_Toolbox/tools/quiz_balancer.py" "<path-to-quiz>.json"
+   ```
+   This guarantees uniform distribution of answers across A, B, C, D (~25% each) and validates psychometric health.
