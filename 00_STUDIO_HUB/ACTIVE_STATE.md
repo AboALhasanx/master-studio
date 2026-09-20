@@ -4,8 +4,8 @@ active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
 immediate_todo: "Prepare for the 01_Cyber_Security daily quiz (Week 01 material) — Sunday 2026-09-20 lecture"
-next_session_focus: "Cyber Sunday quiz drills; Soft Computing Week 01 comprehensive note rebuilt in Data Mining method (awaiting only class confirmation of timetable); DM W03 Monday; SC Week 2 still unposted on doctor site"
-last_updated: "2026-09-19"
+next_session_focus: "Sunday Cyber quiz — read Week_01_Cybersecurity_Bilingual_EN_AR.pdf + CIA/arithmetic traps; after quiz: DM W03 Monday; SC note ready"
+last_updated: "2026-09-20"
 status: "WEEK_01_ACTIVE"
 ---
 

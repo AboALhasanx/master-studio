@@ -103,3 +103,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-19:** Soft Computing official Fall 2026: alaidi.net 8/9-8/12/2026; midterm 20/10 Weeks 1-6 fuzzy only; NO chain codes/ANFIS as weekly topics; only Lecture 1 posted online; Week 2 (15/9) materials not uploaded; next class Tue 22/9 Week 3 Fuzzy relations/propositions.
 
 - **Added 2026-09-19:** SC Week 01 note rebuilt 2026-09-19 with student permission: Data Mining style — no AI-slop compression. File Week_01_Introduction_to_Soft_Computing.md. Calendar provisional (W1 intro-only in class; W2 unposted).
+
+- **Added 2026-09-20:** Cyber W01 bilingual PDF: Week_01_Cybersecurity_Bilingual_EN_AR.pdf (11pp). Build via HTML + Edge headless print-to-pdf because MIMO_SOFFICE fails with 0xC0000135 missing DLL.
