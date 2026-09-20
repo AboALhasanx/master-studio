@@ -17,7 +17,7 @@
 |----------------------------|:-------:|:-------------:|:-------------:|:----------------------:|
 | 01_Cyber_Security          |    2    |       3       |     ~68%      | 🟢 Theory done · 🔴 drills before Sun quiz |
 | 02_English_Language        |    1    |       1       |     100%      | 🟢 Unit 1 done · presentation 27/9 |
-| 03_Data_Mining             |    2    |   banks only  |      --       | 🟢 W01–W03 comprehensive notes ready |
+| 03_Data_Mining             |    2    |       1       |      92%      | 🟢 W01 quiz excellence · W01–W03 notes ready |
 | 04_Advanced_Software_Eng   |    3    |       1       |      80%      | 🟢 On track |
 | 05_Soft_Computing          |    2    |   banks only  |      --       | 🟢 W01 note rebuilt (DM method) · 🟡 W2 unposted |
 | 06_Artificial_Intelligence |    3    |       0       |      --       | ⏸️ ON HOLD (no material from professor) |
@@ -42,9 +42,10 @@
 - **Open:** presentation ~5 min on **2026-09-27** (student-reported, low stakes).
 
 ### 03_Data_Mining — Dr. Ahmed Shakir
-- **Done:** Week 01 comprehensive (Gemini frameworks preserved) · **Week 02 comprehensive** (types + preparation, 50Q, URL=Nominal) · **Week 03 comprehensive** (feature extraction + portability, 35Q).
-- **Open:** Monday 2026-09-21 lecture W03; optional drill of note question banks.
-- **Professor question:** URL data type → **Nominal** (recorded).
+- **Done:** Week 01–03 comprehensive notes (Gemini method; URL=Nominal).
+- **Quiz WebUI 2026-09-20:** W01 Introduction — **92% (23/25)** · uuid `94822c56-b05b-4f7b-be28-d4d1a31ea147` · dwell ~11s · session 274s. **Excellence (≥75%).**
+- **Soft gaps (2):** q16 Market Basket hypothesis [Concept Gap] · q9 system-level advantages [Misread / B-bias]. Bloom gap: Understand.
+- **Open:** Monday lecture W03; optional W02/W03 bank drills; URL=Nominal if asked.
 
 ### 04_Advanced_Software_Eng — Dr. Ali Fahim
 - **Done:** W01 note + DOCX + seminar PPTX + diagrams + quiz.
@@ -65,6 +66,7 @@
 
 | Log ID | Date | Subject | Topic | Score | Result |
 |:---:|:---:|:---|:---|:---:|:---|
+| #007 | 2026-09-20 21:15 | `03_Data_Mining` | W01 Intro WebUI 25Q | **23/25 (92%)** | PASS | 🟢 Excellence |
 | #006 | 2026-09-19 19:23 | `04_Advanced_Software_Eng` | Lecture 01 Simulation Check | 4/5 (80%) | PASS | 🟢 Mastered |
 | #001 | 2026-09-16 | ASE | Lecture 01 | 4/5 (80%) | PASS |
 | #002 | 2026-09-17 | English | Unit 01 Grammar | 5/5 (100%) | PASS |
@@ -72,7 +74,7 @@
 | #004 | 2026-09-18 | Cyber | W1 Topic 2 domains/R(t) | Content OK | PASS (gaps) |
 | #005 | 2026-09-18 | Cyber | W1 Topic 3 CIA U() | 3.5/5 | PASS (term) |
 
-**Trend:** arithmetic improved; remaining Cyber risk = terminology/spelling/format, not concepts.
+**Trend:** DM Week 01 quiz **92%** — material understood. Remaining DM nits: Market Basket hypothesis + system-level advantage list + **no all-B answer bias**. Cyber still needs drills when booklet 2 arrives / quiz next week.
 
 ---
 
