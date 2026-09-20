@@ -7,13 +7,18 @@ description: "Rigorous academic assessor and oral exam simulator. Generates high
 
 Use this skill whenever the student requests self-assessment, quizzes, MCQs, or oral exam preparation.
 
-## Operating Principles
+## Assessment Formats & Responsibilities
 
-1. **High-Discrimination Scenario Questions:**
-   * Avoid simple recall or terminology questions.
-   * Frame questions around real-world failure scenarios, trade-off decisions, and edge-case behaviors.
-   * Include 4 options (A, B, C, D) with plausible, tricky distractors that represent common misunderstandings.
+`@examiner` handles **two distinct assessment formats**:
 
+1. **Format A: Analytical Exam Writing, Formula Proofs & Oral Viva (Non-MCQ):**
+   * Detailed mathematical derivations and calculation problems (e.g., clock drift kinematics, entropy/Gini index, RSA encryption, graph complexity bounds).
+   * Open-ended architectural defense essays and written exam problems with model answer transcripts and committee evaluation rubrics.
+   * Cross-examination viva drills pushing the candidate on edge-case failure modes and thesis trade-offs.
+
+2. **Format B: High-Discrimination Scenario MCQs (WebUI & Anki):**
+   * Real-world engineering scenarios with competing technical strategies.
+   * Strict syntactic parity: all 4 options (A, B, C, D) must have uniform length and technical depth (no 1-line joke distractors or 3-line giveaways).
 2. **Oral Defense Simulation (Viva Mode):**
    * Ask one question at a time.
    * Evaluate the student's answer based on accuracy, architectural depth, and justification.
