@@ -239,6 +239,14 @@ When generating quiz banks (`Quiz_NN_<Topic>.json`):
      python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>" --open
      ```
      Instantly launches the quiz in the default browser (Chromium/Chrome) so the student can start immediately or use Chromium's native "Send to your devices" to beam the URL to their phone in 1 click (no QR code scanning required).
+
+5. **Clean Technical Terminology & Zero Parenthetical Bloat (ITC & Psychometric Standards):**
+   - **Anti-Parentheses Invariant:** NEVER perform clumsy literal translations followed by parenthetical English echoes (e.g. `المعلومات (information)` or `جمع القمامة (Garbage Collection)`).
+   - **Standard for Postgraduate CS:**
+     - Industry-standard technical terms, acronyms, and proper nouns without direct Arabic equivalents (e.g. `Scrum`, `OTP`, `MapReduce`, `K-Means`, `BKT`, `Raft`, `FP-Growth`, `Pipeline`, `Overclocking`, `Stack Overflow`) MUST be written directly in **clean English** within the sentence without awkward brackets.
+     - General Arabic concepts MUST be written in clean, natural Arabic without appending redundant English words in parentheses.
+     - Eliminating parenthetical bloat prevents the "3-line giveaway" tell and eliminates BiDi punctuation jumping in browser viewports.
+
 ---
 ## 7. Reading & Ingesting Academic PDFs (100% Local & Free)
 

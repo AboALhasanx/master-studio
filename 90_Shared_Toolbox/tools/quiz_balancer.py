@@ -77,8 +77,30 @@ def analyze_quiz(quiz_data: dict) -> dict:
         "length_disparities": disparities
     }
 
+import re
 
-def balance_quiz(quiz_data: dict, seed: int = None) -> dict:
+
+def clean_parenthetical_bloat(text: str) -> str:
+    """
+    Cleans clumsy parenthetical English echoes from Arabic options while
+    preserving uppercase technical acronyms like (KDD), (API), (OTP).
+    e.g. 'المعلومات (information)' -> 'المعلومات'
+         'خوارزميات معقّدة (complex mathematical algorithms)' -> 'خوارزميات معقّدة'
+    """
+    if not isinstance(text, str):
+        return text
+
+    def replacer(match):
+        inner = match.group(1).strip()
+        if inner.isupper() and len(inner) <= 6:
+            return f" ({inner})"
+        return ""
+
+    cleaned = re.sub(r'\s*\(([A-Za-z\s\-_/]+)\)', replacer, text)
+    return re.sub(r'\s{2,}', ' ', cleaned).strip()
+
+
+def balance_quiz(quiz_data: dict, seed: int = None, clean_bloat: bool = True) -> dict:
     """
     Algorithmatically re-assigns option order using a balanced target distribution
     so that A, B, C, D are represented approximately equally (~25% each).
@@ -139,17 +161,23 @@ def balance_quiz(quiz_data: dict, seed: int = None) -> dict:
         # Insert correct index at target_idx
         indices.insert(target_idx, curr_corr_idx)
 
-        # Apply permutation
-        new_opts = [opts_list[idx] for idx in indices]
+        # Apply permutation and clean parenthetical bloat if requested
+        if clean_bloat:
+            new_opts = [clean_parenthetical_bloat(opts_list[idx]) for idx in indices]
+        else:
+            new_opts = [opts_list[idx] for idx in indices]
+
         q["options"] = new_opts
         q["answer"] = target_ans
 
         if isinstance(opts_ar, list) and len(opts_ar) == num_opts:
-            q["options_ar"] = [opts_ar[idx] for idx in indices]
+            if clean_bloat:
+                q["options_ar"] = [clean_parenthetical_bloat(opts_ar[idx]) for idx in indices]
+            else:
+                q["options_ar"] = [opts_ar[idx] for idx in indices]
 
         if isinstance(opts_en, list) and len(opts_en) == num_opts:
             q["options_en"] = [opts_en[idx] for idx in indices]
-
     return quiz_data
 
 
