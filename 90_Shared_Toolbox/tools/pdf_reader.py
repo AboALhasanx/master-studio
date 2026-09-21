@@ -96,6 +96,48 @@ def render_pdf_images(pdf_path, out_dir, page_list=None, dpi=150):
         rendered_files.append(target_file)
 
     return rendered_files
+def extract_embedded_images(pdf_path, out_dir, min_dim=80):
+    """
+    Extracts embedded figures, charts, and diagrams from the PDF into out_dir.
+    Filters out tiny decorative lines/dots (<80px).
+    """
+    doc = pymupdf.open(str(pdf_path))
+    out_path = Path(out_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+
+    extracted_files = []
+    seen_xrefs = set()
+
+    for pno in range(len(doc)):
+        page = doc[pno]
+        image_list = page.get_images(full=True)
+
+        for img_idx, img_info in enumerate(image_list):
+            xref = img_info[0]
+            if xref in seen_xrefs:
+                continue
+            seen_xrefs.add(xref)
+
+            try:
+                base_image = doc.extract_image(xref)
+                image_bytes = base_image["image"]
+                image_ext = base_image["ext"]
+                width = base_image["width"]
+                height = base_image["height"]
+
+                # Filter out tiny decorative icons/dots
+                if width < min_dim or height < min_dim:
+                    continue
+
+                img_name = f"fig_p{pno + 1:02d}_{img_idx + 1:02d}_{width}x{height}.{image_ext}"
+                target_file = out_path / img_name
+                with open(target_file, "wb") as f:
+                    f.write(image_bytes)
+                extracted_files.append(target_file)
+            except Exception:
+                continue
+
+    return extracted_files
 
 
 def main():
@@ -105,6 +147,7 @@ def main():
     parser.add_argument("-p", "--pages", help="Pages to extract, e.g. '1-5' or '1,3,5' (1-based)")
     parser.add_argument("--ocr", action="store_true", help="Force OCR mode even if digital text is present")
     parser.add_argument("--render-images", help="Directory path to save high-res PNGs for Vision AI")
+    parser.add_argument("--extract-images", help="Directory path to extract all embedded figures, charts, and diagrams")
     parser.add_argument("--dpi", type=int, default=150, help="DPI for rendering images/OCR (default: 150)")
     parser.add_argument("--margins", type=float, nargs=4, default=[0, 0, 0, 0],
                         help="Margins to ignore [top, left, bottom, right] in points")
@@ -122,21 +165,30 @@ def main():
     if args.render_images:
         rendered = render_pdf_images(pdf_path, args.render_images, page_list=page_list, dpi=args.dpi)
         print(f"Rendered {len(rendered)} page images to: {args.render_images}", file=sys.stderr)
+    # Optional: Extract embedded figures and charts
+    if args.extract_images:
+        extracted = extract_embedded_images(pdf_path, args.extract_images)
+        print(f"Extracted {len(extracted)} embedded figures/diagrams to: {args.extract_images}", file=sys.stderr)
 
     md_text = ""
     # 1. Try digital text extraction first (unless --ocr is forced)
     if not args.ocr:
         try:
+            extra_kwargs = {}
+            if args.extract_images:
+                extra_kwargs["write_images"] = True
+                extra_kwargs["image_path"] = args.extract_images
+
             md_text = pymupdf4llm.to_markdown(
                 str(pdf_path),
                 pages=page_list,
                 page_chunks=False,
-                margins=args.margins
+                margins=args.margins,
+                **extra_kwargs
             )
         except Exception as e:
             print(f"[Notice] Digital extraction error: {e}. Falling back to OCR...", file=sys.stderr)
             md_text = ""
-
     # 2. If no digital text (scanned PDF) or --ocr forced, run RapidOCR
     if not md_text.strip():
         print(f"[Notice] Scanned PDF detected (no digital text layer). Running RapidOCR...", file=sys.stderr)

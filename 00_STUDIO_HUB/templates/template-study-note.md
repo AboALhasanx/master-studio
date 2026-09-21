@@ -51,8 +51,17 @@ literature_references:
 - **الحل الهندسي (*The Architectural Solution*):** {{كيف يحل المفهوم هذه العقدة بشكل فعال}}
 - **القاعدة الذهبية (*The Golden Invariant*):** {{القانون الهندسي أو الرياضي الذي لا يمكن كسره}}
 
----
+### 1.3. Feynman 9-Year-Old Explanation (الشرح التبسيطي كأنك تشرح لطفل)
+> **التشبيه الحقيقي:**  
+> {{اشرح هنا المفهوم كأنك تشرح لطفل عمره 9 سنوات باستخدام أشياء ملموسة من الحياة اليومية (قطع ليغو، فرز رسائل البريد، إشارات المرور، أدوات المطبخ) مع تفادي المصطلحات المعقدة تماماً في البداية حتى يستقر الفهم الحدسي في الذهن.}}
 
+### 1.4. Key Academic Terms & Professor's Exam Traps (المصطلحات وفخاخ الامتحان)
+| Term / Acronym | Author / Seminal Origin | Formal Standard Definition | Professor's Exam Trap & Distinction |
+|:---|:---|:---|:---|
+| `{{Term 1}}` | {{Author, Year}} | *"{{Formal IEEE/ISO Definition}}"* | {{How the professor tests it and common student confusion}} |
+| `{{Term 2}}` | {{Author, Year}} | *"{{Formal IEEE/ISO Definition}}"* | {{How the professor tests it and common student confusion}} |
+
+---
 ## 2. Formal Theoretical Foundations & Mechanics (Tier 2)
 
 ### 2.1. Mathematical Formulation & Notation
@@ -72,6 +81,15 @@ Where:
 1. **Phase 1 (Initialization / Discovery):** {{Step-by-step technical breakdown}}
 2. **Phase 2 (Processing / Transformation):** {{Step-by-step technical breakdown}}
 3. **Phase 3 (Consensus / Output / Commit):** {{Step-by-step technical breakdown}}
+
+### 2.3. Concrete Worked-Out Example with Real Numbers (مثال تطبيقي حسابي بالأرقام)
+> **المعطيات:**  
+> {{اذكر مسألة تطبيقية بأرقام حقيقية ملموسة}}  
+>  
+> **خطوات الحل خطوة بخطوة:**  
+> 1. الخطوة الأولى: {{الحساب بالتفصيل}}  
+> 2. الخطوة الثانية: {{الحساب بالتفصيل}}  
+> 3. النتيجة والتحليل الهندسي: {{ماذا تعني النتيجة عملياً}}  
 
 ---
 

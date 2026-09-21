@@ -51,12 +51,13 @@ Agents operating in this vault must function not merely as generic text generato
    - **Solved Scanned Worksheets:** `CamScanner Scan - Grammar Worksheet...pdf` fully extracted and solved against the Oxford Teacher's Book answer key (`NH Upper Intermediate - Teacher Book (Answer Key).pdf`).
 
 ### Available Local Toolchain (`90_Shared_Toolbox/tools/`)
-- `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`).
-- `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM; **automatically falls back to local RapidOCR** on CPU for scanned PDFs (0 LLM tokens, 0 API calls).
+- `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`) for OnlyOffice and MS Office.
+- `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM, falls back to local RapidOCR, and extracts embedded figures/diagrams via `--extract-images`.
 - `session_memory.py`: Cross-agent memory manager (`boot`, `log`, `remember`, `recall`, `status`).
 - `quiz_engine.py`: Bayesian Knowledge Tracing (BKT) engine, dwell-time analysis, and session telemetry logger.
+- `quiz_balancer.py`: Algorithmic balancer and strict psychometric linter (`--strict`).
 - `quiz_runner.py`: Interactive command-line quiz conductor.
-- `quiz_qr.py`: Generates LAN-accessible quiz links and terminal ASCII QR codes for mobile studying.
+- `quiz_qr.py`: Generates LAN-accessible quiz links and opens in Chromium (`--open`) for 1-click device sharing.
 - `pack_subject.py`: Bundles entire subject vaults into single-file digests for mobile LLMs.
 ### Immediate Action Priorities
 1. **Immediate Task:** Conduct oral viva defense rehearsal for Dr. Ali Fahim's lecture (Patriot missile 24-bit fixed-point clock drift kinematics & Brooks' essential complexity).
@@ -67,7 +68,9 @@ Agents operating in this vault must function not merely as generic text generato
 >
 > **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
 > - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
+> - If the student says: *"Extract images / diagrams from this PDF"* $\rightarrow$ YOU execute `pdf_reader.py "<pdf>" --extract-images "<subject>/06_Diagrams_&_Mindmaps/extracted/"` in the background.
 > - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
+> - If the student says: *"Teach me [topic]"* $\rightarrow$ YOU teach from first principles using the Feynman technique (explain like I'm 9 years old first + concrete worked examples), deconstruct all academic terms, and do not stop at dry summaries unless the student says *"I know this"*.
 - If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
 > - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
 
@@ -102,6 +105,18 @@ To optimize deep cognitive retention and high-impact academic output:
 - **External & Formal Deliverables (`05_Seminars_&_Slides`, `04_Academic_Papers`, Proposal Drafts):**
   - Must be **100% formal academic English** conforming strictly to IEEE/ACM technical writing conventions. No Arabic text in formal presentation decks or seminar submissions unless discussing localized linguistic corpora.
 
+### 2.4. Concise File Naming & Academic Glossary Standard
+1. **Concise Naming Policy:**
+   - Use short, punchy slugs with `W0X_` prefixes (or `U0X_` for English units), e.g.:
+     - Study notes: `03_Study_Notes/W01_Data_Mining.md`
+     - Slides: `05_Seminars_&_Slides/W01_Slides.pptx`
+     - Quizzes: `07_Quizzes_&_Anki/Quiz_01_<Slug>.json`
+   - Never generate sentence-long or redundant filenames (e.g. avoid `Week_01_Lecture01_Software_Foundations_and_Crisis.md`).
+
+2. **Per-Subject Academic Glossary (`08_Academic_Glossary/`):**
+   - Every subject maintains an `08_Academic_Glossary/` directory containing weekly term ledgers (`W01_Terms.md`, `W02_Terms.md`, etc.).
+   - Conforms strictly to `00_STUDIO_HUB/templates/template-academic-terms.md`.
+   - Every key term must detail: canonical English term, seminal author/paper DOI, word-for-word IEEE/ACM/ISO definition, Feynman 9-year-old analogy, and the **Professor's Exam Trap**.
 ---
 
 ## 3. Fast-Boot Initialization & Memory Protocol

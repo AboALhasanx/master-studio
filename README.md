@@ -49,7 +49,7 @@ Every course follows the same layout:
 | `05_Seminars_&_Slides/` | Marp seminar decks (Markdown + PDF + PPTX) |
 | `06_Diagrams_&_Mindmaps/` | Architecture diagrams and visual summaries |
 | `07_Quizzes_&_Anki/` | Scenario MCQ banks and spaced-repetition cards |
-
+| `08_Academic_Glossary/` | Weekly academic terminology indexes (IEEE/ISO definitions, origins, exam traps) |
 ---
 
 ## Agent Skills
@@ -71,10 +71,11 @@ All tools are local, free, and run offline:
 
 | Tool | Purpose |
 |:---|:---|
-| `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` (projector-tuned) |
-| `pdf_reader.py` | Extracts academic PDFs to Markdown (preserves two-column layout) |
+| `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` for OnlyOffice & MS Office |
+| `pdf_reader.py` | Extracts academic PDFs to Markdown (two-column layout) and extracts embedded figures/charts |
+| `quiz_balancer.py` | Algorithmic balancer and psychometric linter (fixes answer bias and length tells) |
 | `quiz_runner.py` | Interactive terminal quiz with auto-grading and analytics logging |
-| `quiz_qr.py` | Generates LAN-accessible quiz links and terminal ASCII QR codes for mobile studying |
+| `quiz_qr.py` | Generates LAN-accessible quiz links and opens in Chromium for 1-click device sharing |
 | `pack_subject.py` | Bundles a subject folder for mobile / ChatGPT offline study |
 | `91_Dashboard/` (Flask) | Local web dashboard with Interactive Quizzes (Study & Exam modes, BKT telemetry) |
 ---
