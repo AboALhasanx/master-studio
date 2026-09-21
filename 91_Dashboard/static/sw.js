@@ -13,11 +13,11 @@ const PRECACHE_URLS = [
     '/static/quiz.js',
     '/static/cards.css',
     '/static/cards.js',
+    '/static/lucide.min.js',
     '/static/manifest.json',
     '/static/icon-192.png',
     '/static/icon-512.png'
 ];
-
 // Install: Pre-cache static application shell
 self.addEventListener('install', (event) => {
     event.waitUntil(

@@ -10,8 +10,8 @@
     <meta name="theme-color" content="#14161C">
     <link rel="apple-touch-icon" href="/static/icon-192.png">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Local Offline Lucide Icons -->
+    <script src="/static/lucide.min.js"></script>
     <link rel="stylesheet" href="/static/cards.css">
 </head>
 <body id="cards-root"
@@ -45,6 +45,21 @@
                 </button>
             </div>
         </header>
+
+        <!-- 1-Tap PWA Install Banner (Mobile Offline Mode) -->
+        <div id="pwa-install-banner" class="pwa-install-banner hidden">
+            <div class="pwa-install-info">
+                <i data-lucide="download-cloud" class="pwa-icon"></i>
+                <div class="pwa-text">
+                    <strong>تثبيت التطبيق على هاتفك</strong>
+                    <span>للمذاكرة بدون إنترنت وبسرعة فائقة</span>
+                </div>
+            </div>
+            <div class="pwa-actions">
+                <button id="btn-pwa-install" class="pwa-install-btn">تثبيت الآن</button>
+                <button id="btn-pwa-dismiss" class="pwa-dismiss-btn" aria-label="Dismiss">✕</button>
+            </div>
+        </div>
 
         <!-- Topic Banner -->
         <section class="topic-banner">
@@ -198,7 +213,7 @@
     <!-- Application Script -->
     <script src="/static/cards.js"></script>
 
-    <!-- PWA Service Worker Registration -->
+    <!-- PWA Service Worker & Install Prompt Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -207,6 +222,29 @@
                     .catch(err => console.log('Service Worker registration failed:', err));
             });
         }
+
+        // 1-Tap PWA Installation Prompt
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const banner = document.getElementById('pwa-install-banner');
+            if (banner) banner.classList.remove('hidden');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+
+        document.getElementById('btn-pwa-install')?.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                document.getElementById('pwa-install-banner')?.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('btn-pwa-dismiss')?.addEventListener('click', () => {
+            document.getElementById('pwa-install-banner')?.classList.add('hidden');
+        });
     </script>
 </body>
 </html>
