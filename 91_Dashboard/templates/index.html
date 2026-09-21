@@ -83,15 +83,12 @@
             </div>
             <strong style="font-size: 0.95rem; color: #f1f5f9; display: block; margin-top: 6px; line-height: 1.4;">{{ q.topic }}</strong>
           </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">
-            <a href="{{ q.url }}" class="badge badge-live" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; text-align: center; flex: 1; min-width: 90px;">
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <a href="{{ q.url }}" class="badge badge-live" style="text-decoration: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; text-align: center; flex: 1;">
               Study Drill &rarr;
             </a>
-            <a href="{{ q.url }}?mode=exam" class="badge" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; text-align: center; background: #6366f1; color: #ffffff; flex: 1; min-width: 90px;">
+            <a href="{{ q.url }}?mode=exam" class="badge" style="text-decoration: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; text-align: center; background: #6366f1; color: #ffffff; flex: 1;">
               Exam Mode &rarr;
-            </a>
-            <a href="/cards/{{ q.subject }}/{{ q.quiz_id }}" class="badge" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; text-align: center; background: #10b981; color: #ffffff; flex: 1; min-width: 110px;">
-              🃏 Flashcards &rarr;
             </a>
           </div>
         </div>

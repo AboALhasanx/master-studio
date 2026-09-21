@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Quiz | Master Studio</title>
-    <!-- PWA Manifest & Theme (Quiz App) -->
-    <link rel="manifest" href="/static/manifest-quiz.json">
+    <!-- PWA Manifest & Theme -->
+    <link rel="manifest" href="/static/manifest.json">
     <meta name="theme-color" content="#14161C">
-    <link rel="apple-touch-icon" href="/static/icon-quiz-192.png">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
     <!-- Local Offline Lucide Icons -->
     <script src="/static/lucide.min.js"></script>
     <link rel="stylesheet" href="/static/quiz.css">
@@ -33,11 +33,6 @@
                 <span class="app-brand-title">الرئيسية</span>
             </div>
             <div class="header-right">
-                {% if subject_id and quiz_id %}
-                <a href="/cards/{{ subject_id }}/{{ quiz_id }}" class="icon-btn" aria-label="Open as Flashcards" title="التحويل إلى بطاقات الحفظ (Flashcards)">
-                    <i data-lucide="layers"></i>
-                </a>
-                {% endif %}
                 <button id="btn-mode-toggle" class="icon-btn" aria-label="Toggle Exam / Study Mode" title="تبديل بين وضع التدريب ووضع الامتحان">
                     <i data-lucide="book-open" id="mode-icon"></i>
                 </button>
@@ -116,11 +111,8 @@
                     </div>
                     <h3 style="font-size: 0.95rem; color: var(--text-main); font-weight: 700;">{{ q.topic }}</h3>
                     <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
-                        <a href="{{ q.url }}" class="action-btn primary-btn" style="height: 38px; flex: 1; text-decoration: none; font-size: 0.85rem;">
+                        <a href="{{ q.url }}" class="action-btn primary-btn" style="height: 40px; flex: 1; text-decoration: none; font-size: 0.9rem;">
                             بدء الكويز &rarr;
-                        </a>
-                        <a href="/cards/{{ q.subject }}/{{ q.quiz_id }}" class="action-btn secondary-btn" style="height: 38px; flex: 1; text-decoration: none; font-size: 0.85rem;">
-                            🃏 بطاقات الحفظ
                         </a>
                     </div>
                 </div>

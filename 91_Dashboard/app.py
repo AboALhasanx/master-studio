@@ -388,34 +388,6 @@ def quiz_direct(subject_id, quiz_id):
         lan_ip=lan_ip,
     )
 
-
-@app.route("/cards")
-def cards_hub():
-    """Hub landing page for offline-first flashcard review."""
-    lan_ip = get_lan_ip()
-    return render_template(
-        "cards.html",
-        direct_mode=False,
-        subject_id=None,
-        quiz_id=None,
-        lan_ip=lan_ip,
-        available_quizzes=get_all_quizzes(),
-    )
-
-
-@app.route("/cards/<subject_id>/<quiz_id>")
-def cards_direct(subject_id, quiz_id):
-    """Direct flashcard review deck for a specific subject and quiz ID."""
-    lan_ip = get_lan_ip()
-    return render_template(
-        "cards.html",
-        direct_mode=True,
-        subject_id=subject_id,
-        quiz_id=quiz_id,
-        lan_ip=lan_ip,
-    )
-
-
 @app.route("/api/quiz/<subject_id>/<quiz_id>")
 def api_quiz_get(subject_id, quiz_id):
     filename = quiz_id if quiz_id.endswith(".json") else f"{quiz_id}.json"

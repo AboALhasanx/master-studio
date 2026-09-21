@@ -8,18 +8,12 @@ const CACHE_NAME = 'master-studio-v2';
 const PRECACHE_URLS = [
     '/',
     '/quiz',
-    '/cards',
     '/static/quiz.css',
     '/static/quiz.js',
-    '/static/cards.css',
-    '/static/cards.js',
     '/static/lucide.min.js',
-    '/static/manifest-quiz.json',
-    '/static/manifest-cards.json',
-    '/static/icon-quiz-192.png',
-    '/static/icon-quiz-512.png',
-    '/static/icon-cards-192.png',
-    '/static/icon-cards-512.png'
+    '/static/manifest.json',
+    '/static/icon-192.png',
+    '/static/icon-512.png'
 ];
 // Install: Pre-cache static application shell
 self.addEventListener('install', (event) => {

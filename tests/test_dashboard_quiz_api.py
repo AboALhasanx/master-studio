@@ -187,22 +187,6 @@ def test_api_quiz_list(client):
     assert len(data["quizzes"]) >= 2
     topics = [q["topic"] for q in data["quizzes"]]
     assert any("Software" in t or "Crisis" in t or "Foundations" in t for t in topics)
-def test_cards_hub_route(client):
-    res = client.get("/cards")
-    assert res.status_code == 200
-    html = res.get_data(as_text=True)
-    assert "cards-root" in html
-    assert "cards.js" in html
-
-
-def test_cards_direct_route(client):
-    res = client.get("/cards/04_Advanced_Software_Eng/Quiz_01_Software_Crisis")
-    assert res.status_code == 200
-    html = res.get_data(as_text=True)
-    assert "flip-card-scene" in html
-    assert "btn-again" in html
-
-
 def test_pwa_manifest_and_service_worker(client):
     res_manifest = client.get("/static/manifest.json")
     assert res_manifest.status_code == 200
@@ -215,22 +199,4 @@ def test_pwa_manifest_and_service_worker(client):
     sw = res_sw.get_data(as_text=True)
     assert "CACHE_NAME" in sw
     assert "precache" in sw.lower()
-def test_dual_pwa_manifests_and_scoped_icons(client):
-    # Test Quiz Manifest
-    res_q = client.get("/static/manifest-quiz.json")
-    assert res_q.status_code == 200
-    m_q = json.loads(res_q.get_data(as_text=True))
-    assert m_q["short_name"] == "Quizzes"
-    assert m_q["start_url"] == "/quiz"
-    assert m_q["scope"] == "/quiz"
-    assert any("icon-quiz" in icon["src"] for icon in m_q["icons"])
-
-    # Test Cards Manifest
-    res_c = client.get("/static/manifest-cards.json")
-    assert res_c.status_code == 200
-    m_c = json.loads(res_c.get_data(as_text=True))
-    assert m_c["short_name"] == "Cards"
-    assert m_c["start_url"] == "/cards"
-    assert m_c["scope"] == "/cards"
-    assert m_c["theme_color"] == "#10B981"
-    assert any("icon-cards" in icon["src"] for icon in m_c["icons"])
+    assert "quiz" in sw
