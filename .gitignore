@@ -64,3 +64,10 @@ repomix-output.*
 __pycache__/
 *.pyc
 .venv/
+# Node & Package Managers
+**/node_modules/
+package-lock.json
+
+# Caches & Test Artifacts
+.pytest_cache/
+.superpowers/
