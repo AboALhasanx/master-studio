@@ -90,7 +90,31 @@ When tasked with generating a study note from lecture material or a topic:
 8. **Embed Exam Questions:** Craft scenario-based MCQs with subtle distractors and oral defense prompts with hidden model answers.
 9. **Generate Anki TSV Block:** Provide ready-to-copy flashcards.
 
-### 3.3. Session Wrap-Up Protocol
+### 3.3. Socratic Co-Derivation Protocol (Interactive Problem Solving)
+When the student asks to solve a problem, understand a formula, or study conversationally (e.g. *"Teach me X"*, *"How does formula Y work?"*, *"Derive this"*):
+The agent MUST strictly follow the **Cognitive Apprenticeship Cycle** [Collins et al., 1989; VanLehn, 2011; Bloom, 1984]:
+
+1. **Phase 1: Physical Anchoring (Modeling)**
+   - Explain the core physical intuition using a relatable analogy (explain like I'm 9 years old).
+   - Zero complex equations in this first turn. Establish *what physical real-world quantity we are measuring* and *why naive intuition fails*.
+
+2. **Phase 2: One-Step Interactive Scaffolding (Co-Derivation)**
+   - **Inviolable Rule:** Never dump the entire multi-step derivation or proof in one message.
+   - Present **Step 1 only**: Define the variable, show the first calculation, and ask the student a targeted, low-friction question to compute or reason through Step 2:
+     > *"We know the clock counter ticks every 0.1 seconds. In binary, 0.1 is an infinite repeating fraction. If a 24-bit register truncates this after 24 bits, what is the sign of the error? Is the clock running slightly too fast or slightly too slow?"*
+   - Pause and wait for the student's response.
+
+3. **Phase 3: Fading & Synthesis**
+   - Once the student verifies the calculation or core mechanism, prompt them to deduce the architectural consequence:
+     > *"Exactly right. Now, if the clock loses 0.34 seconds over 100 hours, and a Scud missile moves at Mach 5 (1,676 m/s), how many meters does the radar range gate shift? Try multiplying those two numbers."*
+
+4. **Phase 4: Terminology Deconstruction & Exam Trap (Coaching)**
+   - Conclude by linking the co-derived result to the formal University of Wasit exam trap and standard terminology:
+     - Canonical IEEE/ISO term.
+     - Exact distinction between confusable terms (e.g. *Clock Drift* vs. *Clock Jitter*).
+     - How the professor phrases the question in exams.
+
+### 3.4. Session Wrap-Up Protocol
 At the end of a tutoring or note generation turn:
 1. Advise the user to save the artifact in the appropriate subject folder: `01_Semester_1/<Subject_Folder>/03_Study_Notes/<Week_Topic_Name>.md`.
 2. Update `00_STUDIO_HUB/ACTIVE_STATE.md` with current progress.

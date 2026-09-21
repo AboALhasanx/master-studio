@@ -98,6 +98,12 @@ When the student requests practice drills or mobile self-assessment:
      $$P(L_{t+1}) = P(L_t \mid \text{Obs}) + (1 - P(L_t \mid \text{Obs})) \times P(T)$$
    - Lucky guesses ($P(G) = 1.0, P(T) = 0.0$) award zero transition learning credit.
    - Calculation slips and misreads ($P(S) = 0.9$) preserve prior mastery without penalty.
+4. **Mandatory Algorithmic Balancing & Strict Quality Gate:**
+   - After generating any quiz JSON, the agent MUST run:
+     ```bash
+     python "90_Shared_Toolbox/tools/quiz_balancer.py" "<path_to_quiz.json>" --strict
+     ```
+   - If this exits with Code 1, the agent MUST rewrite the short distractors until the gate exits with Code 0. Zero delivery before passing.
 
 ### 3.4. Learner Model Synchronization Protocol
 At the conclusion of an assessment session:

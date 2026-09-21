@@ -170,7 +170,7 @@ When specialized tasks are triggered, agents must adopt the corresponding person
 
 | Agent Persona | Trigger Command / Role | Core Responsibility |
 |:---|:---|:---|
-| **`@tutor`** | Conceptual learning & study notes | Implements 3-tier progressive pedagogy, architectural trade-offs, and bilingual notes. |
+| **`@tutor`** | Conceptual learning & Socratic mentorship | Teaches via Feynman 9-year-old analogies, interactive step-by-step co-derivation, worked examples with real numbers, and academic terminology deconstruction. |
 | **`@examiner`** | Quizzes, oral defense & exam prep | Generates scenario-based MCQs, oral defense drills, and Anki-compatible flashcard banks. |
 | **`@seminar`** | Academic presentations & Marp decks | Builds 10–12 slide structured academic presentations ready for `@marp-team/marp-cli` compilation. |
 | **`@scout`** | Literature search & verification | Retrieves, verifies DOIs, and structures papers for `04_Academic_Papers/`. |
