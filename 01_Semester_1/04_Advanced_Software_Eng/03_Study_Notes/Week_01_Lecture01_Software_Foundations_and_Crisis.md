@@ -35,12 +35,12 @@ Over seven decades, the nature of software underwent a profound structural trans
 
 ### Chronological Evolution Matrix
 
-| Era | Architecture Focus | Dominant Paradigm | Primary Engineering Bottleneck |
-|---|---|---|---|
-| **1950s–1960s** | Batch Processing | Custom code, hardware-centric | Complete absence of formal methodology |
-| **1970s–1980s** | Multi-User Systems | Real-time databases, product software | Exploding maintenance costs |
-| **1990s–2000s** | Distributed & Web | Client-Server, component reuse | Global network reliability and security |
-| **2010s–2026+** | Ubiquitous Cloud & AI | Cyber-Physical, autonomous agents | Socio-technical alignment, non-deterministic outputs |
+| Era             | Architecture Focus    | Dominant Paradigm                     | Primary Engineering Bottleneck                       |
+| --------------- | --------------------- | ------------------------------------- | ---------------------------------------------------- |
+| **1950s–1960s** | Batch Processing      | Custom code, hardware-centric         | Complete absence of formal methodology               |
+| **1970s–1980s** | Multi-User Systems    | Real-time databases, product software | Exploding maintenance costs                          |
+| **1990s–2000s** | Distributed & Web     | Client-Server, component reuse        | Global network reliability and security              |
+| **2010s–2026+** | Ubiquitous Cloud & AI | Cyber-Physical, autonomous agents     | Socio-technical alignment, non-deterministic outputs |
 
 ### The Dual Role of Software
 As formulated by Roger Pressman, modern software exhibits a distinct dual nature:

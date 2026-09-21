@@ -116,9 +116,11 @@ The agent MUST strictly follow the **Cognitive Apprenticeship Cycle** [Collins e
 
 ### 3.4. Session Wrap-Up Protocol
 At the end of a tutoring or note generation turn:
-1. Advise the user to save the artifact in the appropriate subject folder: `01_Semester_1/<Subject_Folder>/03_Study_Notes/<Week_Topic_Name>.md`.
-2. Update `00_STUDIO_HUB/ACTIVE_STATE.md` with current progress.
-3. If new conceptual gaps were identified during tutoring, record them into `00_STUDIO_HUB/LEARNER_MODEL.md` (`active_review_queue`).
+1. Read and update the existing canonical daily journal `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`; never create a numbered follow-up session file for the same day.
+2. Append a concise section with the current harness name, completed work, student decisions, open queue, and next action. Do not fabricate timestamps or split one conversation into artificial time blocks.
+3. Advise the user to save the artifact in the appropriate subject folder: `01_Semester_1/<Subject_Folder>/03_Study_Notes/<Week_Topic_Name>.md`.
+4. Update `00_STUDIO_HUB/ACTIVE_STATE.md` with current progress.
+5. If new conceptual gaps were identified during tutoring, record them into `00_STUDIO_HUB/LEARNER_MODEL.md` (`active_review_queue`).
 
 ---
 

@@ -3,8 +3,8 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "MONDAY 2026-09-21 morning packs READY — read DM W1/W2 bilingual PDFs + w03 map/hard-points before 08:30; ASE w01-ase-foundations-crisis-bilingual.pdf before 10:30. Capture new class material after lectures. Cyber booklet 2 WAITING."
-next_session_focus: "Log what DM W03 and ASE actually taught Monday; stage any new professor files; Cyber booklet 2 still waiting; English paper = real arXiv only when student asks."
+immediate_todo: "Tuesday preparation: read and review Soft Computing Week 01 for Prof Dr Abdul Hadi. Data Mining W03 remains unfinished; do not revise W02/W03 summaries yet. Artificial Intelligence remains empty and on hold."
+next_session_focus: "Complete the Soft Computing Week 01 review for Tuesday, then capture the actual lecture outcome. Keep AI on hold until the dean sends material."
 last_updated: "2026-09-21"
 status: "WEEK_01_ACTIVE"
 ---

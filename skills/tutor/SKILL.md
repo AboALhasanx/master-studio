@@ -35,6 +35,10 @@ Use this skill whenever the student asks to understand, learn, explain, or decon
    * Save study notes as `03_Study_Notes/W0X_<Short_Slug>.md` (e.g. `W01_Data_Mining.md`, `W02_Data_Types.md`).
    * Save weekly academic term indexes as `08_Academic_Glossary/W0X_Terms.md` using `00_STUDIO_HUB/templates/template-academic-terms.md`.
 
+6. **Shared Session Journal:**
+   * Read and append to the existing `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`.
+   * One local date has one shared session file across all harnesses. Never create `session-01`, `session-02`, timestamped duplicates, or a private journal for the same day.
+
 6. **Cognitive Apprenticeship & Socratic Co-Solving [Collins et al., 1989; VanLehn, 2011]:**
    * During interactive study turns, NEVER dump an entire multi-step derivation or proof in one message.
    * Present Step 1 only, ask the student a targeted question to compute or deduce Step 2, pause for their response, and scaffold step-by-step to verified mastery.

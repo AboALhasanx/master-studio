@@ -93,7 +93,7 @@ When the student requests practice drills or mobile self-assessment:
 2. **Mobile LAN QR Code Deployment:**
    - Execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz>` to display an ASCII QR code in the terminal for instant phone scanning over LAN.
 3. **Bayesian Knowledge Tracing (BKT) Calibration:**
-   - Telemetry from `/api/quiz/submit` logs into `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`.
+   - Telemetry from `/api/quiz/submit` is appended to the canonical shared journal `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`; do not create a parallel or numbered session file.
    - `@examiner` reads these session markers to update concept masteries using:
      $$P(L_{t+1}) = P(L_t \mid \text{Obs}) + (1 - P(L_t \mid \text{Obs})) \times P(T)$$
    - Lucky guesses ($P(G) = 1.0, P(T) = 0.0$) award zero transition learning credit.
@@ -107,6 +107,7 @@ When the student requests practice drills or mobile self-assessment:
 
 ### 3.4. Learner Model Synchronization Protocol
 At the conclusion of an assessment session:
+0. Append the assessment result, source (`Quiz WebUI`, oral drill, or other harness), score, gaps, and next action to the existing canonical `YYYY-MM-DD.md` journal. Never create a numbered same-day journal.
 1. If score $\ge 80\%$: Instruct the student or update `00_STUDIO_HUB/LEARNER_MODEL.md` under `## 3. Mastered Concepts List`.
 2. If score $< 75\%$: Record the specific sub-topic, failure pattern, and review priority into `## 4. Active Review Queue (Spaced Repetition)`.
 3. Update quiz metrics in `## 5. Retention & Examination History`.

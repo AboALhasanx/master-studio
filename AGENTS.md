@@ -239,7 +239,7 @@ The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-dat
 - **Automated Telemetry & Cognitive Model Sync:**
   When a quiz is submitted in the WebUI:
   1. Dwell times, lucky guess flags, and metacognitive error reasons (*Misread Question*, *Calculation Slip*, *Terminology Mix-up*, *Concept Gap*) are sent to `/api/quiz/submit`.
-  2. `quiz_engine.py` idempotently logs the result and Bloom taxonomy gaps into today's session journal (`00_STUDIO_HUB/sessions/YYYY-MM-DD.md`).
+  2. `quiz_engine.py` idempotently logs the result and Bloom taxonomy gaps into the canonical shared session journal (`00_STUDIO_HUB/sessions/YYYY-MM-DD.md`).
   3. The agent ingests these markers during study sessions to calibrate Bayesian Knowledge Tracing (BKT) mastery probabilities in `00_STUDIO_HUB/LEARNER_MODEL.md`.
 ---
 
@@ -310,7 +310,7 @@ To allow agents to read and analyze dense two-column academic papers, textbook c
 
 ---
 
-## 8. Cross-Agent Persistent Memory & Session Journaling (Zero Token Drag)
+## 8. Cross-Agent Persistent Memory & Shared Session Journaling (Zero Token Drag)
 
 To maintain continuous academic context across all agent harnesses (Oh My Pi, OpenCode, MiMo Studio, FreeBuf, Cursor):
 
@@ -320,17 +320,23 @@ To maintain continuous academic context across all agent harnesses (Oh My Pi, Op
    ```
    Injects active subject, active week, immediate milestone, and core invariants in under 150 tokens.
 
-2. **Log Completed Milestones to Today's Session Journal:**
-   ```bash
-   python "90_Shared_Toolbox/tools/session_memory.py" log "Synthesized English Unit 1 note and quiz" -s "02_English_Language"
-   ```
+2. **Canonical shared session file — mandatory:**
+   - Use exactly one shared session file per local date: `00_STUDIO_HUB/sessions/YYYY-MM-DD.md`.
+   - If that file exists, every harness MUST read it and append to it. If it does not exist, create that exact date-named file.
+   - Never create `session-01`, `session-02`, `session-03`, numbered variants, or parallel human session files unless the student explicitly asks for a separate archive.
+   - Quiz telemetry and tutoring notes must be appended to the same `YYYY-MM-DD.md` file; the date is the only session identity.
+   - Preserve the established Markdown style of the existing daily files. Add a clear heading or source label for the harness when useful, but do not invent artificial time sequences.
+   - All agents follow the same queue: read `ACTIVE_STATE.md`, read the current and previous daily session files when relevant, append only verified work or explicitly attributed student reports, then update `ACTIVE_STATE.md` if the session changes the next action.
 
-3. **Persist a Critical Invariant or Doctor Exam Quirk:**
+3. **Log completed milestones to the canonical session journal:**
+   - The `session_memory.py log` helper may be used for semantic memory, but its output must be merged into the canonical `YYYY-MM-DD.md` rather than creating a second daily journal.
+
+4. **Persist a Critical Invariant or Doctor Exam Quirk:**
    ```bash
    python "90_Shared_Toolbox/tools/session_memory.py" remember "Dr. Ali Fahim emphasizes 24-bit fixed-point truncation drift math."
    ```
 
-4. **Search Past Sessions and Memory (Zero Tokens / Fast Substring Search):**
+5. **Search Past Sessions and Memory (Zero Tokens / Fast Substring Search):**
    ```bash
    python "90_Shared_Toolbox/tools/session_memory.py" recall "patriot"
    ```
