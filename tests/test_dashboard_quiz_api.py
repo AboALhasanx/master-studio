@@ -215,3 +215,22 @@ def test_pwa_manifest_and_service_worker(client):
     sw = res_sw.get_data(as_text=True)
     assert "CACHE_NAME" in sw
     assert "precache" in sw.lower()
+def test_dual_pwa_manifests_and_scoped_icons(client):
+    # Test Quiz Manifest
+    res_q = client.get("/static/manifest-quiz.json")
+    assert res_q.status_code == 200
+    m_q = json.loads(res_q.get_data(as_text=True))
+    assert m_q["short_name"] == "Quizzes"
+    assert m_q["start_url"] == "/quiz"
+    assert m_q["scope"] == "/quiz"
+    assert any("icon-quiz" in icon["src"] for icon in m_q["icons"])
+
+    # Test Cards Manifest
+    res_c = client.get("/static/manifest-cards.json")
+    assert res_c.status_code == 200
+    m_c = json.loads(res_c.get_data(as_text=True))
+    assert m_c["short_name"] == "Cards"
+    assert m_c["start_url"] == "/cards"
+    assert m_c["scope"] == "/cards"
+    assert m_c["theme_color"] == "#10B981"
+    assert any("icon-cards" in icon["src"] for icon in m_c["icons"])
