@@ -134,12 +134,21 @@ body {
 }
 
 .app-container {
+    width: 100%;
     max-width: 680px;
     margin: 0 auto;
-    padding: 0.75rem 1rem 4rem 1rem;
+    padding: 0.25rem 0.65rem calc(4rem + env(safe-area-inset-bottom)) 0.65rem;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+@media (max-width: 640px) {
+    .app-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: max(0.2rem, env(safe-area-inset-top));
+    }
 }
 
 /* App Header */
@@ -696,4 +705,11 @@ body {
     white-space: nowrap !important;
     border: 0 !important;
     opacity: 0 !important;
+}
+/* Auto-collapse topic banner and install banner during active card view for maximum vertical space */
+body:has(.quiz-view:not(.hidden)) .topic-banner,
+body:has(.cards-view:not(.hidden)) .topic-banner,
+body:has(.quiz-view:not(.hidden)) .pwa-install-banner,
+body:has(.cards-view:not(.hidden)) .pwa-install-banner {
+    display: none !important;
 }

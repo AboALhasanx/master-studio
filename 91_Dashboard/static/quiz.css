@@ -262,10 +262,19 @@ input:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    max-width: 860px;
+    width: 100%;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 0 1rem 5rem 1rem;
+    padding: 0.25rem 0.65rem calc(4.25rem + env(safe-area-inset-bottom)) 0.65rem;
     position: relative;
+}
+
+@media (max-width: 640px) {
+    .app-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: max(0.2rem, env(safe-area-inset-top));
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -275,7 +284,7 @@ input:focus, textarea:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.875rem 0;
+    padding: 0.5rem 0;
     position: sticky;
     top: 0;
     z-index: 20;
@@ -1033,25 +1042,24 @@ button.timer-unified-pill.is-paused {
     right: 0;
     background-color: var(--bg-base);
     border-top: 1px solid var(--border-subtle);
-    padding: 8px 12px;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 6px 12px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
     z-index: 25;
-    max-width: 860px;
-    margin: 0 auto;
 }
+
 .bottom-nav.single-btn-nav {
     justify-content: center !important;
 }
 
 .nav-btn.full-width-btn {
     width: 100% !important;
+    max-width: 760px;
     justify-content: center !important;
-    min-height: 48px;
-    font-size: 1rem;
+    min-height: 44px;
+    font-size: 0.95rem;
     font-weight: 700;
 }
 
@@ -2085,4 +2093,11 @@ pre,
     white-space: nowrap !important;
     border: 0 !important;
     opacity: 0 !important;
+}
+/* Auto-collapse topic banner and install banner during active question view for maximum vertical space */
+body:has(.quiz-view:not(.hidden)) .topic-banner,
+body:has(.cards-view:not(.hidden)) .topic-banner,
+body:has(.quiz-view:not(.hidden)) .pwa-install-banner,
+body:has(.cards-view:not(.hidden)) .pwa-install-banner {
+    display: none !important;
 }
