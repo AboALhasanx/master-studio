@@ -28,9 +28,9 @@
                 <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
                     <i data-lucide="home"></i>
                 </button>
-                <button id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)">
+                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)" style="cursor: pointer;">
                     <i data-lucide="folder-open"></i>
-                </button>
+                </label>
                 <span class="app-brand-title">الرئيسية</span>
             </div>
             <div class="header-right">
@@ -118,16 +118,15 @@
                         <i data-lucide="refresh-cw"></i>
                         <span>إعادة المحاولة</span>
                     </button>
-                    <button id="btn-browse-local" class="action-btn secondary-btn">
+                    <label for="local-file-input" id="btn-browse-local" class="action-btn secondary-btn" style="cursor: pointer; width: 100%; max-width: 280px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
                         <i data-lucide="folder-open"></i>
                         <span>تصفح ملف من الهاتف (أوفلاين)</span>
-                    </button>
+                    </label>
                 </div>
             </div>
 
-            <!-- Hidden Local File Input -->
-            <input type="file" id="local-file-input" accept=".json" style="display: none;">
-
+            <!-- Native File Input for Mobile (Visually Hidden, Not display:none) -->
+            <input type="file" id="local-file-input" accept=".json,application/json,text/plain,*/*" class="visually-hidden-input">
             <!-- Quiz Start Intro View (Prevents time flying before student is ready) -->
             <div id="quiz-start-view" class="state-view quiz-start-card hidden">
                 <div class="start-icon-box">

@@ -28,9 +28,9 @@
                 <a href="/quiz" id="btn-exit" class="icon-btn" aria-label="العودة" title="العودة للكوز">
                     <i data-lucide="arrow-right"></i>
                 </a>
-                <button id="btn-open-local-cards" class="icon-btn" aria-label="Open Local Deck" title="فتح بطاقات من ذاكرة الهاتف (أوفلاين)">
+                <label for="local-cards-input" id="btn-open-local-cards" class="icon-btn" aria-label="Open Local Deck" title="فتح بطاقات من ذاكرة الهاتف (أوفلاين)" style="cursor: pointer;">
                     <i data-lucide="folder-open"></i>
-                </button>
+                </label>
                 <span class="app-brand-title">بطاقات الحفظ</span>
             </div>
             <div class="header-right">
@@ -106,15 +106,15 @@
                         <i data-lucide="refresh-cw"></i>
                         <span>إعادة المحاولة</span>
                     </button>
-                    <button id="btn-browse-local-cards" class="action-btn secondary-btn">
+                    <label for="local-cards-input" id="btn-browse-local-cards" class="action-btn secondary-btn" style="cursor: pointer; width: 100%; max-width: 280px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
                         <i data-lucide="folder-open"></i>
                         <span>تصفح ملف من الهاتف (أوفلاين)</span>
-                    </button>
+                    </label>
                 </div>
             </div>
 
-            <!-- Hidden Local Cards File Input -->
-            <input type="file" id="local-cards-input" accept=".json" style="display: none;">
+            <!-- Native Cards File Input for Mobile (Visually Hidden, Not display:none) -->
+            <input type="file" id="local-cards-input" accept=".json,application/json,text/plain,*/*" class="visually-hidden-input">
 
             <!-- 3D Flip Card Scene -->
             <div id="cards-view" class="cards-view hidden">
