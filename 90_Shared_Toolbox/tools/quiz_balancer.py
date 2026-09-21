@@ -206,8 +206,8 @@ def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_le
                 f"Distractors must be expanded to match."
             )
 
-    # 2. Check positional bias (only for quizzes with >= 4 questions)
-    if total >= 4:
+    # 2. Check positional bias
+    if total >= 8:
         dom_letter, dom_count = stats.get("dominant_letter", ("None", 0))
         dom_pct = (dom_count / total) * 100.0 if total > 0 else 0
         if dom_pct > max_letter_pct:
@@ -215,7 +215,15 @@ def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_le
                 f"Severe positional bias: Option {dom_letter} accounts for {dom_pct:.1f}% of answers ({dom_count}/{total}). "
                 f"Maximum allowed is {max_letter_pct}%. Run balance_quiz to redistribute."
             )
-
+    elif total >= 4:
+        # For small quizzes (4-7 questions), ensure every letter A, B, C, D appears at least once
+        # and no single letter appears more than 2 times
+        for letter in ["A", "B", "C", "D"]:
+            count = stats["distribution"].get(letter, {}).get("count", 0)
+            if count == 0:
+                errors.append(f"Small quiz bias: Option {letter} has 0 questions. Every letter (A, B, C, D) must appear at least once.")
+            elif count > 2:
+                errors.append(f"Small quiz bias: Option {letter} appears {count} times (max allowed is 2).")
     # 3. Check for parenthetical bloat in options
     for i, q in enumerate(questions):
         qid = q.get("id", f"q{i+1}")

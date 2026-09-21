@@ -187,3 +187,31 @@ def test_api_quiz_list(client):
     assert len(data["quizzes"]) >= 2
     topics = [q["topic"] for q in data["quizzes"]]
     assert any("Software" in t or "Crisis" in t or "Foundations" in t for t in topics)
+def test_cards_hub_route(client):
+    res = client.get("/cards")
+    assert res.status_code == 200
+    html = res.get_data(as_text=True)
+    assert "cards-root" in html
+    assert "cards.js" in html
+
+
+def test_cards_direct_route(client):
+    res = client.get("/cards/04_Advanced_Software_Eng/Quiz_01_Software_Crisis")
+    assert res.status_code == 200
+    html = res.get_data(as_text=True)
+    assert "flip-card-scene" in html
+    assert "btn-again" in html
+
+
+def test_pwa_manifest_and_service_worker(client):
+    res_manifest = client.get("/static/manifest.json")
+    assert res_manifest.status_code == 200
+    manifest = json.loads(res_manifest.get_data(as_text=True))
+    assert manifest["short_name"] == "MasterStudio"
+    assert manifest["display"] == "standalone"
+
+    res_sw = client.get("/static/sw.js")
+    assert res_sw.status_code == 200
+    sw = res_sw.get_data(as_text=True)
+    assert "CACHE_NAME" in sw
+    assert "precache" in sw.lower()

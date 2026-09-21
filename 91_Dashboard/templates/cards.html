@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Studio Flashcards | بطاقات الاسترجاع النشط</title>
+    
+    <!-- PWA Manifest & Meta -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#14161C">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/cards.css">
+</head>
+<body id="cards-root"
+      data-direct-mode="{{ 'true' if direct_mode else 'false' }}"
+      data-subject-id="{{ subject_id or '' }}"
+      data-quiz-id="{{ quiz_id or '' }}"
+      data-lan-ip="{{ lan_ip or '' }}">
+
+    <div class="app-container">
+        
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <a href="/quiz" id="btn-exit" class="icon-btn" aria-label="العودة" title="العودة للكوز">
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <span class="app-brand-title">بطاقات الحفظ</span>
+            </div>
+            <div class="header-right">
+                <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Language" title="ترجمة البطاقة">
+                    <i data-lucide="languages"></i>
+                </button>
+                <button id="btn-sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="كتم/تشغيل الصوت">
+                    <i data-lucide="volume-2" id="sound-icon"></i>
+                </button>
+                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Topic Banner -->
+        <section class="topic-banner">
+            <span id="deck-subtitle" class="topic-subject-badge">جاري التحميل...</span>
+            <h1 id="deck-title" class="topic-title">بطاقات الاسترجاع والحفظ</h1>
+        </section>
+
+        <!-- Card Progress Row -->
+        <section class="progress-section" aria-label="Deck Progress">
+            <div class="progress-bar-track">
+                <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-meta-row">
+                <div class="progress-counter">
+                    <span id="card-index-label">1</span>
+                    <span class="meta-separator">/</span>
+                    <span id="card-total-label">0</span>
+                </div>
+                <div class="deck-mode-indicator">
+                    <i data-lucide="repeat" class="flip-hint-icon"></i>
+                    <span>انقر على البطاقة لقلبها</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Loading State -->
+            <div id="cards-loading" class="state-view">
+                <div class="spinner"></div>
+                <p>جاري تحميل البطاقات...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="cards-error" class="state-view hidden">
+                <div class="error-icon-box">
+                    <i data-lucide="alert-triangle"></i>
+                </div>
+                <h2>تعذر تحميل البطاقات</h2>
+                <p id="error-message">لم يتم العثور على مجموعة البطاقات المطلوبة.</p>
+                <button id="btn-retry-load" class="action-btn primary-btn">
+                    <i data-lucide="refresh-cw"></i>
+                    <span>إعادة المحاولة</span>
+                </button>
+            </div>
+
+            <!-- 3D Flip Card Scene -->
+            <div id="cards-view" class="cards-view hidden">
+                <div class="flip-card-scene" id="card-scene">
+                    <div class="flip-card" id="active-card">
+                        
+                        <!-- Front Face (Question / Concept) -->
+                        <div class="card-face card-front">
+                            <div class="card-top-tags">
+                                <span class="tag concept-tag" id="card-concept-tag">Concept</span>
+                                <span class="tag bloom-tag" id="card-bloom-tag">Level</span>
+                            </div>
+
+                            <div class="card-body-content">
+                                <p class="card-prompt" id="card-front-text"></p>
+                            </div>
+
+                            <div class="card-flip-prompt">
+                                <i data-lucide="rotate-cw"></i>
+                                <span>اضغط للكشف عن الإجابة</span>
+                            </div>
+                        </div>
+
+                        <!-- Back Face (Answer / Explanation / Feynman) -->
+                        <div class="card-face card-back">
+                            <div class="card-top-tags">
+                                <span class="tag answer-tag">الإجابة النموذجية</span>
+                            </div>
+
+                            <div class="card-body-content">
+                                <div class="model-answer-box" id="card-model-answer"></div>
+                                <div class="explanation-box" id="card-explanation-text"></div>
+                            </div>
+
+                            <div class="card-flip-prompt">
+                                <i data-lucide="rotate-ccw"></i>
+                                <span>اضغط للعودة للسؤال</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Spaced Repetition Rating Bar (Anki Style) -->
+                <nav class="rating-bar" id="rating-bar" aria-label="Self Assessment Ratings">
+                    <button class="rating-btn btn-again" data-rating="again">
+                        <span class="rating-label">أعد</span>
+                        <span class="rating-interval">&lt; 1 دقيقة</span>
+                    </button>
+                    <button class="rating-btn btn-hard" data-rating="hard">
+                        <span class="rating-label">صعب</span>
+                        <span class="rating-interval">1 يوم</span>
+                    </button>
+                    <button class="rating-btn btn-good" data-rating="good">
+                        <span class="rating-label">جيد</span>
+                        <span class="rating-interval">3 أيام</span>
+                    </button>
+                    <button class="rating-btn btn-easy" data-rating="easy">
+                        <span class="rating-label">سهل</span>
+                        <span class="rating-interval">7 أيام</span>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Completion / Summary View -->
+            <div id="cards-complete-view" class="state-view complete-view hidden">
+                <div class="complete-icon-box">
+                    <i data-lucide="check-circle-2"></i>
+                </div>
+                <h2>اكتملت مراجعة المجموعة!</h2>
+                <p>أحسنت! تم تقييم جميع البطاقات وتحديث جدول التكرار المتباعد.</p>
+
+                <div class="deck-summary-stats">
+                    <div class="summary-pill stat-again"><span id="sum-again">0</span> أعد</div>
+                    <div class="summary-pill stat-hard"><span id="sum-hard">0</span> صعب</div>
+                    <div class="summary-pill stat-good"><span id="sum-good">0</span> جيد</div>
+                    <div class="summary-pill stat-easy"><span id="sum-easy">0</span> سهل</div>
+                </div>
+
+                <div class="complete-actions">
+                    <button id="btn-restart-deck" class="action-btn primary-btn">
+                        <i data-lucide="repeat"></i>
+                        <span>مراجعة البطاقات مرة أخرى</span>
+                    </button>
+                    <a id="link-open-as-quiz" href="#" class="action-btn secondary-btn">
+                        <i data-lucide="help-circle"></i>
+                        <span>الانتقال لوضع الكوز (MCQ)</span>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/cards.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(reg => console.log('PWA Service Worker registered:', reg.scope))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>

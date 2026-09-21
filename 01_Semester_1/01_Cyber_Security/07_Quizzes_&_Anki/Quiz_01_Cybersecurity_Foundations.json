@@ -1,0 +1,142 @@
+{
+  "subject": "01_Cyber_Security",
+  "topic": "Week 01: Cybersecurity Foundations, CIA Triad & Risk Assessment",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "cia_triad_definitions",
+      "bloom_level": "Understand",
+      "question": "A financial banking server is attacked by malicious actors who alter transaction balances in the SQL database without authorization. Which core pillar of the CIA Triad has been directly violated?",
+      "question_ar": "تعرض خادم مصرفي لهجوم إلكتروني قام فيه المهاجمون بتعديل أرصدة الحسابات في قاعدة البيانات دون تخويل. أي ركن أساسي من ثالوث CIA تم انتهاكه بشكل مباشر؟",
+      "options": [
+        "جاهزية النظام لضمان وصول المستخدمين المخولين إلى الخدمات المصرفية.",
+        "عدم الإنكار لإثبات هوية الطرف المرسل للبيانات في المعاملات المالية.",
+        "سرية البيانات لمنع الكشف غير المصرّح به لأطراف خارجية غير موثوقة.",
+        "سلامة وتكامل البيانات لضمان عدم تعديل السجلات أو العبث بمحتواها."
+      ],
+      "options_ar": [
+        "جاهزية النظام لضمان وصول المستخدمين المخولين إلى الخدمات المصرفية.",
+        "عدم الإنكار لإثبات هوية الطرف المرسل للبيانات في المعاملات المالية.",
+        "سرية البيانات لمنع الكشف غير المصرّح به لأطراف خارجية غير موثوقة.",
+        "سلامة وتكامل البيانات لضمان عدم تعديل السجلات أو العبث بمحتواها."
+      ],
+      "options_en": [
+        "Availability to ensure authorized users have continuous access to banking services.",
+        "Non-repudiation to prove the identity of the sender in financial transactions.",
+        "Confidentiality to prevent unauthorized disclosure of records to external parties.",
+        "Integrity to guarantee that records are not modified, altered, or tampered with."
+      ],
+      "answer": "D",
+      "explanation": "ركن السلامة والتكامل (Integrity) يختص بحماية البيانات من التعديل أو التغيير غير المصرّح به. تعديل الأرصدة المصرفية هو انتهاك مباشر للسلامة، بينما السرية تختص بالاطلاع غير المصرّح به، والجاهزية تختص بتوقف الخدمة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "cia_banking_weighting",
+      "bloom_level": "Analyze",
+      "question": "In Dr. Huda's risk weighting formulation for financial banking systems (Beta weighting), which CIA component carries the highest priority weight, and why?",
+      "question_ar": "في معادلة الأوزان النسبية للمخاطر للأنظمة المصرفية وفق منهج دكتورة هدى، أي أركان ثالوث CIA يحمل أعلى وزن، وما هو التعليل؟",
+      "options": [
+        "الجاهزية لأن توقف الخوادم لمدة خمس دقائق يؤدي لفقدان العملاء وهبوط القيمة السوقية.",
+        "السلامة والتكامل لأن تعديل رقم الحساب أو الرصيد المالي يؤدي لكوارث تنظيمية وقانونية.",
+        "المصادقة الثنائية لأنها تمنع هجمات التصيد الاحتيالي واختراق حسابات الموظفين عن بعد.",
+        "السرية لأن كشف البيانات المصرفية يعاقب عليه القانون الدولي بفرض غرامات مالية فورية."
+      ],
+      "options_ar": [
+        "الجاهزية لأن توقف الخوادم لمدة خمس دقائق يؤدي لفقدان العملاء وهبوط القيمة السوقية.",
+        "السلامة والتكامل لأن تعديل رقم الحساب أو الرصيد المالي يؤدي لكوارث تنظيمية وقانونية.",
+        "المصادقة الثنائية لأنها تمنع هجمات التصيد الاحتيالي واختراق حسابات الموظفين عن بعد.",
+        "السرية لأن كشف البيانات المصرفية يعاقب عليه القانون الدولي بفرض غرامات مالية فورية."
+      ],
+      "options_en": [
+        "Availability because server downtime of five minutes leads to customer loss and market drop.",
+        "Integrity because altering account numbers or balances causes catastrophic financial and legal chaos.",
+        "Two-factor authentication because it prevents remote phishing attacks on banking personnel.",
+        "Confidentiality because leaking banking records triggers immediate severe international regulatory fines."
+      ],
+      "answer": "B",
+      "explanation": "في البنوك والمؤسسات المالية، يعتبر ركن التكامل والسلامة (Integrity) هو الأعلى وزناً (Beta الأثقل)؛ لأن تغيير رقم الحساب أو تحويل الأموال لحساب آخر يسبب كارثة تصفية وانهياراً ثقة لا يمكن تعويضه بسهولة مقارنة بتوقف مؤقت للخدمة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "firewall_classification_boundary",
+      "bloom_level": "Understand",
+      "question": "Under the mandatory technical classification table of cybersecurity controls, to which domain does a packet-filtering Firewall strictly belong?",
+      "question_ar": "وفق جدول التصنيف الإلزامي لتقنيات الأمن السيبراني في المنهج، إلى أي مجال تنتمي جدران الحماية (Firewall) بشكل حصري؟",
+      "options": [
+        "تكامل البرمجيات للتحقق من التوقيعات الرقمية ومنع هجمات حقن الأوامر الخبيثة.",
+        "سرية البيانات عبر تشفير قنوات الاتصال وعزل الأنظمة عن الشبكة العامة.",
+        "أمن الشبكات للتحكم في حركة المرور الواردة وتصفية الحزم غير المصرح بها.",
+        "إدارة النسخ الاحتياطية لاستعادة الملفات المشفرة بعد هجمات برمجيات الفدية."
+      ],
+      "options_ar": [
+        "تكامل البرمجيات للتحقق من التوقيعات الرقمية ومنع هجمات حقن الأوامر الخبيثة.",
+        "سرية البيانات عبر تشفير قنوات الاتصال وعزل الأنظمة عن الشبكة العامة.",
+        "أمن الشبكات للتحكم في حركة المرور الواردة وتصفية الحزم غير المصرح بها.",
+        "إدارة النسخ الاحتياطية لاستعادة الملفات المشفرة بعد هجمات برمجيات الفدية."
+      ],
+      "options_en": [
+        "Software Integrity to verify digital signatures and block command injection attacks.",
+        "Data Confidentiality through channel encryption and public network isolation.",
+        "Network Security to inspect and filter inbound and outbound packet traffic.",
+        "Backup Management to restore encrypted files following widespread ransomware attacks."
+      ],
+      "answer": "C",
+      "explanation": "جدار الحماية (Firewall) يندرج بشكل قاطع تحت أمن الشبكات (Network Security في الفصل الثاني)، وليس ضمن تقنيات سرية البيانات (Confidentiality) التي تعتمد على التشفير والتحكم في الوصول وشبكات VPN."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ransomware_incident_response",
+      "bloom_level": "Apply",
+      "question": "A hospital database is hit by Ransomware that encrypts patient health records and demands cryptocurrency. Which two CIA pillars are compromised, and what is the primary recovery control?",
+      "question_ar": "تعرضت قاعدة بيانات مستشفى لهجوم برمجيات الفدية (Ransomware) قام بتشفير السجلات ومطالبة بفدية. ما هما ركنا CIA المتضرران، وما هو إجراء التعافي الأساسي؟",
+      "options": [
+        "الجاهزية والتكامل، وإجراء التعافي الأساسي هو استعادة البيانات من نسخ احتياطية معزولة.",
+        "السرية والمصادقة، وإجراء التعافي الأساسي هو الدفع الفوري عبر المحافظ الرقمية المشفرة.",
+        "السرية والجاهزية، وإجراء التعافي الأساسي هو تشغيل برامج مكافحة الفيروسات التقليدية.",
+        "عدم الإنكار والخصوصية، وإجراء التعافي الأساسي هو إبلاغ الجهات القانونية والشرطة الدولية."
+      ],
+      "options_ar": [
+        "الجاهزية والتكامل، وإجراء التعافي الأساسي هو استعادة البيانات من نسخ احتياطية معزولة.",
+        "السرية والمصادقة، وإجراء التعافي الأساسي هو الدفع الفوري عبر المحافظ الرقمية المشفرة.",
+        "السرية والجاهزية، وإجراء التعافي الأساسي هو تشغيل برامج مكافحة الفيروسات التقليدية.",
+        "عدم الإنكار والخصوصية، وإجراء التعافي الأساسي هو إبلاغ الجهات القانونية والشرطة الدولية."
+      ],
+      "options_en": [
+        "Availability and Integrity, recovered by restoring data from isolated air-gapped backups.",
+        "Confidentiality and Authentication, recovered by paying ransom via crypto wallets.",
+        "Confidentiality and Availability, recovered by running traditional antivirus software.",
+        "Non-repudiation and Privacy, recovered by notifying legal authorities and international police."
+      ],
+      "answer": "A",
+      "explanation": "هجوم الفدية يضرب الجاهزية (Availability) لأن الأطباء لا يستطيعون قراءة السجلات، ويضرب التكامل (Integrity) لأن البيانات حُبست وشُفرت بمفتاح خارجي. التعافي الهندسي المعتمد هو الاسترجاع من نسخ احتياطية معزولة فيزيائياً (Air-gapped Backups)."
+    },
+    {
+      "id": "q5",
+      "concept_id": "threat_vs_vulnerability_vs_risk",
+      "bloom_level": "Understand",
+      "question": "What is the precise architectural distinction between a Vulnerability, a Threat, and a Risk in standard cybersecurity risk models?",
+      "question_ar": "ما هو الفارق المعماري الدقيق بين الثغرة (Vulnerability) والتهديد (Threat) والخطر (Risk) وفق النماذج القياسية؟",
+      "options": [
+        "الثغرة هي نقطة ضعف داخلية، والتهديد حدث خارجي محتمل، والخطر هو ناتج احتمال حدوثهما وتأثيره.",
+        "التهديد هو الفيروس فقط، والثغرة هي انقطاع الكهرباء، والخطر هو عدم تدريب موظفي المؤسسة.",
+        "الخطر هو البرمجيات الخبيثة، والتهديد هو نقطة الضعف، والثغرة هي احتمالية حدوث الاختراق.",
+        "الثغرة هي الهجوم الفعلي، والتهديد هو الخسارة المالية، والخطر هو ضعف البرمجيات الداخلي."
+      ],
+      "options_ar": [
+        "الثغرة هي نقطة ضعف داخلية، والتهديد حدث خارجي محتمل، والخطر هو ناتج احتمال حدوثهما وتأثيره.",
+        "التهديد هو الفيروس فقط، والثغرة هي انقطاع الكهرباء، والخطر هو عدم تدريب موظفي المؤسسة.",
+        "الخطر هو البرمجيات الخبيثة، والتهديد هو نقطة الضعف، والثغرة هي احتمالية حدوث الاختراق.",
+        "الثغرة هي الهجوم الفعلي، والتهديد هو الخسارة المالية، والخطر هو ضعف البرمجيات الداخلي."
+      ],
+      "options_en": [
+        "Vulnerability is an internal flaw, Threat is an external danger, and Risk is their likelihood and impact.",
+        "Threat is malware only, Vulnerability is power outage, and Risk is lack of training.",
+        "Risk is malicious software, Threat is system flaw, and Vulnerability is breach probability.",
+        "Vulnerability is the actual attack, Threat is financial loss, and Risk is software flaw."
+      ],
+      "answer": "A",
+      "explanation": "وفق معايير NIST SP 800-30: الثغرة (Vulnerability) هي نقطة ضعف كامنة في النظام. التهديد (Threat) هو عامل خارجي قد يستغل هذه النقطة. الخطر (Risk) هو الاحتمالية والضرر الناتج عن نجاح التهديد في استغلال الثغرة (Risk = Threat × Vulnerability × Impact)."
+    }
+  ]
+}

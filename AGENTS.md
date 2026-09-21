@@ -213,8 +213,15 @@ The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-dat
   - **Study Mode (Recitation):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>` (Immediate visual feedback, explanation card, and sound effects).
   - **Exam Mode (Simulated University Exam):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>?mode=exam` (Silent answer tracking, freely editable choices, score and explanations revealed only upon final submission).
   - **Question & Option Shuffle:** Append `?shuffle=true` or click the shuffle button in the header to randomize question and option order while preserving telemetry IDs.
+- **Dedicated Flashcard Memo System (Active Recall):**
+  - **Launch Direct Deck:** `http://127.0.0.1:5000/cards/<Subject_Folder>/<Quiz_Name>`
+  - **3D Flip Card Experience:** Front displays the prompt, concept, and Bloom level. Tap to flip reveals the model answer, explanation, Feynman analogy, and professor exam traps.
+  - **4-Tier Spaced Repetition Rating Bar:** Anki-style buttons (`Again <1m`, `Hard 1d`, `Good 3d`, `Easy 7d`) with local persistence in `localStorage`.
 
-- **Generate Terminal QR Code for Mobile Phone:**
+- **Installable Offline-First PWA (Progressive Web App):**
+  - The entire learning portal is an installable PWA with Service Worker caching (`/static/sw.js` and `/static/manifest.json`).
+  - Tap "Add to Home Screen" in Chromium/Chrome on mobile to install Master Studio as a standalone app.
+  - Operates 100% offline (Airplane mode) on campus, bus, or outside home Wi-Fi without requiring the PC server to be running.
   ```bash
   python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>"
   ```

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Quiz | Master Studio</title>
+    <!-- PWA Manifest & Theme -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#14161C">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="/static/quiz.css">
@@ -297,5 +302,16 @@
 
     <!-- Application Script -->
     <script src="/static/quiz.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(reg => console.log('PWA Service Worker registered:', reg.scope))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
 </body>
 </html>
