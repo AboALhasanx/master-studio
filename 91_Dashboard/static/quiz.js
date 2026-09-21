@@ -361,6 +361,34 @@ class QuizApp {
         this.dom.btnSubmitTelemetry?.addEventListener('click', () => this.submitTelemetry());
         this.dom.btnRetryLoad?.addEventListener('click', () => this.loadQuiz());
 
+        // Local Offline File Picker
+        const localInput = document.getElementById('local-file-input');
+        const triggerPicker = () => localInput?.click();
+        document.getElementById('btn-open-local-file')?.addEventListener('click', triggerPicker);
+        document.getElementById('btn-browse-local')?.addEventListener('click', triggerPicker);
+
+        localInput?.addEventListener('change', (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                try {
+                    const data = JSON.parse(ev.target.result);
+                    if (!data || !data.questions || data.questions.length === 0) {
+                        alert('الملف لا يحتوي على أسئلة صالحة.');
+                        return;
+                    }
+                    this.quizData = data;
+                    try {
+                        localStorage.setItem('ms_last_offline_quiz', JSON.stringify({ name: file.name, data }));
+                    } catch (err) {}
+                    this.setupQuizSession();
+                } catch (err) {
+                    alert('خطأ في قراءة ملف JSON: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        });
         // Drawers
         this.dom.btnBookmarksToggle?.addEventListener('click', () => this.openDrawer(this.dom.bookmarksDrawer));
         this.dom.btnCloseBookmarks?.addEventListener('click', () => this.closeDrawer(this.dom.bookmarksDrawer));

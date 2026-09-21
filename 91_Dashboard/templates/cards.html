@@ -28,6 +28,9 @@
                 <a href="/quiz" id="btn-exit" class="icon-btn" aria-label="العودة" title="العودة للكوز">
                     <i data-lucide="arrow-right"></i>
                 </a>
+                <button id="btn-open-local-cards" class="icon-btn" aria-label="Open Local Deck" title="فتح بطاقات من ذاكرة الهاتف (أوفلاين)">
+                    <i data-lucide="folder-open"></i>
+                </button>
                 <span class="app-brand-title">بطاقات الحفظ</span>
             </div>
             <div class="header-right">
@@ -83,11 +86,20 @@
                 </div>
                 <h2>تعذر تحميل البطاقات</h2>
                 <p id="error-message">لم يتم العثور على مجموعة البطاقات المطلوبة.</p>
-                <button id="btn-retry-load" class="action-btn primary-btn">
-                    <i data-lucide="refresh-cw"></i>
-                    <span>إعادة المحاولة</span>
-                </button>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%; max-width: 280px;">
+                    <button id="btn-retry-load" class="action-btn primary-btn">
+                        <i data-lucide="refresh-cw"></i>
+                        <span>إعادة المحاولة</span>
+                    </button>
+                    <button id="btn-browse-local-cards" class="action-btn secondary-btn">
+                        <i data-lucide="folder-open"></i>
+                        <span>تصفح ملف من الهاتف (أوفلاين)</span>
+                    </button>
+                </div>
             </div>
+
+            <!-- Hidden Local Cards File Input -->
+            <input type="file" id="local-cards-input" accept=".json" style="display: none;">
 
             <!-- 3D Flip Card Scene -->
             <div id="cards-view" class="cards-view hidden">

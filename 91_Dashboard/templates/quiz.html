@@ -28,6 +28,9 @@
                 <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
                     <i data-lucide="home"></i>
                 </button>
+                <button id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)">
+                    <i data-lucide="folder-open"></i>
+                </button>
                 <span class="app-brand-title">الرئيسية</span>
             </div>
             <div class="header-right">
@@ -94,11 +97,20 @@
                 </div>
                 <h2>تعذر تحميل الكوز</h2>
                 <p id="error-message">لم يتم العثور على الكوز المطلوب.</p>
-                <button id="btn-retry-load" class="action-btn primary-btn">
-                    <i data-lucide="refresh-cw"></i>
-                    <span>إعادة المحاولة</span>
-                </button>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%; max-width: 280px;">
+                    <button id="btn-retry-load" class="action-btn primary-btn">
+                        <i data-lucide="refresh-cw"></i>
+                        <span>إعادة المحاولة</span>
+                    </button>
+                    <button id="btn-browse-local" class="action-btn secondary-btn">
+                        <i data-lucide="folder-open"></i>
+                        <span>تصفح ملف من الهاتف (أوفلاين)</span>
+                    </button>
+                </div>
             </div>
+
+            <!-- Hidden Local File Input -->
+            <input type="file" id="local-file-input" accept=".json" style="display: none;">
 
             <!-- Quiz Start Intro View (Prevents time flying before student is ready) -->
             <div id="quiz-start-view" class="state-view quiz-start-card hidden">

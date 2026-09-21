@@ -159,6 +159,34 @@ class CardsApp {
         this.dom.btnRetryLoad?.addEventListener('click', () => this.loadDeck());
         this.dom.btnRestartDeck?.addEventListener('click', () => this.restartDeck());
 
+        // Local Offline Deck Picker
+        const cardsInput = document.getElementById('local-cards-input');
+        const triggerCardsPicker = () => cardsInput?.click();
+        document.getElementById('btn-open-local-cards')?.addEventListener('click', triggerCardsPicker);
+        document.getElementById('btn-browse-local-cards')?.addEventListener('click', triggerCardsPicker);
+
+        cardsInput?.addEventListener('change', (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                try {
+                    const data = JSON.parse(ev.target.result);
+                    if (!data || !data.questions || data.questions.length === 0) {
+                        alert('الملف لا يحتوي على بطاقات صالحة.');
+                        return;
+                    }
+                    this.deckData = data;
+                    try {
+                        localStorage.setItem('ms_last_offline_deck', JSON.stringify({ name: file.name, data }));
+                    } catch (err) {}
+                    this.setupDeck();
+                } catch (err) {
+                    alert('خطأ في قراءة ملف JSON: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        });
         // Card flip on tap / click
         this.dom.activeCard?.addEventListener('click', () => this.flipCard());
 

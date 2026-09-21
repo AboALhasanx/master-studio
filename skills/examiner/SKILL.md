@@ -46,6 +46,9 @@ Use this skill whenever the student requests self-assessment, quizzes, MCQs, or 
    * If the student asks to open the quiz or practice on their phone, execute:
      `python 90_Shared_Toolbox/tools/quiz_qr.py "<Subject>" "<Quiz>" --open`
      to launch directly in the default browser (Chromium/Chrome) for 1-click device sharing.
+   * **Active Recall Flashcards:** Direct deck URL `http://127.0.0.1:5000/cards/<Subject>/Quiz_NN_<Topic>` for 3D flip-card memorization with 4-tier spaced repetition ratings.
+   * **100% Offline Mobile Mode:** When disconnected from PC Wi-Fi, tap the folder icon in `/quiz` or `/cards` to load any `Quiz_*.json` directly from phone storage (DriveSync) with zero network connection.
+   * **Mobile Automation Standard:** Automate Android via `adb shell uiautomator dump` and semantic bounds; never burn VLM tokens on coordinate guessing.
    * WebUI submissions automatically record telemetry, dwell times, and Bloom gaps into `00_STUDIO_HUB/sessions/YYYY-MM-DD.md` for BKT calibration.
 7. **Mandatory Strict Quality Gate (Zero-Chance Policy):**
    * After creating any quiz bank JSON, the agent MUST execute:
