@@ -4,7 +4,7 @@ subject: "05_Soft_Computing"
 week: 2
 source_pdf: "../02_Raw_Materials/W02_Fuzzy_Logic_Systems.pdf"
 ocr_companion: "../02_Raw_Materials/W02_Fuzzy_Logic_Systems_OCR.md"
-status: "analysis before condensed note"
+status: "analysis with vision-verified math update"
 ---
 
 # Week 02 Fuzzy Logic Systems — Forensic Content Analysis
@@ -207,18 +207,34 @@ These formulas are reconstructed from standard notation and the slide sequence. 
 > **Booklet notation:** empty set = **φ**, universal set on Identity slide = **X**. Alternative fuzzy notation (p.61): $A=\sum \mu_A(x_i)/x_i$ and $\int \mu_A(x)/x$ — **`/` is a marker, not division**; Σ/∫ mean **union of membership grades**.  
 > Full vision transcription: `../02_Raw_Materials/W02_Fuzzy_Math_Vision_Verified.md` (prefer that file over OCR for math).
 
-## 6. Mathematical Content That Needs Source Validation
+## 6. Update Register — Vision-Verified Extraction
 
-The following must not be copied from OCR without checking the page image:
+The Mimo/image pass in `../02_Raw_Materials/W02_Fuzzy_Math_Vision_Verified.md` supersedes the older OCR-only uncertainty for the locked pages.
 
-- All formulas on pp. 34–40.
-- Membership-function diagrams on pp. 47–55.
-- The set-builder expression on p. 56.
-- The formal mapping `μA : X → [0,1]` on pp. 57–58.
-- Alternative notation on pp. 61–63, especially summation, integral, and slash notation.
-- Discrete and continuous representations on pp. 64–66.
+### 6.1 Locked and ready for synthesis
 
-The safe workflow is: transcribe the formula from the PDF image, render it in Markdown/LaTeX, then compare the rendered result with the source page. OCR text alone is not sufficient for these pages.
+- Pages 34–40: commutative, associative, distributive, idempotency, identity, transitive, involution, and De Morgan's laws.
+- Identity Property is **four laws**, using the booklet's notation:
+  `A ∪ φ = A`, `A ∩ X = A`, `A ∩ φ = φ`, and `A ∪ X = X`.
+- The booklet uses `φ` for the empty set and `X` for the universal set on the Identity slide.
+- De Morgan's complement bars cover the complete left-hand expressions.
+- Pages 56–58: `μ_Ã : X → [0,1]`, the three membership cases, the not-probability warning, and fuzzification as the mapping from `x` to `μ_Ã(x)`.
+- Page 61: discrete summation and continuous integral notation; `/` is a marker, while `Σ`/`∫` represent the union of membership grades in the booklet's notation.
+- Ordered-pair representation near pp. 64–65: `Ã = {(y, μ_Ã(y)) | y ∈ U}` with membership values in `[0,1]`.
+
+### 6.2 Still open before final synthesis
+
+- Pages 47–55: crisp/fuzzy diagrams and comparison visuals need one consolidated interpretation, not repeated OCR prose.
+- Pages 62–66: the worked discrete and continuous representation examples should be transcribed from the verified images, including all subscripts and membership values.
+- Any final rendered formula must be checked once against the source page after LaTeX typesetting.
+
+### 6.3 Source-of-truth precedence
+
+```text
+Vision-verified math file > source PDF image > OCR Markdown > reconstructed standard formula
+```
+
+The OCR file remains useful for search and page indexing, but it must not override the vision-verified math file.
 
 ## 7. Proposed 28-Page Condensed Note
 
