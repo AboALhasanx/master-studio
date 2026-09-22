@@ -3,7 +3,10 @@
 > **Method:** Source PDF pages rendered at 180–220 DPI and read with multimodal vision (MiMo).  
 > **Why:** RapidOCR destroyed `μ`, `Σ`, `∫`, overlines, and set symbols.  
 > **Rule:** These transcriptions are from **page images**, not OCR text.  
-> **Status:** 2026-09-22 vision pass on critical pages 34–40 and 61 (plus earlier 56–58 content from analysis cross-check).
+> **Status:**  
+> - Pass 1 (2026-09-22): pages **34–40, 56–58, 61** + analysis cross-check.  
+> - Pass 2 (2026-09-22, MiMo vision): **reconfirmed** 38, 61 + locked **48, 52, 55, 62, 64**.  
+> **Codex checklist 2026-09-22:** all 10 claims below **MATCH this file and page images**.
 
 ---
 
@@ -195,13 +198,18 @@ $$
 | 35 | Associative |
 | 36 | Distributive |
 | 37 | Idempotency |
-| 38 | Identity (four laws, φ and X) |
+| 38 | Identity (four laws, φ and X) — **reconfirmed pass 2** |
 | 39 | Transitive + Involution |
 | 40 | De Morgan (both forms) |
-| 61 | Alternative discrete/continuous notation + `/` note |
-| 56–64 | Membership definition, range, not-probability, fuzzification, ordered-pair form (from analysis + earlier text) |
+| 48 | Fuzzy set: degrees between 1 and 0 · tilde · partial membership · **not probability** · `Ã = {(x, μ_Ã(x)) \| x ∈ X}` |
+| 52 | Tall people: crisp step at 5'10" vs fuzzy membership curve (0.5 / 0.9 / 1.0) |
+| 55 | Definition 1: `A = {(x, μ_A(x)) \| x ∈ X}` · `μ_A(x)` maps X onto grade in **[0,1] both inclusive** |
+| 56–58 | Membership definition, range, not-probability, fuzzification |
+| 61 | Alternative discrete/continuous notation + `/` marker note — **reconfirmed pass 2** |
+| 62 | `Ã = Σ μ_Ã(x_i) / x_i` (X discrete) · `Ã = ∫ μ_Ã(x) / x` (X continuous) |
+| 64 | Ordered pairs: `Ã = {(y, μ_Ã(y)) \| y ∈ U}` · `μ_Ã(y) ∈ [0,1]` (universe letter **U** on this slide) |
 
-Remaining pages 47–55 diagrams (crisp/fuzzy visuals) and 62–66 worked numeric examples can be locked the same way before the final 28-page note; they are **examples/figures**, not new law statements.
+Remaining low-risk figure-only pages (47, 49–51, 53–54) are comparison visuals already summarized by p52; 63/65–66 are continued examples of the same notation.
 
 ---
 
