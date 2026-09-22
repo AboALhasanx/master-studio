@@ -60,6 +60,7 @@ status: "WEEK_01_ACTIVE"
 - [x] **`05_Soft_Computing` official syllabus synced from alaidi.net** — course window 8/9/2026–**8/12/2026**; Midterm **20/10/2026 Weeks 1–6 fuzzy** (provisional — doctor may renumber); chain codes/ANFIS are NOT official weekly topics this term
 - [x] **`05_Soft_Computing` Week 01 comprehensive note REBUILT** — `03_Study_Notes/Week_01_Introduction_to_Soft_Computing.md` in Data Mining method (full lecture text + Arabic conceptual layer + decoded images + long doctor answers + 35Q bank). **Not AI-slop compression.**
 - [x] **`05_Soft_Computing` Week 2 source staged + local OCR** — PDF pages 1–66 only; searchable OCR at `02_Raw_Materials/W02_Fuzzy_Logic_Systems_OCR.md`; equations still require source-PDF validation
+- [x] **`05_Soft_Computing` Week 02 FINAL BOOKLET delivered** — `03_Study_Notes/w02-fuzzy-logic-systems-booklet.{html,pdf}` (29pp = cover + 28 sections, English, MathJax). Math from `W02_Fuzzy_Math_Vision_Verified.md`; LaTeX-escape corruption repaired and rebuilt; source-verified against pp. 59/60/65/66 page images. Commit `a8cd34e`, pushed. **Layout density question open with the student** (one-topic-per-page ≈ 45% fill; could compress 29pp → ~18pp).
 - [ ] **`06_Artificial_Intelligence`** — waiting. **Abu Al-Hasan will report it himself when Dr. Saif posts material — do not proactively check the group.**
 
 ### Next Session Focus
