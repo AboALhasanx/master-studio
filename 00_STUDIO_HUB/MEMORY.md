@@ -125,3 +125,11 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-22 (trap, recurring):** Python-embedded LaTeX eats backslashes. `\tilde`→TAB+`ilde`, `\varphi`→`arphi`. **Always double backslashes or use raw strings**, and always scan the *generated* HTML: `s.count('\t')==0` and no `\\[vtnrabf]` stray escapes. MathJax glyphs are invisible to PDF text extraction — verify math by rendering page images, not by extracting text.
 
 - **Added 2026-09-22 (git/Drive):** two failure modes hit in one session. (1) stale 0-byte `.git/packed-refs.lock` blocks all git writes — safe to delete. (2) Drive injects `desktop.ini` into `.git/refs/...` (325 files) → `fatal: bad object refs/codex/desktop.ini`, breaks `fetch` only (push still works). Drive re-injects within seconds, so win the race with `rm -f .git/refs/remotes/origin/desktop.ini && git fetch origin` in ONE command.
+
+- **Added 2026-09-22 (SC W02 quiz bank):** `Quiz_02_Fuzzy_Logic_Systems.json` — 12 bilingual scenario MCQs, balanced 3/3/3/3, passed `quiz_balancer.py --strict`. Workflow: author JSON → `quiz_balancer.py <file> --seed 42` (rewrites in place, permutes `options`/`options_ar`/`options_en` together) → `--strict --check` must PASS → **then re-verify keys semantically by hand** (the balancer guarantees letter balance, not correctness). To fix ONE question's key, re-permute only that question's three option arrays — never re-run the balancer on the whole file.
+
+- **Added 2026-09-22 (math precision, SC W02):** the fuzzy set `Ã = {(x, μ_Ã(x)) | x ∈ X}` is the **graph of the membership function** and a **subset of** `X × [0,1]`. The Cartesian product supplies the **ambient space** of possible pairs; **`μ_Ã` selects** them (exactly one grade per element). The product alone does **not** build the fuzzy set. Source p. 33 defines the product only and never mentions fuzzy sets — that link is an author's bridge.
+
+- **Added 2026-09-22 (decision):** the **29-page** SC W02 booklet is **canonical — keep one-topic-per-page**. Do not compress it to cut page count. A lighter mobile/revision edition, if ever wanted, is a **separate artefact**, not a replacement.
+
+- **Added 2026-09-22 (agent discipline):** explanatory **bridges between sourced facts are the agent's own claims** and carry the full anti-fabrication burden — label them as bridges. This is what produced the Q12 error.

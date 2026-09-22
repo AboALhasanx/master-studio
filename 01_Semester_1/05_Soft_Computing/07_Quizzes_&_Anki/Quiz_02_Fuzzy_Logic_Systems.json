@@ -303,30 +303,30 @@
     },
     {
       "id": "q12",
-      "concept_id": "cartesian_product_ordered_pairs",
-      "bloom_level": "Apply",
-      "question": "Why is the Cartesian product A x B central to the fuzzy-set definition?",
-      "question_ar": "لماذا يُعد الجداء الديكارتي A × B جوهرياً في تعريف المجموعة الضبابية؟",
+      "concept_id": "cartesian_product_ambient_space",
+      "bloom_level": "Analyze",
+      "question": "A fuzzy set on universe X is written as a set of ordered pairs. What is the precise role of the Cartesian product in that representation?",
+      "question_ar": "المجموعة الضبابية على الكون X تُكتب كمجموعة أزواج مرتّبة. ما الدور الدقيق للجداء الديكارتي في هذا التمثيل؟",
       "options": [
-        "لأنه يعكس ترتيب العناصر بحيث يصبح A × B مساوياً لـ B × A.",
-        "لأنه يحصي العناصر المشتركة بين مجموعتين متقاطعتين.",
-        "لأنه يبني الأزواج المرتّبة من العنصر ودرجة عضويته.",
-        "لأنه يحذف العناصر المكرّرة قبل تقييم عملية الاتحاد."
+        "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+        "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1].",
+        "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+        "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها."
       ],
       "options_ar": [
-        "لأنه يعكس ترتيب العناصر بحيث يصبح A × B مساوياً لـ B × A.",
-        "لأنه يحصي العناصر المشتركة بين مجموعتين متقاطعتين.",
-        "لأنه يبني الأزواج المرتّبة من العنصر ودرجة عضويته.",
-        "لأنه يحذف العناصر المكرّرة قبل تقييم عملية الاتحاد."
+        "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+        "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1].",
+        "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+        "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها."
       ],
       "options_en": [
-        "Because it reverses element order so that A cross B equals B cross A.",
-        "Because it counts the elements shared by two overlapping classical sets.",
-        "Because it builds the ordered pairs of an element together with its membership grade.",
-        "Because it removes duplicated elements before the union operation is evaluated."
+        "The product X x [0, 1] alone determines which pairs belong, so any subset of it is a fuzzy set.",
+        "The fuzzy set is itself the Cartesian product of the universe X with the interval [0, 1].",
+        "The product X x [0, 1] supplies the space of possible pairs; the membership function is what selects the pairs.",
+        "The product builds pairs from two crisp elements, and the membership grade is the second element."
       ],
       "answer": "C",
-      "explanation": "تعريف المجموعة الضبابية مبني على الأزواج المرتّبة: Ã = {(x, μ_Ã(x)) | x ∈ X}. والجداء الديكارتي (ص33) هو الأداة التي تنتج هذه الأزواج، ولذلك هو الأساس الشكلي للانتقال من المجموعة الحاسمة إلى الضبابية. الجداء الديكارتي غير تبادلي: A × B ≠ B × A."
+      "explanation": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة (المحيط الذي تعيش فيه المجموعة)، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. ودقة إضافية: المجموعة الضبابية على X تقابل دالة X → [0, 1]، فرسمها مجموعة دالية — درجة واحدة لكل عنصر — وليست أي مجموعة جزئية عشوائية من الجداء. علماً أن صفحة 33 في الكتيّب تعرّف الجداء الديكارتي فقط ولا تربطه بالمجموعات الضبابية؛ الربط جسر تعليمي لا ادّعاء من المصدر."
     }
   ]
 }

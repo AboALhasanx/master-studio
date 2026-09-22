@@ -487,8 +487,15 @@ def part_cartesian():
   \\(B \\times A = \\{(1,a), (1,b), (2,a), (2,b)\\}\\)
 </div>
 <div class="trap"><b>Exam trap.</b> Pairs are <b>ordered</b>: \\(A \\times B \\ne B \\times A\\) in general. \\((a,1) \\ne (1,a)\\).</div>
-<h2>Why ordered pairs matter for fuzzy sets</h2>
-<p>Later, a fuzzy set is represented as a set of ordered pairs \\((x, \\mu(x))\\) — element and its grade. The Cartesian-product idea (pairs, not bare elements) is the structural bridge into fuzzy representation.</p>
+<h2>Ordered pairs and the fuzzy-set representation</h2>
+<p>A fuzzy set \\(\\tilde{A}\\) on universe \\(X\\) is written as a set of ordered pairs \\((x, \\mu_{\\tilde{A}}(x))\\). Read that precisely: the set is the <b>graph of the membership function</b>, and it is a <b>subset of the Cartesian product</b> \\(X \\times [0,1]\\).</p>
+<table class="kv">
+  <tr><td>What the product supplies</td><td>The <b>ambient space</b> of all conceivable (element, grade) pairs — necessary, but not sufficient.</td></tr>
+  <tr><td>What actually selects the pairs</td><td>The membership function \\(\\mu_{\\tilde{A}}\\), which fixes <b>exactly one</b> grade for each \\(x \\in X\\).</td></tr>
+  <tr><td>Therefore</td><td>The fuzzy set is <b>determined by its membership function</b>, not by the Cartesian product.</td></tr>
+</table>
+<div class="trap"><b>Precision trap.</b> \\(X \\times [0,1]\\) is the space the fuzzy set <b>lives in</b>, not the fuzzy set itself, and an arbitrary subset of it need not be one. A fuzzy set on \\(X\\) is a <b>function</b> \\(X \\to [0,1]\\), so its graph carries exactly one grade per element.</div>
+<p class="small">Source note: page 33 defines the Cartesian product and gives the \\(\\{a,b\\} \\times \\{1,2\\}\\) example only. The link to fuzzy representation is an <b>author's bridge</b>, not a claim made on that page.</p>
 """
     return page(14, "Cartesian Product", body)
 
