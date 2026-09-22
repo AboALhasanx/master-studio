@@ -30,12 +30,13 @@
 Raw data (messy types)
     → Feature Extraction (new useful numbers)
     → OR Portability (convert type A → type B)
-    → Suitable representation
+    → Representation **compatible with the chosen algorithm**
     → Mining / ML algorithm
     → Patterns / predictions
 ```
 
-**عربي:** البيانات الخام أنواعها مختلفة → نستخرج **ميزات جديدة** أو **نحوّل النوع** حتى يفهمه الخوارزمية → نشغّل التنقيب.
+**عربي:** البيانات الخام أنواعها مختلفة → نستخرج **ميزات جديدة** أو **نحوّل النوع** حتى يفهمه الخوارزمية → نشغّل التنقيب.  
+**توضيح:** «التمثيل المناسب» = مناسب **لهذه الخوارزمية** (جدول/متجه/تسلسل/رسم…) مو بالضرورة جدول رقمي واحد.
 
 ---
 
@@ -45,7 +46,9 @@ Raw data (messy types)
 
 **Why (lecture list):**
 - Raw can be large, complex, hard to process, high-dimensional, unsuitable for some algorithms
-- Extraction can: reduce data · remove noise · represent important traits · ease algorithms · sometimes improve accuracy
+- Extraction can: reduce data · **remove unnecessary information (lecture wording)** · represent important traits · ease algorithms · sometimes improve accuracy
+
+**Precision:** extraction **transforms/summarizes** and keeps task-relevant traits; guaranteed deletion of irrelevant columns is closer to **feature selection / reduction**. Safe phrase: *“reduce representation size while retaining task-relevant information; may discard what the task does not need.”*
 
 ### X-ray / CT pipeline (doctor’s favorite shape)
 
@@ -130,6 +133,8 @@ Different data types → conversion → suitable representation → algorithm
 | **Equal-Width** | Same **numeric span** per bin | Age 0–80 → `[0–20][21–40][41–60][61–80]` |
 | **Equal-Frequency** | Same **number of observations** per bin | Sort values; each bin ~same count |
 
+**Precision (exam-safe):** Lecture example is **integer ages** (0–20, 21–40…). For **continuous** data, state interval convention, e.g. `[0,20), [20,40), …`.
+
 **Lecture mapping:**  
 Age bins `0–17 Young · 18–40 Adult · 41–60 Middle-aged · 61+ Older`  
 → `25→Adult · 45→Middle-aged · 67→Older`
@@ -185,9 +190,10 @@ D1 `"good product"` · D2 `"good service"` · vocab `{good, product, service}`
 | Target | Method | Example |
 |:---|:---|:---|
 | **Numeric features** | mean, std, frequency, wavelet | vector for ML |
-| **Discrete symbols** | symbolic / thresholds | `20,22,21,25,27,30` → `A,A,A,B,B,C` |
+| **Discrete symbols** | symbolic / **given Low/Medium/High cutoffs** | `20,22,21,25,27,30` → `A,A,A,B,B,C` |
 
-**Mix-up risk:** “TS always becomes symbols” — **false**. Lecture has **both** numeric features **and** symbolic sequences.
+**Mix-up risk:** “TS always becomes symbols” — **false**. Lecture has **both** numeric features **and** symbolic sequences.  
+**Precision:** symbol string is only defined **after** thresholds (lecture: Low=A, Medium=B, High=C).
 
 ---
 
@@ -203,6 +209,11 @@ If distance(P1, P2) < threshold
 **Uses (lecture):** clustering · classification · nearest-neighbor · outlier detection
 
 **Why it matters:** if you can define **distance**, you can build a graph and use graph mining tools.
+
+**Exam condition (bold in answers):** any type → similarity graph **only if** an **appropriate distance/similarity function** exists and the task is similarity-based (Aggarwal: *restricted applicability*).
+
+**[Textbook] heat kernel edge weight:**  
+$w_{ij} = \exp\left(-d(O_i,O_j)^2/t^2\right)$, $t$ user-defined; larger $w$ = more similar.
 
 ---
 
