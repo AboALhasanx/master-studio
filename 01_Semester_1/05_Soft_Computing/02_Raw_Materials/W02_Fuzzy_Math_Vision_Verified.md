@@ -236,5 +236,24 @@ Continuous:   A = ∫_X μ_A(x) / x
 
 ---
 
+## 8. Codex claim checklist (2026-09-22)
+
+| Codex claim | Verdict |
+|:---|:---:|
+| pp. 34–40 Vision-Verified | **OK** |
+| Identity = four laws `A∪φ=A` `A∩X=A` `A∩φ=φ` `A∪X=X` | **OK** (p.38) |
+| φ = empty set | **OK** |
+| X = universal set (Identity slide) | **OK** |
+| De Morgan · Involution · Transitive locked | **OK** |
+| `μ_Ã : X → [0,1]` locked | **OK** (p.55: 0 and 1 inclusive) |
+| Membership is **not** Probability | **OK** (p.48) |
+| Σ / ∫ = union of membership grades | **OK** (p.61) |
+| `/` = marker, not division | **OK** (p.61) |
+| Fuzzification = `x → μ_Ã(x)` | **OK** |
+
+**Codex “remaining” 47–55 / 62–66:** pass 2 locked **48, 52, 55, 62, 64**; others are examples of the same definitions.
+
+---
+
 *Vision recovery log for Soft Computing W02 · 2026-09-22 · Koko (MiMo).*
 *Use this file as math source of truth over `W02_Fuzzy_Logic_Systems_OCR.md`.*
