@@ -5,7 +5,7 @@ active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
 immediate_todo: "Tuesday preparation: read and review Soft Computing Week 01 for Prof Dr Abdul Hadi. Data Mining W03 remains unfinished; do not revise W02/W03 summaries yet. Artificial Intelligence remains empty and on hold."
 next_session_focus: "Complete the Soft Computing Week 01 review for Tuesday, then capture the actual lecture outcome. Keep AI on hold until the dean sends material."
-last_updated: "2026-09-21"
+last_updated: "2026-09-22"
 status: "WEEK_01_ACTIVE"
 ---
 
@@ -54,15 +54,16 @@ status: "WEEK_01_ACTIVE"
 - [ ] **Prepare for the `01_Cyber_Security` daily quiz (امتحان يومي)** — Sunday 2026-09-20, 08:30 lecture, on Week 01 material
 - [x] **`03_Data_Mining` Week 02 comprehensive note built** — `03_Study_Notes/Week_02_Data_Types_and_Preparation.md` (lecture text preserved + Gemini frameworks + Dr. Ahmed formula layer + 50-question bank)
 - [x] **`03_Data_Mining` Week 03 comprehensive note built** — `03_Study_Notes/Week_03_Feature_Extraction_and_Portability.md` (feature extraction + portability matrix + similarity graph + ~35Q; cross-linked to Week 02)
-- [ ] **`03_Data_Mining` — Monday lecture is Week 03: *Feature Extraction and Portability*** — lecture note already prepared in vault. **Weeks 01–03 all have study notes.**
+- [x] **`03_Data_Mining` — Monday delivered Feature Extraction and Portability content** — note and logical/mathematical audit are in the vault. **Week numbering remains subject to doctor confirmation; Weeks 01–03 have study notes.**
 - [x] **Answer Dr. Ahmed Shakir's Week 02 question** — *"what is the data type of a URL?"* → **Nominal** (recorded in Week 02 comprehensive note §1.2)
 - [ ] *(Low stakes)* English presentation — Sunday 2026-09-27: a short research-style paper on any computer/software field in English, presented on the Data Show (~5 min)
 - [x] **`05_Soft_Computing` official syllabus synced from alaidi.net** — course window 8/9/2026–**8/12/2026**; Midterm **20/10/2026 Weeks 1–6 fuzzy** (provisional — doctor may renumber); chain codes/ANFIS are NOT official weekly topics this term
 - [x] **`05_Soft_Computing` Week 01 comprehensive note REBUILT** — `03_Study_Notes/Week_01_Introduction_to_Soft_Computing.md` in Data Mining method (full lecture text + Arabic conceptual layer + decoded images + long doctor answers + 35Q bank). **Not AI-slop compression.**
-- [ ] **`05_Soft_Computing` Week 2 catch-up** — membership functions + fuzzy set ops; **not posted on alaidi.net** — wait for doctor or explicit student order to build from textbooks only
+- [x] **`05_Soft_Computing` Week 2 source staged + local OCR** — PDF pages 1–66 only; searchable OCR at `02_Raw_Materials/W02_Fuzzy_Logic_Systems_OCR.md`; equations still require source-PDF validation
 - [ ] **`06_Artificial_Intelligence`** — waiting. **Abu Al-Hasan will report it himself when Dr. Saif posts material — do not proactively check the group.**
 
 ### Next Session Focus
+- **Topic:** Soft Computing Week 02 — Fuzzy Logic Systems, starting with the staged pages 1–66.
 - **Topic:** Week 01 Cyber Security revision for the Sunday daily quiz, plus the Data Mining "URL data type" question.
 - **Correction 2026-09-18 (student-confirmed):** the previously listed "Week 01 viva defense drill with Dr. Ali Fahim" was **agent-inferred and is not a real event**. The Patriot-drift / Brooks material stays valid *study* content, but it is not tied to any scheduled assessment.
 - **Deliverables Ready:** `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` & `seminar_lecture01_software_crisis.pptx`.
