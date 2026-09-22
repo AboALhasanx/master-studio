@@ -115,3 +115,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-20:** DM Week 01 WebUI 2026-09-20: 92% (23/25) excellence. Fix: Market Basket 'buy group A → likely buy group B'; system advantages = cost-efficient/integratable/fast. Student B-answer bias cost 2 marks.
 
 - **Added 2026-09-20:** DM morning packs: Week_01_Data_Mining_Bilingual_EN_AR.pdf + Week_02_Data_Mining_Bilingual_EN_AR.pdf in 03_Study_Notes. Full bilingual, not compressed. WebUI quiz = platform only, not course exam.
+
+- **Added 2026-09-22:** W02 math vision: Identity has FOUR laws (A∪φ=A, A∩X=A, A∩φ=φ, A∪X=X). Fuzzy alt notation A=Σ μ(x_i)/x_i — slash is MARKER not division. Complement overline De Morgan. File W02_Fuzzy_Math_Vision_Verified.md beats OCR.
