@@ -235,8 +235,8 @@ These are binding. The student can hold the agent to any of them by quoting this
 | 02 | Build & Fix and the Waterfall Family | **DONE** — `Week_02_File_02_BuildFix_and_Waterfall_Family.md` |
 | 03 | Prototyping and the Evolutionary Model | **DONE** — `Week_02_File_03_Prototyping_and_Evolutionary.md` |
 | 04 | Incremental Development | **DONE** — `Week_02_File_04_Incremental_Development.md` |
-| 05 | RAD | **next** |
-| 06 | The Spiral Model | not started |
+| 05 | RAD | **DONE** — `Week_02_File_05_RAD.md` |
+| 06 | The Spiral Model | **next** |
 | 07 | The Unified Process | not started |
 | 08 | Agile, XP and Scrum | not started |
 | 09 | Choosing a Model | not started |
