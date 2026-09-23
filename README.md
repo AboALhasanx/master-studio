@@ -44,7 +44,7 @@ Every course follows the same layout:
 | `00_Doctor_Profile.md` | Instructor intelligence, exam patterns, grading tendencies |
 | `01_Syllabus_&_Roadmap.md` | 16-week chronological syllabus with progress tracker |
 | `02_Raw_Materials/` | Textbooks, lecture PDFs (gitignored — stored in Google Drive) |
-| `03_Study_Notes/` | Bilingual master study notes (Markdown + Word) |
+| `03_Study_Notes/` | Bilingual master study notes (Markdown + Word + Publication-Grade PDF) |
 | `04_Academic_Papers/` | Verified literature with real DOIs |
 | `05_Seminars_&_Slides/` | Marp seminar decks (Markdown + PDF + PPTX) |
 | `06_Diagrams_&_Mindmaps/` | Architecture diagrams and visual summaries |
@@ -62,7 +62,7 @@ Four specialized agents operate inside this vault. They are defined in `.mimocod
 | `@examiner` | Quizzes & oral defense | High-discrimination scenario MCQs and viva simulation |
 | `@seminar` | Slide decks | 10-slide academic Marp presentations |
 | `@scout` | Literature search | IEEE/ACM papers with verified, clickable DOIs |
-
+| `@pdf_exporter` | PDF publishing | Publication-grade vector PDFs with DirectWrite Arabic, KaTeX math, and inlined diagrams |
 ---
 
 ## Toolchain
@@ -71,6 +71,7 @@ All tools are local, free, and run offline:
 
 | Tool | Purpose |
 |:---|:---|
+| `pdf_exporter.py` | Compiles Markdown to publication-grade vector PDFs via Playwright Chromium (DirectWrite / HarfBuzz, KaTeX, inlined diagrams, 4 presets) |
 | `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` for OnlyOffice & MS Office |
 | `pdf_reader.py` | Extracts academic PDFs to Markdown (two-column layout) and extracts embedded figures/charts |
 | `quiz_balancer.py` | Algorithmic balancer and psychometric linter (fixes answer bias and length tells) |

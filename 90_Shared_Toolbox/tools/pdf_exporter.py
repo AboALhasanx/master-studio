@@ -285,11 +285,41 @@ def _render_callout(kind: str, custom_title: str, body_lines: List[str], lang: s
   </div>
 </div>
 """
+def trim_image_whitespace(img_bytes: bytes, pad: int = 6) -> bytes:
+    """Auto-trims solid white or near-white margins from an image before inlining."""
+    try:
+        from io import BytesIO
+        from PIL import Image, ImageChops
+        im = Image.open(BytesIO(img_bytes))
+        im_rgb = im.convert("RGB")
+        bg = Image.new("RGB", im_rgb.size, (255, 255, 255))
+        diff = ImageChops.difference(im_rgb, bg)
+        bbox = diff.getbbox()
+        if bbox:
+            w, h = im.size
+            # Only crop if at least 15px of whitespace exists on any side
+            if (bbox[0] > 15 or bbox[1] > 15 or (w - bbox[2]) > 15 or (h - bbox[3]) > 15):
+                x0 = max(0, bbox[0] - pad)
+                y0 = max(0, bbox[1] - pad)
+                x1 = min(w, bbox[2] + pad)
+                y1 = min(h, bbox[3] + pad)
+                trimmed = im_rgb.crop((x0, y0, x1, y1))
+                out_io = BytesIO()
+                trimmed.save(out_io, format="PNG", optimize=True)
+                return out_io.getvalue()
+    except Exception:
+        pass
+    return img_bytes
+
+
 def inline_images_in_html(html_text: str, base_dir: Path) -> str:
     """Finds image tags and Markdown images, replacing local file paths with base64 data URIs.
     
-    Properly unescapes HTML entities in src (e.g. &amp; -> &) and wraps standalone
-    images in figure boxes with captions.
+    Supports:
+      - Pipe width syntax: ![Caption|400](img.png) or ![Caption|60%](img.png)
+      - HTML width/style attributes: <img src="..." width="350">
+      - Whitespace auto-trimming (via Pillow)
+      - Side-by-side figures via <div class="fig-row">
     """
     vault_root = Path(__file__).resolve().parents[2]
 
@@ -297,40 +327,60 @@ def inline_images_in_html(html_text: str, base_dir: Path) -> str:
         full_tag = match.group(0)
         src_match = re.search(r'src=["\']([^"\']+)["\']', full_tag)
         alt_match = re.search(r'alt=["\']([^"\']*)["\']', full_tag)
+        width_match = re.search(r'width=["\']([^"\']*)["\']', full_tag)
 
         if not src_match:
             return full_tag
 
         src = H.unescape(src_match.group(1).strip())
-        alt = alt_match.group(1).strip() if alt_match else ""
+        alt_raw = alt_match.group(1).strip() if alt_match else ""
+
+        # Parse pipe sizing syntax e.g. "Figure 1|350" or "Figure 1|50%"
+        caption = alt_raw
+        custom_width = ""
+        if "|" in alt_raw:
+            parts = alt_raw.rsplit("|", 1)
+            caption = parts[0].strip()
+            spec = parts[1].strip()
+            if spec.isdigit():
+                custom_width = f"max-width: {spec}px;"
+            elif any(spec.endswith(unit) for unit in ["%", "px", "mm", "cm", "in", "pt"]):
+                custom_width = f"max-width: {spec};"
+
+        if not custom_width and width_match:
+            w = width_match.group(1).strip()
+            custom_width = f"max-width: {w if not w.isdigit() else w + 'px'};"
 
         # Skip already-inlined data URIs or remote URLs
         if src.startswith("data:") or src.startswith("http://") or src.startswith("https://"):
             return full_tag
 
         # Resolve image path:
-        # 1. Relative to markdown file directory
         img_path = (base_dir / src).resolve()
         if not img_path.exists():
-            # 2. Relative to vault root
             alt_path = (vault_root / src).resolve()
             if alt_path.exists():
                 img_path = alt_path
             else:
-                # 3. Direct path as string
                 direct_path = Path(src).resolve()
                 if direct_path.exists():
                     img_path = direct_path
 
         if img_path.exists() and img_path.is_file():
+            raw_b = img_path.read_bytes()
+            # Trim dead white margins for bitmap images
+            if img_path.suffix.lower() in [".png", ".jpg", ".jpeg"]:
+                raw_b = trim_image_whitespace(raw_b)
+
             mime, _ = mimetypes.guess_type(str(img_path))
             if not mime:
                 mime = "image/png"
             try:
-                b64_data = base64.b64encode(img_path.read_bytes()).decode("ascii")
+                b64_data = base64.b64encode(raw_b).decode("ascii")
                 data_uri = f"data:{mime};base64,{b64_data}"
-                caption_html = f'<div class="figure-caption">{H.escape(alt)}</div>' if alt else ""
-                return f'<div class="figure-box"><img src="{data_uri}" alt="{H.escape(alt)}"/>{caption_html}</div>'
+                caption_html = f'<div class="figure-caption">{H.escape(caption)}</div>' if caption else ""
+                box_style = f' style="{custom_width}"' if custom_width else ''
+                return f'<div class="figure-box"{box_style}><img src="{data_uri}" alt="{H.escape(caption)}"/>{caption_html}</div>'
             except Exception as e:
                 sys.stderr.write(f"Warning: Failed to encode image {img_path}: {e}\n")
         else:
@@ -644,6 +694,18 @@ p {
   color: #475569;
   font-weight: 600;
   margin-top: 4px;
+}
+.fig-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 14px 0;
+  page-break-inside: avoid;
+}
+.fig-row .figure-box {
+  flex: 1;
+  margin: 0;
 }
 
 /* Academic Tables */

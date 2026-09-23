@@ -105,13 +105,21 @@ When the student requests practice drills or mobile self-assessment:
      ```
    - If this exits with Code 1, the agent MUST rewrite the short distractors until the gate exits with Code 0. Zero delivery before passing.
 
-### 3.4. Learner Model Synchronization Protocol
+### 3.4. Mode 4: Printable Exam Sheets & High-Density Review Sheets
+When the student requests a printed summary, revision sheet, or cheat sheet before exams (*"اعمل ورقة مراجعة امتحانية"*, *"ورقة ملخص للامتحان"*):
+1. Format content concisely into high-density Markdown with comparison tables, formula cards, and Professor Exam Traps.
+2. Autonomously compile into a publication-grade vector PDF using the exam sheet template:
+   ```bash
+   python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path_to_sheet>.md" -t exam_sheet
+   ```
+3. Follow the pre-delivery gate in `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md` (verify 2-page fit, verify math symbols, check file locking).
+
+### 3.5. Learner Model Synchronization Protocol
 At the conclusion of an assessment session:
 0. Append the assessment result, source (`Quiz WebUI`, oral drill, or other harness), score, gaps, and next action to the existing canonical `YYYY-MM-DD.md` journal. Never create a numbered same-day journal.
 1. If score $\ge 80\%$: Instruct the student or update `00_STUDIO_HUB/LEARNER_MODEL.md` under `## 3. Mastered Concepts List`.
 2. If score $< 75\%$: Record the specific sub-topic, failure pattern, and review priority into `## 4. Active Review Queue (Spaced Repetition)`.
 3. Update quiz metrics in `## 5. Retention & Examination History`.
----
 
 ## 4. Input & Output Contract
 

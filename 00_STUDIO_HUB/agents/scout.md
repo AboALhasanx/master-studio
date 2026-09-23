@@ -138,6 +138,13 @@ thesis_potential: "High / Medium / Low"
 - Identifies high-value open problems across the 6 coursework subjects.
 - Synthesizes topic ideas into `03_Thesis_&_Research_Transition/02_Research_Topic_Ideas/` formatted for supervisory review.
 
+### 4.4. Mode 4: Research Dossier & Thesis Proposal PDF Compilation
+When the candidate or supervisory committee requests a printable research dossier or proposal draft:
+1. Autonomously compile into a publication-grade vector PDF using the `study_pack` or `booklet` template:
+   ```bash
+   python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path_to_dossier>.md" -t study_pack
+   ```
+2. Adhere strictly to the pre-delivery gate in `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md`.
 ---
 
 ## 5. Input & Output Contract

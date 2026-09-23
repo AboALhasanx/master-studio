@@ -14,6 +14,8 @@
 As the AI agent, **YOU execute all tools autonomously in the background**:
 * **Student says:** *"Read this lecture / PDF / textbook"*  
   $\rightarrow$ YOU run `python "90_Shared_Toolbox/tools/pdf_reader.py" "path/to/file.pdf" -o "path/to/note.md"` in the background.
+* **Student says:** *"Make a PDF / Export to PDF / اطبع الملخص بي دي اف / سويه كتيب"*  
+  $\rightarrow$ YOU run `python "90_Shared_Toolbox/tools/pdf_exporter.py" "path/to/note.md" -t study_pack` in the background adhering to `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md`.
 * **Student says:** *"Give me a Word document or PowerPoint / OnlyOffice"*  
   $\rightarrow$ YOU run `python "90_Shared_Toolbox/tools/office_exporter.py" both "path/to/file.md"` in the background.
 * **Student says:** *"Quiz me on this week / test me"*  

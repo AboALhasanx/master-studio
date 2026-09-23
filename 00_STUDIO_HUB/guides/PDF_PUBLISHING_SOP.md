@@ -108,14 +108,28 @@ Master Studio uses visual cards for cognitive reinforcement:
 > الإزاحة الكلية تساوي حاصل ضرب سرعة الصاروخ في الخطأ الزمني...
 ```
 
-### 4.4. Diagram & Image Inlining
-- Store all diagrams in `<subject>/06_Diagrams_&_Mindmaps/`.
-- Reference them in Markdown using standard relative syntax:
+### 4.4. Diagram & Image Insertion, Sizing & Cropping
+- **Directory Standard:** Store all subject images and diagrams in `<subject>/06_Diagrams_&_Mindmaps/`.
+- **Custom Width & Sizing Syntax (Obsidian-Style):**
+  To prevent small diagrams from blowing up to full width, or to scale large flowcharts:
   ```markdown
-  ![المخطط الحركي لانحراف بوابة الرادار](01_Semester_1/04_Advanced_Software_Eng/06_Diagrams_&_Mindmaps/patriot_missile_kinematics.png)
+  ![Caption|320](01_Semester_1/01_Cyber_Security/06_Diagrams_&_Mindmaps/fig.png)   <!-- 320px max-width -->
+  ![Caption|50%](01_Semester_1/01_Cyber_Security/06_Diagrams_&_Mindmaps/fig.png)   <!-- 50% width -->
   ```
-- The exporter automatically converts the local image to a base64 data URI, wraps it in a centered card, centers the caption, and applies `page-break-inside: avoid;` to prevent ugly page splits.
-
+- **Side-by-Side Dual Figures (Comparison Row):**
+  To place two related diagrams or before/after matrices side by side in a balanced flexbox row:
+  ```html
+  <div class="fig-row">
+    <img src="path/to/fig1.png" alt="Figure 1: Inherent Risk Matrix">
+    <img src="path/to/fig2.png" alt="Figure 2: Residual Risk Matrix">
+  </div>
+  ```
+- **Automatic Whitespace Cropping (Pillow Built-In):**
+  Scanned diagrams or screenshots with thick white/blank borders are automatically trimmed by the engine before inlining, saving up to 20–30% of dead page space.
+- **Vector SVG Support:**
+  SVGs are fully supported and rendered as razor-sharp vector paths inside the PDF.
+- **Page Break Control:**
+  All figure boxes enforce `page-break-inside: avoid;` so an image and its caption are never sliced in half across a page boundary.
 ---
 
 ## 5. Critical Engineering Pitfalls & Windows Gotchas
