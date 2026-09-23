@@ -251,6 +251,44 @@ And the mechanism — why experimenting beats specifying:
 
 `[THIN]` — Sommerville يفصّل أكثر في **النماذج التطويرية مقابل المُرمية** (evolutionary vs throwaway prototyping) في صفحات 61–64. هذا الملف يذكر الفرق لأنه يربط بالملف التالي، لكن **التفصيل الكامل عند المصدر**.
 
+### 3.4 Strengths and weaknesses — Mall's summary
+
+**EN.** Mall closes his prototyping section with a balance sheet, and it contains the cost argument that justifies building something you will throw away.
+
+> **Verbatim (Mall p.94):** *"Even though the construction of a throwaway prototype might involve incurring **additional cost**, for systems with **unclear customer requirements** and for systems with **unresolved technical issues**, the overall development cost usually turns out to be **lower** compared to an equivalent system developed using the iterative waterfall model."*
+
+> **Verbatim (Mall p.94):** *"By constructing the prototype and submitting it for user evaluation, **many customer requirements get properly defined and technical issues get resolved** by experimenting with the prototype. This **minimises later change requests from the customer and the associated redesign costs**."*
+
+**AR.** **الحجّة الاقتصادية:** مع إن بناء نموذج مُرمى **يضيف كلفة**، إلا إنه **لأنظمة مطلوباتها غير واضحة أو فيها مسائل تقنية غير محلولة**، **الكلفة الإجمالية تطلع أقل** من نظام مكافئ يُبنى بالـiterative waterfall.
+
+**والسبب:** بناء النموذج وتقديمه للعميل **يعرّف مطلوبات كثيرة بشكل صحيح ويحلّ مسائل تقنية** → وهذا **يقلّل طلبات التغيير اللاحقة وكلفة إعادة التصميم المرتبطة بيها**.
+
+**وهذا يقلب الفكرة الشائعة:** «ليش أبني شي وراح أرميه؟» → **لأن الرمي أرخص من التصحيح المتأخر**.
+
+**Strengths:**
+
+> **Verbatim (Mall p.95):** *"This model is the **most appropriate for projects that suffer from technical and requirements risks**. A constructed prototype helps overcome these risks."*
+
+**Weaknesses — and these are precise:**
+
+> **Verbatim (Mall p.95):** *"The prototype model can **increase the cost of development** for projects that are **routine development work and do not suffer from any significant risks**. Even when a project is susceptible to risks, the prototyping model is effective **only for those projects for which the risks can be identified upfront before the development starts**. Since the prototype is constructed only at the start of the project, the prototyping model is **ineffective for risks identified later during the development cycle**. The prototyping model would not be appropriate for projects for which the risks can only be identified after the development is underway."*
+
+**AR.** **القوة:** النموذج **الأنسب للمشاريع اللي تعاني من مخاطر تقنية ومخاطر مطلوبات**.
+
+**والضعف — وهذي دقيقة وتستاهل الانتباه، ثلاث حالات:**
+
+| الحالة | الحكم |
+|:---|:---|
+| **شغل تطوير روتيني بلا مخاطر كبيرة** | النموذج **يزيد الكلفة** |
+| **مخاطر تُحدَّد مسبقاً** قبل بدء التطوير | النموذج **فعّال** |
+| **مخاطر تظهر بعد بدء التطوير** | النموذج **غير فعّال** |
+
+**والسبب البنيوي:** *«النموذج يُبنى ببداية المشروع فقط»* — فهو **يكشف المخاطر الموجودة بداية، مو اللي تظهر لاحقاً**.
+
+**وهذي معلومة قوية للسيناريوهات:** لو السؤال وصف مشروعاً **روتينياً** أو **مخاطره تظهر لاحقاً** → **الجواب: النموذج الأولي مو مناسب**.
+
+**وهذا كذلك يمهّد للملف 04:** لأن النموذج الأولي **مقيّد ببداية المشروع**، فهو ما يعالج **المخاطر اللي تظهر خلال التطوير**. والنماذج الجاية (التزايدي، ثم الحلزوني) تعالج هذا القيد.
+
 ---
 
 ## 4. The evolutionary model
