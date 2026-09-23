@@ -527,7 +527,10 @@ Two equations are given in this booklet. Both are quoted, with their verificatio
 | 4 | "Inheritance" as the *something you are* factor | Booklet wording recorded verbatim; standard term is **Inherence**. Terminology check, not a content challenge |
 | 5 | ISO 27001 (mentioned in §18) vs ISO/IEC 27002 (§9) | Different standards; the booklet does not distinguish them |
 | 6 | OCTAVE FORTE — named as the 4th variant with no description | No sourced description in the booklet |
-| 7 | Source textbook / chapter attribution | The booklet gives only a stray `3`. **The parent textbook is not stated anywhere in the file**, and a targeted search did not identify it. Do not attribute a citation until it is confirmed |
+| 7 | Source textbook / chapter attribution | **RESOLVED 2026-09-23** — the booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2024, pp. 37–56**, DOI [10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3). The stray `3` is the chapter number. **Verification also found two factual errors in the booklet — see `Week_02_Risk_Source_Verification.md`** |
+| 9 | ISO/IEC 27002 "**2022** … 14 categories" (§9) | **ERROR (verified).** The 14 categories are the **2013** structure; **2022** is **4 themes / 93 controls**. Dr. Huda highlighted this line yellow |
+| 10 | OCTAVE's fourth variant "**OCTAVE FORTE**" (§10) | **ERROR (verified).** Only **three** public OCTAVE methodologies exist: OCTAVE, OCTAVE-S, OCTAVE Allegro |
+| 11 | Authentication factor "**Inheritance**" (§15) | **TERMINOLOGY ERROR (verified).** Standard term is **Inherence** |
 | 8 | Exact quiz date | Still **unconfirmed**. The postponed quiz covers **both** booklets |
 
 ---

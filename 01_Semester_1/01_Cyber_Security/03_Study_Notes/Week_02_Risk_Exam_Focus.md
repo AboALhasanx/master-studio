@@ -20,6 +20,13 @@ created: "2026-09-23"
 | **The doctor's highlights** inside the delivered DOCX | Mechanical extraction from the file — 30 highlight runs + 27 coloured runs | Objective. It is her own marking, not an interpretation |
 | **The student's lecture report** (2026-09-23) | What she said and how she weighted it in class | Authoritative as a report of the lecture, but recorded as reported — see the conflicts in §8 |
 
+> **SOURCE FOUND — and two facts in this booklet are wrong.** The booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2024, pp. 37–56** ([DOI 10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3)). Verifying it against public sources found:
+> - **"ISO/IEC 27002 from 2022 … 14 categories" is wrong.** The 14 categories are the **2013** structure (114 controls in 14 clauses). The **2022** version has **4 themes and 93 controls**. The list itself is real — just mislabelled. *This is the line she highlighted yellow.*
+> - **"OCTAVE FORTE" does not exist.** There are **three** public OCTAVE methodologies: OCTAVE, OCTAVE-S, OCTAVE Allegro.
+> - Plus: **"Inheritance" should be "Inherence"**, and OCTAVE was developed at CMU **for the US Department of Defense**.
+>
+> **Full evidence, links and the exam strategy: `Week_02_Risk_Source_Verification.md`.** The exam rule is in that file §5 — answer in her vocabulary, but know the correct fact.
+
 ---
 
 ## 1. The doctor's emphasis map (extracted from the file, not inferred)
