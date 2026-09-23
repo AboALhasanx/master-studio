@@ -217,11 +217,65 @@ Whole book: [Sharp, R., *Introduction to Cybersecurity: A Multidisciplinary Chal
 
 | # | Item | What would close it |
 |:---:|:---|:---|
-| 1 | Sharp's exact equation letters | The chapter PDF, or library access to Springer |
+| 1 | Sharp's exact equation letters | The chapter PDF, or library access to Springer — **but see §8: the structure is already proven, so this is now low-value** |
 | 2 | Your lecture notes on the two equations | A photo or a transcription |
-| 3 | The illustrated booklet | Still missing — `word/media` in the DOCX is empty. But note: **the figures are the book's Fig. 3.1–3.3**, so the book (or any library copy) is now the better source for them |
+| 3 | **The illustrated booklet** | Still missing — `word/media` in the DOCX is empty. **This is now the highest-value gap.** The figures are the book's Fig. 3.1–3.3, so the book is the source |
 | 4 | Whether the ISO "2022/14 categories" slip is Sharp's or introduced later | Reading the book's §on ISO 27002 — same paywall |
 | 5 | "The debug has 5 steps" | Still unlocated anywhere. Now that the source is known, this can be checked against the book's chapter 3 if we get access |
+
+---
+
+## 8. Getting the chapter — every route tried, and the one that works
+
+I exhausted the free routes so you do not have to repeat them. All of these **failed**, for the reasons shown:
+
+| Route | Result |
+|:---|:---|
+| Springer chapter PDF (`link.springer.com/content/pdf/…_3`) | **Blocked** — paywall + bot challenge |
+| Springer book front-matter PDF | **Blocked** — same bot challenge |
+| Exact-phrase search on the chapter's own sentences | Chapter body is **not publicly indexed**; only the landing page returns |
+| Google Books | No accessible preview; the Books API returned **quota-exceeded** |
+| Open Library (by ISBN) | **404 — not held** |
+| Internet Archive (`creator:"Robin Sharp"`) | **Not held** — one unrelated 1964 title |
+| DTU Orbit (the author's own institution) | Record exists, **no deposited full text**; the only link points back to Springer |
+| Secondary preview/aggregator sites | No legitimate preview found |
+
+**Conclusion: no free route exists.** The book is a paid Springer title and every legitimate open channel has been checked.
+
+### The one route that will work — and only you can take it
+
+Your **university library**. Most universities subscribe to Springer, and this title is in the standard *Undergraduate Topics in Computer Science* series, so it is very likely already covered. I cannot log in for you; you can.
+
+**If you go to the library, or email the librarian, hand over this — it is everything they need:**
+
+```text
+Request: one chapter (or the whole book)
+
+Author:      Robin Sharp
+Title:       Introduction to Cybersecurity: A Multidisciplinary Challenge
+Series:      Undergraduate Topics in Computer Science
+Publisher:   Springer, Cham, 2023 (442 pp)
+Print ISBN:  978-3-031-41463-3
+DOI:         10.1007/978-3-031-41463-3
+Chapter:     3 — "Risk", pp. 37–56
+Chapter DOI: 10.1007/978-3-031-41463-3_3
+
+What I need from it:
+  1. Figures 3.1, 3.2 and 3.3 (the shark diagram, the risk matrix,
+     and the residual-risk matrix)
+  2. The two equations, exactly as printed (letters and operators)
+```
+
+That is a completely ordinary student request and librarians handle it routinely — many universities will scan and send a single chapter by email.
+
+### Two other things only you can do
+
+1. **Photograph the two equations from your lecture notes.** Fastest of all, and it settles the letter question in one message.
+2. **Ask Dr. Huda for the book reference** — a normal question, not a challenge: *"Doctor, which book is the risk material based on?"* She has it; that is how the booklet came to exist. Note this is worth doing **only** to obtain the reference and the figures. Do **not** raise the ISO 27002 or OCTAVE-Forte discrepancies with her — see §5: answer in her vocabulary, know the correct facts, and leave it there.
+
+### What is NOT worth your time
+
+Do **not** spend time hunting for the book online yourself. Every free route has been checked and is closed. The equation question is already settled mathematically (`Week_02_Risk_Formula_Mathematical_Verification.md`), so the book's only remaining value is **the three figures** — and the library route above is the way to get them.
 
 ---
 
