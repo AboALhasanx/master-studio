@@ -232,7 +232,8 @@ These are binding. The student can hold the agent to any of them by quoting this
 |:---:|:---|:---|
 | — | **This plan** | **done** |
 | 01 | SDLC Fundamentals | **DONE** — `Week_02_File_01_SDLC_Fundamentals.md` |
-| 02 | Build & Fix and the Waterfall Family | **next** |
+| 02 | Build & Fix and the Waterfall Family | **DONE** — `Week_02_File_02_BuildFix_and_Waterfall_Family.md` |
+| 03 | Prototyping and the Evolutionary Model | **next** |
 | 03 | Prototyping and the Evolutionary Model | not started |
 | 04 | Incremental Development | not started |
 | 05 | RAD | not started |
