@@ -318,6 +318,26 @@ def index():
     )
 
 
+@app.route("/opencode")
+def opencode_guide():
+    """OpenCode V2 cheat-sheet with live config."""
+    live = {"model": "?", "plugins": [], "tui_plugins": [], "agents": [], "mcp": []}
+    try:
+        cfg = json.loads((Path.home() / ".config" / "opencode" / "opencode.json").read_text(encoding="utf-8"))
+        live["model"] = cfg.get("model", "?")
+        live["plugins"] = cfg.get("plugins", cfg.get("plugin", []))
+        live["agents"] = list(cfg.get("agents", cfg.get("agent", {})).keys())
+        live["mcp"] = list(cfg.get("mcp", {}).get("servers", cfg.get("mcp", {})).keys())
+    except Exception:
+        pass
+    try:
+        cli = json.loads((Path.home() / ".config" / "opencode" / "cli.json").read_text(encoding="utf-8"))
+        live["tui_plugins"] = cli.get("plugins", [])
+    except Exception:
+        pass
+    return render_template("opencode.html", live=live)
+
+
 @app.route("/api/data")
 def api_data():
     return jsonify({

@@ -1,7 +1,7 @@
 ---
 title: "College Buddy: Academic Events & Interactive Deadlines Ledger"
 type: "interactive-buddy-ledger"
-last_updated: "2026-09-20"
+last_updated: "2026-09-23"
 version: "1.2.0"
 ---
 
@@ -19,9 +19,11 @@ version: "1.2.0"
 
 | ID | Target Date | Subject | Event / Topic | Professor | Status | Urgency | Buddy Notes / Action |
 |:---|:---|:---|:---|:---|:---|:---|:---|
-| **EVT-04** | **next week** (weekly Cyber slot = Sunday 08:30; **no new exact date given**) | 01_Cyber_Security | **Daily quiz POSTPONED** by Dr. Huda (student report 2026-09-20) | Dr. Huda Lafta Majeed | **POSTPONED** | HIGH (prep still needed) | **Covers TWO booklets (ملزمتين):** (1) material we already have / Week 01 notes — OK; (2) **a second booklet she has NOT given them yet** — not Week 02 as previously assumed. She taught ~40 min from it today via Data Show; mostly memorization; student took paper notes + **voice recording**. He will hand the booklet over when he has it. Possible **external reading passage** in the exam (doctor mentioned). |
-| **EVT-05** | after Unit 1 from **both** sources (no date stated); **research-paper talk = next week** | 02_English_Language | **Research-paper talk** + Unit 1 exam later | Dr. Haidar Akab Alwan | UPCOMING | MEDIUM | **Paper rule (student 2026-09-20):** do **NOT** invent a topic paper. Use a **real published paper** — free PDF from **arXiv** or similar; real journal/conference; clear enough to present; CS field + **academic terminology**. **Headway Language Focus = top of page 7** (student). Headway grammar important. Q Skills vocab ~p.17. Exam after Unit 1 both sources; possible external passage. **Not reviewing English tonight.** |
-| **EVT-04b** | when delivered | 01_Cyber_Security | **Huda booklet 2** | Dr. Huda | **WAITING** | — | Still **not given**; random notes only. **Build notes together AFTER booklet arrives.** |
+| **EVT-04** | Postponed; exact date not confirmed | 01_Cyber_Security | Daily quiz covering two booklets | Dr. Huda Lafta Majeed | **POSTPONED** | HIGH (prep still needed) | Student report 2026-09-23: Week 02 Risk booklet 2 is now available in `02_Raw_Materials` as `Week 02 - Cybersecurity Risks and Threats - Dr Huda Booklet 2.docx`. Quiz still covers two booklets; do not assume a new date. |
+| **EVT-05** | No confirmed date; deferred | 02_English_Language | Research-paper talk + Unit 1 exam later | Dr. Haidar Akab Alwan | DEFERRED | LOW | Student says English is not important right now; resume only when asked or a date is confirmed. Retain rule: talk must use a real published CS paper. |
+| **EVT-04b** | Available | 01_Cyber_Security | Huda Week 02 Risk booklet 2 | Dr. Huda | **AVAILABLE** | — | Student confirms it was uploaded; file is staged in `02_Raw_Materials`. |
+| **EVT-07** | Sunday (date not specified) | 06_Artificial_Intelligence | Tuesday lecture postponed | Dr. Saif Ali Al-Saidi | **POSTPONED** | — | Student report 2026-09-23: the dean had other commitments; lecture moved to Sunday. Do not infer a calendar date. |
+| **EVT-08** | Next lecture (date not specified) | 03_Data_Mining | Feature Selection Techniques | Dr. Ahmed Shakir | UPCOMING | — | Student report 2026-09-23: seminar format replaces the doctor's lecture; use the sources he provided. Record only for now; student says not to work on it yet. |
 | **EVT-06** | answered 2026-09-19 | 03_Data_Mining | Standing question: data type of a **URL** | Dr. Ahmed Shakir | **ANSWERED** | — | **Nominal.** Still may be asked in class Monday. |
 
 > **Correction — 2026-09-18:** EVT-01 and EVT-02 were agent-inferred and are INVALID. Do not invent deadlines.

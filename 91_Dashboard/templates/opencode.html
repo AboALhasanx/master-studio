@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenCode V2 Guide — Master Studio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 900px) { .guide-grid { grid-template-columns: 1fr; } }
+    code.inline { background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 4px; font-size: .9em; }
+    pre.block { background: rgba(0,0,0,.35); padding: 12px; border-radius: 8px; overflow-x: auto; font-size: .85em; }
+    table.ref { width: 100%; border-collapse: collapse; font-size: .88em; }
+    table.ref th, table.ref td { text-align: left; padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    table.ref th { opacity: .7; }
+    .pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: .8em; margin: 2px; background: rgba(99,102,241,.2); }
+    .nav-back { display: inline-block; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="badge badge-live nav-back" style="text-decoration:none;padding:8px 14px;border-radius:6px;">← Dashboard</a>
+    <header>
+      <div class="header-left">
+        <h1>OpenCode V2 Guide</h1>
+        <p class="subtitle">Slash commands &middot; keybinds &middot; settings &middot; live config</p>
+      </div>
+      <div class="header-right"><span class="badge badge-live">V2.0.15</span></div>
+    </header>
+
+    <section class="panel">
+      <h2>Live Config (yours)</h2>
+      <div class="active-grid">
+        <div class="active-item"><span class="active-label">Default model</span><span class="active-value highlight">{{ live.model }}</span></div>
+        <div class="active-item"><span class="active-label">Server plugins</span><span class="active-value">{% for p in live.plugins %}<span class="pill">{{ p }}</span>{% endfor %}</span></div>
+        <div class="active-item"><span class="active-label">TUI plugins</span><span class="active-value">{% for p in live.tui_plugins %}<span class="pill">{{ p }}</span>{% endfor %}</span></div>
+        <div class="active-item"><span class="active-label">Agents</span><span class="active-value">{% for a in live.agents %}<span class="pill">{{ a }}</span>{% endfor %}</span></div>
+        <div class="active-item"><span class="active-label">MCP connected</span><span class="active-value">{% for m in live.mcp %}<span class="pill">{{ m }}</span>{% endfor %}</span></div>
+      </div>
+    </section>
+
+    <div class="guide-grid">
+      <section class="panel">
+        <h2>Slash commands — how they work</h2>
+        <p>Type <code class="inline">/name args</code> in the TUI. Any <code class="inline">.opencode/commands/*.md</code> file becomes <code class="inline">/filename</code>.</p>
+        <pre class="block">.opencode/commands/review.md
+---
+description: Review code for correctness
+agent: plan
+model: anthropic/claude-sonnet-4-5#high
+subagent: true
+---
+Review $ARGUMENTS for bugs and missing tests.</pre>
+        <table class="ref">
+          <tr><th>Placeholder</th><th>Meaning</th></tr>
+          <tr><td><code class="inline">$ARGUMENTS</code></td><td>Full argument string as typed</td></tr>
+          <tr><td><code class="inline">$1, $2…</code></td><td>Positional args (quotes group words)</td></tr>
+          <tr><td><code class="inline">!`cmd`</code></td><td>Shell output inserted before submit</td></tr>
+          <tr><td><code class="inline">subagent: true</code></td><td>Run in background child session</td></tr>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Built-in slashes &amp; palette</h2>
+        <p>Press <code class="inline">Ctrl+P</code> for the command palette — every slash, keybind command, and plugin command lives there. Confirmed built-ins:</p>
+        <table class="ref">
+          <tr><th>Slash / action</th><th>What it does</th></tr>
+          <tr><td><code class="inline">/diff</code></td><td>Diff viewer (branch / committed / working)</td></tr>
+          <tr><td><code class="inline">/mcps</code></td><td>MCP servers — select one to sign in (OAuth)</td></tr>
+          <tr><td><code class="inline">@agent</code></td><td>Mention a subagent directly in prompt</td></tr>
+          <tr><td><code class="inline">Ctrl+P → Open settings</code></td><td>Edit common cli.json settings live</td></tr>
+          <tr><td><code class="inline">Ctrl+P → Experiments</code></td><td>Toggle experimental feature IDs</td></tr>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Essential keybinds (leader = Ctrl+X)</h2>
+        <table class="ref">
+          <tr><th>Keys</th><th>Action</th></tr>
+          <tr><td><code class="inline">Ctrl+P</code></td><td>Command palette</td></tr>
+          <tr><td><code class="inline">Leader n / l</code></td><td>New session / list sessions</td></tr>
+          <tr><td><code class="inline">Leader m / a</code></td><td>List models / list agents</td></tr>
+          <tr><td><code class="inline">Leader c</code></td><td>Compact session</td></tr>
+          <tr><td><code class="inline">Leader u / r</code></td><td>Undo / redo message</td></tr>
+          <tr><td><code class="inline">Shift+Tab</code></td><td>Cycle agent</td></tr>
+          <tr><td><code class="inline">Ctrl+T</code></td><td>Cycle model variant</td></tr>
+          <tr><td><code class="inline">F2 / Shift+F2</code></td><td>Next / prev recent model</td></tr>
+          <tr><td><code class="inline">Esc</code></td><td>Interrupt session</td></tr>
+          <tr><td><code class="inline">Ctrl+B</code></td><td>Background blocking tools</td></tr>
+          <tr><td><code class="inline">Ctrl+O</code></td><td>Recent sessions &amp; projects</td></tr>
+          <tr><td><code class="inline">Ctrl+Alt+K</code></td><td>Which-key panel (all binds)</td></tr>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Settings — two files, two owners</h2>
+        <table class="ref">
+          <tr><th>File</th><th>Owns</th></tr>
+          <tr><td><code class="inline">opencode.json(c)</code></td><td>Server: model, agents, permissions, MCP, providers, commands, plugins</td></tr>
+          <tr><td><code class="inline">cli.json</code></td><td>TUI only: theme, tabs, session view, diffs, attention, keybinds, TUI plugins</td></tr>
+        </table>
+        <p>cli.json groups: <code class="inline">theme</code>, <code class="inline">session</code> (sidebar/scrollbar/thinking/markdown), <code class="inline">tabs</code> (mode/scope/layout), <code class="inline">diffs</code> (source/wrap/view), <code class="inline">attention</code> (notifications/sound), <code class="inline">keybinds</code>, <code class="inline">plugins</code> (TUI-only!), <code class="inline">mini</code>, <code class="inline">debug</code>.</p>
+        <p><b>Rule:</b> server-only plugins (tools, no <code class="inline">./tui</code> export) go in <code class="inline">opencode.json → plugins</code>, never in <code class="inline">cli.json</code> — that was your quota crash.</p>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2>V1 → V2 renames (already applied to you)</h2>
+      <table class="ref">
+        <tr><th>V1</th><th>V2</th></tr>
+        <tr><td><code class="inline">plugin</code></td><td><code class="inline">plugins</code></td></tr>
+        <tr><td><code class="inline">command</code></td><td><code class="inline">commands</code></td></tr>
+        <tr><td><code class="inline">agent</code> + <code class="inline">disable</code></td><td><code class="inline">agents</code> + <code class="inline">disabled</code></td></tr>
+        <tr><td><code class="inline">permission: {bash:…}</code></td><td><code class="inline">permissions: [{action: shell…}]</code></td></tr>
+        <tr><td><code class="inline">autoupdate</code></td><td><code class="inline">update: notify/auto/disable</code></td></tr>
+        <tr><td><code class="inline">mcp: {name: {enabled}}</code></td><td><code class="inline">mcp.servers: {name: {disabled}}</code></td></tr>
+        <tr><td><code class="inline">tui.json</code> (layered)</td><td><code class="inline">cli.json</code> (one global file)</td></tr>
+      </table>
+    </section>
+  </div>
+</body>
+</html>
