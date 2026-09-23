@@ -307,13 +307,20 @@ Your report: she **finished explaining up to Authentication** and did not comple
 | **The delivered file says** | `S = F × K` | `R = S / M` |
 | **Your lecture report says** | `f = s · k` | `f = s / n`, with `n` = number of threats |
 
-Three things need settling, and I am not guessing at any of them:
+**The structure is now settled — independently of the letters.** `Week_02_Risk_Formula_Mathematical_Verification.md` proves both equations on their own terms:
 
-1. **Which letter is the risk?** The file uses `S`. Your report uses `f` on the left-hand side of both.
-2. **`n` — number of what?** You said *number of threats*. The file says the denominator is the **level of countermeasures**, and that it covers **the number of countermeasures plus their effectiveness**. Worth noting as a sanity check rather than a correction: more/better countermeasures → lower residual risk makes sense, whereas *more threats → lower residual risk* does not. Please check your paper notes for the exact word she used.
-3. **Did she write it in a different order from the file?** The file's own text layer is damaged here — the operators `×` and `/` are missing and the letters survive as separate paragraphs (`S` / `F` / `K` / `=`, and `R` / `S` / `M` / `=`), so I cannot read the layout off the file. Your notes are the better witness.
+- **`S = F × K`** — sound. Orthodox likelihood × consequence form; **multiplication is required, not addition**, because it enforces that *both* factors must matter (a huge frequency cannot compensate for zero consequence).
+- **`R = S / M`** — sound **provided `M` is a protective factor ≥ 1**, not a raw count. Proof: at `M = 0` the formula divides by zero, and for `0 < M < 1` it gives residual risk *greater* than inherent risk — impossible. On the reading `M ≥ 1` it is **algebraically identical** to the industry-standard `R = S × (1 − Control Effectiveness)`.
+- **Your reported version fails a logical test.** If `f` is the subject of both equations, the symbol `s` must mean "frequency" in one and "risk" in the other — a contradiction. And a denominator of *number of threats* fails twice: more threats would mean *less* risk, and zero threats would divide by zero. **A defensive quantity belongs in the denominator; a threat quantity does not.**
 
-**She coloured `S`, `F` and `K` red** — those three letters are hers. That is the one hard fact I have about the first equation.
+**Carry this into the exam:**
+
+```text
+risk          = frequency × consequences     (both must matter → multiply)
+residual risk = risk ÷ protection factor     (protection ≥ 1; never divides by zero)
+```
+
+That holds whatever letters the book prints. **Still worth one look at your paper notes** — if they show `S`, `F`, `K` and `R`, `S`, `M`, the booklet is reproducing the book exactly and you can drill it as printed.
 
 ### 8.2 OCTAVE — important or not?
 You said both. My reading of her highlighting is that she marked OCTAVE **yellow** (framework list) and its **three phases red** (explain them) — which points to *important*. But you were in the room. Which is it?

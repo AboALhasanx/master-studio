@@ -154,7 +154,11 @@ This was the item you were most unsure about, so here is exactly what I know and
 
 ### 4.1 What I could not verify
 
-The chapter body is **paywalled**. Springer shows only the abstract and metadata; the full-text PDF is behind an institutional login. So I could **not** read Sharp's exact equations with my own eyes.
+The chapter body is **paywalled**. Springer shows only the abstract and metadata; the full-text PDF is behind an institutional login, and the publisher blocks automated access (bot challenge). I also tried exact-phrase search on the chapter's own sentences, Google Books, and preview aggregators — **the chapter body is not publicly indexed**. So I could **not** read Sharp's exact equations with my own eyes, and I am not going to claim otherwise.
+
+**However — the equations were settled anyway, without the paywalled text, by testing them mathematically.** See the companion file:
+
+> **`Week_02_Risk_Formula_Mathematical_Verification.md`** — boundary-condition analysis, dimensional check, an equivalence proof against the industry-standard residual-risk formula, and a logical contradiction test on the student's lecture report. **The structure of both equations is now proven independently of the letters.**
 
 ### 4.2 What I can establish by inference
 
