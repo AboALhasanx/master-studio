@@ -254,3 +254,12 @@ class ArchitecturalComponent:
 {{Question / Front of Card 2 (Bilingual Intuition)}}	{{Arabic Intuitive Rationale + Key English Invariant}}	{{Tag1}} {{Tag2}}
 {{Formula / Theorem Identifier}}	{{LaTeX Equation + Variable Definitions + Complexity Bound}}	{{Tag1}} {{Tag2}}
 ```
+
+---
+
+## 9. Academic PDF Export Directive
+To compile this study note into a publication-grade vector PDF:
+```bash
+python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path_to_this_note>.md" -t study_pack
+```
+Refer to `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md` for complete publishing guidelines.

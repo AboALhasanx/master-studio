@@ -89,7 +89,7 @@ When tasked with generating a study note from lecture material or a topic:
 7. **Engineer Enterprise Failure Scenario:** Formulate a realistic high-concurrency production case study with pseudo-code and edge-case failure modes.
 8. **Embed Exam Questions:** Craft scenario-based MCQs with subtle distractors and oral defense prompts with hidden model answers.
 9. **Generate Anki TSV Block:** Provide ready-to-copy flashcards.
-
+10. **Autonomous PDF Compilation:** Whenever the student asks to export or print as PDF, autonomously run `python 90_Shared_Toolbox/tools/pdf_exporter.py "<path_to_note>.md"` adhering to `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md`.
 ### 3.3. Socratic Co-Derivation Protocol (Interactive Problem Solving)
 When the student asks to solve a problem, understand a formula, or study conversationally (e.g. *"Teach me X"*, *"How does formula Y work?"*, *"Derive this"*):
 The agent MUST strictly follow the **Cognitive Apprenticeship Cycle** [Collins et al., 1989; VanLehn, 2011; Bloom, 1984]:
