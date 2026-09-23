@@ -239,8 +239,8 @@ These are binding. The student can hold the agent to any of them by quoting this
 | 06 | The Spiral Model | **DONE** — `Week_02_File_06_The_Spiral_Model.md` |
 | 07 | The Unified Process | **DONE** — `Week_02_File_07_The_Unified_Process.md` |
 | 08 | Agile, XP and Scrum | **DONE** — `Week_02_File_08_Agile_XP_Scrum.md` |
-| 09 | Choosing a Model | **next** |
-| 10 | Master Comparison and Exam Bank | not started |
+| 09 | Choosing a Model | **DONE** — `Week_02_File_09_Choosing_A_Model.md` |
+| 10 | Master Comparison and Exam Bank | **next** |
 | — | **Merged document** | only after all ten exist |
 
 ---
