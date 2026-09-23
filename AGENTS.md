@@ -51,6 +51,7 @@ Agents operating in this vault must function not merely as generic text generato
    - **Solved Scanned Worksheets:** `CamScanner Scan - Grammar Worksheet...pdf` fully extracted and solved against the Oxford Teacher's Book answer key (`NH Upper Intermediate - Teacher Book (Answer Key).pdf`).
 
 ### Available Local Toolchain (`90_Shared_Toolbox/tools/`)
+- `pdf_exporter.py`: Compiles Markdown to publication-grade vector PDFs with native DirectWrite Arabic text shaping, KaTeX math, embedded diagrams, and 4 academic templates (`study_pack`, `booklet`, `exam_sheet`, `glossary`).
 - `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`) for OnlyOffice and MS Office.
 - `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM, falls back to local RapidOCR, and extracts embedded figures/diagrams via `--extract-images`.
 - `session_memory.py`: Cross-agent memory manager (`boot`, `log`, `remember`, `recall`, `status`).
@@ -69,6 +70,7 @@ Agents operating in this vault must function not merely as generic text generato
 > **Agent Obligation:** Whenever the student makes a conversational request, **YOU (the agent) must autonomously run the underlying tools in the background**:
 > - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
 > - If the student says: *"Extract images / diagrams from this PDF"* $\rightarrow$ YOU execute `pdf_reader.py "<pdf>" --extract-images "<subject>/06_Diagrams_&_Mindmaps/extracted/"` in the background.
+> - If the student says: *"Make a PDF / Export to PDF / اطبع الملخص بي دي اف / سويه كتيب"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/pdf_exporter.py "<path-to-note>.md"` in the background.
 > - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
 > - If the student says: *"Teach me [topic]"* $\rightarrow$ YOU teach from first principles using the Feynman technique (explain like I'm 9 years old first + concrete worked examples), deconstruct all academic terms, and do not stop at dry summaries unless the student says *"I know this"*.
 - If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
@@ -187,6 +189,25 @@ When specialized tasks are triggered, agents must adopt the corresponding person
 ---
 
 ## 6. Zero Paid SaaS Toolchains & Office Exports (.docx & .pptx)
+### 6.0. Academic Publication-Grade PDF Exports (.pdf via DirectWrite Engine)
+
+To generate publication-grade vector PDFs with native Arabic/BiDi support, KaTeX math, and embedded diagrams:
+
+```bash
+# Standard Lecture Study Pack (Default: Wasit header, course badges, Page X of Y footers)
+python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path-to-note>.md" -t study_pack
+
+# Multi-Page Comprehensive Booklet (Cover page + Table of contents)
+python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path-to-note>.md" -t booklet
+
+# 2-Column Compact Exam Cheat Sheet (High information density)
+python "90_Shared_Toolbox/tools/pdf_exporter.py" "<path-to-note>.md" -t exam_sheet
+```
+Or via the Windows batch wrapper:
+```cmd
+"90_Shared_Toolbox/tools/export-pdf.bat" "<path-to-note>.md"
+```
+
 
 When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions instead of PDF/Markdown:
 
