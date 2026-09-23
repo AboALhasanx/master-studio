@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Cyber Security - Exam Sheet</title>
+<style>
+
+@page { size: A4; margin: 11mm 11mm 9mm; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#1b2530;
+       font-size:7.9pt; line-height:1.3; background:#fff; }
+.sheet { page-break-after: always; }
+.sheet:last-child { page-break-after: auto; }
+
+.head { display:flex; align-items:baseline; justify-content:space-between;
+        border-bottom:2.2px solid #1f6f8b; padding-bottom:1.3mm; margin-bottom:2.4mm; }
+.head h1 { font-size:13.5pt; margin:0; color:#12293f; font-weight:650; letter-spacing:-0.2pt; }
+.head .meta { font-size:7.4pt; color:#6b7683; }
+
+h2 { font-size:9.3pt; color:#12293f; margin:2.3mm 0 1.1mm; font-weight:650;
+     border-left:3px solid #1f6f8b; padding-left:2mm; }
+h2:first-of-type { margin-top:0; }
+h3 { font-size:8.3pt; color:#1f6f8b; margin:1.7mm 0 0.8mm; font-weight:650; }
+
+table { width:100%; border-collapse:collapse; margin:1.1mm 0 1.9mm; font-size:7.6pt; }
+th { background:#12293f; color:#fff; padding:0.9mm 1.4mm; text-align:left; font-weight:600; font-size:7.3pt; }
+td { border:0.5pt solid #d5dde5; padding:0.85mm 1.4mm; vertical-align:top; }
+tr:nth-child(even) td { background:#f7fafc; }
+td.c, th.c { text-align:center; }
+
+.eq { font-family:"Consolas","SF Mono",monospace; font-size:8.9pt; color:#12293f; font-weight:600; }
+.two { display:flex; gap:4mm; }
+.two > div { flex:1; }
+.box { border-left:3px solid #1f6f8b; background:#f4f9fb; padding:1.4mm 2mm; margin:1.2mm 0; }
+.warn { border-left:3px solid #b45309; background:#fffaf2; padding:1.4mm 2mm; margin:1.2mm 0; }
+.ok { border-left:3px solid #15803d; background:#f2fbf5; padding:1.4mm 2mm; margin:1.2mm 0; }
+.tag { display:block; font-size:7pt; letter-spacing:.09em; text-transform:uppercase;
+       color:#1f6f8b; font-weight:640; margin-bottom:0.6mm; }
+.warn .tag { color:#9a4a06; }
+.ok .tag { color:#146c33; }
+ul, ol { margin:0.5mm 0 1.3mm 4mm; padding-left:2.4mm; }
+li { margin-bottom:0.4mm; }
+b { color:#12293f; font-weight:650; }
+.small { font-size:7.1pt; color:#5b6673; }
+.mono { font-family:"Consolas","SF Mono",monospace; }
+.pill { display:inline-block; background:#eef6fb; border:0.5pt solid #cfe0e8;
+        border-radius:1mm; padding:0.15mm 1.1mm; margin-right:0.5mm; font-size:7.2pt; }
+.foot { margin-top:1.8mm; border-top:1px solid #e3e8ee; padding-top:1mm;
+        font-size:6.8pt; color:#98a2ae; text-align:center; }
+
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="head">
+    <h1>Cyber Security — Exam Sheet</h1>
+    <div class="meta">Both booklets · Week 01 (Ch. 1–6) and Week 02 (Risk) · Dr. Huda Lafta Majeed</div>
+  </div>
+
+  <div class="box">
+    <span class="tag">Answer shape — the doctor's format, learn this first</span>
+    The quiz is <b>written / essay, about 10 minutes</b>, at the start of the lecture. Soft stakes — a reading check.
+    <ul style="margin-bottom:0">
+      <li><b>Numbers given</b> &rarr; apply the formula.</li>
+      <li><b>No numbers</b> (analytical scenario) &rarr; <b>step &rarr; name the CIA pillar &rarr; (techniques in brackets)</b>.</li>
+    </ul>
+  </div>
+
+  <h2>Week 01 — the six equations</h2>
+  <table>
+    <tr><th style="width:7%">#</th><th style="width:44%">Equation</th><th>Meaning and symbols</th></tr>
+    <tr><td class="c">1</td><td class="eq">min R = &Sigma;P<sub>i</sub>I<sub>i</sub> &minus; &Sigma;C<sub>j</sub></td>
+        <td>Cybersecurity as an <b>optimisation problem</b>. Minimise residual risk = expected loss (&Sigma; probability &times; impact) minus the cost of controls. Spend on a control only while it removes more loss than it costs.</td></tr>
+    <tr><td class="c">2</td><td class="eq">R(t) = &Sigma;P<sub>i</sub>(t)&thinsp;I<sub>i</sub>(t)</td>
+        <td>Expected risk <b>at time t</b>, summed over all threats. <b>Awareness only</b> — the doctor said you just need to know the law exists.</td></tr>
+    <tr><td class="c">3</td><td class="eq">U(C,I,A) = &alpha;C + &beta;I + &gamma;A</td>
+        <td><b>Security utility function.</b> <i>C, I, A</i> normalised 0–1; <i>&alpha;, &beta;, &gamma;</i> are the <b>importance weights</b> for that system. Weights are <b>not fixed</b> — see the domain table below.</td></tr>
+    <tr><td class="c">4</td><td class="eq">AS = &Sigma;(E<sub>j</sub> &middot; V<sub>j</sub> &middot; A<sub>j</sub>)</td>
+        <td><b>Attack surface.</b> <i>E<sub>j</sub></i> exposed entry points &middot; <i>V<sub>j</sub></i> vulnerability severity (<b>CVSS score</b>) &middot; <i>A<sub>j</sub></i> asset value. A <b>product</b>, not a sum — all three must matter.</td></tr>
+    <tr><td class="c">5</td><td class="eq">P(R &gt; r) = 1 &minus; F(r)</td>
+        <td>Probability that risk <b>exceeds</b> a threshold <i>r</i>. <i>F</i> is a <b>CDF</b>, so its range is always <b>[0, 1]</b>; <span class="mono">1 &minus; F(r)</span> gives the tail probability.</td></tr>
+    <tr><td class="c">6</td><td class="eq">PCI = &Sigma;w<sub>k</sub>c<sub>k</sub> / &Sigma;w<sub>k</sub></td>
+        <td><b>Policy compliance index</b> — a <b>weighted average</b>. <i>c<sub>k</sub></i> compliance level for requirement <i>k</i> (0–1); <i>w<sub>k</sub></i> its importance weight. Result 0–1 (&times;100 for a percentage).</td></tr>
+  </table>
+
+  <h2>Week 01 — the CIA triad (the doctor's red-highlighted core)</h2>
+  <div class="warn">
+    <span class="tag">Why this is the most important table</span>
+    These technique names are the words you write <b>inside the brackets</b> of every scenario answer. Without them the answer is incomplete.
+  </div>
+  <table>
+    <tr><th style="width:20%">Pillar</th><th style="width:34%">Definition</th><th>Techniques — write these in the brackets</th></tr>
+    <tr><td><b>Confidentiality</b></td><td>Preventing unauthorised access to data</td>
+        <td><span class="pill">encryption</span><span class="pill">access controls</span><span class="pill">VPNs</span></td></tr>
+    <tr><td><b>Integrity</b></td><td>Ensuring data is accurate and unmodified</td>
+        <td><span class="pill">hashing (SHA-256)</span><span class="pill">digital signatures</span><span class="pill">version control</span></td></tr>
+    <tr><td><b>Availability</b></td><td>Ensuring resources are available when needed</td>
+        <td><span class="pill">redundancy</span><span class="pill">load balancing</span><span class="pill">DDoS mitigation</span></td></tr>
+  </table>
+
+  <h3>The weights change with the domain — a likely essay question</h3>
+  <table>
+    <tr><th style="width:26%">Domain</th><th style="width:26%">Heaviest pillar</th><th>Why</th></tr>
+    <tr><td>Healthcare</td><td><b>Confidentiality (&alpha;)</b></td><td>Patient records — privacy above all. <span class="small">The doctor wrote this in red: confidentiality has higher weight than availability.</span></td></tr>
+    <tr><td>Banking</td><td><b>Integrity (&beta;)</b></td><td>If a figure in an account changes, it is a disaster</td></tr>
+    <tr><td>Emergency services</td><td><b>Availability (&gamma;)</b></td><td>The system must work at all times</td></tr>
+  </table>
+
+  <div class="two">
+    <div>
+      <h3>Chapter 5 — three terms that get confused</h3>
+      <table>
+        <tr><th style="width:32%">Term</th><th>Definition</th></tr>
+        <tr><td><b>Risk</b></td><td>A function of <b>probability &times; impact</b></td></tr>
+        <tr><td><b>Vulnerability</b></td><td>A weakness — software, hardware or human (<b>OWASP Top 10</b>, <b>CVEs</b>)</td></tr>
+        <tr><td><b>Exploit</b></td><td>The tool or method that uses a vulnerability</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Chapter 6 — evolution and frameworks</h3>
+      <table>
+        <tr><th style="width:34%">Era</th><th>Character</th></tr>
+        <tr><td>Early (1960s–1990s)</td><td>Perimeter defence — firewalls, antivirus</td></tr>
+        <tr><td>Modern (2000s–now)</td><td>Cloud, IoT, mobile, <b>AI-powered attacks</b></td></tr>
+      </table>
+      <table>
+        <tr><th style="width:32%">Framework</th><th>Body &middot; covers</th></tr>
+        <tr><td><b>GDPR</b></td><td>EU &middot; data protection and privacy</td></tr>
+        <tr><td><b>HIPAA</b></td><td>USA &middot; health-care information</td></tr>
+        <tr><td><b>NIST / ISO 27001</b></td><td>International &middot; international standards</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-top:1mm">
+    <span class="tag">Excluded — do not revise it</span>
+    <b>Chapter 7 is out of the exam</b>: Stuxnet &middot; Colonial Pipeline &middot; GDPR enforcement. The doctor said she does not want it.
+  </div>
+
+  <div class="foot">Cyber Security exam sheet &middot; page 1 of 2 &middot; Week 01 (Ch. 1–6)</div>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <h1>Week 02 — Risk &middot; Exam Sheet</h1>
+    <div class="meta">Booklet 2 · from Sharp, <i>Introduction to Cybersecurity</i>, Ch. 3, pp. 37–56</div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h2>The two equations</h2>
+      <table>
+        <tr><th style="width:22%">Equation</th><th>Symbols</th></tr>
+        <tr><td class="eq">S = F &times; K</td>
+            <td><b>S</b> basic risk &middot; <b>F</b> frequency of attempts to exploit the vulnerability &middot; <b>K</b> consequences of a successful attempt</td></tr>
+        <tr><td class="eq">R = S / M</td>
+            <td><b>R</b> residual risk &middot; <b>S</b> risk of the threat &middot; <b>M</b> level of countermeasures — <b>number AND effectiveness</b></td></tr>
+      </table>
+      <div class="warn">
+        <span class="tag">How to use them</span>
+        The scale is <b>ordinal</b> (low / medium / high) and the book's own examples print <b>&ldquo;medium &times; high = medium&rdquo;</b>. <b>Read the colour off the matrix — do not multiply the words as numbers.</b>
+      </div>
+      <table>
+        <tr><th style="width:34%">Matrix</th><th>Axes</th><th style="width:26%">Red corner</th></tr>
+        <tr><td>Risk matrix</td><td>frequency &times; consequences</td><td>high <b>and</b> high</td></tr>
+        <tr><td>Residual risk matrix</td><td>risk &divide; countermeasures</td><td>high risk, <b>low</b> countermeasures</td></tr>
+      </table>
+      <div class="box">
+        <span class="tag">Why multiply, not add</span>
+        Multiplication collapses when <b>either</b> factor is near zero — a constant nuisance that harms nothing is not a catastrophe. Addition would let a huge frequency compensate for <b>zero</b> consequence, which is nonsense. <b>Both factors must matter.</b>
+      </div>
+    </div>
+    <div>
+      <h2>The numbers to remember</h2>
+      <table>
+        <tr><th class="c" style="width:14%">#</th><th>What</th></tr>
+        <tr><td class="c"><b>2</b></td><td>Equations</td></tr>
+        <tr><td class="c"><b>4</b></td><td>Threat groups — hardware &middot; software &middot; data &middot; liveware</td></tr>
+        <tr><td class="c"><b>5</b></td><td>Risk mitigation strategies — avoidance &middot; reduction &middot; retention &middot; transfer &middot; sharing</td></tr>
+        <tr><td class="c"><b>5</b></td><td>Analysis frameworks — COBIT &middot; COSO &middot; FAIR &middot; ISO/IEC 27002 &middot; OCTAVE</td></tr>
+        <tr><td class="c"><b>5</b></td><td>Dealing with damage — preventing &middot; complicating &middot; diverting &middot; detecting &middot; reestablishing</td></tr>
+        <tr><td class="c"><b>14</b></td><td>ISO/IEC 27002 categories <span class="small">(2013 structure)</span></td></tr>
+        <tr><td class="c"><b>3</b></td><td>OCTAVE phases</td></tr>
+        <tr><td class="c"><b>4</b></td><td>OCTAVE variants in the book <span class="small">(3 exist publicly)</span></td></tr>
+        <tr><td class="c"><b>4</b></td><td>PDCA — plan &middot; do &middot; check &middot; act</td></tr>
+        <tr><td class="c"><b>4</b></td><td>Authentication factors — knowledge &middot; possession &middot; inheritance/inherence &middot; location</td></tr>
+        <tr><td class="c"><b>4</b></td><td>Cyber risk assessment — identification &middot; evaluation &middot; mitigation &middot; monitoring</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3>The five lists, in order</h3>
+      <table>
+        <tr><th style="width:30%">List</th><th>Items</th></tr>
+        <tr><td><b>Mitigation strategies</b></td><td>1 avoidance &middot; 2 reduction &middot; 3 retention &middot; 4 transfer &middot; 5 sharing</td></tr>
+        <tr><td><b>Dealing with damage</b></td><td>1 preventing &middot; 2 complicating &middot; 3 diverting <span class="small">(1–3 proactive)</span> &middot; 4 detecting &middot; 5 reestablishing <span class="small">(4–5 reactive)</span></td></tr>
+        <tr><td><b>OCTAVE phases</b></td><td>1 asset-based threat profiles &middot; 2 infrastructure vulnerabilities &middot; 3 security strategy and plans</td></tr>
+        <tr><td><b>PDCA</b></td><td>plan (identify, analyse, plan) &middot; do (implement) &middot; check (monitor) &middot; act (adjust <b>or start a new plan</b>)</td></tr>
+        <tr><td><b>Cyber risk assessment</b></td><td>1 identification &middot; 2 evaluation &middot; 3 mitigation &middot; 4 monitoring and review</td></tr>
+      </table>
+      <h3>Frameworks — one line each</h3>
+      <table>
+        <tr><td style="width:26%"><b>COBIT</b></td><td>Objectives for measures to manage risk</td></tr>
+        <tr><td><b>COSO</b></td><td>Internal processes inside the company</td></tr>
+        <tr><td><b>FAIR</b></td><td>The only one with a <b>calculation model</b>; also a naming standard</td></tr>
+        <tr><td><b>ISO/IEC 27002</b></td><td>A <b>checklist</b>. <b>27001 = requirements</b> (audited against); <b>27002 = code of practice</b></td></tr>
+        <tr><td><b>OCTAVE</b></td><td>A <b>process</b>; Carnegie Mellon, for the US DoD</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Traps, in order</h3>
+      <ol>
+        <li><b>A threat is not a vulnerability.</b> Weakness alone = vulnerability; actor alone = threat.</li>
+        <li><b>Multiplication, not addition</b> (AS and S = F &times; K).</li>
+        <li><b>Red has exactly one cell</b> in each matrix.</li>
+        <li><b>Do not mix the matrices.</b></li>
+        <li><b>M is number AND effectiveness</b> — not just a count.</li>
+        <li><b>The two five-item lists differ</b> — dealing with damage vs mitigation strategies.</li>
+        <li><b>Proactive 1–2–3, reactive 4–5.</b></li>
+        <li><b>Act restarts PDCA</b> — a cycle, not a line.</li>
+        <li><b>OCTAVE phases 3, variants 4.</b></li>
+        <li><b>Authentication factors = 4</b> — most people forget <b>Location</b>.</li>
+        <li><b>Authorisation is based on authentication.</b></li>
+        <li><b>Insider threats &rarr; administrative controls</b> (vetting, training), not technology.</li>
+        <li><b>Three remote terms differ by word order</b> — monitoring &middot; remote-access control &middot; remote-control access.</li>
+      </ol>
+
+      <div class="warn">
+        <span class="tag">Write her answer — and know the correct fact</span>
+        <table style="margin:0">
+          <tr><th style="width:40%">She marks</th><th>Correct fact</th></tr>
+          <tr><td><b>14</b> ISO/IEC 27002 categories</td><td>14 is the <b>2013</b> structure (114 controls in 14 clauses); <b>2022</b> is <b>4 themes / 93 controls</b></td></tr>
+          <tr><td><b>4</b> OCTAVE variants</td><td>Public OCTAVE documents only <b>3</b> — OCTAVE, -S, Allegro</td></tr>
+          <tr><td><b>Inheritance</b></td><td>The correct term is <b>inherence</b> (something you are)</td></tr>
+        </table>
+        <div class="small" style="margin-top:1mm">Answer in her vocabulary — she marks it. Add the correction in brackets only if there is room; it shows mastery rather than contradicting her.</div>
+      </div>
+
+      <div class="ok">
+        <span class="tag">Three sentences worth memorising word for word</span>
+        <ul style="margin-bottom:0">
+          <li>&ldquo;<b>Authorisation is based on authentication.</b>&rdquo;</li>
+          <li>&ldquo;The <b>door</b> provides the physical barrier but in itself will only keep honest people out. The <b>lock</b> provides the authentication function.&rdquo;</li>
+          <li>&ldquo;<b>If security measures do not give a usable system, users will find ways to avoid them!</b>&rdquo;</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Cyber Security exam sheet &middot; page 2 of 2 &middot; Week 02 (Risk)</div>
+</div>
+
+</body>
+</html>
