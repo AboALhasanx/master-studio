@@ -13,6 +13,10 @@ created: 2026-09-23
 
 > **Why this file exists.** Produced as the Thursday step of `00_STUDIO_HUB/PLAN_2026-09-23_to_27.md`: work through the Risk booklet in manageable sections, build a bilingual concept outline, and flag everything that needs source verification. This is the **backbone of the full study note** — it is not a compression of the booklet, and nothing from the booklet has been dropped.
 
+> **Companion file — read this one for what to drill:** `Week_02_Risk_Exam_Focus.md` (built 2026-09-23 after the student's lecture report). It carries the **doctor's own emphasis map** — 30 highlight runs and 27 coloured runs extracted mechanically from the delivered DOCX — plus the numbered sets to memorise, the acronym list, and the open conflicts. **This outline is the reference; that sheet is the revision list.**
+
+> **Late finding, 2026-09-23:** the DOCX **does** contain the doctor's highlighting (30 runs: `yellow` and `red`) and coloured text (red `FF0000`, dark red `C00000`, blue `548DD4`). My first pass at this file missed it because I only extracted plain `<w:t>` runs. The emphasis map is now recorded in the exam-focus sheet and the affected items are cross-referenced below.
+
 **How to read it**
 
 - **EN** = the booklet's own wording. Keep these exact terms for the exam; Dr. Huda's questions are answered in her vocabulary.
@@ -85,6 +89,8 @@ R = S / M
 بمصفوفة الـ residual risk: **الأحمر = خطر عالي مع تدابير واطية**. لاحظ الانعكاس: هذي المصفوفة محاورها `(risk, countermeasures)` مو `(frequency, consequences)`.
 
 `[VERIFY]` — the `/` operator is likewise **absent from the DOCX text layer**. The division reading is taken from the booklet's next sentence: *"The result of the 'division' is again given by a colour code."* Confirm against the printed original.
+
+`[CONFLICT — 2026-09-23 lecture report]` — the student reports the two equations from the lecture as **`f = s · k`** and **`f = s / n`, with `n` = number of threats**. That does **not** match the file's letters (`S = F × K`, `R = S / M`) or its definition of the denominator (the **level of countermeasures**, covering *number + effectiveness*). The lecture wording is recorded verbatim in `Week_02_Risk_Exam_Focus.md` §8.1. **Not resolved — awaiting the student's paper notes.** One hard fact from the doctor's own marking: she coloured the letters **`S`, `F`, `K`** red, so those three are hers.
 
 **الفرق اللي لازم يثبت:** `S = F × K` مصفوفتها محاورها **(التكرار × العواقب)**؛ `R = S / M` مصفوفتها محاورها **(الخطر ÷ التدابير)**. مصفوفتان، محوران مختلفان، ولا وحدة تكمل الثانية.
 
