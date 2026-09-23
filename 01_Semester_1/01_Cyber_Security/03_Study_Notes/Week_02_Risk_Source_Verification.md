@@ -364,6 +364,25 @@ This resolves several puzzles at once. I searched all 452 pages for the booklet'
 
 **Open:** the second source is still unidentified. Identifying it would let us verify the authentication-factor section properly.
 
+### 9.4.1 Second-source hunt — attempted and closed
+
+Four targeted searches were run to identify it. **All failed:**
+
+| Search | Result |
+|:---|:---|
+| The distinctive lock cluster — `"Solenoid-Operated Deadbolt Locks" "Cipher Locks" "Access-Control Gates" "Control Relays"` | Only commercial lock vendors. No book |
+| The full remote-access sentence — `"a design feature that manages entry to protected areas by authenticating the identity of persons entering a secured area"` | No match; the phrase is not publicly indexed |
+| The four factors with `"Inheritance" "Something you are"` | Only the standard **inherence** sources. **No published source uses "Inheritance"** |
+| The section-heading cluster — `"Locks and Keys" "Cipher Locks" "Access-Control Gates" "Biometric Scanners" "Remote-Access Monitoring" "Automated Access-Control"` | Only vendor and blog pages |
+
+**Conclusion: the second source's text is not publicly indexed** — the same wall that stood in front of Sharp's chapter until the book itself was obtained. **Further searching is not worth the time**, and here is the reason it does not matter:
+
+1. **The "Inheritance" question is already settled without the source.** No published source pairs *Inheritance* with *something you are*; the standard term is **Inherence**. Whatever the second source says, the correct exam-safe wording is known.
+2. **The physical-security content is generic and individually verifiable.** Deadbolts, cipher locks, gates, control relays, magnetic stripe, smart cards, RFID and biometrics are all standard technology with well-documented definitions.
+3. **The doctor's own text is available** for everything she highlighted red, so the exam-relevant wording is not lost.
+
+**The one route left, and it is optional:** ask Dr. Huda which book the physical-security part came from. Low priority — see §8.
+
 ## 9.5 The figures — extracted from the book
 
 All three figures were extracted into `06_Diagrams_&_Mindmaps/from_sharp_ch3/`:
