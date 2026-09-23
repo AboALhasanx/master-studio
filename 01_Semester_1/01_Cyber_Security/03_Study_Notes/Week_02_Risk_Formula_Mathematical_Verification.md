@@ -10,6 +10,14 @@ created: "2026-09-23"
 
 # The Two Equations — Mathematical and Logical Verification
 
+> **UPDATE — the book has now been read directly. The analysis below is confirmed, with one refinement.**
+>
+> - **`S = F × K` and `R = S / M` are confirmed verbatim** from Sharp's typeset text (printed pp. 38–39), including `M` covering *number of countermeasures + effectiveness*. My reconstruction was exact.
+> - **Both figures confirm the structural predictions:** Fig. 3.2 (risk matrix) and Fig. 3.3 (residual-risk matrix) are **mirror-symmetric in their colour banding**, which is what the multiplicative form predicts. Red appears **only** at (high frequency, high consequences) and at (high risk, low countermeasures) — exactly as the boundary analysis implied.
+> - **REFINEMENT — the book does not use the equations arithmetically.** Its own worked examples print `medium × high (= medium)`, not `6`. So `×` and `/` are **ordinal combination operators**, and the operative rule is the colour table in Figs. 3.2/3.3. The equation is a **mnemonic for the table**.
+> - **Consequence for §3 below:** the boundary-condition critique (`M = 0` divides by zero; `0 < M < 1` gives `R > S`) is correct **for the arithmetic reading**, but the book does not take that reading. On the ordinal reading the matrix is the rule, and the matrix is well-formed in every cell. **Both statements are true; the book means the second.** See `Week_02_Risk_Source_Verification.md` §9.8.
+> - **Practical exam rule:** given low/medium/high, **read the colour off Fig. 3.2 or 3.3** — do not multiply numbers.
+
 > **Purpose.** You asked me to verify the formulas "mathematically and logically" and to try published page images. This file does both: it reports honestly what the image search could and could not reach, and then **proves** what the equations must be from their own internal behaviour — which does not depend on the paywall at all.
 
 ---

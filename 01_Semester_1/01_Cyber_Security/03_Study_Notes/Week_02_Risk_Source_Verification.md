@@ -10,6 +10,15 @@ created: "2026-09-23"
 
 # Week 02 — Risk · Source Verification Report
 
+> **STATUS: CONFIRMED AGAINST THE ORIGINAL BOOK.** The student located the full textbook (452 pp). Chapter 3 was read directly and every claim below has now been checked against the book's own typeset text and figures. **Read §9 first — it confirms some of this report and corrects other parts, including two of my earlier verdicts.**
+>
+> **Headline corrections:**
+> - The equations are **confirmed verbatim**: `S = F × K` and `R = S / M`. My reconstruction was exactly right.
+> - **The booklet is a compilation of TWO sources**, not one. Sharp's Chapter 3 covers the risk theory; the physical-security, authentication and NIST material is **not in Sharp at all** (zero hits across all 452 pages).
+> - **"OCTAVE FORTE" IS in Sharp's book** as variant 4. My earlier "does not exist" verdict was about the public OCTAVE literature and I mis-attributed the problem to the booklet. **Correction in §9.2.**
+> - **The ISO/IEC 27002 "2022 … 14 categories" line is Sharp's own text, verbatim.** The booklet reproduces it faithfully. **Correction in §9.3.**
+> - All three figures (3.1 shark, 3.2 risk matrix, 3.3 residual risk matrix) have been **extracted from the book** into `06_Diagrams_&_Mindmaps/from_sharp_ch3/`.
+
 > **Why this exists.** You asked me to stop relying on the lecture and the booklet, find the original source, and check the material against the internet. This is that work. Every claim below is traced to a named source with a link.
 
 ---
@@ -280,3 +289,160 @@ Do **not** spend time hunting for the book online yourself. Every free route has
 ---
 
 *Verification report built 2026-09-23. Sources: Springer (chapter and book records), ISMS.online, SureCloud, ISO, Wikipedia, CIO Wiki, IriusRisk, PECB, Signisys, HYPR, Auditive, Panorays, RiskWatch, DTU Orbit, DBLP. Nothing asserted without a traceable source; nothing that could not be verified was stated as fact.*
+
+---
+
+# 9. CONFIRMED AGAINST THE ORIGINAL BOOK
+
+The full textbook was located (452 pp, TeX-typeset PDF, so the text layer and the vector figures are intact). Chapter 3 "Risk" was read directly at printed pages 37–56. This section records what the book actually says, and **corrects three things in the sections above**.
+
+## 9.1 The equations — CONFIRMED VERBATIM
+
+Quoted from the book, printed page 38:
+
+> *"The basic risk, **S**, of a threat depends on the frequency, **F**, of attempts to exploit the vulnerability and the consequences, **K**, of a successful attempt, as expressed in the "equation":* **S = F × K**"
+
+Quoted from printed page 39:
+
+> *"The reduced risk is known as the **residual risk, R**. If the threat is evaluated to give a risk **S**, and the level of countermeasures is **M**, then the residual risk is often defined by the "equation":* **R = S / M**"
+>
+> *"**M** covers both the number of countermeasures (there can be several things which affect the risk for particular types of attack) and their effectiveness."*
+
+**Verdict: the booklet's letters and operators are exact. The student's reported `f = s·k` / `f = s/n` was a mishearing, as the mathematical contradiction test in `Week_02_Risk_Formula_Mathematical_Verification.md` had already concluded.**
+
+## 9.2 CORRECTION — "OCTAVE FORTE" IS in the book
+
+I previously wrote that OCTAVE FORTE "does not exist". That verdict was based on the public OCTAVE literature, where only three methodologies appear. **The book itself says otherwise**, on printed page 46:
+
+> *"OCTAVE exists in four variants: 1. OCTAVE, the original method [2]. 2. OCTAVE-S, a simplified version for small enterprises with limited resources. 3. OCTAVE ALLEGRO, an expanded version for enterprises with an advanced IT structure [13]. **4. OCTAVE FORTE**, In this book we give an short introduction to the original OCTAVE method."*
+
+**What this means:**
+
+- The **book lists four variants**, so the booklet and Dr. Huda are reproducing the book faithfully. **Neither the booklet nor the doctor invented anything.**
+- Note the sentence is **garbled in the book itself** — the FORTE entry runs straight into an unrelated sentence, and no description of FORTE is given anywhere. That looks like a **typesetting or drafting slip in Sharp's manuscript**.
+- Public OCTAVE documentation still names only three. So the honest position is: **the book is the origin of the fourth variant, and it gives no source for it.**
+
+**Corrected verdict: not a booklet error. A book-level issue, faithfully reproduced.** For the exam, four variants is what the material says.
+
+## 9.3 CORRECTION — the ISO/IEC 27002 "2022 … 14 categories" line is Sharp's own text
+
+I previously attributed this to the booklet. **It is in the book, word for word**, on printed page 45:
+
+> *"The latest version of ISO/IEC 27002 from 2022 describes targets for what has to be done within 14 categories:"* — followed by the identical 14-item list.
+
+**So: the booklet is a faithful extraction. The doctor is faithfully teaching it. The error, if it is one, originates in the published book.** The factual position is unchanged and still verified: the **14 categories are the 2013 clause structure** (114 controls in 14 clauses); the **2022** version is **4 themes / 93 controls**.
+
+**One thing the book does better than the booklet:** the book carries **Table 3.1 "Standards in the ISO 27000 series"**, which lists and distinguishes ISO/IEC 27000, 27001 (*Requirements*), 27002 (*Code of practice for information security controls*), 27003, 27004, 27005 and others. **The booklet dropped that table**, which is why my earlier flag said "the booklet does not distinguish 27001 from 27002". The book does. If the exam asks the difference, the book's table is the source.
+
+## 9.4 MAJOR FINDING — the booklet is a compilation of TWO sources
+
+This resolves several puzzles at once. I searched all 452 pages for the booklet's later content:
+
+| Booklet content | Occurrences in Sharp's entire book |
+|:---|:---:|
+| "Develop a risk-management program" | **0** |
+| "Use NIST security controls" | **0** |
+| "NIST Framework Stakeholders" | **0** |
+| Cipher Locks / cipher lock | **0** |
+| Deadbolt / deadbolt | **0** |
+| Access-Control Gates | **0** |
+| Magnetic Stripe / magnetic stripe | **0** |
+| Smart Cards / smart card | **0** |
+| RFID | **0** |
+| Remote-Access Monitoring | **0** |
+| Automated Access-Control | **0** |
+| "Multiple factors are involved in authentication" | **0** |
+| **Inheritance / Inherence** | **0** |
+
+**Conclusion: the physical-security, access-control, authentication and NIST material is NOT from Sharp's book at all.** It comes from an unidentified **second source** — most likely a US physical-security or security-fundamentals textbook, given the NIST-heavy framing and the American terminology.
+
+**What this fixes:**
+
+- The **"Inheritance"** issue is **not Sharp's**. The word appears **nowhere in his book**. It belongs to the second source — or to whoever assembled the booklet.
+- The **NIST blocks** you called "not important" are also **not Sharp's**.
+- The **doctor's highlighting spans both sources** — which is why she marked the Sharp material (5 strategies, frameworks, ISO 14, OCTAVE) *and* the physical-security headings (Locks and Keys, Cipher Locks, Control Gates, Authentication Systems) and the four authentication factors. She was marking a compiled booklet, not one book.
+
+**Open:** the second source is still unidentified. Identifying it would let us verify the authentication-factor section properly.
+
+## 9.5 The figures — extracted from the book
+
+All three figures were extracted into `06_Diagrams_&_Mindmaps/from_sharp_ch3/`:
+
+| File | What it is |
+|:---|:---|
+| `pdfpage53_img1_879x646.png` | **Fig. 3.1** — the white shark (the threat) inside the cage whose welding fault is the vulnerability. Photo by **Terry Goss, Wikimedia Commons, CC-BY 2.5 Generic** — attribution required |
+| `pdfpage53_full.png` | Printed p. 38: Fig. 3.1, the typeset `S = F × K`, and **Fig. 3.2 the risk matrix** |
+| `pdfpage54_full.png` | Printed p. 39: the typeset `R = S / M`, **Fig. 3.3 the residual risk matrix**, and the 3-point-scale note |
+| `pdfpage56_full.png` | The countermeasure list and the **five-step "dealing with damage"** list |
+| `pdfpage67_full.png`, `pdfpage68_full.png`, `pdfpage69_full.png` | The worked numerical examples (Fig. 3.9, 3.10), the PDCA section and Fig. 3.11 |
+
+**Fig. 3.2 — the risk matrix, exactly as printed.** Axes: **Frequency** (low / medium / high) horizontally, **Consequences** (low / medium / high) vertically. Colour bands:
+
+| Consequences ↓ / Frequency → | low | medium | high |
+|:---|:---:|:---:|:---:|
+| **low** | green | green | green |
+| **medium** | green | yellow | yellow |
+| **high** | green | yellow | **red** |
+
+A diagonal arrow runs from top-left to bottom-right, labelled **Risk** — showing risk increasing along the diagonal. **Red occurs only where frequency and consequences are both high**, exactly as the text says.
+
+**Fig. 3.3 — the residual risk matrix, exactly as printed.** Axes: **Countermeasures** (high / medium / low — note the axis is **inverted**, high on the left) and **Risk** (low / medium / high, low at the top). Colour bands:
+
+| Risk ↓ / Countermeasures → | high | medium | low |
+|:---|:---:|:---:|:---:|
+| **low** | green | green | green |
+| **medium** | green | yellow | yellow |
+| **high** | green | yellow | **red** |
+
+Diagonal arrow labelled **Residual risk**. **Red occurs only where risk is high and countermeasures are low.**
+
+**Both matrices are mirror-symmetric in their colour banding** — which is exactly what my mathematical analysis predicted from the multiplicative form, before I had the figures.
+
+## 9.6 NEW — the "5 steps" you remembered are in the book, and the booklet dropped them
+
+On printed page 42, Sharp gives a five-step list that the booklet **omits entirely**. This is very likely what you were reaching for:
+
+> *"More generally, one can deal with damaging events by:*
+> 1. **Preventing** them: Block attacks or remove (or reduce) the vulnerability.
+> 2. **Complicating** them: Make the attack more difficult to perform.
+> 3. **Diverting** them: Make other targets more attractive.
+> 4. **Detecting** them, when they occur, or later.
+> 5. **Reestablishing** status after them."
+
+And the book adds the classification worth memorising:
+
+> *"Notice that some of them (1, 2 and 3) are **proactive** steps, which reduce the risk before the damage takes place, while others (4 and 5) are **reactive** steps which are taken when the damage has in fact occurred."*
+
+**Proactive = 1, 2, 3 · Reactive = 4, 5.** That is a clean examinable split, and it was **missing from your booklet**.
+
+## 9.7 NEW — other chapter 3 content the booklet dropped
+
+| Item | The book says |
+|:---|:---|
+| **The three-factor balance** | Every risk-management choice must balance **Security** (how well protected), **Functionality** (how well it performs its purpose) and **Usability** (how easy for users). The book adds: *"If security measures do not give a usable system, users will find ways to avoid them!"* |
+| **Why consequences resist scaling** | Financial losses · loss of reputation · regulatory penalties · compensation to employees — or combinations |
+| **Objective vs subjective risk, evidenced** | A **Danish 2009 survey**: almost 100% called remote extraction of personal data a breach, but only about a quarter considered **theft of the computer** a breach — even though theft is more common and gives easier access. People's risk perception diverges sharply from the actual risk |
+| **Chapter 3 structure** | 3.1 What Is Risk? · 3.2 Threats in IT Systems · 3.3 Countermeasures · 3.4 Risk Management · 3.5 Systematic Security Analysis (3.5.1 ISO/IEC 27002, 3.5.2 OCTAVE) · 3.6 Risk Management as a PDCA Process · Exercises · "Useful concepts" · Further Reading |
+| **The chapter's own concept list** | vulnerability · threat · threat profile · objective risk · subjective risk · countermeasure · risk matrix · residual risk matrix · attack · risk management · security analysis · PDCA |
+| **Further Reading** | The Royal Society report *"Risk: Analysis, Perception and Management"* [76] and Ben Ale, *"Risk: An Introduction"* [4] |
+
+## 9.8 The ordinal-scale nuance — proven by the book's own worked examples
+
+The book's worked examples (printed p. 52) show:
+
+```text
+Threat 1:  Risk: medium × high  (= medium)
+Threat 2:  Risk: low    × high  (= low)
+Threat 3:  Risk: medium × high  (= medium)
+...
+Threat 1:  Residual Risk: medium / medium (= medium)
+Threat 2:  Residual Risk: low    / medium (= low)
+```
+
+**`medium × high` is given as `medium`, not 6.** So the book's `×` and `/` are **not arithmetic** — they are **ordinal combination operators**, and the operative rule is the colour table in Fig. 3.2 and 3.3. The equation is a **mnemonic for the table**, not a computation.
+
+**This refines my earlier mathematical analysis** (`Week_02_Risk_Formula_Mathematical_Verification.md`): the boundary-condition critique holds for the **arithmetic** reading, but the book does not use the arithmetic reading. On the ordinal reading the matrix is the rule, and the matrix is well-formed everywhere. **Both statements are true; the book means the second one.**
+
+**And the practical rule for the exam:** when a question gives you low/medium/high, **read the colour off Fig. 3.2 or 3.3** — do not try to multiply numbers.
+
+---

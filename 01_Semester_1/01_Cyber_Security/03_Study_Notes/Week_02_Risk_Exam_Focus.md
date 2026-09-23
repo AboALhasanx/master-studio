@@ -20,12 +20,16 @@ created: "2026-09-23"
 | **The doctor's highlights** inside the delivered DOCX | Mechanical extraction from the file — 30 highlight runs + 27 coloured runs | Objective. It is her own marking, not an interpretation |
 | **The student's lecture report** (2026-09-23) | What she said and how she weighted it in class | Authoritative as a report of the lecture, but recorded as reported — see the conflicts in §8 |
 
-> **SOURCE FOUND — and two facts in this booklet are wrong.** The booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2024, pp. 37–56** ([DOI 10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3)). Verifying it against public sources found:
-> - **"ISO/IEC 27002 from 2022 … 14 categories" is wrong.** The 14 categories are the **2013** structure (114 controls in 14 clauses). The **2022** version has **4 themes and 93 controls**. The list itself is real — just mislabelled. *This is the line she highlighted yellow.*
-> - **"OCTAVE FORTE" does not exist.** There are **three** public OCTAVE methodologies: OCTAVE, OCTAVE-S, OCTAVE Allegro.
-> - Plus: **"Inheritance" should be "Inherence"**, and OCTAVE was developed at CMU **for the US Department of Defense**.
+> **SOURCE FOUND — AND NOW READ DIRECTLY.** The booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2023, pp. 37–56** ([DOI 10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3)). The full book was located, and chapter 3 was read page by page. What that changed:
 >
-> **Full evidence, links and the exam strategy: `Week_02_Risk_Source_Verification.md`.** The exam rule is in that file §5 — answer in her vocabulary, but know the correct fact.
+> - **The equations are confirmed exactly**: `S = F × K` and `R = S / M`, with `M` covering **number of countermeasures + effectiveness**. Your lecture report was a mishearing; the structure is settled.
+> - **The booklet is a compilation of TWO sources.** Sharp supplies the risk theory. The physical-security, authentication and NIST material is **not in Sharp at all** (zero hits in 452 pages) — it comes from an unidentified second source. **The "Inheritance" wording is from that second source, not from Sharp.**
+> - **"OCTAVE FORTE" IS in Sharp's book** as variant 4, though with no description and a garbled sentence. So the booklet and the doctor reproduce the book faithfully. My earlier "does not exist" verdict was about the public OCTAVE literature — **the book is the origin, not the booklet**.
+> - **The ISO/IEC 27002 "2022 … 14 categories" line is Sharp's own text, verbatim.** The booklet is faithful; the doctor is faithful. The factual position is unchanged (14 categories = the **2013** structure; 2022 = **4 themes / 93 controls**).
+> - **All three figures were extracted** into `06_Diagrams_&_Mindmaps/from_sharp_ch3/` — the shark, the risk matrix and the residual-risk matrix. **Your booklet had none of them.**
+> - **Content the booklet dropped, recovered from the book:** the **five-step "dealing with damaging events"** list (§2A), the **security / functionality / usability balance** (§2B), and the **Danish 2009 survey** on objective vs subjective risk (§5.1).
+>
+> **Full evidence and corrections: `Week_02_Risk_Source_Verification.md` §9.** Exam rule unchanged and in that file §5: answer in her vocabulary, know the correct fact.
 
 ---
 
@@ -103,6 +107,39 @@ Her marking uses two devices: **highlight colour** and **font colour**. They are
 | Countermeasure examples | **6** | Firewalls · Antivirus · Secure room · Backups · Encryption/access control · Personnel checks and training | Coloured text |
 
 **Order matters in two places only:** the **five mitigation strategies** and the **four PDCA elements**. The rest are sets, not sequences.
+
+---
+
+## 2A. Recovered from the book — the five-step damage list (this was missing from your booklet)
+
+On printed page 42, Sharp gives a list the Word conversion **dropped entirely**. This is almost certainly the "5 steps" you remembered:
+
+> *"More generally, one can deal with damaging events by:*
+> 1. **Preventing** them — block attacks or remove (or reduce) the vulnerability.
+> 2. **Complicating** them — make the attack more difficult to perform.
+> 3. **Diverting** them — make other targets more attractive.
+> 4. **Detecting** them — when they occur, or later.
+> 5. **Reestablishing** status after them."
+
+And the split that makes it examinable, in the book's own words:
+
+> *"Notice that some of them (1, 2 and 3) are **proactive** steps, which reduce the risk before the damage takes place, while others (4 and 5) are **reactive** steps which are taken when the damage has in fact occurred."*
+
+**Proactive = 1, 2, 3 · Reactive = 4, 5.** That is the memorisable structure. Note it is a **different list** from the five risk-mitigation strategies (§5.3) — do not mix them up.
+
+## 2B. Recovered from the book — the three-factor balance
+
+Every risk-management decision must balance three factors, and the book is emphatic about the third:
+
+| Factor | The question it answers |
+|:---|:---|
+| **Security** | How well is the IT system protected against unwanted events? |
+| **Functionality** | How well does the system perform its intended functions? |
+| **Usability** | How easy is it for users to make use of the system? |
+
+The book's warning, worth quoting: *"This last factor is unfortunately often forgotten by system designers… **If security measures do not give a usable system, users will find ways to avoid them!**"*
+
+---
 
 ---
 
