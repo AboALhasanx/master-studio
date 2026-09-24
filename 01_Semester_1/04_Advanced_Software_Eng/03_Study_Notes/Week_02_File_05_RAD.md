@@ -1,14 +1,44 @@
-# File 05 — RAD (Rapid Application Development)
+---
+title: "ASE Week 02 — Unit 05: RAD — Rapid Application Development"
+subtitle: "The schedule is the binding constraint: minimal planning, heavy reuse, parallel construction, and the time-box"
+subject: "04_Advanced_Software_Eng"
+week: 2
+sources:
+  - "Mall, Fundamentals of Software Engineering, 4th ed., §2.3–§2.3.3, pp.100–104"
+  - "Agarwal, Software Engineering and Testing, 2010, pp.62–63"
+type: "study compendium — source-derived"
+---
 
-> **Position in the series:** File 04 closed on the cost of incremental development: **it is slow**, because the customer waits for the last increment. RAD is the response to that slowness — it keeps the customer-visible delivery of incremental models but compresses the timeline by parallelising feature construction and automating requirements collection. [Foundational Knowledge / Standard Concept]
->
-> **Primary source:** Rajib Mall, *Fundamentals of Software Engineering* (4th Ed.), §2.3, pp. 100–104.
-> **Secondary source:** C. S. Agarwal, *Software Engineering and Testing: An Introduction* (2010), pp. 62–63 (phases and disadvantages).
-> **Coverage gap:** Sommerville 9th Ed. does NOT treat RAD as a standalone lifecycle model; Pressman mentions it only in passing. This file is therefore **Mall-primary**; a student should not expect Sommerville to supply a RAD definition. [Source Coverage Note]
+# Unit 05 — RAD (Rapid Application Development)
+
+> **Sources.** Rajib Mall, *Fundamentals of Software Engineering* 4th ed., §2.3, pp.100–104. C. S. Agarwal, *Software Engineering and Testing* (2010), pp.62–63 (phases and disadvantages).
+> **Note on method.** This is a compendium, not a summary. Every definition is quoted verbatim from the source before it is explained, and every claim carries a page anchor. Sommerville 9th ed. does **not** treat RAD as a standalone life-cycle model and Pressman mentions it only in passing, so this unit is **Mall-primary**.
+
+---
+
+## Where this sits
+
+**Unit Context:** Unit 04 closed on the cost of incremental development — **it is slow**, because the customer waits for the last increment. RAD is the response to that slowness: it keeps the customer-visible delivery of the incremental models but compresses the timeline by parallelising feature construction and automating requirements collection.
+
+**The question this unit answers:** *the schedule is the binding constraint — how do you go fast without going ad hoc?*
+
+**The question it hands to the next unit:** *RAD buys speed by cutting planning and reusing code, but it has no mechanism for deciding which risk to attack first — and that is what the Spiral model adds.*
 
 ---
 
 ## 1. Definition and the Four Goals of RAD
+
+### 1.0 The intuition before the definition
+
+Imagine a **kitchen during a dinner rush**. A single cook working through the menu one dish at a time is correct and orderly — but slow. Now imagine the same kitchen with **several cooks, each owning a few dishes**, a **menu that never changes** (so nobody has to invent anything), **ready-made sauces and pre-cut vegetables** instead of raw ingredients, and a **timer on every dish**: when the timer runs out, that dish leaves the kitchen whether or not it is perfect.
+
+That is RAD. The **parallel cooks** are the feature teams building simultaneously; the **fixed menu** is the condition that the requirements must already be clear; the **pre-cut ingredients** are reusable components and CASE tools; and the **timer** is the time-box.
+
+And note the cost hidden in the metaphor: if a dish needed a technique the cooks had never learned, the timer would not save them. That is exactly why RAD fails when the **technical risk is high**.
+
+**الشرح المفاهيمي والتعليلات الهندسية:** RAD **مو نموذج هندسي جديد** — هو **ضغط إداري على نموذج موجود**. Mall نفسه يسمّيه *"a type of incremental model"* (ص100). الفكرة كلها إن **الزمن هو المتغيّر المستقل**، وكل شي ثاني — التوازي، الأتمتة، مشاركة العميل، الفريق بمكان واحد — **وسائل تخدم هذا الهدف الواحد**. ولهذا عيوبه كلها **مو عيوب هندسية، هي شروط تشغيلية**: عميل غير متعاون · فريق موزّع · مشروع كبير · مخاطر تقنية عالية. **لو سُئلت «علّق على RAD» — ابدأ من هذه الجملة.**
+
+---
 
 ### 1.1 Definition
 
@@ -28,7 +58,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > 3. To ensure that the development team is located at one place.
 > 4. To automate the software construction process as much as possible.
 
-**AR.** التفسير بالعربي:
 
 الهدف الأول هو **التعريف نفسه** — بناء النظام بفترة قصيرة. الأهداف الثلاثة الباقية هي **الأدوات اللي تخدم الهدف الأول**:
 
@@ -48,7 +77,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 > The time-box is the maximum time that can be taken to develop each feature.
 
-**AR.** التفسير بالعربي:
 
 **Time-box = صندوق زمني مغلق.** ما هو "الوقت المتوقع" أو "الوقت المثالي" — هو **الحد الأقصى** (maximum time). يعني لو ميزة ما انتهت قبل الـtime-box، تمام. لكن لو تأخرت، **يتم إيقاف العمل عليها** ويُنقل الفريق للميزة التالية.
 
@@ -79,7 +107,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > - **Coding:** In this phase, the different features are coded.
 > - **Testing:** In this phase, the different features are tested.
 
-**AR.** التفسير بالعربي:
 
 أهم نقطة هنا: **البناء بالتوازي (constructed in parallel).** كل ميزة = **مشروع مصغر** (mini project) بفريق صغير. هذا يختلف جذرياً عن الـIncremental، اللي يبني الزيادات **بالتسلسل** (واحدة تلو الأخرى).
 
@@ -94,7 +121,7 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > 3. Process Modeling. In this model, information flows from object to object...
 > 4. Application Generation. RAD assumes the use of fourth-generation techniques.
 
-**[THIN]** — Agarwal يستخدم **مصطلحات مختلفة** لمراحل RAD: Business Modeling · Data Modeling · Process Modeling · Application Generation. هذي **ليست مراحل مختلفة** — هي **نفس المراحل الأربع** لكن بمنظور **هندسة المعلومات** (information engineering) بدل هندسة البرمجيات التقليدية.
+**ملاحظة تغطية:** Agarwal يستخدم **مصطلحات مختلفة** لمراحل RAD: Business Modeling · Data Modeling · Process Modeling · Application Generation. هذي **ليست مراحل مختلفة** — هي **نفس المراحل الأربع** لكن بمنظور **هندسة المعلومات** (information engineering) بدل هندسة البرمجيات التقليدية.
 
 **التوافق:**
 | **Mall** | **Agarwal** | **التوضيح** |
@@ -119,7 +146,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > 2. The project can be completed within 2 to 3 months.
 > 3. The requirements of the project are known clearly in the beginning.
 
-**AR.** التفسير بالعربي:
 
 ثلاثة شروط **جميعها لازمة** (necessary conditions) — مو كافية بروحها:
 
@@ -137,7 +163,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 > RAD may not be appropriate when technical risks are high (for example, when new technology is being introduced).
 
-**AR.** التفسير بالعربي:
 
 **نقطة الاتفاق بين Mall و Agarwal:** **المخاطر التقنية العالية = مانع قاطع لـRAD.** ليش؟ لأن RAD يفترض إن الفريق يعرف **كيف** يبني — هو يسرّع البناء، لا يكتشف التقنية. لو التقنية جديدة (نظام تشغيل جديد · جهاز غير مألوف · لغة برمجة غير معروفة)، الفريق يحتاج وقت للتعلم، وهذا يُبطّل فكرة الـtime-box.
 
@@ -146,6 +171,27 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > RAD may not be appropriate when technical risks are high... when new technology is being introduced.
 
 **القاعدة:** **RAD = تسريع التنفيذ المعروف ؛ Spiral = إدارة المخاطر المجهولة.** [Foundational Knowledge / Standard Concept]
+
+---
+
+### 4.3 The whole model in one picture
+
+![RAD: the same time axis, a much shorter project — parallel feature teams, the four phases with the design–construction loop, and the time-box|720](../06_Diagrams_&_Mindmaps/rad_timeline_compression.png)
+
+**كيف تقرأ الرسم — وهذا خريطة الوحدة كلها:**
+
+| العنصر في الرسم | معناه الهندسي |
+|:---|:---|
+| **الشريط الأزرق `Sequential model`** | التسلسل التقليدي: خمس مراحل ورا بعض — **12 شهر** على نفس المحور |
+| **الأشرطة البرتقالية `Team A/B/C`** | **البناء بالتوازي**: كل فريق يبني مجموعة ميزات **كأنها مشروع مصغّر** |
+| **صندوق `Integrate & cutover`** | نقطة **الدمج والتسليم** — وهي **مو مرحلة متوازية**، تحتاج تنسيقاً |
+| **السهم الأخضر المتقطّع** | **الزمن الموفَّر** — من نفس المحور الزمني، المشروع يخلص بجزء من المدة |
+| **الصناديق الأربعة (1←4)** | المراحل الأربع: Requirements planning · User design · Construction · Cutover |
+| **سهمان برتقاليان بين ② و③** | **الحلقة الأهم**: تصميم المستخدم والبناء **يتكرران معاً** — العميل داخل الحلقة، مو توقيع مرة واحدة |
+| **صندوق `⏱ THE TIMEBOX`** | **القيد المعرِّف**: التاريخ يُثبَّت أولاً، والنطاق يُفاوَض ليناسب |
+| **الصندوقان الأخضر والأحمر** | **شروط التطبيق**: ما يناسبه (أنظمة تجارية مبنية على مكونات) وما لا يناسبه (تقنية جديدة · مخاطر عالية) |
+
+**الخلاصة البصرية:** RAD **ما يقصّر المراحل** — يخلّيها **متوازية**، ويقفل كل واحدة بصندوق زمني. والثمن: **الحجم** و**المخاطر التقنية**.
 
 ---
 
@@ -161,7 +207,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 > 3. Reduced development cost.
 > 4. Reduced development time.
 
-**AR.** التفسير بالعربي:
 
 أربع ميزات **جميعها متعلقة بالوقت والكلفة** — لا يوجد ميزة تقنية (مثل "جودة أعلى" أو "صيانة أسهل"). هذا يؤكد طبيعة RAD: **أداة إدارية/اقتصادية**، لا أداة هندسية.
 
@@ -183,7 +228,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 > For large, but scalable projects, RAD requires sufficient human resources to create the right number of RAD teams.
 
-**AR.** التفسير بالعربي:
 
 **عيوب Mall الثلاثة = عكس شروط التطبيق:**
 
@@ -203,7 +247,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 > The main difference between the incremental model and the RAD model is that in the incremental model the SRS document is prepared in the requirements analysis and specification phase, whereas in the RAD model the requirements are specified in a much less formal manner... The requirements are collected using the automated tools.
 
-**AR.** التفسير بالعربي:
 
 **هذا الفرق هو جوهر المقارنة:**
 
@@ -222,7 +265,6 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 > The incremental model is suitable when the requirements are well understood and the project is large. The RAD model is suitable when the requirements are well understood and the project is small or medium sized.
 
-**AR.** التفسير بالعربي:
 
 **النقطة المشتركة:** الاثنان يتطلبان **مطلوبات مفهومة جيداً** (well understood requirements). يعني **لا RAD ولا Incremental يناسبان المطلوبات الغامضة** — هذي شغل Prototyping أو Spiral.
 
@@ -236,7 +278,7 @@ This is the **defining constraint** of RAD: time is the independent variable, an
 
 ## 7. Source Coverage Note — Why Sommerville and Pressman Are Silent
 
-**[THIN]** — Sommerville 9th Ed. **لا يعامل RAD كنموذج حياة مستقل** في فصل "Software Processes". ذكر "rapid application development" مرتين فقط:
+**ملاحظة تغطية:** Sommerville 9th Ed. **لا يعامل RAD كنموذج حياة مستقل** في فصل "Software Processes". ذكر "rapid application development" مرتين فقط:
 - ص398: عبارة عابرة في سياق عملي
 - ص760: على الأرجح في الفهرس
 
@@ -266,13 +308,13 @@ Pressman أيضاً يذكر RAD عابراً (ص60، ص76) بلا تفصيل.
 - **Team co-location requirement:** restricts distributed teams
 - **Customer dependency:** fails if customer is not actively available
 
-### 8.3 The Door to File 06
+### 8.3 The door to the next unit
 
-RAD repairs **four** of the five waterfall shortcomings but **introduces a new constraint: it cannot handle risk**. The model that handles risk is **Spiral** — File 06.
+RAD repairs **four** of the five waterfall shortcomings but **introduces a new constraint: it cannot handle risk**. The model that handles risk is **Spiral** — and that is the next unit.
 
 ---
 
-## 9. Retrieval Set — 16 Items
+## 9. Retrieval set
 
 **[RS-05-01]** What is the **main objective** of the RAD model?
 > **Answer:** To build the software system in a short span of time. [Mall p. 100]
@@ -324,4 +366,6 @@ RAD repairs **four** of the five waterfall shortcomings but **introduces a new c
 
 ---
 
-**End of File 05.**
+---
+
+*Master Studio · Advanced Software Engineering (CS504) · University of Wasit*

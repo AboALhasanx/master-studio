@@ -1,9 +1,8 @@
 ---
-title: "ASE Week 02 — File 03 of 10: Prototyping and the Evolutionary Model"
+title: "ASE Week 02 — Unit 03: Prototyping and the Evolutionary Model"
 subtitle: "Learning the requirements by building something — and the model that lets the requirements themselves evolve"
 subject: "04_Advanced_Software_Eng"
 week: 2
-file: "03 of 10"
 sources:
   - "Mall, Fundamentals of Software Engineering, 4th ed., pp.91–99"
   - "Sommerville, Software Engineering, 9th ed., pp.60–65"
@@ -11,33 +10,33 @@ type: "study compendium — source-derived, not an abbreviation"
 created: "2026-09-23"
 ---
 
-# File 03 of 10 — Prototyping and the Evolutionary Model
+# Unit 03 — Prototyping and the Evolutionary Model
 
 > **Sources.** Mall, *Fundamentals of Software Engineering* 4th ed., pp.91–99. Sommerville, *Software Engineering* 9th ed., pp.60–65.
 > **Page numbers are PDF page numbers**, not printed page numbers.
-> **Method.** Every definition is quoted verbatim before it is explained; every claim carries a page anchor; `[THIN]` marks where this document is thinner than the source.
+> **Method.** Every definition is quoted verbatim from the source before it is explained, and every claim carries a page anchor. Where a concept rests on a single source, or where a phase is summarised rather than reproduced in full, the coverage note says so explicitly.
 
 ---
 
 ## Where this sits
 
-**Previous file:** File 02 ended with the waterfall family's central weakness — it assumes the requirements can be *"completely and correctly defined at the beginning"* (Mall p.82), and File 01 established that requirements begin **vague**. So the family fails on its own assumption, not on its execution.
+**Previous unit:** Unit 02 ended with the waterfall family's central weakness — it assumes the requirements can be *"completely and correctly defined at the beginning"* (Mall p.82), and Unit 01 established that requirements begin **vague**. So the family fails on its own assumption, not on its execution.
 
 **The problem this file opens with:** *if we cannot write the requirements down correctly up front, what if we build something in order to discover them?*
 
-**The question it hands to File 04:** a prototype teaches us the requirements — **but the prototype is thrown away**. What if instead we delivered the *real* thing, in pieces, so each piece taught us something? That is incremental development.
+**The question it hands to Unit 04:** a prototype teaches us the requirements — **but the prototype is thrown away**. What if instead we delivered the *real* thing, in pieces, so each piece taught us something? That is incremental development.
 
 ---
 
 ## 1. The framework — two ways to survive change
 
-**EN.** Before either model, Sommerville supplies the lens that organises the whole series. It is worth having first, because it explains *why* prototyping exists rather than just *what* it is.
+Before either model, Sommerville supplies the lens that organises the whole series. It is worth having first, because it explains *why* prototyping exists rather than just *what* it is.
 
 > **Verbatim (Sommerville p.60):** *"**Change is inevitable in all large software projects.** The system requirements change as the business procuring the system responds to external pressures and management priorities change. As new technologies become available, new design and implementation possibilities emerge. Therefore **whatever software process model is used, it is essential that it can accommodate changes** to the software being developed."*
 
 > **Verbatim (Sommerville p.61):** *"Change adds to the costs of software development because it usually means that work that has been completed has to be redone. **This is called rework.**"*
 
-**AR.** **التغيير حتمي بكل مشروع كبير** — المطلوبات تتغيّر لما تستجيب المؤسسة لضغوط خارجية، وتتغيّر أولويات الإدارة، وتظهر تقنيات جديدة. فـ**أي نموذج تُستخدم، لازم يكون قادر على استيعاب التغيير**.
+**التغيير حتمي بكل مشروع كبير** — المطلوبات تتغيّر لما تستجيب المؤسسة لضغوط خارجية، وتتغيّر أولويات الإدارة، وتظهر تقنيات جديدة. فـ**أي نموذج تُستخدم، لازم يكون قادر على استيعاب التغيير**.
 
 **والتغيير يكلّف** لأنه يعني إعادة عمل شغل منجز. وهذا اسمه **rework**.
 
@@ -47,7 +46,7 @@ created: "2026-09-23"
 > 1. ***Change avoidance**, where the software process includes activities that can **anticipate possible changes before significant rework is required**. For example, a prototype system may be developed to show some key features of the system to customers. They can **experiment with the prototype and refine their requirements before committing to high software production costs**.*
 > 2. ***Change tolerance**, where the process is designed so that **changes can be accommodated at relatively low cost**. This normally involves some form of **incremental development**. Proposed changes may be implemented **in increments that have not yet been developed**. If this is impossible, then **only a single increment** (a small part of the system) may have to be altered to incorporate the change.*"*
 
-**AR.** **طريقتان لتقليل كلفة إعادة العمل:**
+**طريقتان لتقليل كلفة إعادة العمل:**
 
 | الطريقة | الفكرة | المثال |
 |:---|:---|:---|
@@ -81,7 +80,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.91):** *"A prototype is a **toy and crude implementation of a system**. It has **limited functional capabilities, low reliability, or inefficient performance** as compared to the actual software."*
 
-**AR.** **نموذج Prototyping** — وصفه Mall بأنه **امتداد للـWaterfall**. الفكرة: **بناء نموذج عامل للنظام قبل تطوير البرنامج الفعلي**.
+**نموذج Prototyping** — وصفه Mall بأنه **امتداد للـWaterfall**. الفكرة: **بناء نموذج عامل للنظام قبل تطوير البرنامج الفعلي**.
 
 **وتعريف النموذج الأولي دقيق وقاسٍ:** **تطبيق لعبة وخام (toy and crude)** — إمكانيات وظيفية **محدودة**، موثوقية **واطية**، وأداء **غير كفؤ** بالمقارنة بالبرنامج الفعلي.
 
@@ -93,7 +92,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.91):** *"Normally the term **rapid prototyping** is used when software tools are used for prototype construction. For example, tools based on **fourth generation languages (4GL)** may be used to construct the prototype for the GUI parts."*
 
-**AR.** **كيف يُبنى بسرعة؟ بالاختصارات (shortcuts).** والاختصارات تعني دوال **غير كفؤة، غير دقيقة، أو وهمية (dummy)**.
+**كيف يُبنى بسرعة؟ بالاختصارات (shortcuts).** والاختصارات تعني دوال **غير كفؤة، غير دقيقة، أو وهمية (dummy)**.
 
 **المثال:** دالة تنتج النتيجة المطلوبة عن طريق **جدول بحث (table look-up)** بدل تنفيذ الحسابات الفعلية.
 
@@ -103,7 +102,7 @@ created: "2026-09-23"
 
 ### 2.3 When prototyping is the right choice — three cases
 
-**EN.** Mall is specific: prototyping is **not** for everything. He names the project types where it wins.
+Mall is specific: prototyping is **not** for everything. He names the project types where it wins.
 
 **Case one — the graphical user interface:**
 
@@ -113,7 +112,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.92):** *"**The GUI part of a software system is almost always developed using the prototyping model.**"*
 
-**AR.** **الحالة الأولى — واجهة المستخدم الرسومية (GUI).** النموذج يسهّل **توضيح** صيغ الإدخال، والرسائل، والتقارير، والحوارات التفاعلية للعميل. وهي **آلية قيّمة لفهم احتياجات العميل**.
+**الحالة الأولى — واجهة المستخدم الرسومية (GUI).** النموذج يسهّل **توضيح** صيغ الإدخال، والرسائل، والتقارير، والحوارات التفاعلية للعميل. وهي **آلية قيّمة لفهم احتياجات العميل**.
 
 **والجملة اللي تنحفظ:** *«أسهل على المستخدم يكوّن رأياً بالتجربة مع واجهة عاملة، بدل ما يتخيّل واجهة افتراضية»*. ← **فرق التجربة عن التخيّل** هو جوهر فايدة النموذج.
 
@@ -129,7 +128,7 @@ Mall's own worked example:
 
 > **Verbatim (Mall p.92):** *"Often, major design decisions depend on issues such as the **response time of a hardware controller**, or the **efficiency of a sorting algorithm**, etc. In such circumstances, a prototype is often the **best way to resolve the technical issues**."*
 
-**AR.** **الحالة الثانية — الحلول التقنية غير واضحة.** والنموذج يساعد على **فحص المسائل التقنية نقدياً**.
+**الحالة الثانية — الحلول التقنية غير واضحة.** والنموذج يساعد على **فحص المسائل التقنية نقدياً**.
 
 **مثال Mall:** الفريق لازم يكتب **مفسّر لغة أوامر**، و**ما أحد منهم كتب مترجماً (compiler) قبل**. هذا **نقص خبرة بتقنية مطلوبة = خطر تقني**. والحل: **بناء نموذج مترجم للغة صغيرة جداً** لفهم المسائل، وبعدها ينقلون المعرفة للمترجم الفعلي.
 
@@ -139,7 +138,7 @@ Mall's own worked example:
 
 > **Verbatim (Mall p.92):** *"An important reason for developing a prototype is that it is **impossible to 'get it right' the first time**. As advocated by **Brooks [1975]**, one must **plan to throw away the software** in order to develop a good software later. Thus, the prototyping model can be deployed when development of **highly optimised and efficient software** is required."*
 
-**AR.** **الحالة الثالثة — مبدأ Brooks [1975]:** *«مستحيل تجيبها صح من أول مرة»*، و**لازم تخطّط إنك ترمي البرنامج** حتى تطوّر برنامجاً جيداً لاحقاً.
+**الحالة الثالثة — مبدأ Brooks [1975]:** *«مستحيل تجيبها صح من أول مرة»*، و**لازم تخطّط إنك ترمي البرنامج** حتى تطوّر برنامجاً جيداً لاحقاً.
 
 **وهذي هي الجملة الفلسفية للملف:** **الرمي جزء من الخطة، مو فشل**.
 
@@ -147,7 +146,7 @@ Mall's own worked example:
 
 > **Verbatim:** *"The prototyping model is considered to be useful for the development of **not only the GUI parts** of a software, but also for a software project **for which certain technical issues are not clear** to the development team."*
 
-**AR.** النموذج مفيد **لجزء الـGUI**، **و**لمشروع **فيه مسائل تقنية غير واضحة للفريق**. **حالتان — احفظهن.**
+النموذج مفيد **لجزء الـGUI**، **و**لمشروع **فيه مسائل تقنية غير واضحة للفريق**. **حالتان — احفظهن.**
 
 ### 2.4 The life cycle — two major activities
 
@@ -161,7 +160,7 @@ Mall's own worked example:
 
 > **Verbatim (Mall p.93):** *"Once the customer approves the prototype, the actual software is developed using the **iterative waterfall approach**. In spite of the availability of a working prototype, **the SRS document is usually needed to be developed** since the SRS document is invaluable for carrying out **traceability analysis, verification, and test case design** during later phases. However, **for GUI parts, the requirements analysis and specification phase becomes redundant since the working prototype that has been approved by the customer serves as an animated requirements specification**."*
 
-**AR.** **نشاطان رئيسيان:**
+**نشاطان رئيسيان:**
 
 **1. بناء النموذج** — يبلش بـ**جمع مطلوبات أولي**، ثم **تصميم سريع**، ثم بناء النموذج، ثم **تقديمه للعميل للتقييم**. وبناءً على التغذية الراجعة **تُصفَّى المطلوبات ويُعدَّل النموذج**. وهذه الدورة **تستمر لحد ما يوافق العميل على النموذج**.
 
@@ -182,7 +181,7 @@ Mall's own worked example:
 
 > **Verbatim (Mall p.93):** *"**The code for the prototype is usually thrown away.** However, **the experience gathered from developing the prototype helps a great deal in developing the actual system.**"*
 
-**AR.** **كود النموذج يُرمى عادةً** — بس **الخبرة المستفادة منه تساعد كثيراً في تطوير النظام الفعلي**.
+**كود النموذج يُرمى عادةً** — بس **الخبرة المستفادة منه تساعد كثيراً في تطوير النظام الفعلي**.
 
 **فالمكسب مو الكود — المكسب المعرفة.** وهذا بالضبط منطق Brooks: **ارمِ حتى تبني أحسن**.
 
@@ -196,7 +195,7 @@ Mall's own worked example:
 
 > **Verbatim (Sommerville p.62):** *"A **prototype is an initial version of a software system** that is used to **demonstrate concepts, try out design options, and find out more about the problem and its possible solutions**. **Rapid, iterative development of the prototype is essential** so that costs are controlled and system stakeholders can experiment with the prototype early in the software process."*
 
-**AR.** تعريف Sommerville: النموذج **نسخة أولية من نظام برمجي** تُستخدم لـ:
+تعريف Sommerville: النموذج **نسخة أولية من نظام برمجي** تُستخدم لـ:
 1. **عرض المفاهيم** (demonstrate concepts)
 2. **تجربة خيارات التصميم** (try out design options)
 3. **معرفة المزيد عن المشكلة وحلولها الممكنة**
@@ -217,7 +216,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Sommerville p.62):** *"A function described in a specification may seem useful and well defined. **However, when that function is combined with other functions, users often find that their initial view was incorrect or incomplete.** The system specification may then be modified to reflect their changed understanding of the requirements."*
 
-**AR.** **استعمالان:**
+**استعمالان:**
 
 | # | المرحلة | الفايدة |
 |:---:|:---|:---|
@@ -228,7 +227,7 @@ And the mechanism — why experimenting beats specifying:
 
 > *«دالة موصوفة بالمواصفة ممكن تبان مفيدة ومعرّفة زين. **بس لما تُدمج مع دوال ثانية، المستخدمون يكتشفون إن رأيهم الأول كان خاطئاً أو ناقصاً**.»*
 
-**AR.** **هذي هي الحجّة النظرية للنموذج الأولي:** المشكلة **مو بالدالة وحدها** — المشكلة **بالتفاعل بين الدوال**. والتفاعل **ما ينكشف بالمستند، ينكشف بالتشغيل**. ولهذا **التجربة تتقدّم على الوصف**.
+**هذي هي الحجّة النظرية للنموذج الأولي:** المشكلة **مو بالدالة وحدها** — المشكلة **بالتفاعل بين الدوال**. والتفاعل **ما ينكشف بالمستند، ينكشف بالتشغيل**. ولهذا **التجربة تتقدّم على الوصف**.
 
 **وهذا يفسّر كلام Mall عن «الواجهة المتحركة»:** النموذج **يُظهر التفاعل**، والمستند **يوصف الدوال منفصلة**.
 
@@ -238,7 +237,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Sommerville p.63):** *"Developers are sometimes pressured by managers to deliver **throwaway prototypes**, particularly when there are delays in delivering the final version of the software."*
 
-**AR.** **المشكلة العامة — وتستاهل تنحفظ:** *«النموذج ممكن ما يُستخدم بنفس الطريقة اللي يُستخدم بيها النظام النهائي»*. والأسباب:
+**المشكلة العامة — وتستاهل تنحفظ:** *«النموذج ممكن ما يُستخدم بنفس الطريقة اللي يُستخدم بيها النظام النهائي»*. والأسباب:
 - **المختبِر مو نموذجي** (مو من مستخدمي النظام الفعليين)،
 - **وقت التدريب غير كافٍ**،
 - **لو النموذج بطيء**، المقيّمون **يعدّلون طريقة عملهم ويتجنبون الميزات البطيئة** — وبعدين **يستخدمون النظام النهائي بطريقة مختلفة** لما يصير أسرع.
@@ -249,17 +248,17 @@ And the mechanism — why experimenting beats specifying:
 
 **نقطة خطرة عملية:** النموذج المُرمى **يُسلَّم للعميل** لما تتأخر النسخة النهائية — وهذا **فخ إداري** يعرفه Sommerville ويحذّر منه.
 
-`[THIN]` — Sommerville يفصّل أكثر في **النماذج التطويرية مقابل المُرمية** (evolutionary vs throwaway prototyping) في صفحات 61–64. هذا الملف يذكر الفرق لأنه يربط بالملف التالي، لكن **التفصيل الكامل عند المصدر**.
+**ملاحظة تغطية:** Sommerville يفصّل أكثر في **النماذج التطويرية مقابل المُرمية** (evolutionary vs throwaway prototyping) في صفحات 61–64. هذا الملف يذكر الفرق لأنه يربط بالملف التالي، لكن **التفصيل الكامل عند المصدر**.
 
 ### 3.4 Strengths and weaknesses — Mall's summary
 
-**EN.** Mall closes his prototyping section with a balance sheet, and it contains the cost argument that justifies building something you will throw away.
+Mall closes his prototyping section with a balance sheet, and it contains the cost argument that justifies building something you will throw away.
 
 > **Verbatim (Mall p.94):** *"Even though the construction of a throwaway prototype might involve incurring **additional cost**, for systems with **unclear customer requirements** and for systems with **unresolved technical issues**, the overall development cost usually turns out to be **lower** compared to an equivalent system developed using the iterative waterfall model."*
 
 > **Verbatim (Mall p.94):** *"By constructing the prototype and submitting it for user evaluation, **many customer requirements get properly defined and technical issues get resolved** by experimenting with the prototype. This **minimises later change requests from the customer and the associated redesign costs**."*
 
-**AR.** **الحجّة الاقتصادية:** مع إن بناء نموذج مُرمى **يضيف كلفة**، إلا إنه **لأنظمة مطلوباتها غير واضحة أو فيها مسائل تقنية غير محلولة**، **الكلفة الإجمالية تطلع أقل** من نظام مكافئ يُبنى بالـiterative waterfall.
+**الحجّة الاقتصادية:** مع إن بناء نموذج مُرمى **يضيف كلفة**، إلا إنه **لأنظمة مطلوباتها غير واضحة أو فيها مسائل تقنية غير محلولة**، **الكلفة الإجمالية تطلع أقل** من نظام مكافئ يُبنى بالـiterative waterfall.
 
 **والسبب:** بناء النموذج وتقديمه للعميل **يعرّف مطلوبات كثيرة بشكل صحيح ويحلّ مسائل تقنية** → وهذا **يقلّل طلبات التغيير اللاحقة وكلفة إعادة التصميم المرتبطة بيها**.
 
@@ -273,7 +272,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Mall p.95):** *"The prototype model can **increase the cost of development** for projects that are **routine development work and do not suffer from any significant risks**. Even when a project is susceptible to risks, the prototyping model is effective **only for those projects for which the risks can be identified upfront before the development starts**. Since the prototype is constructed only at the start of the project, the prototyping model is **ineffective for risks identified later during the development cycle**. The prototyping model would not be appropriate for projects for which the risks can only be identified after the development is underway."*
 
-**AR.** **القوة:** النموذج **الأنسب للمشاريع اللي تعاني من مخاطر تقنية ومخاطر مطلوبات**.
+**القوة:** النموذج **الأنسب للمشاريع اللي تعاني من مخاطر تقنية ومخاطر مطلوبات**.
 
 **والضعف — وهذي دقيقة وتستاهل الانتباه، ثلاث حالات:**
 
@@ -299,17 +298,17 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Mall p.98):** *"Though the evolutionary model can also be viewed as an extension of the waterfall model, but it **incorporates a major paradigm shift** that has been widely adopted in many recent life cycle models."*
 
-**AR.** النموذج التطوري **يشترك بخصائص كثيرة مع التزايدي**: البرنامج يُبنى على **عدة زيادات**، وكل زيادة **تُنفَّذ وتُنشَر بموقع العميل**، والبرنامج **يُصفَّى ويُثرى بالميزات** لحد ما يكتمل.
+النموذج التطوري **يشترك بخصائص كثيرة مع التزايدي**: البرنامج يُبنى على **عدة زيادات**، وكل زيادة **تُنفَّذ وتُنشَر بموقع العميل**، والبرنامج **يُصفَّى ويُثرى بالميزات** لحد ما يكتمل.
 
 **والتصنيف:** يُعتبر **امتداداً للـWaterfall**، **بس فيه تحوّل جذري بالمنهج (major paradigm shift)** — وهذا التحوّل معتمَد بنماذج حديثة كثيرة.
 
 ### 4.2 The distinction from incremental — the sentence to memorise
 
-**EN.** This is the core of the file. Mall draws the line explicitly.
+This is the core of the file. Mall draws the line explicitly.
 
 > **Verbatim (Mall p.98):** *"The principal idea behind the evolutionary life cycle model is conveyed by its name. **In the incremental development model, complete requirements are first developed and the SRS document prepared. In contrast, in the evolutionary model, the requirements, plan, estimates, and solution evolve over the iterations, rather than fully defined and frozen in a major up-front specification effort before the development iterations begin.** Such evolution is consistent with the pattern of **unpredictable feature discovery and feature changes** that take place in new product development."*
 
-**AR.** **هذا أهم فرق بالملف — احفظه حرفياً:**
+**هذا أهم فرق بالملف — احفظه حرفياً:**
 
 | | **Incremental** | **Evolutionary** |
 |:---|:---|:---|
@@ -329,7 +328,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Mall p.98):** *"Due to obvious reasons, the evolutionary software development process is sometimes referred to as **design a little, build a little, test a little, deploy a little model**. This means that **after the requirements have been specified, the design, build, test, and deployment activities are iterated**."*
 
-**AR.** النموذج التطوري يُسمّى أحياناً: **«صمّم شوية، ابنِ شوية، اختبر شوية، انشر شوية»**.
+النموذج التطوري يُسمّى أحياناً: **«صمّم شوية، ابنِ شوية، اختبر شوية، انشر شوية»**.
 
 **ومعناه:** بعد توصيف المطلوبات، **أنشطة التصميم والبناء والاختبار والنشر تُكرَّر**.
 
@@ -341,7 +340,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Mall p.98):** *"**Easy handling change requests:** In this model, handling change requests is easier as **no long term plans are made**. Consequently, **reworks required due to change requests are normally much smaller** compared to the sequential models."*
 
-**AR.** **ميزتان أساسيتان:**
+**ميزتان أساسيتان:**
 
 **1. استخلاص فعّال لمطلوبات العميل الحقيقية** — المستخدم **يجرّب برنامجاً نصف مطوَّر قبل** ما تُطوَّر المطلوبات الكاملة. فالنموذج **يساعد على استخلاص المطلوبات بدقة** بالتغذية الراجعة من النسخ المختلفة. **والنتيجة:** **طلبات التغيير بعد التسليم الكامل تقلّ بشكل كبير**.
 
@@ -355,7 +354,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim (Mall p.99):** *"**Ad hoc design:** Since at a time design for only the current increment is done, the design can become **ad hoc without specific attention being paid to maintainability and optimality**. Obviously, **for moderate sized problems and for those for which the customer requirements are clear, the iterative waterfall model can yield a better solution**."*
 
-**AR.** **عيبان أساسيان:**
+**عيبان أساسيان:**
 
 **1. تقسيم الميزات لأجزاء تزايدية قد يكون صعباً** — خصوصاً **للمشاريع الصغيرة**. وحتى للمشاكل الكبيرة، **الميزات متشابكة ومتعمدة على بعضها** لدرجة إن **حتى الخبير يحتاج جهداً كبيراً** لخطّة التسليمات التزايدية.
 
@@ -367,11 +366,29 @@ And the mechanism — why experimenting beats specifying:
 
 ---
 
+## 4.6 The two models side by side
+
+![Prototyping versus the evolutionary model: one throws the build away, the other ships it|720](../06_Diagrams_&_Mindmaps/prototyping_vs_evolutionary.png)
+
+**كيف تقرأ الرسم — الفرق كله بسهم واحد:**
+
+| العنصر في الرسم | معناه الهندسي |
+|:---|:---|
+| **حلقة `REFINE & REBUILD` البنفسجية** (يسار) | دورة تعلّم: تُبنى، تُقيَّم، تُنقّح، وتُعاد. الهدف **المعرفة**، مو التسليم |
+| **الصندوق الأحمر المتقطّع `Prototype DISCARDED ✗`** | **الكود يُرمى.** الناجي هو **المواصفة المنقّحة**، مو البرنامج |
+| **حلقة `EVOLVE → VERSION N+1` السماوية** (يمين) | كل نسخة **تُسلَّم وتشتغل بموقع العميل**، والتغذية الراجعة تبني النسخة الجاية |
+| **صندوق `Version 1 → 2 → 3`** | **ماكو رمي إطلاقاً** — المنتج نفسه هو اللي ينضج |
+| **الشريط السفلي (استعمالان + فخ)** | الاستعمالان المشروعان: استنباط المطلوبات · استكشاف التصميم. والفخ: المستخدم يتعلّق بالنموذج فيُسلَّم بكل اختصاراته |
+
+**الجملة الواحدة للامتحان:** الاثنان **يتعلّمان بالبناء**؛ الاختلاف **مصير البناء** — يُرمى (prototyping) أو يُسلَّم (evolutionary).
+
+---
+
 ## 5. The distinctions — three models, one table
 
-**EN.** This is the comparison an exam is most likely to ask for, and Mall sets it up himself in his exercise set (Q52: *"Identify the major differences between the iterative and evolutionary SDLCs"*).
+This is the comparison an exam is most likely to ask for, and Mall sets it up himself in his exercise set (Q52: *"Identify the major differences between the iterative and evolutionary SDLCs"*).
 
-| | **Iterative waterfall** (File 02) | **Incremental** (File 04) | **Evolutionary** (this file) |
+| | **Iterative waterfall** (Unit 02) | **Incremental** (Unit 04) | **Evolutionary** (this file) |
 |:---|:---|:---|:---|
 | **Requirements up front?** | **Yes** — full, before development | **Yes** — complete, then split into versions | **No** — they evolve |
 | **SRS document?** | Yes, before development | **Yes** — *"complete requirements are first developed and the SRS document prepared"* | **No** — emerges over iterations |
@@ -381,7 +398,7 @@ And the mechanism — why experimenting beats specifying:
 | **Main risk** | Errors caught late | Feature division may be hard | **Ad hoc design**; feature division may be hard |
 | **Best when** | Requirements are **clear** | Requirements are clear and the system can be **partitioned** | Requirements are **unclear or unpredictable** |
 
-**AR.** **الفرق الجوهري بجملة واحدة:**
+**الفرق الجوهري بجملة واحدة:**
 
 > **التكراري والتزايدي يجمّدان المطلوبات أولاً — والتطوري لا.**
 
@@ -389,7 +406,7 @@ And the mechanism — why experimenting beats specifying:
 
 > **Verbatim:** *"This distinction between development and maintenance is increasingly irrelevant. Hardly any software systems are completely new systems and it makes much more sense to see development and maintenance as a **continuum**. Rather than two separate processes, it is more realistic to think of software engineering as an **evolutionary process** where software is **continually changed over its lifetime in response to changing requirements and customer needs**."*
 
-**AR.** Sommerville يگول شي جذري: **التمييز بين التطوير والصيانة صار غير ذي صلة**. ما تكاد توجد أنظمة جديدة تماماً، والأصحّ نرى **التطوير والصيانة كاستمرارية (continuum)** — ونفكّر بهندسة البرمجيات كـ**عملية تطورية**، البرنامج فيها **يتغيّر باستمرار على مدى عمره**.
+Sommerville يگول شي جذري: **التمييز بين التطوير والصيانة صار غير ذي صلة**. ما تكاد توجد أنظمة جديدة تماماً، والأصحّ نرى **التطوير والصيانة كاستمرارية (continuum)** — ونفكّر بهندسة البرمجيات كـ**عملية تطورية**، البرنامج فيها **يتغيّر باستمرار على مدى عمره**.
 
 **ليش هذه جملة مهمة؟** لأنها **تبرّر النموذج التطوري نظرياً**: لو التطوير والصيانة **استمرارية**، فالنموذج اللي يفصلهما (كل التسلسلية) **مبني على تصنيف خاطئ**.
 
@@ -397,7 +414,7 @@ And the mechanism — why experimenting beats specifying:
 
 ## 6. A structural insight from Sommerville worth keeping
 
-**EN.** Sommerville adds a point that connects this file to the next. Incremental delivery does not suit every system — and he names which.
+Sommerville adds a point that connects this file to the next. Incremental delivery does not suit every system — and he names which.
 
 > **Verbatim (Sommerville p.65):** *"There are some types of system where incremental development and delivery is **not the best approach**. These are **very large systems** where development may involve teams working in different locations, some **embedded systems** where the software depends on hardware development and some **critical systems** where all the requirements must be analyzed to check for interactions that may compromise the safety or security of the system."*
 
@@ -405,7 +422,7 @@ And then the resolution — which is **prototyping**:
 
 > **Verbatim (Sommerville p.65):** *"These systems, of course, suffer from the same problems of uncertain and changing requirements. Therefore, to address these problems and get some of the benefits of incremental development, a process may be used in which **a system prototype is developed iteratively and used as a platform for experiments with the system requirements and design. With the experience gained from the prototype, definitive requirements can then be agreed**…"*
 
-**AR.** **أنواع أنظمة لا يناسبها التطوير والتسليم التزايدي:**
+**أنواع أنظمة لا يناسبها التطوير والتسليم التزايدي:**
 - **الأنظمة الضخمة جداً** (فرق بمواقع مختلفة)،
 - **الأنظمة المضمّنة** (البرنامج يعتمد على تطوير العتاد)،
 - **الأنظمة الحرجة** (لازم تحليل كل المطلوبات لفحص التفاعلات اللي تهدّد السلامة أو الأمن).
@@ -426,8 +443,8 @@ And then the resolution — which is **prototyping**:
 | **Sommerville pp.62–63** | **Primary for §3.** The prototype definition and its three uses, the two uses in the life cycle, the mechanism (a function seems fine alone but fails in combination), the general problem of the prototype not being used as the final system would be, and the managerial pressure to deliver throwaway prototypes. |
 | **Sommerville pp.60, 65** | §5 and §6 — the *"development and maintenance as a continuum"* argument, the systems where incremental delivery does not fit, and prototyping as the resolution. |
 | **Pressman / Agarwal** | **Add little here.** Pressman has 62 pages mentioning prototyping but at a lower level of precision; Agarwal covers it at introductory depth. Neither adds a distinction Mall and Sommerville do not already give. |
-| `[THIN]` | **The evolutionary-versus-throwaway prototype distinction is only touched here.** Sommerville develops it in pp.61–64. If the doctor asks which kind of prototype becomes the product, **go to the source**. |
-| `[THIN]` | **Mall's incremental model (§2.2.5, pp.95–97) is only referenced, not taught** — it belongs to File 04. The core/non-core feature distinction and the two incremental advantages are recorded there. |
+| **Coverage note** | **The evolutionary-versus-throwaway prototype distinction is only touched here.** Sommerville develops it in pp.61–64. If the doctor asks which kind of prototype becomes the product, **go to the source**. |
+| **Coverage note** | **Mall's incremental model (§2.2.5, pp.95–97) is only referenced, not taught** — it belongs to Unit 04. The core/non-core feature distinction and the two incremental advantages are recorded there. |
 | Note | Mall's *"no long term plans are made"* is said of **both** the incremental and the evolutionary models (pp.96, 98). Do not use it to distinguish them — use **what is frozen**, per §4.2. |
 
 ---
@@ -494,15 +511,14 @@ And then the resolution — which is **prototyping**:
 | **Sommerville p.61** | **Rework** defined · **change avoidance** vs **change tolerance** · which model supports which · the two approaches introduced |
 | **Sommerville p.62** | The **prototype definition** and its three purposes · the **two uses** in the life cycle · the mechanism — a function fine alone, wrong in combination |
 | **Sommerville p.63** | **The general problem** with prototyping and its three causes · **managerial pressure to deliver throwaway prototypes** |
-| **Sommerville p.64–65** | Incremental delivery in full (belongs to File 04) · the three problems · **the systems where it does not fit, and prototyping as the resolution** |
+| **Sommerville p.64–65** | Incremental delivery in full (belongs to Unit 04) · the three problems · **the systems where it does not fit, and prototyping as the resolution** |
 | **Mall p.91** | **§2.2.4 Prototyping** · the prototype as *"toy and crude"* · the shortcuts and table look-up · **4GL and rapid prototyping** · **the GUI case** |
 | **Mall p.92** | *"experimenting with a working user interface rather than imagining a hypothetical one"* · **the unclear-technical-solution case** with the compiler example · **Brooks [1975]** · the summary of when prototyping is useful |
 | **Mall p.93** | **The two major activities** · prototype development as a customer-feedback loop · the SRS still required · **"animated requirements specification"** for GUI · **the code is thrown away, the experience is not** |
-| **Mall pp.95–97** | The incremental model — belongs to File 04, but read here for the contrast |
+| **Mall pp.95–97** | The incremental model — belongs to Unit 04, but read here for the contrast |
 | **Mall p.97–98** | **§2.2.6 Evolutionary Model** · the shared features with incremental · **the explicit distinction (requirements frozen or not)** · the paradigm shift · the nickname |
 | **Mall p.98** | The two advantages of the evolutionary model · *"compared to the sequential models"* |
 | **Mall p.99** | The two disadvantages · **the recommendation to use iterative waterfall when requirements are clear** |
 
 ---
 
-*File 03 of 10. Built 2026-09-23 under `Week_02_BUILD_PLAN.md`. Every definition is quoted verbatim before it is explained; every claim carries a page anchor; `[THIN]` marks where this document is thinner than the source.*

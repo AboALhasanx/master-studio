@@ -1,9 +1,8 @@
 ---
-title: "ASE Week 02 — File 02 of 10: Build & Fix, and the Waterfall Family"
+title: "ASE Week 02 — Unit 02: Build & Fix and the Waterfall Family"
 subtitle: "The era before process, the first real process, its failure, and the two repairs"
 subject: "04_Advanced_Software_Eng"
 week: 2
-file: "02 of 10"
 sources:
   - "Mall, Fundamentals of Software Engineering, 4th ed., pp.28, 72–91"
   - "Sommerville, Software Engineering, 9th ed., pp.46–49"
@@ -11,21 +10,21 @@ type: "study compendium — source-derived, not an abbreviation"
 created: "2026-09-23"
 ---
 
-# File 02 of 10 — Build & Fix, and the Waterfall Family
+# Unit 02 — Build & Fix and the Waterfall Family
 
 > **Sources.** Mall, *Fundamentals of Software Engineering* 4th ed., pp.28 and 72–91. Sommerville, *Software Engineering* 9th ed., pp.46–49.
 > **Page numbers are PDF page numbers**, not printed page numbers.
-> **Method.** Every definition is quoted verbatim from the source before it is explained. Every claim carries a page anchor. `[THIN]` marks where this document is thinner than the source.
+> **Method.** Every definition is quoted verbatim from the source before it is explained, and every claim carries a page anchor. Where a concept rests on a single source, or where a phase is summarised rather than reproduced in full, the coverage note says so explicitly.
 
 ---
 
 ## Where this sits
 
-**Previous file:** File 01 established that a team needs a process — a *"precise understanding as to when to do what"* — and that the reason is coordination, not skill.
+**Previous unit:** Unit 01 established that a team needs a process — a *"precise understanding as to when to do what"* — and that the reason is coordination, not skill.
 
 **The problem this file opens with:** *what did people actually do before there was a process — and what did the first real process look like?*
 
-**The question it hands to File 03:** the waterfall family works, but **only when the requirements are stable** — and File 01 established that requirements begin vague and keep changing. So the next four models are all attempts to repair that one weakness. File 03 takes the first repair: **learn the requirements by building something.**
+**The question it hands to the next unit:** the waterfall family works, but **only when the requirements are stable** — and Unit 01 established that requirements begin vague and keep changing. So the next four models are all attempts to repair that one weakness. The next unit takes the first repair: **learn the requirements by building something.**
 
 ---
 
@@ -33,11 +32,11 @@ created: "2026-09-23"
 
 ### 1.1 The arc the term sits inside
 
-**EN.** Mall frames build-and-fix not as a model but as a **stage in the profession's history**. The section is titled *"Evolution—From an Art Form to an Engineering Discipline"*.
+Mall frames build-and-fix not as a model but as a **stage in the profession's history**. The section is titled *"Evolution—From an Art Form to an Engineering Discipline"*.
 
 > **Verbatim (Mall p.28):** *"Software engineering principles have evolved over the last sixty years with contributions from numerous researchers and software professionals. Over the years, it has emerged from a **pure art to a craft, and finally to an engineering discipline**."*
 
-**AR.** Mall ما يقدّم build-and-fix كنموذج — يقدّمه كـ**مرحلة بالتاريخ المهني**. عنوان القسم: *«التطوّر — من شكل فنّي إلى انضباط هندسي»*. وهندسة البرمجيات تطوّرت على مدى ستين سنة من **فنّ خالص**، إلى **حرفة**، وأخيراً إلى **انضباط هندسي**.
+Mall ما يقدّم build-and-fix كنموذج — يقدّمه كـ**مرحلة بالتاريخ المهني**. عنوان القسم: *«التطوّر — من شكل فنّي إلى انضباط هندسي»*. وهندسة البرمجيات تطوّرت على مدى ستين سنة من **فنّ خالص**، إلى **حرفة**، وأخيراً إلى **انضباط هندسي**.
 
 **ليش هذا مهم؟** لأنه يحدد **الموقع المنطقي** لـbuild-and-fix: هو **ما كان قبل الهندسة**، مو نموذج منافس. يعني ما ينقارن بـWaterfall كخيار — هو **الوضع الافتراضي اللي تنشأ منه الحاجة للعملية**.
 
@@ -45,7 +44,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.28):** *"The early programmers used an **ad hoc programming style**. This style of program development is now variously being referred to as **exploratory, build and fix, and code and fix** styles."*
 
-**AR.** ثلاث تسميات لنفس الأسلوب: **exploratory · build and fix · code and fix**. وكلها تعني **أسلوب برمجة عشوائي (ad hoc)**.
+ثلاث تسميات لنفس الأسلوب: **exploratory · build and fix · code and fix**. وكلها تعني **أسلوب برمجة عشوائي (ad hoc)**.
 
 **لللامتحان:** لو جاب السؤال اسم واحد منهن، اعرف إن الثلاثة مترادفة. وهذا نوع سؤال سهل يضيّع الطالب.
 
@@ -53,7 +52,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.28):** *"In a **build and fix** style, a program is quickly developed **without making any specification, plan, or design**. The different imperfections that are subsequently noticed are fixed."*
 
-**AR.** التعريف دقيق ومحدد: **يُطوَّر البرنامج بسرعة بلا مواصفة ولا خطة ولا تصميم**، وبعدين **تُصلَّح العيوب اللي تُلاحظ لاحقاً**.
+التعريف دقيق ومحدد: **يُطوَّر البرنامج بسرعة بلا مواصفة ولا خطة ولا تصميم**، وبعدين **تُصلَّح العيوب اللي تُلاحظ لاحقاً**.
 
 **لاحظ البنية:** ثلاث أشياء **معدومة** (specification · plan · design)، وشي واحد **موجود** (fixing بعد الملاحظة). يعني **البناء أول، والفهم بعدين**. وهذي **بالضبط** عكس ما تقوله الملفات الجاية.
 
@@ -61,7 +60,7 @@ created: "2026-09-23"
 
 > **Verbatim (Mall p.28):** *"The **exploratory** programming style is an **informal** style in the sense that there are **no set rules or recommendations** that a programmer has to adhere to — **every programmer himself evolves his own software development techniques** solely guided by his own **intuition, experience, whims, and fancies**."*
 
-**AR.** الـ**exploratory** أسلوب **غير رسمي**: ما فيه قواعد ولا توصيات ملزمة، و**كل مبرمج يطوّر تقنياته بنفسه**، موجّه فقط بـ**الحدس والخبرة والأهواء والخيالات**.
+الـ**exploratory** أسلوب **غير رسمي**: ما فيه قواعد ولا توصيات ملزمة، و**كل مبرمج يطوّر تقنياته بنفسه**، موجّه فقط بـ**الحدس والخبرة والأهواء والخيالات**.
 
 **انتبه لكلمة `whims and fancies`** (أهواء وخيالات) — Mall يختار كلمات **سلبية عن قصد**. هذا مو وصف محايد؛ هذا **حكم**.
 
@@ -73,7 +72,7 @@ And the historical honesty:
 
 > **Verbatim (Mall p.28):** *"the build and fix style was **widely adopted by the programmers in the early years of computing history**. We can consider the exploratory program development style as an **art** — since this style, as is the case with any art, is mostly guided by intuition. There are many stories about programmers in the past who were like **proficient artists** and could write good programs using an essentially build and fix model and some esoteric knowledge."*
 
-**AR.** الحكم من ثلاث جهات:
+الحكم من ثلاث جهات:
 
 | الجهة | الحكم |
 |:---|:---|
@@ -85,13 +84,13 @@ And the historical honesty:
 
 **ليش يهم هذا؟** لأنه يعني **الفنّ نجح مع الأفراد الموهوبين، وفشل مع الفرق** — وهذا **بالضبط** ما قاله الملف 01 بحجّة فشل الفريق. **الملفان يتفقان على نفس الاستنتاج من جهتين مختلفتين.**
 
-### 1.6 Why the model fails at scale — the link to File 01
+### 1.6 Why the model fails at scale — the link to Unit 01
 
-**EN.** Mall's own link back to the argument in File 01:
+Mall's own link back to the argument in Unit 01:
 
 > **Verbatim (Mall p.71):** *"While development of a software of the former type could succeed even while an individual programmer uses a **build and fix** style of development, use of a **suitable SDLC is essential** for a professional software development project involving team effort to succeed."*
 
-**AR.** **الربط المباشر بالملف 01:** build-and-fix **يكدر ينجح** مع **مبرمج فرد**، بس **ما ينجح** مع **فريق** على برنامج احترافي.
+**الربط المباشر بالوحدة 01:** build-and-fix **يكدر ينجح** مع **مبرمج فرد**، بس **ما ينجح** مع **فريق** على برنامج احترافي.
 
 **القاعدة اللي تطلع من الملفين معاً:**
 
@@ -104,13 +103,13 @@ And the historical honesty:
 
 ## 2. Phase entry and exit criteria — the concept that makes phases work
 
-**EN.** Before the waterfall itself, Mall establishes what makes a *phase* a phase. This is the machinery that all the models in the series depend on.
+Before the waterfall itself, Mall establishes what makes a *phase* a phase. This is the machinery that all the models in the series depend on.
 
 > **Verbatim (Mall p.73):** *"If the **entry and exit criteria** for various phases are not well-defined, then that would leave enough scope for **ambiguity** in starting and ending various phases, and cause lot of confusion among the developers. Sometimes they might **prematurely stop** the activities in a phase, and some other times they might **continue working on a phase much after** when the phase should have been over."*
 
 > **Verbatim (Mall p.73):** *"The decision regarding whether a phase is complete or not becomes **subjective** and it becomes difficult for the project manager to accurately tell how much has the development progressed. When the phase entry and exit criteria are not well-defined, the developers might close the activities of a phase **much before they are actually complete, giving a false impression of rapid progress**."*
 
-**AR.** **معايير الدخول والخروج (entry and exit criteria)** هي اللي تحدد **متى تبلش المرحلة ومتى تخلص**. بدونها:
+**معايير الدخول والخروج (entry and exit criteria)** هي اللي تحدد **متى تبلش المرحلة ومتى تخلص**. بدونها:
 
 - **غموض** بالبداية والنهاية،
 - الفريق **يوقف المرحلة بدري** أو **يستمر بيها بعد ما كان المفروض تخلص**،
@@ -121,7 +120,7 @@ And the historical honesty:
 
 > **Verbatim (Mall p.73):** *"This usually leads to a problem that is usually identified as the **99 per cent complete syndrome**. This syndrome appears when there the software project manager has no definite way of assessing the progress of a project, the **optimistic team members feel that their work is 99 per cent complete even when their work is far from completion** — making all projections made by the project manager about the project completion time to be **highly inaccurate**."*
 
-**AR.** **متلازمة الـ99% مكتمل.** تظهر لما مدير المشروع **ما عنده طريقة محددة** لتقييم التقدّم، فيحسّ **الأعضاء المتفائلون** إن شغلهم **99% مكتمل** وهو **بعيد جداً عن الاكتمال** — وكل تقديرات وقت الإنجاز تصير **غير دقيقة جداً**.
+**متلازمة الـ99% مكتمل.** تظهر لما مدير المشروع **ما عنده طريقة محددة** لتقييم التقدّم، فيحسّ **الأعضاء المتفائلون** إن شغلهم **99% مكتمل** وهو **بعيد جداً عن الاكتمال** — وكل تقديرات وقت الإنجاز تصير **غير دقيقة جداً**.
 
 **ليش هذا مفهوم قوي؟** لأنه يشرح **فشل مشاريع مو بسبب الكود، بل بسبب القياس**. ولو تذكره بسيناريو امتحاني، فهذا **مصطلح مميّز** يدل على فهم عميق.
 
@@ -143,7 +142,7 @@ And the justification for studying something unusable:
 
 > **Verbatim (Mall p.74):** *"Therefore, it makes sense to first understand the classical waterfall model, in order to be able to develop a proper understanding of other life cycle models. Besides, we shall see later in this text that this model **though not used for software development; is implicitly used while documenting software**."*
 
-**AR.** **أهم فكرة بهذا الملف كله:**
+**أهم فكرة بهذا الملف كله:**
 
 > **Waterfall ليس نموذجاً منافساً — هو النموذج الأمّ اللي تنبثق منه كل النماذج الثانية.**
 
@@ -157,7 +156,7 @@ Mall يقولها صراحة: **كل نماذج دورة الحياة الثان
 
 > **Verbatim (Mall p.74):** *"It can be easily observed from this figure that the diagrammatic representation of the classical waterfall model **resembles a multi-level waterfall**. This resemblance justifies the name of the model."*
 
-**AR.** الاسم **من الشكل**: التمثيل البياني **يشبه شلالاً متعدد المستويات**. يعني الاسم **وصفي بصري**، مو اسم مؤلف ولا اختصار. (ونفس الشي راح نشوفه بـV-model.)
+الاسم **من الشكل**: التمثيل البياني **يشبه شلالاً متعدد المستويات**. يعني الاسم **وصفي بصري**، مو اسم مؤلف ولا اختصار. (ونفس الشي راح نشوفه بـV-model.)
 
 ### 3.3 The six phases
 
@@ -167,7 +166,7 @@ Mall يقولها صراحة: **كل نماذج دورة الحياة الثان
 
 > **Verbatim (Mall p.74):** *"After the delivery of software, customers start to use the software signalling the commencement of the **operation phase**… Therefore, the last phase is also known as the **maintenance phase** of the life cycle."*
 
-**AR.** **الست مراحل بالترتيب:**
+**الست مراحل بالترتيب:**
 
 | # | المرحلة | التصنيف |
 |:---:|:---|:---|
@@ -182,7 +181,7 @@ Mall يقولها صراحة: **كل نماذج دورة الحياة الثان
 
 **تنبيه Mall:** *"some of the text books have different number and names of the phases"* (p.75).
 
-**AR.** **احفظ هذا التنبيه.** كتب ثانية تستخدم **أرقاماً وأسماء مختلفة** للمراحل. فلو شفت نموذج بخمس مراحل أو بسبع، **مو تناقض** — اختلاف تقطيع. ولو سألك الدكتور بأسماء Mall، جاوب بأسماء Mall.
+**احفظ هذا التنبيه.** كتب ثانية تستخدم **أرقاماً وأسماء مختلفة** للمراحل. فلو شفت نموذج بخمس مراحل أو بسبع، **مو تناقض** — اختلاف تقطيع. ولو سألك الدكتور بأسماء Mall، جاوب بأسماء Mall.
 
 **ومقارنة مع Sommerville:** عنده **خمس** مراحل: *requirements analysis and definition · system and software design · implementation and unit testing · integration and system testing · operation and maintenance* (Sommerville p.48). **الفرق الأساسي: Sommerville ما عنده feasibility study كمرحلة.** وهذي نقطة مهمة لو سألك «شنو المرحلة الأولى؟» — الجواب يعتمد على المصدر.
 
@@ -190,7 +189,7 @@ Mall يقولها صراحة: **كل نماذج دورة الحياة الثان
 
 > **Verbatim (Mall p.75):** *"An activity that spans all phases of software development is **project management**. Since it spans the entire project duration, **no specific phase is named after it**. Project management, nevertheless, is an important activity in the life cycle and deals with managing the software development and maintenance activities."*
 
-**AR.** **إدارة المشروع نشاط يمرّ على كل المراحل** — ولهذا **ما سمّوا مرحلة باسمه**. لكنه **نشاط مهم** يدير أنشطة التطوير والصيانة.
+**إدارة المشروع نشاط يمرّ على كل المراحل** — ولهذا **ما سمّوا مرحلة باسمه**. لكنه **نشاط مهم** يدير أنشطة التطوير والصيانة.
 
 **ليش يذكرها؟** لأنها **استثناء بالبنية**: كل شي بالمراحل، إلا هذا. لو سألك «وين موقع إدارة المشروع بالنموذج؟» — الجواب: **خارج المراحل، يغطيها كلها**.
 
@@ -202,7 +201,7 @@ Mall يقولها صراحة: **كل نماذج دورة الحياة الثان
 
 > **Verbatim (Mall p.81):** *"Many studies carried out in the past confirm this and indicate that the ratio of relative effort of developing a typical software product and the total effort spent on its maintenance is roughly **40:60**."*
 
-**AR.** **توزيع الجهد — رقم يغيّر طريقة تفكيرك:**
+**توزيع الجهد — رقم يغيّر طريقة تفكيرك:**
 
 | | النسبة |
 |:---|:---|
@@ -241,7 +240,7 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.76):** *"other than deciding whether to take up a project or not, at this stage very **high-level decisions regarding the solution strategy is defined**. Therefore, feasibility study is a **very crucial stage** in software development."*
 
-**AR.** **الهدف:** تحديد هل التطوير **مجدٍ مالياً وتقنياً**.
+**الهدف:** تحديد هل التطوير **مجدٍ مالياً وتقنياً**.
 
 **الأنشطة:** جمع معلومات أساسية — **بيانات الإدخال**، **المعالجة**، **بيانات الإخراج**، و**القيود**.
 
@@ -265,16 +264,16 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.77):** *"The aim of the requirements analysis and specification phase is to **understand the exact requirements of the customer and to document** them…"*
 
-**AR.** الهدف: **فهم المطلوبات الدقيقة للعميل وتوثيقها** (ينتج SRS document).
+الهدف: **فهم المطلوبات الدقيقة للعميل وتوثيقها** (ينتج SRS document).
 
 #### 3.6.3 Design · coding and unit testing · integration and system testing
 
-**AR.** المراحل الثلاث الوسطى:
+المراحل الثلاث الوسطى:
 - **Design** — التصميم
 - **Coding and unit testing** — الكود + اختبار الوحدات
 - **Integration and system testing** — الدمج واختبار النظام (وهي **الأثقل بين مراحل التطوير**، بحسب Mall p.75)
 
-`[THIN]` — Mall يفصّل هذه المراحل في صفحات 78–81، وهذا الملف يلخّصها. **راجعها لو احتجت التفاصيل.**
+**ملاحظة تغطية:** Mall يفصّل هذه المراحل في صفحات 78–81، وهذا الملف يلخّصها. **راجعها لو احتجت التفاصيل.**
 
 #### 3.6.4 Maintenance — and its three types
 
@@ -285,7 +284,7 @@ And the outcome that can end the project:
 > - ***Perfective maintenance**: This type of maintenance is carried out to **improve the performance of the system, or to enhance the functionalities of the system based on customer's requests**.*
 > - ***Adaptive maintenance**: Adaptive maintenance is usually required for **porting the software to work in a new environment**. For example, porting may be required to get the software to work on a **new computer platform or with a new operating system**.*"*
 
-**AR.** **ثلاثة أنواع صيانة — احفظها بالأسماء:**
+**ثلاثة أنواع صيانة — احفظها بالأسماء:**
 
 | النوع | السبب |
 |:---|:---|
@@ -297,7 +296,7 @@ And the outcome that can end the project:
 
 ### 3.7 The shortcomings of the classical waterfall
 
-**EN.** Mall lists them systematically. This is the heart of the file, because **every later model is a response to one of these**.
+Mall lists them systematically. This is the heart of the file, because **every later model is a response to one of these**.
 
 **Shortcoming 1 — No feedback paths:**
 
@@ -305,7 +304,7 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.81):** *"The classical waterfall model is **idealistic** in the sense that it **assumes that no error is ever committed** by the developers during any of the life cycle phases, and therefore, **incorporates no mechanism for error correction**."*
 
-**AR.** التشبيه **مضبوط حتى النهاية**: كما الماء بالشلال ما يرجع لفوق، **بعد ما تخلص المرحلة، ممنوع أي إعادة عمل**. وهذا **يفترض إن كل نشاط يُنفَّذ بلا خطأ**.
+التشبيه **مضبوط حتى النهاية**: كما الماء بالشلال ما يرجع لفوق، **بعد ما تخلص المرحلة، ممنوع أي إعادة عمل**. وهذا **يفترض إن كل نشاط يُنفَّذ بلا خطأ**.
 
 **وهذا هو «المثالية» اللي وصفها Mall:** النموذج **يفترض صفر أخطاء**، فـ**ما عنده آلية تصحيح**.
 
@@ -315,7 +314,7 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.82):** *"These defects usually get detected **much later in the life cycle**. For example, a **design defect might go unnoticed till the coding or testing phase**. Once a defect is detected at a later time, the developers need to **redo some of the work done during that phase and also redo the work of later phases that are affected by the rework**. Therefore, in any non-trivial software development project, it becomes **nearly impossible to strictly follow the classical waterfall model**."*
 
-**AR.** ضد الافتراض الأساسي: المطورون **يخطئون كثيراً** بكل نشاط تقريباً. والأسباب: **سهو · تفسيرات خاطئة · استخدام حل خاطئ · فجوة تواصل**.
+ضد الافتراض الأساسي: المطورون **يخطئون كثيراً** بكل نشاط تقريباً. والأسباب: **سهو · تفسيرات خاطئة · استخدام حل خاطئ · فجوة تواصل**.
 
 **والأخطر:** العيوب **تُكتشف متأخراً** — عيب تصميم ممكن **ما ينكشف إلا بمرحلة الكود أو الاختبار**. ولما ينكشف متأخر، لازم **إعادة عمل المرحلة + كل المراحل اللاحقة المتأثرة**.
 
@@ -325,7 +324,7 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.82):** *"This model assumes that **all customer requirements can be completely and correctly defined at the beginning** of the project. There is much emphasis on creating an **unambiguous and complete** set of requirements. But, it is hard to achieve this **even in ideal project scenarios**. The customers' requirements usually **keep on changing with time**. But, in this model it becomes difficult to accommodate any requirement change requests made by the customer **after the requirements specification phase is complete**, and this often becomes a **source of customer discontent**."*
 
-**AR.** النموذج **يفترض** إن كل المطلوبات **تُعرَّف كاملة وصحيحة بالبداية**. وصعب تحقيق هذا **حتى بالسيناريوهات المثالية**. والمطلوبات **تتغيّر باستمرار**، والنموذج **ما يستوعب** أي تغيير بعد اكتمال مرحلة المطلوبات → **مصدر استياء للعميل**.
+النموذج **يفترض** إن كل المطلوبات **تُعرَّف كاملة وصحيحة بالبداية**. وصعب تحقيق هذا **حتى بالسيناريوهات المثالية**. والمطلوبات **تتغيّر باستمرار**، والنموذج **ما يستوعب** أي تغيير بعد اكتمال مرحلة المطلوبات → **مصدر استياء للعميل**.
 
 **وهذي هي النقطة اللي تربط الملف 01 بهذا الملف:** الملف 01 أثبت إن المطلوبات **تبدأ مبهمة**؛ وهنا نشوف إن النموذج **مبني على افتراض معاكس**. **فالفشل مو سوء تنفيذ — هو فشل بالافتراض نفسه.**
 
@@ -333,7 +332,7 @@ And the outcome that can end the project:
 
 > **Verbatim (Mall p.82):** *"This model **defers integration of code and testing tasks until it is very late** when the problems are harder to resolve."*
 
-**AR.** النموذج **يأجّل الدمج والاختبار لوقت متأخر جداً**، لما تصير المشاكل **أصعب حلاً**.
+النموذج **يأجّل الدمج والاختبار لوقت متأخر جداً**، لما تصير المشاكل **أصعب حلاً**.
 
 **Shortcoming 5 — No overlapping of phases:**
 
@@ -345,7 +344,7 @@ The example Mall gives:
 
 > **Verbatim (Mall p.82):** *"Consequently, it is safe to say that in a practical software development scenario, rather than having a **precise point in time at which a phase transition occurs**, the different phases **need to overlap for cost and efficiency reasons**."*
 
-**AR.** النموذج يفرض **تسلسلاً صارماً**: المرحلة الجديدة ما تبلش إلا بعد اكتمال السابقة. بس **نادراً** ممكن الالتزام بهذا، ونتيجته **بقاء عدد كبير من الأعضاء عاطلين لفترات طويلة**.
+النموذج يفرض **تسلسلاً صارماً**: المرحلة الجديدة ما تبلش إلا بعد اكتمال السابقة. بس **نادراً** ممكن الالتزام بهذا، ونتيجته **بقاء عدد كبير من الأعضاء عاطلين لفترات طويلة**.
 
 **والمثال الذكي:** فريق الاختبار **يحتاج يصمّم حالات اختبار النظام مباشرة بعد اكتمال المطلوبات** — لأن **حالات اختبار النظام تُصمَّم من مستند SRS فقط**. يعني **التصميم والاختبار يتداخلان** فعلاً.
 
@@ -362,7 +361,7 @@ The example Mall gives:
 | **Heavy weight** | *"The waterfall model **overemphasises documentation**. A significant portion of the time of the developers is spent in preparing documents, and revising them as changes occur… Heavy documentation though useful during maintenance and for carrying out review, is a **source of team inefficiency**."* |
 | **No support for risk handling and code reuse** | *"It becomes difficult to use the waterfall model in projects that are susceptible to various types of **risks**, or those involving significant **reuse of existing development artifacts**."* |
 
-**AR.** ست عيوب إضافية — وكل واحد منها **يبرّر نموذجاً لاحقاً**:
+ست عيوب إضافية — وكل واحد منها **يبرّر نموذجاً لاحقاً**:
 
 | العيب | النموذج اللي يعالجه |
 |:---|:---|
@@ -385,7 +384,7 @@ And the justification — a metaphor worth quoting in full:
 
 > **Verbatim (Mall p.83):** *"The rationale behind preparation of documents based on the classical waterfall model can be explained using **Hoare's metaphor of mathematical theorem [1994] proving** — A mathematician presents a proof as a **single chain of deductions**, even though the proof might have come from a **convoluted set of partial attempts, blind alleys and backtracks**. Imagine how difficult it would be to understand, if a mathematician presents a proof by **retaining all the backtracking, mistake corrections, and solution refinements** he made while working out the proof."*
 
-**AR.** **هذا جواب سؤال امتحاني مباشر** (Mall نفسه يسأله بتمرين 44): *«ليش لازم المستندات النهائية توصف البرنامج كأنه تطوّر بـWaterfall كلاسيكي؟»*
+**هذا جواب سؤال امتحاني مباشر** (Mall نفسه يسأله بتمرين 44): *«ليش لازم المستندات النهائية توصف البرنامج كأنه تطوّر بـWaterfall كلاسيكي؟»*
 
 **الجواب من ثلاث طبقات:**
 
@@ -407,7 +406,7 @@ And the justification — a metaphor worth quoting in full:
 
 > **Verbatim (Mall p.83):** *"The feedback paths allow for **correcting errors committed by a programmer during some phase, as and when these are detected in a later phase**. For example, if during the testing phase a design error is identified, then the feedback path allows the design to be reworked and the changes to be reflected in the design documents and all other subsequent documents."*
 
-**AR.** **التغيير الواحد الأساسي: مسارات تغذية راجعة (feedback paths) من كل مرحلة إلى المراحل السابقة.**
+**التغيير الواحد الأساسي: مسارات تغذية راجعة (feedback paths) من كل مرحلة إلى المراحل السابقة.**
 
 **وظيفتها:** تصحيح الأخطاء **لحظة اكتشافها بمرحلة لاحقة**. مثال: لو انكشف خطأ تصميم بمرحلة الاختبار، المسار يسمح **بإعادة عمل التصميم** وانعكاس التغيير على مستندات التصميم **وكل المستندات اللاحقة**.
 
@@ -417,7 +416,7 @@ And the justification — a metaphor worth quoting in full:
 
 > **Verbatim (Mall p.84):** *"Please notice that in Figure 2.3 there is **no feedback path to the feasibility stage**. This is because **once a team having accepted to take up a project, does not give up the project easily due to legal and moral reasons**."*
 
-**AR.** **ما يوجد مسار رجوع لمرحلة الجدوى** — لأنه **بعد ما يقبل الفريق المشروع، ما يتركه بسهولة لأسباب قانونية وأخلاقية**.
+**ما يوجد مسار رجوع لمرحلة الجدوى** — لأنه **بعد ما يقبل الفريق المشروع، ما يتركه بسهولة لأسباب قانونية وأخلاقية**.
 
 **وهذي نقطة ذكية تجي بالامتحان:** لو سألك «ليش ما يوجد مسار رجوع للجدوى؟» — الجواب **قانوني وأخلاقي، مو تقني**.
 
@@ -425,7 +424,7 @@ And the justification — a metaphor worth quoting in full:
 
 > **Verbatim (Mall p.84):** *"**Almost every life cycle model that we discuss are iterative in nature, except the classical waterfall model and the V-model — which are sequential in nature.** In a **sequential model**, once a phase is complete, **no work product of that phase are changed later**."*
 
-**AR.** **قاعدة تصنيفية مهمة:**
+**قاعدة تصنيفية مهمة:**
 
 | | النماذج |
 |:---|:---|
@@ -448,7 +447,7 @@ And the technique:
 
 > **Verbatim (Mall p.85):** *"For achieving phase containment of errors, how can the developers detect almost all error that they commit in the same phase? After all, the end product of many phases are **text or graphical documents**, e.g. SRS document, design document, test plan document, etc. A popular technique is to **rigorously review the documents produced at the end of a phase**."*
 
-**AR.** **مبدأ احتواء الأخطاء بالمرحلة (phase containment of errors)** = **كشف الخطأ أقرب ما يمكن لنقطة ارتكابه**.
+**مبدأ احتواء الأخطاء بالمرحلة (phase containment of errors)** = **كشف الخطأ أقرب ما يمكن لنقطة ارتكابه**.
 
 **المنطق:** كشف الخطأ **بنفس مرحلته** يقلّل الجهد والوقت المطلوب لتصحيحه. مثال: مشكلة تصميم تُكتشف **بمرحلة التصميم** أسهل بكثير من كشفها **بنهاية الاختبار** — لأنه بالحالة الثانية لازم **إعادة التصميم + الكود + الاختبار**.
 
@@ -470,7 +469,7 @@ And the technique:
 
 > **Verbatim (Mall p.85):** *"As a result, in real projects, the phases are allowed to overlap. That is, **once a developer completes his work assignment for a phase, proceeds to start the work for the next phase, without waiting for all his team members to complete their respective work allocations**."*
 
-**AR.** **سببان لتداخل المراحل:**
+**سببان لتداخل المراحل:**
 
 **1. الأخطاء اللي تفلت.** حتى مع أفضل جهد للاحتواء، **بعض الأخطاء تفلت وتنكشف لاحقاً** → إعادة عمل مراحل منتهية → يعني أنشطة المرحلة **ما تنتهي عند اكتمالها**، بل تتداخل مع غيرها.
 
@@ -482,6 +481,24 @@ And the technique:
 
 ---
 
+## 4.6 The two variants side by side
+
+![The waterfall family: the classical one-way cascade on the left, the feedback-corrected iterative variant on the right, with the 40:60 effort split beneath|720](../06_Diagrams_&_Mindmaps/waterfall_classical_vs_iterative.png)
+
+**كيف تقرأ الرسم — وهذا هو مفتاح المقارنة:**
+
+| العنصر في الرسم | معناه الهندسي |
+|:---|:---|
+| **الأسهم النازلة فقط** (يسار) | التسلسل الصارم: مرحلة مكتملة = مغلقة نهائياً، بلا أي إعادة عمل |
+| **الخط الأحمر المتقطّع `NO RETURN PATH`** | المسار الممنوع: الماء ما يرجع لفوق — ولهذا يفشل النموذج لو ظهر خطأ متأخر |
+| **الحافلة الخضراء الصاعدة** (يمين) | **مسارات التغذية الراجعة**: من كل مرحلة إلى كل المراحل السابقة |
+| **صندوق التحذير الأصفر** | **الاستثناء الوحيد:** ما يوجد رجوع لمرحلة **الجدوى**، لأسباب قانونية وأخلاقية |
+| **شريط الجهد 40 : 60** | البناء 40% والصيانة 60% — وهذا اللي يفسّر ليش النموذج لازم يتحمّل التغيير |
+
+**الخلاصة البصرية:** الفرق بين النموذجين **مو بالمراحل** — المراحل نفسها بالضبط. الفرق **كله** بالأسهم. ستة صناديق وحافلة رجوع واحدة = نموذج مختلف تماماً.
+
+---
+
 ## 5. The V-model — repair number two
 
 > **Verbatim (Mall p.88):** *"A popular development process model, **V-model is a variant of the waterfall model**. As is the case with the waterfall model, this model gets its name from its **visual appearance**."*
@@ -490,7 +507,7 @@ And the technique:
 
 > **Verbatim (Mall p.89):** *"This model is therefore generally considered to be suitable for use in projects concerned with development of **safety-critical software** that are required to have **high reliability**."*
 
-**AR.** الـ**V-model** **مشتقّ من Waterfall**، واسمه **من شكله البصري**. وفيه **أنشطة التحقق والتحقّق (verification and validation) تُنفَّذ على امتداد دورة الحياة كلها** — فتقلّ احتمالية الأخطاء بالمخرجات. ولهذا يُعتبر مناسباً لمشاريع **البرمجيات الحرجة للسلامة** اللي تحتاج **موثوقية عالية**.
+الـ**V-model** **مشتقّ من Waterfall**، واسمه **من شكله البصري**. وفيه **أنشطة التحقق والتحقّق (verification and validation) تُنفَّذ على امتداد دورة الحياة كلها** — فتقلّ احتمالية الأخطاء بالمخرجات. ولهذا يُعتبر مناسباً لمشاريع **البرمجيات الحرجة للسلامة** اللي تحتاج **موثوقية عالية**.
 
 ### 5.1 The structure
 
@@ -500,7 +517,7 @@ And the technique:
 
 > **Verbatim (Mall p.89):** *"In the validation phase, testing is carried out in **three steps — unit, integration, and system testing**. The purpose of these three different steps of testing during the validation phase is to **detect defects that arise in the corresponding phases of software development**."*
 
-**AR.** **البنية:**
+**البنية:**
 
 | النصف | المحتوى |
 |:---|:---|
@@ -521,17 +538,17 @@ And the technique:
 
 **وهذا هو تحقيق مبدأ `phase containment of errors`** (§4.4) **بالتصميم، مو بالمراجعة**.
 
-`[THIN]` — **Sommerville ما عنده V-model إطلاقاً** (صفر نتائج بكل الـ790 صفحة). **Mall هو المصدر الوحيد المتاح لك.** ولو سألك الدكتور عن V-model، ما تكدر ترجع لـSommerville.
+**ملاحظة تغطية:** **Sommerville ما عنده V-model إطلاقاً** (صفر نتائج بكل الـ790 صفحة). **Mall هو المصدر الوحيد المتاح لك.** ولو سألك الدكتور عن V-model، ما تكدر ترجع لـSommerville.
 
 ---
 
 ## 6. Sommerville's account — the cross-check
 
-**EN.** Sommerville covers the same waterfall but frames it differently. Worth knowing both framings, because an exam answer that mentions both looks stronger.
+Sommerville covers the same waterfall but frames it differently. Worth knowing both framings, because an exam answer that mentions both looks stronger.
 
 > **Verbatim (Sommerville p.47):** *"The **first published model** of the software development process was derived from more general system engineering processes (**Royce, 1970**). Because of the **cascade** from one phase to another, this model is known as the **'waterfall model' or software life cycle**. The waterfall model is an example of a **plan-driven process** — in principle, you must plan and schedule all of the process activities before starting work on them."*
 
-**AR.** Sommerville يعطي **معلومتين Mall ما يعطيهن:**
+Sommerville يعطي **معلومتين Mall ما يعطيهن:**
 1. **الأصل:** أول نموذج منشور، **مشتق من عمليات هندسة الأنظمة العامة**، و**Royce (1970)** هو المرجع.
 2. **السبب التسمية عند Sommerville:** **التتابع الشلالي (cascade)** — وMall يقول **الشكل**. الاثنان متوافقان.
 3. **والتصنيف:** **plan-driven process**.
@@ -544,7 +561,7 @@ And the technique:
 
 > **Verbatim (Sommerville p.48):** *"Because of the **costs of producing and approving documents**, iterations can be **costly**."*
 
-**AR.** Sommerville يسمّي آلية الانتقال: **«التوقيع (signed off)»** — كل مرحلة تنتج مستندات **تُعتمد**، والمرحلة التالية ما تبلش قبل انتهاء السابقة. وعملياً **تتداخل وتغذّي بعضها**. و**كلفة إنتاج واعتماد المستندات** تجعل التكرار **مكلفاً**.
+Sommerville يسمّي آلية الانتقال: **«التوقيع (signed off)»** — كل مرحلة تنتج مستندات **تُعتمد**، والمرحلة التالية ما تبلش قبل انتهاء السابقة. وعملياً **تتداخل وتغذّي بعضها**. و**كلفة إنتاج واعتماد المستندات** تجعل التكرار **مكلفاً**.
 
 **وهذا يفسّر العيب السادس عند Mall** (التوثيق المفرط) **بمنطق اقتصادي**: المستندات **مو مجانية**، واعتمادها **له كلفة**.
 
@@ -556,7 +573,7 @@ And the technique:
 
 > **Verbatim:** *"However, the waterfall model reflects the type of process used in other engineering projects. As is easier to use a common management model for the whole project, software processes based on the waterfall model are **still commonly used**."*
 
-**AR.** العيب الأكبر عند Sommerville: **التقسيم غير المرن للمشروع لمراحل منفصلة**. والالتزامات تُتخذ مبكراً، فيصعب الاستجابة لتغيّر المطلوبات.
+العيب الأكبر عند Sommerville: **التقسيم غير المرن للمشروع لمراحل منفصلة**. والالتزامات تُتخذ مبكراً، فيصعب الاستجابة لتغيّر المطلوبات.
 
 **ومتى يُستخدم؟** *«فقط لما المطلوبات مفهومة جيداً وغير محتمل تغيّرها جذرياً»*.
 
@@ -567,7 +584,7 @@ And the technique:
 - **النماذج الثلاثة العامة عنده (p.47):** waterfall · incremental development · **reuse-oriented software engineering**. *"These models are not mutually exclusive and are often used together."*
 - **والقاعدة العملية المهمة (p.47):** *"Parts of the system that are **well understood can be specified and developed using a waterfall-based process**. Parts of the system which are **difficult to specify in advance, such as the user interface, should always be developed using an incremental approach**."*
 
-**AR.** **هذي جملة عملية تنفع بالسيناريوهات:** النظام الواحد **ما لازم يكون نموذج واحد**. الأجزاء **المفهومة** → Waterfall؛ الأجزاء **الصعب تحديدها مسبقاً** (مثل واجهة المستخدم) → **incremental**.
+**هذي جملة عملية تنفع بالسيناريوهات:** النظام الواحد **ما لازم يكون نموذج واحد**. الأجزاء **المفهومة** → Waterfall؛ الأجزاء **الصعب تحديدها مسبقاً** (مثل واجهة المستخدم) → **incremental**.
 
 **والـ`reuse-oriented`** اللي يذكره Sommerville هو **بذرة الملف 05 (RAD)** — لاحظ إنه ظهر **من أول فصل**.
 
@@ -578,7 +595,7 @@ And the technique:
 | **Formal system development** | *"a **mathematical model of a system specification is created**. This model is then refined, using **mathematical transformations that preserve its consistency**, into executable code."* مثال: **the B method**. |
 | **Cleanroom** | *"originally developed by **IBM**… each software increment is **formally specified**… **There is no unit testing for defects**… system testing is focused on assessing the system's **reliability**. The objective… is **zero-defects software**."* |
 
-**AR.** **هذولا مو بالخطة** (المحاضرة ما سمّتهن)، لكن ذكرهن هنا للاكتمال: **التطوير الرسمي** (بناء نموذج رياضي وتحويله لكود بتحويلات تحفظ الاتساق)، و**Cleanroom** من IBM (هدفها **برمجيات بلا عيوب**، وما فيها اختبار وحدات للأخطاء).
+**هذولا مو بالخطة** (المحاضرة ما سمّتهن)، لكن ذكرهن هنا للاكتمال: **التطوير الرسمي** (بناء نموذج رياضي وتحويله لكود بتحويلات تحفظ الاتساق)، و**Cleanroom** من IBM (هدفها **برمجيات بلا عيوب**، وما فيها اختبار وحدات للأخطاء).
 
 ---
 
@@ -590,8 +607,8 @@ And the technique:
 | **Mall p.28** | **The only source for build-and-fix.** Sommerville: 0 hits. Pressman: 0 hits. Agarwal: 0 hits. |
 | **Mall p.72** | Also carries a point worth keeping: a documented process is a **mandatory requirement of ISO 9000 and SEI CMM** — without it an organisation *"would not qualify for accreditation"* and *"might find it difficult to win tenders"*. Plus: good organisations document their process *"in the form of a booklet"*. |
 | **Sommerville pp.46–49** | **Primary for §6 only** — but §6 carries the two facts Mall does not: the **origin and date (Royce, 1970)** and the **plan-driven classification**. Also the reuse-oriented model and the "well-understood parts use waterfall / unclear parts use incremental" rule. |
-| `[THIN]` | **The V-model rests on Mall alone.** Sommerville has no V-model. If the doctor examines it, Mall pp.88–91 is your only authority. |
-| `[THIN]` | **The middle phases (design, coding, integration) are compressed here.** Mall develops them at pp.78–81. I summarised rather than reproduced them, because the examinable content of this file is the model-level argument, not the phase internals. |
+| **Coverage note** | **The V-model rests on Mall alone.** Sommerville has no V-model. If the doctor examines it, Mall pp.88–91 is your only authority. |
+| **Coverage note** | **The middle phases (design, coding, integration) are compressed here.** Mall develops them at pp.78–81. I summarised rather than reproduced them, because the examinable content of this file is the model-level argument, not the phase internals. |
 | Note | **Sommerville has five phases; Mall has six.** The difference is that **Sommerville has no feasibility study**. Flagged rather than merged — do not treat it as a contradiction. |
 | Note | **Sommerville p.47 gives a different taxonomy of "three generic models"** (waterfall, incremental, reuse-oriented) from the lecture's (which follows Mall). Both are correct; they are different cuts. |
 
@@ -674,4 +691,3 @@ And the technique:
 
 ---
 
-*File 02 of 10. Built 2026-09-23 under `Week_02_BUILD_PLAN.md`. Every definition is quoted verbatim before it is explained; every claim carries a page anchor; `[THIN]` marks where this document is thinner than the source.*

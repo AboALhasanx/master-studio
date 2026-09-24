@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:#ffffff; }
+  #diagram { width:1080px; background:#ffffff; }
+  text { font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,Helvetica,sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1080" height="848" viewBox="0 0 1080 848" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="dA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="dB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER -->
+  <text x="540" y="44" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">Prototyping vs. the Evolutionary Model</text>
+  <text x="540" y="74" text-anchor="middle" font-size="16" fill="#64748b">Both learn by building &#8212; one throws the build away, the other ships it (Mall &#167;2.2.4 &amp; &#167;2.2.6; Sommerville &#167;2.3.1)</text>
+  <line x1="30" y1="98" x2="1050" y2="98" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- PANEL A : PROTOTYPING -->
+  <rect x="30" y="118" width="495" height="500" rx="14" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.6"/>
+  <text x="52" y="148" font-size="14" font-weight="700" fill="#6d28d9" letter-spacing="1.4">PROTOTYPING &#8212; THROW-AWAY</text>
+  <text x="52" y="172" font-size="13.5" fill="#64748b">A learning instrument, not a deliverable</text>
+
+  <g font-size="14.5" font-weight="600" fill="#0f172a">
+    <rect x="52" y="196" width="392" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="70" y="224">1 &nbsp; Quick design (sketch, not a spec)</text>
+    <rect x="52" y="262" width="392" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="70" y="290">2 &nbsp; Build the prototype quickly</text>
+    <rect x="52" y="328" width="392" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="70" y="356">3 &nbsp; Customer evaluates it hands-on</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#d)">
+    <line x1="248" y1="242" x2="248" y2="260"/>
+    <line x1="248" y1="308" x2="248" y2="326"/>
+    <line x1="248" y1="374" x2="248" y2="392"/>
+  </g>
+
+  <!-- refine loop on the right -->
+  <path d="M 448 350 L 476 350 L 476 218 L 450 218" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#dA)"/>
+  <text x="486" y="286" font-size="12.5" font-weight="700" fill="#6d28d9" transform="rotate(-90 486 286)" letter-spacing="1.2">REFINE &amp; REBUILD</text>
+
+  <!-- discarded -->
+  <rect x="52" y="392" width="392" height="44" rx="9" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="70" y="420" font-size="14.5" font-weight="700" fill="#b91c1c">4 &nbsp; Prototype DISCARDED &#10007;</text>
+
+  <text x="52" y="462" font-size="13" fill="#334155">What survives is the <tspan font-weight="700">refined specification</tspan>, not the code:</text>
+  <rect x="52" y="474" width="392" height="46" rx="9" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="70" y="495" font-size="13.5" font-weight="600" fill="#4c1d95">Final system built from the learned requirements</text>
+  <text x="70" y="512" font-size="12" fill="#64748b">the prototype never becomes the product</text>
+
+  <text x="52" y="548" font-size="12.5" font-style="italic" fill="#6d28d9">&#8220;The prototype is not used the same way as the final system.&#8221;</text>
+  <text x="52" y="574" font-size="12.5" fill="#64748b">Quality attributes are deliberately ignored while prototyping.</text>
+  <text x="52" y="596" font-size="12.5" fill="#64748b">Fast and cheap beats correct and complete.</text>
+
+  <!-- PANEL B : EVOLUTIONARY -->
+  <rect x="555" y="118" width="495" height="500" rx="14" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.6"/>
+  <text x="577" y="148" font-size="14" font-weight="700" fill="#0e7490" letter-spacing="1.4">EVOLUTIONARY &#8212; KEEP IT</text>
+  <text x="577" y="172" font-size="13.5" fill="#64748b">Every build is delivered and becomes the system</text>
+
+  <g font-size="14.5" font-weight="600" fill="#0f172a">
+    <rect x="634" y="196" width="394" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="652" y="224">1 &nbsp; Initial, partial understanding</text>
+    <rect x="634" y="262" width="394" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="652" y="290">2 &nbsp; Build &amp; deliver version <tspan font-weight="700">N</tspan></text>
+    <rect x="634" y="328" width="394" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="652" y="356">3 &nbsp; Operate it; users give feedback</text>
+    <rect x="634" y="394" width="394" height="44" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="652" y="422">4 &nbsp; Requirements change in the field</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#d)">
+    <line x1="831" y1="242" x2="831" y2="260"/>
+    <line x1="831" y1="308" x2="831" y2="326"/>
+    <line x1="831" y1="374" x2="831" y2="392"/>
+  </g>
+
+  <!-- evolve loop on the left -->
+  <path d="M 634 416 L 606 416 L 606 218 L 632 218" fill="none" stroke="#0891b2" stroke-width="2.4" marker-end="url(#dB)"/>
+  <text x="598" y="312" font-size="12.5" font-weight="700" fill="#0e7490" transform="rotate(-90 598 312)" letter-spacing="1.2" text-anchor="middle">EVOLVE &#8594; VERSION N+1</text>
+
+  <rect x="634" y="454" width="394" height="46" rx="9" fill="#ffffff" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="652" y="475" font-size="13.5" font-weight="600" fill="#155e75">Version 1 &#8594; 2 &#8594; 3 &#8230; the product itself matures</text>
+  <text x="652" y="492" font-size="12" fill="#64748b">nothing is thrown away at any point</text>
+
+  <text x="634" y="548" font-size="12.5" font-style="italic" fill="#0e7490">No single agreed specification exists up front.</text>
+  <text x="634" y="574" font-size="12.5" fill="#64748b">The requirements are discovered <tspan font-weight="700">by operating</tspan> the system.</text>
+  <text x="634" y="596" font-size="12.5" fill="#64748b">Best for long-lived products whose needs drift.</text>
+
+  <!-- BOTTOM STRIP -->
+  <line x1="30" y1="636" x2="1050" y2="636" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="30" y="660" font-size="13.5" font-weight="700" fill="#1e3a8a" letter-spacing="1.1">THE TWO LEGITIMATE USES OF A PROTOTYPE (SOMMERVILLE &#167;2.3.1)</text>
+
+  <rect x="30" y="672" width="326" height="76" rx="10" fill="#ffffff" stroke="#d8b4fe" stroke-width="1.5"/>
+  <text x="46" y="696" font-size="13.5" font-weight="700" fill="#6d28d9">1 &#183; Requirements elicitation</text>
+  <text x="46" y="718" font-size="12.5" fill="#475569">The customer cannot state what is</text>
+  <text x="46" y="736" font-size="12.5" fill="#475569">wanted until something is visible.</text>
+
+  <rect x="377" y="672" width="326" height="76" rx="10" fill="#ffffff" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="393" y="696" font-size="13.5" font-weight="700" fill="#0e7490">2 &#183; Design exploration</text>
+  <text x="393" y="718" font-size="12.5" fill="#475569">Testing feasibility of a UI or an</text>
+  <text x="393" y="736" font-size="12.5" fill="#475569">architecture before committing.</text>
+
+  <rect x="724" y="672" width="326" height="76" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="740" y="696" font-size="13.5" font-weight="700" fill="#92400e">&#9888; The trap</text>
+  <text x="740" y="718" font-size="12.5" fill="#78350f">Users grow attached to it; it gets</text>
+  <text x="740" y="736" font-size="12.5" fill="#78350f">shipped with all its shortcuts intact.</text>
+
+  <!-- FOOTER -->
+  <line x1="30" y1="776" x2="1050" y2="776" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="30" y="798" font-size="12.5" fill="#64748b"><tspan font-weight="700" fill="#334155">Source:</tspan> R. Mall, Fundamentals of Software Engineering (4th ed.), &#167;2.2.4 &amp; &#167;2.2.6; I. Sommerville, Software Engineering (9th ed.), &#167;2.3.1.</text>
+  <text x="30" y="820" font-size="12.5" font-weight="700" fill="#334155">Master Studio &#183; Advanced Software Engineering (CS504) &#183; University of Wasit</text>
+</svg>
+</div>
+</body>
+</html>

@@ -15,14 +15,17 @@ The agent shell has **`APPDATA` unset**, which breaks `gh` (it cannot find `%APP
 ```bash
 export APPDATA="C:\\Users\\gokoq\\AppData\\Roaming"
 export HOME="/c/Users/gokoq"
-cd "G:/My Drive/Master-Studio"
+cd "C:/Users/gokoq/Master-Studio"
 gh auth setup-git
 git push origin master
 ```
 `gh` is authenticated as `AboALhasanx` via keyring token.
 
-## 3. Google Drive File Stream + `.git` hazard
-The vault lives on `G:` (Drive File Stream). Drive injects `desktop.ini` into **every** folder including `.git/`, which corrupts git (`fatal: bad object refs/desktop.ini`) and can wipe `.git/refs/remotes/`. Cleanup tool: `90_Shared_Toolbox/tools/fix_git_drive_desktop_ini.py`. If git refs misbehave, suspect Drive write-lag and retry the write.
+## 3. Vault location — CANONICAL PATH = `C:\Users\gokoq\Master-Studio` (moved off Drive 2026-09-23)
+- **The vault now lives at `C:\Users\gokoq\Master-Studio`** (moved here on 2026-09-23 from Google Drive File Stream). This is the ONLY current working copy. All source notes, the git repo (`.git`), tooling (`90_Shared_Toolbox`), and agent memory (`.workbuddy-ai/memory`) are here.
+- **`G:\My Drive\Master-Studio` is now a STALE/ORPHANED copy — do NOT work there.** Any work done in G: is in the wrong place and must be moved to C:. (This bit us on 2026-09-24: the PDF exports were accidentally created in G: and had to be moved to C:.)
+- **Historical Drive hazard (now avoided):** Google Drive File Stream injects `desktop.ini` into every folder including `.git/`, corrupting git (`fatal: bad object refs/desktop.ini`) and able to wipe `.git/refs/remotes/`. Moving the vault to a plain local path (C:) eliminates this. Cleanup tool remains if ever needed: `90_Shared_Toolbox/tools/fix_git_drive_desktop_ini.py`.
+- The safe-delete guard refuses to delete from the G: Drive path (trash op fails there — fail-closed, files preserved), so G: duplicates may linger. That is harmless; just ensure the canonical C: copy is correct.
 
 ## 4. Student operating rules
 - **Zero-CLI policy:** the student speaks plain Arabic/English; the agent runs all tools, commits, and pushes autonomously. Never ask him to run commands.

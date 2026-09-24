@@ -138,7 +138,7 @@ Incoming agents must memorize these five hard-won lessons to prevent recurring b
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    THE 5 LAWS OF MASTER STUDIO PDF ENGINE                               │
+│                                    THE 9 LAWS OF MASTER STUDIO PDF ENGINE                               │
 ├───────────────────────────────┬─────────────────────────────────────────────────────────────────────────┤
 │ 1. Windows File Lock Law      │ If the student has a PDF open in Adobe Acrobat or Edge, Windows locks   │
 │                               │ the file exclusively. The engine catches PermissionError and safely     │
@@ -152,16 +152,32 @@ Incoming agents must memorize these five hard-won lessons to prevent recurring b
 │                               │ regexes must use `<td(\s*[^>]*)>(.*?)</td>`. Pure `<td>` matchers will   │
 │                               │ silently fail on all styled tables.                                     │
 ├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
-│ 4. Table Cell White-Space Law │ Table cells containing English phrases or symbols (e.g. Exposed entry   │
-│                               │ points, $E_j$) must have `white-space: nowrap !important;` and LTR to   │
-│                               │ prevent bold initial letters (E) from wrapping to a separate line!       │
+│ 4. Table Cell Text Wrapping   │ `white-space: nowrap;` is strictly reserved for pure numbers, dates,    │
+│    & Direction Law            │ and short badges (`td.num-cell`). All text cells MUST have `white-space:│
+│                               │ normal !important; word-wrap: break-word;` so descriptions wrap cleanly!│
+│                               │ Pure English tables in RTL docs must be tagged `dir="ltr"`!             │
 ├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
 │ 5. Leading Definition Law     │ If an Arabic paragraph starts with an English definition (e.g.          │
 │                               │ `CVSS = Common Vulnerability... — معيار...`), the entire English formula│
 │                               │ must be wrapped in `<bdi dir="ltr">` so BiDi won't invert word order.   │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
+│ 6. Zero Backend Leakage Law   │ NEVER leak agent prompt scaffolding (`File 01 of 10`, `**EN.**`,        │
+│                               │ `**AR.**`, `[THIN]`, or build footers) into student deliverables!       │
+│                               │ Use academic titles (`Unit 01: SDLC Fundamentals`).                     │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
+│ 7. Zero ASCII Art Law         │ ASCII code-box diagrams are strictly forbidden in PDFs! Render real     │
+│                               │ vector PNG/SVG diagrams into `06_Diagrams_&_Mindmaps/` and inline them. │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
+│ 8. BiDi Typography & Arrow Law│ Inline English tokens must be `display: inline; color: inherit;`. Never │
+│                               │ turn English paragraphs blue or space-distorted! Sequence arrows (→)    │
+│                               │ must be wrapped in LTR containers so BiDi never inverts the sequence.   │
+├───────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
+│ 9. Citation vs Q&A Card Law   │ Textbook quotations use `#f8fafc` background with a Royal Blue border   │
+│                               │ (`#2563eb`). Active recall Q&A pairs MUST NEVER look like quotes; they  │
+│                               │ render as dedicated `.qa-card`s with an emerald green (`#10b981`) answer│
+│                               │ box. Borders are strictly language-sensitive (LEFT for LTR, RIGHT for   │
+│                               │ RTL), regardless of document-level direction!                           │
 └───────────────────────────────┴─────────────────────────────────────────────────────────────────────────┘
-```
-
 ---
 
 ## 6. Pre-Delivery Verification Checklist (The Agent Gate)
@@ -172,3 +188,6 @@ Before claiming a PDF is generated and delivered to the student, the agent MUST 
 - [ ] **2. File Lock Notice:** Check stderr output. If `[*] Notice: ... is currently open in a PDF viewer. Writing to ..._new.pdf` was printed, inform the student: *"The original PDF was open in your viewer, so I saved the updated edition as `<filename>_new.pdf`."*
 - [ ] **3. Page Count Sanity:** Ensure page count matches expectations (PyMuPDF `len(doc)` $> 0$).
 - [ ] **4. Zero Delimiter Leak:** Ensure raw LaTeX symbols (`$E_j$`, `\sum`) or raw HTML tags (`<h1>`, `<bdi>`) did NOT leak as literal text in the rendered output.
+- [ ] **5. Zero Backend Prompt Artifacts:** Verify that `File X of Y`, `**EN.**`, `**AR.**`, `[THIN]`, ASCII boxes, or internal build ledger footers do NOT appear in the final PDF.
+- [ ] **6. Table Text Wrapping:** Inspect rendered tables to confirm text wraps properly inside cells with zero horizontal overflow or clipping.
+- [ ] **7. Citation vs Q&A Differentiation:** Confirm textbook quotations use royal blue borders and Q&A answers use emerald green cards, with borders on the left for English and right for Arabic.

@@ -1,9 +1,8 @@
 ---
-title: "ASE Week 02 — File 01 of 10: SDLC Fundamentals"
+title: "ASE Week 02 — Unit 01: SDLC Fundamentals"
 subtitle: "The software life cycle, the process, its four activities, and why a team cannot work without one"
 subject: "04_Advanced_Software_Eng"
 week: 2
-file: "01 of 10"
 sources:
   - "Sommerville, Software Engineering, 9th ed., pp.44–46"
   - "Mall, Fundamentals of Software Engineering, 4th ed., pp.67–71"
@@ -11,7 +10,7 @@ type: "study compendium — source-derived, not an abbreviation"
 created: "2026-09-23"
 ---
 
-# File 01 of 10 — SDLC Fundamentals
+# Unit 01 — SDLC Fundamentals
 
 > **Sources.** Sommerville, *Software Engineering* 9th ed., pp.44–46. Mall, *Fundamentals of Software Engineering* 4th ed., pp.67–71.
 > **Page numbers are PDF page numbers**, not printed page numbers — the front-matter offset differs between the two books.
@@ -21,13 +20,13 @@ created: "2026-09-23"
 
 ## Where this sits
 
-**This is the first file. Nothing comes before it.**
+**الوحدة الأولى: المفاهيم التأسيسية لدورة حياة وبرمجيات الفريق.**
 
 The entire series rests on one fact: **professional software is built by teams, not by individuals.** A single programmer writing a small program can succeed with no process at all. A team cannot — and the reason is not skill, it is coordination. This file establishes that, and it establishes the vocabulary the remaining nine files will use.
 
 **The question this file answers:** *why does a software team need a defined process in the first place?*
 
-**The question it hands to File 02:** *granted, a process is needed. What should the first process look like?* The obvious answer is "plan everything up front", and that answer has a name — the waterfall model.
+**السؤال الذي تسلّمه هذه الوحدة إلى Unit 02:** *سلّمنا بأن العملية ضرورية؛ فكيف ينبغي أن تبدو أول عملية منظّمة؟* الجواب البديهي هو «خطّط لكل شيء مقدماً»، وهذا الجواب له اسم شهير: **The Waterfall Model**.
 
 ---
 
@@ -35,11 +34,11 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 ### 1.1 The analogy the term is built on
 
-**EN.** Mall does not open with a definition. He opens with a comparison, because the term itself was built on one.
+Mall does not open with a definition. He opens with a comparison, because the term itself was built on one.
 
 > **Verbatim (Mall p.67):** *"It is well known that all living organisms undergo a life cycle. For example when a seed is planted, it germinates, grows into a full tree, and finally dies. Based on this concept of a biological life cycle, the term **software life cycle** has been defined to imply the different stages (or phases) over which a software evolves from an initial customer request for it, to a fully developed software, and finally to a stage where it is no longer useful to any user, and then it is discarded."*
 
-**AR.** Mall ما يبلش بتعريف — يبلش بتشبيه، لأن المصطلح نفسه مبني على تشبيه. كل كائن حي إله دورة حياة: بذرة تنبت، تكبر وتصير شجرة، وبالآخر تموت. وعلى هذا الأساس عُرّف الـ**software life cycle**: المراحل اللي يمر بيها البرنامج من **طلب العميل الأول**، إلى **برنامج مكتمل**، إلى **مرحلة يصير ما يفيد أحد** فيُرمى.
+**الشرح المفاهيمي:** Mall ما يبلش بتعريف — يبلش بتشبيه، لأن المصطلح نفسه مبني على تشبيه. كل كائن حي إله دورة حياة: بذرة تنبت، تكبر وتصير شجرة، وبالآخر تموت. وعلى هذا الأساس عُرّف الـ**software life cycle**: المراحل اللي يمر بيها البرنامج من **طلب العميل الأول**، إلى **برنامج مكتمل**، إلى **مرحلة يصير ما يفيد أحد** فيُرمى.
 
 **ليش التشبيه مهم مو مجرد مقدمة؟** لأنه يفرض ثلاث نتائج:
 1. **البداية طلب، مو برنامج** — البرنامج ما موجود بالسؤال الأصلي.
@@ -48,7 +47,7 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 ### 1.2 The stages, in the source's own order
 
-**EN.** Mall names the stages as the software moves through them.
+Mall names the stages as the software moves through them:
 
 | Stage | Mall's wording |
 |:---|:---|
@@ -57,7 +56,7 @@ The entire series rests on one fact: **professional software is built by teams, 
 | **Operation (also called maintenance)** | *"Once installed and made available for use, the users start to use the software. This signals the start of the **operation (also called maintenance) phase**."* |
 | **Retirement** | *"Finally the software is **retired**, when the users do not find it any longer useful…"* |
 
-**AR.**
+**المعنى بالعربية لمراحل دورة الحياة:**
 
 | المرحلة | المعنى |
 |:---|:---|
@@ -70,11 +69,11 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 ### 1.3 The inception stage — the fact that makes the whole series necessary
 
-**EN.** This is the single most consequential sentence in the file:
+This is the single most consequential sentence in the file:
 
 > **Verbatim (Mall p.67):** *"At this stage, the customers are usually **not clear about all the features that would be needed**, neither can they **completely describe the identified features in concrete terms**, and can only **vaguely describe what is needed**."*
 
-**AR.** **هذه أهم جملة بالملف كله.** العميل بمرحلة البداية:
+**التحليل الهندسي لأهمية البداية المبهمة:** العميل بمرحلة البداية:
 - **مو واضح** شنو يريد كل الميزات،
 - **ما يكدر يوصف** الميزات اللي يعرفها بوصف ملموس،
 - **يكدر يوصف المطلوب بشكل مبهم فقط.**
@@ -94,7 +93,7 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 > **Verbatim (Mall p.68):** *"The **operation phase is usually the longest of all phases** and constitutes the useful life of a software."*
 
-**AR.** الصيانة مو بس إصلاح أعطال. المستخدمون:
+**الشرح المفاهيمي:** الصيانة مو بس إصلاح أعطال. المستخدمون:
 - يطلبون **إصلاح إخفاقات**، **و**
 - **يقترحون تحسينات وتعديلات باستمرار**.
 
@@ -108,7 +107,7 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 > **Verbatim (Mall p.68):** *"Finally the software is retired, when the users do not find it any longer useful due to reasons such as **changed business scenario**, **availability of a new software having improved features and working**, **changed computing platforms**, etc."*
 
-**AR.** ثلاثة أسباب للتقاعد:
+**التحليل الهندسي:** ثلاثة أسباب للتقاعد:
 1. **تغيّر سيناريو العمل** — النشاط نفسه تغيّر.
 2. **توفّر برنامج جديد** بميزات وتشغيل أفضل.
 3. **تغيّر منصات الحوسبة.**
@@ -119,7 +118,7 @@ The entire series rests on one fact: **professional software is built by teams, 
 
 > **Verbatim (Mall p.68):** *"The **life cycle of a software** represents the **series of identifiable stages through which it evolves during its life time**."*
 
-**AR.** التعريف الرسمي: **سلسلة مراحل قابلة للتمييز يمر بيها البرنامج خلال عمره.**
+**الشرح المفاهيمي:** التعريف الرسمي: **سلسلة مراحل قابلة للتمييز يمر بيها البرنامج خلال عمره.**
 
 **احفظ كلمة `identifiable`** — المراحل **مُعرَّفة ومميّزة**، مو استمرارية مبهمة. هذا اللي يجعل «النموذج» ممكناً أصلاً: لو ما كدرنا نميّز المراحل، ما كدرنا نرسمها ولا نرتّبها.
 
@@ -135,7 +134,7 @@ And the qualification that matters for the rest of the series:
 
 > **Verbatim (Sommerville p.45):** *"These activities may involve the development of software from scratch in a standard programming language like Java or C. **However, business applications are not necessarily developed in this way.** New business software is now often developed by **extending and modifying existing systems** or by **configuring and integrating off-the-shelf software or system components**."*
 
-**AR.** الـ**software process** = **مجموعة أنشطة مترابطة تؤدي لمنتج برمجي**.
+**الشرح المفاهيمي:** الـ**software process** = **مجموعة أنشطة مترابطة تؤدي لمنتج برمجي**.
 
 **بس لاحظ التحذير اللي يضيفه فوراً:** البرامج **مو دائماً** تُبنى من الصفر. البرامج التجارية الحديثة كثيراً ما تُبنى بـ:
 - **توسيع وتعديل أنظمة موجودة**، أو
@@ -160,7 +159,7 @@ And they are not atomic:
 
 > **Verbatim (Sommerville p.45):** *"In practice, of course, they are complex activities in themselves and include sub-activities such as **requirements validation**, **architectural design**, **unit testing**, etc. There are also supporting process activities such as **documentation** and **software configuration management**."*
 
-**AR.** أربعة أنشطة **موجودة بكل عملية مهما كان شكلها**:
+**التحليل المفاهيمي للأنشطة الأربعة:** أربعة أنشطة **موجودة بكل عملية مهما كان شكلها**:
 
 | # | النشاط | المعنى |
 |:---:|:---|:---|
@@ -187,7 +186,7 @@ And they are not atomic:
 | **Roles** | *"which reflect the responsibilities of the people involved in the process. Examples of roles are project manager, configuration manager, programmer, etc."* |
 | **Pre- and post-conditions** | *"which are statements that are true before and after a process activity has been enacted or a product produ[ced]."* |
 
-**AR.** العملية **مو بس أنشطة وترتيبها**. توصيفها يحتوي **ثلاثة عناصر إضافية**:
+**العناصر الثلاثة الإضافية في توصيف العملية:** العملية **مو بس أنشطة وترتيبها**، توصيفها يحتوي ثلاثة عناصر إضافية:
 
 | العنصر | المعنى | مثال |
 |:---|:---|:---|
@@ -201,7 +200,7 @@ And they are not atomic:
 
 ## 4. The three-level vocabulary — SDLC, process, methodology
 
-**EN.** This is the part most students blur. Mall draws **two distinct distinctions** that together form a three-level hierarchy.
+This is the part most students blur. Mall draws **two distinct distinctions** that together form a three-level hierarchy.
 
 ### 4.1 Level one: SDLC versus process
 
@@ -211,7 +210,7 @@ And they are not atomic:
 
 > **Verbatim (Mall p.69):** *"…several development processes may fit the same SDLC."*
 
-**AR.** Mall يعطيك الاسم بثلاث تسميات مترادفة: **SDLC model = software life cycle model = software development process model**.
+**الشرح والتمييز الأول بين SDLC والعملية:** Mall يعطيك الاسم بثلاث تسميات مترادفة: **SDLC model = software life cycle model = software development process model**.
 
 **بس بعدين يسجّل فرقاً مهماً:** هو شخصياً يستخدم SDLC و«عملية التطوير» بالتبادل، **بس بعض المؤلفين يفرّقون**:
 - **عملية التطوير** تصف الأنشطة **بدقة وتفصيل أكثر**،
@@ -233,28 +232,25 @@ Mall's own example:
 
 > **Verbatim (Mall p.69):** *"For example, a design process may recommend that in the design stage, the high-level design activity be carried out using **Hatley and Pirbhai's structured analysis and design methodology**."*
 
-**AR.**
+**المقارنة التفصيلية بين العملية والمنهجية:**
 
-| | Process | Methodology |
+| المعيار | Software Process (العملية) | Methodology (المنهجية) |
 |:---|:---|:---|
 | **النطاق** | أوسع — **كل الأنشطة** أو أنشطة كبيرة (عملية التصميم، عملية الاختبار) | **نشاط واحد** أو بضعة أنشطة |
 | **يغطي** | من **البداية (inception) للتشغيل والتقاعد** | خطوات نشاط واحد |
 | **قد يوصي** | بمنهجية لكل نشاط | — |
 | **قد يشمل** | — | **المبرّر والافتراضات الفلسفية** وراء الخطوات |
 
-**مثال Mall:** «عملية التصميم» ممكن توصي إن التصميم العالي يُسوّى بمنهجية *Hatley and Pirbhai's structured analysis and design*.
-
+**مثال Mall:** «عملية التصميم» ممكن توصي إن التصميم العالي يُسوّى بمنهجية <span dir="ltr">*(Hatley and Pirbhai's structured analysis and design)*</span>.
 ### 4.3 The hierarchy, put together
 
-```text
-SDLC          ← most generic:  the phases a software evolves through
-   ↓            (graphically depicted + textually described)
-process       ← more precise:  all activities from inception to retirement,
-   ↓            may prescribe methodologies, names the documents per phase
-methodology   ← narrowest:     the steps for ONE activity, plus its rationale
-```
+![The Software Engineering Hierarchy of Terms|720](../06_Diagrams_&_Mindmaps/sdlc_process_methodology_hierarchy.png)
 
-**AR.** من الأعمّ للأخصّ: **SDLC** → **Process** → **Methodology**.
+**التدرج المفاهيمي (من الأعمّ إلى الأخصّ):**
+
+<div dir="ltr" style="text-align: center; font-weight: 700; margin: 10px 0; color: #1e3a8a; font-size: 11pt;">
+  SDLC Model &nbsp;→&nbsp; Software Process &nbsp;→&nbsp; Software Methodology
+</div>
 
 **للامتحان:** لو سألك «الفرق بين SDLC والعملية؟» أو «بين العملية والمنهجية؟» — **المنطق واحد: الأعمّ مقابل الأخصّ.**
 
@@ -264,7 +260,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.69):** *"An **SDLC graphically depicts** the different phases through which a software evolves. It is usually accompanied by a textual description of the different activities that need to be carried out during each phase."*
 
-**AR.** الـSDLC **يُرسم** — يبيّن المراحل و**الانتقالات** بينها، **ويُرافق** الرسم وصف نصي للأنشطة اللي لازم تُنجز قبل اعتبار المرحلة مكتملة.
+**الرسم المقترن بالنص التوصيفي:** الـSDLC **يُرسم** — يبيّن المراحل و**الانتقالات** بينها، **ويُرافق** الرسم وصف نصي للأنشطة اللي لازم تُنجز قبل اعتبار المرحلة مكتملة.
 
 **عنصران معاً: رسم + نص.** الرسم جزء من التعريف مو زينة — ولهذا كل نموذج بالملفات الجاية إله **شكل**، ولهذا ندرس الأشكال.
 
@@ -280,7 +276,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.70):** *"Software development organisations have realised that adherence to a suitable life cycle model helps to produce **good quality software** and that helps **minimise the chances of time and cost overruns**."*
 
-**AR.** الفائدة الأساسية: **تطوير منهجي ومنضبط**. والنتيجتان الملموستان:
+**التحليل الهندسي لأهمية العملية:** الفائدة الأساسية: **تطوير منهجي ومنضبط**. والنتيجتان الملموستان:
 1. **جودة أفضل**،
 2. **تقليل احتمال تجاوز الوقت والكلفة.**
 
@@ -292,14 +288,13 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.71):** *"While development of a software of the former type could succeed even while an individual programmer uses a **build and fix** style of development, use of a **suitable SDLC is essential** for a professional software development project involving team effort to succeed."*
 
-**AR.**
+**المقارنة الحاسمة بين البرمجة الفردية والبرمجة الفريقة:**
 
-| | programming-in-the-small | programming-in-the-large |
+| وجه المقارنة | Programming-in-the-small | Programming-in-the-large |
 |:---|:---|:---|
-| **مين** | **مبرمج واحد** | **فريق** |
-| **شنو** | **برنامج لعبة (toy program)** | **برنامج احترافي** |
-| **يحتاج SDLC؟** | لا — ممكن ينجح بـ**build and fix** | **نعم — ضروري** |
-
+| **القائم بالعمل** | **مبرمج واحد** | **فريق هندسي** |
+| **طبيعة المنتج** | **برنامج لعبة (toy program)** | **برنامج احترافي معقد** |
+| **هل يحتاج SDLC؟** | لا — ممكن ينجح بـ**build and fix** | **نعم — استخدام SDLC حتمي وإلزامي** |
 **مثال Mall للصغير:** طالب يحل واجب صف — ممكن ينجح بلا عملية.
 
 **ليش مهم للامتحان؟** لأنه **يمنع الجواب الخاطئ**: لو سألك «هل نحتاج SDLC دائماً؟» — الجواب **مو نعم مطلقاً**. الجواب: **يعتمد على الحجم**. للصغير لا، وللكبير **ضروري**.
@@ -310,7 +305,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.70):** *"Therefore, ad hoc development turns out to be is a **sure way to have a failed project**. Believe it or not, this is exactly what has caused many project failures in the past!"*
 
-**AR.** السيناريو الملموس: المشكلة تتقسّم أجزاء وتُوزّع على الأعضاء، ويُترك لكل واحد حرية الطريقة. النتيجة المحتملة:
+**سيناريو الفوضى التطويرية بدون عملية:** السيناريو الملموس: المشكلة تتقسّم أجزاء وتُوزّع على الأعضاء، ويُترك لكل واحد حرية الطريقة. النتيجة المحتملة:
 
 - واحد **يبلش يكتب الكود** وهو **يفترض** شنو راح تكون مخرجات الأجزاء الثانية،
 - وواحد يبلش بـ**مستندات الاختبار** أول،
@@ -326,7 +321,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.70):** *"When a software is developed by a team, it is necessary to have a **precise understanding among the team members as to—when to do what**. In the absence of such an understanding, if each member at any time would do whatever activity he feels like doing. This would be an **open invitation to developmental chaos and project failure**."*
 
-**AR.** الجملة اللي تختصر كل شي:
+**خلاصة الحجة في عبارة واحدة:**
 
 > **«تفاهم دقيق بين أعضاء الفريق: *متى* نسوي *شنو*.»**
 
@@ -348,7 +343,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Mall p.71):** *"An undocumented process gives a **clear indication to the members of the development teams about the lack of seriousness on the part of the management** of the organisation about following the process."*
 
-**AR.** **مو كافي يكون عندك عملية** — لازم تكون **موثّقة**. بدون توثيق، المطورين يكوّنون **فهم غير رسمي** فقط، وهذا يخلق مشاكل:
+**التحليل الهندسي:** **مو كافي يكون عندك عملية** — لازم تكون **موثّقة**. بدون توثيق، المطورين يكوّنون **فهم غير رسمي** فقط، وهذا يخلق مشاكل:
 
 | المشكلة | المثال اللي يعطيه Mall |
 |:---|:---|
@@ -371,7 +366,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 > **Verbatim (Sommerville p.46):** *"For **critical systems**, a very **structured** development process is required. For **business systems, with rapidly changing requirements**, a **less formal, flexible** process is likely to be more effective."*
 
-**AR.**
+**المقارنة المفاهيمية:**
 
 | | Plan-driven | Agile |
 |:---|:---|:---|
@@ -392,7 +387,7 @@ methodology   ← narrowest:     the steps for ONE activity, plus its rationale
 
 ## 8. The thread — what the remaining nine files are about
 
-**EN.** Sommerville states this chapter's own objectives (p.44):
+Sommerville states this chapter's own objectives (p.44):
 
 > **Verbatim:** *"When you have read this chapter you will:*
 > - *understand the concepts of software processes and software process models;*
@@ -409,7 +404,7 @@ Mall also lays out his chapter as a narrative (p.67):
 
 > **Verbatim:** *"…we discuss a few derivatives of this model. Subsequently we discuss the **spiral model that generalises various life cycle models**. Finally, we discuss a few recently proposed life cycle models that are categorized under the umbrella term **agile model**."*
 
-**AR.** Sommerville يحدد هدف الفصل بخمسة أهداف، وأهم اثنين: **ثلاثة نماذج عملية عامة** ومتى تُستخدم، و**ليش لازم تُنظَّم العمليات حتى تتحمّل التغيّرات**.
+**الرابط الفلسفي بين النماذج العشرة:** Sommerville يحدد هدف الفصل بخمسة أهداف، وأهم اثنين: **ثلاثة نماذج عملية عامة** ومتى تُستخدم، و**ليش لازم تُنظَّم العمليات حتى تتحمّل التغيّرات**.
 
 وMall يقول شي أعمق: **ظهور Agile ما جاء من اختراع جديد** — جاء من **تغيّر نوع المشاريع نفسها**: من **مشاريع منتج كبيرة تدوم سنوات** إلى **مشاريع خدمات صغيرة**.
 
@@ -421,17 +416,17 @@ Mall also lays out his chapter as a narrative (p.67):
 
 **النماذج كأجوبة — هكذا اقرأ التسعة الجاية:**
 
-| الملف | الجواب اللي يقدّمه |
+| الوحدة / النموذج | الجواب الهندسي الذي يقدّمه لاستيعاب التغيير |
 |:---:|:---|
-| 02 | **قرّر كل شي مقدماً** — Waterfall. ينجح لما المطلوبات مستقرة |
-| 03 | **اكتشف المطلوبات بالبناء** — Prototyping. و**خلّي النظام يتطوّر** — Evolutionary |
-| 04 | **سلّم شرائح واستوعب التغيير** — Incremental |
-| 05 | **اضغط الجدول الزمني** — RAD |
-| 06 | **خلّي الخطر هو الموجّه** — Spiral |
-| 07 | **اجمع الكل بإطار مرحلي وتكراري** — Unified Process |
-| 08 | **غيّر الفلسفة: الناس قبل العملية** — Agile / XP / Scrum |
-| 09 | **ما موجود فائز — تعلّم تختار** |
-
+| **Unit 02 (Waterfall)** | **قرّر كل شي مقدماً** — ينجح حصراً لما تكون المطلوبات مستقرة تماماً |
+| **Unit 03 (Prototyping & Evolutionary)** | **اكتشف المطلوبات بالبناء التفاعلي** (Prototyping) و**دع النظام يتطور تدريجياً** (Evolutionary) |
+| **Unit 04 (Incremental)** | **سلّم شرائح تشغيلية واستوعب التغيير** بين كل دورة تسليم |
+| **Unit 05 (RAD)** | **اضغط الجدول الزمني** بالتطوير السريع المبني على المكونات الجاهزة |
+| **Unit 06 (Spiral)** | **خلّي تحليل المخاطر (Risk) هو الموجّه الأساسي** لكل حلقة تطوير |
+| **Unit 07 (Unified Process)** | **اجمع الكل بإطار مرحلي وتكراري موحد** (Inception, Elaboration, Construction, Transition) |
+| **Unit 08 (Agile / XP / Scrum)** | **غيّر الفلسفة بالكامل: الأفراد والتفاعل قبل الإجراءات والوثائق** |
+| **Unit 09 (Model Selection)** | **لا يوجد نموذج مثالي مطلق — تعلّم معايير الاختيار الهندسي** بحسب المخاطر والمطلوبات |
+| **Unit 10 (Master Synthesis)** | **مصفوفة المقارنة الشاملة وبنك أسئلة الامتحان التحليلية** |
 ---
 
 ## Source notes
@@ -441,8 +436,8 @@ Mall also lays out his chapter as a narrative (p.67):
 | **Mall p.67–71** | **Primary for §1, §4, §5 and §6.** The life-cycle definition and stages, the inception stage, operation/maintenance and retirement, the SDLC definition and synonyms, **both** vocabulary distinctions (SDLC/process and process/methodology), programming-in-the-small/large, the team-failure scenario, and the documentation argument are all Mall's. **Sommerville has none of them.** |
 | **Sommerville p.44–46** | **Primary for §2, §3 and §7.** The process definition, the four fundamental activities, the products/roles/pre-conditions list, the off-the-shelf qualification, and the plan-driven/agile axis are all his, all verbatim. **Mall has none of them.** |
 | **Pressman / Agarwal** | **Add nothing to this file.** Both restate the four activities without Mall's vocabulary precision or Sommerville's process-description detail. |
-| `[THIN]` | **The three-level vocabulary hierarchy (§4) rests on Mall alone.** Sommerville draws neither distinction. If the doctor asks about SDLC vs process or process vs methodology, **Mall p.68–69 is the only authority you have** — and note Mall explicitly says he uses the terms interchangeably himself, so the distinction is a *reported usage*, not his own. |
-| `[THIN]` | **`programming-in-the-small` / `programming-in-the-large`** appears at Mall p.70–71. I have the definitions but not how Mall develops the concept further in the chapter. |
+| **Textbook Scope Note** | **The three-level vocabulary hierarchy (§4) rests on Mall alone.** Sommerville draws neither distinction. If the doctor asks about SDLC vs process or process vs methodology, **Mall p.68–69 is the only authority you have** — and note Mall explicitly says he uses the terms interchangeably himself, so the distinction is a *reported usage*, not his own. |
+| **Textbook Scope Note** | **`programming-in-the-small` / `programming-in-the-large`** appears at Mall p.70–71, defining the exact organizational boundary where team coordination makes an SDLC strictly indispensable. |
 | Note | Sommerville's objective mentions **"three generic software process models"** — waterfall, incremental development, and reuse-oriented software engineering (Sommerville p.47). **This is a different taxonomy from the lecture's**, which follows Mall. Both are correct; they are different cuts. Flagged so the difference is not mistaken for a contradiction. |
 
 ---
@@ -504,4 +499,4 @@ Mall also lays out his chapter as a narrative (p.67):
 
 ---
 
-*File 01 of 10. Built 2026-09-23 under `Week_02_BUILD_PLAN.md`. Every definition is quoted verbatim before it is explained; every claim carries a page anchor; `[THIN]` marks where this document is thinner than the source.*
+*Master Studio · Advanced Software Engineering (CS504) · University of Wasit*

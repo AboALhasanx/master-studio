@@ -107,7 +107,7 @@ def isolate_english_tokens_in_arabic(text: str) -> str:
     )
     tokens = split_pat.split(text)
     result = []
-    en_phrase_re = re.compile(r"\b([A-Za-z][A-Za-z0-9_\-\.\s/]{1,40}[A-Za-z0-9])\b")
+    en_phrase_re = re.compile(r"\b([A-Za-z][A-Za-z0-9_\-\.\s/\'’]{1,50}[A-Za-z0-9])\b")
 
     for token in tokens:
         if split_pat.fullmatch(token):
@@ -137,7 +137,7 @@ def tag_bilingual_blocks(html_text: str) -> str:
             return f'<{tag}{attrs} dir="ltr" class="ltr-block">{content}{closing}'
         return m.group(0)
 
-    pattern = r'<(h[1-6]|p|blockquote|li)(\s*[^>]*)>(.*?)(</\1>)'
+    pattern = r'<(h[1-6]|p|blockquote|li|table)(\s*[^>]*)>(.*?)(</\1>)'
     return re.sub(pattern, _fix_tag, html_text, flags=re.DOTALL)
 
 
@@ -285,6 +285,53 @@ def _render_callout(kind: str, custom_title: str, body_lines: List[str], lang: s
   </div>
 </div>
 """
+
+
+def transform_qa_cards(html_text: str, default_lang: str = "ar") -> str:
+    """Transforms active recall Q&A pairs into dedicated assessment cards distinct from quotes."""
+    qa_pattern = re.compile(
+        r"<p><strong>((?:Q\d*[:\.\)]|\d+[\.\)]|س\d*[:\.\)]|سؤال[:\.\)]).*?)</strong></p>\s*<blockquote(?:\s*[^>]*)>(.*?)</blockquote>",
+        re.DOTALL
+    )
+
+    def _replace_qa(m):
+        q_raw = m.group(1).strip()
+        ans_raw = m.group(2).strip()
+
+        # Extract number if present
+        num_m = re.match(r"^((?:Q\d*|\d+|س\d*))[\.\):\-]\s*(.*)$", q_raw)
+        if num_m:
+            badge_text = num_m.group(1)
+            q_text = num_m.group(2)
+        else:
+            badge_text = "Q"
+            q_text = q_raw
+
+        # Determine language/direction of question and answer
+        ans_inner = re.sub(r'<[^>]+>', '', ans_raw)
+        ans_has_ar = has_arabic(ans_inner)
+        ans_dir = "rtl" if ans_has_ar else "ltr"
+        ans_class = "rtl-ans" if ans_has_ar else "ltr-ans"
+
+        q_has_ar = has_arabic(q_text)
+        q_dir = "rtl" if q_has_ar else "ltr"
+        badge_ans_label = "نموذج الإجابة (Model Answer)" if ans_has_ar else "Model Answer"
+
+        return f"""
+<div class="qa-card">
+  <div class="qa-question-box" dir="{q_dir}">
+    <span class="qa-badge-q">{H.escape(badge_text)}</span>
+    <div class="qa-question-text">{q_text}</div>
+  </div>
+  <div class="qa-answer-box {ans_class}" dir="{ans_dir}">
+    <div class="qa-answer-content">{ans_raw}</div>
+  </div>
+</div>
+"""
+
+    return qa_pattern.sub(_replace_qa, html_text)
+
+
 def trim_image_whitespace(img_bytes: bytes, pad: int = 6) -> bytes:
     """Auto-trims solid white or near-white margins from an image before inlining."""
     try:
@@ -394,7 +441,7 @@ def inline_images_in_html(html_text: str, base_dir: Path) -> str:
 
 
 def format_table_cells(html_text: str) -> str:
-    """Detects table cells with numbers, units, metrics, or pure English text, and applies LTR."""
+    """Detects table cells with numbers, units, metrics, or pure English text, and applies LTR with clean wrapping."""
     def _fix_td(m):
         attrs = m.group(1) or ""
         content = m.group(2).strip()
@@ -404,13 +451,13 @@ def format_table_cells(html_text: str) -> str:
         if inner_text in ["—", "-", "–"]:
             return '<td style="text-align: center;">—</td>'
 
-        # If cell has NO Arabic text and has Latin chars, math, or digits
-        if not has_arabic(inner_text) and re.search(r'[A-Za-z0-9\$\→\←]', content):
-            # Pure numerical cell
-            if re.search(r'^\s*[-+]?[\d\.,\s/%]+\s*$', inner_text):
-                return f'<td class="num-cell" dir="ltr"><bdi dir="ltr">{content}</bdi></td>'
-            else:
-                return f'<td class="ltr-cell" dir="ltr" style="text-align: left;"><bdi dir="ltr">{content}</bdi></td>'
+        # Pure numerical cell
+        if re.search(r'^\s*[-+]?[\d\.,\s/%]+\s*$', inner_text):
+            return f'<td class="num-cell" dir="ltr">{content}</td>'
+
+        # If cell has NO Arabic text and has Latin chars
+        if not has_arabic(inner_text) and re.search(r'[A-Za-z]', inner_text):
+            return f'<td class="ltr-cell" dir="ltr" style="text-align: left;">{content}</td>'
 
         return f'<td{attrs}>{content}</td>'
 
@@ -457,7 +504,52 @@ def parse_frontmatter(md_content: str) -> Tuple[Dict[str, str], str]:
                     meta[key] = val
 
     return meta, content
+def sanitize_markdown_for_publication(md_text: str, meta: Dict[str, str]) -> str:
+    """Strips internal agent scaffolding, backend work notes, and language markers before publication."""
+    # Clean frontmatter meta titles of 'File 01 of 10' patterns
+    if "title" in meta:
+        meta["title"] = re.sub(r"File\s+0?(\d+)\s+of\s+\d+[\s:—–-]+", r"Unit \1: ", meta["title"])
+        meta["title"] = re.sub(r"File\s+0?(\d+)\s+of\s+\d+", r"Unit \1", meta["title"])
+    if "file" in meta:
+        del meta["file"]
 
+    lines = md_text.splitlines()
+    clean_lines = []
+    found_first_heading = False
+    for line in lines:
+        # 1. Strip leading top-level title from body to avoid duplicate title under doc-header
+        if not found_first_heading and re.match(r"^#\s+.*", line):
+            found_first_heading = True
+            continue
+        if line.strip():
+            found_first_heading = True
+        # 2. Strip standalone language markers like **EN.**, **AR.**, EN., AR.
+        if re.match(r"^\s*(?:\*{1,2})?(?:EN|AR)\.?(?:\*{1,2})?\s*$", line):
+            continue
+
+        # 3. Strip leading **EN.** or **AR.** prefixes from paragraph starts
+        line = re.sub(r"^\s*(?:\*{1,2})?(?:EN|AR)\.?(?:\*{1,2})?\s+", "", line)
+
+        # 4. Strip internal backend footers
+        if re.search(r"^\s*\*?File\s+\d+\s+of\s+\d+\.\s*Built\s+\d{4}-\d{2}-\d{2}", line, re.IGNORECASE):
+            continue
+        if re.search(r"under\s+`?Week_\w+\.md`?", line, re.IGNORECASE) and re.search(r"\[THIN\]", line):
+            continue
+
+        # 5. Clean [THIN] markers inside table rows or text
+        line = re.sub(r"\|\s*`?\[THIN\]`?\s*\|", "| Note: Primary Coverage |", line)
+        line = re.sub(r"`?\[THIN\]`?", "*(In-depth note)*", line)
+
+        clean_lines.append(line)
+
+    return "\n".join(clean_lines)
+
+
+def wrap_flow_arrows(html_text: str) -> str:
+    """Wraps sequence flow arrows in explicit LTR containers so BiDi doesn't reverse them."""
+    def _arrow_rep(m):
+        return f'<span class="flow-arrow" dir="ltr">{m.group(0)}</span>'
+    return re.sub(r"(?<![<A-Za-z0-9])([→←]|->)(?![>A-Za-z0-9])", _arrow_rep, html_text)
 
 # ---------------------------------------------------------------------------
 # Math & KaTeX Preprocessing
@@ -556,9 +648,9 @@ html, body {
 .en-token {
   font-family: 'Segoe UI', Arial, sans-serif;
   direction: ltr;
-  display: inline-block;
-  color: #1e3a8a;
-  font-weight: 600;
+  display: inline;
+  color: inherit;
+  font-weight: inherit;
   unicode-bidi: isolate;
 }
 
@@ -588,44 +680,164 @@ h3 {
 }
 p {
   margin: 0 0 10px 0;
+  line-height: 1.6;
+}
+[dir="ltr"] p, .ltr-block {
+  text-align: left !important;
+}
+[dir="rtl"] p {
   text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Blockquotes (Verbatim Citations & Formal Quotations) */
+blockquote {
+  margin: 12px 0;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border-radius: 4px;
+  color: #1e293b;
+  font-style: normal;
+  page-break-inside: avoid;
+}
+/* LTR Blockquote: ALWAYS border on the LEFT */
+blockquote[dir="ltr"], blockquote.ltr-block, [dir="ltr"] blockquote:not([dir="rtl"]):not(.rtl-block) {
+  border-left: 3.5px solid #2563eb !important;
+  border-right: none !important;
+  text-align: left !important;
+}
+/* RTL Blockquote: ALWAYS border on the RIGHT */
+blockquote[dir="rtl"], blockquote.rtl-block, [dir="rtl"] blockquote:not([dir="ltr"]):not(.ltr-block) {
+  border-right: 3.5px solid #2563eb !important;
+  border-left: none !important;
+  text-align: right !important;
+}
+blockquote p {
+  margin: 4px 0;
+  text-align: inherit;
+}
+
+/* Active Recall Q&A Cards (Distinct from Quotes) */
+.qa-card {
+  margin: 14px 0;
+  page-break-inside: avoid;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+.qa-question-box {
+  padding: 8px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.qa-question-box[dir="rtl"] {
+  text-align: right;
+}
+.qa-question-box[dir="ltr"] {
+  text-align: left;
+}
+.qa-badge-q {
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: 8.5pt;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.qa-question-text {
+  font-weight: 700;
+  font-size: 10pt;
+  color: #0f172a;
+  line-height: 1.45;
+}
+.qa-answer-box {
+  padding: 10px 14px;
+  background: #f0fdf4;
+  position: relative;
+}
+/* Direction-sensitive emerald border for Q&A answers! */
+.qa-answer-box.ltr-ans, .qa-answer-box[dir="ltr"] {
+  border-left: 4px solid #10b981 !important;
+  border-right: none !important;
+  text-align: left !important;
+}
+.qa-answer-box.rtl-ans, .qa-answer-box[dir="rtl"] {
+  border-right: 4px solid #10b981 !important;
+  border-left: none !important;
+  text-align: right !important;
+}
+.qa-badge-ans {
+  font-size: 7.5pt;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #059669;
+  margin-bottom: 5px;
+}
+.qa-answer-content {
+  font-size: 9.5pt;
+  line-height: 1.55;
+  color: #1e293b;
+}
+.qa-answer-content p {
+  margin: 4px 0 !important;
+  text-align: inherit !important;
+}
+
+/* Flow Arrows */
+.flow-arrow {
+  direction: ltr !important;
+  display: inline-block;
+  unicode-bidi: isolate;
+  padding: 0 3px;
+  color: #0f766e;
+  font-weight: 700;
 }
 
 /* Academic Header & Metadata Banner */
 .doc-header {
-  border-bottom: 2.5px solid #1e3a8a;
-  padding-bottom: 12px;
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  text-align: center;
   page-break-after: avoid;
+  direction: ltr !important;
 }
-.univ-meta {
-  font-size: 8.5pt;
-  color: #475569;
-  line-height: 1.4;
-  text-align: left;
-  direction: ltr;
+.unit-eyebrow {
+  color: #2563eb;
+  font-size: 11pt;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-align: center;
 }
-.badge-chip {
-  background: #1e3a8a;
-  color: #ffffff;
-  padding: 3px 10px;
-  border-radius: 4px;
-  font-size: 8.5pt;
-  font-weight: 700;
-  display: inline-block;
-  letter-spacing: 0.3px;
-  margin-bottom: 4px;
+.doc-main-title {
+  color: #0f172a;
+  font-size: 21pt;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  text-align: center;
 }
 .sub-title {
   color: #0f766e;
   font-size: 11pt;
   font-weight: 600;
-  margin-top: 2px;
+  margin: 4px auto 0 auto;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 88%;
 }
-
 /* Pedagogical Callout Cards */
 .callout {
   border-radius: 6px;
@@ -713,8 +925,9 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 14px 0;
-  font-size: 9.5pt;
-  page-break-inside: avoid;
+  font-size: 9pt;
+  page-break-inside: auto;
+  table-layout: auto;
 }
 thead {
   display: table-header-group;
@@ -725,12 +938,21 @@ tr {
 th, td {
   border: 1px solid #cbd5e1;
   padding: 6px 10px;
+  line-height: 1.45;
+  vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 th {
   background: #f1f5f9;
   color: #0f172a;
   font-weight: 700;
+}
+[dir="rtl"] th, [dir="rtl"] td {
   text-align: right;
+}
+[dir="ltr"] th, [dir="ltr"] td {
+  text-align: left;
 }
 td.num-cell, th.num-cell {
   direction: ltr !important;
@@ -743,7 +965,7 @@ td.ltr-cell, th.ltr-cell {
   direction: ltr !important;
   text-align: left !important;
   unicode-bidi: isolate;
-  white-space: nowrap;
+  white-space: normal !important;
 }
 tr:nth-child(even) td {
   background: #f8fafc;
@@ -796,21 +1018,27 @@ def generate_header_footer_templates(course_name: str, doc_title: str) -> Tuple[
 
 def render_study_pack_html(body_html: str, meta: Dict[str, str], lang: str) -> str:
     """Builds standard lecture study pack layout."""
-    course = meta.get("course", meta.get("subject", "Master of Computer Science"))
-    title = meta.get("title", "وثيقة المراجعة والتلخيص الأكاديمي")
-    subtitle = meta.get("subtitle", meta.get("description", "Comprehensive Lecture Summary & Review"))
-    instructor = meta.get("instructor", meta.get("prof", "Faculty of CS & IT"))
-    term = meta.get("term", "Fall 2026")
-    badge = meta.get("badge", f"Master Studio · {course}")
+    raw_title = meta.get("title", "وثيقة المراجعة والتلخيص الأكاديمي")
+    subtitle = meta.get("subtitle", meta.get("description", ""))
+
+    # Parse eyebrow and main title if present (e.g. "ASE Week 02 — Unit 01: SDLC Fundamentals")
+    eyebrow = ""
+    main_title = raw_title
+    if ":" in raw_title:
+        parts = raw_title.split(":", 1)
+        eyebrow = parts[0].strip()
+        main_title = parts[1].strip()
+    elif " — " in raw_title:
+        parts = raw_title.split(" — ", 1)
+        eyebrow = parts[0].strip()
+        main_title = parts[1].strip()
 
     dir_attr = "rtl" if lang == "ar" else "ltr"
 
     return f"""<!DOCTYPE html>
 <html lang="{lang}" dir="{dir_attr}">
 <head>
-<meta charset="utf-8">
-<title>{H.escape(title)}</title>
-<!-- KaTeX Math Engine -->
+<title>{H.escape(raw_title)}</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -822,17 +1050,9 @@ def render_study_pack_html(body_html: str, meta: Dict[str, str], lang: str) -> s
 <body>
 
 <div class="doc-header">
-  <div>
-    <span class="badge-chip">{H.escape(badge)}</span>
-    <h1>{H.escape(title)}</h1>
-    <div class="sub-title">{H.escape(subtitle)}</div>
-  </div>
-  <div class="univ-meta">
-    <b>University of Wasit</b><br>
-    College of CS & IT<br>
-    Academic Term: {H.escape(term)}<br>
-    Instructor: {H.escape(instructor)}
-  </div>
+  {f'<div class="unit-eyebrow">{H.escape(eyebrow)}</div>' if eyebrow else ''}
+  <h1 class="doc-main-title">{H.escape(main_title)}</h1>
+  {f'<div class="sub-title">{H.escape(subtitle)}</div>' if subtitle else ''}
 </div>
 
 {body_html}
@@ -1058,14 +1278,20 @@ def export_markdown_to_pdf(
         output_pdf_path = Path(output_pdf_path).resolve()
 
     # Check if target file is locked by an external PDF viewer on Windows
-    if output_pdf_path.exists():
+    orig_target = output_pdf_path
+    candidate = output_pdf_path
+    counter = 1
+    while candidate.exists():
         try:
-            with open(output_pdf_path, "a+b"):
-                pass
+            with open(candidate, "a+b"):
+                output_pdf_path = candidate
+                break
         except PermissionError:
-            alt_path = output_pdf_path.with_name(f"{output_pdf_path.stem}_new.pdf")
-            sys.stderr.write(f"[*] Notice: {output_pdf_path.name} is currently open in a PDF viewer. Writing to {alt_path.name}\n")
-            output_pdf_path = alt_path
+            candidate = orig_target.with_name(f"{orig_target.stem}_v{counter}.pdf" if counter > 1 else f"{orig_target.stem}_new.pdf")
+            counter += 1
+    if candidate != orig_target:
+        sys.stderr.write(f"[*] Notice: {orig_target.name} is currently open in a PDF viewer. Writing to {candidate.name}\n")
+        output_pdf_path = candidate
     raw_text = input_md_path.read_text(encoding="utf-8")
     meta, body_md = parse_frontmatter(raw_text)
 
@@ -1081,8 +1307,11 @@ def export_markdown_to_pdf(
     if not lang:
         lang = "ar" if has_arabic(body_md) else "en"
 
+    # Step 0: Sanitize Markdown for Publication (strip backend markers, File 01 of 10, etc.)
+    sanitized_md = sanitize_markdown_for_publication(body_md, meta)
+
     # Step 1: Protect Math Blocks ($$...$$ and $...$)
-    protected_md, math_placeholders = protect_math_blocks(body_md)
+    protected_md, math_placeholders = protect_math_blocks(sanitized_md)
 
     # Step 2: Transform Callouts (> [!TRAP], > [!FEYNMAN]...)
     callouts_md = transform_callouts(protected_md, default_lang=lang)
@@ -1091,11 +1320,14 @@ def export_markdown_to_pdf(
     extensions = ["tables", "fenced_code", "toc", "def_list", "attr_list"]
     raw_html = markdown.markdown(callouts_md, extensions=extensions)
 
+    # Step 3.5: Transform Active Recall Q&A Cards (Distinguishes Q&A from Quotes)
+    qa_transformed_html = transform_qa_cards(raw_html, default_lang=lang)
+
     # Step 4: BiDi English Token Isolation in Arabic text (while math is safely protected as @@MATH...@@)
     if lang == "ar":
-        bidi_html = isolate_english_tokens_in_arabic(raw_html)
+        bidi_html = isolate_english_tokens_in_arabic(qa_transformed_html)
     else:
-        bidi_html = raw_html
+        bidi_html = qa_transformed_html
 
     # Step 5: Tag Pure English Blocks as LTR
     tagged_html = tag_bilingual_blocks(bidi_html)
@@ -1106,10 +1338,13 @@ def export_markdown_to_pdf(
     # Step 7: Base64 Image Inlining
     inlined_html = inline_images_in_html(isolated_leading_html, input_md_path.parent)
 
-    # Step 8: Format Table Numerical and English Cells for BiDi/LTR
-    table_formatted_html = format_table_cells(inlined_html)
+    # Step 7.5: Wrap Flow Arrows
+    arrow_wrapped_html = wrap_flow_arrows(inlined_html)
 
-    # Step 8: Restore Math Blocks as pure, untouched LaTeX
+    # Step 8: Format Table Numerical and English Cells for BiDi/LTR
+    table_formatted_html = format_table_cells(arrow_wrapped_html)
+
+    # Step 8.5: Restore Math Blocks as pure, untouched LaTeX
     math_restored_html = restore_math_blocks(table_formatted_html, math_placeholders)
 
     # Step 9: Select & Render Layout Template

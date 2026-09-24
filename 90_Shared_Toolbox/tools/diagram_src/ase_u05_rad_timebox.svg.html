@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:#ffffff; }
+  #diagram { width:1080px; background:#ffffff; }
+  text { font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,Helvetica,sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1080" height="788" viewBox="0 0 1080 788" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+
+  <!-- HEADER -->
+  <text x="540" y="44" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">RAD: Compressing the Schedule</text>
+  <text x="540" y="74" text-anchor="middle" font-size="16" fill="#64748b">Minimal planning, heavy reuse, parallel construction, and the timebox (Mall &#167;2.3&#8211;&#167;2.3.3, pp. 100&#8211;104)</text>
+  <line x1="30" y1="98" x2="1050" y2="98" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- SECTION 1 -->
+  <text x="30" y="132" font-size="14" font-weight="700" fill="#1e3a8a" letter-spacing="1.2">WHY RAD EXISTS &#8212; THE SAME TIME AXIS, A MUCH SHORTER PROJECT</text>
+
+  <g stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4">
+    <line x1="250" y1="150" x2="250" y2="352"/>
+    <line x1="447" y1="150" x2="447" y2="352"/>
+    <line x1="645" y1="150" x2="645" y2="352"/>
+    <line x1="842" y1="150" x2="842" y2="352"/>
+    <line x1="1040" y1="150" x2="1040" y2="352"/>
+  </g>
+
+  <!-- sequential row -->
+  <text x="30" y="176" font-size="13.5" font-weight="700" fill="#b91c1c">Sequential model</text>
+  <text x="30" y="194" font-size="11.5" fill="#64748b">one phase at a time</text>
+  <g font-size="11.5" font-weight="600" fill="#1e40af" text-anchor="middle">
+    <rect x="250" y="156" width="158" height="30" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="329" y="175">Reqs</text>
+    <rect x="408" y="156" width="158" height="30" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="487" y="175">Design</text>
+    <rect x="566" y="156" width="158" height="30" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="645" y="175">Code</text>
+    <rect x="724" y="156" width="158" height="30" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="803" y="175">Test</text>
+    <rect x="882" y="156" width="158" height="30" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="961" y="175">Deliver</text>
+  </g>
+
+  <!-- RAD row -->
+  <text x="30" y="248" font-size="13.5" font-weight="700" fill="#c2410c">RAD</text>
+  <text x="30" y="266" font-size="11.5" fill="#64748b">parallel feature teams</text>
+  <g font-size="11" font-weight="600" fill="#9a3412">
+    <rect x="250" y="216" width="182" height="22" rx="5" fill="#ffedd5" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="258" y="231">Team A &#183; feature set 1</text>
+    <rect x="250" y="244" width="182" height="22" rx="5" fill="#ffedd5" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="258" y="259">Team B &#183; feature set 2</text>
+    <rect x="250" y="272" width="182" height="22" rx="5" fill="#ffedd5" stroke="#fdba74" stroke-width="1.2"/>
+    <text x="258" y="287">Team C &#183; feature set 3</text>
+  </g>
+  <rect x="440" y="216" width="75" height="78" rx="6" fill="#fed7aa" stroke="#fb923c" stroke-width="1.4"/>
+  <text x="477" y="250" font-size="11" font-weight="700" fill="#7c2d12" text-anchor="middle">Integrate</text>
+  <text x="477" y="266" font-size="11" font-weight="700" fill="#7c2d12" text-anchor="middle">&amp; cutover</text>
+
+  <line x1="525" y1="300" x2="1035" y2="300" stroke="#16a34a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+  <text x="780" y="292" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="middle">schedule compressed by parallel work + component reuse</text>
+
+  <g font-size="11.5" fill="#64748b" text-anchor="middle">
+    <text x="250" y="322">0</text>
+    <text x="447" y="322">3 mo</text>
+    <text x="645" y="322">6 mo</text>
+    <text x="842" y="322">9 mo</text>
+    <text x="1040" y="322">12 mo</text>
+  </g>
+  <line x1="250" y1="330" x2="1040" y2="330" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="645" y="348" font-size="12" fill="#475569" text-anchor="middle">elapsed time &#8594;</text>
+
+  <!-- SECTION 2 -->
+  <line x1="30" y1="372" x2="1050" y2="372" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="30" y="398" font-size="14" font-weight="700" fill="#1e3a8a" letter-spacing="1.2">THE FOUR RAD PHASES &#8212; AND THE ONE LOOP THAT MATTERS</text>
+
+  <g font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">
+    <rect x="30" y="412" width="225" height="56" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="142" y="436">1 &#183; Requirements</text>
+    <text x="142" y="454">planning</text>
+
+    <rect x="295" y="412" width="225" height="56" rx="9" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+    <text x="407" y="436">2 &#183; User design</text>
+    <text x="407" y="454">(rapid prototyping)</text>
+
+    <rect x="560" y="412" width="225" height="56" rx="9" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+    <text x="672" y="436">3 &#183; Construction</text>
+    <text x="672" y="454">(components + tools)</text>
+
+    <rect x="825" y="412" width="225" height="56" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="937" y="436">4 &#183; Cutover</text>
+    <text x="937" y="454">(deploy &amp; review)</text>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)">
+    <line x1="256" y1="440" x2="292" y2="440"/>
+    <line x1="786" y1="440" x2="822" y2="440"/>
+  </g>
+
+  <!-- the design <-> construction loop, drawn inside the 520..560 gap -->
+  <path d="M 556 426 L 526 426" fill="none" stroke="#c2410c" stroke-width="2.4" marker-end="url(#arO)"/>
+  <path d="M 524 456 L 554 456" fill="none" stroke="#c2410c" stroke-width="2.4" marker-end="url(#arO)"/>
+
+  <text x="540" y="492" font-size="12.5" fill="#9a3412" text-anchor="middle">&#8646; Phases 2 and 3 iterate continuously &#8212; the user stays in the loop; this is not a one-off sign-off.</text>
+
+  <!-- TIMEBOX -->
+  <rect x="30" y="506" width="1020" height="48" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="46" y="528" font-size="13.5" font-weight="700" fill="#92400e">&#9201; THE TIMEBOX &#8212; the defining constraint</text>
+  <text x="46" y="546" font-size="12.5" fill="#78350f">The delivery date is fixed first and the scope is negotiated to fit it. If a feature will not fit the box, it is dropped or deferred &#8212; the box never moves.</text>
+
+  <!-- APPLICABILITY -->
+  <text x="30" y="584" font-size="13.5" font-weight="700" fill="#1e3a8a" letter-spacing="1.1">APPLICABILITY &#8212; RAD IS NOT FOR EVERY PROJECT</text>
+
+  <rect x="30" y="596" width="500" height="86" rx="10" fill="#f0fdf4" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="46" y="620" font-size="13.5" font-weight="700" fill="#047857">&#10003; Suits</text>
+  <text x="46" y="642" font-size="12.5" fill="#475569">Component-based, data-driven business systems &#183; a committed</text>
+  <text x="46" y="660" font-size="12.5" fill="#475569">user group that can decide quickly &#183; teams of 2&#8211;6 on each track &#183; a</text>
+  <text x="46" y="678" font-size="12.5" fill="#475569">schedule that is genuinely the binding constraint.</text>
+
+  <rect x="550" y="596" width="500" height="86" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="566" y="620" font-size="13.5" font-weight="700" fill="#b91c1c">&#10007; Does not suit</text>
+  <text x="566" y="642" font-size="12.5" fill="#475569">New, unproven technology with no reusable components &#183; high-</text>
+  <text x="566" y="660" font-size="12.5" fill="#475569">performance or safety-critical systems &#183; large, multi-team projects</text>
+  <text x="566" y="678" font-size="12.5" fill="#475569">where parallel tracks cannot be integrated cheaply.</text>
+
+  <!-- FOOTER -->
+  <line x1="30" y1="708" x2="1050" y2="708" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="30" y="730" font-size="12.5" fill="#64748b"><tspan font-weight="700" fill="#334155">Source:</tspan> R. Mall, Fundamentals of Software Engineering (4th ed.), &#167;2.3&#8211;&#167;2.3.3, pp. 100&#8211;104. Sommerville has no RAD coverage at all.</text>
+  <text x="30" y="752" font-size="12.5" font-weight="700" fill="#334155">Master Studio &#183; Advanced Software Engineering (CS504) &#183; University of Wasit</text>
+</svg>
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:#ffffff; }
+  #diagram { width:1080px; background:#ffffff; }
+  text { font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,Helvetica,sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1080" height="800" viewBox="0 0 1080 800" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- HEADER -->
+  <text x="540" y="44" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">Incremental Development: Delivering in Slices</text>
+  <text x="540" y="74" text-anchor="middle" font-size="16" fill="#64748b">Specification, development and validation interleaved &#8212; and what that costs the manager (Sommerville pp. 49&#8211;51)</text>
+  <line x1="30" y1="98" x2="1050" y2="98" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- LANE LABELS -->
+  <text x="30" y="140" font-size="14" font-weight="700" fill="#1e3a8a" letter-spacing="1.2">THE THREE ACTIVITIES ARE INTERLEAVED, NOT SEQUENTIAL</text>
+
+  <g font-size="13.5" font-weight="700" fill="#334155">
+    <text x="30" y="180">Specification</text>
+    <text x="30" y="230">Development</text>
+    <text x="30" y="280">Validation</text>
+  </g>
+
+  <!-- increment boundaries + release markers -->
+  <g stroke="#0f766e" stroke-width="1.4" stroke-dasharray="5 4">
+    <line x1="389" y1="152" x2="389" y2="306"/>
+    <line x1="608" y1="152" x2="608" y2="306"/>
+    <line x1="827" y1="152" x2="827" y2="306"/>
+    <line x1="1046" y1="152" x2="1046" y2="306"/>
+  </g>
+  <g fill="#0f766e">
+    <polygon points="389,308 395,318 383,318"/>
+    <polygon points="608,308 614,318 602,318"/>
+    <polygon points="827,308 833,318 821,318"/>
+    <polygon points="1046,308 1052,318 1040,318"/>
+  </g>
+  <g font-size="11.5" font-weight="700" fill="#0f766e" text-anchor="middle">
+    <text x="389" y="332">Release 1</text>
+    <text x="608" y="332">Release 2</text>
+    <text x="827" y="332">Release 3</text>
+    <text x="1046" y="332">Release 4</text>
+  </g>
+
+  <!-- LANES -->
+  <g>
+    <!-- Specification -->
+    <rect x="174" y="162" width="88" height="26" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+    <rect x="393" y="162" width="88" height="26" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+    <rect x="612" y="162" width="88" height="26" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+    <rect x="831" y="162" width="88" height="26" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.3"/>
+    <!-- Development -->
+    <rect x="244" y="212" width="88" height="26" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+    <rect x="463" y="212" width="88" height="26" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+    <rect x="682" y="212" width="88" height="26" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+    <rect x="901" y="212" width="88" height="26" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.3"/>
+    <!-- Validation -->
+    <rect x="314" y="262" width="66" height="26" rx="6" fill="#d1fae5" stroke="#34d399" stroke-width="1.3"/>
+    <rect x="533" y="262" width="66" height="26" rx="6" fill="#d1fae5" stroke="#34d399" stroke-width="1.3"/>
+    <rect x="752" y="262" width="66" height="26" rx="6" fill="#d1fae5" stroke="#34d399" stroke-width="1.3"/>
+    <rect x="971" y="262" width="66" height="26" rx="6" fill="#d1fae5" stroke="#34d399" stroke-width="1.3"/>
+  </g>
+
+  <!-- overlap annotation -->
+  <g stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="262" y1="175" x2="262" y2="225"/>
+    <line x1="332" y1="225" x2="332" y2="275"/>
+  </g>
+  <text x="288" y="200" font-size="11" font-weight="600" fill="#475569">overlap</text>
+
+  <!-- cumulative growth -->
+  <rect x="389" y="348" width="44" height="20" rx="5" fill="#99f6e4" stroke="#14b8a6" stroke-width="1.2"/>
+  <rect x="608" y="348" width="44" height="20" rx="5" fill="#5eead4" stroke="#14b8a6" stroke-width="1.2"/>
+  <rect x="827" y="348" width="44" height="20" rx="5" fill="#2dd4bf" stroke="#14b8a6" stroke-width="1.2"/>
+  <rect x="1002" y="348" width="44" height="20" rx="5" fill="#14b8a6" stroke="#0d9488" stroke-width="1.2"/>
+  <text x="30" y="363" font-size="12.5" font-weight="600" fill="#0f766e">Usable software grows with each release</text>
+
+  <!-- BENEFITS -->
+  <text x="30" y="410" font-size="13.5" font-weight="700" fill="#047857" letter-spacing="1.1">THE THREE BENEFITS</text>
+  <rect x="30" y="422" width="326" height="84" rx="10" fill="#f0fdf4" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="46" y="446" font-size="13.5" font-weight="700" fill="#047857">1 &#183; Customer value early</text>
+  <text x="46" y="468" font-size="12.5" fill="#475569">Usable software is delivered at each</text>
+  <text x="46" y="486" font-size="12.5" fill="#475569">release, so the customer gets value</text>
+  <text x="46" y="502" font-size="12.5" fill="#475569">long before the last increment.</text>
+
+  <rect x="377" y="422" width="326" height="84" rx="10" fill="#f0fdf4" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="393" y="446" font-size="13.5" font-weight="700" fill="#047857">2 &#183; Lower risk of total failure</text>
+  <text x="393" y="468" font-size="12.5" fill="#475569">A change is absorbed between two</text>
+  <text x="393" y="486" font-size="12.5" fill="#475569">increments, not as expensive rework</text>
+  <text x="393" y="502" font-size="12.5" fill="#475569">after a completed build.</text>
+
+  <rect x="724" y="422" width="326" height="84" rx="10" fill="#f0fdf4" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="740" y="446" font-size="13.5" font-weight="700" fill="#047857">3 &#183; Priority gets tested most</text>
+  <text x="740" y="468" font-size="12.5" fill="#475569">The highest-priority services are built</text>
+  <text x="740" y="486" font-size="12.5" fill="#475569">and exercised first, so they receive</text>
+  <text x="740" y="502" font-size="12.5" fill="#475569">the most testing effort.</text>
+
+  <!-- PROBLEMS -->
+  <text x="30" y="544" font-size="13.5" font-weight="700" fill="#b91c1c" letter-spacing="1.1">THE TWO MANAGEMENT PROBLEMS</text>
+  <rect x="30" y="556" width="500" height="84" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="46" y="580" font-size="13.5" font-weight="700" fill="#b91c1c">1 &#183; The process is not visible</text>
+  <text x="46" y="602" font-size="12.5" fill="#475569">Managers need regular deliverables to judge progress. Here the</text>
+  <text x="46" y="620" font-size="12.5" fill="#475569">deliverable exists only every few weeks &#8212; so documenting every</text>
+  <text x="46" y="636" font-size="12.5" fill="#475569">version costs heavily.</text>
+
+  <rect x="550" y="556" width="500" height="84" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="566" y="580" font-size="13.5" font-weight="700" fill="#b91c1c">2 &#183; Structure degrades as change accumulates</text>
+  <text x="566" y="602" font-size="12.5" fill="#475569">Regular change corrupts the code structure; the cure is continuous</text>
+  <text x="566" y="620" font-size="12.5" fill="#475569"><tspan font-weight="600">refactoring</tspan>, which itself costs money and time. Left alone, the</text>
+  <text x="566" y="636" font-size="12.5" fill="#475569">system becomes progressively harder to change.</text>
+
+  <!-- DISTINCTION -->
+  <rect x="30" y="660" width="1020" height="72" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="46" y="684" font-size="13.5" font-weight="700" fill="#92400e">&#9888; EXAM TRAP &#8212; incremental <tspan font-style="italic">development</tspan> is not incremental <tspan font-style="italic">delivery</tspan></text>
+  <text x="46" y="706" font-size="12.5" fill="#78350f"><tspan font-weight="600">Development</tspan>: the increments are the internal slices of a single build (the diagram above).</text>
+  <text x="46" y="724" font-size="12.5" fill="#78350f"><tspan font-weight="600">Delivery</tspan>: the increments are actually deployed to the customer, who may still receive the complete system only at the end.</text>
+
+  <!-- FOOTER -->
+  <line x1="30" y1="748" x2="1050" y2="748" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="30" y="770" font-size="12.5" fill="#64748b"><tspan font-weight="700" fill="#334155">Source:</tspan> I. Sommerville, Software Engineering (9th ed.), pp. 49&#8211;51; R. Mall, Fundamentals of Software Engineering (4th ed.), &#167;2.2.5.</text>
+  <text x="30" y="792" font-size="12.5" font-weight="700" fill="#334155">Master Studio &#183; Advanced Software Engineering (CS504) &#183; University of Wasit</text>
+</svg>
+</div>
+</body>
+</html>

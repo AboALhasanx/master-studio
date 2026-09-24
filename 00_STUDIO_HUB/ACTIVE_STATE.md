@@ -3,9 +3,9 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "Work Buddy: Thursday step of PLAN_2026-09-23_to_27.md is DONE (Week_02_Risk_Bilingual_Concept_Outline.md). Next per plan: Friday - finish the Risk booklet's core content and connect both Cyber booklets. Needs the student: the illustrated booklet (figures are absent from the delivered DOCX) and the confirmed quiz date."
-next_session_focus: "Work Buddy follows the dated plan through Sunday 2026-09-27, records verified study progress, and attends to actual student reports. Cyber quiz date remains unconfirmed."
-last_updated: "2026-09-23"
+immediate_todo: "Author Unit 02: Build & Fix and Classical Waterfall (Mall §2.2.1, §2.2.2; Sommerville pp. 47–49) following ACADEMIC_STUDY_NOTE_SOP.md and template-study-unit.md, then compile clean v3 PDF."
+next_session_focus: "Execute the 10-unit ASE Week 02 series sequentially with deep pedagogical rigor, vector diagrams, and active recall Q&A."
+last_updated: "2026-09-24"
 status: "WEEK_01_ACTIVE"
 ---
 
@@ -30,7 +30,7 @@ status: "WEEK_01_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-23` | Student's latest lecture report is recorded in the 2026-09-23 shared session journal. |
+| **Last Updated** | `2026-09-24` | PDF publishing engine upgraded with direction-sensitive borders, centered 3-tier header, and ACADEMIC_STUDY_NOTE_SOP.md codified. |
 
 ---
 

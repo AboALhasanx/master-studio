@@ -119,8 +119,31 @@ To optimize deep cognitive retention and high-impact academic output:
    - Every subject maintains an `08_Academic_Glossary/` directory containing weekly term ledgers (`W01_Terms.md`, `W02_Terms.md`, etc.).
    - Conforms strictly to `00_STUDIO_HUB/templates/template-academic-terms.md`.
    - Every key term must detail: canonical English term, seminal author/paper DOI, word-for-word IEEE/ACM/ISO definition, Feynman 9-year-old analogy, and the **Professor's Exam Trap**.
----
 
+### 2.5. Master Studio Research, Authoring & Publishing Workflow (The Invariant Contract)
+Incoming agents must strictly adhere to the 5-stage artifact lifecycle codified in `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` and use `00_STUDIO_HUB/templates/template-study-unit.md`:
+
+1. **Ingestion & Sifting (Triangulation):**
+   - Identify the primary canonical course textbook (e.g. Mall for SDLC, Sommerville for SE theory, Sharp for Cyber Risk, Han & Kamber for Data Mining) and cross-reference with international standards (ISO/IEC/IEEE, NIST) and expert consensus.
+   - Sift essential concepts (authoritative verbatim definitions, boundary conditions, failure modes, professor exam traps) from non-essential historical padding.
+   - Tables vs Graphics: Comparative matrices become clean Markdown tables (`white-space: normal`); system kinematics and transitions become 2x retina vector graphics in `06_Diagrams_&_Mindmaps/`. Blurry scans and ASCII code blocks are strictly banned.
+
+2. **Deep Pedagogical Authoring (Anti-Compression Law):**
+   - Never output dry summaries. Teach from first principles:
+     - **Narrative Spine:** Why did this concept emerge? What broke down in the previous model that necessitated this one?
+     - **Feynman Mental Model:** Concrete real-world intuition (explain like I'm 9) before technical jargon.
+     - **Verbatim Standard Definition:** Quoted word-for-word with exact textbook page numbers.
+     - **Bilingual Rationale:** English technical precision paired with deep, conversational Iraqi-Arabic engineering explanations (*الشرح المفاهيمي والتعليلات الهندسية*).
+     - **Active Recall Retrieval Set:** Conclude each unit with 10–12 demanding scenario/analytical Q&A items formatted for `.qa-card` compilation.
+
+3. **Modular Unit Architecture & Zero Backend Leakage:**
+   - Partition multi-model syllabi into modular units (e.g. 10 units for ASE Week 02) to guarantee 100% textbook verification and eliminate LLM hallucination.
+   - **Strict Zero-Leakage:** Student-facing titles must be clean academic topics (`Unit 01: SDLC Fundamentals`), NEVER internal agent scaffolding (`File 01 of 10`, `**EN.**`, `**AR.**`, `[THIN]`, or build footers).
+
+4. **Autonomous 1-Click Publishing (Zero-CLI):**
+   - Execute `python 90_Shared_Toolbox/tools/pdf_exporter.py "<note>.md" -t study_pack` autonomously in the background.
+   - The engine automatically formats the centered 3-tier header (`Unit Eyebrow` + `Main Title` + `Thesis Subtitle`), applies language-sensitive borders (left for English, right for Arabic), and resolves multi-viewer Windows file locks (`_new.pdf`, `_v2.pdf`, `_v3.pdf`).
+---
 ## 3. Fast-Boot Initialization & Memory Protocol
 
 To prevent token waste and ensure immediate context synchronization across sessions, agents must strictly follow the **Fast-Boot Protocol**:
@@ -179,13 +202,14 @@ When specialized tasks are triggered, agents must adopt the corresponding person
 
 ---
 
-## 5. Artifact Quality Standards
+## 5. Artifact Quality Standards & Publication Invariants
 
-- **Diagrams:** Use native **Mermaid.js** blocks (flowcharts, sequence diagrams, class diagrams, C4 architecture) that render seamlessly in Obsidian and Marp.
+- **Diagrams:** Use native **Mermaid.js** blocks or high-resolution rendered vector diagrams (`.png`/`.svg` at 2x scale in `06_Diagrams_&_Mindmaps/`). **ASCII text art in code fences is STRICTLY PROHIBITED** in study notes and PDFs.
+- **Zero Backend Leakage in Deliverables:** Never output internal agent scaffolding (`File 01 of 10`, `under BUILD_PLAN.md`, `[THIN]`, `**EN.**`, `**AR.**`) in student-facing notes, headings, or PDFs. File partitioning is strictly an internal agent cognition strategy; student deliverables must use clean academic titles (e.g. `Unit 01: SDLC Fundamentals`).
+- **Table Text Wrapping:** Table textual columns must never have `white-space: nowrap`. Descriptions, citations, and explanations must wrap cleanly within cell borders. Pure English tables in bilingual notes must be rendered LTR.
 - **Slide Decks:** Use valid Marp frontmatter (`marp: true`, `theme: gaia`, `paginate: true`, `header`, `footer`).
 - **Math & Notation:** Use standard LaTeX syntax (`$x_i$`, `$$\sum ...$$`).
-- **Zero SaaS Bloat:** Rely exclusively on open formats (Markdown, SVG, PDF via Marp CLI). Never introduce proprietary cloud locks.
-
+- **Zero SaaS Bloat:** Rely exclusively on open formats (Markdown, SVG, PDF via DirectWrite engine). Never introduce proprietary cloud locks.
 ---
 
 ## 6. Zero Paid SaaS Toolchains & Office Exports (.docx & .pptx)

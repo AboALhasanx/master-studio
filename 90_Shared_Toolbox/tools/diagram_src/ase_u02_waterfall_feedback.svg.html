@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:#ffffff; }
+  #diagram { width:1080px; background:#ffffff; }
+  text { font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,Helvetica,sans-serif; }
+  .ar { font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif; direction:rtl; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1080" height="840" viewBox="0 0 1080 840" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="dn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="dnRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- ============ HEADER ============ -->
+  <text x="540" y="44" text-anchor="middle" font-size="31" font-weight="700" fill="#1e3a8a">The Waterfall Family: Rigid Cascade vs. Feedback-Corrected Flow</text>
+  <text x="540" y="74" text-anchor="middle" font-size="16" fill="#64748b">Six phases, one-way transitions, and the single repair that makes the model usable (Mall pp. 73&#8211;85)</text>
+  <line x1="30" y1="98" x2="1050" y2="98" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- ============ PANEL A : CLASSICAL ============ -->
+  <rect x="30" y="118" width="495" height="506" rx="14" fill="#fef7f7" stroke="#fca5a5" stroke-width="1.6"/>
+  <text x="52" y="148" font-size="14" font-weight="700" fill="#b91c1c" letter-spacing="1.4">CLASSICAL WATERFALL</text>
+  <text x="52" y="172" font-size="13.5" fill="#64748b">Sequential &#8212; a completed phase is closed for rework</text>
+
+  <!-- phase boxes -->
+  <g font-size="15" font-weight="600" fill="#0f172a">
+    <rect x="76" y="196" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="225">1 &nbsp; Feasibility study</text>
+    <rect x="76" y="264" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="293">2 &nbsp; Requirements analysis &amp; spec.</text>
+    <rect x="76" y="332" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="361">3 &nbsp; Design</text>
+    <rect x="76" y="400" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="429">4 &nbsp; Coding &amp; unit testing</text>
+    <rect x="76" y="468" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="497">5 &nbsp; Integration &amp; system testing</text>
+    <rect x="76" y="536" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="96" y="565">6 &nbsp; Maintenance / operation</text>
+  </g>
+
+  <!-- downward transitions -->
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#dn)">
+    <line x1="235" y1="242" x2="235" y2="262"/>
+    <line x1="235" y1="310" x2="235" y2="330"/>
+    <line x1="235" y1="378" x2="235" y2="398"/>
+    <line x1="235" y1="446" x2="235" y2="466"/>
+    <line x1="235" y1="514" x2="235" y2="534"/>
+  </g>
+
+  <!-- the blocked return path -->
+  <line x1="424" y1="196" x2="424" y2="582" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="424" y="392" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dc2626" transform="rotate(-90 424 392)" letter-spacing="1.6">NO RETURN PATH</text>
+  <circle cx="424" cy="190" r="12" fill="#dc2626"/>
+  <text x="424" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">&#10005;</text>
+
+  <text x="52" y="606" font-size="12.5" font-style="italic" fill="#b91c1c">&#8220;Just as water in a waterfall after having flowed down cannot flow back.&#8221;</text>
+
+  <!-- ============ PANEL B : ITERATIVE ============ -->
+  <rect x="555" y="118" width="495" height="506" rx="14" fill="#f2fdf8" stroke="#6ee7b7" stroke-width="1.6"/>
+  <text x="577" y="148" font-size="14" font-weight="700" fill="#047857" letter-spacing="1.4">ITERATIVE WATERFALL</text>
+  <text x="577" y="172" font-size="13.5" fill="#64748b">Feedback from every phase to its preceding phases</text>
+
+  <!-- return bus -->
+  <g stroke="#10b981" stroke-width="2.6" marker-end="url(#up)">
+    <line x1="602" y1="558" x2="602" y2="492"/>
+    <line x1="602" y1="490" x2="602" y2="424"/>
+    <line x1="602" y1="422" x2="602" y2="356"/>
+    <line x1="602" y1="354" x2="602" y2="288"/>
+    <line x1="602" y1="286" x2="602" y2="220"/>
+  </g>
+  <g stroke="#10b981" stroke-width="1.8">
+    <line x1="602" y1="219" x2="632" y2="219"/>
+    <line x1="602" y1="287" x2="632" y2="287"/>
+    <line x1="602" y1="355" x2="632" y2="355"/>
+    <line x1="602" y1="423" x2="632" y2="423"/>
+    <line x1="602" y1="491" x2="632" y2="491"/>
+    <line x1="602" y1="559" x2="632" y2="559"/>
+  </g>
+
+  <!-- phase boxes -->
+  <g font-size="15" font-weight="600" fill="#0f172a">
+    <rect x="634" y="196" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="225">1 &nbsp; Feasibility study</text>
+    <rect x="634" y="264" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="293">2 &nbsp; Requirements analysis &amp; spec.</text>
+    <rect x="634" y="332" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="361">3 &nbsp; Design</text>
+    <rect x="634" y="400" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="429">4 &nbsp; Coding &amp; unit testing</text>
+    <rect x="634" y="468" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="497">5 &nbsp; Integration &amp; system testing</text>
+    <rect x="634" y="536" width="318" height="46" rx="9" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4"/>
+    <text x="654" y="565">6 &nbsp; Maintenance / operation</text>
+  </g>
+
+  <!-- downward transitions -->
+  <g stroke="#94a3b8" stroke-width="2" marker-end="url(#dn)">
+    <line x1="793" y1="242" x2="793" y2="262"/>
+    <line x1="793" y1="310" x2="793" y2="330"/>
+    <line x1="793" y1="378" x2="793" y2="398"/>
+    <line x1="793" y1="446" x2="793" y2="466"/>
+    <line x1="793" y1="514" x2="793" y2="534"/>
+  </g>
+
+  <!-- feasibility exception -->
+  <rect x="634" y="596" width="394" height="24" rx="6" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="644" y="613" font-size="12" fill="#92400e">&#9888; No feedback to <tspan font-weight="700">feasibility</tspan> &#8212; legal &amp; moral reasons (Mall p. 84)</text>
+
+  <!-- ============ EFFORT BAR ============ -->
+  <text x="30" y="672" font-size="14" font-weight="700" fill="#1e3a8a" letter-spacing="1.2">LIFE-CYCLE EFFORT DISTRIBUTION</text>
+  <text x="1050" y="672" text-anchor="end" font-size="12.5" fill="#64748b">Mall p. 75 &amp; p. 81 &#8212; ratio roughly 40 : 60</text>
+
+  <rect x="30" y="686" width="408" height="40" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.4"/>
+  <rect x="438" y="686" width="612" height="40" rx="8" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.4"/>
+  <text x="234" y="711" text-anchor="middle" font-size="15" font-weight="700" fill="#1e40af">DEVELOPMENT &#8212; 40 %</text>
+  <text x="744" y="711" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">MAINTENANCE &#8212; 60 %</text>
+  <text x="234" y="746" text-anchor="middle" font-size="12" fill="#475569">phases 1&#8211;5 &#183; heaviest single phase: integration &amp; system testing</text>
+  <text x="744" y="746" text-anchor="middle" font-size="12" fill="#475569">the longest phase &#183; corrective / perfective / adaptive</text>
+
+  <!-- ============ FOOTER ============ -->
+  <line x1="30" y1="782" x2="1050" y2="782" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="30" y="806" font-size="12.5" fill="#64748b"><tspan font-weight="700" fill="#334155">Source:</tspan> Fundamentals of Software Engineering (R. Mall, 4th ed.), &#167;2.2.1&#8211;&#167;2.2.2, pp. 73&#8211;85.</text>
+  <text x="1050" y="806" text-anchor="end" font-size="12.5" font-weight="700" fill="#334155">Master Studio &#183; Advanced Software Engineering (CS504)</text>
+</svg>
+</div>
+</body>
+</html>
