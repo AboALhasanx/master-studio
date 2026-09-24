@@ -1,12 +1,12 @@
 ---
 current_semester: "Semester 1 (Fall 2026)"
 active_week: 2
-active_subject: "03_Data_Mining"
-active_subject_code: "CS602"
-immediate_todo: "ASE Week 02 is COMPLETE — all ten units cleaned + published, then merged into a single 146-page Week_02_Master_Lecture.pdf (cover + topic index with confirmed page numbers + continuous pagination). Transitioned to Data Mining; W01–W03 notes exist, next lecture topic is Feature Selection Techniques."
-next_session_focus: "Data Mining — review W03 (Feature Extraction & Portability) and prepare Feature Selection Techniques."
-last_updated: "2026-09-24"
-status: "ASE_W02_COMPLETE__DATA_MINING_ACTIVE"
+active_subject: "06_Artificial_Intelligence"
+active_subject_code: "CS605"
+immediate_todo: "Data Mining Feature Selection is COMPLETE (source report + 24-page ملزمة + V1/V2 seminar decks). Artificial Intelligence (CS605) has now OPENED: the assigned textbook is Russell & Norvig, Artificial Intelligence: A Modern Approach, 4th ed. (verified), and the Week-01 lecture (WSU, Prof. Diane J. Cook) is identified. Both sources are in the vault — the Lecture-01 ملزمة is ready to start on the student's word."
+next_session_focus: "Artificial Intelligence — build the Lecture-01 ملزمة (the four AI definitions, Turing Test & Chinese Room, foundations & history, rationality, PEAS, environment dimensions, agent architectures)."
+last_updated: "2026-09-25"
+status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
 ---
 
 # Master Studio: Active Session State
