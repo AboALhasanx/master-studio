@@ -78,3 +78,10 @@ Then render the pages with PyMuPDF and **look at them**. The linter cannot see a
 - Propagated into the merged `Week_02_Master_Lecture.md` (≈ lines 2534, 2540, 3318, 3322) → visible in `08_PDF_Exports/Week_02_Master_Lecture.pdf`.
 
 **Why my eye missed it:** both forms look identical in *raw markdown preview* — the difference only appears in the rendered callout box. This is exactly the "render the page and actually look at it" step of the Delivery Gate (§5); a structural check of "is every `**Verbatim…**` line prefixed with `>`?" would have caught it mechanically. Add that grep to the pre-delivery sweep.
+
+## 7. Authoring rules learned 2026-09-24 (student-flagged; Manifesto Law 6 + Pillar 3)
+
+1. **No filler labels.** Never write `الشرح بالعربي:` / `**AR.**` / `**EN.**` / `(ترجمة)` as a *label* above the Arabic. The Arabic rationale is **Pillar 3** — it must be **woven in, unlabelled**, directly after the English it explains (and it should **decode the hard English terms** and connect back to the preceding paragraph). A label is scaffolding and violates Manifesto Law 6.
+2. **Depth is mandatory, not a summary.** The student wants a **ملزمة** (deep pedagogical instrument), never a compressed summary. Per section: narrative spine → verbatim anchor → Feynman intuition → bilingual rationale → and where possible a **worked example** and **equations**. Padding is banned; *genuine* explanation is required.
+3. **The linter + exporter were fixed 2026-09-24 by the other agent.** `*"…"*` italic verbatim quotes and `&` / apostrophes are allowed again — **but the fix does NOT cover the `.qa-card` text path** in `transform_qa_cards()` (still double-escapes `&` → `&amp;`). Workaround: avoid `&` **inside retrieval-set questions** only.
+4. **Page-count sanity:** the ASE master lecture (146 pp) merged **ten units**; a single-topic ملزمة should be compared to **one unit** (~15 pp), and a good one runs **20–30 pp**.

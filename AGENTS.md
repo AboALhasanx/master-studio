@@ -60,6 +60,7 @@ Agents operating in this vault must function not merely as generic text generato
 - `quiz_runner.py`: Interactive command-line quiz conductor.
 - `quiz_qr.py`: Generates LAN-accessible quiz links and opens in Chromium (`--open`) for 1-click device sharing.
 - `pack_subject.py`: Bundles entire subject vaults into single-file digests for mobile LLMs.
+- `phone_sync.py`: 1-click local high-speed phone sync over direct ADB (USB or Wi-Fi). Replaces fragile Syncthing with zero battery drain and zero conflict files.
 ### Immediate Action Priorities
 1. **Immediate Task:** Conduct oral viva defense rehearsal for Dr. Ali Fahim's lecture (Patriot missile 24-bit fixed-point clock drift kinematics & Brooks' essential complexity).
 2. **Next Staging Milestone:** Ingest Week 01 lecture materials and canonical textbooks for `01_Cyber_Security` and `03_Data_Mining`.
@@ -74,6 +75,7 @@ Agents operating in this vault must function not merely as generic text generato
 > - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
 > - If the student says: *"Teach me [topic]"* $\rightarrow$ YOU teach from first principles using the Feynman technique (explain like I'm 9 years old first + concrete worked examples), deconstruct all academic terms, and do not stop at dry summaries unless the student says *"I know this"*.
 - If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
+> - If the student says: *"Sync my phone / انقل التحديث للموبايل / حدث ملفاتي"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/phone_sync.py` in the background.
 > - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
 
 

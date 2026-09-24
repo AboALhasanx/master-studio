@@ -268,8 +268,7 @@ def transform_callouts(md_text: str, default_lang: str = "ar") -> str:
 def _render_callout(kind: str, custom_title: str, body_lines: List[str], lang: str) -> str:
     cfg = CALLOUT_CONFIGS.get(kind, CALLOUT_CONFIGS["NOTE"])
     default_title = cfg["title_ar"] if lang == "ar" else cfg["title_en"]
-    title = custom_title if custom_title else default_title
-    
+    title = H.unescape(custom_title if custom_title else default_title)
     # Process markdown inside callout body
     body_md = "\n".join(body_lines).strip()
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
@@ -398,15 +397,18 @@ def inline_images_in_html(html_text: str, base_dir: Path) -> str:
 
     def _replace_img(match):
         full_tag = match.group(0)
-        src_match = re.search(r'src=["\']([^"\']+)["\']', full_tag)
-        alt_match = re.search(r'alt=["\']([^"\']*)["\']', full_tag)
-        width_match = re.search(r'width=["\']([^"\']*)["\']', full_tag)
+        src_match = re.search(r'src="([^"]*)"|src=\'([^\']*)\'', full_tag)
+        alt_match = re.search(r'alt="([^"]*)"|alt=\'([^\']*)\'', full_tag)
+        width_match = re.search(r'width="([^"]*)"|width=\'([^\']*)\'', full_tag)
 
         if not src_match:
             return full_tag
 
-        src = H.unescape(src_match.group(1).strip())
-        alt_raw = alt_match.group(1).strip() if alt_match else ""
+        src_val = src_match.group(1) if src_match.group(1) is not None else src_match.group(2)
+        src = H.unescape(src_val.strip())
+
+        alt_val = (alt_match.group(1) if alt_match.group(1) is not None else alt_match.group(2)) if alt_match else ""
+        alt_raw = alt_val.strip()
 
         # Parse pipe sizing syntax e.g. "Figure 1|350" or "Figure 1|50%"
         caption = alt_raw
@@ -421,9 +423,11 @@ def inline_images_in_html(html_text: str, base_dir: Path) -> str:
                 custom_width = f"max-width: {spec};"
 
         if not custom_width and width_match:
-            w = width_match.group(1).strip()
+            w_val = width_match.group(1) if width_match.group(1) is not None else width_match.group(2)
+            w = w_val.strip()
             custom_width = f"max-width: {w if not w.isdigit() else w + 'px'};"
 
+        clean_caption = H.unescape(caption)
         # Skip already-inlined data URIs or remote URLs
         if src.startswith("data:") or src.startswith("http://") or src.startswith("https://"):
             return full_tag
@@ -451,9 +455,9 @@ def inline_images_in_html(html_text: str, base_dir: Path) -> str:
             try:
                 b64_data = base64.b64encode(raw_b).decode("ascii")
                 data_uri = f"data:{mime};base64,{b64_data}"
-                caption_html = f'<div class="figure-caption">{H.escape(caption)}</div>' if caption else ""
+                caption_html = f'<div class="figure-caption">{H.escape(clean_caption)}</div>' if clean_caption else ""
                 box_style = f' style="{custom_width}"' if custom_width else ''
-                return f'<div class="figure-box"{box_style}><img src="{data_uri}" alt="{H.escape(caption)}"/>{caption_html}</div>'
+                return f'<div class="figure-box"{box_style}><img src="{data_uri}" alt="{H.escape(clean_caption, quote=True)}"/>{caption_html}</div>'
             except Exception as e:
                 sys.stderr.write(f"Warning: Failed to encode image {img_path}: {e}\n")
         else:

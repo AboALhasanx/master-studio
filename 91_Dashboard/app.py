@@ -382,6 +382,17 @@ def api_quiz_list():
     return jsonify({"quizzes": get_all_quizzes()})
 
 
+@app.route("/sw.js")
+def service_worker_root():
+    """Serves the PWA Service Worker at root scope ('/') so it can intercept ALL app navigation."""
+    from flask import send_from_directory, make_response
+    resp = make_response(send_from_directory(BASE / "91_Dashboard" / "static", "sw.js"))
+    resp.headers["Content-Type"] = "application/javascript"
+    resp.headers["Service-Worker-Allowed"] = "/"
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    return resp
+
+
 @app.route("/quiz")
 def quiz_hub():
     """Hub landing page for interactive quizzes."""

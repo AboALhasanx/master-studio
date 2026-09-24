@@ -353,9 +353,9 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/static/sw.js')
-                    .then(reg => console.log('PWA Service Worker registered:', reg.scope))
-                    .catch(err => console.log('Service Worker registration failed:', err));
+                navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                    .then(reg => console.log('Master Studio Root SW registered:', reg.scope))
+                    .catch(err => console.log('Root SW registration failed:', err));
             });
         }
 

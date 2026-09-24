@@ -76,10 +76,11 @@ def lint_and_fix_markdown(file_path: Path, auto_fix: bool = False) -> Tuple[int,
             line = re.sub(r"\*\*\*([^*\n]+?)\*(?!\*)", r"*\1*", line)
             fixes.append(f"Line {line_num}: Auto-balanced ***Text* -> *Text*")
 
-        # Pattern C: Broken trailing quote/asterisk combos (*."* or *"* or ."*)
-        if re.search(r'\*\."\*|\*"\*|\."\*', line):
+        # Pattern C: Broken trailing quote/asterisk combos (*."* or *"*)
+        # NOTE: '."*' is standard valid punctuation for ending an italic quote (*"..."*). Never flag it!
+        if re.search(r'\*\."\*|\*"\*', line):
             errors.append(f"Line {line_num}: Corrupted quote/asterisk punctuation.")
-            line = re.sub(r'\*\."\*|\."\*', '."', line)
+            line = re.sub(r'\*\."\*', '."', line)
             line = re.sub(r'\*"\*', '"', line)
             fixes.append(f"Line {line_num}: Cleaned trailing quote/asterisk delimiter.")
 
