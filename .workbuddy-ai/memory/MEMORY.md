@@ -53,3 +53,28 @@ Then render the pages with PyMuPDF and **look at them**. The linter cannot see a
 **Retrieval-set format that renders as emerald cards:** `**[RS-XX-YY]** Question?` on its own line, answer in a `>` blockquote directly beneath. A leading `Answer:` is stripped automatically; do not add a `Model Answer` label.
 
 **Windows File Lock Law (Engine Law 1):** if a PDF is open in a viewer, the exporter writes `*_new.pdf` instead of failing. That is a *notice*, not an error — but it means the canonical filename still holds the **old** content. Always tell the student, and check which file is actually current.
+
+## 6. Verbatim-callout authoring rule — the label MUST live INSIDE the quote block (LEARNED 2026-09-24, student-flagged)
+
+**The slip (student caught it in the rendered PDF):** I attached the source label to a verbatim quote as a **standalone bold paragraph** sitting *above* the quote. The renderer then draws that label **outside** the callout, as a bold line over an empty-looking box — visually broken. The label belongs **within** the quotation, never outside it. The student's words: *"المفروض تشوف زين أنو الاسم يجي ضمن الاقتباس وليس خارجه."* He marked this **unforgivable unless I record it properly.** So: recorded, and it is now a hard authoring law.
+
+**WRONG (label outside — renders as a bold line above a separate callout):**
+```markdown
+**Verbatim (Mall p.114):**
+
+> This model gets its name from the appearance of its diagrammatic representation ...
+```
+
+**RIGHT (label inside — one `>` block, label and quote on the same line):**
+```markdown
+> **Verbatim (Mall p.67):** *"At this stage, the customers are usually **not clear about all the features that would be needed** ..."*
+```
+
+**The rule, generalised:** *any* label bound to a blockquote — `Verbatim`, `Source`, `Note`, `Quoted`, `المصدر`, `اقتباس` — must be **inside the `>` block on the same line as the quote** (or at minimum inside the same `>` block as its own `>` line, never as a bare paragraph above it). Never let a bold label escape the blockquote.
+
+**Where the defect currently exists (DO NOT fix now — student said leave it, we built and finished; fix only when he asks):**
+- `03_Study_Notes/Week_02_File_06_The_Spiral_Model.md` — lines **49** and **55** (`**Verbatim (Mall p.114):**` followed by a blank line then `> …`).
+- `03_Study_Notes/Week_02_File_08_Agile_XP_Scrum.md` — lines **294** and **298** (same pattern).
+- Propagated into the merged `Week_02_Master_Lecture.md` (≈ lines 2534, 2540, 3318, 3322) → visible in `08_PDF_Exports/Week_02_Master_Lecture.pdf`.
+
+**Why my eye missed it:** both forms look identical in *raw markdown preview* — the difference only appears in the rendered callout box. This is exactly the "render the page and actually look at it" step of the Delivery Gate (§5); a structural check of "is every `**Verbatim…**` line prefixed with `>`?" would have caught it mechanically. Add that grep to the pre-delivery sweep.

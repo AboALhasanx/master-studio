@@ -1,12 +1,12 @@
 ---
 current_semester: "Semester 1 (Fall 2026)"
-active_week: 1
-active_subject: "04_Advanced_Software_Eng"
-active_subject_code: "CS-MCS-504"
-immediate_todo: "Units 01–05 are SOP-conformant and published as clean bilingual PDFs. Next: apply the same cleanup (scaffolding markers, diagrams, frontmatter) to Units 06–10, which still carry 'File NN of 10' references and have no figures."
-next_session_focus: "Units 06–10 cleanup + diagrams + PDF re-export, following the identical recipe used for Units 01–05."
+active_week: 2
+active_subject: "03_Data_Mining"
+active_subject_code: "CS602"
+immediate_todo: "ASE Week 02 is COMPLETE — all ten units cleaned + published, then merged into a single 146-page Week_02_Master_Lecture.pdf (cover + topic index with confirmed page numbers + continuous pagination). Transitioned to Data Mining; W01–W03 notes exist, next lecture topic is Feature Selection Techniques."
+next_session_focus: "Data Mining — review W03 (Feature Extraction & Portability) and prepare Feature Selection Techniques."
 last_updated: "2026-09-24"
-status: "WEEK_01_ACTIVE"
+status: "ASE_W02_COMPLETE__DATA_MINING_ACTIVE"
 ---
 
 # Master Studio: Active Session State
@@ -17,9 +17,9 @@ status: "WEEK_01_ACTIVE"
 +-------------------------------------------------------------------------------+
 |                            FAST-BOOT CURRENT POINTER                          |
 |                                                                               |
-|  Semester: Semester 1 (Fall 2026)      Active Week: Week 01                   |
-|  Subject:  04_Advanced_Software_Eng    Target Path: 01_Semester_1/04_...      |
-|  Status:   Initialized & Operational   Date: 2026-09-16                       |
+|  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
+|  Subject:  03_Data_Mining (CS602)      Target Path: 01_Semester_1/03_...      |
+|  Status:  ASE W02 COMPLETE             Date: 2026-09-24                       |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -28,9 +28,9 @@ status: "WEEK_01_ACTIVE"
 | Key | Current Value | Notes / Description |
 |:---|:---|:---|
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
-| **Active Week** | `1` | Week 1: Introduction, Architecture Overview & Standards |
-| **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) |
-| **Last Updated** | `2026-09-24` | PDF publishing engine upgraded with direction-sensitive borders, centered 3-tier header, and ACADEMIC_STUDY_NOTE_SOP.md codified. |
+| **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
+| **Active Subject** | `03_Data_Mining` | Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida (2 Credit Hours) — CS602 |
+| **Last Updated** | `2026-09-24` | ASE Week 02 closed: ten zero-leakage unit PDFs + a 146-page merged `Week_02_Master_Lecture.pdf` (cover + indexed TOC + continuous pagination). Transitioned to Data Mining. |
 
 ---
 
@@ -38,7 +38,9 @@ status: "WEEK_01_ACTIVE"
 
 ### Active Work Queue
 - [x] **ASE Week 02 Units 01–05 — zero-leakage cleanup + vector diagrams + clean bilingual PDFs (2026-09-24).** All backend scaffolding was stripped from student-facing text in Units 02–05 (`File NN of 10` cross-references, `[THIN]` flags, `**EN.**`/`**AR.**` markers, `BUILD_PLAN` build footers, the `file:` frontmatter key). `[THIN]` coverage notes were **rewritten as prose** (`ملاحظة تغطية:` / `Coverage note`) rather than deleted, so no information was lost. Unit 05 gained frontmatter, a **Where this sits** narrative spine, an English Feynman intuition section and a closing footer — it previously had none. Four new 2x-retina vector diagrams were built (waterfall classical vs iterative; prototyping vs evolutionary; incremental interleaving; RAD timeline compression), each inlined with an Arabic "how to read this figure" table. New tool: `90_Shared_Toolbox/tools/diagram_forge.py` (HTML/SVG → 2x PNG via Playwright; resolves `chromium-*/chrome-win64/chrome.exe`). PDFs re-exported with `study_pack` + `--lang ar`: **01 = 17 pp, 02 = 24 pp, 03 = 20 pp, 04 = 18 pp, 05 = 10 pp** — all verified with **zero leakage**, one embedded figure each, Arabic layer intact. Superseded exports moved to `99_Archives/2026-09-24_ASE_W02_superseded_exports/` (gitignored). Pushed as commits `7787ab1`, `8ba5bf2`.
-- [ ] **ASE Week 02 Units 06–10 — same treatment pending.** They still carry `File NN` references, have **no diagrams**, and **Units 05–10 lacked frontmatter** (05 now fixed). Units 06–10's existing PDFs in `08_PDF_Exports/` are the *old* pre-sanitizer builds.
+- [x] **ASE Week 02 Units 06–10 — clean manifesto rebuild DONE (2026-09-24).** Zero-leakage, one diagram each, frontmatter + the 4-part "Where this sits" spine added; page counts **06 = 13, 07 = 11, 08 = 15, 09 = 11, 10 = 29**. Unit 10 carried a §2.5-before-§2 ordering bug, caught only by rendering and fixed. Committed `c8b9206`.
+- [x] **ASE Week 02 MASTER LECTURE — ten units merged into one paginated booklet DONE (2026-09-24).** `08_PDF_Exports/Week_02_Master_Lecture.pdf` — **146 pages**: cover (p1) + index of topics/sub-topics/branches with **confirmed page numbers** (pp2–7) + the ten units with **continuous re-numbered pagination**. Builder `90_Shared_Toolbox/tools/build_week02_master.py` (two-pass measure→re-render). Verified **0 pagination mismatches**; unit starts at pages **[7, 21, 41, 57, 70, 78, 88, 96, 108, 118]**. One known blemish left by request: Unit 08's "Source notes" index line renders `p.000`.
+- [ ] **`03_Data_Mining` — NOW THE ACTIVE SUBJECT.** W01–W03 notes exist in `03_Study_Notes/`. Next lecture topic: **Feature Selection Techniques** (professor-provided sources). Record only until the student directs study.
 - [x] **Ingest 4 Canonical Textbooks for `04_Advanced_Software_Eng`** (Sommerville, Pressman, Mall, Agarwal)
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
@@ -77,12 +79,13 @@ status: "WEEK_01_ACTIVE"
 - [ ] **`06_Artificial_Intelligence`** — Tuesday lecture did not take place because the dean had other commitments; lecture postponed to Sunday. No material reported; do not proactively check the group.
 
 ### Next Session Focus
-- [x] Create a cross-subject current-status mind map to help the student stay oriented across all six subjects.
-- [x] Split the Wednesday–Sunday workload into a dated plan, keeping English and Soft Computing parked and Data Mining Feature Selection recorded but inactive.
-- Data Mining next lecture: Feature Selection Techniques, from professor-provided sources. Record only for now; do not prepare/study it yet.
-- Cyber Security Week 02 booklet on Risk is available; quiz covers two booklets, but exact date remains unconfirmed.
+- **ASE Week 02 is COMPLETE** — ten unit PDFs + the 146-page merged Master Lecture. No further ASE work queued until the student asks.
+- **Data Mining is now the active subject.** Next lecture topic: Feature Selection Techniques, from professor-provided sources. Record only; do not prepare/study it until the student directs.
+- [x] Cross-subject current-status mind map (`00_STUDIO_HUB/CURRENT_MATERIALS_MAP.md`) — delivered.
+- [x] Wednesday–Sunday dated plan (`PLAN_2026-09-23_to_27.md`) — delivered.
+- Cyber Security Week 02 booklet on Risk is available; the postponed quiz covers two booklets, exact date unconfirmed.
 - English and Soft Computing are deferred for now.
-- Artificial Intelligence lecture moved from Tuesday to Sunday because the dean was unavailable.
+- Artificial Intelligence lecture moved from Tuesday to Sunday (dean unavailable).
 - **Correction 2026-09-18 (student-confirmed):** the previously listed "Week 01 viva defense drill with Dr. Ali Fahim" was **agent-inferred and is not a real event**. The Patriot-drift / Brooks material stays valid *study* content, but it is not tied to any scheduled assessment.
 - **Deliverables Ready:** `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` & `seminar_lecture01_software_crisis.pptx`.
 ---
