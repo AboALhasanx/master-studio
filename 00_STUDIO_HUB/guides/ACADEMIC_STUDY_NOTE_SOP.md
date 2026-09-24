@@ -1,6 +1,6 @@
 # Master Studio Standard Operating Procedure (SOP): Academic Research, Note Authoring & Publishing Lifecycle
 
-> **Scope:** Mandatory protocol for all incoming AI agents (Oh My Pi, OpenCode, MiMo, Codex, Cursor) generating study deliverables within Master Studio.
+> **Scope:** Universal Master Studio Protocol — Mandatory across **ALL 6 Postgraduate Coursework Subjects** (`01_Cyber_Security`, `02_English_Language`, `03_Data_Mining`, `04_Advanced_Software_Eng`, `05_Soft_Computing`, `06_Artificial_Intelligence`) and Thesis Modules for all AI agents (Oh My Pi, OpenCode, MiMo, Codex, Cursor, WorkBuddy).
 > **Authority:** Root Behavioral Governance Directive (`AGENTS.md`).
 
 ---

@@ -32,9 +32,9 @@ created: "2026-09-23"
 
 Before either model, Sommerville supplies the lens that organises the whole series. It is worth having first, because it explains *why* prototyping exists rather than just *what* it is.
 
-> **Verbatim (Sommerville p.60):** *"**Change is inevitable in all large software projects.** The system requirements change as the business procuring the system responds to external pressures and management priorities change. As new technologies become available, new design and implementation possibilities emerge. Therefore **whatever software process model is used, it is essential that it can accommodate changes** to the software being developed."*
+> **Verbatim (Sommerville p.60):** "*Change is inevitable in all large software projects.** The system requirements change as the business procuring the system responds to external pressures and management priorities change. As new technologies become available, new design and implementation possibilities emerge. Therefore **whatever software process model is used, it is essential that it can accommodate changes** to the software being developed."
 
-> **Verbatim (Sommerville p.61):** *"Change adds to the costs of software development because it usually means that work that has been completed has to be redone. **This is called rework.**"*
+> **Verbatim (Sommerville p.61):** *"Change adds to the costs of software development because it usually means that work that has been completed has to be redone. **This is called rework.*"
 
 **التغيير حتمي بكل مشروع كبير** — المطلوبات تتغيّر لما تستجيب المؤسسة لضغوط خارجية، وتتغيّر أولويات الإدارة، وتظهر تقنيات جديدة. فـ**أي نموذج تُستخدم، لازم يكون قادر على استيعاب التغيير**.
 
@@ -43,8 +43,8 @@ Before either model, Sommerville supplies the lens that organises the whole seri
 **ثم يعطينا الحلّين — وهذا الإطار مهم جداً:**
 
 > **Verbatim (Sommerville p.61):** *"There are **two related approaches** that may be used to reduce the costs of rework:*
-> 1. ***Change avoidance**, where the software process includes activities that can **anticipate possible changes before significant rework is required**. For example, a prototype system may be developed to show some key features of the system to customers. They can **experiment with the prototype and refine their requirements before committing to high software production costs**.*
-> 2. ***Change tolerance**, where the process is designed so that **changes can be accommodated at relatively low cost**. This normally involves some form of **incremental development**. Proposed changes may be implemented **in increments that have not yet been developed**. If this is impossible, then **only a single increment** (a small part of the system) may have to be altered to incorporate the change.*"*
+> 1. **Change avoidance**, where the software process includes activities that can **anticipate possible changes before significant rework is required**. For example, a prototype system may be developed to show some key features of the system to customers. They can **experiment with the prototype and refine their requirements before committing to high software production costs**.*
+> 2. **Change tolerance**, where the process is designed so that **changes can be accommodated at relatively low cost**. This normally involves some form of **incremental development**. Proposed changes may be implemented **in increments that have not yet been developed**. If this is impossible, then **only a single increment** (a small part of the system) may have to be altered to incorporate the change."
 
 **طريقتان لتقليل كلفة إعادة العمل:**
 
@@ -59,7 +59,7 @@ Before either model, Sommerville supplies the lens that organises the whole seri
 |:---|:---|
 | **Prototyping** (هذا الملف) | **Change avoidance** |
 | **Evolutionary** (هذا الملف) | **Change tolerance** (الأقصى) |
-| **Incremental delivery** (الملف 04) | **الاثنتان معاً** |
+| **Incremental delivery**  | **الاثنتان معاً** |
 | **RAD** (05) | Change tolerance |
 | **Spiral** (06) | Change avoidance + risk |
 | **Agile** (08) | الاثنتان |
@@ -76,9 +76,9 @@ Before either model, Sommerville supplies the lens that organises the whole seri
 
 ### 2.1 What a prototype actually is
 
-> **Verbatim (Mall p.91):** *"The prototype model is also a popular life cycle model. **The prototyping model can be considered to be an extension of the waterfall model.** This model suggests **building a working prototype of the system, before development of the actual software**."*
+> **Verbatim (Mall p.91):** *"The prototype model is also a popular life cycle model. **The prototyping model can be considered to be an extension of the waterfall model.** This model suggests **building a working prototype of the system, before development of the actual software*."
 
-> **Verbatim (Mall p.91):** *"A prototype is a **toy and crude implementation of a system**. It has **limited functional capabilities, low reliability, or inefficient performance** as compared to the actual software."*
+> **Verbatim (Mall p.91):** *"A prototype is a **toy and crude implementation of a system**. It has **limited functional capabilities, low reliability, or inefficient performance** as compared to the actual software."
 
 **نموذج Prototyping** — وصفه Mall بأنه **امتداد للـWaterfall**. الفكرة: **بناء نموذج عامل للنظام قبل تطوير البرنامج الفعلي**.
 
@@ -88,9 +88,9 @@ Before either model, Sommerville supplies the lens that organises the whole seri
 
 ### 2.2 The shortcuts — how it is built fast
 
-> **Verbatim (Mall p.91):** *"A prototype can be built **very quickly by using several shortcuts**. The shortcuts usually involve developing **inefficient, inaccurate, or dummy functions**. The shortcut implementation of a function, for example, may produce the desired results by using a **table look-up rather than by performing the actual computations**."*
+> **Verbatim (Mall p.91):** *"A prototype can be built **very quickly by using several shortcuts**. The shortcuts usually involve developing **inefficient, inaccurate, or dummy functions**. The shortcut implementation of a function, for example, may produce the desired results by using a **table look-up rather than by performing the actual computations*."
 
-> **Verbatim (Mall p.91):** *"Normally the term **rapid prototyping** is used when software tools are used for prototype construction. For example, tools based on **fourth generation languages (4GL)** may be used to construct the prototype for the GUI parts."*
+> **Verbatim (Mall p.91):** *"Normally the term **rapid prototyping** is used when software tools are used for prototype construction. For example, tools based on **fourth generation languages (4GL)** may be used to construct the prototype for the GUI parts."
 
 **كيف يُبنى بسرعة؟ بالاختصارات (shortcuts).** والاختصارات تعني دوال **غير كفؤة، غير دقيقة، أو وهمية (dummy)**.
 
@@ -106,11 +106,11 @@ Mall is specific: prototyping is **not** for everything. He names the project ty
 
 **Case one — the graphical user interface:**
 
-> **Verbatim (Mall p.91):** *"It is advantageous to use the prototyping model for development of the **graphical user interface (GUI)** part of an application. Through the use of a prototype, it becomes easier to **illustrate the input data formats, messages, reports, and the interactive dialogs** to the customer. This is a valuable mechanism for **gaining better understanding of the customers' needs**."*
+> **Verbatim (Mall p.91):** *"It is advantageous to use the prototyping model for development of the **graphical user interface (GUI)** part of an application. Through the use of a prototype, it becomes easier to **illustrate the input data formats, messages, reports, and the interactive dialogs** to the customer. This is a valuable mechanism for **gaining better understanding of the customers' needs*."
 
-> **Verbatim (Mall p.92):** *"For the user, it becomes much easier to form an opinion regarding what would be more suitable by **experimenting with a working user interface, rather than trying to imagine the working of a hypothetical user interface**."*
+> **Verbatim (Mall p.92):** *"For the user, it becomes much easier to form an opinion regarding what would be more suitable by **experimenting with a working user interface, rather than trying to imagine the working of a hypothetical user interface*."
 
-> **Verbatim (Mall p.92):** *"**The GUI part of a software system is almost always developed using the prototyping model.**"*
+> **Verbatim (Mall p.92):** "*The GUI part of a software system is almost always developed using the prototyping model.*"
 
 **الحالة الأولى — واجهة المستخدم الرسومية (GUI).** النموذج يسهّل **توضيح** صيغ الإدخال، والرسائل، والتقارير، والحوارات التفاعلية للعميل. وهي **آلية قيّمة لفهم احتياجات العميل**.
 
@@ -120,13 +120,13 @@ Mall is specific: prototyping is **not** for everything. He names the project ty
 
 **Case two — unclear technical solutions:**
 
-> **Verbatim (Mall p.92):** *"The prototyping model is especially useful when **the exact technical solutions are unclear to the development team**. A prototype can help them to **critically examine the technical issues** associated with product development."*
+> **Verbatim (Mall p.92):** *"The prototyping model is especially useful when **the exact technical solutions are unclear to the development team**. A prototype can help them to **critically examine the technical issues** associated with product development."
 
 Mall's own worked example:
 
-> **Verbatim (Mall p.92):** *"For example, consider a situation where the development team has to write a **command language interpreter** as part of a graphical user interface development. Suppose **none of the team members has ever written a compiler before**. Then, this **lack of familiarity with a required development technology is a technical risk**. This risk can be resolved by **developing a prototype compiler for a very small language** to understand the issues associated with writing a compiler for a command language. Once they feel confident in writing compiler for the small language, they can use this knowledge to develop the compiler for the command language."*
+> **Verbatim (Mall p.92):** *"For example, consider a situation where the development team has to write a **command language interpreter** as part of a graphical user interface development. Suppose **none of the team members has ever written a compiler before**. Then, this **lack of familiarity with a required development technology is a technical risk**. This risk can be resolved by **developing a prototype compiler for a very small language** to understand the issues associated with writing a compiler for a command language. Once they feel confident in writing compiler for the small language, they can use this knowledge to develop the compiler for the command language."
 
-> **Verbatim (Mall p.92):** *"Often, major design decisions depend on issues such as the **response time of a hardware controller**, or the **efficiency of a sorting algorithm**, etc. In such circumstances, a prototype is often the **best way to resolve the technical issues**."*
+> **Verbatim (Mall p.92):** *"Often, major design decisions depend on issues such as the **response time of a hardware controller**, or the **efficiency of a sorting algorithm**, etc. In such circumstances, a prototype is often the **best way to resolve the technical issues*."
 
 **الحالة الثانية — الحلول التقنية غير واضحة.** والنموذج يساعد على **فحص المسائل التقنية نقدياً**.
 
@@ -136,7 +136,7 @@ Mall's own worked example:
 
 **الحالة الثالثة — مبدأ Brooks:**
 
-> **Verbatim (Mall p.92):** *"An important reason for developing a prototype is that it is **impossible to 'get it right' the first time**. As advocated by **Brooks [1975]**, one must **plan to throw away the software** in order to develop a good software later. Thus, the prototyping model can be deployed when development of **highly optimised and efficient software** is required."*
+> **Verbatim (Mall p.92):** *"An important reason for developing a prototype is that it is **impossible to 'get it right' the first time**. As advocated by **Brooks [1975]**, one must **plan to throw away the software** in order to develop a good software later. Thus, the prototyping model can be deployed when development of **highly optimised and efficient software** is required."
 
 **الحالة الثالثة — مبدأ Brooks [1975]:** *«مستحيل تجيبها صح من أول مرة»*، و**لازم تخطّط إنك ترمي البرنامج** حتى تطوّر برنامجاً جيداً لاحقاً.
 
@@ -144,21 +144,21 @@ Mall's own worked example:
 
 **والخلاصة عند Mall (p.92):**
 
-> **Verbatim:** *"The prototyping model is considered to be useful for the development of **not only the GUI parts** of a software, but also for a software project **for which certain technical issues are not clear** to the development team."*
+> **Verbatim:** *"The prototyping model is considered to be useful for the development of **not only the GUI parts** of a software, but also for a software project **for which certain technical issues are not clear** to the development team."
 
 النموذج مفيد **لجزء الـGUI**، **و**لمشروع **فيه مسائل تقنية غير واضحة للفريق**. **حالتان — احفظهن.**
 
 ### 2.4 The life cycle — two major activities
 
-> **Verbatim (Mall p.93):** *"software is developed through **two major activities — prototype construction and iterative waterfall-based software development**."*
+> **Verbatim (Mall p.93):** *"software is developed through **two major activities — prototype construction and iterative waterfall-based software development*."
 
 **Activity one — prototype development:**
 
-> **Verbatim (Mall p.93):** *"Prototype development starts with an **initial requirements gathering phase**. A **quick design** is carried out and a prototype is built. The developed prototype is **submitted to the customer for evaluation**. Based on the customer feedback, **the requirements are refined and the prototype is suitably modified**. This cycle of obtaining customer feedback and modifying the prototype continues **till the customer approves the prototype**."*
+> **Verbatim (Mall p.93):** *"Prototype development starts with an **initial requirements gathering phase**. A **quick design** is carried out and a prototype is built. The developed prototype is **submitted to the customer for evaluation**. Based on the customer feedback, **the requirements are refined and the prototype is suitably modified**. This cycle of obtaining customer feedback and modifying the prototype continues **till the customer approves the prototype*."
 
 **Activity two — iterative development:**
 
-> **Verbatim (Mall p.93):** *"Once the customer approves the prototype, the actual software is developed using the **iterative waterfall approach**. In spite of the availability of a working prototype, **the SRS document is usually needed to be developed** since the SRS document is invaluable for carrying out **traceability analysis, verification, and test case design** during later phases. However, **for GUI parts, the requirements analysis and specification phase becomes redundant since the working prototype that has been approved by the customer serves as an animated requirements specification**."*
+> **Verbatim (Mall p.93):** *"Once the customer approves the prototype, the actual software is developed using the **iterative waterfall approach**. In spite of the availability of a working prototype, **the SRS document is usually needed to be developed** since the SRS document is invaluable for carrying out **traceability analysis, verification, and test case design** during later phases. However, **for GUI parts, the requirements analysis and specification phase becomes redundant since the working prototype that has been approved by the customer serves as an animated requirements specification*."
 
 **نشاطان رئيسيان:**
 
@@ -179,7 +179,7 @@ Mall's own worked example:
 
 ### 2.5 The prototype is thrown away — and why that is the point
 
-> **Verbatim (Mall p.93):** *"**The code for the prototype is usually thrown away.** However, **the experience gathered from developing the prototype helps a great deal in developing the actual system.**"*
+> **Verbatim (Mall p.93):** "*The code for the prototype is usually thrown away.** However, **the experience gathered from developing the prototype helps a great deal in developing the actual system.*"
 
 **كود النموذج يُرمى عادةً** — بس **الخبرة المستفادة منه تساعد كثيراً في تطوير النظام الفعلي**.
 
@@ -193,7 +193,7 @@ Mall's own worked example:
 
 ### 3.1 The definition
 
-> **Verbatim (Sommerville p.62):** *"A **prototype is an initial version of a software system** that is used to **demonstrate concepts, try out design options, and find out more about the problem and its possible solutions**. **Rapid, iterative development of the prototype is essential** so that costs are controlled and system stakeholders can experiment with the prototype early in the software process."*
+> **Verbatim (Sommerville p.62):** *"A **prototype is an initial version of a software system** that is used to **demonstrate concepts, try out design options, and find out more about the problem and its possible solutions**. **Rapid, iterative development of the prototype is essential** so that costs are controlled and system stakeholders can experiment with the prototype early in the software process."
 
 تعريف Sommerville: النموذج **نسخة أولية من نظام برمجي** تُستخدم لـ:
 1. **عرض المفاهيم** (demonstrate concepts)
@@ -208,13 +208,13 @@ Mall's own worked example:
 
 > **Verbatim (Sommerville p.62):** *"A software prototype can be used in a software development process to help **anticipate changes** that may be required:*
 > 1. *In the **requirements engineering process**, a prototype can help with the **elicitation and validation of system requirements**.*
-> 2. *In the **system design process**, a prototype can be used to **explore particular software solutions** and to support **user interface design**.*"*
+> 2. *In the **system design process**, a prototype can be used to **explore particular software solutions** and to support **user interface design**."
 
 And the mechanism — why experimenting beats specifying:
 
-> **Verbatim (Sommerville p.62):** *"System prototypes allow users to **see how well the system supports their work**. They may **get new ideas for requirements**, and **find areas of strength and weakness** in the software. They may then **propose new system requirements**. Furthermore, as the prototype is developed, it may **reveal errors and omissions in the requirements** that have been proposed."*
+> **Verbatim (Sommerville p.62):** *"System prototypes allow users to **see how well the system supports their work**. They may **get new ideas for requirements**, and **find areas of strength and weakness** in the software. They may then **propose new system requirements**. Furthermore, as the prototype is developed, it may **reveal errors and omissions in the requirements** that have been proposed."
 
-> **Verbatim (Sommerville p.62):** *"A function described in a specification may seem useful and well defined. **However, when that function is combined with other functions, users often find that their initial view was incorrect or incomplete.** The system specification may then be modified to reflect their changed understanding of the requirements."*
+> **Verbatim (Sommerville p.62):** *"A function described in a specification may seem useful and well defined. **However, when that function is combined with other functions, users often find that their initial view was incorrect or incomplete.** The system specification may then be modified to reflect their changed understanding of the requirements."
 
 **استعمالان:**
 
@@ -233,9 +233,9 @@ And the mechanism — why experimenting beats specifying:
 
 ### 3.3 The two kinds of prototype — and the problem
 
-> **Verbatim (Sommerville p.63):** *"A general problem with prototyping is that **the prototype may not necessarily be used in the same way as the final system**. The tester of the prototype may **not be typical of system users**. The **training time during prototype evaluation may be insufficient**. If the prototype is slow, the evaluators may **adjust their way of working and avoid those system features that have slow response times**. When provided with better response in the final system, they may use it in a **different way**."*
+> **Verbatim (Sommerville p.63):** *"A general problem with prototyping is that **the prototype may not necessarily be used in the same way as the final system**. The tester of the prototype may **not be typical of system users**. The **training time during prototype evaluation may be insufficient**. If the prototype is slow, the evaluators may **adjust their way of working and avoid those system features that have slow response times**. When provided with better response in the final system, they may use it in a **different way*."
 
-> **Verbatim (Sommerville p.63):** *"Developers are sometimes pressured by managers to deliver **throwaway prototypes**, particularly when there are delays in delivering the final version of the software."*
+> **Verbatim (Sommerville p.63):** *"Developers are sometimes pressured by managers to deliver **throwaway prototypes**, particularly when there are delays in delivering the final version of the software."
 
 **المشكلة العامة — وتستاهل تنحفظ:** *«النموذج ممكن ما يُستخدم بنفس الطريقة اللي يُستخدم بيها النظام النهائي»*. والأسباب:
 - **المختبِر مو نموذجي** (مو من مستخدمي النظام الفعليين)،
@@ -254,9 +254,9 @@ And the mechanism — why experimenting beats specifying:
 
 Mall closes his prototyping section with a balance sheet, and it contains the cost argument that justifies building something you will throw away.
 
-> **Verbatim (Mall p.94):** *"Even though the construction of a throwaway prototype might involve incurring **additional cost**, for systems with **unclear customer requirements** and for systems with **unresolved technical issues**, the overall development cost usually turns out to be **lower** compared to an equivalent system developed using the iterative waterfall model."*
+> **Verbatim (Mall p.94):** *"Even though the construction of a throwaway prototype might involve incurring **additional cost**, for systems with **unclear customer requirements** and for systems with **unresolved technical issues**, the overall development cost usually turns out to be **lower** compared to an equivalent system developed using the iterative waterfall model."
 
-> **Verbatim (Mall p.94):** *"By constructing the prototype and submitting it for user evaluation, **many customer requirements get properly defined and technical issues get resolved** by experimenting with the prototype. This **minimises later change requests from the customer and the associated redesign costs**."*
+> **Verbatim (Mall p.94):** *"By constructing the prototype and submitting it for user evaluation, **many customer requirements get properly defined and technical issues get resolved** by experimenting with the prototype. This **minimises later change requests from the customer and the associated redesign costs*."
 
 **الحجّة الاقتصادية:** مع إن بناء نموذج مُرمى **يضيف كلفة**، إلا إنه **لأنظمة مطلوباتها غير واضحة أو فيها مسائل تقنية غير محلولة**، **الكلفة الإجمالية تطلع أقل** من نظام مكافئ يُبنى بالـiterative waterfall.
 
@@ -266,11 +266,11 @@ Mall closes his prototyping section with a balance sheet, and it contains the co
 
 **Strengths:**
 
-> **Verbatim (Mall p.95):** *"This model is the **most appropriate for projects that suffer from technical and requirements risks**. A constructed prototype helps overcome these risks."*
+> **Verbatim (Mall p.95):** *"This model is the **most appropriate for projects that suffer from technical and requirements risks**. A constructed prototype helps overcome these risks."
 
 **Weaknesses — and these are precise:**
 
-> **Verbatim (Mall p.95):** *"The prototype model can **increase the cost of development** for projects that are **routine development work and do not suffer from any significant risks**. Even when a project is susceptible to risks, the prototyping model is effective **only for those projects for which the risks can be identified upfront before the development starts**. Since the prototype is constructed only at the start of the project, the prototyping model is **ineffective for risks identified later during the development cycle**. The prototyping model would not be appropriate for projects for which the risks can only be identified after the development is underway."*
+> **Verbatim (Mall p.95):** *"The prototype model can **increase the cost of development** for projects that are **routine development work and do not suffer from any significant risks**. Even when a project is susceptible to risks, the prototyping model is effective **only for those projects for which the risks can be identified upfront before the development starts**. Since the prototype is constructed only at the start of the project, the prototyping model is **ineffective for risks identified later during the development cycle**. The prototyping model would not be appropriate for projects for which the risks can only be identified after the development is underway."
 
 **القوة:** النموذج **الأنسب للمشاريع اللي تعاني من مخاطر تقنية ومخاطر مطلوبات**.
 
@@ -294,9 +294,9 @@ Mall closes his prototyping section with a balance sheet, and it contains the co
 
 ### 4.1 What it is
 
-> **Verbatim (Mall p.97):** *"This model has **many of the features of the incremental model**. As in case of the incremental model, the software is developed over a **number of increments**. At each increment, a **concept (feature) is implemented and is deployed at the client site**. The software is **successively refined and feature-enriched until the full software is realised**."*
+> **Verbatim (Mall p.97):** *"This model has **many of the features of the incremental model**. As in case of the incremental model, the software is developed over a **number of increments**. At each increment, a **concept (feature) is implemented and is deployed at the client site**. The software is **successively refined and feature-enriched until the full software is realised*."
 
-> **Verbatim (Mall p.98):** *"Though the evolutionary model can also be viewed as an extension of the waterfall model, but it **incorporates a major paradigm shift** that has been widely adopted in many recent life cycle models."*
+> **Verbatim (Mall p.98):** *"Though the evolutionary model can also be viewed as an extension of the waterfall model, but it **incorporates a major paradigm shift** that has been widely adopted in many recent life cycle models."
 
 النموذج التطوري **يشترك بخصائص كثيرة مع التزايدي**: البرنامج يُبنى على **عدة زيادات**، وكل زيادة **تُنفَّذ وتُنشَر بموقع العميل**، والبرنامج **يُصفَّى ويُثرى بالميزات** لحد ما يكتمل.
 
@@ -306,7 +306,7 @@ Mall closes his prototyping section with a balance sheet, and it contains the co
 
 This is the core of the file. Mall draws the line explicitly.
 
-> **Verbatim (Mall p.98):** *"The principal idea behind the evolutionary life cycle model is conveyed by its name. **In the incremental development model, complete requirements are first developed and the SRS document prepared. In contrast, in the evolutionary model, the requirements, plan, estimates, and solution evolve over the iterations, rather than fully defined and frozen in a major up-front specification effort before the development iterations begin.** Such evolution is consistent with the pattern of **unpredictable feature discovery and feature changes** that take place in new product development."*
+> **Verbatim (Mall p.98):** *"The principal idea behind the evolutionary life cycle model is conveyed by its name. **In the incremental development model, complete requirements are first developed and the SRS document prepared. In contrast, in the evolutionary model, the requirements, plan, estimates, and solution evolve over the iterations, rather than fully defined and frozen in a major up-front specification effort before the development iterations begin.** Such evolution is consistent with the pattern of **unpredictable feature discovery and feature changes** that take place in new product development."
 
 **هذا أهم فرق بالملف — احفظه حرفياً:**
 
@@ -326,19 +326,19 @@ This is the core of the file. Mall draws the line explicitly.
 
 ### 4.3 The nickname
 
-> **Verbatim (Mall p.98):** *"Due to obvious reasons, the evolutionary software development process is sometimes referred to as **design a little, build a little, test a little, deploy a little model**. This means that **after the requirements have been specified, the design, build, test, and deployment activities are iterated**."*
+> **Verbatim (Mall p.98):** *"Due to obvious reasons, the evolutionary software development process is sometimes referred to as **design a little, build a little, test a little, deploy a little model**. This means that **after the requirements have been specified, the design, build, test, and deployment activities are iterated*."
 
 النموذج التطوري يُسمّى أحياناً: **«صمّم شوية، ابنِ شوية، اختبر شوية، انشر شوية»**.
 
 **ومعناه:** بعد توصيف المطلوبات، **أنشطة التصميم والبناء والاختبار والنشر تُكرَّر**.
 
-**لاحظ الترتيب:** التصميم → البناء → الاختبار → **النشر**. يعني **النشر جزء من الدورة التكرارية** — مو خطوة نهائية بعد كل شي. وهذا **الفرق عن النماذج التسلسلية**، وهي نفسها **فكرة Incremental delivery** اللي تجي بالملف 04.
+**لاحظ الترتيب:** التصميم → البناء → الاختبار → **النشر**. يعني **النشر جزء من الدورة التكرارية** — مو خطوة نهائية بعد كل شي. وهذا **الفرق عن النماذج التسلسلية**، وهي نفسها **فكرة Incremental delivery** اللي تجي بالمفهوم السابق.
 
 ### 4.4 The advantages
 
-> **Verbatim (Mall p.98):** *"**Effective elicitation of actual customer requirements:** In this model, the user gets a chance to **experiment with a partially developed software much before the complete requirements are developed**. Therefore, the evolutionary model helps to **accurately elicit user requirements** with the help of feedback obtained on the delivery of different versions of the software. As a result, **the change requests after delivery of the complete software gets substantially reduced**."*
+> **Verbatim (Mall p.98):** "*Effective elicitation of actual customer requirements:** In this model, the user gets a chance to **experiment with a partially developed software much before the complete requirements are developed**. Therefore, the evolutionary model helps to **accurately elicit user requirements** with the help of feedback obtained on the delivery of different versions of the software. As a result, **the change requests after delivery of the complete software gets substantially reduced*."
 
-> **Verbatim (Mall p.98):** *"**Easy handling change requests:** In this model, handling change requests is easier as **no long term plans are made**. Consequently, **reworks required due to change requests are normally much smaller** compared to the sequential models."*
+> **Verbatim (Mall p.98):** "*Easy handling change requests:** In this model, handling change requests is easier as **no long term plans are made**. Consequently, **reworks required due to change requests are normally much smaller** compared to the sequential models."
 
 **ميزتان أساسيتان:**
 
@@ -350,9 +350,9 @@ This is the core of the file. Mall draws the line explicitly.
 
 ### 4.5 The disadvantages
 
-> **Verbatim (Mall p.99):** *"**Feature division into incremental parts can be non-trivial:** For many development projects, **especially for small-sized projects, it is difficult to divide the required features into several parts** that can be incrementally implemented and delivered. Further, even for larger problems, **often the features are so intertwined and dependent on each other that even an expert would need considerable effort to plan the incremental deliveries**."*
+> **Verbatim (Mall p.99):** "*Feature division into incremental parts can be non-trivial:** For many development projects, **especially for small-sized projects, it is difficult to divide the required features into several parts** that can be incrementally implemented and delivered. Further, even for larger problems, **often the features are so intertwined and dependent on each other that even an expert would need considerable effort to plan the incremental deliveries*."
 
-> **Verbatim (Mall p.99):** *"**Ad hoc design:** Since at a time design for only the current increment is done, the design can become **ad hoc without specific attention being paid to maintainability and optimality**. Obviously, **for moderate sized problems and for those for which the customer requirements are clear, the iterative waterfall model can yield a better solution**."*
+> **Verbatim (Mall p.99):** "*Ad hoc design:** Since at a time design for only the current increment is done, the design can become **ad hoc without specific attention being paid to maintainability and optimality**. Obviously, **for moderate sized problems and for those for which the customer requirements are clear, the iterative waterfall model can yield a better solution*."
 
 **عيبان أساسيان:**
 
@@ -404,7 +404,7 @@ This is the comparison an exam is most likely to ask for, and Mall sets it up hi
 
 **وSommerville يدعم هذا من جهة ثانية (p.60):**
 
-> **Verbatim:** *"This distinction between development and maintenance is increasingly irrelevant. Hardly any software systems are completely new systems and it makes much more sense to see development and maintenance as a **continuum**. Rather than two separate processes, it is more realistic to think of software engineering as an **evolutionary process** where software is **continually changed over its lifetime in response to changing requirements and customer needs**."*
+> **Verbatim:** *"This distinction between development and maintenance is increasingly irrelevant. Hardly any software systems are completely new systems and it makes much more sense to see development and maintenance as a **continuum**. Rather than two separate processes, it is more realistic to think of software engineering as an **evolutionary process** where software is **continually changed over its lifetime in response to changing requirements and customer needs*."
 
 Sommerville يگول شي جذري: **التمييز بين التطوير والصيانة صار غير ذي صلة**. ما تكاد توجد أنظمة جديدة تماماً، والأصحّ نرى **التطوير والصيانة كاستمرارية (continuum)** — ونفكّر بهندسة البرمجيات كـ**عملية تطورية**، البرنامج فيها **يتغيّر باستمرار على مدى عمره**.
 
@@ -416,7 +416,7 @@ Sommerville يگول شي جذري: **التمييز بين التطوير وا�
 
 Sommerville adds a point that connects this file to the next. Incremental delivery does not suit every system — and he names which.
 
-> **Verbatim (Sommerville p.65):** *"There are some types of system where incremental development and delivery is **not the best approach**. These are **very large systems** where development may involve teams working in different locations, some **embedded systems** where the software depends on hardware development and some **critical systems** where all the requirements must be analyzed to check for interactions that may compromise the safety or security of the system."*
+> **Verbatim (Sommerville p.65):** *"There are some types of system where incremental development and delivery is **not the best approach**. These are **very large systems** where development may involve teams working in different locations, some **embedded systems** where the software depends on hardware development and some **critical systems** where all the requirements must be analyzed to check for interactions that may compromise the safety or security of the system."
 
 And then the resolution — which is **prototyping**:
 
@@ -457,49 +457,49 @@ And then the resolution — which is **prototyping**:
 > **Rework** is work that has been completed having to be redone because of change. The two approaches are **change avoidance** — activities that *"anticipate possible changes before significant rework is required"* — and **change tolerance** — a process designed so changes *"can be accommodated at relatively low cost"*, normally through incremental development. (Sommerville p.61)
 
 **2. Which of the two approaches does prototyping support, and which does incremental delivery support?**
-> **Prototyping supports change avoidance** — it lets users experiment and refine requirements *"before committing to high software production costs."* **Incremental delivery supports both** change avoidance and change tolerance. (Sommerville p.61)
+> **Prototyping supports change avoidance** — it lets users experiment and refine requirements *"before committing to high software production costs." **Incremental delivery supports both** change avoidance and change tolerance. (Sommerville p.61)
 
 **3. Define a prototype in Mall's terms, and say why the crudeness is deliberate.**
-> *"A prototype is a **toy and crude implementation of a system**. It has **limited functional capabilities, low reliability, or inefficient performance** as compared to the actual software."* The crudeness is deliberate because it is built *"very quickly by using several **shortcuts**"* — inefficient, inaccurate or dummy functions, e.g. producing a result by **table look-up rather than performing the actual computations**. Speed is bought with accuracy, which is acceptable **because the prototype is thrown away**. (Mall p.91)
+> *"A prototype is a **toy and crude implementation of a system**. It has **limited functional capabilities, low reliability, or inefficient performance** as compared to the actual software." The crudeness is deliberate because it is built *"very quickly by using several **shortcuts*" — inefficient, inaccurate or dummy functions, e.g. producing a result by **table look-up rather than performing the actual computations**. Speed is bought with accuracy, which is acceptable **because the prototype is thrown away**. (Mall p.91)
 
 **4. Name the two situations where Mall says prototyping is the right choice.**
-> **(1)** The **graphical user interface** part of an application — prototyping makes it easier to illustrate *"input data formats, messages, reports, and the interactive dialogs"*, and *"the GUI part of a software system is almost always developed using the prototyping model."* **(2)** When **the exact technical solutions are unclear** to the team — e.g. writing a compiler when nobody has written one, which is a *"technical risk"* resolved by prototyping a compiler for a very small language first. (Mall pp.91–92)
+> **(1)** The **graphical user interface** part of an application — prototyping makes it easier to illustrate *"input data formats, messages, reports, and the interactive dialogs"*, and *"the GUI part of a software system is almost always developed using the prototyping model." **(2)** When **the exact technical solutions are unclear** to the team — e.g. writing a compiler when nobody has written one, which is a *"technical risk"* resolved by prototyping a compiler for a very small language first. (Mall pp.91–92)
 
 **5. State the Brooks [1975] justification for prototyping.**
-> *"It is impossible to 'get it right' the first time. As advocated by Brooks [1975], one must **plan to throw away the software** in order to develop a good software later."* (Mall p.92)
+> *"It is impossible to 'get it right' the first time. As advocated by Brooks [1975], one must **plan to throw away the software** in order to develop a good software later." (Mall p.92)
 
 **6. Name the two major activities of the prototyping life cycle, and say what survives after the prototype is discarded.**
-> **Prototype construction** (initial requirements gathering → quick design → build → customer evaluation → refine and modify, repeated *"till the customer approves the prototype"*) and **iterative waterfall-based development**. After approval, *"the code for the prototype is usually thrown away. However, **the experience gathered from developing the prototype** helps a great deal in developing the actual system."* (Mall p.93)
+> **Prototype construction** (initial requirements gathering → quick design → build → customer evaluation → refine and modify, repeated *"till the customer approves the prototype"*) and **iterative waterfall-based development**. After approval, *"the code for the prototype is usually thrown away. However, **the experience gathered from developing the prototype** helps a great deal in developing the actual system." (Mall p.93)
 
 **7. Is the SRS document still needed when a working prototype exists? When is it not?**
-> **Usually yes** — *"in spite of the availability of a working prototype, the SRS document is usually needed to be developed"*, because it is invaluable for **traceability analysis, verification, and test case design**. **But for GUI parts the requirements analysis and specification phase becomes redundant**, because the approved prototype *"serves as an **animated requirements specification**."* (Mall p.93)
+> **Usually yes** — *"in spite of the availability of a working prototype, the SRS document is usually needed to be developed"*, because it is invaluable for **traceability analysis, verification, and test case design**. **But for GUI parts the requirements analysis and specification phase becomes redundant**, because the approved prototype *"serves as an **animated requirements specification*." (Mall p.93)
 
 **8. Give Sommerville's definition of a prototype and its three purposes.**
-> *"A prototype is an **initial version of a software system** that is used to **demonstrate concepts, try out design options, and find out more about the problem and its possible solutions**."* Rapid, iterative development is essential so costs are controlled and stakeholders can experiment early. (Sommerville p.62)
+> *"A prototype is an **initial version of a software system** that is used to **demonstrate concepts, try out design options, and find out more about the problem and its possible solutions*." Rapid, iterative development is essential so costs are controlled and stakeholders can experiment early. (Sommerville p.62)
 
 **9. Why does experimenting with a prototype reveal problems that reading a specification does not?**
-> Because the difficulty lies in **interaction, not in individual functions**: *"A function described in a specification may seem useful and well defined. However, **when that function is combined with other functions, users often find that their initial view was incorrect or incomplete**."* (Sommerville p.62)
+> Because the difficulty lies in **interaction, not in individual functions**: *"A function described in a specification may seem useful and well defined. However, **when that function is combined with other functions, users often find that their initial view was incorrect or incomplete*." (Sommerville p.62)
 
 **10. What is the general problem with prototyping, and what are its three causes?**
-> *"The prototype may not necessarily be used in the same way as the final system."* Causes: the **tester may not be typical** of system users; **training time during evaluation may be insufficient**; and if the prototype is **slow**, evaluators avoid the slow features and then *"may use it in a different way"* once the final system responds better. (Sommerville p.63)
+> *"The prototype may not necessarily be used in the same way as the final system." Causes: the **tester may not be typical** of system users; **training time during evaluation may be insufficient**; and if the prototype is **slow**, evaluators avoid the slow features and then *"may use it in a different way"* once the final system responds better. (Sommerville p.63)
 
 **11. State the distinction between the incremental and evolutionary models in one sentence, and explain what it means to freeze something.**
-> *"In the incremental development model, **complete requirements are first developed and the SRS document prepared**. In contrast, in the evolutionary model, **the requirements, plan, estimates, and solution evolve over the iterations, rather than fully defined and frozen in a major up-front specification effort** before the development iterations begin."* To **freeze** something is to fix it in advance so it does not change — incremental freezes the requirements and the SRS; evolutionary freezes nothing. (Mall p.98)
+> *"In the incremental development model, **complete requirements are first developed and the SRS document prepared**. In contrast, in the evolutionary model, **the requirements, plan, estimates, and solution evolve over the iterations, rather than fully defined and frozen in a major up-front specification effort** before the development iterations begin." To **freeze** something is to fix it in advance so it does not change — incremental freezes the requirements and the SRS; evolutionary freezes nothing. (Mall p.98)
 
 **12. What is the evolutionary model sometimes called, and what does the name mean?**
-> *"**design a little, build a little, test a little, deploy a little model**"* — meaning that *"after the requirements have been specified, the design, build, test, and deployment activities are **iterated**."* Note that **deployment is part of the iteration**, not a final step. (Mall p.98)
+> "*design a little, build a little, test a little, deploy a little model*" — meaning that *"after the requirements have been specified, the design, build, test, and deployment activities are **iterated*." Note that **deployment is part of the iteration**, not a final step. (Mall p.98)
 
 **13. Give the two advantages of the evolutionary model.**
-> **(1) Effective elicitation of actual customer requirements** — the user experiments with partially developed software *"much before the complete requirements are developed"*, so requirements are elicited accurately and *"the change requests after delivery of the complete software gets substantially reduced."* **(2) Easy handling of change requests** — *"handling change requests is easier as **no long term plans are made**"*, so rework is *"much smaller compared to the sequential models."* (Mall p.98)
+> **(1) Effective elicitation of actual customer requirements** — the user experiments with partially developed software *"much before the complete requirements are developed"*, so requirements are elicited accurately and *"the change requests after delivery of the complete software gets substantially reduced." **(2) Easy handling of change requests** — *"handling change requests is easier as **no long term plans are made*", so rework is *"much smaller compared to the sequential models." (Mall p.98)
 
 **14. Give the two disadvantages of the evolutionary model, and the model Mall recommends instead in some cases.**
-> **(1) Feature division into incremental parts can be non-trivial** — especially for small projects, and for large ones the features are *"so intertwined and dependent on each other that even an expert would need considerable effort."* **(2) Ad hoc design** — designing only the current increment at a time can produce design *"without specific attention being paid to maintainability and optimality."* Mall's alternative: *"for moderate sized problems and for those for which the customer requirements are clear, the **iterative waterfall model can yield a better solution**."* (Mall p.99)
+> **(1) Feature division into incremental parts can be non-trivial** — especially for small projects, and for large ones the features are *"so intertwined and dependent on each other that even an expert would need considerable effort." **(2) Ad hoc design** — designing only the current increment at a time can produce design *"without specific attention being paid to maintainability and optimality." Mall's alternative: *"for moderate sized problems and for those for which the customer requirements are clear, the **iterative waterfall model can yield a better solution*." (Mall p.99)
 
 **15. Sommerville argues that the split between development and maintenance is outdated. What does he propose instead?**
-> That *"development and maintenance"* be seen as a **continuum**, and software engineering as an *"**evolutionary process** where software is continually changed over its lifetime in response to changing requirements and customer needs."* (Sommerville p.60)
+> That *"development and maintenance"* be seen as a **continuum**, and software engineering as an "*evolutionary process** where software is continually changed over its lifetime in response to changing requirements and customer needs." (Sommerville p.60)
 
 **16. Name the three kinds of system where incremental delivery is not the best approach, and say what Sommerville recommends for them instead.**
-> **Very large systems** (teams in different locations), some **embedded systems** (software depends on hardware development), and some **critical systems** (all requirements must be analysed for safety or security interactions). The recommendation: develop *"a **system prototype** iteratively and use it as a platform for experiments"*, so that *"with the experience gained from the prototype, definitive requirements can then be agreed."* (Sommerville p.65)
+> **Very large systems** (teams in different locations), some **embedded systems** (software depends on hardware development), and some **critical systems** (all requirements must be analysed for safety or security interactions). The recommendation: develop *"a **system prototype** iteratively and use it as a platform for experiments"*, so that *"with the experience gained from the prototype, definitive requirements can then be agreed." (Sommerville p.65)
 
 ---
 
@@ -521,4 +521,3 @@ And then the resolution — which is **prototyping**:
 | **Mall p.99** | The two disadvantages · **the recommendation to use iterative waterfall when requirements are clear** |
 
 ---
-

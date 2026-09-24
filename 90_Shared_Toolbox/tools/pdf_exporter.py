@@ -288,49 +288,75 @@ def _render_callout(kind: str, custom_title: str, body_lines: List[str], lang: s
 
 
 def transform_qa_cards(html_text: str, default_lang: str = "ar") -> str:
-    """Transforms active recall Q&A pairs into dedicated assessment cards distinct from quotes."""
-    qa_pattern = re.compile(
-        r"<p><strong>((?:Q\d*[:\.\)]|\d+[\.\)]|س\d*[:\.\)]|سؤال[:\.\)]).*?)</strong></p>\s*<blockquote(?:\s*[^>]*)>(.*?)</blockquote>",
+    """Transforms active recall Q&A pairs into dedicated assessment cards.
+    STRICT INVARIANT: Only operates inside the ## Retrieval set / Active recall section.
+    Never touches lecture content in the body!
+    """
+    # 1. Partition document at retrieval set heading
+    retrieval_split = re.split(
+        r"(?i)(<h[1-6][^>]*>.*?(?:retrieval\s*set|active\s*recall|أسئلة\s*الاسترجاع|بنك\s*الأسئلة).*?</h[1-6]>)",
+        html_text,
+        maxsplit=1
+    )
+    if len(retrieval_split) < 3:
+        # No retrieval section in document; do NOT modify body
+        return html_text
+
+    body_head = retrieval_split[0]
+    retrieval_heading = retrieval_split[1]
+    retrieval_html = retrieval_split[2]
+
+    # 2. Unified QA pattern matching both numbered items and [RS-XX-YY] patterns
+    q_unified = re.compile(
+        r"<p>(<strong>\s*\[?(?:RS-[\d\-]+|\d+|Q\d*|س\d*)\]?[\.:\-]?\s*.*?</p>)\s*<blockquote(?:\s*[^>]*)>(.*?)</blockquote>",
         re.DOTALL
     )
 
     def _replace_qa(m):
-        q_raw = m.group(1).strip()
+        p_full = m.group(1).strip()
         ans_raw = m.group(2).strip()
 
-        # Extract number if present
-        num_m = re.match(r"^((?:Q\d*|\d+|س\d*))[\.\):\-]\s*(.*)$", q_raw)
-        if num_m:
-            badge_text = num_m.group(1)
-            q_text = num_m.group(2)
+        # Strip HTML tags from question to extract badge and clean text
+        clean_p = re.sub(r"</?[^>]+>", "", p_full).strip()
+        badge_m = re.match(r"^\[?(RS-[\d\-]+|[A-Za-z]?\d+|س\d*)\]?[\.:\-]?\s*(.*)$", clean_p)
+        if badge_m:
+            badge_text = badge_m.group(1)
+            q_text = badge_m.group(2)
         else:
             badge_text = "Q"
-            q_text = q_raw
+            q_text = clean_p
 
-        # Determine language/direction of question and answer
-        ans_inner = re.sub(r'<[^>]+>', '', ans_raw)
+        # Clean leading 'Answer:' or '**Answer:**' or 'الإجابة:' from answer
+        ans_clean = re.sub(
+            r"^(?:<p>)?\s*(?:<strong>)?\s*(?:Answer|الإجابة|نموذج الإجابة)\s*[:—–-]?\s*(?:</strong>)?\s*",
+            "<p>",
+            ans_raw,
+            flags=re.IGNORECASE
+        )
+
+        # Determine language/direction
+        ans_inner = re.sub(r'<[^>]+>', '', ans_clean)
         ans_has_ar = has_arabic(ans_inner)
         ans_dir = "rtl" if ans_has_ar else "ltr"
         ans_class = "rtl-ans" if ans_has_ar else "ltr-ans"
 
         q_has_ar = has_arabic(q_text)
         q_dir = "rtl" if q_has_ar else "ltr"
-        badge_ans_label = "نموذج الإجابة (Model Answer)" if ans_has_ar else "Model Answer"
 
         return f"""
 <div class="qa-card">
   <div class="qa-question-box" dir="{q_dir}">
     <span class="qa-badge-q">{H.escape(badge_text)}</span>
-    <div class="qa-question-text">{q_text}</div>
+    <div class="qa-question-text">{H.escape(q_text)}</div>
   </div>
   <div class="qa-answer-box {ans_class}" dir="{ans_dir}">
-    <div class="qa-answer-content">{ans_raw}</div>
+    <div class="qa-answer-content">{ans_clean}</div>
   </div>
 </div>
 """
 
-    return qa_pattern.sub(_replace_qa, html_text)
-
+    transformed_retrieval = q_unified.sub(_replace_qa, retrieval_html)
+    return body_head + retrieval_heading + transformed_retrieval
 
 def trim_image_whitespace(img_bytes: bytes, pad: int = 6) -> bytes:
     """Auto-trims solid white or near-white margins from an image before inlining."""
@@ -539,6 +565,16 @@ def sanitize_markdown_for_publication(md_text: str, meta: Dict[str, str]) -> str
         # 5. Clean [THIN] markers inside table rows or text
         line = re.sub(r"\|\s*`?\[THIN\]`?\s*\|", "| Note: Primary Coverage |", line)
         line = re.sub(r"`?\[THIN\]`?", "*(In-depth note)*", line)
+
+        # 6. Repair unbalanced ***bold/italic*** inside blockquotes or text
+        line = re.sub(r"\*\*\*([^*\n]+?)\*\*(?!\*)", r"**\1**", line)
+        line = re.sub(r"\*\*\*([^*\n]+?)\*(?!\*)", r"*\1*", line)
+        line = re.sub(r'\*\."\*', '."', line)
+        line = re.sub(r'\*"\*', '"', line)
+
+        # 7. Strip leaked internal cross-file references (e.g. "اربط هذا بالملف 02")
+        line = re.sub(r"\(الملف\s+0?\d+[^)]*\)", "", line)
+        line = re.sub(r"بالملف\s+0?\d+", "بالمفهوم السابق", line)
 
         clean_lines.append(line)
 

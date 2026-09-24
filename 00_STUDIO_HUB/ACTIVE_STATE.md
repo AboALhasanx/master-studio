@@ -3,8 +3,8 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 1
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS-MCS-504"
-immediate_todo: "Author Unit 02: Build & Fix and Classical Waterfall (Mall §2.2.1, §2.2.2; Sommerville pp. 47–49) following ACADEMIC_STUDY_NOTE_SOP.md and template-study-unit.md, then compile clean v3 PDF."
-next_session_focus: "Execute the 10-unit ASE Week 02 series sequentially with deep pedagogical rigor, vector diagrams, and active recall Q&A."
+immediate_todo: "Units 01–05 are SOP-conformant and published as clean bilingual PDFs. Next: apply the same cleanup (scaffolding markers, diagrams, frontmatter) to Units 06–10, which still carry 'File NN of 10' references and have no figures."
+next_session_focus: "Units 06–10 cleanup + diagrams + PDF re-export, following the identical recipe used for Units 01–05."
 last_updated: "2026-09-24"
 status: "WEEK_01_ACTIVE"
 ---
@@ -37,6 +37,8 @@ status: "WEEK_01_ACTIVE"
 ## 2. Immediate Tasks & Roadmap
 
 ### Active Work Queue
+- [x] **ASE Week 02 Units 01–05 — zero-leakage cleanup + vector diagrams + clean bilingual PDFs (2026-09-24).** All backend scaffolding was stripped from student-facing text in Units 02–05 (`File NN of 10` cross-references, `[THIN]` flags, `**EN.**`/`**AR.**` markers, `BUILD_PLAN` build footers, the `file:` frontmatter key). `[THIN]` coverage notes were **rewritten as prose** (`ملاحظة تغطية:` / `Coverage note`) rather than deleted, so no information was lost. Unit 05 gained frontmatter, a **Where this sits** narrative spine, an English Feynman intuition section and a closing footer — it previously had none. Four new 2x-retina vector diagrams were built (waterfall classical vs iterative; prototyping vs evolutionary; incremental interleaving; RAD timeline compression), each inlined with an Arabic "how to read this figure" table. New tool: `90_Shared_Toolbox/tools/diagram_forge.py` (HTML/SVG → 2x PNG via Playwright; resolves `chromium-*/chrome-win64/chrome.exe`). PDFs re-exported with `study_pack` + `--lang ar`: **01 = 17 pp, 02 = 24 pp, 03 = 20 pp, 04 = 18 pp, 05 = 10 pp** — all verified with **zero leakage**, one embedded figure each, Arabic layer intact. Superseded exports moved to `99_Archives/2026-09-24_ASE_W02_superseded_exports/` (gitignored). Pushed as commits `7787ab1`, `8ba5bf2`.
+- [ ] **ASE Week 02 Units 06–10 — same treatment pending.** They still carry `File NN` references, have **no diagrams**, and **Units 05–10 lacked frontmatter** (05 now fixed). Units 06–10's existing PDFs in `08_PDF_Exports/` are the *old* pre-sanitizer builds.
 - [x] **Ingest 4 Canonical Textbooks for `04_Advanced_Software_Eng`** (Sommerville, Pressman, Mall, Agarwal)
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)

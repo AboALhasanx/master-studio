@@ -32,3 +32,24 @@ git push origin master
 - **Recap at every section transition** (standing instruction) — restate what was covered, what is solved, where we are.
 - Exam strategy: prioritize **fixed/memorizable** items (vocabulary, grammar, fixed phrases); deprioritize story comprehension and skills sections.
 - Anti-hallucination: never fabricate citations/DOIs; tag unverifiable claims `[Foundational Knowledge / Standard Concept]`.
+
+## 5. The Delivery Gate — MANDATORY, NO EXCEPTIONS (learned the hard way 2026-09-24)
+
+**I once delivered five PDFs that rendered with fake "Q" boxes and leaked bold. The student had to fix them with another agent. Do not repeat it.** The gate now exists; run it.
+
+**Read before authoring, in this order:** `AGENTS.md` (§6.0.1 is the gate) → `00_STUDIO_HUB/STUDY_NOTE_MANIFESTO.md` (the 7 Laws) → `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` → `00_STUDIO_HUB/guides/PDF_PUBLISHING_SOP.md` (the 9 Engine Laws + §6 checklist) → `00_STUDIO_HUB/templates/template-study-unit.md`.
+
+**Run before delivery, in this order — never skip step 1:**
+```bash
+python "90_Shared_Toolbox/tools/note_linter.py" "<note>.md" --fix --strict   # MUST exit 0
+python "90_Shared_Toolbox/tools/pdf_exporter.py" "<note>.md" -t study_pack
+```
+Then render the pages with PyMuPDF and **look at them**. The linter cannot see a fake Q box or a leaked bold — only eyes on the page catch those.
+
+**The two defect classes that bit me, and their authoring rules:**
+1. **Fake "Q" cards in the lecture body.** Cause was an unscoped `re.DOTALL` QA regex in `transform_qa_cards()` that matched any bold numbered line followed by a blockquote anywhere in the document. **Now fixed engine-side** — the transform is partitioned at the `## Retrieval set` heading and the body is immune. **Still: never put a bold numbered line directly above a blockquote outside the retrieval set.**
+2. **Bold leaking across a whole page.** Cause: I wrote `***Change avoidance**` — three opening asterisks, two closing. **Manifesto Law 5: never `***`.** Inside a `*"…"*` verbatim quote every bold span must open and close with exactly `**`.
+
+**Retrieval-set format that renders as emerald cards:** `**[RS-XX-YY]** Question?` on its own line, answer in a `>` blockquote directly beneath. A leading `Answer:` is stripped automatically; do not add a `Model Answer` label.
+
+**Windows File Lock Law (Engine Law 1):** if a PDF is open in a viewer, the exporter writes `*_new.pdf` instead of failing. That is a *notice*, not an error — but it means the canonical filename still holds the **old** content. Always tell the student, and check which file is actually current.

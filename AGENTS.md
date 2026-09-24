@@ -120,9 +120,8 @@ To optimize deep cognitive retention and high-impact academic output:
    - Conforms strictly to `00_STUDIO_HUB/templates/template-academic-terms.md`.
    - Every key term must detail: canonical English term, seminal author/paper DOI, word-for-word IEEE/ACM/ISO definition, Feynman 9-year-old analogy, and the **Professor's Exam Trap**.
 
-### 2.5. Master Studio Research, Authoring & Publishing Workflow (The Invariant Contract)
-Incoming agents must strictly adhere to the 5-stage artifact lifecycle codified in `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` and use `00_STUDIO_HUB/templates/template-study-unit.md`:
-
+### 2.5. Universal Vault-Wide Research, Authoring & Publishing Workflow (The Invariant Contract)
+Incoming agents must strictly adhere to the 5-stage artifact lifecycle codified in `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` across **ALL six postgraduate subjects** (`01_Cyber_Security`, `02_English_Language`, `03_Data_Mining`, `04_Advanced_Software_Eng`, `05_Soft_Computing`, `06_Artificial_Intelligence`) using `00_STUDIO_HUB/templates/template-study-unit.md`:
 1. **Ingestion & Sifting (Triangulation):**
    - Identify the primary canonical course textbook (e.g. Mall for SDLC, Sommerville for SE theory, Sharp for Cyber Risk, Han & Kamber for Data Mining) and cross-reference with international standards (ISO/IEC/IEEE, NIST) and expert consensus.
    - Sift essential concepts (authoritative verbatim definitions, boundary conditions, failure modes, professor exam traps) from non-essential historical padding.
@@ -231,8 +230,19 @@ Or via the Windows batch wrapper:
 ```cmd
 "90_Shared_Toolbox/tools/export-pdf.bat" "<path-to-note>.md"
 ```
+### 6.0.1. Inviolable Zero-Defect Delivery Gate for Study Notes & PDFs (MANDATORY FOR ALL AGENTS)
+NO STUDY NOTE OR PDF ARTIFACT MAY BE DELIVERED, ANNOUNCED, OR COMMITTED WITHOUT PASSING:
+```bash
+python "90_Shared_Toolbox/tools/note_linter.py" "<path_to_note>.md" --fix --strict
+```
+  - If this command exits with **Code 1 (FAILED)**:
+    YOU MUST NOT deliver the note or PDF to the student or conclude your turn.
+    You MUST resolve all flagged errors (unclosed asterisks, prohibited ASCII art, leaked prompt scaffolding, missing retrieval sets), re-run the command, and **repeat until it exits with Code 0**.
+  - **Automated System 1 Pre-Flight Auto-Repair:** The `--fix` flag automatically balances asterisks (`***` $\rightarrow$ `**`), neutralizes leaked `الملف XX` talk, cleans prompt markers (`**EN.**`, `**AR.**`, `[THIN]`), and normalizes H1 unit titles.
+  - **Mathematical Formulations Guarantee:** LaTeX math (`$$...$$` and `$...$`) is protected as atomic tokens before linting and rendered via KaTeX + DirectWrite in isolated LTR blocks.
+  - Zero exceptions across all models (whether Claude, GPT, DeepSeek, Qwen, WorkBuddy, or local LLMs).
 
-
+---
 When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions instead of PDF/Markdown:
 
 - **Word Documents (.docx for OnlyOffice / MS Office 2016+):**
