@@ -124,20 +124,29 @@ def isolate_english_tokens_in_arabic(text: str) -> str:
     return "".join(result)
 
 def tag_bilingual_blocks(html_text: str) -> str:
-    """Tags block elements (headings, paragraphs, blockquotes, lists) as LTR if they contain no Arabic."""
+    """Tags block elements (headings, paragraphs, blockquotes, lists) as LTR if they contain no Arabic.
+
+    Recurses into nested block elements. Without the recursion the regex matched the OUTER
+    element first (e.g. an Arabic <li>) and consumed the inner pure-English block (e.g. a
+    <blockquote> holding a verbatim quote), so the inner block never got dir="ltr" and rendered
+    RTL — which flips parentheses and reorders the label vs the quote (bug fixed 2026-09-25).
+    """
+    pattern = r'<(h[1-6]|p|blockquote|li|table)(\s*[^>]*)>(.*?)(</\1>)'
+
     def _fix_tag(m):
         tag = m.group(1)
         attrs = m.group(2) or ""
         content = m.group(3)
         closing = m.group(4)
+        # Recurse first so nested blocks are tagged independently of the outer container.
+        content = re.sub(pattern, _fix_tag, content, flags=re.DOTALL)
         if 'dir=' in attrs:
-            return m.group(0)
+            return f'<{tag}{attrs}>{content}{closing}'
         inner_text = re.sub(r'<[^>]+>', '', content)
         if inner_text.strip() and not has_arabic(inner_text):
             return f'<{tag}{attrs} dir="ltr" class="ltr-block">{content}{closing}'
-        return m.group(0)
+        return f'<{tag}{attrs}>{content}{closing}'
 
-    pattern = r'<(h[1-6]|p|blockquote|li|table)(\s*[^>]*)>(.*?)(</\1>)'
     return re.sub(pattern, _fix_tag, html_text, flags=re.DOTALL)
 
 
