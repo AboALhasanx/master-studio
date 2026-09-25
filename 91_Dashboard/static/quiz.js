@@ -231,7 +231,11 @@ class QuizApp {
             bookmarksDrawer: document.getElementById('bookmarks-drawer'),
             btnCloseBookmarks: document.getElementById('btn-close-bookmarks'),
             bookmarksList: document.getElementById('bookmarks-list'),
-            bookmarksEmpty: document.getElementById('bookmarks-empty')
+            bookmarksEmpty: document.getElementById('bookmarks-empty'),
+            matrixDrawer: document.getElementById('matrix-drawer'),
+            btnOpenMatrix: document.getElementById('btn-open-matrix'),
+            btnCloseMatrix: document.getElementById('btn-close-matrix'),
+            matrixGrid: document.getElementById('matrix-grid')
         };
 
         this.init();
@@ -423,6 +427,11 @@ class QuizApp {
         this.dom.btnBookmarksToggle?.addEventListener('click', () => this.openDrawer(this.dom.bookmarksDrawer));
         this.dom.btnCloseBookmarks?.addEventListener('click', () => this.closeDrawer(this.dom.bookmarksDrawer));
         this.dom.drawerOverlay?.addEventListener('click', () => this.closeAllDrawers());
+        this.dom.btnOpenMatrix?.addEventListener('click', () => {
+            this.renderQuestionMatrix();
+            this.openDrawer(this.dom.matrixDrawer);
+        });
+        this.dom.btnCloseMatrix?.addEventListener('click', () => this.closeDrawer(this.dom.matrixDrawer));
 
         // Filter Pills on Results Page
         document.querySelectorAll('.filter-pill').forEach(pill => {
@@ -455,6 +464,9 @@ class QuizApp {
                 });
             });
         });
+        // Download all quizzes locally for offline use
+        document.getElementById('btn-download-all-quizzes')?.addEventListener('click', () => this.saveAllQuizzesOffline());
+
 
         // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
@@ -529,6 +541,26 @@ class QuizApp {
      */
     async loadQuiz() {
         if (this.subjectId && this.quizId) {
+            const cacheKey = `ms_quiz_${this.subjectId}_${this.quizId}`;
+            // 1. Cache-first check: if cached, boot immediately in 0ms!
+            const cachedRaw = localStorage.getItem(cacheKey);
+            if (cachedRaw) {
+                try {
+                    const parsed = JSON.parse(cachedRaw);
+                    if (parsed && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+                        this.quizData = parsed;
+                        this.setupQuizSession();
+                        this.restoreInProgressState();
+                        // Silently refresh in background if online
+                        this.refreshQuizInBackground(cacheKey);
+                        return;
+                    }
+                } catch (e) {
+                    console.warn('Cached quiz parse error, falling back to network:', e);
+                }
+            }
+
+            // 2. Network fetch if not cached
             this.showState('loading');
             try {
                 const response = await fetch(`/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`);
@@ -539,7 +571,12 @@ class QuizApp {
                 if (!this.quizData || !this.quizData.questions || this.quizData.questions.length === 0) {
                     throw new Error('Quiz contains no questions.');
                 }
+                // Store in persistent local storage
+                try {
+                    localStorage.setItem(cacheKey, JSON.stringify(this.quizData));
+                } catch (e) {}
                 this.setupQuizSession();
+                this.restoreInProgressState();
             } catch (error) {
                 console.error('Quiz loading error:', error);
                 if (this.dom.errorMessage) {
@@ -548,8 +585,107 @@ class QuizApp {
                 this.showState('error');
             }
         } else {
-            // Catalog Hub Mode: No dummy demo quiz, clean catalog!
+            // Catalog Hub Mode: Clean catalog
             this.showState('catalog');
+        }
+    }
+
+    async refreshQuizInBackground(cacheKey) {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
+            const response = await fetch(`/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (response.ok) {
+                const fresh = await response.json();
+                if (fresh && fresh.questions && fresh.questions.length > 0) {
+                    localStorage.setItem(cacheKey, JSON.stringify(fresh));
+                }
+            }
+        } catch (e) {}
+    }
+
+    saveInProgressState() {
+        if (!this.subjectId || !this.quizId || this.isSubmitted) return;
+        const progressKey = `ms_progress_${this.subjectId}_${this.quizId}`;
+        try {
+            const state = {
+                currentIndex: this.currentIndex,
+                answers: this.answers,
+                dwellTimes: this.dwellTimes,
+                answerTimestamps: this.answerTimestamps,
+                reflections: this.reflections,
+                luckyGuesses: this.luckyGuesses,
+                examMode: this.examMode,
+                updatedAt: Date.now()
+            };
+            localStorage.setItem(progressKey, JSON.stringify(state));
+        } catch (e) {}
+    }
+
+    restoreInProgressState() {
+        if (!this.subjectId || !this.quizId) return;
+        const progressKey = `ms_progress_${this.subjectId}_${this.quizId}`;
+        try {
+            const raw = localStorage.getItem(progressKey);
+            if (!raw) return;
+            const state = JSON.parse(raw);
+            if (state && typeof state.answers === 'object') {
+                this.answers = state.answers || {};
+                this.dwellTimes = state.dwellTimes || {};
+                this.answerTimestamps = state.answerTimestamps || {};
+                this.reflections = state.reflections || {};
+                this.luckyGuesses = state.luckyGuesses || {};
+                if (state.examMode !== undefined) this.examMode = state.examMode;
+                if (typeof state.currentIndex === 'number' && state.currentIndex < (this.quizData.questions?.length || 0)) {
+                    this.currentIndex = state.currentIndex;
+                }
+            }
+        } catch (e) {}
+    }
+
+    clearInProgressState() {
+        if (!this.subjectId || !this.quizId) return;
+        try {
+            localStorage.removeItem(`ms_progress_${this.subjectId}_${this.quizId}`);
+        } catch (e) {}
+    }
+
+    async saveAllQuizzesOffline() {
+        const btn = document.getElementById('btn-download-all-quizzes');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner" style="width:14px;height:14px;border-width:2px;display:inline-block;"></span> <span>جاري الحفظ في الهاتف...</span>`;
+        }
+        try {
+            const res = await fetch('/api/quiz/list');
+            if (!res.ok) throw new Error('Server unreachable');
+            const data = await res.json();
+            const quizzes = data.quizzes || [];
+            let count = 0;
+            for (const q of quizzes) {
+                try {
+                    const qUrl = q.url.replace('/quiz/', '/api/quiz/');
+                    const qRes = await fetch(qUrl);
+                    if (qRes.ok) {
+                        const qData = await qRes.json();
+                        localStorage.setItem(`ms_quiz_${q.subject}_${q.quiz_id}`, JSON.stringify(qData));
+                        count++;
+                    }
+                } catch (e) {}
+            }
+            this.showTemporaryToast(`تم حفظ ${count} كويز بنجاح في ذاكرة الهاتف!`);
+            if (btn) {
+                btn.innerHTML = `<i data-lucide="check-check"></i> <span>تم الحفظ (${count} كويز جاهز أوفلاين)</span>`;
+            }
+        } catch (err) {
+            this.showTemporaryToast('تعذر تنزيل الكويزات، تأكد من اتصال هاتفك بالكمبيوتر.');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="download-cloud"></i> <span>تنزيل جميع الكويزات للمذاكرة بدون نت</span>`;
+            }
+        } finally {
+            this.refreshLucideIcons();
         }
     }
 
@@ -944,6 +1080,7 @@ class QuizApp {
             tiles?.[optionIndex]?.classList.add('selected');
 
             this.soundManager.play('click');
+            this.saveInProgressState();
             return;
         }
 
@@ -986,6 +1123,7 @@ class QuizApp {
                 }, 100);
             }
         }
+        this.saveInProgressState();
     }
 
     /**
@@ -1005,6 +1143,7 @@ class QuizApp {
         } else {
             this.finishQuiz();
         }
+        this.saveInProgressState();
     }
 
     jumpToQuestion(index) {
@@ -1013,8 +1152,30 @@ class QuizApp {
             this.closeAllDrawers();
             this.showState('quiz');
             this.renderQuestion(index);
+            this.saveInProgressState();
         }
     }
+    renderQuestionMatrix() {
+        if (!this.quizData || !this.dom.matrixGrid) return;
+        const total = this.quizData.questions?.length || 0;
+        this.dom.matrixGrid.innerHTML = '';
+        for (let i = 0; i < total; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'matrix-cell';
+            const isAnswered = this.answers[i] !== undefined;
+            const isCurrent = i === this.currentIndex;
+            if (isAnswered) btn.classList.add('answered');
+            if (isCurrent) btn.classList.add('current');
+            btn.textContent = (i + 1).toString();
+            btn.setAttribute('aria-label', `Question ${i + 1}${isAnswered ? ' (Answered)' : ''}${isCurrent ? ' (Current)' : ''}`);
+            btn.addEventListener('click', () => {
+                this.jumpToQuestion(i);
+                this.closeDrawer(this.dom.matrixDrawer);
+            });
+            this.dom.matrixGrid.appendChild(btn);
+        }
+    }
+
 
     /**
      * Quiz Completion & Scoring
@@ -1022,7 +1183,7 @@ class QuizApp {
     finishQuiz() {
         if (this.timerInterval) clearInterval(this.timerInterval);
         this.flushCurrentDwellTime();
-
+        this.clearInProgressState();
         const questions = this.quizData.questions;
         let correctCount = 0;
         let wrongCount = 0;
@@ -1514,6 +1675,7 @@ class QuizApp {
     }
 
     restartQuiz() {
+        this.clearInProgressState();
         this.setupQuizSession();
     }
 
@@ -1671,6 +1833,7 @@ class QuizApp {
 
     /**
      * UI State Management (loading, error, quiz, results)
+     */
     showState(state) {
         this.dom.quizLoading?.classList.toggle('hidden', state !== 'loading');
         this.dom.quizError?.classList.toggle('hidden', state !== 'error');

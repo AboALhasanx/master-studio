@@ -366,7 +366,14 @@ def get_all_quizzes():
         semester_dirs.insert(0, SEM1)
     quizzes = []
     history_summary = get_quiz_history(HUB).get("summary", {})
-
+    subject_names = {
+        "01_Cyber_Security": "الأمن السيبراني",
+        "02_English_Language": "اللغة الإنجليزية",
+        "03_Data_Mining": "تنقيب البيانات",
+        "04_Advanced_Software_Eng": "هندسة البرمجيات المتقدمة",
+        "05_Soft_Computing": "الحوسبة المرنة",
+        "06_Artificial_Intelligence": "الذكاء الاصطناعي",
+    }
     for sem in semester_dirs:
         for qf in sorted(sem.glob("*/07_Quizzes_&_Anki/Quiz_*.json")):
             try:
@@ -377,6 +384,7 @@ def get_all_quizzes():
                 quizzes.append({
                     "semester": sem.name,
                     "subject": subject_folder,
+                    "subject_title": subject_names.get(subject_folder, subject_folder.replace("_", " ")),
                     "quiz_id": quiz_name,
                     "topic": content.get("topic", quiz_name),
                     "instructor": content.get("instructor", ""),

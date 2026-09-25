@@ -3,7 +3,7 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v5';
+const CACHE_NAME = 'master-studio-v6';
 
 const PRECACHE_URLS = [
     '/',
@@ -108,29 +108,17 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // 3. HTML Views (/quiz, /quiz/..., /): Cache-First / Fallback to /quiz
+    // 3. HTML Navigation: Network-First, fallback to Cache when offline!
     if (event.request.mode === 'navigate' || event.request.headers.get('accept')?.includes('text/html')) {
         event.respondWith(
-            caches.match(event.request).then((cachedResponse) => {
-                // If exact page is in cache, return immediately (100% offline!)
-                if (cachedResponse) {
-                    // Update cache in background if online
-                    fetch(event.request).then((netResp) => {
-                        if (netResp && netResp.status === 200) {
-                            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, netResp));
-                        }
-                    }).catch(() => {});
-                    return cachedResponse;
+            fetch(event.request).then((netResp) => {
+                if (netResp && netResp.status === 200) {
+                    const copy = netResp.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
                 }
-
-                // If not in cache, try network, fall back to /quiz hub
-                return fetch(event.request).then((networkResponse) => {
-                    const cloned = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
-                    return networkResponse;
-                }).catch(() => {
-                    return caches.match('/quiz').then((hub) => hub || caches.match('/'));
-                });
+                return netResp;
+            }).catch(() => {
+                return caches.match(event.request).then((cached) => cached || caches.match('/quiz'));
             })
         );
         return;

@@ -284,27 +284,33 @@ input:focus, textarea:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0.25rem;
     position: sticky;
     top: 0;
     z-index: 20;
     background-color: var(--bg-base);
     border-bottom: 1px solid var(--border-subtle);
+    gap: 0.35rem;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
-    min-width: 0;
-    overflow: hidden;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 0.3rem;
     flex-shrink: 0;
 }
 
@@ -430,11 +436,11 @@ input:focus, textarea:focus {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 38px;
-    min-height: 38px;
-    width: 38px;
-    height: 38px;
-    padding: 6px;
+    min-width: 36px;
+    min-height: 36px;
+    width: 36px;
+    height: 36px;
+    padding: 5px;
     border-radius: var(--radius-md);
     color: var(--text-muted);
     transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
@@ -442,6 +448,14 @@ input:focus, textarea:focus {
     flex-shrink: 0;
 }
 
+.icon-btn svg,
+.icon-btn i {
+    width: 19px !important;
+    height: 19px !important;
+    max-width: 19px !important;
+    max-height: 19px !important;
+    flex-shrink: 0;
+}
 .icon-btn:hover {
     background-color: var(--bg-surface);
     color: var(--text-main);
@@ -2185,4 +2199,199 @@ body:has(.deck-catalog) .progress-section {
     background: rgba(56, 189, 248, 0.12);
     color: #38bdf8;
     border: 1px solid rgba(56, 189, 248, 0.22);
+}
+
+/* Brand Logo & Header Layout */
+.header-catalog-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.brand-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .brand-logo-img {
+    content: url('/static/brand-icon-dark.png');
+}
+
+/* Offline Pack Download Bar */
+.offline-pack-bar {
+    margin-bottom: 0.25rem;
+}
+.download-pack-btn {
+    width: 100%;
+    height: 38px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px dashed rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    font-size: 0.82rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.download-pack-btn:hover {
+    background: rgba(56, 189, 248, 0.16);
+    border-color: #38bdf8;
+}
+
+/* Compact Cards Layout (155px height) */
+.compact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: 0.85rem 1rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem !important;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+}
+.compact-card:hover {
+    border-color: var(--border-focus);
+}
+.card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-subject-pill {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.01em;
+}
+.card-topic-title {
+    font-size: 0.92rem !important;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 !important;
+    line-height: 1.35;
+}
+.card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+.card-action-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+}
+.card-study-btn {
+    height: 36px !important;
+    flex: 1;
+    text-decoration: none;
+    font-size: 0.84rem !important;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    background: rgba(56, 189, 248, 0.12) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    color: #38bdf8 !important;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+.card-study-btn:hover {
+    background: #38bdf8 !important;
+    color: #0b0f19 !important;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+.card-exam-btn {
+    height: 36px !important;
+    flex: 1;
+    text-decoration: none;
+    font-size: 0.84rem !important;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-main) !important;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+.card-exam-btn:hover {
+    border-color: var(--text-muted) !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+}
+
+/* Question Matrix / Quick Jump Drawer */
+.matrix-legend {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-card);
+    margin-bottom: 0.75rem;
+}
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.dot-answered {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+.dot-unanswered {
+    background: rgba(255, 255, 255, 0.2);
+}
+.dot-current {
+    background: #38bdf8;
+    box-shadow: 0 0 6px #38bdf8;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+}
+.matrix-cell {
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    border: 1px solid var(--border-card);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+.matrix-cell.answered {
+    background: rgba(16, 185, 129, 0.16);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #34d399;
+}
+.matrix-cell.current {
+    border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.35);
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+.matrix-cell:hover {
+    transform: scale(1.05);
 }

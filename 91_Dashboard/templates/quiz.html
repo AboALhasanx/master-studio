@@ -23,29 +23,47 @@
         
         <!-- Top App Bar -->
         <header class="app-header">
-            <div class="header-left">
-                <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
-                    <i data-lucide="home"></i>
-                </button>
-                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)" style="cursor: pointer;">
-                    <i data-lucide="folder-open"></i>
-                </label>
+            {% if not direct_mode %}
+            <!-- Catalog Header: Brand Logo + Status + Bookmarks + Theme -->
+            <div class="header-left header-catalog-brand">
+                <img src="/static/brand-icon-light.png" alt="MCS Logo" class="brand-logo-img" width="24" height="24">
                 <span class="app-brand-title">MCS Quiz</span>
                 <div id="server-status-pill" class="server-status-pill status-checking" title="حالة الاتصال بماستر ستوديو">
                     <span class="status-dot"></span>
                     <span id="server-status-text">جاري الفحص...</span>
                 </div>
             </div>
+            <div class="header-right header-catalog-actions">
+                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)" style="cursor: pointer;">
+                    <i data-lucide="folder-open"></i>
+                </label>
+                <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="الأسئلة المحفوظة">
+                    <i data-lucide="bookmark"></i>
+                    <span id="bookmarks-badge" class="badge">0</span>
+                </button>
+                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                </button>
+            </div>
+            {% else %}
+            <!-- In-Quiz Session Header: Minimal, Non-Distracting, High Focus -->
+            <div class="header-left">
+                <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
+                    <i data-lucide="home"></i>
+                </button>
+                <button id="btn-open-matrix" class="icon-btn" aria-label="Question Matrix" title="جدول الأسئلة">
+                    <i data-lucide="layout-grid"></i>
+                </button>
+            </div>
+            <div class="header-center">
+                <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
+                    <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
+                    <span id="session-timer" class="timer-total">00:00</span>
+                </button>
+            </div>
             <div class="header-right">
                 <button id="btn-mode-toggle" class="icon-btn" aria-label="Toggle Exam / Study Mode" title="تبديل بين وضع التدريب ووضع الامتحان">
                     <i data-lucide="book-open" id="mode-icon"></i>
-                </button>
-                <button id="btn-shuffle-toggle" class="icon-btn" aria-label="Shuffle Questions" title="خلط ترتيب الأسئلة والخيارات">
-                    <i data-lucide="shuffle" id="shuffle-icon"></i>
-                </button>
-                <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="Saved Questions">
-                    <i data-lucide="bookmark"></i>
-                    <span id="bookmarks-badge" class="badge">0</span>
                 </button>
                 <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Question Language" title="ترجمة السؤال والخيارات">
                     <i data-lucide="languages"></i>
@@ -53,10 +71,11 @@
                 <button id="btn-sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="كتم/تشغيل الصوت">
                     <i data-lucide="volume-2" id="sound-icon"></i>
                 </button>
-                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
                     <i data-lucide="moon" id="theme-icon"></i>
                 </button>
             </div>
+            {% endif %}
         </header>
 
         <!-- 1-Tap PWA Install Banner (Mobile Offline Mode) -->
@@ -92,12 +111,6 @@
                     <span class="meta-separator">/</span>
                     <span id="question-total-label">5</span>
                 </div>
-                <div class="timers-group">
-                    <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
-                        <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
-                        <span id="session-timer" class="timer-total">00:00</span>
-                    </button>
-                </div>
             </div>
         </section>
         {% endif %}
@@ -106,11 +119,16 @@
         <main class="main-content">
             
             {% if not direct_mode and available_quizzes %}
-            <!-- Available Quiz Catalog -->
-            <div class="deck-catalog" style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.75rem 0;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h2 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main);">الكويزات المتاحة في المنهج</h2>
+            <div class="deck-catalog" style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.5rem 0;">
+                <!-- Offline Pack Action Bar -->
+                <div class="offline-pack-bar">
+                    <button id="btn-download-all-quizzes" class="action-btn download-pack-btn">
+                        <i data-lucide="download-cloud"></i>
+                        <span>تنزيل جميع الكويزات للمذاكرة أوفلاين</span>
+                    </button>
                 </div>
+
+                <!-- Subject Filter Bar -->
                 <div class="catalog-filter-bar" id="catalog-filter-bar">
                     <button class="filter-chip active" data-subject="all">الكل</button>
                     <button class="filter-chip" data-subject="01_Cyber_Security">الأمن السيبراني</button>
@@ -119,32 +137,34 @@
                     <button class="filter-chip" data-subject="04_Advanced_Software_Eng">هندسة البرمجيات</button>
                     <button class="filter-chip" data-subject="05_Soft_Computing">الحوسبة المرنة</button>
                 </div>
+
+                <!-- Compact Catalog Cards -->
                 <div id="catalog-cards-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
                 {% for q in available_quizzes %}
-                <div class="catalog-card" data-subject="{{ q.subject }}" style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 0.75rem; color: #38bdf8; font-weight: 700;">{{ q.subject }}</span>
+                <div class="catalog-card compact-card" data-subject="{{ q.subject }}">
+                    <div class="card-top-row">
+                        <span class="card-subject-pill">{{ q.subject_title or q.subject }}</span>
                         {% if q.attempts and q.attempts > 0 %}
                         <span class="quiz-badge badge-passed">
                             <i data-lucide="award"></i> أعلى درجة: {{ q.best_percentage|round|int }}% ({{ q.best_score }})
                         </span>
                         {% else %}
                         <span class="quiz-badge badge-new">
-                            <i data-lucide="sparkles"></i> جديد (لم يُختبر)
+                            <i data-lucide="sparkles"></i> جديد
                         </span>
                         {% endif %}
                     </div>
-                    <h3 style="font-size: 0.95rem; color: var(--text-main); font-weight: 700;">{{ q.topic }}</h3>
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-muted);">
-                        <span>{{ q.questions_count }} أسئلة</span>
-                        {% if q.instructor %}<span>{{ q.instructor }}</span>{% endif %}
+                    <h3 class="card-topic-title">{{ q.topic }}</h3>
+                    <div class="card-meta-row">
+                        <span><i data-lucide="help-circle" style="width:13px;height:13px;vertical-align:-2px;"></i> {{ q.questions_count }} أسئلة</span>
+                        {% if q.instructor %}<span><i data-lucide="user" style="width:13px;height:13px;vertical-align:-2px;"></i> {{ q.instructor }}</span>{% endif %}
                     </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
-                        <a href="{{ q.url }}" class="action-btn primary-btn" style="height: 38px; flex: 1; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem;">
+                    <div class="card-action-row">
+                        <a href="{{ q.url }}" class="action-btn card-study-btn">
                             <i data-lucide="play"></i> بدء التدريب
                         </a>
-                        <a href="{{ q.url }}?mode=exam" class="action-btn secondary-btn" style="height: 38px; flex: 1; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem;">
-                            <i data-lucide="graduation-cap"></i> محاكاة امتحان
+                        <a href="{{ q.url }}?mode=exam" class="action-btn card-exam-btn">
+                            <i data-lucide="graduation-cap"></i> امتحان
                         </a>
                     </div>
                 </div>
@@ -377,7 +397,31 @@
                     <span>اضغط على أيقونة الحفظ في أي سؤال لحفظه للمراجعة.</span>
                 </div>
             </div>
-        </aside>    </div>
+        </aside>
+
+        <!-- Question Matrix / Quick-Jump Drawer -->
+        <aside id="matrix-drawer" class="drawer" aria-labelledby="matrix-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="layout-grid" class="drawer-header-icon"></i>
+                    <h2 id="matrix-drawer-title">جدول الأسئلة</h2>
+                </div>
+                <button id="btn-close-matrix" class="icon-btn" aria-label="Close Matrix">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="matrix-legend">
+                    <span class="legend-item"><span class="legend-dot dot-answered"></span> مُجاب</span>
+                    <span class="legend-item"><span class="legend-dot dot-unanswered"></span> لم يُجب</span>
+                    <span class="legend-item"><span class="legend-dot dot-current"></span> الحالي</span>
+                </div>
+                <div id="matrix-grid" class="matrix-grid">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </aside>
+    </div>
 
     <!-- Application Script -->
     <script src="/static/quiz.js"></script>
