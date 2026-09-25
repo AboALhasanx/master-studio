@@ -3,7 +3,7 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v3';
+const CACHE_NAME = 'master-studio-v4';
 
 const PRECACHE_URLS = [
     '/',

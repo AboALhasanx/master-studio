@@ -264,3 +264,32 @@ def test_process_quiz_telemetry_perfect_score_marker():
         today_str = datetime.now().strftime("%Y-%m-%d")
         text = (hub / "sessions" / f"{today_str}.md").read_text(encoding="utf-8")
         assert "Perfect score" in text
+
+def test_process_quiz_telemetry_structured_history():
+    from quiz_engine import get_quiz_history
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        (hub / "sessions").mkdir()
+
+        payload = {
+            "submission_uuid": "struct-uuid-1",
+            "subject_id": "04_Advanced_Software_Eng",
+            "quiz_id": "Quiz_01_Software_Crisis",
+            "topic": "Software Crisis",
+            "summary": {"percentage": 80.0, "correct": 4, "total": 5, "avg_dwell_time_seconds": 15.0},
+            "questions": [
+                {"id": "q1", "is_correct": True, "concept_id": "brooks_law"}
+            ],
+        }
+
+        res = process_quiz_telemetry(payload, hub)
+        assert res["status"] == "success"
+
+        history_file = hub / "quiz_history.json"
+        assert history_file.is_file()
+
+        data = get_quiz_history(hub)
+        assert len(data["history"]) == 1
+        assert data["history"][0]["submission_uuid"] == "struct-uuid-1"
+        assert "Quiz_01_Software_Crisis" in data["summary"]
+        assert data["summary"]["Quiz_01_Software_Crisis"]["best_percentage"] == 80.0

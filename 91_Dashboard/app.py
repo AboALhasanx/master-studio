@@ -21,7 +21,7 @@ from flask import Flask, render_template, jsonify, request
 _toolbox_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "tools"
 if str(_toolbox_path) not in sys.path:
     sys.path.insert(0, str(_toolbox_path))
-from quiz_engine import process_quiz_telemetry
+from quiz_engine import process_quiz_telemetry, get_quiz_history
 
 app = Flask(__name__)
 
@@ -44,10 +44,18 @@ def get_lan_ip() -> str:
         s.connect(("8.8.8.8", 80))
         ip = s.getsockname()[0]
         s.close()
+        if ip.startswith("10."):
+            try:
+                hostname = socket.gethostname()
+                ip_list = socket.gethostbyname_ex(hostname)[2]
+                wifi_ips = [candidate for candidate in ip_list if candidate.startswith("192.168.")]
+                if wifi_ips:
+                    return wifi_ips[0]
+            except Exception:
+                pass
         return ip
     except Exception:
         return "127.0.0.1"
-
 def parse_frontmatter(text):
     """Extract key: value pairs from YAML frontmatter."""
     m = re.match(r"^---\s*\n(.*?)\n---", text, re.DOTALL)
@@ -351,17 +359,20 @@ def api_data():
     })
 
 def get_all_quizzes():
-    """Scans all semester directories for available quizzes."""
+    """Scans all semester directories for available quizzes and enriches with attempt history."""
     semester_dirs = sorted([d for d in BASE.glob("0*_Semester_*") if d.is_dir()])
     if SEM1 not in semester_dirs:
         semester_dirs.insert(0, SEM1)
     quizzes = []
+    history_summary = get_quiz_history(HUB).get("summary", {})
+
     for sem in semester_dirs:
         for qf in sorted(sem.glob("*/07_Quizzes_&_Anki/Quiz_*.json")):
             try:
                 content = json.loads(qf.read_text(encoding="utf-8"))
                 subject_folder = qf.parent.parent.name
                 quiz_name = qf.stem
+                h_info = history_summary.get(quiz_name, {})
                 quizzes.append({
                     "semester": sem.name,
                     "subject": subject_folder,
@@ -369,12 +380,32 @@ def get_all_quizzes():
                     "topic": content.get("topic", quiz_name),
                     "instructor": content.get("instructor", ""),
                     "questions_count": len(content.get("questions", [])),
-                    "url": f"/quiz/{subject_folder}/{quiz_name}"
+                    "url": f"/quiz/{subject_folder}/{quiz_name}",
+                    "attempts": h_info.get("attempts", 0),
+                    "best_percentage": h_info.get("best_percentage"),
+                    "best_score": h_info.get("best_score"),
+                    "last_attempt": h_info.get("last_attempt")
                 })
             except Exception:
                 continue
     return quizzes
 
+
+@app.route("/api/health")
+def api_health():
+    """Heartbeat endpoint for mobile and desktop clients to probe connectivity."""
+    return jsonify({
+        "status": "ok",
+        "timestamp": datetime.now().isoformat(),
+        "client_ip": request.remote_addr,
+        "lan_ip": get_lan_ip()
+    }), 200
+
+
+@app.route("/api/quiz/history")
+def api_quiz_history():
+    """Returns historical quiz submissions and aggregated per-quiz statistics."""
+    return jsonify(get_quiz_history(HUB)), 200
 
 @app.route("/api/quiz/list")
 def api_quiz_list():
@@ -421,21 +452,43 @@ def quiz_direct(subject_id, quiz_id):
 
 @app.route("/api/quiz/<subject_id>/<quiz_id>")
 def api_quiz_get(subject_id, quiz_id):
-    filename = quiz_id if quiz_id.endswith(".json") else f"{quiz_id}.json"
+    clean_id = quiz_id[:-5] if quiz_id.endswith(".json") else quiz_id
+    filename = f"{clean_id}.json"
     semester_dirs = sorted([d for d in BASE.glob("0*_Semester_*") if d.is_dir()])
     if SEM1 not in semester_dirs:
         semester_dirs.insert(0, SEM1)
     target_file = None
+
     for sem in semester_dirs:
-        candidate_dir = (sem / subject_id / "07_Quizzes_&_Anki").resolve()
-        candidate_file = (candidate_dir / filename).resolve()
-        try:
-            candidate_file.relative_to(candidate_dir)
-            if candidate_file.is_file():
-                target_file = candidate_file
-                break
-        except ValueError:
+        if not sem.is_dir():
             continue
+        candidate_dir = (sem / subject_id / "07_Quizzes_&_Anki").resolve()
+        if not candidate_dir.is_dir():
+            # Fuzzy subject directory match
+            for sdir in sem.iterdir():
+                if sdir.is_dir() and subject_id.lower() in sdir.name.lower():
+                    candidate_dir = (sdir / "07_Quizzes_&_Anki").resolve()
+                    break
+        if candidate_dir.is_dir():
+            # 1. Exact match
+            candidate_file = (candidate_dir / filename).resolve()
+            try:
+                candidate_file.relative_to(candidate_dir)
+                if candidate_file.is_file():
+                    target_file = candidate_file
+                    break
+            except ValueError:
+                pass
+
+            # 2. Case-insensitive or prefix slug match (e.g. Quiz_01 -> Quiz_01_Software_Crisis)
+            for qf in candidate_dir.glob("Quiz_*.json"):
+                stem_lower = qf.stem.lower()
+                clean_lower = clean_id.lower()
+                if stem_lower == clean_lower or stem_lower.startswith(clean_lower) or clean_lower in stem_lower:
+                    target_file = qf
+                    break
+            if target_file:
+                break
 
     if not target_file or not target_file.is_file():
         return jsonify({"error": "Quiz not found"}), 404
@@ -446,7 +499,6 @@ def api_quiz_get(subject_id, quiz_id):
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": f"Failed to load quiz: {str(e)}"}), 500
-
 @app.route("/api/quiz/submit", methods=["POST"])
 def api_quiz_submit():
     """Accepts JSON telemetry, ingests via quiz engine, returns result."""

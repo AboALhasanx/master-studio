@@ -27,10 +27,71 @@ def get_lan_ip() -> str:
             ip = s.getsockname()[0]
         finally:
             s.close()
+
+        # If the detected IP is on a 10.x virtual/WireGuard range, check if a 192.168.x.x Wi-Fi NIC exists
+        if ip.startswith("10."):
+            try:
+                hostname = socket.gethostname()
+                ip_list = socket.gethostbyname_ex(hostname)[2]
+                wifi_ips = [candidate for candidate in ip_list if candidate.startswith("192.168.")]
+                if wifi_ips:
+                    return wifi_ips[0]
+            except Exception:
+                pass
+
         return ip
     except Exception:
         return "127.0.0.1"
 
+
+def check_adb_usb_device() -> bool:
+    """
+    Checks if an Android device is connected via USB/ADB.
+    If connected, runs 'adb reverse tcp:5000 tcp:5000' so the phone
+    can connect directly to http://localhost:5000 with zero Wi-Fi latency.
+    """
+    import subprocess
+    try:
+        res = subprocess.run(["adb", "devices"], capture_output=True, text=True, timeout=2)
+        lines = [line.strip() for line in res.stdout.strip().splitlines() if line.strip()]
+        devices = [l for l in lines[1:] if "\tdevice" in l or " device" in l]
+        if devices:
+            subprocess.run(["adb", "reverse", "tcp:5000", "tcp:5000"], capture_output=True, timeout=2)
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def resolve_quiz_slug(subject_id: str, quiz_slug: str) -> str:
+    """
+    Resolves a short or case-insensitive quiz slug (e.g. 'Quiz_01')
+    to the canonical filename stem (e.g. 'Quiz_01_Software_Crisis').
+    """
+    from pathlib import Path
+    base_dir = Path(__file__).resolve().parent.parent.parent
+    clean_slug = quiz_slug.replace(".json", "").strip()
+    semesters = sorted([d for d in base_dir.glob("0*_Semester_*") if d.is_dir()])
+
+    for sem in semesters:
+        quiz_dir = sem / subject_id / "07_Quizzes_&_Anki"
+        if not quiz_dir.is_dir():
+            for sdir in sem.iterdir():
+                if sdir.is_dir() and subject_id.lower() in sdir.name.lower():
+                    quiz_dir = sdir / "07_Quizzes_&_Anki"
+                    break
+        if quiz_dir.is_dir():
+            files = list(quiz_dir.glob("Quiz_*.json"))
+            for f in files:
+                if f.stem.lower() == clean_slug.lower():
+                    return f.stem
+            for f in files:
+                if f.stem.lower().startswith(clean_slug.lower()):
+                    return f.stem
+            for f in files:
+                if clean_slug.lower() in f.stem.lower():
+                    return f.stem
+    return clean_slug
 
 def generate_quiz_link(subject_id: str, quiz_id: str, print_qr: bool = True) -> Tuple[str, str]:
     """
@@ -41,16 +102,20 @@ def generate_quiz_link(subject_id: str, quiz_id: str, print_qr: bool = True) -> 
             link: "http://{lan_ip}:5000/quiz/{subject_id}/{quiz_id}"
             lan_ip: detected host IP
     """
+    canonical_quiz_id = resolve_quiz_slug(subject_id, quiz_id)
     lan_ip = get_lan_ip()
-    link = f"http://{lan_ip}:5000/quiz/{subject_id}/{quiz_id}"
-    local_link = f"http://localhost:5000/quiz/{subject_id}/{quiz_id}"
-
+    link = f"http://{lan_ip}:5000/quiz/{subject_id}/{canonical_quiz_id}"
+    local_link = f"http://localhost:5000/quiz/{subject_id}/{canonical_quiz_id}"
+    usb_active = check_adb_usb_device()
     if print_qr:
         print("=" * 60)
         print("📱 MASTER STUDIO INTERACTIVE QUIZ PORTAL")
         print("=" * 60)
         print(f"🔗 LAN URL (Mobile/Tablet): {link}")
         print(f"💻 Local URL (Browser)   : {local_link}")
+        if usb_active:
+            print("⚡ USB Cable Connected    : Active (adb reverse port 5000 forwarded)")
+            print(f"📱 1-Tap USB Phone URL   : {local_link}")
         print("-" * 60)
         print("📲 Scan QR Code on your mobile device (same Wi-Fi):")
         print()

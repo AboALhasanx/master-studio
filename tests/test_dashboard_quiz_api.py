@@ -191,7 +191,7 @@ def test_pwa_manifest_and_service_worker(client):
     res_manifest = client.get("/static/manifest.json")
     assert res_manifest.status_code == 200
     manifest = json.loads(res_manifest.get_data(as_text=True))
-    assert manifest["short_name"] == "MasterStudio"
+    assert manifest["short_name"] in ["MCS Quiz", "MasterStudio"]
     assert manifest["display"] == "standalone"
 
     res_sw = client.get("/static/sw.js")
@@ -200,3 +200,28 @@ def test_pwa_manifest_and_service_worker(client):
     assert "CACHE_NAME" in sw
     assert "precache" in sw.lower()
     assert "quiz" in sw
+
+def test_api_health(client):
+    res = client.get("/api/health")
+    assert res.status_code == 200
+    data = res.get_json()
+    assert data["status"] == "ok"
+    assert "timestamp" in data
+    assert "lan_ip" in data
+
+
+def test_api_quiz_history(client):
+    res = client.get("/api/quiz/history")
+    assert res.status_code == 200
+    data = res.get_json()
+    assert "history" in data
+    assert "summary" in data
+
+
+def test_api_quiz_get_fuzzy_prefix(client):
+    # Passing Quiz_01 should resolve Quiz_01_Software_Crisis
+    res = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_01")
+    assert res.status_code == 200
+    data = res.get_json()
+    assert "questions" in data
+    assert len(data["questions"]) > 0

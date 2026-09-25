@@ -2081,23 +2081,108 @@ pre,
     cursor: pointer;
     padding: 0.2rem;
 }
-/* Visually hidden file input for 100% reliable mobile activation */
+/* Visually hidden file input: 100% hidden from viewport and accessibility tree */
 .visually-hidden-input {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-    opacity: 0 !important;
-}
-/* Auto-collapse topic banner and install banner during active question view for maximum vertical space */
-body:has(.quiz-view:not(.hidden)) .topic-banner,
-body:has(.cards-view:not(.hidden)) .topic-banner,
-body:has(.quiz-view:not(.hidden)) .pwa-install-banner,
-body:has(.cards-view:not(.hidden)) .pwa-install-banner {
     display: none !important;
+}
+
+/* Auto-collapse topic banner & progress section during start screen, active question view, and catalog */
+body:has(.quiz-view:not(.hidden)) .topic-banner,
+body:has(.quiz-view:not(.hidden)) .pwa-install-banner,
+body:has(.quiz-start-card:not(.hidden)) .topic-banner,
+body:has(.quiz-start-card:not(.hidden)) .progress-section,
+body:has(.deck-catalog) .topic-banner,
+body:has(.deck-catalog) .progress-section {
+    display: none !important;
+}
+
+/* Live Server Connection Status Pill */
+.server-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    transition: all 0.3s ease;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94a3b8;
+}
+
+.status-online {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+.status-online .status-dot {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+
+.status-offline {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+}
+.status-offline .status-dot {
+    background: #f59e0b;
+}
+
+/* Catalog Badges & Filter Bar */
+.catalog-filter-bar {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.5rem 0;
+    scrollbar-width: none;
+}
+.catalog-filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-chip {
+    white-space: nowrap;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    border: 1px solid var(--border-card);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.filter-chip.active {
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-color: var(--accent);
+}
+
+.quiz-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.badge-passed {
+    background: rgba(16, 185, 129, 0.14);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.badge-new {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.22);
 }

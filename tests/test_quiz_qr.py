@@ -82,3 +82,27 @@ def test_generate_quiz_link_qrcode_runtime_exception(capsys):
             captured = capsys.readouterr()
             assert "Could not render QR code" in captured.out
             assert "http://192.168.1.100:5000/quiz/PHY-101/quiz-03" in captured.out
+
+def test_check_adb_usb_device_success():
+    from quiz_qr import check_adb_usb_device
+    mock_proc = MagicMock()
+    mock_proc.stdout = "List of devices attached\n166667061Y030799\tdevice\n"
+    with patch("subprocess.run", return_value=mock_proc) as mock_run:
+        assert check_adb_usb_device() is True
+        # Verify adb reverse was called
+        assert mock_run.call_count == 2
+
+
+def test_check_adb_usb_device_none():
+    from quiz_qr import check_adb_usb_device
+    mock_proc = MagicMock()
+    mock_proc.stdout = "List of devices attached\n\n"
+    with patch("subprocess.run", return_value=mock_proc):
+        assert check_adb_usb_device() is False
+
+
+def test_resolve_quiz_slug_prefix():
+    from quiz_qr import resolve_quiz_slug
+    # Resolves Quiz_01 to Quiz_01_Software_Crisis for 04_Advanced_Software_Eng
+    resolved = resolve_quiz_slug("04_Advanced_Software_Eng", "Quiz_01")
+    assert resolved == "Quiz_01_Software_Crisis"

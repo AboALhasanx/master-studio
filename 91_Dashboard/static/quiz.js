@@ -247,10 +247,40 @@ class QuizApp {
         this.updateModeUI();
         this.updateShuffleUI();
         this.initEvents();
+        this.checkServerHealth();
+        setInterval(() => this.checkServerHealth(), 15000);
         this.flushOfflineQueue();
         await this.loadBookmarks();
         await this.loadQuiz();
         this.refreshLucideIcons();
+    }
+
+    async checkServerHealth() {
+        const pill = document.getElementById('server-status-pill');
+        const text = document.getElementById('server-status-text');
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 1500);
+            const res = await fetch('/api/health', { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+                if (pill) {
+                    pill.className = 'server-status-pill status-online';
+                    pill.title = 'متصل بماستر ستوديو (Live Sync)';
+                }
+                if (text) text.textContent = 'متصل (Live Sync)';
+                this.flushOfflineQueue();
+                return true;
+            }
+        } catch (e) {
+            // Offline / Unreachable
+        }
+        if (pill) {
+            pill.className = 'server-status-pill status-offline';
+            pill.title = 'غير متصل بالسيرفر (يعمل أوفلاين مع الحفظ المحلي)';
+        }
+        if (text) text.textContent = 'أوفلاين (حفظ محلي)';
+        return false;
     }
 
     /**
@@ -409,6 +439,23 @@ class QuizApp {
             });
         });
 
+        // Catalog Subject Filter Chips
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                const subj = e.currentTarget.dataset.subject;
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                const cards = document.querySelectorAll('.catalog-card');
+                cards.forEach(card => {
+                    if (subj === 'all' || card.dataset.subject === subj) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
         // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
     }
@@ -481,31 +528,28 @@ class QuizApp {
      * Load Quiz Data from Server or Fallback
      */
     async loadQuiz() {
-        this.showState('loading');
-
-        try {
-            if (this.subjectId && this.quizId) {
+        if (this.subjectId && this.quizId) {
+            this.showState('loading');
+            try {
                 const response = await fetch(`/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`);
                 if (!response.ok) {
                     throw new Error(`Failed to load quiz (${response.status} ${response.statusText})`);
                 }
                 this.quizData = await response.json();
-            } else {
-                // Fallback / Demonstration Sample Quiz if no parameters provided
-                this.quizData = this.getFallbackQuizData();
+                if (!this.quizData || !this.quizData.questions || this.quizData.questions.length === 0) {
+                    throw new Error('Quiz contains no questions.');
+                }
+                this.setupQuizSession();
+            } catch (error) {
+                console.error('Quiz loading error:', error);
+                if (this.dom.errorMessage) {
+                    this.dom.errorMessage.textContent = error.message || 'Unable to connect to quiz server.';
+                }
+                this.showState('error');
             }
-
-            if (!this.quizData || !this.quizData.questions || this.quizData.questions.length === 0) {
-                throw new Error('Quiz contains no questions.');
-            }
-
-            this.setupQuizSession();
-        } catch (error) {
-            console.error('Quiz loading error:', error);
-            if (this.dom.errorMessage) {
-                this.dom.errorMessage.textContent = error.message || 'Unable to connect to quiz server.';
-            }
-            this.showState('error');
+        } else {
+            // Catalog Hub Mode: No dummy demo quiz, clean catalog!
+            this.showState('catalog');
         }
     }
 
@@ -1627,15 +1671,18 @@ class QuizApp {
 
     /**
      * UI State Management (loading, error, quiz, results)
-     */
     showState(state) {
         this.dom.quizLoading?.classList.toggle('hidden', state !== 'loading');
         this.dom.quizError?.classList.toggle('hidden', state !== 'error');
         this.dom.quizStartView?.classList.toggle('hidden', state !== 'start');
         this.dom.quizView?.classList.toggle('hidden', state !== 'quiz');
         this.dom.resultsView?.classList.toggle('hidden', state !== 'results');
-    }
 
+        const catalogEl = document.querySelector('.deck-catalog');
+        if (catalogEl) {
+            catalogEl.style.display = (state === 'catalog') ? 'flex' : 'none';
+        }
+    }
     /**
      * Lucide Icons Refresh Utility
      */
