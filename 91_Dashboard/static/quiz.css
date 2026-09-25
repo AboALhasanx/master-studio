@@ -2291,18 +2291,23 @@ body:has(.deck-catalog) .progress-section {
    ========================================================================== */
 .sketch-card-group {
     background: var(--bg-card);
-    border: 1px solid var(--border-card);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 22px; /* Bigger rounded corners as requested */
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
+[data-theme="light"] .sketch-card-group {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
 .sketch-row {
+    direction: ltr !important; /* Force Left-to-Right columns matching the sketch 1-to-1 */
     display: flex;
     align-items: stretch;
     min-height: 64px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     transition: background-color 0.15s ease;
 }
 
@@ -2311,19 +2316,20 @@ body:has(.deck-catalog) .progress-section {
 }
 
 [data-theme="light"] .sketch-row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
 }
 
-/* Right Cell: Info Button (i) */
+/* Left Cell: Info Button (i) as drawn in sketch */
 .sketch-info-cell {
-    width: 46px;
-    min-width: 46px;
+    width: 48px;
+    min-width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: none;
     border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-left: none !important;
     color: var(--text-muted);
     cursor: pointer;
     transition: all 0.15s ease;
@@ -2332,7 +2338,8 @@ body:has(.deck-catalog) .progress-section {
 }
 
 [data-theme="light"] .sketch-info-cell {
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-left: none !important;
 }
 
 .sketch-info-cell:hover,
@@ -2342,8 +2349,8 @@ body:has(.deck-catalog) .progress-section {
 }
 
 .sketch-info-cell svg {
-    width: 17px !important;
-    height: 17px !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 
 /* Middle Cell: Main Content (LTR Title + Subtitle) */
@@ -2418,15 +2425,16 @@ body:has(.deck-catalog) .progress-section {
     margin-right: 0.2rem;
 }
 
-/* Left Cell: Direct Play Button (▷) */
+/* Right Cell: Direct Play Button (▷) as drawn in sketch */
 .sketch-play-cell {
-    width: 46px;
-    min-width: 46px;
+    width: 48px;
+    min-width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-right: none !important;
     color: #38bdf8;
     background: rgba(56, 189, 248, 0.04);
     transition: all 0.15s ease;
@@ -2434,7 +2442,8 @@ body:has(.deck-catalog) .progress-section {
 }
 
 [data-theme="light"] .sketch-play-cell {
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: none !important;
 }
 
 .sketch-play-cell:hover,
@@ -2444,9 +2453,9 @@ body:has(.deck-catalog) .progress-section {
 }
 
 .sketch-play-cell svg {
-    width: 17px !important;
-    height: 17px !important;
-    transform: rotate(180deg);
+    width: 18px !important;
+    height: 18px !important;
+    transform: none !important; /* Points forward to the right */
 }
 .row-info-btn {
     width: 28px !important;
