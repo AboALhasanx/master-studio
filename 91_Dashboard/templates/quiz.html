@@ -24,10 +24,9 @@
         <!-- Top App Bar -->
         <header class="app-header">
             {% if not direct_mode %}
-            <!-- Ultra-Minimal Catalog Header: Brand Mark + Quick Utilities -->
+            <!-- Ultra-Minimal Catalog Header: Brand Mark + Clean Utilities -->
             <div class="header-left header-catalog-brand">
                 <img src="/static/brand-icon-light.png" alt="MCS Logo" class="brand-logo-img" width="24" height="24">
-                <span id="server-status-dot" class="server-status-dot online" title="متصل"></span>
             </div>
             <div class="header-right header-catalog-actions">
                 <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
@@ -49,12 +48,6 @@
                 </button>
                 <button id="btn-open-matrix" class="icon-btn" aria-label="Question Matrix" title="جدول الأسئلة">
                     <i data-lucide="layout-grid"></i>
-                </button>
-            </div>
-            <div class="header-center">
-                <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
-                    <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
-                    <span id="session-timer" class="timer-total">00:00</span>
                 </button>
             </div>
             <div class="header-right">
@@ -107,6 +100,10 @@
                     <span class="meta-separator">/</span>
                     <span id="question-total-label">5</span>
                 </div>
+                <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
+                    <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
+                    <span id="session-timer" class="timer-total">00:00</span>
+                </button>
             </div>
         </section>
         {% endif %}
@@ -118,40 +115,50 @@
             <div class="deck-catalog" style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.5rem 0;">
                 <!-- Offline sync relocated to bottom footer -->
                 <!-- Subject Filter Bar -->
+                <!-- Full 6-Subject Segmented Filter (Full Names, Folder Order 01-06) -->
                 <div class="catalog-filter-bar" id="catalog-filter-bar">
                     <button class="filter-chip active" data-subject="all">الكل</button>
                     <button class="filter-chip" data-subject="01_Cyber_Security">الأمن السيبراني</button>
                     <button class="filter-chip" data-subject="02_English_Language">اللغة الإنجليزية</button>
                     <button class="filter-chip" data-subject="03_Data_Mining">تنقيب البيانات</button>
-                    <button class="filter-chip" data-subject="04_Advanced_Software_Eng">هندسة البرمجيات</button>
+                    <button class="filter-chip" data-subject="04_Advanced_Software_Eng">هندسة البرمجيات المتقدمة</button>
                     <button class="filter-chip" data-subject="05_Soft_Computing">الحوسبة المرنة</button>
+                    <button class="filter-chip" data-subject="06_Artificial_Intelligence">الذكاء الاصطناعي</button>
                 </div>
 
-                <!-- Compact Catalog Cards -->
-                <!-- Compact Catalog Cards: Single Focused Action, Zero Double Buttons -->
-                <div id="catalog-cards-container" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <!-- Native Inset-Grouped Curriculum List (Zero Card Clutter, Zero Repeat Buttons) -->
+                <div id="catalog-cards-container" class="inset-list-group">
                 {% for q in available_quizzes %}
-                <div class="catalog-card compact-card" data-subject="{{ q.subject }}">
-                    <div class="card-top-row">
-                        <span class="card-subject-pill">{{ q.subject_title or q.subject }}</span>
-                        {% if q.attempts and q.attempts > 0 %}
-                        <span class="quiz-score-pill">
-                            {{ q.best_percentage|round|int }}%
-                        </span>
-                        {% endif %}
+                <div class="list-row-item" data-subject="{{ q.subject }}">
+                    <a href="{{ q.url }}" class="row-hit-link" aria-label="ابدأ: {{ q.topic }}"></a>
+                    <div class="row-main">
+                        <div class="row-header-meta">
+                            <span class="row-subject-tag">{{ q.subject_title or q.subject }}</span>
+                            <span class="row-count-meta">{{ q.questions_count }} أسئلة{% if q.instructor %} · {{ q.instructor }}{% endif %}</span>
+                        </div>
+                        <div class="row-title-text">{{ q.topic }}</div>
                     </div>
-                    <h3 class="card-topic-title">{{ q.topic }}</h3>
-                    <div class="card-footer-row">
-                        <span class="card-meta-text">{{ q.questions_count }} أسئلة{% if q.instructor %} · {{ q.instructor }}{% endif %}</span>
-                        <a href="{{ q.url }}" class="action-btn card-start-btn">
-                            <span>بدء الكويز</span>
-                            <i data-lucide="arrow-left"></i>
-                        </a>
+                    <div class="row-trailing">
+                        {% if q.attempts and q.attempts > 0 %}
+                        <span class="row-score-badge">{{ q.best_percentage|round|int }}%</span>
+                        {% endif %}
+                        <button type="button" class="row-info-btn" aria-label="تفاصيل الكويز" title="تفاصيل الكويز"
+                                data-subject="{{ q.subject_title or q.subject }}"
+                                data-topic="{{ q.topic }}"
+                                data-instructor="{{ q.instructor or '' }}"
+                                data-count="{{ q.questions_count }}"
+                                data-attempts="{{ q.attempts }}"
+                                data-best="{{ q.best_percentage|int if q.best_percentage is not none else '' }}"
+                                data-last="{{ q.last_attempt or '' }}"
+                                data-url="{{ q.url }}">
+                            <i data-lucide="info"></i>
+                        </button>
+                        <i data-lucide="chevron-left" class="row-chevron-icon"></i>
                     </div>
                 </div>
                 {% endfor %}
                 </div>
-
+                <div id="catalog-empty-state" class="catalog-empty-state hidden">لا توجد كويزات لهذه المادة بعد</div>
                 <!-- Discrete Offline Sync Action at Bottom -->
                 <div class="offline-sync-footer">
                     <button id="btn-download-all-quizzes" class="offline-sync-btn">
@@ -385,6 +392,27 @@
                     <p>لا توجد أسئلة محفوظة بعد.</p>
                     <span>اضغط على أيقونة الحفظ في أي سؤال لحفظه للمراجعة.</span>
                 </div>
+            </div>
+        </aside>
+
+        <!-- Quiz Info Sheet (progressive-disclosure details from catalog ⓘ) -->
+        <aside id="quiz-info-drawer" class="drawer" aria-labelledby="info-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="info" class="drawer-header-icon"></i>
+                    <h2 id="info-drawer-title">تفاصيل الكويز</h2>
+                </div>
+                <button id="btn-close-info" class="icon-btn" aria-label="Close Info">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div id="info-sheet-topic" class="info-sheet-topic"></div>
+                <ul id="info-sheet-list" class="info-sheet-list"></ul>
+                <a id="info-sheet-start" class="action-btn primary-btn info-sheet-start" href="#">
+                    <span>ابدأ الكويز</span>
+                    <i data-lucide="arrow-left"></i>
+                </a>
             </div>
         </aside>
 

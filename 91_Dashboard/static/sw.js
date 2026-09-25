@@ -3,7 +3,7 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v6';
+const CACHE_NAME = 'master-studio-v7';
 
 const PRECACHE_URLS = [
     '/',
@@ -60,7 +60,21 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
-    // 1. Static Assets & Icons & Audio: Cache-First
+    // 1a. Code assets (JS/CSS): Network-First so code updates land instantly; cache fallback keeps offline working
+    if (url.pathname.startsWith('/static/') && (url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))) {
+        event.respondWith(
+            fetch(event.request).then((networkResp) => {
+                if (networkResp && networkResp.status === 200) {
+                    const copy = networkResp.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+                }
+                return networkResp;
+            }).catch(() => caches.match(event.request).then((cached) => cached || Response.error()))
+        );
+        return;
+    }
+
+    // 1b. Static Assets & Icons & Audio: Cache-First
     if (url.pathname.startsWith('/static/')) {
         event.respondWith(
             caches.match(event.request).then((cached) => {

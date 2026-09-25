@@ -141,7 +141,12 @@ class QuizApp {
         this.reflections = {};       // { [qIndex]: { reason: string, notes: string } }
         this.luckyGuesses = {};      // { [qIndex]: boolean }
         this.answerTimestamps = {};  // { [qIndex]: epochMs when the option was selected }
-        this.bookmarks = new Set();  // Set of question IDs (e.g. "q1")
+        this.bookmarks = new Set();          // Keys: "<subject>/<quiz>#<index>" (legacy: raw question id)
+        this.bookmarkMeta = new Map();       // key → { subject, quiz, n, text, url, ts } so saved items stay useful across quizzes
+        this.pendingJump = (() => {
+            const m = /#q=(\d+)/.exec(window.location.hash || '');
+            return m ? Math.max(0, parseInt(m[1], 10) - 1) : null;
+        })();
         this.submissionUUID = this.generateUUID();
         this.isSubmitted = false;
         this.activeFilter = 'all';
@@ -232,6 +237,11 @@ class QuizApp {
             btnCloseBookmarks: document.getElementById('btn-close-bookmarks'),
             bookmarksList: document.getElementById('bookmarks-list'),
             bookmarksEmpty: document.getElementById('bookmarks-empty'),
+            infoDrawer: document.getElementById('quiz-info-drawer'),
+            btnCloseInfo: document.getElementById('btn-close-info'),
+            infoSheetTopic: document.getElementById('info-sheet-topic'),
+            infoSheetList: document.getElementById('info-sheet-list'),
+            infoSheetStart: document.getElementById('info-sheet-start'),
             matrixDrawer: document.getElementById('matrix-drawer'),
             btnOpenMatrix: document.getElementById('btn-open-matrix'),
             btnCloseMatrix: document.getElementById('btn-close-matrix'),
@@ -435,6 +445,15 @@ class QuizApp {
         // Drawers
         this.dom.btnBookmarksToggle?.addEventListener('click', () => this.openDrawer(this.dom.bookmarksDrawer));
         this.dom.btnCloseBookmarks?.addEventListener('click', () => this.closeDrawer(this.dom.bookmarksDrawer));
+
+        // Catalog row info buttons (progressive-disclosure detail sheet)
+        document.querySelectorAll('.row-info-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openInfoSheet(btn);
+            });
+        });
+        this.dom.btnCloseInfo?.addEventListener('click', () => this.closeDrawer(this.dom.infoDrawer));
         this.dom.drawerOverlay?.addEventListener('click', () => this.closeAllDrawers());
         this.dom.btnOpenMatrix?.addEventListener('click', () => {
             this.renderQuestionMatrix();
@@ -463,14 +482,18 @@ class QuizApp {
                 const subj = e.currentTarget.dataset.subject;
                 document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                 e.currentTarget.classList.add('active');
-                const cards = document.querySelectorAll('.catalog-card');
-                cards.forEach(card => {
-                    if (subj === 'all' || card.dataset.subject === subj) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                const rows = document.querySelectorAll('.list-row-item');
+                let visibleCount = 0;
+                rows.forEach(row => {
+                    const match = subj === 'all' || row.dataset.subject === subj;
+                    row.style.display = match ? 'flex' : 'none';
+                    if (match) visibleCount += 1;
                 });
+                // Hide the group entirely and show an empty hint when no quiz matches
+                const group = document.getElementById('catalog-cards-container');
+                const empty = document.getElementById('catalog-empty-state');
+                if (group) group.classList.toggle('hidden', visibleCount === 0);
+                if (empty) empty.classList.toggle('hidden', visibleCount > 0);
             });
         });
         // Download all quizzes locally for offline use
@@ -845,6 +868,9 @@ class QuizApp {
             this.dom.quizSubtitle.textContent = cleanSubj;
         }
 
+        // Question-matrix navigator only pays off on long quizzes (keep short ones clutter-free)
+        this.dom.btnOpenMatrix?.classList.toggle('hidden', (this.quizData?.questions?.length || 0) < 10);
+
         // Prepare Pre-Quiz Start Screen (Prevents time flying before student is ready)
         this.prepareStartScreen();
         this.showState('start');
@@ -876,7 +902,10 @@ class QuizApp {
         this.dwellStartTime = Date.now();
         this.startTimerLoop();
         this.showState('quiz');
-        this.renderQuestion(0);
+        // Deep link from saved questions (#q=N) lands on the flagged question
+        const jumpTarget = (this.pendingJump !== null && this.quizData?.questions?.[this.pendingJump]) ? this.pendingJump : 0;
+        this.pendingJump = null;
+        this.renderQuestion(jumpTarget);
     }
 
     togglePause() {
@@ -934,6 +963,7 @@ class QuizApp {
     }
 
     flushCurrentDwellTime() {
+        if (this.isPaused) return; // Never accrue dwell time while frozen
         const now = Date.now();
         const deltaSeconds = (now - this.dwellStartTime) / 1000;
         this.dwellTimes[this.currentIndex] = (this.dwellTimes[this.currentIndex] || 0) + deltaSeconds;
@@ -970,8 +1000,9 @@ class QuizApp {
             this.dom.questionTotalLabel.textContent = total.toString();
         }
 
-        // Update Bookmark Button
-        const isBookmarked = this.bookmarks.has(q.id || `q_${index}`);
+        // Update Bookmark Button (quiz-scoped key, with legacy-id fallback)
+        const bmKey = this.bookmarkKeyFor(index);
+        const isBookmarked = (bmKey !== null && this.bookmarks.has(bmKey)) || this.bookmarks.has(q.id || `q_${index}`);
         if (this.dom.btnBookmarkQuestion) {
             this.dom.btnBookmarkQuestion.classList.toggle('bookmarked', isBookmarked);
         }
@@ -1079,6 +1110,7 @@ class QuizApp {
     }
 
     selectOption(optionIndex) {
+        if (this.isPaused) return; // Frozen: answer only after resuming
         if (this.examMode) {
             // Exam Mode: allow changing answer, no green/red, no explanation
             this.answers[this.currentIndex] = optionIndex;
@@ -1139,6 +1171,10 @@ class QuizApp {
      * Question Navigation Handlers
      */
     prevQuestion() {
+        if (this.isPaused) {
+            this.showTemporaryToast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة');
+            return;
+        }
         if (this.currentIndex > 0) {
             this.flushCurrentDwellTime();
             this.renderQuestion(this.currentIndex - 1);
@@ -1146,16 +1182,38 @@ class QuizApp {
     }
 
     nextQuestion() {
-        this.flushCurrentDwellTime();
+        if (this.isPaused) {
+            this.showTemporaryToast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة');
+            return;
+        }
+        if (!this.quizData || !this.quizData.questions) return;
+
+        // No skipping: the current question must be answered first
+        if (this.answers[this.currentIndex] === undefined) {
+            this.showTemporaryToast('أجب على السؤال أولاً — لا يمكن تخطيه');
+            return;
+        }
+
         if (this.currentIndex < this.quizData.questions.length - 1) {
+            this.flushCurrentDwellTime();
             this.renderQuestion(this.currentIndex + 1);
         } else {
+            // Finishing requires every question answered (matrix jumps must not create blanks)
+            const remaining = this.quizData.questions.filter((_, i) => this.answers[i] === undefined).length;
+            if (remaining > 0) {
+                this.showTemporaryToast(`لم تجب على كل الأسئلة — متبقٍ ${remaining} — استخدم جدول الأسئلة`);
+                return;
+            }
             this.finishQuiz();
         }
         this.saveInProgressState();
     }
 
     jumpToQuestion(index) {
+        if (this.isPaused) {
+            this.showTemporaryToast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة');
+            return;
+        }
         if (index >= 0 && index < this.quizData.questions.length) {
             this.flushCurrentDwellTime();
             this.closeAllDrawers();
@@ -1691,27 +1749,50 @@ class QuizApp {
     /**
      * Bookmarks Management (GET / POST /api/quiz/bookmarks)
      */
+    normalizeBookmarkEntries(rawList) {
+        const set = new Set();
+        const meta = new Map();
+        (Array.isArray(rawList) ? rawList : []).forEach(entry => {
+            if (entry && typeof entry === 'object' && entry.k) {
+                if (!set.has(entry.k)) {
+                    set.add(entry.k);
+                    meta.set(entry.k, entry);
+                }
+            } else {
+                const k = String(entry);
+                if (!set.has(k)) {
+                    set.add(k);
+                    // Legacy entry (raw question id like "q1"): keep it visible & removable
+                    meta.set(k, { k, legacy: true, text: '' });
+                }
+            }
+        });
+        return { set, meta };
+    }
+
     async loadBookmarks() {
+        let list = null;
         try {
             const response = await fetch('/api/quiz/bookmarks');
             if (response.ok) {
                 const data = await response.json();
-                const list = Array.isArray(data) ? data : (data.bookmarks || []);
-                this.bookmarks = new Set(list);
+                list = Array.isArray(data) ? data : (data.bookmarks || []);
             } else {
                 throw new Error('Bookmarks API not available');
             }
         } catch (e) {
             // Load from LocalStorage fallback
-            const saved = JSON.parse(localStorage.getItem('master_studio_bookmarks') || '[]');
-            this.bookmarks = new Set(saved);
+            list = JSON.parse(localStorage.getItem('master_studio_bookmarks') || '[]');
         }
+        const { set, meta } = this.normalizeBookmarkEntries(list);
+        this.bookmarks = set;
+        this.bookmarkMeta = meta;
         this.updateBookmarksBadge();
         this.renderBookmarksDrawer();
     }
 
     async saveBookmarks() {
-        const list = Array.from(this.bookmarks);
+        const list = Array.from(this.bookmarkMeta.values()).filter(Boolean);
         localStorage.setItem('master_studio_bookmarks', JSON.stringify(list));
         this.updateBookmarksBadge();
         this.renderBookmarksDrawer();
@@ -1727,15 +1808,39 @@ class QuizApp {
         }
     }
 
+    bookmarkKeyFor(index) {
+        if (!this.subjectId || !this.quizId) return null;
+        return `${this.subjectId}/${this.quizId}#${index}`;
+    }
+
     toggleCurrentBookmark() {
         if (!this.quizData || !this.quizData.questions[this.currentIndex]) return;
-        const qId = this.quizData.questions[this.currentIndex].id || `q_${this.currentIndex}`;
-        
-        if (this.bookmarks.has(qId)) {
-            this.bookmarks.delete(qId);
+        const idx = this.currentIndex;
+        const q = this.quizData.questions[idx];
+        const legacyId = q.id || `q_${idx}`;
+        const k = this.bookmarkKeyFor(idx) || legacyId;
+
+        if (this.bookmarks.has(k)) {
+            this.bookmarks.delete(k);
+            this.bookmarkMeta.delete(k);
             this.dom.btnBookmarkQuestion?.classList.remove('bookmarked');
         } else {
-            this.bookmarks.add(qId);
+            this.bookmarks.add(k);
+            // Upgrade path: drop the old quiz-agnostic id so one question is not saved twice
+            if (legacyId !== k && this.bookmarks.has(legacyId)) {
+                this.bookmarks.delete(legacyId);
+                this.bookmarkMeta.delete(legacyId);
+            }
+            const text = (q.question || '').replace(/\s+/g, ' ').trim();
+            this.bookmarkMeta.set(k, {
+                k,
+                subject: this.subjectId,
+                quiz: this.quizId,
+                n: idx,
+                text: text.length > 90 ? `${text.slice(0, 90)}…` : text,
+                url: `/quiz/${this.subjectId}/${this.quizId}`,
+                ts: Date.now()
+            });
             this.dom.btnBookmarkQuestion?.classList.add('bookmarked');
         }
 
@@ -1763,26 +1868,59 @@ class QuizApp {
         this.dom.bookmarksEmpty.classList.add('hidden');
         this.dom.bookmarksList.innerHTML = '';
 
-        this.bookmarks.forEach(qId => {
+        this.bookmarks.forEach(k => {
+            const meta = this.bookmarkMeta.get(k) || { k };
             const item = document.createElement('div');
             item.className = 'drawer-item';
-            
-            let label = qId;
+
+            let label = '';
+            let sub = '';
             let targetIdx = -1;
+            let openUrl = '';
+
+            // 1) Saved in the quiz currently open (index-based key)
             if (this.quizData && this.quizData.questions) {
-                const idx = this.quizData.questions.findIndex(q => (q.id || `q_${this.quizData.questions.indexOf(q)}`) === qId);
+                const idx = this.quizData.questions.findIndex((q, i) => this.bookmarkKeyFor(i) === k);
                 if (idx !== -1) {
-                    label = `Q${idx + 1}: ${this.quizData.questions[idx].question.substring(0, 40)}...`;
                     targetIdx = idx;
+                    label = `Q${idx + 1}: ${(this.quizData.questions[idx].question || '').substring(0, 40)}...`;
                 }
             }
 
+            // 2) Legacy entry (raw question id) matching the currently open quiz
+            if (targetIdx === -1 && meta.legacy && this.quizData && this.quizData.questions) {
+                const idx = this.quizData.questions.findIndex(q => (q.id || '') === k);
+                if (idx !== -1) {
+                    targetIdx = idx;
+                    label = `Q${idx + 1}: ${(this.quizData.questions[idx].question || '').substring(0, 40)}...`;
+                }
+            }
+
+            // 3) Saved from another quiz: show stored context + one-tap deep link
+            if (targetIdx === -1 && meta.text) {
+                label = meta.text;
+                const subj = (meta.subject || '').replace(/^\d+_/, '').replace(/_/g, ' ');
+                const quiz = (meta.quiz || '').replace(/^Quiz_\d+_?/, '').replace(/_/g, ' ');
+                sub = [subj, quiz].filter(Boolean).join(' · ');
+                openUrl = meta.url || '';
+            }
+
+            if (!label) label = meta.legacy ? `سؤال محفوظ قديمًا (${k})` : k;
+
             item.innerHTML = `
-                <span class="drawer-item-title">${this.escapeHtml(label)}</span>
+                <div class="drawer-item-body">
+                    <span class="drawer-item-title">${this.escapeHtml(label)}</span>
+                    ${sub ? `<span class="drawer-item-sub">${this.escapeHtml(sub)}</span>` : ''}
+                </div>
                 <div style="display: flex; gap: 0.25rem;">
                     ${targetIdx !== -1 ? `
                         <button class="icon-btn-sm btn-jump" title="Jump to question">
                             <i data-lucide="arrow-right"></i>
+                        </button>
+                    ` : ''}
+                    ${openUrl ? `
+                        <button class="icon-btn-sm btn-open" title="Open quiz">
+                            <i data-lucide="external-link"></i>
                         </button>
                     ` : ''}
                     <button class="icon-btn-sm btn-remove" title="Remove bookmark">
@@ -1795,8 +1933,13 @@ class QuizApp {
                 this.jumpToQuestion(targetIdx);
             });
 
+            item.querySelector('.btn-open')?.addEventListener('click', () => {
+                window.location.href = `${openUrl}#q=${(Number(meta.n) || 0) + 1}`;
+            });
+
             item.querySelector('.btn-remove')?.addEventListener('click', () => {
-                this.bookmarks.delete(qId);
+                this.bookmarks.delete(k);
+                this.bookmarkMeta.delete(k);
                 this.saveBookmarks();
                 if (this.currentIndex === targetIdx) {
                     this.dom.btnBookmarkQuestion?.classList.remove('bookmarked');
@@ -1807,6 +1950,39 @@ class QuizApp {
         });
 
         this.refreshLucideIcons();
+    }
+
+    openInfoSheet(btn) {
+        const d = btn.dataset || {};
+        if (this.dom.infoSheetTopic) {
+            const topic = d.topic || '';
+            this.dom.infoSheetTopic.textContent = topic;
+            // English topics render LTR (Arabic stays RTL via auto-detection)
+            this.dom.infoSheetTopic.classList.toggle('ltr-text', !!topic && !/[\u0600-\u06FF]/.test(topic));
+        }
+        const rows = [
+            ['المادة', d.subject],
+            ['المحاضر', d.instructor],
+            ['عدد الأسئلة', d.count ? `${d.count} سؤال` : ''],
+            ['المحاولات', d.attempts && Number(d.attempts) > 0 ? `${d.attempts} محاولة` : 'لم يُبدأ بعد'],
+            ['أفضل نتيجة', d.best ? `${d.best}%` : '—'],
+            ['آخر محاولة', this.formatLastAttempt(d.last)]
+        ];
+        if (this.dom.infoSheetList) {
+            this.dom.infoSheetList.innerHTML = rows
+                .filter(([, v]) => v !== '' && v !== undefined && v !== null)
+                .map(([label, value]) => `<li><span class="info-label">${this.escapeHtml(label)}</span><span class="info-value">${this.escapeHtml(String(value))}</span></li>`)
+                .join('');
+        }
+        if (this.dom.infoSheetStart) this.dom.infoSheetStart.href = d.url || '#';
+        this.openDrawer(this.dom.infoDrawer);
+    }
+
+    formatLastAttempt(value) {
+        if (!value) return '—';
+        const t = new Date(value);
+        if (isNaN(t.getTime())) return String(value);
+        return t.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
     }
 
     /**

@@ -374,6 +374,14 @@ def get_all_quizzes():
         "05_Soft_Computing": "الحوسبة المرنة",
         "06_Artificial_Intelligence": "الذكاء الاصطناعي",
     }
+    prof_names_ar = {
+        "01_Cyber_Security": "أ.م.د. هدى لفتة مجيد",
+        "02_English_Language": "أ.م.د. حيدر عكاب علوان",
+        "03_Data_Mining": "أ.م.د. أحمد شاكر عبد الرضا",
+        "04_Advanced_Software_Eng": "أ.م.د. علي فاهم نعمة",
+        "05_Soft_Computing": "أ.د. عبد الهادي محمد ادخيل",
+        "06_Artificial_Intelligence": "أ.د. سيف علي السعيدي",
+    }
     for sem in semester_dirs:
         for qf in sorted(sem.glob("*/07_Quizzes_&_Anki/Quiz_*.json")):
             try:
@@ -387,7 +395,8 @@ def get_all_quizzes():
                     "subject_title": subject_names.get(subject_folder, subject_folder.replace("_", " ")),
                     "quiz_id": quiz_name,
                     "topic": content.get("topic", quiz_name),
-                    "instructor": content.get("instructor", ""),
+                    "instructor": prof_names_ar.get(subject_folder, content.get("instructor", "")),
+                    "instructor_ar": prof_names_ar.get(subject_folder, content.get("instructor", "")),
                     "questions_count": len(content.get("questions", [])),
                     "url": f"/quiz/{subject_folder}/{quiz_name}",
                     "attempts": h_info.get("attempts", 0),
