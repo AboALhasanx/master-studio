@@ -735,7 +735,7 @@ def main():
         add_p(doc, f"الجواب: {aa}", size=10, color=GRAY, rtl=True, space_after=4)
 
     add_p(doc, "", space_after=8)
-    add_p(doc, "Source of truth for this PDF: vault notes Week_01_Introduction_to_Cybersecurity.md + Week_01_Question_Bank.md + doctor method map. Full question bank (961 lines) remains in the vault.", size=9, color=GRAY, align="center", space_after=2)
+    add_p(doc, "Source of truth for this PDF: vault notes W01_Source_Notes.md + Week_01_Question_Bank.md + doctor method map. Full question bank (961 lines) remains in the vault.", size=9, color=GRAY, align="center", space_after=2)
     add_p(doc, "مصدر هذا الملف: ملاحظات الفولدر + بنك الأسئلة الكامل. لا يُغني عن قراءة الملاحظات الطويلة عند الحاجة للتفاصيل.", size=9, color=GRAY, rtl=True, align="center", space_after=2)
     add_p(doc, "Good luck Sunday — CIA + parentheses + arithmetic check.", size=11, bold=True, color=NAVY, align="center", space_after=2)
     add_p(doc, "حظاً موفقاً الأحد — CIA + القوس + مراجعة الحساب مرتين.", size=11, bold=True, color=TEAL, rtl=True, align="center")

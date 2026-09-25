@@ -1,7 +1,7 @@
 # 🔐 Cyber Security — Week 01: Question Bank
 
 > **Built for:** Dr. Huda Lafta Majeed's exam format (scenario → CIA → techniques in parentheses)
-> **Companion to:** `03_Study_Notes/Week_01_Introduction_to_Cybersecurity.md`
+> **Companion to:** `03_Study_Notes/W01_Source_Notes.md`
 > **Status:** 🔄 growing — a topic is added each review session.
 
 > ### ✅ ترتيب المراجعة — محدّث 2026-09-18
@@ -570,7 +570,7 @@ $$AS = \sum_{j=1}^{m} (E_j \cdot V_j \cdot A_j)$$
 
 ### 📝 ملاحظات على الموضوع الرابع
 
-- ✅ **2026-09-18:** بعد شرح المعادلة بالتفصيل الكامل، أبو الحسن قال **"فهمتها"** — وطلب **بلا امتحان** لهذا الموضوع. فـ Q4.5 و Q4.6 **ما جاوبهن**، بس الشرح الكامل محفوظ بملحق `Week_01_Introduction_to_Cybersecurity.md` (§ ملحق: شرح معادلة سطح الهجوم).
+- ✅ **2026-09-18:** بعد شرح المعادلة بالتفصيل الكامل، أبو الحسن قال **"فهمتها"** — وطلب **بلا امتحان** لهذا الموضوع. فـ Q4.5 و Q4.6 **ما جاوبهن**، بس الشرح الكامل محفوظ بملحق `W01_Source_Notes.md` (§ ملحق: شرح معادلة سطح الهجوم).
 - 🔴 **احفظ الأنواع الخمسة + أمثلة** — سؤال مباشر مضمون.
 - 🎯 **اتجاهات 2023–2024** — إنت كتبتها بخطك، يعني **ركّزت عليها الدكتورة**. احفظ الثلاثة (Ransomware > $20B · cloud misconfigurations · AI-powered).
 - 💡 **$AS$:** إذا جاب أرقام → طبّق. إذا جاب "شكد النظام مكشوف؟" → اشرح العوامل الثلاثة.

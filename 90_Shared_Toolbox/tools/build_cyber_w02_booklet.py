@@ -19,7 +19,7 @@ import html as _html
 
 OUT = Path(r"G:\My Drive\Master-Studio\01_Semester_1\01_Cyber_Security\03_Study_Notes")
 FIGDIR = Path(r"G:\My Drive\Master-Studio\01_Semester_1\01_Cyber_Security\06_Diagrams_&_Mindmaps\from_sharp_ch3")
-HTML_OUT = OUT / "Week_02_Risk_Booklet.html"
+HTML_OUT = OUT / "W02_Risks_Basic.html"
 
 
 def fig(name, alt):

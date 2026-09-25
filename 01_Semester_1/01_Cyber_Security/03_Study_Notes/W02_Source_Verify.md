@@ -167,7 +167,7 @@ The chapter body is **paywalled**. Springer shows only the abstract and metadata
 
 **However — the equations were settled anyway, without the paywalled text, by testing them mathematically.** See the companion file:
 
-> **`Week_02_Risk_Formula_Mathematical_Verification.md`** — boundary-condition analysis, dimensional check, an equivalence proof against the industry-standard residual-risk formula, and a logical contradiction test on the student's lecture report. **The structure of both equations is now proven independently of the letters.**
+> **`W02_Formulas.md`** — boundary-condition analysis, dimensional check, an equivalence proof against the industry-standard residual-risk formula, and a logical contradiction test on the student's lecture report. **The structure of both equations is now proven independently of the letters.**
 
 ### 4.2 What I can establish by inference
 
@@ -284,7 +284,7 @@ That is a completely ordinary student request and librarians handle it routinely
 
 ### What is NOT worth your time
 
-Do **not** spend time hunting for the book online yourself. Every free route has been checked and is closed. The equation question is already settled mathematically (`Week_02_Risk_Formula_Mathematical_Verification.md`), so the book's only remaining value is **the three figures** — and the library route above is the way to get them.
+Do **not** spend time hunting for the book online yourself. Every free route has been checked and is closed. The equation question is already settled mathematically (`W02_Formulas.md`), so the book's only remaining value is **the three figures** — and the library route above is the way to get them.
 
 ---
 
@@ -308,7 +308,7 @@ Quoted from printed page 39:
 >
 > *"**M** covers both the number of countermeasures (there can be several things which affect the risk for particular types of attack) and their effectiveness."*
 
-**Verdict: the booklet's letters and operators are exact. The student's reported `f = s·k` / `f = s/n` was a mishearing, as the mathematical contradiction test in `Week_02_Risk_Formula_Mathematical_Verification.md` had already concluded.**
+**Verdict: the booklet's letters and operators are exact. The student's reported `f = s·k` / `f = s/n` was a mishearing, as the mathematical contradiction test in `W02_Formulas.md` had already concluded.**
 
 ## 9.2 CORRECTION — "OCTAVE FORTE" IS in the book
 
@@ -460,7 +460,7 @@ Threat 2:  Residual Risk: low    / medium (= low)
 
 **`medium × high` is given as `medium`, not 6.** So the book's `×` and `/` are **not arithmetic** — they are **ordinal combination operators**, and the operative rule is the colour table in Fig. 3.2 and 3.3. The equation is a **mnemonic for the table**, not a computation.
 
-**This refines my earlier mathematical analysis** (`Week_02_Risk_Formula_Mathematical_Verification.md`): the boundary-condition critique holds for the **arithmetic** reading, but the book does not use the arithmetic reading. On the ordinal reading the matrix is the rule, and the matrix is well-formed everywhere. **Both statements are true; the book means the second one.**
+**This refines my earlier mathematical analysis** (`W02_Formulas.md`): the boundary-condition critique holds for the **arithmetic** reading, but the book does not use the arithmetic reading. On the ordinal reading the matrix is the rule, and the matrix is well-formed everywhere. **Both statements are true; the book means the second one.**
 
 **And the practical rule for the exam:** when a question gives you low/medium/high, **read the colour off Fig. 3.2 or 3.3** — do not try to multiply numbers.
 

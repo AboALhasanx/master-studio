@@ -3,7 +3,7 @@ title: "Week 02 — Cybersecurity Risks and Threats · Exam Focus (lecture-drive
 subject: "01_Cyber_Security"
 week: 2
 instructor: "Asst. Prof. Dr. Huda Lafta Majeed"
-source_file: "../02_Raw_Materials/Week 02 - Cybersecurity Risks and Threats - Dr Huda Booklet 2.docx"
+source_file: "../02_Raw_Materials/W02_Risks_DrHuda_Booklet2.docx"
 built_from: "doctor's own highlights in the DOCX + student's 2026-09-23 lecture report"
 status: "exam-focus sheet — two items flagged for student confirmation"
 created: "2026-09-23"
@@ -11,7 +11,7 @@ created: "2026-09-23"
 
 # Week 02 — Risk · Exam Focus Sheet
 
-> **What this is.** The comprehensive reference is `Week_02_Risk_Bilingual_Concept_Outline.md`. **This sheet is the memorisation list** — what the doctor marked and what she said mattered, in the order she covered it. Nothing here replaces the outline; it tells you what to drill.
+> **What this is.** The comprehensive reference is `W02_Concept_Outline.md`. **This sheet is the memorisation list** — what the doctor marked and what she said mattered, in the order she covered it. Nothing here replaces the outline; it tells you what to drill.
 
 **Two inputs, kept separate on purpose**
 
@@ -29,7 +29,7 @@ created: "2026-09-23"
 > - **All three figures were extracted** into `06_Diagrams_&_Mindmaps/from_sharp_ch3/` — the shark, the risk matrix and the residual-risk matrix. **Your booklet had none of them.**
 > - **Content the booklet dropped, recovered from the book:** the **five-step "dealing with damaging events"** list (§2A), the **security / functionality / usability balance** (§2B), and the **Danish 2009 survey** on objective vs subjective risk (§5.1).
 >
-> **Full evidence and corrections: `Week_02_Risk_Source_Verification.md` §9.** Exam rule unchanged and in that file §5: answer in her vocabulary, know the correct fact.
+> **Full evidence and corrections: `W02_Source_Verify.md` §9.** Exam rule unchanged and in that file §5: answer in her vocabulary, know the correct fact.
 
 ---
 
@@ -344,7 +344,7 @@ Your report: she **finished explaining up to Authentication** and did not comple
 | **The delivered file says** | `S = F × K` | `R = S / M` |
 | **Your lecture report says** | `f = s · k` | `f = s / n`, with `n` = number of threats |
 
-**The structure is now settled — independently of the letters.** `Week_02_Risk_Formula_Mathematical_Verification.md` proves both equations on their own terms:
+**The structure is now settled — independently of the letters.** `W02_Formulas.md` proves both equations on their own terms:
 
 - **`S = F × K`** — sound. Orthodox likelihood × consequence form; **multiplication is required, not addition**, because it enforces that *both* factors must matter (a huge frequency cannot compensate for zero consequence).
 - **`R = S / M`** — sound **provided `M` is a protective factor ≥ 1**, not a raw count. Proof: at `M = 0` the formula divides by zero, and for `0 < M < 1` it gives residual risk *greater* than inherent risk — impossible. On the reading `M ≥ 1` it is **algebraically identical** to the industry-standard `R = S × (1 − Control Effectiveness)`.

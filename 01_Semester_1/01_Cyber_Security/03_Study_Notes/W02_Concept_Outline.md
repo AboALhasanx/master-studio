@@ -3,7 +3,7 @@ title: "Week 02 — Cybersecurity Risks and Threats (Booklet 2) · Bilingual Con
 subject: "01_Cyber_Security"
 week: 2
 instructor: "Asst. Prof. Dr. Huda Lafta Majeed"
-source: "../02_Raw_Materials/Week 02 - Cybersecurity Risks and Threats - Dr Huda Booklet 2.docx"
+source: "../02_Raw_Materials/W02_Risks_DrHuda_Booklet2.docx"
 source_state: "text-only DOCX (no embedded images, no OMML equations)"
 status: "concept outline — complete coverage, formula verification flags open"
 created: 2026-09-23
@@ -13,7 +13,7 @@ created: 2026-09-23
 
 > **Why this file exists.** Produced as the Thursday step of `00_STUDIO_HUB/PLAN_2026-09-23_to_27.md`: work through the Risk booklet in manageable sections, build a bilingual concept outline, and flag everything that needs source verification. This is the **backbone of the full study note** — it is not a compression of the booklet, and nothing from the booklet has been dropped.
 
-> **Companion file — read this one for what to drill:** `Week_02_Risk_Exam_Focus.md` (built 2026-09-23 after the student's lecture report). It carries the **doctor's own emphasis map** — 30 highlight runs and 27 coloured runs extracted mechanically from the delivered DOCX — plus the numbered sets to memorise, the acronym list, and the open conflicts. **This outline is the reference; that sheet is the revision list.**
+> **Companion file — read this one for what to drill:** `W02_Exam_Focus.md` (built 2026-09-23 after the student's lecture report). It carries the **doctor's own emphasis map** — 30 highlight runs and 27 coloured runs extracted mechanically from the delivered DOCX — plus the numbered sets to memorise, the acronym list, and the open conflicts. **This outline is the reference; that sheet is the revision list.**
 
 > **Late finding, 2026-09-23:** the DOCX **does** contain the doctor's highlighting (30 runs: `yellow` and `red`) and coloured text (red `FF0000`, dark red `C00000`, blue `548DD4`). My first pass at this file missed it because I only extracted plain `<w:t>` runs. The emphasis map is now recorded in the exam-focus sheet and the affected items are cross-referenced below.
 
@@ -90,7 +90,7 @@ R = S / M
 
 `[VERIFY]` — the `/` operator is likewise **absent from the DOCX text layer**. The division reading is taken from the booklet's next sentence: *"The result of the 'division' is again given by a colour code."* Confirm against the printed original.
 
-`[CONFLICT — 2026-09-23 lecture report]` — the student reports the two equations from the lecture as **`f = s · k`** and **`f = s / n`, with `n` = number of threats**. That does **not** match the file's letters (`S = F × K`, `R = S / M`) or its definition of the denominator (the **level of countermeasures**, covering *number + effectiveness*). The lecture wording is recorded verbatim in `Week_02_Risk_Exam_Focus.md` §8.1. **Not resolved — awaiting the student's paper notes.** One hard fact from the doctor's own marking: she coloured the letters **`S`, `F`, `K`** red, so those three are hers.
+`[CONFLICT — 2026-09-23 lecture report]` — the student reports the two equations from the lecture as **`f = s · k`** and **`f = s / n`, with `n` = number of threats**. That does **not** match the file's letters (`S = F × K`, `R = S / M`) or its definition of the denominator (the **level of countermeasures**, covering *number + effectiveness*). The lecture wording is recorded verbatim in `W02_Exam_Focus.md` §8.1. **Not resolved — awaiting the student's paper notes.** One hard fact from the doctor's own marking: she coloured the letters **`S`, `F`, `K`** red, so those three are hers.
 
 **الفرق اللي لازم يثبت:** `S = F × K` مصفوفتها محاورها **(التكرار × العواقب)**؛ `R = S / M` مصفوفتها محاورها **(الخطر ÷ التدابير)**. مصفوفتان، محوران مختلفان، ولا وحدة تكمل الثانية.
 
@@ -527,7 +527,7 @@ Two equations are given in this booklet. Both are quoted, with their verificatio
 | 4 | "Inheritance" as the *something you are* factor | Booklet wording recorded verbatim; standard term is **Inherence**. Terminology check, not a content challenge |
 | 5 | ISO 27001 (mentioned in §18) vs ISO/IEC 27002 (§9) | Different standards; the booklet does not distinguish them |
 | 6 | OCTAVE FORTE — named as the 4th variant with no description | No sourced description in the booklet |
-| 7 | Source textbook / chapter attribution | **RESOLVED 2026-09-23** — the booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2024, pp. 37–56**, DOI [10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3). The stray `3` is the chapter number. **Verification also found two factual errors in the booklet — see `Week_02_Risk_Source_Verification.md`** |
+| 7 | Source textbook / chapter attribution | **RESOLVED 2026-09-23** — the booklet is a direct extraction of **Sharp, R., "Risk", in *Introduction to Cybersecurity: A Multidisciplinary Challenge*, Springer, 2024, pp. 37–56**, DOI [10.1007/978-3-031-41463-3_3](https://doi.org/10.1007/978-3-031-41463-3_3). The stray `3` is the chapter number. **Verification also found two factual errors in the booklet — see `W02_Source_Verify.md`** |
 | 9 | ISO/IEC 27002 "**2022** … 14 categories" (§9) | **ERROR (verified).** The 14 categories are the **2013** structure; **2022** is **4 themes / 93 controls**. Dr. Huda highlighted this line yellow |
 | 10 | OCTAVE's fourth variant "**OCTAVE FORTE**" (§10) | **ERROR (verified).** Only **three** public OCTAVE methodologies exist: OCTAVE, OCTAVE-S, OCTAVE Allegro |
 | 11 | Authentication factor "**Inheritance**" (§15) | **TERMINOLOGY ERROR (verified).** Standard term is **Inherence** |
@@ -537,7 +537,7 @@ Two equations are given in this booklet. Both are quoted, with their verificatio
 
 ## 22. Week 01 closed-book recall (no answers — attempt before checking)
 
-Answer these from memory, then verify against `Week_01_Introduction_to_Cybersecurity.md`. Mark each one: **solid / shaky / blank**.
+Answer these from memory, then verify against `W01_Source_Notes.md`. Mark each one: **solid / shaky / blank**.
 
 1. Define cybersecurity in one sentence, and state what the *cybersecurity-as-an-optimization-problem* equation optimises.
 2. Name the three pillars of the CIA Triad and give the one-line definition of each.

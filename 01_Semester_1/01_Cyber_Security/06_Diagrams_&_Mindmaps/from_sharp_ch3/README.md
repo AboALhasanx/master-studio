@@ -16,7 +16,7 @@ All are **tightly cropped to the figure itself**, at 320 DPI, with axis labels a
 | `fig3_10_resid_example.png` | 53 | 3.10 | The same threats after countermeasures, in the residual risk matrix |
 | `fig3_11_pdca.png` | 54 | 3.11 | The PDCA cycle |
 
-These six are embedded directly in `../../03_Study_Notes/Week_02_Risk_Booklet.pdf`.
+These six are embedded directly in `../../03_Study_Notes/W02_Risks_Basic.pdf`.
 
 ## `_page_renders_superseded/` — local only, not published
 
