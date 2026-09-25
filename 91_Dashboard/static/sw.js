@@ -3,14 +3,18 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v7';
+const CACHE_NAME = 'master-studio-v8';
 
 const PRECACHE_URLS = [
     '/',
     '/quiz',
+    '/quiz/bookmarks',
+    '/quiz/history',
     '/api/quiz/list',
     '/static/quiz.css',
     '/static/quiz.js',
+    '/static/quiz-library.css',
+    '/static/quiz-library.js',
     '/static/lucide.min.js',
     '/static/manifest.json',
     '/static/icon-192.png',

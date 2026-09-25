@@ -33,10 +33,12 @@
                 <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
                     <i data-lucide="folder-open"></i>
                 </label>
-                <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="الأسئلة المحفوظة">
+                <a id="btn-toggle-bookmarks" class="icon-btn" href="/quiz/bookmarks" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
                     <i data-lucide="bookmark"></i>
-                    <span id="bookmarks-badge" class="badge">0</span>
-                </button>
+                </a>
+                <a class="icon-btn" href="/quiz/history" aria-label="سجل الاختبارات" title="سجل الاختبارات">
+                    <i data-lucide="history"></i>
+                </a>
                 <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
                     <i data-lucide="moon" id="theme-icon"></i>
                 </button>
@@ -377,28 +379,6 @@
 
         <!-- Slide-Over Drawer Overlay -->
         <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
-
-        <!-- Bookmarks Drawer -->
-        <aside id="bookmarks-drawer" class="drawer" aria-labelledby="bookmarks-drawer-title" aria-hidden="true">
-            <div class="drawer-header">
-                <div class="drawer-title-group">
-                    <i data-lucide="bookmark" class="drawer-header-icon"></i>
-                    <h2 id="bookmarks-drawer-title">الأسئلة المحفوظة</h2>
-                <button id="btn-close-bookmarks" class="icon-btn" aria-label="Close Bookmarks">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="drawer-body">
-                <div id="bookmarks-list" class="drawer-list">
-                    <!-- Rendered by JS -->
-                </div>
-                <div id="bookmarks-empty" class="drawer-empty-state">
-                    <i data-lucide="bookmark-check" class="empty-state-icon"></i>
-                    <p>لا توجد أسئلة محفوظة بعد.</p>
-                    <span>اضغط على أيقونة الحفظ في أي سؤال لحفظه للمراجعة.</span>
-                </div>
-            </div>
-        </aside>
 
         <!-- Quiz Info Sheet (progressive-disclosure details from catalog ⓘ) -->
         <aside id="quiz-info-drawer" class="drawer" aria-labelledby="info-drawer-title" aria-hidden="true">

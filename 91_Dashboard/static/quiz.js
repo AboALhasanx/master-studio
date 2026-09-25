@@ -122,6 +122,7 @@ class QuizApp {
         this.quizId = this.root?.dataset?.quizId || urlParams.get('quiz') || '';
         this.directMode = this.root?.dataset?.directMode === 'true' || urlParams.get('direct') === 'true';
         this.shuffleMode = urlParams.get('shuffle') === 'true';
+        this.bookmarksDrillMode = urlParams.get('bookmarks-drill') === '1';
         this.rawQuestions = null;
         this.isPaused = false;
         this.hasStarted = false;
@@ -165,7 +166,6 @@ class QuizApp {
             soundIcon: document.getElementById('sound-icon'),
             btnThemeToggle: document.getElementById('btn-theme-toggle'),
             themeIcon: document.getElementById('theme-icon'),
-            bookmarksBadge: document.getElementById('bookmarks-badge'),
             progressBarFill: document.getElementById('progress-bar-fill'),
             questionIndexLabel: document.getElementById('question-index-label'),
             questionTotalLabel: document.getElementById('question-total-label'),
@@ -233,6 +233,11 @@ class QuizApp {
             btnCloseBookmarks: document.getElementById('btn-close-bookmarks'),
             bookmarksList: document.getElementById('bookmarks-list'),
             bookmarksEmpty: document.getElementById('bookmarks-empty'),
+            bookmarksDrillBar: document.getElementById('bookmarks-drill-bar'),
+            btnStartBookmarksDrill: document.getElementById('btn-start-bookmarks-drill'),
+            drillCountLabel: document.getElementById('drill-count-label'),
+            bookmarksFilterBar: document.getElementById('bookmarks-filter-bar'),
+            bookmarksCountPill: document.getElementById('bookmarks-count-pill'),
             infoDrawer: document.getElementById('quiz-info-drawer'),
             btnCloseInfo: document.getElementById('btn-close-info'),
             infoSheetTopic: document.getElementById('info-sheet-topic'),
@@ -438,8 +443,9 @@ class QuizApp {
             reader.readAsText(file);
         });
         // Drawers
-        this.dom.btnBookmarksToggle?.addEventListener('click', () => this.openDrawer(this.dom.bookmarksDrawer));
-        this.dom.btnCloseBookmarks?.addEventListener('click', () => this.closeDrawer(this.dom.bookmarksDrawer));
+        // Bookmarks Quick Drill Launcher
+        this.dom.btnStartBookmarksDrill?.addEventListener('click', () => this.startBookmarksDrill());
+
 
         // Catalog row info buttons (progressive-disclosure detail sheet)
         document.querySelectorAll('.row-info-btn').forEach(btn => {
@@ -547,6 +553,22 @@ class QuizApp {
      * Load Quiz Data from Server or Fallback
      */
     async loadQuiz() {
+        if (this.bookmarksDrillMode) {
+            try {
+                const savedDrill = JSON.parse(localStorage.getItem('ms_bookmarks_drill_payload') || 'null');
+                if (savedDrill && Array.isArray(savedDrill.questions) && savedDrill.questions.length) {
+                    this.quizData = savedDrill;
+                    this.subjectId = savedDrill.subject_id || '00_STUDIO_HUB';
+                    this.quizId = savedDrill.quiz_id || `bookmarks-${Date.now()}`;
+                    this.directMode = true;
+                    this.setupQuizSession();
+                    this.startQuizSession();
+                    return;
+                }
+            } catch (error) { console.warn('Saved-question drill could not be loaded:', error); }
+            this.showState('catalog');
+            return;
+        }
         if (this.subjectId && this.quizId) {
             const cacheKey = `ms_quiz_${this.subjectId}_${this.quizId}`;
             // 1. Cache-first check: if cached, boot immediately in 0ms!
@@ -754,7 +776,31 @@ class QuizApp {
                 let correctIdx = 0;
                 let correctLetter = 'A';
 
-                if (q.answer !== undefined && q.answer !== null) {
+                // A saved question may carry both fields: `answer` is the original
+                // letter key, while `correct` is the current index after shuffling.
+                // Prefer the normalized index so a bookmarks drill cannot reuse a stale key.
+                if (q.correct !== undefined && q.correct !== null) {
+                    if (typeof q.correct === 'string') {
+                        const cleanAns = q.correct.trim().toUpperCase();
+                        const keyIdx = optionKeys.indexOf(cleanAns);
+                        if (keyIdx !== -1) {
+                            correctIdx = keyIdx;
+                            correctLetter = cleanAns;
+                        } else {
+                            const parsed = parseInt(cleanAns, 10);
+                            if (!isNaN(parsed) && parsed >= 0 && parsed < optionsArray.length) {
+                                correctIdx = parsed;
+                                correctLetter = optionKeys[parsed] || ['A', 'B', 'C', 'D'][parsed] || 'A';
+                            } else {
+                                correctIdx = 0;
+                                correctLetter = optionKeys[0] || 'A';
+                            }
+                        }
+                    } else if (typeof q.correct === 'number') {
+                        correctIdx = q.correct;
+                        correctLetter = optionKeys[q.correct] || ['A', 'B', 'C', 'D'][q.correct] || 'A';
+                    }
+                } else if (q.answer !== undefined && q.answer !== null) {
                     if (typeof q.answer === 'string') {
                         const cleanAns = q.answer.trim().toUpperCase();
                         const keyIdx = optionKeys.indexOf(cleanAns);
@@ -774,27 +820,6 @@ class QuizApp {
                     } else if (typeof q.answer === 'number') {
                         correctIdx = q.answer;
                         correctLetter = optionKeys[q.answer] || ['A', 'B', 'C', 'D'][q.answer] || 'A';
-                    }
-                } else if (q.correct !== undefined && q.correct !== null) {
-                    if (typeof q.correct === 'number') {
-                        correctIdx = q.correct;
-                        correctLetter = optionKeys[q.correct] || ['A', 'B', 'C', 'D'][q.correct] || 'A';
-                    } else if (typeof q.correct === 'string') {
-                        const cleanCorr = q.correct.trim().toUpperCase();
-                        const keyIdx = optionKeys.indexOf(cleanCorr);
-                        if (keyIdx !== -1) {
-                            correctIdx = keyIdx;
-                            correctLetter = cleanCorr;
-                        } else {
-                            const parsed = parseInt(cleanCorr, 10);
-                            if (!isNaN(parsed) && parsed >= 0 && parsed < optionsArray.length) {
-                                correctIdx = parsed;
-                                correctLetter = optionKeys[parsed] || ['A', 'B', 'C', 'D'][parsed] || 'A';
-                            } else {
-                                correctIdx = 0;
-                                correctLetter = optionKeys[0] || 'A';
-                            }
-                        }
                     }
                 } else {
                     correctIdx = 0;
@@ -972,9 +997,7 @@ class QuizApp {
         // Update Bookmark Button (quiz-scoped key, with legacy-id fallback)
         const bmKey = this.bookmarkKeyFor(index);
         const isBookmarked = (bmKey !== null && this.bookmarks.has(bmKey)) || this.bookmarks.has(q.id || `q_${index}`);
-        if (this.dom.btnBookmarkQuestion) {
-            this.dom.btnBookmarkQuestion.classList.toggle('bookmarked', isBookmarked);
-        }
+        this.syncBookmarkButtonState(isBookmarked);
 
         const isCardAr = this.cardLang === 'ar';
         const cardOptionLetters = isCardAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
@@ -1087,6 +1110,9 @@ class QuizApp {
 
         // Lock options grid
         this.dom.optionsContainer?.classList.add('locked');
+        tiles?.forEach((tile, index) => {
+            tile.setAttribute('aria-checked', String(index === optionIndex));
+        });
         if (isCorrect) {
             tiles?.[optionIndex]?.classList.add('correct-answer');
             this.soundManager.play('correct');
@@ -1225,9 +1251,59 @@ class QuizApp {
         const avgDwell = total > 0 ? (totalDwell / total).toFixed(1) : 0;
         const isPassed = percentage >= 75;
 
+        this.saveAttemptLocally(correctCount, total, percentage);
+
         this.renderResults();
 
         this.soundManager.play('completed');
+    }
+
+    saveAttemptLocally(correctCount, total, percentage) {
+        const subjectId = this.quizData?.subject || this.quizData?.subject_id || this.subjectId || 'عام';
+        const subjectTitle = SUBJECT_MAP[subjectId] || String(subjectId).replace(/^\d+_/, '').replace(/_/g, ' ');
+        const attempt = {
+            id: this.submissionUUID || this.generateUUID(),
+            finishedAt: new Date().toISOString(),
+            quizId: this.quizId || this.quizData?.quiz_id || null,
+            title: this.quizData?.topic || 'اختبار تفاعلي',
+            subjectId,
+            subjectTitle,
+            score: correctCount,
+            total,
+            percentage,
+            questions: (this.quizData?.questions || []).map((q, index) => {
+                const selected = this.answers[index];
+                const optionsAr = q.options_ar?.length ? q.options_ar : q.options;
+                const optionsEn = q.options_en?.length ? q.options_en : q.options;
+                return {
+                    number: index + 1,
+                    question: q.text || q.question_ar || q.question || '',
+                    questionEn: q.text_en || q.question_en || q.question || '',
+                    options: optionsAr,
+                    optionsEn,
+                    selected: selected === undefined ? null : selected,
+                    correct: q.correct,
+                    isCorrect: selected !== undefined && selected === q.correct,
+                    explanation: q.explanation_ar || q.explanation || '',
+                    explanationEn: q.explanation_en || q.explanation || '',
+                    bloom: q.bloom_level || '',
+                    dwell: Math.round(this.dwellTimes[index] || 0)
+                };
+            })
+        };
+        try {
+            const storageKey = 'master_studio_quiz_history';
+            const current = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+            const retained = (Array.isArray(current) ? current : []).filter(item => {
+                const stamp = Date.parse(item.finishedAt || '');
+                return Number.isFinite(stamp) && stamp >= cutoff;
+            });
+            retained.unshift(attempt);
+            localStorage.setItem(storageKey, JSON.stringify(retained.slice(0, 100)));
+        } catch (error) {
+            console.warn('Could not save local quiz history:', error);
+        }
     }
 
     /**
@@ -1721,30 +1797,37 @@ class QuizApp {
     }
 
     async loadBookmarks() {
-        let list = null;
+        let serverList = [];
         try {
-            const response = await fetch('/api/quiz/bookmarks');
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 1200);
+            const response = await fetch('/api/quiz/bookmarks', { signal: controller.signal });
+            clearTimeout(timeoutId);
             if (response.ok) {
                 const data = await response.json();
-                list = Array.isArray(data) ? data : (data.bookmarks || []);
-            } else {
-                throw new Error('Bookmarks API not available');
+                serverList = Array.isArray(data) ? data : (data.bookmarks || []);
             }
-        } catch (e) {
-            // Load from LocalStorage fallback
-            list = JSON.parse(localStorage.getItem('master_studio_bookmarks') || '[]');
-        }
-        const { set, meta } = this.normalizeBookmarkEntries(list);
+        } catch (e) {}
+
+        let localList = [];
+        try {
+            localList = JSON.parse(localStorage.getItem('master_studio_bookmarks') || '[]');
+        } catch (e) {}
+
+        const combined = [...serverList, ...localList];
+        const { set, meta } = this.normalizeBookmarkEntries(combined);
         this.bookmarks = set;
         this.bookmarkMeta = meta;
-        this.updateBookmarksBadge();
         this.renderBookmarksDrawer();
+
+        if (localList.length > 0 && serverList.length === 0) {
+            this.saveBookmarks();
+        }
     }
 
     async saveBookmarks() {
         const list = Array.from(this.bookmarkMeta.values()).filter(Boolean);
         localStorage.setItem('master_studio_bookmarks', JSON.stringify(list));
-        this.updateBookmarksBadge();
         this.renderBookmarksDrawer();
 
         try {
@@ -1763,6 +1846,20 @@ class QuizApp {
         return `${this.subjectId}/${this.quizId}#${index}`;
     }
 
+    syncBookmarkButtonState(isBookmarked) {
+        const button = this.dom.btnBookmarkQuestion;
+        if (!button) return;
+        const isArabic = this.cardLang === 'ar';
+        button.classList.toggle('bookmarked', isBookmarked);
+        button.setAttribute('aria-pressed', String(isBookmarked));
+        button.setAttribute('aria-label', isBookmarked
+            ? (isArabic ? 'إزالة السؤال من المحفوظات' : 'Remove bookmark')
+            : (isArabic ? 'حفظ السؤال' : 'Save question'));
+        button.title = isBookmarked
+            ? (isArabic ? 'إزالة من المحفوظات' : 'Remove from saved questions')
+            : (isArabic ? 'حفظ السؤال' : 'Save question');
+    }
+
     toggleCurrentBookmark() {
         if (!this.quizData || !this.quizData.questions[this.currentIndex]) return;
         const idx = this.currentIndex;
@@ -1773,7 +1870,6 @@ class QuizApp {
         if (this.bookmarks.has(k)) {
             this.bookmarks.delete(k);
             this.bookmarkMeta.delete(k);
-            this.dom.btnBookmarkQuestion?.classList.remove('bookmarked');
         } else {
             this.bookmarks.add(k);
             // Upgrade path: drop the old quiz-agnostic id so one question is not saved twice
@@ -1785,121 +1881,235 @@ class QuizApp {
             this.bookmarkMeta.set(k, {
                 k,
                 subject: this.subjectId,
+                subject_title: SUBJECT_MAP[this.subjectId] || this.subjectId,
                 quiz: this.quizId,
                 n: idx,
-                text: text.length > 90 ? `${text.slice(0, 90)}…` : text,
+                text: text,
+                question_data: q, // Full question data for drill & preview!
                 url: `/quiz/${this.subjectId}/${this.quizId}`,
                 ts: Date.now()
             });
-            this.dom.btnBookmarkQuestion?.classList.add('bookmarked');
         }
+
+        this.syncBookmarkButtonState(this.bookmarks.has(k));
 
         this.saveBookmarks();
         this.refreshLucideIcons();
     }
 
-    updateBookmarksBadge() {
-        const count = this.bookmarks.size;
-        if (this.dom.bookmarksBadge) {
-            this.dom.bookmarksBadge.textContent = count.toString();
-            this.dom.bookmarksBadge.style.display = count > 0 ? 'flex' : 'none';
-        }
+    getBookmarkDrillItems(filterSubject = 'all') {
+        return Array.from(this.bookmarkMeta.values())
+            .filter(m => {
+                const q = m?.question_data;
+                const hasOptions = Array.isArray(q?.options) ? q.options.length > 1 : !!(q?.options && typeof q.options === 'object');
+                const hasAnswer = q && (q.answer !== undefined || q.correct !== undefined || q.correctLetter !== undefined);
+                return hasOptions && hasAnswer;
+            })
+            .filter(m => filterSubject === 'all' || m.subject === filterSubject);
     }
 
-    renderBookmarksDrawer() {
+    renderBookmarksDrawer(filterSubject = 'all') {
         if (!this.dom.bookmarksList || !this.dom.bookmarksEmpty) return;
 
-        if (this.bookmarks.size === 0) {
+        this.activeBookmarkFilter = filterSubject;
+        const totalCount = this.bookmarks.size;
+        if (this.dom.bookmarksCountPill) {
+            this.dom.bookmarksCountPill.textContent = totalCount.toString();
+        }
+
+        if (totalCount === 0) {
             this.dom.bookmarksList.innerHTML = '';
             this.dom.bookmarksEmpty.classList.remove('hidden');
+            this.dom.bookmarksDrillBar?.classList.add('hidden');
+            this.dom.bookmarksFilterBar?.classList.add('hidden');
             return;
         }
 
         this.dom.bookmarksEmpty.classList.add('hidden');
+        this.dom.bookmarksDrillBar?.classList.remove('hidden');
+        this.dom.bookmarksFilterBar?.classList.remove('hidden');
         this.dom.bookmarksList.innerHTML = '';
 
+        // Calculate counts per subject
+        const subjectCounts = new Map();
+        this.bookmarkMeta.forEach(m => {
+            if (m && m.subject) {
+                subjectCounts.set(m.subject, (subjectCounts.get(m.subject) || 0) + 1);
+            }
+        });
+
+        // Update Dynamic Drill CTA Button Label
+        const drillBtnText = this.dom.btnStartBookmarksDrill?.querySelector('span');
+        const drillableCount = this.getBookmarkDrillItems(filterSubject).length;
+        if (this.dom.btnStartBookmarksDrill) {
+            this.dom.btnStartBookmarksDrill.disabled = drillableCount === 0;
+        }
+        if (drillBtnText) {
+            if (drillableCount === 0) {
+                drillBtnText.textContent = 'لا توجد أسئلة جاهزة للاختبار';
+            } else if (filterSubject === 'all') {
+                drillBtnText.textContent = `اختبار الأسئلة الجاهزة من المحفوظات (${drillableCount})`;
+            } else {
+                const sName = SUBJECT_MAP[filterSubject] || filterSubject.replace(/^\d+_/, '').replace(/_/g, ' ');
+                drillBtnText.textContent = `اختبار محفوظات ${sName} (${drillableCount} جاهزة)`;
+            }
+        }
+
+        // Render Subject Filters inside drawer
+        if (this.dom.bookmarksFilterBar) {
+            const subjects = Array.from(subjectCounts.keys());
+            let filterHtml = `<button type="button" class="bm-filter-chip ${filterSubject === 'all' ? 'active' : ''}" data-subject="all" aria-pressed="${filterSubject === 'all'}">الكل (${totalCount})</button>`;
+            subjects.forEach(s => {
+                const title = SUBJECT_MAP[s] || s.replace(/^\d+_/, '').replace(/_/g, ' ');
+                const count = subjectCounts.get(s) || 0;
+                filterHtml += `<button type="button" class="bm-filter-chip ${filterSubject === s ? 'active' : ''}" data-subject="${this.escapeHtml(s)}" aria-pressed="${filterSubject === s}">${this.escapeHtml(title)} (${count})</button>`;
+            });
+            this.dom.bookmarksFilterBar.innerHTML = filterHtml;
+            this.dom.bookmarksFilterBar.querySelectorAll('.bm-filter-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => {
+                    const s = e.currentTarget.dataset.subject;
+                    this.renderBookmarksDrawer(s);
+                });
+            });
+        }
+
+        // Render Bookmarked Question Cards
+        let cardIndex = 0;
         this.bookmarks.forEach(k => {
             const meta = this.bookmarkMeta.get(k) || { k };
-            const item = document.createElement('div');
-            item.className = 'drawer-item';
+            if (filterSubject !== 'all' && meta.subject !== filterSubject) return;
 
-            let label = '';
-            let sub = '';
-            let targetIdx = -1;
-            let openUrl = '';
+            const qData = meta.question_data;
+            const qText = meta.text || (qData ? (qData.question || qData.question_ar || '') : k);
+            const subjectLabel = meta.subject_title || (meta.subject ? (SUBJECT_MAP[meta.subject] || meta.subject) : 'عام');
 
-            // 1) Saved in the quiz currently open (index-based key)
-            if (this.quizData && this.quizData.questions) {
-                const idx = this.quizData.questions.findIndex((q, i) => this.bookmarkKeyFor(i) === k);
-                if (idx !== -1) {
-                    targetIdx = idx;
-                    label = `Q${idx + 1}: ${(this.quizData.questions[idx].question || '').substring(0, 40)}...`;
-                }
-            }
+            const card = document.createElement('div');
+            card.className = 'bm-card';
+            card.setAttribute('data-key', k);
+            const detailsId = `bookmark-details-${cardIndex++}`;
 
-            // 2) Legacy entry (raw question id) matching the currently open quiz
-            if (targetIdx === -1 && meta.legacy && this.quizData && this.quizData.questions) {
-                const idx = this.quizData.questions.findIndex(q => (q.id || '') === k);
-                if (idx !== -1) {
-                    targetIdx = idx;
-                    label = `Q${idx + 1}: ${(this.quizData.questions[idx].question || '').substring(0, 40)}...`;
-                }
-            }
-
-            // 3) Saved from another quiz: show stored context + one-tap deep link
-            if (targetIdx === -1 && meta.text) {
-                label = meta.text;
-                const subj = (meta.subject || '').replace(/^\d+_/, '').replace(/_/g, ' ');
-                const quiz = (meta.quiz || '').replace(/^Quiz_\d+_?/, '').replace(/_/g, ' ');
-                sub = [subj, quiz].filter(Boolean).join(' · ');
-                openUrl = meta.url || '';
-            }
-
-            if (!label) label = meta.legacy ? `سؤال محفوظ قديمًا (${k})` : k;
-
-            item.innerHTML = `
-                <div class="drawer-item-body">
-                    <span class="drawer-item-title">${this.escapeHtml(label)}</span>
-                    ${sub ? `<span class="drawer-item-sub">${this.escapeHtml(sub)}</span>` : ''}
-                </div>
-                <div style="display: flex; gap: 0.25rem;">
-                    ${targetIdx !== -1 ? `
-                        <button class="icon-btn-sm btn-jump" title="Jump to question">
-                            <i data-lucide="arrow-right"></i>
-                        </button>
-                    ` : ''}
-                    ${openUrl ? `
-                        <button class="icon-btn-sm btn-open" title="Open quiz">
-                            <i data-lucide="external-link"></i>
-                        </button>
-                    ` : ''}
-                    <button class="icon-btn-sm btn-remove" title="Remove bookmark">
+            // Header preview
+            const header = document.createElement('div');
+            header.className = 'bm-card-header';
+            header.innerHTML = `
+                <button type="button" class="bm-card-toggle" aria-label="عرض تفاصيل السؤال" aria-expanded="false" aria-controls="${detailsId}">
+                    <span class="bm-subject-tag">${this.escapeHtml(subjectLabel)}</span>
+                    <span class="bm-question-preview">${this.escapeHtml(qText)}</span>
+                    <i data-lucide="chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="bm-card-header-actions">
+                    <button type="button" class="bm-delete-btn" aria-label="حذف" title="حذف">
                         <i data-lucide="trash-2"></i>
                     </button>
                 </div>
             `;
 
-            item.querySelector('.btn-jump')?.addEventListener('click', () => {
-                this.jumpToQuestion(targetIdx);
+            // Collapsible details body
+            const body = document.createElement('div');
+            body.className = 'bm-card-body hidden';
+            body.id = detailsId;
+            body.setAttribute('aria-hidden', 'true');
+
+            let optionsHtml = '';
+            if (qData && qData.options) {
+                let opts = [];
+                const optionKeys = Array.isArray(qData.optionKeys) ? qData.optionKeys : ['A', 'B', 'C', 'D'];
+                const answerValue = qData.correct ?? qData.correctLetter ?? qData.answer;
+                let correctIdx = -1;
+                if (Array.isArray(qData.options)) opts = qData.options;
+                else if (typeof qData.options === 'object') opts = Object.values(qData.options);
+                if (typeof answerValue === 'number' && Number.isInteger(answerValue)) {
+                    correctIdx = answerValue;
+                } else if (typeof answerValue === 'string') {
+                    const normalizedAnswer = answerValue.trim().toUpperCase();
+                    const keyedIndex = optionKeys.indexOf(normalizedAnswer);
+                    const numericIndex = /^\d+$/.test(normalizedAnswer) ? Number(normalizedAnswer) : -1;
+                    correctIdx = keyedIndex >= 0 ? keyedIndex : numericIndex;
+                }
+                if (correctIdx < 0 || correctIdx >= opts.length) correctIdx = -1;
+                const letters = ['أ', 'ب', 'ج', 'د'];
+
+                optionsHtml = opts.map((opt, i) => {
+                    const isCorr = i === correctIdx;
+                    return `
+                        <div class="bm-opt-row ${isCorr ? 'is-correct' : ''}">
+                            <span class="bm-opt-letter">${letters[i] || i + 1}</span>
+                            <span class="bm-opt-text">${this.escapeHtml(String(opt))}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            body.innerHTML = `
+                <div class="bm-full-question">${this.escapeHtml(qText)}</div>
+                ${optionsHtml ? `<div class="bm-options-preview">${optionsHtml}</div>` : ''}
+                ${qData && qData.explanation ? `<div class="bm-explanation-box"><strong>الشرح:</strong> ${this.escapeHtml(qData.explanation)}</div>` : ''}
+                <div class="bm-footer-actions">
+                    ${meta.url ? `
+                        <a href="${meta.url}#q=${(Number(meta.n) || 0) + 1}" class="bm-deep-link-btn">
+                            <i data-lucide="external-link"></i>
+                            <span>فتح في الكويز الأصلي</span>
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+
+            // Keep accordion state available to keyboard and assistive technology users.
+            const toggleButton = header.querySelector('.bm-card-toggle');
+            toggleButton?.addEventListener('click', () => {
+                const isHidden = body.classList.toggle('hidden');
+                card.classList.toggle('expanded', !isHidden);
+                toggleButton.setAttribute('aria-expanded', String(!isHidden));
+                body.setAttribute('aria-hidden', String(isHidden));
             });
 
-            item.querySelector('.btn-open')?.addEventListener('click', () => {
-                window.location.href = `${openUrl}#q=${(Number(meta.n) || 0) + 1}`;
-            });
-
-            item.querySelector('.btn-remove')?.addEventListener('click', () => {
+            // Delete button handler
+            header.querySelector('.bm-delete-btn')?.addEventListener('click', (e) => {
+                e.stopPropagation();
                 this.bookmarks.delete(k);
                 this.bookmarkMeta.delete(k);
                 this.saveBookmarks();
-                if (this.currentIndex === targetIdx) {
-                    this.dom.btnBookmarkQuestion?.classList.remove('bookmarked');
+                if (this.dom.btnBookmarkQuestion && k === this.bookmarkKeyFor(this.currentIndex)) {
+                    this.syncBookmarkButtonState(false);
                 }
+                this.showTemporaryToast('تم حذف السؤال من المحفوظات');
             });
 
-            this.dom.bookmarksList.appendChild(item);
+            card.appendChild(header);
+            card.appendChild(body);
+            this.dom.bookmarksList.appendChild(card);
         });
 
         this.refreshLucideIcons();
+    }
+
+    startBookmarksDrill(targetSubject = null) {
+        const filter = targetSubject || this.activeBookmarkFilter || 'all';
+        const items = this.getBookmarkDrillItems(filter);
+
+        if (items.length === 0) {
+            this.showTemporaryToast('هذه المحفوظات قديمة أو ناقصة بيانات الإجابة؛ أعد حفظ السؤال من الكويز الأصلي.');
+            return;
+        }
+
+        const drillQuestions = items.map(m => JSON.parse(JSON.stringify(m.question_data)));
+        this.closeAllDrawers();
+
+        // Boot interactive drill session from bookmarked questions!
+        const subjectTitle = filter === 'all' ? 'الأسئلة المحفوظة' : (SUBJECT_MAP[filter] || filter);
+        this.quizData = {
+            quiz_id: 'bookmarks_drill_' + Date.now(),
+            subject_id: filter === 'all' ? '00_STUDIO_HUB' : filter,
+            subject: subjectTitle,
+            topic: `مراجعة الأسئلة المحفوظة: ${subjectTitle} (${drillQuestions.length} أسئلة)`,
+            questions: drillQuestions
+        };
+
+        this.rawQuestions = null;
+        this.directMode = true;
+        this.setupQuizSession();
+        this.startQuizSession();
+        this.showTemporaryToast(`بدأ كويز المحفوظات (${drillQuestions.length} أسئلة)!`);
     }
 
     openInfoSheet(btn) {

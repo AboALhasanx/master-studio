@@ -457,6 +457,19 @@ def quiz_hub():
     )
 
 
+@app.route("/quiz/bookmarks")
+def quiz_bookmarks_page():
+    """Standalone, linkable saved-question library."""
+    return render_template("quiz_library.html", page="bookmarks")
+
+
+@app.route("/quiz/history")
+@app.route("/quiz/history/<attempt_id>")
+def quiz_history_page(attempt_id=None):
+    """Standalone local attempt history and saved review view."""
+    return render_template("quiz_library.html", page="history", attempt_id=attempt_id)
+
+
 @app.route("/quiz/<subject_id>/<quiz_id>")
 def quiz_direct(subject_id, quiz_id):
     """Direct view for a specific quiz."""

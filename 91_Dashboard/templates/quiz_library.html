@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14161C">
+  <title>{% if page == 'history' %}سجل الاختبارات{% else %}الأسئلة المحفوظة{% endif %} | Master Studio</title>
+  <script src="/static/lucide.min.js"></script>
+  <link rel="stylesheet" href="/static/quiz.css">
+  <link rel="stylesheet" href="/static/quiz-library.css">
+</head>
+<body data-page="{{ page }}" data-attempt-id="{{ attempt_id or '' }}">
+  <div class="library-shell">
+    <header class="app-header library-header">
+      <div class="header-left library-brand"><a href="/quiz" aria-label="الرئيسية"><img src="/static/brand-icon-light.png" alt="" width="24" height="24"></a><span>Master Studio</span></div>
+      <nav class="header-right library-nav" aria-label="التنقل">
+        <a class="icon-btn" href="/quiz" aria-label="المواد" title="المواد"><i data-lucide="library"></i></a>
+        <a class="icon-btn {% if page == 'bookmarks' %}is-current{% endif %}" href="/quiz/bookmarks" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة"><i data-lucide="bookmark"></i></a>
+        <a class="icon-btn {% if page == 'history' %}is-current{% endif %}" href="/quiz/history" aria-label="سجل الاختبارات" title="سجل الاختبارات"><i data-lucide="history"></i></a>
+        <button id="library-theme-toggle" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر"><i id="library-theme-icon" data-lucide="moon"></i></button>
+      </nav>
+    </header>
+    <main id="library-main" class="library-main">
+      <a class="library-back" href="/quiz"><i data-lucide="arrow-right"></i> كل المواد</a>
+      {% if page == 'history' %}
+      <section class="library-heading">
+        <div><h1>سجل الاختبارات</h1><p>محاولاتك ونتائجها خلال آخر ٧ أيام، محفوظة على هذا الجهاز.</p></div>
+        <span class="history-window"><i data-lucide="calendar-days"></i> آخر ٧ أيام</span>
+      </section>
+      <section id="history-content" aria-live="polite"><p class="library-loading">جاري تحميل السجل…</p></section>
+      {% else %}
+      <section class="library-heading">
+        <div><h1>الأسئلة المحفوظة</h1><p>بنك مراجعتك الشخصي، مرتب حسب المادة.</p></div>
+        <span id="bookmark-total" class="history-window">— سؤال</span>
+      </section>
+      <div class="bookmark-practice-row"><button id="bookmark-practice" class="action-btn primary-btn" type="button" disabled><i data-lucide="zap"></i><span>اختبر أسئلتي المحفوظة</span><b id="bookmark-practice-count"></b></button><span>يشمل أسئلة المادة المختارة التي لها خيارات وإجابة صحيحة.</span></div>
+      <div id="bookmark-filters" class="library-filters" aria-label="تصفية حسب المادة"></div>
+      <section id="bookmark-content" aria-live="polite"><p class="library-loading">جاري تحميل الأسئلة…</p></section>
+      {% endif %}
+    </main>
+  </div>
+  <script src="/static/quiz-library.js"></script>
+</body>
+</html>
