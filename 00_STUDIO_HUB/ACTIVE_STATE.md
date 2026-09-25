@@ -3,8 +3,8 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 2
 active_subject: "02_English_Language"
 active_subject_code: "CS502"
-immediate_todo: "English (CS502) — locate + download a short open-access CS journal paper for the explain-a-paper assignment. SELECTED: Pedregosa et al., 'Scikit-learn: Machine Learning in Python', JMLR 12 (2011) 2825-2830 (6 pp, free PDF in 02_Raw_Materials). Next: build the student's explanation/summary + presentation for the English class."
-next_session_focus: "English (CS502) — produce the paper-explanation deliverable for 'Scikit-learn: Machine Learning in Python' (JMLR 2011): structured summary, key-contribution analysis, and a short spoken presentation outline."
+immediate_todo: "English (CS502) - explain-a-paper assignment. SELECTED (documented, DOI): Christakis & Fowler, 'Social Network Sensors for Early Detection of Contagious Outbreaks', PLOS ONE 5(9):e12948 (2010), 8 pp, DOI 10.1371/journal.pone.0012948, free PDF in 02_Raw_Materials. Next: build the student's explanation/summary + presentation."
+next_session_focus: "English (CS502) - produce the paper-explanation deliverable for 'Social Network Sensors for Early Detection of Contagious Outbreaks' (PLOS ONE 2010): structured summary, key-contribution analysis, and a short spoken presentation outline."
 last_updated: "2026-09-25"
 status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 ---
