@@ -118,25 +118,27 @@
                 <!-- Full 6-Subject Segmented Filter (Full Names, Folder Order 01-06) -->
                 <div class="catalog-filter-bar" id="catalog-filter-bar">
                     <button class="filter-chip active" data-subject="all">الكل</button>
-                    <button class="filter-chip" data-subject="01_Cyber_Security">الأمن السيبراني</button>
-                    <button class="filter-chip" data-subject="02_English_Language">اللغة الإنجليزية</button>
-                    <button class="filter-chip" data-subject="03_Data_Mining">تنقيب البيانات</button>
-                    <button class="filter-chip" data-subject="04_Advanced_Software_Eng">هندسة البرمجيات المتقدمة</button>
-                    <button class="filter-chip" data-subject="05_Soft_Computing">الحوسبة المرنة</button>
+                    <button class="filter-chip" data-subject="01_Cyber_Security">الأمن</button>
+                    <button class="filter-chip" data-subject="04_Advanced_Software_Eng">البرمجيات</button>
+                    <button class="filter-chip" data-subject="03_Data_Mining">التنقيب</button>
+                    <button class="filter-chip" data-subject="05_Soft_Computing">الحوسبة</button>
+                    <button class="filter-chip" data-subject="02_English_Language">الإنجليزية</button>
                     <button class="filter-chip" data-subject="06_Artificial_Intelligence">الذكاء الاصطناعي</button>
                 </div>
-
                 <!-- Native Inset-Grouped Curriculum List (Zero Card Clutter, Zero Repeat Buttons) -->
                 <div id="catalog-cards-container" class="inset-list-group">
                 {% for q in available_quizzes %}
                 <div class="list-row-item" data-subject="{{ q.subject }}">
                     <a href="{{ q.url }}" class="row-hit-link" aria-label="ابدأ: {{ q.topic }}"></a>
                     <div class="row-main">
-                        <div class="row-header-meta">
-                            <span class="row-subject-tag">{{ q.subject_title or q.subject }}</span>
-                            <span class="row-count-meta">{{ q.questions_count }} أسئلة{% if q.instructor %} · {{ q.instructor }}{% endif %}</span>
-                        </div>
                         <div class="row-title-text">{{ q.topic }}</div>
+                        <div class="row-sub-meta">
+                            <span class="row-subject-tag">{{ q.subject_title or q.subject }}</span>
+                            <span class="meta-sep">·</span>
+                            <span class="row-prof-name">{{ q.instructor or '' }}</span>
+                            <span class="meta-sep">·</span>
+                            <span class="row-count-meta">{{ q.questions_count }} أسئلة</span>
+                        </div>
                     </div>
                     <div class="row-trailing">
                         {% if q.attempts and q.attempts > 0 %}
@@ -153,7 +155,6 @@
                                 data-url="{{ q.url }}">
                             <i data-lucide="info"></i>
                         </button>
-                        <i data-lucide="chevron-left" class="row-chevron-icon"></i>
                     </div>
                 </div>
                 {% endfor %}
