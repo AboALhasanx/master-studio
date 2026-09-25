@@ -15,6 +15,7 @@ import socket
 import sys
 from pathlib import Path
 from datetime import datetime
+import uuid
 from flask import Flask, render_template, jsonify, request
 
 # Ensure Shared Toolbox is importable
@@ -531,7 +532,9 @@ def api_quiz_bookmarks():
 
         try:
             HUB.mkdir(parents=True, exist_ok=True)
-            bookmarks_file.write_text(json.dumps(bookmarks, indent=2), encoding="utf-8")
+            tmp_file = HUB / f"quiz_bookmarks_{uuid.uuid4().hex[:8]}.tmp"
+            tmp_file.write_text(json.dumps(bookmarks, indent=2), encoding="utf-8")
+            tmp_file.replace(bookmarks_file)
             return jsonify({"status": "success", "bookmarks": bookmarks}), 200
         except Exception as e:
             return jsonify({"status": "error", "message": str(e)}), 500

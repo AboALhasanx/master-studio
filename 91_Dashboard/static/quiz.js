@@ -677,7 +677,7 @@ class QuizApp {
                         q.options_en = optIndices.map(i => q.options_en[i]);
                     }
 
-                    correctIdx = optionsArray.indexOf(originalCorrectText);
+                    correctIdx = optIndices.indexOf(correctIdx);
                     if (correctIdx === -1) correctIdx = 0;
                     correctLetter = optionKeys[correctIdx] || ['A', 'B', 'C', 'D'][correctIdx] || 'A';
                 }
