@@ -153,7 +153,8 @@
                             <span class="sketch-meta-dot">·</span>
                             <span class="sketch-count-tag">{{ q.questions_count }} أسئلة</span>
                             {% if q.attempts and q.attempts > 0 %}
-                            <span class="sketch-score-badge">{{ q.best_percentage|round|int }}%</span>
+                            <span class="sketch-meta-dot">·</span>
+                            <span class="sketch-score-label">{{ q.best_percentage|round|int }}%</span>
                             {% endif %}
                         </div>
                     </a>
