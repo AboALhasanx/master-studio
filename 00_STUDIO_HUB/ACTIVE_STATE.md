@@ -18,8 +18,8 @@ status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
 |                            FAST-BOOT CURRENT POINTER                          |
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
-|  Subject:  03_Data_Mining (CS602)      Target Path: 01_Semester_1/03_...      |
-|  Status:  ASE W02 COMPLETE             Date: 2026-09-24                       |
+|  Subject:  06_Artificial_Intelligence  Target Path: 01_Semester_1/06_...      |
+|  Status:  AI OPENED (ملزمة ready)      Date: 2026-09-25                       |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -29,8 +29,8 @@ status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
 |:---|:---|:---|
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
-| **Active Subject** | `03_Data_Mining` | Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida (2 Credit Hours) — CS602 |
-| **Last Updated** | `2026-09-24` | ASE Week 02 closed: ten zero-leakage unit PDFs + a 146-page merged `Week_02_Master_Lecture.pdf` (cover + indexed TOC + continuous pagination). Transitioned to Data Mining. |
+| **Active Subject** | `06_Artificial_Intelligence` | Prof. Dr. Saif Ali Al-Saidi (3 Credit Hours) — CS605 |
+| **Last Updated** | `2026-09-25` | Data Mining Feature Selection COMPLETE (source report + 24-page ملزمة + V1/V2 seminar decks). AI opened: AIMA 4th ed. verified + Week-01 lecture identified; Lecture-01 ملزمة ready to start. |
 
 ---
 
