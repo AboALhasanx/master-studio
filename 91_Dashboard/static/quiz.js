@@ -260,6 +260,7 @@ class QuizApp {
     }
 
     async checkServerHealth() {
+        const dot = document.getElementById('server-status-dot');
         const pill = document.getElementById('server-status-pill');
         const text = document.getElementById('server-status-text');
         try {
@@ -268,22 +269,30 @@ class QuizApp {
             const res = await fetch('/api/health', { signal: controller.signal });
             clearTimeout(timeoutId);
             if (res.ok) {
+                if (dot) {
+                    dot.className = 'server-status-dot online';
+                    dot.title = 'متصل';
+                }
                 if (pill) {
                     pill.className = 'server-status-pill status-online';
-                    pill.title = 'متصل بماستر ستوديو (Live Sync)';
+                    pill.title = 'متصل';
                 }
-                if (text) text.textContent = 'متصل (Live Sync)';
+                if (text) text.textContent = 'متصل';
                 this.flushOfflineQueue();
                 return true;
             }
         } catch (e) {
             // Offline / Unreachable
         }
+        if (dot) {
+            dot.className = 'server-status-dot offline';
+            dot.title = 'أوفلاين';
+        }
         if (pill) {
             pill.className = 'server-status-pill status-offline';
-            pill.title = 'غير متصل بالسيرفر (يعمل أوفلاين مع الحفظ المحلي)';
+            pill.title = 'أوفلاين';
         }
-        if (text) text.textContent = 'أوفلاين (حفظ محلي)';
+        if (text) text.textContent = 'أوفلاين';
         return false;
     }
 

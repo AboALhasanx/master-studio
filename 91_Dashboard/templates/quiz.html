@@ -24,17 +24,13 @@
         <!-- Top App Bar -->
         <header class="app-header">
             {% if not direct_mode %}
-            <!-- Catalog Header: Brand Logo + Status + Bookmarks + Theme -->
+            <!-- Ultra-Minimal Catalog Header: Brand Mark + Quick Utilities -->
             <div class="header-left header-catalog-brand">
                 <img src="/static/brand-icon-light.png" alt="MCS Logo" class="brand-logo-img" width="24" height="24">
-                <span class="app-brand-title">MCS Quiz</span>
-                <div id="server-status-pill" class="server-status-pill status-checking" title="حالة الاتصال بماستر ستوديو">
-                    <span class="status-dot"></span>
-                    <span id="server-status-text">جاري الفحص...</span>
-                </div>
+                <span id="server-status-dot" class="server-status-dot online" title="متصل"></span>
             </div>
             <div class="header-right header-catalog-actions">
-                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف (أوفلاين)" style="cursor: pointer;">
+                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
                     <i data-lucide="folder-open"></i>
                 </label>
                 <button id="btn-toggle-bookmarks" class="icon-btn with-badge" aria-label="Open Bookmarks" title="الأسئلة المحفوظة">
@@ -120,14 +116,7 @@
             
             {% if not direct_mode and available_quizzes %}
             <div class="deck-catalog" style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.5rem 0;">
-                <!-- Offline Pack Action Bar -->
-                <div class="offline-pack-bar">
-                    <button id="btn-download-all-quizzes" class="action-btn download-pack-btn">
-                        <i data-lucide="download-cloud"></i>
-                        <span>تنزيل جميع الكويزات للمذاكرة أوفلاين</span>
-                    </button>
-                </div>
-
+                <!-- Offline sync relocated to bottom footer -->
                 <!-- Subject Filter Bar -->
                 <div class="catalog-filter-bar" id="catalog-filter-bar">
                     <button class="filter-chip active" data-subject="all">الكل</button>
@@ -139,36 +128,36 @@
                 </div>
 
                 <!-- Compact Catalog Cards -->
-                <div id="catalog-cards-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <!-- Compact Catalog Cards: Single Focused Action, Zero Double Buttons -->
+                <div id="catalog-cards-container" style="display: flex; flex-direction: column; gap: 0.6rem;">
                 {% for q in available_quizzes %}
                 <div class="catalog-card compact-card" data-subject="{{ q.subject }}">
                     <div class="card-top-row">
                         <span class="card-subject-pill">{{ q.subject_title or q.subject }}</span>
                         {% if q.attempts and q.attempts > 0 %}
-                        <span class="quiz-badge badge-passed">
-                            <i data-lucide="award"></i> أعلى درجة: {{ q.best_percentage|round|int }}% ({{ q.best_score }})
-                        </span>
-                        {% else %}
-                        <span class="quiz-badge badge-new">
-                            <i data-lucide="sparkles"></i> جديد
+                        <span class="quiz-score-pill">
+                            {{ q.best_percentage|round|int }}%
                         </span>
                         {% endif %}
                     </div>
                     <h3 class="card-topic-title">{{ q.topic }}</h3>
-                    <div class="card-meta-row">
-                        <span><i data-lucide="help-circle" style="width:13px;height:13px;vertical-align:-2px;"></i> {{ q.questions_count }} أسئلة</span>
-                        {% if q.instructor %}<span><i data-lucide="user" style="width:13px;height:13px;vertical-align:-2px;"></i> {{ q.instructor }}</span>{% endif %}
-                    </div>
-                    <div class="card-action-row">
-                        <a href="{{ q.url }}" class="action-btn card-study-btn">
-                            <i data-lucide="play"></i> بدء التدريب
-                        </a>
-                        <a href="{{ q.url }}?mode=exam" class="action-btn card-exam-btn">
-                            <i data-lucide="graduation-cap"></i> امتحان
+                    <div class="card-footer-row">
+                        <span class="card-meta-text">{{ q.questions_count }} أسئلة{% if q.instructor %} · {{ q.instructor }}{% endif %}</span>
+                        <a href="{{ q.url }}" class="action-btn card-start-btn">
+                            <span>بدء الكويز</span>
+                            <i data-lucide="arrow-left"></i>
                         </a>
                     </div>
                 </div>
                 {% endfor %}
+                </div>
+
+                <!-- Discrete Offline Sync Action at Bottom -->
+                <div class="offline-sync-footer">
+                    <button id="btn-download-all-quizzes" class="offline-sync-btn">
+                        <i data-lucide="download-cloud"></i>
+                        <span>حفظ بنك الأسئلة للمذاكرة بدون نت</span>
+                    </button>
                 </div>
             </div>
             {% endif %}

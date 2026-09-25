@@ -2125,32 +2125,21 @@ body:has(.deck-catalog) .progress-section {
     transition: all 0.3s ease;
 }
 
-.status-dot {
-    width: 6px;
-    height: 6px;
+/* Quiet Server Status Dot */
+.server-status-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #94a3b8;
-}
-
-.status-online {
-    background: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.3);
-    color: #34d399;
-}
-.status-online .status-dot {
     background: #10b981;
     box-shadow: 0 0 6px #10b981;
+    display: inline-block;
+    margin-right: 0.15rem;
+    transition: all 0.3s ease;
 }
-
-.status-offline {
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.3);
-    color: #fbbf24;
-}
-.status-offline .status-dot {
+.server-status-dot.offline {
     background: #f59e0b;
+    box-shadow: 0 0 6px #f59e0b;
 }
-
 /* Catalog Badges & Filter Bar */
 .catalog-filter-bar {
     display: flex;
@@ -2208,11 +2197,14 @@ body:has(.deck-catalog) .progress-section {
     gap: 0.5rem;
 }
 .brand-logo-img {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    object-fit: cover;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    object-fit: contain !important;
+    flex-shrink: 0;
 }
 [data-theme="light"] .brand-logo-img {
     content: url('/static/brand-icon-dark.png');
@@ -2282,51 +2274,80 @@ body:has(.deck-catalog) .progress-section {
     font-size: 0.74rem;
     color: var(--text-muted);
 }
-.card-action-row {
+/* Clean Single-Action Card Footer */
+.card-footer-row {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.25rem;
+    padding-top: 0.2rem;
 }
-.card-study-btn {
-    height: 36px !important;
-    flex: 1;
+.card-meta-text {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+.card-start-btn {
+    height: 32px !important;
+    padding: 0 0.85rem !important;
     text-decoration: none;
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    background: rgba(56, 189, 248, 0.12) !important;
-    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    gap: 0.3rem;
+    background: rgba(56, 189, 248, 0.1) !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
     color: #38bdf8 !important;
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
 }
-.card-study-btn:hover {
+.card-start-btn:hover {
     background: #38bdf8 !important;
     color: #0b0f19 !important;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
 }
-.card-exam-btn {
-    height: 36px !important;
-    flex: 1;
-    text-decoration: none;
-    font-size: 0.84rem !important;
-    font-weight: 700;
+.card-start-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* Discrete Score Pill */
+.quiz-score-pill {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.12);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* Discrete Offline Sync Footer */
+.offline-sync-footer {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 0 1.5rem 0;
+}
+.offline-sync-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid var(--border-card) !important;
-    color: var(--text-main) !important;
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
+    gap: 0.4rem;
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-full);
+    transition: color 0.2s ease, background 0.2s ease;
 }
-.card-exam-btn:hover {
-    border-color: var(--text-muted) !important;
-    background: rgba(255, 255, 255, 0.09) !important;
+.offline-sync-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+.offline-sync-btn svg {
+    width: 14px !important;
+    height: 14px !important;
 }
 
 /* Question Matrix / Quick Jump Drawer */
