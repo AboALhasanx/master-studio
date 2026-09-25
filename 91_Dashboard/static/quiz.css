@@ -2321,24 +2321,29 @@ body:has(.deck-catalog) .progress-section {
 
 /* Left Cell: Info Button (i) as drawn in sketch */
 .sketch-info-cell {
-    width: 48px;
-    min-width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    height: auto !important;
+    align-self: stretch !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    border-right: 1.5px solid rgba(255, 255, 255, 0.18) !important;
     border-left: none !important;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    padding: 0;
-    flex-shrink: 0;
+    border-radius: 0 !important;
+    color: var(--text-muted) !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 [data-theme="light"] .sketch-info-cell {
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 1.5px solid rgba(0, 0, 0, 0.15) !important;
     border-left: none !important;
 }
 
@@ -2349,10 +2354,9 @@ body:has(.deck-catalog) .progress-section {
 }
 
 .sketch-info-cell svg {
-    width: 18px !important;
-    height: 18px !important;
+    width: 20px !important;
+    height: 20px !important;
 }
-
 /* Middle Cell: Main Content (LTR Title + Subtitle) */
 .sketch-content-cell {
     flex: 1;
@@ -2427,22 +2431,29 @@ body:has(.deck-catalog) .progress-section {
 
 /* Right Cell: Direct Play Button (▷) as drawn in sketch */
 .sketch-play-cell {
-    width: 48px;
-    min-width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    height: auto !important;
+    align-self: stretch !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.18) !important;
     border-right: none !important;
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.04);
-    transition: all 0.15s ease;
-    flex-shrink: 0;
+    border-radius: 0 !important;
+    color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.04) !important;
+    transition: all 0.15s ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 [data-theme="light"] .sketch-play-cell {
-    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-left: 1.5px solid rgba(0, 0, 0, 0.15) !important;
     border-right: none !important;
 }
 
@@ -2453,38 +2464,9 @@ body:has(.deck-catalog) .progress-section {
 }
 
 .sketch-play-cell svg {
-    width: 18px !important;
-    height: 18px !important;
+    width: 20px !important;
+    height: 20px !important;
     transform: none !important; /* Points forward to the right */
-}
-.row-info-btn {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    min-height: 28px !important;
-    border-radius: 50% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    color: var(--text-muted) !important;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    z-index: 2;
-    padding: 0 !important;
-    flex-shrink: 0;
-}
-
-.row-info-btn:hover {
-    background: rgba(56, 189, 248, 0.15) !important;
-    border-color: #38bdf8 !important;
-    color: #38bdf8 !important;
-}
-
-.row-info-btn svg {
-    width: 14px !important;
-    height: 14px !important;
 }
 .list-row-item:hover .row-chevron-icon {
     color: var(--text-main);
