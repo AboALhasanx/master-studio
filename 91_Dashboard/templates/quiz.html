@@ -125,37 +125,43 @@
                     <button class="filter-chip" data-subject="02_English_Language">الإنجليزية</button>
                     <button class="filter-chip" data-subject="06_Artificial_Intelligence">الذكاء الاصطناعي</button>
                 </div>
-                <!-- Native Inset-Grouped Curriculum List (Zero Card Clutter, Zero Repeat Buttons) -->
-                <div id="catalog-cards-container" class="inset-list-group">
+                <!-- Exact Hand-Drawn Sketch Layout: [ i ] | [ Middle LTR Content ] | [ ▷ ] -->
+                <div id="catalog-cards-container" class="sketch-card-group">
                 {% for q in available_quizzes %}
-                <div class="list-row-item" data-subject="{{ q.subject }}">
-                    <a href="{{ q.url }}" class="row-hit-link" aria-label="ابدأ: {{ q.topic }}"></a>
-                    <div class="row-main">
-                        <div class="row-title-text">{{ q.topic }}</div>
-                        <div class="row-sub-meta">
-                            <span class="row-subject-tag">{{ q.subject_title or q.subject }}</span>
-                            <span class="meta-sep">·</span>
-                            <span class="row-prof-name">{{ q.instructor or '' }}</span>
-                            <span class="meta-sep">·</span>
-                            <span class="row-count-meta">{{ q.questions_count }} أسئلة</span>
+                <div class="sketch-row" data-subject="{{ q.subject }}">
+                    <!-- Right Cell: Info Button (i) with vertical divider -->
+                    <button type="button" class="sketch-cell sketch-info-cell row-info-btn" aria-label="تفاصيل الكويز" title="تفاصيل الكويز"
+                            data-subject="{{ q.subject_title or q.subject }}"
+                            data-semester="{{ q.semester_label or 'كورس أول' }}"
+                            data-topic="{{ q.topic }}"
+                            data-instructor="{{ q.instructor or '' }}"
+                            data-count="{{ q.questions_count }}"
+                            data-attempts="{{ q.attempts }}"
+                            data-best="{{ q.best_percentage|int if q.best_percentage is not none else '' }}"
+                            data-last="{{ q.last_attempt or '' }}"
+                            data-url="{{ q.url }}">
+                        <i data-lucide="info"></i>
+                    </button>
+
+                    <!-- Middle Cell: LTR Bold Title (single line with ellipsis) + Metadata -->
+                    <a href="{{ q.url }}" class="sketch-cell sketch-content-cell" aria-label="ابدأ: {{ q.topic }}">
+                        <div class="sketch-title-ltr">{{ q.topic }}</div>
+                        <div class="sketch-meta-line">
+                            <span class="sketch-subject-tag">{{ q.subject_title or q.subject }}</span>
+                            <span class="sketch-meta-dot">·</span>
+                            <span class="sketch-sem-tag">{{ q.semester_label or 'كورس أول' }}</span>
+                            <span class="sketch-meta-dot">·</span>
+                            <span class="sketch-count-tag">{{ q.questions_count }} أسئلة</span>
+                            {% if q.attempts and q.attempts > 0 %}
+                            <span class="sketch-score-badge">{{ q.best_percentage|round|int }}%</span>
+                            {% endif %}
                         </div>
-                    </div>
-                    <div class="row-trailing">
-                        {% if q.attempts and q.attempts > 0 %}
-                        <span class="row-score-badge">{{ q.best_percentage|round|int }}%</span>
-                        {% endif %}
-                        <button type="button" class="row-info-btn" aria-label="تفاصيل الكويز" title="تفاصيل الكويز"
-                                data-subject="{{ q.subject_title or q.subject }}"
-                                data-topic="{{ q.topic }}"
-                                data-instructor="{{ q.instructor or '' }}"
-                                data-count="{{ q.questions_count }}"
-                                data-attempts="{{ q.attempts }}"
-                                data-best="{{ q.best_percentage|int if q.best_percentage is not none else '' }}"
-                                data-last="{{ q.last_attempt or '' }}"
-                                data-url="{{ q.url }}">
-                            <i data-lucide="info"></i>
-                        </button>
-                    </div>
+                    </a>
+
+                    <!-- Left Cell: Direct Play Button (▷) with vertical divider -->
+                    <a href="{{ q.url }}" class="sketch-cell sketch-play-cell" aria-label="بدء الكويز مباشرة">
+                        <i data-lucide="play"></i>
+                    </a>
                 </div>
                 {% endfor %}
                 </div>
@@ -410,11 +416,16 @@
             <div class="drawer-body">
                 <div id="info-sheet-topic" class="info-sheet-topic"></div>
                 <ul id="info-sheet-list" class="info-sheet-list"></ul>
-                <a id="info-sheet-start" class="action-btn primary-btn info-sheet-start" href="#">
-                    <span>ابدأ الكويز</span>
-                    <i data-lucide="arrow-left"></i>
-                </a>
-            </div>
+                <div class="info-sheet-actions" style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+                    <a id="info-sheet-start" class="action-btn primary-btn" href="#" style="flex: 1; height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; text-decoration: none; font-size: 0.88rem;">
+                        <i data-lucide="play"></i>
+                        <span>بدء التدريب</span>
+                    </a>
+                    <a id="info-sheet-exam" class="action-btn secondary-btn" href="#" style="flex: 1; height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; text-decoration: none; font-size: 0.88rem;">
+                        <i data-lucide="graduation-cap"></i>
+                        <span>محاكاة امتحان</span>
+                    </a>
+                </div>
         </aside>
 
         <!-- Question Matrix / Quick-Jump Drawer -->

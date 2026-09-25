@@ -2285,109 +2285,169 @@ body:has(.deck-catalog) .progress-section {
     transition: border-color 0.2s ease, transform 0.15s ease;
 }
 /* Native Inset-Grouped Curriculum List (Apple / Linear Style) */
-.inset-list-group {
+/* ==========================================================================
+   Hand-Drawn Sketch Grouped Layout
+   3-Column Architecture: [ i ] | [ Middle LTR Content ] | [ ▷ ]
+   ========================================================================== */
+.sketch-card-group {
     background: var(--bg-card);
     border: 1px solid var(--border-card);
-    border-radius: var(--radius-lg);
+    border-radius: 22px; /* Bigger rounded corners as requested */
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.list-row-item {
-    position: relative;
+.sketch-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.85rem 1rem;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    align-items: stretch;
+    min-height: 64px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: background-color 0.15s ease;
-    gap: 0.75rem;
 }
 
-.list-row-item:last-child {
+.sketch-row:last-child {
     border-bottom: none;
 }
 
-.list-row-item:hover {
-    background-color: rgba(255, 255, 255, 0.04);
+[data-theme="light"] .sketch-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.list-row-item:active {
-    background-color: rgba(255, 255, 255, 0.08);
-}
-
-[data-theme="light"] .list-row-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-[data-theme="light"] .list-row-item:hover {
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-.row-main {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-.row-title-text {
-    font-size: 0.94rem;
-    font-weight: 700;
-    color: var(--text-main);
-    line-height: 1.35;
-    word-break: break-word;
-}
-
-.row-sub-meta {
+/* Right Cell: Info Button (i) */
+.sketch-info-cell {
+    width: 46px;
+    min-width: 46px;
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.73rem;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-muted);
-    flex-wrap: wrap;
-}
-
-.row-subject-tag {
-    font-size: 0.73rem;
-    font-weight: 800;
-    color: #38bdf8;
-    letter-spacing: 0.01em;
-}
-
-.row-prof-name {
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.row-count-meta {
-    color: var(--text-subtle);
-}
-
-.meta-sep {
-    opacity: 0.35;
-}
-
-.row-trailing {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
     flex-shrink: 0;
 }
 
-.row-score-badge {
-    font-size: 0.74rem;
+[data-theme="light"] .sketch-info-cell {
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sketch-info-cell:hover,
+.sketch-info-cell:active {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+}
+
+.sketch-info-cell svg {
+    width: 17px !important;
+    height: 17px !important;
+}
+
+/* Middle Cell: Main Content (LTR Title + Subtitle) */
+.sketch-content-cell {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.sketch-content-cell:hover,
+.sketch-content-cell:active {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.sketch-title-ltr {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-main);
+    direction: ltr !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.3;
+}
+
+.sketch-meta-line {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.sketch-subject-tag {
+    font-weight: 800;
+    color: #38bdf8;
+}
+
+.sketch-sem-tag {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.sketch-count-tag {
+    color: var(--text-subtle);
+}
+
+.sketch-meta-dot {
+    opacity: 0.35;
+}
+
+.sketch-score-badge {
+    font-size: 0.68rem;
     font-weight: 800;
     color: #34d399;
     background: rgba(16, 185, 129, 0.14);
-    padding: 0.15rem 0.5rem;
+    padding: 0.1rem 0.4rem;
     border-radius: var(--radius-full);
     border: 1px solid rgba(16, 185, 129, 0.25);
+    margin-right: 0.2rem;
 }
 
+/* Left Cell: Direct Play Button (▷) */
+.sketch-play-cell {
+    width: 46px;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.04);
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+[data-theme="light"] .sketch-play-cell {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sketch-play-cell:hover,
+.sketch-play-cell:active {
+    background: rgba(56, 189, 248, 0.16);
+    color: #ffffff;
+}
+
+.sketch-play-cell svg {
+    width: 17px !important;
+    height: 17px !important;
+    transform: rotate(180deg);
+}
 .row-info-btn {
     width: 28px !important;
     height: 28px !important;

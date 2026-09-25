@@ -482,7 +482,7 @@ class QuizApp {
                 const subj = e.currentTarget.dataset.subject;
                 document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                 e.currentTarget.classList.add('active');
-                const rows = document.querySelectorAll('.list-row-item');
+                const rows = document.querySelectorAll('.sketch-row, .list-row-item');
                 let visibleCount = 0;
                 rows.forEach(row => {
                     const match = subj === 'all' || row.dataset.subject === subj;
@@ -1962,6 +1962,7 @@ class QuizApp {
         }
         const rows = [
             ['المادة', d.subject],
+            ['الفصل الدراسي', d.semester || 'كورس أول'],
             ['المحاضر', d.instructor],
             ['عدد الأسئلة', d.count ? `${d.count} سؤال` : ''],
             ['المحاولات', d.attempts && Number(d.attempts) > 0 ? `${d.attempts} محاولة` : 'لم يُبدأ بعد'],
@@ -1975,6 +1976,8 @@ class QuizApp {
                 .join('');
         }
         if (this.dom.infoSheetStart) this.dom.infoSheetStart.href = d.url || '#';
+        const examBtn = document.getElementById('info-sheet-exam');
+        if (examBtn) examBtn.href = d.url ? `${d.url}?mode=exam` : '#';
         this.openDrawer(this.dom.infoDrawer);
     }
 

@@ -391,6 +391,7 @@ def get_all_quizzes():
                 h_info = history_summary.get(quiz_name, {})
                 quizzes.append({
                     "semester": sem.name,
+                    "semester_label": "كورس أول" if "Semester_1" in sem.name else "كورس ثاني",
                     "subject": subject_folder,
                     "subject_title": subject_names.get(subject_folder, subject_folder.replace("_", " ")),
                     "quiz_id": quiz_name,
