@@ -1,12 +1,12 @@
 ---
 current_semester: "Semester 1 (Fall 2026)"
 active_week: 2
-active_subject: "06_Artificial_Intelligence"
-active_subject_code: "CS605"
-immediate_todo: "Data Mining Feature Selection is COMPLETE (source report + 24-page ملزمة + V1/V2 seminar decks). Artificial Intelligence (CS605) has now OPENED: the assigned textbook is Russell & Norvig, Artificial Intelligence: A Modern Approach, 4th ed. (verified), and the Week-01 lecture (WSU, Prof. Diane J. Cook) is identified. Both sources are in the vault — the Lecture-01 ملزمة is ready to start on the student's word."
-next_session_focus: "Artificial Intelligence — build the Lecture-01 ملزمة (the four AI definitions, Turing Test & Chinese Room, foundations & history, rationality, PEAS, environment dimensions, agent architectures)."
+active_subject: "02_English_Language"
+active_subject_code: "CS502"
+immediate_todo: "English (CS502) — locate + download a short open-access CS journal paper for the explain-a-paper assignment. SELECTED: Pedregosa et al., 'Scikit-learn: Machine Learning in Python', JMLR 12 (2011) 2825-2830 (6 pp, free PDF in 02_Raw_Materials). Next: build the student's explanation/summary + presentation for the English class."
+next_session_focus: "English (CS502) — produce the paper-explanation deliverable for 'Scikit-learn: Machine Learning in Python' (JMLR 2011): structured summary, key-contribution analysis, and a short spoken presentation outline."
 last_updated: "2026-09-25"
-status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
+status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 ---
 
 # Master Studio: Active Session State
@@ -18,7 +18,7 @@ status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
 |                            FAST-BOOT CURRENT POINTER                          |
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
-|  Subject:  06_Artificial_Intelligence  Target Path: 01_Semester_1/06_...      |
+|  Subject:  02_English_Language  Target Path: 01_Semester_1/02_English_Language      |
 |  Status:  AI OPENED (ملزمة ready)      Date: 2026-09-25                       |
 +-------------------------------------------------------------------------------+
 ```
@@ -29,7 +29,7 @@ status: "DM_FEATURE_SELECTION_COMPLETE__AI_OPENED"
 |:---|:---|:---|
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
-| **Active Subject** | `06_Artificial_Intelligence` | Prof. Dr. Saif Ali Al-Saidi (3 Credit Hours) — CS605 |
+| **Active Subject** | `02_English_Language` | Asst. Prof. Dr. Haidar Akab Alwan (1 Credit Hour) — CS502 |
 | **Last Updated** | `2026-09-25` | Data Mining Feature Selection COMPLETE (source report + 24-page ملزمة + V1/V2 seminar decks). AI opened: AIMA 4th ed. verified + Week-01 lecture identified; Lecture-01 ملزمة ready to start. |
 
 ---
