@@ -85,3 +85,17 @@ Then render the pages with PyMuPDF and **look at them**. The linter cannot see a
 2. **Depth is mandatory, not a summary.** The student wants a **ملزمة** (deep pedagogical instrument), never a compressed summary. Per section: narrative spine → verbatim anchor → Feynman intuition → bilingual rationale → and where possible a **worked example** and **equations**. Padding is banned; *genuine* explanation is required.
 3. **The linter + exporter were fixed 2026-09-24 by the other agent.** `*"…"*` italic verbatim quotes and `&` / apostrophes are allowed again — **but the fix does NOT cover the `.qa-card` text path** in `transform_qa_cards()` (still double-escapes `&` → `&amp;`). Workaround: avoid `&` **inside retrieval-set questions** only.
 4. **Page-count sanity:** the ASE master lecture (146 pp) merged **ten units**; a single-topic ملزمة should be compared to **one unit** (~15 pp), and a good one runs **20–30 pp**.
+
+## 8. Authoring rules learned 2026-09-25 (student-flagged) — note titles + no-ASCII (STANDING)
+
+1. **Every note MUST carry YAML frontmatter with a REAL title.** The exporter's `render_study_pack_html` falls back to **"وثيقة المراجعة والتلخيص الأكاديمي"** (`pdf_exporter.py:1070`) when the note has no frontmatter `title` — the student calls this **حشو (filler)** and it is banned. The title must be the **booklet + week number + topic**. Required:
+   ```yaml
+   ---
+   title: ملزمة الويك N — <topic>
+   course: <Subject>
+   subtitle: <one-line description>
+   ---
+   ```
+   The title splits at `" — "` into **eyebrow** + **main title**; the running header shows `Master Studio · <course> — <title>`. The first `# heading` in the body is stripped by the sanitizer, so the frontmatter title is what renders. (Fixed in `Week_03_DeepDive_Research_Reading` + `Week_02_03_DeepDive_Research_Reading_v4.2` on 2026-09-25.)
+2. **NO ASCII / code fences anywhere in a note.** The linter only forbids arrow chars inside ``` fences (`note_linter.py` line 57), but the student rejects **any** fenced ASCII block — including a numeric matrix. Use **markdown tables** for data and **plain-text flow lines** (arrows are allowed *outside* fences). Pre-delivery grep: `grep -nE '^```' <note>.md` must return nothing.
+3. **Title phrasing (2026-09-25).** Write **`Week N`** in Latin script — **never "الويك N"**. And the title must be the agent's **own understanding/summary of the booklet's content**, NOT a literal transliteration of the doctor's docx title. The docx title is only a starting point. (Student: *"المفروض العنوان والتايتل فهمك للملزمة مال ويك الاصلية وتكتب week مو ويك حرفياً"*.)
