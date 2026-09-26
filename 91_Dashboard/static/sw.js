@@ -3,7 +3,7 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v8';
+const CACHE_NAME = 'master-studio-v9';
 
 const PRECACHE_URLS = [
     '/',
@@ -36,12 +36,19 @@ const PRECACHE_URLS = [
     '/quiz/05_Soft_Computing/Quiz_02_Fuzzy_Logic_Systems',
     '/api/quiz/05_Soft_Computing/Quiz_02_Fuzzy_Logic_Systems'
 ];
-// Install: Pre-cache static application shell
+// Install: Resilient pre-cache (individual add prevents single-failure aborts)
 self.addEventListener('install', (event) => {
+    self.skipWaiting();
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(PRECACHE_URLS);
-        }).then(() => self.skipWaiting())
+        caches.open(CACHE_NAME).then(async (cache) => {
+            for (const url of PRECACHE_URLS) {
+                try {
+                    await cache.add(url);
+                } catch (err) {
+                    console.warn('Pre-cache skipped for URL:', url, err);
+                }
+            }
+        })
     );
 });
 
@@ -64,16 +71,19 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
-    // 1a. Code assets (JS/CSS): Network-First so code updates land instantly; cache fallback keeps offline working
+    // 1a. Code assets (JS/CSS): Stale-While-Revalidate (instant offline boot + fresh background update)
     if (url.pathname.startsWith('/static/') && (url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))) {
         event.respondWith(
-            fetch(event.request).then((networkResp) => {
-                if (networkResp && networkResp.status === 200) {
-                    const copy = networkResp.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-                }
-                return networkResp;
-            }).catch(() => caches.match(event.request).then((cached) => cached || Response.error()))
+            caches.match(event.request, { ignoreSearch: true }).then((cached) => {
+                const netFetch = fetch(event.request).then((networkResp) => {
+                    if (networkResp && networkResp.status === 200) {
+                        const copy = networkResp.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+                    }
+                    return networkResp;
+                }).catch(() => null);
+                return cached || netFetch;
+            })
         );
         return;
     }
@@ -126,7 +136,7 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // 3. HTML Navigation: Network-First, fallback to Cache when offline!
+    // 3. HTML Navigation: Network-First with guaranteed Multi-Tier Cache Fallback
     if (event.request.mode === 'navigate' || event.request.headers.get('accept')?.includes('text/html')) {
         event.respondWith(
             fetch(event.request).then((netResp) => {
@@ -135,8 +145,29 @@ self.addEventListener('fetch', (event) => {
                     caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
                 }
                 return netResp;
-            }).catch(() => {
-                return caches.match(event.request).then((cached) => cached || caches.match('/quiz'));
+            }).catch(async () => {
+                // Multi-tier offline fallback: exact request -> /quiz -> / -> any cached quiz
+                const directMatch = await caches.match(event.request, { ignoreSearch: true });
+                if (directMatch) return directMatch;
+
+                const quizShell = await caches.match('/quiz', { ignoreSearch: true });
+                if (quizShell) return quizShell;
+
+                const rootShell = await caches.match('/', { ignoreSearch: true });
+                if (rootShell) return rootShell;
+
+                // Last resort: search all cached responses for any quiz HTML
+                const cache = await caches.open(CACHE_NAME);
+                const keys = await cache.keys();
+                for (const req of keys) {
+                    if (req.url.includes('/quiz')) {
+                        const fallback = await cache.match(req);
+                        if (fallback) return fallback;
+                    }
+                }
+                return new Response("Offline - Master Studio Quiz", {
+                    headers: { "Content-Type": "text/html; charset=utf-8" }
+                });
             })
         );
         return;
