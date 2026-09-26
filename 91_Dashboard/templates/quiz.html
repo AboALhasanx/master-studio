@@ -23,48 +23,50 @@
         
         <!-- Top App Bar -->
         <header class="app-header">
-            {% if not direct_mode %}
-            <!-- Ultra-Minimal Catalog Header: Brand Mark + Clean Utilities -->
-            <div class="header-left header-catalog-brand">
-                <img src="/static/brand-icon-light.png" alt="MCS Logo" class="brand-logo-img" width="24" height="24">
-                <span class="app-brand-title">الرئيسية</span>
+            <!-- Catalog Header View -->
+            <div id="header-catalog-view" class="header-inner" style="display: {% if direct_mode %}none{% else %}flex{% endif %}; width: 100%; justify-content: space-between; align-items: center;">
+                <div class="header-left header-catalog-brand">
+                    <img src="/static/brand-icon-light.png" alt="MCS Logo" class="brand-logo-img" width="24" height="24">
+                    <span class="app-brand-title">MSCQuiz</span>
+                </div>
+                <div class="header-right header-catalog-actions">
+                    <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
+                        <i data-lucide="folder-open"></i>
+                    </label>
+                    <a id="btn-toggle-bookmarks" class="icon-btn" href="/quiz/bookmarks" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
+                        <i data-lucide="bookmark"></i>
+                    </a>
+                    <a class="icon-btn" href="/quiz/history" aria-label="سجل الاختبارات" title="سجل الاختبارات">
+                        <i data-lucide="history"></i>
+                    </a>
+                    <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
+                        <i data-lucide="moon" id="theme-icon"></i>
+                    </button>
+                </div>
             </div>
-            <div class="header-right header-catalog-actions">
-                <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
-                    <i data-lucide="folder-open"></i>
-                </label>
-                <a id="btn-toggle-bookmarks" class="icon-btn" href="/quiz/bookmarks" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
-                    <i data-lucide="bookmark"></i>
-                </a>
-                <a class="icon-btn" href="/quiz/history" aria-label="سجل الاختبارات" title="سجل الاختبارات">
-                    <i data-lucide="history"></i>
-                </a>
-                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
-                    <i data-lucide="moon" id="theme-icon"></i>
-                </button>
+
+            <!-- In-Quiz Session Header View -->
+            <div id="header-session-view" class="header-inner" style="display: {% if direct_mode %}flex{% else %}none{% endif %}; width: 100%; justify-content: space-between; align-items: center;">
+                <div class="header-left">
+                    <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
+                        <i data-lucide="home"></i>
+                    </button>
+                    <button id="btn-open-matrix" class="icon-btn" aria-label="Question Matrix" title="جدول الأسئلة">
+                        <i data-lucide="layout-grid"></i>
+                    </button>
+                </div>
+                <div class="header-right">
+                    <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Question Language" title="ترجمة السؤال والخيارات">
+                        <i data-lucide="languages"></i>
+                    </button>
+                    <button id="btn-sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="كتم/تشغيل الصوت">
+                        <i data-lucide="volume-2" id="sound-icon"></i>
+                    </button>
+                    <button id="btn-theme-toggle-session" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
+                        <i data-lucide="moon" id="theme-icon-session"></i>
+                    </button>
+                </div>
             </div>
-            {% else %}
-            <!-- In-Quiz Session Header: Minimal, Non-Distracting, High Focus -->
-            <div class="header-left">
-                <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
-                    <i data-lucide="home"></i>
-                </button>
-                <button id="btn-open-matrix" class="icon-btn" aria-label="Question Matrix" title="جدول الأسئلة">
-                    <i data-lucide="layout-grid"></i>
-                </button>
-            </div>
-            <div class="header-right">
-                <button id="btn-lang-toggle" class="icon-btn" aria-label="Toggle Question Language" title="ترجمة السؤال والخيارات">
-                    <i data-lucide="languages"></i>
-                </button>
-                <button id="btn-sound-toggle" class="icon-btn" aria-label="Toggle Sound" title="كتم/تشغيل الصوت">
-                    <i data-lucide="volume-2" id="sound-icon"></i>
-                </button>
-                <button id="btn-theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="تبديل المظهر">
-                    <i data-lucide="moon" id="theme-icon"></i>
-                </button>
-            </div>
-            {% endif %}
         </header>
 
         <!-- 1-Tap PWA Install Banner (Mobile Offline Mode) -->
@@ -82,37 +84,37 @@
             </div>
         </div>
 
-        {% if direct_mode %}
-        <!-- Topic Banner -->
-        <section class="topic-banner">
-            <span id="quiz-subtitle" class="topic-subject-badge">جاري التحميل...</span>
-            <h1 id="quiz-title" class="topic-title">كوز تفاعلي</h1>
-        </section>
+        <!-- Session Topbar: Topic Banner & Progress Section -->
+        <div id="quiz-session-topbar" style="display: {% if direct_mode %}block{% else %}none{% endif %};">
+            <!-- Topic Banner -->
+            <section class="topic-banner">
+                <span id="quiz-subtitle" class="topic-subject-badge">جاري التحميل...</span>
+                <h1 id="quiz-title" class="topic-title">كوز تفاعلي</h1>
+            </section>
 
-        <!-- Progress and Dwell Timer Bar -->
-        <section class="progress-section" aria-label="Quiz Progress">
-            <div class="progress-bar-track">
-                <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
-            </div>
-            <div class="progress-meta-row">
-                <div class="progress-counter">
-                    <span id="question-index-label">1</span>
-                    <span class="meta-separator">/</span>
-                    <span id="question-total-label">5</span>
+            <!-- Progress and Dwell Timer Bar -->
+            <section class="progress-section" aria-label="Quiz Progress">
+                <div class="progress-bar-track">
+                    <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
                 </div>
-                <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
-                    <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
-                    <span id="session-timer" class="timer-total">00:00</span>
-                </button>
-            </div>
-        </section>
-        {% endif %}
+                <div class="progress-meta-row">
+                    <div class="progress-counter">
+                        <span id="question-index-label">1</span>
+                        <span class="meta-separator">/</span>
+                        <span id="question-total-label">5</span>
+                    </div>
+                    <button id="btn-timer-pause" class="timer-unified-pill" aria-label="Pause or Resume Quiz" title="إيقاف مؤقت / استئناف">
+                        <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
+                        <span id="session-timer" class="timer-total">00:00</span>
+                    </button>
+                </div>
+            </section>
+        </div>
 
         <!-- Main Content Area -->
         <main class="main-content">
             
-            {% if not direct_mode and available_quizzes %}
-            <div class="deck-catalog" style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.5rem 0;">
+        <div id="deck-catalog" class="deck-catalog" style="display: {% if direct_mode %}none{% else %}flex{% endif %}; flex-direction: column; gap: 0.75rem; margin: 0.5rem 0;">
                 <!-- Offline sync relocated to bottom footer -->
                 <!-- Subject Filter Bar -->
                 <!-- Full 6-Subject Segmented Filter (Full Names, Folder Order 01-06) -->
@@ -175,7 +177,6 @@
                     </button>
                 </div>
             </div>
-            {% endif %}
 
             <!-- Loading Indicator -->
             <div id="quiz-loading" class="state-view {% if not direct_mode and available_quizzes %}hidden{% endif %}">

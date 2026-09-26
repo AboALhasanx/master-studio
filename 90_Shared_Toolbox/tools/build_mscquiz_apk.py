@@ -84,30 +84,55 @@ def setup_project_tree():
     assets_static = assets_dir / "static"
     assets_static.mkdir(parents=True, exist_ok=True)
     
-    # Copy template as index.html
-    html_src = REPO_ROOT / "91_Dashboard" / "templates" / "quiz.html"
-    html_content = html_src.read_text(encoding="utf-8")
-    
-    # Clean Jinja2 template tags for standalone asset rendering
-    cleaned_html = html_content.replace("{% if page == 'history' %}سجل الاختبارات{% else %}الأسئلة المحفوظة{% endif %}", "MSCQuiz")
-    cleaned_html = cleaned_html.replace("{{ lan_ip or '127.0.0.1' }}", "127.0.0.1")
-    # Replace root element dynamic attributes
-    cleaned_html = cleaned_html.replace('data-direct-mode="{% if direct_mode %}true{% else %}false{% endif %}"', 'data-direct-mode="false"')
-    cleaned_html = cleaned_html.replace('data-subject-id="{{ subject_id or \'\' }}"', 'data-subject-id=""')
-    cleaned_html = cleaned_html.replace('data-quiz-id="{{ quiz_id or \'\' }}"', 'data-quiz-id=""')
-    cleaned_html = cleaned_html.replace('data-lan-ip="{{ lan_ip or \'127.0.0.1\' }}"', 'data-lan-ip="127.0.0.1"')
-    
-    # Remove Jinja loops
-    import re
-    cleaned_html = re.sub(r'\{% if not direct_mode and available_quizzes %\}.*?\{% endif %\}', '', cleaned_html, flags=re.DOTALL)
-    cleaned_html = re.sub(r'\{% if shared_quizzes %\}.*?\{% endif %\}', '', cleaned_html, flags=re.DOTALL)
-    cleaned_html = re.sub(r'\{%.*?%\}', '', cleaned_html)
-    cleaned_html = re.sub(r'\{\{.*?\}\}', '', cleaned_html)
-    # Fix paths from /static/ to static/
-    cleaned_html = cleaned_html.replace('href="/static/', 'href="static/')
-    cleaned_html = cleaned_html.replace('src="/static/', 'src="static/')
+    # Render index.html cleanly using Jinja2 with all semester quizzes pre-baked into catalog
+    import json
+    from jinja2 import Environment, FileSystemLoader
 
-    (assets_dir / "index.html").write_text(cleaned_html, encoding="utf-8")
+    templates_dir = REPO_ROOT / "91_Dashboard" / "templates"
+    env = Environment(loader=FileSystemLoader(str(templates_dir)))
+    template = env.get_template("quiz.html")
+
+    hub_bundle = REPO_ROOT / "00_STUDIO_HUB" / "curriculum_quiz_bundle_sem1.json"
+    quizzes_list = []
+    if hub_bundle.is_file():
+        bundle_data = json.loads(hub_bundle.read_text(encoding="utf-8"))
+        for q in bundle_data.get("quizzes", []):
+            quizzes_list.append({
+                "semester": "01_Semester_1",
+                "semester_label": q.get("semester_label", "كورس أول"),
+                "subject": q.get("subject_id", ""),
+                "subject_title": q.get("subject_title", ""),
+                "quiz_id": q.get("quiz_id", ""),
+                "topic": q.get("topic", ""),
+                "instructor": q.get("instructor_ar", ""),
+                "instructor_ar": q.get("instructor_ar", ""),
+                "questions_count": len(q.get("questions", [])),
+                "url": f"/quiz/{q.get('subject_id')}/{q.get('quiz_id')}",
+                "attempts": 0,
+                "best_percentage": None,
+                "best_score": None,
+                "last_attempt": None
+            })
+
+    rendered_html = template.render(
+        direct_mode=False,
+        subject_id=None,
+        quiz_id=None,
+        lan_ip="127.0.0.1",
+        available_quizzes=quizzes_list,
+        shared_quizzes=None
+    )
+
+    # Embed bundled curriculum for 100% offline 0ms boot without network
+    bundle_text = hub_bundle.read_text(encoding="utf-8") if hub_bundle.is_file() else "{}"
+    bundled_tag = f'<script id="ms-bundled-curriculum" type="application/json">{bundle_text}</script>'
+    rendered_html = rendered_html.replace("<!-- Storage Engine -->", f"{bundled_tag}\\n    <!-- Storage Engine -->")
+
+    # Clean paths for file:///android_asset/
+    rendered_html = rendered_html.replace('href="/static/', 'href="static/')
+    rendered_html = rendered_html.replace('src="/static/', 'src="static/')
+
+    (assets_dir / "index.html").write_text(rendered_html, encoding="utf-8")
 
     # Copy static assets
     for item in static_dir.glob("*"):
@@ -140,6 +165,7 @@ def setup_project_tree():
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@android:style/Theme.NoTitleBar"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:supportsRtl="true">
 
@@ -252,6 +278,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage cm) {
+                android.util.Log.d("MSCQuiz_JS", cm.message() + " -- Line " + cm.lineNumber());
                 return super.onConsoleMessage(cm);
             }
         });
@@ -301,7 +328,20 @@ public class MainActivity extends Activity {
 
     private void importFromUri(Uri uri) {
         try {
-            InputStream is = getContentResolver().openInputStream(uri);
+            android.util.Log.d("MSCQuiz_Intent", "Received URI: " + uri);
+            InputStream is = null;
+            try {
+                is = getContentResolver().openInputStream(uri);
+            } catch (Exception e1) {
+                android.util.Log.w("MSCQuiz_Intent", "openInputStream failed: " + e1.getMessage());
+            }
+            if (is == null && uri.getPath() != null) {
+                try {
+                    is = new java.io.FileInputStream(new java.io.File(uri.getPath()));
+                } catch (Exception e2) {
+                    android.util.Log.w("MSCQuiz_Intent", "FileInputStream failed: " + e2.getMessage());
+                }
+            }
             if (is == null) return;
             BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
@@ -314,24 +354,23 @@ public class MainActivity extends Activity {
             String jsonText = sb.toString();
             // Encode as Base64 to safely pass through evaluateJavascript
             String base64 = Base64.encodeToString(jsonText.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
-            String js = "try { " +
-                    "  const rawText = decodeURIComponent(escape(atob('" + base64 + "'))); " +
-                    "  const data = JSON.parse(rawText); " +
+            String js = "function tryImport() { " +
                     "  if (window.quizApp && window.quizApp.processImportedQuizData) { " +
-                    "    window.quizApp.processImportedQuizData(data, 'Telegram_Quiz').then(quizzes => { " +
-                    "      if (quizzes && quizzes.length) { " +
-                    "        window.quizApp.injectImportedQuizzesToCatalog(quizzes); " +
-                    "        window.quizApp.showTemporaryToast('تم فتح وحفظ الكويز من تليغرام بنجاح!'); " +
-                    "        if (quizzes.length === 1) { " +
-                    "          window.quizApp.quizData = quizzes[0]; " +
-                    "          window.quizApp.subjectId = quizzes[0].subject_id; " +
-                    "          window.quizApp.quizId = quizzes[0].quiz_id; " +
-                    "          window.quizApp.setupQuizSession(); " +
+                    "    try { " +
+                    "      const rawText = decodeURIComponent(escape(atob('" + base64 + "'))); " +
+                    "      const data = JSON.parse(rawText); " +
+                    "      window.quizApp.processImportedQuizData(data, 'Telegram_Quiz').then(quizzes => { " +
+                    "        if (quizzes && quizzes.length) { " +
+                    "          window.quizApp.injectImportedQuizzesToCatalog(quizzes); " +
+                    "          window.quizApp.showTemporaryToast('تم فتح وحفظ الكويز من تليغرام بنجاح!'); " +
+                    "          if (quizzes.length === 1) { " +
+                    "            window.quizApp.loadDirectQuiz(quizzes[0].subject_id, quizzes[0].quiz_id); " +
+                    "          } " +
                     "        } " +
-                    "      } " +
-                    "    }); " +
-                    "  } " +
-                    "} catch (e) { console.error('Intent import error:', e); }";
+                    "      }); " +
+                    "    } catch(err) { console.error('Intent import parse error:', err); } " +
+                    "  } else { setTimeout(tryImport, 250); } " +
+                    "} tryImport();";
 
             webView.post(() -> webView.evaluateJavascript(js, null));
         } catch (Exception e) {

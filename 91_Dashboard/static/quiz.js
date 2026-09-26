@@ -260,6 +260,19 @@ class QuizApp {
         this.initTheme();
         this.updateSoundIcon();
         this.updateShuffleUI();
+        // In standalone file:/// mode, import embedded curriculum bundle into QuizVault
+        const bundledScript = document.getElementById('ms-bundled-curriculum');
+        if (bundledScript && bundledScript.textContent) {
+            try {
+                const bundle = JSON.parse(bundledScript.textContent);
+                if (window.quizVault) {
+                    await window.quizVault.importBundle(bundle);
+                }
+            } catch (e) {
+                console.warn('Bundled curriculum parse error:', e);
+            }
+        }
+
         this.initEvents();
         this.initDragAndDrop();
         this.initFileHandlingLaunchQueue();
@@ -287,10 +300,23 @@ class QuizApp {
         const dot = document.getElementById('server-status-dot');
         const pill = document.getElementById('server-status-pill');
         const text = document.getElementById('server-status-text');
+
+        // In standalone file:/// mode without a configured LAN IP, app is cleanly offline
+        if (window.location.protocol === 'file:' && (!this.lanIp || this.lanIp === '127.0.0.1')) {
+            if (dot) { dot.className = 'server-status-dot offline'; dot.title = 'أوفلاين'; }
+            if (pill) { pill.className = 'server-status-pill status-offline'; pill.title = 'أوفلاين'; }
+            if (text) text.textContent = 'أوفلاين';
+            return false;
+        }
+
+        const healthUrl = (window.location.protocol === 'file:' && this.lanIp)
+            ? `http://${this.lanIp}:5000/api/health`
+            : '/api/health';
+
         try {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 1500);
-            const res = await fetch('/api/health', { signal: controller.signal });
+            const res = await fetch(healthUrl, { signal: controller.signal });
             clearTimeout(timeoutId);
             if (res.ok) {
                 if (dot) {
@@ -413,7 +439,21 @@ class QuizApp {
         this.dom.btnSoundToggle?.addEventListener('click', () => this.toggleSound());
         this.dom.btnLangToggle?.addEventListener('click', () => this.toggleLanguage());
         this.dom.btnThemeToggle?.addEventListener('click', () => this.toggleTheme());
+        document.getElementById('btn-theme-toggle-session')?.addEventListener('click', () => this.toggleTheme());
         this.dom.btnExit?.addEventListener('click', () => this.handleExit());
+
+        // Intercept catalog quiz clicks for seamless SPA transitions (vital for file:/// and offline PWA)
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('.sketch-row a.sketch-content-cell, .sketch-row a.sketch-play-cell');
+            if (link) {
+                e.preventDefault();
+                const href = link.getAttribute('href') || '';
+                const parts = href.split('/').filter(Boolean);
+                if (parts.length >= 3 && parts[0] === 'quiz') {
+                    this.loadDirectQuiz(decodeURIComponent(parts[1]), decodeURIComponent(parts[2]));
+                }
+            }
+        });
         this.dom.btnModeToggle?.addEventListener('click', () => this.toggleExamMode());
         this.dom.btnShuffleToggle?.addEventListener('click', () => this.toggleShuffleMode());
         // Question Navigation
@@ -911,11 +951,21 @@ class QuizApp {
     }
 
     handleExit() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = '/';
+        this.directMode = false;
+        this.showState('catalog');
+        if (window.location.protocol !== 'file:') {
+            try {
+                history.pushState(null, '', '/quiz');
+            } catch (e) {}
         }
+    }
+
+    async loadDirectQuiz(subjectId, quizId) {
+        this.subjectId = subjectId;
+        this.quizId = quizId;
+        this.directMode = true;
+        this.quizData = null;
+        await this.loadQuiz();
     }
 
     /**
@@ -977,9 +1027,21 @@ class QuizApp {
             }
 
             // 3. Network fetch if not cached
+            if (window.location.protocol === 'file:' && (!this.lanIp || this.lanIp === '127.0.0.1')) {
+                console.warn('Standalone file:// mode: quiz not found in vault or cache');
+                if (this.dom.errorMessage) {
+                    this.dom.errorMessage.textContent = 'الكويز غير متوفر محلياً في ذاكرة التطبيق.';
+                }
+                this.showState('error');
+                return;
+            }
+
             this.showState('loading');
             try {
-                const response = await fetch(`/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`);
+                const fetchUrl = (window.location.protocol === 'file:' && this.lanIp)
+                    ? `http://${this.lanIp}:5000/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`
+                    : `/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`;
+                const response = await fetch(fetchUrl);
                 if (!response.ok) {
                     throw new Error(`Failed to load quiz (${response.status} ${response.statusText})`);
                 }
@@ -2670,9 +2732,25 @@ class QuizApp {
         this.dom.quizView?.classList.toggle('hidden', state !== 'quiz');
         this.dom.resultsView?.classList.toggle('hidden', state !== 'results');
 
-        const catalogEl = document.querySelector('.deck-catalog');
+        const catalogEl = document.getElementById('deck-catalog') || document.querySelector('.deck-catalog');
         if (catalogEl) {
+            catalogEl.classList.toggle('hidden', state !== 'catalog');
             catalogEl.style.display = (state === 'catalog') ? 'flex' : 'none';
+        }
+
+        const topbarEl = document.getElementById('quiz-session-topbar');
+        if (topbarEl) {
+            topbarEl.classList.toggle('hidden', state === 'catalog');
+            topbarEl.style.display = (state === 'catalog') ? 'none' : 'block';
+        }
+
+        const headerCatalog = document.getElementById('header-catalog-view');
+        const headerSession = document.getElementById('header-session-view');
+        if (headerCatalog && headerSession) {
+            headerCatalog.classList.toggle('hidden', state !== 'catalog');
+            headerCatalog.style.display = (state === 'catalog') ? 'flex' : 'none';
+            headerSession.classList.toggle('hidden', state === 'catalog');
+            headerSession.style.display = (state === 'catalog') ? 'none' : 'flex';
         }
     }
     /**

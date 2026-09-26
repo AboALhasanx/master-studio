@@ -2143,8 +2143,10 @@ body:has(.quiz-view:not(.hidden)) .topic-banner,
 body:has(.quiz-view:not(.hidden)) .pwa-install-banner,
 body:has(.quiz-start-card:not(.hidden)) .topic-banner,
 body:has(.quiz-start-card:not(.hidden)) .progress-section,
-body:has(.deck-catalog) .topic-banner,
-body:has(.deck-catalog) .progress-section {
+body:has(#deck-catalog:not(.hidden)) .topic-banner,
+body:has(#deck-catalog:not(.hidden)) .progress-section,
+body:has(.deck-catalog:not(.hidden)) .topic-banner,
+body:has(.deck-catalog:not(.hidden)) .progress-section {
     display: none !important;
 }
 
