@@ -426,6 +426,9 @@
         </aside>
     </div>
 
+    {% if shared_quizzes %}
+    <script id="ms-shared-quizzes-data" type="application/json">{{ shared_quizzes|safe }}</script>
+    {% endif %}
     <!-- Storage Engine -->
     <script src="/static/quiz-vault.js"></script>
     <!-- Application Script -->

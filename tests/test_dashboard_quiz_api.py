@@ -274,3 +274,73 @@ def test_quiz_vault_asset_and_sw_v10(client):
     assert "master-studio-v10" in sw
     assert "quiz-vault.js" in sw
     assert "/api/quiz/bundle" in sw
+
+
+def test_api_quiz_import_from_mobile(client, monkeypatch):
+    with TemporaryDirectory() as tmpdir:
+        tmp_base = Path(tmpdir)
+        monkeypatch.setattr(dashboard_app, "BASE", tmp_base)
+
+        # Send quiz from mobile over LAN
+        quiz_payload = {
+            "subject_id": "04_Advanced_Software_Eng",
+            "quiz_id": "Quiz_Telegram_Synced",
+            "topic": "Telegram Received Lecture",
+            "questions": [
+                {
+                    "id": "q1",
+                    "concept_id": "telegram_sync",
+                    "bloom_level": "Understand",
+                    "question": "Was this quiz synced from Telegram over LAN?",
+                    "question_ar": "هل تم استيراد هذا الكويز من تليغرام ومزامنته عبر الشبكة المحلية؟",
+                    "options": ["Yes, flawlessly", "No", "Failed", "Unknown"],
+                    "options_ar": ["نعم، بسلاسة تامة", "لا", "فشل", "غير معروف"],
+                    "options_en": ["Yes, flawlessly", "No", "Failed", "Unknown"],
+                    "answer": "A",
+                    "correct": 0,
+                    "explanation": "Seamless LAN sync between mobile PWA and PC agent."
+                }
+            ]
+        }
+
+        res = client.post("/api/quiz/import", json=quiz_payload)
+        assert res.status_code == 200
+        data = res.get_json()
+        assert data["status"] == "success"
+        assert len(data["imported"]) == 1
+
+        # Verify file exists on PC storage in temporary base
+        saved_file = tmp_base / "01_Semester_1" / "04_Advanced_Software_Eng" / "07_Quizzes_&_Anki" / "Quiz_Telegram_Synced.json"
+        assert saved_file.exists()
+        saved_data = json.loads(saved_file.read_text(encoding="utf-8"))
+        assert saved_data["schema_version"] == 2
+        assert saved_data["topic"] == "Telegram Received Lecture"
+
+
+def test_post_quiz_web_share_target(client):
+    from io import BytesIO
+    quiz_json_bytes = json.dumps({
+        "topic": "Shared via Telegram",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "share_target",
+                "bloom_level": "Apply",
+                "question": "Is Web Share Target active?",
+                "question_ar": "هل ميزة مشاركة الويب نشطة؟",
+                "options": ["Active", "Inactive", "Unknown", "Disabled"],
+                "answer": "A",
+                "correct": 0,
+                "explanation": "Web Share Target POST handler receives files directly."
+            }
+        ]
+    }).encode("utf-8")
+
+    data = {
+        "quiz_files": [(BytesIO(quiz_json_bytes), "Quiz_Shared.json")]
+    }
+    res = client.post("/quiz?shared=true", data=data, content_type="multipart/form-data")
+    assert res.status_code == 200
+    html = res.get_data(as_text=True)
+    assert "ms-shared-quizzes-data" in html
+    assert "Shared via Telegram" in html

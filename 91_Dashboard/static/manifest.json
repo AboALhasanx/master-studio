@@ -24,5 +24,37 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "file_handlers": [
+    {
+      "action": "/quiz",
+      "name": "Master Studio Quiz Bank",
+      "icons": [
+        {
+          "src": "/static/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "accept": {
+        "application/json": [".json"],
+        "application/x-masterstudio-quiz": [".msquiz"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/quiz?shared=true",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "files": [
+        {
+          "name": "quiz_files",
+          "accept": ["application/json", ".json", "text/plain", "*/*"]
+        }
+      ]
+    }
+  }
 }

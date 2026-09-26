@@ -261,6 +261,8 @@ class QuizApp {
         this.updateSoundIcon();
         this.updateShuffleUI();
         this.initEvents();
+        this.initDragAndDrop();
+        this.initFileHandlingLaunchQueue();
         this.checkServerHealth();
         setInterval(() => this.checkServerHealth(), 15000);
         window.addEventListener('online', () => {
@@ -269,6 +271,7 @@ class QuizApp {
         });
         this.flushOfflineQueue();
         await this.loadBookmarks();
+        await this.checkSharedImportReceiver();
         await this.loadQuiz();
         if (!this.directMode && window.quizVault) {
             window.quizVault.getAllQuizzes().then(stored => {
@@ -435,58 +438,27 @@ class QuizApp {
             const files = Array.from(e.target.files || []);
             if (!files.length) return;
 
-            let totalImported = 0;
             const importedQuizzes = [];
-
             for (const file of files) {
                 try {
                     const text = await file.text();
                     const data = JSON.parse(text);
-
-                    // Check if Curriculum Bundle (bundle_version or quizzes array)
-                    if (data && Array.isArray(data.quizzes) && (data.bundle_version || data.quizzes.length)) {
-                        if (window.quizVault) {
-                            const res = await window.quizVault.importBundle(data);
-                            totalImported += res.imported;
-                        } else {
-                            totalImported += data.quizzes.length;
-                        }
-                        data.quizzes.forEach(q => {
-                            const norm = window.QuizVault?.normalizeClientQuiz ? window.QuizVault.normalizeClientQuiz(q) : q;
-                            if (norm) {
-                                importedQuizzes.push(norm);
-                                try {
-                                    localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
-                                } catch (err) {}
-                            }
-                        });
-                    } else if (data && Array.isArray(data.questions) && data.questions.length > 0) {
-                        // Single Quiz JSON
-                        const norm = window.QuizVault?.normalizeClientQuiz
-                            ? window.QuizVault.normalizeClientQuiz(data, null, file.name.replace(/\.json$/i, ''))
-                            : data;
-                        if (window.quizVault) {
-                            await window.quizVault.putQuiz(norm);
-                        }
-                        try {
-                            localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
-                        } catch (err) {}
-                        totalImported++;
-                        importedQuizzes.push(norm);
-                    }
+                    const processed = await this.processImportedQuizData(data, file.name);
+                    if (processed) importedQuizzes.push(...processed);
                 } catch (err) {
                     console.warn(`Failed to parse file ${file.name}:`, err);
                 }
             }
 
-            if (totalImported === 0) {
+            if (importedQuizzes.length === 0) {
                 alert('لم يتم العثور على أسئلة أو كويزات صالحة في الملفات المختارة.');
                 return;
             }
 
             localInput.value = '';
             this.injectImportedQuizzesToCatalog(importedQuizzes);
-            this.showTemporaryToast(`تم استيراد ${totalImported} كويز بنجاح إلى ذاكرة الهاتف!`);
+            this.showTemporaryToast(`تم استيراد ${importedQuizzes.length} كويز بنجاح إلى ذاكرة الهاتف!`);
+            this.syncQuizzesToPCAgent(importedQuizzes);
 
             if (importedQuizzes.length === 1 && (!this.quizData || !this.quizData.questions || !this.quizData.questions.length)) {
                 this.quizData = importedQuizzes[0];
@@ -651,6 +623,230 @@ class QuizApp {
         });
 
         this.refreshLucideIcons();
+    }
+
+    async processImportedQuizData(data, filename = 'Quiz') {
+        if (!data || typeof data !== 'object') return [];
+        const result = [];
+
+        // 1. Check if Curriculum Bundle
+        if (data.bundle_version || Array.isArray(data.quizzes)) {
+            if (window.quizVault) {
+                await window.quizVault.importBundle(data);
+            }
+            (data.quizzes || []).forEach(q => {
+                const norm = window.QuizVault?.normalizeClientQuiz ? window.QuizVault.normalizeClientQuiz(q) : q;
+                if (norm) {
+                    result.push(norm);
+                    try {
+                        localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
+                    } catch (err) {}
+                }
+            });
+        } else if (Array.isArray(data.questions) && data.questions.length > 0) {
+            // 2. Single Quiz JSON
+            const cleanSlug = filename.replace(/\.json$/i, '');
+            const norm = window.QuizVault?.normalizeClientQuiz
+                ? window.QuizVault.normalizeClientQuiz(data, null, cleanSlug)
+                : data;
+            if (window.quizVault) {
+                await window.quizVault.putQuiz(norm);
+            }
+            try {
+                localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
+            } catch (err) {}
+            result.push(norm);
+        }
+        return result;
+    }
+
+    async syncQuizzesToPCAgent(quizzes) {
+        if (!Array.isArray(quizzes) || quizzes.length === 0) return;
+        const isOnline = await this.checkServerHealth();
+        if (!isOnline) return;
+
+        try {
+            const res = await fetch('/api/quiz/import', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ quizzes })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                console.log('PC Agent Quiz Sync:', data.message);
+                this.showTemporaryToast(`تمت مزامنة ${quizzes.length} كويز مع كمبيوتر ماستر ستوديو بنجاح!`);
+            }
+        } catch (e) {
+            console.warn('LAN PC agent sync skipped:', e);
+        }
+    }
+
+    initFileHandlingLaunchQueue() {
+        if ('launchQueue' in window && typeof window.launchQueue.setConsumer === 'function') {
+            window.launchQueue.setConsumer(async (launchParams) => {
+                if (!launchParams.files || !launchParams.files.length) return;
+                const imported = [];
+                for (const handle of launchParams.files) {
+                    try {
+                        const file = await handle.getFile();
+                        const text = await file.text();
+                        const data = JSON.parse(text);
+                        const processed = await this.processImportedQuizData(data, file.name);
+                        if (processed) imported.push(...processed);
+                    } catch (err) {
+                        console.warn('LaunchQueue file read error:', err);
+                    }
+                }
+                if (imported.length > 0) {
+                    this.injectImportedQuizzesToCatalog(imported);
+                    this.showTemporaryToast(`تم فتح وحفظ ${imported.length} كويز بنجاح!`);
+                    this.syncQuizzesToPCAgent(imported);
+                    if (imported.length === 1 && (!this.quizData || !this.quizData.questions || !this.quizData.questions.length)) {
+                        this.quizData = imported[0];
+                        this.subjectId = this.quizData.subject_id;
+                        this.quizId = this.quizData.quiz_id;
+                        this.setupQuizSession();
+                    }
+                }
+            });
+        }
+    }
+
+    async checkSharedImportReceiver() {
+        const imported = [];
+
+        // 1. Check DOM for LAN POST Web Share Target injection
+        const domShared = document.getElementById('ms-shared-quizzes-data');
+        if (domShared && domShared.textContent) {
+            try {
+                const list = JSON.parse(domShared.textContent);
+                domShared.remove();
+                if (Array.isArray(list) && list.length > 0) {
+                    for (const item of list) {
+                        const processed = await this.processImportedQuizData(item, item.quiz_id || 'Shared_Quiz');
+                        if (processed) imported.push(...processed);
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // 2. Check Service Worker cache for offline Web Share Target injection
+        try {
+            const swRes = await fetch('/api/internal/shared-quizzes');
+            if (swRes.ok) {
+                const list = await swRes.json();
+                if (Array.isArray(list) && list.length > 0) {
+                    for (const item of list) {
+                        const processed = await this.processImportedQuizData(item, item.quiz_id || 'Shared_Quiz');
+                        if (processed) imported.push(...processed);
+                    }
+                }
+            }
+        } catch (e) {}
+
+        if (imported.length > 0) {
+            this.injectImportedQuizzesToCatalog(imported);
+            this.showTemporaryToast(`تم استلام وحفظ ${imported.length} كويز من المشاركة!`);
+            this.syncQuizzesToPCAgent(imported);
+            if (imported.length === 1 && (!this.quizData || !this.quizData.questions || !this.quizData.questions.length)) {
+                this.quizData = imported[0];
+                this.subjectId = this.quizData.subject_id;
+                this.quizId = this.quizData.quiz_id;
+                this.setupQuizSession();
+            }
+        }
+    }
+
+    initDragAndDrop() {
+        const root = document.body;
+        if (!root) return;
+
+        ['dragenter', 'dragover'].forEach(name => {
+            root.addEventListener(name, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        root.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const dt = e.dataTransfer;
+            if (!dt) return;
+
+            const files = [];
+
+            if (dt.items && dt.items.length > 0) {
+                const entries = [];
+                for (let i = 0; i < dt.items.length; i++) {
+                    const item = dt.items[i];
+                    if (typeof item.webkitGetAsEntry === 'function') {
+                        const entry = item.webkitGetAsEntry();
+                        if (entry) entries.push(entry);
+                    } else if (item.kind === 'file') {
+                        const file = item.getAsFile();
+                        if (file) files.push(file);
+                    }
+                }
+
+                if (entries.length > 0) {
+                    const readEntryRecursively = async (entry) => {
+                        if (entry.isFile) {
+                            return new Promise((resolve) => {
+                                entry.file((f) => {
+                                    if (f.name.toLowerCase().endsWith('.json')) files.push(f);
+                                    resolve();
+                                }, () => resolve());
+                            });
+                        } else if (entry.isDirectory) {
+                            return new Promise((resolve) => {
+                                const dirReader = entry.createReader();
+                                dirReader.readEntries(async (childEntries) => {
+                                    for (const child of childEntries) {
+                                        await readEntryRecursively(child);
+                                    }
+                                    resolve();
+                                }, () => resolve());
+                            });
+                        }
+                    };
+
+                    for (const entry of entries) {
+                        await readEntryRecursively(entry);
+                    }
+                }
+            } else if (dt.files && dt.files.length > 0) {
+                files.push(...Array.from(dt.files));
+            }
+
+            const jsonFiles = files.filter(f => f.name.toLowerCase().endsWith('.json'));
+            if (!jsonFiles.length) return;
+
+            const totalImported = [];
+            for (const f of jsonFiles) {
+                try {
+                    const text = await f.text();
+                    const data = JSON.parse(text);
+                    const processed = await this.processImportedQuizData(data, f.name);
+                    if (processed) totalImported.push(...processed);
+                } catch (err) {
+                    console.warn(`Drag-drop file error ${f.name}:`, err);
+                }
+            }
+
+            if (totalImported.length > 0) {
+                this.injectImportedQuizzesToCatalog(totalImported);
+                this.showTemporaryToast(`تم استيراد ${totalImported.length} كويز بنجاح!`);
+                this.syncQuizzesToPCAgent(totalImported);
+                if (totalImported.length === 1 && (!this.quizData || !this.quizData.questions || !this.quizData.questions.length)) {
+                    this.quizData = totalImported[0];
+                    this.subjectId = this.quizData.subject_id;
+                    this.quizId = this.quizData.quiz_id;
+                    this.setupQuizSession();
+                }
+            }
+        });
     }
     toggleShuffleMode() {
         this.shuffleMode = !this.shuffleMode;

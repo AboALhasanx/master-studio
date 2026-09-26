@@ -74,6 +74,50 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
+    // 0a. Web Share Target POST Handler (receives quiz files shared from Telegram or Android File Managers)
+    if (event.request.method === 'POST' && url.pathname === '/quiz' && url.searchParams.has('shared')) {
+        event.respondWith((async () => {
+            try {
+                const formData = await event.request.formData();
+                const files = formData.getAll('quiz_files');
+                const fileContents = [];
+                for (const file of files) {
+                    try {
+                        const text = await file.text();
+                        const parsed = JSON.parse(text);
+                        fileContents.push(parsed);
+                    } catch (e) {}
+                }
+                if (fileContents.length > 0) {
+                    const cache = await caches.open(CACHE_NAME);
+                    await cache.put(
+                        new Request('/api/internal/shared-quizzes'),
+                        new Response(JSON.stringify(fileContents), {
+                            headers: { 'Content-Type': 'application/json' }
+                        })
+                    );
+                }
+            } catch (err) {
+                console.warn('SW share_target error:', err);
+            }
+            return Response.redirect('/quiz?from_share=1', 303);
+        })());
+        return;
+    }
+
+    // 0b. Read and drain shared quizzes from cache
+    if (url.pathname === '/api/internal/shared-quizzes') {
+        event.respondWith((async () => {
+            const cache = await caches.open(CACHE_NAME);
+            const match = await cache.match(new Request('/api/internal/shared-quizzes'));
+            if (match) {
+                await cache.delete(new Request('/api/internal/shared-quizzes'));
+                return match;
+            }
+            return new Response(JSON.stringify([]), { headers: { 'Content-Type': 'application/json' } });
+        })());
+        return;
+    }
     // 1a. Code assets (JS/CSS): Stale-While-Revalidate (instant offline boot + fresh background update)
     if (url.pathname.startsWith('/static/') && (url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))) {
         event.respondWith(

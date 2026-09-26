@@ -479,10 +479,23 @@ def service_worker_root():
     return resp
 
 
-@app.route("/quiz")
+@app.route("/quiz", methods=["GET", "POST"])
 def quiz_hub():
-    """Hub landing page for interactive quizzes."""
+    """Hub landing page for interactive quizzes, supporting Web Share Target POST."""
     lan_ip = get_lan_ip()
+    shared_quizzes = []
+    if request.method == "POST":
+        files = request.files.getlist("quiz_files")
+        for f in files:
+            try:
+                raw = json.loads(f.read().decode("utf-8"))
+                if isinstance(raw, dict):
+                    if "quizzes" in raw and isinstance(raw["quizzes"], list):
+                        shared_quizzes.extend(raw["quizzes"])
+                    elif "questions" in raw and isinstance(raw["questions"], list):
+                        shared_quizzes.append(raw)
+            except Exception:
+                continue
     return render_template(
         "quiz.html",
         direct_mode=False,
@@ -490,8 +503,8 @@ def quiz_hub():
         quiz_id=None,
         lan_ip=lan_ip,
         available_quizzes=get_all_quizzes(),
+        shared_quizzes=json.dumps(shared_quizzes) if shared_quizzes else None,
     )
-
 
 @app.route("/quiz/bookmarks")
 def quiz_bookmarks_page():
@@ -581,6 +594,64 @@ def api_quiz_submit():
 
     return jsonify(result), 200
 
+
+
+@app.route("/api/quiz/import", methods=["POST"])
+def api_quiz_import():
+    """
+    Receives a normalized quiz JSON from mobile client (e.g. from Telegram or file manager)
+    and saves it into the canonical subject vault on the PC.
+    """
+    payload = request.get_json(silent=True)
+    if not payload and request.files:
+        f = request.files.get("quiz_file") or request.files.get("file")
+        if f:
+            try:
+                payload = json.loads(f.read().decode("utf-8"))
+            except Exception:
+                payload = None
+
+    if not isinstance(payload, dict):
+        return jsonify({"status": "error", "message": "Invalid JSON quiz payload"}), 400
+
+    imported_quizzes = []
+    if "quizzes" in payload and isinstance(payload["quizzes"], list):
+        raw_list = payload["quizzes"]
+    elif "questions" in payload and isinstance(payload["questions"], list):
+        raw_list = [payload]
+    else:
+        return jsonify({"status": "error", "message": "No valid quiz or questions found"}), 400
+
+    for item in raw_list:
+        if not isinstance(item, dict):
+            continue
+        subj = item.get("subject_id") or item.get("subject") or "00_STUDIO_HUB"
+        quiz_id = item.get("quiz_id") or "Quiz_Imported"
+        norm = normalize_quiz_schema(item, subject_id=subj, quiz_id=quiz_id)
+        sem_num = norm.get("semester", 1)
+
+        sem_dir = BASE / f"0{sem_num}_Semester_{sem_num}"
+        target_dir = sem_dir / subj / "07_Quizzes_&_Anki"
+        if not target_dir.is_dir():
+            for sdir in sem_dir.glob("*"):
+                if sdir.is_dir() and subj.lower() in sdir.name.lower():
+                    target_dir = sdir / "07_Quizzes_&_Anki"
+                    break
+        target_dir.mkdir(parents=True, exist_ok=True)
+        target_file = target_dir / f"{quiz_id}.json"
+        target_file.write_text(json.dumps(norm, ensure_ascii=False, indent=2), encoding="utf-8")
+        imported_quizzes.append({
+            "subject_id": subj,
+            "quiz_id": quiz_id,
+            "path": str(target_file.relative_to(BASE)),
+            "questions_count": len(norm.get("questions", []))
+        })
+
+    return jsonify({
+        "status": "success",
+        "message": f"Successfully imported {len(imported_quizzes)} quizzes into PC vault",
+        "imported": imported_quizzes
+    }), 200
 
 @app.route("/api/quiz/bookmarks", methods=["GET", "POST"])
 def api_quiz_bookmarks():
