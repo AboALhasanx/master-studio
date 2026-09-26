@@ -4,6 +4,13 @@ Agent-native personal university environment for a Master of Computer Science (M
 
 This vault is designed to be operated entirely through natural-language chat with AI agents — no CLI commands required from the student.
 
+[![CI](https://github.com/AboALhasanx/master-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/AboALhasanx/master-studio/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
+
+- 📜 **License:** [Apache-2.0](LICENSE) · 🤝 **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md) · 🔒 **Security:** [SECURITY.md](SECURITY.md)
+- 📱 **iOS roadmap (deferred):** [#1 Shortcut import](https://github.com/AboALhasanx/master-studio/issues/1) · [#2 Telegram Mini App](https://github.com/AboALhasanx/master-studio/issues/2) · [#3 Files-app seed](https://github.com/AboALhasanx/master-studio/issues/3)
+
 ---
 
 ## Repository Structure
@@ -81,6 +88,16 @@ All tools are local, free, and run offline:
 | `91_Dashboard/` (Flask) | Local web dashboard with Interactive Quizzes (Study & Exam modes, BKT telemetry) |
 ---
 
+## Quickstart (for contributors)
+
+```bash
+pip install -r requirements.txt   # Python 3.10+
+pytest -q                         # run the test suite (must pass before any PR)
+```
+
+- Full guide: [CONTRIBUTING.md](CONTRIBUTING.md) · Docs index: [docs/index.md](docs/index.md)
+- Dashboard: `91_Dashboard/` (Flask, optional for most changes) · Toolbox: `90_Shared_Toolbox/tools/`
+
 ## Academic Thresholds
 
 | Threshold | Value | Meaning |
@@ -109,6 +126,7 @@ Other subjects are staged with syllabi and doctor profiles; study content is pro
 
 - **Tracked:** Markdown notes, diagrams (PNG), quizzes (JSON), final `.docx` study notes, final `.pptx` seminar decks
 - **Gitignored:** Textbooks and raw lecture PDFs (`02_Raw_Materials/`), personal archives, OS artifacts
+- **Never committed:** signed APKs, keystores (`*.keystore`/`*.jks`), `.env` files, generated `quiz_mobile.html` — all gitignored by rule
 - Large binary materials live in Google Drive; this repo holds the processed, agent-ready knowledge layer
 
 ---

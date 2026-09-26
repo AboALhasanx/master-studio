@@ -1,0 +1,20 @@
+name: Stale
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 120
+          days-before-close: 21
+          stale-issue-message: "No activity for 120 days — still relevant? Comment to keep open."
+          stale-pr-message: "No activity for 120 days — still wanted? Push or comment to keep open."
+          exempt-labels: "deferred,pinned,security"

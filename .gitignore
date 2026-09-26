@@ -111,4 +111,22 @@ output/
 # Android Build Artifacts
 91_Dashboard/android_build/
 *.keystore
+*.jks
+*.apk
+*.aab
 *.idsig
+*.apks
+
+# Generated web artifacts (build outputs, kept on disk, never published)
+quiz_mobile.html
+
+# Ephemeral device verification artifacts
+/tablet_*.png
+/temp_*.json
+/_*.txt
+
+# Editors & local runtimes
+.vscode/
+.idea/
+venv/
+*.log
