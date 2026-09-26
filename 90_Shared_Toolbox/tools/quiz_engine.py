@@ -12,9 +12,18 @@ to calibrate mastery from correct/wrong/lucky-guess/reflection signals.
 """
 
 import json
+import logging
+import threading
 from pathlib import Path
 from datetime import datetime
+
+logger = logging.getLogger(__name__)
+
 SEEN_UUIDS = set()
+
+# Serializes read-modify-write cycles on quiz_history.json and the session
+# journal across concurrent Flask request threads (threaded=True server).
+_INGEST_LOCK = threading.RLock()
 
 
 def calculate_bkt_update(
@@ -62,49 +71,61 @@ def calculate_bkt_update(
 def record_structured_history(payload: dict, hub_path: Path, bloom_gaps: list, wrong_parts: list, lucky_ids: list):
     """
     Atomically records structured submission telemetry to 00_STUDIO_HUB/quiz_history.json.
-    Uses a temporary file swap to guarantee zero file corruption under concurrency.
+    Uses a temporary file swap to guarantee zero file corruption under concurrency,
+    and holds an in-process lock around the read-modify-write cycle so concurrent
+    submissions can never overwrite each other's entries.
+
+    Raises RuntimeError instead of swallowing failures: an unreadable or
+    unwritable history file must surface as an error response so the client
+    keeps its submission queued for retry rather than silently losing it.
     """
-    history_file = hub_path / "quiz_history.json"
-    history = []
-    if history_file.is_file():
-        try:
-            history = json.loads(history_file.read_text(encoding="utf-8"))
-            if not isinstance(history, list):
-                history = []
-        except Exception:
-            history = []
+    with _INGEST_LOCK:
+        history_file = hub_path / "quiz_history.json"
+        history = []
+        if history_file.is_file():
+            try:
+                history = json.loads(history_file.read_text(encoding="utf-8"))
+                if not isinstance(history, list):
+                    raise ValueError("quiz_history.json must contain a JSON list")
+            except Exception as e:
+                # Never clobber an existing (possibly recoverable) history file.
+                logger.exception("quiz_history.json is unreadable; refusing to overwrite it")
+                raise RuntimeError(f"quiz_history.json unreadable; refusing to overwrite: {e}") from e
 
-    sub_uuid = payload.get("submission_uuid")
-    # Avoid duplicates in history file
-    if any(item.get("submission_uuid") == sub_uuid for item in history):
-        return
+        sub_uuid = payload.get("submission_uuid")
+        # Avoid duplicates in history file
+        if any(item.get("submission_uuid") == sub_uuid for item in history):
+            return
 
-    summary = payload.get("summary", {})
-    entry = {
-        "submission_uuid": sub_uuid,
-        "timestamp": datetime.now().isoformat(),
-        "subject_id": payload.get("subject_id", "Unknown_Subject"),
-        "quiz_id": payload.get("quiz_id") or "",
-        "topic": payload.get("topic", "Quiz"),
-        "percentage": float(summary.get("percentage", 0.0)),
-        "score": int(summary.get("correct", 0)),
-        "total": int(summary.get("total", 0)),
-        "avg_dwell_time_seconds": float(summary.get("avg_dwell_time_seconds", 0.0) or 0.0),
-        "session_duration_seconds": payload.get("session_duration_seconds") or summary.get("session_duration_seconds"),
-        "finished_at": payload.get("finished_at") or datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "bloom_gaps": bloom_gaps,
-        "wrong_questions": wrong_parts,
-        "lucky_questions": lucky_ids
-    }
-    history.append(entry)
+        summary = payload.get("summary", {})
+        entry = {
+            "submission_uuid": sub_uuid,
+            "timestamp": datetime.now().isoformat(),
+            "subject_id": payload.get("subject_id", "Unknown_Subject"),
+            "quiz_id": payload.get("quiz_id") or "",
+            "topic": payload.get("topic", "Quiz"),
+            "percentage": float(summary.get("percentage", 0.0)),
+            "score": int(summary.get("correct", 0)),
+            "total": int(summary.get("total", 0)),
+            "avg_dwell_time_seconds": float(summary.get("avg_dwell_time_seconds", 0.0) or 0.0),
+            "session_duration_seconds": payload.get("session_duration_seconds") or summary.get("session_duration_seconds"),
+            "finished_at": payload.get("finished_at") or datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "bloom_gaps": bloom_gaps,
+            "wrong_questions": wrong_parts,
+            "lucky_questions": lucky_ids
+        }
+        history.append(entry)
 
-    try:
-        hub_path.mkdir(parents=True, exist_ok=True)
         tmp_file = hub_path / f"quiz_history_{sub_uuid}.tmp"
-        tmp_file.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
-        tmp_file.replace(history_file)
-    except Exception:
-        pass
+        try:
+            hub_path.mkdir(parents=True, exist_ok=True)
+            tmp_file.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
+            tmp_file.replace(history_file)
+        except Exception as e:
+            logger.exception("Failed to persist quiz history entry %s", sub_uuid)
+            raise RuntimeError(f"Failed to persist quiz history: {e}") from e
+        finally:
+            tmp_file.unlink(missing_ok=True)
 
 
 def get_quiz_history(hub_path: Path) -> dict:
@@ -167,6 +188,15 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
     if not sub_uuid:
         return {"status": "error", "message": "Missing submission_uuid"}
 
+    # Thread-safe: whole ingestion (journal idempotency + history file
+    # read-modify-write + journal append) runs serialized under the lock.
+    # Persistence failures propagate as exceptions so the HTTP layer can
+    # answer 5xx and the client keeps the submission queued for retry.
+    with _INGEST_LOCK:
+        return _process_quiz_telemetry_locked(payload, sub_uuid, hub_path)
+
+
+def _process_quiz_telemetry_locked(payload: dict, sub_uuid: str, hub_path: Path) -> dict:
     # Idempotency check against memory
     if sub_uuid in SEEN_UUIDS:
         return {"status": "already_ingested"}
@@ -182,8 +212,6 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
         if sub_uuid in session_text:
             SEEN_UUIDS.add(sub_uuid)
             return {"status": "already_ingested"}
-
-    SEEN_UUIDS.add(sub_uuid)
 
     subject = payload.get("subject_id", "Unknown_Subject")
     topic = payload.get("topic", "Quiz")
@@ -272,5 +300,9 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
 
     with open(today_session, "a", encoding="utf-8") as f:
         f.write("".join(lines))
+
+    # Only mark the UUID as seen after BOTH the history file and the journal
+    # were written successfully, so a failed submission can be retried cleanly.
+    SEEN_UUIDS.add(sub_uuid)
 
     return {"status": "success", "percentage": percentage}

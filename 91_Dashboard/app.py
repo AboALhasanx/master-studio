@@ -39,6 +39,15 @@ def read_file(path):
         return ""
 
 
+_SAFE_VAULT_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 _\-]{0,99}$")
+
+
+def is_safe_vault_name(name) -> bool:
+    """Reject path separators, '..' and other traversal characters in
+    client-controlled vault folder/file names (subject_id, quiz_id)."""
+    return isinstance(name, str) and bool(_SAFE_VAULT_NAME.match(name))
+
+
 def get_lan_ip() -> str:
     """Detect host Wi-Fi/Ethernet LAN IP address, fallback to 127.0.0.1."""
     try:
@@ -588,7 +597,14 @@ def api_quiz_submit():
     if not isinstance(payload, dict):
         return jsonify({"status": "error", "message": "Invalid JSON payload"}), 400
 
-    result = process_quiz_telemetry(payload, HUB)
+    try:
+        result = process_quiz_telemetry(payload, HUB)
+    except Exception as e:
+        # Persistence failure: answer 5xx so the PWA keeps the submission
+        # queued in QuizVault and retries later instead of losing it.
+        app.logger.exception("Telemetry ingestion failed")
+        return jsonify({"status": "error", "message": f"Persistence failure: {e}"}), 500
+
     if result.get("status") == "error":
         return jsonify(result), 400
 
@@ -627,8 +643,18 @@ def api_quiz_import():
             continue
         subj = item.get("subject_id") or item.get("subject") or "00_STUDIO_HUB"
         quiz_id = item.get("quiz_id") or "Quiz_Imported"
+        if not is_safe_vault_name(subj) or not is_safe_vault_name(quiz_id):
+            return jsonify({
+                "status": "error",
+                "message": f"Invalid subject_id or quiz_id (path traversal rejected): {subj!r} / {quiz_id!r}"
+            }), 400
         norm = normalize_quiz_schema(item, subject_id=subj, quiz_id=quiz_id)
-        sem_num = norm.get("semester", 1)
+        try:
+            sem_num = int(norm.get("semester", 1))
+        except (TypeError, ValueError):
+            return jsonify({"status": "error", "message": f"Invalid semester: {norm.get('semester')!r}"}), 400
+        if not 1 <= sem_num <= 9:
+            return jsonify({"status": "error", "message": f"Invalid semester: {sem_num}"}), 400
 
         sem_dir = BASE / f"0{sem_num}_Semester_{sem_num}"
         target_dir = sem_dir / subj / "07_Quizzes_&_Anki"
@@ -637,8 +663,15 @@ def api_quiz_import():
                 if sdir.is_dir() and subj.lower() in sdir.name.lower():
                     target_dir = sdir / "07_Quizzes_&_Anki"
                     break
-        target_dir.mkdir(parents=True, exist_ok=True)
         target_file = target_dir / f"{quiz_id}.json"
+        try:
+            target_file.resolve().relative_to(BASE.resolve())
+        except ValueError:
+            return jsonify({
+                "status": "error",
+                "message": "Resolved import path escapes the vault root"
+            }), 400
+        target_dir.mkdir(parents=True, exist_ok=True)
         target_file.write_text(json.dumps(norm, ensure_ascii=False, indent=2), encoding="utf-8")
         imported_quizzes.append({
             "subject_id": subj,

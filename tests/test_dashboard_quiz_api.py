@@ -317,6 +317,60 @@ def test_api_quiz_import_from_mobile(client, monkeypatch):
         assert saved_data["topic"] == "Telegram Received Lecture"
 
 
+def _traversal_quiz_payload(**overrides):
+    base = {
+        "subject_id": "04_Advanced_Software_Eng",
+        "quiz_id": "Quiz_Safe",
+        "questions": [
+            {
+                "id": "q1",
+                "question": "Safe question?",
+                "options": ["a", "b", "c", "d"],
+                "answer": "A",
+                "correct": 0,
+                "explanation": "Because.",
+            }
+        ],
+    }
+    base.update(overrides)
+    return base
+
+
+def test_api_quiz_import_rejects_subject_traversal(client, monkeypatch):
+    with TemporaryDirectory() as tmpdir:
+        tmp_base = Path(tmpdir)
+        monkeypatch.setattr(dashboard_app, "BASE", tmp_base)
+
+        res = client.post("/api/quiz/import", json=_traversal_quiz_payload(subject_id="../../evil"))
+        assert res.status_code == 400
+        assert "traversal" in res.get_json()["message"]
+        assert not (tmp_base.parent / "evil").exists()
+
+
+def test_api_quiz_import_rejects_quiz_id_traversal(client, monkeypatch):
+    with TemporaryDirectory() as tmpdir:
+        tmp_base = Path(tmpdir)
+        monkeypatch.setattr(dashboard_app, "BASE", tmp_base)
+
+        res = client.post(
+            "/api/quiz/import",
+            json=_traversal_quiz_payload(quiz_id="../../../91_Dashboard/evil"),
+        )
+        assert res.status_code == 400
+        assert "traversal" in res.get_json()["message"]
+        assert not (tmp_base / "91_Dashboard" / "evil.json").exists()
+
+
+def test_api_quiz_import_rejects_bad_semester(client, monkeypatch):
+    with TemporaryDirectory() as tmpdir:
+        tmp_base = Path(tmpdir)
+        monkeypatch.setattr(dashboard_app, "BASE", tmp_base)
+
+        res = client.post("/api/quiz/import", json=_traversal_quiz_payload(semester=999))
+        assert res.status_code == 400
+        assert "semester" in res.get_json()["message"]
+
+
 def test_post_quiz_web_share_target(client):
     from io import BytesIO
     quiz_json_bytes = json.dumps({

@@ -293,3 +293,77 @@ def test_process_quiz_telemetry_structured_history():
         assert data["history"][0]["submission_uuid"] == "struct-uuid-1"
         assert "Quiz_01_Software_Crisis" in data["summary"]
         assert data["summary"]["Quiz_01_Software_Crisis"]["best_percentage"] == 80.0
+
+
+def test_corrupt_history_file_refuses_overwrite():
+    """P1: a corrupt quiz_history.json must surface as an error, never be clobbered."""
+    from quiz_engine import record_structured_history
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        corrupted = "{ this is not valid json"
+        (hub / "quiz_history.json").write_text(corrupted, encoding="utf-8")
+
+        payload = {"submission_uuid": "corrupt-guard-1", "summary": {"percentage": 50.0}}
+        with pytest.raises(RuntimeError):
+            record_structured_history(payload, hub, [], [], [])
+
+        # The corrupt file must survive byte-for-byte (recoverable by the user)
+        assert (hub / "quiz_history.json").read_text(encoding="utf-8") == corrupted
+        # No temp file left behind
+        assert not list(hub.glob("*.tmp"))
+
+
+def test_failed_persistence_allows_clean_retry():
+    """P1: a failed write must NOT poison SEEN_UUIDS, so the retry succeeds."""
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        (hub / "sessions").mkdir()
+        (hub / "quiz_history.json").write_text("{ corrupt", encoding="utf-8")
+
+        payload = {
+            "submission_uuid": "retry-after-fail-1",
+            "subject_id": "01_Cyber_Security",
+            "quiz_id": "Quiz_01_Cyber_Security",
+            "topic": "Retry Drill",
+            "summary": {"percentage": 75.0, "correct": 3, "total": 4, "avg_dwell_time_seconds": 10.0},
+            "questions": [{"id": "q1", "is_correct": True}],
+        }
+
+        with pytest.raises(RuntimeError):
+            process_quiz_telemetry(payload, hub)
+
+        # Operator repairs the file -> same submission must now ingest cleanly
+        (hub / "quiz_history.json").write_text("[]", encoding="utf-8")
+        res = process_quiz_telemetry(payload, hub)
+        assert res["status"] == "success"
+
+        from quiz_engine import get_quiz_history
+        data = get_quiz_history(hub)
+        assert len(data["history"]) == 1
+
+
+def test_concurrent_submissions_all_persist():
+    """P1: concurrent submissions must never lose entries (thread lock around RMW)."""
+    from concurrent.futures import ThreadPoolExecutor
+    with TemporaryDirectory() as tmpdir:
+        hub = Path(tmpdir)
+        (hub / "sessions").mkdir()
+
+        def make_payload(i):
+            return {
+                "submission_uuid": f"conc-uuid-{i}-{datetime.now().timestamp()}",
+                "subject_id": "01_Cyber_Security",
+                "quiz_id": f"Quiz_Conc_{i}",
+                "topic": f"Concurrency Drill {i}",
+                "summary": {"percentage": 60.0, "correct": 3, "total": 5, "avg_dwell_time_seconds": 9.0},
+                "questions": [{"id": "q1", "is_correct": True}],
+            }
+
+        payloads = [make_payload(i) for i in range(6)]
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            results = list(pool.map(lambda p: process_quiz_telemetry(p, hub), payloads))
+
+        assert all(r["status"] == "success" for r in results)
+
+        data = json.loads((hub / "quiz_history.json").read_text(encoding="utf-8"))
+        assert len(data) == 6
