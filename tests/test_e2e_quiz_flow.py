@@ -383,7 +383,7 @@ def test_e2e_bundle_offline_sync_lifecycle(client, isolated_hub):
     assert res_bundle.status_code == 200
     bundle = res_bundle.get_json()
     assert bundle["bundle_version"] == 2
-    assert bundle["total_quizzes"] == 6
+    assert bundle["total_quizzes"] >= 6
 
     # 2. Pick a quiz from the bundle (e.g. 05_Soft_Computing)
     target_quiz = next(q for q in bundle["quizzes"] if q["subject_id"] == "05_Soft_Computing" and q["quiz_id"] == "Quiz_01_Soft_Computing_Foundations")

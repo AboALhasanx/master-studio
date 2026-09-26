@@ -2159,7 +2159,27 @@ class QuizApp {
         const sessionDuration = this.sessionDuration || Math.round((Date.now() - this.sessionStartTime) / 1000);
 
         const submissionUuid = this.submissionUUID || this.generateUUID();
-        payload.submission_uuid = submissionUuid;
+
+        const payload = {
+            submission_uuid: submissionUuid,
+            quiz_id: this.quizId || this.quizData.quiz_id || null,
+            instructor: this.quizData.instructor || null,
+            subject_id: this.quizData.subject || this.quizData.subject_id || this.subjectId || 'CS_GENERAL',
+            topic: this.quizData.topic || 'Interactive Quiz',
+            finished_at: finishedAt,
+            session_duration_seconds: sessionDuration,
+            summary: {
+                total,
+                correct: correctCount,
+                wrong: wrongCount,
+                percentage,
+                avg_dwell_time_seconds: avgDwell,
+                total_time_seconds: parseFloat(totalDwell.toFixed(1)),
+                wrong_ids: questionPayloads.filter(p => !p.is_correct).map(p => p.id),
+                lucky_ids: questionPayloads.filter(p => p.is_lucky_guess).map(p => p.id)
+            },
+            questions: questionPayloads
+        };
 
         // 1. Always enqueue in QuizVault first
         if (window.quizVault) {
