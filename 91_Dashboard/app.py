@@ -14,7 +14,7 @@ import json
 import socket
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 from flask import Flask, render_template, jsonify, request
 
@@ -23,6 +23,7 @@ _toolbox_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "
 if str(_toolbox_path) not in sys.path:
     sys.path.insert(0, str(_toolbox_path))
 from quiz_engine import process_quiz_telemetry, get_quiz_history
+from quiz_balancer import normalize_quiz_schema
 
 app = Flask(__name__)
 
@@ -432,6 +433,41 @@ def api_quiz_list():
     return jsonify({"quizzes": get_all_quizzes()})
 
 
+@app.route("/api/quiz/bundle")
+def api_quiz_bundle():
+    """Consolidated curriculum bundle endpoint for batch offline importing."""
+    raw_sem = request.args.get("semester", "1")
+    try:
+        sem_target = int(raw_sem)
+    except (ValueError, TypeError):
+        sem_target = 1
+
+    sem_folder = f"0{sem_target}_Semester_{sem_target}"
+    target_sem_dir = BASE / sem_folder
+    if not target_sem_dir.is_dir():
+        semester_dirs = sorted([d for d in BASE.glob(f"0{sem_target}_Semester_*") if d.is_dir()])
+        target_sem_dir = semester_dirs[0] if semester_dirs else (BASE / "01_Semester_1")
+
+    quizzes_payload = []
+    for qf in sorted(target_sem_dir.glob("*/07_Quizzes_&_Anki/Quiz_*.json")):
+        try:
+            content = json.loads(qf.read_text(encoding="utf-8"))
+            subj = qf.parent.parent.name
+            normalized = normalize_quiz_schema(content, subject_id=subj, quiz_id=qf.stem)
+            quizzes_payload.append(normalized)
+        except Exception:
+            continue
+
+    bundle = {
+        "bundle_version": 2,
+        "exported_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "semester": sem_target,
+        "total_quizzes": len(quizzes_payload),
+        "quizzes": quizzes_payload,
+    }
+    return jsonify(bundle), 200
+
+
 @app.route("/sw.js")
 def service_worker_root():
     """Serves the PWA Service Worker at root scope ('/') so it can intercept ALL app navigation."""
@@ -528,6 +564,7 @@ def api_quiz_get(subject_id, quiz_id):
     try:
         content = target_file.read_text(encoding="utf-8")
         quiz_data = json.loads(content)
+        quiz_data = normalize_quiz_schema(quiz_data, subject_id=target_file.parent.parent.name, quiz_id=target_file.stem)
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": f"Failed to load quiz: {str(e)}"}), 500

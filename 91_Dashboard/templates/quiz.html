@@ -203,7 +203,7 @@
             </div>
 
             <!-- Native File Input for Mobile (Visually Hidden, Not display:none) -->
-            <input type="file" id="local-file-input" accept=".json,application/json,text/plain,*/*" class="visually-hidden-input" style="display: none !important;">
+            <input type="file" id="local-file-input" multiple accept=".json,application/json" class="visually-hidden-input" style="display: none !important;">
             <!-- Quiz Start Intro View (Prevents time flying before student is ready) -->
             <div id="quiz-start-view" class="state-view quiz-start-card hidden">
                 <div class="start-icon-box">
@@ -426,6 +426,8 @@
         </aside>
     </div>
 
+    <!-- Storage Engine -->
+    <script src="/static/quiz-vault.js"></script>
     <!-- Application Script -->
     <script src="/static/quiz.js"></script>
 

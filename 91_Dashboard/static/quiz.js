@@ -263,9 +263,20 @@ class QuizApp {
         this.initEvents();
         this.checkServerHealth();
         setInterval(() => this.checkServerHealth(), 15000);
+        window.addEventListener('online', () => {
+            this.checkServerHealth();
+            this.flushOfflineQueue();
+        });
         this.flushOfflineQueue();
         await this.loadBookmarks();
         await this.loadQuiz();
+        if (!this.directMode && window.quizVault) {
+            window.quizVault.getAllQuizzes().then(stored => {
+                if (stored && stored.length > 0) {
+                    this.injectImportedQuizzesToCatalog(stored);
+                }
+            }).catch(() => {});
+        }
         this.refreshLucideIcons();
     }
 
@@ -420,27 +431,69 @@ class QuizApp {
         document.getElementById('btn-open-local-file')?.addEventListener('click', triggerPicker);
         document.getElementById('btn-browse-local')?.addEventListener('click', triggerPicker);
 
-        localInput?.addEventListener('change', (e) => {
-            const file = e.target.files?.[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => {
+        localInput?.addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files || []);
+            if (!files.length) return;
+
+            let totalImported = 0;
+            const importedQuizzes = [];
+
+            for (const file of files) {
                 try {
-                    const data = JSON.parse(ev.target.result);
-                    if (!data || !data.questions || data.questions.length === 0) {
-                        alert('الملف لا يحتوي على أسئلة صالحة.');
-                        return;
+                    const text = await file.text();
+                    const data = JSON.parse(text);
+
+                    // Check if Curriculum Bundle (bundle_version or quizzes array)
+                    if (data && Array.isArray(data.quizzes) && (data.bundle_version || data.quizzes.length)) {
+                        if (window.quizVault) {
+                            const res = await window.quizVault.importBundle(data);
+                            totalImported += res.imported;
+                        } else {
+                            totalImported += data.quizzes.length;
+                        }
+                        data.quizzes.forEach(q => {
+                            const norm = window.QuizVault?.normalizeClientQuiz ? window.QuizVault.normalizeClientQuiz(q) : q;
+                            if (norm) {
+                                importedQuizzes.push(norm);
+                                try {
+                                    localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
+                                } catch (err) {}
+                            }
+                        });
+                    } else if (data && Array.isArray(data.questions) && data.questions.length > 0) {
+                        // Single Quiz JSON
+                        const norm = window.QuizVault?.normalizeClientQuiz
+                            ? window.QuizVault.normalizeClientQuiz(data, null, file.name.replace(/\.json$/i, ''))
+                            : data;
+                        if (window.quizVault) {
+                            await window.quizVault.putQuiz(norm);
+                        }
+                        try {
+                            localStorage.setItem(`ms_quiz_${norm.subject_id}_${norm.quiz_id}`, JSON.stringify(norm));
+                        } catch (err) {}
+                        totalImported++;
+                        importedQuizzes.push(norm);
                     }
-                    this.quizData = data;
-                    try {
-                        localStorage.setItem('ms_last_offline_quiz', JSON.stringify({ name: file.name, data }));
-                    } catch (err) {}
-                    this.setupQuizSession();
                 } catch (err) {
-                    alert('خطأ في قراءة ملف JSON: ' + err.message);
+                    console.warn(`Failed to parse file ${file.name}:`, err);
                 }
-            };
-            reader.readAsText(file);
+            }
+
+            if (totalImported === 0) {
+                alert('لم يتم العثور على أسئلة أو كويزات صالحة في الملفات المختارة.');
+                return;
+            }
+
+            localInput.value = '';
+            this.injectImportedQuizzesToCatalog(importedQuizzes);
+            this.showTemporaryToast(`تم استيراد ${totalImported} كويز بنجاح إلى ذاكرة الهاتف!`);
+
+            if (importedQuizzes.length === 1 && (!this.quizData || !this.quizData.questions || !this.quizData.questions.length)) {
+                this.quizData = importedQuizzes[0];
+                this.subjectId = this.quizData.subject_id;
+                this.quizId = this.quizData.quiz_id;
+                this.setupQuizSession();
+            }
         });
         // Drawers
         // Bookmarks Quick Drill Launcher
@@ -503,6 +556,101 @@ class QuizApp {
 
         // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
+    }
+
+    injectImportedQuizzesToCatalog(quizzes) {
+        if (!Array.isArray(quizzes) || quizzes.length === 0) return;
+        const container = document.getElementById('catalog-cards-container');
+        if (!container) return;
+
+        quizzes.forEach(q => {
+            if (!q || !q.topic) return;
+            const subjId = q.subject_id || q.subject || 'CS_GENERAL';
+            const quizId = q.quiz_id || 'Quiz_01';
+            const targetUrl = `/quiz/${encodeURIComponent(subjId)}/${encodeURIComponent(quizId)}`;
+
+            // Check if row already exists in DOM
+            let existingRow = null;
+            const rows = container.querySelectorAll('.sketch-row');
+            rows.forEach(row => {
+                const link = row.querySelector('a.sketch-content-cell');
+                if (link && link.getAttribute('href') === targetUrl) {
+                    existingRow = row;
+                }
+            });
+
+            if (existingRow) {
+                const metaLine = existingRow.querySelector('.sketch-meta-line');
+                if (metaLine && !metaLine.querySelector('.sketch-badge-imported')) {
+                    const badge = document.createElement('span');
+                    badge.className = 'sketch-badge-imported';
+                    badge.textContent = 'مستورد محلياً';
+                    badge.style.cssText = 'background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; margin-inline-start: 6px;';
+                    metaLine.appendChild(badge);
+                }
+            } else {
+                const row = document.createElement('div');
+                row.className = 'sketch-row';
+                row.setAttribute('data-subject', subjId);
+
+                const infoBtn = document.createElement('button');
+                infoBtn.type = 'button';
+                infoBtn.className = 'sketch-cell sketch-info-cell row-info-btn';
+                infoBtn.setAttribute('aria-label', 'تفاصيل الكويز');
+                infoBtn.setAttribute('title', 'تفاصيل الكويز');
+                infoBtn.setAttribute('data-subject', q.subject_title || subjId);
+                infoBtn.setAttribute('data-semester', q.semester_label || 'كورس أول');
+                infoBtn.setAttribute('data-topic', q.topic);
+                infoBtn.setAttribute('data-instructor', q.instructor_ar || q.instructor || '');
+                infoBtn.setAttribute('data-count', String(q.questions?.length || 0));
+                infoBtn.setAttribute('data-attempts', '0');
+                infoBtn.setAttribute('data-best', '');
+                infoBtn.setAttribute('data-last', '');
+                infoBtn.setAttribute('data-url', targetUrl);
+                infoBtn.innerHTML = '<i data-lucide="info"></i>';
+                infoBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.openInfoSheet(infoBtn);
+                });
+
+                const contentLink = document.createElement('a');
+                contentLink.href = targetUrl;
+                contentLink.className = 'sketch-cell sketch-content-cell';
+                contentLink.setAttribute('aria-label', `ابدأ: ${q.topic}`);
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'sketch-title-ltr';
+                titleDiv.textContent = q.topic;
+
+                const metaLine = document.createElement('div');
+                metaLine.className = 'sketch-meta-line';
+                metaLine.innerHTML = `
+                    <span class="sketch-subject-tag">${q.subject_title || subjId}</span>
+                    <span class="sketch-meta-dot">·</span>
+                    <span class="sketch-sem-tag">${q.semester_label || 'كورس أول'}</span>
+                    <span class="sketch-meta-dot">·</span>
+                    <span class="sketch-count-tag">${q.questions?.length || 0} أسئلة</span>
+                    <span class="sketch-badge-imported" style="background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; margin-inline-start: 6px;">مستورد محلياً</span>
+                `;
+
+                contentLink.appendChild(titleDiv);
+                contentLink.appendChild(metaLine);
+
+                const playLink = document.createElement('a');
+                playLink.href = targetUrl;
+                playLink.className = 'sketch-cell sketch-play-cell';
+                playLink.setAttribute('aria-label', 'بدء الكويز مباشرة');
+                playLink.innerHTML = '<i data-lucide="play"></i>';
+
+                row.appendChild(infoBtn);
+                row.appendChild(contentLink);
+                row.appendChild(playLink);
+
+                container.appendChild(row);
+            }
+        });
+
+        this.refreshLucideIcons();
     }
     toggleShuffleMode() {
         this.shuffleMode = !this.shuffleMode;
@@ -571,16 +719,34 @@ class QuizApp {
         }
         if (this.subjectId && this.quizId) {
             const cacheKey = `ms_quiz_${this.subjectId}_${this.quizId}`;
-            // 1. Cache-first check: if cached, boot immediately in 0ms!
+            // 1. QuizVault (IndexedDB) check: 0ms boot!
+            if (window.quizVault) {
+                try {
+                    const vaultQuiz = await window.quizVault.getQuiz(this.subjectId, this.quizId);
+                    if (vaultQuiz && Array.isArray(vaultQuiz.questions) && vaultQuiz.questions.length > 0) {
+                        this.quizData = vaultQuiz;
+                        this.setupQuizSession();
+                        await this.restoreInProgressState();
+                        this.refreshQuizInBackground(cacheKey);
+                        return;
+                    }
+                } catch (e) {
+                    console.warn('QuizVault get error, falling back:', e);
+                }
+            }
+
+            // 2. localStorage fallback check
             const cachedRaw = localStorage.getItem(cacheKey);
             if (cachedRaw) {
                 try {
                     const parsed = JSON.parse(cachedRaw);
                     if (parsed && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
                         this.quizData = parsed;
+                        if (window.quizVault) {
+                            window.quizVault.putQuiz(parsed).catch(() => {});
+                        }
                         this.setupQuizSession();
-                        this.restoreInProgressState();
-                        // Silently refresh in background if online
+                        await this.restoreInProgressState();
                         this.refreshQuizInBackground(cacheKey);
                         return;
                     }
@@ -589,7 +755,7 @@ class QuizApp {
                 }
             }
 
-            // 2. Network fetch if not cached
+            // 3. Network fetch if not cached
             this.showState('loading');
             try {
                 const response = await fetch(`/api/quiz/${encodeURIComponent(this.subjectId)}/${encodeURIComponent(this.quizId)}`);
@@ -600,12 +766,15 @@ class QuizApp {
                 if (!this.quizData || !this.quizData.questions || this.quizData.questions.length === 0) {
                     throw new Error('Quiz contains no questions.');
                 }
-                // Store in persistent local storage
+                // Store in QuizVault and persistent local storage
+                if (window.quizVault) {
+                    window.quizVault.putQuiz(this.quizData).catch(() => {});
+                }
                 try {
                     localStorage.setItem(cacheKey, JSON.stringify(this.quizData));
                 } catch (e) {}
                 this.setupQuizSession();
-                this.restoreInProgressState();
+                await this.restoreInProgressState();
             } catch (error) {
                 console.error('Quiz loading error:', error);
                 if (this.dom.errorMessage) {
@@ -628,51 +797,67 @@ class QuizApp {
             if (response.ok) {
                 const fresh = await response.json();
                 if (fresh && fresh.questions && fresh.questions.length > 0) {
-                    localStorage.setItem(cacheKey, JSON.stringify(fresh));
+                    if (window.quizVault) {
+                        window.quizVault.putQuiz(fresh).catch(() => {});
+                    }
+                    try {
+                        localStorage.setItem(cacheKey, JSON.stringify(fresh));
+                    } catch (e) {}
                 }
             }
         } catch (e) {}
     }
 
-    saveInProgressState() {
+    async saveInProgressState() {
         if (!this.subjectId || !this.quizId || this.isSubmitted) return;
-        const progressKey = `ms_progress_${this.subjectId}_${this.quizId}`;
+        const state = {
+            currentIndex: this.currentIndex,
+            answers: this.answers,
+            dwellTimes: this.dwellTimes,
+            answerTimestamps: this.answerTimestamps,
+            reflections: this.reflections,
+            luckyGuesses: this.luckyGuesses,
+            updatedAt: Date.now()
+        };
+        if (window.quizVault) {
+            window.quizVault.saveProgress(this.subjectId, this.quizId, state).catch(() => {});
+        }
         try {
-            const state = {
-                currentIndex: this.currentIndex,
-                answers: this.answers,
-                dwellTimes: this.dwellTimes,
-                answerTimestamps: this.answerTimestamps,
-                reflections: this.reflections,
-                luckyGuesses: this.luckyGuesses,
-                updatedAt: Date.now()
-            };
-            localStorage.setItem(progressKey, JSON.stringify(state));
+            localStorage.setItem(`ms_progress_${this.subjectId}_${this.quizId}`, JSON.stringify(state));
         } catch (e) {}
     }
 
-    restoreInProgressState() {
+    async restoreInProgressState() {
         if (!this.subjectId || !this.quizId) return;
-        const progressKey = `ms_progress_${this.subjectId}_${this.quizId}`;
-        try {
-            const raw = localStorage.getItem(progressKey);
-            if (!raw) return;
-            const state = JSON.parse(raw);
-            if (state && typeof state.answers === 'object') {
-                this.answers = state.answers || {};
-                this.dwellTimes = state.dwellTimes || {};
-                this.answerTimestamps = state.answerTimestamps || {};
-                this.reflections = state.reflections || {};
-                this.luckyGuesses = state.luckyGuesses || {};
-                if (typeof state.currentIndex === 'number' && state.currentIndex < (this.quizData.questions?.length || 0)) {
-                    this.currentIndex = state.currentIndex;
-                }
+        let state = null;
+        if (window.quizVault) {
+            try {
+                state = await window.quizVault.getProgress(this.subjectId, this.quizId);
+            } catch (e) {}
+        }
+        if (!state) {
+            try {
+                const raw = localStorage.getItem(`ms_progress_${this.subjectId}_${this.quizId}`);
+                if (raw) state = JSON.parse(raw);
+            } catch (e) {}
+        }
+        if (state && typeof state.answers === 'object') {
+            this.answers = state.answers || {};
+            this.dwellTimes = state.dwellTimes || {};
+            this.answerTimestamps = state.answerTimestamps || {};
+            this.reflections = state.reflections || {};
+            this.luckyGuesses = state.luckyGuesses || {};
+            if (typeof state.currentIndex === 'number' && state.currentIndex < (this.quizData.questions?.length || 0)) {
+                this.currentIndex = state.currentIndex;
             }
-        } catch (e) {}
+        }
     }
 
-    clearInProgressState() {
+    async clearInProgressState() {
         if (!this.subjectId || !this.quizId) return;
+        if (window.quizVault) {
+            window.quizVault.clearProgress(this.subjectId, this.quizId).catch(() => {});
+        }
         try {
             localStorage.removeItem(`ms_progress_${this.subjectId}_${this.quizId}`);
         } catch (e) {}
@@ -684,23 +869,55 @@ class QuizApp {
             btn.disabled = true;
             btn.innerHTML = `<span class="spinner" style="width:14px;height:14px;border-width:2px;display:inline-block;"></span> <span>جاري الحفظ في الهاتف...</span>`;
         }
+        let count = 0;
         try {
-            const res = await fetch('/api/quiz/list');
-            if (!res.ok) throw new Error('Server unreachable');
-            const data = await res.json();
-            const quizzes = data.quizzes || [];
-            let count = 0;
-            for (const q of quizzes) {
-                try {
-                    const qUrl = q.url.replace('/quiz/', '/api/quiz/');
-                    const qRes = await fetch(qUrl);
-                    if (qRes.ok) {
-                        const qData = await qRes.json();
-                        localStorage.setItem(`ms_quiz_${q.subject}_${q.quiz_id}`, JSON.stringify(qData));
-                        count++;
+            // 1. Try instantaneous 1-click bundle download first
+            let bundleSuccess = false;
+            try {
+                const bundleRes = await fetch('/api/quiz/bundle?semester=1');
+                if (bundleRes.ok) {
+                    const bundleData = await bundleRes.json();
+                    if (window.quizVault) {
+                        const importRes = await window.quizVault.importBundle(bundleData);
+                        count = importRes.imported;
+                    } else {
+                        count = (bundleData.quizzes || []).length;
                     }
-                } catch (e) {}
+                    (bundleData.quizzes || []).forEach(q => {
+                        try {
+                            localStorage.setItem(`ms_quiz_${q.subject_id}_${q.quiz_id}`, JSON.stringify(q));
+                        } catch (e) {}
+                    });
+                    bundleSuccess = true;
+                }
+            } catch (bErr) {
+                console.warn('Bundle download failed, falling back to individual items:', bErr);
             }
+
+            // 2. Fallback to individual items if bundle failed
+            if (!bundleSuccess) {
+                const res = await fetch('/api/quiz/list');
+                if (!res.ok) throw new Error('Server unreachable');
+                const data = await res.json();
+                const quizzes = data.quizzes || [];
+                for (const q of quizzes) {
+                    try {
+                        const qUrl = q.url.replace('/quiz/', '/api/quiz/');
+                        const qRes = await fetch(qUrl);
+                        if (qRes.ok) {
+                            const qData = await qRes.json();
+                            if (window.quizVault) {
+                                await window.quizVault.putQuiz(qData);
+                            }
+                            try {
+                                localStorage.setItem(`ms_quiz_${q.subject}_${q.quiz_id}`, JSON.stringify(qData));
+                            } catch (e) {}
+                            count++;
+                        }
+                    } catch (e) {}
+                }
+            }
+
             this.showTemporaryToast(`تم حفظ ${count} كويز بنجاح في ذاكرة الهاتف!`);
             if (btn) {
                 btn.innerHTML = `<i data-lucide="check-check"></i> <span>تم الحفظ (${count} كويز جاهز أوفلاين)</span>`;
@@ -1658,26 +1875,17 @@ class QuizApp {
         const finishedAt = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
         const sessionDuration = this.sessionDuration || Math.round((Date.now() - this.sessionStartTime) / 1000);
 
-        const payload = {
-            submission_uuid: this.submissionUUID,
-            quiz_id: this.quizId || this.quizData.quiz_id || null,
-            instructor: this.quizData.instructor || null,
-            subject_id: this.quizData.subject || this.quizData.subject_id || this.subjectId || 'CS_GENERAL',
-            topic: this.quizData.topic || 'Interactive Quiz',
-            finished_at: finishedAt,
-            session_duration_seconds: sessionDuration,
-            summary: {
-                total,
-                correct: correctCount,
-                wrong: wrongCount,
-                percentage,
-                avg_dwell_time_seconds: avgDwell,
-                total_time_seconds: parseFloat(totalDwell.toFixed(1)),
-                wrong_ids: questionPayloads.filter(p => !p.is_correct).map(p => p.id),
-                lucky_ids: questionPayloads.filter(p => p.is_lucky_guess).map(p => p.id)
-            },
-            questions: questionPayloads
-        };
+        const submissionUuid = this.submissionUUID || this.generateUUID();
+        payload.submission_uuid = submissionUuid;
+
+        // 1. Always enqueue in QuizVault first
+        if (window.quizVault) {
+            try {
+                await window.quizVault.enqueueSubmission(payload);
+            } catch (err) {
+                console.warn('QuizVault enqueue error:', err);
+            }
+        }
 
         try {
             const response = await fetch('/api/quiz/submit', {
@@ -1690,9 +1898,17 @@ class QuizApp {
                 throw new Error(`Submission failed with status ${response.status}`);
             }
 
+            // Successfully synced with server -> dequeue from QuizVault
+            if (window.quizVault) {
+                try {
+                    await window.quizVault.dequeueSubmission(submissionUuid);
+                } catch (e) {}
+            }
+
             this.isSubmitted = true;
             if (this.dom.syncStatusBanner) {
                 this.dom.syncStatusBanner.classList.remove('hidden');
+                this.dom.syncStatusBanner.querySelector('strong').textContent = 'Telemetry Synced';
             }
 
             if (this.dom.btnSubmitTelemetry) {
@@ -1703,10 +1919,10 @@ class QuizApp {
             }
         } catch (err) {
             console.error('Telemetry submit error:', err);
-            // Save to localStorage as offline queue
+            // Retain in QuizVault (and fallback to localStorage)
             this.saveOfflineTelemetry(payload);
 
-            this.showTemporaryToast('Telemetry saved locally (server offline)');
+            this.showTemporaryToast('تم الحفظ في ذاكرة الهاتف (سيتم المزامنة تلقائياً عند الاتصال)');
             if (this.dom.syncStatusBanner) {
                 this.dom.syncStatusBanner.classList.remove('hidden');
                 this.dom.syncStatusBanner.querySelector('strong').textContent = 'Telemetry Saved Locally';
@@ -1737,33 +1953,68 @@ class QuizApp {
      * Called on page load; successfully synced payloads drain from the queue.
      */
     async flushOfflineQueue() {
+        let flushed = 0;
+
+        // 1. Flush QuizVault native IndexedDB queue
+        if (window.quizVault) {
+            try {
+                const pending = await window.quizVault.getPendingSubmissions();
+                for (const item of pending) {
+                    try {
+                        const res = await fetch('/api/quiz/submit', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(item.payload)
+                        });
+                        if (res.ok) {
+                            await window.quizVault.dequeueSubmission(item.submission_uuid);
+                            flushed++;
+                        }
+                    } catch (e) {
+                        // Still unreachable
+                    }
+                }
+            } catch (err) {
+                console.warn('Error flushing QuizVault submissions:', err);
+            }
+        }
+
+        // 2. Also flush legacy localStorage queue
         let queue = [];
         try {
             queue = JSON.parse(localStorage.getItem('master_studio_offline_telemetry') || '[]');
         } catch (e) {
-            return;
+            queue = [];
         }
-        if (!Array.isArray(queue) || queue.length === 0) return;
-
-        const remaining = [];
-        for (const payload of queue) {
-            try {
-                const res = await fetch('/api/quiz/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!res.ok) remaining.push(payload);
-            } catch (e) {
-                remaining.push(payload);
+        if (Array.isArray(queue) && queue.length > 0) {
+            const remaining = [];
+            for (const payload of queue) {
+                try {
+                    const res = await fetch('/api/quiz/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (res.ok) {
+                        flushed++;
+                    } else {
+                        remaining.push(payload);
+                    }
+                } catch (e) {
+                    remaining.push(payload);
+                }
             }
+            try {
+                if (remaining.length > 0) {
+                    localStorage.setItem('master_studio_offline_telemetry', JSON.stringify(remaining));
+                } else {
+                    localStorage.removeItem('master_studio_offline_telemetry');
+                }
+            } catch (e) {}
         }
-        try {
-            localStorage.setItem('master_studio_offline_telemetry', JSON.stringify(remaining));
-        } catch (e) { /* storage unavailable — keep queue intact */ }
-        const flushed = queue.length - remaining.length;
+
         if (flushed > 0) {
-            this.showTemporaryToast(`Synced ${flushed} offline quiz result${flushed > 1 ? 's' : ''}`);
+            this.showTemporaryToast(`تمت مزامنة ${flushed} نتيجة كويز تلقائياً مع ماستر ستوديو`);
         }
     }
 
@@ -1814,7 +2065,14 @@ class QuizApp {
             localList = JSON.parse(localStorage.getItem('master_studio_bookmarks') || '[]');
         } catch (e) {}
 
-        const combined = [...serverList, ...localList];
+        let vaultList = [];
+        if (window.quizVault) {
+            try {
+                vaultList = await window.quizVault.getAllBookmarks();
+            } catch (e) {}
+        }
+
+        const combined = [...serverList, ...localList, ...vaultList];
         const { set, meta } = this.normalizeBookmarkEntries(combined);
         this.bookmarks = set;
         this.bookmarkMeta = meta;
@@ -1827,6 +2085,9 @@ class QuizApp {
 
     async saveBookmarks() {
         const list = Array.from(this.bookmarkMeta.values()).filter(Boolean);
+        if (window.quizVault) {
+            list.forEach(b => window.quizVault.saveBookmark(b).catch(() => {}));
+        }
         localStorage.setItem('master_studio_bookmarks', JSON.stringify(list));
         this.renderBookmarksDrawer();
 
@@ -1870,6 +2131,7 @@ class QuizApp {
         if (this.bookmarks.has(k)) {
             this.bookmarks.delete(k);
             this.bookmarkMeta.delete(k);
+            if (window.quizVault) window.quizVault.removeBookmark(k).catch(() => {});
         } else {
             this.bookmarks.add(k);
             // Upgrade path: drop the old quiz-agnostic id so one question is not saved twice

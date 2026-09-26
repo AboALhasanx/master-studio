@@ -25,7 +25,14 @@
       "answer": "B",
       "explanation": "أدى اقتطاع 1/10 عند البت 24 إلى انحراف سالب قدره ~0.000000095 ثانية لكل نبضة. على مدار 100 ساعة (3.6 مليون نبضة)، فقدت الساعة 0.3433 ثانية. وبسرعة 5 ماخ (1,676 م/ث)، أزيحت بوابة النطاق (Range Gate) بمقدار ~687 متراً، مما جعل الرادار يبحث في موقع سابق للهدف.",
       "question": "During continuous operation of a real-time defense tracking battery, an integer tenth-of-a-second clock counter is multiplied by a 24-bit fixed-point approximation of 1/10. Over 100 hours, what kinematic consequence directly caused the Dhahran Patriot missile failure?",
-      "question_ar": "خلال التشغيل المستمر لبطارية دفاع جوي في الوقت الحقيقي (Real-Time)، تم ضرب عداد الوقت العشري بتقريب النقطة الثابتة 24-بت لـ 1/10. على مدار 100 ساعة، ما هي النتيجة الحركية المباشرة التي سببت فشل صاروخ باتريوت الظهران؟"
+      "question_ar": "خلال التشغيل المستمر لبطارية دفاع جوي في الوقت الحقيقي (Real-Time)، تم ضرب عداد الوقت العشري بتقريب النقطة الثابتة 24-بت لـ 1/10. على مدار 100 ساعة، ما هي النتيجة الحركية المباشرة التي سببت فشل صاروخ باتريوت الظهران؟",
+      "correct": 1,
+      "options_ar": [
+        "احتراق جهاز إرسال الرادار بسبب رفع تردد تشغيل المعالج (CPU Overclocking).",
+        "انحراف في الساعة بمقدار 0.34 ثانية أدى لإزاحة بوابة نطاق الرادار (Range Gate) بحوالي 687 متراً، مما جعله يتعقب فضاءً فارغاً.",
+        "حدوث طفح في المكدس (Stack Overflow) عند التحويل إلى دقة مضاعفة 48-بت.",
+        "تعطل جنيحات توجيه الصاروخ بسبب استثناء القسمة على صفر."
+      ]
     },
     {
       "id": "q2",
@@ -48,7 +55,14 @@
       "answer": "C",
       "explanation": "حدد بروكس أربع خصائص متأصلة في التعقيد الجوهري: التعقيد (Complexity)، المطابقة (Conformity)، القابلية للتغيير (Changeability)، والخفاء (Invisibility). أما الأدوات وبطء الترجمة وصعوبة الصياغة فهي تعقيدات عرضية يمكن تحسينها تقنياً.",
       "question": "In his seminal paper 'No Silver Bullet', Fred Brooks distinguishes between Essential and Accidental complexity. Which of the following is an ESSENTIAL complexity inherent to software systems?",
-      "question_ar": "في ورقته البحثية الشهيرة 'لا رصاصة فضية' (No Silver Bullet)، ميز فريد بروكس بين التعقيد الجوهري (Essential) والعرضي (Accidental). أي مما يلي يُعد تعقيداً جوهرياً متأصلاً في الأنظمة البرمجية؟"
+      "question_ar": "في ورقته البحثية الشهيرة 'لا رصاصة فضية' (No Silver Bullet)، ميز فريد بروكس بين التعقيد الجوهري (Essential) والعرضي (Accidental). أي مما يلي يُعد تعقيداً جوهرياً متأصلاً في الأنظمة البرمجية؟",
+      "correct": 2,
+      "options_ar": [
+        "إدارة تخصيص الذاكرة يدوياً وجمع القمامة في C/C++.",
+        "بطء زمن الترجمة والربط (Compilation and Linking) على محطات عمل المطورين.",
+        "عدم وجود تمثيل مكاني هندسي مادي للبرمجيات (الخفاء / Invisibility).",
+        "الإسهاب اللغوي وصعوبة صياغة الأوامر في لغات التجميع القديمة (Assembly)."
+      ]
     },
     {
       "id": "q3",
@@ -71,7 +85,14 @@
       "answer": "B",
       "explanation": "يوضح قانون بروكس أن عبء التواصل يزداد بالصيغة N(N-1)/2، بالإضافة إلى استهلاك وقت كبار المهندسين في تدريب الأعضاء الجدد بدلاً من إنجاز العمل.",
       "question": "According to Brooks' Law formulated during the development of IBM OS/360, adding manpower to a late software project makes it later because:",
-      "question_ar": "وفقاً لقانون بروكس (Brooks' Law) الذي صيغ أثناء تطوير نظام IBM OS/360، فإن إضافة مبرمجين إلى مشروع برمجيات متأخر يزيده تأخيراً لأن:"
+      "question_ar": "وفقاً لقانون بروكس (Brooks' Law) الذي صيغ أثناء تطوير نظام IBM OS/360، فإن إضافة مبرمجين إلى مشروع برمجيات متأخر يزيده تأخيراً لأن:",
+      "correct": 1,
+      "options_ar": [
+        "قيود ذاكرة الأجهزة تمنع المطورين الإضافيين من سحب فروع الكود.",
+        "التدريب يستهلك وقت الخبراء الحاليين، وقنوات الاتصال بين الفرق تتزايد تربيعياً (O(N^2)).",
+        "المطورون الجدد يُدخلون حتماً أخطاء نحوية تكسر المترجم الآلي.",
+        "مجدولات أنظمة التشغيل لا يمكنها التعامل مع تدفقات التطوير متعددة الخيوط."
+      ]
     },
     {
       "id": "q4",
@@ -94,7 +115,14 @@
       "answer": "A",
       "explanation": "الخطأ الإدراكي البشري (Error) يولد عيباً ثابتاً (Fault/Defect) في الكود أو الوثائق. وعند تنفيذه في وقت التشغيل، يُنتج حالة خطأ داخلية غير صالحة (Error State)، والتي تظهر على حدود النظام كفشل مرئي (Failure).",
       "question": "In the formal IEEE 610.12 and Laprie/Avižienis dependability taxonomy, which sequence correctly models how software breakdowns emerge?",
-      "question_ar": "في تصنيف الموثوقية الرسمي المعياري IEEE 610.12 ولابري/أفيزينيس (Laprie/Avižienis)، ما هو التسلسل الصحيح لكيفية حدوث الانهيارات البرمجية؟"
+      "question_ar": "في تصنيف الموثوقية الرسمي المعياري IEEE 610.12 ولابري/أفيزينيس (Laprie/Avižienis)، ما هو التسلسل الصحيح لكيفية حدوث الانهيارات البرمجية؟",
+      "correct": 0,
+      "options_ar": [
+        "خطأ بشري (Error) -> عيب/خلل ثابت (Fault/Defect) -> حالة خطأ داخلية (Error State) -> فشل مرئي (Failure)",
+        "فشل مرئي (Failure) -> خطأ بشري (Error) -> خلل ثابت -> علة (Bug)",
+        "خلل (Fault) -> فشل (Failure) -> خطأ (Error) -> عيب (Defect)",
+        "علة (Bug) -> خلل عابر (Glitch) -> انهيار (Crash) -> فشل (Failure)"
+      ]
     },
     {
       "id": "q5",
@@ -117,7 +145,21 @@
       "answer": "C",
       "explanation": "ينص المبدأ الأول بوضوح على أن مهندسي البرمجيات يجب أن يتصرفوا بما يتفق مع المصلحة العامة، وهي مصلحة تعلو فوق الولاء لصاحب العمل عندما تكون السلامة أو الصحة أو الرفاهية العامة مهددة.",
       "question": "Under Principle 1 (PUBLIC) of the ACM/IEEE Software Engineering Code of Ethics, what is a software engineer's primary professional obligation if pressured by management to ship software with known unverified safety risks?",
-      "question_ar": "وفقاً للمبدأ الأول (المصلحة العامة / PUBLIC) من ميثاق أخلاقيات هندسة البرمجيات ACM/IEEE، ما هو الواجب المهني الأساسي للمهندس إذا ضغطت عليه الإدارة لتسليم برمجيات تنطوي على مخاطر أمان وسلامة غير مؤكدة؟"
+      "question_ar": "وفقاً للمبدأ الأول (المصلحة العامة / PUBLIC) من ميثاق أخلاقيات هندسة البرمجيات ACM/IEEE، ما هو الواجب المهني الأساسي للمهندس إذا ضغطت عليه الإدارة لتسليم برمجيات تنطوي على مخاطر أمان وسلامة غير مؤكدة؟",
+      "correct": 2,
+      "options_ar": [
+        "التوقيع بالموافقة فوراً إذا كان العقد يحتوي على بند إخلاء مسؤولية قانونية للمهندس.",
+        "تقديم المصالح التجارية لصاحب العمل فوق كل الاعتبارات الخارجية.",
+        "رفض اعتماد مواصفات الأمان المشبوهة وإبلاغ الجهات المسؤولة والمختصة إذا لم تُعالج المخاطر.",
+        "تقليل تغطية حزمة الاختبارات حتى تصبح نتائج CI/CD خضراء قبل الإصدار."
+      ]
     }
-  ]
+  ],
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات المتقدمة",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_01_Software_Crisis",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة"
 }

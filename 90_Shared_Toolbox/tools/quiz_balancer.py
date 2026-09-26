@@ -18,6 +18,241 @@ from collections import Counter
 from pathlib import Path
 
 
+SUBJECT_METADATA = {
+    "01_Cyber_Security": {
+        "title": "الأمن السيبراني",
+        "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+    "02_English_Language": {
+        "title": "اللغة الإنجليزية",
+        "instructor_ar": "أ.م.د. حيدر عكاب علوان",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+    "03_Data_Mining": {
+        "title": "تنقيب البيانات",
+        "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+    "04_Advanced_Software_Eng": {
+        "title": "هندسة البرمجيات المتقدمة",
+        "instructor_ar": "أ.م.د. علي فاهم نعمة",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+    "05_Soft_Computing": {
+        "title": "الحوسبة المرنة",
+        "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+    "06_Artificial_Intelligence": {
+        "title": "الذكاء الاصطناعي",
+        "instructor_ar": "أ.د. سيف علي السعيدي",
+        "semester": 1,
+        "semester_label": "كورس أول",
+    },
+}
+
+
+def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str = None) -> dict:
+    """
+    Normalizes a quiz bank to Canonical Schema v2:
+      - schema_version: 2
+      - subject_id, subject_title, semester, semester_label, quiz_id, topic, instructor_ar
+      - converts dictionary options to 4-item lists
+      - guarantees answer ('A'-'D') and correct (0-3) synchronization
+      - guarantees options_ar and options_en 4-item arrays
+      - ensures id, concept_id, bloom_level, question, question_ar, explanation
+    """
+    if not isinstance(quiz_data, dict):
+        return quiz_data
+
+    letters = ["A", "B", "C", "D"]
+
+    # 1. Resolve subject metadata
+    subj_slug = subject_id or quiz_data.get("subject_id") or quiz_data.get("subject") or "00_STUDIO_HUB"
+    meta = SUBJECT_METADATA.get(subj_slug, {})
+
+    quiz_data["schema_version"] = 2
+    quiz_data["subject_id"] = subj_slug
+    quiz_data["subject"] = subj_slug  # Backward compatibility alias
+    quiz_data["subject_title"] = quiz_data.get("subject_title") or meta.get("title") or subj_slug.replace("_", " ")
+
+    raw_sem = quiz_data.get("semester")
+    if raw_sem is not None:
+        try:
+            sem_int = int(raw_sem)
+        except (ValueError, TypeError):
+            sem_int = 1 if "Semester_1" in str(raw_sem) else 2
+    else:
+        sem_int = meta.get("semester", 1)
+    quiz_data["semester"] = sem_int
+    quiz_data["semester_label"] = quiz_data.get("semester_label") or meta.get("semester_label") or ("كورس أول" if sem_int == 1 else "كورس ثاني")
+
+    q_slug = quiz_id or quiz_data.get("quiz_id") or (quiz_data.get("topic", "Quiz").replace(" ", "_"))
+    quiz_data["quiz_id"] = q_slug
+    quiz_data["topic"] = quiz_data.get("topic") or q_slug
+    quiz_data["instructor_ar"] = quiz_data.get("instructor_ar") or meta.get("instructor_ar") or quiz_data.get("instructor", "")
+    quiz_data["instructor"] = quiz_data.get("instructor") or quiz_data["instructor_ar"]
+
+    # 2. Normalize questions
+    questions = quiz_data.get("questions", [])
+    for i, q in enumerate(questions):
+        if not isinstance(q, dict):
+            continue
+
+        q["id"] = q.get("id") or f"q{i+1}"
+        q["concept_id"] = q.get("concept_id") or f"concept_{i+1}"
+
+        bloom = q.get("bloom_level")
+        if bloom and isinstance(bloom, str):
+            q["bloom_level"] = bloom.strip().capitalize()
+        else:
+            q["bloom_level"] = "Understand"
+
+        # Question prompts (bilingual)
+        q_en = q.get("question") or q.get("text_en") or q.get("text") or q.get("question_ar") or ""
+        q_ar = q.get("question_ar") or q.get("text") or q.get("question") or ""
+        q["question"] = q_en
+        q["question_ar"] = q_ar
+
+        # Options list conversion
+        raw_opts = q.get("options")
+        if isinstance(raw_opts, dict):
+            opts_list = [str(raw_opts.get(l, "")) for l in letters]
+        elif isinstance(raw_opts, list):
+            opts_list = [str(item) for item in raw_opts]
+        else:
+            opts_list = ["", "", "", ""]
+        while len(opts_list) < 4:
+            opts_list.append("")
+        opts_list = opts_list[:4]
+        q["options"] = opts_list
+
+        # Answer & Correct index
+        ans = q.get("answer")
+        corr = q.get("correct")
+        if isinstance(ans, str) and ans.upper() in letters:
+            corr_idx = letters.index(ans.upper())
+        elif isinstance(corr, int) and 0 <= corr < 4:
+            corr_idx = corr
+        elif isinstance(ans, int) and 0 <= ans < 4:
+            corr_idx = ans
+        else:
+            corr_idx = 0
+        q["correct"] = corr_idx
+        q["answer"] = letters[corr_idx]
+
+        # Options AR / EN
+        raw_opts_ar = q.get("options_ar")
+        if isinstance(raw_opts_ar, dict):
+            opts_ar = [str(raw_opts_ar.get(l, "")) for l in letters]
+        elif isinstance(raw_opts_ar, list):
+            opts_ar = [str(item) for item in raw_opts_ar]
+        else:
+            opts_ar = list(opts_list)
+        while len(opts_ar) < 4:
+            opts_ar.append("")
+        q["options_ar"] = opts_ar[:4]
+
+        raw_opts_en = q.get("options_en")
+        if isinstance(raw_opts_en, dict):
+            opts_en = [str(raw_opts_en.get(l, "")) for l in letters]
+        elif isinstance(raw_opts_en, list):
+            opts_en = [str(item) for item in raw_opts_en]
+        else:
+            opts_en = list(opts_list)
+        while len(opts_en) < 4:
+            opts_en.append("")
+        q["options_en"] = opts_en[:4]
+
+        q["explanation"] = q.get("explanation") or ""
+
+    return quiz_data
+
+
+def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
+    """
+    Validates that a quiz dictionary complies with Canonical Schema v2:
+      - schema_version == 2
+      - top-level keys: subject_id, subject_title, semester, semester_label, quiz_id, topic, instructor_ar, questions
+      - questions is non-empty list of dicts
+      - each question has: id, concept_id, bloom_level, question, question_ar,
+        options (len 4), options_ar (len 4), options_en (len 4),
+        answer in A-D, correct in 0-3, letters[correct] == answer, explanation
+    """
+    errors = []
+    if not isinstance(quiz_data, dict):
+        return False, ["Quiz data must be a JSON dictionary."]
+
+    if quiz_data.get("schema_version") != 2:
+        errors.append(f"Invalid or missing 'schema_version': expected 2, got {quiz_data.get('schema_version')!r}")
+
+    top_keys = [
+        ("subject_id", str),
+        ("subject_title", str),
+        ("semester", int),
+        ("semester_label", str),
+        ("quiz_id", str),
+        ("topic", str),
+        ("instructor_ar", str),
+    ]
+    for key, expected_type in top_keys:
+        val = quiz_data.get(key)
+        if val is None or not isinstance(val, expected_type) or (isinstance(val, str) and not val.strip()):
+            errors.append(f"Missing or invalid required top-level property '{key}' (expected non-empty {expected_type.__name__}).")
+
+    if quiz_data.get("semester") not in (1, 2):
+        errors.append(f"Invalid 'semester': expected 1 or 2, got {quiz_data.get('semester')!r}")
+
+    questions = quiz_data.get("questions")
+    if not isinstance(questions, list) or len(questions) == 0:
+        errors.append("Property 'questions' must be a non-empty list.")
+        return False, errors
+
+    letters = ["A", "B", "C", "D"]
+    allowed_bloom = {"Remember", "Understand", "Apply", "Analyze", "Evaluate", "Create"}
+
+    for i, q in enumerate(questions):
+        qid = q.get("id") or f"q{i+1}"
+        if not isinstance(q, dict):
+            errors.append(f"Question {i+1} must be a dictionary.")
+            continue
+
+        for prop in ["id", "concept_id", "question", "question_ar", "explanation"]:
+            val = q.get(prop)
+            if not isinstance(val, str) or not val.strip():
+                errors.append(f"Q{i+1} ({qid}): Missing or empty required property '{prop}'.")
+
+        bloom = q.get("bloom_level")
+        if not isinstance(bloom, str) or bloom not in allowed_bloom:
+            errors.append(f"Q{i+1} ({qid}): Invalid bloom_level '{bloom}'. Expected one of {sorted(allowed_bloom)}.")
+
+        for opt_key in ["options", "options_ar", "options_en"]:
+            arr = q.get(opt_key)
+            if not isinstance(arr, list) or len(arr) != 4:
+                errors.append(f"Q{i+1} ({qid}): '{opt_key}' must be an array of exactly 4 strings.")
+            else:
+                for idx, opt_item in enumerate(arr):
+                    if not isinstance(opt_item, str) or not opt_item.strip():
+                        errors.append(f"Q{i+1} ({qid}): '{opt_key}[{idx}]' must be a non-empty string.")
+
+        ans = q.get("answer")
+        corr = q.get("correct")
+        if ans not in letters:
+            errors.append(f"Q{i+1} ({qid}): 'answer' must be one of {letters}, got {ans!r}.")
+        if not isinstance(corr, int) or corr not in range(4):
+            errors.append(f"Q{i+1} ({qid}): 'correct' must be an integer 0..3, got {corr!r}.")
+        if ans in letters and isinstance(corr, int) and 0 <= corr < 4:
+            if letters[corr] != ans:
+                errors.append(f"Q{i+1} ({qid}): Mismatch between 'correct' ({corr} -> {letters[corr]}) and 'answer' ({ans}).")
+
+    return len(errors) == 0, errors
+
 def analyze_quiz(quiz_data: dict) -> dict:
     """Calculates answer distribution and option length statistics."""
     questions = quiz_data.get("questions", [])
@@ -169,6 +404,7 @@ def balance_quiz(quiz_data: dict, seed: int = None, clean_bloat: bool = True) ->
 
         q["options"] = new_opts
         q["answer"] = target_ans
+        q["correct"] = letters.index(target_ans)
 
         if isinstance(opts_ar, list) and len(opts_ar) == num_opts:
             if clean_bloat:
@@ -259,6 +495,8 @@ def main():
     parser.add_argument("quiz_path", help="Path to quiz JSON file")
     parser.add_argument("-o", "--output", help="Output file path (defaults to overwriting input)")
     parser.add_argument("--check", action="store_true", help="Only check psychometric health without modifying")
+    parser.add_argument("--schema", action="store_true", help="Validate canonical schema v2 compliance")
+    parser.add_argument("--normalize", action="store_true", help="Normalize quiz to canonical schema v2 and save")
     parser.add_argument("--strict", action="store_true", help="Enforce strict psychometric gate (exits with code 1 on any violation)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for deterministic balancing")
     args = parser.parse_args()
@@ -294,6 +532,25 @@ def main():
             print(f"   - Q{d['question_idx']} ({d['id']}): Correct={d['correct_len']} chars vs Distractors={d['avg_distractor_len']} chars ({d['ratio']}x longer)")
         if len(disparities) > 5:
             print(f"   ... and {len(disparities) - 5} more questions.")
+
+    v2_valid, v2_errors = validate_schema_v2(quiz_data)
+    if not v2_valid:
+        print(f"\n⚠️  SCHEMA V2 WARNING: {len(v2_errors)} schema issues detected:")
+        for err in v2_errors[:5]:
+            print(f"   - {err}")
+        if len(v2_errors) > 5:
+            print(f"   ... and {len(v2_errors) - 5} more schema issues.")
+    else:
+        print("\n✅ SCHEMA V2: 100% Canonical Schema v2 Compliant.")
+
+    if args.schema:
+        if not v2_valid:
+            print("\n❌ Schema v2 Validation Failed.")
+            sys.exit(1)
+        else:
+            print("\n✅ Schema v2 Validation Passed.")
+            if args.check:
+                sys.exit(0)
     if args.strict:
         is_valid, errors = validate_strict_gate(quiz_data)
         if not is_valid:
@@ -311,6 +568,20 @@ def main():
     if args.check:
         print("\n[Check mode only — no changes made]")
         return
+
+    # If normalize-only requested
+    if args.normalize and not args.output:
+        # Normalize and save directly without re-balancing
+        normalized_data = normalize_quiz_schema(quiz_data, quiz_id=path.stem)
+        out_path = path
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(normalized_data, f, ensure_ascii=False, indent=2)
+        print(f"\n💾 Saved normalized schema v2 quiz to: {out_path}")
+        print("=" * 65)
+        return
+
+    # Perform balancing with schema normalization
+    quiz_data = normalize_quiz_schema(quiz_data, quiz_id=path.stem)
 
     # Perform balancing
     balanced_data = balance_quiz(quiz_data, seed=args.seed)

@@ -28,7 +28,8 @@
         "Integrity to guarantee that records are not modified, altered, or tampered with."
       ],
       "answer": "D",
-      "explanation": "ركن السلامة والتكامل (Integrity) يختص بحماية البيانات من التعديل أو التغيير غير المصرّح به. تعديل الأرصدة المصرفية هو انتهاك مباشر للسلامة، بينما السرية تختص بالاطلاع غير المصرّح به، والجاهزية تختص بتوقف الخدمة."
+      "explanation": "ركن السلامة والتكامل (Integrity) يختص بحماية البيانات من التعديل أو التغيير غير المصرّح به. تعديل الأرصدة المصرفية هو انتهاك مباشر للسلامة، بينما السرية تختص بالاطلاع غير المصرّح به، والجاهزية تختص بتوقف الخدمة.",
+      "correct": 3
     },
     {
       "id": "q2",
@@ -55,7 +56,8 @@
         "Confidentiality because leaking banking records triggers immediate severe international regulatory fines."
       ],
       "answer": "B",
-      "explanation": "في البنوك والمؤسسات المالية، يعتبر ركن التكامل والسلامة (Integrity) هو الأعلى وزناً (Beta الأثقل)؛ لأن تغيير رقم الحساب أو تحويل الأموال لحساب آخر يسبب كارثة تصفية وانهياراً ثقة لا يمكن تعويضه بسهولة مقارنة بتوقف مؤقت للخدمة."
+      "explanation": "في البنوك والمؤسسات المالية، يعتبر ركن التكامل والسلامة (Integrity) هو الأعلى وزناً (Beta الأثقل)؛ لأن تغيير رقم الحساب أو تحويل الأموال لحساب آخر يسبب كارثة تصفية وانهياراً ثقة لا يمكن تعويضه بسهولة مقارنة بتوقف مؤقت للخدمة.",
+      "correct": 1
     },
     {
       "id": "q3",
@@ -82,7 +84,8 @@
         "Backup Management to restore encrypted files following widespread ransomware attacks."
       ],
       "answer": "C",
-      "explanation": "جدار الحماية (Firewall) يندرج بشكل قاطع تحت أمن الشبكات (Network Security في الفصل الثاني)، وليس ضمن تقنيات سرية البيانات (Confidentiality) التي تعتمد على التشفير والتحكم في الوصول وشبكات VPN."
+      "explanation": "جدار الحماية (Firewall) يندرج بشكل قاطع تحت أمن الشبكات (Network Security في الفصل الثاني)، وليس ضمن تقنيات سرية البيانات (Confidentiality) التي تعتمد على التشفير والتحكم في الوصول وشبكات VPN.",
+      "correct": 2
     },
     {
       "id": "q4",
@@ -109,7 +112,8 @@
         "Non-repudiation and Privacy, recovered by notifying legal authorities and international police."
       ],
       "answer": "A",
-      "explanation": "هجوم الفدية يضرب الجاهزية (Availability) لأن الأطباء لا يستطيعون قراءة السجلات، ويضرب التكامل (Integrity) لأن البيانات حُبست وشُفرت بمفتاح خارجي. التعافي الهندسي المعتمد هو الاسترجاع من نسخ احتياطية معزولة فيزيائياً (Air-gapped Backups)."
+      "explanation": "هجوم الفدية يضرب الجاهزية (Availability) لأن الأطباء لا يستطيعون قراءة السجلات، ويضرب التكامل (Integrity) لأن البيانات حُبست وشُفرت بمفتاح خارجي. التعافي الهندسي المعتمد هو الاسترجاع من نسخ احتياطية معزولة فيزيائياً (Air-gapped Backups).",
+      "correct": 0
     },
     {
       "id": "q5",
@@ -136,7 +140,15 @@
         "Vulnerability is the actual attack, Threat is financial loss, and Risk is software flaw."
       ],
       "answer": "A",
-      "explanation": "وفق معايير NIST SP 800-30: الثغرة (Vulnerability) هي نقطة ضعف كامنة في النظام. التهديد (Threat) هو عامل خارجي قد يستغل هذه النقطة. الخطر (Risk) هو الاحتمالية والضرر الناتج عن نجاح التهديد في استغلال الثغرة (Risk = Threat × Vulnerability × Impact)."
+      "explanation": "وفق معايير NIST SP 800-30: الثغرة (Vulnerability) هي نقطة ضعف كامنة في النظام. التهديد (Threat) هو عامل خارجي قد يستغل هذه النقطة. الخطر (Risk) هو الاحتمالية والضرر الناتج عن نجاح التهديد في استغلال الثغرة (Risk = Threat × Vulnerability × Impact).",
+      "correct": 0
     }
-  ]
+  ],
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_01_Cybersecurity_Foundations",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد"
 }

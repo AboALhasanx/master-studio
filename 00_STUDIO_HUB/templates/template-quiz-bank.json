@@ -1,8 +1,15 @@
 {
   "$schema_description": "Master Studio Canonical Quiz Bank Template (Psychometric Rigor & Anti-Bias Standards)",
-  "subject": "{{Subject_Folder_Name}}",
+  "schema_version": 2,
+  "subject_id": "{{Subject_Folder_Name}}",
+  "subject_title": "{{Subject_Arabic_Title}}",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_01_{{Topic_Slug}}",
   "topic": "{{Topic_Title_and_Week}}",
+  "instructor_ar": "{{Professor_Arabic_Name}}",
   "instructor": "{{Professor_Full_Name}}",
+  "subject": "{{Subject_Folder_Name}}",
   "_psychometric_invariants": {
     "rule_1_balanced_answer_keys": "The correct answer MUST be uniformly distributed across A, B, C, D (approx 25% each, max 30% on any single letter). Never dump majority of answers into a single letter like B!",
     "rule_2_uniform_option_length": "Every distractor option MUST be within ±25% character length of the correct option. The correct answer MUST NEVER be visibly longer, more detailed, or qualified (longest-option tell)!",
@@ -36,6 +43,7 @@
         "Fourth plausible option of uniform length (~50-80 chars)..."
       ],
       "answer": "A",
+      "correct": 0,
       "explanation": "Detailed bilingual explanation of why the correct option wins and why each distractor is technically flawed."
     },
     {
@@ -63,6 +71,7 @@
         "Option D..."
       ],
       "answer": "B",
+      "correct": 1,
       "explanation": "Technical and conceptual explanation..."
     },
     {
@@ -90,6 +99,7 @@
         "Option D..."
       ],
       "answer": "C",
+      "correct": 2,
       "explanation": "Technical and conceptual explanation..."
     },
     {
@@ -117,6 +127,7 @@
         "Option D..."
       ],
       "answer": "D",
+      "correct": 3,
       "explanation": "Technical and conceptual explanation..."
     }
   ]

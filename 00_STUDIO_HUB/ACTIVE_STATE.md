@@ -5,7 +5,7 @@ active_subject: "02_English_Language"
 active_subject_code: "CS502"
 immediate_todo: "English (CS502) - explain-a-paper assignment. SELECTED (documented, DOI): Christakis & Fowler, 'Social Network Sensors for Early Detection of Contagious Outbreaks', PLOS ONE 5(9):e12948 (2010), 8 pp, DOI 10.1371/journal.pone.0012948, free PDF in 02_Raw_Materials. Next: build the student's explanation/summary + presentation."
 next_session_focus: "English (CS502) - produce the paper-explanation deliverable for 'Social Network Sensors for Early Detection of Contagious Outbreaks' (PLOS ONE 2010): structured summary, key-contribution analysis, and a short spoken presentation outline."
-last_updated: "2026-09-25"
+last_updated: "2026-09-26"
 status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 ---
 
@@ -19,7 +19,7 @@ status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
 |  Subject:  02_English_Language  Target Path: 01_Semester_1/02_English_Language      |
-|  Status:  AI OPENED (ملزمة ready)      Date: 2026-09-25                       |
+|  Status:  QUIZ ARCHITECTURE V2 COMPLETE  Date: 2026-09-26                       |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -37,6 +37,7 @@ status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 ## 2. Immediate Tasks & Roadmap
 
 ### Active Work Queue
+- [x] **Industrial-Grade Quiz Ingestion, Packaging & Offline Sync Architecture DONE (2026-09-26).** Canonical Schema v2 deployed across all 6 active subjects; `quiz_balancer.py` upgraded with `normalize_quiz_schema()` & `validate_schema_v2()`; `GET /api/quiz/bundle` & `pack_quiz_bundle.py` implemented; native IndexedDB `QuizVault` engine deployed in `quiz-vault.js` with zero dependencies; smart multi-file & bundle importer in `quiz.html`/`quiz.js` with dynamic catalog DOM injection & `"مستورد محلياً"` badges; write-ahead offline queue & auto-flushing sync; PWA bumped to `master-studio-v10`; 97/97 tests passing.
 - [x] **ASE Week 02 Units 01–05 — zero-leakage cleanup + vector diagrams + clean bilingual PDFs (2026-09-24).** All backend scaffolding was stripped from student-facing text in Units 02–05 (`File NN of 10` cross-references, `[THIN]` flags, `**EN.**`/`**AR.**` markers, `BUILD_PLAN` build footers, the `file:` frontmatter key). `[THIN]` coverage notes were **rewritten as prose** (`ملاحظة تغطية:` / `Coverage note`) rather than deleted, so no information was lost. Unit 05 gained frontmatter, a **Where this sits** narrative spine, an English Feynman intuition section and a closing footer — it previously had none. Four new 2x-retina vector diagrams were built (waterfall classical vs iterative; prototyping vs evolutionary; incremental interleaving; RAD timeline compression), each inlined with an Arabic "how to read this figure" table. New tool: `90_Shared_Toolbox/tools/diagram_forge.py` (HTML/SVG → 2x PNG via Playwright; resolves `chromium-*/chrome-win64/chrome.exe`). PDFs re-exported with `study_pack` + `--lang ar`: **01 = 17 pp, 02 = 24 pp, 03 = 20 pp, 04 = 18 pp, 05 = 10 pp** — all verified with **zero leakage**, one embedded figure each, Arabic layer intact. Superseded exports moved to `99_Archives/2026-09-24_ASE_W02_superseded_exports/` (gitignored). Pushed as commits `7787ab1`, `8ba5bf2`.
 - [x] **ASE Week 02 Units 06–10 — clean manifesto rebuild DONE (2026-09-24).** Zero-leakage, one diagram each, frontmatter + the 4-part "Where this sits" spine added; page counts **06 = 13, 07 = 11, 08 = 15, 09 = 11, 10 = 29**. Unit 10 carried a §2.5-before-§2 ordering bug, caught only by rendering and fixed. Committed `c8b9206`.
 - [x] **ASE Week 02 MASTER LECTURE — ten units merged into one paginated booklet DONE (2026-09-24).** `08_PDF_Exports/Week_02_Master_Lecture.pdf` — **146 pages**: cover (p1) + index of topics/sub-topics/branches with **confirmed page numbers** (pp2–7) + the ten units with **continuous re-numbered pagination**. Builder `90_Shared_Toolbox/tools/build_week02_master.py` (two-pass measure→re-render). Verified **0 pagination mismatches**; unit starts at pages **[7, 21, 41, 57, 70, 78, 88, 96, 108, 118]**. One known blemish left by request: Unit 08's "Source notes" index line renders `p.000`.

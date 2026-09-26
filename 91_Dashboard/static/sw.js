@@ -3,7 +3,7 @@
  * Enables 100% offline quiz drills, flashcard review, and asset caching.
  */
 
-const CACHE_NAME = 'master-studio-v9';
+const CACHE_NAME = 'master-studio-v10';
 
 const PRECACHE_URLS = [
     '/',
@@ -11,6 +11,7 @@ const PRECACHE_URLS = [
     '/quiz/bookmarks',
     '/quiz/history',
     '/api/quiz/list',
+    '/static/quiz-vault.js',
     '/static/quiz.css',
     '/static/quiz.js',
     '/static/quiz-library.css',
@@ -22,6 +23,8 @@ const PRECACHE_URLS = [
     '/static/sounds/correct.mp3',
     '/static/sounds/wrong.mp3',
     '/static/sounds/completed.mp3',
+    '/api/quiz/bundle',
+    '/api/quiz/bundle?semester=1',
     // Pre-cache all 6 subject quiz views & data APIs for 100% offline access
     '/quiz/01_Cyber_Security/Quiz_01_Cybersecurity_Foundations',
     '/api/quiz/01_Cyber_Security/Quiz_01_Cybersecurity_Foundations',

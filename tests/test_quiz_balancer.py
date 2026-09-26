@@ -7,7 +7,14 @@ import sys
 tools_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "tools"
 if str(tools_path) not in sys.path:
     sys.path.insert(0, str(tools_path))
-from quiz_balancer import analyze_quiz, balance_quiz, clean_parenthetical_bloat, validate_strict_gate
+from quiz_balancer import (
+    analyze_quiz,
+    balance_quiz,
+    clean_parenthetical_bloat,
+    validate_strict_gate,
+    normalize_quiz_schema,
+    validate_schema_v2,
+)
 
 # --------------------------------------------------------------------------
 # 1. Clean Parenthetical Bloat Tests
@@ -271,3 +278,105 @@ def test_validate_strict_gate_passes_on_compliant_quiz():
     is_valid, errors = validate_strict_gate(quiz)
     assert is_valid is True
     assert len(errors) == 0
+
+
+# --------------------------------------------------------------------------
+# 5. Canonical Schema v2 Tests
+# --------------------------------------------------------------------------
+def test_normalize_quiz_schema_from_legacy_dict():
+    legacy_quiz = {
+        "subject": "02_English_Language",
+        "topic": "Unit 01 Grammar",
+        "questions": [
+            {
+                "concept_id": "tense_contrast",
+                "bloom_level": "Understand",
+                "question": "Which tense is correct?",
+                "options": {
+                    "A": "Past Simple option",
+                    "B": "Present Perfect option",
+                    "C": "Future Continuous option",
+                    "D": "Past Perfect option"
+                },
+                "answer": "B",
+                "explanation": "Present perfect connects past to present."
+            }
+        ]
+    }
+    norm = normalize_quiz_schema(legacy_quiz, quiz_id="Quiz_01_Grammar")
+    assert norm["schema_version"] == 2
+    assert norm["subject_id"] == "02_English_Language"
+    assert norm["subject_title"] == "اللغة الإنجليزية"
+    assert norm["semester"] == 1
+    assert norm["semester_label"] == "كورس أول"
+    assert norm["instructor_ar"] == "أ.م.د. حيدر عكاب علوان"
+    assert norm["quiz_id"] == "Quiz_01_Grammar"
+
+    q0 = norm["questions"][0]
+    assert q0["id"] == "q1"
+    assert isinstance(q0["options"], list)
+    assert len(q0["options"]) == 4
+    assert q0["options"][1] == "Present Perfect option"
+    assert q0["correct"] == 1
+    assert q0["answer"] == "B"
+    assert isinstance(q0["options_ar"], list) and len(q0["options_ar"]) == 4
+    assert isinstance(q0["options_en"], list) and len(q0["options_en"]) == 4
+    assert q0["question_ar"] == "Which tense is correct?"
+
+
+def test_validate_schema_v2_accepts_valid_quiz():
+    valid_quiz = {
+        "schema_version": 2,
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "هندسة البرمجيات المتقدمة",
+        "semester": 1,
+        "semester_label": "كورس أول",
+        "quiz_id": "Quiz_01_Software_Crisis",
+        "topic": "Foundations",
+        "instructor_ar": "أ.م.د. علي فاهم نعمة",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "software_crisis_cause",
+                "bloom_level": "Understand",
+                "question": "What caused the crisis?",
+                "question_ar": "ما الذي سبب أزمة البرمجيات؟",
+                "options": ["Hardware outpacing software", "Compilers", "Networks", "Databases"],
+                "options_ar": ["تجاوز العتاد للبرمجيات", "المترجمات", "الشبكات", "قواعد البيانات"],
+                "options_en": ["Hardware outpacing software", "Compilers", "Networks", "Databases"],
+                "answer": "A",
+                "correct": 0,
+                "explanation": "Software complexity outgrew ad-hoc methods."
+            }
+        ]
+    }
+    is_valid, errors = validate_schema_v2(valid_quiz)
+    assert is_valid is True
+    assert len(errors) == 0
+
+
+def test_validate_schema_v2_rejects_malformed_quiz():
+    # Missing schema_version and truncated options array
+    invalid_quiz = {
+        "subject_id": "01_Cyber_Security",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "cia_triad",
+                "bloom_level": "Analyze",
+                "question": "What is Integrity?",
+                "question_ar": "ما هي السلامة؟",
+                "options": ["Only two options", "Second option"],
+                "options_ar": ["خياران فقط", "خيار ثاني"],
+                "options_en": ["Two options", "Second option"],
+                "answer": "A",
+                "correct": 0,
+                "explanation": "Integrity prevents unauthorized changes."
+            }
+        ]
+    }
+    is_valid, errors = validate_schema_v2(invalid_quiz)
+    assert is_valid is False
+    assert any("schema_version" in err for err in errors)
+    assert any("must be an array of exactly 4 strings" in err for err in errors)
+    assert any("subject_title" in err for err in errors)

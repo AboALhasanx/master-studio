@@ -225,3 +225,52 @@ def test_api_quiz_get_fuzzy_prefix(client):
     data = res.get_json()
     assert "questions" in data
     assert len(data["questions"]) > 0
+
+
+def test_api_quiz_bundle_success(client):
+    tools_dir = BASE_DIR / "90_Shared_Toolbox" / "tools"
+    if str(tools_dir) not in sys.path:
+        sys.path.insert(0, str(tools_dir))
+    from quiz_balancer import validate_schema_v2
+
+    res = client.get("/api/quiz/bundle?semester=1")
+    assert res.status_code == 200
+    bundle = res.get_json()
+    assert bundle["bundle_version"] == 2
+    assert bundle["semester"] == 1
+    assert bundle["total_quizzes"] == 6
+    assert len(bundle["quizzes"]) == 6
+    assert "exported_at" in bundle
+
+    for q in bundle["quizzes"]:
+        valid, errors = validate_schema_v2(q)
+        assert valid is True, f"Quiz {q.get('quiz_id')} failed validation: {errors}"
+        assert len(q["questions"]) > 0
+
+
+def test_pack_quiz_bundle_module():
+    tools_dir = BASE_DIR / "90_Shared_Toolbox" / "tools"
+    if str(tools_dir) not in sys.path:
+        sys.path.insert(0, str(tools_dir))
+    from pack_quiz_bundle import create_quiz_bundle
+
+    bundle = create_quiz_bundle(semester=1, base_dir=BASE_DIR)
+    assert bundle["bundle_version"] == 2
+    assert bundle["semester"] == 1
+    assert bundle["total_quizzes"] == 6
+    assert len(bundle["quizzes"]) == 6
+
+
+def test_quiz_vault_asset_and_sw_v10(client):
+    res_vault = client.get("/static/quiz-vault.js")
+    assert res_vault.status_code == 200
+    vault_content = res_vault.get_data(as_text=True)
+    assert "class QuizVault" in vault_content
+    assert "MasterStudioQuizDB" in vault_content
+
+    res_sw = client.get("/static/sw.js")
+    assert res_sw.status_code == 200
+    sw = res_sw.get_data(as_text=True)
+    assert "master-studio-v10" in sw
+    assert "quiz-vault.js" in sw
+    assert "/api/quiz/bundle" in sw

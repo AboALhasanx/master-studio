@@ -371,3 +371,70 @@ def test_e2e_full_lifecycle_journey(client, isolated_hub):
         f = isolated_hub / fname
         if f.exists():
             assert sub_uuid not in f.read_text(encoding="utf-8")
+
+
+def test_e2e_bundle_offline_sync_lifecycle(client, isolated_hub):
+    """
+    E2E Test: 1-click bundle download, offline submission queuing,
+    and server queue flushing upon reconnection.
+    """
+    # 1. Fetch entire semester bundle in 1 HTTP call
+    res_bundle = client.get("/api/quiz/bundle?semester=1")
+    assert res_bundle.status_code == 200
+    bundle = res_bundle.get_json()
+    assert bundle["bundle_version"] == 2
+    assert bundle["total_quizzes"] == 6
+
+    # 2. Pick a quiz from the bundle (e.g. 05_Soft_Computing)
+    target_quiz = next(q for q in bundle["quizzes"] if q["subject_id"] == "05_Soft_Computing" and q["quiz_id"] == "Quiz_01_Soft_Computing_Foundations")
+    assert target_quiz["schema_version"] == 2
+    assert len(target_quiz["questions"]) == 5
+
+    # 3. Simulate offline attempt: student takes quiz completely offline
+    sub_uuid = f"offline_e2e_{uuid.uuid4().hex[:8]}"
+    simulated_questions = []
+    for idx, q in enumerate(target_quiz["questions"]):
+        simulated_questions.append({
+            "id": q["id"],
+            "selected": q["answer"],
+            "correct": q["answer"],
+            "concept_id": q["concept_id"],
+            "bloom_level": q["bloom_level"],
+            "is_correct": True,
+            "is_lucky_guess": False,
+            "reflection": None,
+            "dwell_time_seconds": 12.5,
+            "answered_at": datetime.now().isoformat()
+        })
+
+    offline_payload = {
+        "submission_uuid": sub_uuid,
+        "quiz_id": target_quiz["quiz_id"],
+        "instructor": target_quiz["instructor_ar"],
+        "subject_id": target_quiz["subject_id"],
+        "topic": target_quiz["topic"],
+        "finished_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "session_duration_seconds": 65,
+        "summary": {
+            "total": 5,
+            "correct": 5,
+            "wrong": 0,
+            "percentage": 100.0,
+            "avg_dwell_time_seconds": 12.5
+        },
+        "questions": simulated_questions
+    }
+
+    # 4. Connection restored: auto-flush trigger POSTs to /api/quiz/submit
+    flush_res = client.post("/api/quiz/submit", json=offline_payload)
+    assert flush_res.status_code == 200
+    assert flush_res.get_json()["status"] == "success"
+
+    # 5. Verify ingestion in session journal
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    session_file = isolated_hub / "sessions" / f"{today_str}.md"
+    assert session_file.exists()
+    content = session_file.read_text(encoding="utf-8")
+    assert sub_uuid in content
+    assert "100%, 5/5" in content
+    assert f"Saved `{target_quiz['subject_id']}`" in content
