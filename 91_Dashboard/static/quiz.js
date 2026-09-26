@@ -744,6 +744,31 @@ class QuizApp {
             }
         } catch (e) {}
 
+        // 3. Check URL hash for iOS Shortcut / Telegram deep-link (#data=... or #import=...)
+        if (window.location.hash) {
+            const hash = window.location.hash;
+            let rawJson = null;
+            if (hash.startsWith('#data=')) {
+                try {
+                    const encoded = hash.slice(6);
+                    rawJson = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+                } catch (e) {
+                    try { rawJson = JSON.parse(decodeURIComponent(hash.slice(6))); } catch (e2) {}
+                }
+            } else if (hash.startsWith('#import=')) {
+                try {
+                    rawJson = JSON.parse(decodeURIComponent(hash.slice(8)));
+                } catch (e) {}
+            }
+            if (rawJson) {
+                try {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                } catch (e) {}
+                const processed = await this.processImportedQuizData(rawJson, rawJson.quiz_id || 'DeepLink_Quiz');
+                if (processed) imported.push(...processed);
+            }
+        }
+
         if (imported.length > 0) {
             this.injectImportedQuizzesToCatalog(imported);
             this.showTemporaryToast(`تم استلام وحفظ ${imported.length} كويز من المشاركة!`);

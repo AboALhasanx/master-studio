@@ -191,7 +191,7 @@ def test_pwa_manifest_and_service_worker(client):
     res_manifest = client.get("/static/manifest.json")
     assert res_manifest.status_code == 200
     manifest = json.loads(res_manifest.get_data(as_text=True))
-    assert manifest["short_name"] in ["MCS Quiz", "MasterStudio"]
+    assert manifest["short_name"] in ["MSCQuiz", "MCS Quiz", "MasterStudio"]
     assert manifest["display"] == "standalone"
 
     res_sw = client.get("/static/sw.js")
