@@ -8,8 +8,8 @@
     <link rel="manifest" href="/static/manifest.json">
     <meta name="theme-color" content="#0A0E17">
     <link rel="apple-touch-icon" href="/static/icon-192.png">
-    <!-- Local Offline Lucide Icons -->
-    <script src="/static/lucide.min.js"></script>
+    <!-- Local Offline Lucide Icons (deferred: non-blocking first paint) -->
+    <script src="/static/lucide.min.js" defer></script>
     <link rel="stylesheet" href="/static/quiz.css">
 </head>
 <body id="quiz-root" 
@@ -30,6 +30,11 @@
                     <span class="app-brand-title">MSCQuiz</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    {% if not direct_mode %}
+                    <button id="btn-qr-scan" class="icon-btn" aria-label="مسح رابط QR" title="مسح رابط الكوز من شاشة الحاسوب">
+                        <i data-lucide="scan-line"></i>
+                    </button>
+                    {% endif %}
                     <label for="local-file-input" id="btn-open-local-file" class="icon-btn" aria-label="Open Local Quiz" title="فتح كويز من ذاكرة الهاتف" style="cursor: pointer;">
                         <i data-lucide="folder-open"></i>
                     </label>
@@ -425,15 +430,42 @@
                 </div>
             </div>
         </aside>
+
+        <!-- QR Link Scanner Overlay (scan the PC's session QR to connect) -->
+        {% if not direct_mode %}
+        <div id="qr-scanner-overlay" class="qr-scanner-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="qr-scanner-title">
+            <div class="qr-scanner-box">
+                <div class="qr-scanner-head">
+                    <i data-lucide="scan-line"></i>
+                    <h3 id="qr-scanner-title">امسح كود الربط</h3>
+                    <button id="btn-qr-close" class="icon-btn" aria-label="إغلاق الماسح">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <video id="qr-video" playsinline muted autoplay></video>
+                <div class="qr-frame-hint">وجّه الكاميرا نحو الكود المعروض على شاشة الحاسوب</div>
+                <p id="qr-status" class="qr-status"></p>
+                <div class="qr-manual-row">
+                    <input id="qr-manual-input" type="url" inputmode="url" dir="ltr" placeholder="http://192.168.x.x:5000/quiz/..." aria-label="رابط الكوز يدوياً">
+                    <button id="btn-qr-open" class="action-btn primary-btn qr-open-btn">فتح</button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     {% if shared_quizzes %}
     <script id="ms-shared-quizzes-data" type="application/json">{{ shared_quizzes|safe }}</script>
     {% endif %}
     <!-- Storage Engine -->
-    <script src="/static/quiz-vault.js"></script>
+    <script src="/static/quiz-vault.js" defer></script>
+    {% if not direct_mode %}
+    <!-- QR Decoder (vendored, Apache-2.0) + Link Scanner — catalog only (257 KB kept off quiz pages) -->
+    <script src="/static/jsqr.min.js" defer></script>
+    <script src="/static/qr-scanner.js" defer></script>
+    {% endif %}
     <!-- Application Script -->
-    <script src="/static/quiz.js"></script>
+    <script src="/static/quiz.js" defer></script>
 
     <!-- PWA Service Worker & Install Prompt Registration -->
     <script>

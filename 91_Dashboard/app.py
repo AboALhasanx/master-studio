@@ -13,6 +13,7 @@ import re
 import json
 import socket
 import sys
+import zlib
 from pathlib import Path
 from datetime import datetime, timezone
 import uuid
@@ -30,6 +31,62 @@ app = Flask(__name__)
 BASE = Path(__file__).resolve().parent.parent
 HUB = BASE / "00_STUDIO_HUB"
 SEM1 = BASE / "01_Semester_1"
+
+# ---------------------------------------------------------------------------
+# Production-grade response optimization for slow LAN links:
+#   1. Gzip text payloads (Werkzeug's dev server never compresses by default).
+#   2. Long-lived caching for static assets + revalidation for HTML.
+#      (Flask already emits strong ETags on /static, so repeats become 304s.)
+# ---------------------------------------------------------------------------
+_GZIP_MIMETYPES = frozenset(
+    {
+        "text/html",
+        "text/css",
+        "text/plain",
+        "text/javascript",
+        "application/javascript",
+        "application/x-javascript",
+        "application/json",
+        "image/svg+xml",
+    }
+)
+
+
+@app.after_request
+def optimize_response(resp):
+    try:
+        if resp.mimetype == "text/html":
+            resp.headers.setdefault("Cache-Control", "no-cache")
+        if request.path.startswith("/static/"):
+            resp.headers.setdefault("Cache-Control", "public, max-age=1800")
+
+        accept = request.headers.get("Accept-Encoding", "")
+        if (
+            resp.status_code == 200
+            and "gzip" in accept
+            and "Content-Encoding" not in resp.headers
+            and "Range" not in request.headers
+            and resp.mimetype in _GZIP_MIMETYPES
+        ):
+            # send_file() responses run in direct-passthrough mode; release it
+            # so the payload can be read and re-encoded.
+            resp.direct_passthrough = False
+            raw = resp.get_data()
+            if len(raw) >= 1024:
+                compressor = zlib.compressobj(9, zlib.DEFLATED, 16 + zlib.MAX_WBITS)
+                packed = compressor.compress(raw) + compressor.flush()
+                if len(packed) < len(raw):
+                    resp.set_data(packed)
+                    resp.headers["Content-Encoding"] = "gzip"
+                    resp.headers["Content-Length"] = str(len(packed))
+                    vary = resp.headers.get("Vary")
+                    resp.headers["Vary"] = (
+                        f"{vary}, Accept-Encoding" if vary else "Accept-Encoding"
+                    )
+    except Exception:
+        # Never let transport optimization break a response.
+        pass
+    return resp
 
 
 def read_file(path):
@@ -728,4 +785,4 @@ if __name__ == "__main__":
     print("Master Studio Dashboard")
     print(f"Local:   http://127.0.0.1:5000")
     print(f"Network: http://{lan_ip}:5000")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True, threaded=True)

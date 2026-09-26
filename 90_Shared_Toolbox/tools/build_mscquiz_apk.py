@@ -150,14 +150,17 @@ def setup_project_tree():
     manifest_xml = """<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.masterstudio.mscquiz"
-    android:versionCode="1"
-    android:versionName="1.0.0">
+    android:versionCode="2"
+    android:versionName="1.1.0">
 
     <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="34" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <!-- QR session scanner (getUserMedia video capture) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
         android:label="@string/app_name"
@@ -214,12 +217,15 @@ def setup_project_tree():
     # 6. MainActivity.java
     main_activity_java = """package com.masterstudio.mscquiz;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.webkit.ConsoleMessage;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -237,6 +243,8 @@ public class MainActivity extends Activity {
     private WebView webView;
     private ValueCallback<Uri[]> fileUploadCallback;
     private static final int FILE_CHOOSER_REQ = 1001;
+    private static final int CAMERA_PERM_REQ = 1002;
+    private PermissionRequest pendingCamRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,6 +252,12 @@ public class MainActivity extends Activity {
 
         webView = new WebView(this);
         setContentView(webView);
+
+        // QR scanner: ask for the camera up-front (Android remembers the
+        // choice; the pending-request path below covers a later grant).
+        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_REQ);
+        }
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -257,6 +271,8 @@ public class MainActivity extends Activity {
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
+        // Remote inspection (adb forward + http://127.0.0.1:9222/json) for QA.
+        android.webkit.WebView.setWebContentsDebuggingEnabled(true);
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -281,12 +297,50 @@ public class MainActivity extends Activity {
                 android.util.Log.d("MSCQuiz_JS", cm.message() + " -- Line " + cm.lineNumber());
                 return super.onConsoleMessage(cm);
             }
+
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                // Camera capture for the QR session scanner only.
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] resources = request.getResources();
+                        boolean wantsVideo = false;
+                        for (String r : resources) {
+                            if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(r)) {
+                                wantsVideo = true;
+                                break;
+                            }
+                        }
+                        if (!wantsVideo) {
+                            request.deny();
+                            return;
+                        }
+                        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                            request.grant(new String[]{PermissionRequest.RESOURCE_VIDEO_CAPTURE});
+                        } else {
+                            pendingCamRequest = request;
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_REQ);
+                        }
+                    }
+                });
+            }
         });
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
+            public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                android.util.Log.i("MSCQuiz_Nav", "started: " + url);
+                // Let page scripts know they run inside the native APK.
+                view.evaluateJavascript("window.__NATIVE__=true", null);
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                android.util.Log.i("MSCQuiz_Nav", "finished: " + url);
+                view.evaluateJavascript("window.__NATIVE__=true", null);
                 handleIncomingIntent(getIntent());
             }
         });
@@ -300,6 +354,20 @@ public class MainActivity extends Activity {
         super.onNewIntent(intent);
         setIntent(intent);
         handleIncomingIntent(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERM_REQ && pendingCamRequest != null) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                pendingCamRequest.grant(new String[]{PermissionRequest.RESOURCE_VIDEO_CAPTURE});
+            } else {
+                pendingCamRequest.deny();
+                Toast.makeText(this, "إذن الكاميرا مرفوض — يمكنك لصق الرابط يدوياً", Toast.LENGTH_LONG).show();
+            }
+            pendingCamRequest = null;
+        }
     }
 
     private void handleIncomingIntent(Intent intent) {

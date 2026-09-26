@@ -592,14 +592,7 @@ class QuizApp {
             });
 
             if (existingRow) {
-                const metaLine = existingRow.querySelector('.sketch-meta-line');
-                if (metaLine && !metaLine.querySelector('.sketch-badge-imported')) {
-                    const badge = document.createElement('span');
-                    badge.className = 'sketch-badge-imported';
-                    badge.textContent = 'مستورد محلياً';
-                    badge.style.cssText = 'background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; margin-inline-start: 6px;';
-                    metaLine.appendChild(badge);
-                }
+                // Row already rendered in the catalog — nothing to add.
             } else {
                 const row = document.createElement('div');
                 row.className = 'sketch-row';
@@ -642,7 +635,6 @@ class QuizApp {
                     <span class="sketch-sem-tag">${q.semester_label || 'كورس أول'}</span>
                     <span class="sketch-meta-dot">·</span>
                     <span class="sketch-count-tag">${q.questions?.length || 0} أسئلة</span>
-                    <span class="sketch-badge-imported" style="background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; margin-inline-start: 6px;">مستورد محلياً</span>
                 `;
 
                 contentLink.appendChild(titleDiv);
@@ -951,12 +943,14 @@ class QuizApp {
     }
 
     handleExit() {
-        this.directMode = false;
-        this.showState('catalog');
-        if (window.location.protocol !== 'file:') {
-            try {
-                history.pushState(null, '', '/quiz');
-            } catch (e) {}
+        // Full navigation (not a SPA swap): the catalog must come from its
+        // real source — baked file:// index in the APK, server HTML in the
+        // PWA — otherwise the direct-quiz HTML shows an empty catalog and an
+        // insecure http origin blocks the QR scanner camera.
+        if (window.location.protocol === 'file:') {
+            window.location.replace('file:///android_asset/index.html');
+        } else {
+            window.location.replace('/quiz');
         }
     }
 

@@ -126,8 +126,10 @@ def generate_quiz_link(subject_id: str, quiz_id: str, print_qr: bool = True) -> 
             qr.add_data(link)
             qr.make(fit=True)
             qr.print_ascii(invert=True)
-        except ImportError:
+        except ImportError as e:
+            import sys as _sys
             print("⚠️  Package 'qrcode' is not installed.")
+            print(f"   ({e} — interpreter: {_sys.executable})")
             print("   To enable terminal QR codes, run: pip install qrcode")
         except Exception as e:
             print(f"⚠️  Could not render QR code ({e}). Open the link directly:")
@@ -159,7 +161,15 @@ if __name__ == "__main__":
         import os
         from pathlib import Path
         script_path = Path(__file__).resolve()
-        cmd = f'start "Master Studio Quiz Portal - {args.subject_id}" cmd /k "python \"{script_path}\" \"{args.subject_id}\" \"{args.quiz_id}\""'
+        # Pin the child window to THIS interpreter (sys.executable) and UTF-8
+        # output: a bare `python` in the spawned cmd can resolve to a different
+        # install (e.g. the Windows Python Manager shim defaulting to 3.14)
+        # that lacks the qrcode package or crashes on emoji output.
+        cmd = (
+            f'start "Master Studio Quiz Portal - {args.subject_id}" '
+            f'cmd /k "{sys.executable} -X utf8 '
+            f'\"{script_path}\" \"{args.subject_id}\" \"{args.quiz_id}\""'
+        )
         os.system(cmd)
         print(f"🚀 Launched standalone QR window for {args.subject_id} / {args.quiz_id}")
     else:

@@ -2958,3 +2958,120 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     width: 13px !important;
     height: 13px !important;
 }
+
+/* ===== QR Link Scanner Overlay ===== */
+.qr-scanner-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(4, 7, 13, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.qr-scanner-overlay.hidden {
+    display: none;
+}
+
+.qr-scanner-box {
+    width: 100%;
+    max-width: 430px;
+    background: #101725;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] .qr-scanner-box {
+    background: #f8fafc;
+    border-color: rgba(3, 105, 161, 0.35);
+}
+
+.qr-scanner-head {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #e6edf7;
+}
+
+[data-theme="light"] .qr-scanner-head {
+    color: #0f172a;
+}
+
+.qr-scanner-head h3 {
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.qr-scanner-head svg {
+    width: 19px;
+    height: 19px;
+    color: #38bdf8;
+}
+
+#qr-video {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #000;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.qr-frame-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.qr-status {
+    min-height: 1.1rem;
+    margin: 0;
+    text-align: center;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #fbbf24;
+}
+
+.qr-manual-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+
+.qr-manual-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.82rem;
+    font-family: inherit;
+    color: #e2e8f0;
+    background: #0a0e17;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 9px;
+    outline: none;
+}
+
+.qr-manual-row input:focus {
+    border-color: #38bdf8;
+}
+
+[data-theme="light"] .qr-manual-row input {
+    color: #0f172a;
+    background: #fff;
+    border-color: #94a3b8;
+}
+
+.qr-open-btn {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
