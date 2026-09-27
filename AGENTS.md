@@ -270,20 +270,15 @@ The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-dat
   - **Study Mode (Recitation):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>` (Immediate visual feedback, explanation card, and sound effects).
   - **Exam Mode (Simulated University Exam):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>?mode=exam` (Silent answer tracking, freely editable choices, score and explanations revealed only upon final submission).
   - **Question & Option Shuffle:** Append `?shuffle=true` or click the shuffle button in the header to randomize question and option order while preserving telemetry IDs.
-- **Dedicated Flashcard Memo System (Active Recall):**
-  - **Launch Direct Deck:** `http://127.0.0.1:5000/cards/<Subject_Folder>/<Quiz_Name>`
-  - **3D Flip Card Experience:** Front displays the prompt, concept, and Bloom level. Tap to flip reveals the model answer, explanation, Feynman analogy, and professor exam traps.
-  - **4-Tier Spaced Repetition Rating Bar:** Anki-style buttons (`Again <1m`, `Hard 1d`, `Good 3d`, `Easy 7d`) with local persistence in `localStorage`.
-
 - **Installable Offline-First PWA (Progressive Web App):**
   - The entire learning portal is an installable PWA with Service Worker caching (`/static/sw.js` and `/static/manifest.json`).
   - Tap "Add to Home Screen" in Chromium/Chrome on mobile to install Master Studio as a standalone app.
   - Operates 100% offline (Airplane mode) on campus, bus, or outside home Wi-Fi without requiring the PC server to be running.
 
 - **Offline Local File Picker (Zero-Server Fallback):**
-  - When outside home Wi-Fi or when the PC server is turned off, tap the folder icon (`#btn-open-local-file` or `#btn-open-local-cards`) on mobile.
+  - When outside home Wi-Fi or when the PC server is turned off, tap the folder icon (`#btn-open-local-file`) on mobile.
   - Opens the native Android file picker to load any `Quiz_*.json` directly from your phone's DriveSync folder.
-  - Automatically caches the quiz/deck locally in `localStorage`, so you can study completely offline with zero network connection.
+  - Automatically caches the quiz locally in `localStorage`, so you can study completely offline with zero network connection.
 
 - **Modern Mobile Testing Protocol (UIAutomator First):**
   - AI agents automating Android mobile devices MUST inspect the UI hierarchy using `adb shell uiautomator dump` or compact accessibility snapshots.

@@ -6,7 +6,7 @@
  *
  * Security whitelist: only private/LAN origins on port 5000 with a
  * /quiz path are accepted — anything else (public IPs, https, other
- * ports, /cards decks) is rejected with an Arabic error message.
+ * ports) is rejected with an Arabic error message.
  *
  * Works offline-safe: the decoder (jsQR, vendored at
  * /static/jsqr.min.js) and this script are both precached by sw.js.

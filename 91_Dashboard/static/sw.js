@@ -1,6 +1,6 @@
 /**
  * Master Studio Offline Service Worker (PWA)
- * Enables 100% offline quiz drills, flashcard review, and asset caching.
+ * Enables 100% offline quiz drills and asset caching.
  */
 
 const CACHE_NAME = 'master-studio-v13';
