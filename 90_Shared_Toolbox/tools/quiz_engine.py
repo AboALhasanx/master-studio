@@ -13,11 +13,17 @@ to calibrate mastery from correct/wrong/lucky-guess/reflection signals.
 
 import json
 import logging
+import re
 import threading
+import uuid
 from pathlib import Path
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
+
+_SAFE_UUID_RE = re.compile(r"^[a-zA-Z0-9_\-\.]{8,64}$")
+def _clean_md(val: str) -> str:
+    return re.sub(r"[\r\n]+", " ", str(val)).strip()
 
 SEEN_UUIDS = set()
 
@@ -116,7 +122,8 @@ def record_structured_history(payload: dict, hub_path: Path, bloom_gaps: list, w
         }
         history.append(entry)
 
-        tmp_file = hub_path / f"quiz_history_{sub_uuid}.tmp"
+        swap_id = uuid.uuid4().hex
+        tmp_file = hub_path / f"quiz_history_{swap_id}.tmp"
         try:
             hub_path.mkdir(parents=True, exist_ok=True)
             tmp_file.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -187,7 +194,9 @@ def process_quiz_telemetry(payload: dict, hub_path: Path) -> dict:
     sub_uuid = payload.get("submission_uuid")
     if not sub_uuid:
         return {"status": "error", "message": "Missing submission_uuid"}
-
+    sub_uuid = str(sub_uuid).strip()
+    if not _SAFE_UUID_RE.match(sub_uuid) or ".." in sub_uuid:
+        return {"status": "error", "message": "Invalid submission_uuid (must be alphanumeric/hyphen 8-64 chars)"}
     # Thread-safe: whole ingestion (journal idempotency + history file
     # read-modify-write + journal append) runs serialized under the lock.
     # Persistence failures propagate as exceptions so the HTTP layer can
@@ -213,9 +222,9 @@ def _process_quiz_telemetry_locked(payload: dict, sub_uuid: str, hub_path: Path)
             SEEN_UUIDS.add(sub_uuid)
             return {"status": "already_ingested"}
 
-    subject = payload.get("subject_id", "Unknown_Subject")
-    topic = payload.get("topic", "Quiz")
-    quiz_id = payload.get("quiz_id") or ""
+    subject = _clean_md(payload.get("subject_id", "Unknown_Subject"))
+    topic = _clean_md(payload.get("topic", "Quiz"))
+    quiz_id = _clean_md(payload.get("quiz_id") or "")
     summary = payload.get("summary", {})
     percentage = float(summary.get("percentage", 0.0))
     correct_count = summary.get("correct", 0)

@@ -19,6 +19,9 @@ Zero-CLI (I run all). Recap at each transition; end every block with "is that it
 - RS emerald card: `**[RS-XX-YY]** Q?` then `>` answer. No `Model Answer` label.
 - Windows File Lock: open PDF → exporter writes `*_new.pdf`; tell him which is current.
 
+## D2. Quiz serving = LIVE LISTENING session (2026-09-26, corrected by student)
+When he says "يلا" for a quiz, the deliverable is NOT a file/PNG. It is: (1) start Flask **in an external CMD window** (`90_Shared_Toolbox/tools/start-quiz-server.bat`), (2) open the QR in a **second external CMD window** (`show-quiz-qr.bat <Subject> <Quiz>`), (3) **stay listening** (`_wait_quiz_result.py`, background) for the new attempt in `00_STUDIO_HUB/quiz_history.json`, then report score + gaps. Quirks: Flask `debug=True` = parent+reloader-child (kill BOTH via psutil on `app.py`); `quiz_qr.py --window` breaks on nested quoting → use the bat; fresh cmd may lack `python` → bats pin absolute `Python312` interpreter; netstat is stale ~10s → trust `curl /api/health`. Full skill: `~/.workbuddy-ai/skills/master-studio-quiz-session/`.
+
 ## E. Verbatim label MUST be inside the `>` block (2026-09-24, "unforgivable unless recorded")
 Never a standalone bold `**Verbatim (p.x):**` paragraph above the `>`. Defective-but-frozen (fix only if asked): `Week_02_File_06_The_Spiral_Model.md` L49,55; `Week_02_File_08_Agile_XP_Scrum.md` L294,298; `Week_02_Master_Lecture.pdf`.
 

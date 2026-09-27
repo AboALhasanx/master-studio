@@ -143,3 +143,5 @@ token_budget: "< 400 tokens"
   - **Lesson 2 (BiDi Math Isolation):** Never apply regex replacements (BiDi token isolation, text substitution) while math is restored! Keep LaTeX formulas protected as atomic `@@MATH_N@@` tokens until the final template rendering so KaTeX delimiters (`$...$`, `$$...$$`) are 100% pristine.
   - **Lesson 3 (Table Cell Regex & Alignment):** Aligned Markdown tables (`|:---|`) generate `<td style="...">`. Matcher regexes must use `<td(\s*[^>]*)>(.*?)</td>`. Cells containing Latin text, formulas, or directional arrows (e.g. `1 → $m$`) must receive `dir="ltr"` and `white-space: nowrap;` so bold acronym expansions (e.g. `**A**sset value`) never flip to `sset valueA`.
   - **Lesson 4 (Leading English Definitions):** In Arabic paragraphs starting with an English definition (e.g. `CVSS = Common Vulnerability... — معيار...`), the entire English formula must be wrapped in `<bdi dir="ltr">` via `isolate_english_leading_phrases()` to prevent BiDi word inversion.
+
+- **Added 2026-09-26:** Terminal TUI does not support Arabic text rendering cleanly; communicate strictly in technical English in chat.

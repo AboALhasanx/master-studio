@@ -1955,7 +1955,7 @@ class QuizApp {
                 expBox.className = 'review-explanation-box';
                 expBox.innerHTML = `
                     <strong>${t.explanation}</strong>
-                    <span>${q.explanation}</span>
+                    <span>${this.escapeHtml(q.explanation)}</span>
                 `;
                 card.appendChild(expBox);
             }

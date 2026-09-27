@@ -367,3 +367,17 @@ def test_concurrent_submissions_all_persist():
 
         data = json.loads((hub / "quiz_history.json").read_text(encoding="utf-8"))
         assert len(data) == 6
+
+
+def test_process_quiz_telemetry_rejects_path_traversal_uuid(tmp_path):
+    from quiz_engine import process_quiz_telemetry
+    payload = {
+        "submission_uuid": "../../evil_escape",
+        "subject_id": "01_Cyber_Security",
+        "topic": "Test Topic",
+        "summary": {"percentage": 100, "correct": 5, "total": 5}
+    }
+    result = process_quiz_telemetry(payload, tmp_path)
+    assert result.get("status") == "error"
+    assert "invalid submission_uuid" in result.get("message", "").lower()
+    assert not (tmp_path.parent / "quiz_history_../../evil_escape.tmp").exists()

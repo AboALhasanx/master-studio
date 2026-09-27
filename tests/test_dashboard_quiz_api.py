@@ -398,3 +398,42 @@ def test_post_quiz_web_share_target(client):
     html = res.get_data(as_text=True)
     assert "ms-shared-quizzes-data" in html
     assert "Shared via Telegram" in html
+
+
+def test_dashboard_debug_mode_safe_by_default(monkeypatch):
+    import os
+    import app as dashboard_app
+    monkeypatch.delenv("FLASK_DEBUG", raising=False)
+    assert not dashboard_app.app.config.get("DEBUG", False)
+
+
+def test_review_card_explanation_is_html_escaped():
+    """Task 4 (DOM XSS): renderReviewCards() must escape q.explanation before innerHTML."""
+    quiz_js = BASE_DIR / "91_Dashboard" / "static" / "quiz.js"
+    src = quiz_js.read_text(encoding="utf-8")
+
+    # Locate the review-explanation-box sink
+    sink_idx = src.find("review-explanation-box")
+    assert sink_idx != -1, "review-explanation-box sink not found in quiz.js"
+    window = src[sink_idx : sink_idx + 400]
+
+    assert "this.escapeHtml(q.explanation)" in window, (
+        "DOM XSS: q.explanation is injected into innerHTML without escapeHtml()"
+    )
+    assert "${q.explanation}" not in window, (
+        "DOM XSS: raw ${q.explanation} template interpolation found in explanation box"
+    )
+
+
+def test_post_quiz_web_share_target_escapes_closing_script_tags(client):
+    from io import BytesIO
+    malicious_quiz = {
+        "topic": "XSS Test </script><script>alert('xss')</script>",
+        "questions": [{"id": 1, "question": "Q?", "options": ["A", "B"], "correct": 0}]
+    }
+    data = {"quiz_files": [(BytesIO(json.dumps(malicious_quiz).encode("utf-8")), "evil.json")]}
+    res = client.post("/quiz", data=data, content_type="multipart/form-data")
+    assert res.status_code == 200
+    html = res.get_data(as_text=True)
+    assert "</script><script>alert" not in html
+    assert r"\u003c/script\u003e" in html or r"&lt;/script&gt;" in html or r"\u003c" in html

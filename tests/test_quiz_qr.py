@@ -106,3 +106,45 @@ def test_resolve_quiz_slug_prefix():
     # Resolves Quiz_01 to Quiz_01_Software_Crisis for 04_Advanced_Software_Eng
     resolved = resolve_quiz_slug("04_Advanced_Software_Eng", "Quiz_01")
     assert resolved == "Quiz_01_Software_Crisis"
+
+
+def test_standalone_launcher_uses_argument_array_not_shell():
+    """Task 5 (Command Injection): launcher must use subprocess args, never os.system."""
+    import inspect
+    import quiz_qr
+
+    src = inspect.getsource(quiz_qr)
+    assert "os.system(" not in src, (
+        "Command injection: quiz_qr.py still calls os.system() with a formatted command string"
+    )
+    assert hasattr(quiz_qr, "launch_standalone_window"), (
+        "launch_standalone_window() helper missing from quiz_qr.py"
+    )
+
+
+def test_launch_standalone_window_rejects_shell_metacharacters():
+    """Subject/quiz ids containing cmd metacharacters must be rejected before spawn."""
+    from quiz_qr import launch_standalone_window
+
+    with pytest.raises(ValueError):
+        launch_standalone_window('04_Advanced" & calc', "Quiz_01")
+    with pytest.raises(ValueError):
+        launch_standalone_window("04_Advanced_Software_Eng", "Quiz_01|whoami")
+
+
+def test_launch_standalone_window_spawns_argument_array():
+    """Verify Popen receives a list (no shell=True, no string interpolation)."""
+    from quiz_qr import launch_standalone_window
+
+    with patch("subprocess.Popen") as mock_popen:
+        launch_standalone_window("04_Advanced_Software_Eng", "Quiz_01")
+
+    assert mock_popen.call_count == 1
+    args, kwargs = mock_popen.call_args
+    argv = args[0]
+    assert isinstance(argv, list), "launcher must pass an argument list, not a shell string"
+    assert kwargs.get("shell") is not True
+    # user-controlled values must be discrete argv elements (never concatenated)
+    assert "04_Advanced_Software_Eng" in argv
+    assert "Quiz_01" in argv
+    assert all(isinstance(a, str) for a in argv)

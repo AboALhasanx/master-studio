@@ -105,6 +105,11 @@ def is_safe_vault_name(name) -> bool:
     return isinstance(name, str) and bool(_SAFE_VAULT_NAME.match(name))
 
 
+def safe_json_for_html(obj) -> str:
+    """Serializes object to JSON safely for embedding inside HTML <script> tags."""
+    dumped = json.dumps(obj, ensure_ascii=False)
+    return dumped.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
 def get_lan_ip() -> str:
     """Detect host Wi-Fi/Ethernet LAN IP address, fallback to 127.0.0.1."""
     try:
@@ -569,7 +574,7 @@ def quiz_hub():
         quiz_id=None,
         lan_ip=lan_ip,
         available_quizzes=get_all_quizzes(),
-        shared_quizzes=json.dumps(shared_quizzes) if shared_quizzes else None,
+        shared_quizzes=safe_json_for_html(shared_quizzes) if shared_quizzes else None,
     )
 
 @app.route("/quiz/bookmarks")
@@ -781,8 +786,15 @@ def api_quiz_bookmarks():
 
 
 if __name__ == "__main__":
+    import os
     lan_ip = get_lan_ip()
+    debug_mode = os.environ.get("FLASK_DEBUG", "0").lower() in ("1", "true", "yes")
     print("Master Studio Dashboard")
     print(f"Local:   http://127.0.0.1:5000")
     print(f"Network: http://{lan_ip}:5000")
-    app.run(host="0.0.0.0", port=5000, debug=True, threaded=True)
+    if debug_mode:
+        print("[WARNING] Running with FLASK_DEBUG enabled. Do not expose to untrusted networks.")
+    # use_reloader=False: the watchdog reloader raced on file churn and killed the
+    # server silently (exit 1) twice mid-session while the student was testing.
+    # Restart manually after editing app.py instead.
+    app.run(host="0.0.0.0", port=5000, debug=debug_mode, threaded=True, use_reloader=False)

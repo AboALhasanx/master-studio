@@ -6,9 +6,25 @@ Generates LAN-accessible quiz links and renders ASCII QR codes in the terminal
 so mobile devices on the same Wi-Fi network can scan and take quizzes.
 """
 
+import re
 import socket
 import sys
 from typing import Tuple
+
+# Strict allowlist for CLI identifiers that get forwarded into a spawned console.
+# Deliberately excludes every cmd.exe metacharacter: & | < > ^ " % ! ( ) = ; , 
+_SAFE_CLI_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 _\-]{0,63}$")
+
+
+def validate_cli_id(name: str, value: str) -> str:
+    """Zero-trust validation: reject anything outside the safe identifier set."""
+    value = str(value or "").strip()
+    if not _SAFE_CLI_ID_RE.match(value):
+        raise ValueError(
+            f"Invalid {name}: {value!r} -- only letters, digits, space, '_' and '-' "
+            f"are allowed (max 64 chars)."
+        )
+    return value
 
 
 def get_lan_ip() -> str:
@@ -140,6 +156,46 @@ def generate_quiz_link(subject_id: str, quiz_id: str, print_qr: bool = True) -> 
     return link, lan_ip
 
 
+def launch_standalone_window(subject_id: str, quiz_id: str) -> None:
+    """
+    Launch this script in a standalone Windows console window.
+
+    Security (Task 5 - Command Injection):
+      * subject_id / quiz_id are validated against `_SAFE_CLI_ID_RE` FIRST,
+        so no cmd.exe metacharacter (& | < > ^ " %) can ever reach a shell.
+      * The child is spawned via `subprocess.Popen` with an ARGUMENT ARRAY
+        (never `os.system` / never `shell=True`), so each user-controlled value
+        is a discrete argv token handed straight to CreateProcess -- it is
+        never concatenated into a command string and never re-parsed.
+      * No shell is involved at all: the window is opened natively with
+        CREATE_NEW_CONSOLE, and `--keep-open` makes the child pause on stdin
+        so the QR output stays visible (replacing the old `cmd /k` host).
+    """
+    import subprocess
+    from pathlib import Path
+
+    subject_id = validate_cli_id("subject_id", subject_id)
+    quiz_id = validate_cli_id("quiz_id", quiz_id)
+
+    script_path = str(Path(__file__).resolve())
+    # Pin the child to THIS interpreter (sys.executable) and UTF-8 output.
+    argv = [
+        sys.executable,
+        "-X", "utf8",
+        script_path,
+        subject_id,
+        quiz_id,
+        "--keep-open",
+    ]
+
+    subprocess.Popen(
+        argv,
+        creationflags=subprocess.CREATE_NEW_CONSOLE,
+        shell=False,
+    )
+    print(f"🚀 Launched standalone QR window for {subject_id} / {quiz_id}")
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -149,6 +205,8 @@ if __name__ == "__main__":
     parser.add_argument("--no-qr", action="store_true", help="Suppress QR code output")
     parser.add_argument("--open", "--browser", action="store_true", help="Open quiz directly in default browser (Chromium/Chrome)")
     parser.add_argument("--window", action="store_true", help="Launch in a standalone external CMD window on Windows")
+    parser.add_argument("--keep-open", action="store_true",
+                        help=argparse.SUPPRESS)  # internal: child stays open after rendering
 
     args = parser.parse_args()
 
@@ -158,19 +216,13 @@ if __name__ == "__main__":
         webbrowser.open(link)
         print(f"🌐 Opened quiz directly in default browser: {link}")
     elif args.window and sys.platform == "win32":
-        import os
-        from pathlib import Path
-        script_path = Path(__file__).resolve()
-        # Pin the child window to THIS interpreter (sys.executable) and UTF-8
-        # output: a bare `python` in the spawned cmd can resolve to a different
-        # install (e.g. the Windows Python Manager shim defaulting to 3.14)
-        # that lacks the qrcode package or crashes on emoji output.
-        cmd = (
-            f'start "Master Studio Quiz Portal - {args.subject_id}" '
-            f'cmd /k "{sys.executable} -X utf8 '
-            f'\"{script_path}\" \"{args.subject_id}\" \"{args.quiz_id}\""'
-        )
-        os.system(cmd)
-        print(f"🚀 Launched standalone QR window for {args.subject_id} / {args.quiz_id}")
+        # Security (Task 5): validated allowlist + argv-array Popen, never os.system.
+        launch_standalone_window(args.subject_id, args.quiz_id)
     else:
         generate_quiz_link(args.subject_id, args.quiz_id, print_qr=not args.no_qr)
+        if args.keep_open:
+            # Keeps the standalone child window visible (replaces legacy `cmd /k`).
+            try:
+                input("\nPress ENTER to close this window...")
+            except EOFError:
+                pass

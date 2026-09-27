@@ -3,10 +3,10 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 2
 active_subject: "02_English_Language"
 active_subject_code: "CS502"
-immediate_todo: "English (CS502) - explain-a-paper assignment. SELECTED (documented, DOI): Christakis & Fowler, 'Social Network Sensors for Early Detection of Contagious Outbreaks', PLOS ONE 5(9):e12948 (2010), 8 pp, DOI 10.1371/journal.pone.0012948, free PDF in 02_Raw_Materials. Next: build the student's explanation/summary + presentation."
-next_session_focus: "English (CS502) - produce the paper-explanation deliverable for 'Social Network Sensors for Early Detection of Contagious Outbreaks' (PLOS ONE 2010): structured summary, key-contribution analysis, and a short spoken presentation outline."
-last_updated: "2026-09-26"
-status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
+immediate_todo: "Data Mining Week4.docx STAGED (`02_Raw_Materials/Week4_Feature_Selection.docx`) + gap map vs prior Feature Selection seminar/ملزمة logged. DECIDE with student: (A) absorb Week4 calc examples into seminar, (B) build bilingual note from Week4, or (C) wait for Monday class. Monday = Data Mining seminar topic Feature Selection (all required; pair-vs-solo unresolved). Cyber: W03 lecture notes due Wednesday. English paper deferred to next week."
+next_session_focus: "Monday Data Mining: Feature Selection seminar. Use Week4 gap map — doctor's calc examples (Pearson, Chi-Square, IG, MI, RFE, LASSO, RF) are the exam-shaped layer. Student's W03 Cyber notes still due Wednesday."
+last_updated: "2026-09-27"
+status: "WEEK4_STAGED_GAP_MAP_READY"
 ---
 
 # Master Studio: Active Session State
@@ -19,7 +19,7 @@ status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
 |  Subject:  02_English_Language  Target Path: 01_Semester_1/02_English_Language      |
-|  Status:  QR SCANNER LIVE + 6x FASTER LOADS  Date: 2026-09-26                       |
+|  Status:  MATERIALS RENUMBERED · W03 NOTES DUE WED  Date: 2026-09-27                   |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -30,19 +30,21 @@ status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
 | **Active Subject** | `02_English_Language` | Asst. Prof. Dr. Haidar Akab Alwan (1 Credit Hour) — CS502 |
-| **Last Updated** | `2026-09-25` | Data Mining Feature Selection COMPLETE (source report + 24-page ملزمة + V1/V2 seminar decks). AI opened: AIMA 4th ed. verified + Week-01 lecture identified; Lecture-01 ملزمة ready to start. |
+| **Last Updated** | `2026-09-27` | Sunday report logged: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep. |
 
 ---
 
 ## 2. Immediate Tasks & Roadmap
 
 ### Active Work Queue
+- [x] **Vault Security Audit & Hardening — ALL 7 TASKS DONE (2026-09-27).** 11 risky sinks audited under the 6-factor flow model (`credential ↔ scope ↔ actor ↔ target ↔ action ↔ state`); 6 were vulnerable and are now fixed, 5 proven not vulnerable. Fixes: (1) Flask `debug=True` on `0.0.0.0` → env-gated off by default; (2) `quiz_engine` `submission_uuid` path traversal → strict allowlist + randomized swap files; (3) `quiz_hub` `</script>` JSON breakout → `safe_json_for_html()`; (4) `quiz.js:1958` DOM XSS → `escapeHtml()`; (5) `quiz_qr.py --window` `os.system` command injection → `validate_cli_id()` allowlist + argv-array `Popen(shell=False)` (no `cmd /k`); (6) `sieve_client` Bearer token to arbitrary URL → `_url_is_first_party()` origin gate. New gate: `tests/test_security_audit_invariants.py` (24 invariants pinning all 11 flows + vault-wide `shell=True`/`os.system(` sweep). **Suite: 139 passed.** NOT committed yet; dashboard server needs a manual restart to load `app.py`/`quiz.js`.
+- [x] **Sunday 2026-09-27 wrap + materials renumber DONE.** Quiz = Cyber Booklets 1+2 (`W01` + `W02_Risks_DrHuda_Booklet2`), 2 forgotten Qs, not graded. English lecture cancelled (Haidar absent) — paper deferred to next week. AI cancelled again (Dean no-show from last Tue → Sun). Cyber lecture = **`W03_Risks.pdf`** (old `W02_Risks.pdf`), lots of marks, **unfinished**; student notes **due Wednesday** — do not synthesise early. File map: Booklet2 DOCX→PDF (ONLYOFFICE x2t) locked as **W02**; old W02_Risks→**W03_Risks**; W03–W15 shifted +1 (now W04–W16). See `sessions/2026-09-27.md` + `02_Raw_Materials/README.md`.
+- [ ] **`03_Data_Mining` — standing subject (record-only).** W01–W03 notes exist in `03_Study_Notes/`. Next lecture topic: **Feature Selection Techniques** (professor-provided sources). Record only until the student directs study.
 - [x] **Built-in QR scanner + performance pass + tablet E2E DONE (2026-09-26).** jsQR vendored (`static/jsqr.min.js`) + `qr-scanner.js` with LAN/localhost `:5000` `/quiz/*` whitelist, manual-paste fallback, insecure-origin redirect to the file:// catalog, busy-camera auto-retry; scanner UI gated `{% if not direct_mode %}`. APK v1.1.0 (versionCode 2) with CAMERA permission, WebView permission-request flows, remote debugging + `MSCQuiz_Nav` URL logs. Perf: gzip level-9 + `threaded=True` + script `defer` + cache headers -> critical path **954 KB -> 159 KB (6x)**, live scan-to-quiz **<2 s**. Root causes fixed: `handleExit()` now full-navigates (was: empty SPA catalog + camera blocked on insecure http); `quiz_qr.py --window` pinned to `sys.executable -X utf8` (was resolving the Python Manager shim to a qrcode-less 3.14). `quiz_qr.py` window QR verified rendering (console-buffer capture). "مستورد محلياً" badge removed catalog-wide; SW v13. **Suite: 105 passed**; live submit `POST /api/quiz/submit -> 200`, zero 5xx.
 - [x] **Industrial-Grade Quiz Ingestion, Packaging & Offline Sync Architecture DONE (2026-09-26).** Canonical Schema v2 deployed across all 6 active subjects; `quiz_balancer.py` upgraded with `normalize_quiz_schema()` & `validate_schema_v2()`; `GET /api/quiz/bundle` & `pack_quiz_bundle.py` implemented; native IndexedDB `QuizVault` engine deployed in `quiz-vault.js` with zero dependencies; smart multi-file & bundle importer in `quiz.html`/`quiz.js` with dynamic catalog DOM injection (badge-free catalog since 2026-09-26); write-ahead offline queue & auto-flushing sync; PWA bumped to `master-studio-v10`; native signed APK built (`MSCQuiz_Signed.apk`, 422.8 KB) via `build_mscquiz_apk.py` and 100% verified on physical tablet via ADB; Telegram direct-open intent & Web Share Target verified; 99/99 tests passing.
 - [x] **ASE Week 02 Units 01–05 — zero-leakage cleanup + vector diagrams + clean bilingual PDFs (2026-09-24).** All backend scaffolding was stripped from student-facing text in Units 02–05 (`File NN of 10` cross-references, `[THIN]` flags, `**EN.**`/`**AR.**` markers, `BUILD_PLAN` build footers, the `file:` frontmatter key). `[THIN]` coverage notes were **rewritten as prose** (`ملاحظة تغطية:` / `Coverage note`) rather than deleted, so no information was lost. Unit 05 gained frontmatter, a **Where this sits** narrative spine, an English Feynman intuition section and a closing footer — it previously had none. Four new 2x-retina vector diagrams were built (waterfall classical vs iterative; prototyping vs evolutionary; incremental interleaving; RAD timeline compression), each inlined with an Arabic "how to read this figure" table. New tool: `90_Shared_Toolbox/tools/diagram_forge.py` (HTML/SVG → 2x PNG via Playwright; resolves `chromium-*/chrome-win64/chrome.exe`). PDFs re-exported with `study_pack` + `--lang ar`: **01 = 17 pp, 02 = 24 pp, 03 = 20 pp, 04 = 18 pp, 05 = 10 pp** — all verified with **zero leakage**, one embedded figure each, Arabic layer intact. Superseded exports moved to `99_Archives/2026-09-24_ASE_W02_superseded_exports/` (gitignored). Pushed as commits `7787ab1`, `8ba5bf2`.
 - [x] **ASE Week 02 Units 06–10 — clean manifesto rebuild DONE (2026-09-24).** Zero-leakage, one diagram each, frontmatter + the 4-part "Where this sits" spine added; page counts **06 = 13, 07 = 11, 08 = 15, 09 = 11, 10 = 29**. Unit 10 carried a §2.5-before-§2 ordering bug, caught only by rendering and fixed. Committed `c8b9206`.
 - [x] **ASE Week 02 MASTER LECTURE — ten units merged into one paginated booklet DONE (2026-09-24).** `08_PDF_Exports/Week_02_Master_Lecture.pdf` — **146 pages**: cover (p1) + index of topics/sub-topics/branches with **confirmed page numbers** (pp2–7) + the ten units with **continuous re-numbered pagination**. Builder `90_Shared_Toolbox/tools/build_week02_master.py` (two-pass measure→re-render). Verified **0 pagination mismatches**; unit starts at pages **[7, 21, 41, 57, 70, 78, 88, 96, 108, 118]**. One known blemish left by request: Unit 08's "Source notes" index line renders `p.000`.
-- [ ] **`03_Data_Mining` — NOW THE ACTIVE SUBJECT.** W01–W03 notes exist in `03_Study_Notes/`. Next lecture topic: **Feature Selection Techniques** (professor-provided sources). Record only until the student directs study.
 - [x] **Ingest 4 Canonical Textbooks for `04_Advanced_Software_Eng`** (Sommerville, Pressman, Mall, Agarwal)
 - [x] **Synthesize Week 01 Lecture 01 Master Study Note** (33.9 KB Markdown, DOCX for OnlyOffice)
 - [x] **Generate & Compile Lecture 01 Marp Seminar Deck** (10 slides, PDF + PPTX for OnlyOffice)
@@ -82,12 +84,12 @@ status: "ENGLISH_PAPER_ASSIGNMENT_ACTIVE"
 
 ### Next Session Focus
 - **ASE Week 02 is COMPLETE** — ten unit PDFs + the 146-page merged Master Lecture. No further ASE work queued until the student asks.
-- **Data Mining is now the active subject.** Next lecture topic: Feature Selection Techniques, from professor-provided sources. Record only; do not prepare/study it until the student directs.
+- **Cyber: materials renumbered 2026-09-27.** W02 = `W02_Risks_DrHuda_Booklet2.pdf` (exam booklet 2). Lecture source = **`W03_Risks.pdf`**. Student notes for the unfinished W03 lecture **due Wednesday** — synthesise only after handover. Quiz today covered Booklets 1+2 (2 forgotten Qs, not graded).
+- **English paper (CS502) deferred to next week** (Dr. Haidar no-show). Christakis & Fowler PLOS ONE 2010 still the standing deliverable. Soft Computing deferred.
+- **Artificial Intelligence:** Dean's Sunday make-up also a no-show (rescheduled from last Tue). Still ON HOLD, no material.
+- **Data Mining:** record-only for Feature Selection until the student directs.
 - [x] Cross-subject current-status mind map (`00_STUDIO_HUB/CURRENT_MATERIALS_MAP.md`) — delivered.
 - [x] Wednesday–Sunday dated plan (`PLAN_2026-09-23_to_27.md`) — delivered.
-- Cyber Security Week 02 booklet on Risk is available; the postponed quiz covers two booklets, exact date unconfirmed.
-- English and Soft Computing are deferred for now.
-- Artificial Intelligence lecture moved from Tuesday to Sunday (dean unavailable).
 - **Correction 2026-09-18 (student-confirmed):** the previously listed "Week 01 viva defense drill with Dr. Ali Fahim" was **agent-inferred and is not a real event**. The Patriot-drift / Brooks material stays valid *study* content, but it is not tied to any scheduled assessment.
 - **Deliverables Ready:** `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` & `seminar_lecture01_software_crisis.pptx`.
 ---
