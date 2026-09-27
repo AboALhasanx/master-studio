@@ -25,7 +25,7 @@
 
 ## Findings
 
-### D-01 · S1 · Unhandled `500` on null byte in quiz filename
+### D-01 · S1 · Unhandled `500` on null byte in quiz filename → ✅ **FIXED**
 `GET /api/quiz/<subject_id>/<quiz_id>` builds a `Path` from client input and calls `is_file()`/`read_text()` without guarding OS-level path errors.
 
 - **Repro:** `curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:5000/api/quiz/01_Cyber_Security/Quiz_01%00evil"` → **500**
@@ -33,14 +33,14 @@
 - **Also affected:** any other `OSError` from `Path` (illegal characters, path too long) currently escapes as a 500 instead of the intended `{"error": "Quiz not found"}` 404.
 - **Why it matters:** the endpoint already has traversal guards (`.resolve()` + `relative_to()`), but error *handling* around filesystem metadata calls is missing — one malformed URL poisons the log with a full traceback and returns a generic 500.
 
-### D-02 · S1 · `/api/quiz/bookmarks` overwrites real data with unvalidated payloads
+### D-02 · S1 · `/api/quiz/bookmarks` overwrites real data with unvalidated payloads → ✅ **FIXED**
 The POST branch accepts any JSON list, serialises it and atomically replaces `00_STUDIO_HUB/quiz_bookmarks.json` — **no schema check, no size cap, no auth**.
 
 - **Repro:** `POST /api/quiz/bookmarks` body `{"bookmarks":[{"deep":{"x":[0..49]}}]}` → `200 {"status":"success"}`
 - **Observed damage:** the file went from **6 real bookmarks → 1 junk object** (restored from backup afterwards).
 - **Why it matters:** atomic write prevents *torn* files but not *wrong* files. One buggy or hostile client permanently destroys bookmark state.
 
-### D-03 · S1 · `/api/quiz/submit` persists out-of-range telemetry
+### D-03 · S1 · `/api/quiz/submit` persists out-of-range telemetry → ✅ **FIXED**
 `percentage`, `score`, `total` are not range- or type-validated before ingestion.
 
 - **Repro:**
@@ -49,12 +49,12 @@ The POST branch accepts any JSON list, serialises it and atomically replaces `00
 - **Impact:** corrupts `quiz_history.json`, the daily session journal, catalog aggregates (`best_percentage`), and the BKT mastery model in `LEARNER_MODEL.md`.
 - **Note:** idempotency **is** correct — a replayed `submission_uuid` returns `{"status":"already_ingested"}` (verified).
 
-### D-04 · S2 · No rate limiting, no authentication on any write endpoint
+### D-04 · S2 · No rate limiting, no authentication on any write endpoint → ✅ **FIXED** (rate limiting)
 - **Repro:** 30 × `POST /api/quiz/submit` completed in **0.36 s**, all processed.
 - **Exposed writers:** `/api/quiz/submit` (history+journal), `/api/quiz/bookmarks` (file overwrite), `/api/quiz/import` (writes `.json` into the subject vault).
 - **Context:** the tablet joins the same Wi-Fi as the PC; any device on the LAN (or any page the browser visits, via CSRF-style POSTs) can drive these endpoints. Traversal is rejected (`is_safe_vault_name`), so this is **not** path escape — it is *unauthenticated resource consumption and content injection*.
 
-### D-05 · S2 · No security headers; version disclosure
+### D-05 · S2 · No security headers; version disclosure → ✅ **FIXED**
 On `GET /` (and API responses):
 
 | Header | Status |
@@ -122,11 +122,56 @@ Startup banner: *"This is a development server. Do not use it in a production de
 
 ---
 
+## Remediation applied — 2026-09-27 (TDD: failing test → fix → full suite green)
+
+Scope chosen by the student: the **four critical defects (D-01 … D-05)**. Each fix was written
+as a failing test first (`tests/test_dashboard_hardening.py`, 23 gates), then implemented.
+
+| Defect | Fix | Standards anchor |
+|:--|:--|:--|
+| **D-01** | `api_quiz_get` now resolves client input inside a boundary that catches `(OSError, ValueError, UnicodeError)` → `404` JSON; corrupt-on-disk JSON → `500` with a **generic** body; global `@app.errorhandler(500)` returns JSON with no exception text (detail goes to the log only). | OWASP Error Handling Cheat Sheet |
+| **D-02** | `validate_bookmarks()` allow-list gate on `POST /api/quiz/bookmarks`: list only, ≤ 5000 entries, entries must be a `1–400` char key **or** a `{k, n, question_data, subject, quiz}` object with typed fields → otherwise `400`, file untouched. | OWASP Input Validation Cheat Sheet |
+| **D-03** | `validate_telemetry()` on `POST /api/quiz/submit`: finite-number check (rejects `NaN`/`inf`/booleans), `percentage ∈ [0,100]`, `correct ≤ total`, counts `∈ [0,500]`, dwell/duration `∈ [0, 86400]`, ≤ 500 questions, control-character and length limits on string fields; `MAX_CONTENT_LENGTH = 1 MiB` → `413`. Rejects instead of clamping (a clamped row still poisons the BKT model). | OWASP API4:2023, Input Validation Cheat Sheet |
+| **D-04** | `flask-limiter 4.1.1`, in-memory (keeps the 0-database invariant): `submit 60/min`, `bookmarks 60/min`, `import 30/min`, default `1000/min` for reads. `RATELIMIT_HEADERS_ENABLED` → `X-RateLimit-Limit/Remaining/Reset` + `Retry-After`, and a custom `429` handler answers **JSON** instead of an HTML error page. | OWASP API4:2023, NIST SP 800-204 |
+| **D-05** | `after_request` hook adds `Content-Security-Policy` (HTML only, `script-src 'self'`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` + `frame-ancestors 'none'`, `Referrer-Policy`, `Permissions-Policy`. Version banner removed by `FingerprintlessRequestHandler.version_string()` → wire header is `Server: MasterStudio`. The inline PWA bootstrap in `quiz.html` was externalised to `/static/pwa-boot.js` to make `script-src 'self'` enforceable. | OWASP HTTP Headers Cheat Sheet, Secure Headers Project |
+
+### Post-fix evidence
+
+**Automated:** `python -m pytest tests/ -q` → **162 passed** (139 baseline + 23 new hardening gates).
+`bandit -r 91_Dashboard/app.py` → 0 high; the single medium (`B104` `host="0.0.0.0"`) and the 7 low
+(`B110/B112` try/except pass) are pre-existing and intentional (LAN server, fuzzy-match skipping).
+
+**Live abuse battery (re-run after the fixes):**
+
+| Attack | Before | After |
+|:--|:--|:--|
+| `GET .../Quiz_01%00evil` | **500** + traceback in log | **404** `{"error":"Quiz not found"}` + WARNING log line |
+| `{"percentage":-50,"score":-3,"total":-10}` | **200** + poisoned row | **400** `percentage must be between 0 and 100; total must be between 0 and 500; …` |
+| `{"percentage":1e308,…}` / `NaN` / `"99"` | **200** | **400** |
+| junk bookmark object `{"deep":{…}}` | **200**, file overwritten | **400**, file untouched |
+| 2 MiB body | accepted | **413** |
+| 70 rapid writes | all processed | **429** after the 60th, JSON body, `Retry-After: 59` |
+| `Server:` header | `Werkzeug/3.1.8 Python/3.12.0` | `MasterStudio` |
+| CSP / nosniff / DENY / Referrer-Policy | missing | present on every response |
+| **Any 5xx in the whole battery** | 1 (D-01) | **0** |
+| Valid, real-shaped submission | 200 | **200** (no false positives — real clients still work) |
+
+**Tablet E2E re-verification (AJ5EJK5913W00158, `adb reverse`):** quiz page `readyState: complete`,
+`inlineScriptCount: 0`, scripts run = `lucide.min.js`, `quiz-vault.js`, `quiz.js`, **`pwa-boot.js`**,
+service worker *controlled* (registration still works after externalising the script),
+`#btn-start-quiz` → question 1/30 with running timer and progress bar →
+**0 CSP violations · 0 JS exceptions · 0 console errors/warnings**.
+
+**Hygiene:** `wire_verify.py` snapshots and restores `quiz_history.json`, `quiz_bookmarks.json`
+and the session journal byte-for-byte, so this verification added no learner telemetry.
+
+---
+
 ## Recommended fixes (research-backed — see `docs/QA_FIX_RESEARCH_2026-09-27.md`)
 
-1. Wrap filesystem metadata calls in try/except → 404 JSON (**D-01**).
-2. Pydantic/jsonschema validation + size caps on `bookmarks`, `submit`, `import` (**D-02, D-03**).
-3. `Flask-Limiter` (fixed-window/token bucket) on all POST routes (**D-04**).
-4. `Flask-Talisman` + `X-Content-Type-Options` + strip `Server` (**D-05**).
+1. ✅ **Applied** — Wrap filesystem metadata calls in try/except → 404 JSON (**D-01**).
+2. ✅ **Applied** — schema validation + size caps on `bookmarks`, `submit` (**D-02, D-03**).
+3. ✅ **Applied** — `Flask-Limiter` on all write routes, JSON `429` + backoff headers (**D-04**).
+4. ✅ **Applied** — security-header hook + `script-src 'self'` CSP + strip `Server` (**D-05**).
 5. Add the internal route server-side or drop the fetch (**D-06**).
-6. State assertion after every label-based tap in WebView contexts (**D-08**).
+6. State assertion after every label-based tap in WebView contexts (**D-08**) — *recorded in the machine-global protocol*.

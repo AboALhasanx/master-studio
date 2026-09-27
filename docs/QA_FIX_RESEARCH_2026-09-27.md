@@ -202,16 +202,36 @@ The QR launcher (`quiz_qr.py`) should print the fallback command alongside the c
 
 ## Prioritised remediation backlog
 
-| # | Fix | Defects | Effort | Risk reduced |
-|:--|:--|:--|:--|:--|
-| 1 | Try/except around FS metadata + 500 handler + parametrised hostile-id tests | D-01 | S | Crash / log poisoning |
-| 2 | Schema validation (Pydantic) + `MAX_CONTENT_LENGTH` + range checks | D-02, D-03 | M | Data & model corruption |
-| 3 | `Flask-Limiter` per-route limits + token on vault-writing routes | D-04 | S | DoS, unauthenticated writes |
-| 4 | Security headers + strip `Server` (Flask-Talisman or `after_request`) | D-05 | S | Fingerprinting, clickjacking, XSS layer |
-| 5 | Implement or remove `/api/internal/shared-quizzes` | D-06 | XS | Log noise, contract drift |
-| 6 | Production WSGI (Waitress/Gunicorn) | D-10 | M | Stability under load |
-| 7 | Unique-match rule for quiz ids | D-11 | XS | Wrong-quiz serving |
-| 8 | Health-check + `adb reverse` fallback in `quiz_qr.py` | D-09 | S | Broken study sessions |
-| 9 | State-assertion rule after every tap | D-08 | XS | Wasted agent loops |
+| # | Fix | Defects | Effort | Risk reduced | Status |
+|:--|:--|:--|:--|:--|:--|
+| 1 | Try/except around FS metadata + 500 handler + parametrised hostile-id tests | D-01 | S | Crash / log poisoning | ✅ Applied 2026-09-27 |
+| 2 | Schema validation + `MAX_CONTENT_LENGTH` + range checks | D-02, D-03 | M | Data & model corruption | ✅ Applied 2026-09-27 |
+| 3 | `Flask-Limiter` per-route limits + JSON `429` + backoff headers | D-04 | S | DoS, unauthenticated writes | ✅ Applied 2026-09-27 |
+| 4 | Security headers + strip `Server` (`after_request` hook + `FingerprintlessRequestHandler`) | D-05 | S | Fingerprinting, clickjacking, XSS layer | ✅ Applied 2026-09-27 |
+| 5 | Implement or remove `/api/internal/shared-quizzes` | D-06 | XS | Log noise, contract drift | ⬜ Pending |
+| 6 | Production WSGI (Waitress/Gunicorn) | D-10 | M | Stability under load | ⬜ Pending |
+| 7 | Unique-match rule for quiz ids | D-11 | XS | Wrong-quiz serving | ⬜ Pending |
+| 8 | Health-check + `adb reverse` fallback in `quiz_qr.py` | D-09 | S | Broken study sessions | ⬜ Pending |
+| 9 | State-assertion rule after every tap | D-08 | XS | Wasted agent loops | ✅ Recorded in the machine-global Android protocol |
 
 **Verification gates for every fix:** `pytest tests/` green, then `bandit -r 91_Dashboard 90_Shared_Toolbox/tools` clean for the touched files, then re-run the abuse battery in `C:\Windows\Temp\opencode\abuse_battery.py` expecting **zero 5xx** and expected 4xx, and finally the device E2E (`e2e_tablet.py`) green.
+
+**Result for items 1–4 (2026-09-27):** all four gates passed — `162 passed` in pytest, bandit
+0-high (1 medium = pre-existing intentional `host="0.0.0.0"` LAN binding), abuse battery **0 × 5xx**
+with 404/400/413/429 exactly where expected, and a device re-verification through
+`adb reverse` that checked CSP conformance specifically (0 violations, `pwa-boot.js` loaded,
+service worker controlled, start → Q1/30). The device run deliberately stopped **short of submitting**
+so that no synthetic attempt would touch `quiz_history.json` / the BKT model; a full real submission
+was already proven green in the pre-fix E2E and the real-shaped payload is covered by the
+`VALID telemetry → 200` wire check.
+
+**Implementation notes / deviations from the original plan:**
+- Validation is hand-rolled allow-list code in `app.py` (`validate_telemetry`, `validate_bookmarks`)
+  rather than a separate Pydantic module: the two endpoints need only ~40 typed assertions, and the
+  dashboard must keep importing with zero new module paths. Pydantic 2.13.4 remains available if the
+  payload surface grows.
+- `Flask-Talisman` was **not** adopted: it hard-codes an `https` upgrade path and a nonce policy that
+  fights this plain-HTTP LAN + PWA setup; the explicit `after_request` header hook gives the same
+  controls without a redirect trap, and its CSP is asserted by tests on the live socket.
+- `flask-limiter` was added to `requirements.txt` (pinned `4.1.1`) and `91_Dashboard/requirements.txt`
+  (`flask-limiter>=4.0`) so CI installs it.

@@ -9,6 +9,7 @@ Usage:
   Then open http://127.0.0.1:5000
 """
 
+import math
 import re
 import json
 import socket
@@ -18,6 +19,9 @@ from pathlib import Path
 from datetime import datetime, timezone
 import uuid
 from flask import Flask, render_template, jsonify, request
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from werkzeug.serving import WSGIRequestHandler
 
 # Ensure Shared Toolbox is importable
 _toolbox_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox" / "tools"
@@ -31,6 +35,98 @@ app = Flask(__name__)
 BASE = Path(__file__).resolve().parent.parent
 HUB = BASE / "00_STUDIO_HUB"
 SEM1 = BASE / "01_Semester_1"
+
+# ---------------------------------------------------------------------------
+# Hardening (docs/QA_DEFECTS_2026-09-27.md -> D-02/D-03/D-04/D-05)
+#
+#   D-02/D-03  schema + range validation before any state change
+#              (OWASP Input Validation Cheat Sheet: allow-list, not clamp)
+#   D-04       per-endpoint rate limiting on every write route
+#              (OWASP API4:2023 Unrestricted Resource Consumption; NIST SP 800-204)
+#   D-05       security headers + no version banner
+#              (OWASP HTTP Headers Cheat Sheet)
+#
+# MAX_CONTENT_LENGTH -> Werkzeug answers 413 before a body is parsed, which is
+# exactly the "maximum size of data on all incoming payloads" control API4 asks
+# for. Largest quiz JSON on disk is ~84 KiB, so 1 MiB is a wide safety margin.
+# ---------------------------------------------------------------------------
+app.config["MAX_CONTENT_LENGTH"] = 1_048_576  # 1 MiB
+
+# Must be set BEFORE the Limiter is constructed: the extension snapshots it at init.
+# Tell clients how much budget they have left and when to retry, so a well behaved
+# client (quiz.js offline queue) backs off instead of hammering a write endpoint.
+app.config["RATELIMIT_HEADERS_ENABLED"] = True
+
+limiter = Limiter(
+    app=app,
+    key_func=get_remote_address,
+    default_limits=["1000 per minute"],  # safety valve for reads; writes get stricter limits
+    storage_uri="memory://",  # single-process app: no DB overhead (0-database invariant)
+)
+
+# Response headers applied to every answer (D-05). CSP is HTML-only because it
+# is meaningless for JSON; `style-src 'unsafe-inline'` stays because the
+# templates use inline style attributes, while scripts are strictly 'self'.
+_CSP_POLICY = (
+    "default-src 'self'; "
+    "script-src 'self'; "
+    "style-src 'self' 'unsafe-inline'; "
+    "img-src 'self' data: blob:; "
+    "media-src 'self'; "
+    "font-src 'self' data:; "
+    "connect-src 'self'; "
+    "worker-src 'self' blob:; "
+    "manifest-src 'self'; "
+    "object-src 'none'; "
+    "base-uri 'self'; "
+    "form-action 'self'; "
+    "frame-ancestors 'none'"
+)
+
+
+class FingerprintlessRequestHandler(WSGIRequestHandler):
+    """Serves without the `Server: Werkzeug/x.y Python/a.b` banner.
+
+    BaseHTTPRequestHandler injects Server via version_string(); overriding it
+    keeps the HTTP layer from fingerprinting the stack (OWASP HTTP Headers:
+    "Remove this header or set non-informative values").
+    """
+
+    def version_string(self) -> str:
+        return "MasterStudio"
+
+
+@app.after_request
+def security_headers(resp):
+    resp.headers.setdefault("X-Content-Type-Options", "nosniff")
+    resp.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    resp.headers.setdefault("X-Frame-Options", "DENY")
+    resp.headers.setdefault(
+        "Permissions-Policy", "geolocation=(), camera=(self), microphone=(), payment=()"
+    )
+    if resp.mimetype == "text/html":
+        resp.headers.setdefault("Content-Security-Policy", _CSP_POLICY)
+    return resp
+
+
+@app.errorhandler(500)
+def _internal_server_error(_exc):
+    """OWASP Error Handling: one boundary, generic body, detail only in the log."""
+    return jsonify({"status": "error", "message": "Internal error"}), 500
+
+
+@app.errorhandler(429)
+def _rate_limited(_exc):
+    """JSON answer for a breached limit (D-04).
+
+    Werkzeug would render an HTML error page; API clients only understand the
+    JSON contract used everywhere else in this app. The Retry-After /
+    X-RateLimit-* headers are attached by flask-limiter after this handler.
+    """
+    return jsonify({
+        "status": "error",
+        "message": "Rate limit exceeded — retry after the Retry-After header",
+    }), 429
 
 # ---------------------------------------------------------------------------
 # Production-grade response optimization for slow LAN links:
@@ -109,6 +205,148 @@ def safe_json_for_html(obj) -> str:
     """Serializes object to JSON safely for embedding inside HTML <script> tags."""
     dumped = json.dumps(obj, ensure_ascii=False)
     return dumped.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+# ---------------------------------------------------------------------------
+# Input validation (D-02 / D-03)
+# OWASP Input Validation Cheat Sheet: validate type, range and length against
+# an explicit schema BEFORE mutating state, and reject — never silently clamp.
+# A clamped value still writes a poisoned attempt into quiz_history.json and the
+# session journal, which then feeds the BKT mastery model.
+# ---------------------------------------------------------------------------
+_BOOKMARK_MAX_ENTRIES = 5000
+_BOOKMARK_MAX_KEY_LEN = 400
+_MAX_QUESTIONS = 500  # a real quiz bank never exceeds this (largest on disk: 30)
+_MAX_SECONDS = 86400.0  # no single session/dwell can exceed 24h
+
+
+def _is_number(value) -> bool:
+    """Finite int/float (bools are rejected: isinstance(True, int) is True)."""
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def _is_count(value) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def validate_telemetry(payload: dict) -> str | None:
+    """Type/range gate for POST /api/quiz/submit. Returns None when valid,
+    otherwise the human-readable reason the caller must answer 400."""
+    errors = []
+
+    for key, limit in (
+        ("submission_uuid", 64),
+        ("subject_id", 120),
+        ("quiz_id", 120),
+        ("topic", 300),
+        ("finished_at", 40),
+    ):
+        value = payload.get(key)
+        if value is None:
+            continue
+        if not isinstance(value, str):
+            errors.append(f"{key} must be a string")
+        elif len(value) > limit:
+            errors.append(f"{key} exceeds {limit} characters")
+        elif any(ord(ch) < 32 for ch in value):
+            errors.append(f"{key} must not contain control characters")
+
+    def check_number(value, name: str, lo: float, hi: float) -> None:
+        if value is None:
+            return
+        if not _is_number(value):
+            errors.append(f"{name} must be a finite number")
+        elif not lo <= float(value) <= hi:
+            errors.append(f"{name} must be between {lo:g} and {hi:g}")
+
+    def check_count(value, name: str, hi: int) -> None:
+        if value is None:
+            return
+        if not _is_count(value):
+            errors.append(f"{name} must be an integer")
+        elif not 0 <= value <= hi:
+            errors.append(f"{name} must be between 0 and {hi}")
+
+    def check_score_pair(correct, total, label: str) -> None:
+        if _is_count(correct) and _is_count(total) and correct > total:
+            errors.append(f"{label}: correct cannot exceed total")
+
+    def check_summary(summary, prefix: str) -> None:
+        if not isinstance(summary, dict):
+            errors.append(f"{prefix}summary must be an object")
+            return
+        check_number(summary.get("percentage"), f"{prefix}percentage", 0.0, 100.0)
+        check_count(summary.get("total"), f"{prefix}total", _MAX_QUESTIONS)
+        check_count(summary.get("correct"), f"{prefix}correct", _MAX_QUESTIONS)
+        check_count(summary.get("wrong"), f"{prefix}wrong", _MAX_QUESTIONS)
+        check_number(summary.get("session_duration_seconds"),
+                     f"{prefix}session_duration_seconds", 0.0, _MAX_SECONDS)
+        check_number(summary.get("avg_dwell_time_seconds"),
+                     f"{prefix}avg_dwell_time_seconds", 0.0, _MAX_SECONDS)
+        check_score_pair(summary.get("correct"), summary.get("total"), prefix or "summary")
+
+    # Top-level legacy fields (older clients and hostile payloads share this shape).
+    check_number(payload.get("percentage"), "percentage", 0.0, 100.0)
+    check_count(payload.get("total"), "total", _MAX_QUESTIONS)
+    check_count(payload.get("score"), "score", _MAX_QUESTIONS)
+    check_score_pair(payload.get("score"), payload.get("total"), "top level")
+    check_number(payload.get("session_duration_seconds"),
+                 "session_duration_seconds", 0.0, _MAX_SECONDS)
+
+    if payload.get("summary") is not None:
+        check_summary(payload.get("summary"), "")
+
+    questions = payload.get("questions")
+    if questions is not None:
+        if not isinstance(questions, list):
+            errors.append("questions must be a list")
+        elif len(questions) > _MAX_QUESTIONS:
+            errors.append(f"questions exceeds {_MAX_QUESTIONS} entries")
+        else:
+            for i, item in enumerate(questions):
+                if not isinstance(item, dict):
+                    errors.append(f"questions[{i}] must be an object")
+                    break
+                check_number(item.get("dwell_time_seconds"),
+                             f"questions[{i}].dwell_time_seconds", 0.0, _MAX_SECONDS)
+
+    return "; ".join(errors) if errors else None
+
+
+def validate_bookmarks(bookmarks) -> str | None:
+    """Shape gate for POST /api/quiz/bookmarks (D-02).
+
+    The endpoint performs a full-file replace, so anything it accepts becomes
+    the truth. Accepted entries are exactly what quiz.js/quiz-library.js write:
+    a plain question key (legacy) or a `{k, n, question_data}` object.
+    """
+    if not isinstance(bookmarks, list):
+        return "bookmarks must be a list"
+    if len(bookmarks) > _BOOKMARK_MAX_ENTRIES:
+        return f"bookmarks exceeds {_BOOKMARK_MAX_ENTRIES} entries"
+
+    for i, item in enumerate(bookmarks):
+        if isinstance(item, str):
+            if not 0 < len(item) <= _BOOKMARK_MAX_KEY_LEN:
+                return f"bookmarks[{i}] key must be 1-{_BOOKMARK_MAX_KEY_LEN} characters"
+            continue
+        if not isinstance(item, dict):
+            return f"bookmarks[{i}] must be a question key string or a bookmark object"
+        key = item.get("k")
+        if not isinstance(key, str) or not 0 < len(key) <= _BOOKMARK_MAX_KEY_LEN:
+            return f"bookmarks[{i}].k must be a 1-{_BOOKMARK_MAX_KEY_LEN} character string"
+        index = item.get("n")
+        if index is not None and (not _is_count(index) or index < 0):
+            return f"bookmarks[{i}].n must be a non-negative integer"
+        data = item.get("question_data")
+        if data is not None and not isinstance(data, dict):
+            return f"bookmarks[{i}].question_data must be an object"
+        if item.get("subject") is not None and not isinstance(item.get("subject"), str):
+            return f"bookmarks[{i}].subject must be a string"
+        if item.get("quiz") is not None and not isinstance(item.get("quiz"), str):
+            return f"bookmarks[{i}].quiz must be a string"
+    return None
+
 
 def get_lan_ip() -> str:
     """Detect host Wi-Fi/Ethernet LAN IP address, fallback to 127.0.0.1."""
@@ -604,6 +842,21 @@ def quiz_direct(subject_id, quiz_id):
 
 @app.route("/api/quiz/<subject_id>/<quiz_id>")
 def api_quiz_get(subject_id, quiz_id):
+    """Serve one quiz JSON by id (D-01 hardened).
+
+    Every client-controlled path component is resolved inside a boundary that
+    converts filesystem errors into 404 JSON: a malformed name must never reach
+    the client as a 500 with a traceback in the log.
+    """
+    try:
+        return _resolve_quiz_payload(subject_id, quiz_id)
+    except (OSError, ValueError, UnicodeError) as exc:
+        app.logger.warning("Rejected invalid quiz path subject=%r quiz=%r: %s",
+                           subject_id, quiz_id, exc)
+        return jsonify({"error": "Quiz not found"}), 404
+
+
+def _resolve_quiz_payload(subject_id, quiz_id):
     clean_id = quiz_id[:-5] if quiz_id.endswith(".json") else quiz_id
     filename = f"{clean_id}.json"
     semester_dirs = sorted([d for d in BASE.glob("0*_Semester_*") if d.is_dir()])
@@ -650,14 +903,31 @@ def api_quiz_get(subject_id, quiz_id):
         quiz_data = json.loads(content)
         quiz_data = normalize_quiz_schema(quiz_data, subject_id=target_file.parent.parent.name, quiz_id=target_file.stem)
         return jsonify(quiz_data)
-    except Exception as e:
-        return jsonify({"error": f"Failed to load quiz: {str(e)}"}), 500
+    except json.JSONDecodeError:
+        # A corrupt file on disk is a server-side defect: 500, generic body.
+        app.logger.exception("Failed to parse quiz %s", target_file)
+        return jsonify({"error": "Failed to load quiz"}), 500
+    except (OSError, ValueError, UnicodeError) as exc:
+        app.logger.warning("Unreadable quiz file %s: %s", target_file, exc)
+        return jsonify({"error": "Quiz not found"}), 404
+    except Exception:
+        # Detail stays in the log only (OWASP Error Handling Cheat Sheet).
+        app.logger.exception("Failed to serve quiz %s", target_file)
+        return jsonify({"error": "Failed to load quiz"}), 500
 @app.route("/api/quiz/submit", methods=["POST"])
+@limiter.limit("60 per minute")
 def api_quiz_submit():
     """Accepts JSON telemetry, ingests via quiz engine, returns result."""
     payload = request.get_json(silent=True)
     if not isinstance(payload, dict):
         return jsonify({"status": "error", "message": "Invalid JSON payload"}), 400
+
+    # D-03: reject out-of-range telemetry instead of clamping it — a clamped
+    # value still poisons quiz_history.json, the journal and the BKT model.
+    reason = validate_telemetry(payload)
+    if reason:
+        app.logger.warning("Rejected telemetry (%s): %s", payload.get("submission_uuid"), reason)
+        return jsonify({"status": "error", "message": f"Invalid telemetry payload: {reason}"}), 400
 
     try:
         result = process_quiz_telemetry(payload, HUB)
@@ -675,6 +945,7 @@ def api_quiz_submit():
 
 
 @app.route("/api/quiz/import", methods=["POST"])
+@limiter.limit("30 per minute")
 def api_quiz_import():
     """
     Receives a normalized quiz JSON from mobile client (e.g. from Telegram or file manager)
@@ -749,6 +1020,7 @@ def api_quiz_import():
     }), 200
 
 @app.route("/api/quiz/bookmarks", methods=["GET", "POST"])
+@limiter.limit("60 per minute")
 def api_quiz_bookmarks():
     """GET or POST bookmarked question IDs from/to 00_STUDIO_HUB/quiz_bookmarks.json."""
     bookmarks_file = HUB / "quiz_bookmarks.json"
@@ -763,6 +1035,12 @@ def api_quiz_bookmarks():
             bookmarks = data["bookmarks"]
         else:
             return jsonify({"status": "error", "message": "Expected list or {'bookmarks': [...]}"}), 400
+
+        # D-02: this endpoint replaces the whole file, so the payload becomes
+        # the truth. Validate the shape before touching disk.
+        reason = validate_bookmarks(bookmarks)
+        if reason:
+            return jsonify({"status": "error", "message": reason}), 400
 
         try:
             HUB.mkdir(parents=True, exist_ok=True)
@@ -797,4 +1075,5 @@ if __name__ == "__main__":
     # use_reloader=False: the watchdog reloader raced on file churn and killed the
     # server silently (exit 1) twice mid-session while the student was testing.
     # Restart manually after editing app.py instead.
-    app.run(host="0.0.0.0", port=5000, debug=debug_mode, threaded=True, use_reloader=False)
+    app.run(host="0.0.0.0", port=5000, debug=debug_mode, threaded=True, use_reloader=False,
+            request_handler=FingerprintlessRequestHandler)

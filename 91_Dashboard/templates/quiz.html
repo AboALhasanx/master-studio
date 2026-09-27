@@ -467,38 +467,8 @@
     <!-- Application Script -->
     <script src="/static/quiz.js" defer></script>
 
-    <!-- PWA Service Worker & Install Prompt Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js', { scope: '/' })
-                    .then(reg => console.log('Master Studio Root SW registered:', reg.scope))
-                    .catch(err => console.log('Root SW registration failed:', err));
-            });
-        }
-
-        // 1-Tap PWA Installation Prompt
-        let deferredPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const banner = document.getElementById('pwa-install-banner');
-            if (banner) banner.classList.remove('hidden');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-
-        document.getElementById('btn-pwa-install')?.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-                document.getElementById('pwa-install-banner')?.classList.add('hidden');
-            }
-        });
-
-        document.getElementById('btn-pwa-dismiss')?.addEventListener('click', () => {
-            document.getElementById('pwa-install-banner')?.classList.add('hidden');
-        });
-    </script>
+    <!-- PWA Service Worker & Install Prompt Registration (D-05: kept out of the
+         template so a strict script-src 'self' CSP can be enforced) -->
+    <script src="/static/pwa-boot.js" defer></script>
 </body>
 </html>
