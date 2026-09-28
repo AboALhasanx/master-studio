@@ -75,7 +75,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_target(p)
     group = p.add_mutually_exclusive_group(required=True)
     group.add_argument("--text", help="message text (HTML parse mode)")
-    group.add_argument("--file", help="path of a document to upload")
+    group.add_argument("--file", action="append", default=[], metavar="PATH",
+                       help="file to upload; repeat 2-10 times to post an album")
     p.add_argument("--button", action="append", default=[], metavar="LABEL=URL",
                    help="inline URL button; repeatable")
     p.add_argument("--reply-to", type=int, dest="reply_to", help="anchor to an existing message id")
@@ -164,8 +165,11 @@ def _action_from_args(args: argparse.Namespace) -> Action:
         data["target"] = _target(args)
         if args.text is not None:
             data["text"] = args.text
-        if args.file is not None:
-            data["file"] = args.file
+        if args.file:
+            if len(args.file) == 1:
+                data["file"] = args.file[0]
+            else:
+                data["files"] = list(args.file)   # 2+ -> one sendMediaGroup
         if args.caption is not None:
             data["caption"] = args.caption
         if args.html:

@@ -117,6 +117,8 @@ class PublishAction(Action):
     target: Target
     text: str | None = None
     file: str | None = None
+    #: 2-10 uploads posted as ONE album (Telegram ``sendMediaGroup``, #11).
+    files: list[str] = Field(default_factory=list)
     caption: str | None = None  # media caption (issue #11)
     parse_mode: Literal["HTML"] | None = None  # rich text for text/caption (issue #11)
     #: Which ``send*`` method carries the file (issue #11). The default is
@@ -129,13 +131,29 @@ class PublishAction(Action):
 
     @model_validator(mode="after")
     def _exactly_one_payload(self) -> "PublishAction":
-        if (self.text is None) == (self.file is None):
+        if self.files:
+            if self.text is not None or self.file is not None:
+                raise ValueError("publish: 'files' cannot be combined with 'text' or 'file'")
+            if not 2 <= len(self.files) <= 10:
+                raise ValueError("media group needs 2-10 files (Telegram sendMediaGroup)")
+            if self.kind == "document":
+                # the default is byte-exact; an album of documents buys nothing
+                # over separate sends, so picking a shape has to be deliberate
+                raise ValueError(
+                    "media group needs an explicit --kind: auto (type from each "
+                    "file's suffix) or photo/video/audio/document"
+                )
+            if self.kind in {"voice", "animation", "sticker"}:
+                raise ValueError("media groups accept only photo/video/audio/document")
+            if self.buttons:
+                raise ValueError("media groups cannot carry buttons")
+        elif (self.text is None) == (self.file is None):
             raise ValueError("publish needs exactly one of: 'text', 'file'")
-        if self.caption is not None and self.file is None:
+        if self.caption is not None and not (self.file or self.files):
             raise ValueError("caption requires a 'file' payload")
         if self.parse_mode is not None and not (self.text or self.caption):
             raise ValueError("parse_mode requires 'text' or 'caption'")
-        if self.file is None and self.kind != "document":
+        if not (self.file or self.files) and self.kind != "document":
             raise ValueError("publish 'kind' requires a 'file' payload")
         if self.kind == "sticker" and self.caption is not None:
             raise ValueError("stickers do not carry a caption")

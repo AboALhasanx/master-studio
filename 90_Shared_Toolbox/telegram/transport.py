@@ -41,15 +41,46 @@ def _split_uploads(params: dict[str, Any]) -> tuple[dict[str, Any], dict[str, st
     Telegram's Bot API answers 400 ("wrong file identifier/HTTP URL
     specified") for a ``file://`` value sent as JSON, so anything meant to be
     uploaded has to leave as multipart instead.
+
+    That includes the members of a ``sendMediaGroup`` payload: they live
+    *inside* the ``media`` JSON string, so they are rewritten to
+    ``attach://<part name>`` and shipped as sibling parts.
     """
     fields: dict[str, Any] = {}
     files: dict[str, str] = {}
     for key, value in params.items():
         if key in _UPLOAD_PARAMS and isinstance(value, str) and value.startswith("file://"):
             files[key] = value
+        elif key == "media" and isinstance(value, str) and "file://" in value:
+            fields[key], attached = _attach_media(value)
+            files.update(attached)
         else:
             fields[key] = value
     return fields, files
+
+
+def _attach_media(raw: str) -> tuple[str, dict[str, str]]:
+    """Rewrite local album members to ``attach://`` and collect their URIs.
+
+    A bare ``file://`` inside ``media`` is a 400; Telegram resolves the file
+    only when the entry reads ``attach://<part name>`` and a multipart part of
+    exactly that name travels with the request.
+    """
+    try:
+        items = json.loads(raw)
+    except (TypeError, ValueError) as exc:
+        raise TransportError(f"media group payload is not valid JSON: {exc}") from exc
+    if not isinstance(items, list):
+        raise TransportError("media group payload must be a JSON array of InputMedia")
+
+    attached: dict[str, str] = {}
+    for index, item in enumerate(items):
+        uri = item.get("media") if isinstance(item, dict) else None
+        if isinstance(uri, str) and uri.startswith("file://"):
+            name = f"file{index}"
+            item["media"] = f"attach://{name}"
+            attached[name] = uri
+    return json.dumps(items, ensure_ascii=True), attached
 
 
 def _local_path(uri: str) -> Path:

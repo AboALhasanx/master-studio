@@ -94,15 +94,48 @@ def _chunk_params(params: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
     return {**params, "text": head}, tail
 
 
+def _album_items(action: PublishAction) -> list[dict[str, Any]]:
+    """One ``InputMedia`` per file; the caption rides on the first member only.
+
+    Telegram renders an album as a single block with ONE caption, so repeating
+    it per member would post the same sentence under every photo.
+    """
+    items: list[dict[str, Any]] = []
+    for index, uri in enumerate(action.files):
+        item: dict[str, Any] = {"type": publisher.album_type(action.kind, uri), "media": uri}
+        if index == 0:
+            if action.caption is not None:
+                item["caption"] = action.caption
+            if action.parse_mode is not None:
+                item["parse_mode"] = action.parse_mode
+        items.append(item)
+    return items
+
+
+def _first_message_id(result: Any) -> int | None:
+    """The id worth carrying in the audit row for a transport result.
+
+    Most methods return one ``Message``; ``sendMediaGroup`` returns a *list*
+    of them (one per member), so the album's first member stands for the post.
+    """
+    if isinstance(result, dict):
+        return result.get("message_id")
+    if isinstance(result, list) and result and isinstance(result[0], dict):
+        return result[0].get("message_id")
+    return None
+
+
 def build_call(action: Action, registry: Registry) -> Call:
     """Pure translation of a validated action into one Bot API call."""
     verb = action.verb
 
     if verb == "publish":
         assert isinstance(action, PublishAction)
-        if action.file is not None and pipeline.is_excluded_uri(action.file):
-            # PR-template security rule: never upload a secret, keystore or APK
-            raise PipelineError(f"refusing to publish an excluded path: {action.file}")
+        # PR-template security rule: never upload a secret, keystore or APK —
+        # checked member by member, so an album cannot smuggle one past --file
+        for uri in ([action.file] if action.file else []) + action.files:
+            if pipeline.is_excluded_uri(uri):
+                raise PipelineError(f"refusing to publish an excluded path: {uri}")
         chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
         params: dict[str, Any] = {"chat_id": chat_id}
         if thread_id is not None:
@@ -112,6 +145,10 @@ def build_call(action: Action, registry: Registry) -> Call:
         if action.text is not None:
             method = "sendMessage"
             params["text"] = action.text
+        elif action.files:
+            # ONE call for the whole album; `media` is a JSON *string* on the wire
+            method = "sendMediaGroup"
+            params["media"] = json.dumps(_album_items(action), ensure_ascii=True)
         else:
             # kind decides which send* carries it; `document` (the default) is
             # the only byte-exact option, photo/video may be recompressed
@@ -119,7 +156,9 @@ def build_call(action: Action, registry: Registry) -> Call:
             params[publisher.media_param(method)] = action.file
             if publisher.supports_caption(method):
                 params["caption"] = action.caption or ""
-        if action.parse_mode is not None:
+        # parse_mode lives inside the first InputMedia for an album, and
+        # sendMediaGroup has no top-level parse_mode / reply_markup at all
+        if action.parse_mode is not None and not action.files:
             params["parse_mode"] = action.parse_mode
         if action.buttons:
             params["reply_markup"] = {
@@ -427,7 +466,7 @@ def execute(
 
     if limiter is not None:
         limiter.record(call.chat_id, now)
-    message_id = result.get("message_id") if isinstance(result, dict) else None
+    message_id = _first_message_id(result)
     _maybe_bind(store, registry, payload, result)
 
     unsent = payload.pop("_tail", None)
@@ -538,7 +577,7 @@ def _queue_op(action, *, transport: Transport, store: Store, limiter: ChatRateLi
             store.audit("queue", "sent", chat_id=chat_id, idempotency_key=key,
                         detail=f"chunk, {len(split_message(unsent))} left")
         else:
-            message_id = result.get("message_id") if isinstance(result, dict) else None
+            message_id = _first_message_id(result)
             store.mark_sent(key, message_id)
             # #14 AC3: every attempt must be auditable, drained or not
             store.audit("queue", "sent", chat_id=chat_id, idempotency_key=key,

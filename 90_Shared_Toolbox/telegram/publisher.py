@@ -29,6 +29,7 @@ __all__ = [
     "send_method",
     "media_param",
     "supports_caption",
+    "album_type",
 ]
 
 #: Maximum length of a Telegram text message (Bot API ``sendMessage``).
@@ -87,6 +88,23 @@ def media_param(method: str) -> str:
 def supports_caption(method: str) -> bool:
     """Stickers are the one upload shape Telegram gives no ``caption`` field."""
     return method != "sendSticker"
+
+
+#: The only types ``sendMediaGroup`` understands (issue #11).
+ALBUM_TYPES = ("photo", "video", "audio", "document")
+
+
+def album_type(kind: str, file: str) -> str:
+    """The ``InputMedia.type`` for one media-group member.
+
+    A voice note, an animation or a sticker can never be part of an album, so
+    an ``auto`` suffix that resolves to one of those falls back to
+    ``document`` — which is also the only byte-exact option.
+    """
+    resolved = kind
+    if kind == "auto":
+        resolved = _AUTO_KIND.get(Path(str(file or "")).suffix.lower(), "document")
+    return resolved if resolved in ALBUM_TYPES else "document"
 
 _AMP = "&"
 _SPAN_MARKERS = ("**", "`")

@@ -626,6 +626,116 @@ def test_publish_kind_needs_a_file_and_stickers_take_no_caption():
         publish(text=None, file="file:///x/pack.tgs", kind="sticker", caption="nope")
 
 
+# ------------------------------------------------------ media group (#11) --
+def test_media_group_posts_one_send_media_group_with_a_json_array(
+    registry, store, acl, transport
+):
+    execute(
+        publish(
+            text=None,
+            files=["file:///x/dependability_chain.png",
+                   "file:///x/brooks_complexity_tree.png"],
+            kind="auto",
+            caption="Two chains from lecture 01",
+            parse_mode="HTML",
+        ),
+        transport=transport, acl=acl, registry=registry, store=store,
+    )
+    method, params = transport.last()
+    assert method == "sendMediaGroup"
+    assert params["chat_id"] == -1001234567890
+    assert params["message_thread_id"] == 7
+
+    items = json.loads(params["media"])          # must be a JSON *string*
+    assert [i["type"] for i in items] == ["photo", "photo"]
+    assert [i["media"] for i in items] == [
+        "file:///x/dependability_chain.png",
+        "file:///x/brooks_complexity_tree.png",
+    ]
+    # Telegram shows ONE caption block for an album; repeating it per item
+    # would post the same sentence under every photo.
+    assert items[0]["caption"] == "Two chains from lecture 01"
+    assert items[0]["parse_mode"] == "HTML"
+    assert "caption" not in items[1]
+
+
+def test_media_group_kind_pins_every_type_and_auto_drops_to_document(
+    registry, store, acl, transport
+):
+    execute(publish(text=None, files=["file:///x/a.png", "file:///x/b.png"],
+                    kind="photo"),
+            transport=transport, acl=acl, registry=registry, store=store)
+    _, params = transport.last()
+    assert [i["type"] for i in json.loads(params["media"])] == ["photo", "photo"]
+
+    # voice notes and animations are not album types at all
+    execute(publish(text=None, files=["file:///x/note.ogg", "file:///x/loop.gif"],
+                    kind="auto"),
+            transport=transport, acl=acl, registry=registry, store=store)
+    _, params = transport.last()
+    assert [i["type"] for i in json.loads(params["media"])] == ["document", "document"]
+
+
+def test_media_group_rejects_bad_shapes_at_schema_time():
+    two = ["file:///x/a.png", "file:///x/b.png"]
+    with pytest.raises(ActionValidationError, match="2-10 files"):
+        publish(text=None, files=["file:///x/a.png"])
+    with pytest.raises(ActionValidationError, match="2-10 files"):
+        publish(text=None, files=["file:///x/a.png"] * 11)
+    with pytest.raises(ActionValidationError, match="explicit --kind"):
+        publish(text=None, files=two)                 # default kind is byte-exact
+    with pytest.raises(ActionValidationError, match="only photo/video/audio/document"):
+        publish(text=None, files=two, kind="voice")
+    with pytest.raises(ActionValidationError, match="cannot be combined"):
+        publish(text=None, files=two, kind="auto", file="file:///x/c.png")
+    with pytest.raises(ActionValidationError, match="cannot be combined"):
+        publish(text="hi", files=two, kind="auto")
+    # ...and the good shapes still parse
+    assert publish(text=None, files=two, kind="auto").files == two
+
+
+def test_publish_group_refuses_an_excluded_member(registry, store, acl, transport):
+    """The PR-template rule must hold per file, not just for `--file`."""
+    with pytest.raises(PipelineError, match="excluded path"):
+        execute(
+            publish(text=None,
+                    files=["file:///v/.env", "file:///v/notes.pdf"],
+                    kind="auto"),
+            transport=transport, acl=acl, registry=registry, store=store,
+        )
+    assert transport.calls == []
+
+
+def test_media_group_audit_records_the_albums_first_message_id(registry, store, acl):
+    """`sendMediaGroup` returns a LIST of messages, not one Message."""
+    class _AlbumTransport:
+        is_live = False
+
+        def __init__(self):
+            self.calls = []
+
+        def call(self, method, params):
+            self.calls.append((method, dict(params)))
+            return [{"message_id": 41}, {"message_id": 42}]
+
+        def methods(self):
+            return [m for m, _ in self.calls]
+
+        def last(self):
+            return self.calls[-1]
+
+    result = execute(
+        publish(text=None, files=["file:///x/a.png", "file:///x/b.png"], kind="auto"),
+        transport=_AlbumTransport(), acl=acl, registry=registry, store=store,
+    )
+    assert result["status"] == "sent"
+    assert result["message_id"] == 41
+
+    row = store.audit_rows()[0]
+    assert row["result"] == "sent"
+    assert row["detail"] == "sendMediaGroup -> 41", "an album must not audit as -> None"
+
+
 def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl):
     text = ("word " * 4000).strip()
     transport = MockTransport()
@@ -1213,6 +1323,38 @@ def test_cli_publish_exposes_kind_and_caption(tmp_path, capsys, owners):
     assert code == 2
 
 
+def test_cli_repeating_file_builds_a_media_group(tmp_path, capsys, owners):
+    base = ["--json", "--dry-run", "--actor", str(OWNER),
+            "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db")]
+
+    # two --file flags => one sendMediaGroup, types read from the suffix
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001",
+                "--file", "file:///x/a.png", "--file", "file:///x/b.png",
+                "--kind", "auto"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "sendMediaGroup"
+    assert [i["type"] for i in json.loads(payload["plan"]["params"]["media"])] == [
+        "photo", "photo"
+    ]
+
+    # a single --file is still an ordinary byte-exact document
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001", "--file", "file:///x/a.png"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "sendDocument"
+
+    # two files without a deliberate --kind fail closed, with the fix in the message
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001",
+                "--file", "file:///x/a.png", "--file", "file:///x/b.png"], capsys
+    )
+    assert code == 2
+    assert "explicit --kind" in str(payload)
+
+
 def test_cli_audits_every_attempt(tmp_path, owners):
     db = tmp_path / "g.db"
     tg_cli.main(["--json", "--actor", str(OWNER), "--registry", str(tmp_path / "r.json"),
@@ -1255,6 +1397,13 @@ def fake_urlopen(script, calls):
         return _Resp(payload)
 
     return _open
+
+
+def _multipart_field(body: bytes, name: str) -> bytes:
+    """Pull one form-data value back out of an encoded multipart body."""
+    marker = f'Content-Disposition: form-data; name="{name}"\r\n\r\n'.encode()
+    start = body.index(marker) + len(marker)
+    return body[start:body.index(b"\r\n", start)]
 
 
 def test_http_transport_sends_ascii_safe_payload(monkeypatch):
@@ -1348,6 +1497,63 @@ def test_http_transport_refuses_a_missing_local_file_before_any_request(
             "sendDocument", {"chat_id": -1, "document": (tmp_path / "ghost.pdf").as_uri()}
         )
     assert calls == [], "a missing local file must never reach the network"
+
+
+def test_http_transport_uploads_media_group_members_as_attach_parts(
+    monkeypatch, tmp_path
+):
+    """`sendMediaGroup` carries local files as `attach://` parts, never as URIs.
+
+    The `media` field is a JSON string; Telegram only resolves a local file
+    when the entry reads `attach://<part name>` and a matching multipart part
+    with that exact name ships alongside it.
+    """
+    import telegram.transport as tr
+
+    a = tmp_path / "diagram_a.png"
+    a.write_bytes(b"\x89PNG first-bytes")
+    b = tmp_path / "diagram_b.png"
+    b.write_bytes(b"\x89PNG second-bytes")
+
+    media = json.dumps(
+        [
+            {"type": "photo", "media": a.as_uri(), "caption": "الأسبوع الأول"},
+            {"type": "photo", "media": b.as_uri()},
+        ],
+        ensure_ascii=True,
+    )
+
+    calls = []
+    monkeypatch.setattr(
+        tr.urllib.request, "urlopen",
+        fake_urlopen([{"ok": True,
+                       "result": [{"message_id": 41}, {"message_id": 42}]}], calls),
+    )
+    result = HttpTransport("TEST:token").call("sendMediaGroup",
+                                              {"chat_id": -1001, "media": media})
+    assert result == [{"message_id": 41}, {"message_id": 42}]
+
+    req = calls[0]
+    headers = {k.lower(): v for k, v in req.header_items()}
+    assert headers["content-type"].startswith("multipart/form-data; boundary=")
+    assert req.full_url.endswith("/sendMediaGroup")
+
+    body = req.data
+    assert b"attach://file0" in body and b"attach://file1" in body
+    assert b"file://" not in body, "a raw local URI must never leave the machine"
+    assert b'name="file0"' in body and b'name="file1"' in body
+    assert b'filename="diagram_a.png"' in body
+    assert b"\x89PNG first-bytes" in body and b"\x89PNG second-bytes" in body
+    assert b'name="chat_id"' in body and b"-1001" in body
+
+    # `media` must stay ASCII-escaped on the wire (same rule as JSON payloads)
+    # while still decoding to the real Arabic once Telegram parses it.
+    media_field = _multipart_field(body, "media")
+    media_field.decode("ascii")                                  # must not raise
+    items = json.loads(media_field)
+    assert items[0]["caption"] == "الأسبوع الأول"
+    assert items[0]["media"] == "attach://file0"
+    assert items[1]["media"] == "attach://file1"
 
 
 def test_chat_allowlist_parsing():
