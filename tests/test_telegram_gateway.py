@@ -624,6 +624,26 @@ def test_pipeline_refuses_excluded_paths(tmp_path, monkeypatch):
     assert pipeline_mod.resolve("03_Study_Notes/W01_Note.md").name == "W01_Note.md"
 
 
+def test_vault_root_is_the_checkout_not_one_level_too_high():
+    """VAULT_ROOT used `parents[3]`, which resolves to the *user profile* dir.
+
+    Every other pipeline test monkeypatched VAULT_ROOT onto a tmp_path, so the
+    default root was never exercised: a live `pipeline --source` would have
+    died as "source not found", and containment was one level too permissive.
+    """
+    root = pipeline_mod.VAULT_ROOT
+    assert (root / "00_STUDIO_HUB").is_dir(), root
+    assert (root / "90_Shared_Toolbox" / "telegram" / "pipeline.py").is_file(), root
+    assert pipeline_mod.TOOLS_DIR == root / "90_Shared_Toolbox" / "tools"
+
+    here = Path(pipeline_mod.__file__).resolve()
+    assert pipeline_mod.resolve(here.relative_to(root).as_posix()) == here
+
+    # the vault's own parent must be refused, not resolved
+    with pytest.raises(PipelineError, match="escapes the vault"):
+        pipeline_mod.resolve((root.parent / "outside-the-vault" / "note.md").as_posix())
+
+
 def test_pipeline_reexports_only_when_the_artifact_is_missing_or_stale(tmp_path):
     src = tmp_path / "W01_Note.md"
     src.write_text("# Week 1", encoding="utf-8")

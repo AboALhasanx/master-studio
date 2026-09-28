@@ -39,8 +39,12 @@ __all__ = [
     "run_export",
 ]
 
-#: Vault root — three levels up from ``90_Shared_Toolbox/telegram/``.
-VAULT_ROOT = Path(__file__).resolve().parents[3]
+#: Vault root. Counting from *this file*:
+#: ``parents[0]`` = 90_Shared_Toolbox/telegram/ · ``parents[1]`` = 90_Shared_Toolbox/
+#: ``parents[2]`` = the checkout (the vault) · ``parents[3]`` = the user profile dir.
+#: It is parents[2] — parents[3] pointed VAULT_ROOT at C:/Users/<me>, which every
+#: test hid by monkeypatching the root onto a tmp_path.
+VAULT_ROOT = Path(__file__).resolve().parents[2]
 
 #: Where the exporters live. Derived from *this file*, never from VAULT_ROOT:
 #: the toolchain is part of the checkout, the vault is the data it operates on.
