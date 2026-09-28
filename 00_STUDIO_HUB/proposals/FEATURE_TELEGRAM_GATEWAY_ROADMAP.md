@@ -1,6 +1,6 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. `pytest -q` → **229 passed** (162 baseline + 65 gateway + 2 CI-portability tests). CI and CodeQL are green on `ubuntu-latest` (since `c6fc06b`). **Plan reconciled with reality 2026-09-28** — see deviations D9/D10 and the D8-driven rewrite of SP2, G3 and G5. Next: gate G3 (publish/moderation/file packs + durable queue).
+> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 IN PROGRESS** — `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#11` publish pack partially landed (captions / HTML / lossless chunking), `#12` moderation pack still open. `pytest -q` → **250 passed** (162 baseline + 88 gateway). CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10 and the D8-driven rewrite of SP2, G3 and G5. **Next: `#12` moderation pack**, then the remaining media verbs of `#11`.
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
@@ -76,6 +76,10 @@
 
 ### G3 — Capability Packs · **SP3: "rich actions, confined to the single allow-listed chat"**
 - **Work:** publish pack (#11), moderation pack (#12), file pipeline (#13), durable queue with rate limits / retries / idempotency / audit (#14).
+  - **#14 ✅ (closed):** `available_at` cooldown honours `retry_after`, bounded retries (`MAX_ATTEMPTS=8`), `deferred` counter, per-attempt `queue/sent` audit rows, restart-survival test. Deviation: the drain used to leave only an aggregate `queue/run` row.
+  - **#13 ✅ (closed):** new `pipeline` verb (resolve → export if stale → publish), fail-closed path refusals via `PipelineError` (exit 8), exclusions per the PR-template security rule. `TOOLS_DIR` deliberately does **not** follow `VAULT_ROOT`.
+  - **#11 ⏳ partial:** captions, `parse_mode`, `escape_html()`, entity/Markdown-safe chunking under one idempotency key. Still open: photo/video/voice/animation/sticker, `media_group`, poll/quiz, forward/copy, live smoke.
+  - **#12 ⬜ next:** reply/edit/delete/pin/react are implemented in `build_call`; missing are `action` (sendChatAction), `editMessageCaption`, tests for topic `rename`/`close`/`reopen`, and `unpin-all`.
 - **Entry:** SP2 green. **Scope note after D8:** there is no disposable test group any more — the allowlist already points at `Master-Studio FINAL`, so "confined" means *the one allow-listed chat and nothing else*. Every pack ships against `MockTransport` first; live sends stay behind `--live`.
 - **Exit / verification:** idempotency test (same command twice → exactly one post); simulated 429 retried with no loss; a real PDF exported and published into a topic; audit rows written for every attempt; a non-allowlisted chat id fails closed with no network call.
 - **Stop guarantees:** nothing outside the allow-listed chat; queue survives restarts; production group untouched by *new* verbs until G5.
@@ -160,7 +164,7 @@
 ## 7. Standing Verification Gates
 
 ```bash
-pytest -q                                   # must be green at every SP (229 since 2026-09-28)
+pytest -q                                   # must be green at every SP (250 since 2026-09-28)
 python -m telegram.cli status --dry-run     # gateway plan without I/O
 gh issue list --label telegram --state open # phase backlog health
 git check-ignore -v .env                    # secret isolation
