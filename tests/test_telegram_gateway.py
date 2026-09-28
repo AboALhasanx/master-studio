@@ -36,6 +36,7 @@ from telegram.errors import (  # noqa: E402
 )
 from telegram.structure import STRUCTURE, topic_link  # noqa: E402
 from telegram.links import parse_message_link  # noqa: E402
+from telegram.publisher import TEXT_LIMIT, escape_html, split_message, split_once  # noqa: E402
 from telegram.registry import SEED_SUBJECTS  # noqa: E402
 from telegram.schema import idempotency_key  # noqa: E402
 from telegram.store import ChatRateLimiter, Store, backoff_delay  # noqa: E402
@@ -443,6 +444,91 @@ def test_retries_are_bounded_and_then_give_up(store):
     store.mark_error(key, "boom", retry_in=1.0, now=1000.0)
     assert store.find(key)["status"] == "dead", "exhausted jobs must stop retrying"
     assert store.pending(now=5000.0) == [], "a dead job must never be drained again"
+
+
+# --------------------------------------------------------------- issue #11 --
+def test_escape_html_neutralises_markup():
+    assert escape_html('<b>&"x"</b>') == "&lt;b&gt;&amp;&quot;x&quot;&lt;/b&gt;"
+    assert escape_html("plain") == "plain"
+
+
+def test_split_message_keeps_every_chunk_within_the_api_limit():
+    text = ("word " * 3000).strip()
+    chunks = split_message(text)
+    assert len(chunks) > 1
+    assert all(0 < len(c) <= TEXT_LIMIT for c in chunks)
+    assert " ".join(chunks).split() == text.split(), "no word may be lost or duplicated"
+
+
+def test_split_message_never_cuts_an_html_entity():
+    text = "x" * (TEXT_LIMIT - 3) + "&amp; and the tail"
+    chunks = split_message(text)
+    assert all(len(c) <= TEXT_LIMIT for c in chunks)
+    assert "".join(chunks).replace(" ", "") == text.replace(" ", "")
+    assert not any(c.endswith("&") or c.endswith("&amp") for c in chunks), (
+        "an entity must never be sliced across the boundary"
+    )
+
+
+def test_split_message_never_cuts_through_a_markdown_span():
+    text = "a " * 2000 + "**" + "bold " * 400 + "** and `code` after"
+    chunks = split_message(text)
+    assert all(len(c) <= TEXT_LIMIT for c in chunks)
+    assert "".join(chunks) == text, "splitting must be lossless"
+    assert all(c.count("**") % 2 == 0 for c in chunks), "never split a **bold** span"
+    assert all(c.count("`") % 2 == 0 for c in chunks), "never split a `code` span"
+
+
+def test_split_once_returns_head_and_tail():
+    head, tail = split_once("word " * 4000)
+    assert len(head) <= TEXT_LIMIT and tail
+    assert (head + tail).split() == ("word " * 4000).split()
+
+
+def test_publish_file_carries_caption_and_parse_mode(registry, store, acl, transport):
+    action = publish(text=None, file="file:///x/W01_Note.pdf", caption="<b>Week 1</b>",
+                     parse_mode="HTML")
+    execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    method, params = transport.calls[-1]
+    assert method == "sendDocument"
+    assert params["document"] == "file:///x/W01_Note.pdf"
+    assert params["caption"] == "<b>Week 1</b>"
+    assert params["parse_mode"] == "HTML"
+
+
+def test_caption_needs_a_file_and_parse_mode_needs_text():
+    with pytest.raises(ActionValidationError):
+        publish(text="hi", caption="nope")           # caption without a file
+    with pytest.raises(ActionValidationError):
+        publish(text=None, file="file:///x/a.pdf", parse_mode="HTML")  # nothing to format
+
+
+def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl):
+    text = ("word " * 4000).strip()
+    transport = MockTransport()
+    result = execute(publish(text=text), transport=transport, acl=acl,
+                     registry=registry, store=store)
+    key = result["idempotency_key"]
+
+    assert result["status"] == "queued", "a multi-chunk publish is not finished yet"
+    assert result["chunks_remaining"] >= 1
+    assert transport.methods() == ["sendMessage"]
+
+    sent = [transport.calls[0][1]["text"]]
+    for _ in range(20):
+        if store.find(key)["status"] == "sent":
+            break
+        drain = execute(parse_action({"verb": "queue", "op": "run"}), transport=transport,
+                        acl=acl, registry=registry, store=store)
+        assert drain["sent"] == 1, "every drain must advance exactly one chunk"
+        sent.append(transport.calls[-1][1]["text"])
+    else:
+        raise AssertionError("the drain loop never finished")
+
+    assert store.find(key)["status"] == "sent"
+    assert all(0 < len(t) <= TEXT_LIMIT for t in sent)
+    assert "".join(sent).split() == text.split(), "the tail must survive every hop"
+    assert len(transport.calls) == len(sent)
 
 
 def test_queue_run_drains_queued_jobs(registry, store, acl, transport):

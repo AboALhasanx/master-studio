@@ -98,6 +98,8 @@ class PublishAction(Action):
     target: Target
     text: str | None = None
     file: str | None = None
+    caption: str | None = None  # media caption (issue #11)
+    parse_mode: Literal["HTML"] | None = None  # rich text for text/caption (issue #11)
     buttons: list[Button] = Field(default_factory=list)
     reply_to: int | None = None  # anchor to an already-published message
 
@@ -105,6 +107,10 @@ class PublishAction(Action):
     def _exactly_one_payload(self) -> "PublishAction":
         if (self.text is None) == (self.file is None):
             raise ValueError("publish needs exactly one of: 'text', 'file'")
+        if self.caption is not None and self.file is None:
+            raise ValueError("caption requires a 'file' payload")
+        if self.parse_mode is not None and not (self.text or self.caption):
+            raise ValueError("parse_mode requires 'text' or 'caption'")
         return self
 
 

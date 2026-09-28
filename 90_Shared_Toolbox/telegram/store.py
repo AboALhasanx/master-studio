@@ -152,6 +152,27 @@ class Store:
         )
         self.db.commit()
 
+    def requeue_payload(
+        self, key: str, payload: dict[str, Any], *, delay: float = 0.0, now: float | None = None
+    ) -> None:
+        """Swap in a new payload and keep the job queued (issue #11 chunking).
+
+        Deliberately does **not** bump ``attempts``: a multi-chunk message makes
+        progress on every hop and must not burn the retry budget.
+        """
+        now = time.time() if now is None else float(now)
+        self.db.execute(
+            "UPDATE jobs SET payload=?, status='queued', available_at=?, updated_at=? "
+            "WHERE idempotency_key=?",
+            (
+                json.dumps(payload, ensure_ascii=False),
+                now + max(0.0, float(delay)),
+                now,
+                key,
+            ),
+        )
+        self.db.commit()
+
     def pending(self, limit: int = 50, now: float | None = None) -> list[dict[str, Any]]:
         """Jobs eligible to run: queued/errored **and** past their cooldown."""
         now = time.time() if now is None else float(now)

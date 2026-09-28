@@ -30,6 +30,7 @@ from .errors import (
     UnboundTopic,
 )
 from .links import parse_message_link
+from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
 from .schema import Action, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
 from .store import ChatRateLimiter, Store, backoff_delay
@@ -77,6 +78,20 @@ def resolve_destination(
     return int(chat_id), (int(thread_id) if thread_id is not None else None)
 
 
+def _chunk_params(params: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
+    """Trim ``params['text']`` to the API limit, returning the unsent tail.
+
+    Used by both :func:`execute` and the queue drain, so a 20 000-character
+    digest is posted as several messages under **one** idempotency key: the
+    already-sent part is never re-sent (issue #11).
+    """
+    text = params.get("text")
+    if not isinstance(text, str) or len(text) <= TEXT_LIMIT:
+        return params, None
+    head, tail = split_once(text)
+    return {**params, "text": head}, tail
+
+
 def build_call(action: Action, registry: Registry) -> Call:
     """Pure translation of a validated action into one Bot API call."""
     verb = action.verb
@@ -95,7 +110,9 @@ def build_call(action: Action, registry: Registry) -> Call:
         else:
             method = "sendDocument"
             params["document"] = action.file
-            params["caption"] = ""
+            params["caption"] = action.caption or ""
+        if action.parse_mode is not None:
+            params["parse_mode"] = action.parse_mode
         if action.buttons:
             params["reply_markup"] = {
                 "inline_keyboard": [[{"text": b.label, "url": b.url}] for b in action.buttons]
@@ -282,7 +299,13 @@ def execute(
                 f"chat {call.chat_id} is not in TELEGRAM_CHAT_ALLOWLIST (fail closed)"
             )
 
-    payload = {"method": call.method, "params": call.params}
+    params, unsent_tail = _chunk_params(call.params)
+    if params is not call.params:
+        call = Call(call.method, params, call.chat_id, call.thread_id)
+
+    payload: dict[str, Any] = {"method": call.method, "params": call.params}
+    if unsent_tail is not None:
+        payload["_tail"] = unsent_tail  # re-sent under this same key (issue #11)
     if action.verb == "topic" and action.op == "create" and action.target.subject:
         # remember what to bind when the topic id comes back (issue #8)
         payload["_bind"] = {
@@ -344,6 +367,33 @@ def execute(
         limiter.record(call.chat_id, now)
     message_id = result.get("message_id") if isinstance(result, dict) else None
     _maybe_bind(store, registry, payload, result)
+
+    unsent = payload.pop("_tail", None)
+    if unsent is not None:
+        # A long digest is only partly out: keep the job queued with the rest
+        # so a retry resumes exactly where it stopped (never re-sends a chunk).
+        next_params, next_tail = _chunk_params({**call.params, "text": unsent})
+        next_payload: dict[str, Any] = {"method": call.method, "params": next_params}
+        if next_tail is not None:
+            next_payload["_tail"] = next_tail
+        store.requeue_payload(key, next_payload, now=now)
+        remaining = len(split_message(unsent))
+        store.audit(
+            action.verb,
+            "sent",
+            actor=action.actor,
+            chat_id=call.chat_id,
+            thread_id=call.thread_id,
+            idempotency_key=key,
+            detail=f"{call.method} -> {message_id} (chunk, {remaining} left)",
+        )
+        return {
+            "status": "queued",
+            "chunks_remaining": remaining,
+            "message_id": message_id,
+            "idempotency_key": key,
+        }
+
     store.mark_sent(key, message_id)
     store.audit(
         action.verb,
@@ -415,8 +465,19 @@ def _queue_op(action, *, transport: Transport, store: Store, limiter: ChatRateLi
             store.audit("queue", "error", chat_id=chat_id, idempotency_key=key, detail=str(exc))
             skipped += 1
             continue
-        store.mark_sent(key, result.get("message_id") if isinstance(result, dict) else None)
-        _maybe_bind(store, registry, payload, result)
+        unsent = payload.pop("_tail", None)
+        if unsent is not None:
+            # advance one chunk of a long message (issue #11), never re-send
+            next_params, next_tail = _chunk_params({**payload["params"], "text": unsent})
+            next_payload: dict[str, Any] = {"method": payload["method"], "params": next_params}
+            if next_tail is not None:
+                next_payload["_tail"] = next_tail
+            store.requeue_payload(key, next_payload, now=now)
+            store.audit("queue", "sent", chat_id=chat_id, idempotency_key=key,
+                        detail=f"chunk, {len(split_message(unsent))} left")
+        else:
+            store.mark_sent(key, result.get("message_id") if isinstance(result, dict) else None)
+            _maybe_bind(store, registry, payload, result)
         if limiter is not None and chat_id is not None:
             limiter.record(int(chat_id), now)
         sent += 1
