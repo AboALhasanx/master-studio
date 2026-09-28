@@ -148,3 +148,52 @@ def test_launch_standalone_window_spawns_argument_array():
     assert "04_Advanced_Software_Eng" in argv
     assert "Quiz_01" in argv
     assert all(isinstance(a, str) for a in argv)
+
+
+def test_launch_standalone_window_survives_missing_windows_only_flag():
+    """``subprocess.CREATE_NEW_CONSOLE`` exists ONLY on Windows.
+
+    GitHub's CI runs the suite on ``ubuntu-latest``, where that constant does
+    not exist at all. Reading it unconditionally raises AttributeError before
+    Popen is ever reached, so the launcher must treat the flag as optional.
+    """
+    import subprocess
+
+    from quiz_qr import launch_standalone_window
+
+    saved = getattr(subprocess, "CREATE_NEW_CONSOLE", None)
+    try:
+        if hasattr(subprocess, "CREATE_NEW_CONSOLE"):
+            delattr(subprocess, "CREATE_NEW_CONSOLE")
+
+        with patch("subprocess.Popen") as mock_popen:
+            launch_standalone_window("04_Advanced_Software_Eng", "Quiz_01")
+    finally:
+        if saved is not None:
+            subprocess.CREATE_NEW_CONSOLE = saved
+
+    assert mock_popen.call_count == 1
+    args, kwargs = mock_popen.call_args
+    assert isinstance(args[0], list)
+    assert kwargs.get("shell") is not True
+    assert "creationflags" not in kwargs, (
+        "creationflags must not be passed when Windows exposes no such flag"
+    )
+
+
+@pytest.mark.skipif(
+    __import__("os").name != "nt", reason="CREATE_NEW_CONSOLE is a Windows-only flag"
+)
+def test_launch_standalone_window_requests_new_console_on_windows():
+    """On Windows the standalone console window behaviour must be preserved."""
+    import subprocess
+
+    from quiz_qr import launch_standalone_window
+
+    with patch("subprocess.Popen") as mock_popen:
+        launch_standalone_window("04_Advanced_Software_Eng", "Quiz_01")
+
+    assert (
+        mock_popen.call_args.kwargs.get("creationflags")
+        == subprocess.CREATE_NEW_CONSOLE
+    )

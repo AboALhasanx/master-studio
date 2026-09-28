@@ -171,6 +171,7 @@ def launch_standalone_window(subject_id: str, quiz_id: str) -> None:
         CREATE_NEW_CONSOLE, and `--keep-open` makes the child pause on stdin
         so the QR output stays visible (replacing the old `cmd /k` host).
     """
+    import os
     import subprocess
     from pathlib import Path
 
@@ -188,11 +189,15 @@ def launch_standalone_window(subject_id: str, quiz_id: str) -> None:
         "--keep-open",
     ]
 
-    subprocess.Popen(
-        argv,
-        creationflags=subprocess.CREATE_NEW_CONSOLE,
-        shell=False,
-    )
+    # CREATE_NEW_CONSOLE is a Windows-only constant: it does not exist at all
+    # on POSIX (GitHub's ubuntu-latest CI), where reading it raises
+    # AttributeError before Popen is reached. Guard it so the launcher stays
+    # portable while keeping the standalone-window behaviour on Windows.
+    popen_kwargs = {"shell": False}
+    if os.name == "nt" and hasattr(subprocess, "CREATE_NEW_CONSOLE"):
+        popen_kwargs["creationflags"] = subprocess.CREATE_NEW_CONSOLE
+
+    subprocess.Popen(argv, **popen_kwargs)
     print(f"🚀 Launched standalone QR window for {subject_id} / {quiz_id}")
 
 
