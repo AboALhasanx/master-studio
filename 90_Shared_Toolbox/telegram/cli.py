@@ -237,11 +237,25 @@ def _action_from_args(args: argparse.Namespace) -> Action:
 
 
 def _emit(payload: dict[str, Any], as_json: bool) -> None:
+    """Print without ever dying on the console's encoding.
+
+    A Windows console defaults to cp1252, so any Arabic caption or emoji in
+    the payload (`react --emoji 👍`) raised UnicodeEncodeError *before* a
+    single byte was written — the live smoke hit exactly that. Forcing UTF-8
+    with a replacement fallback keeps the JSON parseable and the CLI alive.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None and hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
     if as_json:
-        print(json.dumps(payload, ensure_ascii=False, indent=2, default=str))
+        print(json.dumps(payload, ensure_ascii=False, indent=2, default=str), flush=True)
         return
     status = payload.get("status", "ok")
-    print(f"[{status}] " + " ".join(f"{k}={v}" for k, v in payload.items() if k != "status"))
+    print(
+        f"[{status}] " + " ".join(f"{k}={v}" for k, v in payload.items() if k != "status"),
+        flush=True,
+    )
 
 
 # ---------------------------------------------------------------------------

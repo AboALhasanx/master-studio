@@ -1075,6 +1075,27 @@ def test_cli_live_without_token_fails_closed(tmp_path, capsys, owners, monkeypat
     assert "TELEGRAM_BOT_TOKEN" in payload["error"]
 
 
+def test_json_output_survives_arabic_and_emoji_on_a_cp1252_console(monkeypatch):
+    """`_emit` inherited the console encoding, so `react --emoji 👍` and any
+    Arabic payload crashed with UnicodeEncodeError before printing a byte."""
+    buffer = io.BytesIO()
+    fake = io.TextIOWrapper(buffer, encoding="cp1252", newline="")
+    monkeypatch.setattr(sys, "stdout", fake)
+
+    tg_cli._emit({"status": "sent", "caption": "الأسبوع الأول", "emoji": "\U0001f44d"}, True)
+
+    text = buffer.getvalue().decode("utf-8")
+    assert "الأسبوع الأول" in text
+    assert "\U0001f44d" in text
+    assert json.loads(text)["status"] == "sent"   # still parseable JSON
+
+    # the human-readable branch must not crash either
+    buffer.seek(0)
+    buffer.truncate(0)
+    tg_cli._emit({"status": "sent", "caption": "مرحبا"}, False)
+    assert "مرحبا" in buffer.getvalue().decode("utf-8")
+
+
 def test_cli_wires_the_action_and_caption_edit_verbs(tmp_path, capsys, owners):
     base = ["--json", "--dry-run", "--actor", str(OWNER),
             "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db")]
