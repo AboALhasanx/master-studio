@@ -145,3 +145,5 @@ token_budget: "< 400 tokens"
   - **Lesson 4 (Leading English Definitions):** In Arabic paragraphs starting with an English definition (e.g. `CVSS = Common Vulnerability... — معيار...`), the entire English formula must be wrapped in `<bdi dir="ltr">` via `isolate_english_leading_phrases()` to prevent BiDi word inversion.
 
 - **Added 2026-09-26:** Terminal TUI does not support Arabic text rendering cleanly; communicate strictly in technical English in chat.
+
+- **Added 2026-09-28 (Telegram gateway — STOP POINT at gate G2):** bot **@cs_mscbot** is admin of group `Master-Studio FINAL` (`-1003710711332`); owner `5664798395`. Gateway lives in `90_Shared_Toolbox/telegram/` + launcher `tools/tg.py` (outbound-only, fail-closed ACL, chat allowlist, SQLite audit). **10 topics + pinned cards + pinned index provisioned by the gateway itself; re-run is a no-op.** `pytest -q` = **227 passed**. Roadmap `00_STUDIO_HUB/proposals/FEATURE_TELEGRAM_GATEWAY_ROADMAP.md`, playbook `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`, epic GitHub issue #7. Next: gate G3 (#11–#14). Token/ids only in gitignored `.env`. **Nothing committed yet.**
