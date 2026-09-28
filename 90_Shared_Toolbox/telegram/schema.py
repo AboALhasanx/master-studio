@@ -119,6 +119,11 @@ class PublishAction(Action):
     file: str | None = None
     caption: str | None = None  # media caption (issue #11)
     parse_mode: Literal["HTML"] | None = None  # rich text for text/caption (issue #11)
+    #: Which ``send*`` method carries the file (issue #11). The default is
+    #: ``document`` — a byte-exact upload — because Telegram recompresses
+    #: anything that goes through ``sendPhoto``.
+    kind: Literal["document", "photo", "video", "audio", "voice",
+                  "animation", "sticker", "auto"] = "document"
     buttons: list[Button] = Field(default_factory=list)
     reply_to: int | None = None  # anchor to an already-published message
 
@@ -130,6 +135,10 @@ class PublishAction(Action):
             raise ValueError("caption requires a 'file' payload")
         if self.parse_mode is not None and not (self.text or self.caption):
             raise ValueError("parse_mode requires 'text' or 'caption'")
+        if self.file is None and self.kind != "document":
+            raise ValueError("publish 'kind' requires a 'file' payload")
+        if self.kind == "sticker" and self.caption is not None:
+            raise ValueError("stickers do not carry a caption")
         return self
 
 

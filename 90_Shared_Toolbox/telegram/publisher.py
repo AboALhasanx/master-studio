@@ -17,13 +17,76 @@ string arithmetic, so it can be reasoned about (and tested) in isolation.
 
 from __future__ import annotations
 
-__all__ = ["TEXT_LIMIT", "CAPTION_LIMIT", "escape_html", "split_once", "split_message"]
+from pathlib import Path
+
+__all__ = [
+    "TEXT_LIMIT",
+    "CAPTION_LIMIT",
+    "MEDIA_KINDS",
+    "escape_html",
+    "split_once",
+    "split_message",
+    "send_method",
+    "media_param",
+    "supports_caption",
+]
 
 #: Maximum length of a Telegram text message (Bot API ``sendMessage``).
 TEXT_LIMIT = 4096
 
 #: Maximum length of a media caption (Bot API ``sendDocument``/``sendPhoto``).
 CAPTION_LIMIT = 1024
+
+#: The media shapes ``publish --kind`` accepts (issue #11). ``auto`` is the
+#: only "magic" value; everything else names the Bot API method explicitly.
+MEDIA_KINDS = ("document", "photo", "video", "audio", "voice", "animation",
+               "sticker", "auto")
+
+_SEND_METHOD = {
+    "document": "sendDocument",
+    "photo": "sendPhoto",
+    "video": "sendVideo",
+    "audio": "sendAudio",
+    "voice": "sendVoice",
+    "animation": "sendAnimation",
+    "sticker": "sendSticker",
+}
+
+#: method -> the request field that carries the file.
+_SEND_PARAM = {method: kind for kind, method in _SEND_METHOD.items()}
+
+#: ``kind=auto``: file suffix -> kind. Unknown suffixes stay documents.
+_AUTO_KIND = {
+    ".jpg": "photo", ".jpeg": "photo", ".png": "photo", ".bmp": "photo",
+    ".gif": "animation",
+    ".mp4": "video", ".mov": "video", ".mkv": "video", ".webm": "video",
+    ".mp3": "audio", ".m4a": "audio", ".flac": "audio", ".wav": "audio",
+    ".ogg": "voice", ".opus": "voice",
+    ".tgs": "sticker",
+}
+
+
+def send_method(kind: str, file: str | None) -> str:
+    """Resolve a media kind to the Bot API method that carries ``file``.
+
+    ``auto`` reads the suffix; an unknown suffix falls back to
+    ``sendDocument``, because a document upload is byte-exact while
+    ``sendPhoto`` lets Telegram recompress the image.
+    """
+    resolved = kind
+    if kind == "auto":
+        resolved = _AUTO_KIND.get(Path(str(file or "")).suffix.lower(), "document")
+    return _SEND_METHOD[resolved]
+
+
+def media_param(method: str) -> str:
+    """The request field name that carries the file for a ``send*`` method."""
+    return _SEND_PARAM[method]
+
+
+def supports_caption(method: str) -> bool:
+    """Stickers are the one upload shape Telegram gives no ``caption`` field."""
+    return method != "sendSticker"
 
 _AMP = "&"
 _SPAN_MARKERS = ("**", "`")

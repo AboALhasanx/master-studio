@@ -564,6 +564,68 @@ def test_publish_refuses_secrets_and_build_outputs(registry, store, acl, transpo
     assert all(row["result"] == "refused" for row in store.audit_rows())
 
 
+# ------------------------------------------------------- media kinds (#11) --
+def test_publish_selects_the_right_method_for_each_media_kind(
+    registry, store, acl, transport
+):
+    cases = [
+        ("photo", "sendPhoto", "photo", "file:///x/dependability_chain.png"),
+        ("video", "sendVideo", "video", "file:///x/walkthrough.mp4"),
+        ("audio", "sendAudio", "audio", "file:///x/viva.mp3"),
+        ("voice", "sendVoice", "voice", "file:///x/note.ogg"),
+        ("animation", "sendAnimation", "animation", "file:///x/loop.gif"),
+        ("sticker", "sendSticker", "sticker", "file:///x/pack.tgs"),
+        ("document", "sendDocument", "document", "file:///x/W01.pdf"),
+    ]
+    for kind, method, param, uri in cases:
+        kwargs = {} if kind == "sticker" else {"caption": "Week 1"}
+        execute(publish(text=None, file=uri, kind=kind, **kwargs),
+                transport=transport, acl=acl, registry=registry, store=store)
+        got, params = transport.last()
+        assert got == method, kind
+        assert params[param] == uri, kind
+        assert "text" not in params, kind
+        if kind == "sticker":
+            assert "caption" not in params, "stickers carry no caption"
+        else:
+            assert params["caption"] == "Week 1"
+
+
+def test_publish_kind_auto_reads_the_suffix_but_the_default_stays_document(
+    registry, store, acl, transport
+):
+    for uri, method in (
+        ("file:///x/diagram.PNG", "sendPhoto"),
+        ("file:///x/photo.jpeg", "sendPhoto"),
+        ("file:///x/loop.gif", "sendAnimation"),
+        ("file:///x/clip.mp4", "sendVideo"),
+        ("file:///x/note.ogg", "sendVoice"),
+        ("file:///x/track.MP3", "sendAudio"),
+        ("file:///x/W01.pdf", "sendDocument"),
+        ("file:///x/mystery.bin", "sendDocument"),
+    ):
+        execute(publish(text=None, file=uri, kind="auto"),
+                transport=transport, acl=acl, registry=registry, store=store)
+        assert transport.last()[0] == method, uri
+
+    # The DEFAULT must stay byte-exact: Telegram recompresses sendPhoto, so a
+    # 2x-retina diagram round-tripped through it would lose resolution.
+    execute(publish(text=None, file="file:///x/brooks_complexity_tree.png"),
+            transport=transport, acl=acl, registry=registry, store=store)
+    method, params = transport.last()
+    assert method == "sendDocument"
+    assert params["document"] == "file:///x/brooks_complexity_tree.png"
+
+
+def test_publish_kind_needs_a_file_and_stickers_take_no_caption():
+    with pytest.raises(ActionValidationError):
+        publish(text="hello", kind="photo")
+    with pytest.raises(ActionValidationError):
+        publish(text="hello", kind="auto")
+    with pytest.raises(ActionValidationError):
+        publish(text=None, file="file:///x/pack.tgs", kind="sticker", caption="nope")
+
+
 def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl):
     text = ("word " * 4000).strip()
     transport = MockTransport()
@@ -1119,6 +1181,35 @@ def test_cli_wires_the_action_and_caption_edit_verbs(tmp_path, capsys, owners):
 
     # neither --text nor --caption -> validation error, exit 2, nothing planned
     code, _ = run_cli(base + ["edit", "--chat", "-1001", "--message-id", "9"], capsys)
+    assert code == 2
+
+
+def test_cli_publish_exposes_kind_and_caption(tmp_path, capsys, owners):
+    base = ["--json", "--dry-run", "--actor", str(OWNER),
+            "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db")]
+
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001", "--file", "file:///x/diagram.png",
+                "--kind", "photo", "--caption", "Week 1 diagram", "--html"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "sendPhoto"
+    assert payload["plan"]["params"]["photo"] == "file:///x/diagram.png"
+    assert payload["plan"]["params"]["caption"] == "Week 1 diagram"
+    assert payload["plan"]["params"]["parse_mode"] == "HTML"
+
+    # default: still a byte-exact document, so nothing is recompressed
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001", "--file", "file:///x/diagram.png"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "sendDocument"
+
+    # a sticker is rejected outright when a caption is supplied
+    code, payload = run_cli(
+        base + ["publish", "--chat", "-1001", "--file", "file:///x/pack.tgs",
+                "--kind", "sticker", "--caption", "nope"], capsys
+    )
     assert code == 2
 
 

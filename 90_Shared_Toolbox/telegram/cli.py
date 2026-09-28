@@ -24,6 +24,7 @@ from typing import Any
 from .acl import ACL, chat_allowlist_from_env
 from .errors import ActionValidationError, GatewayError
 from .executor import execute, plan
+from .publisher import MEDIA_KINDS
 from .registry import Registry
 from .schema import Action, parse_action
 from .store import ChatRateLimiter, Store, load_dotenv
@@ -78,6 +79,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--button", action="append", default=[], metavar="LABEL=URL",
                    help="inline URL button; repeatable")
     p.add_argument("--reply-to", type=int, dest="reply_to", help="anchor to an existing message id")
+    p.add_argument("--caption", help="caption for an uploaded file")
+    p.add_argument("--html", action="store_true", dest="html",
+                   help="send --text/--caption as HTML")
+    p.add_argument("--kind", choices=list(MEDIA_KINDS), default="document",
+                   help="which send* method carries the file; document (default) is "
+                        "byte-exact, photo/video are recompressed by Telegram")
 
     p = sub.add_parser("topic", help="manage forum topics")
     _add_target(p)
@@ -159,6 +166,11 @@ def _action_from_args(args: argparse.Namespace) -> Action:
             data["text"] = args.text
         if args.file is not None:
             data["file"] = args.file
+        if args.caption is not None:
+            data["caption"] = args.caption
+        if args.html:
+            data["parse_mode"] = "HTML"
+        data["kind"] = args.kind
         if args.reply_to is not None:
             data["reply_to"] = args.reply_to
         if args.button:

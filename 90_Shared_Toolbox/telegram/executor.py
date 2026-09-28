@@ -31,7 +31,7 @@ from .errors import (
     UnboundTopic,
 )
 from .links import parse_message_link
-from . import pipeline
+from . import pipeline, publisher
 from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
 from .schema import Action, ChatAction, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
@@ -113,9 +113,12 @@ def build_call(action: Action, registry: Registry) -> Call:
             method = "sendMessage"
             params["text"] = action.text
         else:
-            method = "sendDocument"
-            params["document"] = action.file
-            params["caption"] = action.caption or ""
+            # kind decides which send* carries it; `document` (the default) is
+            # the only byte-exact option, photo/video may be recompressed
+            method = publisher.send_method(action.kind, action.file)
+            params[publisher.media_param(method)] = action.file
+            if publisher.supports_caption(method):
+                params["caption"] = action.caption or ""
         if action.parse_mode is not None:
             params["parse_mode"] = action.parse_mode
         if action.buttons:
