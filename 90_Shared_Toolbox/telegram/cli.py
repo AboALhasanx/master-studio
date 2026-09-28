@@ -89,24 +89,34 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--to", required=True, help="t.me link or numeric message id")
     p.add_argument("--text", required=True)
 
-    p = sub.add_parser("edit", help="edit an existing message")
+    p = sub.add_parser("edit", help="edit an existing message (text or caption)")
     _add_target(p, thread=False)
     p.add_argument("--message-id", type=int, required=True, dest="message_id")
-    p.add_argument("--text", required=True)
+    p.add_argument("--text", help="new message body -> editMessageText")
+    p.add_argument("--caption", help="new media caption -> editMessageCaption")
+    p.add_argument("--html", action="store_true", dest="html",
+                   help="send the payload as HTML")
 
     p = sub.add_parser("delete", help="delete one or many messages")
     _add_target(p, thread=False)
     p.add_argument("--message-id", type=int, required=True, dest="message_id", nargs="+")
 
-    p = sub.add_parser("pin", help="pin or unpin a message")
+    p = sub.add_parser("pin", help="pin / unpin a message, or sweep a whole topic")
     _add_target(p, thread=False)
-    p.add_argument("--message-id", type=int, required=True, dest="message_id")
+    p.add_argument("--message-id", type=int, dest="message_id",
+                   help="the message to pin or unpin (omit with --unpin-all)")
     p.add_argument("--unpin", action="store_true")
+    p.add_argument("--unpin-all", action="store_true", dest="unpin_all",
+                   help="unpin every message in the topic (needs --confirm)")
 
     p = sub.add_parser("react", help="add a reaction to a message")
     _add_target(p, thread=False)
     p.add_argument("--message-id", type=int, required=True, dest="message_id")
     p.add_argument("--emoji", required=True)
+
+    p = sub.add_parser("action", help="send a transient presence signal (typing ...)")
+    _add_target(p)
+    p.add_argument("--kind", required=True, help="typing | upload_document | choose_sticker | ...")
 
     p = sub.add_parser("queue", help="inspect or drain the local job queue")
     p.add_argument("op", nargs="?", choices=["list", "pending", "run"], default="list")
@@ -176,7 +186,12 @@ def _action_from_args(args: argparse.Namespace) -> Action:
     elif args.command == "edit":
         data["target"] = _target(args)
         data["message_id"] = args.message_id
-        data["text"] = args.text
+        if args.text is not None:
+            data["text"] = args.text
+        if args.caption is not None:
+            data["caption"] = args.caption
+        if args.html:
+            data["parse_mode"] = "HTML"
 
     elif args.command == "delete":
         data["target"] = _target(args)
@@ -184,13 +199,21 @@ def _action_from_args(args: argparse.Namespace) -> Action:
 
     elif args.command == "pin":
         data["target"] = _target(args)
-        data["message_id"] = args.message_id
-        data["pinned"] = not args.unpin
+        data["unpin_all"] = bool(args.unpin_all)
+        if args.unpin_all:
+            data["pinned"] = False
+        else:
+            data["message_id"] = args.message_id
+            data["pinned"] = not args.unpin
 
     elif args.command == "react":
         data["target"] = _target(args)
         data["message_id"] = args.message_id
         data["emoji"] = args.emoji
+
+    elif args.command == "action":
+        data["target"] = _target(args)
+        data["kind"] = args.kind
 
     elif args.command == "queue":
         data["op"] = args.op

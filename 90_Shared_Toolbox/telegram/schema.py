@@ -9,10 +9,11 @@ Verbs
 ``publish``  send text/file into a topic (issue #11)
 ``topic``    create / rename / close / reopen / delete topics (issue #10)
 ``reply``    reply to a message addressed by link or id (issue #12)
-``edit``     edit an existing message (issue #12)
+``edit``     edit an existing message: text or caption (issue #12)
 ``delete``   delete one or many messages (issue #12)
-``pin``      pin / unpin a message (issue #12)
+``pin``      pin / unpin a message, or unpin a whole topic (issue #12)
 ``react``    add a reaction (issue #12)
+``action``   transient presence signal — typing, upload_document ... (issue #12)
 ``queue``    inspect / drain the local job queue (issue #14)
 ``pipeline`` export a vault file if it is stale, then publish it (issue #13)
 ``status``   local health report — no Telegram target at all
@@ -40,6 +41,7 @@ __all__ = [
     "DeleteAction",
     "PinAction",
     "ReactAction",
+    "ChatAction",
     "QueueAction",
     "StructureAction",
     "PipelineAction",
@@ -48,8 +50,23 @@ __all__ = [
 ]
 
 VERBS = (
-    "publish", "topic", "reply", "edit", "delete", "pin", "react",
+    "publish", "topic", "reply", "edit", "delete", "pin", "react", "action",
     "queue", "structure", "pipeline", "status",
+)
+
+#: The Bot API's ``sendChatAction`` vocabulary, verbatim (issue #12).
+CHAT_ACTIONS = (
+    "typing",
+    "upload_photo",
+    "record_video",
+    "upload_video",
+    "record_voice",
+    "upload_voice",
+    "upload_document",
+    "find_location",
+    "record_video_note",
+    "upload_video_note",
+    "choose_sticker",
 )
 
 
@@ -144,10 +161,25 @@ class ReplyAction(Action):
 
 
 class EditAction(Action):
+    """Edit an existing message: ``editMessageText`` **or** ``editMessageCaption``.
+
+    Which one is decided purely by which payload you supply (issue #12).
+    """
+
     verb: Literal["edit"] = "edit"
     target: Target
     message_id: int = Field(gt=0)
-    text: str = Field(min_length=1)
+    text: str | None = None  # editMessageText
+    caption: str | None = None  # editMessageCaption
+    parse_mode: Literal["HTML"] | None = None
+
+    @model_validator(mode="after")
+    def _exactly_one_payload(self) -> "EditAction":
+        if (self.text is None) == (self.caption is None):
+            raise ValueError("edit needs exactly one of: 'text', 'caption'")
+        if self.parse_mode is not None and not (self.text or self.caption):
+            raise ValueError("parse_mode requires 'text' or 'caption'")
+        return self
 
 
 class DeleteAction(Action):
@@ -169,8 +201,24 @@ class DeleteAction(Action):
 class PinAction(Action):
     verb: Literal["pin"] = "pin"
     target: Target
-    message_id: int = Field(gt=0)
+    message_id: int | None = None
     pinned: bool = True
+    unpin_all: bool = False  # unpin every message in the topic (#10 / #12)
+
+    @model_validator(mode="after")
+    def _pin_shape(self) -> "PinAction":
+        if self.unpin_all:
+            if self.message_id is not None:
+                raise ValueError("unpin_all does not take 'message_id'")
+        elif self.message_id is None:
+            raise ValueError("pin/unpin requires 'message_id'")
+        elif self.message_id <= 0:
+            raise ValueError("message_id must be positive")
+        return self
+
+    def destructive(self) -> bool:
+        # One unpin is cheap; sweeping a whole topic is a bulk operation (ADR D7).
+        return self.unpin_all
 
 
 class ReactAction(Action):
@@ -178,6 +226,27 @@ class ReactAction(Action):
     target: Target
     message_id: int = Field(gt=0)
     emoji: str = Field(min_length=1, max_length=16)
+
+
+class ChatAction(Action):
+    """Presence signal (``sendChatAction``) — "typing", "upload_document" ...
+
+    Not persisted anywhere: Telegram discards it after a few seconds, so it
+    exists purely to make the bot feel alive (issue #12, consumed by #17).
+    """
+
+    verb: Literal["action"] = "action"
+    target: Target
+    kind: str  # validated against CHAT_ACTIONS below
+
+    @model_validator(mode="after")
+    def _known_kind(self) -> "ChatAction":
+        if self.kind not in CHAT_ACTIONS:
+            raise ValueError(
+                f"unknown chat action {self.kind!r} (expected one of: "
+                f"{', '.join(CHAT_ACTIONS)})"
+            )
+        return self
 
 
 class QueueAction(Action):
@@ -224,6 +293,7 @@ ActionUnion = Union[
     DeleteAction,
     PinAction,
     ReactAction,
+    ChatAction,
     QueueAction,
     StructureAction,
     PipelineAction,
@@ -238,6 +308,7 @@ _BY_VERB = {
     "delete": DeleteAction,
     "pin": PinAction,
     "react": ReactAction,
+    "action": ChatAction,
     "queue": QueueAction,
     "structure": StructureAction,
     "pipeline": PipelineAction,

@@ -33,7 +33,7 @@ from .links import parse_message_link
 from . import pipeline
 from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
-from .schema import Action, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
+from .schema import Action, ChatAction, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
 from .store import ChatRateLimiter, Store, backoff_delay
 from .transport import Transport
 
@@ -137,12 +137,23 @@ def build_call(action: Action, registry: Registry) -> Call:
 
     if verb == "edit":
         chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
-        return Call(
-            "editMessageText",
-            {"chat_id": chat_id, "message_id": action.message_id, "text": action.text},
-            chat_id,
-            thread_id,
-        )
+        if action.caption is not None:
+            method = "editMessageCaption"
+            params = {
+                "chat_id": chat_id,
+                "message_id": action.message_id,
+                "caption": action.caption,
+            }
+        else:
+            method = "editMessageText"
+            params = {
+                "chat_id": chat_id,
+                "message_id": action.message_id,
+                "text": action.text,
+            }
+        if action.parse_mode is not None:
+            params["parse_mode"] = action.parse_mode
+        return Call(method, params, chat_id, thread_id)
 
     if verb == "delete":
         assert isinstance(action, DeleteAction)
@@ -155,9 +166,30 @@ def build_call(action: Action, registry: Registry) -> Call:
         )
 
     if verb == "pin":
+        if action.unpin_all:
+            # unpinAllForumTopicMessages sweeps the topic, so it must resolve a thread
+            chat_id, thread_id = resolve_destination(
+                action.target, registry, require_thread=True
+            )
+            return Call(
+                "unpinAllForumTopicMessages",
+                {"chat_id": chat_id, "message_thread_id": thread_id},
+                chat_id,
+                thread_id,
+            )
         chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
         method = "pinChatMessage" if action.pinned else "unpinChatMessage"
-        return Call(method, {"chat_id": chat_id, "message_id": action.message_id}, chat_id, thread_id)
+        return Call(method, {"chat_id": chat_id, "message_id": action.message_id},
+                    chat_id, thread_id)
+
+    if verb == "action":
+        assert isinstance(action, ChatAction)
+        chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
+        params = {"chat_id": chat_id, "action": action.kind}
+        if thread_id is not None:
+            # in a forum group the signal only shows inside the topic it names
+            params["message_thread_id"] = thread_id
+        return Call("sendChatAction", params, chat_id, thread_id)
 
     if verb == "react":
         assert isinstance(action, ReactAction)
@@ -261,13 +293,15 @@ def execute(
     allowed_chats: frozenset[int] | set[int] | None = None,
 ) -> dict[str, Any]:
     """Authorize, deduplicate, rate-limit and execute one action."""
+    now = time.time() if now is None else float(now)
+    key = idempotency_key(action)
     try:
         acl.authorize(action)
     except GatewayError as exc:
-        store.audit(action.verb, "denied", actor=action.actor, detail=str(exc))
+        # a refusal is still an attempt: keep it traceable to its payload
+        store.audit(action.verb, "denied", actor=action.actor, idempotency_key=key,
+                    detail=str(exc))
         raise
-    now = time.time() if now is None else float(now)
-    key = idempotency_key(action)
 
     if action.verb == "pipeline":
         return _pipeline_op(

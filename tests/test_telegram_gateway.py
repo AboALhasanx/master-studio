@@ -797,6 +797,156 @@ def test_reply_cross_chat_is_refused(registry, store, acl, transport):
     assert transport.calls == []
 
 
+# --------------------------------------------------------------- issue #12 --
+def test_reply_executes_when_a_message_link_is_the_only_input(registry, store, acl, transport):
+    """AC1: nothing about the target message is known but the link itself."""
+    action = parse_action({
+        "verb": "reply", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "to": "https://t.me/c/1234567890/42",
+        "text": "see the pinned card",
+    })
+    result = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert result["status"] == "sent"
+    method, params = transport.last()
+    assert method == "sendMessage"
+    assert params["chat_id"] == -1001234567890
+    assert params["reply_to_message_id"] == 42
+
+
+def test_reply_accepts_a_public_username_link(registry, store, acl, transport):
+    action = parse_action({
+        "verb": "reply", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "to": "t.me/master_studio/9",
+        "text": "noted",
+    })
+    result = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert result["status"] == "sent"
+    _, params = transport.last()
+    assert params["reply_to_message_id"] == 9
+
+
+def test_bulk_delete_without_confirm_is_refused_and_still_audited(registry, store, transport):
+    """AC3: a bulk delete may not fire, but the refusal must leave a trail."""
+    acl = ACL([OWNER])
+    action = parse_action({
+        "verb": "delete", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "message_ids": [5, 6, 7],
+    })
+    with pytest.raises(ConfirmationRequired):
+        execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert transport.calls == [], "nothing may be deleted before the confirmation"
+
+    row = store.audit_rows()[0]
+    assert row["verb"] == "delete" and row["result"] == "denied"
+    assert "confirm" in (row["detail"] or "")
+    assert row["idempotency_key"] == idempotency_key(action), (
+        "the refused attempt must stay traceable to its payload"
+    )
+
+    confirmed = execute(parse_action({**action.model_dump(mode="json"), "confirm": True}),
+                        transport=transport, acl=acl, registry=registry, store=store)
+    assert confirmed["status"] == "sent"
+    method, params = transport.last()
+    assert method == "deleteMessages"
+    assert params["message_ids"] == [5, 6, 7]
+    assert store.audit_rows()[0]["result"] == "sent"
+
+
+def test_edit_switches_between_text_and_caption(registry, store, acl, transport):
+    target = {"chat_id": -1001234567890}
+    execute(parse_action({"verb": "edit", "actor": OWNER, "target": target,
+                          "message_id": 9, "text": "new text"}),
+            transport=transport, acl=acl, registry=registry, store=store)
+    method, params = transport.last()
+    assert method == "editMessageText" and params["text"] == "new text"
+
+    execute(parse_action({"verb": "edit", "actor": OWNER, "target": target,
+                          "message_id": 9, "caption": "new caption", "parse_mode": "HTML"}),
+            transport=transport, acl=acl, registry=registry, store=store)
+    method, params = transport.last()
+    assert method == "editMessageCaption"
+    assert params["caption"] == "new caption"
+    assert params["parse_mode"] == "HTML"
+    assert "text" not in params
+
+
+def test_edit_requires_exactly_one_of_text_or_caption():
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "edit", "target": {"chat_id": 1}, "message_id": 9})
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "edit", "target": {"chat_id": 1}, "message_id": 9,
+                      "text": "a", "caption": "b"})
+
+
+def test_action_verb_signals_a_chat_action(registry, store, acl, transport):
+    action = parse_action({"verb": "action", "actor": OWNER,
+                           "target": {"chat_id": -1001234567890, "thread_id": 7},
+                           "kind": "typing"})
+    result = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert result["status"] == "sent"
+    method, params = transport.last()
+    assert method == "sendChatAction"
+    assert params["chat_id"] == -1001234567890
+    assert params["action"] == "typing"
+    assert params["message_thread_id"] == 7, "the signal belongs in the topic, not General"
+
+
+def test_action_verb_rejects_unknown_kinds():
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "action", "target": {"chat_id": -1}, "kind": "summon"})
+
+
+def test_topic_rename_close_and_reopen_build_their_own_calls(registry, store, acl, transport):
+    registry.bind("01-Cyber-Security", -1001234567890, 12)
+    cases = [
+        ("rename", "editForumTopic", {"name": "01-Cyber-Security (2026)"}),
+        ("close", "closeForumTopic", {}),
+        ("reopen", "reopenForumTopic", {}),
+    ]
+    for op, expected, extra in cases:
+        payload = {"verb": "topic", "actor": OWNER,
+                   "target": {"subject": "01-Cyber-Security"}, "op": op, **extra}
+        result = execute(parse_action(payload), transport=transport, acl=acl,
+                         registry=registry, store=store)
+        assert result["status"] == "sent", op
+        method, params = transport.last()
+        assert method == expected, op
+        assert params["chat_id"] == -1001234567890, op
+        assert params["message_thread_id"] == 12, op
+        for key, value in extra.items():
+            assert params[key] == value, op
+
+
+def test_unpin_all_targets_the_topic_and_requires_confirmation(registry, store, acl, transport):
+    registry.bind("01-Cyber-Security", -1001234567890, 12)
+    payload = {"verb": "pin", "actor": OWNER, "target": {"subject": "01-Cyber-Security"},
+               "unpin_all": True}
+
+    with pytest.raises(ConfirmationRequired):
+        execute(parse_action(payload), transport=transport, acl=acl,
+                registry=registry, store=store)
+    assert transport.calls == [], "a bulk unpin may not fire without --confirm"
+
+    ok = execute(parse_action({**payload, "confirm": True}), transport=transport,
+                 acl=acl, registry=registry, store=store)
+    assert ok["status"] == "sent"
+    method, params = transport.last()
+    assert method == "unpinAllForumTopicMessages"
+    assert params["chat_id"] == -1001234567890
+    assert params["message_thread_id"] == 12
+
+
+def test_pin_shape_validation():
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "pin", "target": {"chat_id": 1}})           # nothing to pin
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "pin", "target": {"chat_id": 1},
+                      "unpin_all": True, "message_id": 4})                # contradictory
+
+
 # --------------------------------------------------------------------------- CLI
 def run_cli(argv, capsys):
     code = tg_cli.main(argv)
@@ -886,6 +1036,32 @@ def test_cli_live_without_token_fails_closed(tmp_path, capsys, owners, monkeypat
     )
     assert code == 5
     assert "TELEGRAM_BOT_TOKEN" in payload["error"]
+
+
+def test_cli_wires_the_action_and_caption_edit_verbs(tmp_path, capsys, owners):
+    base = ["--json", "--dry-run", "--actor", str(OWNER),
+            "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db")]
+
+    code, payload = run_cli(
+        base + ["action", "--chat", "-1001", "--thread", "7", "--kind", "typing"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "sendChatAction"
+    assert payload["plan"]["params"]["action"] == "typing"
+    assert payload["plan"]["params"]["message_thread_id"] == 7
+
+    code, payload = run_cli(
+        base + ["edit", "--chat", "-1001", "--message-id", "9",
+                "--caption", "<b>hi</b>", "--html"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "editMessageCaption"
+    assert payload["plan"]["params"]["caption"] == "<b>hi</b>"
+    assert payload["plan"]["params"]["parse_mode"] == "HTML"
+
+    # neither --text nor --caption -> validation error, exit 2, nothing planned
+    code, _ = run_cli(base + ["edit", "--chat", "-1001", "--message-id", "9"], capsys)
+    assert code == 2
 
 
 def test_cli_audits_every_attempt(tmp_path, owners):
