@@ -24,6 +24,7 @@ from .errors import (
     AccessDenied,
     ActionValidationError,
     GatewayError,
+    PipelineError,
     RateLimited,
     RegistryError,
     TransportError,
@@ -99,6 +100,9 @@ def build_call(action: Action, registry: Registry) -> Call:
 
     if verb == "publish":
         assert isinstance(action, PublishAction)
+        if action.file is not None and pipeline.is_excluded_uri(action.file):
+            # PR-template security rule: never upload a secret, keystore or APK
+            raise PipelineError(f"refusing to publish an excluded path: {action.file}")
         chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
         params: dict[str, Any] = {"chat_id": chat_id}
         if thread_id is not None:

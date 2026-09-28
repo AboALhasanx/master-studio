@@ -4,6 +4,8 @@
 * **G2** adds :class:`HttpTransport`: a stdlib-only Bot API client whose
   payload is always ASCII-safe (``json.dumps(..., ensure_ascii=True)``) — the
   terminal-encoding fix proven during the manual smoke test — plus:
+    * local ``file://`` payloads -> ``multipart/form-data`` (Telegram 400s on a
+      file URI sent as JSON, so uploads are a different wire format entirely),
     * 429 -> :class:`~telegram.errors.RateLimited` with ``retry_after``,
     * other API/HTTP failures -> :class:`~telegram.errors.TransportError`,
     * missing token -> :class:`~telegram.errors.GatewayNotReady` (exit 5).
@@ -17,12 +19,74 @@ from __future__ import annotations
 import json
 import os
 import urllib.error
+import urllib.parse
 import urllib.request
+import uuid
+from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
 from .errors import GatewayNotReady, RateLimited, TransportError
 
 __all__ = ["Transport", "MockTransport", "HttpTransport", "RateLimitedScript", "build_transport"]
+
+#: Bot API parameters that can carry a file upload.
+_UPLOAD_PARAMS = frozenset(
+    {"document", "photo", "video", "audio", "voice", "animation", "thumb", "sticker"}
+)
+
+
+def _split_uploads(params: dict[str, Any]) -> tuple[dict[str, Any], dict[str, str]]:
+    """Separate local ``file://`` uploads from the plain scalar fields.
+
+    Telegram's Bot API answers 400 ("wrong file identifier/HTTP URL
+    specified") for a ``file://`` value sent as JSON, so anything meant to be
+    uploaded has to leave as multipart instead.
+    """
+    fields: dict[str, Any] = {}
+    files: dict[str, str] = {}
+    for key, value in params.items():
+        if key in _UPLOAD_PARAMS and isinstance(value, str) and value.startswith("file://"):
+            files[key] = value
+        else:
+            fields[key] = value
+    return fields, files
+
+
+def _local_path(uri: str) -> Path:
+    """``file:///C:/a/b.pdf`` -> ``WindowsPath`` (stdlib URL->path conversion)."""
+    return Path(urllib.request.url2pathname(urllib.parse.urlparse(uri).path))
+
+
+def _encode_multipart(fields: dict[str, Any], files: dict[str, str]) -> tuple[bytes, str]:
+    """Build the ``multipart/form-data`` body the Bot API accepts for uploads."""
+    boundary = uuid.uuid4().hex
+    out = bytearray()
+
+    for name, value in fields.items():
+        if value is None:
+            continue
+        text = "true" if value is True else "false" if value is False else str(value)
+        out += f"--{boundary}\r\n".encode("ascii")
+        out += f'Content-Disposition: form-data; name="{name}"\r\n\r\n'.encode("utf-8")
+        out += text.encode("utf-8")
+        out += b"\r\n"
+
+    for name, uri in files.items():
+        path = _local_path(uri)
+        if not path.is_file():
+            raise TransportError(f"file not found for '{name}': {path}")
+        filename = path.name.replace('"', "")
+        out += f"--{boundary}\r\n".encode("ascii")
+        out += (
+            f'Content-Disposition: form-data; name="{name}"; filename="{filename}"\r\n'
+            .encode("utf-8")
+        )
+        out += b"Content-Type: application/octet-stream\r\n\r\n"
+        out += path.read_bytes()
+        out += b"\r\n"
+
+    out += f"--{boundary}--\r\n".encode("ascii")
+    return bytes(out), f"multipart/form-data; boundary={boundary}"
 
 
 @runtime_checkable
@@ -89,11 +153,16 @@ class HttpTransport:
 
     def call(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         url = f"{self.base_url}/bot{self.token}/{method}"
-        # ensure_ascii keeps Arabic/Persian payloads encoding-independent — the
-        # exact failure seen with curl in the terminal (mangled to '?').
-        body = json.dumps(params, ensure_ascii=True).encode("ascii")
+        fields, files = _split_uploads(params)
+        if files:
+            body, content_type = _encode_multipart(fields, files)
+        else:
+            # ensure_ascii keeps Arabic/Persian payloads encoding-independent — the
+            # exact failure seen with curl in the terminal (mangled to '?').
+            body = json.dumps(params, ensure_ascii=True).encode("ascii")
+            content_type = "application/json"
         request = urllib.request.Request(
-            url, data=body, headers={"Content-Type": "application/json"}
+            url, data=body, headers={"Content-Type": content_type}
         )
         try:
             with urllib.request.urlopen(request, timeout=self.timeout) as response:

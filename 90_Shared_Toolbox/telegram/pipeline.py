@@ -35,6 +35,7 @@ __all__ = [
     "resolve",
     "artifact_for",
     "needs_export",
+    "is_excluded_uri",
     "run_export",
 ]
 
@@ -91,6 +92,27 @@ def _is_excluded(path: Path, base: Path) -> bool:
     except ValueError:  # pragma: no cover - resolve() already checked containment
         return False
     return any(part in EXCLUDED_DIRS for part in rel.parts[:-1])
+
+
+def is_excluded_uri(uri: Any) -> bool:
+    """True when a ``file://`` URI names something the PR rule forbids uploading.
+
+    Pure string inspection — no filesystem access, no URL decoding — so it can
+    run inside ``build_call`` before a single byte is read. Every ``publish``
+    with a file payload goes through this, not only the ``pipeline`` verb.
+    """
+    value = str(uri or "")
+    if not value.startswith("file://"):
+        return False
+    parts = [p for p in value[len("file://"):].replace("\\", "/").split("/") if p]
+    if not parts:
+        return False
+    name = parts[-1]
+    if name.startswith(".env") or name in EXCLUDED_NAMES:
+        return True
+    if Path(name).suffix.lower() in EXCLUDED_SUFFIXES:
+        return True
+    return any(part in EXCLUDED_DIRS for part in parts[:-1])
 
 
 def artifact_for(source: Path) -> Path:

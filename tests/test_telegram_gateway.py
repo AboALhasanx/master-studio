@@ -547,6 +547,23 @@ def test_caption_needs_a_file_and_parse_mode_needs_text():
         publish(text=None, file="file:///x/a.pdf", parse_mode="HTML")  # nothing to format
 
 
+def test_publish_refuses_secrets_and_build_outputs(registry, store, acl, transport):
+    """PR-template security rule, enforced on EVERY upload, not just `pipeline`."""
+    for bad in (
+        "file:///vault/.env",
+        "file:///vault/keystore.jks",
+        "file:///vault/app.apk",
+        "file:///vault/gateway.db",
+        "file:///vault/.ssh/keys/id_rsa.pem",
+        "file:///vault/03_Study_Notes/__pycache__/note.pdf",
+    ):
+        with pytest.raises(PipelineError, match="excluded"):
+            execute(publish(text=None, file=bad), transport=transport, acl=acl,
+                    registry=registry, store=store)
+    assert transport.calls == []
+    assert all(row["result"] == "refused" for row in store.audit_rows())
+
+
 def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl):
     text = ("word " * 4000).strip()
     transport = MockTransport()
@@ -1150,6 +1167,55 @@ def test_http_transport_maps_api_and_network_errors(monkeypatch):
                         fake_urlopen([urllib.error.URLError("connection reset")], []))
     with pytest.raises(TransportError, match="network error"):
         HttpTransport("TEST:token").call("sendMessage", {})
+
+
+# ---------------------------------------------------- local file uploads (#11)
+def test_http_transport_uploads_a_local_file_as_multipart(monkeypatch, tmp_path):
+    """A `file://` payload must travel multipart — Telegram rejects file URIs."""
+    import telegram.transport as tr
+
+    pdf = tmp_path / "W01_Note.pdf"
+    pdf.write_bytes(b"%PDF-1.7 fake-bytes")
+
+    calls = []
+    monkeypatch.setattr(tr.urllib.request, "urlopen",
+                        fake_urlopen([{"ok": True, "result": {"message_id": 31}}], calls))
+    result = HttpTransport("TEST:token").call("sendDocument", {
+        "chat_id": -1001,
+        "message_thread_id": 12,
+        "document": pdf.as_uri(),
+        "caption": "الأسبوع الأول",
+        "parse_mode": "HTML",
+    })
+    assert result == {"message_id": 31}
+
+    req = calls[0]
+    headers = {k.lower(): v for k, v in req.header_items()}
+    assert headers["content-type"].startswith("multipart/form-data; boundary=")
+    assert req.full_url.endswith("/sendDocument")
+
+    body = req.data
+    assert b"%PDF-1.7 fake-bytes" in body, "the file bytes must actually be on the wire"
+    assert b'name="document"' in body
+    assert b'filename="W01_Note.pdf"' in body
+    assert b'name="chat_id"' in body and b"-1001" in body
+    assert b'name="message_thread_id"' in body and b"12" in body
+    assert b'name="caption"' in body and b'name="parse_mode"' in body
+    assert "الأسبوع الأول".encode("utf-8") in body, "UTF-8 in multipart, never '?' mangled"
+
+
+def test_http_transport_refuses_a_missing_local_file_before_any_request(
+    monkeypatch, tmp_path
+):
+    import telegram.transport as tr
+
+    calls = []
+    monkeypatch.setattr(tr.urllib.request, "urlopen", fake_urlopen([], calls))
+    with pytest.raises(TransportError, match="file not found"):
+        HttpTransport("TEST:token").call(
+            "sendDocument", {"chat_id": -1, "document": (tmp_path / "ghost.pdf").as_uri()}
+        )
+    assert calls == [], "a missing local file must never reach the network"
 
 
 def test_chat_allowlist_parsing():
