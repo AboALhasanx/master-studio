@@ -34,6 +34,10 @@ def backoff_delay(attempt: int, base: float = 2.0, cap: float = 60.0) -> float:
 class Store:
     """SQLite-backed job queue + audit log."""
 
+    #: A job is retried at most this many times before it is parked as ``dead``
+    #: (roadmap G3 / issue #14 -- bounded retries, no infinite loop).
+    MAX_ATTEMPTS = 8
+
     def __init__(self, path: Path | str | None = None):
         self.path = Path(path) if path else DEFAULT_DB_PATH
         if str(self.path) != ":memory:":
@@ -55,6 +59,7 @@ class Store:
                 attempts        INTEGER NOT NULL DEFAULT 0,
                 message_id      INTEGER,
                 last_error      TEXT,
+                available_at    REAL NOT NULL DEFAULT 0,
                 created_at      REAL NOT NULL,
                 updated_at      REAL NOT NULL
             );
@@ -71,7 +76,15 @@ class Store:
             );
             """
         )
+        self._ensure_columns({"available_at": "REAL NOT NULL DEFAULT 0"})
         self.db.commit()
+
+    def _ensure_columns(self, wanted: dict[str, str]) -> None:
+        """Migrate pre-existing databases (the queue landed before available_at)."""
+        have = {row[1] for row in self.db.execute("PRAGMA table_info(jobs)")}
+        for name, decl in wanted.items():
+            if name not in have:
+                self.db.execute(f"ALTER TABLE jobs ADD COLUMN {name} {decl}")
 
     # -- jobs ------------------------------------------------------------
     def enqueue(
@@ -104,26 +117,48 @@ class Store:
         )
         self.db.commit()
 
-    def mark_error(self, key: str, error: str) -> None:
+    def mark_error(
+        self,
+        key: str,
+        error: str,
+        *,
+        retry_in: float = 0.0,
+        now: float | None = None,
+    ) -> None:
+        """Record a failed attempt and schedule its retry.
+
+        The job stays ``error`` (hence retryable) until it exhausts
+        :attr:`MAX_ATTEMPTS`, then it is parked as ``dead`` and drops out of
+        :meth:`pending`. ``retry_in`` is the cooldown: a 429 passes the
+        ``retry_after`` Telegram sent, other failures use ``backoff_delay``.
+        """
+        now = time.time() if now is None else float(now)
+        row = self.find(key)
+        attempts = (int(row["attempts"]) if row else 0) + 1
+        status = "dead" if attempts >= self.MAX_ATTEMPTS else "error"
         self.db.execute(
-            "UPDATE jobs SET status='error', attempts=attempts+1, last_error=?, updated_at=? "
-            "WHERE idempotency_key=?",
-            (str(error)[:500], time.time(), key),
+            "UPDATE jobs SET status=?, attempts=attempts+1, last_error=?, "
+            "available_at=?, updated_at=? WHERE idempotency_key=?",
+            (status, str(error)[:500], now + max(0.0, float(retry_in)), now, key),
         )
         self.db.commit()
 
-    def mark_queued(self, key: str) -> None:
+    def mark_queued(self, key: str, *, delay: float = 0.0, now: float | None = None) -> None:
         """Keep the job queued (e.g. rate limited) — it is retried later."""
+        now = time.time() if now is None else float(now)
         self.db.execute(
-            "UPDATE jobs SET status='queued', attempts=attempts+1, updated_at=? WHERE idempotency_key=?",
-            (time.time(), key),
+            "UPDATE jobs SET status='queued', attempts=attempts+1, available_at=?, updated_at=? WHERE idempotency_key=?",
+            (now + max(0.0, float(delay)), now, key),
         )
         self.db.commit()
 
-    def pending(self, limit: int = 50) -> list[dict[str, Any]]:
+    def pending(self, limit: int = 50, now: float | None = None) -> list[dict[str, Any]]:
+        """Jobs eligible to run: queued/errored **and** past their cooldown."""
+        now = time.time() if now is None else float(now)
         rows = self.db.execute(
-            "SELECT * FROM jobs WHERE status IN ('queued', 'error') ORDER BY created_at LIMIT ?",
-            (int(limit),),
+            "SELECT * FROM jobs WHERE status IN ('queued', 'error') AND available_at <= ? "
+            "ORDER BY created_at LIMIT ?",
+            (now, int(limit)),
         ).fetchall()
         return [dict(r) for r in rows]
 

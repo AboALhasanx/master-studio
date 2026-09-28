@@ -32,7 +32,7 @@ from .errors import (
 from .links import parse_message_link
 from .registry import Registry
 from .schema import Action, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
-from .store import ChatRateLimiter, Store
+from .store import ChatRateLimiter, Store, backoff_delay
 from .transport import Transport
 
 __all__ = ["Call", "build_call", "plan", "execute", "resolve_destination"]
@@ -303,7 +303,7 @@ def execute(
         return {"status": "duplicate", "idempotency_key": key}
 
     if limiter is not None and not limiter.allow(call.chat_id, now):
-        store.mark_queued(key)
+        store.mark_queued(key, now=now)
         store.audit(
             action.verb,
             "queued",
@@ -318,7 +318,9 @@ def execute(
     try:
         result = transport.call(call.method, call.params)
     except RateLimited as exc:
-        store.mark_error(key, str(exc))
+        # G3 / issue #14: a 429 is a *deferral*, not a failure. The job keeps
+        # retrying after Telegram's own retry_after instead of being dropped.
+        store.mark_error(key, str(exc), retry_in=exc.retry_after, now=now)
         store.audit(
             action.verb,
             "rate_limited",
@@ -327,9 +329,13 @@ def execute(
             idempotency_key=key,
             detail=f"retry_after={exc.retry_after}",
         )
-        return {"status": "rate_limited", "retry_after": exc.retry_after, "idempotency_key": key}
+        return {
+            "status": "rate_limited",
+            "retry_after": exc.retry_after,
+            "idempotency_key": key,
+        }
     except TransportError as exc:
-        store.mark_error(key, str(exc))
+        store.mark_error(key, str(exc), retry_in=backoff_delay(0), now=now)
         store.audit(action.verb, "error", actor=action.actor, chat_id=call.chat_id,
                     idempotency_key=key, detail=str(exc))
         return {"status": "error", "error": str(exc), "idempotency_key": key}
@@ -375,32 +381,47 @@ def _status_payload(*, acl: ACL, registry: Registry, store: Store, transport: Tr
 
 
 def _queue_op(action, *, transport: Transport, store: Store, limiter: ChatRateLimiter | None, now: float, registry: Registry | None = None) -> dict[str, Any]:
-    """Local queue inspection; ``run`` drains jobs already authorized at enqueue."""
+    """Local queue inspection; ``run`` drains jobs already authorized at enqueue.
+
+    A job bounced by a 429 is *deferred* (``deferred`` counter): it keeps its
+    place and becomes eligible again once ``retry_after`` has elapsed. Any job
+    that exhausts :attr:`Store.MAX_ATTEMPTS` disappears from the drain and is
+    reported by ``store.counts()`` as ``dead``.
+    """
     if action.op in ("list", "pending"):
-        rows = store.pending(action.limit)
+        rows = store.pending(action.limit, now=now)
         return {"status": "ok", "pending": len(rows), "jobs": rows}
 
-    jobs = store.pending(action.limit)
-    sent = skipped = 0
+    jobs = store.pending(action.limit, now=now)
+    sent = skipped = deferred = 0
     for job in jobs:
         chat_id = job.get("chat_id")
         if limiter is not None and chat_id is not None and not limiter.allow(int(chat_id), now):
             skipped += 1
             continue
+        key = job["idempotency_key"]
         try:
             payload = json.loads(job["payload"])
             result = transport.call(payload["method"], payload["params"])
+        except RateLimited as exc:
+            store.mark_error(key, str(exc), retry_in=exc.retry_after, now=now)
+            store.audit("queue", "rate_limited", chat_id=chat_id, idempotency_key=key,
+                        detail=f"retry_after={exc.retry_after}")
+            deferred += 1
+            continue
         except GatewayError as exc:
-            store.mark_error(job["idempotency_key"], str(exc))
+            store.mark_error(key, str(exc), retry_in=backoff_delay(int(job.get("attempts") or 0)),
+                             now=now)
+            store.audit("queue", "error", chat_id=chat_id, idempotency_key=key, detail=str(exc))
             skipped += 1
             continue
-        store.mark_sent(job["idempotency_key"], result.get("message_id") if isinstance(result, dict) else None)
+        store.mark_sent(key, result.get("message_id") if isinstance(result, dict) else None)
         _maybe_bind(store, registry, payload, result)
         if limiter is not None and chat_id is not None:
             limiter.record(int(chat_id), now)
         sent += 1
-    store.audit("queue", "run", detail=f"sent={sent} skipped={skipped}")
-    return {"status": "ok", "sent": sent, "skipped": skipped}
+    store.audit("queue", "run", detail=f"sent={sent} skipped={skipped} deferred={deferred}")
+    return {"status": "ok", "sent": sent, "skipped": skipped, "deferred": deferred}
 
 
 def _maybe_bind(store: Store, registry: Registry | None, payload: dict[str, Any], result: Any) -> None:
@@ -471,7 +492,7 @@ def _structure_op(
             if job and job["status"] == "sent":
                 return {"status": "sent", "message_id": job["message_id"],
                         "idempotency_key": key}
-            if job and job["status"] == "error":
+            if job and job["status"] == "dead":
                 return {"status": "error", "error": job["last_error"],
                         "idempotency_key": key}
         return {"status": "queued", "idempotency_key": key}

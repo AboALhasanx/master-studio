@@ -9,6 +9,7 @@ idempotency, audit trail, no live transport).
 import io
 import json
 import sys
+import time
 import urllib.error
 from pathlib import Path
 
@@ -37,7 +38,7 @@ from telegram.structure import STRUCTURE, topic_link  # noqa: E402
 from telegram.links import parse_message_link  # noqa: E402
 from telegram.registry import SEED_SUBJECTS  # noqa: E402
 from telegram.schema import idempotency_key  # noqa: E402
-from telegram.store import ChatRateLimiter, backoff_delay  # noqa: E402
+from telegram.store import ChatRateLimiter, Store, backoff_delay  # noqa: E402
 from telegram.transport import (  # noqa: E402
     HttpTransport,
     RateLimitedScript,
@@ -380,6 +381,68 @@ def test_execute_transport_429_marks_error(registry, store, acl):
     assert result["retry_after"] == 7.0
     job = store.find(result["idempotency_key"])
     assert job["status"] == "error" and job["attempts"] == 1
+
+
+# --------------------------------------------------------------- issue #14 --
+# Roadmap G3 exit criterion: "simulated 429 retried with no loss".
+def test_transport_429_stores_a_cooldown_and_hides_the_job_until_it_elapses(
+    registry, store, acl
+):
+    transport = MockTransport(script=[RateLimitedScript(7.0)])
+    result = execute(publish(), transport=transport, acl=acl, registry=registry, store=store)
+    key = result["idempotency_key"]
+
+    # the retry_after Telegram handed us must land on the job itself
+    assert result["retry_after"] == 7.0
+    job = store.find(key)
+    assert job["attempts"] == 1
+    assert job["available_at"] > 0, "429 must record when the job becomes eligible again"
+
+    # inside the cooldown the job is not drainable (no hammering) ...
+    assert store.pending(now=job["available_at"] - 0.5) == []
+    # ... but it is never dropped (no loss)
+    assert [r["idempotency_key"] for r in store.pending(now=job["available_at"] + 0.5)] == [key]
+
+
+def test_queue_run_defers_a_429_job_then_sends_it_exactly_once(registry, store, acl):
+    transport = MockTransport(script=[RateLimitedScript(7.0)])
+    blocked = ChatRateLimiter(per_minute=0)
+    queued = execute(publish(), transport=transport, acl=acl, registry=registry,
+                     store=store, limiter=blocked, now=1000.0)
+    assert queued["status"] == "queued" and transport.methods() == []
+    job_key = queued["idempotency_key"]
+
+    # drain #1: the attempt happens and Telegram answers 429 -> deferred, not lost
+    first = execute(parse_action({"verb": "queue", "op": "run"}), transport=transport,
+                    acl=acl, registry=registry, store=store, now=1000.0)
+    assert first["status"] == "ok" and first["sent"] == 0 and first["deferred"] == 1
+    assert transport.methods() == ["sendMessage"], "the attempt must actually have happened"
+
+    # still inside the 7s window -> a second drain must not fire a request
+    second = execute(parse_action({"verb": "queue", "op": "run"}), transport=transport,
+                     acl=acl, registry=registry, store=store, now=1006.0)
+    assert second["sent"] == 0 and second["deferred"] == 0
+    assert len(transport.methods()) == 1, "no hammering inside the cooldown"
+    assert store.find(job_key)["status"] == "error", "job must survive the cooldown"
+
+    # window elapsed -> exactly one more attempt, which succeeds
+    third = execute(parse_action({"verb": "queue", "op": "run"}), transport=transport,
+                    acl=acl, registry=registry, store=store, now=1010.0)
+    assert third["sent"] == 1 and third["deferred"] == 0
+    assert transport.methods() == ["sendMessage", "sendMessage"]
+    assert store.find(job_key)["status"] == "sent"
+
+
+def test_retries_are_bounded_and_then_give_up(store):
+    key = "k-bounded"
+    store.enqueue(key, "publish", -1001, 5, {"method": "sendMessage", "params": {}})
+    for _ in range(Store.MAX_ATTEMPTS - 1):
+        store.mark_error(key, "boom", retry_in=1.0, now=1000.0)
+    assert store.find(key)["status"] == "error", "still retrying below the cap"
+
+    store.mark_error(key, "boom", retry_in=1.0, now=1000.0)
+    assert store.find(key)["status"] == "dead", "exhausted jobs must stop retrying"
+    assert store.pending(now=5000.0) == [], "a dead job must never be drained again"
 
 
 def test_queue_run_drains_queued_jobs(registry, store, acl, transport):
