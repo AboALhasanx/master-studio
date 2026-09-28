@@ -8,7 +8,7 @@ Usage (through the launcher so no PYTHONPATH juggling is needed)::
 
 Exit codes are stable (see :mod:`telegram.errors`): 0 ok, 2 invalid action,
 3 access denied, 4 needs --confirm, 5 gateway not ready (live mode is a G2
-capability), 6 registry problem, 7 transport failure.
+capability), 6 registry problem, 7 transport failure, 8 file pipeline failure.
 
 Gate G1 guarantees: without ``--dry-run`` the call still goes through the
 mock transport — no socket is ever opened, and ``--live`` fails loudly.
@@ -122,6 +122,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--only", action="append", default=[], metavar="SUBJECT",
                    help="limit to specific registry subjects (repeatable)")
 
+    p = sub.add_parser("pipeline",
+                       help="export a vault file when stale, then publish it")
+    _add_target(p)
+    p.add_argument("--source", required=True,
+                   help="vault-relative path, e.g. 03_Study_Notes/W01_Note.md")
+    p.add_argument("--caption", help="media caption for the uploaded artifact")
+    p.add_argument("--html", action="store_true", dest="html",
+                   help="send the caption as HTML")
+
     return parser
 
 
@@ -192,6 +201,14 @@ def _action_from_args(args: argparse.Namespace) -> Action:
         data["cards"] = bool(args.cards)
         data["index"] = bool(args.index)
         data["only"] = list(args.only or [])
+
+    elif args.command == "pipeline":
+        data["target"] = _target(args)
+        data["source"] = args.source
+        if args.caption is not None:
+            data["caption"] = args.caption
+        if args.html:
+            data["parse_mode"] = "HTML"
 
     return parse_action(data)
 

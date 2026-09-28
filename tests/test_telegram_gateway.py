@@ -8,10 +8,12 @@ idempotency, audit trail, no live transport).
 
 import io
 import json
+import os
 import sys
 import time
 import urllib.error
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -22,12 +24,14 @@ if str(toolbox_path) not in sys.path:
 
 from telegram import ACL, MockTransport, Registry, Store, execute, parse_action, plan  # noqa: E402
 from telegram import cli as tg_cli  # noqa: E402
+from telegram import pipeline as pipeline_mod  # noqa: E402
 from telegram.acl import chat_allowlist_from_env  # noqa: E402
 from telegram.errors import (  # noqa: E402
     AccessDenied,
     ActionValidationError,
     ConfirmationRequired,
     GatewayNotReady,
+    PipelineError,
     RateLimited,
     RegistryError,
     RegistryMiss,
@@ -529,6 +533,189 @@ def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl
     assert all(0 < len(t) <= TEXT_LIMIT for t in sent)
     assert "".join(sent).split() == text.split(), "the tail must survive every hop"
     assert len(transport.calls) == len(sent)
+
+
+# --------------------------------------------------------------- issue #13 --
+def test_pipeline_refuses_paths_that_escape_the_vault(tmp_path, monkeypatch):
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    with pytest.raises(PipelineError, match="escapes the vault"):
+        pipeline_mod.resolve("../escape.md")
+    with pytest.raises(PipelineError, match="escapes the vault"):
+        pipeline_mod.resolve(str(tmp_path.parent / "elsewhere.md"))
+
+
+def test_pipeline_refuses_excluded_paths(tmp_path, monkeypatch):
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    notes = tmp_path / "03_Study_Notes"
+    (notes / "__pycache__").mkdir(parents=True)
+    (notes / "W01_Note.md").write_text("# ok", encoding="utf-8")
+
+    for bad in (
+        "03_Study_Notes/.env",
+        "03_Study_Notes/keystore.jks",
+        "03_Study_Notes/payload.apk",
+        "03_Study_Notes/notes.db",
+        "03_Study_Notes/__pycache__/W01_Note.md",
+    ):
+        with pytest.raises(PipelineError, match="excluded"):
+            pipeline_mod.resolve(bad)
+
+    # a legal-but-absent path is a plain not-found, not a security refusal
+    with pytest.raises(PipelineError, match="not found"):
+        pipeline_mod.resolve("03_Study_Notes/ghost.md")
+
+    assert pipeline_mod.resolve("03_Study_Notes/W01_Note.md").name == "W01_Note.md"
+
+
+def test_pipeline_reexports_only_when_the_artifact_is_missing_or_stale(tmp_path):
+    src = tmp_path / "W01_Note.md"
+    src.write_text("# Week 1", encoding="utf-8")
+
+    art = pipeline_mod.artifact_for(src)
+    assert art.suffix == ".pdf" and art.stem == src.stem
+    assert pipeline_mod.needs_export(src, art) is True, "missing artifact -> export"
+
+    art.write_text("pdf-bytes", encoding="utf-8")
+    now = time.time()
+    os.utime(art, (now, now))
+    os.utime(src, (now - 60, now - 60))
+    assert pipeline_mod.needs_export(src, art) is False, "fresh artifact -> reuse"
+
+    os.utime(src, (now + 60, now + 60))
+    assert pipeline_mod.needs_export(src, art) is True, "stale artifact -> re-export"
+
+    # pre-built binaries carry no exporter rule: publish them as they are
+    deck = tmp_path / "Deck.pdf"
+    deck.write_text("x", encoding="utf-8")
+    assert pipeline_mod.artifact_for(deck) == deck
+    assert pipeline_mod.needs_export(deck, deck) is False
+
+
+def test_pipeline_plan_is_pure_and_never_touches_the_filesystem(registry):
+    action = parse_action({
+        "verb": "pipeline",
+        "target": {"chat_id": -1001},
+        "source": "03_Study_Notes/ghost.md",   # deliberately absent
+    })
+    info = plan(action, registry)
+    assert info["verb"] == "pipeline"
+    assert info["source"] == "03_Study_Notes/ghost.md"
+    assert "method" not in info, "plan must not resolve a path or build an upload"
+
+
+def test_run_export_invokes_the_matching_exporter(tmp_path, monkeypatch):
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    src = tmp_path / "W01_Note.md"
+    src.write_text("# Week 1", encoding="utf-8")
+    art = src.with_suffix(".pdf")
+    seen: dict[str, list] = {}
+
+    def fake_runner(cmd, **kwargs):
+        seen["cmd"] = list(cmd)
+        art.write_text("pdf-bytes", encoding="utf-8")
+        return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+    pipeline_mod.run_export(src, art, runner=fake_runner)
+    assert seen["cmd"][0] == sys.executable
+    assert seen["cmd"][1].endswith("pdf_exporter.py")
+    assert str(src) in seen["cmd"]
+    assert seen["cmd"][-2:] == ["-t", "study_pack"]
+    assert art.exists()
+
+
+def test_run_export_surfaces_a_failed_exporter(tmp_path, monkeypatch):
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    src = tmp_path / "W01_Note.md"
+    src.write_text("# Week 1", encoding="utf-8")
+    art = src.with_suffix(".pdf")
+
+    def failing_runner(cmd, **kwargs):
+        return SimpleNamespace(returncode=1, stdout="", stderr="SyntaxError: boom")
+
+    with pytest.raises(PipelineError, match="exporter failed"):
+        pipeline_mod.run_export(src, art, runner=failing_runner)
+    assert not art.exists()
+
+
+def test_run_export_locates_the_toolchain_independently_of_the_vault(
+    tmp_path, monkeypatch
+):
+    """Regression: a sandboxed vault must not make the exporter path vanish."""
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    src = tmp_path / "W01_Note.md"
+    src.write_text("# Week 1", encoding="utf-8")
+    art = src.with_suffix(".pdf")
+    seen: dict[str, list] = {}
+
+    def fake_runner(cmd, **kwargs):
+        seen["cmd"] = list(cmd)
+        art.write_text("pdf-bytes", encoding="utf-8")
+        return SimpleNamespace(returncode=0, stdout="", stderr="")
+
+    pipeline_mod.run_export(src, art, runner=fake_runner)
+    script = Path(seen["cmd"][1])
+    assert script.name == "pdf_exporter.py"
+    assert script.is_file(), "the exporter lives in the checkout, not in the vault"
+
+
+def test_pipeline_exports_then_publishes_and_stays_idempotent(
+    registry, store, acl, transport, tmp_path, monkeypatch
+):
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    notes = tmp_path / "03_Study_Notes"
+    notes.mkdir()
+    src = notes / "W01_Note.md"
+    src.write_text("# Week 1", encoding="utf-8")
+
+    exports: list[str] = []
+
+    def fake_run_export(source, artifact, *, root=None, runner=None):
+        exports.append(source.name)
+        time.sleep(0.02)                      # keep mtimes strictly ordered
+        artifact.write_text("pdf-bytes", encoding="utf-8")
+        return artifact
+
+    monkeypatch.setattr(pipeline_mod, "run_export", fake_run_export)
+
+    action = parse_action({
+        "verb": "pipeline",
+        "actor": OWNER,
+        "target": {"chat_id": -1001, "thread_id": 7},
+        "source": "03_Study_Notes/W01_Note.md",
+        "caption": "<b>Week 1</b>",
+        "parse_mode": "HTML",
+    })
+
+    first = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert exports == ["W01_Note.md"], "a missing artifact must trigger an export"
+    assert first["exported"] is True and first["status"] == "sent"
+    assert transport.methods() == ["sendDocument"]
+    _, params = transport.calls[0]
+    assert params["document"].endswith("W01_Note.pdf")
+    assert params["caption"] == "<b>Week 1</b>"
+    assert params["parse_mode"] == "HTML"
+
+    second = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert exports == ["W01_Note.md"], "a fresh artifact must never be re-exported"
+    assert second["exported"] is False
+    assert second["status"] == "duplicate"
+    assert len(transport.calls) == 1, "the same command must post exactly once"
+
+
+def test_pipeline_cli_dry_run_never_touches_the_filesystem(tmp_path, capsys, owners):
+    code, payload = run_cli(
+        ["--json", "--dry-run", "--actor", str(OWNER),
+         "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db"),
+         "pipeline", "--chat", "-1001", "--thread", "7",
+         "--source", "03_Study_Notes/W01_Note.md"],
+        capsys,
+    )
+    assert code == 0
+    assert payload["dry_run"] is True and payload["authorized"] is True
+    assert payload["plan"]["verb"] == "pipeline"
+    assert payload["plan"]["source"] == "03_Study_Notes/W01_Note.md"
+    assert "method" not in payload["plan"], "plan must not resolve or upload anything"
+    assert Store(tmp_path / "g.db").counts() == {}, "dry-run must not enqueue anything"
 
 
 def test_queue_run_drains_queued_jobs(registry, store, acl, transport):

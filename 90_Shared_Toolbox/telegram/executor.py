@@ -30,6 +30,7 @@ from .errors import (
     UnboundTopic,
 )
 from .links import parse_message_link
+from . import pipeline
 from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
 from .schema import Action, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
@@ -227,6 +228,15 @@ def plan(action: Action, registry: Registry) -> dict[str, Any]:
             "local": True,
             "idempotency_key": idempotency_key(action),
         }
+    if action.verb == "pipeline":
+        # deliberately does NOT resolve the path: --dry-run must be pure I/O-free
+        return {
+            "verb": action.verb,
+            "destructive": False,
+            "publishes": True,
+            "source": action.source,
+            "idempotency_key": idempotency_key(action),
+        }
     call = build_call(action, registry)
     return {
         "verb": action.verb,
@@ -258,6 +268,17 @@ def execute(
         raise
     now = time.time() if now is None else float(now)
     key = idempotency_key(action)
+
+    if action.verb == "pipeline":
+        return _pipeline_op(
+            action,
+            transport=transport,
+            acl=acl,
+            registry=registry,
+            store=store,
+            limiter=limiter,
+            allowed_chats=allowed_chats,
+        )
 
     if action.verb == "structure":
         return _structure_op(
@@ -508,6 +529,57 @@ def _maybe_bind(store: Store, registry: Registry | None, payload: dict[str, Any]
         return
     store.audit("topic", "bound", chat_id=int(bind["chat_id"]), thread_id=int(thread_id),
                 detail=bind["subject"])
+
+
+def _pipeline_op(
+    action,
+    *,
+    transport: Transport,
+    acl: ACL,
+    registry: Registry,
+    store: Store,
+    limiter: ChatRateLimiter | None,
+    allowed_chats: frozenset[int] | set[int] | None,
+) -> dict[str, Any]:
+    """Resolve -> export if stale -> publish (roadmap G3, issue #13).
+
+    The publish half is a regular :func:`execute` call, so it inherits the
+    ACL, the idempotency gate, the rate limiter and the audit trail. Re-running
+    the same command therefore neither re-exports a fresh artifact nor posts
+    the same file twice.
+    """
+    source = pipeline.resolve(action.source)
+    artifact = pipeline.artifact_for(source)
+    exported = pipeline.needs_export(source, artifact)
+    if exported:
+        artifact = pipeline.run_export(source, artifact)
+
+    publish: dict[str, Any] = {
+        "verb": "publish",
+        "actor": action.actor,
+        "target": action.target.model_dump(mode="python"),
+        "file": artifact.as_uri(),
+    }
+    if action.caption is not None:
+        publish["caption"] = action.caption
+    if action.parse_mode is not None:
+        publish["parse_mode"] = action.parse_mode
+
+    result = execute(
+        parse_action(publish),
+        transport=transport,
+        acl=acl,
+        registry=registry,
+        store=store,
+        limiter=limiter,
+        allowed_chats=allowed_chats,
+    )
+    return {
+        **result,
+        "exported": exported,
+        "source": str(action.source),
+        "artifact": str(artifact),
+    }
 
 
 def _structure_op(

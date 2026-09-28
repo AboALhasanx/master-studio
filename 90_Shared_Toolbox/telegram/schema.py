@@ -14,6 +14,7 @@ Verbs
 ``pin``      pin / unpin a message (issue #12)
 ``react``    add a reaction (issue #12)
 ``queue``    inspect / drain the local job queue (issue #14)
+``pipeline`` export a vault file if it is stale, then publish it (issue #13)
 ``status``   local health report — no Telegram target at all
 """
 
@@ -41,13 +42,14 @@ __all__ = [
     "ReactAction",
     "QueueAction",
     "StructureAction",
+    "PipelineAction",
     "StatusAction",
     "parse_action",
 ]
 
 VERBS = (
     "publish", "topic", "reply", "edit", "delete", "pin", "react",
-    "queue", "structure", "status",
+    "queue", "structure", "pipeline", "status",
 )
 
 
@@ -194,6 +196,22 @@ class StructureAction(Action):
     only: list[str] = Field(default_factory=list)  # subset of subject keys
 
 
+class PipelineAction(Action):
+    """Composite: export a vault file when stale, then publish it (issue #13)."""
+
+    verb: Literal["pipeline"] = "pipeline"
+    target: Target
+    source: str = Field(min_length=1)  # vault-relative path, e.g. 03_Study_Notes/W01.md
+    caption: str | None = None
+    parse_mode: Literal["HTML"] | None = None
+
+    @model_validator(mode="after")
+    def _parse_mode_needs_a_caption(self) -> "PipelineAction":
+        if self.parse_mode is not None and not self.caption:
+            raise ValueError("pipeline parse_mode requires 'caption'")
+        return self
+
+
 class StatusAction(Action):
     verb: Literal["status"] = "status"
 
@@ -208,6 +226,7 @@ ActionUnion = Union[
     ReactAction,
     QueueAction,
     StructureAction,
+    PipelineAction,
     StatusAction,
 ]
 
@@ -221,6 +240,7 @@ _BY_VERB = {
     "react": ReactAction,
     "queue": QueueAction,
     "structure": StructureAction,
+    "pipeline": PipelineAction,
     "status": StatusAction,
 }
 

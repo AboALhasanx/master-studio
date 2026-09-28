@@ -14,6 +14,7 @@ agents (and humans) can branch on failures without parsing text:
   5    gateway not ready (live transport arrives at gate G2)
   6    topic registry miss / unbound subject
   7    transport-level failure (rate limit, API error)
+  8    file pipeline failure (path refused or exporter run failed)
 ===== ==========================================================
 """
 
@@ -76,3 +77,13 @@ class RateLimited(TransportError):
     def __init__(self, message: str, retry_after: float = 1.0):
         super().__init__(message)
         self.retry_after = float(retry_after)
+
+
+class PipelineError(GatewayError):
+    """Vault path refused (escapes the root / excluded) or an exporter failed.
+
+    Raised *before* anything is uploaded, so a rejected path can never turn
+    into a message in the group (issue #13).
+    """
+
+    code = 8
