@@ -1,6 +1,6 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 IN PROGRESS** — `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#11` publish pack partially landed (captions / HTML / lossless chunking), `#12` moderation pack still open. `pytest -q` → **250 passed** (162 baseline + 88 gateway). CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10 and the D8-driven rewrite of SP2, G3 and G5. **Next: `#12` moderation pack**, then the remaining media verbs of `#11`.
+> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 in progress — every exit criterion verified LIVE on 2026-09-28**: `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#12` moderation pack ✅ CLOSED (all three ACs, AC2 proven in the group itself), `#11` publish pack partial (captions / HTML / lossless chunking / **working multipart upload**). `pytest -q` → **266 passed** (162 baseline + 104 gateway). CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10 and the D8-driven rewrite of SP2, G3 and G5. **Next: the remaining media verbs of `#11`**, then G4 (`#15` telegram skill).
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
@@ -34,7 +34,7 @@
 | `90_Shared_Toolbox/telegram/store.py` | SQLite queue + idempotency + audit log | #14 |
 | `90_Shared_Toolbox/telegram/transport.py` | Bot API executor: `MockTransport` + `HttpTransport` (no `getUpdates`). **D9:** delivers #9 in place of a separate `gateway.py` | #9 |
 | `90_Shared_Toolbox/telegram/publisher.py` | Publish pack (text/files/media/polls/buttons) | #11 |
-| `90_Shared_Toolbox/telegram/moderation.py` | Reply / edit / delete / pin / reactions | #12 |
+| `90_Shared_Toolbox/telegram/moderation.py` | Reply / edit / delete / pin / reactions — **D11:** delivered inside `schema.py` + `executor.py`, no separate module | #12 |
 | `90_Shared_Toolbox/telegram/pipeline.py` | Vault export → publish | #13 |
 | `90_Shared_Toolbox/telegram/cli.py` | Single entry point the agents invoke | #15 |
 | `90_Shared_Toolbox/tools/tg.py` | Path launcher: `python 90_Shared_Toolbox/tools/tg.py <verb>` | #15 |
@@ -77,12 +77,12 @@
 ### G3 — Capability Packs · **SP3: "rich actions, confined to the single allow-listed chat"**
 - **Work:** publish pack (#11), moderation pack (#12), file pipeline (#13), durable queue with rate limits / retries / idempotency / audit (#14).
   - **#14 ✅ (closed):** `available_at` cooldown honours `retry_after`, bounded retries (`MAX_ATTEMPTS=8`), `deferred` counter, per-attempt `queue/sent` audit rows, restart-survival test. Deviation: the drain used to leave only an aggregate `queue/run` row.
-  - **#13 ✅ (closed):** new `pipeline` verb (resolve → export if stale → publish), fail-closed path refusals via `PipelineError` (exit 8), exclusions per the PR-template security rule. `TOOLS_DIR` deliberately does **not** follow `VAULT_ROOT`.
-  - **#11 ⏳ partial:** captions, `parse_mode`, `escape_html()`, entity/Markdown-safe chunking under one idempotency key. Still open: photo/video/voice/animation/sticker, `media_group`, poll/quiz, forward/copy, live smoke.
-  - **#12 ⬜ next:** reply/edit/delete/pin/react are implemented in `build_call`; missing are `action` (sendChatAction), `editMessageCaption`, tests for topic `rename`/`close`/`reopen`, and `unpin-all`.
+  - **#13 ✅ (closed):** new `pipeline` verb (resolve → export if stale → publish), fail-closed path refusals via `PipelineError` (exit 8), exclusions per the PR-template security rule. `TOOLS_DIR` deliberately does **not** follow `VAULT_ROOT`. Caught by the live run, not by tests: `VAULT_ROOT` was computed as `parents[3]`, which resolves to the *user profile* directory — every test had monkeypatched the root onto a tmp_path, so a live `--source` died as `source not found`. Now `parents[2]`, with a test that exercises the real checkout layout.
+  - **#11 ⏳ partial:** captions, `parse_mode`, `escape_html()`, entity/Markdown-safe chunking under one idempotency key; **and the upload path is now proven live** — `file://` used to travel as JSON, which the Bot API rejects with `400 wrong file identifier/HTTP URL`, so `publish --file` was unshippable until G3. Still open: photo/video/voice/animation/sticker, `media_group`, poll/quiz (#18), forward/copy.
+  - **#12 ✅ (closed):** `action` → `sendChatAction` (Bot-API vocabulary validated at schema time, thread-scoped so the signal lands in the topic), `editMessageCaption` vs `editMessageText` chosen by which payload you supply (exactly-one-of enforced), `pin --unpin-all` → `unpinAllForumTopicMessages` behind `--confirm` (bulk ⇒ ADR D7), tests for topic `rename`/`close`/`reopen`, and ACL refusals now audited **with their idempotency key**. AC2 proven live in the allow-listed group (audit ids 97–106); `action` deliberately not exercised live — see the stop guarantee below.
 - **Entry:** SP2 green. **Scope note after D8:** there is no disposable test group any more — the allowlist already points at `Master-Studio FINAL`, so "confined" means *the one allow-listed chat and nothing else*. Every pack ships against `MockTransport` first; live sends stay behind `--live`.
-- **Exit / verification:** idempotency test (same command twice → exactly one post); simulated 429 retried with no loss; a real PDF exported and published into a topic; audit rows written for every attempt; a non-allowlisted chat id fails closed with no network call.
-- **Stop guarantees:** nothing outside the allow-listed chat; queue survives restarts; production group untouched by *new* verbs until G5.
+- **Exit / verification:** ✅ **all five verified live 2026-09-28** — (1) idempotency: a repeat carries the same key and reports `duplicate` instead of posting twice; (2) simulated 429 retried with no loss (unit-tested, `deferred` counter); (3) **a real PDF exported and published**: `pipeline` → `pdf_exporter.py -t study_pack` → `sendDocument` → **message 28** in `04-Advanced-Software-Eng`; (4) audit rows for every attempt: **ids 97–106**, including `delete … denied — destructive action requires --confirm` carrying the *same* idempotency key as the confirmed run that followed; (5) a non-allowlisted chat id fails closed with **no network call** (exit 3).
+- **Stop guarantees:** nothing outside the allow-listed chat; queue survives restarts; production group untouched by *new* verbs until G5 — honoured: only verbs that already existed in `build_call` were used live, `action` was not.
 - **Rollback:** stop using the queue; posts made through packs are editable/deletable (D8 blast radius).
 
 ### G4 — Agent Control · **SP4: "natural language works, unauthorized actors cannot"**
@@ -144,6 +144,7 @@
 | D8 | Promote the real group's chat id at G2 instead of a disposable test group (owner decision) | Blast radius is one allow-listed chat; every live action is audited and reversible (edit/delete) |
 | D9 | Deliver the Bot API client inside `transport.py` (`HttpTransport`) instead of the layout's separate `gateway.py` | One stdlib HTTP path already owns the `urlopen` seam tests mock, plus 429 → `RateLimited` and failure → `TransportError`; a second module would duplicate it |
 | D10 | Gitignore `registry.json` (live chat/thread bindings) and keep `SEED_SUBJECTS` as the committed source | Live ids are runtime state, not source; a fresh clone re-provisions with a no-op idempotent `structure` run |
+| D11 | Deliver the moderation pack inside `schema.py` (action classes) + `executor.py` (`build_call`) instead of the layout's separate `moderation.py` | Every verb already funnels through `parse_action` → `build_call` → ACL → audit; a second module would duplicate the destination resolution, the `Call` seam and the confirmation path for no gain. `publisher.py` *stays* separate because it owns real text semantics (HTML escaping, 4096/1024 limits, entity-safe chunking) — same split logic as D9 |
 
 ---
 
@@ -164,7 +165,7 @@
 ## 7. Standing Verification Gates
 
 ```bash
-pytest -q                                   # must be green at every SP (250 since 2026-09-28)
+pytest -q                                   # must be green at every SP (266 since 2026-09-28)
 python -m telegram.cli status --dry-run     # gateway plan without I/O
 gh issue list --label telegram --state open # phase backlog health
 git check-ignore -v .env                    # secret isolation
