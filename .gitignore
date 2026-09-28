@@ -108,6 +108,13 @@ _workbuddy_inspect*/
 90_Shared_Toolbox/tools/.tg-profile/
 output/
 
+# Telegram gateway local state (roadmap gate G1, issue #14): local-only, never publish
+90_Shared_Toolbox/telegram/*.db
+90_Shared_Toolbox/telegram/*.db-*
+# Live chat/thread id bindings (provisioned at runtime, SEED_SUBJECTS is in code)
+90_Shared_Toolbox/telegram/registry.json
+90_Shared_Toolbox/telegram/__pycache__/
+
 # Android Build Artifacts
 91_Dashboard/android_build/
 *.keystore
@@ -131,7 +138,7 @@ quiz_mobile.html
 venv/
 *.log
 
-# Vendored third-party CLI (handsets) — install locally, never published
+# Vendored third-party CLI (handsets) â€” install locally, never published
 90_Shared_Toolbox/bin/
 
 # Local conflict recovery archive (agent scaffolding, not course content)
