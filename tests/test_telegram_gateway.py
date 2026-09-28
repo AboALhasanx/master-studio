@@ -450,6 +450,46 @@ def test_retries_are_bounded_and_then_give_up(store):
     assert store.pending(now=5000.0) == [], "a dead job must never be drained again"
 
 
+def test_queue_survives_a_restart_mid_drain_and_audits_every_attempt(
+    tmp_path, registry, acl
+):
+    """#14 AC3: a crash mid-queue loses no job, and every attempt is audited."""
+    db = tmp_path / "gateway.db"
+
+    # --- process 1: the job is rate limited, then the process dies
+    first = Store(db)
+    blocked = ChatRateLimiter(per_minute=0)
+    queued = execute(publish(), transport=MockTransport(), acl=acl, registry=registry,
+                     store=first, limiter=blocked, now=1000.0)
+    assert queued["status"] == "queued"
+    key = queued["idempotency_key"]
+    first.audit("publish", "rate_limited", chat_id=-1001234567890,
+                idempotency_key=key, detail="retry_after=1.0")
+    before = [dict(r) for r in reversed(first.audit_rows())]   # oldest first
+    first.close()
+
+    # --- process 2: a brand new Store on the same file
+    second = Store(db)
+    assert [r["idempotency_key"] for r in second.pending(now=5000.0)] == [key], (
+        "a queued job must outlive the process that created it"
+    )
+
+    transport = MockTransport()
+    drain = execute(parse_action({"verb": "queue", "op": "run"}), transport=transport,
+                    acl=acl, registry=registry, store=second, now=5000.0)
+    assert drain["sent"] == 1, "the surviving job must drain after the restart"
+    assert second.find(key)["status"] == "sent"
+    assert transport.methods() == ["sendMessage"]
+
+    after = [dict(r) for r in reversed(second.audit_rows())]   # oldest first
+    assert [r["idempotency_key"] for r in after] == [
+        r["idempotency_key"] for r in before
+    ] + [key, None], "the pre-restart attempt is preserved and the drain appends its own rows"
+    assert after[len(before)]["result"] == "sent", "the drained send must be audited"
+    assert after[len(before) + 1]["result"] == "run"
+    assert after[len(before)]["idempotency_key"] == key
+
+
 # --------------------------------------------------------------- issue #11 --
 def test_escape_html_neutralises_markup():
     assert escape_html('<b>&"x"</b>') == "&lt;b&gt;&amp;&quot;x&quot;&lt;/b&gt;"

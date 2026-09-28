@@ -497,7 +497,11 @@ def _queue_op(action, *, transport: Transport, store: Store, limiter: ChatRateLi
             store.audit("queue", "sent", chat_id=chat_id, idempotency_key=key,
                         detail=f"chunk, {len(split_message(unsent))} left")
         else:
-            store.mark_sent(key, result.get("message_id") if isinstance(result, dict) else None)
+            message_id = result.get("message_id") if isinstance(result, dict) else None
+            store.mark_sent(key, message_id)
+            # #14 AC3: every attempt must be auditable, drained or not
+            store.audit("queue", "sent", chat_id=chat_id, idempotency_key=key,
+                        detail=f"drain -> {message_id}")
             _maybe_bind(store, registry, payload, result)
         if limiter is not None and chat_id is not None:
             limiter.record(int(chat_id), now)
