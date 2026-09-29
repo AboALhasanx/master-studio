@@ -18,6 +18,7 @@ Verbs
 ``action``   transient presence signal — typing, upload_document ... (issue #12)
 ``queue``    inspect / drain the local job queue (issue #14)
 ``pipeline`` export a vault file if it is stale, then publish it (issue #13)
+``quiz``     publish a deep link into the existing Flask quiz engine (issue #18)
 ``status``   local health report — no Telegram target at all
 """
 
@@ -49,13 +50,14 @@ __all__ = [
     "QueueAction",
     "StructureAction",
     "PipelineAction",
+    "QuizAction",
     "StatusAction",
     "parse_action",
 ]
 
 VERBS = (
     "publish", "topic", "reply", "forward", "copy", "edit", "delete", "pin",
-    "react", "action", "queue", "structure", "pipeline", "status",
+    "react", "action", "queue", "structure", "pipeline", "quiz", "status",
 )
 
 #: The Bot API's ``sendChatAction`` vocabulary, verbatim (issue #12).
@@ -353,6 +355,38 @@ class StatusAction(Action):
     verb: Literal["status"] = "status"
 
 
+class QuizAction(Action):
+    """Publish a deep link into the existing dashboard quiz engine (issue #18).
+
+    Phase A of the MCQ bridge: the gateway only *composes the door*. Nothing
+    here reads answers, results or the quiz JSON — the dashboard owns the
+    engine, the shared schema and ``/api/quiz/submit``. Phase B (a native
+    Telegram ``quiz`` poll) is deliberately **not** modelled, because poll
+    answers require ``getUpdates`` ingestion (ADR D2/D4).
+    """
+
+    verb: Literal["quiz"] = "quiz"
+    target: Target
+    quiz_id: str = Field(min_length=1, max_length=128)
+    title: str | None = Field(default=None, max_length=256)
+    #: Host/port of the dashboards LAN address — the link has to be reachable
+    #: from the phone that taps the button, not from the agent's machine.
+    host: str = Field(default="127.0.0.1", min_length=1, max_length=255)
+    port: int = Field(default=5000, gt=0, lt=65536)
+    mode: Literal["exam", "study"] = "exam"
+    shuffle: bool = False
+    text: str | None = None  # override the generated caption entirely
+
+    @model_validator(mode="after")
+    def _no_path_separators(self) -> "QuizAction":
+        # A separator here would publish a broken link and only fail once the
+        # student tapped it — refuse at schema time instead.
+        for bad in ("/", "?", "#", ".."):
+            if bad in self.quiz_id:
+                raise ValueError(f"quiz_id must not contain {bad!r}")
+        return self
+
+
 ActionUnion = Union[
     PublishAction,
     TopicAction,
@@ -367,6 +401,7 @@ ActionUnion = Union[
     QueueAction,
     StructureAction,
     PipelineAction,
+    QuizAction,
     StatusAction,
 ]
 
@@ -384,6 +419,7 @@ _BY_VERB = {
     "queue": QueueAction,
     "structure": StructureAction,
     "pipeline": PipelineAction,
+    "quiz": QuizAction,
     "status": StatusAction,
 }
 

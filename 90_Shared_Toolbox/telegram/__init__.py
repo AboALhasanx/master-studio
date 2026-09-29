@@ -31,4 +31,4 @@ from .registry import Registry  # noqa: F401
 from .store import ChatRateLimiter, Store, backoff_delay  # noqa: F401
 from .schema import Action, parse_action  # noqa: F401
 from .transport import MockTransport, build_transport  # noqa: F401
-from .executor import execute, plan  # noqa: F401
+from .executor import build_call, execute, plan  # noqa: F401

@@ -70,9 +70,23 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> structure --chat -10037
 # publish into a subject topic by name (registry resolves the thread id)
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> publish --subject 03-Data-Mining --text "…"
 
+# publish an MCQ link into a subject topic (issue #18 Phase A)
+#   --host is the LAN address the PHONE can reach, not the agent's machine
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> quiz \
+    --subject 01-Cyber-Security --quiz-id Quiz_01_Cybersecurity_Foundations \
+    --host 192.168.1.50
+
 # topic lifecycle
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op close --subject 06-Artificial-Intelligence
 ```
+
+**Quiz links (`quiz` verb).** `--quiz-id` is the *bank name* (`Quiz_01_…`), and the gateway
+translates the registry key into the vault folder (`01-Cyber-Security` → `01_Cyber_Security`)
+when it composes the URL — never hand-write the folder form. The message carries two buttons
+(exam / study); `--mode study` leaves just one. A bank name containing `/`, `?`, `#` or `..`
+is refused at schema time, because a broken link is only discovered by the student *after*
+they tap it. This verb adds no quiz engine: the dashboard owns `/quiz/...` and the shared
+JSON schema, and an AST test in the gateway suite enforces that permanently (issue #18 AC2).
 
 ## 7. Sources
 

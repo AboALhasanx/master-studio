@@ -168,6 +168,22 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--html", action="store_true", dest="html",
                    help="send the caption as HTML")
 
+    p = sub.add_parser("quiz",
+                       help="publish a deep link into the dashboard quiz engine")
+    _add_target(p)
+    p.add_argument("--quiz-id", required=True, dest="quiz_id",
+                   help="quiz bank name, e.g. Quiz_01_Software_Crisis")
+    p.add_argument("--title", help="heading shown in the message (defaults to the id)")
+    p.add_argument("--mode", choices=["exam", "study"], default="exam",
+                   help="which dashboard mode the link opens (default: exam)")
+    p.add_argument("--shuffle", action="store_true",
+                   help="ask the dashboard to shuffle questions/options")
+    p.add_argument("--host", default="127.0.0.1",
+                   help="dashboard host as reachable from the phone (default: 127.0.0.1)")
+    p.add_argument("--port", type=int, default=5000,
+                   help="dashboard port (default: 5000)")
+    p.add_argument("--text", help="override the generated message body")
+
     return parser
 
 
@@ -278,6 +294,18 @@ def _action_from_args(args: argparse.Namespace) -> Action:
             data["caption"] = args.caption
         if args.html:
             data["parse_mode"] = "HTML"
+
+    elif args.command == "quiz":
+        data["target"] = _target(args)
+        data["quiz_id"] = args.quiz_id
+        data["host"] = args.host
+        data["port"] = args.port
+        data["mode"] = args.mode
+        data["shuffle"] = bool(args.shuffle)
+        if args.title is not None:
+            data["title"] = args.title
+        if args.text is not None:
+            data["text"] = args.text
 
     return parse_action(data)
 

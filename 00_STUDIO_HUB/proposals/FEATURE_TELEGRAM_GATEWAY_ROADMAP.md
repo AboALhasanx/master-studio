@@ -1,6 +1,6 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 in progress — every exit criterion verified LIVE on 2026-09-28**: `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#12` moderation pack ✅ CLOSED (all three ACs, AC2 proven in the group itself), `#11` publish pack partial — **text/document proven live; the media leg (single-file kinds + `media_group`) and `forward`/`copy` are unit-tested**. `pytest -q` → **287 passed** (162 baseline + 125 gateway). CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10 and the D8-driven rewrite of SP2, G3 and G5. **Next: `#11` poll/quiz (#18)**, then G4 (`#15` telegram skill).
+> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 COMPLETE — every exit criterion verified LIVE**: `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#12` moderation pack ✅ CLOSED (all three ACs, AC2 proven in the group itself), `#11` publish pack ✅ CLOSED (text/document proven live; the media leg, `media_group`, `forward`/`copy` and the quiz bridge unit-tested), `#18` quiz bridge Phase A ✅ CLOSED. `pytest -q` → **303 passed** (162 baseline + 141 gateway) since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10/D11/D12. **Next: G4 (`#15` telegram skill)**, then G5.
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
@@ -36,6 +36,7 @@
 | `90_Shared_Toolbox/telegram/publisher.py` | Publish pack (text/files/media/polls/buttons) | #11 |
 | `90_Shared_Toolbox/telegram/moderation.py` | Reply / edit / delete / pin / reactions — **D11:** delivered inside `schema.py` + `executor.py`, no separate module | #12 |
 | `90_Shared_Toolbox/telegram/pipeline.py` | Vault export → publish | #13 |
+| `90_Shared_Toolbox/telegram/quizbridge.py` | MCQ deep-link composer (dashboard door, no engine) — **D12** | #18 |
 | `90_Shared_Toolbox/telegram/cli.py` | Single entry point the agents invoke | #15 |
 | `90_Shared_Toolbox/tools/tg.py` | Path launcher: `python 90_Shared_Toolbox/tools/tg.py <verb>` | #15 |
 | `.mimocode/skills/telegram/SKILL.md` | Teaches every harness to drive the CLI | #15 |
@@ -74,11 +75,12 @@
 - **Deviation (owner decision):** the disposable test group was replaced by promoting the real group's chat id at G2 — blast radius stays a single allow-listed chat, and every live action is audited. Recorded as **D8**.
 - **Structure provisioned live (2026-09-28):** the `structure` verb (composite, idempotent, rate-limited) created **10 topics**, auto-bound every `thread_id` (including jobs drained from the queue), posted a **pinned brief card** per topic and a **pinned index with topic buttons** in General — 0 failures; a live re-run posted nothing (`created: []`, everything `duplicate`). Conventions documented in the Topics Playbook (#19).
 
-### G3 — Capability Packs · **SP3: "rich actions, confined to the single allow-listed chat"**
-- **Work:** publish pack (#11), moderation pack (#12), file pipeline (#13), durable queue with rate limits / retries / idempotency / audit (#14).
+### G3 — Capability Packs · **SP3: "rich actions, confined to the single allow-listed chat"** — ✅ DONE
+- **Work:** publish pack (#11), moderation pack (#12), file pipeline (#13), durable queue with rate limits / retries / idempotency / audit (#14), MCQ bridge Phase A (#18).
   - **#14 ✅ (closed):** `available_at` cooldown honours `retry_after`, bounded retries (`MAX_ATTEMPTS=8`), `deferred` counter, per-attempt `queue/sent` audit rows, restart-survival test. Deviation: the drain used to leave only an aggregate `queue/run` row.
   - **#13 ✅ (closed):** new `pipeline` verb (resolve → export if stale → publish), fail-closed path refusals via `PipelineError` (exit 8), exclusions per the PR-template security rule. `TOOLS_DIR` deliberately does **not** follow `VAULT_ROOT`. Caught by the live run, not by tests: `VAULT_ROOT` was computed as `parents[3]`, which resolves to the *user profile* directory — every test had monkeypatched the root onto a tmp_path, so a live `--source` died as `source not found`. Now `parents[2]`, with a test that exercises the real checkout layout.
-  - **#11 ⏳ partial — 3 of 4 legs done:** captions, `parse_mode`, `escape_html()`, entity/Markdown-safe chunking under one idempotency key; **and the upload path is now proven live** — `file://` used to travel as JSON, which the Bot API rejects with `400 wrong file identifier/HTTP URL`, so `publish --file` was unshippable until G3. **Landed 2026-09-28/29 (unit-tested only — a new Bot API method or verb stays off the group until G5):** `publish --kind` → `sendPhoto`/`sendVideo`/`sendAudio`/`sendVoice`/`sendAnimation`/`sendSticker` with an `auto` suffix fallback and `document` as the deliberate byte-exact default (Telegram *recompresses* `sendPhoto`), the previously missing `publish --caption`/`--html`, **`media_group`** (a repeatable `--file` becomes one `sendMediaGroup` whose local members are rewritten to `attach://file0…` multipart parts), and **`forward` / `copy`** — the source is read from the link alone (`t.me/c/<chat>/<id>`, `t.me/<user>/<id>`, or a bare id plus `--from-chat`), `copy` may re-caption, and the allowlist gate deliberately watches the **destination** because `copy` only ever *reads* its source. Verified by `--dry-run` against the real registry, not sent. Still open: poll/quiz (#18).
+  - **#11 ✅ (closed):** captions, `parse_mode`, `escape_html()`, entity/Markdown-safe chunking under one idempotency key; **and the upload path is now proven live** — `file://` used to travel as JSON, which the Bot API rejects with `400 wrong file identifier/HTTP URL`, so `publish --file` was unshippable until G3. **Landed 2026-09-28/29 (unit-tested only — a new Bot API method or verb stays off the group until G5):** `publish --kind` → `sendPhoto`/`sendVideo`/`sendAudio`/`sendVoice`/`sendAnimation`/`sendSticker` with an `auto` suffix fallback and `document` as the deliberate byte-exact default (Telegram *recompresses* `sendPhoto`), the previously missing `publish --caption`/`--html`, **`media_group`** (a repeatable `--file` becomes one `sendMediaGroup` whose local members are rewritten to `attach://file0…` multipart parts), and **`forward` / `copy`** — the source is read from the link alone (`t.me/c/<chat>/<id>`, `t.me/<user>/<id>`, or a bare id plus `--from-chat`), `copy` may re-caption, and the allowlist gate deliberately watches the **destination** because `copy` only ever *reads* its source. Verified by `--dry-run` against the real registry, not sent.
+  - **#18 ✅ (closed, 2026-09-29):** the MCQ bridge Phase A — a new `quiz` verb composes the dashboard deep link (`/quiz/<folder>/<bank>?mode=exam|study[&shuffle=true]`) and publishes it as a `sendMessage` with URL buttons into the registry-resolved subject topic. **No new Bot API method** (the reason it stays inside the outbound-only envelope) and **no second engine**: `quizbridge.py` is pure string arithmetic, imports nothing from the gateway, and the AC2 test parses its AST to prove no `sendPoll`/`correct_option_id` is ever constructed (the docstring names them only to document the deferral). `subject_folder()` is the single place the registry key (`01-Cyber-Security`) becomes the vault folder (`01_Cyber_Security`) — a mismatch there would have produced a 404 the student only sees *after* tapping. **Phase B (native `sendPoll` quiz) stays deferred** (AC3): poll answers arrive as `poll_answer` updates, which needs a `getUpdates` loop forbidden by ADR D2. Verified against the three real banks by `--dry-run`; 16 tests, written RED first (one asserted `status == "ok"` where the executor's convention is `"sent"` — the test was wrong, not the code, and was corrected).
   - **#12 ✅ (closed):** `action` → `sendChatAction` (Bot-API vocabulary validated at schema time, thread-scoped so the signal lands in the topic), `editMessageCaption` vs `editMessageText` chosen by which payload you supply (exactly-one-of enforced), `pin --unpin-all` → `unpinAllForumTopicMessages` behind `--confirm` (bulk ⇒ ADR D7), tests for topic `rename`/`close`/`reopen`, and ACL refusals now audited **with their idempotency key**. AC2 proven live in the allow-listed group (audit ids 97–106); `action` deliberately not exercised live — see the stop guarantee below.
 - **Entry:** SP2 green. **Scope note after D8:** there is no disposable test group any more — the allowlist already points at `Master-Studio FINAL`, so "confined" means *the one allow-listed chat and nothing else*. Every pack ships against `MockTransport` first; live sends stay behind `--live`.
 - **Exit / verification:** ✅ **all five verified live 2026-09-28** — (1) idempotency: a repeat carries the same key and reports `duplicate` instead of posting twice; (2) simulated 429 retried with no loss (unit-tested, `deferred` counter); (3) **a real PDF exported and published**: `pipeline` → `pdf_exporter.py -t study_pack` → `sendDocument` → **message 28** in `04-Advanced-Software-Eng`; (4) audit rows for every attempt: **ids 97–106**, including `delete … denied — destructive action requires --confirm` carrying the *same* idempotency key as the confirmed run that followed; (5) a non-allowlisted chat id fails closed with **no network call** (exit 3).
@@ -100,9 +102,9 @@
 - **Rollback:** remove the bot from the group **or** reset the allowlist to test ids — both take seconds.
 
 ### G6 — MCQ Bridge & Digests · **SP6: "results flow, still one-directional"**
-- **Work:** publish quiz deep links with URL buttons (#18); agent-generated results summaries from `/api/quiz/history` + `/api/quiz/list`; topic digests (#19 conventions).
+- **Work:** ~~publish quiz deep links with URL buttons (#18)~~ ✅ **Phase A done at G3 (D12)** — the `quiz` verb publishes the dashboard door; agent-generated results summaries from `/api/quiz/history` + `/api/quiz/list`; topic digests (#19 conventions). **Phase B (native `sendPoll` quiz with `poll_answer` ingestion) remains explicitly deferred** — it conflicts with D2 and is tracked inside #18.
 - **Entry:** SP5 stable for at least one real study session.
-- **Exit / verification:** one command publishes a working exam link; results summary lands in the same topic; no second quiz engine exists (shared JSON schema intact).
+- **Exit / verification:** one command publishes a working exam link; results summary lands in the same topic; no second quiz engine exists (shared JSON schema intact) — the AC2 AST test in `tests/test_telegram_gateway.py` pins this permanently.
 - **Rollback:** stop issuing the publish command; nothing else changes.
 
 ### G7 — Hardening & Close-out · **Final stop: "gateway is the only path"**
@@ -145,6 +147,7 @@
 | D9 | Deliver the Bot API client inside `transport.py` (`HttpTransport`) instead of the layout's separate `gateway.py` | One stdlib HTTP path already owns the `urlopen` seam tests mock, plus 429 → `RateLimited` and failure → `TransportError`; a second module would duplicate it |
 | D10 | Gitignore `registry.json` (live chat/thread bindings) and keep `SEED_SUBJECTS` as the committed source | Live ids are runtime state, not source; a fresh clone re-provisions with a no-op idempotent `structure` run |
 | D11 | Deliver the moderation pack inside `schema.py` (action classes) + `executor.py` (`build_call`) instead of the layout's separate `moderation.py` | Every verb already funnels through `parse_action` → `build_call` → ACL → audit; a second module would duplicate the destination resolution, the `Call` seam and the confirmation path for no gain. `publisher.py` *stays* separate because it owns real text semantics (HTML escaping, 4096/1024 limits, entity-safe chunking) — same split logic as D9 |
+| D12 | The MCQ bridge (#18) is a **`quiz` verb composed in `quizbridge.py`**, not a `publish` preset and not a poll | A deep-link door is: (a) one verb, so the agent cannot forget the allowlist/audit path; (b) pure string arithmetic, so AC2 ("no second engine") is enforceable by an AST test rather than a promise; (c) `sendMessage`-only, so it needs no new Bot API capability and stays shippable at G5. Native `sendPoll` remains Phase B because poll answers require `getUpdates` ingestion — forbidden by D2 |
 
 ---
 
@@ -165,12 +168,12 @@
 ## 7. Standing Verification Gates
 
 ```bash
-pytest -q                                   # must be green at every SP (287 since 2026-09-29)
+pytest -q                                   # must be green at every SP (303 since 2026-09-29)
 python 90_Shared_Toolbox/tools/tg.py --dry-run status   # plan without I/O
                                              # (--dry-run is GLOBAL: it must precede the verb,
                                              #  and `python -m telegram.cli` only resolves from
                                              #  90_Shared_Toolbox/ — use tools/tg.py from the vault root)
-python -m bandit -q -r 90_Shared_Toolbox/telegram -f json   # baseline 6x B101 + 1x B310 (pre-existing)
+python -m bandit -q -r 90_Shared_Toolbox/telegram -f json   # baseline 7x B101 + 1x B310 (pre-existing idiom)
 gh issue list --label telegram --state open # phase backlog health
 git check-ignore -v .env                    # secret isolation
 git check-ignore -v 90_Shared_Toolbox/telegram/registry.json  # live ids stay local (D10)
@@ -185,9 +188,9 @@ git check-ignore -v 90_Shared_Toolbox/telegram/registry.json  # live ids stay lo
 | G0 | #7 (epic) |
 | G1 | #15, #16, #21 (schema/ACL/test scaffolding) |
 | G2 | #8, #9, #10 (bootstrap captured owner id + group chat id; `manage_topics` confirmed) |
-| G3 | #11, #12, #13, #14 |
+| G3 | #11, #12, #13, #14, #18 |
 | G4 | #15, #16, #17 |
 | G5 | #8, #10, #20 (note) |
-| G6 | #18 |
+| G6 | #18 (Phase B — native poll, deferred) |
 | G7 | #19, #20, #21, #7 acceptance |
 | Backlog | #22 |

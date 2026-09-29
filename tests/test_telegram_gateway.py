@@ -22,7 +22,7 @@ toolbox_path = Path(__file__).resolve().parent.parent / "90_Shared_Toolbox"
 if str(toolbox_path) not in sys.path:
     sys.path.insert(0, str(toolbox_path))
 
-from telegram import ACL, MockTransport, Registry, Store, execute, parse_action, plan  # noqa: E402
+from telegram import ACL, MockTransport, Registry, Store, build_call, execute, parse_action, plan  # noqa: E402
 from telegram import cli as tg_cli  # noqa: E402
 from telegram import pipeline as pipeline_mod  # noqa: E402
 from telegram.acl import chat_allowlist_from_env  # noqa: E402
@@ -1862,3 +1862,197 @@ def test_cli_structure_dry_run(tmp_path, capsys, owners):
     )
     assert code == 0
     assert payload["plan"]["create"] == [s.subject for s in STRUCTURE]
+
+
+# ------------------------------------------------------------- quiz bridge (#18)
+class TestQuizBridge:
+    """Phase A of the MCQ bridge: the gateway publishes a *door*, not an engine.
+
+    The acceptance criteria of issue #18 are asserted directly here:
+      AC1 one command publishes a working exam link to the correct topic,
+      AC2 no second engine / the dashboard remains the single source of truth,
+      AC3 Phase B stays deferred (i.e. no ``sendPoll`` is ever built).
+    """
+
+    def test_registry_key_maps_to_vault_folder(self):
+        from telegram.quizbridge import subject_folder
+
+        assert subject_folder("01-Cyber-Security") == "01_Cyber_Security"
+        assert subject_folder("04-Advanced-Software-Eng") == "04_Advanced_Software_Eng"
+        # idempotent: a folder name passes through untouched
+        assert subject_folder("01_Cyber_Security") == "01_Cyber_Security"
+
+    def test_url_matches_the_dashboard_route_table(self):
+        from telegram.quizbridge import quiz_url
+
+        url = quiz_url("01-Cyber-Security", "Quiz_01_Software_Crisis")
+        assert url == (
+            "http://127.0.0.1:5000/quiz/01_Cyber_Security/"
+            "Quiz_01_Software_Crisis?mode=exam"
+        )
+
+    def test_url_shuffle_and_study_mode(self):
+        from telegram.quizbridge import quiz_url
+
+        url = quiz_url("03-Data-Mining", "Quiz_02", mode="study", shuffle=True)
+        assert url.endswith("/quiz/03_Data_Mining/Quiz_02?mode=study&shuffle=true")
+
+    def test_url_rejects_a_traversing_quiz_id(self):
+        from telegram.quizbridge import quiz_url
+
+        for bad in ("../secret", "a/b", "a?b", "a#b"):
+            with pytest.raises(ValueError):
+                quiz_url("01-Cyber-Security", bad)
+
+    def test_url_rejects_an_unknown_mode_and_a_bad_port(self):
+        from telegram.quizbridge import quiz_url
+
+        with pytest.raises(ValueError):
+            quiz_url("01-Cyber-Security", "Quiz_01", mode="midterm")
+        with pytest.raises(ValueError):
+            quiz_url("01-Cyber-Security", "Quiz_01", port=0)
+        with pytest.raises(ValueError):
+            quiz_url("01-Cyber-Security", "Quiz_01", port=70000)
+
+    def test_schema_requires_an_id_and_refuses_separators(self):
+        with pytest.raises(ActionValidationError):
+            parse_action({"verb": "quiz", "target": {"chat_id": 1}})
+        with pytest.raises(ActionValidationError):
+            parse_action({"verb": "quiz", "target": {"chat_id": 1}, "quiz_id": "a/b"})
+
+    def test_schema_defaults_favour_the_exam_door(self):
+        action = parse_action(
+            {"verb": "quiz", "target": {"chat_id": 1}, "quiz_id": "Quiz_01"}
+        )
+        assert action.mode == "exam"
+        assert action.shuffle is False
+        assert action.port == 5000
+
+    def test_payload_offers_exam_and_study_buttons(self):
+        from telegram.quizbridge import quiz_payload
+
+        text, buttons = quiz_payload("01-Cyber-Security", "Quiz_01")
+        assert "Quiz_01" in text
+        assert [b["label"] for b in buttons] == ["▶️ ابدأ الاختبار", "📖 وضع الدراسة"]
+        assert "mode=exam" in buttons[0]["url"]
+        assert "mode=study" in buttons[1]["url"]
+
+    def test_study_mode_does_not_offer_a_second_study_button(self):
+        from telegram.quizbridge import quiz_payload
+
+        _, buttons = quiz_payload("01-Cyber-Security", "Quiz_01", mode="study")
+        assert len(buttons) == 1
+
+    def test_ac1_build_call_lands_on_the_subject_topic(self, registry):
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        action = parse_action({
+            "verb": "quiz", "actor": OWNER,
+            "target": {"subject": "01-Cyber-Security"},
+            "quiz_id": "Quiz_01_Software_Crisis",
+        })
+        call = build_call(action, registry)
+
+        assert call.method == "sendMessage", "no new Bot API method is introduced"
+        assert call.chat_id == -1001 and call.thread_id == 6
+        keyboard = call.params["reply_markup"]["inline_keyboard"]
+        assert keyboard[0][0]["url"] == (
+            "http://127.0.0.1:5000/quiz/01_Cyber_Security/"
+            "Quiz_01_Software_Crisis?mode=exam"
+        )
+
+    def test_ac1_execute_publishes_once_under_one_key(self, registry, store, acl, transport):
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        action = parse_action({
+            "verb": "quiz", "actor": OWNER,
+            "target": {"subject": "01-Cyber-Security"},
+            "quiz_id": "Quiz_01_Software_Crisis",
+        })
+        first = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+        assert first["status"] == "sent"
+        assert transport.methods() == ["sendMessage"]
+
+        again = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+        assert again["status"] == "duplicate"
+        assert transport.methods() == ["sendMessage"], "a repeat must not double-post"
+
+    def test_ac2_no_engine_is_duplicated_in_the_gateway(self):
+        """The gateway must not grow a quiz engine of its own (AC2).
+
+        The check runs against the module's *code*, not its prose: the
+        docstring deliberately names ``sendPoll``/``poll_answer`` in order to
+        explain why they are deferred, so a naive substring scan would flag
+        the very sentence that documents the deferral.
+        """
+        import ast
+
+        import telegram.quizbridge as bridge
+
+        tree = ast.parse(Path(bridge.__file__).read_text(encoding="utf-8"))
+        docstrings = set()
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Module, ast.FunctionDef, ast.ClassDef, ast.AsyncFunctionDef)):
+                doc = ast.get_docstring(node, clean=False)
+                if doc:
+                    docstrings.add(doc)
+
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Constant) and isinstance(node.value, str):
+                if node.value in docstrings:
+                    continue  # prose may explain the deferral; code may not do it
+                assert "sendPoll" not in node.value, node.value
+                assert "correct_option_id" not in node.value, node.value
+
+        # the module defines link helpers only — never a grader or a poll builder
+        functions = {n.name for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)}
+        assert not any("poll" in name or "grade" in name for name in functions), functions
+
+    def test_explicit_text_still_carries_the_link_button(self, registry):
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        action = parse_action({
+            "verb": "quiz", "actor": OWNER,
+            "target": {"subject": "01-Cyber-Security"},
+            "quiz_id": "Quiz_01", "text": "اختبر نفسك 👇",
+        })
+        call = build_call(action, registry)
+        assert call.params["text"] == "اختبر نفسك 👇"
+        assert call.params["reply_markup"]["inline_keyboard"][0][0]["url"].endswith(
+            "/quiz/01_Cyber_Security/Quiz_01?mode=exam"
+        )
+
+    def test_quiz_requires_a_bound_subject(self, registry):
+        action = parse_action({
+            "verb": "quiz", "actor": OWNER,
+            "target": {"subject": "90-Toolbox"},
+            "quiz_id": "Quiz_01",
+        })
+        with pytest.raises(RegistryError):
+            build_call(action, registry)
+
+    def test_cli_quiz_dry_run_shows_the_link(self, tmp_path, capsys, owners):
+        registry_path = tmp_path / "r.json"
+        seed = Registry(registry_path)
+        seed.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        code, payload = run_cli(
+            ["--json", "--dry-run", "--actor", str(OWNER),
+             "--registry", str(registry_path), "--db", str(tmp_path / "g.db"),
+             "quiz", "--subject", "01-Cyber-Security",
+             "--quiz-id", "Quiz_01_Software_Crisis"],
+            capsys,
+        )
+        assert code == 0
+        assert payload["plan"]["publishes"] is True
+        assert payload["plan"]["thread_id"] == 6
+        assert payload["plan"]["url"].endswith(
+            "/quiz/01_Cyber_Security/Quiz_01_Software_Crisis?mode=exam"
+        )
+
+    def test_cli_quiz_rejects_a_traversing_id(self, tmp_path, capsys, owners):
+        code, payload = run_cli(
+            ["--json", "--dry-run", "--actor", str(OWNER),
+             "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db"),
+             "quiz", "--chat", "-1001", "--quiz-id", "../etc"],
+            capsys,
+        )
+        assert code == 2
+        assert "error" in payload

@@ -31,10 +31,10 @@ from .errors import (
     UnboundTopic,
 )
 from .links import parse_message_link
-from . import pipeline, publisher
+from . import pipeline, publisher, quizbridge
 from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
-from .schema import Action, ChatAction, DeleteAction, PublishAction, ReactAction, ReplyAction, TopicAction, idempotency_key
+from .schema import Action, ChatAction, DeleteAction, PublishAction, QuizAction, ReactAction, ReplyAction, TopicAction, idempotency_key
 from .store import ChatRateLimiter, Store, backoff_delay
 from .transport import Transport
 
@@ -315,6 +315,45 @@ def build_call(action: Action, registry: Registry) -> Call:
             method = "deleteForumTopic"
         return Call(method, params, chat_id, thread_id)
 
+    if verb == "quiz":
+        assert isinstance(action, QuizAction)
+        # Phase A of the MCQ bridge (#18): compose the dashboard deep link and
+        # carry it on a plain sendMessage with URL buttons. No new Bot API
+        # method is introduced, which is what keeps this shippable inside the
+        # existing outbound-only envelope (ADR D2/D4).
+        chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
+        text = action.text
+        buttons: list[dict[str, Any]]
+        if text is None:
+            text, buttons = quizbridge.quiz_payload(
+                action.target.subject or str(chat_id),
+                action.quiz_id,
+                host=action.host,
+                port=action.port,
+                mode=action.mode,
+                shuffle=action.shuffle,
+                title=action.title,
+            )
+        else:
+            # an explicit --text still gets the link button, otherwise the
+            # override would silently publish a dead-end message
+            _, buttons = quizbridge.quiz_payload(
+                action.target.subject or str(chat_id),
+                action.quiz_id,
+                host=action.host,
+                port=action.port,
+                mode=action.mode,
+                shuffle=action.shuffle,
+            )
+        params = {"chat_id": chat_id, "text": text}
+        if thread_id is not None:
+            params["message_thread_id"] = thread_id
+        if buttons:
+            params["reply_markup"] = {
+                "inline_keyboard": [[{"text": b["label"], "url": b["url"]}] for b in buttons]
+            }
+        return Call("sendMessage", params, chat_id, thread_id)
+
     raise ActionValidationError(f"verb '{verb}' does not map to a Telegram call")
 
 
@@ -354,6 +393,22 @@ def plan(action: Action, registry: Registry) -> dict[str, Any]:
             "destructive": False,
             "publishes": True,
             "source": action.source,
+            "idempotency_key": idempotency_key(action),
+        }
+    if action.verb == "quiz":
+        # build_call is pure here (it only composes strings + resolves the
+        # registry), so the preview can show the exact link that would be sent
+        call = build_call(action, registry)
+        return {
+            "verb": action.verb,
+            "destructive": False,
+            "publishes": True,
+            "method": call.method,
+            "chat_id": call.chat_id,
+            "thread_id": call.thread_id,
+            "url": (call.params.get("reply_markup") or {}).get("inline_keyboard", [[{}]])[0][0].get("url")
+            if call.params.get("reply_markup")
+            else None,
             "idempotency_key": idempotency_key(action),
         }
     call = build_call(action, registry)
