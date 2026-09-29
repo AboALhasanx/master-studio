@@ -37,6 +37,7 @@
 | `90_Shared_Toolbox/telegram/moderation.py` | Reply / edit / delete / pin / reactions — **D11:** delivered inside `schema.py` + `executor.py`, no separate module | #12 |
 | `90_Shared_Toolbox/telegram/pipeline.py` | Vault export → publish | #13 |
 | `90_Shared_Toolbox/telegram/quizbridge.py` | MCQ deep-link composer (dashboard door, no engine) — **D12** | #18 |
+| `90_Shared_Toolbox/telegram/persona.py` | Human-like defaults: pacing, presence, tone — **D13** | #17 |
 | `90_Shared_Toolbox/telegram/cli.py` | Single entry point the agents invoke | #15 |
 | `90_Shared_Toolbox/tools/tg.py` | Path launcher: `python 90_Shared_Toolbox/tools/tg.py <verb>` | #15 |
 | `.mimocode/skills/telegram/SKILL.md` (+ mirror `skills/telegram/SKILL.md`) | Teaches every harness to drive the CLI — kept in sync by `TestTelegramSkill` | #15 |
@@ -150,6 +151,7 @@
 | D10 | Gitignore `registry.json` (live chat/thread bindings) and keep `SEED_SUBJECTS` as the committed source | Live ids are runtime state, not source; a fresh clone re-provisions with a no-op idempotent `structure` run |
 | D11 | Deliver the moderation pack inside `schema.py` (action classes) + `executor.py` (`build_call`) instead of the layout's separate `moderation.py` | Every verb already funnels through `parse_action` → `build_call` → ACL → audit; a second module would duplicate the destination resolution, the `Call` seam and the confirmation path for no gain. `publisher.py` *stays* separate because it owns real text semantics (HTML escaping, 4096/1024 limits, entity-safe chunking) — same split logic as D9 |
 | D12 | The MCQ bridge (#18) is a **`quiz` verb composed in `quizbridge.py`**, not a `publish` preset and not a poll | A deep-link door is: (a) one verb, so the agent cannot forget the allowlist/audit path; (b) pure string arithmetic, so AC2 ("no second engine") is enforceable by an AST test rather than a promise; (c) `sendMessage`-only, so it needs no new Bot API capability and stays shippable at G5. Native `sendPoll` remains Phase B because poll answers require `getUpdates` ingestion — forbidden by D2 |
+| D13 | Pacing/tone (#17) live in a **`persona.py` policy module** with a **deterministic** delay pattern, applied **only to live transports** | Pacing is policy, the transport is mechanism — the split lets the executor sleep between calls while `MockTransport` stays instantaneous, so the suite asserts the behaviour without waiting. The pattern is fixed (not RNG) so an audit log is reproducible and tests never flake; a live `sendChatAction` is cosmetic and its failure is swallowed so it can never break a real post |
 
 ---
 
