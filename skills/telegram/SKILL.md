@@ -219,7 +219,35 @@ configured, how many subjects are bound, and whether jobs are pending.
 
 ---
 
-## 5. Safety rules (enforced in code — do not try to work around them)
+## 5. Persona — how the bot behaves (issue #17)
+
+The bot is an **official bot**, but it does not behave like a firehose. The gateway applies
+these defaults automatically; you do not pass flags for them.
+
+| Behaviour | Rule |
+|---|---|
+| **Presence first** | A `typing` bubble precedes any text ≥ 120 chars; `upload_document` precedes any upload. Short one-liners get none — nobody types a single line for a second first. |
+| **Human pacing** | Batch items are separated by a short, *unequal* delay (0.8–2.6 s). It is deterministic, not random, so an audit log is reproducible and the suite is never flaky. |
+| **Reply in context** | Use `--reply-to <id>` to anchor a post to what it answers, instead of broadcasting into a topic. |
+| **Edit, don't re-post** | To correct something, `edit --message-id <id>` — do not publish a second message saying "تصحيح". |
+| **Live only** | Pacing and presence apply to `--live` sends **only**. `--dry-run` and the mock path stay instantaneous. |
+
+### The tone (Iraqi, as the student writes)
+
+> **ودّي ومباشر، بلا حشو وبلا مجاملة زايدة. يكتب بالعراقي الطبيعي، ويخلّي المصطلح التقني بالإنجليزي.**
+
+Practical reading of that:
+
+- Plain Iraqi Arabic for the message body — the way he actually talks, not MSA.
+- **Technical terms stay in English** (`fuzzy relations`, `risk assessment`) — never transliterate.
+- No filler openers ("بكل سرور"، "سؤال ممتاز"). Get to the point.
+- Corrections are stated plainly: "هاي غلط، الصحيح…" — not softened.
+- Emoji sparingly, as a heading marker (🎯 📗 ⚙️), not as decoration.
+
+The persona is defined in `90_Shared_Toolbox/telegram/persona.py` (`PERSONA`), which is the
+**single source** for pacing, thresholds and tone — the skill and the code cannot disagree.
+
+## 6. Safety rules (enforced in code — do not try to work around them)
 
 1. **Owner only.** Every remote verb needs `--actor <id>` with an id in `TELEGRAM_OWNER_IDS`.
    An **empty** allowlist denies everyone (fail closed). Refusals are audited.
@@ -235,7 +263,7 @@ configured, how many subjects are bound, and whether jobs are pending.
 
 ---
 
-## 6. Worked examples (the four the roadmap asks for)
+## 7. Worked examples (the four the roadmap asks for)
 
 **Publish a PDF**
 ```bash
@@ -268,7 +296,7 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> quiz \
 
 ---
 
-## 7. Troubleshooting
+## 8. Troubleshooting
 
 | Symptom | Cause | Fix |
 |---|---|---|

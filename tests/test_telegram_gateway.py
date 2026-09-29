@@ -2153,3 +2153,192 @@ class TestTelegramSkill:
         assert mirror.read_text(encoding="utf-8") == self._skill_text(), (
             "skills/telegram/SKILL.md drifted from .mimocode/skills/telegram/SKILL.md"
         )
+
+
+# ------------------------------------------------- human-like behaviour pack (#17)
+class TestPersona:
+    """Pacing, presence and tone — the bot behaves like a person, not a firehose.
+
+    Acceptance criteria of issue #17:
+      AC1 a published post is anchored as a contextual reply (reply_to is wired),
+      AC2 pacing and typing indicators are observable,
+      AC3 the persona is documented and referenced by the gateway defaults.
+    """
+
+    def test_no_presence_before_the_first_item(self):
+        from telegram.persona import pacing_seconds
+
+        assert pacing_seconds(0) == 0.0
+
+    def test_pacing_is_bounded_and_never_zero_mid_batch(self):
+        from telegram.persona import PERSONA, pacing_seconds
+
+        values = [pacing_seconds(i) for i in range(1, 13)]
+        assert all(0.0 < v <= PERSONA.max_pace for v in values), values
+        # unequal like a human, but reproducible (no RNG anywhere)
+        assert len(set(values)) > 1, "pacing must not be a constant"
+        assert values == [pacing_seconds(i) for i in range(1, 13)], "must be deterministic"
+
+    def test_pacing_pattern_is_coprime_not_random(self):
+        """No RNG may be *called* — prose explaining that is fine (same trap
+        as the #18 AST test: a naive substring scan flags its own docstring)."""
+        import ast
+
+        import telegram.persona as persona
+
+        tree = ast.parse(Path(persona.__file__).read_text(encoding="utf-8"))
+        docstrings = set()
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Module, ast.FunctionDef, ast.ClassDef, ast.AsyncFunctionDef)):
+                doc = ast.get_docstring(node, clean=False)
+                if doc:
+                    docstrings.add(doc)
+
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Name):
+                assert node.id != "random", "the persona must not call the random module"
+            if isinstance(node, ast.Attribute):
+                assert node.attr != "random", "the persona must not call the random module"
+            if isinstance(node, ast.Constant) and isinstance(node.value, str):
+                if node.value in docstrings:
+                    continue
+                assert "random" not in node.value, "a random delay makes the suite flaky"
+
+    def test_typing_is_signalled_only_for_long_text_or_uploads(self):
+        from telegram.persona import TYPING_THRESHOLD, presence_for
+
+        assert presence_for("ok") is None
+        assert presence_for("") is None
+        assert presence_for("x" * TYPING_THRESHOLD) == "typing"
+        assert presence_for(None, uploading=True) == "upload_document"
+        # an upload signals regardless of how short the caption is
+        assert presence_for("hi", uploading=True) == "upload_document"
+
+    def test_presence_value_is_in_the_sendchataction_vocabulary(self):
+        from telegram.persona import presence_for
+        from telegram.schema import CHAT_ACTIONS
+
+        for value in (presence_for("x" * 500), presence_for(None, uploading=True)):
+            assert value in CHAT_ACTIONS, value
+
+    def test_read_estimate_is_clamped(self):
+        from telegram.persona import PERSONA, estimate_read_seconds
+
+        assert estimate_read_seconds("") == 0.0
+        assert estimate_read_seconds("x" * 10) < 1.0
+        # never exceeds the persona ceiling, however long the text
+        assert estimate_read_seconds("x" * 100_000) == PERSONA.max_pace
+
+    def test_pause_does_nothing_for_zero(self, monkeypatch):
+        import telegram.persona as persona
+
+        calls = []
+        monkeypatch.setattr(persona.time, "sleep", lambda s: calls.append(s))
+        persona.pause(0)
+        persona.pause(0.0)
+        assert calls == []
+        persona.pause(1.5)
+        assert calls == [1.5]
+
+    def test_ac2_presence_fires_live_but_never_on_the_mock(self, registry, store, acl):
+        """The signal is a *live* behaviour; the mock path must stay instant."""
+        from telegram.transport import MockTransport
+
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        mock = MockTransport()
+        action = parse_action({
+            "verb": "publish", "actor": OWNER,
+            "target": {"subject": "01-Cyber-Security"}, "text": "x" * 500,
+        })
+        execute(action, transport=mock, acl=acl, registry=registry, store=store)
+        assert "sendChatAction" not in mock.methods(), (
+            "the mock must not pay the pacing cost — otherwise every test slows down"
+        )
+
+    def test_ac2_presence_fires_for_a_live_publish(self, registry, store, acl, monkeypatch):
+        """A live transport emits sendChatAction first, then the message."""
+        import telegram.executor as executor
+        from telegram.transport import HttpTransport
+
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "123:TEST")
+        live = HttpTransport("123:TEST")
+        calls = []
+
+        def spy(method, params):
+            calls.append((method, dict(params)))
+            return {"message_id": 7}
+
+        monkeypatch.setattr(live, "call", spy)
+        action = parse_action({
+            "verb": "publish", "actor": OWNER,
+            "target": {"subject": "01-Cyber-Security"}, "text": "x" * 500,
+        })
+        execute(action, transport=live, acl=acl, registry=registry, store=store,
+                allowed_chats={-1001})
+
+        methods = [m for m, _ in calls]
+        assert methods[0] == "sendChatAction", methods
+        assert calls[0][1]["action"] == "typing"
+        assert calls[0][1]["message_thread_id"] == 6, "the signal lands inside the topic"
+        assert methods[1] == "sendMessage"
+
+    def test_a_short_live_message_gets_no_typing_bubble(self, registry, store, acl, monkeypatch):
+        from telegram.transport import HttpTransport
+
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "123:TEST")
+        live = HttpTransport("123:TEST")
+        calls = []
+        monkeypatch.setattr(live, "call", lambda m, p: (calls.append(m), {"message_id": 7})[1])
+
+        execute(parse_action({"verb": "publish", "actor": OWNER,
+                              "target": {"subject": "01-Cyber-Security"}, "text": "ok"}),
+                transport=live, acl=acl, registry=registry, store=store,
+                allowed_chats={-1001})
+        assert calls == ["sendMessage"]
+
+    def test_a_failing_presence_never_breaks_the_publish(self, registry, store, acl, monkeypatch):
+        """A cosmetic signal must not be able to turn a good post into an error."""
+        from telegram.transport import HttpTransport
+
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "123:TEST")
+        live = HttpTransport("123:TEST")
+
+        def flaky(method, params):
+            if method == "sendChatAction":
+                raise TransportError("presence is cosmetic")
+            return {"message_id": 7}
+
+        monkeypatch.setattr(live, "call", flaky)
+        result = execute(
+            parse_action({"verb": "publish", "actor": OWNER,
+                          "target": {"subject": "01-Cyber-Security"}, "text": "x" * 500}),
+            transport=live, acl=acl, registry=registry, store=store, allowed_chats={-1001},
+        )
+        assert result["status"] == "sent"
+
+    def test_ac1_a_post_can_anchor_as_a_contextual_reply(self, registry):
+        """The human way is to answer *in context*, not to broadcast."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        call = build_call(
+            parse_action({"verb": "publish", "actor": OWNER,
+                          "target": {"subject": "01-Cyber-Security"},
+                          "text": "هذا رد على الرسالة السابقة", "reply_to": 41}),
+            registry,
+        )
+        assert call.params["reply_to_message_id"] == 41
+
+    def test_ac3_persona_is_documented_in_the_skill(self):
+        skill = (Path(__file__).resolve().parent.parent
+                 / ".mimocode" / "skills" / "telegram" / "SKILL.md").read_text(encoding="utf-8")
+        assert "persona" in skill.lower() or "أسلوب" in skill
+        assert "typing" in skill
+
+    def test_ac3_persona_has_a_defined_tone(self):
+        from telegram.persona import PERSONA
+
+        assert PERSONA.name
+        assert len(PERSONA.tone) > 20
+        assert PERSONA.min_pace < PERSONA.max_pace

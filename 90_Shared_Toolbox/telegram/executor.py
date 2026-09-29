@@ -32,6 +32,7 @@ from .errors import (
 )
 from .links import parse_message_link
 from . import pipeline, publisher, quizbridge
+from .persona import PERSONA, presence_for, pause
 from .publisher import TEXT_LIMIT, split_message, split_once
 from .registry import Registry
 from .schema import Action, ChatAction, DeleteAction, PublishAction, QuizAction, ReactAction, ReplyAction, TopicAction, idempotency_key
@@ -123,6 +124,40 @@ def _first_message_id(result: Any) -> int | None:
     if isinstance(result, list) and result and isinstance(result[0], dict):
         return result[0].get("message_id")
     return None
+
+
+#: Methods that show a "typing…"/"uploading…" bubble while they run.
+_PRESENCE_METHODS = {"sendMessage", "sendDocument", "sendPhoto", "sendVideo",
+                     "sendAudio", "sendVoice", "sendAnimation", "sendSticker",
+                     "sendMediaGroup"}
+
+
+def _signal_presence(call: Call, transport: Transport) -> None:
+    """Fire ``sendChatAction`` before a long/upload send (issue #17).
+
+    **Live transports only.** The mock path must stay instantaneous, otherwise
+    every test would pay the pacing cost; the behaviour is instead asserted
+    directly against :mod:`telegram.persona` and through a transport spy.
+
+    Failures are swallowed on purpose: a presence signal is cosmetic, and it
+    must never turn a working publish into an error.
+    """
+    if not getattr(transport, "is_live", False):
+        return
+    if call.method not in _PRESENCE_METHODS:
+        return
+    uploading = call.method != "sendMessage"
+    text = call.params.get("text") or call.params.get("caption")
+    signal = presence_for(text, uploading=uploading, persona=PERSONA)
+    if signal is None:
+        return
+    params: dict[str, Any] = {"chat_id": call.chat_id, "action": signal}
+    if call.thread_id is not None:
+        params["message_thread_id"] = call.thread_id
+    try:
+        transport.call("sendChatAction", params)
+    except GatewayError:
+        return
 
 
 def build_call(action: Action, registry: Registry) -> Call:
@@ -534,6 +569,8 @@ def execute(
             detail="rate limited",
         )
         return {"status": "queued", "reason": "rate_limited", "idempotency_key": key}
+
+    _signal_presence(call, transport)
 
     try:
         result = transport.call(call.method, call.params)

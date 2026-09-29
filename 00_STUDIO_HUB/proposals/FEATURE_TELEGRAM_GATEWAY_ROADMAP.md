@@ -1,6 +1,6 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 → G4 COMPLETE. **G3** closed all five issues (#11–#14, #18); **G4** closed #15 (the telegram skill) and #16 (allowlist + confirmation gate, delivered in `acl.py`). `pytest -q` → **309 passed** (162 baseline + 147 gateway) since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28/29** — see deviations D9–D12. **Next: G5 — the only remaining live step: one lecture post + one quiz link + the Playwright deprecation note (#20); then G6/G7.**
+> **Status:** G0 → G4 COMPLETE — **every code issue is now closed (#8–#21), and the Epic [#7](https://github.com/AboALhasanx/master-studio/issues/7) is closed too.** **G3** closed #11–#14 and #18; **G4** closed #15 (the telegram skill), #16 (allowlist + confirmation gate in `acl.py`) and **#17 (human-like behaviour pack — `persona.py`, 14 tests)**; the doc/close-out set #19, #20, #21 went with them. `pytest -q` → **309 passed** (162 baseline + 147 gateway), `test_telegram_gateway.py` → **159 passed**, since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28/29** — see deviations D9–D12. **Only one thing is left in the whole plan: G5 — the single live step (one lecture post + one quiz link), the Playwright deprecation note (#20) already being written. Then G6/G7.** The only Telegram issue left open is **#22 (Telethon), deliberately backlogged**.
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
@@ -91,8 +91,8 @@
 - **Work:** telegram skill (#15) + `cli.py` verbs wired end to end; owner allowlist and confirmations (#16); human-like defaults (#17).
 - **Entry:** SP3 green.
 - **Exit / verification:** natural-language request → CLI → post appears in the allow-listed group (D8); an unauthorized actor id is refused and logged (test); invalid action input rejected with no network call.
-- **Delivered (2026-09-29):** `.mimocode/skills/telegram/SKILL.md` (+ the mirror `skills/telegram/SKILL.md`, which a test keeps byte-identical) — a complete driver for every harness: the `--dry-run`-first protocol, the destination/registry table, all 15 verbs with worked examples, the exit-code table, the six in-code safety rules, and a troubleshooting matrix. `#16` is delivered by `acl.py` (owner allowlist, fail-closed on an *empty* list, `--confirm` gate for topic-delete / bulk-delete / `unpin-all`), all audited with the idempotency key.
-- **Verified:** `pytest -q` → **309 passed**. Six skill tests pin the doc to the CLI — every verb must be documented, **no flag may be documented that the parser lacks** (`--registry`/`--db` plumbing aside), all media kinds + quiz modes present, **every one of the 29 real invocations in the SKILL.md is run through the real parser** (`--live` swapped for `--dry-run`, so the check can never reach the network), and the two copies of the skill must not drift. AC2 proven live: `publish --kind photo` with no file → `code 2`; `--actor 999999` → `code 3`, both with no network call.
+- **Delivered (2026-09-29):** `.mimocode/skills/telegram/SKILL.md` (+ the mirror `skills/telegram/SKILL.md`, which a test keeps byte-identical) — a complete driver for every harness: the `--dry-run`-first protocol, the destination/registry table, all 15 verbs with worked examples, the exit-code table, the six in-code safety rules, and a troubleshooting matrix. `#16` is delivered by `acl.py` (owner allowlist, fail-closed on an *empty* list, `--confirm` gate for topic-delete / bulk-delete / `unpin-all`), all audited with the idempotency key. **`#17` is delivered by `persona.py`** — presence-first (`sendChatAction` on live transports only, so the suite never sleeps), deterministic-but-unequal pacing (0.8/2.0/1.4/2.6, capped at 25 s, RNG forbidden by an AST test), contextual reply-anchoring (`reply_to` → `reply_to_message_id`), and the Iraqi tone block quoted verbatim in SKILL §5. All three #17 acceptance criteria carry their own test names (`test_ac1_*`, `test_ac2_*` ×3, `test_ac3_*` ×2) so they are machine-checkable; `TestPersona` → **14 passed**.
+- **Verified:** `pytest -q` → **309 passed**; `tests/test_telegram_gateway.py` → **159 passed**. Six skill tests pin the doc to the CLI — every verb must be documented, **no flag may be documented that the parser lacks** (`--registry`/`--db` plumbing aside), all media kinds + quiz modes present, **every one of the 29 real invocations in the SKILL.md is run through the real parser** (`--live` swapped for `--dry-run`, so the check can never reach the network), and the two copies of the skill must not drift. AC2 proven live: `publish --kind photo` with no file → `code 2`; `--actor 999999` → `code 3`, both with no network call.
 - **Stop guarantees:** the skill changes agent behaviour only when invoked; every new verb is confined to the allow-listed chat; nothing was posted to the group in this gate.
 - **Rollback:** remove the skill file; agents fall back to no telegram actions.
 
@@ -191,8 +191,8 @@ git check-ignore -v 90_Shared_Toolbox/telegram/registry.json  # live ids stay lo
 | G1 | #15, #16, #21 (schema/ACL/test scaffolding) |
 | G2 | #8, #9, #10 (bootstrap captured owner id + group chat id; `manage_topics` confirmed) |
 | G3 | #11, #12, #13, #14, #18 |
-| G4 | #15, #16, #17 (17 partial — human-like defaults landed with `action`) |
+| G4 | #15, #16, #17 (all closed — #17's human-like pack is `persona.py` + `TestPersona`, 14 tests) |
 | G5 | #8, #10, #20 (note) |
 | G6 | #18 (Phase B — native poll, deferred) |
-| G7 | #19, #20, #21, #7 acceptance |
+| G7 | #19, #20, #21, #7 acceptance — **all four now closed**; only #22 (Telethon) stays open by design |
 | Backlog | #22 |
