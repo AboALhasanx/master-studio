@@ -2056,3 +2056,100 @@ class TestQuizBridge:
         )
         assert code == 2
         assert "error" in payload
+
+
+# --------------------------------------------------------- the telegram skill (#15)
+class TestTelegramSkill:
+    """The skill must stay in lockstep with the CLI it documents (issue #15).
+
+    A skill that documents a verb the CLI does not have (or a flag that was
+    renamed) is worse than no skill: the agent follows it and fails live.
+    These tests read the *shipped* SKILL.md and diff it against the parser.
+    """
+
+    SKILL = Path(__file__).resolve().parent.parent / ".mimocode" / "skills" / "telegram" / "SKILL.md"
+
+    def _skill_text(self) -> str:
+        assert self.SKILL.is_file(), f"skill file missing: {self.SKILL}"
+        return self.SKILL.read_text(encoding="utf-8")
+
+    def test_skill_exists_with_frontmatter(self):
+        text = self._skill_text()
+        assert text.startswith("---\n"), "SKILL.md must open with YAML frontmatter"
+        head = text.split("---", 2)[1]
+        assert "name: telegram" in head
+        assert "description:" in head
+
+    def test_every_cli_verb_is_documented(self):
+        from telegram.schema import VERBS
+
+        text = self._skill_text()
+        missing = [v for v in VERBS if v not in text]
+        assert missing == [], f"verbs absent from SKILL.md: {missing}"
+
+    def test_no_flag_is_documented_that_the_cli_lacks(self):
+        import re
+
+        import telegram.cli as cli
+
+        parser = cli.build_parser()
+        known: set[str] = set()
+        for action in parser._actions:
+            known.update(action.option_strings)
+        for sub in parser._subparsers._group_actions[0].choices.values():
+            for action in sub._actions:
+                known.update(action.option_strings)
+
+        used = set(re.findall(r"(?<![\w-])(--[a-z][a-z0-9-]+)", self._skill_text()))
+        unknown = sorted(f for f in used if f not in known)
+        assert unknown == [], f"SKILL.md documents flags the CLI does not have: {unknown}"
+
+    def test_media_kinds_and_quiz_modes_are_documented(self):
+        from telegram.publisher import MEDIA_KINDS
+
+        text = self._skill_text()
+        for kind in MEDIA_KINDS:
+            assert kind in text, f"media kind {kind!r} undocumented"
+        for mode in ("exam", "study"):
+            assert mode in text, f"quiz mode {mode!r} undocumented"
+
+    def test_every_documented_invocation_parses(self):
+        """Run each `tg.py …` line in the doc through the real parser.
+
+        `--live` is swapped for `--dry-run` so the check can never touch the
+        network; the point is only that argparse accepts the shape.
+        """
+        import re
+        import shlex
+
+        text = self._skill_text()
+        blocks = re.findall(r"```bash\n(.*?)```", text, re.S)
+        invocations: list[str] = []
+        for block in blocks:
+            block = block.replace("\\\n", " ")
+            for line in block.splitlines():
+                line = re.sub(r"\s+#\s.*$", "", line.strip())
+                if line and not line.startswith("#") and "tg.py" in line:
+                    invocations.append(line.split("tg.py", 1)[1].strip())
+
+        assert len(invocations) >= 20, f"expected the full verb catalogue, got {len(invocations)}"
+
+        parser = tg_cli.build_parser()
+        checked = 0
+        for command in invocations:
+            if "<verb>" in command or "[GLOBAL FLAGS]" in command:
+                continue  # the usage template, not a real command
+            command = command.replace("<id>", str(OWNER)).replace("--live", "--dry-run")
+            argv = ["--registry", "r.json", "--db", "g.db"] + shlex.split(command)
+            parser.parse_args(argv)  # raises SystemExit on a bad flag
+            checked += 1
+        assert checked >= 20, f"only {checked} real invocations checked"
+
+    def test_skill_mirror_is_identical(self):
+        """`.mimocode/skills/` and `skills/` must not drift apart."""
+        root = Path(__file__).resolve().parent.parent
+        mirror = root / "skills" / "telegram" / "SKILL.md"
+        assert mirror.is_file(), "the mirror copy is missing"
+        assert mirror.read_text(encoding="utf-8") == self._skill_text(), (
+            "skills/telegram/SKILL.md drifted from .mimocode/skills/telegram/SKILL.md"
+        )

@@ -1,6 +1,6 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 + G1 + G2 COMPLETE **+ live structure provisioning** — the group's 10 topics, pinned brief cards and pinned index were built by the gateway itself (idempotent re-run verified); conventions in `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`. **G3 COMPLETE — every exit criterion verified LIVE**: `#14` durable queue ✅ CLOSED, `#13` file pipeline ✅ CLOSED, `#12` moderation pack ✅ CLOSED (all three ACs, AC2 proven in the group itself), `#11` publish pack ✅ CLOSED (text/document proven live; the media leg, `media_group`, `forward`/`copy` and the quiz bridge unit-tested), `#18` quiz bridge Phase A ✅ CLOSED. `pytest -q` → **303 passed** (162 baseline + 141 gateway) since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28** — see deviations D9/D10/D11/D12. **Next: G4 (`#15` telegram skill)**, then G5.
+> **Status:** G0 → G4 COMPLETE. **G3** closed all five issues (#11–#14, #18); **G4** closed #15 (the telegram skill) and #16 (allowlist + confirmation gate, delivered in `acl.py`). `pytest -q` → **309 passed** (162 baseline + 147 gateway) since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28/29** — see deviations D9–D12. **Next: G5 — the only remaining live step: one lecture post + one quiz link + the Playwright deprecation note (#20); then G6/G7.**
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
@@ -39,7 +39,7 @@
 | `90_Shared_Toolbox/telegram/quizbridge.py` | MCQ deep-link composer (dashboard door, no engine) — **D12** | #18 |
 | `90_Shared_Toolbox/telegram/cli.py` | Single entry point the agents invoke | #15 |
 | `90_Shared_Toolbox/tools/tg.py` | Path launcher: `python 90_Shared_Toolbox/tools/tg.py <verb>` | #15 |
-| `.mimocode/skills/telegram/SKILL.md` | Teaches every harness to drive the CLI | #15 |
+| `.mimocode/skills/telegram/SKILL.md` (+ mirror `skills/telegram/SKILL.md`) | Teaches every harness to drive the CLI — kept in sync by `TestTelegramSkill` | #15 |
 | `tests/test_telegram_*.py` | Mocked-transport test suite (`-m live` opt-in) | #21 |
 | `90_Shared_Toolbox/telegram/registry.json` | Topic registry data (created on first run; **gitignored** — live ids stay local, `SEED_SUBJECTS` is the committed source) | #8 |
 | `90_Shared_Toolbox/telegram/gateway.db` | SQLite jobs + audit (gitignored, local-only) | #14 |
@@ -87,11 +87,13 @@
 - **Stop guarantees:** nothing outside the allow-listed chat; queue survives restarts; production group untouched by *new* verbs until G5 — honoured: only verbs that already existed in `build_call` were used live, `action` was not.
 - **Rollback:** stop using the queue; posts made through packs are editable/deletable (D8 blast radius).
 
-### G4 — Agent Control · **SP4: "natural language works, unauthorized actors cannot"**
+### G4 — Agent Control · **SP4: "natural language works, unauthorized actors cannot"** — ✅ DONE (2026-09-29)
 - **Work:** telegram skill (#15) + `cli.py` verbs wired end to end; owner allowlist and confirmations (#16); human-like defaults (#17).
 - **Entry:** SP3 green.
 - **Exit / verification:** natural-language request → CLI → post appears in the allow-listed group (D8); an unauthorized actor id is refused and logged (test); invalid action input rejected with no network call.
-- **Stop guarantees:** new verbs are confined to the allow-listed chat; the skill changes agent behaviour only when invoked.
+- **Delivered (2026-09-29):** `.mimocode/skills/telegram/SKILL.md` (+ the mirror `skills/telegram/SKILL.md`, which a test keeps byte-identical) — a complete driver for every harness: the `--dry-run`-first protocol, the destination/registry table, all 15 verbs with worked examples, the exit-code table, the six in-code safety rules, and a troubleshooting matrix. `#16` is delivered by `acl.py` (owner allowlist, fail-closed on an *empty* list, `--confirm` gate for topic-delete / bulk-delete / `unpin-all`), all audited with the idempotency key.
+- **Verified:** `pytest -q` → **309 passed**. Six skill tests pin the doc to the CLI — every verb must be documented, **no flag may be documented that the parser lacks** (`--registry`/`--db` plumbing aside), all media kinds + quiz modes present, **every one of the 29 real invocations in the SKILL.md is run through the real parser** (`--live` swapped for `--dry-run`, so the check can never reach the network), and the two copies of the skill must not drift. AC2 proven live: `publish --kind photo` with no file → `code 2`; `--actor 999999` → `code 3`, both with no network call.
+- **Stop guarantees:** the skill changes agent behaviour only when invoked; every new verb is confined to the allow-listed chat; nothing was posted to the group in this gate.
 - **Rollback:** remove the skill file; agents fall back to no telegram actions.
 
 ### G5 — Pilot Cutover · **SP5: "the real group is touched, minimally"**
@@ -168,7 +170,7 @@
 ## 7. Standing Verification Gates
 
 ```bash
-pytest -q                                   # must be green at every SP (303 since 2026-09-29)
+pytest -q                                   # must be green at every SP (309 since 2026-09-29)
 python 90_Shared_Toolbox/tools/tg.py --dry-run status   # plan without I/O
                                              # (--dry-run is GLOBAL: it must precede the verb,
                                              #  and `python -m telegram.cli` only resolves from
@@ -189,7 +191,7 @@ git check-ignore -v 90_Shared_Toolbox/telegram/registry.json  # live ids stay lo
 | G1 | #15, #16, #21 (schema/ACL/test scaffolding) |
 | G2 | #8, #9, #10 (bootstrap captured owner id + group chat id; `manage_topics` confirmed) |
 | G3 | #11, #12, #13, #14, #18 |
-| G4 | #15, #16, #17 |
+| G4 | #15, #16, #17 (17 partial — human-like defaults landed with `action`) |
 | G5 | #8, #10, #20 (note) |
 | G6 | #18 (Phase B — native poll, deferred) |
 | G7 | #19, #20, #21, #7 acceptance |
