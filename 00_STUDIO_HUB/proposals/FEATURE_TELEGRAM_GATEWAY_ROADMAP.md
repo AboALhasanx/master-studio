@@ -166,7 +166,11 @@
 
 ```bash
 pytest -q                                   # must be green at every SP (287 since 2026-09-29)
-python -m telegram.cli status --dry-run     # gateway plan without I/O
+python 90_Shared_Toolbox/tools/tg.py --dry-run status   # plan without I/O
+                                             # (--dry-run is GLOBAL: it must precede the verb,
+                                             #  and `python -m telegram.cli` only resolves from
+                                             #  90_Shared_Toolbox/ — use tools/tg.py from the vault root)
+python -m bandit -q -r 90_Shared_Toolbox/telegram -f json   # baseline 6x B101 + 1x B310 (pre-existing)
 gh issue list --label telegram --state open # phase backlog health
 git check-ignore -v .env                    # secret isolation
 git check-ignore -v 90_Shared_Toolbox/telegram/registry.json  # live ids stay local (D10)
