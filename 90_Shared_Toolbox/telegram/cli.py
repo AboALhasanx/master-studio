@@ -97,6 +97,25 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--to", required=True, help="t.me link or numeric message id")
     p.add_argument("--text", required=True)
 
+    p = sub.add_parser("forward",
+                       help="re-post a message into a topic, keeping its original sender")
+    _add_target(p)
+    p.add_argument("--from", dest="source", required=True,
+                   help="source message: t.me/c/<chat>/<id>, t.me/<user>/<id> or a bare id")
+    p.add_argument("--from-chat", type=int, dest="source_chat",
+                   help="explicit source chat id (required when --from is a bare id)")
+
+    p = sub.add_parser("copy",
+                       help="re-post a message as our own, optionally re-captioned")
+    _add_target(p)
+    p.add_argument("--from", dest="source", required=True,
+                   help="source message: t.me/c/<chat>/<id>, t.me/<user>/<id> or a bare id")
+    p.add_argument("--from-chat", type=int, dest="source_chat",
+                   help="explicit source chat id (required when --from is a bare id)")
+    p.add_argument("--caption", help="replace the caption (omit to keep the original)")
+    p.add_argument("--html", action="store_true", dest="html",
+                   help="send --caption as HTML")
+
     p = sub.add_parser("edit", help="edit an existing message (text or caption)")
     _add_target(p, thread=False)
     p.add_argument("--message-id", type=int, required=True, dest="message_id")
@@ -198,6 +217,17 @@ def _action_from_args(args: argparse.Namespace) -> Action:
         data["target"] = _target(args)
         data["to"] = args.to
         data["text"] = args.text
+
+    elif args.command in ("forward", "copy"):
+        data["target"] = _target(args)
+        data["source"] = args.source
+        if args.source_chat is not None:
+            data["source_chat"] = args.source_chat
+        if args.command == "copy":
+            if args.caption is not None:
+                data["caption"] = args.caption
+            if args.html:
+                data["parse_mode"] = "HTML"
 
     elif args.command == "edit":
         data["target"] = _target(args)

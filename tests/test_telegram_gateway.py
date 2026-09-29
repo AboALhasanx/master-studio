@@ -764,6 +764,163 @@ def test_publish_chunks_a_long_text_without_losing_the_tail(registry, store, acl
     assert len(transport.calls) == len(sent)
 
 
+# ------------------------------------------------- forward/copy (#11) --
+def test_forward_reads_the_source_chat_and_message_from_the_link(registry, store, acl, transport):
+    """``forwardMessage`` keeps the original sender; the link is all we know."""
+    action = parse_action({
+        "verb": "forward", "actor": OWNER,
+        "target": {"chat_id": -1001234567890, "thread_id": 7},
+        "source": "https://t.me/c/1234567890/42",
+    })
+    result = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert result["status"] == "sent"
+    method, params = transport.last()
+    assert method == "forwardMessage"
+    assert params == {
+        "chat_id": -1001234567890,
+        "from_chat_id": -1001234567890,
+        "message_id": 42,
+        "message_thread_id": 7,
+    }
+
+
+def test_copy_pulls_from_another_chat_and_can_re_caption(registry, store, acl, transport):
+    action = parse_action({
+        "verb": "copy", "actor": OWNER,
+        "target": {"chat_id": -1001234567890, "thread_id": 7},
+        "source": "https://t.me/c/999888777/15",
+        "caption": "<b>week 1 recap</b>",
+        "parse_mode": "HTML",
+    })
+    result = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert result["status"] == "sent"
+    method, params = transport.last()
+    assert method == "copyMessage"
+    assert params["from_chat_id"] == -100999888777
+    assert params["message_id"] == 15
+    assert params["caption"] == "<b>week 1 recap</b>"
+    assert params["parse_mode"] == "HTML"
+    assert params["message_thread_id"] == 7
+    assert "reply_to_message_id" not in params
+
+
+def test_copy_keeps_the_original_caption_when_none_is_given(registry, store, acl, transport):
+    """No --caption means "keep whatever the original said", not an empty one."""
+    action = parse_action({
+        "verb": "copy", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "source": "t.me/master_studio/9",
+    })
+    execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    _, params = transport.last()
+    assert params["from_chat_id"] == "@master_studio", "a public link IS the chat id"
+    assert params["message_id"] == 9
+    assert "caption" not in params and "parse_mode" not in params
+
+
+def test_forward_needs_a_source_chat_when_only_a_bare_id_is_given(registry, store, acl, transport):
+    action = parse_action({
+        "verb": "forward", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "source": "42",
+    })
+    with pytest.raises(ActionValidationError) as exc:
+        execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert "--from-chat" in str(exc.value)
+    assert transport.calls == []
+    assert store.audit_rows()[0]["result"] == "refused", "a refusal still leaves a trail"
+
+    # ...but with it, the bare id resolves
+    with_chat = parse_action({
+        "verb": "forward", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "source": "42", "source_chat": -1001234567890,
+    })
+    execute(with_chat, transport=transport, acl=acl, registry=registry, store=store)
+    _, params = transport.last()
+    assert params["from_chat_id"] == -1001234567890
+    assert params["message_id"] == 42
+
+
+def test_forward_refuses_a_source_link_that_contradicts_from_chat(registry, store, acl, transport):
+    """A link and an explicit --from-chat that disagree is a mistake, not a surprise."""
+    action = parse_action({
+        "verb": "forward", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "source": "https://t.me/c/1234567890/42",
+        "source_chat": -100555666777,
+    })
+    with pytest.raises(ActionValidationError) as exc:
+        execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert "source" in str(exc.value)
+    assert transport.calls == []
+
+
+def test_forward_and_copy_are_deduplicated_like_any_other_publish(
+    registry, store, acl, transport
+):
+    action = parse_action({
+        "verb": "forward", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},
+        "source": "https://t.me/c/1234567890/42",
+    })
+    first = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    second = execute(action, transport=transport, acl=acl, registry=registry, store=store)
+    assert first["status"] == "sent"
+    assert second["status"] == "duplicate"
+    assert transport.methods() == ["forwardMessage"]
+
+
+def test_forward_and_copy_obeys_the_owner_allowlist(registry, store, transport):
+    action = parse_action({
+        "verb": "copy", "actor": 999,
+        "target": {"chat_id": -1001234567890},
+        "source": "https://t.me/c/1234567890/42",
+    })
+    with pytest.raises(AccessDenied):
+        execute(action, transport=transport, acl=ACL([OWNER]), registry=registry, store=store)
+    assert transport.calls == [], "a refused copy must not reach Telegram"
+
+
+def test_live_gate_watches_the_destination_and_never_the_source(registry, store, acl):
+    """The source may sit outside the allowlist; the DESTINATION may not.
+
+    Guard against anyone ever moving the G2 check onto ``from_chat_id``: a
+    copy pulls *from* chat X and writes only to chat Y, so Y is the one that
+    has to be allow-listed.
+    """
+    action = parse_action({
+        "verb": "copy", "actor": OWNER,
+        "target": {"chat_id": -1001234567890},           # NOT allow-listed
+        "source": "https://t.me/c/999900000000/42",       # ...the source IS
+    })
+    with pytest.raises(AccessDenied) as exc:
+        execute(action, transport=HttpTransport("TEST:token"), acl=acl,
+                registry=registry, store=store,
+                allowed_chats=chat_allowlist_from_env("-1009990000000"))
+    assert "TELEGRAM_CHAT_ALLOWLIST" in str(exc.value)
+    assert store.audit_rows()[0]["result"] == "denied"
+
+
+def test_copy_parse_mode_needs_a_caption_and_forward_takes_no_caption():
+    with pytest.raises(ActionValidationError) as exc:
+        parse_action({
+            "verb": "copy", "target": {"chat_id": -1},
+            "source": "https://t.me/c/1234567890/42",
+            "parse_mode": "HTML",
+        })
+    assert "parse_mode" in str(exc.value)
+
+    # forwardMessage has no caption field at all, so the option must not exist
+    with pytest.raises(ActionValidationError) as exc:
+        parse_action({
+            "verb": "forward", "target": {"chat_id": -1},
+            "source": "https://t.me/c/1234567890/42",
+            "caption": "forwardMessage has no caption field",
+        })
+    assert "caption" in str(exc.value)
+
+
 # --------------------------------------------------------------- issue #13 --
 def test_pipeline_refuses_paths_that_escape_the_vault(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
@@ -1353,6 +1510,37 @@ def test_cli_repeating_file_builds_a_media_group(tmp_path, capsys, owners):
     )
     assert code == 2
     assert "explicit --kind" in str(payload)
+
+
+def test_cli_wires_the_forward_and_copy_verbs(tmp_path, capsys, owners):
+    base = ["--json", "--dry-run", "--actor", str(OWNER),
+            "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db")]
+
+    code, payload = run_cli(
+        base + ["forward", "--chat", "-1001", "--from", "https://t.me/c/1234567890/42"],
+        capsys,
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "forwardMessage"
+    assert payload["plan"]["params"]["from_chat_id"] == -1001234567890
+    assert payload["plan"]["params"]["message_id"] == 42
+
+    code, payload = run_cli(
+        base + ["copy", "--chat", "-1001", "--from", "https://t.me/c/999888777/15",
+                "--caption", "<b>hi</b>", "--html"], capsys
+    )
+    assert code == 0
+    assert payload["plan"]["method"] == "copyMessage"
+    assert payload["plan"]["params"]["from_chat_id"] == -100999888777
+    assert payload["plan"]["params"]["caption"] == "<b>hi</b>"
+    assert payload["plan"]["params"]["parse_mode"] == "HTML"
+
+    # a bare id with no --from-chat fails before anything is planned
+    code, payload = run_cli(
+        base + ["forward", "--chat", "-1001", "--from", "42"], capsys
+    )
+    assert code == 2
+    assert "--from-chat" in str(payload)
 
 
 def test_cli_audits_every_attempt(tmp_path, owners):

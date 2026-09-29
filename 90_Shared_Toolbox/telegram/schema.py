@@ -9,6 +9,8 @@ Verbs
 ``publish``  send text/file into a topic (issue #11)
 ``topic``    create / rename / close / reopen / delete topics (issue #10)
 ``reply``    reply to a message addressed by link or id (issue #12)
+``forward``  re-post a message keeping the original sender (issue #11)
+``copy``     re-post a message as our own, optionally re-captioned (issue #11)
 ``edit``     edit an existing message: text or caption (issue #12)
 ``delete``   delete one or many messages (issue #12)
 ``pin``      pin / unpin a message, or unpin a whole topic (issue #12)
@@ -37,6 +39,8 @@ __all__ = [
     "PublishAction",
     "TopicAction",
     "ReplyAction",
+    "ForwardAction",
+    "CopyAction",
     "EditAction",
     "DeleteAction",
     "PinAction",
@@ -50,8 +54,8 @@ __all__ = [
 ]
 
 VERBS = (
-    "publish", "topic", "reply", "edit", "delete", "pin", "react", "action",
-    "queue", "structure", "pipeline", "status",
+    "publish", "topic", "reply", "forward", "copy", "edit", "delete", "pin",
+    "react", "action", "queue", "structure", "pipeline", "status",
 )
 
 #: The Bot API's ``sendChatAction`` vocabulary, verbatim (issue #12).
@@ -187,6 +191,43 @@ class ReplyAction(Action):
     text: str = Field(min_length=1)
 
 
+class ForwardAction(Action):
+    """Re-post somebody else's message into a topic (issue #11).
+
+    ``forwardMessage`` keeps the original sender attached — that is the whole
+    point of forwarding, and it is also why the link alone is enough: nothing
+    is written to the source chat, so the allowlist gate (D8) stays on the
+    destination.
+    """
+
+    verb: Literal["forward"] = "forward"
+    target: Target
+    source: str = Field(min_length=1)  # t.me link or bare message id
+    source_chat: int | None = None  # explicit from_chat_id (bare id / cross-check)
+
+
+class CopyAction(Action):
+    """Re-post a message as if the bot had written it (issue #11).
+
+    ``copyMessage`` drops the original attribution, so this is the verb for
+    "put that announcement into the new topic". Unlike ``forward`` it can carry
+    a replacement caption; leaving it out keeps whatever the original said.
+    """
+
+    verb: Literal["copy"] = "copy"
+    target: Target
+    source: str = Field(min_length=1)
+    source_chat: int | None = None
+    caption: str | None = None  # omitted => keep the original caption
+    parse_mode: Literal["HTML"] | None = None
+
+    @model_validator(mode="after")
+    def _parse_mode_needs_caption(self) -> "CopyAction":
+        if self.parse_mode is not None and self.caption is None:
+            raise ValueError("parse_mode requires 'caption'")
+        return self
+
+
 class EditAction(Action):
     """Edit an existing message: ``editMessageText`` **or** ``editMessageCaption``.
 
@@ -316,6 +357,8 @@ ActionUnion = Union[
     PublishAction,
     TopicAction,
     ReplyAction,
+    ForwardAction,
+    CopyAction,
     EditAction,
     DeleteAction,
     PinAction,
@@ -331,6 +374,8 @@ _BY_VERB = {
     "publish": PublishAction,
     "topic": TopicAction,
     "reply": ReplyAction,
+    "forward": ForwardAction,
+    "copy": CopyAction,
     "edit": EditAction,
     "delete": DeleteAction,
     "pin": PinAction,

@@ -181,6 +181,47 @@ def build_call(action: Action, registry: Registry) -> Call:
             thread_id,
         )
 
+    if verb in ("forward", "copy"):
+        # The link identifies the SOURCE; the allowlist gate (D8) still guards
+        # only the destination — nothing is ever written to from_chat_id, and
+        # the bot can only read chats it has been added to anyway.
+        chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
+        ref = parse_message_link(action.source)
+        if action.source_chat is not None and ref.chat_id is not None:
+            if action.source_chat != ref.chat_id:
+                raise ActionValidationError(
+                    f"source chat id {action.source_chat} contradicts "
+                    f"the link's chat {ref.chat_id}"
+                )
+        if ref.chat_id is not None:
+            from_chat_id: Any = ref.chat_id
+        elif ref.username is not None:
+            from_chat_id = f"@{ref.username}"  # a public link IS the chat id
+        elif action.source_chat is not None:
+            from_chat_id = action.source_chat
+        else:
+            raise ActionValidationError(
+                "forward/copy needs --from-chat when the source is a bare message id"
+            )
+        params = {
+            "chat_id": chat_id,
+            "from_chat_id": from_chat_id,
+            "message_id": ref.message_id,
+        }
+        if thread_id is not None:
+            params["message_thread_id"] = thread_id
+        if verb == "copy":
+            method = "copyMessage"
+            # caption/parse_mode exist on CopyAction only — forwardMessage has
+            # no caption field, and the schema rejects the option outright
+            if action.caption is not None:
+                params["caption"] = action.caption
+                if action.parse_mode is not None:
+                    params["parse_mode"] = action.parse_mode
+        else:
+            method = "forwardMessage"
+        return Call(method, params, chat_id, thread_id)
+
     if verb == "edit":
         chat_id, thread_id = resolve_destination(action.target, registry, require_thread=False)
         if action.caption is not None:
