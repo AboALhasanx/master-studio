@@ -129,7 +129,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--message-id", type=int, required=True, dest="message_id", nargs="+")
 
     p = sub.add_parser("pin", help="pin / unpin a message, or sweep a whole topic")
-    _add_target(p, thread=False)
+    # `--thread` IS accepted: `--unpin-all` needs a thread (the sweep call is
+    # topic-scoped, `resolve_destination(require_thread=True)`), and it used to
+    # be impossible to supply one — the parser rejected the flag while the
+    # executor demanded it, so `pin --unpin-all --chat X --thread Y` could
+    # never run. `--subject` worked; the explicit form did not. Fixed 2026-09-29.
+    _add_target(p, thread=True)
     p.add_argument("--message-id", type=int, dest="message_id",
                    help="the message to pin or unpin (omit with --unpin-all)")
     p.add_argument("--unpin", action="store_true")

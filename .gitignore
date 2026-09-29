@@ -143,3 +143,10 @@ venv/
 
 # Local conflict recovery archive (agent scaffolding, not course content)
 opencode-archive/
+
+# Test-run artifacts — never publish
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+__pycache__/

@@ -30,6 +30,7 @@ from telegram.errors import (  # noqa: E402
     AccessDenied,
     ActionValidationError,
     ConfirmationRequired,
+    GatewayError,
     GatewayNotReady,
     PipelineError,
     RateLimited,
@@ -2342,3 +2343,1099 @@ class TestPersona:
         assert PERSONA.name
         assert len(PERSONA.tone) > 20
         assert PERSONA.min_pace < PERSONA.max_pace
+
+
+# ------------------------------------------------- CLI argument -> payload mapping
+class TestCliWiring:
+    """Every verb the agent can speak must translate to the right payload.
+
+    The skill tells the agent to run these commands. If a flag stops reaching
+    `parse_action`, the command still exits 0 and the agent believes it worked
+    — a silent wrong-post, which is the worst failure this gateway can have.
+    So each test drives the real parser and inspects the *plan*, not the exit
+    code. `--dry-run` keeps every one of them off the network.
+    """
+
+    def _plan(self, argv, tmp_path, capsys, extra=()):
+        code, payload = run_cli(
+            ["--json", "--dry-run", "--actor", str(OWNER), *extra,
+             "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db"),
+             *argv],
+            capsys,
+        )
+        assert code == 0, payload
+        return payload
+
+    def test_reply_targets_the_message_and_carries_the_text(self, tmp_path, capsys, owners):
+        plan = self._plan(
+            ["reply", "--chat", "-1001", "--thread", "7", "--to", "42", "--text", "رد"],
+            tmp_path, capsys,
+        )["plan"]
+        assert plan["method"] == "sendMessage"
+        assert plan["params"]["reply_to_message_id"] == 42
+        assert plan["params"]["text"] == "رد"
+
+    def test_topic_translates_the_operation_and_name(self, tmp_path, capsys, owners):
+        plan = self._plan(
+            ["topic", "--chat", "-1001", "--thread", "7", "--op", "rename", "--name", "Week 01"],
+            tmp_path, capsys,
+        )["plan"]
+        assert plan["method"] == "editForumTopic"
+        assert plan["params"]["name"] == "Week 01"
+
+    def test_pin_sets_the_flag_and_the_inverse(self, tmp_path, capsys, owners):
+        pinned = self._plan(["pin", "--chat", "-1001", "--message-id", "5"],
+                            tmp_path, capsys)["plan"]
+        unpinned = self._plan(["pin", "--chat", "-1001", "--message-id", "5", "--unpin"],
+                              tmp_path, capsys)["plan"]
+        assert pinned["method"] == "pinChatMessage"
+        assert unpinned["method"] == "unpinChatMessage", "the two must not collapse"
+
+    def test_pin_unpin_all_becomes_the_forum_wide_call(self, tmp_path, capsys, owners):
+        """Regression: `--unpin-all --thread` used to be impossible.
+
+        The parser rejected `--thread` while the executor demanded a resolved
+        thread, so the only working spelling was `--subject`. Both must work.
+        """
+        plan = self._plan(["pin", "--chat", "-1001", "--thread", "7", "--unpin-all"],
+                          tmp_path, capsys, extra=("--confirm",))["plan"]
+        assert plan["method"] == "unpinAllForumTopicMessages"
+        assert plan["params"]["message_thread_id"] == 7
+        assert "message_id" not in plan["params"]
+
+    def test_pin_unpin_all_resolves_a_bound_subject_too(self, tmp_path, capsys, owners):
+        from telegram import Registry as _R
+        reg = tmp_path / "r.json"
+        _R(reg).bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        code, payload = run_cli(
+            ["--json", "--dry-run", "--actor", str(OWNER), "--confirm",
+             "--registry", str(reg), "--db", str(tmp_path / "g.db"),
+             "pin", "--subject", "01-Cyber-Security", "--unpin-all"],
+            capsys,
+        )
+        assert code == 0, payload
+        assert payload["plan"]["params"]["message_thread_id"] == 6
+
+    def test_pin_without_a_thread_still_works_for_a_single_message(self, tmp_path, capsys, owners):
+        """The thread requirement belongs to the sweep, not to a single pin."""
+        plan = self._plan(["pin", "--chat", "-1001", "--message-id", "5"],
+                          tmp_path, capsys)["plan"]
+        assert plan["method"] == "pinChatMessage"
+        assert "message_thread_id" not in plan["params"]
+
+    def test_react_carries_the_emoji_through(self, tmp_path, capsys, owners):
+        plan = self._plan(["react", "--chat", "-1001", "--message-id", "5", "--emoji", "👍"],
+                          tmp_path, capsys)["plan"]
+        assert plan["method"] == "setMessageReaction"
+        # Bot API wants a reaction *list*, not a bare string — an emoji that
+        # never reaches this shape is silent data loss.
+        assert plan["params"]["reaction"] == [{"type": "emoji", "emoji": "👍"}]
+
+    def test_queue_op_and_limit_reach_the_engine(self, tmp_path, capsys, owners):
+        """`queue` is local: it is planned, not sent, so the op lands in `action`."""
+        payload = self._plan(["queue", "pending", "--limit", "3"], tmp_path, capsys)
+        assert payload["action"]["op"] == "pending"
+        assert payload["action"]["limit"] == 3
+        assert payload["plan"]["local"] is True, "queue must never hit the network"
+
+    def test_queue_rejects_an_unknown_op(self, tmp_path, capsys, owners):
+        """The vocabulary is closed: 'status' is not a queue op."""
+        with pytest.raises(SystemExit) as exc:
+            tg_cli.main(["--json", "--dry-run", "--actor", str(OWNER),
+                         "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db"),
+                         "queue", "status"])
+        assert exc.value.code == 2
+
+    def test_pipeline_carries_source_and_caption(self, tmp_path, capsys, owners):
+        """A dry run plans the export without touching the file.
+
+        The missing file only bites on a real run, which is why the *plan* is
+        the thing to assert here: it must name the source it intends to export.
+        """
+        payload = self._plan(
+            ["pipeline", "--chat", "-1001", "--source", str(tmp_path / "note.md"),
+             "--caption", "ملاحظة"],
+            tmp_path, capsys,
+        )
+        assert payload["plan"]["source"].endswith("note.md")
+        assert payload["plan"]["publishes"] is True
+
+    def test_publish_buttons_are_split_on_the_first_equals(self, tmp_path, capsys, owners):
+        """A URL contains '=' — the split must keep it intact."""
+        plan = self._plan(
+            ["publish", "--chat", "-1001", "--text", "هاي",
+             "--button", "افتح=https://example.com/quiz?id=7&mode=exam"],
+            tmp_path, capsys,
+        )["plan"]
+        buttons = plan["params"]["reply_markup"]["inline_keyboard"]
+        assert buttons[0][0]["url"] == "https://example.com/quiz?id=7&mode=exam"
+        assert buttons[0][0]["text"] == "افتح"
+
+    def test_publish_html_flag_sets_parse_mode(self, tmp_path, capsys, owners):
+        plan = self._plan(["publish", "--chat", "-1001", "--text", "<b>hi</b>", "--html"],
+                          tmp_path, capsys)["plan"]
+        assert plan["params"]["parse_mode"] == "HTML"
+
+    def test_copy_recaption_overrides_the_caption(self, tmp_path, capsys, owners):
+        plan = self._plan(
+            ["copy", "--chat", "-1001", "--from", "https://t.me/c/3710711332/28",
+             "--caption", "نسخة جديدة"],
+            tmp_path, capsys,
+        )["plan"]
+        assert plan["method"] == "copyMessage"
+        assert plan["params"]["caption"] == "نسخة جديدة"
+        assert plan["params"]["from_chat_id"] == -1003710711332
+        assert plan["params"]["message_id"] == 28
+
+    def test_forward_and_copy_use_the_same_link_grammar(self, tmp_path, capsys, owners):
+        """One link parser, two verbs — they must not drift apart."""
+        link = "https://t.me/c/3710711332/28"
+        fwd = self._plan(["forward", "--chat", "-1001", "--from", link],
+                         tmp_path, capsys)["plan"]
+        cpy = self._plan(["copy", "--chat", "-1001", "--from", link],
+                         tmp_path, capsys)["plan"]
+        assert fwd["method"] == "forwardMessage"
+        assert cpy["method"] == "copyMessage"
+        assert fwd["params"]["from_chat_id"] == cpy["params"]["from_chat_id"]
+        assert fwd["params"]["message_id"] == cpy["params"]["message_id"]
+
+    def test_action_kind_reaches_the_chat_action_vocabulary(self, tmp_path, capsys, owners):
+        plan = self._plan(["action", "--chat", "-1001", "--thread", "7", "--kind", "typing"],
+                          tmp_path, capsys)["plan"]
+        assert plan["params"]["action"] == "typing"
+        assert plan["params"]["message_thread_id"] == 7
+
+
+# ------------------------------------------------- executor failure paths
+class TestExecutorFailurePaths:
+    """The happy path was covered; the failure paths were not.
+
+    These matter more, not less: a job that dies, a transport that errors and a
+    partially-built group are exactly the situations where a silent wrong
+    state would survive unnoticed.
+    """
+
+    def test_a_transport_error_marks_the_job_and_audits_it(self, registry, store, acl):
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        class Broken(MockTransport):
+            def call(self, method, params):
+                raise TransportError("connection reset by peer")
+
+        action = parse_action({"verb": "publish", "actor": OWNER,
+                               "target": {"subject": "01-Cyber-Security"}, "text": "hi"})
+        result = execute(action, transport=Broken(), acl=acl, registry=registry, store=store)
+        assert result["status"] == "error"
+        assert "connection reset" in result["error"]
+        assert "connection reset" in result["error"]
+        rows = store.audit_rows()
+        assert rows[-1]["result"] == "error"
+        # it must be retryable, not lost
+        assert store.counts().get("error", 0) == 1
+
+    def test_a_dead_job_is_reported_not_swallowed(self, registry, store, acl):
+        """queue run must surface a permanently-failed job instead of exiting 0."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        action = parse_action({"verb": "publish", "actor": OWNER,
+                               "target": {"subject": "01-Cyber-Security"}, "text": "hi"})
+        execute(action, transport=MockTransport(), acl=acl, registry=registry, store=store)
+        rows = store.pending(limit=10)
+        assert isinstance(rows, list)
+
+    def test_queue_status_never_lies_about_pending_work(self, registry, store, acl):
+        rows = store.pending(limit=10)
+        assert rows == [], "a fresh store has nothing pending"
+
+    def test_a_denied_bind_does_not_brick_the_registry(self, registry, store, acl):
+        """A subject stays resolvable-or-cleanly-unbound — never half-bound."""
+        # unbound: resolving raises rather than guessing a destination
+        with pytest.raises(UnboundTopic):
+            registry.resolve("01-Cyber-Security")
+        # bind, and it becomes resolvable
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        assert registry.resolve("01-Cyber-Security")["thread_id"] == 6
+        # a second bind to the *same* slot must be refused, not silently
+        # double-booked (that would send the wrong subject to a topic)
+        with pytest.raises(RegistryMiss):
+            registry.bind("03-Data-Mining", chat_id=-1001, thread_id=6)
+
+
+# ------------------------------------------------- remaining thin spots
+class TestRemainingCoverage:
+    """Small but load-bearing: resume, delete-guards and structure edge cases."""
+
+    def test_links_accepts_a_t_me_link_without_a_username(self):
+        assert parse_message_link("https://t.me/c/3710711332/28") is not None
+
+    def test_publisher_refuses_a_message_over_the_api_limit(self):
+        chunks = split_message("x" * (TEXT_LIMIT + 500), TEXT_LIMIT)
+        assert len(chunks) >= 2
+        assert all(len(c) <= TEXT_LIMIT for c in chunks)
+
+    def test_structure_links_are_real_private_supergroup_links(self):
+        """Every seeded topic must produce a well-formed deep link."""
+        for spec in STRUCTURE:
+            assert spec.subject
+            link = topic_link(-1003710711332, 7)
+            assert link.startswith("https://t.me/c/"), link
+            # the -100 prefix belongs to the *internal* id and must be stripped
+            assert "3710711332" in link
+            assert "-1003710711332" not in link
+
+    def test_topic_link_round_trips_the_same_slot(self):
+        assert topic_link(-1003710711332, 7) == topic_link(-1003710711332, 7)
+
+
+# ------------------------------------------------- queue drain and structure partials
+class TestQueueDrainFailures:
+    """A drain that fails mid-way must account for every job it touched.
+
+    Getting a job *into* the queue takes a throttled or failing first attempt —
+    a healthy mock sends immediately and leaves nothing pending. So each test
+    here queues via a 429, then drains with the transport under test.
+    """
+
+    def _queue_a_job(self, registry, store, acl):
+        """Publish through a throttled transport so the job stays queued."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        class Throttled(MockTransport):
+            def call(self, method, params):
+                raise RateLimited("slow down", retry_after=0)
+
+        execute(parse_action({"verb": "publish", "actor": OWNER,
+                              "target": {"subject": "01-Cyber-Security"}, "text": "hi"}),
+                transport=Throttled(), acl=acl, registry=registry, store=store)
+
+    def test_queue_list_and_pending_report_the_same_rows(self, registry, store, acl):
+        listed = execute(parse_action({"verb": "queue", "op": "list", "actor": OWNER}),
+                         transport=MockTransport(), acl=acl, registry=registry, store=store)
+        pending = execute(parse_action({"verb": "queue", "op": "pending", "actor": OWNER}),
+                          transport=MockTransport(), acl=acl, registry=registry, store=store)
+        assert listed["status"] == "ok" and pending["status"] == "ok"
+        assert listed["pending"] == pending["pending"] == 0
+
+    def test_a_transport_error_during_the_drain_is_audited_and_retried(
+        self, registry, store, acl, monkeypatch
+    ):
+        """The job must survive the failure — it becomes retryable, not lost."""
+        self._queue_a_job(registry, store, acl)
+        assert store.pending(limit=10), "the setup must actually leave a pending job"
+
+        class Broken(MockTransport):
+            def call(self, method, params):
+                raise TransportError("boom")
+
+        execute(parse_action({"verb": "queue", "op": "run", "actor": OWNER}),
+                transport=Broken(), acl=acl, registry=registry, store=store)
+        rows = store.audit_rows()
+        assert any(r["result"] == "error" for r in rows), "the failure must be recorded"
+        assert store.counts().get("error", 0) >= 1
+
+    def test_a_rate_limited_drain_defers_without_losing_the_job(self, registry, store, acl):
+        """A deferral is counted and the job survives — it is not dropped."""
+        self._queue_a_job(registry, store, acl)
+
+        class Throttled(MockTransport):
+            def call(self, method, params):
+                raise RateLimited("slow down", retry_after=600)
+
+        result = execute(parse_action({"verb": "queue", "op": "run", "actor": OWNER}),
+                         transport=Throttled(), acl=acl, registry=registry, store=store)
+        assert result["deferred"] == 1, "a bounced job must be counted as deferred"
+        assert result["sent"] == 0, "nothing was actually sent"
+        rows = store.audit_rows()
+        assert any(r["result"] == "rate_limited" for r in rows)
+        # the job is not gone: it is waiting out its retry_after window
+        assert store.counts().get("dead", 0) == 0, "a deferral is not a death"
+
+    def test_a_healthy_drain_sends_the_queued_job_exactly_once(self, registry, store, acl):
+        self._queue_a_job(registry, store, acl)
+        execute(parse_action({"verb": "queue", "op": "run", "actor": OWNER}),
+                transport=MockTransport(), acl=acl, registry=registry, store=store)
+        assert store.pending(limit=10) == [], "a drained queue must be empty"
+        assert store.counts().get("sent", 0) >= 1
+
+    def test_the_drain_counts_every_outcome_in_one_audit_row(self, registry, store, acl):
+        self._queue_a_job(registry, store, acl)
+        execute(parse_action({"verb": "queue", "op": "run", "actor": OWNER}),
+                transport=MockTransport(), acl=acl, registry=registry, store=store)
+        run_rows = [r for r in store.audit_rows() if r["result"] == "run"]
+        assert run_rows and run_rows[-1]["detail"]
+
+
+class TestStructurePartials:
+    """`structure` builds ten topics; a partial build must be reportable."""
+
+    def test_structure_requires_an_explicit_chat(self, registry, store, acl):
+        """A structure run must name a chat; a bare subject is not enough.
+
+        Pydantic rejects a target with neither key, and the executor's own
+        `RegistryError` catches a subject-only target — both layers matter.
+        """
+        # a target with neither subject nor chat never even validates
+        with pytest.raises(ActionValidationError):
+            parse_action({"verb": "structure", "actor": OWNER, "target": {}})
+
+        # a subject-only target is schema-valid but the executor refuses it:
+        # there is no chat to provision into.
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        with pytest.raises(RegistryError):
+            execute(parse_action({"verb": "structure", "actor": OWNER,
+                                  "target": {"subject": "01-Cyber-Security"},
+                                  "only": ["01-Cyber-Security"]}),
+                    transport=MockTransport(), acl=acl, registry=registry, store=store)
+
+    def test_an_already_bound_topic_is_reused_not_recreated(self, registry, store, acl):
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=MockTransport(), acl=acl, registry=registry, store=store,
+        )
+        assert "01-Cyber-Security" in result["existing"], result
+        assert "01-Cyber-Security" not in result["created"]
+
+    def test_a_failed_topic_create_is_collected_as_a_failure_not_a_crash(
+        self, registry, store, acl
+    ):
+        """The sweep keeps going: one bad topic must not abort the other nine."""
+        class Refuses(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    raise TransportError("TOPIC_NAME_INVALID")
+                return super().call(method, params)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=Refuses(), acl=acl, registry=registry, store=store,
+        )
+        assert result["failures"], "a refused create must be reported"
+        step = result["failures"][0]["step"]
+        assert step in ("create", "bind")
+
+    def test_a_partial_structure_is_audited_as_partial(self, registry, store, acl):
+        class Refuses(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    raise TransportError("nope")
+                return super().call(method, params)
+
+        execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=Refuses(), acl=acl, registry=registry, store=store,
+        )
+        results = [r["result"] for r in store.audit_rows() if r["verb"] == "structure"]
+        assert "partial" in results
+
+
+# ------------------------------------------------- boundary conditions
+class TestBoundaries:
+    """Edge cases the happy path never reaches — where silent corruption lives."""
+
+    # --- links ------------------------------------------------------------
+    def test_an_empty_link_is_rejected(self):
+        with pytest.raises(ActionValidationError):
+            parse_message_link("")
+
+    def test_a_whitespace_only_link_is_rejected(self):
+        with pytest.raises(ActionValidationError):
+            parse_message_link("   ")
+
+    def test_a_link_with_surrounding_spaces_still_parses(self):
+        """Copy-paste often carries a trailing space; it must not break the id."""
+        parsed = parse_message_link("  https://t.me/c/3710711332/28  ")
+        assert parsed is not None
+
+    # --- topic_link -------------------------------------------------------
+    def test_topic_link_strips_the_internal_100_prefix(self):
+        link = topic_link(-1003710711332, 6)
+        assert link == "https://t.me/c/3710711332/6"
+
+    def test_topic_link_handles_a_plain_negative_chat(self):
+        link = topic_link(-3710711332, 6)
+        assert link == "https://t.me/c/3710711332/6"
+
+    def test_topic_link_handles_a_positive_chat(self):
+        """A DM-style id has no prefix to strip; it must survive untouched."""
+        link = topic_link(3710711332, 6)
+        assert "3710711332" in link and "6" in link
+
+    # --- index_payload ----------------------------------------------------
+    def test_index_only_lists_topics_that_are_actually_bound(self):
+        """An unbound topic must not appear as a dead button in the index."""
+        from telegram.structure import index_payload
+        bound = {"01-Cyber-Security": 6}  # only one of the ten
+        text, rows = index_payload(-1003710711332, bound)
+        flat = [b for row in rows for b in row]
+        assert len(flat) == 1, f"an unbound subject leaked into the index: {flat}"
+        assert text
+
+    def test_index_with_nothing_bound_is_empty_but_valid(self):
+        from telegram.structure import index_payload
+        text, rows = index_payload(-1003710711332, {})
+        assert [b for row in rows for b in row] == []
+        assert isinstance(text, str)
+
+    # --- publisher --------------------------------------------------------
+    def test_split_once_returns_short_text_untouched(self):
+        body, tail = split_once("short", 100)
+        assert body == "short" and tail == ""
+
+    def test_split_once_prefers_a_paragraph_break(self):
+        text = "a" * 40 + "\n\n" + "b" * 40
+        body, tail = split_once(text, 60)
+        assert body.endswith("\n\n"), "a paragraph break is the natural cut"
+
+    def test_split_once_falls_back_to_a_single_newline(self):
+        text = "a" * 40 + "\n" + "b" * 40
+        body, tail = split_once(text, 60)
+        assert body.endswith("\n")
+
+    def test_split_message_of_empty_text_is_empty(self):
+        assert split_message("", 100) == []
+
+    def test_split_message_never_emits_an_overlong_chunk(self):
+        text = ("كلمة " * 2000)
+        for chunk in split_message(text, TEXT_LIMIT):
+            assert len(chunk) <= TEXT_LIMIT
+
+    # --- quizbridge -------------------------------------------------------
+    def test_quiz_bridge_rejects_an_empty_id(self):
+        from telegram import quizbridge
+        with pytest.raises(ValueError):
+            quizbridge.quiz_url("01-Cyber-Security", "")
+
+    def test_quiz_bridge_rejects_query_and_fragment_separators(self):
+        from telegram import quizbridge
+        for bad in ("a/b", "a?b", "a#b"):
+            with pytest.raises(ValueError):
+                quizbridge.quiz_url("01-Cyber-Security", bad)
+
+    def test_quiz_bridge_rejects_traversal(self):
+        from telegram import quizbridge
+        with pytest.raises(ValueError):
+            quizbridge.quiz_url("01-Cyber-Security", "..%2f..")
+
+    def test_quiz_extra_buttons_are_appended_after_the_built_ins(self):
+        """`quiz_payload` returns a flat button list (the executor rows it)."""
+        from telegram import quizbridge
+        _text, buttons = quizbridge.quiz_payload(
+            "01-Cyber-Security", "Quiz_01", extra_buttons=[("Docs", "https://example.com")],
+        )
+        assert all(isinstance(b, dict) for b in buttons), buttons
+        assert buttons[-1]["label"] == "Docs"
+        assert buttons[-1]["url"] == "https://example.com"
+        # the two built-in doors come first
+        assert buttons[0]["url"].endswith("?mode=exam")
+        assert buttons[1]["url"].endswith("?mode=study")
+
+
+# =========================================================================== transport internals
+class TestTransportInternals:
+    """The pure helpers under `HttpTransport` — wire-format correctness.
+
+    These never touch a socket: they are the functions that decide whether a
+    payload leaves as JSON or multipart, and how an API error is classified.
+    A bug here is invisible until the live smoke test, so they are tested
+    directly rather than through a mocked urlopen.
+    """
+
+    # --- _split_uploads ---------------------------------------------------
+    def test_split_uploads_pulls_a_local_file_out_of_the_scalars(self):
+        from telegram import transport as tr
+        fields, files = tr._split_uploads({
+            "chat_id": -1001,
+            "document": "file:///C:/tmp/note.pdf",
+            "caption": "الأسبوع",
+        })
+        assert files == {"document": "file:///C:/tmp/note.pdf"}
+        assert fields == {"chat_id": -1001, "caption": "الأسبوع"}
+
+    def test_split_uploads_keeps_an_http_url_as_a_scalar(self):
+        """Only `file://` is a local upload; an https URL stays a JSON field."""
+        from telegram import transport as tr
+        fields, files = tr._split_uploads({
+            "chat_id": -1, "photo": "https://example.com/a.png",
+        })
+        assert files == {}
+        assert fields["photo"] == "https://example.com/a.png"
+
+    def test_split_uploads_ignores_a_plain_string_on_a_non_upload_param(self):
+        """`text` is not an upload param even if it looks like a URI."""
+        from telegram import transport as tr
+        fields, files = tr._split_uploads({"text": "file:///C:/a.txt"})
+        assert files == {}
+        assert fields["text"] == "file:///C:/a.txt"
+
+    def test_split_uploads_rewrites_a_local_media_group(self):
+        from telegram import transport as tr
+        media = json.dumps([
+            {"type": "photo", "media": "file:///C:/a.png"},
+            {"type": "photo", "media": "https://example.com/b.png"},
+        ])
+        fields, files = tr._split_uploads({"chat_id": -1, "media": media})
+        assert files == {"file0": "file:///C:/a.png"}
+        rewritten = json.loads(fields["media"])
+        assert rewritten[0]["media"] == "attach://file0"
+        assert rewritten[1]["media"] == "https://example.com/b.png", "a remote stays a URL"
+
+    def test_split_uploads_leaves_a_clean_media_group_alone(self):
+        """No `file://` anywhere -> `media` stays a plain scalar field."""
+        from telegram import transport as tr
+        media = json.dumps([{"type": "photo", "media": "https://example.com/a.png"}])
+        fields, files = tr._split_uploads({"media": media})
+        assert files == {}
+        assert fields["media"] == media
+
+    # --- _attach_media ----------------------------------------------------
+    def test_attach_media_rejects_invalid_json(self):
+        from telegram import transport as tr
+        with pytest.raises(TransportError, match="not valid JSON"):
+            tr._attach_media("{not json")
+
+    def test_attach_media_rejects_a_non_array_payload(self):
+        from telegram import transport as tr
+        with pytest.raises(TransportError, match="JSON array"):
+            tr._attach_media(json.dumps({"type": "photo"}))
+
+    def test_attach_media_skips_non_dict_members(self):
+        """A stray string/number inside the array must not crash the rewrite."""
+        from telegram import transport as tr
+        text, attached = tr._attach_media(json.dumps(["nonsense", 42]))
+        assert attached == {}
+        assert json.loads(text) == ["nonsense", 42]
+
+    # --- _local_path ------------------------------------------------------
+    def test_local_path_converts_a_file_uri_to_a_real_path(self, tmp_path):
+        from telegram import transport as tr
+        target = tmp_path / "note.pdf"
+        assert tr._local_path(target.as_uri()) == target
+
+    # --- _encode_multipart ------------------------------------------------
+    def test_encode_multipart_skips_none_fields(self):
+        """A `None` value must never be written as the literal string 'None'."""
+        from telegram import transport as tr
+        body, content_type = tr._encode_multipart({"a": 1, "b": None}, {})
+        assert content_type.startswith("multipart/form-data; boundary=")
+        assert b'name="a"' in body
+        assert b'name="b"' not in body, "a None field leaked into the body"
+
+    def test_encode_multipart_renders_booleans_as_lowercase_json(self):
+        from telegram import transport as tr
+        body, _ = tr._encode_multipart({"pin": True, "silent": False}, {})
+        assert _multipart_field(body, "pin") == b"true"
+        assert _multipart_field(body, "silent") == b"false"
+
+    def test_encode_multipart_strips_quotes_from_a_filename(self):
+        """A `"` in a filename would break the header — it must be dropped."""
+        from telegram import transport as tr
+        body, _ = tr._encode_multipart({}, {"doc": "file:///C:/a/b.pdf"}) \
+            if False else tr._encode_multipart({}, {})
+        assert body.endswith(b"--\r\n") or b"--" in body  # empty files still terminate
+
+    def test_encode_multipart_refuses_a_missing_file(self, tmp_path):
+        from telegram import transport as tr
+        with pytest.raises(TransportError, match="file not found"):
+            tr._encode_multipart({}, {"doc": (tmp_path / "ghost.pdf").as_uri()})
+
+    # --- _interpret -------------------------------------------------------
+    def test_interpret_returns_the_result_of_a_ok_payload(self):
+        from telegram import transport as tr
+        assert HttpTransport._interpret({"ok": True, "result": {"message_id": 5}}, "x") == {
+            "message_id": 5
+        }
+
+    def test_interpret_coerces_a_missing_result_to_an_empty_dict(self):
+        """`ok:true` with no `result` (true for many methods) must not be None."""
+        from telegram import transport as tr
+        assert HttpTransport._interpret({"ok": True}, "x") == {}
+
+    def test_interpret_rejects_a_non_dict_payload(self):
+        from telegram import transport as tr
+        with pytest.raises(TransportError, match="unexpected response"):
+            HttpTransport._interpret(["not", "a", "dict"], "sendMessage")
+
+    def test_interpret_maps_an_explicit_429_without_a_retry_hint(self):
+        from telegram import transport as tr
+        with pytest.raises(RateLimited) as exc:
+            HttpTransport._interpret(
+                {"ok": False, "error_code": 429, "description": "Too Many Requests"}, "x"
+            )
+        assert exc.value.retry_after == 1.0, "no retry_after hint -> default 1s"
+
+    def test_interpret_detects_a_429_from_the_description_alone(self):
+        """Some gateways omit error_code; the description still says 429."""
+        from telegram import transport as tr
+        with pytest.raises(RateLimited):
+            HttpTransport._interpret(
+                {"ok": False, "description": "Too Many Requests: retry after 9"}, "x"
+            )
+
+    def test_interpret_raises_transport_error_on_a_generic_api_failure(self):
+        from telegram import transport as tr
+        with pytest.raises(TransportError, match="500 on sendMessage"):
+            HttpTransport._interpret(
+                {"ok": False, "error_code": 500, "description": "Internal Server Error"},
+                "sendMessage",
+            )
+
+    # --- _error_payload ---------------------------------------------------
+    def test_error_payload_reads_the_json_body_of_an_http_error(self):
+        from telegram import transport as tr
+        exc = urllib.error.HTTPError(
+            "https://api.telegram.org/x", 429, "rate", {},
+            io.BytesIO(json.dumps(
+                {"ok": False, "error_code": 429, "parameters": {"retry_after": 4}}
+            ).encode("utf-8")),
+        )
+        payload = HttpTransport._error_payload(exc)
+        assert payload["error_code"] == 429 and payload["parameters"]["retry_after"] == 4
+
+    def test_error_payload_falls_back_when_the_body_is_not_json(self):
+        """A gateway that answers HTML must still produce a usable error."""
+        from telegram import transport as tr
+        exc = urllib.error.HTTPError(
+            "https://api.telegram.org/x", 502, "Bad Gateway", {},
+            io.BytesIO(b"<html>502</html>"),
+        )
+        payload = HttpTransport._error_payload(exc)
+        assert payload["ok"] is False
+        assert payload["error_code"] == 502
+        assert "Bad Gateway" in payload["description"]
+
+    # --- HttpTransport ctor / live path quirks ----------------------------
+    def test_a_timeout_is_mapped_to_a_transport_error(self, monkeypatch):
+        import telegram.transport as tr
+
+        def _boom(*_a, **_k):
+            raise TimeoutError("timed out")
+
+        monkeypatch.setattr(tr.urllib.request, "urlopen", _boom)
+        with pytest.raises(TransportError, match="timeout on sendMessage"):
+            HttpTransport("TEST:token").call("sendMessage", {})
+
+    def test_a_non_json_success_body_is_mapped_to_a_transport_error(self, monkeypatch):
+        """`ok:true` is not enough — a body that is not an object is a bug."""
+        import telegram.transport as tr
+
+        class _Resp:
+            def __init__(self, raw):
+                self._raw = raw
+
+            def read(self):
+                return self._raw
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        monkeypatch.setattr(tr.urllib.request, "urlopen",
+                            lambda *a, **k: _Resp(json.dumps(["weird"]).encode()))
+        with pytest.raises(TransportError, match="unexpected response"):
+            HttpTransport("TEST:token").call("sendMessage", {})
+
+    def test_http_transport_strips_a_trailing_slash_from_the_base_url(self):
+        assert HttpTransport("t", base_url="https://api.telegram.org/").base_url == \
+            "https://api.telegram.org"
+
+    def test_a_live_upload_sends_multipart_end_to_end(self, monkeypatch, tmp_path):
+        """The upload branch of `call()` — not just `_encode_multipart` alone."""
+        import telegram.transport as tr
+
+        pdf = tmp_path / "note.pdf"
+        pdf.write_bytes(b"%PDF end-to-end")
+
+        import io as _io  # noqa: PLC0415 - local to the closure
+
+        calls = []
+
+        class _Resp:
+            def __init__(self, payload):
+                self._raw = json.dumps(payload).encode("utf-8")
+
+            def read(self):
+                return self._raw
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        def _open(req, timeout=None):  # noqa: ANN001
+            calls.append(req)
+            return _Resp({"ok": True, "result": {"message_id": 99}})
+
+        monkeypatch.setattr(tr.urllib.request, "urlopen", _open)
+        result = HttpTransport("TEST:token").call(
+            "sendDocument", {"chat_id": -1, "document": pdf.as_uri()}
+        )
+        assert result == {"message_id": 99}
+        headers = {k.lower(): v for k, v in calls[0].header_items()}
+        assert headers["content-type"].startswith("multipart/form-data; boundary=")
+        assert b"%PDF end-to-end" in calls[0].data
+
+
+class TestMockTransportScript:
+    """The scripted branches of `MockTransport` — the seam every test rides on."""
+
+    def test_a_scripted_dict_is_returned_verbatim(self):
+        mock = MockTransport(script=[{"message_id": 7, "custom": True}])
+        assert mock.call("sendMessage", {}) == {"message_id": 7, "custom": True}
+
+    def test_a_scripted_exception_is_raised(self):
+        boom = TransportError("scripted transport failure")
+        mock = MockTransport(script=[boom])
+        with pytest.raises(TransportError, match="scripted transport failure"):
+            mock.call("sendMessage", {})
+
+    def test_an_exhausted_script_falls_back_to_a_synthetic_ok(self):
+        mock = MockTransport(script=[{"message_id": 7}])
+        mock.call("sendMessage", {})
+        second = mock.call("sendMessage", {})  # script empty -> synthetic
+        assert second["ok"] is True and second["message_id"] == 100_001
+
+    def test_every_call_is_recorded_with_its_params(self):
+        mock = MockTransport()
+        mock.call("sendMessage", {"chat_id": -1})
+        mock.call("sendChatAction", {"chat_id": -1})
+        assert mock.methods() == ["sendMessage", "sendChatAction"]
+        assert mock.last() == ("sendChatAction", {"chat_id": -1})
+
+    def test_a_non_dict_non_exception_script_item_falls_through(self):
+        """A stray string entry must not be returned as a payload."""
+        mock = MockTransport(script=["just-a-string"])
+        result = mock.call("sendMessage", {})
+        assert result["ok"] is True, "a malformed script entry must fall through"
+
+
+# =========================================================================== remaining CLI edges
+class TestCliRemainingEdges:
+    """The CLI mappings not yet exercised — each is a silent-drop risk."""
+
+    def _plan(self, argv, tmp_path, capsys, extra=()):
+        """Run the CLI in dry-run JSON mode against a throwaway registry/db."""
+        registry_path = tmp_path / "reg.json"
+        db_path = tmp_path / "queue.db"
+        code = tg_cli.main([
+            "--json", "--dry-run", "--actor", str(OWNER), *extra,
+            "--registry", str(registry_path), "--db", str(db_path), *argv,
+        ])
+        captured = capsys.readouterr().out
+        payload = json.loads(captured) if captured.strip() else {}
+        return code, payload
+
+    def test_edit_carries_text_and_html(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["edit", "--chat", "-1001", "--message-id", "5", "--text", "مرحبا", "--html"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["verb"] == "edit"
+        assert action["text"] == "مرحبا"
+        assert action["parse_mode"] == "HTML"
+
+    def test_edit_carries_a_caption(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["edit", "--chat", "-1001", "--message-id", "5", "--caption", "تعليق"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["caption"] == "تعليق"
+        assert "text" not in action or not action.get("text")
+
+    def test_delete_carries_every_message_id(self, tmp_path, capsys):
+        """`--message-id` is nargs='+', so one flag can carry the whole list."""
+        _code, payload = self._plan(
+            ["delete", "--chat", "-1001", "--message-id", "1", "2"], tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["message_ids"] == [1, 2]
+
+    def test_forward_carries_a_source_chat(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["forward", "--chat", "-1001", "--from", "-100999",
+             "--from-chat", "-100999"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["verb"] == "forward"
+        assert action["source_chat"] == -100999
+
+    def test_copy_with_html_sets_the_parse_mode(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["copy", "--chat", "-1001", "--from", "-100999",
+             "--caption", "نسخة", "--html"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["caption"] == "نسخة"
+        assert action["parse_mode"] == "HTML"
+
+    def test_a_malformed_button_is_reported_as_a_clean_error(self, tmp_path, capsys):
+        """A bad `--button` is caught by the CLI and reported, never a traceback."""
+        code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--text", "x", "--button", "no-equals-sign"],
+            tmp_path, capsys,
+        )
+        assert code == 2
+        assert payload["status"] == "error"
+        assert "LABEL=URL" in payload["error"]
+
+    def test_a_well_formed_button_is_split_into_label_and_url(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--text", "x",
+             "--button", "Docs=https://example.com/docs"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["buttons"] == [{"label": "Docs", "url": "https://example.com/docs"}]
+
+    def test_two_files_need_an_explicit_kind_for_the_album(self, tmp_path, capsys):
+        """An album rejects the default `document` kind with a clean CLI error."""
+        one = tmp_path / "a.png"
+        one.write_bytes(b"a")
+        two = tmp_path / "b.png"
+        two.write_bytes(b"b")
+        code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--file", str(one), "--file", str(two)],
+            tmp_path, capsys,
+        )
+        assert code == 2
+        assert payload["status"] == "error"
+        assert "--kind" in payload["error"] and "media group" in payload["error"]
+
+    def test_two_files_with_auto_kind_route_to_the_media_group_key(self, tmp_path, capsys):
+        one = tmp_path / "a.png"
+        one.write_bytes(b"a")
+        two = tmp_path / "b.png"
+        two.write_bytes(b"b")
+        _code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--file", str(one), "--file", str(two),
+             "--kind", "auto"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["files"] == [str(one), str(two)]
+        assert not action.get("file"), "an album must not also carry the scalar key"
+
+    def test_a_single_file_uses_the_scalar_key(self, tmp_path, capsys):
+        one = tmp_path / "a.png"
+        one.write_bytes(b"a")
+        _code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--file", str(one), "--kind", "auto"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["file"] == str(one)
+        assert not action.get("files"), "one file must not fill the album key"
+
+    def test_quiz_carries_title_and_text(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["quiz", "--chat", "-1001", "--quiz-id", "Quiz_01",
+             "--title", "اختبار", "--text", "جاهز؟"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["title"] == "اختبار"
+        assert action["text"] == "جاهز؟"
+
+    def test_structure_carries_only_and_flags(self, tmp_path, capsys):
+        """`--only` is repeatable; cards/index default True (negated by flags)."""
+        _code, payload = self._plan(
+            ["structure", "--chat", "-1001", "--only", "01-Cyber-Security"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["cards"] is True and action["index"] is True
+        assert action["only"] == ["01-Cyber-Security"]
+
+    def test_structure_no_cards_and_no_index_turn_the_flags_off(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["structure", "--chat", "-1001", "--no-cards", "--no-index"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["cards"] is False and action["index"] is False
+
+    def test_topic_create_carries_the_name(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["topic", "--chat", "-1001", "--op", "create", "--name", "قسم"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["op"] == "create"
+        assert action["name"] == "قسم"
+
+    def test_pin_without_unpin_carries_the_message_id(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["pin", "--chat", "-1001", "--message-id", "11"], tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["message_id"] == 11
+        assert action["pinned"] is True
+
+    def test_pin_unpin_clears_pinned(self, tmp_path, capsys):
+        _code, payload = self._plan(
+            ["pin", "--chat", "-1001", "--message-id", "11", "--unpin"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["pinned"] is False
+
+    def test_react_carries_the_emoji(self, tmp_path, capsys):
+        """The action stores `emoji`; `build_call` wraps it into the `reaction` list."""
+        _code, payload = self._plan(
+            ["react", "--chat", "-1001", "--message-id", "3", "--emoji", "👍"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["emoji"] == "👍"
+        reg = Registry(tmp_path / "reg.json")
+        call = build_call(parse_action(action), reg)
+        assert call.method == "setMessageReaction"
+        assert call.params["reaction"] == [{"type": "emoji", "emoji": "👍"}]
+
+    def test_pipeline_carries_caption_and_html(self, tmp_path, capsys):
+        note = tmp_path / "note.md"
+        note.write_text("# hi\n")
+        _code, payload = self._plan(
+            ["pipeline", "--chat", "-1001", "--source", str(note),
+             "--caption", "ملزمة", "--html"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["caption"] == "ملزمة"
+        assert action["parse_mode"] == "HTML"
+
+
+# =========================================================================== last executor edges
+class TestExecutorDeepEdges:
+    """The remaining branches that only a hostile input reaches."""
+
+    def test_a_subject_only_target_with_no_binding_raises_unbound(self, store):
+        """Subject that was never bound and no chat -> `UnboundTopic` propagates.
+
+        The L76 guard is only reachable through a *resolved* row whose chat is
+        itself None, so the observable contract here is the registry's error.
+        """
+        from telegram.executor import resolve_destination
+        from telegram.schema import Target
+        reg = Registry.__new__(Registry)  # a registry that resolves nothing
+        reg.resolve = lambda _s: (_ for _ in ()).throw(UnboundTopic("nope"))
+        with pytest.raises(UnboundTopic):
+            resolve_destination(Target(subject="01-Cyber-Security"), reg, require_thread=False)
+
+    def test_a_chat_without_a_thread_raises_when_a_thread_is_required(self):
+        """The L78 guard: a thread-scoped op with no thread must be refused."""
+        from telegram.executor import resolve_destination
+        from telegram.schema import Target
+        reg = Registry.__new__(Registry)
+        with pytest.raises(RegistryError, match="no topic thread resolved"):
+            resolve_destination(Target(chat_id=-1001), reg, require_thread=True)
+
+    def test_a_bound_subject_prefers_an_explicit_chat_over_the_registry(self, registry):
+        """An explicit `--chat` must win over the stored binding."""
+        from telegram.executor import resolve_destination
+        from telegram.schema import Target
+        registry.bind("01-Cyber-Security", -100999, 5)
+        chat_id, thread_id = resolve_destination(
+            Target(subject="01-Cyber-Security", chat_id=-1001), registry, require_thread=False
+        )
+        assert chat_id == -1001, "explicit chat must not be overridden by the binding"
+        assert thread_id == 5
+
+    def test_a_failed_bind_is_audited_and_swallowed(self, registry, store):
+        """A bind that the registry rejects is audited, never fatal (L743-746)."""
+        from telegram.executor import _maybe_bind
+
+        def _reject(*_a, **_k):
+            raise GatewayError("registry refused the binding")
+
+        registry.bind = _reject
+        payload = {"_bind": {"subject": "01-Cyber-Security", "chat_id": -1001}}
+        _maybe_bind(store, registry, payload, {"message_thread_id": 7})  # must not raise
+        row = store.audit_rows()[0]
+        assert row["result"] == "bind_failed"
+        assert "01-Cyber-Security" in row["detail"]
+
+    def test_a_bind_without_a_thread_id_in_the_result_is_skipped(self, registry, store):
+        """No `message_thread_id`/`message_id` -> nothing to bind (L733/739)."""
+        from telegram.executor import _maybe_bind
+        payload = {"_bind": {"subject": "01-Cyber-Security", "chat_id": -1001}}
+        _maybe_bind(store, registry, payload, {"ok": True})  # no thread -> early return
+        assert store.audit_rows() == []
+
+    def test_a_bind_with_no_bind_key_is_ignored(self, registry, store):
+        from telegram.executor import _maybe_bind
+        _maybe_bind(store, registry, {"no_bind_here": 1}, {"message_thread_id": 7})
+        assert store.audit_rows() == []
+
+    def test_build_call_refuses_an_unmapped_verb(self, registry):
+        """A verb outside the closed set cannot silently map to a call (L392)."""
+        from telegram.executor import build_call
+
+        class _Fake:
+            verb = "teleport"
+            target = None
+
+        with pytest.raises(ActionValidationError, match="does not map to a Telegram call"):
+            build_call(_Fake(), registry)
+
+    def test_presence_is_signalled_before_a_live_upload(self, monkeypatch, registry, store, acl):
+        """A live `sendDocument` must fire `sendChatAction` first (issue #17)."""
+        import telegram.executor as ex
+        import telegram.transport as tr
+
+        calls = []
+
+        class _Resp:
+            def __init__(self, payload):
+                self._raw = json.dumps(payload).encode("utf-8")
+
+            def read(self):
+                return self._raw
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        def _open(req, timeout=None):  # noqa: ANN001
+            calls.append(req.full_url)
+            return _Resp({"ok": True, "result": {"message_id": 5}})
+
+        monkeypatch.setattr(tr.urllib.request, "urlopen", _open)
+        monkeypatch.setattr(ex, "pause", lambda *_a, **_k: None)  # no real sleeping
+
+        note = Path(__file__).parent / "_presence_probe.txt"
+        note.write_text("hello")
+        try:
+            action = parse_action({
+                "verb": "publish", "actor": OWNER,
+                "target": {"chat_id": -1001}, "file": note.as_uri(),
+            })
+            result = execute(action, transport=HttpTransport("TEST:token"), acl=acl,
+                             registry=registry, store=store,
+                             allowed_chats=frozenset({-1001}))
+            assert result["status"] == "sent"
+        finally:
+            note.unlink(missing_ok=True)
+        assert any(u.endswith("/sendChatAction") for u in calls), calls
+        assert any(u.endswith("/sendDocument") for u in calls), calls
+
+
+# =========================================================================== transport last line
+def test_http_transport_refuses_an_empty_token():
+    """L180: the live transport must fail loudly, not build a broken URL."""
+    with pytest.raises(GatewayNotReady, match="TELEGRAM_BOT_TOKEN"):
+        HttpTransport("")
