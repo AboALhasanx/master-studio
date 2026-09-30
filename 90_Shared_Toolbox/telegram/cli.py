@@ -437,8 +437,11 @@ def _run_human(args: argparse.Namespace) -> int:
     executor is safe for any direct caller). Authorization is pure, so the
     second pass costs nothing.
     """
-    from .human import HumanRequest, PACING_STATE, TelethonGateway, run
+    from .errors import AccessDenied, RateLimited, TransportError
+    from .human import (HumanRequest, PACING_STATE, SEND_VERBS,
+                        TelethonGateway, run)
 
+    store = Store(args.db)
     req = HumanRequest(
         verb=args.verb,
         chat_id=getattr(args, "chat_id", None),
@@ -454,6 +457,22 @@ def _run_human(args: argparse.Namespace) -> int:
         allowed_chats=chat_allowlist_from_env(),
     )
 
+    def _row(result: str, detail: str | None = None) -> None:
+        """Record the attempt. Deliberately unwrapped, like every audit call
+        in ``executor.py``: a ledger that fails must surface loudly, not let
+        work pass unmonitored — that would defeat AC 2's monitoring leg."""
+        store.audit(f"human:{req.verb}", result,
+                    chat_id=req.chat_id, detail=detail)
+
+    def _failure(exc: Exception) -> str:
+        if isinstance(exc, AccessDenied):
+            return "denied"
+        if isinstance(exc, RateLimited):          # before TransportError: subclass
+            return "rate_limited"
+        if isinstance(exc, TransportError):
+            return "error"
+        return "refused"
+
     try:
         authorize_human(req, **gate)
         gateway = TelethonGateway.from_env()
@@ -461,16 +480,37 @@ def _run_human(args: argparse.Namespace) -> int:
         # ceiling would reset on every invocation and block nothing
         result = run(req, gateway, persist=PACING_STATE, **gate)
     except GatewayError as exc:
-        _emit({"status": "error", "code": exc.code, "verb": args.verb,
+        _row(_failure(exc), str(exc))
+        _emit({"status": "error", "code": exc.code, "verb": req.verb,
                "error": str(exc)}, args.as_json)
         return exc.code
     except Exception as exc:  # a raw Telethon RPCError must not become a traceback
-        _emit({"status": "error", "code": 1, "verb": args.verb,
+        _row("error", f"{type(exc).__name__}: {exc}")
+        _emit({"status": "error", "code": 1, "verb": req.verb,
                "error": f"{type(exc).__name__}: {exc}"}, args.as_json)
         return 1
 
+    _row("sent" if req.verb in SEND_VERBS else "ok",
+         _human_detail(req, result))
     _emit({"status": "ok", **result}, args.as_json)
     return 0
+
+
+def _human_detail(req, result: dict) -> str:
+    """What the account actually did — enough to reconstruct a run later.
+
+    ``say`` records the text it spoke (the one thing an audit must never
+    lose); reads record only their size, since message bodies are content
+    rather than an action.
+    """
+    payload = result.get("result")
+    if req.verb == "say" and isinstance(payload, dict):
+        return f"message_id={payload.get('message_id')} text={req.text}"
+    if isinstance(payload, list):
+        return f"count={len(payload)}"
+    if isinstance(payload, dict):
+        return json.dumps(payload, ensure_ascii=False)
+    return str(payload)
 
 
 # ---------------------------------------------------------------------------

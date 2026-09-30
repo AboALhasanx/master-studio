@@ -320,6 +320,19 @@ and any typo all mean **off**, because a kill switch that a typo can enable is n
   retried. `receive_updates=False` keeps the update listener that **D15** forbids from ever
   being installed.
 
+**Monitoring.** Every attempt — allowed or refused — writes one audit row to the gateway's own
+`audit` table, namespaced `human:<verb>` so a person-shaped account's actions can never be
+mistaken for the bot's (`read` / `say` are schema verbs; `human:read` / `human:say` are not).
+The `result` column uses the same vocabulary as the executor's rows: `ok` for identity and read
+verbs, `sent` for a message that Telegram accepted, `denied` for the allowlist, `rate_limited`
+for local pacing, `error` for a transport refusal and `refused` for the kill switch or a missing
+`--live`. `detail` carries the reason, and for `say` the **text actually spoken** plus its
+`message_id` — the one field an audit must never lose, because "did the account say anything,
+and what?" has to be answerable after the fact. The write is deliberately **not** wrapped in a
+`try/except`, exactly like every `store.audit(...)` call in `executor.py`: a ledger that fails
+must surface loudly rather than let work pass unmonitored, which is what would defeat AC 2's
+monitoring leg in the first place.
+
 **Exit codes** follow the shared table in §1: `5` = disabled, missing `--live`, missing
 credentials or no session yet; `3` = chat not allowlisted; `2` = malformed request;
 `7` = local pacing or `FloodWait`.

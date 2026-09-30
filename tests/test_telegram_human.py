@@ -407,10 +407,15 @@ class TestDocumentationLinkage:
 
     def test_ac2_controls_are_documented(self):
         """AC 2 asks for flood control, monitoring and a kill switch to be
-        *documented* as well as tested — all three must be findable."""
+        *documented* as well as tested — all three must be findable. The
+        monitoring assertion used to be missing here while the docstring
+        claimed it was covered, which is exactly the kind of promise that
+        reads as satisfied and is not."""
         text = self._skill_text()
         assert human.ENV_ENABLED in text, "the kill switch is undocumented"
         assert "FloodWait" in text, "flood-control policy is undocumented"
+        assert "**Monitoring.**" in text, "the monitoring policy is undocumented"
+        assert "human:<verb>" in text, "the audit namespace is undocumented"
         assert "*.session" in text, "the session-file rule is undocumented"
 
 
@@ -871,6 +876,110 @@ class TestPacingPersistsAcrossInvocations:
         assert limiter.allow(ALLOWED_CHAT, now=1_001.5) is False
         # ...and once it has, the same ledger lets the next send through
         assert limiter.allow(ALLOWED_CHAT, now=1_002.0) is True
+
+
+# ===========================================================================
+# 11. Monitoring — issue #22 AC 2, third leg
+# ===========================================================================
+class TestHumanMonitoring:
+    """AC 2 asks for flood control, a kill switch **and monitoring**, all
+    documented and tested. Without an audit row a run leaves nothing but its
+    JSON printout, so after the fact nobody can reconstruct what the spare
+    account did — which is exactly the observability gap already found in the
+    interactive layer."""
+
+    @staticmethod
+    def _run(db, monkeypatch, *argv, env=None):
+        import telegram.cli as cli
+
+        FakeTelethonClient.instances.clear()
+        monkeypatch.setattr(human, "TelegramClient", FakeTelethonClient)
+        for key, value in (env or {}).items():
+            monkeypatch.setenv(key, value)
+        return cli.main(["--json", "--live", "--db", str(db), "human", *argv])
+
+    @staticmethod
+    def _rows(db):
+        from telegram.store import Store
+
+        return Store(db).audit_rows()
+
+    def test_a_successful_read_leaves_a_row(self, tmp_path, monkeypatch):
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "read",
+                         "--chat", str(ALLOWED_CHAT), "--limit", "3")
+        assert code == 0
+        rows = self._rows(db)
+        assert rows, "a successful read left no audit row"
+        assert rows[0]["verb"] == "human:read"
+        assert rows[0]["result"] == "ok"
+        assert rows[0]["chat_id"] == ALLOWED_CHAT
+
+    def test_a_successful_send_is_recorded_as_sent(self, tmp_path, monkeypatch):
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(ALLOWED_CHAT), "--text", "hi")
+        assert code == 0
+        rows = self._rows(db)
+        assert rows[0]["verb"] == "human:say"
+        assert rows[0]["result"] == "sent"
+
+    def test_a_send_outside_the_allowlist_is_recorded_as_denied(
+            self, tmp_path, monkeypatch):
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(OTHER_CHAT), "--text", "hi")
+        assert code == 3
+        rows = self._rows(db)
+        assert rows[0]["verb"] == "human:say"
+        assert rows[0]["result"] == "denied"
+        assert rows[0]["chat_id"] == OTHER_CHAT
+        assert "TELEGRAM_CHAT_ALLOWLIST" in (rows[0]["detail"] or "")
+
+    def test_a_killed_switch_is_recorded_not_silently_dropped(
+            self, tmp_path, monkeypatch):
+        """The most important row of all: proof that human mode was asked
+        for and stopped."""
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "whoami",
+                         env={human.ENV_ENABLED: "0"})
+        assert code == 5
+        rows = self._rows(db)
+        assert rows[0]["verb"] == "human:whoami"
+        assert rows[0]["result"] == "refused"
+        assert human.ENV_ENABLED in (rows[0]["detail"] or "")
+
+    def test_local_pacing_is_recorded_as_rate_limited(
+            self, tmp_path, monkeypatch):
+        import time as _time
+
+        db = tmp_path / "gw.db"
+        ledger = tmp_path / "pacing.json"
+        ledger.write_text(json.dumps({str(ALLOWED_CHAT): [_time.time()] * 20}),
+                          encoding="utf-8")
+        monkeypatch.setattr(human, "PACING_STATE", ledger)
+
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(ALLOWED_CHAT), "--text", "hi")
+        assert code == 7
+        rows = self._rows(db)
+        assert rows[0]["result"] == "rate_limited"
+
+    def test_identity_verbs_are_audited_too(self, tmp_path, monkeypatch):
+        db = tmp_path / "gw.db"
+        assert self._run(db, monkeypatch, "--verb", "whoami") == 0
+        assert self._rows(db)[0]["verb"] == "human:whoami"
+
+    def test_the_row_names_the_human_namespace_not_a_bot_verb(
+            self, tmp_path, monkeypatch):
+        """``human:*`` must be its own namespace: these actions are taken by
+        a person-shaped account and must never be mistaken for the bot's."""
+        db = tmp_path / "gw.db"
+        self._run(db, monkeypatch, "--verb", "chats")
+        verb = self._rows(db)[0]["verb"]
+        assert verb.startswith("human:")
+        from telegram.schema import VERBS
+        assert verb.split(":", 1)[1] not in VERBS
 
 
 # ---------------------------------------------------------------------------
