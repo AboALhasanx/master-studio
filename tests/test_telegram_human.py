@@ -890,10 +890,23 @@ class TestHumanMonitoring:
 
     @staticmethod
     def _run(db, monkeypatch, *argv, env=None):
+        """Drive the real CLI with a fake Telethon client.
+
+        Every variable the path reads is set **here**, because CI has no
+        `.env` at all — a test that leans on the developer's own file is green
+        locally and red in the pipeline, which is exactly how these five were
+        caught. Defaults are applied first so a test can still override them
+        (the kill-switch case passes its own `0`).
+        """
         import telegram.cli as cli
 
         FakeTelethonClient.instances.clear()
         monkeypatch.setattr(human, "TelegramClient", FakeTelethonClient)
+        monkeypatch.setenv(human.ENV_ENABLED, "1")
+        monkeypatch.setenv("TELEGRAM_CHAT_ALLOWLIST", str(ALLOWED_CHAT))
+        monkeypatch.setenv(human.ENV_API_ID, "12345")
+        monkeypatch.setenv(human.ENV_API_HASH, "0123456789abcdef")
+        monkeypatch.setenv(human.ENV_SESSION, str(db.parent / "human.session"))
         for key, value in (env or {}).items():
             monkeypatch.setenv(key, value)
         return cli.main(["--json", "--live", "--db", str(db), "human", *argv])
