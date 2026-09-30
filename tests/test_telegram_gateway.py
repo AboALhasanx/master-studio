@@ -3434,6 +3434,281 @@ class TestExecutorDeepEdges:
         assert any(u.endswith("/sendDocument") for u in calls), calls
 
 
+class TestExecutorLingeringBranches:
+    """The last uncovered executor lines: degraded drains, waits and partials.
+
+    Each of these is a branch the happy path never enters — an unbound subject
+    with no explicit chat, a limiter that denies mid-drain, a ``structure``
+    whose sub-action lands in the queue, and a provisioning sweep that fails
+    one leg of the trip. They are the difference between "works" and "works
+    when Telegram, the clock and the operator all misbehave at once".
+    """
+
+    # --- resolve_destination / helpers ------------------------------------
+    def test_a_subject_that_resolves_to_no_chat_raises_l76(self, registry):
+        """Subject resolves (no exception) but its row carries chat=None.
+
+        The only way to reach L76 is a *successful* ``registry.resolve`` that
+        yields a row with no chat — then neither the explicit target nor the
+        row can supply one.
+        """
+        from telegram.executor import resolve_destination
+        from telegram.schema import Target
+
+        registry.resolve = lambda _s: {"chat_id": None, "thread_id": None}
+        with pytest.raises(RegistryError, match="no destination chat resolved"):
+            resolve_destination(Target(subject="01-Cyber-Security"), registry,
+                                require_thread=False)
+
+    def test_an_unbound_subject_with_an_explicit_chat_is_allowed(self, registry):
+        """An UnboundTopic is survivable when the caller supplies the chat."""
+        from telegram.executor import resolve_destination
+        from telegram.schema import Target
+
+        registry.resolve = lambda _s: (_ for _ in ()).throw(UnboundTopic("nope"))
+        chat_id, thread_id = resolve_destination(
+            Target(subject="01-Cyber-Security", chat_id=-1001),
+            registry, require_thread=False,
+        )
+        assert chat_id == -1001 and thread_id is None
+
+    def test_message_id_is_none_for_a_non_message_result(self):
+        """L126: an odd payload (not a dict, not a message list) yields None."""
+        from telegram.executor import _first_message_id
+
+        assert _first_message_id(None) is None
+        assert _first_message_id("sent") is None
+        assert _first_message_id([]) is None               # empty list
+        assert _first_message_id([1, 2, 3]) is None        # list of scalars
+        assert _first_message_id({"message_id": 9}) == 9
+
+    def test_message_id_takes_the_first_member_of_a_media_group(self):
+        from telegram.executor import _first_message_id
+
+        assert _first_message_id([{"message_id": 41}, {"message_id": 42}]) == 41
+
+    def test_presence_is_skipped_when_the_persona_yields_no_signal(self):
+        """L148: a live upload whose text maps to no presence action is silent.
+
+        ``presence_for`` is imported *into* ``executor`` by name, so the patch
+        has to land on ``executor.presence_for`` — patching the persona module
+        would not be seen.
+        """
+        import telegram.executor as ex
+        from telegram.executor import Call
+
+        sent = []
+
+        class Spy:
+            is_live = True
+
+            def call(self, method, params):  # noqa: ANN001, ARG002
+                sent.append(method)
+                return {"message_id": 1}
+
+        with pytest.MonkeyPatch.context() as mp:
+            mp.setattr(ex, "presence_for", lambda *_a, **_k: None)
+            call = Call("sendDocument", {"file": "x"}, -1001, 7)
+            ex._signal_presence(call, Spy())
+        assert sent == [], "no presence action must be posted when there is no signal"
+
+    def test_presence_is_skipped_for_a_non_long_method(self):
+        """A plain ``deleteMessage`` is neither live-worthy nor in the set."""
+        import telegram.executor as ex
+        from telegram.executor import Call
+
+        class Spy:
+            is_live = True
+
+            def call(self, method, params):  # noqa: ANN001, ARG002
+                raise AssertionError("must not be called")
+
+        ex._signal_presence(Call("deleteMessage", {}, -1001, None), Spy())
+
+    # --- drain under a limiter --------------------------------------------
+    def test_a_denied_job_is_skipped_not_sent(self, registry, store, acl):
+        """L684-685: the sliding-window limiter can veto a queued job mid-drain."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        class Throttled(MockTransport):
+            def call(self, method, params):
+                raise RateLimited("slow down", retry_after=0)
+
+        execute(parse_action({"verb": "publish", "actor": OWNER,
+                              "target": {"subject": "01-Cyber-Security"}, "text": "hi"}),
+                transport=Throttled(), acl=acl, registry=registry, store=store)
+        assert store.pending(limit=10), "the setup must leave a queued job"
+
+        class DenyAll(ChatRateLimiter):
+            def allow(self, chat_id, now=None):  # noqa: ANN001, ARG002
+                return False
+
+        result = execute(parse_action({"verb": "queue", "op": "run", "actor": OWNER}),
+                         transport=MockTransport(), acl=acl, registry=registry, store=store,
+                         limiter=DenyAll())
+        assert result["skipped"] == 1, result
+        assert result["sent"] == 0, "a vetoed job must not go out"
+        assert store.pending(limit=10), "and it must still be queued"
+
+    # --- _maybe_bind guard -------------------------------------------------
+    def test_maybe_bind_is_a_no_op_without_a_registry(self, store):
+        """L733: no registry at all -> the bind silently cannot happen."""
+        from telegram.executor import _maybe_bind
+
+        _maybe_bind(store, None, {"_bind": {"subject": "x", "chat_id": -1}},
+                    {"message_thread_id": 7})
+        assert store.audit_rows() == []
+
+    def test_maybe_bind_ignores_a_non_dict_payload(self, store, registry):
+        from telegram.executor import _maybe_bind
+
+        _maybe_bind(store, registry, "not-a-dict", {"message_thread_id": 7})  # type: ignore[arg-type]
+        assert store.audit_rows() == []
+
+    # --- structure run_wait: queued -> sent -------------------------------
+    def test_a_queued_sub_action_is_waited_for_until_sent(self, registry, store, acl, monkeypatch):
+        """L836-844: a sub-action that first lands in the queue is drained.
+
+        The topic create is throttled on its *first* attempt only, so the
+        sub-action reports ``queued`` and ``run_wait`` must drain the queue,
+        see the job go ``sent``, and return that success.
+        """
+        state = {"n": 0}
+
+        class OnceThrottled(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    state["n"] += 1
+                    if state["n"] == 1:
+                        raise RateLimited("slow down", retry_after=0)
+                return super().call(method, params)
+
+        monkeypatch.setattr("telegram.executor.time.sleep", lambda *_a, **_k: None)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=OnceThrottled(), acl=acl, registry=registry, store=store,
+        )
+        assert "01-Cyber-Security" in result["created"], result
+        assert not result["failures"], result
+        assert registry.get("01-Cyber-Security")["thread_id"] is not None
+
+    def test_a_queued_sub_action_that_dies_is_reported_as_an_error(
+        self, registry, store, acl, monkeypatch
+    ):
+        """L845-848: a sub-action that exhausts its attempts returns ``error``."""
+        class AlwaysThrottled(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    raise RateLimited("slow down", retry_after=0)
+                return super().call(method, params)
+
+        monkeypatch.setattr("telegram.executor.time.sleep", lambda *_a, **_k: None)
+        # make the queue drain exhaust attempts immediately
+        monkeypatch.setattr(store, "MAX_ATTEMPTS", 1, raising=False)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=AlwaysThrottled(), acl=acl, registry=registry, store=store,
+        )
+        # the sub-action never succeeded: the run must be honest about it
+        assert result["created"] == [], result
+        assert result["failures"], "a permanently throttled leg must surface as a failure"
+
+    def test_a_structure_that_times_out_leaves_the_job_queued(
+        self, registry, store, acl, monkeypatch
+    ):
+        """L848: the deadline can pass with the job still queued."""
+        class AlwaysThrottled(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    raise RateLimited("slow down", retry_after=0)
+                return super().call(method, params)
+
+        monkeypatch.setattr("telegram.executor.time.sleep", lambda *_a, **_k: None)
+        # a zero (already-past) timeout: the while-loop body never runs
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=AlwaysThrottled(), acl=acl, registry=registry, store=store,
+        )
+        assert store.pending(limit=10), "the throttled create must remain queued"
+
+    # --- structure partial legs -------------------------------------------
+    def test_a_create_that_binds_no_thread_is_a_failure(self, registry, store, acl):
+        """L878-880: create succeeds but the registry still has no thread id."""
+        class NoThread(MockTransport):
+            def call(self, method, params):
+                if method == "createForumTopic":
+                    # a result that carries no id at all
+                    return {"name": "created but anonymous"}
+                return super().call(method, params)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "index": False, "only": ["01-Cyber-Security"]}),
+            transport=NoThread(), acl=acl, registry=registry, store=store,
+        )
+        steps = {f.get("step") for f in result["failures"]}
+        assert "bind" in steps, result
+        assert any("no thread id" in str(f.get("result", "")) for f in result["failures"])
+
+    def test_a_failed_card_publish_is_collected_not_fatal(self, registry, store, acl):
+        """L900: a card that neither sends nor duplicates is a recorded failure."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        class CardRefuses(MockTransport):
+            def call(self, method, params):
+                if method == "sendMessage" and params.get("message_thread_id") == 6:
+                    raise TransportError("card refused")
+                return super().call(method, params)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "index": False, "only": ["01-Cyber-Security"]}),
+            transport=CardRefuses(), acl=acl, registry=registry, store=store,
+        )
+        assert any(f.get("step") == "card" for f in result["failures"]), result
+
+    def test_a_failed_index_publish_is_collected_not_fatal(self, registry, store, acl):
+        """L927: the index post can fail on its own and must be reported."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+
+        class IndexRefuses(MockTransport):
+            def call(self, method, params):
+                # the index goes to the chat's General (no thread id)
+                if method == "sendMessage" and params.get("message_thread_id") is None:
+                    raise TransportError("index refused")
+                return super().call(method, params)
+
+        result = execute(
+            parse_action({"verb": "structure", "actor": OWNER,
+                          "target": {"chat_id": -1001},
+                          "cards": False, "only": ["01-Cyber-Security"]}),
+            transport=IndexRefuses(), acl=acl, registry=registry, store=store,
+        )
+        assert any(f.get("step") == "index" for f in result["failures"]), result
+
+    def test_an_index_that_landed_duplicate_is_recorded_as_such(self, registry, store, acl):
+        """L907: a re-run's index is ``duplicate`` — recorded, not duplicated."""
+        registry.bind("01-Cyber-Security", chat_id=-1001, thread_id=6)
+        action = parse_action({"verb": "structure", "actor": OWNER,
+                               "target": {"chat_id": -1001},
+                               "cards": False, "only": ["01-Cyber-Security"]})
+        execute(action, transport=MockTransport(), acl=acl, registry=registry, store=store)
+        again = execute(action, transport=MockTransport(), acl=acl, registry=registry, store=store)
+        assert again["index"] in ({"status": "duplicate"},
+                                  {"message_id": again["index"].get("message_id"),
+                                   "pinned": again["index"].get("pinned")}), again
+
+
 # =========================================================================== transport last line
 def test_http_transport_refuses_an_empty_token():
     """L180: the live transport must fail loudly, not build a broken URL."""
