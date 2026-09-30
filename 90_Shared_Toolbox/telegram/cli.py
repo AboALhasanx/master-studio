@@ -189,6 +189,17 @@ def build_parser() -> argparse.ArgumentParser:
                    help="dashboard port (default: 5000)")
     p.add_argument("--text", help="override the generated message body")
 
+    p = sub.add_parser("interactive",
+                       help="one-shot listening session: reply to mentions (ADR D15)")
+    p.add_argument("--for", type=float, dest="for_seconds", default=60.0,
+                   help="how long the session may run, in seconds (default: 60)")
+    p.add_argument("--max", type=int, dest="max_messages", default=20,
+                   help="cap on messages handled in one session (default: 20)")
+    p.add_argument("--bot-username",
+                   help="the bot's @username, used to detect mentions "
+                        "(default: TELEGRAM_BOT_USERNAME from .env)")
+    p.add_argument("--subject", help="registry subject to steer answers toward")
+
     return parser
 
 
@@ -338,11 +349,70 @@ def _emit(payload: dict[str, Any], as_json: bool) -> None:
 
 
 # ---------------------------------------------------------------------------
+# interactive session (ADR D15) — a bounded, on-demand listener
+# ---------------------------------------------------------------------------
+def _run_interactive(args: argparse.Namespace) -> int:
+    """Run one listening session and report what it saw and did.
+
+    Fails closed on every axis: no chat allowlist, no live transport, or an
+    empty window all return a refusal rather than opening a listener. The
+    processed ``update_id`` watermark is read from and written back to the
+    gateway's own memory (D14), so a message is never handled twice.
+    """
+    from .interactive import SessionLimits, run_session  # local import: keeps the
+    from .telegram_memory import read_state, set_state  # outbound CLI path lean
+
+    allowed = chat_allowlist_from_env()
+    if not allowed:
+        _emit({"status": "error", "code": 3,
+               "error": "interactive needs TELEGRAM_CHAT_ALLOWLIST (fail closed)"},
+              args.as_json)
+        return 3
+    if not args.live:
+        _emit({"status": "error", "code": 5,
+               "error": "interactive is a live-only capability (pass --live)"},
+              args.as_json)
+        return 5
+
+    try:
+        limits = SessionLimits(seconds=args.for_seconds, max_messages=args.max_messages)
+    except ValueError as exc:
+        _emit({"status": "error", "code": 2, "error": str(exc)}, args.as_json)
+        return 2
+
+    store = Store(args.db)
+    acl = ACL.from_env()
+    bot_username = args.bot_username or __import__("os").environ.get("TELEGRAM_BOT_USERNAME")
+    state = read_state()
+    offset = int(state.get("update_offset") or 0)
+
+    result = run_session(
+        build_transport(live=True),
+        bot_username=bot_username,
+        allowed_chats=allowed,
+        owner_ids=acl.owners,
+        limits=limits,
+        offset=offset,
+        audit=store.audit,
+        subject_hint=args.subject,
+    )
+    set_state(update_offset=result.next_offset,
+              last_listen={"seen": len(result.seen), "replied": result.replied})
+    payload = result.summary()
+    payload["status"] = result.status
+    _emit(payload, args.as_json)
+    return 0 if result.status == "ok" else 1
+
+
+# ---------------------------------------------------------------------------
 # entry point
 # ---------------------------------------------------------------------------
 def main(argv: list[str] | None = None) -> int:
     load_dotenv()
     args = build_parser().parse_args(argv)
+
+    if args.command == "interactive":
+        return _run_interactive(args)
 
     try:
         action = _action_from_args(args)
