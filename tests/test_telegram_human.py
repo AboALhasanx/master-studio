@@ -331,7 +331,7 @@ class TestStructuralSeparation:
         subcommands = cli.build_parser()._subparsers._group_actions[0].choices
         assert "human" in subcommands
 
-    def test_human_dispatches_before_action_parsing(self):
+    def test_human_dispatches_before_action_parsing(self, tmp_path):
         """``main`` must branch on ``human`` before ``_action_from_args`` runs,
         exactly as it already does for ``interactive``."""
         import telegram.cli as cli
@@ -342,7 +342,11 @@ class TestStructuralSeparation:
         original = cli._action_from_args
         cli._action_from_args = explode
         try:
-            code = cli.main(["human", "--verb", "whoami"])  # no --live -> exit 5
+            # --db on purpose: the default is the production audit log, and
+            # this refusal writes a row, so without the flag every run left a
+            # false "the account was refused" entry behind
+            code = cli.main(["--json", "--db", str(tmp_path / "g.db"),
+                             "human", "--verb", "whoami"])  # no --live -> 5
         finally:
             cli._action_from_args = original
         assert code == 5
