@@ -6,7 +6,7 @@ active_subject_code: "CS502"
 immediate_todo: "Monday DM lecture: doctor SKIMMED Week4 — class IG numbers 0.35/0.12 are WRONG (booklet: 0.189=0.189 tie). Student learns from booklet+Koko, not the hall. Continue W4 (Wrapper/Embedded) same teaching method. Seminar = show the depth the lecture lacked. Cyber W03 notes due Wed. English paper deferred."
 next_session_focus: "W4 remainder (Wrapper/Embedded) + seminar prep for Feature Selection. Correct the IG tie in writing. Exam templates only (r, chi2, IG) — no mental-math stress."
 last_updated: "2026-10-01"
-status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_AUDITED"
+status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_AUDITED · TELEGRAM_GATEWAY_G5_PILOT_CUTOVER_DONE"
 ---
 
 # Master Studio: Active Session State
