@@ -1,3 +1,13 @@
+"""DEPRECATED — superseded by the Bot API gateway (issue #20).
+
+Kept only until the removal PR (gate G7). Do not add new callers.
+
+Replacement: ``python 90_Shared_Toolbox/tools/tg.py <verb>`` — see
+``docs/TELEGRAM_LEGACY_DEPRECATION.md`` for the script -> command mapping and
+``.mimocode/skills/telegram/SKILL.md`` for how to drive every verb.
+
+Legacy implementation (for reference only): playwright-python + debug Chromium :9222.
+"""
 from playwright.sync_api import sync_playwright
 p = sync_playwright().start()
 b = p.chromium.connect_over_cdp('http://127.0.0.1:9222')
