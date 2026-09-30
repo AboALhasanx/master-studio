@@ -85,11 +85,19 @@ HUMAN_VERBS = ("whoami", "chats", "read", "say", "login")
 #: Verbs that name a chat, and therefore require that chat to be allowlisted.
 CHAT_VERBS = frozenset({"read", "say"})
 
+#: Verbs that actually put something into a chat, and therefore spend the
+#: send budget. ``read`` gates on the allowlist too, but must never consume
+#: slots — otherwise reading a group could silence it.
+SEND_VERBS = frozenset({"say"})
+
 _VAULT_ROOT = Path(__file__).resolve().parents[2]
 #: D14: the gateway owns ``00_STUDIO_HUB/telegram/`` and may write only there.
 MEMORY_DIR = _VAULT_ROOT / "00_STUDIO_HUB" / "telegram"
 #: Single-use hand-off for the login code hash (see ``TelethonGateway``).
 LOGIN_STATE = MEMORY_DIR / "login_state.json"
+#: Per-chat send stamps. The limiter is rebuilt on every invocation, so the
+#: ceiling only means something if the ledger outlives the process.
+PACING_STATE = MEMORY_DIR / "pacing.json"
 
 
 # ---------------------------------------------------------------------------
@@ -128,6 +136,7 @@ class HumanRequest:
     limit: int = 10
     phone: str | None = None
     code: str | None = None
+    password: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -177,22 +186,28 @@ def authorize(req: HumanRequest, *, live: bool, enabled: bool,
 # ---------------------------------------------------------------------------
 def run(req: HumanRequest, gateway, *, live: bool, enabled: bool,
         allowed_chats=(), limiter: ChatRateLimiter | None = None,
-        now: float | None = None) -> dict:
+        now: float | None = None,
+        persist: Path | str | None = None) -> dict:
     """Authorize, pace, then perform **one** call and summarise it.
 
-    Two properties are load-bearing:
+    Three properties are load-bearing:
 
     * a refusal raises before ``gateway`` is touched, so "denied" and "never
       attempted" are the same thing;
     * a successful send records its pacing stamp *after* the fact, so a failed
-      attempt never burns a slot the account did not use.
+      attempt never burns a slot the account did not use;
+    * ``persist`` makes the ledger outlive the process — the CLI is one verb
+      per invocation, so a fresh limiter every time would leave the documented
+      ceiling blocking nothing at all (found live on 2026-09-30).
     """
     authorize(req, live=live, enabled=enabled, allowed_chats=allowed_chats)
 
     paced = limiter if limiter is not None else ChatRateLimiter()
     stamp_now = time.time() if now is None else float(now)
+    if persist is not None:
+        paced.seed(_read_pacing(Path(persist)))
 
-    if req.verb in CHAT_VERBS and not paced.allow(int(req.chat_id), stamp_now):
+    if req.verb in SEND_VERBS and not paced.allow(int(req.chat_id), stamp_now):
         retry = float(paced.min_interval)
         if paced.per_minute > 0:
             retry = max(retry, 60.0 / float(paced.per_minute))
@@ -218,8 +233,10 @@ def run(req: HumanRequest, gateway, *, live: bool, enabled: bool,
             retry_after=float(seconds),
         ) from exc
 
-    if req.verb in CHAT_VERBS:
+    if req.verb in SEND_VERBS:
         paced.record(int(req.chat_id), stamp_now)
+        if persist is not None:
+            _write_pacing(Path(persist), paced)
     return {"verb": req.verb, "ok": True, "result": result}
 
 
@@ -233,6 +250,11 @@ def _dispatch_table(req: HumanRequest, gateway):
     if req.verb == "say":
         return lambda: gateway.send(req.chat_id, req.text)
     if req.verb == "login":
+        # password wins: Telethon's sign_in is an if/elif chain (see the
+        # adapter), so handing it a code as well would clear nothing.
+        if req.password:
+            return lambda: gateway.sign_in(req.phone, None,
+                                           password=req.password)
         if req.code:
             return lambda: gateway.sign_in(req.phone, req.code)
         return lambda: gateway.request_code(req.phone)
@@ -278,6 +300,30 @@ def _drop_login_state(path: Path) -> None:
         path.unlink()
     except OSError:
         pass
+
+
+def _read_pacing(path: Path) -> dict:
+    """Send stamps recorded by an earlier process, or ``{}``."""
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    if not isinstance(data, dict):
+        return {}
+    return {
+        chat: stamps for chat, stamps in data.items()
+        if isinstance(stamps, list)
+    }
+
+
+def _write_pacing(path: Path, limiter: ChatRateLimiter) -> None:
+    """Persist the ledger as strings-on-purpose: JSON object keys are
+    strings, and the chat ids come back as strings that seed() re-ints."""
+    payload = {str(chat): list(ts) for chat, ts in limiter.stamps().items()}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload), encoding="utf-8")
 
 
 def _client_cls():
@@ -413,7 +459,28 @@ class TelethonGateway:
         _save_login_state(self.login_state, phone, code_hash)
         return {"phone": mask_phone(phone), "sent": True}
 
-    def sign_in(self, phone: str, code: str) -> dict:
+    def sign_in(self, phone: str, code: str | None = None,
+                password: str | None = None) -> dict:
+        """Finish the login, either by spending the code or by clearing 2FA.
+
+        Telethon resolves ``sign_in`` as an if/elif chain — *phone and not
+        code and not password* → send a code, *elif code* → verify the code,
+        *elif password* → check the password. Passing a code **and** a
+        password therefore takes the code branch, silently ignores the
+        password and re-raises ``SessionPasswordNeededError``. The two modes
+        are kept apart on purpose.
+
+        The hand-off is dropped only after success: a mistyped password or a
+        refused sign-in must not force a fresh code request.
+        """
+        if password:
+            async def with_password(client):
+                return await _guarded(client.sign_in(password=password))
+
+            user = self._call(with_password)
+            _drop_login_state(self.login_state)
+            return {"authorized": True, "user_id": getattr(user, "id", None)}
+
         code_hash = _load_login_state(self.login_state, phone)
         if not code_hash:
             raise GatewayNotReady(
@@ -422,10 +489,45 @@ class TelethonGateway:
                 "is single-use and expires in about two minutes)"
             )
 
-        async def body(client):
-            return await client.sign_in(phone=phone, code=code,
-                                        phone_code_hash=code_hash)
+        async def with_code(client):
+            return await _guarded(
+                client.sign_in(phone=phone, code=code,
+                               phone_code_hash=code_hash)
+            )
 
-        user = self._call(body)
+        user = self._call(with_code)
         _drop_login_state(self.login_state)
         return {"authorized": True, "user_id": getattr(user, "id", None)}
+
+
+async def _guarded(coro):
+    """Map Telethon's RPC hierarchy onto the gateway's stable exit codes.
+
+    Kept lazy so ``import telegram.human`` never pulls Telethon in. Each
+    branch exists because the raw message is otherwise a four-line nest of
+    request wrappers that an agent cannot branch on:
+
+    * ``FloodWaitError`` is re-raised untouched — :func:`run` already reads
+      its ``seconds`` and turns it into a reported ``retry_after``;
+    * ``SessionPasswordNeededError`` becomes an instruction, not a stack;
+    * any other ``RPCError`` becomes ``TransportError`` (exit 7).
+    """
+    from telethon.errors import (  # noqa: PLC0415
+        FloodWaitError,
+        RPCError,
+        SessionPasswordNeededError,
+    )
+
+    try:
+        return await coro
+    except FloodWaitError:
+        raise
+    except SessionPasswordNeededError as exc:
+        raise GatewayNotReady(
+            "two-step verification is enabled — the code was accepted; "
+            "re-run the same `login` with --password to finish signing in"
+        ) from exc
+    except RPCError as exc:
+        raise TransportError(
+            f"Telegram refused: {type(exc).__name__}: {exc}"
+        ) from exc

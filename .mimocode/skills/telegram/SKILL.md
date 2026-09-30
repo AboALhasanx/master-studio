@@ -282,7 +282,20 @@ python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -10037107113
 # two-step login: request the code, then spend it
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --code 12345
+
+# ...and only if Telegram answers with a two-step challenge
+python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --password <2FA>
 ```
+
+**Two-step verification (2FA).** If the account has it on — and a spare account should — the
+code step answers with `SessionPasswordNeededError`, which means *the code already succeeded
+and only the password remains*. Re-run the same `login` with `--password` and **without**
+`--code`: Telethon resolves `sign_in` as an `if/elif` chain (`phone and not code and not
+password` → send a code, `elif code` → verify the code, `elif password` → check the password),
+so handing it both would silently take the *code* branch, ignore the password and re-raise the
+identical error. A refused sign-in keeps the pending login intact, so a mistyped password never
+costs you a fresh code. **`--password` is one-time: never write it to `.env`, to a file, or to
+the session journal.**
 
 `--verb` is one of `whoami`, `chats`, `read`, `say`, `login`. `read` needs `--chat` **and**
 `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `login` needs `--phone`, and
@@ -297,7 +310,10 @@ and any typo all mean **off**, because a kill switch that a typo can enable is n
 **Flood control, in two layers — neither sleeps and neither retries.**
 
 * *Local pacing*, before Telegram is ever asked: at most 20 messages/minute and at least 1s
-  apart in one chat. A refused send never reaches the network.
+  apart in one chat. A refused send never reaches the network. The send stamps are persisted to
+  `00_STUDIO_HUB/telegram/pacing.json` — without that the limiter would be rebuilt empty on
+  every invocation and the ceiling would block nothing at all, since the CLI is one verb per
+  process. Only `say` spends the budget; `read` gates on the allowlist but never consumes slots.
 * *Server-side*, a `FloodWait` is surfaced as a `retry_after` number and that is the end of
   it. Telethon is built with `flood_sleep_threshold=0` because its default of 60 would make it
   **silently block inside our own call** instead of letting us report the wait; it is never

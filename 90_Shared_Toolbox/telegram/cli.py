@@ -217,6 +217,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--phone", help="spare account number in international "
                                    "form (verb login)")
     p.add_argument("--code", help="login code Telegram just sent (verb login)")
+    p.add_argument("--password", help="2FA password, only after Telegram "
+                                      "answers with a two-step challenge "
+                                      "(verb login) — one-time, never persisted")
 
     return parser
 
@@ -434,7 +437,7 @@ def _run_human(args: argparse.Namespace) -> int:
     executor is safe for any direct caller). Authorization is pure, so the
     second pass costs nothing.
     """
-    from .human import HumanRequest, TelethonGateway, run
+    from .human import HumanRequest, PACING_STATE, TelethonGateway, run
 
     req = HumanRequest(
         verb=args.verb,
@@ -443,6 +446,7 @@ def _run_human(args: argparse.Namespace) -> int:
         limit=getattr(args, "limit", 10),
         phone=getattr(args, "phone", None),
         code=getattr(args, "code", None),
+        password=getattr(args, "password", None),
     )
     gate = dict(
         live=bool(args.live),
@@ -453,7 +457,9 @@ def _run_human(args: argparse.Namespace) -> int:
     try:
         authorize_human(req, **gate)
         gateway = TelethonGateway.from_env()
-        result = run(req, gateway, **gate)
+        # the pacing ledger must outlive this process, or the documented
+        # ceiling would reset on every invocation and block nothing
+        result = run(req, gateway, persist=PACING_STATE, **gate)
     except GatewayError as exc:
         _emit({"status": "error", "code": exc.code, "verb": args.verb,
                "error": str(exc)}, args.as_json)

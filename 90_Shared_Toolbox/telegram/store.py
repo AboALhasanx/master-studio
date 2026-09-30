@@ -253,6 +253,20 @@ class ChatRateLimiter:
         now = time.time() if now is None else float(now)
         self._stamps[int(chat_id)].append(now)
 
+    def stamps(self) -> dict[int, list[float]]:
+        """A copy of the retained timestamps, for persistence.
+
+        The limiter lives in memory, so without a way out and back in every
+        new process starts with an empty ledger and the ceiling never blocks
+        anything (issue #22, found live on 2026-09-30).
+        """
+        return {chat: list(ts) for chat, ts in self._stamps.items()}
+
+    def seed(self, stamps) -> None:
+        """Load timestamps a previous process recorded."""
+        for chat_id, ts in (stamps or {}).items():
+            self._stamps[int(chat_id)].extend(float(t) for t in ts)
+
 
 def load_dotenv(path: Path | str | None = None) -> dict[str, str]:
     """Minimal ``.env`` reader (no dependency): KEY=VALUE lines, ``#`` comments.

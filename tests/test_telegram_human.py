@@ -484,9 +484,11 @@ class FakeTelethonClient:
             phone_code_hash = "hash-for-" + phone
         return _Sent()
 
-    async def sign_in(self, phone=None, code=None, phone_code_hash=None, **kw):
+    async def sign_in(self, phone=None, code=None, phone_code_hash=None,
+                      password=None, **kw):
         self.signed_in_with = {"phone": phone, "code": code,
-                               "phone_code_hash": phone_code_hash}
+                               "phone_code_hash": phone_code_hash,
+                               "password": password}
         return await self.get_me()
 
 
@@ -644,6 +646,231 @@ class TestTelethonGatewayAdapter:
         with pytest.raises(ValueError):
             gw.request_code("+964700")
         assert not (tmp_path / "login_state.json").exists()
+
+
+# ===========================================================================
+# 9. Two-step verification — Telethon's sign_in is an if/elif chain
+# ===========================================================================
+class TestTwoStepPassword:
+    """`SessionPasswordNeededError` means the code already succeeded and only
+    the 2FA password is missing. Telethon resolves sign_in with
+    ``if phone-and-not-code-and-not-password / elif code / elif password``,
+    so passing **both** silently takes the *code* branch, ignores the password
+    and re-raises the very error you were trying to clear."""
+
+    @staticmethod
+    def _gw(monkeypatch, tmp_path):
+        FakeTelethonClient.instances.clear()
+        monkeypatch.setattr(human, "TelegramClient", FakeTelethonClient)
+        monkeypatch.setenv(human.ENV_API_ID, "20702076")
+        monkeypatch.setenv(human.ENV_API_HASH, "deadbeef" * 8)
+        return human.TelethonGateway.from_env(login_state=tmp_path / "s.json")
+
+    def test_a_password_alone_takes_the_password_branch(self, monkeypatch, tmp_path):
+        gw = self._gw(monkeypatch, tmp_path)
+        gw.request_code("+9647779398151")
+        FakeTelethonClient.instances.clear()
+
+        gw.sign_in("+9647779398151", None, password="s3cret")
+        seen = FakeTelethonClient.instances[0].signed_in_with
+        assert seen["password"] == "s3cret"
+        assert seen["code"] is None, \
+            "code was passed alongside the password — Telethon would ignore " \
+            "the password and re-raise SessionPasswordNeededError"
+
+    def test_the_code_path_still_needs_the_hash(self, monkeypatch, tmp_path):
+        gw = self._gw(monkeypatch, tmp_path)
+        gw.request_code("+9647779398151")
+        FakeTelethonClient.instances.clear()
+
+        gw.sign_in("+9647779398151", "39736")
+        seen = FakeTelethonClient.instances[0].signed_in_with
+        assert seen["code"] == "39736"
+        assert seen["password"] is None
+        assert seen["phone_code_hash"] == "hash-for-+9647779398151"
+
+    def test_the_handoff_survives_a_password_challenge(self, monkeypatch, tmp_path):
+        """A refused sign-in must not burn the hand-off — otherwise the user
+        would have to request a fresh code just to retry a mistyped
+        password."""
+        state = tmp_path / "s.json"
+        gw = self._gw(monkeypatch, tmp_path)
+        gw.request_code("+9647779398151")
+        assert state.exists()
+
+        class Challenged(FakeTelethonClient):
+            async def sign_in(self, **kw):
+                raise _session_password_needed()
+        monkeypatch.setattr(human, "TelegramClient", Challenged)
+
+        with pytest.raises(GatewayNotReady) as exc:
+            gw.sign_in("+9647779398151", "39736")
+        assert "password" in str(exc.value)
+        assert state.exists(), "the hand-off was dropped by a refusal"
+
+    def test_a_password_challenge_is_an_actionable_not_an_opaque_error(
+            self, monkeypatch, tmp_path):
+        """The raw message is 4 lines of RPC nesting; the agent must be told
+        exactly which flag clears it."""
+        gw = self._gw(monkeypatch, tmp_path)
+        gw.request_code("+9647779398151")
+
+        class Challenged(FakeTelethonClient):
+            async def sign_in(self, **kw):
+                raise _session_password_needed()
+        monkeypatch.setattr(human, "TelegramClient", Challenged)
+
+        with pytest.raises(GatewayNotReady) as exc:
+            gw.sign_in("+9647779398151", "39736", password=None)
+        assert exc.value.code == 5
+        assert "--password" in str(exc.value)
+
+    def test_a_wrong_password_is_a_transport_error_not_a_traceback(
+            self, monkeypatch, tmp_path):
+        from telethon.errors import PasswordHashInvalidError
+        from telegram.errors import TransportError
+
+        gw = self._gw(monkeypatch, tmp_path)
+        gw.request_code("+9647779398151")
+
+        class Wrong(FakeTelethonClient):
+            async def sign_in(self, **kw):
+                raise PasswordHashInvalidError(None)
+        monkeypatch.setattr(human, "TelegramClient", Wrong)
+
+        with pytest.raises(TransportError) as exc:
+            gw.sign_in("+9647779398151", None, password="nope")
+        assert exc.value.code == 7
+
+    def test_the_request_carries_the_password(self):
+        req = human.HumanRequest(verb="login", phone="+9647700000000",
+                                 password="pw")
+        assert req.password == "pw"
+
+    def test_login_accepts_a_password_without_a_code(self):
+        """Ordering: `login --phone --password` must clear the 2FA challenge
+        without demanding the code again."""
+        authorize_human = human.authorize
+        authorize_human(human.HumanRequest(verb="login", phone="+9647700000000",
+                                           password="pw"),
+                        live=True, enabled=True)
+
+    def test_the_password_flag_is_documented(self):
+        text = (Path(__file__).resolve().parent.parent
+                / "skills" / "telegram" / "SKILL.md").read_text(encoding="utf-8")
+        assert "--password" in text
+        assert "two-step" in text.lower() or "2FA" in text
+
+
+def _session_password_needed():
+    from telethon.errors import SessionPasswordNeededError
+
+    return SessionPasswordNeededError(None)
+
+
+# ===========================================================================
+# 10. Pacing must survive a process boundary
+# ===========================================================================
+class TestPacingPersistsAcrossInvocations:
+    """The CLI is one verb per invocation, and each invocation builds a brand
+    new ``ChatRateLimiter`` whose stamps live only in memory. So the ceiling
+    documented in the skill — 20/minute, 1s apart — blocked *nothing* in real
+    use: every call started from an empty ledger. Caught live on 2026-09-30
+    when a second send inside the same window went through unchallenged."""
+
+    @staticmethod
+    def _limiter():
+        from telegram.store import ChatRateLimiter
+
+        return ChatRateLimiter(per_minute=2, min_interval=0.0)
+
+    def _send(self, text, persist):
+        """One send with a *fresh* limiter, exactly as a new process would."""
+        return human.run(
+            request("say", chat_id=ALLOWED_CHAT, text=text),
+            FakeGateway(),
+            live=True, enabled=True,
+            allowed_chats=frozenset({ALLOWED_CHAT}),
+            limiter=self._limiter(),
+            now=1_000.0,
+            persist=persist,
+        )
+
+    def test_the_third_send_is_refused_even_in_a_new_process(self, tmp_path):
+        persist = tmp_path / "pacing.json"
+        assert self._send("a", persist)["ok"] is True
+        assert self._send("b", persist)["ok"] is True
+
+        with pytest.raises(RateLimited) as exc:
+            self._send("c", persist)
+        assert exc.value.code == 7
+        assert persist.exists(), "send stamps were never persisted"
+
+    def test_without_persist_the_caller_keeps_full_control(self, tmp_path):
+        """Explicit limiter + no persistence behaves exactly as before —
+        the seam is opt-in."""
+        out = human.run(
+            request("say", chat_id=ALLOWED_CHAT, text="a"),
+            FakeGateway(),
+            live=True, enabled=True,
+            allowed_chats=frozenset({ALLOWED_CHAT}),
+            limiter=self._limiter(),
+            now=1_000.0,
+        )
+        assert out["ok"] is True
+
+    def test_only_successful_sends_are_persisted(self, tmp_path):
+        """A send that Telegram refused must not consume a slot that was
+        never used — the ledger has to mirror reality."""
+        persist = tmp_path / "pacing.json"
+        failing = FakeGateway(raise_on="send", exc=ValueError("nope"))
+        with pytest.raises(ValueError):
+            human.run(request("say", chat_id=ALLOWED_CHAT, text="x"), failing,
+                      live=True, enabled=True,
+                      allowed_chats=frozenset({ALLOWED_CHAT}),
+                      limiter=self._limiter(), now=1_000.0,
+                      persist=persist)
+        assert not persist.exists()
+
+    def test_reads_do_not_consume_or_record_pacing_slots(self, tmp_path):
+        """``read`` shares the allowlist gate but must not spend the send
+        budget — otherwise reading a chat could silence it."""
+        persist = tmp_path / "pacing.json"
+        for _ in range(3):
+            human.run(request("read", chat_id=ALLOWED_CHAT), FakeGateway(),
+                      live=True, enabled=True,
+                      allowed_chats=frozenset({ALLOWED_CHAT}),
+                      limiter=self._limiter(), now=1_000.0,
+                      persist=persist)
+        out = self._send("a", persist)
+        assert out["ok"] is True
+
+    def test_the_pacing_ledger_lives_in_the_gateway_memory_folder(self):
+        assert human.PACING_STATE.name == "pacing.json"
+        assert human.PACING_STATE.parent == human.MEMORY_DIR
+
+    def test_the_pacing_ledger_is_gitignored(self):
+        """Live state, not source: a fresh clone must start with an empty
+        ledger, exactly like ``pending_approval.json``."""
+        root = Path(__file__).resolve().parent.parent
+        rules = (root / ".gitignore").read_text(encoding="utf-8").splitlines()
+        assert any(human.PACING_STATE.name in r for r in rules), \
+            f"{human.PACING_STATE.name} is not ignored"
+
+    def test_send_stamps_round_trip_through_the_limiter(self):
+        """The limiter keeps its stamps private, so persistence needs an
+        explicit, tested way in and out."""
+        from telegram.store import ChatRateLimiter
+
+        limiter = ChatRateLimiter(per_minute=20, min_interval=1.0)
+        assert limiter.stamps() == {}
+        limiter.seed({ALLOWED_CHAT: [1_000.0, 1_001.0]})
+        assert limiter.stamps()[ALLOWED_CHAT] == [1_000.0, 1_001.0]
+        # seeded stamps count against the ceiling: only 0.5s after the last
+        # one, the 1s floor has not elapsed yet
+        assert limiter.allow(ALLOWED_CHAT, now=1_001.5) is False
+        # ...and once it has, the same ledger lets the next send through
+        assert limiter.allow(ALLOWED_CHAT, now=1_002.0) is True
 
 
 # ---------------------------------------------------------------------------

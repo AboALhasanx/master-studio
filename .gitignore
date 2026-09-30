@@ -131,6 +131,9 @@ output/
 # single-use login hand-off: the phone number plus a hash that is dead in
 # about two minutes, so it must never outlive the login attempt either
 00_STUDIO_HUB/telegram/login_state.json
+# live pacing ledger — real send stamps, not source; a fresh clone starts
+# with an empty budget like any other runtime state
+00_STUDIO_HUB/telegram/pacing.json
 
 # Android Build Artifacts
 91_Dashboard/android_build/
