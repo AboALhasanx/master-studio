@@ -217,6 +217,52 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> queue run   # drain the
 Always run `status` first when something looks wrong — it tells you whether the ACL is
 configured, how many subjects are bound, and whether jobs are pending.
 
+### 4.9 `interactive` — one bounded listening session (D15)
+
+**This is the only verb that reads the group.** Everything above is outbound; `interactive`
+opens a *window*, handles whatever is aimed at the bot inside it, and closes itself. There is
+no daemon and no permanent `getUpdates` loop — that is the whole point of **D15**: reply on
+demand, not 24/7.
+
+```bash
+python 90_Shared_Toolbox/tools/tg.py --live interactive --for 30 --max 5
+python 90_Shared_Toolbox/tools/tg.py --json --live interactive --for 120 --max 20 --subject 04-Advanced-Software-Eng
+python 90_Shared_Toolbox/tools/tg.py --live interactive --bot-username cs_mscbot
+```
+
+**The bounds are hard, not hints.** `--for <seconds>` (default `60`) and `--max <n>` (default
+`20`) are limits the session *stops* on, whichever comes first — an open-ended listener is
+exactly what this layer exists to avoid. `--bot-username` defaults to `TELEGRAM_BOT_USERNAME`
+from `.env`; it is what mentions are matched against. `--subject` steers answers toward one
+registry topic. **No `--actor` is required**: the session gates on the chat allowlist and the
+owner list instead of on the caller.
+
+**It fails closed on every axis, before any network call:**
+
+| You get | Why | Fix |
+|---|---|---|
+| exit `5` | live-only capability — `--live` is missing | add `--live` |
+| exit `3` | `TELEGRAM_CHAT_ALLOWLIST` empty or absent | configure it; never work around it |
+| exit `2` | `--for` or `--max` is ≤ 0 | pick a real window |
+
+**Where the state lives (D14).** The gateway owns its own folder,
+`00_STUDIO_HUB/telegram/`:
+
+| Path | Holds | Written by |
+|---|---|---|
+| `STATE.md` | the processed `update_id` watermark plus `last_listen` / `last_post` | **gateway only** |
+| `TELEGRAM_MEMORY.md` | durable facts the gateway noticed | gateway |
+| `log/YYYY-MM-DD.md` | one line per session, append-only | gateway |
+| `pending_approval.json` | administrative requests waiting on the student | gateway — **never auto-run** |
+
+The watermark is why a message is never handled twice and never dropped between sessions.
+The gateway may write **its own folder and nothing else**: it reads `MEMORY.md` for context
+but **never writes `MEMORY.md`** — the agent stays the only intermediary between the two.
+
+**D16 — approvals do not execute themselves.** Any administrative action requested from a
+chat lands in `pending_approval.json` as a *pending approval*. Surface it to the student and
+act only on his explicit yes; the owner allowlist and `--confirm` still apply on top.
+
 ---
 
 ## 5. Persona — how the bot behaves (issue #17)

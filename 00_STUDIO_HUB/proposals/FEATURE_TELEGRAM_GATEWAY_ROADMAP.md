@@ -1,10 +1,10 @@
 # Feature Proposal: Master Studio Telegram Gateway (Bot-First, Outbound-Only)
 
-> **Status:** G0 → G4 COMPLETE — **every code issue is now closed (#8–#21), and the Epic [#7](https://github.com/AboALhasanx/master-studio/issues/7) is closed too.** **G3** closed #11–#14 and #18; **G4** closed #15 (the telegram skill), #16 (allowlist + confirmation gate in `acl.py`) and **#17 (human-like behaviour pack — `persona.py`, 14 tests)**; the doc/close-out set #19, #20, #21 went with them. `pytest -q` → **323 passed** (162 baseline + 161 gateway), `test_telegram_gateway.py` → **159 passed**, since 2026-09-29. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28/29** — see deviations D9–**D13**. **Only one thing is left in the whole plan: G5 — the single live step (one lecture post + one quiz link), the Playwright deprecation note (#20) already being written. Then G6/G7.** The only Telegram issue left open is **#22 (Telethon), deliberately backlogged**.
+> **Status:** G0 → G4 COMPLETE — **every code issue is now closed (#8–#21), and the Epic [#7](https://github.com/AboALhasanx/master-studio/issues/7) is closed too.** **G3** closed #11–#14 and #18; **G4** closed #15 (the telegram skill), #16 (allowlist + confirmation gate in `acl.py`) and **#17 (human-like behaviour pack — `persona.py`, 14 tests)**; the doc/close-out set #19, #20, #21 went with them. `pytest -q` → **502 passed** (154 baseline + 283 gateway + 65 interactive), `test_telegram_gateway.py` → **283 passed**, `test_telegram_interactive.py` → **65 passed**, counted on a **clean checkout 2026-09-30 so local == CI**. The retired figures were local and are now explained: **323 = 313 clean (154 + 159) + 10**, the 10 being a stale sync-conflict duplicate of `test_dashboard_quiz_api.py` (deleted); the "162 baseline" was never a clean figure — a clean worktree at G0 `540f0ad` measured **154**, the same nine non-telegram test files as today. CI and CodeQL are green on `ubuntu-latest`. **Plan reconciled with reality 2026-09-28/29, interactive layer reconciled 2026-09-30** — see deviations D9–**D16** (**D14** gateway memory, **D15** bounded listening, **D16** admin approval gate). **Two live steps remain: (a) M5 — the first bounded listening session (`interactive --for …`), and (b) G5 — one lecture post + one quiz link. The Playwright deprecation note (#20) is written in `docs/TELEGRAM_LEGACY_DEPRECATION.md` and its banner is now on all five legacy scripts. Then G6/G7.** The only Telegram issue left open is **#22 (Telethon), deliberately backlogged**.
 > **Epic:** GitHub issue [#7](https://github.com/AboALhasanx/master-studio/issues/7) (children #8–#22, label `telegram`).
 > **Bot:** `@cs_mscbot` (token lives in local `.env` only — never in Git).
 > **Source discussion:** https://chatgpt.com/share/6aba85ff-aa60-83eb-bd0b-a7d0b3fc01c8
-> **Baseline gate:** `pytest -q` → **162 passed** (recorded at G0).
+> **Baseline gate:** `pytest -q` → **154 passed** on a clean checkout (measured 2026-09-30 by summing per-file node counts across the nine non-telegram test files; a clean worktree at G0 `540f0ad` measures **the same 154**, so the baseline never moved). The earlier G0 note of "162" was a local count and is superseded.
 
 **TL;DR (عربي):** مخطّط هندسي بثماني بوابات G0→G7، كل بوابة تنتهي بـ **Safety Stop Point**: حالة متماسكة ومختبرة وقابلة للتوقف والعودة بأمان، قبل ما نلمس جروبنا الحقيقي.
 
@@ -53,7 +53,7 @@
 ### G0 — Alignment & Guardrails · **SP0: "documentation only, zero risk"**
 - **Work:** this roadmap; `.env` with the token (gitignored) + placeholder in `.env.example`; baseline test run recorded; epic #7 cross-linked; decision recorded that pilots run in a **disposable test group**, not `Master-Studio FINAL`.
 - **Entry:** token verified via `getMe`.
-- **Exit / verification:** `pytest -q` → 162 passed; `git status` shows no tracked secret; `git check-ignore -v .env` confirms ignore rule.
+- **Exit / verification:** `pytest -q` → 162 passed *(as recorded at G0 — a **local** figure; superseded. The clean-checkout baseline is **154** and the standing gate is the current total in §7.)*; `git status` shows no tracked secret; `git check-ignore -v .env` confirms ignore rule.
 - **Stop guarantees:** repo changed by docs only; the bot is idle; the real group untouched.
 - **Rollback:** delete the roadmap file.
 
@@ -93,13 +93,13 @@
 - **Entry:** SP3 green.
 - **Exit / verification:** natural-language request → CLI → post appears in the allow-listed group (D8); an unauthorized actor id is refused and logged (test); invalid action input rejected with no network call.
 - **Delivered (2026-09-29):** `.mimocode/skills/telegram/SKILL.md` (+ the mirror `skills/telegram/SKILL.md`, which a test keeps byte-identical) — a complete driver for every harness: the `--dry-run`-first protocol, the destination/registry table, all 15 verbs with worked examples, the exit-code table, the six in-code safety rules, and a troubleshooting matrix. `#16` is delivered by `acl.py` (owner allowlist, fail-closed on an *empty* list, `--confirm` gate for topic-delete / bulk-delete / `unpin-all`), all audited with the idempotency key. **`#17` is delivered by `persona.py`** — presence-first (`sendChatAction` on live transports only, so the suite never sleeps), deterministic-but-unequal pacing (0.8/2.0/1.4/2.6, capped at 25 s, RNG forbidden by an AST test), contextual reply-anchoring (`reply_to` → `reply_to_message_id`), and the Iraqi tone block quoted verbatim in SKILL §5. All three #17 acceptance criteria carry their own test names (`test_ac1_*`, `test_ac2_*` ×3, `test_ac3_*` ×2) so they are machine-checkable; `TestPersona` → **14 passed**.
-- **Verified:** `pytest -q` → **323 passed**; `tests/test_telegram_gateway.py` → **159 passed**. Six skill tests pin the doc to the CLI — every verb must be documented, **no flag may be documented that the parser lacks** (`--registry`/`--db` plumbing aside), all media kinds + quiz modes present, **every one of the 29 real invocations in the SKILL.md is run through the real parser** (`--live` swapped for `--dry-run`, so the check can never reach the network), and the two copies of the skill must not drift. AC2 proven live: `publish --kind photo` with no file → `code 2`; `--actor 999999` → `code 3`, both with no network call.
+- **Verified:** `pytest -q` → **323 passed at the time** (313 of it on a clean checkout = 154 baseline + 159 gateway; the other 10 were a stale sync-conflict duplicate). **Re-verified 2026-09-30 → 502 passed**, `tests/test_telegram_gateway.py` → **283 passed**, `tests/test_telegram_interactive.py` → **65 passed**. Eight skill tests pin the doc to the CLI — every verb must be documented, **every argparse subcommand too** (`interactive` sits outside `VERBS` on purpose, so a `VERBS`-only check is blind to it), **no flag may be documented that the parser lacks** (`--registry`/`--db` plumbing aside), all media kinds + quiz modes present, **every one of the 33 real invocations in the SKILL.md is run through the real parser** (`--live` swapped for `--dry-run`, so the check can never reach the network), and the two copies of the skill must not drift. AC2 proven live: `publish --kind photo` with no file → `code 2`; `--actor 999999` → `code 3`, both with no network call.
 - **Stop guarantees:** the skill changes agent behaviour only when invoked; every new verb is confined to the allow-listed chat; nothing was posted to the group in this gate.
 - **Rollback:** remove the skill file; agents fall back to no telegram actions.
 
 ### G5 — Pilot Cutover · **SP5: "the real group is touched, minimally"**
-- **Work:** ~~promote the allowlist to `Master-Studio FINAL`~~ ✅ **done at G2 (D8)**; ~~build the topic registry~~ ✅ **done at G2** (10 topics auto-bound in `registry.json`); publish **one** lecture post and **one** quiz link; add the deprecation note to the Playwright scripts (#20).
-- **Entry:** SP4 green; bot is admin in the real group ✅; registry seeded ✅. **What actually remains:** the two posts + the deprecation note.
+- **Work:** ~~promote the allowlist to `Master-Studio FINAL`~~ ✅ **done at G2 (D8)**; ~~build the topic registry~~ ✅ **done at G2** (10 topics auto-bound in `registry.json`); publish **one** lecture post and **one** quiz link; ~~add the deprecation note to the Playwright scripts (#20)~~ ✅ **done 2026-09-30 — all five legacy scripts carry the `DEPRECATED` banner.**
+- **Entry:** SP4 green; bot is admin in the real group ✅; registry seeded ✅. **What actually remains:** the two posts only.
 - **Exit / verification:** the two posts are live and correctly placed; registry resolves every subject; `pytest -q` green; audit log shows exactly the intended actions.
 - **Stop guarantees:** old Playwright scripts still present; bot can be pulled from the group instantly.
 - **Rollback:** remove the bot from the group **or** reset the allowlist to test ids — both take seconds.
@@ -175,7 +175,10 @@
 ## 7. Standing Verification Gates
 
 ```bash
-pytest -q                                   # must be green at every SP (323 since 2026-09-29)
+pytest -q                                   # must be green at every SP (502 clean-checkout since
+                                             #  2026-09-30: 154 baseline + 283 gateway + 65 interactive.
+                                             #  Count on a CLEAN tree — a stale (conflict …) test copy
+                                             #  once inflated local runs by 10 nodes)
 python 90_Shared_Toolbox/tools/tg.py --dry-run status   # plan without I/O
                                              # (--dry-run is GLOBAL: it must precede the verb,
                                              #  and `python -m telegram.cli` only resolves from

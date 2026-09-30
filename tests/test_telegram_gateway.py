@@ -2088,6 +2088,49 @@ class TestTelegramSkill:
         missing = [v for v in VERBS if v not in text]
         assert missing == [], f"verbs absent from SKILL.md: {missing}"
 
+    def test_every_cli_subcommand_is_documented(self):
+        """Generalise the verb check to the whole CLI, not just ``VERBS``.
+
+        ``interactive`` sits deliberately outside ``schema.VERBS`` (D15: it
+        must never be composable as a publish path), which made the VERBS
+        check structurally blind to it - so the listening layer shipped on
+        2026-09-30 with zero mentions in the skill and no gate noticed.
+        Drive every argparse subcommand instead.
+        """
+        import telegram.cli as cli
+
+        subcommands = cli.build_parser()._subparsers._group_actions[0].choices
+        text = self._skill_text()
+        missing = sorted(name for name in subcommands if name not in text)
+        assert missing == [], f"CLI subcommands absent from SKILL.md: {missing}"
+
+    def test_the_interactive_layer_is_documented_in_detail(self):
+        """D14 + D15 + D16 must be actionable from the skill alone.
+
+        Zero-CLI makes the *agent* the only interface: if the skill does not
+        say how to open a session, what its bounds are, where the gateway
+        keeps its memory and how approvals surface, the feature is
+        unreachable no matter how well unit-tested it is.
+        """
+        import telegram.cli as cli
+
+        text = self._skill_text()
+
+        subcommands = cli.build_parser()._subparsers._group_actions[0].choices
+        flags = {
+            opt
+            for action in subcommands["interactive"]._actions
+            for opt in action.option_strings
+        } - {"-h", "--help"}
+        undocumented = sorted(f for f in flags if f not in text)
+        assert undocumented == [], f"interactive flags absent from SKILL.md: {undocumented}"
+
+        # D14: the gateway's own memory folder, plus the one rule that matters.
+        assert "00_STUDIO_HUB/telegram/" in text, "D14 memory folder undocumented"
+        assert "MEMORY.md" in text, "the D14 never-write-MEMORY.md rule is undocumented"
+        # D16: administrative actions never auto-run.
+        assert "pending_approval.json" in text, "D16 approval gate undocumented"
+
     def test_no_flag_is_documented_that_the_cli_lacks(self):
         import re
 
