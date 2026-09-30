@@ -263,6 +263,58 @@ but **never writes `MEMORY.md`** — the agent stays the only intermediary betwe
 chat lands in `pending_approval.json` as a *pending approval*. Surface it to the student and
 act only on his explicit yes; the owner allowlist and `--confirm` still apply on top.
 
+### 4.10 `human` — the spare account (issue #22, MTProto)
+
+**A different animal from everything above.** `transport.py` speaks the Bot API; this speaks
+**MTProto as a person** through Telethon. Telegram forgives a clumsy bot with a `FloodWait`,
+but restricts a clumsy *user* account — so this verb brings its own gates and is **off until
+you switch it on**.
+
+```bash
+# identity and discovery
+python 90_Shared_Toolbox/tools/tg.py --live human --verb whoami
+python 90_Shared_Toolbox/tools/tg.py --live human --verb chats
+
+# inside the allowed group only — TELEGRAM_CHAT_ALLOWLIST applies unchanged
+python 90_Shared_Toolbox/tools/tg.py --live human --verb read --chat -1003710711332 --limit 10
+python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -1003710711332 --text "أهلاً"
+
+# two-step login: request the code, then spend it
+python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX
+python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --code 12345
+```
+
+`--verb` is one of `whoami`, `chats`, `read`, `say`, `login`. `read` needs `--chat` **and**
+`--limit` (default `10`); `say` needs `--chat` **and** `--text`; `login` needs `--phone`, and
+`--code` on the second step. The chat must be on `TELEGRAM_CHAT_ALLOWLIST` — **a human account
+is not an ACL bypass**: an empty allowlist denies every chat, exactly as it does for the bot.
+
+**The kill switch.** Human mode is **off by default**. Set `TELEGRAM_HUMAN_ENABLED=1` in
+`.env` to enable it; set it back to `0` (or delete the line) to stop everything at once. Only
+the literal values `1` / `true` / `yes` / `on` count as on — an absent variable, `0`, `false`
+and any typo all mean **off**, because a kill switch that a typo can enable is not one.
+
+**Flood control, in two layers — neither sleeps and neither retries.**
+
+* *Local pacing*, before Telegram is ever asked: at most 20 messages/minute and at least 1s
+  apart in one chat. A refused send never reaches the network.
+* *Server-side*, a `FloodWait` is surfaced as a `retry_after` number and that is the end of
+  it. Telethon is built with `flood_sleep_threshold=0` because its default of 60 would make it
+  **silently block inside our own call** instead of letting us report the wait; it is never
+  retried. `receive_updates=False` keeps the update listener that **D15** forbids from ever
+  being installed.
+
+**Exit codes** follow the shared table in §1: `5` = disabled, missing `--live`, missing
+credentials or no session yet; `3` = chat not allowlisted; `2` = malformed request;
+`7` = local pacing or `FloodWait`.
+
+**A `*.session` file is a bearer token.** It holds the authorization key — full control of the
+account with **no password and no 2FA**. It is written under `90_Shared_Toolbox/telegram/`, and
+both `*.session` and `*.session-journal` are gitignored, because this repository is public;
+never move one into tracked space. The single-use login hand-off
+(`00_STUDIO_HUB/telegram/login_state.json`, which carries the code hash Telethon keeps only in
+memory) is deleted the moment the code is spent.
+
 ---
 
 ## 5. Persona — how the bot behaves (issue #17)

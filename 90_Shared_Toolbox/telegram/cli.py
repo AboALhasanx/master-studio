@@ -24,6 +24,7 @@ from typing import Any
 from .acl import ACL, chat_allowlist_from_env
 from .errors import ActionValidationError, GatewayError
 from .executor import execute, plan
+from .human import HUMAN_VERBS, authorize as authorize_human, human_enabled
 from .publisher import MEDIA_KINDS
 from .registry import Registry
 from .schema import Action, parse_action
@@ -199,6 +200,23 @@ def build_parser() -> argparse.ArgumentParser:
                    help="the bot's @username, used to detect mentions "
                         "(default: TELEGRAM_BOT_USERNAME from .env)")
     p.add_argument("--subject", help="registry subject to steer answers toward")
+
+    # `human` is a *separate* capability, not a schema verb: it drives a
+    # personal MTProto account (issue #22) and, like `interactive`, is
+    # dispatched before `_action_from_args` so it can never be composed into
+    # the bot's publish path.
+    p = sub.add_parser("human",
+                       help="control the spare human account (issue #22)")
+    p.add_argument("--verb", required=True, choices=list(HUMAN_VERBS),
+                   help="what to do with the spare account")
+    p.add_argument("--chat", type=int, dest="chat_id",
+                   help="target chat id (required for read and say)")
+    p.add_argument("--text", help="message body (verb say)")
+    p.add_argument("--limit", type=int, default=10,
+                   help="how many messages to fetch (verb read, default 10)")
+    p.add_argument("--phone", help="spare account number in international "
+                                   "form (verb login)")
+    p.add_argument("--code", help="login code Telegram just sent (verb login)")
 
     return parser
 
@@ -405,6 +423,51 @@ def _run_interactive(args: argparse.Namespace) -> int:
 
 
 # ---------------------------------------------------------------------------
+# spare human account (issue #22) — a gated MTProto client
+# ---------------------------------------------------------------------------
+def _run_human(args: argparse.Namespace) -> int:
+    """Do one thing with the spare account, refusing before anything is built.
+
+    The gates run **twice**, deliberately: once before the Telethon client is
+    constructed (so a refused request never even opens one — "denied" and
+    "never attempted" stay the same thing) and once inside ``run`` (so the
+    executor is safe for any direct caller). Authorization is pure, so the
+    second pass costs nothing.
+    """
+    from .human import HumanRequest, TelethonGateway, run
+
+    req = HumanRequest(
+        verb=args.verb,
+        chat_id=getattr(args, "chat_id", None),
+        text=getattr(args, "text", None),
+        limit=getattr(args, "limit", 10),
+        phone=getattr(args, "phone", None),
+        code=getattr(args, "code", None),
+    )
+    gate = dict(
+        live=bool(args.live),
+        enabled=human_enabled(),
+        allowed_chats=chat_allowlist_from_env(),
+    )
+
+    try:
+        authorize_human(req, **gate)
+        gateway = TelethonGateway.from_env()
+        result = run(req, gateway, **gate)
+    except GatewayError as exc:
+        _emit({"status": "error", "code": exc.code, "verb": args.verb,
+               "error": str(exc)}, args.as_json)
+        return exc.code
+    except Exception as exc:  # a raw Telethon RPCError must not become a traceback
+        _emit({"status": "error", "code": 1, "verb": args.verb,
+               "error": f"{type(exc).__name__}: {exc}"}, args.as_json)
+        return 1
+
+    _emit({"status": "ok", **result}, args.as_json)
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # entry point
 # ---------------------------------------------------------------------------
 def main(argv: list[str] | None = None) -> int:
@@ -413,6 +476,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "interactive":
         return _run_interactive(args)
+
+    if args.command == "human":
+        return _run_human(args)
 
     try:
         action = _action_from_args(args)

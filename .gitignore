@@ -123,6 +123,15 @@ output/
 # live state, not source — a fresh clone starts with an empty ledger.
 00_STUDIO_HUB/telegram/pending_approval.json
 
+# MTProto user-account sessions (issue #22): a Telethon *.session stores the
+# auth_key, i.e. full control of the account with no password and no 2FA.
+# This repo is public — committing one would hand the account over.
+*.session
+*.session-journal
+# single-use login hand-off: the phone number plus a hash that is dead in
+# about two minutes, so it must never outlive the login attempt either
+00_STUDIO_HUB/telegram/login_state.json
+
 # Android Build Artifacts
 91_Dashboard/android_build/
 *.keystore

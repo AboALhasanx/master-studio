@@ -25,3 +25,7 @@ pydantic==2.13.4
 
 # 6. Testing & CI (pytest runs the suite under tests/)
 pytest==8.3.4
+
+# 7. Spare human account via MTProto (issue #22; the Bot API client in
+#    90_Shared_Toolbox/telegram/transport.py does not need this).
+telethon==1.41.2
