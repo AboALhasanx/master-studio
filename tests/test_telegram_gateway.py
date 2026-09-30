@@ -6,6 +6,7 @@ suite asserts the structural guarantees (fail-closed ACL, confirmation gate,
 idempotency, audit trail, no live transport).
 """
 
+import argparse
 import io
 import json
 import os
@@ -254,6 +255,19 @@ def test_unbind_returns_to_unbound(registry):
     registry.unbind("99-Chat")
     with pytest.raises(UnboundTopic):
         registry.resolve("99-Chat")
+
+
+def test_unbound_error_points_at_chat_for_the_general_topic(registry):
+    """``00-Start-Here`` is the group's General and is *intentionally* unbound.
+
+    ``docs/TELEGRAM_LEGACY_DEPRECATION.md`` records 10 topics provisioned from
+    11 seeded subjects as the expected mapping, but the error told the caller
+    to bind it at G2/G5 — advice that cannot be followed for a topic that has
+    no ``thread_id`` to bind. The working route is an explicit ``--chat``.
+    """
+    with pytest.raises(UnboundTopic) as exc:
+        registry.resolve("00-Start-Here")
+    assert "--chat" in str(exc.value)
 
 
 # --------------------------------------------------------------------------- store
@@ -952,6 +966,40 @@ def test_pipeline_refuses_excluded_paths(tmp_path, monkeypatch):
         pipeline_mod.resolve("03_Study_Notes/ghost.md")
 
     assert pipeline_mod.resolve("03_Study_Notes/W01_Note.md").name == "W01_Note.md"
+
+
+def test_pipeline_not_found_says_where_it_looked(tmp_path, monkeypatch):
+    """A bare ``source not found`` gave a live run nothing to correct.
+
+    ``--dry-run`` deliberately does not resolve the path (see
+    ``test_pipeline_cli_dry_run_never_touches_the_filesystem``), so this
+    message is the only place a live failure can name the root it searched.
+    """
+    monkeypatch.setattr(pipeline_mod, "VAULT_ROOT", tmp_path)
+    with pytest.raises(PipelineError) as exc:
+        pipeline_mod.resolve("03_Study_Notes/ghost.md")
+    assert str(tmp_path) in str(exc.value)
+
+
+def test_pipeline_source_help_example_is_vault_relative():
+    """The ``--source`` example was subject-relative; resolve() reads vault-relative.
+
+    ``03_Study_Notes/W01_Note.md`` exists nowhere at the checkout root, so a
+    live ``--source`` built from the documented shape died as not-found. The
+    documented example must be a path an operator can actually paste.
+    """
+    parser = tg_cli.build_parser()
+    subs = next(a for a in parser._actions if isinstance(a, argparse._SubParsersAction))
+    # read the declared help, not format_help(): argparse text-wraps long
+    # paths at an arbitrary column and would shatter the example token
+    source_action = next(a for a in subs.choices["pipeline"]._actions
+                         if a.dest == "source")
+    example = next(tok for tok in source_action.help.split() if tok.endswith(".md"))
+    assert example.startswith("01_Semester_1/"), example
+    assert (pipeline_mod.VAULT_ROOT / example).is_file(), example
+    # ...and it must survive argparse's text wrapping as one contiguous token,
+    # or ``tg.py pipeline --help`` hands the operator a path split mid-word
+    assert example in subs.choices["pipeline"].format_help(), example
 
 
 def test_vault_root_is_the_checkout_not_one_level_too_high():

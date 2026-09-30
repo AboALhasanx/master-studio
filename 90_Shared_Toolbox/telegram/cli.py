@@ -165,11 +165,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--only", action="append", default=[], metavar="SUBJECT",
                    help="limit to specific registry subjects (repeatable)")
 
+    # RawTextHelpFormatter: the --source example is a full vault path, longer
+    # than the help column, and argparse's default textwrap would shatter it
+    # mid-word — --help would print something the operator cannot paste.
     p = sub.add_parser("pipeline",
-                       help="export a vault file when stale, then publish it")
+                       help="export a vault file when stale, then publish it",
+                       formatter_class=argparse.RawTextHelpFormatter)
     _add_target(p)
     p.add_argument("--source", required=True,
-                   help="vault-relative path, e.g. 03_Study_Notes/W01_Note.md")
+                   help="vault-relative path (from the checkout root), e.g. "
+                        "01_Semester_1/01_Cyber_Security/03_Study_Notes/W01_DeepDive.md")
     p.add_argument("--caption", help="media caption for the uploaded artifact")
     p.add_argument("--html", action="store_true", dest="html",
                    help="send the caption as HTML")

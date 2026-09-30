@@ -82,7 +82,7 @@ def resolve(source: Any, root: Path | None = None) -> Path:
     if _is_excluded(candidate, base):
         raise PipelineError(f"refusing to publish an excluded path: {source}")
     if not candidate.is_file():
-        raise PipelineError(f"source not found: {source}")
+        raise PipelineError(f"source not found: {source} (searched under {VAULT_ROOT})")
     return candidate
 
 

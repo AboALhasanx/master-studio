@@ -129,7 +129,9 @@ class Registry:
         entry = self.get(subject)
         if entry.get("chat_id") is None or entry.get("thread_id") is None:
             raise UnboundTopic(
-                f"subject {subject!r} is not bound yet — bind it at gate G2/G5 "
-                "(registry bind, or bootstrap from a topic message link)"
+                f"subject {subject!r} is not bound yet — bind it at gate "
+                "G2/G5 (registry bind, or bootstrap from a topic message "
+                "link), or pass --chat explicitly (00-Start-Here is the "
+                "General topic and has no thread to bind)"
             )
         return dict(entry)
