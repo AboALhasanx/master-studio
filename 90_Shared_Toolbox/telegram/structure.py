@@ -9,11 +9,23 @@ Derived from the **vault itself** (not invented):
   → a Progress & Analytics topic.
 * `90_Shared_Toolbox/` + `91_Dashboard/` → a Toolbox topic.
 * The quiz subsystem (`/quiz/...` routes) → an Exams & MCQ topic.
-* The legacy `TOPICS` list in `telegram_publisher.py` → `99-Chat` for discussion.
+* Discussion needs **no** topic of its own: every forum already has the
+  non-deletable **General** topic (id=1, Telegram API), which the owner has
+  named **محادثة** — it is the group's chat room, and because General
+  messages carry no ``top_msg_id`` it can never be bound in the registry.
+  The legacy ``99-Chat`` subject therefore stays seeded (so old references
+  fail with a clear *unbound*, not *unknown*) but is not provisioned here.
+
+Topic titles are **Arabic only, monochrome, no emoji, no numbers** (student's
+rule: «شيل الارقام من اسماء التوبكتات») — `◆ أمن المعلومات` for the six taught
+subjects, and a lighter ``◇`` with no number for the three cross-cutting
+topics, so subjects and utility rooms read apart at a glance. Order comes
+from creation order, not from a prefix; General (محادثة) needs no title of
+its own — Telegram owns it.
 
 Extras that make topics organised (each is an action the gateway performs):
-  1. **Numbered names** (`01 🛡 Cyber Security`) — ordering by name, because
-     Bot API cannot reorder or pin *topics* (MTProto only, ADR in playbook).
+  1. **Stable titles** — Bot API cannot reorder or pin *topics*
+     (MTProto only, ADR in playbook).
   2. **Icon colour chosen at creation** — the colour cannot be changed later.
      Falls back to Telegram's default when the API rejects a value.
   3. **Brief card per topic** — pinned first message carrying course code,
@@ -44,64 +56,52 @@ class TopicSpec:
 
 STRUCTURE: list[TopicSpec] = [
     TopicSpec(
-        "01-Cyber-Security", "01 🛡 Cyber Security",
-        "📗 CS501 · Dr. Huda Lafta · الأحد 08:30\n"
-        "المحتوى: المحاضرات، ملازم الحفظ، بنوك الأسئلة، واختبارات الأسابيع.\n"
-        "المسار بالـ vault: 01_Semester_1/01_Cyber_Security",
+        "01-Cyber-Security", "◆ أمن المعلومات",
+        "أ.م.د. هدى لفتة مجيد · الأحد 08:30 — 10:30\n"
+        "المحتوى: المحاضرات، ملازم الحفظ، بنوك الأسئلة، واختبارات الأسابيع.",
     ),
     TopicSpec(
-        "02-English-Language", "02 🗣 English Language",
-        "📘 CS502 · Dr. Haidar Akab · الأحد 10:30\n"
-        "المحتوى: الوحدات النحوية، المقالات، والتمارين.\n"
-        "المسار بالـ vault: 01_Semester_1/02_English_Language",
+        "02-English-Language", "◆ اللغة الإنجليزية",
+        "أ.م.د. حيدر عكاب علوان · الأحد 10:30 — 11:30\n"
+        "المحتوى: الوحدات النحوية، المقالات، والتمارين.",
     ),
     TopicSpec(
-        "03-Data-Mining", "03 ⛏ Data Mining",
-        "📙 Dr. Ahmed Shakir · الاثنين 08:30\n"
-        "المحتوى: ملاحظات الأسبوع، المعادلات، وبنوك الأسئلة.\n"
-        "المسار بالـ vault: 01_Semester_1/03_Data_Mining",
+        "03-Data-Mining", "◆ تنقيب البيانات",
+        "أ.م.د. أحمد شاكر عبد الرضا · الاثنين 08:30 — 10:30\n"
+        "المحتوى: ملاحظات الأسبوع، المعادلات، وبنوك الأسئلة.",
     ),
     TopicSpec(
-        "04-Advanced-Software-Eng", "04 ⚙️ Software Engineering",
-        "📕 CS504 · Dr. Ali Fahim · الاثنين 10:30 (3 ساعات)\n"
-        "المحتوى: الوحدات، المخططات، والملخصات المدمجة.\n"
-        "المسار بالـ vault: 01_Semester_1/04_Advanced_Software_Eng",
+        "04-Advanced-Software-Eng", "◆ هندسة البرمجيات المتقدمة",
+        "أ.م.د. علي فاهم نعمة · الاثنين 10:30 — 13:30\n"
+        "المحتوى: الوحدات، المخططات، والملخصات المدمجة.",
     ),
     TopicSpec(
-        "05-Soft-Computing", "05 🧠 Soft Computing",
-        "📗 Prof. Dr. Abdul Hadi · الثلاثاء 08:30\n"
-        "المحتوى: الفازي، ANFIS، والكتيبات الأسبوعية.\n"
-        "المسار بالـ vault: 01_Semester_1/05_Soft_Computing",
+        "05-Soft-Computing", "◆ الحوسبة الناعمة",
+        "أ.د. عبد الهادي محمد عدخيل · الثلاثاء 08:30 — 10:30\n"
+        "المحتوى: الفازي، ANFIS، والكتيبات الأسبوعية.",
     ),
     TopicSpec(
-        "06-Artificial-Intelligence", "06 🤖 Artificial Intelligence",
-        "📘 Dr. Saif Al-Saidi · الثلاثاء 10:30 — **معلّق لسا مواد**\n"
-        "المحتوى: (بانتظار المحاضرة الأولى).\n"
-        "المسار بالـ vault: 01_Semester_1/06_Artificial_Intelligence",
+        "06-Artificial-Intelligence", "◆ الذكاء الاصطناعي",
+        "أ.د. سيف علي السعيدي · الثلاثاء 10:30 — 13:30\n"
+        "المحتوى: بانتظار المحاضرة الأولى.",
+        # All six taught subjects share the subject colour: colour is fixed at
+        # creation and cannot be changed later, so it must say "subject" from
+        # day one — the pending state is what the card text is for.
+    ),
+    TopicSpec(
+        "70-Exams-and-MCQ", "◇ الامتحانات والأسئلة",
+        "روابط الاختبارات، كتيّبات الامتحانات، ونتائج MCQ.\n"
+        "النتائج تُرحَّل أوتوماتيكياً إلى نموذج المتعلّم.",
         icon_color=COLOR_META,
     ),
     TopicSpec(
-        "70-Exams-and-MCQ", "📚 Exams & MCQ",
-        "🎯 روابط الاختبارات، كتيّبات الامتحانات، ونتائج MCQ.\n"
-        "النتائج تُرحّل أوتوماتيكياً لـ LEARNER_MODEL.\n"
-        "المسار بالـ vault: */07_Quizzes_&_Anki/",
+        "71-Progress-Analytics", "◇ التقدم والتحليلات",
+        "تقارير أسبوعية: التقدم، نسب الإتقان، وقائمة المراجعة.",
         icon_color=COLOR_META,
     ),
     TopicSpec(
-        "71-Progress-Analytics", "📊 Progress & Analytics",
-        "📈 تقارير أسبوعية: التقدم، نسب الإتقان، وقائمة المراجعة.\n"
-        "المسار بالـ vault: 00_STUDIO_HUB/PROGRESS_ANALYTICS.md",
-        icon_color=COLOR_META,
-    ),
-    TopicSpec(
-        "90-Toolbox", "🧰 Toolbox",
-        "🛠 أدوات التصدير والمزامنة ولوحة الاختبارات (Dashboard).\n"
-        "المسار بالـ vault: 90_Shared_Toolbox/ · 91_Dashboard/",
-        icon_color=COLOR_META,
-    ),
-    TopicSpec(
-        "99-Chat", "💬 Chat",
-        "🗨 نقاش عام بلا تصنيف. المحتوى المنظّم يروح لتوبيكات المواد.",
+        "90-Toolbox", "◇ الأدوات",
+        "أدوات التصدير والمزامنة ولوحة الاختبارات.",
         icon_color=COLOR_META,
     ),
 ]
@@ -118,8 +118,12 @@ def topic_link(chat_id: int, thread_id: int) -> str:
 
 
 def card_text(spec: TopicSpec) -> str:
-    """Pinned brief card — the topic's description (Telegram has no other)."""
-    return f"{spec.name}\n\n{spec.card}\n\n— يُحدَّث تلقائياً بواسطة Master Studio gateway"
+    """Pinned brief card — the topic's description (Telegram has no other).
+
+    No gateway footer, no vault path, no emoji: the card is a student-facing
+    deliverable and inherits the same zero-leakage rules as every other one.
+    """
+    return f"{spec.name}\n\n{spec.card}"
 
 
 def index_payload(chat_id: int, bound: dict[str, int]) -> tuple[str, list[dict]]:
@@ -127,7 +131,7 @@ def index_payload(chat_id: int, bound: dict[str, int]) -> tuple[str, list[dict]]
 
     ``bound`` maps subject -> thread_id (only bound topics get a button).
     """
-    lines = ["🗂 Master Studio — فهرس الكروب", "", "اختر التوبيك من الأزرار 👇"]
+    lines = ["Master Studio — فهرس الكروب", "", "اختر التوبيك من الأزرار"]
     buttons = []
     for spec in STRUCTURE:
         thread_id = bound.get(spec.subject)

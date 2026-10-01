@@ -1,25 +1,37 @@
-"""Subject catalog cards — one message per subject that holds the whole
-inventory as links (the ordering transplant).
+"""Subject catalog card — one message per subject that carries the whole index.
 
-The model comes from the student's bachelor channels (``cs_stg4`` /
-``cs_stg4_onefile``): a subject is ONE card, never one message per asset. The
-card carries fixed header fields, ``【...】`` link sections, a freshness stamp
-and a uniform footer, and it is **edited in place** when material drops — the
-catalogue is mutable while the topic history stays append-only.
+Transplanted from the student's bachelor channels (``cs_stg4`` /
+``cs_stg4_onefile``), where a subject is ONE message rather than one message
+per asset. The card ships as the **caption of a document**: the first message
+of every subject topic is a file (today a one-page placeholder, tomorrow the
+merged official lectures), and its caption is the index.
 
-Two invariants are asserted against the real shipped files, not only against
-fixtures:
+The caption states, in this order:
 
-* the card message id is smaller than every message it links to, so the index
-  always sits at the top of its topic;
-* every rendered card fits a Telegram message (4096 chars) with balanced HTML.
+* the subject name (Arabic, no ``01`` prefix);
+* the instructor's full Arabic name **with the scientific title**, taken from
+  the semester schedule ``.docx`` rather than transcribed — ``ا.م.د`` and
+  ``ا.د`` are different ranks and a card that drops the rank misrepresents
+  the course;
+* an embedded link to a translated copy, **only if one exists** (omitted
+  otherwise, never left as a placeholder);
+* the chapter numbers contained in the merged file;
+* ``● كل جابتر بملف :`` and then one ``【ordinal (link)】`` per chapter,
+  three to a row.
+
+What the caption must NOT carry is pinned as hard as what it must: no
+``<blockquote>``, no vault path, no build footer, no descriptive chapter
+titles inside the brackets, no per-link icon. Every one of those was removed
+by request — the card is an index, and an index that annotates itself stops
+being an index.
+
+Because the card is a caption, ``TELEGRAM_CAPTION_LIMIT`` (1024) — not the
+4096 text limit — is the ceiling that decides whether it ships at all.
 """
 
-import io
 import json
 import re
 import sys
-from contextlib import redirect_stdout
 from pathlib import Path
 
 import pytest
@@ -32,18 +44,22 @@ if str(toolbox_path) not in sys.path:
 from telegram import cli as tg_cli  # noqa: E402
 from telegram.catalog import (  # noqa: E402
     CATALOG_DIR,
+    ROW_WIDTH,
     SUBJECT_KEYS,
     Catalog,
     CatalogError,
+    arabic_ordinal,
     build_edit_argv,
+    build_publish_argv,
     catalog_main,
     check_rendered,
     message_link,
+    pdf_path,
     render,
 )
 from telegram.links import parse_message_link  # noqa: E402
 from telegram.registry import Registry  # noqa: E402
-from telegram.structure import topic_link  # noqa: E402
+from telegram.structure import COLOR_SUBJECT, STRUCTURE, topic_link  # noqa: E402
 
 CHAT = -1003710711332
 OWNER = 5664798395
@@ -60,29 +76,15 @@ def _gate(monkeypatch):
 def spec(**over):
     """A minimal, valid catalog payload — every test overrides one field."""
     base = {
-        "icon": "📗",
+        "icon": "◆",
         "subject": "أمن المعلومات",
-        "doctor": "د. هدى لفتة مجيد",
+        "doctor": "أ.م.د. هدى لفتة مجيد",
         "schedule": "الأحد 08:30 — 10:30",
-        "vault": "01_Semester_1/01_Cyber_Security",
         "updated": "2026/10/1",
-        "card_message_id": 7,
-        "units": [
-            {
-                "label": "الأول",
-                "title": "أساسيات الأمن السيبراني",
-                "links": [
-                    {"id": 60, "text": "ملزمة W01", "icon": "📎"},
-                    {"id": 61, "text": "كويز W01", "icon": "🎯"},
-                ],
-            },
-            {
-                "label": "الثاني",
-                "title": "تقييم المخاطر",
-                "links": [{"id": 70, "text": "ملزمة W02", "icon": "📎"}],
-            },
-        ],
-        "notes": ["كل ملزمة مع كويزها في نفس الموضوع."],
+        "chapters": [101, 102],
+        "pdf": "00_STUDIO_HUB/telegram/catalog/placeholders/01.pdf",
+        "translation": None,
+        "catalog_message_id": None,
     }
     base.update(over)
     return base
@@ -104,9 +106,31 @@ class TestMessageLink:
         assert (ref.chat_id, ref.message_id) == (CHAT, 28)
 
     def test_it_agrees_with_the_topic_link_builder(self):
-        # structure.topic_link() already builds the same shape for thread ids;
-        # two builders must never drift into two different link dialects.
+        # two builders must never drift into two different link dialects
         assert topic_link(CHAT, 6) == message_link(CHAT, 6)
+
+
+class TestOrdinals:
+    def test_the_first_nine(self):
+        got = [arabic_ordinal(i) for i in range(1, 10)]
+        assert got == [
+            "الأول", "الثاني", "الثالث", "الرابع", "الخامس",
+            "السادس", "السابع", "الثامن", "التاسع",
+        ]
+
+    def test_the_tens_and_teens_carry_the_right_elision(self):
+        assert arabic_ordinal(10) == "العاشر"
+        assert arabic_ordinal(11) == "الحادي عشر"  # not "الأول عشر"
+        assert arabic_ordinal(13) == "الثالث عشر"
+        assert arabic_ordinal(20) == "العشرون"
+
+    def test_compound_ordinals_join_with_waw(self):
+        assert arabic_ordinal(21) == "الحادي والعشرون"
+        assert arabic_ordinal(32) == "الثاني والثلاثون"
+
+    def test_a_zero_ordinal_is_refused(self):
+        with pytest.raises(ValueError):
+            arabic_ordinal(0)
 
 
 # ----------------------------------------------------------- structure ----
@@ -114,27 +138,34 @@ class TestMessageLink:
 
 class TestPayloadShape:
     def test_a_missing_required_key_is_a_structural_error(self):
-        for key in ("subject", "doctor", "schedule", "vault", "updated",
-                    "card_message_id", "units"):
+        for key in ("icon", "subject", "doctor", "schedule", "updated",
+                    "chapters", "pdf"):
             bad = spec()
             bad.pop(key)
             with pytest.raises(CatalogError) as exc:
                 Catalog.from_dict("01-Cyber-Security", bad)
             assert key in str(exc.value)
 
-    def test_a_link_must_name_a_positive_message(self):
-        bad = spec()
-        bad["units"][0]["links"][0]["id"] = 0
+    def test_a_chapter_must_point_at_a_positive_message(self):
         with pytest.raises(CatalogError):
-            Catalog.from_dict("01-Cyber-Security", bad)
+            Catalog.from_dict("x", spec(chapters=[101, 0]))
 
-    def test_the_card_itself_must_have_a_positive_id(self):
+    def test_chapters_may_be_empty_but_must_be_a_list(self):
+        assert Catalog.from_dict("x", spec(chapters=[])).chapters == ()
         with pytest.raises(CatalogError):
-            Catalog.from_dict("01-Cyber-Security", spec(card_message_id=0))
+            Catalog.from_dict("x", spec(chapters="101"))
 
-    def test_a_unit_without_links_is_allowed_for_a_subject_just_announced(self):
-        cat = Catalog.from_dict("06-Artificial-Intelligence", spec(units=[]))
-        assert cat.units == ()
+    def test_a_catalog_message_id_is_optional_until_the_card_exists(self):
+        assert Catalog.from_dict("x", spec()).catalog_message_id is None
+        assert Catalog.from_dict("x", spec(catalog_message_id=9)).catalog_message_id == 9
+        with pytest.raises(CatalogError):
+            Catalog.from_dict("x", spec(catalog_message_id=0))
+
+    def test_a_translation_may_be_absent_but_never_empty(self):
+        assert Catalog.from_dict("x", spec()).translation is None
+        assert Catalog.from_dict("x", spec(translation="")).translation is None
+        with pytest.raises(CatalogError):
+            Catalog.from_dict("x", spec(translation=" "))
 
 
 # -------------------------------------------------------------- render ----
@@ -142,110 +173,142 @@ class TestPayloadShape:
 
 class TestRenderedCard:
     def test_the_header_carries_no_ordinal_prefix(self):
-        # "ما اريد مال 01" -- the card opens on the emoji and the Arabic name.
-        first = render(build(), CHAT).splitlines()[0]
-        assert first == "📗 أمن المعلومات"
+        assert render(build(), CHAT).splitlines()[0] == "◆ أمن المعلومات"
 
-    def test_the_doctor_is_rendered_in_arabic(self):
-        assert "د. هدى لفتة مجيد" in render(build(), CHAT)
-
-    def test_the_unit_numbers_are_derived_from_the_unit_list(self):
-        assert "🏷 الوحدات : 1,2" in render(build(), CHAT)
-
-    def test_an_empty_subject_renders_a_dash_for_the_unit_field(self):
-        body = render(Catalog.from_dict("x", spec(units=[])), CHAT)
-        assert "🏷 الوحدات : —" in body
-
-    def test_every_link_is_built_from_the_chat_and_its_message_id(self):
+    def test_the_doctor_is_rendered_in_arabic_with_her_scientific_rank(self):
         body = render(build(), CHAT)
-        assert f"https://t.me/c/{INTERNAL}/60" in body
-        assert f"https://t.me/c/{INTERNAL}/70" in body
+        assert "الدكتور : أ.م.د. هدى لفتة مجيد" in body
 
-    def test_links_are_wrapped_in_an_anchor(self):
-        assert f'<a href="https://t.me/c/{INTERNAL}/61">كويز W01</a>' in render(
-            build(), CHAT
-        )
+    def test_the_chapter_numbers_state_what_is_inside_the_merged_file(self):
+        assert "الجابتر : 1,2" in render(build(), CHAT)
 
-    def test_at_most_two_links_share_one_line(self):
-        wide = spec()
-        wide["units"] = [
-            {"label": "الأول", "title": "كبير", "links": [
-                {"id": n, "text": f"ملزمة {n}", "icon": "📎"} for n in range(10, 16)
-            ]}
-        ]
+    def test_an_empty_subject_renders_a_dash_for_the_chapter_field(self):
+        body = render(Catalog.from_dict("x", spec(chapters=[])), CHAT)
+        assert "الجابتر : —" in body
+
+    def test_the_chapter_heading_is_verbatim(self):
+        assert "● كل جابتر بملف : —" not in render(build(), CHAT)
+        assert "● كل جابتر بملف :" in render(build(), CHAT)
+
+    def test_a_chapter_is_an_ordinal_wrapped_around_a_bare_link(self):
+        body = render(build(), CHAT)
+        assert f"【الأول (https://t.me/c/{INTERNAL}/101)】" in body
+        assert f"【الثاني (https://t.me/c/{INTERNAL}/102)】" in body
+
+    def test_a_chapter_carries_no_description(self):
+        # "بدون تفاصيل اسم الجابتر او اي شي" — the bracket holds ordinal+link,
+        # never the "الوحدة — العنوان" subtitle the earlier cards carried
+        brackets = re.findall(r"【([^】]*)】", render(build(), CHAT))
+        assert brackets
+        for bracket in brackets:
+            label, sep, url = bracket.partition(" (")
+            assert sep == " (", bracket
+            assert url.endswith(")"), bracket
+            assert "—" not in label and ":" not in label, label
+
+    def test_chapters_are_grouped_three_to_a_row(self):
+        wide = spec(chapters=list(range(101, 110)))
         body = render(Catalog.from_dict("x", wide), CHAT)
-        for line in body.splitlines():
-            assert line.count("<a ") <= 2, line
+        rows = [ln for ln in body.splitlines() if "】" in ln]
+        assert ROW_WIDTH == 3
+        assert len(rows) == 3
+        for row in rows:
+            assert row.count("【") == ROW_WIDTH
 
-    def test_the_freshness_stamp_comes_before_the_footer(self):
+    def test_rows_are_separated_by_a_blank_line(self):
+        wide = spec(chapters=list(range(101, 110)))
+        lines = render(Catalog.from_dict("x", wide), CHAT).splitlines()
+        indexes = [i for i, ln in enumerate(lines) if "】" in ln]
+        for a, b in zip(indexes, indexes[1:]):
+            assert lines[a + 1] == "", "chapter rows must not run together"
+
+    def test_the_translation_link_appears_only_when_one_exists(self):
+        body = render(build(translation="https://example.org/ar"), CHAT)
+        assert f'<a href="https://example.org/ar">اضغط هنا</a>' in body
+        assert render(build(), CHAT).find("مترجمة") == -1
+
+    def test_the_translation_line_uses_the_bachelor_field_word(self):
+        body = render(build(translation="https://example.org/ar"), CHAT)
+        assert "المادة مترجمة" in body
+
+    def test_the_freshness_stamp_closes_the_card(self):
         lines = [ln for ln in render(build(), CHAT).splitlines() if ln.strip()]
-        stamp = next(i for i, ln in enumerate(lines) if "آخر تحديث" in ln)
-        assert lines[stamp].endswith("2026/10/1")
-        assert lines[-1] == "— يُحدَّث تلقائياً بواسطة Master Studio gateway"
+        assert lines[-1].startswith("آخر تحديث")
+        assert lines[-1].endswith("2026/10/1")
 
     def test_user_supplied_text_is_html_escaped(self):
-        cat = Catalog.from_dict("x", spec(notes=["a <b> & c"]))
-        assert "a &lt;b&gt; &amp; c" in render(cat, CHAT)
+        body = render(build(subject="a <b> & c"), CHAT)
+        assert "a &lt;b&gt; &amp; c" in body
 
-    def test_the_rendered_body_fits_a_telegram_message(self):
+    def test_the_rendered_body_fits_a_document_caption(self):
         assert check_rendered(render(build(), CHAT)) == []
 
-    def test_render_refuses_a_body_that_would_be_chopped_by_telegram(self):
-        cat = Catalog.from_dict("x", spec(notes=["x" * 5000]))
+    def test_render_refuses_a_caption_telegram_would_chop(self):
+        # a caption is capped at 1024, not 4096 — overflow truncates the card
         with pytest.raises(CatalogError) as exc:
-            render(cat, CHAT)
-        assert "4096" in str(exc.value)
+            render(build(schedule="x" * 2000), CHAT)
+        assert "1024" in str(exc.value)
 
     def test_check_rendered_flags_unbalanced_html(self):
-        # the renderer owns the markup, so this guards the guard: a stray tag
-        # would render as literal text in Telegram and break every link after it
         assert check_rendered('<a href="x">y') == ["unclosed <a>"]
 
+    def test_a_longer_limit_can_be_asked_for_explicitly(self):
+        body = "x" * 1500
+        assert check_rendered(body) != []
+        assert check_rendered(body, limit=4096) == []
 
-# ------------------------------------------------------------ collapse ----
 
+class TestWhatTheCardMustNotCarry:
+    """The removals are pinned as hard as the additions.
 
-class TestCollapse:
-    def test_notes_live_inside_an_expandable_blockquote(self):
+    Each assertion names the thing it forbids, because a future pass that
+    "helpfully" re-adds a footer or wraps the index in a quote is exactly
+    the regression this class exists to catch.
+    """
+
+    def test_no_blockquote(self):
+        assert "<blockquote" not in render(build(), CHAT)
+
+    def test_no_vault_path(self):
         body = render(build(), CHAT)
-        assert "<blockquote expandable>" in body
-        assert "كل ملزمة مع كويزها" in body
-        start = body.index("<blockquote expandable>")
-        assert body.index("كل ملزمة مع كويزها") > start
+        assert "📂" not in body
+        assert "00_STUDIO_HUB" not in body
 
-    def test_no_notes_means_no_blockquote(self):
-        assert "<blockquote" not in render(build(notes=[]), CHAT)
+    def test_no_build_footer(self):
+        assert "gateway" not in render(build(), CHAT)
 
-    def test_notes_can_be_kept_plain(self):
-        body = render(build(collapse=[]), CHAT)
-        assert "<blockquote" not in body
+    def test_no_per_link_icons(self):
+        body = render(build(), CHAT)
+        assert "📎" not in body and "🎯" not in body
 
-    def test_units_can_be_collapsed_when_a_subject_grows(self):
-        body = render(build(collapse=["notes", "units"]), CHAT)
-        assert body.count("<blockquote expandable>") == 2
-        start, end = body.index("<blockquote"), body.index("</blockquote>")
-        assert f"https://t.me/c/{INTERNAL}/60" in body[start:end]
+    def test_no_notes_or_observations_section(self):
+        assert "ملاحظات" not in render(build(), CHAT)
 
-    def test_the_header_and_the_footer_never_collapse(self):
-        body = render(build(collapse=["notes", "units"]), CHAT)
-        assert body.startswith("📗")
-        assert body.rstrip().endswith("gateway")
+    def test_the_card_carries_no_emoji_at_all(self):
+        # "ولا تستعمل ايموجيات" — the whole card is monochrome: the header
+        # marker (◆), the section head (●) and the brackets (【】) are text
+        # glyphs, and every other line is a plain Arabic label.
+        body = render(build(), CHAT)
+        emoji = [
+            ch for ch in body
+            if 0x1F300 <= ord(ch) <= 0x1FAFF or 0x2600 <= ord(ch) <= 0x27BF
+            or 0x2B00 <= ord(ch) <= 0x2BFF or ord(ch) == 0xFE0F
+        ]
+        assert emoji == [], f"emoji leaked into the card: {emoji}"
 
 
 # ------------------------------------------------------- pending subject ---
 
 
-class TestPendingSubject:
-    def test_an_empty_subject_says_it_is_waiting(self):
-        cat = Catalog.from_dict(
-            "06-Artificial-Intelligence",
-            spec(subject="الذكاء الاصطناعي", units=[], notes=[],
-                 pending="بانتظار المحاضرة الأولى"),
-        )
-        body = render(cat, CHAT)
-        assert "بانتظار المحاضرة الأولى" in body
-        assert "ملزمة" not in body
-        assert "🏷 الوحدات : —" in body
+class TestEmptySubject:
+    def test_no_chapters_renders_an_em_dash_row(self):
+        body = render(Catalog.from_dict("x", spec(chapters=[])), CHAT)
+        assert "● كل جابتر بملف : —" in body
+
+    def test_an_empty_subject_still_carries_its_file(self):
+        # a subject with no lectures ships the blank placeholder, not a
+        # card with nothing attached — "المهم ملف"
+        assert Catalog.from_dict("x", spec(chapters=[])).pdf
 
 
 # ------------------------------------------------------- shipped cards ----
@@ -274,32 +337,115 @@ class TestShippedCards:
     def test_every_shipped_card_opens_on_an_arabic_subject_name(self):
         for key, cat, _chat in shipped():
             first = render(cat, CHAT).splitlines()[0]
-            assert re.match(r"^\S+\s+\S", first), f"{key}: {first!r}"
-            assert not first[0].isdigit(), f"{key} still opens on its ordinal"
+            assert not first.split(" ", 1)[1][0].isdigit(), f"{key} opens on a number"
 
-    def test_the_card_sits_above_every_message_it_links_to(self):
-        # the index must be the first thing you scroll to in its topic
-        for key, cat, chat_id in shipped():
-            for unit in cat.units:
-                for link in unit.links:
-                    assert link.message_id > cat.card_message_id, (
-                        f"{key}: card {cat.card_message_id} is below "
-                        f"message {link.message_id}"
-                    )
+    def test_every_shipped_doctor_carries_a_scientific_rank(self):
+        # the ranks come from "Weekly Schedule.docx": ا.م.د for four subjects,
+        # ا.د for two — a card that loses the rank misstates the course
+        for key, cat, _chat in shipped():
+            assert re.match(r"^(أ\.م\.د\.|أ\.د\.)\s", cat.doctor), (
+                f"{key}: {cat.doctor!r} has no rank"
+            )
 
-    def test_card_ids_are_unique_across_subjects(self):
-        ids = [cat.card_message_id for _k, cat, _c in shipped()]
-        assert len(ids) == len(set(ids))
+    def test_chapter_ids_are_strictly_increasing_and_unique(self):
+        for key, cat, _chat in shipped():
+            assert list(cat.chapters) == sorted(set(cat.chapters)), key
+
+    def test_the_declared_number_range_matches_the_chapter_count(self):
+        for key, cat, _chat in shipped():
+            match = re.search(r"الجابتر : ([\d,]+|—)", render(cat, CHAT))
+            assert match, key
+            if not cat.chapters:
+                assert match.group(1) == "—", key
+            else:
+                expected = ",".join(str(i) for i in range(1, len(cat.chapters) + 1))
+                assert match.group(1) == expected, key
 
     def test_every_shipped_link_points_into_the_registry_chat(self):
         for key, cat, chat_id in shipped():
             body = render(cat, chat_id)
-            for href in re.findall(r'href="([^"]+)"', body):
+            for href in re.findall(r'href="([^\"]+)"', body):
                 assert href.startswith(f"https://t.me/c/{str(chat_id)[4:]}/"), key
 
-    def test_a_shipped_card_is_never_missing_its_freshness_stamp(self):
-        for key, cat, chat_id in shipped():
-            assert "📮 آخر تحديث" in render(cat, chat_id), key
+    def test_every_shipped_card_names_an_existing_placeholder_pdf(self):
+        # "المهم ملف" — a subject with nothing merged yet still ships a file,
+        # so the first message of the topic is never a bare caption
+        for key, cat, _chat in shipped():
+            assert cat.pdf.endswith(".pdf"), key
+            assert pdf_path(cat).is_file(), f"{key}: no PDF at {cat.pdf}"
+
+    def test_placeholder_chapters_are_off_the_group_s_real_range(self):
+        # real traffic stops in the 80s; 100+ cannot collide with a live id
+        for key, cat, _chat in shipped():
+            assert all(mid >= 100 for mid in cat.chapters), key
+
+
+# ------------------------------------------------------------ topic titles --
+
+
+class TestTopicTitles:
+    """Topic names are Arabic, monochrome and ordered (the layout contract).
+
+    "اسماء بالعربية فقط للتوبكات واسمء المواد" — a topic title is what the eye
+    scans first, so the rule is pinned here rather than left to whoever
+    re-provisions the group next time.
+    """
+
+    def test_the_general_room_is_not_provisioned_twice(self):
+        # General (id=1) is non-deletable and already named محادثة — the owner
+        # renamed it (service message 39). A second chat topic would only
+        # duplicate the room Telegram gives every forum for free.
+        keys = {s.subject for s in STRUCTURE}
+        assert "99-Chat" not in keys
+        assert len(STRUCTURE) == 9
+
+    def test_every_title_is_arabic_only(self):
+        # "اسماء بالعربية فقط للتوبكات واسمء المواد" — a Latin word in a title
+        # is exactly what made the old layout unreadable
+        for spec_ in STRUCTURE:
+            letters = [ch for ch in spec_.name if ch.isalpha()]
+            assert letters and all(not ch.isascii() for ch in letters), spec_.name
+            assert not any(ch.isascii() and ch.isalpha() for ch in spec_.name), spec_.name
+
+    def test_every_title_is_emoji_free(self):
+        emoji = lambda s: [                          # noqa: E731
+            ch for ch in s
+            if 0x1F300 <= ord(ch) <= 0x1FAFF or 0x2600 <= ord(ch) <= 0x27BF
+            or 0x2B00 <= ord(ch) <= 0x2BFF or ord(ch) == 0xFE0F
+        ]
+        for spec_ in STRUCTURE:
+            assert emoji(spec_.name) == [], f"{spec_.subject}: {spec_.name}"
+
+    def test_taught_subjects_carry_no_numbers(self):
+        # «شيل الارقام من اسماء التوبكتات ما اريد ال 01 ولا يم اي مادة» — the
+        # prefix was noise: order is creation order, and Telegram lets the
+        # owner drag topics into any order anyway
+        taught = [s for s in STRUCTURE if s.icon_color == COLOR_SUBJECT]
+        assert len(taught) == 6
+        for spec_ in taught:
+            assert not any(ch.isdigit() for ch in spec_.name), spec_.name
+            assert spec_.name.split(" ", 1)[0] == "◆", spec_.name
+            label = spec_.name.split(" ", 1)[1]
+            assert label and not label[0].isascii(), spec_.name
+
+    def test_utility_topics_read_apart_from_the_six_subjects(self):
+        utility = [s for s in STRUCTURE if s.icon_color != COLOR_SUBJECT]
+        assert len(utility) == 3
+        for spec_ in utility:
+            assert spec_.name.startswith("◇ "), spec_.name
+            assert not spec_.name.split(" ", 1)[0].isdigit(), spec_.name
+
+    def test_titles_do_not_carry_vault_paths_or_english_course_names(self):
+        for spec_ in STRUCTURE:
+            assert "vault" not in spec_.card and "01_Semester" not in spec_.card
+            assert "Dr." not in spec_.card and "CS5" not in spec_.card
+
+    def test_the_pinned_card_has_no_gateway_footer(self):
+        from telegram.structure import card_text
+
+        text = card_text(STRUCTURE[0])
+        assert "gateway" not in text and "يُحدَّث" not in text
+        assert text.splitlines()[0] == STRUCTURE[0].name
 
 
 # ------------------------------------------------------------ push tool ----
@@ -307,16 +453,25 @@ class TestShippedCards:
 
 class TestPush:
     def test_global_flags_precede_the_subcommand(self):
-        # `tg.py --live edit ...` -- a trailing --live lands on the subparser
-        argv = build_edit_argv("01-Cyber-Security", 7, "body", live=True,
-                               dry_run=False, as_json=True)
-        assert argv.index("--live") < argv.index("edit")
+        # `tg.py --live publish ...` -- a trailing --live lands on the subparser
+        argv = build_publish_argv("01-Cyber-Security", "x.pdf", "body",
+                                  live=True, dry_run=False, as_json=True)
+        assert argv.index("--live") < argv.index("publish")
 
-    def test_the_edit_targets_the_pinned_card_and_forces_html(self):
+    def test_the_publish_targets_the_subject_and_forces_html(self):
+        argv = build_publish_argv("05-Soft-Computing", "a.pdf", "hello")
+        assert argv[argv.index("publish") + 1] == "--subject"
+        assert argv[argv.index("--file") + 1] == "a.pdf"
+        assert argv[argv.index("--caption") + 1] == "hello"
+        assert "--html" in argv
+
+    def test_an_existing_card_is_edited_not_re_posted(self):
+        # re-publishing a card that already exists would put a second copy at
+        # the bottom of the topic and break "the first message is the catalog"
         argv = build_edit_argv("05-Soft-Computing", 15, "hello")
         assert argv[argv.index("edit") + 1] == "--subject"
         assert argv[argv.index("--message-id") + 1] == "15"
-        assert argv[argv.index("--text") + 1] == "hello"
+        assert argv[argv.index("--caption") + 1] == "hello"
         assert "--html" in argv
 
     def test_the_actor_travels_as_a_global_flag(self):
@@ -337,7 +492,6 @@ class TestPush:
         assert "actor" in payload["reason"]
 
     def test_the_push_payload_is_parsed_by_the_real_cli(self, capsys):
-        # proves build_edit_argv() produces something the gateway accepts
         code = tg_cli.main(
             build_edit_argv("01-Cyber-Security", 7, "hi", dry_run=True,
                             as_json=True, actor=OWNER)
@@ -356,7 +510,7 @@ class TestPush:
         code = catalog_main(["--push", "01-Cyber-Security", "--dry-run", "--json"])
         payload = json.loads(capsys.readouterr().out)
         assert code == 0
-        assert payload["status"] == "ok"
+        assert payload["dry_run"] is True
         assert payload["results"][0]["status"] == "authorized"
 
     def test_the_default_push_is_a_dry_run(self, monkeypatch, capsys):
@@ -364,9 +518,42 @@ class TestPush:
             raise AssertionError("a push without --live must stay offline")
 
         monkeypatch.setattr(tg_cli, "build_transport", explode)
-        assert catalog_main(["--push", "01-Cyber-Security", "--json"]) == 0
+        catalog_main(["--push", "01-Cyber-Security", "--json"])
         payload = json.loads(capsys.readouterr().out)
-        assert payload["results"][0]["dry_run"] is True
+        assert payload["dry_run"] is True
+
+    @staticmethod
+    def _card_with_message_id(tmp_path, message_id):
+        """A copy of a real card with a chosen ``catalog_message_id``.
+
+        The shipped JSONs now carry the ids of the live push, so asserting on
+        them directly would test the deployment state instead of the code.
+        """
+        src = CATALOG_DIR / "06-Artificial-Intelligence.json"
+        data = json.loads(src.read_text(encoding="utf-8"))
+        data["catalog_message_id"] = message_id
+        (tmp_path / src.name).write_text(
+            json.dumps(data, ensure_ascii=False), encoding="utf-8"
+        )
+        return str(tmp_path)
+
+    def test_a_card_without_a_message_id_is_published_not_edited(
+        self, capsys, tmp_path
+    ):
+        # the first push creates the message; every later one edits it in place
+        catalog_main(["--catalog-dir", self._card_with_message_id(tmp_path, None),
+                      "--push", "06-Artificial-Intelligence", "--dry-run", "--json"])
+        payload = json.loads(capsys.readouterr().out)
+        assert payload["results"][0]["mode"] == "publish"
+
+    def test_a_card_with_a_message_id_is_edited_in_place(self, capsys, tmp_path):
+        catalog_main(["--catalog-dir", self._card_with_message_id(tmp_path, 104),
+                      "--push", "06-Artificial-Intelligence", "--dry-run", "--json"])
+        payload = json.loads(capsys.readouterr().out)
+        row = payload["results"][0]
+        # a card that was already published is edited in place, never re-posted
+        assert row["mode"] == "edit"
+        assert row["catalog_message_id"] == 104
 
     def test_an_unknown_subject_lists_the_known_ones(self, capsys):
         code = catalog_main(["--push", "07-Nothing", "--dry-run", "--json"])
@@ -378,6 +565,12 @@ class TestPush:
         assert catalog_main(["--list", "--json"]) == 0
         payload = json.loads(capsys.readouterr().out)
         assert set(payload["subjects"]) == set(SUBJECT_KEYS)
+
+    def test_print_renders_a_card_without_pushing_it(self, capsys):
+        assert catalog_main(["--print", "03-Data-Mining"]) == 0
+        out = capsys.readouterr().out
+        assert "تنقيب البيانات" in out
+        assert "أ.م.د. أحمد شاكر عبد الرضا" in out
 
 
 class TestTheWorkflowIsDiscoverable:
@@ -407,3 +600,10 @@ class TestTheWorkflowIsDiscoverable:
     def test_the_unit_rule_is_named(self):
         # a unit is a lecture FILE, never a calendar week
         assert "lecture file, not a calendar week" in self._text()
+
+    def test_the_skill_does_not_describe_a_removed_element(self):
+        # §4.11 documented a blockquote and a vault path; both were cut
+        text = self._text()
+        section = text.split("### 4.11", 1)[1].split("\n## ", 1)[0]
+        assert "<blockquote" not in section
+        assert "📂 المسار" not in section

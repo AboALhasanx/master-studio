@@ -1296,6 +1296,49 @@ def test_edit_requires_exactly_one_of_text_or_caption():
                       "text": "a", "caption": "b"})
 
 
+def test_edit_carries_url_buttons(registry, store, acl, transport):
+    """`editMessageText` takes `reply_markup`, so a rebuilt index keeps its links.
+
+    A message the Bot API refuses to delete (>48h) can only be corrected in
+    place — without this the only way to repoint its keyboard would be to
+    delete and re-post, which breaks "the index is one message".
+    """
+    execute(parse_action({"verb": "edit", "actor": OWNER,
+                          "target": {"chat_id": -1001234567890},
+                          "message_id": 9, "text": "index",
+                          "buttons": [{"label": "أمن المعلومات",
+                                       "url": "https://t.me/c/1/84"}]}),
+            transport=transport, acl=acl, registry=registry, store=store)
+    method, params = transport.last()
+    assert method == "editMessageText"
+    assert params["reply_markup"] == {
+        "inline_keyboard": [[{"text": "أمن المعلومات",
+                              "url": "https://t.me/c/1/84"}]],
+    }
+
+
+def test_edit_without_buttons_leaves_the_keyboard_alone(registry):
+    """No `--button` means no `reply_markup` key at all, not an empty one.
+
+    An empty keyboard would silently strip the buttons off a message that
+    cannot be re-sent.
+    """
+    from telegram.executor import build_call
+
+    call = build_call(parse_action({"verb": "edit", "target": {"chat_id": 1},
+                                    "message_id": 9, "text": "x"}),
+                      registry)
+    assert "reply_markup" not in call.params
+
+
+def test_edit_buttons_never_ride_on_a_caption():
+    """`editMessageCaption` has no keyboard field; refuse instead of dropping it."""
+    with pytest.raises(ActionValidationError):
+        parse_action({"verb": "edit", "target": {"chat_id": 1}, "message_id": 9,
+                      "caption": "c",
+                      "buttons": [{"label": "a", "url": "https://e.org"}]})
+
+
 def test_action_verb_signals_a_chat_action(registry, store, acl, transport):
     action = parse_action({"verb": "action", "actor": OWNER,
                            "target": {"chat_id": -1001234567890, "thread_id": 7},
@@ -3286,6 +3329,20 @@ class TestCliRemainingEdges:
         assert action["caption"] == "تعليق"
         assert "text" not in action or not action.get("text")
 
+    def test_edit_carries_url_buttons(self, tmp_path, capsys):
+        """`edit --button` is how a message too old to delete gets new links."""
+        _code, payload = self._plan(
+            ["edit", "--chat", "-1001", "--message-id", "5", "--text", "فهرس",
+             "--button", "أمن المعلومات=https://t.me/c/1/84",
+             "--button", "الأدوات=https://t.me/c/1/92"],
+            tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["buttons"] == [
+            {"label": "أمن المعلومات", "url": "https://t.me/c/1/84"},
+            {"label": "الأدوات", "url": "https://t.me/c/1/92"},
+        ]
+
     def test_delete_carries_every_message_id(self, tmp_path, capsys):
         """`--message-id` is nargs='+', so one flag can carry the whole list."""
         _code, payload = self._plan(
@@ -3358,7 +3415,7 @@ class TestCliRemainingEdges:
             tmp_path, capsys,
         )
         action = payload.get("action", payload)
-        assert action["files"] == [str(one), str(two)]
+        assert action["files"] == [one.resolve().as_uri(), two.resolve().as_uri()]
         assert not action.get("file"), "an album must not also carry the scalar key"
 
     def test_a_single_file_uses_the_scalar_key(self, tmp_path, capsys):
@@ -3369,8 +3426,48 @@ class TestCliRemainingEdges:
             tmp_path, capsys,
         )
         action = payload.get("action", payload)
-        assert action["file"] == str(one)
+        assert action["file"] == one.resolve().as_uri()
         assert not action.get("files"), "one file must not fill the album key"
+
+    def test_a_plain_local_path_becomes_a_file_uri(self, tmp_path, capsys):
+        """`--file <path>` must upload, not be handed to Telegram as a URL.
+
+        The transport only recognises `file://` as a local upload; a raw path
+        leaves as JSON, the Bot API parses it as an address and answers
+        `invalid file HTTP URL specified`.
+        """
+        one = tmp_path / "note.pdf"
+        one.write_bytes(b"%PDF-1.4")
+        _code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--file", str(one)], tmp_path, capsys,
+        )
+        action = payload.get("action", payload)
+        assert action["file"] == one.resolve().as_uri()
+        assert action["file"].startswith("file://")
+
+    def test_an_already_formed_uri_or_remote_url_is_left_alone(self, tmp_path, capsys):
+        """`file://` (already an upload) and `http(s)` (a hosted file) stay put."""
+        for value in ("file:///x/a.pdf", "https://example.org/a.pdf"):
+            _code, payload = self._plan(
+                ["publish", "--chat", "-1001", "--file", value], tmp_path, capsys,
+            )
+            assert payload.get("action", payload)["file"] == value
+
+    def test_a_plain_path_to_an_excluded_file_is_refused(self, tmp_path, capsys):
+        """The "never upload a secret" rule must see a bare path too.
+
+        It keys off `file://`, so an unconverted `.env` would sail past the
+        check that a URI always trips.
+        """
+        secret = tmp_path / ".env"
+        secret.write_text("TOKEN=x")
+        code, payload = self._plan(
+            ["publish", "--chat", "-1001", "--file", str(secret)], tmp_path, capsys,
+        )
+        assert code == 8
+        assert payload["error"] == (
+            "refusing to publish an excluded path: " + secret.resolve().as_uri()
+        )
 
     def test_quiz_carries_title_and_text(self, tmp_path, capsys):
         _code, payload = self._plan(

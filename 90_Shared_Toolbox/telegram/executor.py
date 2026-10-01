@@ -275,6 +275,13 @@ def build_call(action: Action, registry: Registry) -> Call:
             }
         if action.parse_mode is not None:
             params["parse_mode"] = action.parse_mode
+        if action.buttons:
+            # Only when buttons were asked for: an empty reply_markup would
+            # strip the keyboard off a message that may not be re-sendable.
+            params["reply_markup"] = {
+                "inline_keyboard": [[{"text": b.label, "url": b.url}]
+                                    for b in action.buttons]
+            }
         return Call(method, params, chat_id, thread_id)
 
     if verb == "delete":

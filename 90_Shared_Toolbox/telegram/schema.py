@@ -242,6 +242,10 @@ class EditAction(Action):
     text: str | None = None  # editMessageText
     caption: str | None = None  # editMessageCaption
     parse_mode: Literal["HTML"] | None = None
+    #: Inline URL buttons — `editMessageText` carries them as ``reply_markup``,
+    #: which is the only way to repoint the keyboard of a message the Bot API
+    #: refuses to delete (older than 48 hours).
+    buttons: list[Button] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def _exactly_one_payload(self) -> "EditAction":
@@ -249,6 +253,10 @@ class EditAction(Action):
             raise ValueError("edit needs exactly one of: 'text', 'caption'")
         if self.parse_mode is not None and not (self.text or self.caption):
             raise ValueError("parse_mode requires 'text' or 'caption'")
+        if self.buttons and self.caption is not None:
+            raise ValueError(
+                "buttons need a text edit: editMessageCaption has no keyboard"
+            )
         return self
 
 

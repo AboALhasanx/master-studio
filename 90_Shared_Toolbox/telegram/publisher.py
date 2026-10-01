@@ -11,8 +11,10 @@ and a naive slice destroys exactly the things our deliverables are made of:
 and :func:`split_message` repeats it. Splitting is lossless apart from the
 whitespace that was used as the cut point.
 
-This module has no imports from the rest of the package on purpose: it is pure
-string arithmetic, so it can be reasoned about (and tested) in isolation.
+This module has no imports from the rest of the package on purpose: the
+splitting and escaping are pure string arithmetic, so they can be reasoned
+about (and tested) in isolation. :func:`upload_uri` is the single exception —
+it only ever stats the local filesystem, never the package.
 """
 
 from __future__ import annotations
@@ -30,6 +32,7 @@ __all__ = [
     "media_param",
     "supports_caption",
     "album_type",
+    "upload_uri",
 ]
 
 #: Maximum length of a Telegram text message (Bot API ``sendMessage``).
@@ -105,6 +108,34 @@ def album_type(kind: str, file: str) -> str:
     if kind == "auto":
         resolved = _AUTO_KIND.get(Path(str(file or "")).suffix.lower(), "document")
     return resolved if resolved in ALBUM_TYPES else "document"
+
+
+#: ``--file`` values that must travel as JSON, not as an uploaded part.
+_SCALAR_FILE_PREFIXES = ("file://", "http://", "https://")
+
+
+def upload_uri(file: str) -> str:
+    """Shape one ``--file`` value the way the wire format expects.
+
+    ``--file`` reads as "the file to upload", and :mod:`telegram.transport`
+    only recognises ``file://`` as a local upload: any other string leaves as
+    JSON, the Bot API parses it as an address and answers *invalid file HTTP
+    URL specified*. A Telegram ``file_id`` and a hosted ``http(s)`` URL
+    genuinely do travel as JSON, so only a path that resolves to a real file
+    is rewritten.
+
+    The rewrite also hands the path to ``pipeline.is_excluded_uri`` in the
+    shape that check inspects, so a bare ``--file .env`` can no longer slip
+    past the "never upload a secret" rule.
+    """
+    value = str(file)
+    if value.startswith(_SCALAR_FILE_PREFIXES):
+        return value
+    candidate = Path(value)
+    if candidate.is_file():
+        return candidate.resolve().as_uri()
+    return value
+
 
 _AMP = "&"
 _SPAN_MARKERS = ("**", "`")

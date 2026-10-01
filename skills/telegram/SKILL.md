@@ -1,6 +1,6 @@
 ---
 name: telegram
-description: "Master Studio Telegram Gateway driver. Publishes study notes, PDFs, quiz links and reports into the group's numbered topics; manages topics, replies, edits, pins and reactions — all through one outbound-only CLI the agent runs in the background (Zero-CLI for the student)."
+description: "Master Studio Telegram Gateway driver. Publishes study notes, PDFs, quiz links and reports into the group's Arabic forum topics; manages topics, replies, edits, pins and reactions — all through one outbound-only CLI the agent runs in the background (Zero-CLI for the student)."
 ---
 
 # Master Studio Telegram Gateway (`telegram`)
@@ -54,12 +54,14 @@ local). Conventions are binding: see `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYB
 
 | Subject key | Topic |
 |---|---|
-| `00-Start-Here` | General (index; send **without** a thread) |
-| `01-Cyber-Security` … `06-Artificial-Intelligence` | the six taught subjects |
-| `70-Exams-and-MCQ` | quiz links, exam booklets, results |
-| `71-Progress-Analytics` | weekly reports, mastery |
-| `90-Toolbox` | tools, dashboard |
-| `99-Chat` | unstructured discussion |
+| `01-Cyber-Security` … `06-Artificial-Intelligence` | the six taught subjects (`◆ <name>`) |
+| `70-Exams-and-MCQ` | quiz links, exam booklets, results (`◇ <name>`) |
+| `71-Progress-Analytics` | weekly reports, mastery (`◇ <name>`) |
+| `90-Toolbox` | tools, dashboard (`◇ <name>`) |
+
+Titles carry **no numbers and no emoji** — only the Arabic name behind a monochrome
+`◆` (subject) or `◇` (utility) marker. General has no registry key: it is the chat room
+(`محادثة`, topic id 1, never provisioned), so send to it with `--chat` and **no thread**.
 
 ---
 
@@ -150,7 +152,7 @@ schema. It is one-directional — no poll answers are read.
 ### 4.4 `topic` — manage topics
 
 ```bash
-python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op rename --subject 99-Chat --name "99 💬 Chat"
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op rename --subject 01-Cyber-Security --name "◆ أمن المعلومات"
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op close  --subject 06-Artificial-Intelligence
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op reopen --subject 06-Artificial-Intelligence
 # destructive — needs --confirm
@@ -169,6 +171,13 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> reply \
 # edit text or a caption (exactly one payload)
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> edit \
     --chat -1003710711332 --message-id 28 --text "نص مصحّح"
+
+# repoint a text message's inline keyboard. Text-only (editMessageCaption has no
+# keyboard) and the one route for a message older than 48h: deletion is refused
+# then, editing is not.
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> edit \
+    --chat -1003710711332 --message-id 26 --text "Master Studio — فهرس الكروب" \
+    --button "◆ أمن المعلومات=https://t.me/c/3710711332/84"
 
 # delete (one message = cheap; many = needs --confirm)
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> delete --chat -1003710711332 --message-id 30
@@ -355,18 +364,20 @@ memory) is deleted the moment the code is spent.
 
 ### 4.11 `tg_catalog` — the subject catalog card (one message per subject)
 
-A subject is **one card**, not one message per asset. The six pinned brief
-cards (`7`, `9`, `11`, `13`, `15`, `17`) are that card, and they are *edited
-in place* — the topic history stays append-only while the catalogue sitting on
-top of it is mutable. Three speeds, exactly as in the bachelor channels: the
-catalogue is small and revisable, the warehouse is huge and untouched, the
-meta block is dated.
+A subject is **one message**, not one message per asset: a **document plus a
+caption**, and it is deliberately *the first message of its topic*. Today the
+document is a one-page placeholder PDF; when the merged official lectures
+land it is the merged file itself. The caption is the index.
+
+Three speeds, exactly as in the bachelor channels: the catalogue is small and
+revisable, the warehouse is huge and untouched, the meta block is dated.
 
 **The source of truth is a file, not the message.**
 `00_STUDIO_HUB/telegram/catalog/<subject>.json` is what you merge into. So the
-whole of "ضيفها" when new material lands is: add the unit or the link there,
-then re-push. Never hand-edit the Telegram message instead — the file and the
-card would then disagree with no way to tell which one is right.
+whole of "ضيفها" when new material lands is: add the chapter (the next
+message id in `chapters`) and bump `updated` there, then re-push. Never
+hand-edit the Telegram message instead — the file and the card would then
+disagree with no way to tell which one is right.
 
 ```bash
 python 90_Shared_Toolbox/tools/tg_catalog.py --list
@@ -382,23 +393,46 @@ flag. The actor is derived from `TELEGRAM_OWNER_IDS` (override with
 `--actor`); without one the ACL answers `denied`, because every non-local verb
 needs a named driver.
 
-**A unit is a lecture file, not a calendar week.** Soft Computing's W02 spanned
-two weeks on the timetable but is one lecture in one file, so it is one unit.
-Never re-derive the list from dates.
+**Publish or edit is chosen by the file, not by a flag.** While
+`catalog_message_id` is `null` the card does not exist yet and the tool runs
+`publish --file … --caption …`; once the id is recorded it runs `edit
+--message-id … --caption …`. Recording that id is the step that makes the next
+"ضيفها" an in-place edit rather than a second copy dropped at the bottom of
+the topic — which would break "the first message is the catalog".
+
+**A chapter is a lecture file, not a calendar week.** Soft Computing's W02
+spanned two weeks on the timetable but is one lecture in one file, so it is one
+chapter. Never re-derive the list from dates.
+
+**Placeholder chapter ids sit far above live traffic** (`100001` and up), not at
+the next free message id. The first push's own cards consume the low range, and
+a placeholder must never resolve to a real, unrelated message. They are replaced
+by the real lecture message ids when the files land.
+
+**The caption carries the doctor's rank as the university writes it.**
+`أ.م.د.` (assistant professor) and `أ.د.` (full professor) come from
+`01_Semester_1/Weekly Schedule.docx` — transcribed there, never from memory,
+because dropping the rank misstates the course. Four subjects are ا.م.د and
+two are ا.د.
 
 **The idempotency key hashes the payload**, so re-pushing an unchanged card
 answers `duplicate` — nothing is posted twice — while a changed card is a real
-`editMessageText`. The builder refuses a card over Telegram's 4096-character
-limit or carrying unbalanced tags, rather than shipping one Telegram would
-truncate.
+`editMessageCaption`. The builder refuses a caption over Telegram's
+**1024-character** caption limit or carrying unbalanced tags, rather than
+shipping one Telegram would truncate: a caption is capped far below the 4096
+text limit, and the card is a caption.
 
 **Verify live, not only with the suite.** Read the card back over MTProto and
-check three things: `pinned` survived the edit, the link entities point at the
-ids you meant, and the blockquote came back collapsed. Two naming traps worth
-knowing before you conclude a flag was lost: Bot API spells it `expandable`
-while Telethon 1.41.2 exposes the same field as `collapsed`, so
-`getattr(entity, "expandable")` returning `None` proves nothing; and `edit`
-takes exactly one of `--text` and `--caption`, with `--html` to parse markup.
+check three things: the message is still the *first* of its topic (a re-push
+that published instead of editing would put a copy at the bottom), the link
+entities point at the ids you meant, and `pinned`/`edit_date` reflect what you
+expect. One naming trap worth knowing: `edit` takes exactly one of `--text`
+and `--caption`, with `--html` to parse markup — the card is media, so it must
+be `--caption`, and `editMessageText` aimed at a document fails.
+
+Placeholder PDFs live under `00_STUDIO_HUB/telegram/catalog/placeholders/`,
+one blank A4 page each, named after the subject key. They are replaced — not
+augmented — when the real merged file arrives.
 
 ---
 
@@ -426,7 +460,8 @@ Practical reading of that:
 - **Technical terms stay in English** (`fuzzy relations`, `risk assessment`) — never transliterate.
 - No filler openers ("بكل سرور"، "سؤال ممتاز"). Get to the point.
 - Corrections are stated plainly: "هاي غلط، الصحيح…" — not softened.
-- Emoji sparingly, as a heading marker (🎯 📗 ⚙️), not as decoration.
+- **No emoji, anywhere** — not in a body, a heading or a topic title. Use a single-colour
+  symbol instead (`◆`, `◇`, `●`); plain text must stay comfortable to read.
 
 The persona is defined in `90_Shared_Toolbox/telegram/persona.py` (`PERSONA`), which is the
 **single source** for pacing, thresholds and tone — the skill and the code cannot disagree.
@@ -460,7 +495,7 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
 **Create a topic**
 ```bash
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
-    topic --op create --chat -1003710711332 --name "07 🧪 Thesis Lab"
+    topic --op create --chat -1003710711332 --name "◆ مختبر الرسائل"
 # then add it to SEED_SUBJECTS + STRUCTURE so `structure` adopts it
 ```
 

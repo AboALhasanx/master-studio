@@ -25,7 +25,7 @@ from .acl import ACL, chat_allowlist_from_env
 from .errors import ActionValidationError, GatewayError
 from .executor import execute, plan
 from .human import HUMAN_VERBS, authorize as authorize_human, human_enabled
-from .publisher import MEDIA_KINDS
+from .publisher import MEDIA_KINDS, upload_uri
 from .registry import Registry
 from .schema import Action, parse_action
 from .store import ChatRateLimiter, Store, load_dotenv
@@ -55,6 +55,17 @@ def _target(args: argparse.Namespace) -> dict[str, Any]:
     return out
 
 
+def _buttons(raw: list[str]) -> list[dict[str, str]]:
+    """Repeated ``--button LABEL=URL`` flags -> the schema's button objects."""
+    buttons = []
+    for item in raw:
+        label, sep, url = item.partition("=")
+        if not sep or not url:
+            raise ActionValidationError(f"--button expects LABEL=URL, got {item!r}")
+        buttons.append({"label": label.strip(), "url": url.strip()})
+    return buttons
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="tg.py",
@@ -77,7 +88,8 @@ def build_parser() -> argparse.ArgumentParser:
     group = p.add_mutually_exclusive_group(required=True)
     group.add_argument("--text", help="message text (HTML parse mode)")
     group.add_argument("--file", action="append", default=[], metavar="PATH",
-                       help="file to upload; repeat 2-10 times to post an album")
+                       help="local path (or file:// URI) to upload; "
+                            "repeat 2-10 times to post an album")
     p.add_argument("--button", action="append", default=[], metavar="LABEL=URL",
                    help="inline URL button; repeatable")
     p.add_argument("--reply-to", type=int, dest="reply_to", help="anchor to an existing message id")
@@ -124,6 +136,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--caption", help="new media caption -> editMessageCaption")
     p.add_argument("--html", action="store_true", dest="html",
                    help="send the payload as HTML")
+    p.add_argument("--button", action="append", default=[], metavar="LABEL=URL",
+                   help="inline URL button (text edit only); repeatable")
 
     p = sub.add_parser("delete", help="delete one or many messages")
     _add_target(p, thread=False)
@@ -247,9 +261,9 @@ def _action_from_args(args: argparse.Namespace) -> Action:
             data["text"] = args.text
         if args.file:
             if len(args.file) == 1:
-                data["file"] = args.file[0]
+                data["file"] = upload_uri(args.file[0])
             else:
-                data["files"] = list(args.file)   # 2+ -> one sendMediaGroup
+                data["files"] = [upload_uri(f) for f in args.file]  # 2+ -> one sendMediaGroup
         if args.caption is not None:
             data["caption"] = args.caption
         if args.html:
@@ -258,15 +272,7 @@ def _action_from_args(args: argparse.Namespace) -> Action:
         if args.reply_to is not None:
             data["reply_to"] = args.reply_to
         if args.button:
-            buttons = []
-            for raw in args.button:
-                label, sep, url = raw.partition("=")
-                if not sep or not url:
-                    raise ActionValidationError(
-                        f"--button expects LABEL=URL, got {raw!r}"
-                    )
-                buttons.append({"label": label.strip(), "url": url.strip()})
-            data["buttons"] = buttons
+            data["buttons"] = _buttons(args.button)
 
     elif args.command == "topic":
         data["target"] = _target(args)
@@ -299,6 +305,8 @@ def _action_from_args(args: argparse.Namespace) -> Action:
             data["caption"] = args.caption
         if args.html:
             data["parse_mode"] = "HTML"
+        if args.button:
+            data["buttons"] = _buttons(args.button)
 
     elif args.command == "delete":
         data["target"] = _target(args)
