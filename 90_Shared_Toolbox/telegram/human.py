@@ -453,8 +453,12 @@ class TelethonGateway:
              thread_id: int | None = None) -> dict:
         async def body(client):
             await self._require(client)
-            sent = await client.send_message(chat_id, text,
-                                             message_thread_id=thread_id)
+            # Telethon 1.41 has no `message_thread_id` (that is Bot API); it
+            # takes `reply_to`. Replying to a forum topic's root message *is*
+            # what places a message inside that topic -- the same wire shape
+            # the bot path produces as message_thread_id -- and None keeps
+            # the general topic, which is the default anyway.
+            sent = await client.send_message(chat_id, text, reply_to=thread_id)
             return {"message_id": sent.id, "chat_id": chat_id}
 
         return self._call(body)
