@@ -470,8 +470,12 @@ def _run_human(args: argparse.Namespace) -> int:
         """Record the attempt. Deliberately unwrapped, like every audit call
         in ``executor.py``: a ledger that fails must surface loudly, not let
         work pass unmonitored — that would defeat AC 2's monitoring leg."""
+        # thread_id belongs here for the same reason chat_id does: five
+        # `human:say` rows read thread=None while MTProto showed them inside
+        # topics 6/8/10/12/14, so the ledger contradicted the messages.
         store.audit(f"human:{req.verb}", result,
-                    chat_id=req.chat_id, detail=detail)
+                    chat_id=req.chat_id, thread_id=req.thread_id,
+                    detail=detail)
 
     def _failure(exc: Exception) -> str:
         if isinstance(exc, AccessDenied):

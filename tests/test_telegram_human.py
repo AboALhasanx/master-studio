@@ -498,9 +498,14 @@ class FakeTelethonClient:
             sender_id = 77
         return [_M() for _ in range(int(limit or 1))]
 
-    async def send_message(self, entity, message="", **kw):
+    async def send_message(self, entity, message="", *, reply_to=None):
+        # Mirrors Telethon 1.41's signature **on purpose**: it takes
+        # `reply_to`, not Bot API's `message_thread_id`, and the permissive
+        # `**kw` this used to have let a bogus kwarg pass every test while six
+        # live sends died with TypeError. No `**kw` = the fake refuses what
+        # Telethon refuses.
         self.sent_messages.append((entity, message))
-        self.sent_threads.append(kw.get("message_thread_id"))
+        self.sent_threads.append(reply_to)
         class _Msg:
             id = 4242
         return _Msg()
@@ -1003,6 +1008,33 @@ class TestHumanMonitoring:
 
         after = live_ledger.read_bytes() if live_ledger.exists() else None
         assert after == before, "this CLI test spent the live pacing ledger"
+
+    def test_a_threaded_say_records_where_it_landed(self, tmp_path, monkeypatch):
+        """AC 2's monitoring leg: the ledger has to say *where* the spare
+        account spoke.
+
+        `_row` passed chat_id and detail but never thread_id, so every
+        `human:say` read `thread=None` — including the five that MTProto
+        proves landed inside topics 6/8/10/12/14. After the fact nobody
+        could tell a topic reply from a general-topic one, and the ledger
+        would have contradicted the messages it was describing.
+        """
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(ALLOWED_CHAT), "--text", "hi",
+                         "--thread", "14")
+        assert code == 0
+        rows = self._rows(db)
+        assert rows[0]["thread_id"] == 14, "the audit row lost the topic"
+
+    def test_a_say_without_a_thread_records_none(self, tmp_path, monkeypatch):
+        """...and the general topic must stay distinguishable from it."""
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(ALLOWED_CHAT), "--text", "hi")
+        assert code == 0
+        rows = self._rows(db)
+        assert rows[0]["thread_id"] is None
 
     def test_a_send_outside_the_allowlist_is_recorded_as_denied(
             self, tmp_path, monkeypatch):
