@@ -1805,6 +1805,50 @@ def test_http_transport_refuses_a_missing_local_file_before_any_request(
     assert calls == [], "a missing local file must never reach the network"
 
 
+def test_an_upload_waits_longer_than_a_plain_call_before_timing_out(
+    monkeypatch, tmp_path
+):
+    """One socket timeout must not strangle both branches of ``call()``.
+
+    A 12 MB booklet upload died in production with
+    ``network error on sendDocument: The write operation timed out`` —
+    the 30 s JSON timeout was being handed to the multipart write as well,
+    while Telegram was still reading the body.
+    """
+    import telegram.transport as tr
+
+    pdf = tmp_path / "booklet.pdf"
+    pdf.write_bytes(b"%PDF-1.7 " + b"x" * 64)
+
+    seen = []
+
+    class _Resp:
+        def read(self):
+            return json.dumps({"ok": True, "result": {"message_id": 7}}).encode("utf-8")
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+    def _open(req, timeout=None):
+        seen.append(timeout)
+        return _Resp()
+
+    monkeypatch.setattr(tr.urllib.request, "urlopen", _open)
+
+    transport = HttpTransport("TEST:token")
+    transport.call("sendMessage", {"chat_id": -1, "text": "hi"})
+    transport.call("sendDocument", {"chat_id": -1, "document": pdf.as_uri()})
+
+    assert len(seen) == 2
+    plain, upload = seen
+    assert plain == transport.timeout, "a JSON call keeps the short timeout"
+    assert upload == transport.upload_timeout
+    assert upload > transport.timeout, "a slow 12 MB write needs a longer leash"
+
+
 def test_http_transport_uploads_media_group_members_as_attach_parts(
     monkeypatch, tmp_path
 ):

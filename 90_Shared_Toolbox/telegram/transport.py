@@ -175,12 +175,15 @@ class HttpTransport:
     is_live = True
 
     def __init__(self, token: str, base_url: str = "https://api.telegram.org",
-                 timeout: float = 30.0):
+                 timeout: float = 30.0, upload_timeout: float = 300.0):
         if not token:
             raise GatewayNotReady("live transport needs TELEGRAM_BOT_TOKEN (set it in .env)")
         self.token = token
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
+        # A multipart body is written, not read: one 30 s socket timeout killed a
+        # 12 MB booklet mid-upload while Telegram was still pulling the file down.
+        self.upload_timeout = upload_timeout
 
     def call(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         url = f"{self.base_url}/bot{self.token}/{method}"
@@ -196,7 +199,10 @@ class HttpTransport:
             url, data=body, headers={"Content-Type": content_type}
         )
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+            with urllib.request.urlopen(
+                request,
+                timeout=self.upload_timeout if files else self.timeout,
+            ) as response:
                 payload = json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
             payload = self._error_payload(exc)

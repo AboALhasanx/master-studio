@@ -357,10 +357,44 @@ def shipped():
     return out
 
 
+# Real booklets are rebuilt from `02_Raw_Materials`, which `.gitignore` already
+# keeps out of the public repo (copyrighted textbook pages); only their merged
+# and split copies live here, and they follow the same rule.
+BOOKLET_DIRS = ("telegram/catalog/files/", "telegram/lectures/")
+
+
+def _booklet_kept_out_of_git(path: Path) -> bool:
+    """True only for an absent booklet inside a dir `.gitignore` reserves."""
+    posix = str(path).replace("\\", "/")
+    return any(marker in posix for marker in BOOKLET_DIRS)
+
+
 class TestShippedCards:
     def test_every_material_subject_has_a_catalog_file(self):
         keys = {p.stem for p in CATALOG_DIR.glob("*.json")}
         assert keys == set(SUBJECT_KEYS), keys ^ set(SUBJECT_KEYS)
+
+    def test_every_attachment_filename_fits_telegrams_safe_byte_budget(self):
+        """Telegram slugifies an uploaded filename that runs past ~64 UTF-8 bytes.
+
+        Probed against the live group: 59 B and 62 B kept their spaces, 67 B
+        came back ``هندسة_البرمجيات_...`` with every run of punctuation turned
+        into an underscore. Arabic charges 2 bytes per letter, so the bilingual
+        ``عربي - إنجليزي`` names blow the budget first.
+        """
+        for key, cat, _chat in shipped():
+            name = Path(cat.pdf).name
+            size = len(name.encode("utf-8"))
+            assert size <= 62, (
+                f"{key}: {name!r} is {size} bytes — Telegram will replace its "
+                "spaces with underscores; shorten the Latin half"
+            )
+
+    def test_no_attachment_filename_carries_a_numeric_prefix(self):
+        """Names are ``عربي - إنجليزي`` only — never ``01-``/``02-``."""
+        for key, cat, _chat in shipped():
+            name = Path(cat.pdf).name
+            assert not re.match(r"^\d+[-_ .]", name), f"{key}: {name!r}"
 
     def test_every_shipped_card_renders_clean(self):
         for key, cat, chat_id in shipped():
@@ -417,7 +451,32 @@ class TestShippedCards:
         # so the first message of the topic is never a bare caption
         for key, cat, _chat in shipped():
             assert cat.pdf.endswith(".pdf"), key
-            assert pdf_path(cat).is_file(), f"{key}: no PDF at {cat.pdf}"
+            path = pdf_path(cat)
+            if path.is_file():
+                assert path.stat().st_size > 0, f"{key}: empty PDF at {cat.pdf}"
+                continue
+            assert _booklet_kept_out_of_git(path), (
+                f"{key}: no PDF at {cat.pdf} and it is not a gitignored booklet"
+            )
+
+    def test_only_the_two_booklet_dirs_are_tolerated_when_absent(self):
+        """A fresh clone has no booklets — but nothing else may go missing.
+
+        Booklets are rebuilt from ``02_Raw_Materials``, which ``.gitignore``
+        already keeps out of the public repo (copyrighted textbook pages).
+        """
+        assert _booklet_kept_out_of_git(
+            Path("00_STUDIO_HUB/telegram/catalog/files/booklet.pdf")
+        )
+        assert _booklet_kept_out_of_git(
+            Path("00_STUDIO_HUB/telegram/lectures/chapter.pdf")
+        )
+        for absent in (
+            Path("00_STUDIO_HUB/telegram/catalog/placeholders/gone.pdf"),
+            Path("01_Semester_1/03_Data_Mining/03_Study_Notes/gone.pdf"),
+            Path("somewhere/else/file.pdf"),
+        ):
+            assert not _booklet_kept_out_of_git(absent), absent
 
     def test_placeholder_chapters_are_off_the_group_s_real_range(self):
         # real traffic stops in the 80s; 100+ cannot collide with a live id
