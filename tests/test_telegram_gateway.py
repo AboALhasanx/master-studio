@@ -1417,6 +1417,32 @@ def test_cli_executes_against_mock(tmp_path, capsys, owners):
     assert payload["status"] == "sent" and payload["message_id"] > 0
 
 
+def test_cli_transport_failure_exits_7(tmp_path, capsys, owners, monkeypatch):
+    """A failed send must not look like success to anything that checks ``$?``.
+
+    A live ``sendDocument`` of a 4.9 MB PDF hit a write timeout: the JSON said
+    ``status: error`` while the shell reported ``exit=0``. CI, a cron, or a
+    batch gate would carry straight past the failure. ``cli.py`` documents
+    "7 transport failure" as an exit code, so the value must be returned.
+    """
+    from telegram.errors import TransportError
+
+    class BrokenTransport:
+        def call(self, method, params):  # noqa: ARG002
+            raise TransportError(f"network error on {method}: write timed out")
+
+    monkeypatch.setattr(tg_cli, "build_transport", lambda **_: BrokenTransport())
+
+    code, payload = run_cli(
+        ["--json", "--actor", str(OWNER),
+         "--registry", str(tmp_path / "r.json"), "--db", str(tmp_path / "g.db"),
+         "publish", "--chat", "-1001234567890", "--thread", "7", "--text", "hi"],
+        capsys,
+    )
+    assert payload["status"] == "error", payload
+    assert code == 7, "a transport failure must exit 7, not 0"
+
+
 def test_cli_destructive_action_needs_confirm(tmp_path, capsys, owners):
     registry = Registry(tmp_path / "r.json")
     registry.bind("99-Chat", -1001234567890, 9)

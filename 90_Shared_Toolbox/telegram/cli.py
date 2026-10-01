@@ -521,6 +521,21 @@ def _human_detail(req, result: dict) -> str:
 # ---------------------------------------------------------------------------
 # entry point
 # ---------------------------------------------------------------------------
+def _exit_code_for(result: dict[str, Any]) -> int:
+    """Map ``execute()``'s result envelope onto the documented exit codes.
+
+    ``execute`` records a transport failure instead of raising — the durable
+    queue must keep the job so it can retry — so ``main`` would otherwise
+    return 0 for a send that never reached Telegram. ``cli.py`` documents
+    "7 transport failure", and a shell gate reading ``$?`` has to see it.
+
+    ``rate_limited`` deliberately stays 0: that status means the job was
+    deferred with a precise ``retry_after``, which is pacing working, not
+    the transport failing.
+    """
+    return 7 if result.get("status") == "error" else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     load_dotenv()
     args = build_parser().parse_args(argv)
@@ -567,7 +582,7 @@ def main(argv: list[str] | None = None) -> int:
             allowed_chats=chat_allowlist_from_env(),
         )
         _emit(result, args.as_json)
-        return 0
+        return _exit_code_for(result)
 
     except GatewayError as exc:
         _emit({"status": "error", "error": str(exc), "code": exc.code}, args.as_json)
