@@ -378,3 +378,32 @@ class TestPush:
         assert catalog_main(["--list", "--json"]) == 0
         payload = json.loads(capsys.readouterr().out)
         assert set(payload["subjects"]) == set(SUBJECT_KEYS)
+
+
+class TestTheWorkflowIsDiscoverable:
+    """The next agent has to find this without re-deriving it.
+
+    "ضيفها" is a recurring request, not a one-off. If the skill stops naming
+    the launcher or the merge target, the cards drift back into being hand-
+    edited Telegram messages with no file behind them — and hand edits are
+    exactly what the file exists to prevent.
+    """
+
+    SKILL = (
+        Path(__file__).resolve().parent.parent
+        / ".mimocode" / "skills" / "telegram" / "SKILL.md"
+    )
+
+    def _text(self) -> str:
+        assert self.SKILL.is_file(), f"skill file missing: {self.SKILL}"
+        return self.SKILL.read_text(encoding="utf-8")
+
+    def test_the_launcher_is_named(self):
+        assert "tg_catalog" in self._text()
+
+    def test_the_merge_target_is_named(self):
+        assert "00_STUDIO_HUB/telegram/catalog" in self._text()
+
+    def test_the_unit_rule_is_named(self):
+        # a unit is a lecture FILE, never a calendar week
+        assert "lecture file, not a calendar week" in self._text()

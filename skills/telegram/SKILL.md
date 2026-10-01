@@ -353,7 +353,57 @@ memory) is deleted the moment the code is spent.
 
 ---
 
+### 4.11 `tg_catalog` — the subject catalog card (one message per subject)
+
+A subject is **one card**, not one message per asset. The six pinned brief
+cards (`7`, `9`, `11`, `13`, `15`, `17`) are that card, and they are *edited
+in place* — the topic history stays append-only while the catalogue sitting on
+top of it is mutable. Three speeds, exactly as in the bachelor channels: the
+catalogue is small and revisable, the warehouse is huge and untouched, the
+meta block is dated.
+
+**The source of truth is a file, not the message.**
+`00_STUDIO_HUB/telegram/catalog/<subject>.json` is what you merge into. So the
+whole of "ضيفها" when new material lands is: add the unit or the link there,
+then re-push. Never hand-edit the Telegram message instead — the file and the
+card would then disagree with no way to tell which one is right.
+
+```bash
+python 90_Shared_Toolbox/tools/tg_catalog.py --list
+python 90_Shared_Toolbox/tools/tg_catalog.py --print 01-Cyber-Security
+python 90_Shared_Toolbox/tools/tg_catalog.py --push 01-Cyber-Security --dry-run
+python 90_Shared_Toolbox/tools/tg_catalog.py --push-all --live
+```
+
+`--push` is repeatable and `--push-all` walks every material subject, sleeping
+between them so the pacing ceiling is respected. **A push is a dry run unless
+`--live` is given** — there is no way to reach the network by forgetting a
+flag. The actor is derived from `TELEGRAM_OWNER_IDS` (override with
+`--actor`); without one the ACL answers `denied`, because every non-local verb
+needs a named driver.
+
+**A unit is a lecture file, not a calendar week.** Soft Computing's W02 spanned
+two weeks on the timetable but is one lecture in one file, so it is one unit.
+Never re-derive the list from dates.
+
+**The idempotency key hashes the payload**, so re-pushing an unchanged card
+answers `duplicate` — nothing is posted twice — while a changed card is a real
+`editMessageText`. The builder refuses a card over Telegram's 4096-character
+limit or carrying unbalanced tags, rather than shipping one Telegram would
+truncate.
+
+**Verify live, not only with the suite.** Read the card back over MTProto and
+check three things: `pinned` survived the edit, the link entities point at the
+ids you meant, and the blockquote came back collapsed. Two naming traps worth
+knowing before you conclude a flag was lost: Bot API spells it `expandable`
+while Telethon 1.41.2 exposes the same field as `collapsed`, so
+`getattr(entity, "expandable")` returning `None` proves nothing; and `edit`
+takes exactly one of `--text` and `--caption`, with `--html` to parse markup.
+
+---
+
 ## 5. Persona — how the bot behaves (issue #17)
+
 
 The bot is an **official bot**, but it does not behave like a firehose. The gateway applies
 these defaults automatically; you do not pass flags for them.

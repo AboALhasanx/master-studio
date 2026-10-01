@@ -50,6 +50,7 @@ __all__ = [
     "Link",
     "Unit",
     "build_edit_argv",
+    "build_parser",
     "catalog_main",
     "check_rendered",
     "message_link",
@@ -395,7 +396,7 @@ def _default_actor() -> int | None:
     return owners[0] if owners else None
 
 
-def _build_parser() -> argparse.ArgumentParser:
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="tg_catalog",
         description="Render and push the one-message-per-subject catalog cards.",
@@ -487,7 +488,7 @@ def catalog_main(argv: list[str] | None = None) -> int:
 
     load_dotenv()  # the owner allowlist lives in .env, and we read it below
 
-    args = _build_parser().parse_args(argv)
+    args = build_parser().parse_args(argv)
     from .registry import Registry  # local to keep import cycles out
 
     registry = Registry(args.registry, seed=False)

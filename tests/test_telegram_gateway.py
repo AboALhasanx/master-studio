@@ -2206,17 +2206,34 @@ class TestTelegramSkill:
         assert "pending_approval.json" in text, "D16 approval gate undocumented"
 
     def test_no_flag_is_documented_that_the_cli_lacks(self):
+        """Every ``--flag`` in the skill must exist on a tool the skill documents.
+
+        The skill documents two launchers, ``tg.py`` and ``tg_catalog.py``
+        (§4.11), so the known set is the union of both parsers. The property is
+        unchanged: a flag the skill mentions is a flag some documented tool
+        actually has. Widening it without this framing would have let the
+        catalog section ship with four flags the checker had simply never
+        heard of.
+        """
         import re
 
+        import telegram.catalog as catalog
         import telegram.cli as cli
 
-        parser = cli.build_parser()
         known: set[str] = set()
-        for action in parser._actions:
-            known.update(action.option_strings)
-        for sub in parser._subparsers._group_actions[0].choices.values():
-            for action in sub._actions:
+
+        def collect(parser: argparse.ArgumentParser) -> None:
+            # tg.py nests its verbs as subparsers; tg_catalog.py has a flat
+            # mutually-exclusive group. Walking _subparsers directly blows up
+            # on the second one, so descend through the action type instead.
+            for action in parser._actions:
                 known.update(action.option_strings)
+                if isinstance(action, argparse._SubParsersAction):
+                    for sub in action.choices.values():
+                        collect(sub)
+
+        for parser in (cli.build_parser(), catalog.build_parser()):
+            collect(parser)
 
         used = set(re.findall(r"(?<![\w-])(--[a-z][a-z0-9-]+)", self._skill_text()))
         unknown = sorted(f for f in used if f not in known)
