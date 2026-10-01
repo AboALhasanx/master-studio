@@ -21,9 +21,11 @@ The caption states, in this order:
 
 What the caption must NOT carry is pinned as hard as what it must: no
 ``<blockquote>``, no vault path, no build footer, no descriptive chapter
-titles inside the brackets, no per-link icon. Every one of those was removed
-by request — the card is an index, and an index that annotates itself stops
-being an index.
+titles inside the brackets, no per-link icon, and no address printed beside
+its label. Every one of those was removed by request — the card is an index,
+and an index that annotates itself stops being an index. A chapter's link is
+therefore hidden inside the word it wraps: the reader taps ``الأول``, never
+a URL, and :func:`check_rendered` refuses a card where one is on screen.
 
 Two properties make the card *maintainable* rather than decorative:
 
@@ -266,7 +268,23 @@ def check_rendered(text: str, *, limit: int = DEFAULT_LIMIT) -> list[str]:
             f"caption at {limit}"
         )
     problems.extend(_tag_problems(text))
+    problems.extend(_visible_url_problems(text))
     return problems
+
+
+def _visible_url_problems(text: str) -> list[str]:
+    """A link has to live inside its label, never beside it.
+
+    Telegram prints verbatim what it is given: an ``href`` shows as the word
+    it wraps, while a URL typed next to that word shows as the URL — which
+    turns the index into the wall of addresses it was meant to replace.
+    Whatever survives taking the anchors out is on screen for the reader.
+    """
+    visible = re.sub(r'<a href="[^"]+">[^<]*</a>', "", text)
+    return [
+        f"{url} is printed as text instead of being hidden in its label"
+        for url in re.findall(r"https?://\S+", visible)
+    ]
 
 
 def _tag_problems(text: str) -> list[str]:
@@ -292,7 +310,8 @@ def _chapter_rows(cat: Catalog, chat_id: int) -> list[str]:
     for start in range(0, len(cat.chapters), ROW_WIDTH):
         chunk = cat.chapters[start:start + ROW_WIDTH]
         cells = [
-            f"【{arabic_ordinal(index + 1)} ({message_link(chat_id, mid)})】"
+            f'【<a href="{message_link(chat_id, mid)}">'
+            f"{arabic_ordinal(index + 1)}</a>】"
             for index, mid in enumerate(chunk, start=start)
         ]
         rows.append("".join(cells))

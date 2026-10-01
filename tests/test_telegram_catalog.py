@@ -190,10 +190,22 @@ class TestRenderedCard:
         assert "● كل جابتر بملف : —" not in render(build(), CHAT)
         assert "● كل جابتر بملف :" in render(build(), CHAT)
 
-    def test_a_chapter_is_an_ordinal_wrapped_around_a_bare_link(self):
+    def test_a_chapter_is_an_ordinal_wrapped_around_a_link(self):
+        # the word is the link: ``الأول`` opens the lecture
         body = render(build(), CHAT)
-        assert f"【الأول (https://t.me/c/{INTERNAL}/101)】" in body
-        assert f"【الثاني (https://t.me/c/{INTERNAL}/102)】" in body
+        assert f'【<a href="https://t.me/c/{INTERNAL}/101">الأول</a>】' in body
+        assert f'【<a href="https://t.me/c/{INTERNAL}/102">الثاني</a>】' in body
+
+    def test_no_address_is_ever_shown_to_the_reader(self):
+        """The card is an index, not a wall of addresses.
+
+        Telegram prints verbatim what it is given, so a URL typed next to the
+        ordinal shows as a URL — the exact thing the student asked to stop
+        seeing. Every address has to sit inside the label that carries it.
+        """
+        body = render(build(), CHAT)
+        visible = re.sub(r'<a href="[^"]+">[^<]*</a>', "", body)
+        assert "http" not in visible, visible
 
     def test_a_chapter_carries_no_description(self):
         # "بدون تفاصيل اسم الجابتر او اي شي" — the bracket holds ordinal+link,
@@ -201,9 +213,10 @@ class TestRenderedCard:
         brackets = re.findall(r"【([^】]*)】", render(build(), CHAT))
         assert brackets
         for bracket in brackets:
-            label, sep, url = bracket.partition(" (")
-            assert sep == " (", bracket
-            assert url.endswith(")"), bracket
+            link = re.fullmatch(r'<a href="([^"]+)">([^<]+)</a>', bracket)
+            assert link, bracket
+            href, label = link.groups()
+            assert href.startswith(f"https://t.me/c/{INTERNAL}/"), bracket
             assert "—" not in label and ":" not in label, label
 
     def test_chapters_are_grouped_three_to_a_row(self):
@@ -251,6 +264,18 @@ class TestRenderedCard:
 
     def test_check_rendered_flags_unbalanced_html(self):
         assert check_rendered('<a href="x">y') == ["unclosed <a>"]
+
+    def test_check_rendered_flags_an_address_printed_as_text(self):
+        # the invariant this card shipped without: an href is hidden behind
+        # its label, a URL written anywhere else is on screen for the reader
+        body = (
+            f'<a href="https://t.me/c/{INTERNAL}/101">الأول</a>\n'
+            f"https://t.me/c/{INTERNAL}/102"
+        )
+        assert check_rendered(body) == [
+            f"https://t.me/c/{INTERNAL}/102 is printed as text instead of "
+            "being hidden in its label"
+        ]
 
     def test_a_longer_limit_can_be_asked_for_explicitly(self):
         body = "x" * 1500
