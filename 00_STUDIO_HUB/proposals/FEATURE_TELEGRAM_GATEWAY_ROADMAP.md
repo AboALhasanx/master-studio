@@ -116,6 +116,18 @@
 - **Exit / verification:** one command publishes a working exam link; results summary lands in the same topic; no second quiz engine exists (shared JSON schema intact) — the AC2 AST test in `tests/test_telegram_gateway.py` pins this permanently.
 - **Rollback:** stop issuing the publish command; nothing else changes.
 
+#### Progress — 2026-10-01
+
+**Done.** The exam link half of the exit criterion is proven end-to-end: a matched **lecture → quiz** pair now sits in every bound subject, 14 bot posts (`60`–`73`) plus G5's `58`–`59`, every one placed **over MTProto** rather than inferred (`thread=6/8/10/12/14`, `forum_topic=True`). The dashboard door was pre-checked `HTTP 200` before each post.
+
+The spare account also made its first real posts — `74` (a `●`/`○` material index in the general topic) and `75`–`79` (a navigation note inside each subject topic), all from `8404964768`, all MTProto-verified. That needed one capability add: `human --verb say --thread` (commits `42d3ea5` → `95fa0ca` → `facf3b9`).
+
+**Four defects were found and fixed on the way**, each TDD: a transport failure exiting `0` instead of `7` (`d26380e`); CLI tests spending the **live** pacing ledger (`42d3ea5`); audit rows losing `thread_id` so the ledger contradicted the messages it described (`95fa0ca`); and Bot API's `message_thread_id` being passed to Telethon, which takes `reply_to` (`facf3b9`). The last one was caught live, not by tests — `FakeTelethonClient` took `**kw` and accepted a parameter the real client rejects, so the fake now mirrors Telethon 1.41.2's signature exactly.
+
+**Still open for G6:** the results summary from `/api/quiz/history` + `/api/quiz/list` landing in the same topic, and the #19 topic-digest conventions. **Phase B (`sendPoll`)** stays explicitly deferred inside #18.
+
+**Gates at this point:** `pytest` **595** · `bandit` **8** · CI ✅ CodeQL ✅ · commits `d26380e`, `42d3ea5`, `95fa0ca`, `facf3b9` pushed, tree clean.
+
 ### G7 — Hardening & Close-out · **Final stop: "gateway is the only path"**
 - **Work:** topic playbook committed (#19); retire Playwright/CDP scripts in a dedicated PR (#20); full pytest coverage review (#21); epic acceptance criteria checked.
 - **Entry:** SP6 green.
