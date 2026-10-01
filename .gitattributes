@@ -1,0 +1,30 @@
+# Master Studio vault — binary deliverables are bytes, never text.
+#
+# core.autocrlf=true on Windows plus git's format check — "is there a NUL in
+# the first 8000 bytes" — is not a format check at all. A small, text-heavy
+# PDF (our one-page catalog placeholders are 830 bytes of uncompressed ASCII)
+# scores as TEXT, and the next checkout silently rewrites its content stream
+# to CRLF, after which no viewer opens it. Marking the format explicitly is
+# the only reliable guard.
+
+*.pdf    binary
+*.cff    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.svgz   binary
+*.mp3    binary
+*.wav    binary
+*.m4a    binary
+*.docx   binary
+*.xlsx   binary
+*.pptx   binary
+*.odt    binary
+*.zip    binary
+*.db     binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
