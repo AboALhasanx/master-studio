@@ -58,6 +58,8 @@ from html import escape
 from pathlib import Path
 from typing import Any
 
+from .errors import RegistryError, UnboundTopic
+
 __all__ = [
     "CATALOG_DIR",
     "DEFAULT_LIMIT",
@@ -490,10 +492,28 @@ def _persist_message_id(cat_dir: Path, key: str, message_id: int) -> None:
     )
 
 
+def _bound_chat(registry: Any, key: str) -> int:
+    """The group a subject's card points at.
+
+    Every link in a card is ``t.me/c/<internal>/...``, so a card cannot be
+    rendered without a chat id — and ``registry.json`` is gitignored local
+    state, so a checkout that never ran a binding has none to give. Report
+    that as the registry's own error, naming the subject, rather than letting
+    ``int(None)`` escape a CLI as a traceback.
+    """
+    row = registry.get(key)  # RegistryMiss for a subject the file lacks
+    if row.get("chat_id") is None:
+        raise UnboundTopic(
+            f"{key}: not bound to any group — bind it first, the card's "
+            "links need a chat id"
+        )
+    return int(row["chat_id"])
+
+
 def _push_one(cat_dir: Path, registry: Any, key: str, *,
               live: bool, dry_run: bool, actor: int | None) -> dict[str, Any]:
     cat = _load(cat_dir, key)
-    chat_id = int(registry.get(key)["chat_id"])
+    chat_id = _bound_chat(registry, key)
     body = render(cat, chat_id)
 
     file = pdf_path(cat)
@@ -546,7 +566,11 @@ _OK = {"sent", "ok", "authorized", "duplicate", "queued"}
 
 def catalog_main(argv: list[str] | None = None) -> int:
     """``tg_catalog`` entry point — the Zero-CLI way to refresh the cards."""
-    from dotenv import load_dotenv
+    # `store.load_dotenv`, not the third-party `dotenv`: the vault ships its
+    # own dependency-free reader (G1) and `python-dotenv` is not in
+    # requirements.txt — importing that one only worked where pip had put it
+    # there by hand, and died with ModuleNotFoundError on a bare CI checkout.
+    from .store import load_dotenv
 
     load_dotenv()  # the owner allowlist lives in .env, and we read it below
 
@@ -572,10 +596,14 @@ def catalog_main(argv: list[str] | None = None) -> int:
     if args.print_subject:
         try:
             cat = _load(cat_dir, args.print_subject)
+            chat_id = _bound_chat(registry, cat.key)
         except CatalogError as exc:
             _emit({"status": "error", "error": str(exc)}, args.as_json)
             return 2
-        print(render(cat, int(registry.get(cat.key)["chat_id"])))
+        except RegistryError as exc:
+            _emit({"status": "error", "error": str(exc)}, args.as_json)
+            return exc.code
+        print(render(cat, chat_id))
         return 0
 
     keys = list(args.push) if args.push else list(SUBJECT_KEYS)
@@ -584,6 +612,7 @@ def catalog_main(argv: list[str] | None = None) -> int:
 
     results: list[dict[str, Any]] = []
     error: str | None = None
+    error_code = 2  # CatalogError; a registry problem reports its own code
     for index, key in enumerate(keys):
         if index and args.pace > 0:
             time.sleep(args.pace)
@@ -593,11 +622,14 @@ def catalog_main(argv: list[str] | None = None) -> int:
         except CatalogError as exc:
             error = str(exc)
             break
+        except RegistryError as exc:
+            error, error_code = str(exc), exc.code
+            break
 
     if error is not None:
         _emit({"status": "error", "error": error, "dry_run": dry_run,
                "live": live, "results": results}, args.as_json)
-        return 2
+        return error_code
 
     failed = [row for row in results if row["status"] not in _OK]
     _emit({"status": "error" if failed else "ok", "live": live,

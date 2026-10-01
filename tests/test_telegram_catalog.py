@@ -315,12 +315,20 @@ class TestEmptySubject:
 
 
 def shipped():
-    """(key, Catalog, chat_id) for every real catalog file."""
+    """(key, Catalog, chat_id) for every real catalog file.
+
+    ``chat_id`` is ``None`` when the subject is not bound: the registry is
+    gitignored local state, so a fresh checkout has no bindings in it, and
+    callers that genuinely need one must say so rather than hit ``int(None)``.
+    """
     registry = Registry(seed=False)
+    known = set(registry.subjects())
     out = []
     for path in sorted(CATALOG_DIR.glob("*.json")):
         cat = Catalog.load(path)
-        out.append((path.stem, cat, int(registry.get(path.stem)["chat_id"])))
+        row = registry.get(path.stem) if path.stem in known else {}
+        chat = row.get("chat_id")
+        out.append((path.stem, cat, None if chat is None else int(chat)))
     return out
 
 
@@ -331,7 +339,8 @@ class TestShippedCards:
 
     def test_every_shipped_card_renders_clean(self):
         for key, cat, chat_id in shipped():
-            problems = check_rendered(render(cat, chat_id))
+            # unbound checkouts (CI) still have a group to build links against
+            problems = check_rendered(render(cat, chat_id if chat_id else CHAT))
             assert problems == [], f"{key}: {problems}"
 
     def test_every_shipped_card_opens_on_an_arabic_subject_name(self):
@@ -362,8 +371,19 @@ class TestShippedCards:
                 assert match.group(1) == expected, key
 
     def test_every_shipped_link_points_into_the_registry_chat(self):
-        for key, cat, chat_id in shipped():
-            body = render(cat, chat_id)
+        """A card must point at the group its subject is actually bound to.
+
+        `registry.json` is gitignored local state, so a CI checkout has no
+        bindings in it: there is nothing to compare against, and inventing a
+        group would only assert that a number equals itself. Where the
+        subject *is* bound, render for the canonical group and require the
+        links to land in that binding.
+        """
+        rows = [(k, c, chat) for k, c, chat in shipped() if chat is not None]
+        if not rows:
+            pytest.skip("registry.json is local-only: no subject is bound here")
+        for key, cat, chat_id in rows:
+            body = render(cat, CHAT)
             for href in re.findall(r'href="([^\"]+)"', body):
                 assert href.startswith(f"https://t.me/c/{str(chat_id)[4:]}/"), key
 
@@ -378,6 +398,25 @@ class TestShippedCards:
         # real traffic stops in the 80s; 100+ cannot collide with a live id
         for key, cat, _chat in shipped():
             assert all(mid >= 100 for mid in cat.chapters), key
+
+    def test_an_unbound_registry_reports_none_instead_of_crashing(
+        self, tmp_path, monkeypatch
+    ):
+        """`registry.json` is gitignored local state — a CI checkout has none.
+
+        A subject that is merely unbound must surface as `chat_id is None`
+        so callers can say so; surfacing as `int(None)` instead took out
+        every shipped-card check with a TypeError unrelated to its subject.
+        """
+        import telegram.registry as registry_mod
+
+        empty = tmp_path / "registry.json"
+        empty.write_text(json.dumps({"subjects": {}}), encoding="utf-8")
+        monkeypatch.setattr(registry_mod, "DEFAULT_REGISTRY_PATH", empty)
+
+        rows = shipped()
+        assert rows, "the shipped cards themselves are the fixture"
+        assert all(chat is None for _key, _cat, chat in rows)
 
 
 # ------------------------------------------------------------ topic titles --
@@ -451,6 +490,65 @@ class TestTopicTitles:
 # ------------------------------------------------------------ push tool ----
 
 
+@pytest.fixture
+def bound_registry(tmp_path, monkeypatch):
+    """Bind every subject to this group for the duration of one test.
+
+    `registry.json` is gitignored local state (`.gitignore:119`), so a CI
+    checkout starts with nothing bound — anything that renders a card or
+    resolves a topic must not depend on this machine's history to run.
+    """
+    import telegram.registry as registry_mod
+
+    path = tmp_path / "registry.json"
+    path.write_text(
+        json.dumps(
+            {
+                "subjects": {
+                    key: {
+                        "description": "",
+                        "chat_id": CHAT,
+                        "thread_id": 7100 + index,
+                        "topic_name": None,
+                    }
+                    for index, key in enumerate(SUBJECT_KEYS, start=1)
+                }
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(registry_mod, "DEFAULT_REGISTRY_PATH", path)
+    return path
+
+
+@pytest.fixture
+def unbound_registry(tmp_path, monkeypatch):
+    """The other side of the same coin: a registry nothing is bound in."""
+    import telegram.registry as registry_mod
+
+    path = tmp_path / "registry.json"
+    path.write_text(
+        json.dumps(
+            {
+                "subjects": {
+                    key: {
+                        "description": "",
+                        "chat_id": None,
+                        "thread_id": None,
+                        "topic_name": None,
+                    }
+                    for key in SUBJECT_KEYS
+                }
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(registry_mod, "DEFAULT_REGISTRY_PATH", path)
+    return path
+
+
 class TestPush:
     def test_global_flags_precede_the_subcommand(self):
         # `tg.py --live publish ...` -- a trailing --live lands on the subparser
@@ -481,7 +579,7 @@ class TestPush:
         assert argv[argv.index("--actor") + 1] == str(OWNER)
         assert argv.index("--actor") < argv.index("edit")
 
-    def test_no_actor_means_the_acl_denies_the_push(self, capsys):
+    def test_no_actor_means_the_acl_denies_the_push(self, capsys, bound_registry):
         code = tg_cli.main(
             build_edit_argv("01-Cyber-Security", 7, "hi", dry_run=True,
                             as_json=True, actor=None)
@@ -491,7 +589,9 @@ class TestPush:
         assert payload["authorized"] is False
         assert "actor" in payload["reason"]
 
-    def test_the_push_payload_is_parsed_by_the_real_cli(self, capsys):
+    def test_the_push_payload_is_parsed_by_the_real_cli(
+        self, capsys, bound_registry
+    ):
         code = tg_cli.main(
             build_edit_argv("01-Cyber-Security", 7, "hi", dry_run=True,
                             as_json=True, actor=OWNER)
@@ -502,7 +602,9 @@ class TestPush:
         assert out["action"]["verb"] == "edit"
         assert out["action"]["message_id"] == 7
 
-    def test_a_dry_run_never_builds_a_transport(self, monkeypatch, capsys):
+    def test_a_dry_run_never_builds_a_transport(
+        self, monkeypatch, capsys, bound_registry
+    ):
         def explode(**_kw):
             raise AssertionError("the network was reached on a dry run")
 
@@ -513,7 +615,9 @@ class TestPush:
         assert payload["dry_run"] is True
         assert payload["results"][0]["status"] == "authorized"
 
-    def test_the_default_push_is_a_dry_run(self, monkeypatch, capsys):
+    def test_the_default_push_is_a_dry_run(
+        self, monkeypatch, capsys, bound_registry
+    ):
         def explode(**_kw):
             raise AssertionError("a push without --live must stay offline")
 
@@ -521,6 +625,18 @@ class TestPush:
         catalog_main(["--push", "01-Cyber-Security", "--json"])
         payload = json.loads(capsys.readouterr().out)
         assert payload["dry_run"] is True
+
+    def test_the_entry_point_needs_no_third_party_dotenv(self, monkeypatch, capsys):
+        """`python-dotenv` is not in requirements.txt — and need not be.
+
+        The vault ships its own dependency-free reader in `store`; importing
+        the other one inside `catalog_main` is what turned a bare CI checkout
+        into `ModuleNotFoundError` on every push test.
+        """
+        monkeypatch.setitem(sys.modules, "dotenv", None)  # any `import dotenv` fails
+        assert catalog_main(["--list", "--json"]) == 0
+        rows = json.loads(capsys.readouterr().out)
+        assert rows, "the shipped cards are the fixture"
 
     @staticmethod
     def _card_with_message_id(tmp_path, message_id):
@@ -538,7 +654,7 @@ class TestPush:
         return str(tmp_path)
 
     def test_a_card_without_a_message_id_is_published_not_edited(
-        self, capsys, tmp_path
+        self, capsys, tmp_path, bound_registry
     ):
         # the first push creates the message; every later one edits it in place
         catalog_main(["--catalog-dir", self._card_with_message_id(tmp_path, None),
@@ -546,7 +662,9 @@ class TestPush:
         payload = json.loads(capsys.readouterr().out)
         assert payload["results"][0]["mode"] == "publish"
 
-    def test_a_card_with_a_message_id_is_edited_in_place(self, capsys, tmp_path):
+    def test_a_card_with_a_message_id_is_edited_in_place(
+        self, capsys, tmp_path, bound_registry
+    ):
         catalog_main(["--catalog-dir", self._card_with_message_id(tmp_path, 104),
                       "--push", "06-Artificial-Intelligence", "--dry-run", "--json"])
         payload = json.loads(capsys.readouterr().out)
@@ -566,11 +684,40 @@ class TestPush:
         payload = json.loads(capsys.readouterr().out)
         assert set(payload["subjects"]) == set(SUBJECT_KEYS)
 
-    def test_print_renders_a_card_without_pushing_it(self, capsys):
+    def test_print_renders_a_card_without_pushing_it(
+        self, capsys, bound_registry
+    ):
         assert catalog_main(["--print", "03-Data-Mining"]) == 0
         out = capsys.readouterr().out
         assert "تنقيب البيانات" in out
         assert "أ.م.د. أحمد شاكر عبد الرضا" in out
+
+    def test_printing_an_unbound_subject_is_a_registry_problem(
+        self, capsys, unbound_registry
+    ):
+        """`registry.json` is gitignored local state, so a fresh checkout has
+        no binding: the card's links then have no group to point at.
+
+        That is the registry's own error (exit 6, with a sentence saying
+        which subject is missing) — not `TypeError: int() argument ...
+        not 'NoneType'` thrown out of a CLI at the user.
+        """
+        code = catalog_main(["--print", "01-Cyber-Security", "--json"])
+        payload = json.loads(capsys.readouterr().out)
+        assert code == 6, payload
+        assert payload["status"] == "error"
+        assert "not bound" in payload["error"]
+
+    def test_pushing_an_unbound_subject_is_a_registry_problem(
+        self, capsys, unbound_registry
+    ):
+        # the same guard on the publish path, where `_push_one` used to
+        # crash before it could report anything at all
+        code = catalog_main(["--push", "01-Cyber-Security", "--json"])
+        payload = json.loads(capsys.readouterr().out)
+        assert code == 6, payload
+        assert payload["status"] == "error"
+        assert "not bound" in payload["error"]
 
 
 class TestTheWorkflowIsDiscoverable:
