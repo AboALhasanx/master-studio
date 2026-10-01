@@ -77,8 +77,9 @@ class FakeGateway:
         self._hit("history", chat_id, limit)
         return [{"id": 1, "text": "hi"}] * min(limit, 1)
 
-    def send(self, chat_id: int, text: str) -> dict:
-        self._hit("send", chat_id, text)
+    def send(self, chat_id: int, text: str,
+             thread_id: int | None = None) -> dict:
+        self._hit("send", chat_id, text, thread_id)
         return {"message_id": 4242, "chat_id": chat_id}
 
     def request_code(self, phone: str) -> dict:
@@ -184,6 +185,22 @@ class TestGatesRunBeforeTheGateway:
             run(request("read"), gateway)
         assert gateway.calls == []
 
+    def test_thread_only_makes_sense_with_say(self):
+        """A silently dropped ``--thread`` would be worse than an error.
+
+        The operator would believe the reply landed inside the topic while it
+        went to the general one, and nothing on screen would contradict them.
+        So it is refused for every other verb, and a non-positive thread id is
+        refused for ``say`` itself.
+        """
+        gateway = FakeGateway()
+        with pytest.raises(ActionValidationError):
+            run(request("read", chat_id=ALLOWED_CHAT, thread_id=12), gateway)
+        with pytest.raises(ActionValidationError):
+            run(request("say", chat_id=ALLOWED_CHAT, text="x",
+                        thread_id=0), gateway)
+        assert gateway.calls == []
+
 
 # ===========================================================================
 # 3. The chat allowlist still applies — a human is not an ACL bypass
@@ -278,7 +295,7 @@ class TestFloodControl:
         with pytest.raises(RateLimited) as exc:
             run(request("say", chat_id=ALLOWED_CHAT, text="hi"), gateway)
         assert exc.value.retry_after == pytest.approx(42.0)
-        assert gateway.calls == [("send", ALLOWED_CHAT, "hi")]  # exactly one
+        assert gateway.calls == [("send", ALLOWED_CHAT, "hi", None)]  # exactly one
 
     def test_flood_wait_on_a_read_is_typed_the_same_way(self):
         gateway = FakeGateway(raise_on="history", exc=_flood_wait(7))
@@ -439,6 +456,7 @@ class FakeTelethonClient:
         self.disconnected = False
         self.sent_codes: list[str] = []
         self.sent_messages: list[tuple] = []
+        self.sent_threads: list[int | None] = []   # message_thread_id per send
         FakeTelethonClient.instances.append(self)
 
     # class-level on purpose: a subclass must be able to flip authorization
@@ -482,6 +500,7 @@ class FakeTelethonClient:
 
     async def send_message(self, entity, message="", **kw):
         self.sent_messages.append((entity, message))
+        self.sent_threads.append(kw.get("message_thread_id"))
         class _Msg:
             id = 4242
         return _Msg()
@@ -589,6 +608,25 @@ class TestTelethonGatewayAdapter:
         gw.history(ALLOWED_CHAT, 5)
         client = FakeTelethonClient.instances[0]
         assert client.sent_messages == [(ALLOWED_CHAT, "hello")]
+
+    def test_say_can_target_a_forum_topic(self, monkeypatch):
+        """A spare-account message has to be able to land *inside* a topic.
+
+        Without a thread every ``say`` went to ``00-Start-Here``, so "real
+        interaction inside the group" was structurally impossible: whatever
+        the reply said, it came out under the wrong topic header. Omitting
+        the flag must keep the old behaviour (``None``), because the general
+        topic is still where an announcement belongs.
+        """
+        gw = self._gateway(monkeypatch)
+        gw.send(ALLOWED_CHAT, "hello")
+        gw.send(ALLOWED_CHAT, "سؤال سريع", thread_id=12)
+        # _call builds a fresh client per invocation (bounded, no held
+        # session), so the two sends land on two different instances.
+        threads = [t for c in FakeTelethonClient.instances for t in c.sent_threads]
+        assert threads == [None, 12]
+        messages = [m for c in FakeTelethonClient.instances for m in c.sent_messages]
+        assert messages == [(ALLOWED_CHAT, "hello"), (ALLOWED_CHAT, "سؤال سريع")]
 
     def test_login_requests_a_code_before_signing_in(self, monkeypatch, tmp_path):
         gw = self._gateway(monkeypatch, tmp_path)
@@ -911,6 +949,12 @@ class TestHumanMonitoring:
         monkeypatch.setenv(human.ENV_API_ID, "12345")
         monkeypatch.setenv(human.ENV_API_HASH, "0123456789abcdef")
         monkeypatch.setenv(human.ENV_SESSION, str(db.parent / "human.session"))
+        # The pacing ledger must follow the test's own db. `_run_human` reads
+        # PACING_STATE at call time, so without this every CLI test spends the
+        # *live* chat's sending budget: the second `say` in this file was then
+        # refused by a ledger the first one had just filled, and a test run
+        # could equally have blocked a real send for up to a minute.
+        monkeypatch.setattr(human, "PACING_STATE", db.parent / "pacing.json")
         for key, value in (env or {}).items():
             monkeypatch.setenv(key, value)
         return cli.main(["--json", "--live", "--db", str(db), "human", *argv])
@@ -940,6 +984,25 @@ class TestHumanMonitoring:
         rows = self._rows(db)
         assert rows[0]["verb"] == "human:say"
         assert rows[0]["result"] == "sent"
+
+    def test_thread_reaches_telethon_from_the_command_line(
+            self, tmp_path, monkeypatch):
+        """``--thread 12`` must survive argparse, HumanRequest, run() and the
+        adapter — a flag that stops anywhere along the way posts to the wrong
+        topic while still exiting 0 and writing a `sent` audit row."""
+        live_ledger = human.PACING_STATE          # before _run redirects it
+        before = live_ledger.read_bytes() if live_ledger.exists() else None
+
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "say",
+                         "--chat", str(ALLOWED_CHAT), "--text", "hi",
+                         "--thread", "12")
+        assert code == 0
+        client = FakeTelethonClient.instances[0]
+        assert client.sent_threads == [12], "--thread was dropped en route"
+
+        after = live_ledger.read_bytes() if live_ledger.exists() else None
+        assert after == before, "this CLI test spent the live pacing ledger"
 
     def test_a_send_outside_the_allowlist_is_recorded_as_denied(
             self, tmp_path, monkeypatch):

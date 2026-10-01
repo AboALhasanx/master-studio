@@ -279,6 +279,9 @@ python 90_Shared_Toolbox/tools/tg.py --live human --verb chats
 python 90_Shared_Toolbox/tools/tg.py --live human --verb read --chat -1003710711332 --limit 10
 python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -1003710711332 --text "أهلاً"
 
+# the same say, but inside a subject topic instead of the general one
+python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -1003710711332 --thread 12 --text "سؤال سريع"
+
 # two-step login: request the code, then spend it
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --code 12345
@@ -299,7 +302,11 @@ the session journal.**
 
 `--verb` is one of `whoami`, `chats`, `read`, `say`, `login`. `read` needs `--chat` **and**
 `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `login` needs `--phone`, and
-`--code` on the second step. The chat must be on `TELEGRAM_CHAT_ALLOWLIST` — **a human account
+`--code` on the second step. `say` also takes `--thread <topic id>`, which posts into that forum
+topic; omit it and the message goes to the general topic as before. `--thread` is refused for
+every other verb and for a non-positive id — a `--thread` that quietly did nothing would leave
+you believing a reply landed inside a topic while it came out under the wrong header. The chat
+must be on `TELEGRAM_CHAT_ALLOWLIST` — **a human account
 is not an ACL bypass**: an empty allowlist denies every chat, exactly as it does for the bot.
 
 **The kill switch.** Human mode is **off by default**. Set `TELEGRAM_HUMAN_ENABLED=1` in

@@ -217,6 +217,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--chat", type=int, dest="chat_id",
                    help="target chat id (required for read and say)")
     p.add_argument("--text", help="message body (verb say)")
+    p.add_argument("--thread", type=int, dest="thread_id",
+                   help="forum topic id to post into (verb say); omit to post "
+                        "to the general topic")
     p.add_argument("--limit", type=int, default=10,
                    help="how many messages to fetch (verb read, default 10)")
     p.add_argument("--phone", help="spare account number in international "
@@ -455,6 +458,7 @@ def _run_human(args: argparse.Namespace) -> int:
         phone=getattr(args, "phone", None),
         code=getattr(args, "code", None),
         password=getattr(args, "password", None),
+        thread_id=getattr(args, "thread_id", None),
     )
     gate = dict(
         live=bool(args.live),

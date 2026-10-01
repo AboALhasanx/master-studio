@@ -137,6 +137,10 @@ class HumanRequest:
     phone: str | None = None
     code: str | None = None
     password: str | None = None
+    # Forum topic to post into. None = the general topic, which is where a
+    # bare announcement belongs; a subject topic is what turns a bare
+    # `say` into interaction that lands under the right header.
+    thread_id: int | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -179,6 +183,18 @@ def authorize(req: HumanRequest, *, live: bool, enabled: bool,
 
     if req.verb == "login" and not (req.phone or "").strip():
         raise ActionValidationError("verb 'login' requires --phone")
+
+    if req.thread_id is not None:
+        # Deliberately outside the CHAT_VERBS block so whoami/chats/login are
+        # covered too: a flag that means nothing for the chosen verb must not
+        # be dropped quietly, or the operator believes a reply landed in a
+        # topic while it went to the general one.
+        if req.verb != "say":
+            raise ActionValidationError(
+                f"--thread only applies to verb 'say' (got {req.verb!r})"
+            )
+        if int(req.thread_id) < 1:
+            raise ActionValidationError("--thread must be a positive topic id")
 
 
 # ---------------------------------------------------------------------------
@@ -248,7 +264,8 @@ def _dispatch_table(req: HumanRequest, gateway):
     if req.verb == "read":
         return lambda: gateway.history(req.chat_id, req.limit)
     if req.verb == "say":
-        return lambda: gateway.send(req.chat_id, req.text)
+        return lambda: gateway.send(req.chat_id, req.text,
+                                    thread_id=req.thread_id)
     if req.verb == "login":
         # password wins: Telethon's sign_in is an if/elif chain (see the
         # adapter), so handing it a code as well would clear nothing.
@@ -432,10 +449,12 @@ class TelethonGateway:
 
         return self._call(body)
 
-    def send(self, chat_id: int, text: str) -> dict:
+    def send(self, chat_id: int, text: str,
+             thread_id: int | None = None) -> dict:
         async def body(client):
             await self._require(client)
-            sent = await client.send_message(chat_id, text)
+            sent = await client.send_message(chat_id, text,
+                                             message_thread_id=thread_id)
             return {"message_id": sent.id, "chat_id": chat_id}
 
         return self._call(body)
