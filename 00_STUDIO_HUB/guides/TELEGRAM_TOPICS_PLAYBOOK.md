@@ -1,6 +1,6 @@
 # Telegram Topics Playbook — Master-Studio FINAL (issue #19)
 
-> **Status:** ACTIVE — structure provisioned live on **2026-09-28** by the gateway (`structure` verb), then **rebuilt number-free on 2026-10-01**: topics `84`–`92`, names `◆ <subject>` / `◇ <utility>`, no numeric prefix, no emoji. The catalog card is the first message of every subject topic.
+> **Status:** ACTIVE — structure provisioned live on **2026-09-28** by the gateway (`structure` verb), **rebuilt number-free on 2026-10-01**, then **trimmed to the six taught subjects on 2026-10-02**: topics `84`–`89`, names `◆ <subject>`, no numeric prefix, no emoji. The catalog card is the first message of every subject topic.
 > **Group:** `Master-Studio FINAL` → `chat_id -1003710711332` (forum enabled).
 > **Authority:** conventions here are binding for the gateway (`telegram/structure.py`), the registry, and every agent publishing into the group.
 
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. The Layout (live — rebuilt 2026-10-01, number-free)
+## 1. The Layout (live — rebuilt 2026-10-01, trimmed 2026-10-02)
 
 | Topic (as shown) | Registry key | thread_id | Purpose |
 |---|---|---|---|
@@ -18,10 +18,15 @@
 | **◆ تنقيب البيانات** | `03-Data-Mining` | 86 | Dr. Ahmed · Mon 08:30 |
 | **◆ هندسة البرمجيات المتقدمة** | `04-Advanced-Software-Eng` | 87 | CS504 · Dr. Ali Fahim · Mon 10:30 |
 | **◆ الحوسبة الناعمة** | `05-Soft-Computing` | 88 | Dr. Abdul Hadi · Tue 08:30 |
-| **◆ الذكاء الاصطناعي** | `06-Artificial-Intelligence` | 89 | Dr. Saif · Tue 10:30 (was on hold — ch.1 shipped 2026-10-02) |
-| **◇ الامتحانات والأسئلة** | `70-Exams-and-MCQ` | 90 | Quiz links, exam booklets, results |
-| **◇ التقدم والتحليلات** | `71-Progress-Analytics` | 91 | Weekly reports, mastery, review queue |
-| **◇ الأدوات** | `90-Toolbox` | 92 | Tools, exporters, dashboard |
+| **◆ الذكاء الاصطناعي** | `06-Artificial-Intelligence` | 89 | Dr. Saif · Tue 10:30 |
+
+**The three utility topics are gone.** `◇ الامتحانات والأسئلة` (90),
+`◇ التقدم والتحليلات` (91) and `◇ الأدوات` (92) were **closed then deleted
+2026-10-02** and removed from `structure.STRUCTURE`, so a future `structure`
+run cannot recreate them; their registry keys (`70-Exams-and-MCQ`,
+`71-Progress-Analytics`, `90-Toolbox`) stay so an old command resolves to a
+clear *unbound* instead of a topic that silently no longer exists. Quiz links
+now go to the **subject topic** they belong to.
 
 `99-Chat` stays a registry key but is **unbound** (no topic) — `محادثة` (id 1, the undeletable General) is the chat room. History: the 2026-09-28 layout used numbered emoji names (`01 🛡 …`); the 2026-10-01 rebuild removed all numbers and emoji and re-published the catalog cards as each topic's first message (see `sessions/2026-10-01.md`).
 
@@ -29,7 +34,7 @@ Source of truth: `90_Shared_Toolbox/telegram/registry.json`. **Never address a t
 
 ## 2. Naming & Ordering Rules
 
-1. **No numeric prefixes, no emoji** (`◆`/`◇` are monochrome markers, not emoji): `◆` = taught subjects in schedule order, `◇` = cross-cutting / infrastructure. The Bot API cannot reorder or pin *topics* at all — those live only in MTProto (`messages.reorderPinnedForumTopics`, `messages.updatePinnedForumTopic`), and topic-level pinning is capped at `topics_pinned_limit` (a server value from the client config; ~5 in practice), so only the index and the live subjects could ever be pinned.
+1. **No numeric prefixes, no emoji** (`◆` is a monochrome marker, not an emoji): `◆` marks the taught subjects in schedule order — there is no second class of topic any more (§1). The Bot API cannot reorder or pin *topics* at all — those live only in MTProto (`messages.reorderPinnedForumTopics`, `messages.updatePinnedForumTopic`), and topic-level pinning is capped at `topics_pinned_limit` (a server value from the client config; ~5 in practice), so only the index and the live subjects could ever be pinned.
 2. The marker prefix is part of the name (visual scanning); name and icon colour are **fixed at creation**.
 3. Renaming = `tg.py topic --op rename --subject <key> --name "…"` (registry updated automatically by the bound thread id). A rename of an unchanged name answers `TOPIC_NOT_MODIFIED` — an expected no-op, not a failure.
 
@@ -62,16 +67,16 @@ Other extras available on demand: `edit` (correct a published card), `react`, `p
 
 ## 5. Reading UX — how the group is meant to be *read*
 
-The point of the numbered layout is that a phone screen shows it in a stable order. A few
+The point of the layout is that a phone screen shows it in a stable order. A few
 member-side settings make that work; none of them are Bot-API operations, so they are
 documentation for the human, not for the gateway.
 
 - **Per-topic notification control.** Every topic carries its own mute/unmute. The intended
   default is: **mute the group globally**, then unmute only the subject topics that are live
-  this week and `70-Exams-and-MCQ` — so an exam link never gets buried under Chat.
+  this week — so an exam link never gets buried under Chat.
 - **"View as messages" (chat-style) layout.** The mobile clients offer a tab view and a
   single-stream "View as messages" view. The tab view is the default recommendation: it maps
-  1:1 onto the subject topics, and the utility topics stay visually last.
+  1:1 onto the six subject topics, in schedule order.
 - **Unread badges.** Each topic shows its own unread count, which is why the index message
   carries a button per topic — one tap goes straight to whatever is new, instead of scrolling
   General.
@@ -82,8 +87,9 @@ documentation for the human, not for the gateway.
 
 ## 6. Lifecycle Rules
 
-- **Close, don't delete.** `topic --op delete` wipes every message in the topic (irreversible, ADR D7) → always `--confirm`, prefer `--op close`.
-- A subject that ends (e.g. `06-Artificial-Intelligence` on hold) stays **created but quiet** — no posts until material exists.
+- **Close, don't delete — for a *subject*.** `topic --op delete` wipes every message in the topic (irreversible, ADR D7) → always `--confirm`, prefer `--op close`.
+- **Deleting a utility topic was the documented exception.** The three `◇` topics held no history worth keeping and were removed 2026-10-02 so the group reads as exactly six subjects; they were closed first (history intact), deleted only after the close had been verified, and stripped from `structure.STRUCTURE` in the same round so no future `structure` run resurrects them.
+- A quiet subject stays **created but posted-by-content-only** — no posts until material exists (all six are live as of 2026-10-02).
 - New subject added to the vault → add a `SEED_SUBJECTS` entry + a `STRUCTURE` entry, then rerun `structure`; only the new topic is created.
 
 ## 7. Operating Commands
@@ -104,8 +110,8 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> quiz \
     --subject 01-Cyber-Security --quiz-id Quiz_01_Cybersecurity_Foundations \
     --host 192.168.1.50
 
-# topic lifecycle
-python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op close --subject 06-Artificial-Intelligence
+# topic lifecycle (a subject that finishes a week — close, don't delete)
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> topic --op close --subject 03-Data-Mining
 ```
 
 **Quiz links (`quiz` verb).** `--quiz-id` is the *bank name* (`Quiz_01_…`), and the gateway

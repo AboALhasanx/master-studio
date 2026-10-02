@@ -55,12 +55,10 @@ local). Conventions are binding: see `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYB
 | Subject key | Topic |
 |---|---|
 | `01-Cyber-Security` … `06-Artificial-Intelligence` | the six taught subjects (`◆ <name>`) |
-| `70-Exams-and-MCQ` | quiz links, exam booklets, results (`◇ <name>`) |
-| `71-Progress-Analytics` | weekly reports, mastery (`◇ <name>`) |
-| `90-Toolbox` | tools, dashboard (`◇ <name>`) |
+| `70-Exams-and-MCQ`, `71-Progress-Analytics`, `90-Toolbox` | **unbound** — their utility topics were deleted 2026-10-02; an old command resolves to a clear *unbound*, never to a silent success |
 
-Titles carry **no numbers and no emoji** — only the Arabic name behind a monochrome
-`◆` (subject) or `◇` (utility) marker. General has no registry key: it is the chat room
+Titles carry **no numbers and no emoji** — only the Arabic name behind the monochrome
+`◆` marker. General has no registry key: it is the chat room
 (`محادثة`, topic id 1, never provisioned), so send to it with `--chat` and **no thread**.
 
 ---
@@ -107,12 +105,12 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
 
 # album: repeat --file 2-10 times, and pick a --kind
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
-    publish --subject 90-Toolbox --file a.png --file b.png --kind photo --caption "مخططان"
+    publish --subject 03-Data-Mining --file a.png --file b.png --kind photo --caption "مخططان"
 
 # with a URL button
-python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
-    publish --subject 70-Exams-and-MCQ --text "بنك الأسئلة" \
-    --button "افتح اللوحة=http://127.0.0.1:5000/quiz"
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> quiz \
+    --subject 01-Cyber-Security --quiz-id Quiz_01_Cybersecurity_Foundations \
+    --host 192.168.1.50
 ```
 
 `--kind` = `document` (default, byte-exact) · `photo` · `video` · `audio` · `voice` ·
@@ -183,8 +181,8 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> edit \
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> delete --chat -1003710711332 --message-id 30
 
 # pin / unpin, or sweep a topic
-python 90_Shared_Toolbox/tools/tg.py --live --actor <id> pin --subject 70-Exams-and-MCQ --message-id 5
-python 90_Shared_Toolbox/tools/tg.py --live --actor <id> --confirm pin --subject 70-Exams-and-MCQ --unpin-all
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> pin --subject 03-Data-Mining --message-id 190
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> --confirm pin --subject 03-Data-Mining --unpin-all
 
 # a reaction, and a transient "typing" signal
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> react --chat -1003710711332 --message-id 28 --emoji "👍"
@@ -196,9 +194,9 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> action --subject 03-Dat
 ```bash
 # forward keeps the original sender; copy posts it as ours, optionally re-captioned
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> forward \
-    --subject 70-Exams-and-MCQ --from "https://t.me/c/1003710711332/28"
+    --subject 03-Data-Mining --from "https://t.me/c/1003710711332/28"
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> copy \
-    --subject 70-Exams-and-MCQ --from "https://t.me/c/1003710711332/28" --caption "أُعيد النشر هنا"
+    --subject 03-Data-Mining --from "https://t.me/c/1003710711332/28" --caption "أُعيد النشر هنا"
 ```
 
 The link identifies the **source**; the allowlist gate watches the **destination** — `copy`
@@ -505,7 +503,7 @@ Practical reading of that:
 - No filler openers ("بكل سرور"، "سؤال ممتاز"). Get to the point.
 - Corrections are stated plainly: "هاي غلط، الصحيح…" — not softened.
 - **No emoji, anywhere** — not in a body, a heading or a topic title. Use a single-colour
-  symbol instead (`◆`, `◇`, `●`); plain text must stay comfortable to read.
+  symbol instead (`◆`, `●`); plain text must stay comfortable to read.
 
 The persona is defined in `90_Shared_Toolbox/telegram/persona.py` (`PERSONA`), which is the
 **single source** for pacing, thresholds and tone — the skill and the code cannot disagree.
@@ -553,7 +551,7 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> reply \
 **Publish a quiz link**
 ```bash
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> quiz \
-    --subject 70-Exams-and-MCQ --quiz-id Quiz_01_Cybersecurity_Foundations \
+    --subject 01-Cyber-Security --quiz-id Quiz_01_Cybersecurity_Foundations \
     --host 192.168.1.50 --mode exam
 ```
 

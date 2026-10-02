@@ -22,19 +22,22 @@
 | Quiz links | **bot** | inline URL buttons are bot-only in Telegram |
 | Chat, replies | bot | — |
 
-Both accounts are admins of the group (the spare is **anonymous**). The spare
-is NOT needed for pinning — the bot pins the spare's card by id.
+Both accounts are admins of the group (the spare is **anonymous**) and **both
+can pin** (`can_pin_messages`): prefer `tg.py pin` (bot, Bot API), fall back to
+the spare via MTProto when the Bot API socket is dropping — proven live when
+`10054` refused `pinChatMessage` for card `190` and the spare's
+`UpdatePinnedMessageRequest` pinned it instantly.
 
 ## 1. The Layout (live)
 
 | Subject | Topic | Card (spare) | Chapters (spare) | Booklet |
 |---|---|---|---|---|
 | 01 أمن المعلومات | 84 | `181` | `182–185` (4) | 61 pp / 1.01 MB |
-| 02 إنجليزي | 85 | `187` | see log (1) | 12.7 MB |
-| 03 تنقيب البيانات | 86 | migrate | migrate | 101 pp / 1.25 MB |
-| 04 هندسة برمجيات | 87 | migrate | migrate | 252 pp / 1.37 MB |
-| 05 حوسبة ناعمة | 88 | migrate | migrate | 144 pp / 5.10 MB |
-| 06 ذكاء اصطناعي | 89 | migrate | migrate | 67 pp / 798 KB |
+| 02 إنجليزي | 85 | `187` | `188` (1) | 12.7 MB |
+| 03 تنقيب البيانات | 86 | `190` | `191–195` (5) | 101 pp / 1.25 MB |
+| 04 هندسة برمجيات | 87 | `196` | `197–199` (3) | 252 pp / 1.37 MB |
+| 05 حوسبة ناعمة | 88 | `201` | `202–203` (2) | 144 pp / 5.10 MB |
+| 06 ذكاء اصطناعي | 89 | `205` | `206` (1) | 67 pp / 798 KB |
 
 Topic names: **`◆ <subject>` — no numeric prefix, no emoji**. The three
 utility topics (`◇ الامتحانات والأسئلة` 90, `◇ التقدم والتحليلات` 91,
@@ -122,9 +125,11 @@ with `editMessageMedia` — same message id, pin and position preserved
 * `editMessageText` has **no time limit** — proven live: message `26` edited
   3 days after creation. The 48 h window is `deleteMessage` only (+ business
   messages). So **in-place edit is the only replacement path** for old cards.
-* A card goes silent only if: not sent by the bot, bot demoted, lost
-  `catalog_message_id`, or a poll. **Rule: cards are published by
-  `@cs_mscbot` only, never by the MTProto spare account.**
+* A card goes silent only if: not sent by its own author, author demoted, lost
+  `catalog_message_id`, or a poll. **Rule (2026-10-02 model): cards and
+  chapters are published by the spare account — the bot never publishes
+  content.** In-place edit therefore goes through `human --verb edit`, not the
+  bot's `edit`, because a message can only be edited by its own sender.
 
 ## 6. Card Format (binding)
 
@@ -143,7 +148,7 @@ with `editMessageMedia` — same message id, pin and position preserved
    pinned, names subject + doctor, verbatim chapter line, every ordinal
    listed, booklet attached, chapter entities point at the published files,
    all filenames ≤ 62 B (26 checks on topic 88, 22 on 89).
-2. `pytest -q` green (683 at last round), `bandit -r 90_Shared_Toolbox/telegram`
+2. `pytest -q` green (768 at last round), `bandit -r 90_Shared_Toolbox/telegram`
    High 0, CI + CodeQL green after push.
 3. Stale idempotency rows in `gateway.db` block re-sends of identical payloads
    (`status=duplicate`, no message) — drop rows whose `message_id` was deleted.
@@ -162,5 +167,5 @@ with `editMessageMedia` — same message id, pin and position preserved
 | inbound Pull poll (proposals only) | `tools/tg.py bridge --live --limit 20` (see `telegram/bridge.py`) |
 | urgent vs. restricted | `telegram/permissions.py` — `classify()`; restricted waits for private-chat `نعم`/`لا` |
 | one-shot mention replies | `tools/tg.py interactive --live` (bounded; admin verbs become pending approvals) |
-| spare human account | `tools/tg.py human --verb …` (gated, paced, audited) |
+| spare human account (files, edits) | `tools/tg.py human --verb sendfile …` — the **only** publish path for content (`--file`, `--filename`, `--text`, `--thread`); also `edit`/`delete`/`sendtext` (gated, paced, audited) |
 | group layout + index | `structure` verb; registry `90_Shared_Toolbox/telegram/registry.json` (gitignored) |
