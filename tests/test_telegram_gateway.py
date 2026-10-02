@@ -368,6 +368,29 @@ def test_execute_is_idempotent(registry, store, acl, transport):
     assert len(transport.calls) == 1, "the same command must never post twice"
 
 
+def test_reissue_after_a_failed_attempt_reports_the_error_not_duplicate(
+    registry, store, acl
+):
+    """A permanently-failed job must not masquerade as done (audit finding).
+
+    Re-issuing the identical command after a terminal failure (e.g.
+    TOPIC_NOT_MODIFIED) used to answer ``duplicate / already enqueued`` while
+    the work had never landed — the healthy transport was never even touched.
+    The re-issue must surface the stored failure instead; ``queue run`` stays
+    the retry path, and nothing is ever re-posted blindly.
+    """
+    failing = MockTransport(script=[TransportError("400 on editMessageCaption: "
+                                                    "Bad Request: message to edit not found")])
+    first = execute(publish(), transport=failing, acl=acl, registry=registry, store=store)
+    assert first["status"] == "error"
+
+    healthy = MockTransport()
+    second = execute(publish(), transport=healthy, acl=acl, registry=registry, store=store)
+    assert second["status"] == "error", "a failed job is not a duplicate of a done one"
+    assert "message to edit not found" in second["error"]
+    assert healthy.calls == [], "a re-issue must never re-post blindly"
+
+
 def test_execute_denied_actor_is_audited(registry, store, transport):
     with pytest.raises(AccessDenied):
         execute(publish(actor=99), transport=transport, acl=ACL([OWNER]),

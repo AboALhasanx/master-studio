@@ -262,3 +262,20 @@ class TestPullOnce:
         proposal: BridgeProposal = proposal_for_mention(
             _mention("/quiz Quiz_01_X"), owner_ids={OWNER})
         assert proposal.summary()["kind"] == "urgent"
+
+    def test_bridge_kinds_derive_from_the_policy_table(self):
+        """Single-source rule: no second literal verb set in bridge.py.
+
+        Every owner command the bridge maps must resolve to the kind the
+        permissions policy table dictates — if RESTRICTED_VERBS ever grows,
+        the bridge follows without an edit.
+        """
+        from telegram.bridge import COMMAND_TO_VERB
+        from telegram.permissions import RESTRICTED_VERBS
+
+        for command, verb in COMMAND_TO_VERB.items():
+            proposal = proposal_for_mention(
+                _mention(f"/{command} x"), owner_ids={OWNER})
+            expected = "restricted" if verb in RESTRICTED_VERBS else "urgent"
+            assert proposal.kind == expected, f"/{command} -> {verb}"
+            assert (proposal.approval is not None) == (expected == "restricted")

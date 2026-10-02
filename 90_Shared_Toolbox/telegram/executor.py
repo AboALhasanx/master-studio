@@ -553,6 +553,28 @@ def execute(
             "topic_name": action.name,
         }
     if not store.enqueue(key, action.verb, call.chat_id, call.thread_id, payload):
+        prior = store.find(key) or {}
+        if prior.get("status") in ("error", "dead"):
+            # A failed job is not a duplicate of a done one: re-issuing the
+            # identical command after a terminal failure (e.g.
+            # TOPIC_NOT_MODIFIED, a 48 h delete, a message that no longer
+            # exists) used to answer "duplicate / already enqueued" while the
+            # work had never landed. Surface the stored failure truthfully
+            # instead — nothing is re-posted, and `queue run` stays the retry
+            # path for jobs that deserve one.
+            detail = str(prior.get("last_error") or "previous attempt failed")
+            store.audit(
+                action.verb,
+                "duplicate",
+                actor=action.actor,
+                chat_id=call.chat_id,
+                thread_id=call.thread_id,
+                idempotency_key=key,
+                detail=f"previous attempt failed: {detail}",
+            )
+            return {"status": "error", "error": detail,
+                    "idempotency_key": key, "previous": prior.get("status"),
+                    "retry": "queue run"}
         store.audit(
             action.verb,
             "duplicate",

@@ -36,7 +36,7 @@ from typing import Any
 
 from . import interactive
 from .errors import GatewayError
-from .permissions import classify, format_approval_request
+from .permissions import RESTRICTED_VERBS
 
 __all__ = [
     "BridgeProposal",
@@ -197,7 +197,9 @@ def proposal_for_mention(
         "target": target,
         "args": mention.args,
     }
-    kind = "restricted" if verb in {"pin", "delete"} else "urgent"
+    # Single source of truth: the policy table in permissions.py decides
+    # which verbs need a private-chat approval — never a second literal set.
+    kind = "restricted" if verb in RESTRICTED_VERBS else "urgent"
     approval = None
     if kind == "restricted":
         approval = {
@@ -281,7 +283,3 @@ def pull_once(
         refused=refused_batch,
         next_offset=int(batch_max),
     )
-
-
-# Re-export so bridge callers keep one import for the approval path.
-__all__ += ["classify", "format_approval_request"]
