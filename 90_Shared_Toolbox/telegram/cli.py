@@ -209,6 +209,15 @@ def build_parser() -> argparse.ArgumentParser:
                    help="dashboard port (default: 5000)")
     p.add_argument("--text", help="override the generated message body")
 
+    p = sub.add_parser("bridge",
+                       help="one-shot Pull poll: read pending bot mentions as proposals (never sends)")
+    p.add_argument("--limit", type=int, default=20,
+                   help="cap on updates considered in one poll (default: 20)")
+    p.add_argument("--bot-username",
+                   help="the bot's @username, used to detect mentions "
+                        "(default: TELEGRAM_BOT_USERNAME from .env)")
+    p.add_argument("--subject", help="registry subject to steer notes toward")
+
     p = sub.add_parser("interactive",
                        help="one-shot listening session: reply to mentions (ADR D15)")
     p.add_argument("--for", type=float, dest="for_seconds", default=60.0,
@@ -386,6 +395,68 @@ def _emit(payload: dict[str, Any], as_json: bool) -> None:
 
 
 # ---------------------------------------------------------------------------
+# agent bridge (Pull model) — one poll, proposals only, never sends
+# ---------------------------------------------------------------------------
+def _run_bridge(args: argparse.Namespace) -> int:
+    """Poll once for pending mentions and print proposals as JSON.
+
+    Live-only and allowlist-gated like ``interactive``: without
+    ``TELEGRAM_CHAT_ALLOWLIST`` it refuses (exit 3) before any network call.
+    The processed ``update_id`` watermark is read from and written back to
+    the gateway's own memory, so a message is never proposed twice.
+    Restricted proposals are NOT executed — the approval card text is
+    included for the agent to forward to the private chat.
+    """
+    from .bridge import pull_once  # local import: keeps the outbound CLI path lean
+    from .telegram_memory import read_state, set_state
+
+    allowed = chat_allowlist_from_env()
+    if not allowed:
+        _emit({"status": "error", "code": 3,
+               "error": "bridge needs TELEGRAM_CHAT_ALLOWLIST (fail closed)"},
+              args.as_json)
+        return 3
+    if not args.live:
+        _emit({"status": "error", "code": 5,
+               "error": "bridge is a live-only capability (pass --live)"},
+              args.as_json)
+        return 5
+
+    limit = int(getattr(args, "limit", 20) or 20)
+    if limit <= 0 or limit > 100:
+        _emit({"status": "error", "code": 2,
+               "error": "bridge --limit must be 1..100"}, args.as_json)
+        return 2
+
+    import os as _os
+
+    store = Store(args.db)
+    acl = ACL.from_env()
+    bot_username = args.bot_username or _os.environ.get("TELEGRAM_BOT_USERNAME")
+    state = read_state()
+    offset = int(state.get("update_offset") or 0)
+
+    result = pull_once(
+        build_transport(live=True),
+        bot_username=bot_username,
+        allowed_chats=allowed,
+        owner_ids=acl.owners,
+        offset=offset,
+        limit=limit,
+    )
+    set_state(update_offset=result.next_offset,
+              last_bridge=result.summary())
+    for proposal in result.proposals:
+        store.audit("bridge", proposal.kind, actor=proposal.actor,
+                    chat_id=proposal.chat_id,
+                    detail=(proposal.text or "")[:200])
+    payload = result.summary()
+    payload["proposals_detail"] = [p.summary() for p in result.proposals]
+    _emit(payload, args.as_json)
+    return 0 if result.status == "ok" else 1
+
+
+# ---------------------------------------------------------------------------
 # interactive session (ADR D15) — a bounded, on-demand listener
 # ---------------------------------------------------------------------------
 def _run_interactive(args: argparse.Namespace) -> int:
@@ -558,6 +629,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "interactive":
         return _run_interactive(args)
+
+    if args.command == "bridge":
+        return _run_bridge(args)
 
     if args.command == "human":
         return _run_human(args)

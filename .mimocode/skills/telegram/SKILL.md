@@ -272,7 +272,41 @@ but **never writes `MEMORY.md`** — the agent stays the only intermediary betwe
 chat lands in `pending_approval.json` as a *pending approval*. Surface it to the student and
 act only on his explicit yes; the owner allowlist and `--confirm` still apply on top.
 
-### 4.10 `human` — the spare account (issue #22, MTProto)
+### 4.10 `bridge` — one Pull poll, proposals only (never sends)
+
+The user talks to the agent **through the bot**. The agent is usually asleep on
+Windows, so pending messages wait in Telegram until it polls — Pull, not Push:
+one `getUpdates` call, bounded by `--limit` (default `20`, max `100`), then it
+stops. Nothing is executed and nothing is sent; every addressed mention becomes
+a **proposal** the agent (or you) dispositions afterwards.
+
+```bash
+python 90_Shared_Toolbox/tools/tg.py --live bridge --limit 20
+python 90_Shared_Toolbox/tools/tg.py --json --live bridge --limit 50 --bot-username cs_mscbot
+```
+
+| Mention from | Becomes | Meaning |
+|---|---|---|
+| owner + `/publish` / `/edit` / `/quiz` / `/reply` / `/react` | `urgent` | run it now (still needs `--actor`, still audited) |
+| owner + `/delete` / `/pin` / admin command | `restricted` | send the included approval card to the private chat first |
+| owner + plain text | `note` | the agent reads it later — no action attached |
+| non-owner (any text) | `denied` | audited, never executed |
+
+**Urgent vs. restricted** lives in `telegram/permissions.py`: `topic`,
+`delete`, `pin` and `structure` are always restricted, anything
+`Action.destructive()` reports is restricted, everything else from an owner is
+urgent. A restricted proposal carries its approval card
+(`format_approval_request`); the owner replies `نعم` / `yes` to run it (with
+`--confirm`) or `لا` / `no` to drop it — anything else keeps it pending
+(`parse_approval_reply`). The processed `update_id` watermark is read from and
+written back to the gateway memory (`STATE.md` → `update_offset`), so a message
+is never proposed twice — including denied ones.
+
+Same fail-closed gates as `interactive`: live-only (exit `5` without `--live`),
+empty allowlist refuses before any network call (exit `3`), `--limit` outside
+`1..100` is exit `2`.
+
+### 4.11 `human` — the spare account (issue #22, MTProto)
 
 **A different animal from everything above.** `transport.py` speaks the Bot API; this speaks
 **MTProto as a person** through Telethon. Telegram forgives a clumsy bot with a `FloodWait`,
