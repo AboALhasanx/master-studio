@@ -1,9 +1,14 @@
 """Office -> PDF converter: pip-only, no SaaS, no LibreOffice, no x2t.
 
-Pipeline
---------
-DOCX --(mammoth)--> HTML --(Chromium print-to-PDF)--> PDF
-PPTX --(python-pptx)--> HTML slides --(Chromium)--> PDF (landscape)
+Pipeline (engine order)
+----------------------
+1. **Office COM** (primary on Windows with Word/PowerPoint installed) —
+   ``Documents.ExportAsFixedFormat`` / ``Presentation.ExportAsFixedFormat``.
+   This is byte-for-byte the same engine as File > Export as PDF, so the
+   output matches Office rendering exactly.
+2. **Chromium fallback** (``--engine chromium`` or when Office is absent):
+   DOCX --(mammoth)--> HTML --(print-to-PDF)--> PDF,
+   PPTX --(python-pptx)--> HTML slides --(print-to-PDF)--> PDF.
 
 Why this exists: the ONLYOFFICE ``x2t`` converter rendered whole documents in
 a single math font (Asana Math) — every published chapter built with it is
@@ -40,6 +45,178 @@ _MATH_FONT_RE = re.compile(r"math|symbol|wingding|webding|asana|cambria",
 
 class QAError(Exception):
     """Raised when a converted PDF fails the text sanity gate."""
+
+
+# --------------------------------------------------------------------------
+# Office COM engine (exact File > Export as PDF)
+# --------------------------------------------------------------------------
+#: ``RPC_E_CALL_REJECTED`` — what Word/PowerPoint answer while a modal dialog
+#: is up (e.g. "Word isn't your default program" after another converter
+#: hijacked the file associations). COM itself is fine; the callee is blocked.
+_RPC_E_CALL_REJECTED = -2147418111
+_WM_COMMAND = 0x0111
+_BN_CLICKED = 0
+
+
+def _com_available() -> bool:
+    """True on Windows with a registered Word *and* PowerPoint."""
+    if sys.platform != "win32":
+        return False
+    try:
+        import win32com.client  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def _office_pids() -> set[int]:
+    """PIDs of every running Word/PowerPoint (dialog dismissal needs them)."""
+    import os
+    import subprocess
+
+    system_root = os.environ.get("SystemRoot", r"C:\Windows")
+    powershell = os.path.join(system_root, "System32", "WindowsPowerShell",
+                              "v1.0", "powershell.exe")
+    if not os.path.isfile(powershell):
+        powershell = "powershell"  # fall back to PATH on a trimmed install
+    try:
+        out = subprocess.run(  # noqa: S603 - fixed argv, no user input
+            [powershell, "-NoProfile", "-Command",
+             "Get-Process WINWORD,POWERPNT -ErrorAction SilentlyContinue | "
+             "Select-Object -ExpandProperty Id"],
+            capture_output=True, text=True, timeout=30).stdout.split()
+    except (OSError, subprocess.SubprocessError):
+        return set()
+    return {int(p) for p in out if p.strip().isdigit()}
+
+
+def _dismiss_office_dialogs() -> int:
+    """Answer any modal Office dialog (Yes/No/OK) so COM can proceed.
+
+    A hidden modal dialog is the classic cause of ``RPC_E_CALL_REJECTED``:
+    ``Documents.Open`` succeeds (it queues) but every later call is refused
+    because the callee is waiting for input. ``BM_CLICK`` does not reach
+    Word's custom buttons; ``WM_COMMAND`` with the real control id does.
+    """
+    import win32gui
+    import win32process
+
+    pids = _office_pids()
+    if not pids:
+        return 0
+    dialogs: list[int] = []
+
+    def _top(hwnd, _):
+        _, pid = win32process.GetWindowThreadProcessId(hwnd)
+        if pid in pids and win32gui.GetClassName(hwnd) == "#32770":
+            dialogs.append(hwnd)
+
+    win32gui.EnumWindows(_top, None)
+    for dlg in dialogs:
+        buttons: list[int] = []
+
+        def _kids(hwnd, _):
+            if win32gui.GetClassName(hwnd) == "Button":
+                buttons.append(hwnd)
+
+        win32gui.EnumChildWindows(dlg, _kids, None)
+        labels = {b: win32gui.GetWindowText(b) for b in buttons}
+        # Tick "Don't show this message again." first, then answer No, then
+        # clear any consequence dialog. Order matters.
+        for want_checkbox in (True, False):
+            for b, text in labels.items():
+                low = text.strip().lstrip("&").lower()
+                if want_checkbox and "don't show" in low:
+                    cid = win32gui.GetDlgCtrlID(b)
+                    win32gui.PostMessage(dlg, _WM_COMMAND,
+                                         (_BN_CLICKED << 16) | cid, b)
+                elif not want_checkbox and low in ("no", "ok"):
+                    cid = win32gui.GetDlgCtrlID(b)
+                    win32gui.PostMessage(dlg, _WM_COMMAND,
+                                         (_BN_CLICKED << 16) | cid, b)
+    return len(dialogs)
+
+
+def _com_busy_retry(fn, *, label: str, tries: int = 20, delay: float = 1.5):
+    """Run a COM call, dismissing modal dialogs and retrying while it is busy."""
+    import time
+
+    import pywintypes
+
+    last: Exception | None = None
+    for attempt in range(tries):
+        try:
+            return fn()
+        except pywintypes.com_error as exc:
+            if exc.hresult != _RPC_E_CALL_REJECTED:
+                raise
+            last = exc
+            _dismiss_office_dialogs()
+            time.sleep(delay)
+    raise RuntimeError(f"{label}: Word stayed busy after {tries} tries ({last})")
+
+
+def _word_to_pdf_com(source: Path, out: Path) -> None:
+    import win32com.client
+
+    src = str(Path(source).resolve())
+    dst = str(Path(out).resolve())
+    word = _com_busy_retry(lambda: win32com.client.DispatchEx("Word.Application"),
+                           label="DispatchEx")
+    try:
+        word.Visible = False
+        word.DisplayAlerts = 0
+        word.AutomationSecurity = 3  # msoAutomationSecurityForceDisable
+        doc = _com_busy_retry(lambda: word.Documents.Open(src), label="Open")
+        try:
+            _com_busy_retry(lambda: doc.ExportAsFixedFormat(dst, 17),
+                            label="ExportAsFixedFormat")
+        finally:
+            try:
+                _com_busy_retry(lambda: doc.Close(False), label="Close")
+            except Exception:
+                pass
+    finally:
+        try:
+            _com_busy_retry(lambda: word.Quit(), label="Quit", tries=5)
+        except Exception:
+            pass
+
+
+def _pptx_to_pdf_com(source: Path, out: Path) -> None:
+    import win32com.client
+
+    src = str(Path(source).resolve())
+    dst = str(Path(out).resolve())
+    ppt = _com_busy_retry(lambda: win32com.client.DispatchEx("PowerPoint.Application"),
+                          label="DispatchEx")
+    try:
+        # PowerPoint refuses Visible=False, so it stays visible but windowless.
+        try:
+            ppt.DisplayAlerts = 0
+        except Exception:
+            pass
+        # Open(FileName, ReadOnly, Untitled, WithWindow) — WithWindow is
+        # MsoTriState (int), NOT a Python bool: passing False raises
+        # "The Python instance can not be converted to a COM object".
+        pres = _com_busy_retry(
+            lambda: ppt.Presentations.Open(src, -1, 0, 0),
+            label="Open")
+        try:
+            # ``ExportAsFixedFormat`` blows up under late binding
+            # ("The Python instance can not be converted to a COM object");
+            # ``SaveAs(path, 32)`` is ppSaveAsPDF and works reliably.
+            _com_busy_retry(lambda: pres.SaveAs(dst, 32), label="SaveAs")
+        finally:
+            try:
+                _com_busy_retry(lambda: pres.Close(), label="Close")
+            except Exception:
+                pass
+    finally:
+        try:
+            _com_busy_retry(lambda: ppt.Quit(), label="Quit", tries=5)
+        except Exception:
+            pass
 
 
 # --------------------------------------------------------------------------
@@ -263,32 +440,51 @@ def qa_pdf(path: Path) -> dict:
 # driver
 # --------------------------------------------------------------------------
 def convert(source: Path, out: Path, *, qa: bool = True,
-            workdir: Path | None = None) -> dict:
-    """Convert one Office file to PDF (with QA unless ``qa=False``)."""
+            workdir: Path | None = None,
+            engine: str = "auto") -> dict:
+    """Convert one Office file to PDF (with QA unless ``qa=False``).
+
+    ``engine``: ``"auto"`` (Office COM when available, else Chromium),
+    ``"com"`` (fail loudly without Office), ``"chromium"`` (force fallback).
+    """
     import shutil
     import tempfile
 
     source = Path(source)
     out = Path(out)
-    tmp = Path(workdir) if workdir else Path(tempfile.mkdtemp(prefix="office2pdf_"))
-    tmp.mkdir(parents=True, exist_ok=True)
-    try:
-        suffix = source.suffix.lower()
-        if suffix == ".docx":
-            body = _docx_to_html(source, tmp)
-            html = _HTML_SHELL.format(css=_PAGE_CSS, body=body)
-        elif suffix == ".pptx":
-            body, _ = _pptx_to_html(source, tmp)
-            html = _HTML_SHELL.format(css=_PAGE_CSS, body=body)
-        else:
-            raise ValueError(f"unsupported input: {suffix} (docx/pptx only)")
-        _html_to_pdf(html, tmp, out)
-    finally:
-        if workdir is None:
-            shutil.rmtree(tmp, ignore_errors=True)
+    suffix = source.suffix.lower()
+    if suffix not in (".docx", ".pptx"):
+        raise ValueError(f"unsupported input: {suffix} (docx/pptx only)")
+
+    used = "chromium"
+    if engine in ("auto", "com"):
+        if _com_available():
+            if suffix == ".docx":
+                _word_to_pdf_com(source, out)
+            else:
+                _pptx_to_pdf_com(source, out)
+            used = "com"
+        elif engine == "com":
+            raise RuntimeError("Office COM requested but Word/PowerPoint "
+                               "is not available on this machine")
+    if used == "chromium" and engine != "com":
+        tmp = Path(workdir) if workdir else Path(tempfile.mkdtemp(prefix="office2pdf_"))
+        tmp.mkdir(parents=True, exist_ok=True)
+        try:
+            if suffix == ".docx":
+                body = _docx_to_html(source, tmp)
+                html = _HTML_SHELL.format(css=_PAGE_CSS, body=body)
+            else:
+                body, _ = _pptx_to_html(source, tmp)
+                html = _HTML_SHELL.format(css=_PAGE_CSS, body=body)
+            _html_to_pdf(html, tmp, out)
+        finally:
+            if workdir is None:
+                shutil.rmtree(tmp, ignore_errors=True)
     if qa:
         qa_pdf(out)
-    return {"pdf": str(out), "qa": "passed" if qa else "skipped"}
+    return {"pdf": str(out), "qa": "passed" if qa else "skipped",
+            "engine": used}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -297,18 +493,22 @@ def main(argv: list[str] | None = None) -> int:
         description="Convert DOCX/PPTX to PDF (pip-only; QA-gated).")
     parser.add_argument("input", help="source .docx or .pptx")
     parser.add_argument("-o", "--output", required=True, help="output .pdf")
+    parser.add_argument("--engine", default="auto",
+                        choices=["auto", "com", "chromium"],
+                        help="conversion engine (default: auto)")
     parser.add_argument("--no-qa", action="store_true",
                         help="skip the text sanity gate (not recommended)")
     args = parser.parse_args(argv)
     try:
-        result = convert(args.input, args.output, qa=not args.no_qa)
+        result = convert(args.input, args.output, qa=not args.no_qa,
+                         engine=args.engine)
     except QAError as exc:
         print(f"QA FAILED: {exc}", file=sys.stderr)
         return 2
     except Exception as exc:  # noqa: BLE001 - CLI must report, not trace
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
-    print(f"OK: {result['pdf']} (qa={result['qa']})")
+    print(f"OK: {result['pdf']} (engine={result['engine']}, qa={result['qa']})")
     return 0
 
 

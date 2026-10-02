@@ -9,6 +9,9 @@ pillow==12.0.0
 # 1b. Office -> PDF converter (pip-only; no SaaS, no LibreOffice, no x2t)
 mammoth==1.9.0
 playwright==1.62.0
+# Windows only: drives Word/PowerPoint COM for an exact "Export as PDF".
+# On Linux/CI it is simply absent and the Chromium fallback is used.
+pywin32==312; sys_platform == "win32"
 
 # 2. Arabic Typography & Text Reshaping
 arabic-reshaper==3.0.0

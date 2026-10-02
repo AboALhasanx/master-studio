@@ -73,14 +73,49 @@ class TestQaGate:
         assert qa_pdf(pdf)["pages"] == 1
 
 
+class TestEngineSelection:
+    """The COM/Chromium dispatch and its Windows-specific helpers."""
+
+    def test_requesting_com_without_office_fails_loudly(self, monkeypatch):
+        import tools.office_to_pdf as mod
+
+        monkeypatch.setattr(mod, "_com_available", lambda: False)
+        with pytest.raises(RuntimeError, match="Office COM"):
+            mod.convert("does-not-matter.docx", "out.pdf", qa=False, engine="com")
+
+    def test_unsupported_suffix_is_refused(self):
+        import tools.office_to_pdf as mod
+
+        with pytest.raises(ValueError, match="unsupported input"):
+            mod.convert("notes.txt", "out.pdf", qa=False)
+
+    def test_office_pids_never_raises_without_office(self):
+        import tools.office_to_pdf as mod
+
+        # On CI/Linux there is no PowerShell: must return an empty set, not blow up.
+        assert mod._office_pids() == set()
+
+    def test_dismiss_dialogs_is_a_safe_noop_without_office(self):
+        import tools.office_to_pdf as mod
+
+        assert mod._dismiss_office_dialogs() == 0
+
+
 class TestEndToEnd:
-    """Full DOCX->PDF through Chromium — skipped where no browser exists."""
+    """Full DOCX->PDF — skipped where no engine exists (COM or Chromium)."""
 
     @staticmethod
-    def _chromium_present():
+    def _engine_present():
         import os
+        import sys
         from pathlib import Path
 
+        if sys.platform == "win32":
+            try:
+                import win32com.client  # noqa: F401
+                return True
+            except ImportError:
+                pass
         local_app = os.environ.get("LOCALAPPDATA", "")
         if local_app and list((Path(local_app) / "ms-playwright").glob(
                 "chromium-*/chrome-win64/chrome.exe")):
@@ -88,8 +123,8 @@ class TestEndToEnd:
         return any(shutil.which(n) for n in
                    ("msedge", "chrome", "google-chrome", "chromium"))
 
-    @pytest.mark.skipif(not _chromium_present.__func__(),
-                        reason="no Chromium on this machine")
+    @pytest.mark.skipif(not _engine_present.__func__(),
+                        reason="no conversion engine on this machine")
     def test_docx_roundtrip_is_clean(self, tmp_path):
         import docx
 
