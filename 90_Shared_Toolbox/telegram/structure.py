@@ -88,23 +88,14 @@ STRUCTURE: list[TopicSpec] = [
         # creation and cannot be changed later, so it must say "subject" from
         # day one — the pending state is what the card text is for.
     ),
-    TopicSpec(
-        "70-Exams-and-MCQ", "◇ الامتحانات والأسئلة",
-        "روابط الاختبارات، كتيّبات الامتحانات، ونتائج MCQ.\n"
-        "النتائج تُرحَّل أوتوماتيكياً إلى نموذج المتعلّم.",
-        icon_color=COLOR_META,
-    ),
-    TopicSpec(
-        "71-Progress-Analytics", "◇ التقدم والتحليلات",
-        "تقارير أسبوعية: التقدم، نسب الإتقان، وقائمة المراجعة.",
-        icon_color=COLOR_META,
-    ),
-    TopicSpec(
-        "90-Toolbox", "◇ الأدوات",
-        "أدوات التصدير والمزامنة ولوحة الاختبارات.",
-        icon_color=COLOR_META,
-    ),
 ]
+
+# Retired 2026-10-02: the three utility topics (``70-Exams-and-MCQ``,
+# ``71-Progress-Analytics``, ``90-Toolbox``) were closed then deleted — every
+# subject is its own hub now, and progress/analytics live in the local
+# dashboard, not in the group. They are deliberately absent from ``STRUCTURE``
+# so a future ``structure`` run cannot recreate them. Their registry keys stay
+# so an old command resolves to a clear "unbound" instead of "unknown".
 
 
 def topic_link(chat_id: int, thread_id: int) -> str:

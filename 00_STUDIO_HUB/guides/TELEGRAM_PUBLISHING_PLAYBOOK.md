@@ -1,50 +1,71 @@
 # Telegram Publishing Playbook — catalog cards + chapters + booklets
 
-> **Status:** ACTIVE — distils the live rounds of **2026-10-01/02** (all six
-> subjects carry a real booklet; every topic verifies `ALL CHECKS PASSED`).
+> **Status:** ACTIVE — **model re-cut 2026-10-02**: files are published by the
+> **spare human account** (so the student can edit them from his phone), while
+> the **bot** keeps only the pinned card, the quiz buttons and conversation.
 > **Group:** `Master-Studio FINAL` → `chat_id -1003710711332` (forum).
 > **Authority:** conventions here are binding for `telegram/catalog.py`,
-> `tools/tg_catalog.py`, and every agent publishing into the group.
+> `telegram/human.py`, `tools/tg.py`, `tools/tg_catalog.py`.
 > Full session evidence: `00_STUDIO_HUB/sessions/2026-10-02.md`.
 
-**TL;DR (عربي):** الكارت أولاً (بـplaceholder) → ثبّت → انشر الجابترات →
-اكتب المعرّفات الحقيقية → أعد الدفع (edit بالمكان) → بدّل المرفق
-(`editMessageMedia`) → تحقق حيّ (`ALL CHECKS PASSED`) → pytest + bandit →
-دوّن → commit + push → تأكد CI/CodeQL.
+**TL;DR (عربي):** الاحتياطي ينشر الكارت (placeholder) → الجابترات (بالأسماء
+العربية عبر `--filename`) → يعدّل الكارت (`edit_message`) → البوت يثبّت الكارت
+(`pin`) → المعرّفات تُكتب في `catalog/*.json` → رسائل البوت القديمة تُحذف →
+تحقق حيّ → pytest + bandit → commit + push.
 
----
+## 0. Who publishes what (2026-10-02)
+
+| Content | Publisher | Why |
+|---|---|---|
+| Booklets, chapters, memos, files | **spare account** (`human --verb sendfile`) | the student can edit/delete them from his own phone; a message can only be edited by its own sender |
+| Pinned catalog card | **spare account** (posted), **bot** (pins it) | content is the student's; the pin is an admin action the bot holds |
+| Quiz links | **bot** | inline URL buttons are bot-only in Telegram |
+| Chat, replies | bot | — |
+
+Both accounts are admins of the group (the spare is **anonymous**). The spare
+is NOT needed for pinning — the bot pins the spare's card by id.
 
 ## 1. The Layout (live)
 
-| Subject | Topic | Card | Chapters | Booklet |
+| Subject | Topic | Card (spare) | Chapters (spare) | Booklet |
 |---|---|---|---|---|
-| 01 أمن المعلومات | 84 | `146` | `148–151` (4) | 61 pp / 1.01 MB |
-| 02 إنجليزي | 85 | `113` | `127` (1) | 12.7 MB |
-| 03 تنقيب البيانات | 86 | `153` | `155–159` (5) | 100 pp / 1.37 MB |
-| 04 هندسة برمجيات | 87 | `141` | `143–145` (3) | 252 pp / 1.37 MB |
-| 05 حوسبة ناعمة | 88 | `123` | `161–162` (2) | 144 pp / 5.98 MB |
-| 06 ذكاء اصطناعي | 89 | `125` | `163` (1) | 67 pp / 798 KB |
+| 01 أمن المعلومات | 84 | `181` | `182–185` (4) | 61 pp / 1.01 MB |
+| 02 إنجليزي | 85 | `187` | see log (1) | 12.7 MB |
+| 03 تنقيب البيانات | 86 | migrate | migrate | 101 pp / 1.25 MB |
+| 04 هندسة برمجيات | 87 | migrate | migrate | 252 pp / 1.37 MB |
+| 05 حوسبة ناعمة | 88 | migrate | migrate | 144 pp / 5.10 MB |
+| 06 ذكاء اصطناعي | 89 | migrate | migrate | 67 pp / 798 KB |
 
-Topic names: **`◆ <subject>` / `◇ <utility>` — no numeric prefix, no emoji**
-(rebuilt 2026-10-01; `محادثة` id 1 stays the chat room). Source of truth for
-ids: `00_STUDIO_HUB/telegram/catalog/*.json` (`catalog_message_id` per subject).
+Topic names: **`◆ <subject>` — no numeric prefix, no emoji**. The three
+utility topics (`◇ الامتحانات والأسئلة` 90, `◇ التقدم والتحليلات` 91,
+`◇ الأدوات` 92) were **closed then deleted 2026-10-02** and removed from
+`structure.STRUCTURE` so a future `structure` run cannot recreate them; their
+registry keys stay so an old command resolves to a clear *unbound*.
+Source of truth for ids: `00_STUDIO_HUB/telegram/catalog/*.json`.
 
-## 2. The Ordering Recipe (learned from the 04 mis-order)
+## 2. The Ordering Recipe (spare-account model)
 
 ```
-1. delete old card → clear catalog_message_id (null) → push card with
-   placeholder ordinals → pin
-2. publish chapter files (captions already pointing at the card)
-3. write the REAL message ids back into the catalog JSON
-4. tg_catalog --push re-renders the card via mode=edit
+1. spare publishes the CARD as a placeholder (booklet file, chapters not yet
+   listed) into the topic  -> card gets an id
+2. spare publishes each CHAPTER with its final caption; the caption's
+   "الفهرس : كتالوج المادة" carries the card link -> chapters get ids
+3. spare edits the card (edit_message) with the full render (real chapter ids)
+4. bot pins the card:  tg.py pin --subject <key> --message-id <card>
+5. write the REAL ids into catalog/*.json (chapters + catalog_message_id)
+6. delete the old bot messages (card + chapters)
+7. verify live
 ```
 
-`tg_catalog --push` picks `mode=edit` while `catalog_message_id != null`; after
-deleting a card you MUST null that field first or the push fails
-(`exit=1 status=error`). Never re-push a deleted card id — stale
-`catalog_message_id` from an old memory is how the duplicate-card incident
-happened (round 01/03); the 05 round kept id `123` throughout with zero
-duplicates.
+**Why the placeholder pass:** the card's `【الأول】…` links need the chapter
+ids, and the chapters' `الفهرس` link needs the card id — a cycle. Publishing
+the card first breaks it, and one `edit_message` completes it (the same
+two-pass idea the old `tg_catalog --push` used, now in the spare's hands).
+
+**Caption rule:** the docs usually arrive already final; on a plain edit
+Telethon drops text-url entities, so prefer **HTML** captions (`parse_mode="html"`)
+where the source text is available, and re-assert the caption after any media
+swap (an `editMessageMedia` wipes the caption).
 
 ## 3. File-Naming Budget: 62 bytes
 

@@ -239,7 +239,11 @@ def build_parser() -> argparse.ArgumentParser:
                    help="what to do with the spare account")
     p.add_argument("--chat", type=int, dest="chat_id",
                    help="target chat id (required for read and say)")
-    p.add_argument("--text", help="message body (verb say)")
+    p.add_argument("--text", help="message body (verb say) or caption "
+                                  "(verb sendfile)")
+    p.add_argument("--file", help="local file to upload (verb sendfile)")
+    p.add_argument("--filename", help="display name Telegram shows for "
+                                      "--file (verb sendfile)")
     p.add_argument("--thread", type=int, dest="thread_id",
                    help="forum topic id to post into (verb say); omit to post "
                         "to the general topic")
@@ -538,6 +542,8 @@ def _run_human(args: argparse.Namespace) -> int:
         code=getattr(args, "code", None),
         password=getattr(args, "password", None),
         thread_id=getattr(args, "thread_id", None),
+        file=getattr(args, "file", None),
+        filename=getattr(args, "filename", None),
     )
     gate = dict(
         live=bool(args.live),
@@ -598,6 +604,9 @@ def _human_detail(req, result: dict) -> str:
     payload = result.get("result")
     if req.verb == "say" and isinstance(payload, dict):
         return f"message_id={payload.get('message_id')} text={req.text}"
+    if req.verb == "sendfile" and isinstance(payload, dict):
+        return (f"message_id={payload.get('message_id')} "
+                f"file={req.filename or req.file}")
     if isinstance(payload, list):
         return f"count={len(payload)}"
     if isinstance(payload, dict):

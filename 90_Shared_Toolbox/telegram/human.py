@@ -80,15 +80,15 @@ TRUTHY = frozenset({"1", "true", "yes", "on"})
 
 #: The complete verb set. Deliberately disjoint from ``schema.VERBS``: what
 #: lives outside ``VERBS`` can never be composed into the bot's publish path.
-HUMAN_VERBS = ("whoami", "chats", "read", "say", "login")
+HUMAN_VERBS = ("whoami", "chats", "read", "say", "sendfile", "login")
 
 #: Verbs that name a chat, and therefore require that chat to be allowlisted.
-CHAT_VERBS = frozenset({"read", "say"})
+CHAT_VERBS = frozenset({"read", "say", "sendfile"})
 
 #: Verbs that actually put something into a chat, and therefore spend the
 #: send budget. ``read`` gates on the allowlist too, but must never consume
 #: slots — otherwise reading a group could silence it.
-SEND_VERBS = frozenset({"say"})
+SEND_VERBS = frozenset({"say", "sendfile"})
 
 _VAULT_ROOT = Path(__file__).resolve().parents[2]
 #: D14: the gateway owns ``00_STUDIO_HUB/telegram/`` and may write only there.
@@ -141,6 +141,11 @@ class HumanRequest:
     # bare announcement belongs; a subject topic is what turns a bare
     # `say` into interaction that lands under the right header.
     thread_id: int | None = None
+    # ``sendfile``: the local path to upload and the display name Telegram
+    # should show. The display name matters — a file sent with its on-disk
+    # name (``dm_ch1.pdf``) reads as scaffolding, not as "الجابتر الأول".
+    file: str | None = None
+    filename: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -180,6 +185,13 @@ def authorize(req: HumanRequest, *, live: bool, enabled: bool,
             raise ActionValidationError("verb 'read' requires --limit >= 1")
         if req.verb == "say" and not (req.text or "").strip():
             raise ActionValidationError("verb 'say' requires a non-empty --text")
+        if req.verb == "sendfile":
+            if not (req.file or "").strip():
+                raise ActionValidationError(
+                    "verb 'sendfile' requires --file <local path>")
+            if not Path(req.file).is_file():
+                raise ActionValidationError(
+                    f"--file does not exist: {req.file}")
 
     if req.verb == "login" and not (req.phone or "").strip():
         raise ActionValidationError("verb 'login' requires --phone")
@@ -189,9 +201,9 @@ def authorize(req: HumanRequest, *, live: bool, enabled: bool,
         # covered too: a flag that means nothing for the chosen verb must not
         # be dropped quietly, or the operator believes a reply landed in a
         # topic while it went to the general one.
-        if req.verb != "say":
+        if req.verb not in ("say", "sendfile"):
             raise ActionValidationError(
-                f"--thread only applies to verb 'say' (got {req.verb!r})"
+                f"--thread only applies to 'say'/'sendfile' (got {req.verb!r})"
             )
         if int(req.thread_id) < 1:
             raise ActionValidationError("--thread must be a positive topic id")
@@ -266,6 +278,11 @@ def _dispatch_table(req: HumanRequest, gateway):
     if req.verb == "say":
         return lambda: gateway.send(req.chat_id, req.text,
                                     thread_id=req.thread_id)
+    if req.verb == "sendfile":
+        return lambda: gateway.send_file(req.chat_id, req.file,
+                                         caption=req.text,
+                                         filename=req.filename,
+                                         thread_id=req.thread_id)
     if req.verb == "login":
         # password wins: Telethon's sign_in is an if/elif chain (see the
         # adapter), so handing it a code as well would clear nothing.
@@ -459,6 +476,32 @@ class TelethonGateway:
             # the bot path produces as message_thread_id -- and None keeps
             # the general topic, which is the default anyway.
             sent = await client.send_message(chat_id, text, reply_to=thread_id)
+            return {"message_id": sent.id, "chat_id": chat_id}
+
+        return self._call(body)
+
+    def send_file(self, chat_id: int, path: str, *,
+                  caption: str | None = None,
+                  filename: str | None = None,
+                  thread_id: int | None = None) -> dict:
+        """Upload a document as the spare account (the file publisher).
+
+        ``attributes`` is the only way to set the *display* name: Telethon
+        otherwise reuses the on-disk name, and a chapter shipped as
+        ``dm_ch1.pdf`` reads as scaffolding. ``force_document=True`` keeps
+        Telegram from recompressing a PDF into an image.
+        """
+        async def body(client):
+            from telethon.tl.types import DocumentAttributeFilename
+            await self._require(client)
+            attributes = None
+            if filename:
+                attributes = [DocumentAttributeFilename(filename)]
+            sent = await client.send_file(
+                chat_id, path, caption=caption, parse_mode="html",
+                reply_to=thread_id, force_document=True,
+                attributes=attributes,
+            )
             return {"message_id": sent.id, "chat_id": chat_id}
 
         return self._call(body)

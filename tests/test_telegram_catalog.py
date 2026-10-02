@@ -520,7 +520,19 @@ class TestTopicTitles:
         # duplicate the room Telegram gives every forum for free.
         keys = {s.subject for s in STRUCTURE}
         assert "99-Chat" not in keys
-        assert len(STRUCTURE) == 9
+        assert len(STRUCTURE) == 6
+
+    def test_the_retired_utility_topics_are_not_provisioned(self):
+        """The three utility topics were closed then deleted on 2026-10-02.
+
+        Keeping them out of ``STRUCTURE`` is what stops a future ``structure``
+        run from recreating them; the registry keys stay so an old command
+        resolves to a clear *unbound* rather than *unknown*.
+        """
+        keys = {s.subject for s in STRUCTURE}
+        for retired in ("70-Exams-and-MCQ", "71-Progress-Analytics",
+                        "90-Toolbox"):
+            assert retired not in keys, retired
 
     def test_every_title_is_arabic_only(self):
         # "اسماء بالعربية فقط للتوبكات واسمء المواد" — a Latin word in a title
@@ -551,12 +563,12 @@ class TestTopicTitles:
             label = spec_.name.split(" ", 1)[1]
             assert label and not label[0].isascii(), spec_.name
 
-    def test_utility_topics_read_apart_from_the_six_subjects(self):
+    def test_no_utility_topics_remain_in_the_layout(self):
+        # Every subject is its own hub now; the three utility topics were
+        # retired, so the layout is exactly the six taught subjects (all of
+        # them subject-coloured).
         utility = [s for s in STRUCTURE if s.icon_color != COLOR_SUBJECT]
-        assert len(utility) == 3
-        for spec_ in utility:
-            assert spec_.name.startswith("◇ "), spec_.name
-            assert not spec_.name.split(" ", 1)[0].isdigit(), spec_.name
+        assert utility == []
 
     def test_titles_do_not_carry_vault_paths_or_english_course_names(self):
         for spec_ in STRUCTURE:

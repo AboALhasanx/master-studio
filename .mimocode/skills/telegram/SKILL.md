@@ -325,6 +325,14 @@ python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -10037107113
 # the same say, but inside a subject topic instead of the general one
 python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -1003710711332 --thread 12 --text "سؤال سريع"
 
+# publish a FILE as the spare account (the file publisher): --filename is the
+# display name Telegram shows — a chapter sent as dm_ch1.pdf reads as scaffolding
+python 90_Shared_Toolbox/tools/tg.py --live human --verb sendfile \
+    --chat -1003710711332 --thread 86 \
+    --file "C:\path\dm_ch1.pdf" \
+    --filename "تنقيب البيانات - الجابتر الاول.pdf" \
+    --text "الفهرس : <a href='https://t.me/c/3710711332/181'>كتالوج المادة</a>"
+
 # two-step login: request the code, then spend it
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --code 12345
@@ -343,12 +351,14 @@ identical error. A refused sign-in keeps the pending login intact, so a mistyped
 costs you a fresh code. **`--password` is one-time: never write it to `.env`, to a file, or to
 the session journal.**
 
-`--verb` is one of `whoami`, `chats`, `read`, `say`, `login`. `read` needs `--chat` **and**
-`--limit` (default `10`); `say` needs `--chat` **and** `--text`; `login` needs `--phone`, and
-`--code` on the second step. `say` also takes `--thread <topic id>`, which posts into that forum
-topic; omit it and the message goes to the general topic as before. `--thread` is refused for
-every other verb and for a non-positive id — a `--thread` that quietly did nothing would leave
-you believing a reply landed inside a topic while it came out under the wrong header. The chat
+`--verb` is one of `whoami`, `chats`, `read`, `say`, `sendfile`, `login`. `read` needs `--chat`
+**and** `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `sendfile` needs
+`--chat` **and** `--file` (an existing path) and takes `--filename` (the display name) and
+`--text` (the caption); `login` needs `--phone`, and `--code` on the second step. Both `say`
+and `sendfile` also take `--thread <topic id>`, which posts into that forum topic; omit it and
+the message goes to the general topic as before. `--thread` is refused for every other verb and
+for a non-positive id — a `--thread` that quietly did nothing would leave you believing a reply
+landed inside a topic while it came out under the wrong header. The chat
 must be on `TELEGRAM_CHAT_ALLOWLIST` — **a human account
 is not an ACL bypass**: an empty allowlist denies every chat, exactly as it does for the bot.
 

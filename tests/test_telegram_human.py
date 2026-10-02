@@ -82,6 +82,11 @@ class FakeGateway:
         self._hit("send", chat_id, text, thread_id)
         return {"message_id": 4242, "chat_id": chat_id}
 
+    def send_file(self, chat_id: int, path: str, *, caption=None,
+                  filename=None, thread_id=None) -> dict:
+        self._hit("send_file", chat_id, path, caption, filename, thread_id)
+        return {"message_id": 4343, "chat_id": chat_id}
+
     def request_code(self, phone: str) -> dict:
         self._hit("request_code", phone)
         return {"phone": phone, "sent": True}
@@ -369,8 +374,51 @@ class TestStructuralSeparation:
         assert code == 5
 
     def test_human_verbs_are_a_fixed_known_set(self):
-        assert set(human.HUMAN_VERBS) == {"whoami", "chats", "read", "say", "login"}
-        assert human.CHAT_VERBS == frozenset({"read", "say"})
+        assert set(human.HUMAN_VERBS) == {
+            "whoami", "chats", "read", "say", "sendfile", "login"}
+        assert human.CHAT_VERBS == frozenset({"read", "say", "sendfile"})
+        assert human.SEND_VERBS == frozenset({"say", "sendfile"})
+
+    def test_sendfile_needs_an_existing_file(self, tmp_path):
+        with pytest.raises(ActionValidationError, match="requires --file"):
+            run(request("sendfile", chat_id=ALLOWED_CHAT, text="x"))
+        with pytest.raises(ActionValidationError, match="does not exist"):
+            run(request("sendfile", chat_id=ALLOWED_CHAT,
+                        file=str(tmp_path / "nope.pdf")))
+
+    def test_sendfile_passes_caption_and_display_name(self, tmp_path):
+        doc = tmp_path / "dm_ch1.pdf"
+        doc.write_bytes(b"%PDF-1.4 test")
+        gw = FakeGateway()
+        result = run(request("sendfile", chat_id=ALLOWED_CHAT, file=str(doc),
+                             text="الفهرس : كتالوج المادة",
+                             filename="تنقيب البيانات - الجابتر الاول.pdf",
+                             thread_id=86), gateway=gw)
+        assert result["ok"] is True
+        name, chat, path, caption, filename, thread = gw.calls[0]
+        assert name == "send_file"
+        assert chat == ALLOWED_CHAT
+        assert path == str(doc)
+        assert caption == "الفهرس : كتالوج المادة"
+        assert filename == "تنقيب البيانات - الجابتر الاول.pdf"
+        assert thread == 86
+
+    def test_sendfile_outside_the_allowlist_is_denied(self, tmp_path):
+        doc = tmp_path / "x.pdf"
+        doc.write_bytes(b"%PDF")
+        with pytest.raises(AccessDenied):
+            run(request("sendfile", chat_id=-999, file=str(doc)),
+                allowed=(ALLOWED_CHAT,))
+
+    def test_sendfile_spends_the_send_budget(self, tmp_path):
+        doc = tmp_path / "x.pdf"
+        doc.write_bytes(b"%PDF")
+        from telegram.store import ChatRateLimiter
+
+        blocked = ChatRateLimiter(per_minute=0)
+        with pytest.raises(RateLimited):
+            run(request("sendfile", chat_id=ALLOWED_CHAT, file=str(doc)),
+                gateway=FakeGateway(), limiter=blocked)
 
 
 # ===========================================================================
