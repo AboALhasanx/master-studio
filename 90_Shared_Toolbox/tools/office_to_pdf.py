@@ -98,8 +98,13 @@ def _dismiss_office_dialogs() -> int:
     because the callee is waiting for input. ``BM_CLICK`` does not reach
     Word's custom buttons; ``WM_COMMAND`` with the real control id does.
     """
-    import win32gui
-    import win32process
+    if sys.platform != "win32":
+        return 0  # no Office/Win32 on Linux/CI
+    try:
+        import win32gui
+        import win32process
+    except ImportError:
+        return 0  # pywin32 absent — the COM engine cannot run anyway
 
     pids = _office_pids()
     if not pids:
