@@ -699,6 +699,42 @@ class TestPush:
         assert payload["dry_run"] is True
         assert payload["results"][0]["status"] == "authorized"
 
+    def test_a_dry_run_survives_a_fresh_clone_without_its_booklet(
+        self, monkeypatch, capsys, tmp_path, bound_registry
+    ):
+        """Booklets are gitignored build artifacts — a CI checkout has none.
+
+        A dry run only renders the card, so it must not demand the file;
+        it flags the absence in the row instead. A live push still refuses,
+        because there would be nothing to upload.
+        """
+        from telegram import catalog as catalog_mod
+
+        src = CATALOG_DIR / "01-Cyber-Security.json"
+        data = json.loads(src.read_text(encoding="utf-8"))
+        data["pdf"] = "00_STUDIO_HUB/telegram/catalog/files/not-here-yet.pdf"
+        (tmp_path / src.name).write_text(
+            json.dumps(data, ensure_ascii=False), encoding="utf-8"
+        )
+
+        def explode(**_kw):
+            raise AssertionError("the network was reached on a dry run")
+
+        monkeypatch.setattr(tg_cli, "build_transport", explode)
+        code = catalog_main([
+            "--catalog-dir", str(tmp_path),
+            "--push", "01-Cyber-Security", "--dry-run", "--json",
+        ])
+        payload = json.loads(capsys.readouterr().out)
+        assert code == 0
+        assert payload["results"][0]["file_missing"] is True
+
+        with pytest.raises(CatalogError, match="no catalog file"):
+            catalog_mod._push_one(
+                tmp_path, Registry(str(bound_registry), seed=False),
+                "01-Cyber-Security", live=True, dry_run=False, actor=OWNER,
+            )
+
     def test_the_default_push_is_a_dry_run(
         self, monkeypatch, capsys, bound_registry
     ):

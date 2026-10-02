@@ -536,7 +536,8 @@ def _push_one(cat_dir: Path, registry: Any, key: str, *,
     body = render(cat, chat_id)
 
     file = pdf_path(cat)
-    if not file.is_file():
+    file_missing = not file.is_file()
+    if file_missing and not dry_run:
         raise CatalogError(f"{key}: no catalog file at {cat.pdf}")
 
     if cat.catalog_message_id is None:
@@ -567,6 +568,7 @@ def _push_one(cat_dir: Path, registry: Any, key: str, *,
                    or f"exit:{code}"),
         "characters": len(body),
         "file": cat.pdf,
+        "file_missing": file_missing,
         "catalog_message_id": cat.catalog_message_id,
     }
     if not dry_run:
