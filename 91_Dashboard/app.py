@@ -501,14 +501,21 @@ def parse_gpa_tracker():
 
 
 def get_folder_stats():
-    """Count content files per subject (excluding raw materials)."""
+    """Count content files per subject (excluding raw materials).
+
+    Index/plan/build scaffolding (*Plan*, *Index*, *Build*) is excluded from
+    the notes count so the dashboard reports real study notes, not meta files.
+    """
+    _NON_NOTE_HINTS = ("plan", "index", "build")
     stats = {}
     if not SEM1.exists():
         return stats
     for subj in sorted(SEM1.iterdir()):
         if not subj.is_dir():
             continue
-        notes = list((subj / "03_Study_Notes").glob("*.md")) if (subj / "03_Study_Notes").exists() else []
+        all_notes = list((subj / "03_Study_Notes").glob("*.md")) if (subj / "03_Study_Notes").exists() else []
+        notes = [p for p in all_notes
+                 if not any(h in p.stem.lower() for h in _NON_NOTE_HINTS)]
         slides = list((subj / "05_Seminars_&_Slides").glob("*.md")) if (subj / "05_Seminars_&_Slides").exists() else []
         diagrams = list((subj / "06_Diagrams_&_Mindmaps").glob("*.png")) if (subj / "06_Diagrams_&_Mindmaps").exists() else []
         quizzes = list((subj / "07_Quizzes_&_Anki").glob("*.json")) if (subj / "07_Quizzes_&_Anki").exists() else []
@@ -640,10 +647,11 @@ def index():
 @app.route("/opencode")
 def opencode_guide():
     """OpenCode V2 cheat-sheet with live config."""
-    live = {"model": "?", "plugins": [], "tui_plugins": [], "agents": [], "mcp": []}
+    live = {"model": "?", "version": "", "plugins": [], "tui_plugins": [], "agents": [], "mcp": []}
     try:
         cfg = json.loads((Path.home() / ".config" / "opencode" / "opencode.json").read_text(encoding="utf-8"))
         live["model"] = cfg.get("model", "?")
+        live["version"] = str(cfg.get("version", ""))
         live["plugins"] = cfg.get("plugins", cfg.get("plugin", []))
         live["agents"] = list(cfg.get("agents", cfg.get("agent", {})).keys())
         live["mcp"] = list(cfg.get("mcp", {}).get("servers", cfg.get("mcp", {})).keys())
@@ -997,6 +1005,31 @@ def api_quiz_import():
                     target_dir = sdir / "07_Quizzes_&_Anki"
                     break
         target_file = target_dir / f"{quiz_id}.json"
+        # Collision guard: a mobile import must never silently overwrite an
+        # existing bank. Identical payloads are idempotent no-ops; differing
+        # ones take the first free Quiz_<name>_N slot, reported back to mobile.
+        note = None
+        if target_file.is_file():
+            try:
+                identical = json.loads(target_file.read_text(encoding="utf-8")) == norm
+            except Exception:
+                identical = False
+            if identical:
+                imported_quizzes.append({
+                    "subject_id": subj,
+                    "quiz_id": quiz_id,
+                    "path": str(target_file.relative_to(BASE)),
+                    "questions_count": len(norm.get("questions", [])),
+                    "note": "already present (identical payload)",
+                })
+                continue
+            suffix = 2
+            while (target_dir / f"{quiz_id}_{suffix}.json").is_file():
+                suffix += 1
+            quiz_id = f"{quiz_id}_{suffix}"
+            norm["quiz_id"] = quiz_id
+            target_file = target_dir / f"{quiz_id}.json"
+            note = f"auto-renamed to avoid overwrite: {quiz_id}.json"
         try:
             target_file.resolve().relative_to(BASE.resolve())
         except ValueError:
@@ -1006,12 +1039,15 @@ def api_quiz_import():
             }), 400
         target_dir.mkdir(parents=True, exist_ok=True)
         target_file.write_text(json.dumps(norm, ensure_ascii=False, indent=2), encoding="utf-8")
-        imported_quizzes.append({
+        entry = {
             "subject_id": subj,
             "quiz_id": quiz_id,
             "path": str(target_file.relative_to(BASE)),
             "questions_count": len(norm.get("questions", []))
-        })
+        }
+        if note:
+            entry["note"] = note
+        imported_quizzes.append(entry)
 
     return jsonify({
         "status": "success",

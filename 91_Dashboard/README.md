@@ -47,6 +47,10 @@ The dashboard includes a full-featured, zero-database quiz web application:
 
 All views read live from `00_STUDIO_HUB/` (ACTIVE_STATE, LEARNER_MODEL, GPA_TRACKER, quiz JSONs). No database.
 
+## Trust Model (read before exposing)
+
+LAN-trusted by design: the server binds `0.0.0.0:5000` with **no authentication**. Any device on the same network can read quizzes and telemetry — and `POST /api/quiz/import` can write quiz banks into the vault (collision-guarded, never overwriting). Never expose this port beyond the home LAN; there is no production WSGI/token gate (tracked as dashboard backlog).
+
 ## Agent & Mobile Notes (moved from root AGENTS.md — agent-facing detail lives here)
 
 - **PWA install:** Service Worker (`/static/sw.js` + `/static/manifest.json`); "Add to Home Screen" in Chromium/Chrome; works 100% offline (Airplane mode) without the PC server.

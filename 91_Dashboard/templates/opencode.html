@@ -25,7 +25,7 @@
         <h1>OpenCode V2 Guide</h1>
         <p class="subtitle">Slash commands &middot; keybinds &middot; settings &middot; live config</p>
       </div>
-      <div class="header-right"><span class="badge badge-live">V2.0.15</span></div>
+      <div class="header-right">{% if live.version %}<span class="badge badge-live">{{ live.version }}</span>{% else %}<span class="badge badge-live">live</span>{% endif %}</div>
     </header>
 
     <section class="panel">

@@ -23,8 +23,8 @@ SDK_ROOT = Path("C:/Android")
 BUILD_TOOLS_DIR = SDK_ROOT / "build-tools" / "35.0.0"
 PLATFORM_JAR = SDK_ROOT / "platforms" / "android-34" / "android.jar"
 BUILD_DIR = REPO_ROOT / "91_Dashboard" / "android_build"
-OUTPUT_APK = REPO_ROOT / "91_Dashboard" / "MSCQuiz_Signed.apk"
-KEYSTORE_PATH = REPO_ROOT / "91_Dashboard" / "mscquiz-release.keystore"
+OUTPUT_APK = REPO_ROOT / "91_Dashboard" / "android_build" / "bin" / "MSCQuiz_Signed.apk"
+KEYSTORE_PATH = REPO_ROOT / "91_Dashboard" / "android_build" / "bin" / "mscquiz-release.keystore"
 KEYSTORE_PASS = "masterstudiopass"
 KEY_ALIAS = "mscquiz"
 
