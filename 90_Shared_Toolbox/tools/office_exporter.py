@@ -3,7 +3,7 @@
 Master Studio Native Office Exporter (v3.0 - Projector & Cursive BiDi Edition)
 ------------------------------------------------------------------------------
 Generates 100% editable Microsoft Word (.docx) and PowerPoint (.pptx) files
-specifically optimized for OnlyOffice, WPS, Canva, and modern classroom projectors.
+specifically optimized for MS Office 2019, WPS, Canva, and modern classroom projectors.
 
 Key Features:
 - Projector-Grade Typography:
@@ -207,7 +207,7 @@ def add_styled_paragraph(doc, raw_text, style='Normal', space_after=6, line_spac
     return p
 
 def convert_markdown_to_docx(md_path, docx_path):
-    """Converts Markdown to a clean, professional DOCX for OnlyOffice/Word."""
+    """Converts Markdown to a clean, professional DOCX for MS Office 2019 / Word."""
     with open(md_path, 'r', encoding='utf-8') as f:
         raw_lines = f.readlines()
 

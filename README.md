@@ -79,7 +79,7 @@ All tools are local, free, and run offline:
 | Tool | Purpose |
 |:---|:---|
 | `pdf_exporter.py` | Compiles Markdown to publication-grade vector PDFs via Playwright Chromium (DirectWrite / HarfBuzz, KaTeX, inlined diagrams, 4 presets) |
-| `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` for OnlyOffice & MS Office |
+| `office_exporter.py` | Converts Markdown to native editable `.docx` / `.pptx` for MS Office 2019 & MS Office |
 | `pdf_reader.py` | Extracts academic PDFs to Markdown (two-column layout) and extracts embedded figures/charts |
 | `quiz_balancer.py` | Algorithmic balancer and psychometric linter (fixes answer bias and length tells) |
 | `quiz_runner.py` | Interactive terminal quiz with auto-grading and analytics logging |

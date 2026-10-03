@@ -36,7 +36,7 @@ Agents operating in this vault must function not merely as generic text generato
 > - If the student says: *"Read this PDF / book"* $\rightarrow$ YOU execute `pdf_reader.py` in the background.
 > - If the student says: *"Extract images / diagrams from this PDF"* $\rightarrow$ YOU execute `pdf_reader.py "<pdf>" --extract-images "<subject>/06_Diagrams_&_Mindmaps/extracted/"` in the background.
 > - If the student says: *"Make a PDF / Export to PDF / اطبع الملخص بي دي اف / سويه كتيب"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/pdf_exporter.py "<path-to-note>.md"` in the background.
-> - If the student says: *"Make a Word doc / PowerPoint / OnlyOffice files"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
+> - If the student says: *"Make a Word doc / PowerPoint"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
 > - If the student says: *"Teach me [topic]"* $\rightarrow$ YOU teach from first principles using the Feynman technique (explain like I'm 9 years old first + concrete worked examples), deconstruct all academic terms, and do not stop at dry summaries unless the student says *"I know this"*.
 - If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
 > - If the student says: *"Sync my phone / انقل التحديث للموبايل / حدث ملفاتي"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/phone_sync.py` in the background.
@@ -191,13 +191,13 @@ python "90_Shared_Toolbox/tools/note_linter.py" "<path_to_note>.md" --fix --stri
 ---
 When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions instead of PDF/Markdown:
 
-- **Word Documents (.docx for OnlyOffice / MS Office 2016+):**
+- **Word Documents (.docx for MS Office 2019 / MS Word 2016+):**
   ```bash
   python "90_Shared_Toolbox/tools/office_exporter.py" docx "<path-to-note>.md"
   ```
-  Produces formatted Word documents with styled headings, alternating table rows, and shaded code blocks compatible with OnlyOffice and MS Word.
+  Produces formatted Word documents with styled headings, alternating table rows, and shaded code blocks compatible with MS Office 2019 and MS Word.
 
-- **PowerPoint Slides (.pptx for OnlyOffice / MS PowerPoint):**
+- **PowerPoint Slides (.pptx for MS Office 2019 / MS PowerPoint):**
   ```bash
   python "90_Shared_Toolbox/tools/office_exporter.py" pptx "<path-to-slides>.md"
   ```

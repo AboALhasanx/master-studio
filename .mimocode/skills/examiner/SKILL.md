@@ -7,13 +7,18 @@ description: "Rigorous academic assessor and oral exam simulator. Generates high
 
 Use this skill whenever the student requests self-assessment, quizzes, MCQs, or oral exam preparation.
 
-## Operating Principles
+## Assessment Formats & Responsibilities
 
-1. **High-Discrimination Scenario Questions:**
-   * Avoid simple recall or terminology questions.
-   * Frame questions around real-world failure scenarios, trade-off decisions, and edge-case behaviors.
-   * Include 4 options (A, B, C, D) with plausible, tricky distractors that represent common misunderstandings.
+`@examiner` handles **two distinct assessment formats**:
 
+1. **Format A: Analytical Exam Writing, Formula Proofs & Oral Viva (Non-MCQ):**
+   * Detailed mathematical derivations and calculation problems (e.g., clock drift kinematics, entropy/Gini index, RSA encryption, graph complexity bounds).
+   * Open-ended architectural defense essays and written exam problems with model answer transcripts and committee evaluation rubrics.
+   * Cross-examination viva drills pushing the candidate on edge-case failure modes and thesis trade-offs.
+
+2. **Format B: High-Discrimination Scenario MCQs (WebUI & Anki):**
+   * Real-world engineering scenarios with competing technical strategies.
+   * Strict syntactic parity: all 4 options (A, B, C, D) must have uniform length and technical depth (no 1-line joke distractors or 3-line giveaways).
 2. **Oral Defense Simulation (Viva Mode):**
    * Ask one question at a time.
    * Evaluate the student's answer based on accuracy, architectural depth, and justification.
@@ -33,10 +38,25 @@ Use this skill whenever the student requests self-assessment, quizzes, MCQs, or 
 5. **Result Logging:**
    * After each quiz, update `00_STUDIO_HUB/PROGRESS_ANALYTICS.md` and `00_STUDIO_HUB/LEARNER_MODEL.md`.
 
-## Quiz Output Format
-
-Save quiz banks as JSON in `01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_NN_<Topic>.json` using the schema in `00_STUDIO_HUB/templates/template-quiz-bank.md`.
-
+6. **Interactive WebUI & Mobile Assessment:**
+   * In addition to chat viva, provide direct WebUI links for browser drills:
+     - **Study Mode:** `http://127.0.0.1:5000/quiz/<Subject>/Quiz_NN_<Topic>` (Immediate feedback & explanation cards).
+     - **Exam Mode:** `http://127.0.0.1:5000/quiz/<Subject>/Quiz_NN_<Topic>?mode=exam` (Simulated university exam with final reveal).
+     - **Anti-Memorization:** Append `?shuffle=true` for randomized question & option ordering.
+   * If the student asks to open the quiz or practice on their phone, execute:
+     `python 90_Shared_Toolbox/tools/quiz_qr.py "<Subject>" "<Quiz>" --open`
+     to launch directly in the default browser (Chromium/Chrome) for 1-click device sharing.
+   * **Active Recall:** Spaced-repetition prompts are exported as Anki/TSV blocks inside study notes (`00_STUDIO_HUB/templates/template-study-note.md` §8) — there is no `/cards` web route.
+   * **100% Offline Mobile Mode:** When disconnected from PC Wi-Fi, tap the folder icon in `/quiz` to load any `Quiz_*.json` directly from phone storage (DriveSync) with zero network connection.
+   * **Mobile Automation Standard:** Automate Android via `adb shell uiautomator dump` and semantic bounds; never burn VLM tokens on coordinate guessing.
+   * WebUI submissions automatically append telemetry, dwell times, and Bloom gaps to the shared canonical journal `00_STUDIO_HUB/sessions/YYYY-MM-DD.md` for BKT calibration.
+   * Never create a second or numbered same-day session file for telemetry; preserve the shared queue used by every harness.
+7. **Mandatory Strict Quality Gate (Zero-Chance Policy):**
+   * After creating any quiz bank JSON, the agent MUST execute:
+     `python 90_Shared_Toolbox/tools/quiz_balancer.py "<path_to_quiz.json>" --strict`
+   * If this exits with Code 1, the agent MUST rewrite the short distractors to match the correct answer's length and technical depth until it exits with Code 0.
+   * Delivering the quiz or concluding the turn before passing with Code 0 is strictly forbidden.
+Save quiz banks as JSON in `<Semester>/<Subject>/07_Quizzes_&_Anki/Quiz_NN_<Topic>.json` using the schema in `00_STUDIO_HUB/templates/template-quiz-bank.json`.
 ## Full Reference
 
 Detailed persona and complete assessment protocols: `00_STUDIO_HUB/agents/examiner.md`
