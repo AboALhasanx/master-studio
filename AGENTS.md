@@ -20,50 +20,14 @@ Agents operating in this vault must function not merely as generic text generato
 |  - MEMORY.md                - 00_STUDIO_HUB/           - 90_Shared_Toolbox/   |
 |  - sessions/                - .mimocode/skills/        - 91_Dashboard/        |
 +-------------------------------------------------------------------------------+
-## 1.1. Current Project Situation & Fast-Boot Inventory (Read This First)
+## 1.1. Fast-Boot Inventory (Read This First)
 
-> **CRITICAL INSTRUCTION FOR ALL INCOMING AGENTS (OMP / OpenCode / MiMo Studio / FreeBuf / Cursor):**  
-> **DO NOT perform open-ended, slow recursive directory scans across the vault.** Everything you need to know about the current state, active tasks, and available deliverables is summarized below and in `00_STUDIO_HUB/ACTIVE_STATE.md`.
-
-```
-+=======================================================================================================+
-|                                  CURRENT MASTER STUDIO RUNTIME STATE                                  |
-+=======================================================================================================+
-| Academic Term: Semester 1 (Fall 2026) | Active Week: Week 01 | Overall Readiness: 33.3%               |
-| Active Subject 1: 04_Advanced_Software_Eng (CS504) — Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credits)      |
-| Active Subject 2: 02_English_Language (CS502) — Asst. Prof. Dr. Haidar Akab Alwan (1 Credit)         |
-| Local Services Live: Flask Web Dashboard on http://127.0.0.1:5000 (PID active, 0 database overhead)  |
-| Shared Memory Hub: 00_STUDIO_HUB/MEMORY.md | Sessions Journal: 00_STUDIO_HUB/sessions/               |
-+=======================================================================================================+
-```
-
-### Completed Subject Deliverables
-1. **`04_Advanced_Software_Eng` (Week 01 Lecture 01):**
-   - **Study Note:** `03_Study_Notes/Week_01_Lecture01_Software_Foundations_and_Crisis.md` (33.9 KB) & clean BiDi Word document `Week_01_Lecture01_Software_Foundations_and_Crisis.docx` (OnlyOffice ready, no frontmatter leak).
-   - **Presentation Deck:** `05_Seminars_&_Slides/seminar_lecture01_software_crisis.pptx` (Projector-tuned: 31pt/21pt/17.5pt/14pt, 100% native vector OpenXML shapes, zero raster screenshots).
-   - **High-Res Diagrams:** `06_Diagrams_&_Mindmaps/dependability_chain.png`, `patriot_missile_kinematics.png`, `brooks_complexity_tree.png` (Zero scrollbars, connected Arabic cursive, no lines inside boxes).
-   - **Quiz Bank:** `07_Quizzes_&_Anki/Quiz_01_Software_Crisis.json` (5 scenario MCQs with bilingual keys).
-   - **4 Canonical Textbooks Staged:** Sommerville 9th Ed, Pressman, Rajib Mall 4th Ed, Agarwal 2010.
-
-2. **`02_English_Language` (Unit 1 "No Place Like Home"):**
-   - **Study Note:** `03_Study_Notes/Unit_01_No_Place_Like_Home_Grammar_and_Tenses.md` (25.4 KB) & clean Word document `Unit_01_No_Place_Like_Home_Grammar_and_Tenses.docx`.
-   - **Quiz Bank:** `07_Quizzes_&_Anki/Quiz_01_Grammar_and_Tenses.json` (5 scenario MCQs).
-   - **Solved Scanned Worksheets:** `CamScanner Scan - Grammar Worksheet...pdf` fully extracted and solved against the Oxford Teacher's Book answer key (`NH Upper Intermediate - Teacher Book (Answer Key).pdf`).
-
-### Available Local Toolchain (`90_Shared_Toolbox/tools/`)
-- `pdf_exporter.py`: Compiles Markdown to publication-grade vector PDFs with native DirectWrite Arabic text shaping, KaTeX math, embedded diagrams, and 4 academic templates (`study_pack`, `booklet`, `exam_sheet`, `glossary`).
-- `office_exporter.py`: Compiles Markdown to clean Word (`.docx`) and native PowerPoint (`.pptx`) for OnlyOffice and MS Office.
-- `pdf_reader.py`: Reads digital PDFs via PyMuPDF4LLM, falls back to local RapidOCR, and extracts embedded figures/diagrams via `--extract-images`.
-- `session_memory.py`: Cross-agent memory manager (`boot`, `log`, `remember`, `recall`, `status`).
-- `quiz_engine.py`: Bayesian Knowledge Tracing (BKT) engine, dwell-time analysis, and session telemetry logger.
-- `quiz_balancer.py`: Algorithmic balancer and strict psychometric linter (`--strict`).
-- `quiz_runner.py`: Interactive command-line quiz conductor.
-- `quiz_qr.py`: Generates LAN-accessible quiz links and opens in Chromium (`--open`) for 1-click device sharing.
-- `pack_subject.py`: Bundles entire subject vaults into single-file digests for mobile LLMs.
-- `phone_sync.py`: 1-click local high-speed phone sync over direct ADB (USB or Wi-Fi). Replaces fragile Syncthing with zero battery drain and zero conflict files.
-### Immediate Action Priorities
-1. **Immediate Task:** Conduct oral viva defense rehearsal for Dr. Ali Fahim's lecture (Patriot missile 24-bit fixed-point clock drift kinematics & Brooks' essential complexity).
-2. **Next Staging Milestone:** Ingest Week 01 lecture materials and canonical textbooks for `01_Cyber_Security` and `03_Data_Mining`.
+> **CRITICAL INSTRUCTION FOR ALL INCOMING AGENTS:**
+> **DO NOT perform open-ended, slow recursive directory scans across the vault.** Live state lives in exactly two files — read them, then stop:
+> 1. `00_STUDIO_HUB/ACTIVE_STATE.md` — current semester/week/subject, immediate todo, next focus (sole runtime truth; never cache it here).
+> 2. `00_STUDIO_HUB/HARNESS_REGISTRY.md` — which harnesses share this vault; sign yourself in before touching anything.
+>
+> Toolchain lives in `90_Shared_Toolbox/tools/` (see `README.md` toolchain table). Subject deliverables live under `01_Semester_1/<Subject>/` per the folder convention in `README.md`. Do not trust any snapshot below this line — pointers only.
 
 ## 1.2. Autonomous Execution Contract (Zero-CLI Policy for the Student)
 > **Golden Rule:** The student will communicate **strictly in plain natural language** (chat). The student must **NEVER** be asked to remember or run command-line commands, python scripts, or CLI flags.
@@ -123,27 +87,7 @@ To optimize deep cognitive retention and high-impact academic output:
    - Every key term must detail: canonical English term, seminal author/paper DOI, word-for-word IEEE/ACM/ISO definition, Feynman 9-year-old analogy, and the **Professor's Exam Trap**.
 
 ### 2.5. Universal Vault-Wide Research, Authoring & Publishing Workflow (The Invariant Contract)
-Incoming agents must strictly adhere to the 5-stage artifact lifecycle codified in `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` across **ALL six postgraduate subjects** (`01_Cyber_Security`, `02_English_Language`, `03_Data_Mining`, `04_Advanced_Software_Eng`, `05_Soft_Computing`, `06_Artificial_Intelligence`) using `00_STUDIO_HUB/templates/template-study-unit.md`:
-1. **Ingestion & Sifting (Triangulation):**
-   - Identify the primary canonical course textbook (e.g. Mall for SDLC, Sommerville for SE theory, Sharp for Cyber Risk, Han & Kamber for Data Mining) and cross-reference with international standards (ISO/IEC/IEEE, NIST) and expert consensus.
-   - Sift essential concepts (authoritative verbatim definitions, boundary conditions, failure modes, professor exam traps) from non-essential historical padding.
-   - Tables vs Graphics: Comparative matrices become clean Markdown tables (`white-space: normal`); system kinematics and transitions become 2x retina vector graphics in `06_Diagrams_&_Mindmaps/`. Blurry scans and ASCII code blocks are strictly banned.
-
-2. **Deep Pedagogical Authoring (Anti-Compression Law):**
-   - Never output dry summaries. Teach from first principles:
-     - **Narrative Spine:** Why did this concept emerge? What broke down in the previous model that necessitated this one?
-     - **Feynman Mental Model:** Concrete real-world intuition (explain like I'm 9) before technical jargon.
-     - **Verbatim Standard Definition:** Quoted word-for-word with exact textbook page numbers.
-     - **Bilingual Rationale:** English technical precision paired with deep, conversational Iraqi-Arabic engineering explanations (*الشرح المفاهيمي والتعليلات الهندسية*).
-     - **Active Recall Retrieval Set:** Conclude each unit with 10–12 demanding scenario/analytical Q&A items formatted for `.qa-card` compilation.
-
-3. **Modular Unit Architecture & Zero Backend Leakage:**
-   - Partition multi-model syllabi into modular units (e.g. 10 units for ASE Week 02) to guarantee 100% textbook verification and eliminate LLM hallucination.
-   - **Strict Zero-Leakage:** Student-facing titles must be clean academic topics (`Unit 01: SDLC Fundamentals`), NEVER internal agent scaffolding (`File 01 of 10`, `**EN.**`, `**AR.**`, `[THIN]`, or build footers).
-
-4. **Autonomous 1-Click Publishing (Zero-CLI):**
-   - Execute `python 90_Shared_Toolbox/tools/pdf_exporter.py "<note>.md" -t study_pack` autonomously in the background.
-   - The engine automatically formats the centered 3-tier header (`Unit Eyebrow` + `Main Title` + `Thesis Subtitle`), applies language-sensitive borders (left for English, right for Arabic), and resolves multi-viewer Windows file locks (`_new.pdf`, `_v2.pdf`, `_v3.pdf`).
+Incoming agents must follow the 5-stage artifact lifecycle in `00_STUDIO_HUB/guides/ACADEMIC_STUDY_NOTE_SOP.md` across **ALL six subjects** using `00_STUDIO_HUB/templates/template-study-unit.md`. Stages: **1. Ingest & Triangulate** (primary textbook + ISO/NIST + expert consensus; verbatim quotes with page anchors) → **2. Modular Units** (10-unit partitioning; **Zero-Leakage:** student-facing titles are `Unit 01: SDLC Fundamentals`, NEVER `File 01 of 10`, `**EN.**`, `**AR.**`, `[THIN]`, build footers) → **3. Deep Pedagogical Author** (narrative spine + Feynman intuition + bilingual rationale + 10–12 retrieval Q&A) → **4. Vector Assets** (2x PNG/SVG in `06_Diagrams_&_Mindmaps/`; ASCII art banned) → **5. Autonomous 1-Click Publish** (`pdf_exporter.py -t study_pack`; engine handles 3-tier header, BiDi borders, Windows file locks).
 ---
 ## 3. Fast-Boot Initialization & Memory Protocol
 
@@ -264,29 +208,7 @@ When professors require Microsoft Word (.docx) or PowerPoint (.pptx) submissions
 
 ## 6.1. Interactive WebUI Quiz System & Mobile QR Code Generation
 
-The Master Studio interactive quiz subsystem (`91_Dashboard/`) provides zero-database, mobile-optimized assessment drills accessible across your local network:
-
-- **Launch Direct Quiz in Browser:**
-  - **Study Mode (Recitation):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>` (Immediate visual feedback, explanation card, and sound effects).
-  - **Exam Mode (Simulated University Exam):** `http://127.0.0.1:5000/quiz/<Subject_Folder>/<Quiz_Name>?mode=exam` (Silent answer tracking, freely editable choices, score and explanations revealed only upon final submission).
-  - **Question & Option Shuffle:** Append `?shuffle=true` or click the shuffle button in the header to randomize question and option order while preserving telemetry IDs.
-- **Installable Offline-First PWA (Progressive Web App):**
-  - The entire learning portal is an installable PWA with Service Worker caching (`/static/sw.js` and `/static/manifest.json`).
-  - Tap "Add to Home Screen" in Chromium/Chrome on mobile to install Master Studio as a standalone app.
-  - Operates 100% offline (Airplane mode) on campus, bus, or outside home Wi-Fi without requiring the PC server to be running.
-
-- **Offline Local File Picker (Zero-Server Fallback):**
-  - When outside home Wi-Fi or when the PC server is turned off, tap the folder icon (`#btn-open-local-file`) on mobile.
-  - Opens the native Android file picker to load any `Quiz_*.json` directly from your phone's DriveSync folder.
-  - Automatically caches the quiz locally in `localStorage`, so you can study completely offline with zero network connection.
-
-- **Modern Mobile Testing Protocol (UIAutomator First):**
-  - AI agents automating Android mobile devices MUST inspect the UI hierarchy using `adb shell uiautomator dump` or compact accessibility snapshots.
-  - NEVER run slow, token-burning VLM screenshot loops to guess coordinates for button clicks.
-  - VLM vision models are reserved strictly for one-shot cosmetic visual regression checks.
-  python "90_Shared_Toolbox/tools/quiz_qr.py" "<Subject_Folder>" "<Quiz_Name>"
-  ```
-  Scans your LAN IP (e.g. `http://192.168.100.3:5000/...`) and displays a scannable QR code in the terminal for instant phone studying.
+The quiz subsystem (`91_Dashboard/`, Flask, zero-database) serves Study Mode (`/quiz/<Subject>/<Quiz>`) and Exam Mode (`?mode=exam`), with `?shuffle=true` for option shuffling. Full agent/mobile detail (PWA install, offline file picker, `--open` device sharing, UIAutomator-first testing) lives in `91_Dashboard/README.md` §Agent & Mobile Notes. Quiz QR: `python 90_Shared_Toolbox/tools/quiz_qr.py "<Subject>" "<Quiz>"`.
 
 - **Automated Telemetry & Cognitive Model Sync:**
   When a quiz is submitted in the WebUI:
@@ -364,7 +286,9 @@ To allow agents to read and analyze dense two-column academic papers, textbook c
 
 ## 8. Cross-Agent Persistent Memory & Shared Session Journaling (Zero Token Drag)
 
-To maintain continuous academic context across all agent harnesses (Oh My Pi, OpenCode, MiMo Studio, FreeBuf, Cursor):
+To maintain continuous academic context across all agent harnesses (Oh My Pi, OpenCode, MiMo Studio, FreeBuf, Cursor, Codex — full roster in `00_STUDIO_HUB/HARNESS_REGISTRY.md`):
+
+0. **Sign in by name (mandatory first act).** Read `HARNESS_REGISTRY.md`. If your harness has no row, add one (name · agent identity · marker you leave · areas you touch). Then append one sign-in line to today's `sessions/YYYY-MM-DD.md`: `> **Harness sign-in:** <Harness> (<agent>) — <task area>.` When you encounter another harness's work, **name it with date** (*"found work from Codex 2026-09-22, left intact"*) — never anonymous "another agent" talk. Never delete another harness's marker dir; announce first.
 
 1. **Fast-Boot Context Injection (< 150 tokens):**
    ```bash

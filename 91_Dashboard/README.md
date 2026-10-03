@@ -44,3 +44,12 @@ The dashboard includes a full-featured, zero-database quiz web application:
 - **Mobile QR Generation:** Run `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz>` to print an ASCII QR code for LAN mobile studying.
 
 ## Data Source
+
+All views read live from `00_STUDIO_HUB/` (ACTIVE_STATE, LEARNER_MODEL, GPA_TRACKER, quiz JSONs). No database.
+
+## Agent & Mobile Notes (moved from root AGENTS.md — agent-facing detail lives here)
+
+- **PWA install:** Service Worker (`/static/sw.js` + `/static/manifest.json`); "Add to Home Screen" in Chromium/Chrome; works 100% offline (Airplane mode) without the PC server.
+- **Offline Local File Picker (zero-server fallback):** folder icon (`#btn-open-local-file`) opens the native Android picker for any `Quiz_*.json` from the phone's DriveSync folder; cached in `localStorage`.
+- **Direct browser launch:** `python 90_Shared_Toolbox/tools/quiz_qr.py "<Subject>" "<Quiz>" --open` pops the quiz in Chromium; use its "Send to your devices" for 1-click phone sharing. LAN QR: same command without `--open` prints scannable terminal QR.
+- **Mobile testing protocol (UIAutomator first):** agents automating Android MUST inspect UI hierarchy via `adb shell uiautomator dump` or compact accessibility snapshots — never VLM screenshot loops for coordinates. VLM vision reserved for one-shot cosmetic checks.
