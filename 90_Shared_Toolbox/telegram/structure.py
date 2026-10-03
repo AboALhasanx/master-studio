@@ -5,10 +5,6 @@ Derived from the **vault itself** (not invented):
 
 * `01_Semester_1/` subject folders + the weekly schedule in
   `00_STUDIO_HUB/ACTIVE_STATE.md` (day/time/instructor) → one topic per subject.
-* `00_STUDIO_HUB/` analytics artifacts (LEARNER_MODEL, PROGRESS_ANALYTICS)
-  → a Progress & Analytics topic.
-* `90_Shared_Toolbox/` + `91_Dashboard/` → a Toolbox topic.
-* The quiz subsystem (`/quiz/...` routes) → an Exams & MCQ topic.
 * Discussion needs **no** topic of its own: every forum already has the
   non-deletable **General** topic (id=1, Telegram API), which the owner has
   named **محادثة** — it is the group's chat room, and because General
@@ -16,12 +12,18 @@ Derived from the **vault itself** (not invented):
   The legacy ``99-Chat`` subject therefore stays seeded (so old references
   fail with a clear *unbound*, not *unknown*) but is not provisioned here.
 
+Three cross-cutting topics once sat beside the subjects — Progress & Analytics
+(`71-Progress-Analytics`), Toolbox (`90-Toolbox`) and Exams & MCQ
+(`70-Exams-and-MCQ`). They were closed then **deleted on 2026-10-02**: every
+subject is its own hub now and their material lives in the local dashboard,
+not in the group. Their registry keys survive as ``registry.RETIRED_SUBJECTS``
+so an old command fails as *unbound*, but ``STRUCTURE`` no longer provisions
+them and nothing here may bring them back.
+
 Topic titles are **Arabic only, monochrome, no emoji, no numbers** (student's
-rule: «شيل الارقام من اسماء التوبكتات») — `◆ أمن المعلومات` for the six taught
-subjects, and a lighter ``◇`` with no number for the three cross-cutting
-topics, so subjects and utility rooms read apart at a glance. Order comes
-from creation order, not from a prefix; General (محادثة) needs no title of
-its own — Telegram owns it.
+rule: «شيل الارقام من اسماء التوبكتات») — one ``◆``-prefixed name per taught
+subject. Order comes from creation order, not from a prefix; General (محادثة)
+needs no title of its own — Telegram owns it.
 
 Extras that make topics organised (each is an action the gateway performs):
   1. **Stable titles** — Bot API cannot reorder or pin *topics*
@@ -43,7 +45,9 @@ __all__ = ["TopicSpec", "STRUCTURE", "topic_link", "card_text", "index_payload"]
 
 # Topic icon colours accepted by createForumTopic (RGB, fixed at creation).
 COLOR_SUBJECT = 7322016      # blue-grey family for taught subjects
-COLOR_META = 16749490        # warm family for cross-cutting topics
+COLOR_META = 16749490        # warm family for cross-cutting topics — kept for
+#                              the colour-picker contract even though the three
+#                              utility topics were deleted on 2026-10-02.
 
 
 @dataclass(frozen=True)

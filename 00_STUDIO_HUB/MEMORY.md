@@ -57,6 +57,7 @@ token_budget: "< 400 tokens"
 - **Word Document Standard (`.docx`):** native OpenXML BiDi (`<w:bidi/>`, `dir="rtl"`) on Arabic text to prevent inverted punctuation; zero raw YAML frontmatter leaks on page 1.
 - **Visual Diagram Standard:** rendered via code (Matplotlib / DirectWrite); no browser-screenshot scrollbars; Arabic reshaped with `arabic_reshaper` + `python-bidi`; padded solid bounding boxes, no lines cutting through text.
 - **Scanned PDFs — CORRECTED 2026-09-18:** the old instruction to parse scans via `rapidocr-onnxruntime` is **stale — RapidOCR is NOT installed** in the managed venv. The working method is: render pages with `pymupdf` (`page.get_pixmap(dpi=150)`) and read them **as images**. For a PDF that has a text layer, just extract the text — and check `page.annots()` for the student's own annotations, which is often the most valuable content on the page.
+- **Telegram publishing (2026-10-03):** the **spare MTProto account** publishes all content (cards, chapters, sources) — a message can only be edited by its own sender — while the **bot** keeps the pin, the quiz buttons and the chat. `human --verb` is `whoami/chats/read/say/sendfile/edit/login`; an in-place card refresh is `edit --message-id … --text …` (gated, allowlisted, audited, **not** send-budgeted). Office→PDF is **Office COM (primary on Windows) with Chromium fallback; NEVER `x2t`/LibreOffice** — it renders a whole document in one math font (wrecked *and* un-extractable). A Word "isn't your default program" modal makes every COM call fail with `RPC_E_CALL_REJECTED`; dismiss it with `PostMessage(dlg, WM_COMMAND, (BN_CLICKED<<16)|cid, …)`, never `BM_CLICK`. Attachment display names are capped at **62 UTF-8 bytes** (Arabic pays 2 B/letter). Bot API `WinError 10054` on pin/send → retry via `queue run` or the spare's MTProto. PowerShell `>` writes **UTF-16** — Arabic/HTML payloads go through temp `.py` files.
 
 ---
 
@@ -93,6 +94,9 @@ token_budget: "< 400 tokens"
 - **College Buddy Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md`
 - **Session Journal:** `00_STUDIO_HUB/sessions/`
 - **Local Dashboard:** `http://127.0.0.1:5000` (Flask service in `91_Dashboard/`)
+- **Telegram Publishing Playbook:** `00_STUDIO_HUB/guides/TELEGRAM_PUBLISHING_PLAYBOOK.md`
+- **Telegram Topics Playbook:** `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`
+- **Telegram Live Verification:** `90_Shared_Toolbox/tools/tg_verify.py --live` → `ALL CHECKS PASSED` (or the failing labels)
 
 - **Added 2026-09-19:** Data Mining Week 02 note: Week_02_Data_Types_and_Preparation.md — Gemini templates on lecture text, not a re-compression. URL data type = Nominal.
 
@@ -147,3 +151,5 @@ token_budget: "< 400 tokens"
 - **Added 2026-09-26:** Terminal TUI does not support Arabic text rendering cleanly; communicate strictly in technical English in chat.
 
 - **Added 2026-09-28 (Telegram gateway — STOP POINT at gate G2):** bot **@cs_mscbot** is admin of group `Master-Studio FINAL` (`-1003710711332`); owner `5664798395`. Gateway lives in `90_Shared_Toolbox/telegram/` + launcher `tools/tg.py` (outbound-only, fail-closed ACL, chat allowlist, SQLite audit). **10 topics + pinned cards + pinned index provisioned by the gateway itself; re-run is a no-op.** `pytest -q` = **227 passed**. Roadmap `00_STUDIO_HUB/proposals/FEATURE_TELEGRAM_GATEWAY_ROADMAP.md`, playbook `00_STUDIO_HUB/guides/TELEGRAM_TOPICS_PLAYBOOK.md`, epic GitHub issue #7. Next: gate G3 (#11–#14). Token/ids only in gitignored `.env`. **Nothing committed yet.**
+
+- **Added 2026-10-03 (Telegram model finalized + audit):** the **spare human account** (`8404964768`, MTProto) publishes all content; the **bot** (`8594106968`) keeps the pin, the quiz buttons and the chat. **13 canonical source textbooks** were published into topics `86`–`89` as messages `210`–`222` (DM `214–215`, ASE `210–213`, SC `216–220`, AI `221–222`), caption `مصدر مادة` / `الطبعة`, editions read out of the PDFs. A read-only audit then found **4 promises the docs made that no code kept** — fixed test-first: (1) `human --verb edit` was documented but **did not exist** (now a real verb: `--message-id`, HTML, gated/allowlisted/audited, not send-budgeted); (2) `resolve()` still returned deleted threads `90/91/92` while four comments promised *unbound* (now `registry.RETIRED_SUBJECTS` clears and refuses); (3) the `ALL CHECKS PASSED` gate pointed at a deleted temp script (now permanent: `telegram/verify.py` + `tools/tg_verify.py`, pure checks, read-only); (4) `structure.py`'s docstring described the topics it says were retired. `catalog.references` now records the 13 posts as a validated ledger. Gates: **`pytest 805`** · bandit High 0 · live `ALL CHECKS PASSED` on 84–89. Detail: `sessions/2026-10-03.md`.

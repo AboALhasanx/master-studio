@@ -30,21 +30,31 @@ the spare via MTProto when the Bot API socket is dropping — proven live when
 
 ## 1. The Layout (live)
 
-| Subject | Topic | Card (spare) | Chapters (spare) | Booklet |
-|---|---|---|---|---|
-| 01 أمن المعلومات | 84 | `181` | `182–185` (4) | 61 pp / 1.01 MB |
-| 02 إنجليزي | 85 | `187` | `188` (1) | 12.7 MB |
-| 03 تنقيب البيانات | 86 | `190` | `191–195` (5) | 101 pp / 1.25 MB |
-| 04 هندسة برمجيات | 87 | `196` | `197–199` (3) | 252 pp / 1.37 MB |
-| 05 حوسبة ناعمة | 88 | `201` | `202–203` (2) | 144 pp / 5.10 MB |
-| 06 ذكاء اصطناعي | 89 | `205` | `206` (1) | 67 pp / 798 KB |
+| Subject | Topic | Card (spare) | Chapters (spare) | Sources (spare) | Booklet |
+|---|---|---|---|---|---|
+| 01 أمن المعلومات | 84 | `181` | `182–185` (4) | — | 61 pp / 1.01 MB |
+| 02 إنجليزي | 85 | `187` | `188` (1) | — | 12.7 MB |
+| 03 تنقيب البيانات | 86 | `190` | `191–195` (5) | `214–215` (2) | 101 pp / 1.25 MB |
+| 04 هندسة برمجيات | 87 | `196` | `197–199` (3) | `210–213` (4) | 252 pp / 1.37 MB |
+| 05 حوسبة ناعمة | 88 | `201` | `202–203` (2) | `216–220` (5) | 144 pp / 5.10 MB |
+| 06 ذكاء اصطناعي | 89 | `205` | `206` (1) | `221–222` (2) | 67 pp / 798 KB |
 
 Topic names: **`◆ <subject>` — no numeric prefix, no emoji**. The three
 utility topics (`◇ الامتحانات والأسئلة` 90, `◇ التقدم والتحليلات` 91,
 `◇ الأدوات` 92) were **closed then deleted 2026-10-02** and removed from
-`structure.STRUCTURE` so a future `structure` run cannot recreate them; their
-registry keys stay so an old command resolves to a clear *unbound*.
+`structure.STRUCTURE` so a future `structure` run cannot recreate them. Their
+registry keys stay seeded — but **unbound**: `registry.RETIRED_SUBJECTS` clears
+any stale coordinates on every seeded load *and* `resolve()` refuses them, so
+an old command fails with a clear *unbound* rather than posting into a topic
+that no longer exists (the file still pointed at threads 90/91/92 until
+2026-10-03 — the promise was documented four times and enforced nowhere).
 Source of truth for ids: `00_STUDIO_HUB/telegram/catalog/*.json`.
+
+The **Sources** column is the 13 canonical textbooks published into topics
+86–89 on 2026-10-02, one post each, caption `مصدر مادة : <source>` /
+`الطبعة: <edition>`. Each catalog records its own under `references`
+(`message_id` + source + edition), so the JSON is the inventory rather than a
+chat scroll; the editions were read out of each PDF, never assumed.
 
 ## 2. The Ordering Recipe (spare-account model)
 
@@ -128,8 +138,15 @@ with `editMessageMedia` — same message id, pin and position preserved
 * A card goes silent only if: not sent by its own author, author demoted, lost
   `catalog_message_id`, or a poll. **Rule (2026-10-02 model): cards and
   chapters are published by the spare account — the bot never publishes
-  content.** In-place edit therefore goes through `human --verb edit`, not the
-  bot's `edit`, because a message can only be edited by its own sender.
+  content.** In-place edit therefore goes through
+  `tg.py --live human --verb edit --chat <chat> --message-id <id> --text <html>`
+  (2026-10-03), not the bot's `edit`: a message can only be edited by its own
+  sender. The verb is gated, allowlisted and audited like every other human
+  verb, and it deliberately does **not** spend the send budget — a card refresh
+  must never be able to silence a real send. Before it existed the playbook
+  promised `human --verb edit` while no such verb was in `HUMAN_VERBS`, so the
+  migration had to reach for a raw Telethon script that bypassed the kill
+  switch, the allowlist and the ledger.
 
 ## 6. Card Format (binding)
 
@@ -144,15 +161,29 @@ with `editMessageMedia` — same message id, pin and position preserved
 
 ## 7. Verification Gate (before any commit)
 
-1. Live topic check → **`ALL CHECKS PASSED`**: card is first content message,
-   pinned, names subject + doctor, verbatim chapter line, every ordinal
-   listed, booklet attached, chapter entities point at the published files,
-   all filenames ≤ 62 B (26 checks on topic 88, 22 on 89).
-2. `pytest -q` green (768 at last round), `bandit -r 90_Shared_Toolbox/telegram`
+1. Live topic check — the **permanent tool**, not a temp script:
+   `python 90_Shared_Toolbox/tools/tg_verify.py --live` → **`ALL CHECKS PASSED`**.
+   Per subject it asserts: the card is the first content message and is pinned,
+   names the subject + doctor, carries the verbatim chapter line and every
+   ordinal, attaches the merged booklet, its links point at the published
+   chapter files, shows no bare URL, every chapter and source post exists, and
+   no display filename exceeds 62 bytes. It prints one line per check (a
+   variable count — one per invariant plus one per chapter file), exits `1`
+   with the failing labels, and refuses with exit `5` when `--live` is absent.
+   Read-only by construction.
+2. `pytest -q` green, `bandit -r 90_Shared_Toolbox/telegram`
    High 0, CI + CodeQL green after push.
-3. Stale idempotency rows in `gateway.db` block re-sends of identical payloads
+3. **Audit-row vocabulary.** Bulk publishing goes through `tg.py human …` (one
+   verb per invocation) so each row keeps the CLI's convention: `result="sent"`
+   for a message that left the process and `detail="message_id=X file=Y"`. A
+   one-off script calling `human.run()` directly must copy that rule
+   (`cli._human_detail` + `SEND_VERBS`), or it writes rows the ledger cannot be
+   filtered by — found 2026-10-03, where rows `210`–`222` read `ok` /
+   `message_id=X <name>`; they were **left as written**, because an audit
+   ledger is not rewritten.
+4. Stale idempotency rows in `gateway.db` block re-sends of identical payloads
    (`status=duplicate`, no message) — drop rows whose `message_id` was deleted.
-4. Push path: `git -c credential.helper= -c "credential.helper=!gh auth
+5. Push path: `git -c credential.helper= -c "credential.helper=!gh auth
    git-credential" push` after clearing `GITHUB_TOKEN`/`GH_TOKEN`; commit
    message via `-F` temp file (PowerShell here-strings break); never stage
    `.workbuddy-ai/memory/*`; PowerShell `>` writes UTF-16 — Arabic/HTML
@@ -163,9 +194,10 @@ with `editMessageMedia` — same message id, pin and position preserved
 | Task | Command |
 |---|---|
 | render / push / edit card | `tools/tg_catalog.py --push` (`--live` for network; dry-run flags `file_missing` and continues, live refuses without the booklet) |
-| publish / edit / pin / delete | `tools/tg.py <verb> --json --live --actor 5664798395 …` |
+| publish / pin card | `tools/tg.py <verb> --json --live --actor 5664798395 …` |
+| **live verification gate** | `tools/tg_verify.py --live` — reads topics 84–89 as the spare and prints `ALL CHECKS PASSED` (see §7) |
 | inbound Pull poll (proposals only) | `tools/tg.py bridge --live --limit 20` (see `telegram/bridge.py`) |
 | urgent vs. restricted | `telegram/permissions.py` — `classify()`; restricted waits for private-chat `نعم`/`لا` |
 | one-shot mention replies | `tools/tg.py interactive --live` (bounded; admin verbs become pending approvals) |
-| spare human account (files, edits) | `tools/tg.py human --verb sendfile …` — the **only** publish path for content (`--file`, `--filename`, `--text`, `--thread`); also `edit`/`delete`/`sendtext` (gated, paced, audited) |
+| spare human account (files, edits) | `tools/tg.py human --verb sendfile …` — the **only** publish path for content (`--file`, `--filename`, `--text`, `--thread`); `--verb edit --message-id … --text …` refreshes a message the spare owns (gated, allowlisted, audited; not send-budgeted). `whoami`/`chats`/`read`/`say`/`sendfile`/`edit`/`login` — there is **no** `delete`/`sendtext` verb |
 | group layout + index | `structure` verb; registry `90_Shared_Toolbox/telegram/registry.json` (gitignored) |

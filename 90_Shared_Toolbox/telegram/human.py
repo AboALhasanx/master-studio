@@ -80,14 +80,15 @@ TRUTHY = frozenset({"1", "true", "yes", "on"})
 
 #: The complete verb set. Deliberately disjoint from ``schema.VERBS``: what
 #: lives outside ``VERBS`` can never be composed into the bot's publish path.
-HUMAN_VERBS = ("whoami", "chats", "read", "say", "sendfile", "login")
+HUMAN_VERBS = ("whoami", "chats", "read", "say", "sendfile", "edit", "login")
 
 #: Verbs that name a chat, and therefore require that chat to be allowlisted.
-CHAT_VERBS = frozenset({"read", "say", "sendfile"})
+CHAT_VERBS = frozenset({"read", "say", "sendfile", "edit"})
 
-#: Verbs that actually put something into a chat, and therefore spend the
-#: send budget. ``read`` gates on the allowlist too, but must never consume
-#: slots — otherwise reading a group could silence it.
+#: Verbs that actually put a **new message** into a chat, and therefore spend
+#: the send budget. ``read`` and ``edit`` gate on the allowlist too, but must
+#: never consume slots: reading a group, or refreshing the pinned card, would
+#: otherwise be able to silence real sends.
 SEND_VERBS = frozenset({"say", "sendfile"})
 
 _VAULT_ROOT = Path(__file__).resolve().parents[2]
@@ -132,6 +133,10 @@ class HumanRequest:
 
     verb: str
     chat_id: int | None = None
+    # ``edit``: the message to rewrite in place. The card is a caption on a
+    # document, so an in-place update touches an existing message id rather
+    # than posting a second copy at the bottom of the topic.
+    message_id: int | None = None
     text: str | None = None
     limit: int = 10
     phone: str | None = None
@@ -185,6 +190,16 @@ def authorize(req: HumanRequest, *, live: bool, enabled: bool,
             raise ActionValidationError("verb 'read' requires --limit >= 1")
         if req.verb == "say" and not (req.text or "").strip():
             raise ActionValidationError("verb 'say' requires a non-empty --text")
+        if req.verb == "edit":
+            if req.message_id is None:
+                raise ActionValidationError(
+                    "verb 'edit' requires --message-id")
+            if int(req.message_id) < 1:
+                raise ActionValidationError(
+                    "--message-id must be a positive message id")
+            if not (req.text or "").strip():
+                raise ActionValidationError(
+                    "verb 'edit' requires a non-empty --text")
         if req.verb == "sendfile":
             if not (req.file or "").strip():
                 raise ActionValidationError(
@@ -278,6 +293,9 @@ def _dispatch_table(req: HumanRequest, gateway):
     if req.verb == "say":
         return lambda: gateway.send(req.chat_id, req.text,
                                     thread_id=req.thread_id)
+    if req.verb == "edit":
+        return lambda: gateway.edit_message(req.chat_id, req.message_id,
+                                            req.text)
     if req.verb == "sendfile":
         return lambda: gateway.send_file(req.chat_id, req.file,
                                          caption=req.text,
@@ -466,6 +484,54 @@ class TelethonGateway:
 
         return self._call(body)
 
+    def topic(self, chat_id: int, thread_id: int,
+              limit: int = 200) -> list[dict]:
+        """Read one forum topic, oldest first, as the verification gate needs.
+
+        The Bot API cannot read a topic's history or its pinned message — it
+        has no "get message by id" at all — so this is the MTProto path. Only
+        the fields the checks consume are returned, so the verifier never
+        touches a live Telethon object.
+
+        ``reply_to`` is Telethon 1.41's forum-topic selector on
+        ``iter_messages`` (``message_thread_id`` is the Bot API spelling). The
+        topic's creation message comes back with an ``action``: it is kept and
+        flagged, because it is always the lowest id in a topic and would
+        otherwise make "the card is the first message" impossible by
+        construction.
+        """
+        async def body(client):
+            await self._require(client)
+            out: list[dict] = []
+            async for msg in client.iter_messages(
+                    int(chat_id), limit=int(limit), reply_to=int(thread_id)):
+                file_name = None
+                document = getattr(msg, "document", None)
+                if document is not None:
+                    for attr in (getattr(document, "attributes", None) or []):
+                        name = getattr(attr, "file_name", None)
+                        if name:
+                            file_name = name
+                            break
+                links = [
+                    url for url in (getattr(entity, "url", None)
+                                    for entity in
+                                    (getattr(msg, "entities", None) or []))
+                    if url
+                ]
+                out.append({
+                    "message_id": msg.id,
+                    "text": getattr(msg, "message", None) or "",
+                    "pinned": bool(getattr(msg, "pinned", False)),
+                    "service": getattr(msg, "action", None) is not None,
+                    "file_name": file_name,
+                    "links": links,
+                })
+            out.sort(key=lambda row: row["message_id"])
+            return out
+
+        return self._call(body)
+
     def send(self, chat_id: int, text: str,
              thread_id: int | None = None) -> dict:
         async def body(client):
@@ -503,6 +569,24 @@ class TelethonGateway:
                 attributes=attributes,
             )
             return {"message_id": sent.id, "chat_id": chat_id}
+
+        return self._call(body)
+
+    def edit_message(self, chat_id: int, message_id: int, text: str) -> dict:
+        """Rewrite one of the spare account's own messages in place.
+
+        ``parse_mode="html"`` matches :meth:`send_file`, so a card re-render
+        keeps the exact markup it shipped with. Telegram refuses to edit a
+        message the account did not send — which is precisely the ownership
+        rule the card model leans on, so the refusal is a feature, not a bug
+        to work around.
+        """
+        async def body(client):
+            await self._require(client)
+            edited = await client.edit_message(int(chat_id), int(message_id),
+                                               text, parse_mode="html")
+            return {"message_id": getattr(edited, "id", int(message_id)),
+                    "chat_id": chat_id}
 
         return self._call(body)
 

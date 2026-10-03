@@ -87,6 +87,10 @@ class FakeGateway:
         self._hit("send_file", chat_id, path, caption, filename, thread_id)
         return {"message_id": 4343, "chat_id": chat_id}
 
+    def edit_message(self, chat_id: int, message_id: int, text: str) -> dict:
+        self._hit("edit_message", chat_id, message_id, text)
+        return {"message_id": message_id, "chat_id": chat_id}
+
     def request_code(self, phone: str) -> dict:
         self._hit("request_code", phone)
         return {"phone": phone, "sent": True}
@@ -375,8 +379,8 @@ class TestStructuralSeparation:
 
     def test_human_verbs_are_a_fixed_known_set(self):
         assert set(human.HUMAN_VERBS) == {
-            "whoami", "chats", "read", "say", "sendfile", "login"}
-        assert human.CHAT_VERBS == frozenset({"read", "say", "sendfile"})
+            "whoami", "chats", "read", "say", "sendfile", "edit", "login"}
+        assert human.CHAT_VERBS == frozenset({"read", "say", "sendfile", "edit"})
         assert human.SEND_VERBS == frozenset({"say", "sendfile"})
 
     def test_sendfile_needs_an_existing_file(self, tmp_path):
@@ -419,6 +423,67 @@ class TestStructuralSeparation:
         with pytest.raises(RateLimited):
             run(request("sendfile", chat_id=ALLOWED_CHAT, file=str(doc)),
                 gateway=FakeGateway(), limiter=blocked)
+
+
+# ===========================================================================
+# 5b. `edit` — refreshing a card the spare account owns
+# ===========================================================================
+class TestEditVerb:
+    """The pinned card is the spare account's message, so refreshing it is an
+    edit *by the same account* — the only account Telegram lets touch it.
+
+    Before this verb the model had a hole: content moved to the spare
+    account, the playbook promised the change went through ``human --verb
+    edit``, and no such verb existed — the migration had to reach for a raw
+    Telethon script that bypassed the kill switch, the allowlist and the
+    audit ledger all at once.
+    """
+
+    def test_edit_requires_a_chat(self):
+        with pytest.raises(ActionValidationError, match="requires --chat"):
+            run(request("edit", message_id=190, text="x"))
+
+    def test_edit_requires_a_message_id(self):
+        with pytest.raises(ActionValidationError, match="requires --message-id"):
+            run(request("edit", chat_id=ALLOWED_CHAT, text="x"))
+
+    def test_edit_requires_a_non_empty_body(self):
+        with pytest.raises(ActionValidationError, match="non-empty --text"):
+            run(request("edit", chat_id=ALLOWED_CHAT, message_id=190,
+                        text="   "))
+
+    def test_edit_outside_the_allowlist_is_denied(self):
+        with pytest.raises(AccessDenied):
+            run(request("edit", chat_id=OTHER_CHAT, message_id=190, text="x"))
+
+    def test_edit_rejects_a_thread_flag(self):
+        # A message already lives in a topic; there is nothing to re-target,
+        # so a `--thread` here means the operator misunderstood the verb.
+        with pytest.raises(ActionValidationError, match="--thread"):
+            run(request("edit", chat_id=ALLOWED_CHAT, message_id=190,
+                        text="x", thread_id=86))
+
+    def test_edit_dispatches_to_the_message_it_names(self):
+        gw = FakeGateway()
+        result = run(request("edit", chat_id=ALLOWED_CHAT, message_id=190,
+                             text="الفهرس المحدّث"), gateway=gw)
+        assert result["ok"] is True
+        name, chat, mid, text = gw.calls[0]
+        assert name == "edit_message"
+        assert chat == ALLOWED_CHAT
+        assert mid == 190
+        assert text == "الفهرس المحدّث"
+
+    def test_edit_does_not_spend_the_send_budget(self):
+        """A refresh must never be able to silence a real send: ``edit`` adds
+        no new message, so it is deliberately outside ``SEND_VERBS``."""
+        from telegram.store import ChatRateLimiter
+
+        blocked = ChatRateLimiter(per_minute=0)
+        result = run(request("edit", chat_id=ALLOWED_CHAT, message_id=190,
+                             text="x"), gateway=FakeGateway(), limiter=blocked)
+        assert result["ok"] is True
+        assert "edit" not in human.SEND_VERBS
 
 
 # ===========================================================================
@@ -505,6 +570,7 @@ class FakeTelethonClient:
         self.sent_codes: list[str] = []
         self.sent_messages: list[tuple] = []
         self.sent_threads: list[int | None] = []   # message_thread_id per send
+        self.edited: list[tuple] = []              # (chat, message_id, text, mode)
         FakeTelethonClient.instances.append(self)
 
     # class-level on purpose: a subclass must be able to flip authorization
@@ -556,6 +622,14 @@ class FakeTelethonClient:
         self.sent_threads.append(reply_to)
         class _Msg:
             id = 4242
+        return _Msg()
+
+    async def edit_message(self, entity, message_id, text, *, parse_mode=None):
+        # Same reason as send_message: no **kw, so a bogus argument fails here
+        # instead of on a live card.
+        self.edited.append((entity, message_id, text, parse_mode))
+        class _Msg:
+            id = message_id
         return _Msg()
 
     # --- login -----------------------------------------------------------
@@ -680,6 +754,16 @@ class TestTelethonGatewayAdapter:
         assert threads == [None, 12]
         messages = [m for c in FakeTelethonClient.instances for m in c.sent_messages]
         assert messages == [(ALLOWED_CHAT, "hello"), (ALLOWED_CHAT, "سؤال سريع")]
+
+    def test_edit_rewrites_in_place_with_html(self, monkeypatch):
+        """An in-place refresh keeps the card's markup: ``send_file`` shipped
+        it as HTML, so an edit that dropped ``parse_mode`` would re-render
+        the links and bold spans as literal tags on the pinned message."""
+        gw = self._gateway(monkeypatch)
+        out = gw.edit_message(ALLOWED_CHAT, 190, '<b>الفهرس</b>')
+        client = FakeTelethonClient.instances[0]
+        assert client.edited == [(ALLOWED_CHAT, 190, '<b>الفهرس</b>', "html")]
+        assert out["message_id"] == 190
 
     def test_login_requests_a_code_before_signing_in(self, monkeypatch, tmp_path):
         gw = self._gateway(monkeypatch, tmp_path)
@@ -1037,6 +1121,37 @@ class TestHumanMonitoring:
         rows = self._rows(db)
         assert rows[0]["verb"] == "human:say"
         assert rows[0]["result"] == "sent"
+
+    def test_edit_reaches_telethon_from_the_command_line(
+            self, tmp_path, monkeypatch):
+        """``--message-id 190`` must survive argparse, HumanRequest, run() and
+        the adapter — a flag that stops anywhere along the way edits the wrong
+        message (or none) while still exiting 0 and writing an audit row."""
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "edit",
+                         "--chat", str(ALLOWED_CHAT), "--message-id", "190",
+                         "--text", "الفهرس المحدّث")
+        assert code == 0
+        client = FakeTelethonClient.instances[0]
+        assert client.edited[0][1] == 190, "--message-id was dropped en route"
+        assert client.edited[0][2] == "الفهرس المحدّث"
+
+    def test_a_successful_edit_is_recorded_with_its_new_body(
+            self, tmp_path, monkeypatch):
+        """The new caption is the one thing the ledger must never lose:
+        Telegram keeps no visible history, so this row is the only record of
+        what the card said before the next edit overwrites it."""
+        db = tmp_path / "gw.db"
+        code = self._run(db, monkeypatch, "--verb", "edit",
+                         "--chat", str(ALLOWED_CHAT), "--message-id", "190",
+                         "--text", "الفهرس المحدّث")
+        assert code == 0
+        rows = self._rows(db)
+        assert rows[0]["verb"] == "human:edit"
+        assert rows[0]["result"] == "ok"       # no new message => not "sent"
+        assert rows[0]["chat_id"] == ALLOWED_CHAT
+        assert "message_id=190" in (rows[0]["detail"] or "")
+        assert "الفهرس المحدّث" in (rows[0]["detail"] or "")
 
     def test_thread_reaches_telethon_from_the_command_line(
             self, tmp_path, monkeypatch):

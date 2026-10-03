@@ -69,6 +69,7 @@ __all__ = [
     "SUBJECT_KEYS",
     "Catalog",
     "CatalogError",
+    "Reference",
     "arabic_ordinal",
     "build_edit_argv",
     "build_parser",
@@ -78,6 +79,7 @@ __all__ = [
     "message_link",
     "pdf_path",
     "render",
+    "visible_url_problems",
 ]
 
 TELEGRAM_TEXT_LIMIT = 4096
@@ -167,6 +169,27 @@ def arabic_ordinal(n: int) -> str:
 
 
 @dataclass(frozen=True)
+class Reference:
+    """One canonical source textbook posted into a subject topic.
+
+    A ledger row, not decoration: ``message_id`` is the **post in the group**,
+    so anything can point back at the file a course actually follows, and
+    ``source``/``edition`` are copied verbatim from the caption that shipped —
+    so the JSON and the topic can never quietly disagree about which printing
+    the student has, which the MOHESR anti-hallucination rule makes binding.
+
+    Deliberately **not** rendered onto the card: the card is a caption capped
+    at 1024 characters and already carries the chapters, and the sources are
+    alive in the topic as their own posts. The field keeps the inventory, and
+    ``--list`` reports it.
+    """
+
+    message_id: int
+    source: str
+    edition: str
+
+
+@dataclass(frozen=True)
 class Catalog:
     """The parsed, validated source of one subject's card."""
 
@@ -180,6 +203,7 @@ class Catalog:
     pdf: str
     translation: str | None = None
     catalog_message_id: int | None = None
+    references: tuple[Reference, ...] = ()
 
     # -- construction ----------------------------------------------------
     @classmethod
@@ -207,6 +231,8 @@ class Catalog:
         else:
             message_id = _positive(key, "catalog_message_id", message_id)
 
+        references = _references(key, data.get("references"))
+
         return cls(
             key=key,
             icon=_text(key, "icon", data["icon"]),
@@ -218,6 +244,7 @@ class Catalog:
             pdf=_text(key, "pdf", data["pdf"]),
             translation=translation,
             catalog_message_id=message_id,
+            references=references,
         )
 
     @classmethod
@@ -256,6 +283,36 @@ def _positive(key: str, name: str, value: Any) -> int:
     return int(value)
 
 
+def _references(key: str, value: Any) -> tuple[Reference, ...]:
+    """Parse the optional ``references`` ledger.
+
+    Absent or empty means "no sources recorded yet" — a valid state, since the
+    field was added after the first cards shipped and a subject may simply have
+    none. What is present, though, is validated as strictly as a chapter: a
+    half-filled entry would put a source in the ledger that nobody can trace
+    back to a post.
+    """
+    if value in (None, ""):
+        return ()
+    if not isinstance(value, list):
+        raise CatalogError(f"{key}: 'references' must be a list")
+    out: list[Reference] = []
+    for index, item in enumerate(value):
+        where = f"references[{index}]"
+        if not isinstance(item, dict):
+            raise CatalogError(f"{key}: {where} must be an object")
+        for name in ("message_id", "source", "edition"):
+            if name not in item:
+                raise CatalogError(f"{key}: {where} missing {name!r}")
+        out.append(Reference(
+            message_id=_positive(key, f"{where}.message_id",
+                                 item["message_id"]),
+            source=_text(key, f"{where}.source", item["source"]),
+            edition=_text(key, f"{where}.edition", item["edition"]),
+        ))
+    return tuple(out)
+
+
 # ----------------------------------------------------------------- render --
 
 
@@ -268,17 +325,20 @@ def check_rendered(text: str, *, limit: int = DEFAULT_LIMIT) -> list[str]:
             f"caption at {limit}"
         )
     problems.extend(_tag_problems(text))
-    problems.extend(_visible_url_problems(text))
+    problems.extend(visible_url_problems(text))
     return problems
 
 
-def _visible_url_problems(text: str) -> list[str]:
+def visible_url_problems(text: str) -> list[str]:
     """A link has to live inside its label, never beside it.
 
     Telegram prints verbatim what it is given: an ``href`` shows as the word
     it wraps, while a URL typed next to that word shows as the URL — which
     turns the index into the wall of addresses it was meant to replace.
     Whatever survives taking the anchors out is on screen for the reader.
+
+    Public because the live verification gate asks the same question about a
+    caption it read back from Telegram; the two must never drift apart.
     """
     visible = re.sub(r'<a href="[^"]+">[^<]*</a>', "", text)
     return [
@@ -608,6 +668,7 @@ def catalog_main(argv: list[str] | None = None) -> int:
             cat = Catalog.load(path)
             rows.append({"subject": path.stem, "title": cat.subject,
                          "chapters": len(cat.chapters),
+                         "references": len(cat.references),
                          "catalog_message_id": cat.catalog_message_id,
                          "updated": cat.updated})
         _emit({"status": "ok", "subjects": [r["subject"] for r in rows],

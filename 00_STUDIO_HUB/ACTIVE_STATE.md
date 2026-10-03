@@ -5,8 +5,8 @@ active_subject: "02_English_Language"
 active_subject_code: "CS502"
 immediate_todo: "Monday DM lecture: doctor SKIMMED Week4 — class IG numbers 0.35/0.12 are WRONG (booklet: 0.189=0.189 tie). Student learns from booklet+Koko, not the hall. Continue W4 (Wrapper/Embedded) same teaching method. Seminar = show the depth the lecture lacked. Cyber W03 notes due Wed. English paper deferred."
 next_session_focus: "W4 remainder (Wrapper/Embedded) + seminar prep for Feature Selection. Correct the IG tie in writing. Exam templates only (r, chi2, IG) — no mental-math stress."
-last_updated: "2026-10-02"
-status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_AUDITED · TELEGRAM_GATEWAY_G5_PILOT_CUTOVER_DONE · TELEGRAM_GATEWAY_G6_CONTENT_AND_INTERACTION_LIVE · TELEGRAM_FORUM_REBUILT_NO_NUMBERS_NO_EMOJI_CATALOG_IS_FIRST_MESSAGE"
+last_updated: "2026-10-03"
+status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_AUDITED · TELEGRAM_GATEWAY_G5_PILOT_CUTOVER_DONE · TELEGRAM_GATEWAY_G6_CONTENT_AND_INTERACTION_LIVE · TELEGRAM_FORUM_REBUILT_NO_NUMBERS_NO_EMOJI_CATALOG_IS_FIRST_MESSAGE · TELEGRAM_SOURCES_PUBLISHED_13 · TELEGRAM_HUMAN_EDIT_VERB_LIVE · TELEGRAM_VERIFY_GATE_PERMANENT · TELEGRAM_RETIRED_TOPICS_UNBOUND"
 ---
 
 # Master Studio: Active Session State
@@ -19,7 +19,7 @@ status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_A
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
 |  Subject:  02_English_Language  Target Path: 01_Semester_1/02_English_Language      |
-|  Status:  MATERIALS RENUMBERED · W03 NOTES DUE WED  Date: 2026-09-27                   |
+|  Status:  MATERIALS RENUMBERED · W03 NOTES DUE WED · TELEGRAM SOURCES LIVE  Date: 2026-10-03                   |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -30,7 +30,7 @@ status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_A
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
 | **Active Subject** | `02_English_Language` | Asst. Prof. Dr. Haidar Akab Alwan (1 Credit Hour) — CS502 |
-| **Last Updated** | `2026-10-01` | Academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — today's update is engineering-track only: catalog cards live. |
+| **Last Updated** | `2026-10-03` | Academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
 
 ---
 

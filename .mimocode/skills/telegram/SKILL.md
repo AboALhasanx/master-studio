@@ -331,6 +331,13 @@ python 90_Shared_Toolbox/tools/tg.py --live human --verb sendfile \
     --filename "تنقيب البيانات - الجابتر الاول.pdf" \
     --text "الفهرس : <a href='https://t.me/c/3710711332/181'>كتالوج المادة</a>"
 
+# rewrite a message the spare account OWNS, in place — the pinned catalog card
+# is the case that matters: Telegram refuses an edit by anyone but its sender,
+# so a card the spare posted can only ever be corrected by the spare
+python 90_Shared_Toolbox/tools/tg.py --live human --verb edit \
+    --chat -1003710711332 --message-id 190 \
+    --text "<b>الفهرس المحدّث</b>"
+
 # two-step login: request the code, then spend it
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX
 python 90_Shared_Toolbox/tools/tg.py --live human --verb login --phone +9647XXXXXXXXX --code 12345
@@ -349,8 +356,10 @@ identical error. A refused sign-in keeps the pending login intact, so a mistyped
 costs you a fresh code. **`--password` is one-time: never write it to `.env`, to a file, or to
 the session journal.**
 
-`--verb` is one of `whoami`, `chats`, `read`, `say`, `sendfile`, `login`. `read` needs `--chat`
-**and** `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `sendfile` needs
+`--verb` is one of `whoami`, `chats`, `read`, `say`, `sendfile`, `edit`, `login`. `read` needs `--chat`
+**and** `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `edit` needs `--chat`,
+`--message-id` **and** `--text` (the replacement body, HTML — the pinned card is a document, so an
+in-place update must render the same markup it shipped with); `sendfile` needs
 `--chat` **and** `--file` (an existing path) and takes `--filename` (the display name) and
 `--text` (the caption); `login` needs `--phone`, and `--code` on the second step. Both `say`
 and `sendfile` also take `--thread <topic id>`, which posts into that forum topic; omit it and
@@ -371,7 +380,8 @@ and any typo all mean **off**, because a kill switch that a typo can enable is n
   apart in one chat. A refused send never reaches the network. The send stamps are persisted to
   `00_STUDIO_HUB/telegram/pacing.json` — without that the limiter would be rebuilt empty on
   every invocation and the ceiling would block nothing at all, since the CLI is one verb per
-  process. Only `say` spends the budget; `read` gates on the allowlist but never consumes slots.
+  process. Only `say` and `sendfile` spend the budget; `read` and `edit` gate on the allowlist but
+  never consume slots — otherwise refreshing a card could silence a real send.
 * *Server-side*, a `FloodWait` is surfaced as a `retry_after` number and that is the end of
   it. Telethon is built with `flood_sleep_threshold=0` because its default of 60 would make it
   **silently block inside our own call** instead of letting us report the wait; it is never
@@ -381,12 +391,14 @@ and any typo all mean **off**, because a kill switch that a typo can enable is n
 **Monitoring.** Every attempt — allowed or refused — writes one audit row to the gateway's own
 `audit` table, namespaced `human:<verb>` so a person-shaped account's actions can never be
 mistaken for the bot's (`read` / `say` are schema verbs; `human:read` / `human:say` are not).
-The `result` column uses the same vocabulary as the executor's rows: `ok` for identity and read
-verbs, `sent` for a message that Telegram accepted, `denied` for the allowlist, `rate_limited`
+The `result` column uses the same vocabulary as the executor's rows: `ok` for identity, read and
+edit verbs, `sent` for a message that Telegram accepted, `denied` for the allowlist, `rate_limited`
 for local pacing, `error` for a transport refusal and `refused` for the kill switch or a missing
 `--live`. `detail` carries the reason, and for `say` the **text actually spoken** plus its
 `message_id` — the one field an audit must never lose, because "did the account say anything,
-and what?" has to be answerable after the fact. The write is deliberately **not** wrapped in a
+and what?" has to be answerable after the fact. An `edit` records the same pair with the **new**
+body, since Telegram keeps no visible history and the ledger is the only record of what the card
+said before the next edit overwrote it. The write is deliberately **not** wrapped in a
 `try/except`, exactly like every `store.audit(...)` call in `executor.py`: a ledger that fails
 must surface loudly rather than let work pass unmonitored, which is what would defeat AC 2's
 monitoring leg in the first place.
@@ -442,6 +454,14 @@ needs a named driver.
 "ضيفها" an in-place edit rather than a second copy dropped at the bottom of
 the topic — which would break "the first message is the catalog".
 
+**Sources are recorded, not rendered.** The canonical textbooks posted into a
+topic are listed in the same JSON under `references`
+(`[{"message_id": …, "source": …, "edition": …}]`), copied verbatim from the
+caption that shipped (`مصدر مادة` / `الطبعة`). The field is a *validated*
+ledger — a half-filled entry is refused — and it stays out of the card on
+purpose: the card is a caption capped at 1024 characters and already carries
+the chapters, while the sources live in the topic as their own posts.
+
 **A chapter is a lecture file, not a calendar week.** Soft Computing's W02
 spanned two weeks on the timetable but is one lecture in one file, so it is one
 chapter. Never re-derive the list from dates.
@@ -464,13 +484,21 @@ answers `duplicate` — nothing is posted twice — while a changed card is a re
 shipping one Telegram would truncate: a caption is capped far below the 4096
 text limit, and the card is a caption.
 
-**Verify live, not only with the suite.** Read the card back over MTProto and
-check three things: the message is still the *first* of its topic (a re-push
-that published instead of editing would put a copy at the bottom), the link
-entities point at the ids you meant, and `pinned`/`edit_date` reflect what you
-expect. One naming trap worth knowing: `edit` takes exactly one of `--text`
-and `--caption`, with `--html` to parse markup — the card is media, so it must
-be `--caption`, and `editMessageText` aimed at a document fails.
+**Verify live, not only with the suite.** `tools/tg_verify.py --live` is the
+permanent form of that check: it reads topics 84–89 over MTProto and prints
+`ALL CHECKS PASSED` or the failing labels. It asserts the card is still the
+*first* message of its topic (a re-push that published instead of editing would
+leave a copy at the bottom) and is pinned, that the link entities point at the
+ids you meant, that every chapter and source post exists, and that every
+display filename is within the 62-byte budget. It is strictly read-only, exits
+`1` on any failure, and refuses without `--live`.
+
+One naming trap worth knowing: the **bot's** `edit` takes exactly one of
+`--text` and `--caption`, with `--html` to parse markup — the card is media, so
+it must be `--caption`, and `editMessageText` aimed at a document fails. Under
+the current model an in-place card refresh is done by the **spare** account
+instead (`human --verb edit --message-id … --text …`), because a message can
+only be edited by its own sender.
 
 Placeholder PDFs live under `00_STUDIO_HUB/telegram/catalog/placeholders/`,
 one blank A4 page each, named after the subject key. They are replaced — not

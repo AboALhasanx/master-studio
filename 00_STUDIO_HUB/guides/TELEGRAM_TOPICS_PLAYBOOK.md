@@ -24,9 +24,13 @@
 `◇ التقدم والتحليلات` (91) and `◇ الأدوات` (92) were **closed then deleted
 2026-10-02** and removed from `structure.STRUCTURE`, so a future `structure`
 run cannot recreate them; their registry keys (`70-Exams-and-MCQ`,
-`71-Progress-Analytics`, `90-Toolbox`) stay so an old command resolves to a
-clear *unbound* instead of a topic that silently no longer exists. Quiz links
-now go to the **subject topic** they belong to.
+`71-Progress-Analytics`, `90-Toolbox`) stay seeded but **unbound** —
+`registry.RETIRED_SUBJECTS` clears any stale coordinates on every seeded load
+*and* `resolve()` refuses them, so an old command fails with a clear *unbound*
+instead of a topic that silently no longer exists. (Until 2026-10-03 the file
+still held threads 90/91/92 while four separate comments promised otherwise —
+see `tests/test_telegram_gateway.py`.) Quiz links now go to the **subject
+topic** they belong to.
 
 `99-Chat` stays a registry key but is **unbound** (no topic) — `محادثة` (id 1, the undeletable General) is the chat room. History: the 2026-09-28 layout used numbered emoji names (`01 🛡 …`); the 2026-10-01 rebuild removed all numbers and emoji and re-published the catalog cards as each topic's first message (see `sessions/2026-10-01.md`).
 

@@ -23,7 +23,7 @@ from typing import Any
 
 from .errors import RegistryMiss, UnboundTopic
 
-__all__ = ["Registry", "SEED_SUBJECTS", "DEFAULT_REGISTRY_PATH"]
+__all__ = ["Registry", "RETIRED_SUBJECTS", "SEED_SUBJECTS", "DEFAULT_REGISTRY_PATH"]
 
 DEFAULT_REGISTRY_PATH = Path(__file__).with_name("registry.json")
 
@@ -41,6 +41,19 @@ SEED_SUBJECTS: list[tuple[str, str]] = [
     ("70-Exams-and-MCQ", "Quiz links, exam booklets, results."),
     ("71-Progress-Analytics", "Weekly reports, mastery, review queue."),
 ]
+
+#: Subjects whose topics were closed then deleted on 2026-10-02. Their keys
+#: stay seeded — so an old command fails with a clear *unbound*, not an
+#: *unknown* that reads like a typo — but they must **never** resolve: the
+#: threads they used to name (90/91/92) no longer exist, and a stale command
+#: that silently posted into one would vanish into a deleted topic. Both
+#: :meth:`Registry.seed` and :meth:`Registry.resolve` enforce that, because a
+#: promise kept only in a docstring is not kept at all.
+RETIRED_SUBJECTS: tuple[str, ...] = (
+    "70-Exams-and-MCQ",
+    "71-Progress-Analytics",
+    "90-Toolbox",
+)
 
 
 class Registry:
@@ -82,6 +95,18 @@ class Registry:
                     "thread_id": None,
                     "topic_name": None,
                 }
+                changed = True
+        # A retired key stays *seeded* but must not stay *bound*: its topic is
+        # gone, so any coordinates still in the file are stale facts pointing
+        # at a deleted thread. Clearing them here makes the promise hold for
+        # every future ``Registry(...)`` load, not just for the one file that
+        # happened to be repaired by hand (found live 2026-10-03: the three
+        # keys still resolved to threads 90/91/92).
+        for subject in RETIRED_SUBJECTS:
+            entry = self._data["subjects"].get(subject)
+            if entry and (entry.get("chat_id") is not None
+                          or entry.get("thread_id") is not None):
+                entry.update({"chat_id": None, "thread_id": None})
                 changed = True
         if changed and self.path.parent.exists():
             self.save()
@@ -127,6 +152,15 @@ class Registry:
     def resolve(self, subject: str) -> dict[str, Any]:
         """Return bound coordinates or raise (never guess a destination)."""
         entry = self.get(subject)
+        if subject in RETIRED_SUBJECTS:
+            # Defence in depth: even a hand-edited registry that rebinds a
+            # retired key cannot resurrect the topic. This is the one place
+            # that decides where a message goes, so that is where the rule
+            # belongs.
+            raise UnboundTopic(
+                f"subject {subject!r} was retired on 2026-10-02 — its topic "
+                "was deleted, so there is no destination to resolve"
+            )
         if entry.get("chat_id") is None or entry.get("thread_id") is None:
             raise UnboundTopic(
                 f"subject {subject!r} is not bound yet — bind it at gate "

@@ -238,15 +238,18 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--verb", required=True, choices=list(HUMAN_VERBS),
                    help="what to do with the spare account")
     p.add_argument("--chat", type=int, dest="chat_id",
-                   help="target chat id (required for read and say)")
-    p.add_argument("--text", help="message body (verb say) or caption "
+                   help="target chat id (required for read, say, edit, "
+                        "sendfile)")
+    p.add_argument("--message-id", type=int, dest="message_id",
+                   help="message to rewrite in place (verb edit)")
+    p.add_argument("--text", help="message body (verbs say, edit) or caption "
                                   "(verb sendfile)")
     p.add_argument("--file", help="local file to upload (verb sendfile)")
     p.add_argument("--filename", help="display name Telegram shows for "
                                       "--file (verb sendfile)")
     p.add_argument("--thread", type=int, dest="thread_id",
-                   help="forum topic id to post into (verb say); omit to post "
-                        "to the general topic")
+                   help="forum topic id to post into (verbs say, sendfile); "
+                        "omit to post to the general topic")
     p.add_argument("--limit", type=int, default=10,
                    help="how many messages to fetch (verb read, default 10)")
     p.add_argument("--phone", help="spare account number in international "
@@ -536,6 +539,7 @@ def _run_human(args: argparse.Namespace) -> int:
     req = HumanRequest(
         verb=args.verb,
         chat_id=getattr(args, "chat_id", None),
+        message_id=getattr(args, "message_id", None),
         text=getattr(args, "text", None),
         limit=getattr(args, "limit", 10),
         phone=getattr(args, "phone", None),
@@ -603,6 +607,11 @@ def _human_detail(req, result: dict) -> str:
     """
     payload = result.get("result")
     if req.verb == "say" and isinstance(payload, dict):
+        return f"message_id={payload.get('message_id')} text={req.text}"
+    if req.verb == "edit" and isinstance(payload, dict):
+        # The new body is the one thing an edit must never lose: Telegram
+        # keeps no visible history, so the ledger is the only record of what
+        # the card said before the next edit overwrites it again.
         return f"message_id={payload.get('message_id')} text={req.text}"
     if req.verb == "sendfile" and isinstance(payload, dict):
         return (f"message_id={payload.get('message_id')} "

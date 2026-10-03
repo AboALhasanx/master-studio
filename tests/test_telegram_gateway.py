@@ -43,7 +43,7 @@ from telegram.errors import (  # noqa: E402
 from telegram.structure import STRUCTURE, topic_link  # noqa: E402
 from telegram.links import parse_message_link  # noqa: E402
 from telegram.publisher import TEXT_LIMIT, escape_html, split_message, split_once  # noqa: E402
-from telegram.registry import SEED_SUBJECTS  # noqa: E402
+from telegram.registry import RETIRED_SUBJECTS, SEED_SUBJECTS  # noqa: E402
 from telegram.schema import idempotency_key  # noqa: E402
 from telegram.store import ChatRateLimiter, Store, backoff_delay  # noqa: E402
 from telegram.transport import (  # noqa: E402
@@ -268,6 +268,50 @@ def test_unbound_error_points_at_chat_for_the_general_topic(registry):
     with pytest.raises(UnboundTopic) as exc:
         registry.resolve("00-Start-Here")
     assert "--chat" in str(exc.value)
+
+
+def test_retired_keys_stay_seeded_but_never_resolve(registry):
+    """The three utility topics were deleted on 2026-10-02, so their keys must
+    still *exist* — an old command should fail as *unbound*, not *unknown*,
+    which reads like a typo — yet must never name a destination again.
+
+    Found live 2026-10-03: ``resolve('70-Exams-and-MCQ')`` still returned
+    thread 90, a topic that no longer exists, while three playbooks, a
+    docstring here and the code comment in ``structure.py`` all promised a
+    clear *unbound*. The claim was repeated four times and tested zero times.
+    """
+    for retired in RETIRED_SUBJECTS:
+        assert retired in registry.subjects(), "the key must survive the topic"
+        with pytest.raises(UnboundTopic):
+            registry.resolve(retired)
+
+
+def test_a_retired_key_cannot_be_resurrected_by_hand(registry):
+    """``bind`` is not a back door: the resolve guard refuses even a registry
+    that was edited to point a retired key at a live thread."""
+    registry.bind("90-Toolbox", -1001, 6)
+    with pytest.raises(UnboundTopic):
+        registry.resolve("90-Toolbox")
+
+
+def test_seed_clears_stale_coordinates_on_a_retired_key(tmp_path):
+    """A registry file written before the deletion still carries threads
+    90/91/92. Loading it with ``seed`` must clean and persist them, so the
+    promise holds for the file the vault actually uses, not only a fresh one."""
+    path = tmp_path / "registry.json"
+    Registry(path)                                   # seeds and writes
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    raw["subjects"]["90-Toolbox"].update({"chat_id": -1001, "thread_id": 92})
+    raw["subjects"]["70-Exams-and-MCQ"].update(
+        {"chat_id": -1001, "thread_id": 90})
+    path.write_text(json.dumps(raw, ensure_ascii=False), encoding="utf-8")
+
+    reg = Registry(path)                             # seed=True
+    for key in ("90-Toolbox", "70-Exams-and-MCQ"):
+        assert reg.get(key)["chat_id"] is None
+        assert reg.get(key)["thread_id"] is None
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    assert saved["subjects"]["90-Toolbox"]["thread_id"] is None
 
 
 # --------------------------------------------------------------------------- store

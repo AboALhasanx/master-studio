@@ -167,6 +167,42 @@ class TestPayloadShape:
         with pytest.raises(CatalogError):
             Catalog.from_dict("x", spec(translation=" "))
 
+    def test_references_default_to_empty_for_every_older_card(self):
+        # The field was added after the first cards shipped; absence must mean
+        # "no sources recorded", never a structural error.
+        assert Catalog.from_dict("x", spec()).references == ()
+        assert Catalog.from_dict("x", spec(references=[])).references == ()
+
+    def test_a_reference_records_the_post_and_its_edition(self):
+        cat = Catalog.from_dict("x", spec(references=[
+            {"message_id": 210, "source": "Software Engineering — Ian "
+                                          "Sommerville", "edition": "9th Edition"},
+        ]))
+        assert len(cat.references) == 1
+        ref = cat.references[0]
+        assert ref.message_id == 210
+        assert ref.source.endswith("Sommerville")
+        assert ref.edition == "9th Edition"
+
+    def test_a_reference_must_be_a_list_of_objects(self):
+        with pytest.raises(CatalogError):
+            Catalog.from_dict("x", spec(references="210"))
+        with pytest.raises(CatalogError):
+            Catalog.from_dict("x", spec(references=[210]))
+
+    def test_a_reference_missing_a_field_is_a_structural_error(self):
+        for drop in ("message_id", "source", "edition"):
+            entry = {"message_id": 210, "source": "S", "edition": "E"}
+            entry.pop(drop)
+            with pytest.raises(CatalogError) as exc:
+                Catalog.from_dict("x", spec(references=[entry]))
+            assert drop in str(exc.value)
+
+    def test_a_reference_must_point_at_a_positive_post(self):
+        with pytest.raises(CatalogError):
+            Catalog.from_dict("x", spec(references=[
+                {"message_id": 0, "source": "S", "edition": "E"}]))
+
 
 # -------------------------------------------------------------- render ----
 
@@ -503,6 +539,43 @@ class TestShippedCards:
         assert all(chat is None for _key, _cat, chat in rows)
 
 
+# ------------------------------------------------------- reference ledger --
+
+
+class TestReferenceLedger:
+    """Every published source book is tracked by the post it lives in.
+
+    The 13 textbooks were posted into topics 86/87/88/89 on 2026-10-02; each
+    catalog records the post ids beside the source and edition from its
+    caption, so the JSON — not a chat scroll — is the inventory. The editions
+    were read out of each PDF, so a mismatch here is a real defect, not a
+    cosmetic one.
+    """
+
+    def test_the_four_subjects_that_received_sources_carry_them(self):
+        by_key = {key: cat for key, cat, _chat in shipped()}
+        for key in ("03-Data-Mining", "04-Advanced-Software-Eng",
+                    "05-Soft-Computing", "06-Artificial-Intelligence"):
+            assert by_key[key].references, f"{key} lost its sources"
+        # ...and a subject with no published source says so honestly.
+        for key in ("01-Cyber-Security", "02-English-Language"):
+            assert by_key[key].references == ()
+
+    def test_the_ledger_covers_all_thirteen_posts(self):
+        ids = [ref.message_id for _k, cat, _c in shipped()
+               for ref in cat.references]
+        assert len(ids) == 13, f"expected 13 source posts, got {len(ids)}"
+        assert len(set(ids)) == len(ids), "a post is listed twice"
+
+    def test_every_reference_is_traceable(self):
+        for key, cat, _chat in shipped():
+            for ref in cat.references:
+                assert ref.message_id > 0, key
+                assert ref.source.strip() and ref.edition.strip(), key
+                assert "<" not in ref.source, key          # never HTML-leaking
+                assert "\n" not in ref.source + ref.edition, key
+
+
 # ------------------------------------------------------------ topic titles --
 
 
@@ -526,8 +599,10 @@ class TestTopicTitles:
         """The three utility topics were closed then deleted on 2026-10-02.
 
         Keeping them out of ``STRUCTURE`` is what stops a future ``structure``
-        run from recreating them; the registry keys stay so an old command
-        resolves to a clear *unbound* rather than *unknown*.
+        run from recreating them. The other half of the promise — that their
+        registry keys still resolve to a clear *unbound* — lives in
+        ``registry.RETIRED_SUBJECTS`` and is enforced and tested in
+        ``test_telegram_gateway.py``.
         """
         keys = {s.subject for s in STRUCTURE}
         for retired in ("70-Exams-and-MCQ", "71-Progress-Analytics",
