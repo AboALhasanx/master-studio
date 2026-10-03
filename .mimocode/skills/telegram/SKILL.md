@@ -100,7 +100,7 @@ python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
 
 # one file (byte-exact document is the default)
 python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
-    publish --subject 04-Advanced-Software-Eng --file "08_PDF_Exports/Week_02_Master_Lecture.pdf" \
+    publish --subject 04-Advanced-Software-Eng --file "03_Study_Notes/Week_02_Master_Lecture.pdf" \
     --caption "المحاضرة المدمجة — 146 صفحة"
 
 # album: repeat --file 2-10 times, and pick a --kind
