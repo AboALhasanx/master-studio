@@ -16,7 +16,7 @@ Christakis, N. A., & Fowler, J. H. (2010). *Social Network Sensors for Early Det
 | الصفحات | 8 صفحات (تحت سقف 15) |
 | DOI | 10.1371/journal.pone.0012948 |
 | الرابط المستقر | https://doi.org/10.1371/journal.pone.0012948 |
-| ملف PDF المحلي | `02_Raw_Materials/social_network_sensors_PLOS2010.pdf` (مجلد Raw_Materials مستثنى من الرفع للريبو العام — محلي فقط) |
+| ملف PDF المحلي | `04_Academic_Papers/social_network_sensors_PLOS2010.pdf` |
 
 ## ليش هالورقة تنطبق على شروطك
 - **مجال علوم الحاسوب:** علم الشبكات (Network Science) — تحليل الرسوم (Graph Mining) ✓

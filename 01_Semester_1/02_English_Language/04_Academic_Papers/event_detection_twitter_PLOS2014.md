@@ -16,7 +16,7 @@
 **DOI:** `10.1371/journal.pone.0097807`  *(verified resolvable via Crossref)*
 **Pages:** 10  *(verified via PyMuPDF — under the 15-page limit)*
 **Open-access PDF:** https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0097807
-**Local PDF (vault):** `02_Raw_Materials/event_detection_twitter_PLOS2014.pdf`
+**Local PDF (vault):** `04_Academic_Papers/event_detection_twitter_PLOS2014.pdf`
 
 ---
 
