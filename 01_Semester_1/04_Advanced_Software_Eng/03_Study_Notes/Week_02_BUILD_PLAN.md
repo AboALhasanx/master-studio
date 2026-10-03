@@ -231,16 +231,16 @@ These are binding. The student can hold the agent to any of them by quoting this
 | # | File | Status |
 |:---:|:---|:---|
 | — | **This plan** | **done** |
-| 01 | SDLC Fundamentals | **DONE** — `Week_02_File_01_SDLC_Fundamentals.md` |
-| 02 | Build & Fix and the Waterfall Family | **DONE** — `Week_02_File_02_BuildFix_and_Waterfall_Family.md` |
-| 03 | Prototyping and the Evolutionary Model | **DONE** — `Week_02_File_03_Prototyping_and_Evolutionary.md` |
-| 04 | Incremental Development | **DONE** — `Week_02_File_04_Incremental_Development.md` |
-| 05 | RAD | **DONE** — `Week_02_File_05_RAD.md` |
-| 06 | The Spiral Model | **DONE** — `Week_02_File_06_The_Spiral_Model.md` |
-| 07 | The Unified Process | **DONE** — `Week_02_File_07_The_Unified_Process.md` |
-| 08 | Agile, XP and Scrum | **DONE** — `Week_02_File_08_Agile_XP_Scrum.md` |
-| 09 | Choosing a Model | **DONE** — `Week_02_File_09_Choosing_A_Model.md` |
-| 10 | Master Comparison and Exam Bank | **DONE** — `Week_02_File_10_Master_Comparison_and_Exam_Bank.md` |
+| 01 | SDLC Fundamentals | **DONE** — `Week_02_Unit_01_SDLC_Fundamentals.md` |
+| 02 | Build & Fix and the Waterfall Family | **DONE** — `Week_02_Unit_02_BuildFix_and_Waterfall_Family.md` |
+| 03 | Prototyping and the Evolutionary Model | **DONE** — `Week_02_Unit_03_Prototyping_and_Evolutionary.md` |
+| 04 | Incremental Development | **DONE** — `Week_02_Unit_04_Incremental_Development.md` |
+| 05 | RAD | **DONE** — `Week_02_Unit_05_RAD.md` |
+| 06 | The Spiral Model | **DONE** — `Week_02_Unit_06_The_Spiral_Model.md` |
+| 07 | The Unified Process | **DONE** — `Week_02_Unit_07_The_Unified_Process.md` |
+| 08 | Agile, XP and Scrum | **DONE** — `Week_02_Unit_08_Agile_XP_Scrum.md` |
+| 09 | Choosing a Model | **DONE** — `Week_02_Unit_09_Choosing_A_Model.md` |
+| 10 | Master Comparison and Exam Bank | **DONE** — `Week_02_Unit_10_Master_Comparison_and_Exam_Bank.md` |
 | — | **Merged document** | only after all ten exist |
 
 ---

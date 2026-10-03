@@ -51,9 +51,9 @@ Mall names the stages as the software moves through them:
 
 | Stage | Mall's wording |
 |:---|:---|
-| **Inception** | *"This stage where the customer feels a need for the software and forms rough ideas about the required features is known as the **inception stage**."* |
+| **Inception** | *"This stage where the customer feels a need for the software and forms rough ideas about the required features is known as the **inception stage*." |
 | **Development stages** | *"Starting with the inception stage, a software evolves through a series of identifiable stages (also called phases) on account of the development activities carried out by the developers, until it is fully developed and is released to the customers."* |
-| **Operation (also called maintenance)** | *"Once installed and made available for use, the users start to use the software. This signals the start of the **operation (also called maintenance) phase**."* |
+| **Operation (also called maintenance)** | *"Once installed and made available for use, the users start to use the software. This signals the start of the **operation (also called maintenance) phase*." |
 | **Retirement** | *"Finally the software is **retired**, when the users do not find it any longer useful…"* |
 
 **المعنى بالعربية لمراحل دورة الحياة:**
@@ -71,7 +71,7 @@ Mall names the stages as the software moves through them:
 
 This is the single most consequential sentence in the file:
 
-> **Verbatim (Mall p.67):** *"At this stage, the customers are usually **not clear about all the features that would be needed**, neither can they **completely describe the identified features in concrete terms**, and can only **vaguely describe what is needed**."*
+> **Verbatim (Mall p.67):** *"At this stage, the customers are usually **not clear about all the features that would be needed**, neither can they **completely describe the identified features in concrete terms**, and can only **vaguely describe what is needed*."
 
 **التحليل الهندسي لأهمية البداية المبهمة:** العميل بمرحلة البداية:
 - **مو واضح** شنو يريد كل الميزات،
@@ -116,7 +116,7 @@ This is the single most consequential sentence in the file:
 
 ### 1.6 The formal definition
 
-> **Verbatim (Mall p.68):** *"The **life cycle of a software** represents the **series of identifiable stages through which it evolves during its life time**."*
+> **Verbatim (Mall p.68):** *"The **life cycle of a software** represents the **series of identifiable stages through which it evolves during its life time*."
 
 **الشرح المفاهيمي:** التعريف الرسمي: **سلسلة مراحل قابلة للتمييز يمر بيها البرنامج خلال عمره.**
 
@@ -128,11 +128,11 @@ This is the single most consequential sentence in the file:
 
 ### 2.1 The definition
 
-> **Verbatim (Sommerville p.45):** *"A **software process** is a **set of related activities that leads to the production of a software product**."*
+> **Verbatim (Sommerville p.45):** *"A **software process** is a **set of related activities that leads to the production of a software product*."
 
 And the qualification that matters for the rest of the series:
 
-> **Verbatim (Sommerville p.45):** *"These activities may involve the development of software from scratch in a standard programming language like Java or C. **However, business applications are not necessarily developed in this way.** New business software is now often developed by **extending and modifying existing systems** or by **configuring and integrating off-the-shelf software or system components**."*
+> **Verbatim (Sommerville p.45):** *"These activities may involve the development of software from scratch in a standard programming language like Java or C. **However, business applications are not necessarily developed in this way.** New business software is now often developed by **extending and modifying existing systems** or by **configuring and integrating off-the-shelf software or system components*."
 
 **الشرح المفاهيمي:** الـ**software process** = **مجموعة أنشطة مترابطة تؤدي لمنتج برمجي**.
 
@@ -140,7 +140,7 @@ And the qualification that matters for the rest of the series:
 - **توسيع وتعديل أنظمة موجودة**، أو
 - **تهيئة ودمج برامج أو مكوّنات جاهزة.**
 
-**ليش يهمنا؟** لأنه **يبرّر الملف 03** (التطوري) و**الملف 05** (RAD، وأساسه **إعادة استخدام الكود**). يعني الفكرة اللي تنبني عليها RAD **مذكورة من أول فصل**.
+**ليش يهمنا؟** لأنه **يبرّر النموذج التطوري (Unit 03)** و**نموذج RAD (Unit 05، وأساسه إعادة استخدام الكود)**. يعني الفكرة اللي تنبني عليها RAD **مذكورة من أول فصل**.
 
 ### 2.2 The four fundamental activities — the invariant
 
@@ -157,7 +157,7 @@ And the qualification that matters for the rest of the series:
 
 And they are not atomic:
 
-> **Verbatim (Sommerville p.45):** *"In practice, of course, they are complex activities in themselves and include sub-activities such as **requirements validation**, **architectural design**, **unit testing**, etc. There are also supporting process activities such as **documentation** and **software configuration management**."*
+> **Verbatim (Sommerville p.45):** *"In practice, of course, they are complex activities in themselves and include sub-activities such as **requirements validation**, **architectural design**, **unit testing**, etc. There are also supporting process activities such as **documentation** and **software configuration management*."
 
 **التحليل المفاهيمي للأنشطة الأربعة:** أربعة أنشطة **موجودة بكل عملية مهما كان شكلها**:
 
@@ -178,7 +178,7 @@ And they are not atomic:
 
 ## 3. What a process description actually contains
 
-> **Verbatim (Sommerville p.45):** *"When we describe and discuss processes, we usually talk about the activities in these processes such as specifying a data model, designing a user interface, etc., and the ordering of these activities. **However, as well as activities, process descriptions may also include:**"*
+> **Verbatim (Sommerville p.45):** *"When we describe and discuss processes, we usually talk about the activities in these processes such as specifying a data model, designing a user interface, etc., and the ordering of these activities. **However, as well as activities, process descriptions may also include:*"
 
 | Element | Verbatim |
 |:---|:---|
@@ -226,11 +226,11 @@ This is the part most students blur. Mall draws **two distinct distinctions** th
 
 > **Verbatim (Mall p.69):** *"A **methodology**, on the other hand, prescribes a **set of steps for carrying out a specific life cycle activity**. It may also include the **rationale and philosophical assumptions** behind the set of steps through which the activity is accomplished."*
 
-> **Verbatim (Mall p.69):** *"A process usually describes **all the activities starting from the inception of a software to its maintenance and retirement stages**, or at least a chunk of activities in the life cycle. It also recommends specific methodologies for carrying out each activity. A methodology, in contrast, describes the steps to carry out **only a single or at best a few individual activities**."*
+> **Verbatim (Mall p.69):** *"A process usually describes **all the activities starting from the inception of a software to its maintenance and retirement stages**, or at least a chunk of activities in the life cycle. It also recommends specific methodologies for carrying out each activity. A methodology, in contrast, describes the steps to carry out **only a single or at best a few individual activities*."
 
 Mall's own example:
 
-> **Verbatim (Mall p.69):** *"For example, a design process may recommend that in the design stage, the high-level design activity be carried out using **Hatley and Pirbhai's structured analysis and design methodology**."*
+> **Verbatim (Mall p.69):** *"For example, a design process may recommend that in the design stage, the high-level design activity be carried out using **Hatley and Pirbhai's structured analysis and design methodology*."
 
 **المقارنة التفصيلية بين العملية والمنهجية:**
 
@@ -270,21 +270,21 @@ Mall's own example:
 
 ### 5.1 The stated advantage
 
-> **Verbatim (Mall p.69):** *"The primary advantage of using a development process is that it encourages development of software in a **systematic and disciplined manner**. Adhering to a process is especially important to the development of **professional software needing team effort**."*
+> **Verbatim (Mall p.69):** *"The primary advantage of using a development process is that it encourages development of software in a **systematic and disciplined manner**. Adhering to a process is especially important to the development of **professional software needing team effort*."
 
 > **Verbatim (Mall p.70):** *"When software is developed by a team rather than by an individual programmer, **use of a life cycle model becomes indispensable** for successful completion of the project."*
 
-> **Verbatim (Mall p.70):** *"Software development organisations have realised that adherence to a suitable life cycle model helps to produce **good quality software** and that helps **minimise the chances of time and cost overruns**."*
+> **Verbatim (Mall p.70):** *"Software development organisations have realised that adherence to a suitable life cycle model helps to produce **good quality software** and that helps **minimise the chances of time and cost overruns*."
 
 **التحليل الهندسي لأهمية العملية:** الفائدة الأساسية: **تطوير منهجي ومنضبط**. والنتيجتان الملموستان:
 1. **جودة أفضل**،
 2. **تقليل احتمال تجاوز الوقت والكلفة.**
 
-**واحفظ الكلمة القوية:** *"**indispensable**"* — **لا غنى عنه** للشغل الفريقي. مو «مفيد» — **لا غنى عنه**.
+**واحفظ الكلمة القوية:** "*indispensable*" — **لا غنى عنه** للشغل الفريقي. مو «مفيد» — **لا غنى عنه**.
 
 ### 5.2 programming-in-the-small versus programming-in-the-large
 
-> **Verbatim (Mall p.70–71):** *"**Programming-in-the-small** refers to development of a **toy program by a single programmer**. Whereas **programming-in-the-large** refers to development of a **professional software through team effort**."*
+> **Verbatim (Mall p.70–71):** "*Programming-in-the-small** refers to development of a **toy program by a single programmer**. Whereas **programming-in-the-large** refers to development of a **professional software through team effort*."
 
 > **Verbatim (Mall p.71):** *"While development of a software of the former type could succeed even while an individual programmer uses a **build and fix** style of development, use of a **suitable SDLC is essential** for a professional software development project involving team effort to succeed."*
 
@@ -301,7 +301,7 @@ Mall's own example:
 
 ### 5.3 What actually goes wrong without a process
 
-> **Verbatim (Mall p.70):** *"Suppose, a software development problem has been divided into several parts and these parts are assigned to the team members. From then on, suppose the team members are allowed the freedom to develop the parts assigned to them in whatever way they like. It is possible that **one member might start writing the code for his part while making assumptions about the input results required from the other parts**, **another might decide to prepare the test documents first**, and **some other developer might start to carry out the design for the part assigned to him**. In this case, severe problems can arise in **interfacing the different parts** and in **managing the overall development**."*
+> **Verbatim (Mall p.70):** *"Suppose, a software development problem has been divided into several parts and these parts are assigned to the team members. From then on, suppose the team members are allowed the freedom to develop the parts assigned to them in whatever way they like. It is possible that **one member might start writing the code for his part while making assumptions about the input results required from the other parts**, **another might decide to prepare the test documents first**, and **some other developer might start to carry out the design for the part assigned to him**. In this case, severe problems can arise in **interfacing the different parts** and in **managing the overall development*."
 
 > **Verbatim (Mall p.70):** *"Therefore, ad hoc development turns out to be is a **sure way to have a failed project**. Believe it or not, this is exactly what has caused many project failures in the past!"*
 
@@ -319,7 +319,7 @@ Mall's own example:
 
 ### 5.4 The one-sentence version of the argument
 
-> **Verbatim (Mall p.70):** *"When a software is developed by a team, it is necessary to have a **precise understanding among the team members as to—when to do what**. In the absence of such an understanding, if each member at any time would do whatever activity he feels like doing. This would be an **open invitation to developmental chaos and project failure**."*
+> **Verbatim (Mall p.70):** *"When a software is developed by a team, it is necessary to have a **precise understanding among the team members as to—when to do what**. In the absence of such an understanding, if each member at any time would do whatever activity he feels like doing. This would be an **open invitation to developmental chaos and project failure*."
 
 **خلاصة الحجة في عبارة واحدة:**
 
@@ -333,11 +333,11 @@ Mall's own example:
 
 ## 6. Why the process must be *documented*
 
-> **Verbatim (Mall p.71):** *"It is **not enough** for an organisation to just have a well-defined development process, but the development process **needs to be properly documented**."*
+> **Verbatim (Mall p.71):** *"It is **not enough** for an organisation to just have a well-defined development process, but the development process **needs to be properly documented*."
 
 > **Verbatim (Mall p.71):** *"In this case, its developers develop **only an informal understanding** of the development process. An informal understanding of the development process among the team members can create several problems during development."*
 
-> **Verbatim (Mall p.71):** *"A documented process model ensures that **every activity in the life cycle is accurately defined**. Also, wherever necessary the **methodologies** for carrying out the respective activities are described. **Without documentation, the activities and their ordering tend to be loosely defined, leading to confusion and misinterpretation by different teams in the organisation.**"*
+> **Verbatim (Mall p.71):** *"A documented process model ensures that **every activity in the life cycle is accurately defined**. Also, wherever necessary the **methodologies** for carrying out the respective activities are described. **Without documentation, the activities and their ordering tend to be loosely defined, leading to confusion and misinterpretation by different teams in the organisation.*"
 
 > **Verbatim (Mall p.71):** *"For example, **code reviews may informally and inadequately be carried out** since there is no documented methodology as to how the code review should be done. Another difficulty is that for loosely defined activities, the developers tend to use their **subjective judgments**. As an example, unless it is explicitly prescribed, the team members would subjectively decide as to **whether the test cases should be designed just after the requirements phase, after the design phase, or after the coding phase**. Also, they would debate **whether the test cases should be documented at all** and the rigour with it should be documented."*
 
@@ -381,7 +381,7 @@ Mall's own example:
 | **Critical systems** | عملية **منظّمة جداً** |
 | **Business systems بمتطلبات سريعة التغيّر** | عملية **أقل رسمية وأكثر مرونة** |
 
-**بذرة الملف 09** — احفظ الجدول، لأنه يجي بصيغة «أي نموذج يناسب هذا المشروع؟».
+**بذرة وحدة اختيار النموذج (Unit 09)** — احفظ الجدول، لأنه يجي بصيغة «أي نموذج يناسب هذا المشروع؟».
 
 ---
 
@@ -402,7 +402,7 @@ And Mall states the same concern from the historical side (p.67):
 
 Mall also lays out his chapter as a narrative (p.67):
 
-> **Verbatim:** *"…we discuss a few derivatives of this model. Subsequently we discuss the **spiral model that generalises various life cycle models**. Finally, we discuss a few recently proposed life cycle models that are categorized under the umbrella term **agile model**."*
+> **Verbatim:** *"…we discuss a few derivatives of this model. Subsequently we discuss the **spiral model that generalises various life cycle models**. Finally, we discuss a few recently proposed life cycle models that are categorized under the umbrella term **agile model*."
 
 **الرابط الفلسفي بين النماذج العشرة:** Sommerville يحدد هدف الفصل بخمسة أهداف، وأهم اثنين: **ثلاثة نماذج عملية عامة** ومتى تُستخدم، و**ليش لازم تُنظَّم العمليات حتى تتحمّل التغيّرات**.
 
@@ -468,10 +468,10 @@ Mall also lays out his chapter as a narrative (p.67):
 > **Small** = a *"toy program by a single programmer"*; **large** = *"professional software through team effort."* For small work a build-and-fix style can succeed; for large work *"use of a suitable SDLC is essential."* So the answer to "is an SDLC always needed?" is **no — it depends on scale**. (Mall p.70–71)
 
 **8. Describe what goes wrong when a team has no process. Where does the failure actually appear?**
-> Members work to their own assumptions: one writes code *"while making assumptions about the input results required from the other parts"*, another prepares test documents first, another starts designing. *"Severe problems can arise in **interfacing the different parts** and in **managing the overall development**."* The failure lands on **coordination**, not on coding skill. (Mall p.70)
+> Members work to their own assumptions: one writes code *"while making assumptions about the input results required from the other parts"*, another prepares test documents first, another starts designing. *"Severe problems can arise in **interfacing the different parts** and in **managing the overall development*." The failure lands on **coordination**, not on coding skill. (Mall p.70)
 
 **9. State, in one sentence, the understanding a team needs — and what its absence produces.**
-> A *"precise understanding among the team members as to — **when to do what**."* Without it, each member does whatever he feels like, which is *"an open invitation to developmental chaos and project failure."* (Mall p.70)
+> A *"precise understanding among the team members as to — **when to do what*." Without it, each member does whatever he feels like, which is *"an open invitation to developmental chaos and project failure."* (Mall p.70)
 
 **10. Having a process is not enough. What else is required, and why?**
 > It must be **properly documented**. Without documentation the team holds only *"an informal understanding"*, activities and their ordering become *"loosely defined"*, developers fall back on **subjective judgment** (e.g. when to design test cases, or whether to document them at all), and — importantly — an undocumented process signals to the team *"the lack of seriousness on the part of the management."* (Mall p.71)

@@ -346,7 +346,7 @@ This is the core of the file. Mall draws the line explicitly.
 
 **2. سهولة التعامل مع طلبات التغيير** — لأن **ما تُوضع خطط طويلة المدى**. فـ**إعادة العمل المطلوبة أصغر بكثير** بالمقارنة بالنماذج التسلسلية.
 
-**لاحظ التعبير:** *«compared to the **sequential** models»* — يعني Mall يقارن بالكلاسيكي و V-model تحديداً (وهما الوحيدان التسلسليان، بحسب الملف 02 §4.3).
+**لاحظ التعبير:** *«compared to the **sequential** models»* — يعني Mall يقارن بالكلاسيكي و V-model تحديداً (وهما الوحيدان التسلسليان، بحسب وحدة Waterfall (Unit 02 §4.3)).
 
 ### 4.5 The disadvantages
 
