@@ -13,3 +13,11 @@
 - **When promoted:** author +12–20 new scenario questions per bank from the
   matching study notes, lengthen distractors to ±25% of the key, run
   `quiz_balancer.py --strict` until exit 0, student reviews new items first.
+
+## 2. Tool defect: `quiz_balancer.py --strict` rewrites banks in check mode (FOUND 2026-10-03)
+
+- Running `--strict` (no `--fix`, no `--seed`) permuted options in 6 banks
+  in place. Reverted via `git checkout` — verified state restored, suite green.
+- Fix required: check mode must be read-only; any rewrite needs an explicit
+  write flag. Until fixed, run the balancer only on copies, or commit first
+  so `git checkout` can rescue a surprise rewrite.
