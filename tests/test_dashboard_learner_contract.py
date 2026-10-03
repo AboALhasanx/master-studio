@@ -55,6 +55,15 @@ def test_review_rows_parse_with_logged_dates():
         assert row["priority"]
 
 
+def test_emoji_flagged_priority_still_parses():
+    """R11 carries a 🔴 flag before High — the top-priority Integrity item
+    must never go invisible on the dashboard."""
+    learner = dashboard_app.parse_learner_model()
+    integrity = [r for r in learner["review"] if "Integration" in r["concept"]]
+    assert integrity, "Integrity-not-Integration row missing from parse"
+    assert integrity[0]["priority"] == "High"
+
+
 def test_table_headers_never_parsed_as_data():
     learner = dashboard_app.parse_learner_model()
     concepts = [r["concept"] for r in learner["mastered"]]

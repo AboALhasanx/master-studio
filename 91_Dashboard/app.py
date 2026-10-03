@@ -408,7 +408,7 @@ def parse_learner_model():
             "agent": m.group(5),
         })
 
-    for m in re.finditer(r'\|\s*`([^`]+)`\s*\|\s*([^|]+)\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*([^|]+)\|\s*(\w+)\s*\|\s*(\d{4}-\d{2}-\d{2})', text):
+    for m in re.finditer(r'\|\s*`([^`]+)`\s*\|\s*([^|]+)\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*([^|]+)\|\s*[^\w|]*(\w+)[^\w|]*\|\s*(\d{4}-\d{2}-\d{2})', text):
         review.append({
             "subject": m.group(1),
             "concept": m.group(2).strip(),
