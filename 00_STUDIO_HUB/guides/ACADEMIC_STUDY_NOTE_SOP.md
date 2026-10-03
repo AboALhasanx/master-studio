@@ -166,6 +166,13 @@ type: "study compendium — source-derived"
   - Emerald Green Q&A border is on the **LEFT** for English, **RIGHT** for Arabic.
 - **Multi-Viewer Windows File Lock Resolver:** Iteratively finds unlocked filenames (`_new.pdf`, `_v2.pdf`, `_v3.pdf`) if open in Adobe Acrobat or Edge.
 
+### 7.3. PDF Placement Law (no free-floating export folders)
+A PDF lives with what it IS — never in a standalone export dump (`08_PDF_Exports/` folders were deleted vault-wide 2026-10-03 and must not be recreated):
+- Study-material PDF → next to its `.md` in `03_Study_Notes/` (same stem).
+- Seminar-deck PDF → `05_Seminars_&_Slides/` next to its `.md`/`.pptx`.
+- Diagram/figure PDF → `06_Diagrams_&_Mindmaps/` next to its source.
+- QA page-renders and `_new`/`_pass2` lock leftovers are verification temp: trash them, never commit them.
+
 ---
 
 ## 8. Summary Checklist for Incoming Agents
@@ -179,3 +186,4 @@ Before concluding your turn or presenting a study note to the student, verify:
 - [ ] **5. High-Res Vector Diagrams:** No ASCII art in code blocks. High-DPI PNG/SVG used.
 - [ ] **6. Differentiated Q&A Cards:** Retrieval Set formatted for `.qa-card` rendering with emerald borders.
 - [ ] **7. Autonomous Compilation:** `pdf_exporter.py` executed in the background; verified output delivered with zero CLI friction for the candidate.
+- [ ] **8. PDF Placement:** output PDF sits with its kind (`03` material / `05` seminar / `06` diagram); no `08_PDF_Exports` recreated.
