@@ -36,7 +36,7 @@ the spare via MTProto when the Bot API socket is dropping — proven live when
 | 02 إنجليزي | 85 | `187` | `188` (1) | — | 12.7 MB |
 | 03 تنقيب البيانات | 86 | `190` | `191–195` (5) | `214–215` (2) | 101 pp / 1.25 MB |
 | 04 هندسة برمجيات | 87 | `196` | `197–199, 272` (4 في الكارت؛ `273–278` منشورة بلا دمج) | `210–213` (4) | 459 pp / 2.26 MB |
-| 05 حوسبة ناعمة | 88 | `201` | `202–203` (2) | `216–220` (5) | 144 pp / 5.10 MB |
+| 05 حوسبة ناعمة | 88 | `201` | `202–203, 281` (3) | `216–220` (5) | 144 pp / 5.10 MB |
 | 06 ذكاء اصطناعي | 89 | `205` | `206, 240` (2) | `221–222` (2) | 67 pp / 798 KB |
 
 Topic names: **`◆ <subject>` — no numeric prefix, no emoji**. The three
@@ -157,7 +157,12 @@ with `editMessageMedia` — same message id, pin and position preserved
   per-link icons, notes sections, any emoji, any URL outside its `<a>`.
 * Chapter captions (house style): `● <subject>` /
   `● الجابتر <Ordinal>   ①` / `● <note>` / blank /
+  `ملخص الجابتر : <a href=…>اضغط هنا</a>` (only when the subject has a
+  summary file — links its message id; added 2026-10-05 for SC) / blank /
   `الفهرس : <a href=…>كتالوج المادة</a>`. No `DOWNLOAD` promo line.
+  Summary posts themselves carry `● ملخص الجابتر <Ordinal>   ①` + the
+  card link only — **never a slide range** (the student dropped ranges:
+  "ما تحتاج").
 
 ## 7. Verification Gate (before any commit)
 
