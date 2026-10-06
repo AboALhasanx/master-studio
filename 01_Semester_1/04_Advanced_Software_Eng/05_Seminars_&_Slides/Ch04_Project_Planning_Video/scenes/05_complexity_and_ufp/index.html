@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Master Studio: Scene 05 — Complexity Multipliers & UFP Computation</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Scene 05 Specialized Kinetic Motion Styles */
+      .matrix-card-container {
+        width: 100%;
+        max-width: 1560px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 2px solid rgba(56, 189, 248, 0.35);
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(56, 189, 248, 0.05);
+        padding: 24px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .weight-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+
+      .weight-table th {
+        background: #1e293b;
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 12px 18px;
+        text-align: center;
+      }
+
+      .weight-table th:first-child {
+        text-align: left;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+      }
+
+      .weight-table th:last-child {
+        text-align: left;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+
+      .weight-row {
+        background: rgba(30, 41, 59, 0.6);
+      }
+
+      .weight-row td {
+        padding: 12px 18px;
+        font-size: 16px;
+        color: #e2e8f0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .weight-row td:first-child {
+        text-align: left;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        font-weight: 800;
+      }
+
+      .weight-row td:last-child {
+        text-align: left;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+
+      .weight-pill {
+        display: inline-block;
+        min-width: 54px;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: -0.02em;
+      }
+
+      .weight-pill.low {
+        background: rgba(56, 189, 248, 0.18);
+        color: #7dd3fc;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+      }
+
+      .weight-pill.avg {
+        background: rgba(251, 191, 36, 0.18);
+        color: #fde68a;
+        border: 1px solid rgba(251, 191, 36, 0.4);
+      }
+
+      .weight-pill.high {
+        background: rgba(244, 114, 182, 0.18);
+        color: #fbcfe8;
+        border: 1px solid rgba(244, 114, 182, 0.4);
+      }
+
+      .row-ei { border-left: 5px solid #38bdf8 !important; }
+      .row-eo { border-left: 5px solid #34d399 !important; }
+      .row-eq { border-left: 5px solid #fbbf24 !important; }
+      .row-ilf { border-left: 5px solid #818cf8 !important; }
+      .row-eif { border-left: 5px solid #f472b6 !important; }
+
+      .asymmetry-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+        max-width: 1560px;
+      }
+
+      .asymmetry-card {
+        background: rgba(30, 41, 59, 0.75);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 18px;
+        padding: 16px 22px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .asymmetry-icon {
+        font-size: 32px;
+        background: rgba(15, 23, 42, 0.8);
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Section 2: Mathematical Derivation Styles */
+      .formula-hero-card {
+        width: 100%;
+        max-width: 1540px;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.92));
+        border: 2px solid #38bdf8;
+        border-radius: 24px;
+        padding: 28px 44px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 189, 248, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .formula-display-large {
+        font-size: 48px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 14px 36px;
+        background: rgba(10, 15, 28, 0.8);
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        border-radius: 16px;
+      }
+
+      .math-term {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      .math-label {
+        font-size: 13px;
+        font-weight: 700;
+        font-family: -apple-system, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 4px;
+      }
+
+      .term-ufp { color: #fde047; }
+      .term-sigma-i { color: #38bdf8; }
+      .term-sigma-j { color: #34d399; }
+      .term-weight { color: #a5b4fc; }
+      .term-count { color: #fbbf24; }
+
+      .term-breakdown-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        width: 100%;
+      }
+
+      .term-card {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 16px;
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .term-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .term-symbol {
+        font-size: 22px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .term-desc {
+        font-size: 14px;
+        color: #cbd5e1;
+        line-height: 1.4;
+      }
+
+      .term-arabic {
+        font-size: 13px;
+        color: #94a3b8;
+        direction: rtl;
+        margin-top: 2px;
+      }
+
+      /* Section 3: Interactive Calculation Styles */
+      .calc-split-canvas {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 32px;
+        width: 100%;
+        max-width: 1560px;
+        align-items: stretch;
+      }
+
+      .calc-ledger-card {
+        background: rgba(15, 23, 42, 0.9);
+        border: 2px solid rgba(148, 163, 184, 0.3);
+        border-radius: 22px;
+        padding: 22px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      }
+
+      .ledger-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(30, 41, 59, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 12px 20px;
+        opacity: 0.35;
+        transform: translateY(10px);
+      }
+
+      .ledger-row.active {
+        opacity: 1;
+        transform: translateY(0);
+        border-color: #38bdf8;
+        background: linear-gradient(90deg, rgba(56, 189, 248, 0.15), rgba(30, 41, 59, 0.85));
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      }
+
+      .ledger-type-badge {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .ledger-math {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 17px;
+        font-weight: 700;
+        color: #94a3b8;
+      }
+
+      .ledger-subtotal {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        font-weight: 900;
+        color: #fde047;
+      }
+
+      .accumulator-panel {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 27, 75, 0.9));
+        border: 2px solid #818cf8;
+        border-radius: 22px;
+        padding: 26px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 40px rgba(129, 140, 248, 0.25);
+      }
+
+      .accumulator-header {
+        text-align: center;
+      }
+
+      .accumulator-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #c7d2fe;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .accumulator-arabic-title {
+        font-size: 14px;
+        color: #94a3b8;
+        direction: rtl;
+        margin-top: 2px;
+      }
+
+      .accumulator-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 14px 0;
+      }
+
+      .big-counter-value {
+        font-size: 88px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+        color: #fde047;
+        line-height: 1;
+        text-shadow: 0 0 35px rgba(253, 224, 71, 0.4);
+      }
+
+      .counter-unit {
+        font-size: 18px;
+        font-weight: 800;
+        color: #cbd5e1;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-top: 6px;
+      }
+
+      .contrib-breakdown {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .contrib-bar-wrapper {
+        height: 10px;
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 9999px;
+        overflow: hidden;
+        display: flex;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contrib-seg {
+        height: 100%;
+        width: 0%;
+      }
+
+      .seg-ei { background: #38bdf8; }
+      .seg-eo { background: #34d399; }
+      .seg-eq { background: #fbbf24; }
+      .seg-ilf { background: #818cf8; }
+      .seg-eif { background: #f472b6; }
+
+      .contrib-legend {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        font-weight: 700;
+        color: #94a3b8;
+        padding: 0 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="210"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Top Persistent Navigation Header -->
+      <header class="header-bar">
+        <div class="brand-title">
+          <span class="brand-badge">Master Studio</span>
+          <span class="course-name">Advanced Software Engineering — CS502</span>
+        </div>
+        <div class="scene-pill" id="scenePill">Scene 05 · Complexity Multipliers & UFP Computation</div>
+      </header>
+      <div id="progressBar" class="progress-line"></div>
+
+      <!-- SECTION 1: Standard 5x3 Complexity Weight Matrix (0s - 70s) -->
+      <section id="section1" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">1. The Standard Complexity Weight Matrix</h1>
+          <p class="scene-subtitle">Albrecht's empirical 5×3 multiplier grid: Quantifying structural effort across functional components</p>
+        </div>
+
+        <div class="matrix-card-container" id="matrixCard">
+          <table class="weight-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Function Component Type</th>
+                <th style="width: 14%;">Low Complexity</th>
+                <th style="width: 14%;">Average Complexity</th>
+                <th style="width: 14%;">High Complexity</th>
+                <th style="width: 30%;">Effort Rationale & Data Structure</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="weight-row row-ei" id="rowEI">
+                <td>
+                  <span style="color: #38bdf8; font-weight: 800;">📥 External Input (EI)</span>
+                  <div style="font-size: 13px; color: #94a3b8; font-weight: normal;">User entry, data intake, batch feeds</div>
+                </td>
+                <td><span class="weight-pill low">3</span></td>
+                <td><span class="weight-pill avg">4</span></td>
+                <td><span class="weight-pill high">6</span></td>
+                <td style="font-size: 14px; color: #cbd5e1;">Mutates internal database state; validation logic</td>
+              </tr>
+              <tr class="weight-row row-eo" id="rowEO">
+                <td>
+                  <span style="color: #34d399; font-weight: 800;">📤 External Output (EO)</span>
+                  <div style="font-size: 13px; color: #94a3b8; font-weight: normal;">Reports, computed stats, alerts</div>
+                </td>
+                <td><span class="weight-pill low">4</span></td>
+                <td><span class="weight-pill avg">5</span></td>
+                <td><span class="weight-pill high">7</span></td>
+                <td style="font-size: 14px; color: #cbd5e1;">Derived mathematical formulas, reporting algorithms</td>
+              </tr>
+              <tr class="weight-row row-eq" id="rowEQ">
+                <td>
+                  <span style="color: #fbbf24; font-weight: 800;">🔎 External Inquiry (EQ)</span>
+                  <div style="font-size: 13px; color: #94a3b8; font-weight: normal;">Lookups, direct queries, search views</div>
+                </td>
+                <td><span class="weight-pill low">3</span></td>
+                <td><span class="weight-pill avg">4</span></td>
+                <td><span class="weight-pill high">6</span></td>
+                <td style="font-size: 14px; color: #cbd5e1;">Direct data retrieval; zero state mutation or math</td>
+              </tr>
+              <tr class="weight-row row-ilf" id="rowILF">
+                <td>
+                  <span style="color: #818cf8; font-weight: 800;">📂 Internal Logical File (ILF)</span>
+                  <div style="font-size: 13px; color: #94a3b8; font-weight: normal;">Database tables, entities, records</div>
+                </td>
+                <td><span class="weight-pill low">7</span></td>
+                <td><span class="weight-pill avg">10</span></td>
+                <td><span class="weight-pill high">15</span></td>
+                <td style="font-size: 14px; color: #cbd5e1;">Highest weight: full schema ownership & maintenance</td>
+              </tr>
+              <tr class="weight-row row-eif" id="rowEIF">
+                <td>
+                  <span style="color: #f472b6; font-weight: 800;">🌐 External Interface File (EIF)</span>
+                  <div style="font-size: 13px; color: #94a3b8; font-weight: normal;">Shared DB views, partner API feeds</div>
+                </td>
+                <td><span class="weight-pill low">5</span></td>
+                <td><span class="weight-pill avg">7</span></td>
+                <td><span class="weight-pill high">10</span></td>
+                <td style="font-size: 14px; color: #cbd5e1;">Read-only reference overhead; no schema maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Asymmetry Rationale Grid -->
+        <div class="asymmetry-grid" id="asymmetryGrid" style="margin-top: 14px;">
+          <div class="asymmetry-card">
+            <div class="asymmetry-icon" style="color: #34d399;">⚙️</div>
+            <div>
+              <div style="font-size: 16px; font-weight: 800; color: #6ee7b7;">Why is EO (4, 5, 7) Higher Than EI/EQ (3, 4, 6)?</div>
+              <div style="font-size: 14px; color: #cbd5e1; margin-top: 2px;">EOs execute complex derived mathematical calculations and statistical conversions.</div>
+              <div style="font-size: 13px; color: #94a3b8; direction: rtl; margin-top: 2px;">تتطلب المخرجات (EO) وزناً أعلى لأنها تتضمن عمليات معالجة وحسابات رياضية مشتقة.</div>
+            </div>
+          </div>
+
+          <div class="asymmetry-card">
+            <div class="asymmetry-icon" style="color: #818cf8;">🗄️</div>
+            <div>
+              <div style="font-size: 16px; font-weight: 800; color: #a5b4fc;">Why is ILF (7, 10, 15) Higher Than EIF (5, 7, 10)?</div>
+              <div style="font-size: 14px; color: #cbd5e1; margin-top: 2px;">Internal files impose complete CRUD responsibility, transactions, and data integrity.</div>
+              <div style="font-size: 13px; color: #94a3b8; direction: rtl; margin-top: 2px;">تتحمل ملفات ILF عبء صيانة كامل لقواعد البيانات والتحقق من صحة التخزين الداخلي.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Mathematical Derivation & Double Summation (70s - 140s) -->
+      <section id="section2" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">2. Mathematical Formulation of Unadjusted Function Points</h1>
+          <p class="scene-subtitle">The rigorous double-summation model: Decoupling functional volume from implementation complexity</p>
+        </div>
+
+        <div class="formula-hero-card" id="formulaHeroCard">
+          <div class="formula-display-large" id="formulaMainDisplay">
+            <span class="math-term term-ufp">
+              <span>UFP</span>
+              <span class="math-label">Unadjusted FP</span>
+            </span>
+            <span style="color: #94a3b8;">=</span>
+            <span class="math-term term-sigma-i">
+              <span>&sum;<sub>i=1</sub><sup>5</sup></span>
+              <span class="math-label">5 Components</span>
+            </span>
+            <span class="math-term term-sigma-j">
+              <span>&sum;<sub>j=1</sub><sup>3</sup></span>
+              <span class="math-label">3 Complexities</span>
+            </span>
+            <span style="color: #e2e8f0;">[</span>
+            <span class="math-term term-weight">
+              <span>W<sub>ij</sub></span>
+              <span class="math-label">Weight Matrix</span>
+            </span>
+            <span style="color: #94a3b8; font-size: 32px;">&times;</span>
+            <span class="math-term term-count">
+              <span>Z<sub>ij</sub></span>
+              <span class="math-label">Count (SRS)</span>
+            </span>
+            <span style="color: #e2e8f0;">]</span>
+          </div>
+
+          <!-- 4 Decomposition Cards -->
+          <div class="term-breakdown-grid" id="breakdownGrid">
+            <div class="term-card" id="cardTermI">
+              <div class="term-card-header">
+                <span class="term-symbol" style="color: #38bdf8;">Index i &in; {1 .. 5}</span>
+                <span class="badge-tag info">Component</span>
+              </div>
+              <div class="term-desc">Iterates over the 5 functional types: 1=EI, 2=EO, 3=EQ, 4=ILF, 5=EIF.</div>
+              <div class="term-arabic">المؤشر i: يعبر عن الأنواع الوظيفية الخمسة.</div>
+            </div>
+
+            <div class="term-card" id="cardTermJ">
+              <div class="term-card-header">
+                <span class="term-symbol" style="color: #34d399;">Index j &in; {1 .. 3}</span>
+                <span class="badge-tag success">Complexity</span>
+              </div>
+              <div class="term-desc">Iterates over the 3 complexity levels: 1=Low, 2=Average, 3=High.</div>
+              <div class="term-arabic">المؤشر j: يمثل مستويات التعقيد الثلاثة (منخفض، متوسط، مرتفع).</div>
+            </div>
+
+            <div class="term-card" id="cardTermW">
+              <div class="term-card-header">
+                <span class="term-symbol" style="color: #a5b4fc;">W<sub>ij</sub> &isin; Matrix</span>
+                <span class="badge-tag info">Constant</span>
+              </div>
+              <div class="term-desc">The standard Albrecht empirical weight assigned to component i at level j.</div>
+              <div class="term-arabic">W: الوزن المعياري المأخوذ من جدول الأوزان الثابت.</div>
+            </div>
+
+            <div class="term-card" id="cardTermZ">
+              <div class="term-card-header">
+                <span class="term-symbol" style="color: #fbbf24;">Z<sub>ij</sub> &isin; Count</span>
+                <span class="badge-tag warning">Variable</span>
+              </div>
+              <div class="term-desc">Number of functional elements identified from user requirements specification.</div>
+              <div class="term-arabic">Z: عدد العناصر والوظائف المستخرجة من وثيقة المتطلبات (SRS).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exam Rationale Banner -->
+        <div class="trap-card" id="ufpInsightCard" style="margin-top: 16px; border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(90deg, rgba(56, 189, 248, 0.15), rgba(30, 41, 59, 0.9));">
+          <div class="trap-icon" style="color: #38bdf8;">💡</div>
+          <div class="trap-body">
+            <div class="trap-title" style="color: #7dd3fc;">Key Principle: Sizing Independent of Programming Language</div>
+            <div class="trap-text">Unadjusted Function Points (UFP) measure purely the user-identifiable functional size. Whether implemented in C++, Java, or Python, the UFP of an SRS remains identical!</div>
+            <div class="trap-arabic">المبدأ الأساسي: نقاط الوظيفة غير المعدلة (UFP) تقيس الحجم المنطقي للمتطلبات فقط، وتظل ثابتة تماماً مهما تغيرت لغة البرمجة!</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Step-by-Step Kinetic Calculation & Accumulator (140s - 210s) -->
+      <section id="section3" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">3. Kinetic Calculation: Step-by-Step UFP Accumulator</h1>
+          <p class="scene-subtitle">Concrete sizing walkthrough: Evaluating a real subsystem specification to compute total UFP</p>
+        </div>
+
+        <div class="calc-split-canvas">
+          <!-- Left Ledger Table -->
+          <div class="calc-ledger-card" id="calcLedger">
+            <div class="ledger-row" id="lRow1">
+              <div class="ledger-type-badge">
+                <span style="font-size: 20px;">📥</span>
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #38bdf8;">2 Low External Inputs (EI)</div>
+                  <div style="font-size: 13px; color: #94a3b8;">User registration & profile form</div>
+                </div>
+              </div>
+              <div class="ledger-math">2 &times; 3 =</div>
+              <div class="ledger-subtotal" style="color: #38bdf8;">+6 FP</div>
+            </div>
+
+            <div class="ledger-row" id="lRow2">
+              <div class="ledger-type-badge">
+                <span style="font-size: 20px;">📤</span>
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #34d399;">3 Average External Outputs (EO)</div>
+                  <div style="font-size: 13px; color: #94a3b8;">Monthly payroll, tax report, invoice generator</div>
+                </div>
+              </div>
+              <div class="ledger-math">3 &times; 5 =</div>
+              <div class="ledger-subtotal" style="color: #34d399;">+15 FP</div>
+            </div>
+
+            <div class="ledger-row" id="lRow3">
+              <div class="ledger-type-badge">
+                <span style="font-size: 20px;">🔎</span>
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">1 High External Inquiry (EQ)</div>
+                  <div style="font-size: 13px; color: #94a3b8;">Multi-filter historical transaction search</div>
+                </div>
+              </div>
+              <div class="ledger-math">1 &times; 6 =</div>
+              <div class="ledger-subtotal" style="color: #fbbf24;">+6 FP</div>
+            </div>
+
+            <div class="ledger-row" id="lRow4">
+              <div class="ledger-type-badge">
+                <span style="font-size: 20px;">📂</span>
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #818cf8;">2 Average Internal Files (ILF)</div>
+                  <div style="font-size: 13px; color: #94a3b8;">User accounts table & transaction ledger</div>
+                </div>
+              </div>
+              <div class="ledger-math">2 &times; 10 =</div>
+              <div class="ledger-subtotal" style="color: #818cf8;">+20 FP</div>
+            </div>
+
+            <div class="ledger-row" id="lRow5">
+              <div class="ledger-type-badge">
+                <span style="font-size: 20px;">🌐</span>
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #f472b6;">1 Low External Interface (EIF)</div>
+                  <div style="font-size: 13px; color: #94a3b8;">Central bank currency rate service</div>
+                </div>
+              </div>
+              <div class="ledger-math">1 &times; 5 =</div>
+              <div class="ledger-subtotal" style="color: #f472b6;">+5 FP</div>
+            </div>
+          </div>
+
+          <!-- Right Accumulator Card -->
+          <div class="accumulator-panel" id="accumPanel">
+            <div class="accumulator-header">
+              <div class="accumulator-title">Unadjusted Functional Size</div>
+              <div class="accumulator-arabic-title">مجموع نقاط الوظيفة غير المعدلة (UFP)</div>
+            </div>
+
+            <div class="accumulator-display">
+              <div class="big-counter-value" id="ufpCounterVal">0</div>
+              <div class="counter-unit">Function Points (UFP)</div>
+            </div>
+
+            <div class="contrib-breakdown">
+              <div class="contrib-bar-wrapper">
+                <div class="contrib-seg seg-ei" id="segEI"></div>
+                <div class="contrib-seg seg-eo" id="segEO"></div>
+                <div class="contrib-seg seg-eq" id="segEQ"></div>
+                <div class="contrib-seg seg-ilf" id="segILF"></div>
+                <div class="contrib-seg seg-eif" id="segEIF"></div>
+              </div>
+              <div class="contrib-legend">
+                <span style="color: #38bdf8;">EI: 6</span>
+                <span style="color: #34d399;">EO: 15</span>
+                <span style="color: #fbbf24;">EQ: 6</span>
+                <span style="color: #818cf8;">ILF: 20</span>
+                <span style="color: #f472b6;">EIF: 5</span>
+              </div>
+            </div>
+
+            <div style="width: 100%; background: rgba(15, 23, 42, 0.7); border-radius: 12px; padding: 10px 16px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1);">
+              <span style="font-size: 14px; color: #94a3b8;">Baseline Functional Total: </span>
+              <span style="font-size: 16px; font-weight: 800; color: #fde047;">UFP = 52</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Step Transition Card -->
+        <div class="trap-card" id="nextStepCard" style="margin-top: 14px; border-color: rgba(52, 211, 153, 0.4); background: linear-gradient(90deg, rgba(52, 211, 153, 0.15), rgba(30, 41, 59, 0.9));">
+          <div class="trap-icon" style="color: #34d399;">➡️</div>
+          <div class="trap-body">
+            <div class="trap-title" style="color: #6ee7b7;">Next Step: Scene 06 — The Value Adjustment Factor (VAF)</div>
+            <div class="trap-text">Now that we have baseline UFP = 52, we will assess the 14 General System Characteristics (GSCs) to calculate VAF and determine the Final Adjusted Function Points!</div>
+            <div class="trap-arabic">الخطوة القادمة: في المشهد 06 سنقوم بتقييم العوامل الـ 14 العامة للنظام لحساب معامل تعديل القيمة (VAF) والوصول لنقاط الوظيفة النهائية!</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director's Bilingual Subtitle Strip -->
+      <footer class="captions-bar">
+        <div class="caption-en" id="captionEn">Albrecht established empirical complexity multipliers for each of the five function types.</div>
+        <div class="caption-ar" id="captionAr">وضع ألبرخت معاملات تعقيد تجريبية دقيقة لكل نوع من أنواع الدوال الوظيفية الخمسة.</div>
+      </footer>
+    </div>
+
+    <!-- GSAP Choreography across 210 seconds (6300 frames @ 30fps) -->
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // 1. Initial State Setup
+      gsap.set("#progressBar", { width: "0%" });
+      gsap.set("#section1", { opacity: 0 });
+      gsap.set("#section2", { opacity: 0 });
+      gsap.set("#section3", { opacity: 0 });
+
+      gsap.set(["#matrixCard", "#asymmetryGrid"], { opacity: 0, y: 30 });
+      gsap.set(["#formulaHeroCard", "#ufpInsightCard"], { opacity: 0, y: 30 });
+      gsap.set(["#breakdownGrid", "#formulaMainDisplay"], { opacity: 0, y: 20 });
+      gsap.set(["#calcLedger", "#accumPanel", "#nextStepCard"], { opacity: 0, y: 30 });
+      gsap.set(["#lRow1", "#lRow2", "#lRow3", "#lRow4", "#lRow5"], { opacity: 0.35, y: 10 });
+      // 2. Global Progress Bar (0 to 210s)
+      tl.to("#progressBar", {
+        width: "100%",
+        duration: 210,
+        ease: "none"
+      }, 0);
+
+      // =========================================================================
+      // PART 1: The 5x3 Standard Complexity Weight Matrix (0s -> 70s)
+      // =========================================================================
+      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.to("#matrixCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "The Function Point matrix categorizes each component type into Low, Average, or High complexity based on FTR and DET counts.";
+        document.getElementById("captionAr").textContent = "تصنف مصفوفة نقاط الوظيفة كل مكون إلى منخفض أو متوسط أو مرتفع التعقيد بناءً على حقول وسجلات البيانات.";
+      }, null, 1.0);
+
+      // Pulse rows in sequence
+      tl.to("#rowEI", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 12.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inputs (EI) receive weights of 3 (Low), 4 (Average), and 6 (High) Function Points.";
+        document.getElementById("captionAr").textContent = "تُمنح المدخلات الخارجية (EI) أوزاناً قدرها 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
+      }, null, 12.0);
+
+      tl.to("#rowEO", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 24.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Outputs (EO) receive weights of 4 (Low), 5 (Average), and 7 (High) Function Points due to algorithmic calculations.";
+        document.getElementById("captionAr").textContent = "تحصل المخرجات (EO) على أوزان 4 و5 و7 نقاط نظراً لاشتمالها على خوارزميات وحسابات مشتقة.";
+      }, null, 24.0);
+
+      tl.to("#rowEQ", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 36.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inquiries (EQ) mirror EI weights with 3 (Low), 4 (Average), and 6 (High) Function Points.";
+        document.getElementById("captionAr").textContent = "تتطابق الاستعلامات (EQ) مع المدخلات بأوزان 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
+      }, null, 36.0);
+
+      tl.to("#rowILF", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 46.0);
+      tl.to("#rowEIF", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 48.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Data files command the highest multipliers: ILF ranges from 7 to 15, while EIF ranges from 5 to 10.";
+        document.getElementById("captionAr").textContent = "تحظى ملفات البيانات بأعلى الأوزان: تتراوح ملفات ILF بين 7 و15، بينما تتراوح ملفات EIF بين 5 و10.";
+      }, null, 46.0);
+
+      tl.to("#asymmetryGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 56.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Notice the structural asymmetry: Outputs exceed inquiries, and internal files exceed external interface files.";
+        document.getElementById("captionAr").textContent = "لاحظ عدم التماثل في الأوزان: المخرجات تفوق الاستعلامات، والملفات الداخلية تفوق ملفات الواجهات الخارجية.";
+      }, null, 56.0);
+
+      // Section 1 Exit
+      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 69.2);
+
+      // =========================================================================
+      // PART 2: Mathematical Derivation & Double Summation (70s -> 140s)
+      // =========================================================================
+      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 70.0);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 05 · Mathematical Formulation";
+        document.getElementById("captionEn").textContent = "Unadjusted Function Points (UFP) are rigorously computed using a double summation over all types and complexity ratings.";
+        document.getElementById("captionAr").textContent = "تُحسب نقاط الوظيفة غير المعدلة (UFP) رياضياً عبر حاصل جمع مضاعف لجميع الأنواع ومستويات التعقيد.";
+      }, null, 70.2);
+
+      tl.to("#formulaHeroCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 72.0);
+      tl.to("#formulaMainDisplay", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }, 74.0);
+
+      tl.to("#breakdownGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 82.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "The outer summation iterates over the 5 functional types (i = 1 to 5), while the inner summation iterates over the 3 complexity levels (j = 1 to 3).";
+        document.getElementById("captionAr").textContent = "المجموع الخارجي يمر على الأنواع الوظيفية الـ 5 (i)، بينما المجموع الداخلي يمر على مستويات التعقيد الـ 3 (j).";
+      }, null, 82.0);
+
+      tl.to("#cardTermW", { scale: 1.04, duration: 0.4, yoyo: true, repeat: 1 }, 98.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "W_ij represents the standard empirical weight constant from Albrecht's 5x3 matrix.";
+        document.getElementById("captionAr").textContent = "يمثل W_ij معامل الوزن القياسي الثابت والمستخرج من مصفوفة ألبرخت 5×3.";
+      }, null, 98.0);
+
+      tl.to("#cardTermZ", { scale: 1.04, duration: 0.4, yoyo: true, repeat: 1 }, 110.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Z_ij represents the empirical count of components identified directly from the Software Requirements Specification.";
+        document.getElementById("captionAr").textContent = "يمثل Z_ij عدد العناصر الفعلية المستخرجة مباشرة من وثيقة مواصفات المتطلبات البرمجية.";
+      }, null, 110.0);
+
+      tl.to("#ufpInsightCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 122.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "UFP measures raw functional size independently of programming language, team skill, or technology stack.";
+        document.getElementById("captionAr").textContent = "تقيس UFP الحجم الوظيفي المجرد دون أي تأثر بلغة البرمجة أو خبرة الفريق أو التقنية المستخدمة.";
+      }, null, 122.0);
+
+      // Section 2 Exit
+      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 139.2);
+
+      // =========================================================================
+      // PART 3: Step-by-Step Kinetic Calculation & Accumulator (140s -> 210s)
+      // =========================================================================
+      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 140.0);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 05 · Kinetic Calculation Walkthrough";
+        document.getElementById("captionEn").textContent = "Let's walk through a concrete calculation for a complete enterprise subsystem with concrete component counts.";
+        document.getElementById("captionAr").textContent = "دعنا نطبق حساباً عملياً شاملاً لنظام مؤسسي متكامل باستخدام أعداد فعلية من المتطلبات.";
+      }, null, 140.2);
+
+      tl.to("#calcLedger", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 142.0);
+      tl.to("#accumPanel", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 143.0);
+
+      // Helper for counter animation
+      const counterObj = { val: 0 };
+      const counterEl = document.getElementById("ufpCounterVal");
+
+      // Step 1: 2 Low EI (2 x 3 = 6) -> Sum: 6
+      tl.to("#lRow1", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 146.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Step 1: Two Low External Inputs (EI) contribute 2 x 3 = 6 Function Points.";
+        document.getElementById("captionAr").textContent = "الخطوة 1: مدخلان خارجيان منخفضا التعقيد (EI) يضيفان 2 × 3 = 6 نقاط وظيفة.";
+      }, null, 146.0);
+      tl.to(counterObj, {
+        val: 6,
+        duration: 1.0,
+        ease: "power1.out",
+        onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
+      }, 146.5);
+      tl.to("#segEI", { width: "11.5%", duration: 1.0, ease: "power1.out" }, 146.5);
+
+      // Step 2: 3 Avg EO (3 x 5 = 15) -> Sum: 21
+      tl.to("#lRow2", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 158.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Step 2: Three Average External Outputs (EO) contribute 3 x 5 = 15 Function Points.";
+        document.getElementById("captionAr").textContent = "الخطوة 2: ثلاثة مخرجات خارجية متوسطة التعقيد (EO) تضيف 3 × 5 = 15 نقطة وظيفة.";
+      }, null, 158.0);
+      tl.to(counterObj, {
+        val: 21,
+        duration: 1.0,
+        ease: "power1.out",
+        onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
+      }, 158.5);
+      tl.to("#segEO", { width: "28.8%", duration: 1.0, ease: "power1.out" }, 158.5);
+
+      // Step 3: 1 High EQ (1 x 6 = 6) -> Sum: 27
+      tl.to("#lRow3", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 170.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Step 3: One High External Inquiry (EQ) contributes 1 x 6 = 6 Function Points.";
+        document.getElementById("captionAr").textContent = "الخطوة 3: استعلام خارجي واحد عالي التعقيد (EQ) يضيف 1 × 6 = 6 نقاط وظيفة.";
+      }, null, 170.0);
+      tl.to(counterObj, {
+        val: 27,
+        duration: 1.0,
+        ease: "power1.out",
+        onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
+      }, 170.5);
+      tl.to("#segEQ", { width: "11.5%", duration: 1.0, ease: "power1.out" }, 170.5);
+
+      // Step 4: 2 Avg ILF (2 x 10 = 20) -> Sum: 47
+      tl.to("#lRow4", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 180.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Step 4: Two Average Internal Logical Files (ILF) contribute 2 x 10 = 20 Function Points.";
+        document.getElementById("captionAr").textContent = "الخطوة 4: ملفان منطقيان داخليان متوسطا التعقيد (ILF) يضيفان 2 × 10 = 20 نقطة وظيفة.";
+      }, null, 180.0);
+      tl.to(counterObj, {
+        val: 47,
+        duration: 1.0,
+        ease: "power1.out",
+        onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
+      }, 180.5);
+      tl.to("#segILF", { width: "38.5%", duration: 1.0, ease: "power1.out" }, 180.5);
+
+      // Step 5: 1 Low EIF (1 x 5 = 5) -> Sum: 52
+      tl.to("#lRow5", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 192.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Step 5: One Low External Interface File (EIF) contributes 1 x 5 = 5 Function Points.";
+        document.getElementById("captionAr").textContent = "الخطوة 5: ملف واجهة خارجية واحد منخفض التعقيد (EIF) يضيف 1 × 5 = 5 نقاط وظيفة.";
+      }, null, 192.0);
+      tl.to(counterObj, {
+        val: 52,
+        duration: 1.0,
+        ease: "power1.out",
+        onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
+      }, 192.5);
+      tl.to("#segEIF", { width: "9.7%", duration: 1.0, ease: "power1.out" }, 192.5);
+
+      // Final Transition Card Entrance
+      tl.to("#nextStepCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 200.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Total UFP = 52 Function Points. Next up in Scene 06: The Value Adjustment Factor (VAF) and the 14 GSCs.";
+        document.getElementById("captionAr").textContent = "المجموع الإجمالي UFP = 52 نقطة وظيفة. في المشهد 06 القادم: سنحسب معامل تعديل القيمة (VAF) والعوامل الـ 14.";
+      }, null, 200.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
