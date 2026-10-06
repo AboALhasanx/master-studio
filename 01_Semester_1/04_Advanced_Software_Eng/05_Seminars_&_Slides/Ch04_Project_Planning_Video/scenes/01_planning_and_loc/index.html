@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Master Studio: Scene 01 — Project Planning & The LOC Dilemma</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      .loc-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 36px;
+        width: 100%;
+        max-width: 1540px;
+      }
+
+      .code-editor {
+        background: #0b1120;
+        border: 1px solid rgba(56, 189, 248, 0.35);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      }
+
+      .editor-topbar {
+        background: #1e293b;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .editor-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .dot.red { background: #ef4444; }
+      .dot.yellow { background: #f59e0b; }
+      .dot.green { background: #10b981; }
+
+      .editor-filename {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 14px;
+        color: #cbd5e1;
+        font-weight: 600;
+      }
+
+      .code-body {
+        padding: 16px 20px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 15px;
+        line-height: 1.55;
+        color: #f1f5f9;
+      }
+
+      .code-line {
+        display: flex;
+        gap: 16px;
+        border-radius: 4px;
+        padding: 1px 6px;
+      }
+
+      .line-num {
+        color: #94a3b8;
+        width: 24px;
+        text-align: right;
+        user-select: none;
+      }
+
+      .code-line.comment { color: #94a3b8; font-style: italic; }
+      .code-line.decl { color: #f472b6; }
+      .code-line.exec { color: #38bdf8; }
+
+      .count-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .metric-pill {
+        background: rgba(30, 41, 59, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 14px;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .metric-label {
+        font-size: 18px;
+        font-weight: 700;
+        color: #f8fafc;
+      }
+
+      .metric-sub {
+        font-size: 14px;
+        color: #cbd5e1;
+        margin-top: 2px;
+      }
+
+      .metric-digit {
+        font-size: 32px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .definition-card {
+        width: 100%;
+        max-width: 1360px;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+        border: 2px solid #818cf8;
+        border-radius: 20px;
+        padding: 36px 44px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .def-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .def-author {
+        font-size: 24px;
+        font-weight: 800;
+        color: #c7d2fe;
+      }
+
+      .def-quote {
+        font-size: 24px;
+        line-height: 1.5;
+        color: #f8fafc;
+        border-left: 4px solid #818cf8;
+        padding-left: 20px;
+        margin-bottom: 24px;
+        font-style: italic;
+      }
+
+      .rules-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .rule-item {
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 12px;
+        padding: 16px 20px;
+        border-left: 4px solid #34d399;
+      }
+
+      .rule-item.danger {
+        border-left-color: #f87171;
+      }
+
+      .rule-item-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 4px;
+      }
+
+      .rule-item-desc {
+        font-size: 15px;
+        color: #cbd5e1;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="180"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Top Persistent Navigation Header -->
+      <header class="header-bar">
+        <div class="brand-title">
+          <span class="brand-badge">Master Studio</span>
+          <span class="course-name">Advanced Software Engineering — CS502</span>
+        </div>
+        <div class="scene-pill" id="scenePill">Scene 01 · Software Project Planning</div>
+      </header>
+      <div id="progressBar" class="progress-line"></div>
+
+      <!-- SECTION 1: Triple Constraint (0s - 55s) -->
+      <section id="section1" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">Software Project Planning &amp; Sizing</h1>
+          <p class="scene-subtitle">The Foundation of Estimation: Scope, Cost, and Schedule</p>
+        </div>
+
+        <div class="comparison-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 28px; max-width: 1540px;">
+          <div class="card info" id="cardScope">
+            <div class="card-header">
+              <span class="card-title" style="color: #38bdf8;">1. Scope</span>
+              <span class="badge-tag info">Core Driver</span>
+            </div>
+            <ul class="card-list">
+              <li class="card-item"><span class="icon">🎯</span> Functional requirements</li>
+              <li class="card-item"><span class="icon">📐</span> Software deliverables &amp; size</li>
+              <li class="card-item"><span class="icon">🔍</span> System complexity bounds</li>
+            </ul>
+          </div>
+
+          <div class="card success" id="cardCost">
+            <div class="card-header">
+              <span class="card-title" style="color: #34d399;">2. Cost (Effort)</span>
+              <span class="badge-tag success">Resource</span>
+            </div>
+            <ul class="card-list">
+              <li class="card-item"><span class="icon">💰</span> Person-Months (PM) needed</li>
+              <li class="card-item"><span class="icon">👥</span> Staffing &amp; engineering team</li>
+              <li class="card-item"><span class="icon">🖥️</span> Infrastructure &amp; tooling budget</li>
+            </ul>
+          </div>
+
+          <div class="card warning" id="cardSchedule">
+            <div class="card-header">
+              <span class="card-title" style="color: #fbbf24;">3. Schedule</span>
+              <span class="badge-tag warning">Timeline</span>
+            </div>
+            <ul class="card-list">
+              <li class="card-item"><span class="icon">⏱️</span> Delivery calendar milestones</li>
+              <li class="card-item"><span class="icon">📅</span> Calendar months to deployment</li>
+              <li class="card-item"><span class="icon">🚨</span> Strict contractual deadlines</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="trap-card" id="tripleInsight" style="margin-top: 28px; max-width: 1540px;">
+          <div class="trap-icon">💡</div>
+          <div class="trap-body">
+            <div class="trap-title">Fundamental Law of Software Estimation</div>
+            <div class="trap-text">You cannot reliably estimate Cost (Effort) or Schedule without first sizing the Software Scope.</div>
+            <div class="trap-arabic">لا يمكن تقدير التكلفة أو الجدول الزمني بدقة دون تحديد وقياس حجم نطاق البرمجيات أولاً.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: LOC Counting Dilemma (55s - 118s) -->
+      <section id="section2" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">The LOC Counting Dilemma</h1>
+          <p class="scene-subtitle">Why Lines of Code (LOC) create profound ambiguity and estimation failure</p>
+        </div>
+
+        <div class="loc-grid">
+          <div class="code-editor" id="codeEditor">
+            <div class="editor-topbar">
+              <div class="editor-dots">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+              </div>
+              <div class="editor-filename">sorting_routine.c</div>
+              <span class="badge-tag info">C Code</span>
+            </div>
+            <div class="code-body">
+              <div class="code-line comment"><span class="line-num">1</span>// Master Studio: Sample Sorting Routine</div>
+              <div class="code-line decl"><span class="line-num">2</span>#include &lt;stdio.h&gt;</div>
+              <div class="code-line decl"><span class="line-num">3</span>#define MAX 100</div>
+              <div class="code-line"><span class="line-num">4</span></div>
+              <div class="code-line exec"><span class="line-num">5</span>void bubble_sort(int arr[], int n) {</div>
+              <div class="code-line decl"><span class="line-num">6</span>    int i, j, temp;</div>
+              <div class="code-line comment"><span class="line-num">7</span>    // Outer sorting loop iteration</div>
+              <div class="code-line exec"><span class="line-num">8</span>    for (i = 0; i &lt; n - 1; i++) {</div>
+              <div class="code-line exec"><span class="line-num">9</span>        for (j = 0; j &lt; n - i - 1; j++) {</div>
+              <div class="code-line exec"><span class="line-num">10</span>            if (arr[j] &gt; arr[j + 1]) {</div>
+              <div class="code-line exec"><span class="line-num">11</span>                temp = arr[j];</div>
+              <div class="code-line exec"><span class="line-num">12</span>                arr[j] = arr[j + 1];</div>
+              <div class="code-line exec"><span class="line-num">13</span>                arr[j + 1] = temp;</div>
+              <div class="code-line"><span class="line-num">14</span>            }</div>
+              <div class="code-line"><span class="line-num">15</span>        }</div>
+              <div class="code-line"><span class="line-num">16</span>    }</div>
+              <div class="code-line exec"><span class="line-num">17</span>}</div>
+              <div class="code-line comment"><span class="line-num">18</span>// End of sorting module</div>
+            </div>
+          </div>
+
+          <div class="count-cards">
+            <div class="metric-pill" id="cardPhys">
+              <div>
+                <div class="metric-label">Physical Lines Count</div>
+                <div class="metric-sub">Raw lines including blank lines and comments</div>
+              </div>
+              <div class="metric-digit" style="color: #f87171;">18 LOC</div>
+            </div>
+
+            <div class="metric-pill" id="cardNoBlank">
+              <div>
+                <div class="metric-label">Non-Blank Lines</div>
+                <div class="metric-sub">Excluding empty whitespace lines</div>
+              </div>
+              <div class="metric-digit" style="color: #fbbf24;">17 LOC</div>
+            </div>
+
+            <div class="metric-pill" id="cardExec">
+              <div>
+                <div class="metric-label">Executable Statements</div>
+                <div class="metric-sub">Actual compiled runtime instructions</div>
+              </div>
+              <div class="metric-digit" style="color: #34d399;">13 LOC</div>
+            </div>
+
+            <div class="card danger" id="cardFatalFlaws" style="padding: 20px 24px; gap: 10px;">
+              <div class="card-header">
+                <span class="card-title" style="font-size: 20px;">Fatal Flaws of LOC Metric:</span>
+                <span class="badge-tag danger">Flawed</span>
+              </div>
+              <ul class="card-list" style="gap: 8px;">
+                <li class="card-item" style="font-size: 16px;"><span class="icon">⚠️</span> Highly language dependent (Java vs C vs Python)</li>
+                <li class="card-item" style="font-size: 16px;"><span class="icon">⏳</span> Code does not exist during early SRS planning phase!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Conte's LOC Standard (118s - 180s) -->
+      <section id="section3" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">Conte's Formal LOC Standard</h1>
+          <p class="scene-subtitle">Academic standardization and the remaining estimation vacuum</p>
+        </div>
+
+        <div class="definition-card" id="conteCard">
+          <div class="def-header">
+            <span class="badge-tag info">Formal Standard</span>
+            <span class="def-author">Conte et al. (1986) Definition of Lines of Code</span>
+          </div>
+          <div class="def-quote">
+            "A line of code is any line of program text that is not a comment or blank line, regardless of the number of statements or fragments of statements on that line."
+          </div>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <div class="rule-item-title">Included in Conte's LOC:</div>
+              <div class="rule-item-desc">Executable lines, data declarations, header inclusions, compiler directives.</div>
+            </div>
+            <div class="rule-item danger">
+              <div class="rule-item-title">Strictly Excluded from Conte's LOC:</div>
+              <div class="rule-item-desc">Blank whitespace lines, stand-alone comments, multi-line comment blocks.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trap-card" id="conteSummary" style="margin-top: 24px; max-width: 1360px;">
+          <div class="trap-icon">🎯</div>
+          <div class="trap-body">
+            <div class="trap-title">Pedagogical Verdict</div>
+            <div class="trap-text">While Conte standardized LOC counting, LOC remains fundamentally unavailable during project inception. Software engineering urgently needed an SRS-level metric.</div>
+            <div class="trap-arabic">رغم أن تعريف كونتي وحّد معايير عد الأسطر، إلا أن الكود يظل غير موجود في بداية المشروع، مما أوجب ابتكار مقياس يعتمد على المتطلبات الوظيفية.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director's Bilingual Subtitle Strip -->
+      <footer class="captions-bar">
+        <div class="caption-en" id="captionEn">Software project planning begins with balancing the classic Triple Constraint: Scope, Cost, and Schedule.</div>
+        <div class="caption-ar" id="captionAr">يبدأ تخطيط المشروع البرمجي بموازنة القيد الثلاثي الكلاسيكي: النطاق، والتكلفة، والجدول الزمني.</div>
+      </footer>
+    </div>
+
+    <!-- GSAP Choreography across 180 seconds (5400 frames @ 30fps) -->
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // 1. Initial State Setup
+      gsap.set("#progressBar", { width: "0%" });
+      gsap.set("#section1", { opacity: 0 });
+      gsap.set("#section2", { opacity: 0 });
+      gsap.set("#section3", { opacity: 0 });
+
+      gsap.set(["#cardScope", "#cardCost", "#cardSchedule", "#tripleInsight"], { opacity: 0, y: 30 });
+      gsap.set(["#codeEditor", "#cardPhys", "#cardNoBlank", "#cardExec", "#cardFatalFlaws"], { opacity: 0, y: 30 });
+      gsap.set(["#conteCard", "#conteSummary"], { opacity: 0, y: 30 });
+
+      // 2. Global Progress Bar (0 to 180s)
+      tl.to("#progressBar", {
+        width: "100%",
+        duration: 180,
+        ease: "none"
+      }, 0);
+
+      // =========================================================================
+      // PART 1: The Triple Constraint (0s -> 55s)
+      // =========================================================================
+      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      
+      tl.to("#cardScope", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Software Scope defines the complete functional requirements and architectural deliverables.";
+        document.getElementById("captionAr").textContent = "يمثل نطاق البرمجيات كافة المتطلبات الوظيفية والمخرجات المعمارية المطلوبة من النظام.";
+      }, null, 1);
+
+      tl.to("#cardCost", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 14);
+      tl.to("#cardSchedule", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 16);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Cost (Effort in person-months) and Schedule (Delivery timeline) depend directly on the project Scope.";
+        document.getElementById("captionAr").textContent = "تعتمد التكلفة (الجهد بالأشهر/شخص) والجدول الزمني (موعد التسليم) اعتماداً مباشراً على حجم النطاق.";
+      }, null, 15);
+
+      tl.to("#tripleInsight", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 30);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "To balance cost and schedule without sacrificing quality, engineers must first measure software size.";
+        document.getElementById("captionAr").textContent = "لتحقيق التوازن بين التكلفة والوقت دون الإخلال بالجودة، يجب على المهندسين قياس حجم البرمجيات أولاً.";
+      }, null, 30);
+
+      // Section 1 Exit
+      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 54);
+
+      // =========================================================================
+      // PART 2: The LOC Counting Dilemma (55s -> 118s)
+      // =========================================================================
+      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 55);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 01 · The LOC Dilemma";
+        document.getElementById("captionEn").textContent = "Traditionally, size was measured in Lines of Code (LOC). But how should lines actually be counted?";
+        document.getElementById("captionAr").textContent = "تاريخياً، قيس الحجم بعدد أسطر الكود (LOC). ولكن كيف تُحسب هذه الأسطر فعلياً وبدقة؟";
+      }, null, 55.2);
+
+      tl.to("#codeEditor", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 56);
+
+      tl.to("#cardPhys", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 66);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Counting all physical lines yields 18 LOC, including comments and blank spacing.";
+        document.getElementById("captionAr").textContent = "العد الإجمالي للأسطر المادية يعطي 18 سطراً، شاملاً التعليقات والأسطر الفارغة.";
+      }, null, 66);
+
+      tl.to("#cardNoBlank", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 80);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Excluding empty whitespace reduces the count to 17 LOC.";
+        document.getElementById("captionAr").textContent = "استبعاد الأسطر الفارغة يقلل العدد إلى 17 سطراً من الكود.";
+      }, null, 80);
+
+      tl.to("#cardExec", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 94);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Counting only executable instructions yields 13 statements. Ambiguity creates major estimation discrepancies.";
+        document.getElementById("captionAr").textContent = "حساب الجمل التنفيذية فقط يعطي 13 تعليمة، وهذا التباين يسبب أخطاء فادحة في التقدير.";
+      }, null, 94);
+
+      tl.to("#cardFatalFlaws", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 106);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Crucially, LOC is language-dependent and unavailable during early SRS requirements planning.";
+        document.getElementById("captionAr").textContent = "والأهم من ذلك: أسطر الكود تعتمد على لغة البرمجة ولا تكون متوفرة أثناء كتابة وثيقة المتطلبات (SRS).";
+      }, null, 106);
+
+      // Section 2 Exit
+      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 117.4);
+
+      // =========================================================================
+      // PART 3: Conte's Standard & The Need for FPA (118s -> 180s)
+      // =========================================================================
+      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 118);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 01 · Conte's Standard";
+        document.getElementById("captionEn").textContent = "In 1986, Conte formulated a rigorous definition to standardize LOC measurement.";
+        document.getElementById("captionAr").textContent = "في عام 1986، وضع كونتي تعريفاً صارماً وموحداً لحساب أسطر الكود البرمجي.";
+      }, null, 118.2);
+
+      tl.to("#conteCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 119);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Conte defines LOC as any program text line that is not a comment or blank line, regardless of statement count.";
+        document.getElementById("captionAr").textContent = "يعرف كونتي سطر الكود بأنه أي سطر نصي ليس تعليقاً أو فراغاً، بغض النظر عن عدد الجمل البرمجية فيه.";
+      }, null, 132);
+
+      tl.to("#conteSummary", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 152);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Even with Conte's standard, LOC cannot size a project before code exists. Enter Function Point Analysis.";
+        document.getElementById("captionAr").textContent = "حتى مع معيار كونتي، لا يمكن استخدام أسطر الكود قبل كتابته. من هنا نشأت الحاجة لتحليل نقاط الوظيفة (FPA).";
+      }, null, 152);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
