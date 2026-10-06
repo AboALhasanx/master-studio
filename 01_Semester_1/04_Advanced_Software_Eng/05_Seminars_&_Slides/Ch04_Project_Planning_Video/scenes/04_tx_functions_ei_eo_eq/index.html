@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Master Studio: Scene 04 — Transactional Function Types (EI, EO, EQ)</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Scene 04 Specialized Kinetic Motion Styles */
+      .tx-flow-canvas {
+        position: relative;
+        width: 1560px;
+        height: 520px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .actor-column {
+        width: 300px;
+        height: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .actor-node {
+        background: rgba(30, 41, 59, 0.9);
+        border: 2px solid rgba(148, 163, 184, 0.4);
+        border-radius: 18px;
+        padding: 16px 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .actor-node.ei-source { border-color: #38bdf8; }
+      .actor-node.eo-dest { border-color: #34d399; }
+      .actor-node.eq-client { border-color: #fbbf24; }
+
+      .system-core-boundary {
+        position: relative;
+        width: 880px;
+        height: 480px;
+        border: 3px dashed #818cf8;
+        border-radius: 28px;
+        background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.12) 0%, rgba(15, 23, 42, 0.7) 100%);
+        box-shadow: 0 0 45px rgba(99, 102, 241, 0.2), inset 0 0 30px rgba(99, 102, 241, 0.08);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .boundary-top-pill {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0f172a;
+        color: #a5b4fc;
+        border: 2px solid #818cf8;
+        padding: 6px 24px;
+        border-radius: 9999px;
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .internal-db-hub {
+        width: 760px;
+        background: linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(49, 46, 129, 0.85));
+        border: 2px solid #818cf8;
+        border-radius: 18px;
+        padding: 18px 24px;
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+      }
+
+      .db-capsule {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(129, 140, 248, 0.4);
+        border-radius: 12px;
+        padding: 10px 18px;
+        text-align: center;
+      }
+
+      .process-lanes {
+        width: 100%;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .lane-box {
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 14px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-left: 6px solid transparent;
+      }
+
+      .lane-box.ei { border-color: #38bdf8; background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.6)); }
+      .lane-box.eo { border-color: #34d399; background: linear-gradient(90deg, rgba(52, 211, 153, 0.12), rgba(15, 23, 42, 0.6)); }
+      .lane-box.eq { border-color: #fbbf24; background: linear-gradient(90deg, rgba(251, 191, 36, 0.12), rgba(15, 23, 42, 0.6)); }
+
+      .card-grid-triad {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+        width: 100%;
+        max-width: 1560px;
+      }
+
+      .rule-decision-matrix {
+        width: 100%;
+        max-width: 1540px;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .matrix-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .matrix-table th {
+        background: #1e293b;
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 14px 20px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+      }
+
+      .matrix-table td {
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 15px;
+        color: #e2e8f0;
+      }
+
+      .status-pill {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+
+      .status-pill.yes { background: rgba(52, 211, 153, 0.25); color: #6ee7b7; border: 1px solid #34d399; }
+      .status-pill.no { background: rgba(239, 68, 68, 0.25); color: #fca5a5; border: 1px solid #f87171; }
+      .status-pill.optional { background: rgba(251, 191, 36, 0.25); color: #fde68a; border: 1px solid #fbbf24; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="210"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Top Persistent Navigation Header -->
+      <header class="header-bar">
+        <div class="brand-title">
+          <span class="brand-badge">Master Studio</span>
+          <span class="course-name">Advanced Software Engineering — CS502</span>
+        </div>
+        <div class="scene-pill" id="scenePill">Scene 04 · Transactional Function Types (EI, EO, EQ)</div>
+      </header>
+      <div id="progressBar" class="progress-line"></div>
+
+      <!-- SECTION 1: Dynamic Boundary Crossings (0s - 70s) -->
+      <section id="section1" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">1. Elementary Processes & Boundary Crossings</h1>
+          <p class="scene-subtitle">Data in motion: How transactions cross the system boundary to process, mutate, or report</p>
+        </div>
+
+        <div class="tx-flow-canvas">
+          <!-- Left Actor Column (External Stimulus / Client) -->
+          <div class="actor-column" id="actorColLeft">
+            <div class="actor-node ei-source" id="eiClientBox">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 16px; font-weight: 800; color: #38bdf8;">👤 User / External App</span>
+                <span class="badge-tag info">Source</span>
+              </div>
+              <p style="font-size: 13px; color: #cbd5e1; margin-top: 6px;">Sends registration data, payment transactions, or updates.</p>
+            </div>
+
+            <div class="actor-node eq-client" id="eqClientBox">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 16px; font-weight: 800; color: #fbbf24;">🔍 Search Client</span>
+                <span class="badge-tag warning">Lookup</span>
+              </div>
+              <p style="font-size: 13px; color: #cbd5e1; margin-top: 6px;">Sends search keys, requests product catalog info without state change.</p>
+            </div>
+          </div>
+
+          <!-- Central Core System Boundary -->
+          <div class="system-core-boundary" id="txCoreSystem">
+            <span class="boundary-top-pill">Application System Boundary</span>
+            
+            <!-- Internal DB Files Hub -->
+            <div class="internal-db-hub" id="internalDbHub">
+              <div class="db-capsule">
+                <span style="font-size: 13px; color: #cbd5e1; font-weight: 700; text-transform: uppercase;">Internal Files</span>
+                <div style="font-size: 16px; font-weight: 800; color: #818cf8;">📂 ILF Database</div>
+              </div>
+              <span style="color: #94a3b8; font-size: 20px;">⇄</span>
+              <div class="db-capsule">
+                <span style="font-size: 13px; color: #cbd5e1; font-weight: 700; text-transform: uppercase;">Business Logic</span>
+                <div style="font-size: 16px; font-weight: 800; color: #38bdf8;">⚙️ Processing Engine</div>
+              </div>
+            </div>
+
+            <!-- Transactional Lanes inside boundary -->
+            <div class="process-lanes">
+              <div class="lane-box ei" id="laneEI">
+                <div>
+                  <span style="font-size: 16px; font-weight: 800; color: #38bdf8;">📥 External Input (EI)</span>
+                  <p style="font-size: 13px; color: #cbd5e1;">Crosses boundary inward ➜ Mutates ILF database state.</p>
+                </div>
+                <span class="status-pill yes">State Mutation</span>
+              </div>
+
+              <div class="lane-box eo" id="laneEO">
+                <div>
+                  <span style="font-size: 16px; font-weight: 800; color: #34d399;">📤 External Output (EO)</span>
+                  <p style="font-size: 13px; color: #cbd5e1;">Reads ILF/EIF ➜ Executes derived calculations ➜ Emits outward.</p>
+                </div>
+                <span class="status-pill yes">Derived Math</span>
+              </div>
+
+              <div class="lane-box eq" id="laneEQ">
+                <div>
+                  <span style="font-size: 16px; font-weight: 800; color: #fbbf24;">🔎 External Inquiry (EQ)</span>
+                  <p style="font-size: 13px; color: #cbd5e1;">Direct input-output retrieval pair ➜ Zero state mutation, zero math.</p>
+                </div>
+                <span class="status-pill no">No Mutation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Actor Column (Reports & Consumers) -->
+          <div class="actor-column" id="actorColRight">
+            <div class="actor-node eo-dest" id="eoDestBox">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 16px; font-weight: 800; color: #34d399;">📊 Executive Dashboard</span>
+                <span class="badge-tag success">Recipient</span>
+              </div>
+              <p style="font-size: 13px; color: #cbd5e1; margin-top: 6px;">Receives monthly tax reports, calculated sales analytics, or alerts.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: EI, EO, EQ Triad Deep Dive & Weights (70s - 140s) -->
+      <section id="section2" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">2. Transactional Complexity Weights & Mathematical Roles</h1>
+          <p class="scene-subtitle">Elementary processes categorized by complexity matrices (Low, Average, High)</p>
+        </div>
+
+        <div class="card-grid-triad">
+          <!-- EI Card -->
+          <div class="card" id="eiDetailCard" style="border-top: 6px solid #38bdf8;">
+            <div class="card-header">
+              <span class="card-title" style="color: #38bdf8; font-size: 22px;">EI · External Input</span>
+              <span class="badge-tag info">Inward</span>
+            </div>
+            <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 10px;">Processes data or control info from outside boundary to maintain one or more ILFs.</p>
+            <div style="font-size: 13px; color: #93c5fd; direction: rtl; margin-bottom: 12px;">عملية تعبر للداخل لتحديث قاعدة البيانات الداخلية.</div>
+            <div class="weights-row">
+              <div class="weight-card">
+                <span class="weight-title">Low</span>
+                <span class="weight-val" style="color: #38bdf8;">3</span>
+              </div>
+              <div class="weight-card" style="border: 2px solid #38bdf8; background: rgba(56, 189, 248, 0.25);">
+                <span class="weight-title" style="color: #f8fafc;">Average</span>
+                <span class="weight-val" style="color: #7dd3fc;">4</span>
+              </div>
+              <div class="weight-card">
+                <span class="weight-title">High</span>
+                <span class="weight-val" style="color: #38bdf8;">6</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- EO Card -->
+          <div class="card" id="eoDetailCard" style="border-top: 6px solid #34d399;">
+            <div class="card-header">
+              <span class="card-title" style="color: #34d399; font-size: 22px;">EO · External Output</span>
+              <span class="badge-tag success">Outward</span>
+            </div>
+            <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 10px;">Emits processed data outside boundary. MUST contain derived calculations or mutate system behavior.</p>
+            <div style="font-size: 13px; color: #6ee7b7; direction: rtl; margin-bottom: 12px;">توليد تقارير أو حسابات رياضية مشتقة تعبر للخارج.</div>
+            <div class="weights-row">
+              <div class="weight-card">
+                <span class="weight-title">Low</span>
+                <span class="weight-val" style="color: #34d399;">4</span>
+              </div>
+              <div class="weight-card" style="border: 2px solid #34d399; background: rgba(52, 211, 153, 0.25);">
+                <span class="weight-title" style="color: #f8fafc;">Average</span>
+                <span class="weight-val" style="color: #a7f3d0;">5</span>
+              </div>
+              <div class="weight-card">
+                <span class="weight-title">High</span>
+                <span class="weight-val" style="color: #34d399;">7</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- EQ Card -->
+          <div class="card" id="eqDetailCard" style="border-top: 6px solid #fbbf24;">
+            <div class="card-header">
+              <span class="card-title" style="color: #fbbf24; font-size: 22px;">EQ · External Inquiry</span>
+              <span class="badge-tag warning">Query</span>
+            </div>
+            <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 10px;">Immediate request-retrieval pair. Reads data directly without executing derived mathematical formulas or modifying ILF.</p>
+            <div style="font-size: 13px; color: #fde68a; direction: rtl; margin-bottom: 12px;">استعلام فوري وقراءة مباشرة دون أي عمليات حسابية أو تعديل.</div>
+            <div class="weights-row">
+              <div class="weight-card">
+                <span class="weight-title">Low</span>
+                <span class="weight-val" style="color: #fbbf24;">3</span>
+              </div>
+              <div class="weight-card" style="border: 2px solid #fbbf24; background: rgba(251, 191, 36, 0.25);">
+                <span class="weight-title" style="color: #f8fafc;">Average</span>
+                <span class="weight-val" style="color: #fde68a;">4</span>
+              </div>
+              <div class="weight-card">
+                <span class="weight-title">High</span>
+                <span class="weight-val" style="color: #fbbf24;">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Weights Insight -->
+        <div class="trap-card" id="txWeightInsight" style="margin-top: 24px;">
+          <div class="trap-icon">⚡</div>
+          <div class="trap-body">
+            <div class="trap-title">Weight Hierarchy: Why EO is Weighted Higher than EQ (5 vs 4 Average)</div>
+            <div class="trap-text">An EO involves computational algorithms, statistical aggregation, or state-trigger logic, whereas an EQ is a simple direct pass-through query.</div>
+            <div class="trap-arabic">تتميز EO بوزن أعلى من EQ لأنها تتطلب معالجة وحسابات رياضية مشتقة، بينما يقتصر EQ على القراءة المباشرة.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: The EO vs EQ Diagnostic Decision Matrix (140s - 210s) -->
+      <section id="section3" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">3. The Diagnostic Test: Differentiating EO vs. EQ</h1>
+          <p class="scene-subtitle">The primary distinction tested in academic examinations and industrial FPA audits</p>
+        </div>
+
+        <div class="rule-decision-matrix" id="decisionMatrix">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Elementary Feature</th>
+                <th style="color: #38bdf8;">EI (Input)</th>
+                <th style="color: #34d399;">EO (Output)</th>
+                <th style="color: #fbbf24;">EQ (Inquiry)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Intent</strong></td>
+                <td>Maintain ILF data</td>
+                <td>Present calculated results</td>
+                <td>Present direct raw data</td>
+              </tr>
+              <tr>
+                <td><strong>Mutates Internal ILF?</strong></td>
+                <td><span class="status-pill yes">YES (Required)</span></td>
+                <td><span class="status-pill optional">OPTIONAL / NO</span></td>
+                <td><span class="status-pill no">NEVER (Forbidden)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Contains Derived Formulas?</strong></td>
+                <td><span class="status-pill optional">OPTIONAL</span></td>
+                <td><span class="status-pill yes">YES (Required)</span></td>
+                <td><span class="status-pill no">NEVER (Pure Pass-Through)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Standard Average Weight</strong></td>
+                <td><span style="font-weight: 800; color: #38bdf8; font-size: 18px;">4 FP</span></td>
+                <td><span style="font-weight: 800; color: #34d399; font-size: 18px;">5 FP</span></td>
+                <td><span style="font-weight: 800; color: #fbbf24; font-size: 18px;">4 FP</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Dr. Ali Fahim Exam Trap -->
+        <div class="trap-card" id="eoEqTrapCard" style="margin-top: 24px; border-color: rgba(245, 158, 11, 0.6); background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(30, 41, 59, 0.95));">
+          <div class="trap-icon">🎯</div>
+          <div class="trap-body">
+            <div class="trap-title" style="color: #fde68a;">The Golden Exam Diagnostic: "Search Employee" vs. "Calculate Payroll"</div>
+            <div class="trap-text">Viewing an employee profile by ID is an <strong>EQ</strong> (direct lookup). Generating a payslip with tax deductions and net salary is an <strong>EO</strong> (derived math).</div>
+            <div class="trap-arabic">عرض بيانات الموظف هو استعلام EQ، بينما توليد كشف الراتب وحساب الخصومات والضرائب هو مخرج EO لوجود عمليات حسابية.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director's Bilingual Subtitle Strip -->
+      <footer class="captions-bar">
+        <div class="caption-en" id="captionEn">Transactional Function Types quantify the dynamic behavior and elementary processes crossing the system boundary.</div>
+        <div class="caption-ar" id="captionAr">تقيس الدوال المعاملاتية السلوك الديناميكي والعمليات الأولية التي تعبر حدود النظام البرمجي.</div>
+      </footer>
+    </div>
+
+    <!-- GSAP Choreography across 210 seconds (6300 frames @ 30fps) -->
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // 1. Initial State Setup
+      gsap.set("#progressBar", { width: "0%" });
+      gsap.set("#section1", { opacity: 0 });
+      gsap.set("#section2", { opacity: 0 });
+      gsap.set("#section3", { opacity: 0 });
+
+      gsap.set(["#actorColLeft", "#txCoreSystem", "#actorColRight"], { opacity: 0, y: 30 });
+      gsap.set(["#eiDetailCard", "#eoDetailCard", "#eqDetailCard", "#txWeightInsight"], { opacity: 0, y: 30 });
+      gsap.set(["#decisionMatrix", "#eoEqTrapCard"], { opacity: 0, y: 30 });
+
+      // 2. Global Progress Bar (0 to 210s)
+      tl.to("#progressBar", {
+        width: "100%",
+        duration: 210,
+        ease: "none"
+      }, 0);
+
+      // =========================================================================
+      // PART 1: Elementary Processes & Boundary Crossings (0s -> 70s)
+      // =========================================================================
+      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+
+      tl.to("#txCoreSystem", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
+      tl.to("#actorColLeft", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.2);
+      tl.to("#actorColRight", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.4);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Transactional Functions represent the elementary processes that move data into, through, and out of the application boundary.";
+        document.getElementById("captionAr").textContent = "تمثل الدوال المعاملاتية العمليات الأولية التي تنقل البيانات دخولا ومعالجة وخروجاً عبر حدود التطبيق.";
+      }, null, 1.0);
+
+      tl.to("#laneEI", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 18.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inputs (EI) accept incoming transactions and modify internal database files (ILF).";
+        document.getElementById("captionAr").textContent = "تستقبل المدخلات الخارجية (EI) البيانات القادمة من المستخدم أو الأنظمة وتقوم بتحديث ملفات النظام الداخلية (ILF).";
+      }, null, 18.0);
+
+      tl.to("#laneEO", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 36.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Outputs (EO) execute derived calculations or formatting algorithms and send the processed results outside.";
+        document.getElementById("captionAr").textContent = "تُجري المخرجات الخارجية (EO) حسابات وخوارزميات رياضية مشتقة وترسل النتائج المعالجة إلى خارج حدود النظام.";
+      }, null, 36.0);
+
+      tl.to("#laneEQ", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 52.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inquiries (EQ) provide immediate direct lookups without performing derived formulas or modifying file states.";
+        document.getElementById("captionAr").textContent = "توفر الاستعلامات الخارجية (EQ) قراءة واسترجاعاً فورياً للبيانات دون أي حسابات مشتقة أو تعديل على الملفات.";
+      }, null, 52.0);
+
+      // Section 1 Exit
+      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 69.2);
+
+      // =========================================================================
+      // PART 2: EI, EO, EQ Triad Deep Dive & Weights (70s -> 140s)
+      // =========================================================================
+      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 70.0);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 04 · Transaction Multipliers";
+        document.getElementById("captionEn").textContent = "Each transaction type is weighted according to its File Types Referenced (FTR) and Data Element Types (DET).";
+        document.getElementById("captionAr").textContent = "تُوزن كل معاملة بناءً على عدد الملفات المشار إليها (FTR) وعناصر البيانات المنطقية (DET).";
+      }, null, 70.2);
+
+      tl.to("#eiDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 72.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inputs (EI) are weighted at 3 (Low), 4 (Average), and 6 (High) Function Points.";
+        document.getElementById("captionAr").textContent = "تُوزن المدخلات الخارجية (EI) بـ 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
+      }, null, 75.0);
+
+      tl.to("#eoDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 88.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Outputs (EO) command the highest transaction weight: 4 (Low), 5 (Average), and 7 (High) Function Points.";
+        document.getElementById("captionAr").textContent = "تحظى المخرجات الخارجية (EO) بأعلى وزن بين المعاملات: 4 (منخفض)، 5 (متوسط)، و7 (مرتفع) نقاط.";
+      }, null, 88.0);
+
+      tl.to("#eqDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 104.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inquiries (EQ) mirror EI weights: 3 (Low), 4 (Average), and 6 (High) Function Points.";
+        document.getElementById("captionAr").textContent = "تتطابق أوزان الاستعلامات (EQ) مع المدخلات: 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط.";
+      }, null, 104.0);
+
+      tl.to("#txWeightInsight", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 120.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Why is EO weighted higher than EQ? Because generating derived calculations requires substantive computational logic.";
+        document.getElementById("captionAr").textContent = "لماذا وزن EO أعلى من EQ؟ لأن توليد الحسابات المشتقة يتطلب خوارزميات معالجة وحسابات إضافية.";
+      }, null, 120.0);
+
+      // Section 2 Exit
+      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 139.2);
+
+      // =========================================================================
+      // PART 3: Diagnostic Decision Matrix & Exam Rules (140s -> 210s)
+      // =========================================================================
+      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 140.0);
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 04 · Diagnostic Decision Matrix";
+        document.getElementById("captionEn").textContent = "Mastering the distinction between EO and EQ is crucial for software sizing precision and exam excellence.";
+        document.getElementById("captionAr").textContent = "إتقان التمييز بين المخرجات (EO) والاستعلامات (EQ) أمر جوهري لدقة التقدير والتفوق الامتحاني.";
+      }, null, 140.2);
+
+      tl.to("#decisionMatrix", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 142.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Remember the golden rule: If a transaction contains ANY mathematical calculations or statistics, it is an EO, not an EQ.";
+        document.getElementById("captionAr").textContent = "تذكر القاعدة الذهبية: إذا تضمنت المعاملة أي حسابات رياضية أو إحصائية فهي مخرج (EO) وليست استعلاماً (EQ).";
+      }, null, 155.0);
+
+      tl.to("#eoEqTrapCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 175.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Searching student records is an EQ; calculating their final weighted GPA is an EO.";
+        document.getElementById("captionAr").textContent = "البحث عن سجل الطالب استعلام (EQ)؛ وحساب معدله التراكمي الموزون هو مخرج (EO).";
+      }, null, 175.0);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Coming up in Scene 05: Combining all 5 function types to compute Unadjusted Function Points (UFP).";
+        document.getElementById("captionAr").textContent = "في المشهد القادم (المشهد 05): سنجمع الأنواع الخمسة لحساب نقاط الوظيفة غير المعدلة (UFP).";
+      }, null, 195.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
