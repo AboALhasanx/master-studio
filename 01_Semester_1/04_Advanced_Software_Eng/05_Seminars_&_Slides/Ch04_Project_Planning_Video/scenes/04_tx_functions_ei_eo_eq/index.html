@@ -171,7 +171,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="210"
+      data-duration="75"
       data-width="1920"
       data-height="1080"
     >
@@ -444,108 +444,108 @@
       // 2. Global Progress Bar (0 to 210s)
       tl.to("#progressBar", {
         width: "100%",
-        duration: 210,
+        duration: 75,
         ease: "none"
-      }, 0);
+      }, 0.0);
 
       // =========================================================================
       // PART 1: Elementary Processes & Boundary Crossings (0s -> 70s)
       // =========================================================================
-      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.to("#section1", { opacity: 1, duration: 0.33, ease: "power2.out" }, 0.07);
 
-      tl.to("#txCoreSystem", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
-      tl.to("#actorColLeft", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.2);
-      tl.to("#actorColRight", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.4);
+      tl.to("#txCoreSystem", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.36);
+      tl.to("#actorColLeft", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.43);
+      tl.to("#actorColRight", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.5);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Transactional Functions represent the elementary processes that move data into, through, and out of the application boundary.";
         document.getElementById("captionAr").textContent = "تمثل الدوال المعاملاتية العمليات الأولية التي تنقل البيانات دخولا ومعالجة وخروجاً عبر حدود التطبيق.";
-      }, null, 1.0);
+      }, null, 0.36);
 
-      tl.to("#laneEI", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 18.0);
+      tl.to("#laneEI", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 6.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inputs (EI) accept incoming transactions and modify internal database files (ILF).";
         document.getElementById("captionAr").textContent = "تستقبل المدخلات الخارجية (EI) البيانات القادمة من المستخدم أو الأنظمة وتقوم بتحديث ملفات النظام الداخلية (ILF).";
-      }, null, 18.0);
+      }, null, 6.43);
 
-      tl.to("#laneEO", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 36.0);
+      tl.to("#laneEO", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 12.86);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Outputs (EO) execute derived calculations or formatting algorithms and send the processed results outside.";
         document.getElementById("captionAr").textContent = "تُجري المخرجات الخارجية (EO) حسابات وخوارزميات رياضية مشتقة وترسل النتائج المعالجة إلى خارج حدود النظام.";
-      }, null, 36.0);
+      }, null, 12.86);
 
-      tl.to("#laneEQ", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 52.0);
+      tl.to("#laneEQ", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 18.57);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inquiries (EQ) provide immediate direct lookups without performing derived formulas or modifying file states.";
         document.getElementById("captionAr").textContent = "توفر الاستعلامات الخارجية (EQ) قراءة واسترجاعاً فورياً للبيانات دون أي حسابات مشتقة أو تعديل على الملفات.";
-      }, null, 52.0);
+      }, null, 18.57);
 
       // Section 1 Exit
-      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 69.2);
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 24.71);
 
       // =========================================================================
       // PART 2: EI, EO, EQ Triad Deep Dive & Weights (70s -> 140s)
       // =========================================================================
-      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 70.0);
+      tl.to("#section2", { opacity: 1, duration: 0.33, ease: "power2.out" }, 25.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 04 · Transaction Multipliers";
         document.getElementById("captionEn").textContent = "Each transaction type is weighted according to its File Types Referenced (FTR) and Data Element Types (DET).";
         document.getElementById("captionAr").textContent = "تُوزن كل معاملة بناءً على عدد الملفات المشار إليها (FTR) وعناصر البيانات المنطقية (DET).";
-      }, null, 70.2);
+      }, null, 25.07);
 
-      tl.to("#eiDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 72.0);
+      tl.to("#eiDetailCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 25.71);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inputs (EI) are weighted at 3 (Low), 4 (Average), and 6 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تُوزن المدخلات الخارجية (EI) بـ 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
-      }, null, 75.0);
+      }, null, 26.79);
 
-      tl.to("#eoDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 88.0);
+      tl.to("#eoDetailCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 31.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Outputs (EO) command the highest transaction weight: 4 (Low), 5 (Average), and 7 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تحظى المخرجات الخارجية (EO) بأعلى وزن بين المعاملات: 4 (منخفض)، 5 (متوسط)، و7 (مرتفع) نقاط.";
-      }, null, 88.0);
+      }, null, 31.43);
 
-      tl.to("#eqDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 104.0);
+      tl.to("#eqDetailCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 37.14);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inquiries (EQ) mirror EI weights: 3 (Low), 4 (Average), and 6 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تتطابق أوزان الاستعلامات (EQ) مع المدخلات: 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط.";
-      }, null, 104.0);
+      }, null, 37.14);
 
-      tl.to("#txWeightInsight", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 120.0);
+      tl.to("#txWeightInsight", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 42.86);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Why is EO weighted higher than EQ? Because generating derived calculations requires substantive computational logic.";
         document.getElementById("captionAr").textContent = "لماذا وزن EO أعلى من EQ؟ لأن توليد الحسابات المشتقة يتطلب خوارزميات معالجة وحسابات إضافية.";
-      }, null, 120.0);
+      }, null, 42.86);
 
       // Section 2 Exit
-      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 139.2);
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 49.71);
 
       // =========================================================================
       // PART 3: Diagnostic Decision Matrix & Exam Rules (140s -> 210s)
       // =========================================================================
-      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 140.0);
+      tl.to("#section3", { opacity: 1, duration: 0.33, ease: "power2.out" }, 50.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 04 · Diagnostic Decision Matrix";
         document.getElementById("captionEn").textContent = "Mastering the distinction between EO and EQ is crucial for software sizing precision and exam excellence.";
         document.getElementById("captionAr").textContent = "إتقان التمييز بين المخرجات (EO) والاستعلامات (EQ) أمر جوهري لدقة التقدير والتفوق الامتحاني.";
-      }, null, 140.2);
+      }, null, 50.07);
 
-      tl.to("#decisionMatrix", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 142.0);
+      tl.to("#decisionMatrix", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 50.71);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Remember the golden rule: If a transaction contains ANY mathematical calculations or statistics, it is an EO, not an EQ.";
         document.getElementById("captionAr").textContent = "تذكر القاعدة الذهبية: إذا تضمنت المعاملة أي حسابات رياضية أو إحصائية فهي مخرج (EO) وليست استعلاماً (EQ).";
-      }, null, 155.0);
+      }, null, 55.36);
 
-      tl.to("#eoEqTrapCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 175.0);
+      tl.to("#eoEqTrapCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 62.5);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Searching student records is an EQ; calculating their final weighted GPA is an EO.";
         document.getElementById("captionAr").textContent = "البحث عن سجل الطالب استعلام (EQ)؛ وحساب معدله التراكمي الموزون هو مخرج (EO).";
-      }, null, 175.0);
+      }, null, 62.5);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Coming up in Scene 05: Combining all 5 function types to compute Unadjusted Function Points (UFP).";
         document.getElementById("captionAr").textContent = "في المشهد القادم (المشهد 05): سنجمع الأنواع الخمسة لحساب نقاط الوظيفة غير المعدلة (UFP).";
-      }, null, 195.0);
+      }, null, 69.64);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

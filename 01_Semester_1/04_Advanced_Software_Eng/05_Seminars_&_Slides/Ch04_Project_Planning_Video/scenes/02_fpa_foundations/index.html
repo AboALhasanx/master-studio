@@ -230,7 +230,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="180"
+      data-duration="65"
       data-width="1920"
       data-height="1080"
     >
@@ -432,86 +432,86 @@
       // 2. Global Progress Bar (0 to 180s)
       tl.to("#progressBar", {
         width: "100%",
-        duration: 180,
+        duration: 65,
         ease: "none"
-      }, 0);
+      }, 0.0);
 
       // =========================================================================
       // PART 1: Allan Albrecht 1979 Breakthrough (0s -> 55s)
       // =========================================================================
-      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.to("#section1", { opacity: 1, duration: 0.33, ease: "power2.out" }, 0.07);
       
-      tl.to("#cardAlbrecht", { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1);
+      tl.to("#cardAlbrecht", { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 0.36);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Albrecht realized that software sizing should measure user-visible functional value rather than syntax lines.";
         document.getElementById("captionAr").textContent = "أدرك ألبرخت أن قياس حجم البرمجيات يجب أن يُبنى على القيمة الوظيفية المرئية للمستخدم بدلاً من أسطر الكود.";
-      }, null, 1);
+      }, null, 0.36);
 
-      tl.to("#historyTrap", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 22);
+      tl.to("#historyTrap", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 7.94);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Function Points size the software from the user's external perspective, completely decoupled from programming language.";
         document.getElementById("captionAr").textContent = "تقيس نقاط الوظيفة البرنامج من المنظور الخارجي للمستخدم، بمعزل كامل عن لغة البرمجة المستخدمة.";
-      }, null, 22);
+      }, null, 7.94);
 
       // Section 1 Exit
-      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 54);
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 19.5);
 
       // =========================================================================
       // PART 2: Sizing from SRS Requirements (55s -> 120s)
       // =========================================================================
-      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 55);
+      tl.to("#section2", { opacity: 1, duration: 0.33, ease: "power2.out" }, 19.86);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 02 · Sizing Pipeline";
         document.getElementById("captionEn").textContent = "FPA takes the Software Requirements Specification (SRS) as direct input during early project planning.";
         document.getElementById("captionAr").textContent = "يأخذ تحليل نقاط الوظيفة مواصفات المتطلبات (SRS) كمدخل مباشر في المراحل المبكرة للتخطيط.";
-      }, null, 55.2);
+      }, null, 19.93);
 
-      tl.to("#pipeSRS", { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, 56);
-      tl.to("#arr1", { opacity: 1, scale: 1, duration: 0.5 }, 68);
-      tl.to("#pipeFPA", { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, 70);
+      tl.to("#pipeSRS", { opacity: 1, scale: 1, duration: 0.44, ease: "back.out(1.5)" }, 20.22);
+      tl.to("#arr1", { opacity: 1, scale: 1, duration: 0.28 }, 24.56);
+      tl.to("#pipeFPA", { opacity: 1, scale: 1, duration: 0.44, ease: "back.out(1.5)" }, 25.28);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Requirements are decomposed into 5 standard functional components: EI, EO, EQ, ILF, and EIF.";
         document.getElementById("captionAr").textContent = "يتم تفكيك المتطلبات إلى 5 مكونات وظيفية قياسية: المدخلات، المخرجات، الاستعلامات، والملفات الداخلية والخارجية.";
-      }, null, 70);
+      }, null, 25.28);
 
-      tl.to("#arr2", { opacity: 1, scale: 1, duration: 0.5 }, 88);
-      tl.to("#pipeEstimate", { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, 90);
+      tl.to("#arr2", { opacity: 1, scale: 1, duration: 0.28 }, 31.78);
+      tl.to("#pipeEstimate", { opacity: 1, scale: 1, duration: 0.44, ease: "back.out(1.5)" }, 32.5);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "From Function Points, engineers accurately compute required Person-Months and delivery schedules.";
         document.getElementById("captionAr").textContent = "انطلاقاً من نقاط الوظيفة، يحسب المهندسون الجهد المطلوب (أشهر/شخص) والجداول الزمنية للتسليم بدقة.";
-      }, null, 90);
+      }, null, 32.5);
 
-      tl.to("#pipeInsight", { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 104);
+      tl.to("#pipeInsight", { opacity: 1, scale: 1, duration: 0.44, ease: "power2.out" }, 37.56);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "This solves the classic software crisis dilemma: estimating effort when no code yet exists.";
         document.getElementById("captionAr").textContent = "يحل هذا معضلة أزمة البرمجيات الكلاسيكية: تقدير الجهد في وقت لا يوجد فيه كود بعد.";
-      }, null, 104);
+      }, null, 37.56);
 
       // Section 2 Exit
-      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 119.4);
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 43.12);
 
       // =========================================================================
       // PART 3: Language Independence & Consistency (120s -> 180s)
       // =========================================================================
-      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 120);
+      tl.to("#section3", { opacity: 1, duration: 0.33, ease: "power2.out" }, 43.33);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 02 · Language Invariance";
         document.getElementById("captionEn").textContent = "Consider an identical application: lines of code vary wildly across languages, but Function Points remain invariant.";
         document.getElementById("captionAr").textContent = "تأمل نظاماً متطابقاً: يتفاوت عدد أسطر الكود بشدة باختلاف لغات البرمجة، لكن نقاط الوظيفة تظل ثابتة تماماً.";
-      }, null, 120.2);
+      }, null, 43.41);
 
-      tl.to("#tableCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 122);
-      tl.to("#summaryCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 138);
+      tl.to("#tableCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 44.06);
+      tl.to("#summaryCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 49.83);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Whether written in Assembly (320k LOC) or Python (20k LOC), the user receives exactly 1,000 Function Points of utility.";
         document.getElementById("captionAr").textContent = "سواء كُتب بلغة التجميع (320 ألف سطر) أو بايثون (20 ألف سطر)، يحصل المستخدم على 1,000 نقطة وظيفة من الفائدة.";
-      }, null, 138);
+      }, null, 49.83);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "In the next scene, we explore the two Data Function Types: Internal Logical Files (ILF) and External Interfaces (EIF).";
         document.getElementById("captionAr").textContent = "في المشهد التالي، سنستكشف نوعي الدوال البيانية: ملفات المنطق الداخلية (ILF) وملفات الواجهات الخارجية (EIF).";
-      }, null, 160);
+      }, null, 57.78);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

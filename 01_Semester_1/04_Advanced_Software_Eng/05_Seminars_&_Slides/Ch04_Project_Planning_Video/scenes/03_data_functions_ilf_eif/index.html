@@ -244,7 +244,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="210"
+      data-duration="75"
       data-width="1920"
       data-height="1080"
     >
@@ -465,99 +465,99 @@
       // 2. Global Progress Bar (0 to 210s)
       tl.to("#progressBar", {
         width: "100%",
-        duration: 210,
+        duration: 75,
         ease: "none"
-      }, 0);
+      }, 0.0);
 
       // =========================================================================
       // PART 1: System Boundary & Data at Rest (0s -> 65s)
       // =========================================================================
-      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.to("#section1", { opacity: 1, duration: 0.33, ease: "power2.out" }, 0.07);
 
-      tl.to("#coreSystemBox", { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1.0);
+      tl.to("#coreSystemBox", { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 0.36);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "The System Boundary establishes the exact perimeter separating our application from external users and other software.";
         document.getElementById("captionAr").textContent = "يحدد جدار النظام (System Boundary) الحدود الدقيقة التي تفصل تطبيقنا عن المستخدمين والأنظمة الخارجية.";
-      }, null, 1.0);
+      }, null, 0.36);
 
-      tl.to("#coreILFVault", { scale: 1.02, duration: 0.4, yoyo: true, repeat: 1, ease: "power1.inOut" }, 18.0);
+      tl.to("#coreILFVault", { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1, ease: "power1.inOut" }, 6.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Internal Logical Files (ILF) are user-identifiable data groups maintained and updated entirely within our system boundary.";
         document.getElementById("captionAr").textContent = "ملفات المنطق الداخلية (ILF) هي مجموعات بيانات منطقية تُنشأ وتُحدث وتُخزن بالكامل داخل حدود نظامنا.";
-      }, null, 18.0);
+      }, null, 6.43);
 
-      tl.to("#extBankBox", { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 36.0);
-      tl.to("#refEIFVault", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 38.0);
+      tl.to("#extBankBox", { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 12.86);
+      tl.to("#refEIFVault", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 13.57);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Interface Files (EIF) are data files maintained by an external system, but referenced and read by our application.";
         document.getElementById("captionAr").textContent = "ملفات الواجهات الخارجية (EIF) هي ملفات تُدار وتُحدَّث بواسطة نظام خارجي، لكن نظامنا يقرؤها ويسترجع بياناتها.";
-      }, null, 36.0);
+      }, null, 12.86);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Our system never modifies an EIF directly; it merely uses external data for read operations and business validation.";
         document.getElementById("captionAr").textContent = "لا يقوم نظامنا بتعديل ملفات EIF مباشرة؛ بل يكتفي بالرجوع إليها لعمليات القراءة والتحقق من صحة البيانات.";
-      }, null, 50.0);
+      }, null, 17.86);
 
       // Section 1 Exit
-      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 64.2);
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 22.93);
 
       // =========================================================================
       // PART 2: ILF & EIF Deep Structural Comparison & Weights (65s -> 135s)
       // =========================================================================
-      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 65.0);
+      tl.to("#section2", { opacity: 1, duration: 0.33, ease: "power2.out" }, 23.21);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 03 · Complexity Weights (ILF / EIF)";
         document.getElementById("captionEn").textContent = "Albrecht established standardized complexity multipliers for Data Functions based on Record Element Types and Data Element Types.";
         document.getElementById("captionAr").textContent = "وضع ألبرخت أوزاناً قياسية لتعقيد دوال البيانات بناءً على عدد حقول وسجلات البيانات المنطقية.";
-      }, null, 65.2);
+      }, null, 23.29);
 
-      tl.to("#ilfDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 67.0);
+      tl.to("#ilfDetailCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 23.93);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "ILF complexity is weighted at 7 (Low), 10 (Average), and 15 (High) Function Points.";
         document.getElementById("captionAr").textContent = "يُقدر تعقيد ملفات ILF بـ 7 نقاط للمنخفض، و10 نقاط للمتوسط، و15 نقطة للملفات عالية التعقيد.";
-      }, null, 75.0);
+      }, null, 26.79);
 
-      tl.to("#eifDetailCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 90.0);
+      tl.to("#eifDetailCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 32.14);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "EIF complexity is weighted lower: 5 (Low), 7 (Average), and 10 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تُوزن ملفات EIF بقيم أقل: 5 (منخفض)، 7 (متوسط)، و10 (مرتفع) لأن نظامنا لا يتحمل عبء صيانتها.";
-      }, null, 90.0);
+      }, null, 32.14);
 
-      tl.to("#weightInsightCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 112.0);
+      tl.to("#weightInsightCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 40.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Notice that an Average ILF (10 FP) yields the same weight as a High EIF (10 FP) due to internal maintenance overhead.";
         document.getElementById("captionAr").textContent = "لاحظ أن ILF المتوسط (10 نقاط) يماثل وزن EIF المرتفع (10 نقاط) نظراً لتحمل النظام أعباء إدارة الملفات الداخلية.";
-      }, null, 112.0);
+      }, null, 40.0);
 
       // Section 2 Exit
-      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 134.2);
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 47.93);
 
       // =========================================================================
       // PART 3: The Golden Duality Rule of FPA (135s -> 210s)
       // =========================================================================
-      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 135.0);
+      tl.to("#section3", { opacity: 1, duration: 0.33, ease: "power2.out" }, 48.21);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 03 · Golden Duality Rule";
         document.getElementById("captionEn").textContent = "The Golden Duality Rule states: Any data group counted as an EIF in System A MUST be an ILF in System B.";
         document.getElementById("captionAr").textContent = "قاعدة الازدواج الذهبية: أي مجموعة بيانات تُحسب كـ EIF في النظام (أ) يجب بالضرورة أن تكون ILF في النظام (ب).";
-      }, null, 135.2);
+      }, null, 48.29);
 
-      tl.to("#dualityBox", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 137.0);
+      tl.to("#dualityBox", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 48.93);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "When an e-commerce platform references carrier rates, it counts 1 EIF (7 FP), while the carrier counts 1 ILF (10 FP).";
         document.getElementById("captionAr").textContent = "عندما يستعلم متجر إلكتروني عن أسعار الشحن فإنه يحسب ملف EIF (7 نقاط)، بينما تحسب شركة الشحن نفس الملف كـ ILF (10 نقاط).";
-      }, null, 150.0);
+      }, null, 53.57);
 
-      tl.to("#examTrapCard3", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 172.0);
+      tl.to("#examTrapCard3", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 61.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Exam Warning: Never double-count a database within the same boundary. It is either maintained (ILF) or referenced (EIF).";
         document.getElementById("captionAr").textContent = "تحذير للامتحان: لا تقم أبداً بالعد المزدوج لنفس الملف داخل النظام الواحد. إما أن يكون مُداراً (ILF) أو مقروءاً (EIF).";
-      }, null, 172.0);
+      }, null, 61.43);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Next in Scene 04: We explore Transactional Functions (EI, EO, and EQ) and how they cross the system boundary.";
         document.getElementById("captionAr").textContent = "في المشهد القادم (المشهد 04): سنستكشف الدوال المعاملاتية (EI و EO و EQ) وكيف تعبر حدود النظام.";
-      }, null, 195.0);
+      }, null, 69.64);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

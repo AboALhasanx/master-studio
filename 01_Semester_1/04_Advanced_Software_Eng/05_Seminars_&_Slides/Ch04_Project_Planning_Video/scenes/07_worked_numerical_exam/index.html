@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Master Studio: Scene 07 — Comprehensive Exam Numerical Problem</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Scene 07 Custom Kinetic Styles */
+      .exam-container {
+        width: 100%;
+        max-width: 1600px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .spec-card {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+        border: 2px solid rgba(56, 189, 248, 0.4);
+        border-radius: 18px;
+        padding: 20px 28px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .spec-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: #38bdf8;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .spec-item {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 10px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .spec-badge {
+        font-size: 13px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .calc-table-card {
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid rgba(129, 140, 248, 0.4);
+        border-radius: 18px;
+        padding: 18px 24px;
+      }
+
+      .calc-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 6px;
+      }
+
+      .calc-table th {
+        background: #1e293b;
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 10px 14px;
+        text-align: center;
+      }
+
+      .calc-table th:first-child {
+        text-align: left;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      .calc-table th:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .calc-row {
+        background: rgba(30, 41, 59, 0.55);
+      }
+
+      .calc-row td {
+        padding: 10px 14px;
+        font-size: 15px;
+        color: #e2e8f0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .calc-row td:first-child {
+        text-align: left;
+        font-weight: 700;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      .calc-row td:last-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-weight: 800;
+        font-family: "JetBrains Mono", monospace;
+        color: #38bdf8;
+      }
+
+      .total-row {
+        background: linear-gradient(90deg, rgba(56, 189, 248, 0.25), rgba(129, 140, 248, 0.25)) !important;
+      }
+
+      .total-row td {
+        font-weight: 900 !important;
+        font-size: 18px !important;
+        color: #38bdf8 !important;
+      }
+
+      /* Section 2: VAF and Final FP calculation */
+      .synthesis-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .step-box {
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid rgba(52, 211, 153, 0.4);
+        border-radius: 18px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .step-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+      }
+
+      .step-num {
+        background: #047857;
+        color: #ffffff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+      }
+      .step-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #34d399;
+      }
+
+      .formula-box {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        padding: 12px 18px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #fde047;
+        text-align: center;
+        border: 1px dashed rgba(253, 224, 71, 0.3);
+      }
+
+      /* Section 3: LOC Conversion Across Languages */
+      .loc-card-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        width: 100%;
+      }
+
+      .loc-card {
+        background: rgba(15, 23, 42, 0.92);
+        border: 2px solid rgba(148, 163, 184, 0.25);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .loc-card.highlight {
+        border-color: #38bdf8;
+        background: linear-gradient(180deg, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.95));
+      }
+
+      .lang-name {
+        font-size: 20px;
+        font-weight: 800;
+        color: #f8fafc;
+      }
+
+      .ratio-pill {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+
+      .total-loc {
+        font-size: 28px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+        color: #34d399;
+      }
+
+      .loc-label {
+        font-size: 12px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="85"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Top Header Bar -->
+      <header class="header-bar">
+        <div class="brand-title">
+          <span class="brand-badge">Master Studio</span>
+          <span class="course-name">Advanced Software Engineering — CS502</span>
+        </div>
+        <div class="scene-pill" id="scenePill">Scene 07 · Comprehensive Exam Problem Walkthrough</div>
+      </header>
+      <div class="progress-line" id="progressBar"></div>
+
+      <!-- Main Stage -->
+      <!-- Section 1: Problem Statement & UFP Matrix Breakdown (0s - 80s) -->
+      <section id="section1" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">Final Exam Numerical Walkthrough: Banking System</h1>
+          <p class="scene-subtitle">Step 1: Parse Software Requirements & Compute Unadjusted Function Points (UFP)</p>
+        </div>
+
+        <div class="spec-card" id="specCard">
+          <div class="spec-title">
+            <span>📋 Problem Specification: Online Banking Portal</span>
+          </div>
+          <div class="spec-grid">
+            <div class="spec-item" id="specItem1">
+              <span style="font-size: 14px; color: #e2e8f0;">User Authentication & Transfer forms</span>
+              <span class="spec-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">10 EIs (Simple: 4, Avg: 6)</span>
+            </div>
+            <div class="spec-item" id="specItem2">
+              <span style="font-size: 14px; color: #e2e8f0;">Monthly Statements & Tax summaries</span>
+              <span class="spec-badge" style="background: rgba(52, 211, 153, 0.2); color: #34d399;">5 EOs (Avg: 3, Complex: 2)</span>
+            </div>
+            <div class="spec-item" id="specItem3">
+              <span style="font-size: 14px; color: #e2e8f0;">Balance lookup & FX rate queries</span>
+              <span class="spec-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">8 EQs (Simple: 5, Avg: 3)</span>
+            </div>
+            <div class="spec-item" id="specItem4">
+              <span style="font-size: 14px; color: #e2e8f0;">Customer & Account databases</span>
+              <span class="spec-badge" style="background: rgba(165, 180, 252, 0.2); color: #a5b4fc;">4 ILFs (Avg: 2, Complex: 2)</span>
+            </div>
+            <div class="spec-item" id="specItem5">
+              <span style="font-size: 14px; color: #e2e8f0;">Credit bureau & Central Bank API</span>
+              <span class="spec-badge" style="background: rgba(244, 114, 182, 0.2); color: #f472b6;">2 EIFs (Simple: 1, Avg: 1)</span>
+            </div>
+            <div class="spec-item" id="specItem6">
+              <span style="font-size: 14px; color: #e2e8f0;">14 General System Characteristics</span>
+              <span class="spec-badge" style="background: rgba(251, 191, 36, 0.2); color: #fde047;">TDI = 48 (High Security/Perf)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-table-card" id="calcTableCard" style="margin-top: 14px; width: 100%;">
+          <table class="calc-table">
+            <thead>
+              <tr>
+                <th>Component Type</th>
+                <th>Simple (Count × W)</th>
+                <th>Average (Count × W)</th>
+                <th>Complex (Count × W)</th>
+                <th>Subtotal Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="calc-row" id="rowEI">
+                <td>External Inputs (EI)</td>
+                <td>4 × 3 = 12</td>
+                <td>6 × 4 = 24</td>
+                <td>0 × 6 = 0</td>
+                <td id="subEI">36</td>
+              </tr>
+              <tr class="calc-row" id="rowEO">
+                <td>External Outputs (EO)</td>
+                <td>0 × 4 = 0</td>
+                <td>3 × 5 = 15</td>
+                <td>2 × 7 = 14</td>
+                <td id="subEO">29</td>
+              </tr>
+              <tr class="calc-row" id="rowEQ">
+                <td>External Inquiries (EQ)</td>
+                <td>5 × 3 = 15</td>
+                <td>3 × 4 = 12</td>
+                <td>0 × 6 = 0</td>
+                <td id="subEQ">27</td>
+              </tr>
+              <tr class="calc-row" id="rowILF">
+                <td>Internal Logical Files (ILF)</td>
+                <td>0 × 7 = 0</td>
+                <td>2 × 10 = 20</td>
+                <td>2 × 15 = 30</td>
+                <td id="subILF">50</td>
+              </tr>
+              <tr class="calc-row" id="rowEIF">
+                <td>External Interface Files (EIF)</td>
+                <td>1 × 5 = 5</td>
+                <td>1 × 7 = 7</td>
+                <td>0 × 10 = 0</td>
+                <td id="subEIF">12</td>
+              </tr>
+              <tr class="calc-row total-row" id="rowTotal">
+                <td colspan="4" style="text-align: right; padding-right: 24px;">TOTAL UNADJUSTED FUNCTION POINTS (UFP)</td>
+                <td id="totalUFP">154</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: GSC Sum, VAF Calculation & Final Adjusted FP (80s - 160s) -->
+      <section id="section2" class="scene" style="opacity: 0;">
+        <div class="scene-heading">
+          <h1 class="scene-title">Step 2: Calculate VAF & Final Adjusted Function Points</h1>
+          <p class="scene-subtitle">Applying Technical Complexity Adjustment to Raw Functional Size</p>
+        </div>
+
+        <div class="synthesis-grid">
+          <div class="step-box" id="vafStepBox">
+            <div class="step-header">
+              <div class="step-num">1</div>
+              <div class="step-title">Compute Value Adjustment Factor (VAF)</div>
+            </div>
+            <p style="font-size: 15px; color: #cbd5e1; line-height: 1.5;">
+              Sum of 14 General System Characteristics: <strong style="color: #38bdf8;">TDI = ∑ Fi = 48</strong>
+              <br />(Reflecting high requirements for data communications, security, and distributed processing).
+            </p>
+            <div class="formula-box">
+              VAF = 0.65 + (0.01 × TDI)
+            </div>
+            <div class="formula-box" style="color: #34d399; font-weight: 800;">
+              VAF = 0.65 + (0.01 × 48) = 0.65 + 0.48 = 1.13
+            </div>
+            <p style="font-size: 14px; color: #94a3b8;">
+              Result indicates a <strong style="color: #34d399;">+13% adjustment</strong> for technical complexity.
+            </p>
+          </div>
+
+          <div class="step-box" id="finalFpStepBox">
+            <div class="step-header">
+              <div class="step-num">2</div>
+              <div class="step-title">Calculate Final Adjusted FP</div>
+            </div>
+            <p style="font-size: 15px; color: #cbd5e1; line-height: 1.5;">
+              Multiply Unadjusted Function Points by the Value Adjustment Factor:
+            </p>
+            <div class="formula-box">
+              Adjusted FP = UFP × VAF
+            </div>
+            <div class="formula-box" style="color: #38bdf8; font-weight: 800; font-size: 22px;">
+              FP = 154 × 1.13 = 174.02 Function Points
+            </div>
+            <div style="background: rgba(56, 189, 248, 0.1); border-radius: 8px; padding: 10px; border-left: 4px solid #38bdf8;">
+              <span style="font-size: 13px; color: #e2e8f0; font-weight: 700;">Key Takeaway:</span>
+              <span style="font-size: 13px; color: #cbd5e1;"> Functional size grew from 154 to 174.02 to account for stringent non-functional reliability requirements.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-card" style="margin-top: 14px; width: 100%;" id="formulaRecapCard">
+          <div style="display: flex; justify-content: space-around; align-items: center; text-align: center;">
+            <div>
+              <div style="font-size: 13px; color: #94a3b8; text-transform: uppercase;">Raw Size (UFP)</div>
+              <div style="font-size: 32px; font-weight: 900; color: #38bdf8; font-family: 'JetBrains Mono', monospace;">154</div>
+            </div>
+            <div style="font-size: 28px; color: #94a3b8;">×</div>
+            <div>
+              <div style="font-size: 13px; color: #94a3b8; text-transform: uppercase;">Complexity Multiplier (VAF)</div>
+              <div style="font-size: 32px; font-weight: 900; color: #34d399; font-family: 'JetBrains Mono', monospace;">1.13</div>
+            </div>
+            <div style="font-size: 28px; color: #94a3b8;">=</div>
+            <div>
+              <div style="font-size: 13px; color: #94a3b8; text-transform: uppercase;">Final Sizing (FP)</div>
+              <div style="font-size: 32px; font-weight: 900; color: #fde047; font-family: 'JetBrains Mono', monospace;">174.02 FP</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Converting FP to LOC Across Languages (160s - 240s) -->
+      <section id="section3" class="scene" style="opacity: 0;">
+        <div class="scene-heading">
+          <h1 class="scene-title">Step 3: Translating Function Points to Lines of Code (LOC)</h1>
+          <p class="scene-subtitle">Demonstrating Language Independence & Language Expansion Ratios</p>
+        </div>
+
+        <div class="loc-card-grid" id="locCardGrid">
+          <div class="loc-card" id="cardAssembly">
+            <div class="lang-name">Assembly</div>
+            <div class="ratio-pill">320 LOC / FP</div>
+            <div class="total-loc">55,686</div>
+            <div class="loc-label">Total Lines of Code</div>
+            <p style="font-size: 12px; color: #94a3b8;">174.02 × 320</p>
+          </div>
+
+          <div class="loc-card" id="cardC">
+            <div class="lang-name">C / C++</div>
+            <div class="ratio-pill">128 LOC / FP</div>
+            <div class="total-loc">22,275</div>
+            <div class="loc-label">Total Lines of Code</div>
+            <p style="font-size: 12px; color: #94a3b8;">174.02 × 128</p>
+          </div>
+
+          <div class="loc-card highlight" id="cardJava">
+            <div class="lang-name">Java / C#</div>
+            <div class="ratio-pill">53 LOC / FP</div>
+            <div class="total-loc">9,223</div>
+            <div class="loc-label">Total Lines of Code</div>
+            <p style="font-size: 12px; color: #94a3b8;">174.02 × 53</p>
+          </div>
+
+          <div class="loc-card highlight" id="cardPython">
+            <div class="lang-name">Python / SQL</div>
+            <div class="ratio-pill">21 LOC / FP</div>
+            <div class="total-loc">3,654</div>
+            <div class="loc-label">Total Lines of Code</div>
+            <p style="font-size: 12px; color: #94a3b8;">174.02 × 21</p>
+          </div>
+        </div>
+
+        <div class="trap-card" id="examTrapCard7" style="margin-top: 14px; width: 100%;">
+          <div class="trap-icon">⚠️</div>
+          <div class="trap-body">
+            <div class="trap-title">CRITICAL EXAM TAKEAWAY — DR. ALI FAHIM</div>
+            <div class="trap-text">
+              Function Points remain <strong>constant (174.02 FP)</strong> regardless of technology chosen. 
+              Using Python produces fewer LOC (3,654) than C (22,275) for the exact same functional value!
+            </div>
+            <div class="trap-arabic">
+              نقاط الوظيفة تظل ثابتة (174.02 نقطة) بغض النظر عن لغة البرمجة المستخدمة، بينما يختلف عدد أسطر الكود بشكل جذري.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director's Subtitle Bar -->
+      <footer class="captions-bar">
+        <div class="caption-en" id="captionEn">Initializing Comprehensive Exam Problem Walkthrough...</div>
+        <div class="caption-ar" id="captionAr">بدء حل المسألة الامتحانية الشاملة لحساب نقاط الوظيفة...</div>
+      </footer>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Progress Bar (0s -> 240s)
+      tl.to("#progressBar", { width: "100%", duration: 85, ease: "none" }, 0.0);
+
+      // =========================================================================
+      // PART 1: Exam Problem Specification & UFP Table (0s -> 80s)
+      // =========================================================================
+      tl.fromTo("#section1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.18);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Let's solve a full 240-second real-world numerical exam problem for an Online Banking Portal.";
+        document.getElementById("captionAr").textContent = "لنبدأ بحل مسألة امتحانية رقمية شاملة لحساب حجم بوابة بنكية إلكترونية.";
+      }, null, 0.35);
+
+      tl.to("#specCard", { scale: 1.01, duration: 0.25, yoyo: true, repeat: 1 }, 3.54);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "The problem provides counts for all 5 functional components categorized by complexity level, plus 14 GSC ratings.";
+        document.getElementById("captionAr").textContent = "تحدد المسألة أعداد المكونات الوظيفية الخمسة ومستويات تعقيدها، بالإضافة لدرجات الخصائص الـ 14 العامة.";
+      }, null, 3.54);
+
+      // Row Highlights & Calculations
+      tl.to("#rowEI", { backgroundColor: "rgba(56, 189, 248, 0.25)", duration: 0.28 }, 7.79);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inputs: 4 Simple (4x3=12) + 6 Average (6x4=24) + 0 Complex = 36 Function Points.";
+        document.getElementById("captionAr").textContent = "المدخلات الخارجية: 4 بسيطة (12) + 6 متوسطة (24) = 36 نقطة وظيفة.";
+      }, null, 7.79);
+
+      tl.to("#rowEO", { backgroundColor: "rgba(52, 211, 153, 0.25)", duration: 0.28 }, 12.04);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Outputs: 0 Simple + 3 Average (3x5=15) + 2 Complex (2x7=14) = 29 Function Points.";
+        document.getElementById("captionAr").textContent = "المخرجات الخارجية: 3 متوسطة (15) + 2 معقدة (14) = 29 نقطة وظيفة.";
+      }, null, 12.04);
+
+      tl.to("#rowEQ", { backgroundColor: "rgba(245, 158, 11, 0.25)", duration: 0.28 }, 16.29);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Inquiries: 5 Simple (5x3=15) + 3 Average (3x4=12) = 27 Function Points.";
+        document.getElementById("captionAr").textContent = "الاستعلامات الخارجية: 5 بسيطة (15) + 3 متوسطة (12) = 27 نقطة وظيفة.";
+      }, null, 16.29);
+
+      tl.to("#rowILF", { backgroundColor: "rgba(129, 140, 248, 0.25)", duration: 0.28 }, 19.83);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Internal Logical Files: 2 Average (2x10=20) + 2 Complex (2x15=30) = 50 Function Points.";
+        document.getElementById("captionAr").textContent = "الملفات المنطقية الداخلية: 2 متوسطة (20) + 2 معقدة (30) = 50 نقطة وظيفة.";
+      }, null, 19.83);
+
+      tl.to("#rowEIF", { backgroundColor: "rgba(244, 114, 182, 0.25)", duration: 0.28 }, 23.38);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "External Interface Files: 1 Simple (1x5=5) + 1 Average (1x7=7) = 12 Function Points.";
+        document.getElementById("captionAr").textContent = "ملفات الواجهات الخارجية: 1 بسيطة (5) + 1 متوسطة (7) = 12 نقطة وظيفة.";
+      }, null, 23.38);
+
+      tl.to("#rowTotal", { scale: 1.02, duration: 0.33, yoyo: true, repeat: 1 }, 26.21);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Summing all 5 component subtotals yields Total UFP = 36 + 29 + 27 + 50 + 12 = 154 Function Points.";
+        document.getElementById("captionAr").textContent = "مجموع المكونات الخمسة يعطي UFP الإجمالي = 36 + 29 + 27 + 50 + 12 = 154 نقطة غير معدلة.";
+      }, null, 26.21);
+
+      // Section 1 Exit
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 28.05);
+
+      // =========================================================================
+      // PART 2: VAF & Adjusted FP Calculation (80s -> 160s)
+      // =========================================================================
+      tl.fromTo("#section2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 28.51);
+
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 07 · Step 2: VAF & Final Adjusted FP";
+        document.getElementById("captionEn").textContent = "Step 2: Calculate the Value Adjustment Factor (VAF) from the Total Degree of Influence (TDI = 48).";
+        document.getElementById("captionAr").textContent = "الخطوة 2: حساب معامل تعديل القيمة VAF بناءً على مجموع درجات التأثير (TDI = 48).";
+      }, null, 28.69);
+
+      tl.to("#vafStepBox", { scale: 1.02, duration: 0.28, yoyo: true, repeat: 1 }, 32.58);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Formula: VAF = 0.65 + (0.01 x 48) = 0.65 + 0.48 = 1.13 (a 13% upward complexity adjustment).";
+        document.getElementById("captionAr").textContent = "الصيغة: VAF = 0.65 + (0.01 × 48) = 1.13 (أي زيادة بنسبة 13% للتعقيد الفني).";
+      }, null, 32.58);
+
+      tl.to("#finalFpStepBox", { scale: 1.02, duration: 0.28, yoyo: true, repeat: 1 }, 39.67);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Final Adjusted FP = UFP x VAF = 154 x 1.13 = 174.02 Function Points.";
+        document.getElementById("captionAr").textContent = "نقاط الوظيفة النهائية المعدلة = 154 × 1.13 = 174.02 نقطة وظيفة.";
+      }, null, 39.67);
+
+      tl.to("#formulaRecapCard", { scale: 1.03, duration: 0.33, yoyo: true, repeat: 1 }, 47.46);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Always write the final decimal result clearly in your exam paper: 174.02 FP.";
+        document.getElementById("captionAr").textContent = "اكتب دائماً النتيجة العشرية النهائية بوضوح في ورقة الامتحان: 174.02 نقطة.";
+      }, null, 47.46);
+
+      // Section 2 Exit
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 56.38);
+
+      // =========================================================================
+      // PART 3: FP to LOC Translation Across Languages (160s -> 240s)
+      // =========================================================================
+      tl.fromTo("#section3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 56.84);
+
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 07 · Step 3: FP to LOC Translation";
+        document.getElementById("captionEn").textContent = "Step 3: Convert 174.02 Function Points to estimated Lines of Code across programming languages.";
+        document.getElementById("captionAr").textContent = "الخطوة 3: تحويل 174.02 نقطة وظيفة إلى تقديرات أسطر الكود (LOC) عبر اللغات المختلفة.";
+      }, null, 57.02);
+
+      tl.to("#cardAssembly", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1 }, 60.92);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Assembly Language (320 LOC/FP): 174.02 x 320 = 55,686 lines of code.";
+        document.getElementById("captionAr").textContent = "لغة التجميع أسمبلي (320 سطر/نقطة): ينتج عنها 55,686 سطر برمجي.";
+      }, null, 60.92);
+
+      tl.to("#cardC", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1 }, 65.88);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "C / C++ (128 LOC/FP): 174.02 x 128 = 22,275 lines of code.";
+        document.getElementById("captionAr").textContent = "لغة سي / سي++ (128 سطر/نقطة): ينتج عنها 22,275 سطر برمجي.";
+      }, null, 65.88);
+
+      tl.to("#cardJava", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1 }, 70.83);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Java / C# (53 LOC/FP): 174.02 x 53 = 9,223 lines of code.";
+        document.getElementById("captionAr").textContent = "لغة جافا / سي شارب (53 سطر/نقطة): ينتج عنها 9,223 سطر برمجي.";
+      }, null, 70.83);
+
+      tl.to("#cardPython", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1 }, 75.79);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Python / SQL (21 LOC/FP): 174.02 x 21 = 3,654 lines of code.";
+        document.getElementById("captionAr").textContent = "لغة بايثون / SQL (21 سطر/نقطة): ينتج عنها 3,654 سطر برمجي فقط.";
+      }, null, 75.79);
+
+      tl.to("#examTrapCard7", { scale: 1.02, duration: 0.28, yoyo: true, repeat: 1 }, 80.04);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Notice how higher-level languages deliver identical functionality with 15x fewer lines of code!";
+        document.getElementById("captionAr").textContent = "لاحظ كيف تقدم اللغات عالية المستوى نفس الوظيفة تماماً بعدد أسطر أقل بـ 15 ضعفاً!";
+      }, null, 80.04);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Master Studio: Scene 08 — Cost Estimation Models (COCOMO & Putnam)</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Scene 08 Specialized Kinetic Styles */
+      .cocomo-container {
+        width: 100%;
+        max-width: 1600px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Section 1: COCOMO Modes Grid */
+      .modes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        width: 100%;
+      }
+
+      .mode-card {
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid rgba(148, 163, 184, 0.25);
+        border-radius: 18px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .mode-card.organic {
+        border-color: #34d399;
+      }
+
+      .mode-card.semidetached {
+        border-color: #38bdf8;
+      }
+
+      .mode-card.embedded {
+        border-color: #f43f5e;
+      }
+
+      .mode-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+      }
+
+      .mode-name {
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .mode-badge {
+        font-size: 13px;
+        font-weight: 800;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .mode-equation {
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fde047;
+      }
+
+      .mode-desc {
+        font-size: 14px;
+        color: #cbd5e1;
+        line-height: 1.45;
+      }
+
+      /* Section 2: Equations & Formulas */
+      .formula-hero-card {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+        border: 2px solid rgba(56, 189, 248, 0.4);
+        border-radius: 20px;
+        padding: 24px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .equation-display-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .equation-card {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        padding: 18px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .eq-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .eq-body {
+        font-size: 26px;
+        font-weight: 900;
+        font-family: "JetBrains Mono", monospace;
+        color: #34d399;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.35);
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(52, 211, 153, 0.3);
+      }
+
+      .eq-explanation {
+        font-size: 14px;
+        color: #cbd5e1;
+        line-height: 1.4;
+      }
+
+      /* Section 3: Putnam Rayleigh Curve & Manpower */
+      .putnam-card {
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid rgba(129, 140, 248, 0.4);
+        border-radius: 20px;
+        padding: 24px 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .rayleigh-canvas {
+        width: 100%;
+        height: 280px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 14px;
+        position: relative;
+        padding: 20px;
+      }
+
+      .putnam-formula-box {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="65"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Top Header Bar -->
+      <header class="header-bar">
+        <div class="brand-title">
+          <span class="brand-badge">Master Studio</span>
+          <span class="course-name">Advanced Software Engineering — CS502</span>
+        </div>
+        <div class="scene-pill" id="scenePill">Scene 08 · Cost Estimation Models (COCOMO & Putnam)</div>
+      </header>
+      <div class="progress-line" id="progressBar"></div>
+
+      <!-- Main Stage -->
+      <!-- Section 1: Boehm's COCOMO Modes (0s - 60s) -->
+      <section id="section1" class="scene">
+        <div class="scene-heading">
+          <h1 class="scene-title">Boehm's Constructive Cost Model (COCOMO)</h1>
+          <p class="scene-subtitle">Three Primary Software Project Development Modes</p>
+        </div>
+
+        <div class="modes-grid">
+          <div class="mode-card organic" id="cardOrganic">
+            <div class="mode-header">
+              <span class="mode-name" style="color: #34d399;">1. Organic Mode</span>
+              <span class="mode-badge" style="background: rgba(52, 211, 153, 0.2); color: #34d399;">Small & Routine</span>
+            </div>
+            <p class="mode-desc">
+              Small, experienced teams working in familiar, in-house environments with relaxed requirements and minimal innovation needed.
+            </p>
+            <div class="mode-equation">
+              Effort = 2.4 × (KLOC)<sup>1.05</sup>
+            </div>
+            <div class="mode-equation" style="color: #38bdf8;">
+              Tdev = 2.5 × (Effort)<sup>0.38</sup>
+            </div>
+          </div>
+
+          <div class="mode-card semidetached" id="cardSemidetached">
+            <div class="mode-header">
+              <span class="mode-name" style="color: #38bdf8;">2. Semidetached</span>
+              <span class="mode-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">Medium & Mixed</span>
+            </div>
+            <p class="mode-desc">
+              Intermediate team size with mixed experience levels. Combination of rigid and flexible requirements (e.g., DBMS or new OS utility).
+            </p>
+            <div class="mode-equation">
+              Effort = 3.0 × (KLOC)<sup>1.12</sup>
+            </div>
+            <div class="mode-equation" style="color: #38bdf8;">
+              Tdev = 2.5 × (Effort)<sup>0.35</sup>
+            </div>
+          </div>
+
+          <div class="mode-card embedded" id="cardEmbedded">
+            <div class="mode-header">
+              <span class="mode-name" style="color: #fb7185;">3. Embedded Mode</span>
+              <span class="mode-badge" style="background: rgba(251, 113, 133, 0.2); color: #fda4af;">Complex & Strict</span>
+            <p class="mode-desc">
+              Tight hardware, software, and operational constraints. Strict regulations with high innovation (e.g., Avionics, Medical Devices, Banking Core).
+            </p>
+            <div class="mode-equation">
+              Effort = 3.6 × (KLOC)<sup>1.20</sup>
+            </div>
+            <div class="mode-equation" style="color: #38bdf8;">
+              Tdev = 2.5 × (Effort)<sup>0.32</sup>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 12px 20px; text-align: center; margin-top: 10px; width: 100%;" id="modeTakeaway">
+          <span style="color: #fbbf24; font-weight: 800; font-size: 15px;">Key Insight:</span>
+          <span style="color: #cbd5e1; font-size: 14px;"> As project complexity rises from Organic to Embedded, the exponent <em>b</em> increases from 1.05 to 1.20, reflecting superlinear diseconomy of scale.</span>
+        </div>
+      </section>
+
+      <!-- Section 2: COCOMO Effort & Development Time Equations (60s - 120s) -->
+      <section id="section2" class="scene" style="opacity: 0;">
+        <div class="scene-heading">
+          <h1 class="scene-title">COCOMO Mathematical Formulation & Equations</h1>
+          <p class="scene-subtitle">Effort (Person-Months) and Development Duration (Months)</p>
+        </div>
+
+        <div class="formula-hero-card" id="formulaHeroCard" style="width: 100%;">
+          <div class="equation-display-row">
+            <div class="equation-card" id="cardEffortEq">
+              <div class="eq-title">1. Effort Equation (Person-Months)</div>
+              <div class="eq-body">
+                Effort = a × (KLOC)<sup>b</sup>
+              </div>
+              <p class="eq-explanation">
+                • <strong>KLOC:</strong> Thousands of Delivered Source Lines of Code.<br />
+                • <strong>a, b:</strong> Empirical coefficients determined by the mode.<br />
+                • Non-linear exponent <em>b &gt; 1</em> represents communication overhead in larger teams.
+              </p>
+            </div>
+
+            <div class="equation-card" id="cardTdevEq">
+              <div class="eq-title">2. Nominal Time to Develop (Months)</div>
+              <div class="eq-body" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
+                T<sub>dev</sub> = c × (Effort)<sup>d</sup>
+              </div>
+              <p class="eq-explanation">
+                • <strong>T<sub>dev</sub>:</strong> Total calendar months required to deliver.<br />
+                • <strong>c, d:</strong> Schedule coefficients (c typically 2.5, d from 0.32 to 0.38).<br />
+                • Sublinear exponent <em>d &lt; 1</em> demonstrates Brooks' Law: schedule cannot shrink proportionally by adding people.
+              </p>
+            </div>
+          </div>
+
+          <div style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 14px 20px; display: flex; justify-content: space-around; align-items: center;" id="avgStaffingBox">
+            <div>
+              <span style="font-size: 13px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Average Staff Size Formula:</span>
+              <span style="font-size: 20px; font-weight: 900; color: #fde047; font-family: 'JetBrains Mono', monospace; margin-left: 12px;">Staff = Effort / T<sub>dev</sub></span>
+            </div>
+            <div style="font-size: 14px; color: #cbd5e1;">
+              Calculates the average number of full-time engineers needed over the project lifecycle.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Putnam's Software Equation & Rayleigh Manpower Curve (120s - 180s) -->
+      <section id="section3" class="scene" style="opacity: 0;">
+        <div class="scene-heading">
+          <h1 class="scene-title">Putnam Model & Rayleigh Manpower Distribution</h1>
+          <p class="scene-subtitle">Dynamic Staffing Distribution Over Project Lifecycle</p>
+        </div>
+
+        <div class="putnam-card" id="putnamCard" style="width: 100%;">
+          <div class="putnam-formula-box">
+            <div style="font-size: 20px; font-weight: 800; color: #818cf8;">Putnam's Software Equation</div>
+            <div style="background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 12px; padding: 16px; font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #fde047; text-align: center;">
+              S = C<sub>k</sub> × K<sup>1/3</sup> × t<sub>d</sub><sup>4/3</sup>
+            </div>
+            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.5;">
+              • <strong>S:</strong> Software size in LOC.<br />
+              • <strong>C<sub>k</sub>:</strong> Technology capability / environment factor.<br />
+              • <strong>K:</strong> Total lifecycle effort in Person-Years.<br />
+              • <strong>t<sub>d</sub>:</strong> Delivery time in years.
+            </p>
+            <div style="background: rgba(244, 63, 94, 0.15); border-left: 4px solid #f43f5e; padding: 8px 12px; border-radius: 6px;">
+              <span style="font-size: 13px; color: #fecdd3; font-weight: 700;">Critical Schedule Tradeoff:</span>
+              <span style="font-size: 13px; color: #ffe4e6;"> Compressing delivery time requires an exponential 4th-power increase in total effort!</span>
+            </div>
+          </div>
+
+          <div class="rayleigh-canvas" id="rayleighCanvas">
+            <div style="font-size: 14px; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">Rayleigh Manpower Curve: Staffing Level vs Time</div>
+            <!-- SVG Rayleigh Curve -->
+            <svg width="100%" height="210" viewBox="0 0 600 210" style="overflow: visible;">
+              <!-- Grid Lines -->
+              <line x1="50" y1="170" x2="560" y2="170" stroke="#475569" stroke-width="2" />
+              <line x1="50" y1="20" x2="50" y2="170" stroke="#475569" stroke-width="2" />
+              
+              <!-- Axis Labels -->
+              <text x="560" y="195" fill="#94a3b8" font-size="12" font-weight="700">Time (t)</text>
+              <text x="15" y="30" fill="#94a3b8" font-size="12" font-weight="700" transform="rotate(-90 15,30)">Staff (P)</text>
+              
+              <!-- Phases Annotations -->
+              <text x="110" y="190" fill="#cbd5e1" font-size="11">Design</text>
+              <text x="240" y="190" fill="#fde047" font-size="11" font-weight="700">Peak Coding</text>
+              <text x="400" y="190" fill="#cbd5e1" font-size="11">Integration & Test</text>
+              
+              <!-- Rayleigh Curve Path -->
+              <path id="rayleighPath" d="M 50 170 Q 150 160 220 50 T 360 120 T 540 168" fill="none" stroke="#38bdf8" stroke-width="4" />
+              
+              <!-- Peak Indicator Line -->
+              <line id="peakLine" x1="240" y1="50" x2="240" y2="170" stroke="#fde047" stroke-dasharray="4 4" stroke-width="2" opacity="0" />
+              <circle id="peakCircle" cx="240" cy="50" r="6" fill="#fde047" opacity="0" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director's Subtitle Bar -->
+      <footer class="captions-bar">
+        <div class="caption-en" id="captionEn">Initializing Cost Estimation Models: COCOMO & Putnam...</div>
+        <div class="caption-ar" id="captionAr">بدء نماذج تقدير التكلفة البرمجية: كوكومو وبوتنام...</div>
+      </footer>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Progress Bar (0s -> 180s)
+      tl.to("#progressBar", { width: "100%", duration: 65, ease: "none" }, 0.0);
+
+      // =========================================================================
+      // PART 1: Boehm's COCOMO Modes (0s -> 60s)
+      // =========================================================================
+      tl.fromTo("#section1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.18);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Barry Boehm's Constructive Cost Model (COCOMO) categorizes software into 3 distinct development modes.";
+        document.getElementById("captionAr").textContent = "يقسم نموذج تقدير التكلفة البنائي (COCOMO) لباري بوم المشاريع البرمجية إلى 3 أنماط تطوير رئيسية.";
+      }, null, 0.36);
+
+      tl.to("#cardOrganic", { scale: 1.03, duration: 0.28, yoyo: true, repeat: 1 }, 4.33);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "1. Organic Mode: Small, experienced teams working on familiar in-house systems with relaxed deadlines.";
+        document.getElementById("captionAr").textContent = "1. النمط العضوي (Organic): فرق عمل صغيرة وذات خبرة تعمل على أنظمة مألوفة بدون تعقيدات.";
+      }, null, 4.33);
+
+      tl.to("#cardSemidetached", { scale: 1.03, duration: 0.28, yoyo: true, repeat: 1 }, 10.11);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "2. Semidetached Mode: Medium-sized teams with mixed experience working on moderately complex projects.";
+        document.getElementById("captionAr").textContent = "2. النمط شبه المنفصل (Semidetached): فرق متوسطة بخبرات متباينة تعمل على مشاريع متوسطة التعقيد.";
+      }, null, 10.11);
+
+      tl.to("#cardEmbedded", { scale: 1.03, duration: 0.28, yoyo: true, repeat: 1 }, 15.89);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "3. Embedded Mode: Highly complex systems with tight hardware constraints and strict safety regulations (e.g. Avionics).";
+        document.getElementById("captionAr").textContent = "3. النمط المدمج (Embedded): أنظمة معقدة جداً محكومة بقيود عتادية وتنظيمية صارمة مثل الطيران والأجهزة الطبية.";
+      }, null, 15.89);
+
+      // Section 1 Exit
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 21.38);
+
+      // =========================================================================
+      // PART 2: COCOMO Equations & Mechanics (60s -> 120s)
+      // =========================================================================
+      tl.fromTo("#section2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 21.85);
+
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 08 · COCOMO Effort & Schedule Equations";
+        document.getElementById("captionEn").textContent = "COCOMO computes Effort in Person-Months and nominal Development Duration in Calendar Months.";
+        document.getElementById("captionAr").textContent = "يحسب نموذج كوكومو الجهد البرمجي بوحدة (شخص-شهر) ومدة التطوير بالشهور الزمنية.";
+      }, null, 22.03);
+
+      tl.to("#cardEffortEq", { scale: 1.02, duration: 0.28, yoyo: true, repeat: 1 }, 26.72);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Effort = a * (KLOC)^b: The exponent b > 1 represents the diseconomy of scale as team communication overhead grows.";
+        document.getElementById("captionAr").textContent = "معادلة الجهد: يمثل الأس b > 1 التكلفة الإضافية الناتجة عن زيادة حجم الفريق وتواصل الأعضاء.";
+      }, null, 26.72);
+
+      tl.to("#cardTdevEq", { scale: 1.02, duration: 0.28, yoyo: true, repeat: 1 }, 33.22);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Tdev = c * (Effort)^d: Sublinear scaling (d < 1) proves Brooks' Law — you cannot arbitrarily compress schedule with more people.";
+        document.getElementById("captionAr").textContent = "معادلة المدة: تثبت هذه المعادلة قانون بروكس بأن زيادة الأشخاص لا تقلص الوقت بنسبة خطية مباشرة.";
+      }, null, 33.22);
+
+      tl.to("#avgStaffingBox", { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1 }, 39.0);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Average Staffing is derived as Effort divided by Tdev, showing the sustained full-time equivalent engineer count.";
+        document.getElementById("captionAr").textContent = "يُحسب متوسط الكادر بقسمة الجهد على مدة المشروع، موضحاً العدد المكافئ للمهندسين المتفرغين.";
+      }, null, 39.0);
+
+      // Section 2 Exit
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 43.04);
+
+      // =========================================================================
+      // PART 3: Putnam Model & Rayleigh Manpower Curve (120s -> 180s)
+      // =========================================================================
+      tl.fromTo("#section3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 43.51);
+
+      tl.call(() => {
+        document.getElementById("scenePill").textContent = "Scene 08 · Putnam Model & Rayleigh Distribution";
+        document.getElementById("captionEn").textContent = "Putnam's Software Equation models dynamic staffing over time using the continuous Rayleigh manpower distribution.";
+        document.getElementById("captionAr").textContent = "ينمذج نموذج بوتنام توزيع القوى العاملة بمرور الوقت عبر منحنى رايلي الديناميكي.";
+      }, null, 43.69);
+
+      tl.to("#putnamCard", { scale: 1.01, duration: 0.28, yoyo: true, repeat: 1 }, 49.11);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Putnam Equation: Software Size S = Ck * K^(1/3) * td^(4/3). Schedule compression incurs an exponential 4th-power penalty on effort!";
+        document.getElementById("captionAr").textContent = "معادلة بوتنام: ضغط وقت التسليم يؤدي إلى زيادة أسية من الدرجة الرابعة في إجمالي الجهد المطلوب!";
+      }, null, 49.11);
+
+      tl.to("#peakLine", { opacity: 1, duration: 0.28 }, 55.61);
+      tl.to("#peakCircle", { opacity: 1, duration: 0.28 }, 55.61);
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "The Rayleigh curve peaks during main implementation and coding, tapering off sharply during testing and deployment.";
+        document.getElementById("captionAr").textContent = "يصل منحنى رايلي لذروته أثناء مرحلة البرمجة الفعلية، ثم ينخفض تدريجياً أثناء مرحلة الاختبار والتسليم.";
+      }, null, 55.61);
+
+      tl.call(() => {
+        document.getElementById("captionEn").textContent = "Next in Scene 09: Master Summary Table and Dr. Ali Fahim's Top Exam Traps!";
+        document.getElementById("captionAr").textContent = "في المشهد 09 القادم: جدول المراجعة الشامل وأهم الفخاخ الامتحانية للدكتور علي فهيم!";
+      }, null, 61.39);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

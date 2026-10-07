@@ -280,7 +280,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="210"
+      data-duration="75"
       data-width="1920"
       data-height="1080"
     >
@@ -589,130 +589,130 @@
       // 2. Global Progress Bar (0 to 210s)
       tl.to("#progressBar", {
         width: "100%",
-        duration: 210,
+        duration: 75,
         ease: "none"
-      }, 0);
+      }, 0.0);
 
       // =========================================================================
       // PART 1: The 14 GSCs and 0-5 Influence Scale (0s -> 70s)
       // =========================================================================
-      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
-      tl.to("#gscGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
-      tl.to("#scaleStrip", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 2.0);
+      tl.to("#section1", { opacity: 1, duration: 0.33, ease: "power2.out" }, 0.07);
+      tl.to("#gscGrid", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.36);
+      tl.to("#scaleStrip", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.71);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "The 14 General System Characteristics evaluate architectural and environmental factors that affect implementation effort.";
         document.getElementById("captionAr").textContent = "تقيم العوامل الـ 14 العامة للنظام المؤثرات المعمارية والبيئية غير الوظيفية التي تؤثر على جهد التطوير.";
-      }, null, 1.0);
+      }, null, 0.36);
 
       // Highlight cluster 1: Network & Comms (F1-F4)
-      tl.to(["#gscF1", "#gscF2", "#gscF3", "#gscF4"], { scale: 1.02, duration: 0.4, yoyo: true, repeat: 1 }, 14.0);
+      tl.to(["#gscF1", "#gscF2", "#gscF3", "#gscF4"], { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1 }, 5.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Factors F1 to F4 quantify distributed processing, telecommunications, and high-performance hardware constraints.";
         document.getElementById("captionAr").textContent = "تقيس العوامل من F1 إلى F4 قيود الاتصالات والمعالجة الموزعة والأداء العالي للأجهزة.";
-      }, null, 14.0);
+      }, null, 5.0);
 
       // Highlight cluster 2: Transactions & UI (F5-F8)
-      tl.to(["#gscF5", "#gscF6", "#gscF7", "#gscF8"], { scale: 1.02, duration: 0.4, yoyo: true, repeat: 1 }, 28.0);
+      tl.to(["#gscF5", "#gscF6", "#gscF7", "#gscF8"], { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1 }, 10.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Factors F5 to F8 assess user interactivity, transaction throughput, and real-time database updates.";
         document.getElementById("captionAr").textContent = "تقيم العوامل من F5 إلى F8 كفاءة المستخدم ومعدل المعاملات والتحديث المباشر لقواعد البيانات.";
-      }, null, 28.0);
+      }, null, 10.0);
 
       // Highlight cluster 3: Complexity & Maintainability (F9-F14)
-      tl.to(["#gscF9", "#gscF10", "#gscF11", "#gscF12", "#gscF13", "#gscF14"], { scale: 1.02, duration: 0.4, yoyo: true, repeat: 1 }, 42.0);
+      tl.to(["#gscF9", "#gscF10", "#gscF11", "#gscF12", "#gscF13", "#gscF14"], { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1 }, 15.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Factors F9 to F14 address complex algorithms, component reusability, installation ease, and multi-site deployment.";
         document.getElementById("captionAr").textContent = "تتناول العوامل من F9 إلى F14 الخوارزميات المعقدة، وإعادة استخدام الأكواد، وسهولة التثبيت وتعدد المواقع.";
-      }, null, 42.0);
+      }, null, 15.0);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Each characteristic is assigned a Degree of Influence from 0 (no influence) to 5 (strong influence).";
         document.getElementById("captionAr").textContent = "يُمنح كل عامل درجة تأثير تتراوح من 0 (دون تأثير) إلى 5 (تأثير قوي وجوهري).";
-      }, null, 54.0);
+      }, null, 19.29);
 
       // Section 1 Exit
-      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 69.2);
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 24.71);
 
       // =========================================================================
       // PART 2: VAF Mathematical Derivation & ±35% Proof (70s -> 140s)
       // =========================================================================
-      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 70.0);
+      tl.to("#section2", { opacity: 1, duration: 0.33, ease: "power2.out" }, 25.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 06 · Value Adjustment Factor Formula";
         document.getElementById("captionEn").textContent = "The Value Adjustment Factor (VAF) formula maps the sum of the 14 GSCs into a multiplier between 0.65 and 1.35.";
         document.getElementById("captionAr").textContent = "تحول صيغة معامل تعديل القيمة (VAF) مجموع العوامل الـ 14 إلى معامل ضرب بين 0.65 و 1.35.";
-      }, null, 70.2);
+      }, null, 25.07);
 
-      tl.to("#vafFormulaCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 72.0);
-      tl.to("#vafMainDisplay", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }, 74.0);
-      tl.to("#boundsGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 80.0);
-      tl.to("#vafSpanContainer", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 82.0);
+      tl.to("#vafFormulaCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 25.71);
+      tl.to("#vafMainDisplay", { opacity: 1, y: 0, duration: 0.44, ease: "back.out(1.4)" }, 26.43);
+      tl.to("#boundsGrid", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 28.57);
+      tl.to("#vafSpanContainer", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 29.29);
 
       // Minimum bound highlight
-      tl.to("#bCardMin", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 88.0);
-      tl.to("#sliderIndicator", { x: 0, duration: 1.2, ease: "power2.inOut" }, 88.0);
+      tl.to("#bCardMin", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 31.43);
+      tl.to("#sliderIndicator", { x: 0, duration: 0.66, ease: "power2.inOut" }, 31.43);
       tl.call(() => {
         document.getElementById("currentSpanValue").textContent = "Minimum Bound: 0.65 (-35%)";
         document.getElementById("captionEn").textContent = "Minimum Bound: When all 14 factors are 0, VAF = 0.65 + 0.01(0) = 0.65 (-35% adjustment).";
         document.getElementById("captionAr").textContent = "الحد الأدنى: عندما تكون جميع العوامل 0، فإن VAF = 0.65 + 0.01(0) = 0.65 (خصم بنسبة 35%).";
-      }, null, 88.0);
+      }, null, 31.43);
 
       // Neutral bound highlight
-      tl.to("#bCardNeutral", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 104.0);
-      tl.to("#sliderIndicator", { x: 723, duration: 1.2, ease: "power2.inOut" }, 104.0);
+      tl.to("#bCardNeutral", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 37.14);
+      tl.to("#sliderIndicator", { x: 723, duration: 0.66, ease: "power2.inOut" }, 37.14);
       tl.call(() => {
         document.getElementById("currentSpanValue").textContent = "Neutral Baseline: 1.00 (0%)";
         document.getElementById("captionEn").textContent = "Neutral Baseline: When average rating is 2.5 (TDI = 35), VAF = 0.65 + 0.01(35) = 1.00 (0% adjustment).";
         document.getElementById("captionAr").textContent = "نقطة التعادل: عندما يكون متوسط التأثير 2.5 (المجموع 35)، فإن VAF = 1.00 دون أي تغيير.";
-      }, null, 104.0);
+      }, null, 37.14);
 
       // Maximum bound highlight
-      tl.to("#bCardMax", { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1 }, 120.0);
-      tl.to("#sliderIndicator", { x: 1446, duration: 1.2, ease: "power2.inOut" }, 120.0);
+      tl.to("#bCardMax", { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1 }, 42.86);
+      tl.to("#sliderIndicator", { x: 1446, duration: 0.66, ease: "power2.inOut" }, 42.86);
       tl.call(() => {
         document.getElementById("currentSpanValue").textContent = "Maximum Bound: 1.35 (+35%)";
         document.getElementById("captionEn").textContent = "Maximum Bound: When all 14 factors are rated 5 (TDI = 70), VAF = 0.65 + 0.01(70) = 1.35 (+35% adjustment).";
         document.getElementById("captionAr").textContent = "الحد الأقصى: عندما تبلغ جميع العوامل أقصاها 5 (المجموع 70)، فإن VAF = 1.35 (زيادة 35%).";
-      }, null, 120.0);
+      }, null, 42.86);
 
       // Section 2 Exit
-      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 139.2);
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 49.71);
 
       // =========================================================================
       // PART 3: Final FP Synthesis, Visual Gauge & Exam Traps (140s -> 210s)
       // =========================================================================
-      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 140.0);
+      tl.to("#section3", { opacity: 1, duration: 0.33, ease: "power2.out" }, 50.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 06 · Final FP Synthesis & Exam Traps";
         document.getElementById("captionEn").textContent = "To obtain Final Adjusted Function Points, multiply Unadjusted Function Points by the Value Adjustment Factor.";
         document.getElementById("captionAr").textContent = "للحصول على نقاط الوظيفة النهائية المعدلة، نضرب نقاط UFP في معامل تعديل القيمة VAF.";
-      }, null, 140.2);
+      }, null, 50.07);
 
-      tl.to("#synthCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 142.0);
-      tl.to("#gaugeCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 144.0);
+      tl.to("#synthCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 50.71);
+      tl.to("#gaugeCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 51.43);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Given our banking application with UFP = 52 and TDI = 45, VAF is calculated as 0.65 + (0.01 x 45) = 1.10.";
         document.getElementById("captionAr").textContent = "بالتطبيق على تطبيقنا البنكي حيث UFP = 52 ومجموع العوامل 45، ينتج VAF = 0.65 + (0.01 × 45) = 1.10.";
-      }, null, 148.0);
+      }, null, 52.86);
 
-      tl.to("#sRow4", { scale: 1.02, duration: 0.4, yoyo: true, repeat: 1 }, 162.0);
+      tl.to("#sRow4", { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1 }, 57.86);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Final Adjusted Size = 52 x 1.10 = 57.2 Function Points (a 10% upward adjustment for high security and performance).";
         document.getElementById("captionAr").textContent = "الحجم النهائي المعدل = 52 × 1.10 = 57.2 نقطة وظيفة (بزيادة 10% لتلبية متطلبات الأمان والأداء).";
-      }, null, 162.0);
+      }, null, 57.86);
 
-      tl.to("#examTrapCard6", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 176.0);
+      tl.to("#examTrapCard6", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 62.86);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Crucial Exam Trap: Never use 0.1 instead of 0.01! And remember that VAF must strictly stay between 0.65 and 1.35.";
         document.getElementById("captionAr").textContent = "فخ امتحاني حاسم: إياك وكتابة 0.1 بدلاً من 0.01! وتذكر دائماً أن قيمة VAF محصورة بين 0.65 و 1.35.";
-      }, null, 176.0);
+      }, null, 62.86);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Coming up in Scene 07: Full Numerical Exam Walkthrough from raw requirements to final effort estimation!";
         document.getElementById("captionAr").textContent = "في المشهد 07 القادم: حل مسألة امتحانية رقمية شاملة من المتطلبات الأولية حتى تقدير الجهد النهائي!";
-      }, null, 196.0);
+      }, null, 70.0);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

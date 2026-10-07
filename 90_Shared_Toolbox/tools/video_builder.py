@@ -65,36 +65,74 @@ class VideoBuilder:
         return str(manifest_path)
 
     def validate_scene(self, scene_dir: str) -> bool:
-        """Runs npx hyperframes check and returns True if Exit Code is 0."""
-        cmd = ["npx", "hyperframes", "check"]
-        res = subprocess.run(
-            cmd,
-            cwd=scene_dir,
-            capture_output=True,
-            text=True,
-            shell=sys.platform == "win32",
-        )
+        """Runs hyperframes check and returns True if Exit Code is 0."""
+        hf_bin = "hyperframes.cmd" if sys.platform == "win32" else "hyperframes"
+        cmd = [hf_bin, "check"]
+        log_path = Path(scene_dir) / "check.log"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(log_path, "w", encoding="utf-8", errors="replace") as lf:
+            res = subprocess.run(
+                cmd,
+                cwd=str(Path(scene_dir).resolve()),
+                stdout=lf,
+                stderr=subprocess.STDOUT,
+                shell=sys.platform == "win32",
+            )
+        if res.returncode != 0:
+            err_text = log_path.read_text(encoding="utf-8", errors="replace") if log_path.exists() else "No log"
+            print(f"[!] Validation failed for {scene_dir}:\n{err_text}", file=sys.stderr)
         return res.returncode == 0
 
-    def render_scene(self, scene_dir: str, output_mp4: str, fps: int = 30) -> bool:
-        """Runs npx hyperframes render to emit scene MP4."""
-        abs_output = str(Path(output_mp4).resolve())
-        os.makedirs(os.path.dirname(abs_output), exist_ok=True)
-        cmd = [
-            "npx", "hyperframes", "render",
-            "--format=mp4",
-            f"--fps={fps}",
-            "-o", abs_output,
-        ]
-        res = subprocess.run(
-            cmd,
-            cwd=scene_dir,
-            capture_output=True,
-            text=True,
-            shell=sys.platform == "win32",
-        )
-        return res.returncode == 0 and os.path.exists(output_mp4)
+    def render_scene(self, scene_dir: str, output_mp4: str, fps: int = 30, retries: int = 3) -> bool:
+        """Runs hyperframes render via safe staging path with retry support without pipe buffer deadlocks."""
+        import shutil
+        import tempfile
+        import time
 
+        abs_output = Path(output_mp4).resolve()
+        abs_output.parent.mkdir(parents=True, exist_ok=True)
+
+        staging_dir = Path(tempfile.gettempdir()) / "master_studio_renders"
+        staging_dir.mkdir(parents=True, exist_ok=True)
+
+        hf_bin = "hyperframes.cmd" if sys.platform == "win32" else "hyperframes"
+
+        for attempt in range(1, retries + 1):
+            temp_out = (staging_dir / f"{abs_output.stem}_{os.getpid()}_{attempt}.mp4").as_posix()
+            log_file = staging_dir / f"{abs_output.stem}_{os.getpid()}_{attempt}.log"
+            cmd = [
+                hf_bin, "render",
+                "--format=mp4",
+                f"--fps={fps}",
+                "-o", temp_out,
+            ]
+            if attempt > 1:
+                print(f"[!] Retry {attempt}/{retries} rendering {Path(scene_dir).name}...")
+                time.sleep(3)
+
+            with open(log_file, "w", encoding="utf-8", errors="replace") as lf:
+                res = subprocess.run(
+                    cmd,
+                    cwd=str(Path(scene_dir).resolve()),
+                    stdout=lf,
+                    stderr=subprocess.STDOUT,
+                    shell=sys.platform == "win32",
+                )
+            if res.returncode == 0:
+                if os.path.exists(temp_out):
+                    shutil.move(temp_out, str(abs_output))
+                    return True
+                elif os.path.exists(str(abs_output)):
+                    return True
+                err_tail = log_file.read_text(encoding="utf-8", errors="replace")[-1000:] if log_file.exists() else "No log"
+                print(f"[!] Attempt {attempt} failed for {Path(scene_dir).name}:\n{err_tail}", file=sys.stderr)
+                if os.path.exists(temp_out):
+                    try:
+                        os.remove(temp_out)
+                    except Exception:
+                        pass
+
+        return False
     def stitch_master_video(self, manifest_path: str, master_output: str) -> bool:
         """Runs ffmpeg concat demuxer to losslessly join all rendered scene parts."""
         abs_master = str(Path(master_output).resolve())
@@ -111,7 +149,6 @@ class VideoBuilder:
             cmd,
             capture_output=True,
             text=True,
-            shell=sys.platform == "win32",
         )
         return res.returncode == 0 and os.path.exists(master_output)
 

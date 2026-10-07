@@ -396,7 +396,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="210"
+      data-duration="75"
       data-width="1920"
       data-height="1080"
     >
@@ -735,189 +735,189 @@
       // 2. Global Progress Bar (0 to 210s)
       tl.to("#progressBar", {
         width: "100%",
-        duration: 210,
+        duration: 75,
         ease: "none"
-      }, 0);
+      }, 0.0);
 
       // =========================================================================
       // PART 1: The 5x3 Standard Complexity Weight Matrix (0s -> 70s)
       // =========================================================================
-      tl.to("#section1", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
-      tl.to("#matrixCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
+      tl.to("#section1", { opacity: 1, duration: 0.33, ease: "power2.out" }, 0.07);
+      tl.to("#matrixCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.36);
 
       tl.call(() => {
         document.getElementById("captionEn").textContent = "The Function Point matrix categorizes each component type into Low, Average, or High complexity based on FTR and DET counts.";
         document.getElementById("captionAr").textContent = "تصنف مصفوفة نقاط الوظيفة كل مكون إلى منخفض أو متوسط أو مرتفع التعقيد بناءً على حقول وسجلات البيانات.";
-      }, null, 1.0);
+      }, null, 0.36);
 
       // Pulse rows in sequence
-      tl.to("#rowEI", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 12.0);
+      tl.to("#rowEI", { scale: 1.015, duration: 0.25, yoyo: true, repeat: 1 }, 4.29);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inputs (EI) receive weights of 3 (Low), 4 (Average), and 6 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تُمنح المدخلات الخارجية (EI) أوزاناً قدرها 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
-      }, null, 12.0);
+      }, null, 4.29);
 
-      tl.to("#rowEO", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 24.0);
+      tl.to("#rowEO", { scale: 1.015, duration: 0.25, yoyo: true, repeat: 1 }, 8.57);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Outputs (EO) receive weights of 4 (Low), 5 (Average), and 7 (High) Function Points due to algorithmic calculations.";
         document.getElementById("captionAr").textContent = "تحصل المخرجات (EO) على أوزان 4 و5 و7 نقاط نظراً لاشتمالها على خوارزميات وحسابات مشتقة.";
-      }, null, 24.0);
+      }, null, 8.57);
 
-      tl.to("#rowEQ", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 36.0);
+      tl.to("#rowEQ", { scale: 1.015, duration: 0.25, yoyo: true, repeat: 1 }, 12.86);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "External Inquiries (EQ) mirror EI weights with 3 (Low), 4 (Average), and 6 (High) Function Points.";
         document.getElementById("captionAr").textContent = "تتطابق الاستعلامات (EQ) مع المدخلات بأوزان 3 (منخفض)، 4 (متوسط)، و6 (مرتفع) نقاط وظيفة.";
-      }, null, 36.0);
+      }, null, 12.86);
 
-      tl.to("#rowILF", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 46.0);
-      tl.to("#rowEIF", { scale: 1.015, duration: 0.4, yoyo: true, repeat: 1 }, 48.0);
+      tl.to("#rowILF", { scale: 1.015, duration: 0.25, yoyo: true, repeat: 1 }, 16.43);
+      tl.to("#rowEIF", { scale: 1.015, duration: 0.25, yoyo: true, repeat: 1 }, 17.14);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Data files command the highest multipliers: ILF ranges from 7 to 15, while EIF ranges from 5 to 10.";
         document.getElementById("captionAr").textContent = "تحظى ملفات البيانات بأعلى الأوزان: تتراوح ملفات ILF بين 7 و15، بينما تتراوح ملفات EIF بين 5 و10.";
-      }, null, 46.0);
+      }, null, 16.43);
 
-      tl.to("#asymmetryGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 56.0);
+      tl.to("#asymmetryGrid", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 20.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Notice the structural asymmetry: Outputs exceed inquiries, and internal files exceed external interface files.";
         document.getElementById("captionAr").textContent = "لاحظ عدم التماثل في الأوزان: المخرجات تفوق الاستعلامات، والملفات الداخلية تفوق ملفات الواجهات الخارجية.";
-      }, null, 56.0);
+      }, null, 20.0);
 
       // Section 1 Exit
-      tl.to("#section1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 69.2);
+      tl.to("#section1", { opacity: 0, duration: 0.33, ease: "power2.in" }, 24.71);
 
       // =========================================================================
       // PART 2: Mathematical Derivation & Double Summation (70s -> 140s)
       // =========================================================================
-      tl.to("#section2", { opacity: 1, duration: 0.6, ease: "power2.out" }, 70.0);
+      tl.to("#section2", { opacity: 1, duration: 0.33, ease: "power2.out" }, 25.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 05 · Mathematical Formulation";
         document.getElementById("captionEn").textContent = "Unadjusted Function Points (UFP) are rigorously computed using a double summation over all types and complexity ratings.";
         document.getElementById("captionAr").textContent = "تُحسب نقاط الوظيفة غير المعدلة (UFP) رياضياً عبر حاصل جمع مضاعف لجميع الأنواع ومستويات التعقيد.";
-      }, null, 70.2);
+      }, null, 25.07);
 
-      tl.to("#formulaHeroCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 72.0);
-      tl.to("#formulaMainDisplay", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }, 74.0);
+      tl.to("#formulaHeroCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 25.71);
+      tl.to("#formulaMainDisplay", { opacity: 1, y: 0, duration: 0.44, ease: "back.out(1.4)" }, 26.43);
 
-      tl.to("#breakdownGrid", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 82.0);
+      tl.to("#breakdownGrid", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 29.29);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "The outer summation iterates over the 5 functional types (i = 1 to 5), while the inner summation iterates over the 3 complexity levels (j = 1 to 3).";
         document.getElementById("captionAr").textContent = "المجموع الخارجي يمر على الأنواع الوظيفية الـ 5 (i)، بينما المجموع الداخلي يمر على مستويات التعقيد الـ 3 (j).";
-      }, null, 82.0);
+      }, null, 29.29);
 
-      tl.to("#cardTermW", { scale: 1.04, duration: 0.4, yoyo: true, repeat: 1 }, 98.0);
+      tl.to("#cardTermW", { scale: 1.04, duration: 0.25, yoyo: true, repeat: 1 }, 35.0);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "W_ij represents the standard empirical weight constant from Albrecht's 5x3 matrix.";
         document.getElementById("captionAr").textContent = "يمثل W_ij معامل الوزن القياسي الثابت والمستخرج من مصفوفة ألبرخت 5×3.";
-      }, null, 98.0);
+      }, null, 35.0);
 
-      tl.to("#cardTermZ", { scale: 1.04, duration: 0.4, yoyo: true, repeat: 1 }, 110.0);
+      tl.to("#cardTermZ", { scale: 1.04, duration: 0.25, yoyo: true, repeat: 1 }, 39.29);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Z_ij represents the empirical count of components identified directly from the Software Requirements Specification.";
         document.getElementById("captionAr").textContent = "يمثل Z_ij عدد العناصر الفعلية المستخرجة مباشرة من وثيقة مواصفات المتطلبات البرمجية.";
-      }, null, 110.0);
+      }, null, 39.29);
 
-      tl.to("#ufpInsightCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 122.0);
+      tl.to("#ufpInsightCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 43.57);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "UFP measures raw functional size independently of programming language, team skill, or technology stack.";
         document.getElementById("captionAr").textContent = "تقيس UFP الحجم الوظيفي المجرد دون أي تأثر بلغة البرمجة أو خبرة الفريق أو التقنية المستخدمة.";
-      }, null, 122.0);
+      }, null, 43.57);
 
       // Section 2 Exit
-      tl.to("#section2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 139.2);
+      tl.to("#section2", { opacity: 0, duration: 0.33, ease: "power2.in" }, 49.71);
 
       // =========================================================================
       // PART 3: Step-by-Step Kinetic Calculation & Accumulator (140s -> 210s)
       // =========================================================================
-      tl.to("#section3", { opacity: 1, duration: 0.6, ease: "power2.out" }, 140.0);
+      tl.to("#section3", { opacity: 1, duration: 0.33, ease: "power2.out" }, 50.0);
       tl.call(() => {
         document.getElementById("scenePill").textContent = "Scene 05 · Kinetic Calculation Walkthrough";
         document.getElementById("captionEn").textContent = "Let's walk through a concrete calculation for a complete enterprise subsystem with concrete component counts.";
         document.getElementById("captionAr").textContent = "دعنا نطبق حساباً عملياً شاملاً لنظام مؤسسي متكامل باستخدام أعداد فعلية من المتطلبات.";
-      }, null, 140.2);
+      }, null, 50.07);
 
-      tl.to("#calcLedger", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 142.0);
-      tl.to("#accumPanel", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 143.0);
+      tl.to("#calcLedger", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 50.71);
+      tl.to("#accumPanel", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 51.07);
 
       // Helper for counter animation
       const counterObj = { val: 0 };
       const counterEl = document.getElementById("ufpCounterVal");
 
       // Step 1: 2 Low EI (2 x 3 = 6) -> Sum: 6
-      tl.to("#lRow1", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 146.0);
+      tl.to("#lRow1", { opacity: 1, y: 0, duration: 0.33, ease: "power2.out" }, 52.14);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Step 1: Two Low External Inputs (EI) contribute 2 x 3 = 6 Function Points.";
         document.getElementById("captionAr").textContent = "الخطوة 1: مدخلان خارجيان منخفضا التعقيد (EI) يضيفان 2 × 3 = 6 نقاط وظيفة.";
-      }, null, 146.0);
+      }, null, 52.14);
       tl.to(counterObj, {
         val: 6,
-        duration: 1.0,
+        duration: 0.55,
         ease: "power1.out",
         onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
-      }, 146.5);
-      tl.to("#segEI", { width: "11.5%", duration: 1.0, ease: "power1.out" }, 146.5);
+      }, 52.32);
+      tl.to("#segEI", { width: "11.5%", duration: 0.55, ease: "power1.out" }, 52.32);
 
       // Step 2: 3 Avg EO (3 x 5 = 15) -> Sum: 21
-      tl.to("#lRow2", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 158.0);
+      tl.to("#lRow2", { opacity: 1, y: 0, duration: 0.33, ease: "power2.out" }, 56.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Step 2: Three Average External Outputs (EO) contribute 3 x 5 = 15 Function Points.";
         document.getElementById("captionAr").textContent = "الخطوة 2: ثلاثة مخرجات خارجية متوسطة التعقيد (EO) تضيف 3 × 5 = 15 نقطة وظيفة.";
-      }, null, 158.0);
+      }, null, 56.43);
       tl.to(counterObj, {
         val: 21,
-        duration: 1.0,
+        duration: 0.55,
         ease: "power1.out",
         onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
-      }, 158.5);
-      tl.to("#segEO", { width: "28.8%", duration: 1.0, ease: "power1.out" }, 158.5);
+      }, 56.61);
+      tl.to("#segEO", { width: "28.8%", duration: 0.55, ease: "power1.out" }, 56.61);
 
       // Step 3: 1 High EQ (1 x 6 = 6) -> Sum: 27
-      tl.to("#lRow3", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 170.0);
+      tl.to("#lRow3", { opacity: 1, y: 0, duration: 0.33, ease: "power2.out" }, 60.71);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Step 3: One High External Inquiry (EQ) contributes 1 x 6 = 6 Function Points.";
         document.getElementById("captionAr").textContent = "الخطوة 3: استعلام خارجي واحد عالي التعقيد (EQ) يضيف 1 × 6 = 6 نقاط وظيفة.";
-      }, null, 170.0);
+      }, null, 60.71);
       tl.to(counterObj, {
         val: 27,
-        duration: 1.0,
+        duration: 0.55,
         ease: "power1.out",
         onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
-      }, 170.5);
-      tl.to("#segEQ", { width: "11.5%", duration: 1.0, ease: "power1.out" }, 170.5);
+      }, 60.89);
+      tl.to("#segEQ", { width: "11.5%", duration: 0.55, ease: "power1.out" }, 60.89);
 
       // Step 4: 2 Avg ILF (2 x 10 = 20) -> Sum: 47
-      tl.to("#lRow4", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 180.0);
+      tl.to("#lRow4", { opacity: 1, y: 0, duration: 0.33, ease: "power2.out" }, 64.29);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Step 4: Two Average Internal Logical Files (ILF) contribute 2 x 10 = 20 Function Points.";
         document.getElementById("captionAr").textContent = "الخطوة 4: ملفان منطقيان داخليان متوسطا التعقيد (ILF) يضيفان 2 × 10 = 20 نقطة وظيفة.";
-      }, null, 180.0);
+      }, null, 64.29);
       tl.to(counterObj, {
         val: 47,
-        duration: 1.0,
+        duration: 0.55,
         ease: "power1.out",
         onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
-      }, 180.5);
-      tl.to("#segILF", { width: "38.5%", duration: 1.0, ease: "power1.out" }, 180.5);
+      }, 64.46);
+      tl.to("#segILF", { width: "38.5%", duration: 0.55, ease: "power1.out" }, 64.46);
 
       // Step 5: 1 Low EIF (1 x 5 = 5) -> Sum: 52
-      tl.to("#lRow5", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 192.0);
+      tl.to("#lRow5", { opacity: 1, y: 0, duration: 0.33, ease: "power2.out" }, 68.57);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Step 5: One Low External Interface File (EIF) contributes 1 x 5 = 5 Function Points.";
         document.getElementById("captionAr").textContent = "الخطوة 5: ملف واجهة خارجية واحد منخفض التعقيد (EIF) يضيف 1 × 5 = 5 نقاط وظيفة.";
-      }, null, 192.0);
+      }, null, 68.57);
       tl.to(counterObj, {
         val: 52,
-        duration: 1.0,
+        duration: 0.55,
         ease: "power1.out",
         onUpdate: () => { counterEl.textContent = Math.round(counterObj.val); }
-      }, 192.5);
-      tl.to("#segEIF", { width: "9.7%", duration: 1.0, ease: "power1.out" }, 192.5);
+      }, 68.75);
+      tl.to("#segEIF", { width: "9.7%", duration: 0.55, ease: "power1.out" }, 68.75);
 
       // Final Transition Card Entrance
-      tl.to("#nextStepCard", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 200.0);
+      tl.to("#nextStepCard", { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 71.43);
       tl.call(() => {
         document.getElementById("captionEn").textContent = "Total UFP = 52 Function Points. Next up in Scene 06: The Value Adjustment Factor (VAF) and the 14 GSCs.";
         document.getElementById("captionAr").textContent = "المجموع الإجمالي UFP = 52 نقطة وظيفة. في المشهد 06 القادم: سنحسب معامل تعديل القيمة (VAF) والعوامل الـ 14.";
-      }, null, 200.0);
+      }, null, 71.43);
 
       window.__timelines["main"] = tl;
       tl.seek(0);
