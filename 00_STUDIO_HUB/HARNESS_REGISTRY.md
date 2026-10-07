@@ -6,10 +6,10 @@
 | Harness | Agent identity | Marker it leaves | Last seen | Status | Role / notes |
 |:---|:---|:---|:---|:---|:---|
 | WorkBuddy | Koko 🐨 (named by student 2026-09-18) | `.workbuddy-ai/memory/` (tracked) | 2026-10-02 | ACTIVE — primary | Study notes, Telegram gateway, dashboard. Largest footprint. |
-| OpenCode | Build agent (this session: cleanup phases) | `opencode-archive/` (legacy config) | 2026-10-03 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds. |
+| OpenCode | Build agent (DeepSeek V4.1 Flash; session: ASE raw-materials tidy) | `opencode-archive/` (legacy config) | 2026-10-05 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds, ASE slide-pack reorg. |
 | MiMo Studio / Desktop | Koko | `.mimocode/skills/` | 2026-10-02 | SEEN | Session logs, bilingual packs. Shares the Koko identity with WorkBuddy. |
 | Codex | Reviewer | none (works inside shared logs) | 2026-09-22 | SEEN — reviewer | 10-point checklists, math audits (SC W02, DM W03). Reviews, does not author notes. |
-| Oh My Pi (OMP) | session URLs (`my.omp.sh/s/…`) | `omp_session_url` in old logs | 2026-09-18 | HISTORICAL | Early sessions only. Do not expect new work. |
+| Oh My Pi (OMP) | Coding Assistant (google-antigravity/gemini-3.8-flash) | `00_STUDIO_HUB/sessions/` entries | 2026-10-06 | ACTIVE | Architecture planning, toolchain expansion, core engineering. |
 | FreeBuf | unknown | `.freebuff/project-id` (single UUID file) | never in sessions | TRACE ONLY | No session content found. If it signs in, it adds its own row. |
 | Cursor | unknown | none | never | ANNOUNCED | Named in `AGENTS.md` §8 only. Row waits for its first sign-in. |
 
