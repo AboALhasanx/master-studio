@@ -331,6 +331,14 @@ def buddy_update(event_id, status, notes="", new_date=None):
 
 
 def main():
+    # Arabic is this CLI's default payload, and a Windows cp1252 console encodes
+    # the em dash in ACTIVE_STATE's `immediate_todo` as a lone 0x97 byte — any
+    # UTF-8 reader (the delivery-gate test that runs `boot`) then fails on it.
+    # Same reconfigure phone_sync.py and telegram/cli.py already do.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(description="Master Studio Session & Memory CLI")
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 
