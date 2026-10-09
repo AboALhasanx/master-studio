@@ -114,7 +114,7 @@ pytest -q                         # run the test suite (must pass before any PR)
 - **Active semester:** Semester 1 (Fall 2026) — Week 02 (active subject: `02_English_Language`)
 - **Live work:** `03_Data_Mining` Week 04 Feature Selection + `01_Cyber_Security` W03 notes (due Wed) — see `00_STUDIO_HUB/ACTIVE_STATE.md` for the fast-boot pointer
 - **Most complete subject:** `04_Advanced_Software_Eng` (Dr. Ali Fahim Ni'ma) — Week 01 pack + Week 02 ten units + 146-page merged Master Lecture, diagrams and quizzes
-- **Done:** `02_English_Language` Unit 1, from both sources (Q Skills + New Headway)
+- **Done:** `02_English_Language` Units 1–2, each merged from both sources (Q Skills + New Headway Upper-Intermediate)
 - **On hold:** `06_Artificial_Intelligence` — the professor has not delivered any material yet
 - **Planning:** see `00_STUDIO_HUB/STUDY_PLAN.md` for the rolling schedule, and `00_STUDIO_HUB/ACTIVE_STATE.md` for the fast-boot pointer
 
