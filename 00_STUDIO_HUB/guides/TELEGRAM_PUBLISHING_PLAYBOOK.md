@@ -33,7 +33,7 @@ the spare via MTProto when the Bot API socket is dropping — proven live when
 | Subject | Topic | Card (spare) | Chapters (spare) | Sources (spare) | Booklet |
 |---|---|---|---|---|---|
 | 01 أمن المعلومات | 84 | `181` | `182–185, 244, 246, 248–255` (14) | — | 61 pp / 1.01 MB |
-| 02 إنجليزي | 85 | `187` | `188, 284` (2) | — | 72 pp / 17.96 MB |
+| 02 إنجليزي | 85 | `187` | `188, 284` (2) | `285, 286` (2) | 72 pp / 17.96 MB |
 | 03 تنقيب البيانات | 86 | `190` | `191–195, 283` (6) | `214–215` (2) | 122 pp / 1.49 MB |
 | 04 هندسة برمجيات | 87 | `196` | `197–199, 272` (4 في الكارت؛ `273–278` منشورة بلا دمج) | `210–213` (4) | 459 pp / 2.26 MB |
 | 05 حوسبة ناعمة | 88 | `201` | `202–203, 281` (3) | `216–220` (5) | 144 pp / 5.10 MB |
@@ -50,9 +50,11 @@ that no longer exists (the file still pointed at threads 90/91/92 until
 2026-10-03 — the promise was documented four times and enforced nowhere).
 Source of truth for ids: `00_STUDIO_HUB/telegram/catalog/*.json`.
 
-The **Sources** column is the 13 canonical textbooks published into topics
-86–89 on 2026-10-02, one post each, caption `مصدر مادة : <source>` /
-`الطبعة: <edition>`. Each catalog records its own under `references`
+The **Sources** column is the canonical course books, one post each, caption
+`مصدر مادة : <source>` / `الطبعة: <edition>`: the 13 textbooks published into
+topics 86–89 on 2026-10-02, plus the two English course books into topic 85 on
+2026-10-09 (`285` New Headway Upper-Intermediate SB, `286` Q Skills 4 R&W SB) —
+15 posts. Each catalog records its own under `references`
 (`message_id` + source + edition), so the JSON is the inventory rather than a
 chat scroll; the editions were read out of each PDF, never assumed.
 

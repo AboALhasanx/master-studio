@@ -545,26 +545,28 @@ class TestShippedCards:
 class TestReferenceLedger:
     """Every published source book is tracked by the post it lives in.
 
-    The 13 textbooks were posted into topics 86/87/88/89 on 2026-10-02; each
-    catalog records the post ids beside the source and edition from its
-    caption, so the JSON — not a chat scroll — is the inventory. The editions
-    were read out of each PDF, so a mismatch here is a real defect, not a
-    cosmetic one.
+    The 13 textbooks were posted into topics 86/87/88/89 on 2026-10-02, and the
+    two English course books (New Headway Upper-Intermediate + Q Skills 4) into
+    topic 85 on 2026-10-09; each catalog records the post ids beside the source
+    and edition from its caption, so the JSON — not a chat scroll — is the
+    inventory. The editions were read out of each PDF, so a mismatch here is a
+    real defect, not a cosmetic one.
     """
 
-    def test_the_four_subjects_that_received_sources_carry_them(self):
+    def test_the_five_subjects_that_received_sources_carry_them(self):
         by_key = {key: cat for key, cat, _chat in shipped()}
-        for key in ("03-Data-Mining", "04-Advanced-Software-Eng",
-                    "05-Soft-Computing", "06-Artificial-Intelligence"):
+        for key in ("02-English-Language", "03-Data-Mining",
+                    "04-Advanced-Software-Eng", "05-Soft-Computing",
+                    "06-Artificial-Intelligence"):
             assert by_key[key].references, f"{key} lost its sources"
         # ...and a subject with no published source says so honestly.
-        for key in ("01-Cyber-Security", "02-English-Language"):
+        for key in ("01-Cyber-Security",):
             assert by_key[key].references == ()
 
-    def test_the_ledger_covers_all_thirteen_posts(self):
+    def test_the_ledger_covers_all_fifteen_posts(self):
         ids = [ref.message_id for _k, cat, _c in shipped()
                for ref in cat.references]
-        assert len(ids) == 13, f"expected 13 source posts, got {len(ids)}"
+        assert len(ids) == 15, f"expected 15 source posts, got {len(ids)}"
         assert len(set(ids)) == len(ids), "a post is listed twice"
 
     def test_every_reference_is_traceable(self):
