@@ -137,7 +137,7 @@ Every risk-management decision must balance three factors, and the book is empha
 | **Functionality** | How well does the system perform its intended functions? |
 | **Usability** | How easy is it for users to make use of the system? |
 
-The book's warning, worth quoting: *"This last factor is unfortunately often forgotten by system designers… **If security measures do not give a usable system, users will find ways to avoid them!**"*
+The book's warning, worth quoting: *"This last factor is unfortunately often forgotten by system designers… **If security measures do not give a usable system, users will find ways to avoid them!*"
 
 ---
 

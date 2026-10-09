@@ -1,0 +1,18 @@
+
+digraph Framework {
+  rankdir=LR; nodesep=0.22; ranksep=0.35; bgcolor="white";
+  node [shape=box style="filled,rounded" fillcolor="#F1F5F9" fontname="Helvetica"
+        fontsize=10 color="#1E3A8A" penwidth=1.0 height=0.45 margin="0.08,0.05"];
+  edge [color="#1E3A8A" penwidth=1.0 arrowsize=0.7];
+  A [label="Initial\nrequirements", fillcolor="#FEF08A"];
+  B [label="Gather\nrequirements\ndata"];
+  C [label="Analyse\nrequirements\ndata"];
+  D [label="Conceive\nhigh-level\ndesign"];
+  E [label="Refine &\ndocument\nthe design"];
+  F [label="Validate vs\nrequirements"];
+  G [label="Completed\ndesign", fillcolor="#FEF08A"];
+  Q [label="Answer\nrequirement\nquestions", fillcolor="#FFFFFF", style="filled,dashed"];
+  A -> B -> C -> D -> E -> F -> G;
+  F -> Q [style=dashed, constraint=false];
+  Q -> D [style=dashed, constraint=false];
+}

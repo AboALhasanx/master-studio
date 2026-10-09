@@ -55,7 +55,7 @@ I did not infer this. The identification is based on four independent matches:
 1. **A verbatim sentence match.** I searched the booklet's opening line — *"The word risk is used here in its technical sense, where it is understood to mean the quantitative probability that an error situation occurs and gives rise to damage"* — and it returned the chapter's first page as the only exact hit. The booklet's text is the book's text.
 2. **The stray "3"** at the top of the DOCX. It is not a page number; it is the chapter number. The chapter runs **pp. 37–56**, and the document opens with a chapter heading.
 3. **Figure numbering.** The booklet references *"Fig. 3.1"* (the shark), then an unnumbered "Fig. An empty risk matrix" and "Fig. An empty residual risk matrix". The book's chapter has **Fig. 3.1, 3.2 and 3.3**. The booklet's figures were stripped in conversion, which is why it has zero images.
-4. **The chapter abstract.** Springer's own abstract reads: *"This chapter explains the meaning of **objective risk**, and gives an introduction to the discipline of **risk management** – the ways in which risk can be reduced in an IT system by introducing **countermeasures**."* That is exactly the booklet's three opening movements, in order.
+4. **The chapter abstract.** Springer's own abstract reads: *"This chapter explains the meaning of **objective risk**, and gives an introduction to the discipline of **risk management** – the ways in which risk can be reduced in an IT system by introducing **countermeasures*." That is exactly the booklet's three opening movements, in order.
 
 **Source pages:** [Springer chapter page](https://link.springer.com/chapter/10.1007/978-3-031-41463-3_3) · [Book page](https://link.springer.com/book/10.1007/978-3-031-41463-3) · [DTU Orbit record](https://orbit.dtu.dk/en/publications/introduction-to-cybersecurity-a-multidisciplinary-challenge/) · [DBLP record](https://dblp.org/rec/series/utcs/Sharp24)
 
@@ -306,7 +306,7 @@ Quoted from printed page 39:
 
 > *"The reduced risk is known as the **residual risk, R**. If the threat is evaluated to give a risk **S**, and the level of countermeasures is **M**, then the residual risk is often defined by the "equation":* **R = S / M**"
 >
-> *"**M** covers both the number of countermeasures (there can be several things which affect the risk for particular types of attack) and their effectiveness."*
+> "*M** covers both the number of countermeasures (there can be several things which affect the risk for particular types of attack) and their effectiveness."*
 
 **Verdict: the booklet's letters and operators are exact. The student's reported `f = s·k` / `f = s/n` was a mishearing, as the mathematical contradiction test in `W02_Formulas.md` had already concluded.**
 

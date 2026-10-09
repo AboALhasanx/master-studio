@@ -1,0 +1,26 @@
+
+@startuml
+skinparam style strictuml
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam sequenceMessageAlign center
+actor Operator
+participant "Bar-code Reader" as R
+participant "Student Info\nController" as C
+participant "Book Info\nController" as B
+database "Student DB" as SDB
+database "Book DB" as BDB
+Operator -> R : 1. Read barcode
+R -> C : 2. Submit barcode
+C -> SDB : 3. Get student details
+SDB --> C : 4. Student details
+C -> C : 5. Validate student details
+C --> R : 6. Valid / invalid
+Operator -> R : 7. Read book code
+R -> B : 8. Submit book code
+B -> BDB : 9. Check book can be issued
+BDB --> B : 10. Issue status
+B -> BDB : 11. Update details
+BDB --> B : 12. Record added
+B --> Operator : 13. Issue successful
+@enduml

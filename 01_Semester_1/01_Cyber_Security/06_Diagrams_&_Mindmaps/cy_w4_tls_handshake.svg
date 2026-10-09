@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="h-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="920" height="520" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">The TLS Handshake — مصافحة TLS (5 خطوات)</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">HTTPS = HTTP + SSL/TLS · confidentiality + integrity + authentication</text>
+
+  <!-- columns -->
+  <rect x="150" y="70" width="250" height="34" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="275" y="93" text-anchor="middle" font-size="13.5" font-weight="700" fill="#075985">Client (browser)</text>
+  <rect x="520" y="70" width="250" height="34" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="645" y="93" text-anchor="middle" font-size="13.5" font-weight="700" fill="#92400e">Server</text>
+
+  <!-- step 1 -->
+  <rect x="24" y="120" width="872" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="52" cy="149" r="15" fill="#0284c7"/>
+  <text x="52" y="155" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+  <text x="82" y="144" font-size="13.5" font-weight="700" fill="#0f172a">ClientHello</text>
+  <text x="82" y="164" font-size="12" fill="#475569">client lists its supported cipher suites</text>
+  <line x1="400" y1="149" x2="516" y2="149" stroke="#0284c7" stroke-width="2" marker-end="url(#h-arw)"/>
+
+  <!-- step 2 -->
+  <rect x="24" y="188" width="872" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="52" cy="217" r="15" fill="#0284c7"/>
+  <text x="52" y="223" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+  <text x="82" y="212" font-size="13.5" font-weight="700" fill="#0f172a">ServerHello + Certificate</text>
+  <text x="82" y="232" font-size="12" fill="#475569">server picks algorithms and sends its X.509 certificate</text>
+  <line x1="560" y1="217" x2="430" y2="217" stroke="#d97706" stroke-width="2" marker-end="url(#h-arw)"/>
+
+  <!-- step 3 -->
+  <rect x="24" y="256" width="872" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="52" cy="285" r="15" fill="#0284c7"/>
+  <text x="52" y="291" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+  <text x="82" y="280" font-size="13.5" font-weight="700" fill="#0f172a">Key Exchange</text>
+  <text x="82" y="300" font-size="12" fill="#475569">legacy: RSA (encrypt session key with K_pub)   ·   modern: ECDHE (Diffie–Hellman Ephemeral)</text>
+
+  <!-- step 4 -->
+  <rect x="24" y="324" width="872" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="52" cy="353" r="15" fill="#0284c7"/>
+  <text x="52" y="359" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+  <text x="82" y="348" font-size="13.5" font-weight="700" fill="#0f172a">Session Key Established</text>
+  <text x="82" y="368" font-size="12" fill="#475569">both parties now share the same symmetric session key</text>
+
+  <!-- step 5 -->
+  <rect x="24" y="392" width="872" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="52" cy="421" r="15" fill="#0284c7"/>
+  <text x="52" y="427" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5</text>
+  <text x="82" y="416" font-size="13.5" font-weight="700" fill="#0f172a">Encrypted Communication</text>
+  <text x="82" y="436" font-size="12" fill="#475569">all subsequent HTTP traffic is encrypted with AES / ChaCha20</text>
+
+  <!-- model -->
+  <rect x="24" y="464" width="872" height="42" rx="10" fill="#ecfeff" stroke="#0e7490" stroke-width="2"/>
+  <text x="460" y="491" text-anchor="middle" font-size="13.5" font-weight="700" fill="#155e75">S_TLS = min(S_sym , S_asym , S_hash)     ·     e.g. AES-128 + ECDHE-256 + SHA-256  →  min(128,128,128) = 128 bits</text>
+</svg>

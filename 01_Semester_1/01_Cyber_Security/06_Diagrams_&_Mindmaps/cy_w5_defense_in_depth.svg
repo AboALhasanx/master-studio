@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="920" height="420" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Network Segmentation &amp; Defense in Depth</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">no single control is enough — layer them, and measure what is left</text>
+
+  <!-- Segmentation types -->
+  <rect x="18" y="74" width="424" height="184" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="230" y="100" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1e40af">Types of segmentation</text>
+  <text x="38" y="128" font-size="12.5" fill="#374151">1 · VLAN-based — logical separation in switches</text>
+  <text x="38" y="152" font-size="12.5" fill="#374151">2 · Subnetting — split address ranges</text>
+  <text x="38" y="176" font-size="12.5" fill="#374151">3 · Firewall segmentation — rules between zones</text>
+  <text x="38" y="200" font-size="12.5" fill="#374151">4 · Micro-segmentation — per-workload policy</text>
+  <text x="38" y="228" font-size="12.5" font-weight="700" fill="#b91c1c">Purpose: stop lateral movement</text>
+  <text x="38" y="248" font-size="12" fill="#374151">every hop must cross a controlled gateway</text>
+
+  <!-- Layers -->
+  <rect x="462" y="74" width="440" height="184" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="682" y="100" text-anchor="middle" font-size="14.5" font-weight="700" fill="#166534">Defense in depth — 5 layers</text>
+  <text x="482" y="128" font-size="12.5" fill="#374151">1 · Perimeter — firewalls, VPNs, proxies</text>
+  <text x="482" y="152" font-size="12.5" fill="#374151">2 · Detection — IDS/IPS, SIEM</text>
+  <text x="482" y="176" font-size="12.5" fill="#374151">3 · Application — secure coding, WAF</text>
+  <text x="482" y="200" font-size="12.5" fill="#374151">4 · Endpoint — antivirus, EDR</text>
+  <text x="482" y="224" font-size="12.5" fill="#374151">5 · User — policies, awareness, MFA</text>
+  <text x="482" y="248" font-size="12" fill="#6b7280">an attacker must beat every layer, not one</text>
+
+  <!-- math -->
+  <rect x="18" y="274" width="884" height="80" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="2"/>
+  <text x="460" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#155e75">The maths of layering</text>
+  <text x="460" y="322" text-anchor="middle" font-size="13" fill="#334155">R_residual = ∏ (1 − eᵢ)      ·      P(attack succeeds) = ∏ pᵢ      ·      A = A₁ × A₂ × …</text>
+  <text x="460" y="344" text-anchor="middle" font-size="12" fill="#6b7280">weakest layer dominates the product — and layers must be independent to multiply</text>
+
+  <!-- cases -->
+  <rect x="18" y="366" width="884" height="44" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="460" y="393" text-anchor="middle" font-size="12.5" fill="#991b1b">Cases: Target (2013) — flat network, lateral movement · Stuxnet (2010) — air-gap crossed · financial micro-segmentation</text>
+</svg>

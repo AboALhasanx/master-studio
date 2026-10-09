@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="920" height="400" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Firewalls · Proxies · VPNs — the traffic-governance triad</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">three functions that modern architectures converge</text>
+
+  <!-- Firewalls -->
+  <rect x="18" y="74" width="288" height="220" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <rect x="18" y="74" width="288" height="34" rx="12" fill="#2563eb"/>
+  <rect x="18" y="96" width="288" height="12" fill="#2563eb"/>
+  <text x="162" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">FIREWALLS</text>
+  <text x="38" y="132" font-size="12.5" fill="#1e3a8a">Classic models</text>
+  <text x="38" y="152" font-size="12" fill="#374151">packet filtering · stateful inspection</text>
+  <text x="38" y="170" font-size="12" fill="#374151">application proxy · DMZ</text>
+  <text x="38" y="194" font-size="12.5" fill="#1e3a8a">Next-generation (NGFW)</text>
+  <text x="38" y="214" font-size="12" fill="#374151">deep packet inspection + app awareness</text>
+  <text x="38" y="232" font-size="12" fill="#374151">IPS + TLS inspection + threat intel</text>
+  <text x="38" y="258" font-size="12.5" fill="#b91c1c">Evasion</text>
+  <text x="38" y="278" font-size="12" fill="#374151">fragmentation · tunneling · encoding</text>
+
+  <!-- Proxies -->
+  <rect x="316" y="74" width="288" height="220" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="316" y="74" width="288" height="34" rx="12" fill="#7c3aed"/>
+  <rect x="316" y="96" width="288" height="12" fill="#7c3aed"/>
+  <text x="460" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">PROXIES</text>
+  <text x="336" y="132" font-size="12.5" fill="#5b21b6">Application mediation</text>
+  <text x="336" y="152" font-size="12" fill="#374151">Forward proxy — on behalf of clients</text>
+  <text x="336" y="170" font-size="12" fill="#374151">Reverse proxy — on behalf of servers</text>
+  <text x="336" y="194" font-size="12.5" fill="#5b21b6">Encrypted era</text>
+  <text x="336" y="214" font-size="12" fill="#374151">TLS interception / re-signing</text>
+  <text x="336" y="232" font-size="12" fill="#374151">breaks end-to-end trust — legal issues</text>
+  <text x="336" y="258" font-size="12.5" fill="#5b21b6">Also: caching, WAF, load balancing</text>
+
+  <!-- VPNs -->
+  <rect x="614" y="74" width="288" height="220" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="614" y="74" width="288" height="34" rx="12" fill="#16a34a"/>
+  <rect x="614" y="96" width="288" height="12" fill="#16a34a"/>
+  <text x="758" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">VPNs</text>
+  <text x="634" y="132" font-size="12.5" fill="#166534">Protocol families</text>
+  <text x="634" y="152" font-size="12" fill="#374151">IPsec (tunnel / transport) · TLS VPN</text>
+  <text x="634" y="170" font-size="12" fill="#374151">WireGuard · SSL VPN</text>
+  <text x="634" y="194" font-size="12.5" fill="#166534">Deployment</text>
+  <text x="634" y="214" font-size="12" fill="#374151">site-to-site · remote access · mesh</text>
+  <text x="634" y="240" font-size="12.5" fill="#b91c1c">Vulnerabilities</text>
+  <text x="634" y="260" font-size="12" fill="#374151">weak ciphers · key leakage · split tunnel</text>
+  <text x="634" y="278" font-size="12" fill="#374151">→ VPN is <tspan font-style="italic">transport</tspan>, not authorization</text>
+
+  <rect x="18" y="310" width="884" height="72" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="2"/>
+  <text x="460" y="336" text-anchor="middle" font-size="14" font-weight="700" fill="#155e75">Convergence: SASE / SSE — firewall + proxy + VPN collapse into one cloud-delivered edge</text>
+  <text x="460" y="360" text-anchor="middle" font-size="12.5" fill="#334155">Residual risk after n independent controls:  R = ∏ (1 − effectivenessᵢ)  —  defense in depth</text>
+  <text x="460" y="378" text-anchor="middle" font-size="12" fill="#6b7280">and  A_total = A₁ × A₂ × … for reliability in series</text>
+</svg>

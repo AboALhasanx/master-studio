@@ -156,6 +156,9 @@ quiz_mobile.html
 /temp_*.json
 /_*.txt
 
+# Phone -> PC hand-off drop box (written by `phone_sync.py --pull`)
+/_inbox_from_phone/
+
 # Editors & local runtimes
 .vscode/
 .idea/
@@ -174,3 +177,17 @@ opencode-archive/
 htmlcov/
 .pytest_cache/
 __pycache__/
+
+# Research sandbox — personal / non-course scratch, never publish
+/sandbox/
+
+# Large official PDFs/images — kept on disk only, never published (kept out of the public repo)
+/00_STUDIO_HUB/official_curriculum/02_Admission_Rules_2025-2026.pdf
+/00_STUDIO_HUB/official_curriculum/03_Academic_Description_FirstCourse_2024-2025.pdf
+/00_STUDIO_HUB/official_curriculum/03b_Academic_Description_FirstCourse_2024-2025_EN.pdf
+/00_STUDIO_HUB/official_curriculum/04_Academic_Description_SecondCourse_2024-2025.pdf
+/00_STUDIO_HUB/official_docs/03_department_296/B7fKxcyIpLZuh14h_1773497002.pdf
+/00_STUDIO_HUB/official_docs/03_department_296/_eQCc_p0.png
+/00_STUDIO_HUB/official_docs/03_department_296/eQCcTWQP4HKONwxx_1763881884.pdf
+/00_STUDIO_HUB/official_docs/04_academic_description/7vryHdFKYy3KEdaa.pdf
+/00_STUDIO_HUB/official_docs/04_academic_description/ifKq1e3YGS1tf2rJ.pdf

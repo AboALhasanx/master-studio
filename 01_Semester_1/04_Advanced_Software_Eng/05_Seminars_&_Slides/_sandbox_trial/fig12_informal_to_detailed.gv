@@ -1,0 +1,15 @@
+
+digraph Informal {
+  rankdir=LR; nodesep=0.4; ranksep=0.75; bgcolor="white";
+  node [shape=box style="filled" fillcolor="#F1F5F9" fontname="Helvetica"
+        fontsize=11 color="#1E3A8A" penwidth=1.2 height=0.8 width=1.6];
+  edge [color="#1E3A8A" penwidth=1.2];
+  A [label="Informal design\noutline"];
+  B [label="Informal\ndesign"];
+  C [label="More formal\ndesign"];
+  D [label="Finished\ndesign"];
+  A -> B -> C -> D;
+  B -> A [style=dashed, constraint=false];
+  C -> B [style=dashed, constraint=false];
+  D -> C [style=dashed, constraint=false];
+}

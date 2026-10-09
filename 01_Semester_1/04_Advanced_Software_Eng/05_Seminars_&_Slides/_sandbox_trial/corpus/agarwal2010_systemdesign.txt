@@ -1,0 +1,328 @@
+\n== AGARWAL2010 p131 ==\n118 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+According to Webster. In a sense, design is representation of an object being created. 
+A design information base that describes aspects of this object, and the design process can 
+be viewed as successive elaboration of representations, such as adding more information or 
+even backtracking and exploring alternatives.
+ 
+ 
+According to Stevens. Software Design is the process of inventing and selecting 
+programs that meet the objectives for software systems. 
+ 
+ 
+Input includes an understanding of the following:
+ 
+ Requirements
+ 
+ Environmental constraints
+ 
+ Design criteria
+ 
+ 
+The output of the design effort is composed of the following:  
+ 
+ Architecture design which shows how pieces are interrelated
+ 
+ Specifications for any new pieces
+ 
+ Definitions for any new data
+5.1.2 
+Design Objectives/Properties
+ 
+The various desirable properties or objectives of software design are:
+ 
+1. Correctness. The design of a system is correct if the system built precisely 
+according to the design satisfies the requirements of that system. Clearly, 
+the goal during the design phase is to produce correct designs. However, 
+correctness is not the sole criterion during the design phase, as there can be 
+many correct designs. The goal of the design process is not simply to produce 
+a design for the system. Instead, the goal is to find the best possible design 
+within the limitations imposed by the requirements and the physical and 
+social environment in which the system will operate.
+ 
+2. Verifiability. Design should be correct and it should be verified for correctness. 
+Verifiability is concerned with how easily the correctness of the design can be 
+checked. Various verification techniques should be easily applied to design. 
+ 
+3. Completeness. Completeness requires that all the different components of 
+the design should be verified, i.e., all the relevant data structures, modules, 
+external interfaces, and module interconnections are specified.
+ 
+4. Traceability. Traceability is an important property that can get design 
+verification. It requires that the entire design element be traceable to the 
+requirements.
+ 
+5. Efficiency. Efficiency of any system is concerned with the proper use of 
+scarce resources by the system. The need for efficiency arises due to cost 
+
+\n== AGARWAL2010 p132 ==\n 
+SYSTEM DESIGN 
+119
+considerations. If  some resources are scarce and expensive, it is desirable that 
+those resources be used  efficiently. In computer systems, the resources that 
+are most often considered for efficiency are processor time and memory. An 
+efficient system consumes less processor time and memory.
+ 
+6. Simplicity. Simplicity is perhaps the most important quality criteria for 
+software systems. Maintenance of a software system is usually quite expensive. 
+The design of the system is one of the most important factors affecting the 
+maintainability of the system.
+5.1.3 
+Design Principles
+ 
+The three design principles are as follows:  
+ 
+ Problem partitioning
+ 
+ Abstraction
+ 
+ Top-down and Bottom-up design
+ 
+1. Problem Partitioning. When solving a small problem, the entire problem can 
+be tackled at once. For solving larger problems, the basic principle is the time-
+tested principle of “divide and conquer.” This principle suggests dividing into 
+smaller pieces, so that each piece can be conquered separately. 
+ 
+ For software design, therefore, the goal is to divide the problem into 
+manageably small pieces that can be solved separately. The basic rationale 
+behind this strategy is the belief that if the pieces of a problem are solvable 
+separately, the cost of solving the entire problem is more than the sum of the 
+cost of solving all the pieces.
+ 
+ However, the different pieces cannot be entirely independent of each other 
+as they together form the system. The different pieces have to cooperate and 
+communicate to solve the larger problem. This communication adds complexity, 
+which arises due to partitioning and may not have existed in the original 
+problem. As the number of components increases, the cost of partitioning, 
+together with the cost of this added complexity, may become more than the 
+savings achieved by partitioning. It is at this point that no further partitioning 
+needs to be done. The designer has to make the judgment about when to stop 
+partitioning. 
+ 
+ Problem partitioning can be divided into two categories:  
+ 
+(i) Horizontal partitioning
+ 
+(ii) Vertical partitioning
+ 
+(i) Horizontal Partitioning. Horizontal partitioning defines separate branches 
+of modular hierarchy for each major program function. The simplest 
+
+\n== AGARWAL2010 p133 ==\n120 
+SOF TWARE ENGINEERING AND TESTING
+approach to horizontal partitioning defines three partitions: input, data 
+transformation (often called processing), and output. Partitioning their 
+architecture horizontally provides a number of distinct benefits:
+ 
+ Software that is easier to test.
+ 
+ Software that is easier to maintain.
+ 
+ Software that is easier to extend.
+ 
+ Propagation of fewer side effects.
+ 
+ Conversely, horizontal partitioning often causes more data to be passed 
+across module interfaces and can complicate the overall control of program 
+flow.
+FIGURE 5.1 Horizontal Partitioning
+ 
+(ii) Vertical Partitioning. Vertical partitioning, often called factoring, suggests 
+that control and work should be distributed from top-down in the program 
+structure. Top-level modules should perform control functions and do 
+actual processing work. Modules that reside low in the structure should 
+be the workers, performing all input, compilation, and output tasks.
+FIGURE 5.2  Vertical Partitioning
+
+\n== AGARWAL2010 p134 ==\n 
+SYSTEM DESIGN 
+121
+ 
+2. Abstraction. An abstraction of a component describes the external behavior of 
+that component without bothering with the internal details that produce the 
+behavior.
+ 
+ Abstraction is an indispensable part of the design process and it is essential for 
+problem partitioning. Partitioning essentially is the exercise in determining 
+the components of a system. However, these components are not isolated from 
+each other, but interact with other components. In order to allow the designer 
+to concentrate on one component at a time, abstraction of other components is 
+used.
+ 
+ Abstraction is used for existing components as well as components that are 
+being designed. Abstraction of existing components plays an important role 
+in the maintenance phase.
+ 
+ During the design process, abstractions are used in a reverse manner not in 
+the process of understanding a system. During design, the components do not 
+exist, and in the design the designer specifies only the abstract specifications 
+of the different components. The basic goal of system design is to specify the 
+modules in a system and their abstractions. Once the different modules are 
+specified, during the detailed design the designer can concentrate on one 
+module at a time. The task in detailed design and implementation is essentially 
+to implement the modules so that the abstract specifications of each module 
+are satisfied.
+ 
+ There are two common abstraction mechanisms for software systems: 
+Functional abstraction and data abstraction. In functional abstraction, a 
+module is specified by the function it performs. For example, a module to sort 
+an input array can be represented by the specification of sorting. Functional 
+abstraction is the basis of partitioning in function-oriented approaches. That 
+is, when the problem is being partitioned, the overall transformation function 
+for the system is partitioned into smaller functions that comprise the system 
+function. 
+ 
+ The second unit for abstraction is data abstraction. There are certain operations 
+required from a data object, depending on the object and the environment 
+in which it is used. Data abstraction supports this view. Data is not treated 
+simply as objects, but is treated as objects with some predefined operations 
+on them. The operations defined on a data object are the only operations that 
+can be performed on those objects. From outside an object, the internals of the 
+object are hidden; only the operations on the object are visible.
+ 
+3. Top-down and Bottom-up Design. A system consists of components, which 
+have components of their own; indeed a system is a hierarchy of components. 
+The highest-level components correspond to the total system. 
+
+\n== AGARWAL2010 p135 ==\n122 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ To design such hierarchies there are two possible approaches: top-down and 
+bottom-up. The top-down approach starts from the highest-level component 
+of the hierarchy and proceeds through to lower levels. By contrast, a bottom-
+up approach starts with the lowest-level component of the hierarchy and 
+proceeds through progressively higher levels to the top-level component.
+ 
+ A top-down design approach starts by identifying the major components 
+of the system, decomposing them into their lower-level components and 
+iterating until the desired level of detail is achieved. Top-down design 
+methods often result in some form of stepwise refinement. Starting from an 
+abstract design, in each step the design is refined to a more concrete level, 
+until we reach a level where no more refinement is needed and the design can 
+be implemented directly. The top-down approach has been promulgated by 
+many researchers and has been found to be extremely useful for design. Most 
+design methodologies are based on the top-down approach.
+FIGURE 5.3 Top-Down Approach 
+ 
+A bottom-up design approach starts with designing the most basic or primitive 
+components and proceeds to higher-level components that use these lower-level 
+components. Bottom-up methods work with layers of abstraction. Starting from the 
+very bottom, operations that provide a layer of abstraction are implemented. The 
+operations of this layer are then used to implement more powerful operations and 
+still a higher layer of abstraction, until the stage is reached where the operations 
+supported by the layer are those desired by the system.
+ 
+A top-down approach is suitable only if the specifications of the system are clearly 
+known and the system development is from scratch. However, if a system is to be 
+built from an existing system, a bottom-up approach is more suitable, as it starts 
+from some existing components. So, for example, if an iterative enhancement type 
+of process is being followed, in later iterations, the bottom-up approach could be 
+more suitable (in the first iteration a top-down approach can be used).
+
+\n== AGARWAL2010 p136 ==\n 
+SYSTEM DESIGN 
+123
+FIGURE 5.4 Bottom-Up Approach
+5.2 
+ARCHITECTURAL DESIGN
+ 
+Large systems are always decomposed into subsystems that provide some related 
+set of services. The initial design process of identifying these subsystems and 
+establishing a framework for subsystem control and communication is called 
+architectural design.
+ 
+ 
+Architectural design represents the structure of data and program components 
+that are required to build a computer-based system. It considers the architectural 
+style that the system will take, the structure and properties of the components that 
+constitute the system, and the interrelationships that occur among all architectural 
+components of a system.
+ 
+ 
+Architectural design methods have a look into various architectural styles for 
+designing a system. These are: 
+ 
+ Data-centric architecture
+ 
+ Data-flow architecture
+ 
+ Object-oriented architecture
+ 
+ Layered architecture
+ 
+ 
+Data-centric architecture involves the use of a central database operation of 
+inserting and updating it in the form of a table. Data-flow architecture is central 
+around the pipe and filter mechanism. This architecture is applied when input data 
+takes the form of output after passing through various phases of transformations. 
+These transformations can be via manipulations or various computations done 
+
+\n== AGARWAL2010 p137 ==\n124 
+SOF TWARE ENGINEERING AND TESTING
+on the data. In object-oriented architecture the software design moves around the 
+clauses and objects of the system. The class encapsulates the data and methods. 
+Layered architecture defines a number of layers and each layer performs tasks. 
+The outer-most layer handles the functionality of the user interface and the inner-
+most layer mainly handles interaction with the hardware.
+5.2.1 
+Objectives of Architectural Design
+ 
+The objective of architectural design is to develop a model of software architecture, 
+which gives an overall organization of the program module in the software 
+product. Software architecture encompasses two aspects of structures of the data 
+and hierarchical structures of the software components. Let us see how a single 
+problem can be translated to a collection of solution domains (see Figure 5.5).
+FIGURE 5.5 Problems, Solutions, and Architecture
+ 
+ 
+Architectural design defines the organization of program components. It does 
+not provide the details of each component and its implementation. Figure 5.6 
+depicts the architecture of a financial accounting system.
+FIGURE 5.6 Architecture of a Financial Accounting System
+
+\n== AGARWAL2010 p138 ==\n 
+SYSTEM DESIGN 
+125
+ 
+ 
+The objective of architectural design is also to control the relationship between 
+modules. One module may control another module or may be controlled by 
+another module. These characteristics are defined by the fan-in and fan-out of a 
+particular module. The organization of a module can be represented by a tree-like 
+structure.
+ 
+ 
+The number of levels of a component in the structure is called depth and the 
+number of components across the horizontal section is called width. The number 
+of components, which controls the component, is called fan-in, i.e., the number of 
+incoming edges to a component. The number of components that are controlled by 
+the module is called fan-out, i.e., the number of outgoing edges.
+FIGURE 5.7 Fan-in and Fan-out
+ 
+ 
+S0 controls three components, hence, the fan-out is 3. S2 is controlled by two 
+components, namely, S1 and S2, hence, the fan-in is 2 (see Figure 5.7).
+5.3 
+LOW-LEVEL DESIGN 
+5.3.1 
+Modularization
+ 
+A system is considered modular if it consists of discreet components so that each 
+component can be implemented separately, and a change to one component has 
+minimal impact on other components.
+ 
+ 
+There are many definitions of the term module.  They range from “a module is 
+a FORTRAN subroutine” to “a module is an ADA package” to “a module is a work 
+assignment for an individual programmer.” All of these definitions are correct, in 
+the sense that modular systems incorporate collections of abstractions in which 
+each functional abstraction, each data abstraction, and each control abstraction 
+handles a local aspect of the problem being solved. Modular system consists of 
+well-defined, manageable units with well-defined interfaces among the units. 
+Desirable properties of a modular system include: 
+ 
+ Each function in each abstraction has a single, well-defined purpose. 
+ 
+ Each function manipulates no more than one major data structure.

@@ -48,13 +48,37 @@ flowchart LR
   - An unexcused absence exceeding **15%** (or excused absence exceeding 25%) results in immediate **Administrative Failure due to Absence (*رسوب بالغياب*)**, resulting in a grade of zero for the course and legal dismissal.
 
 ### 2.3. Assessment & Grade Distribution
-Course performance is evaluated on a strict 100-point scale partitioned as follows:
+
+> ✅ **CONFIRMED (2026-10-04) — source: the Head of Department, College of CS&IT, stated in person to the student.** The split is **30% Continuous Coursework (*السعي*) / 70% Final Examination**. Recorded as given. This replaces the earlier unverified 40–50 / 50–60 figure.
+>
+> ⚠️ Still open: whether the 30% is further sub-divided (monthly exams vs daily quizzes) and whether it is uniform across all six subjects. Ask for it in writing per subject.
 
 | Assessment Component | Weight | Elements Evaluated |
 |:---|:---:|:---|
-| **Continuous Coursework (*السعي السنوي*)** | **40% – 50%** | Written mid-term examinations, periodic quizzes, seminar presentations, laboratory coding deliverables, and active academic participation. |
-| **Final Semester Examination (*الامتحان النهائي*)** | **50% – 60%** | Comprehensive written examination covering the entire semester syllabus. |
-| **Total Final Grade** | **100%** | Cumulative course score recorded on official university transcript. |
+| **Continuous Coursework (*السعي*)** | **30%** (30 marks) | Monthly examinations, daily quizzes, seminars, assignments, participation. |
+| **Final Semester Examination (*الامتحان النهائي*)** | **70%** (70 marks) | End-of-semester written examination. |
+| **Total Final Grade** | **100%** (100 marks) | Recorded on the transcript, then **weighted by credit units** (Art. 24(6)). |
+
+#### 2.3.1. The mark-exchange rate (why the daily is not "just filling")
+
+With a 30/70 split, the course grade is $G = S + 0.7F$ where $S \in [0,30]$ is the coursework mark and $F \in [0,100]$ is the final percentage.
+
+$$\frac{\partial G}{\partial S} = 1 \qquad \frac{\partial G}{\partial F} = 0.7 \qquad \Longrightarrow \quad \textbf{1 coursework mark} = \textbf{1.43 final marks}$$
+
+**A single *سعي* mark is worth 43% more than a single final mark.** Therefore:
+
+| Coursework mark $S$ (of 30) | Final % needed for a course grade of 70 | for 60 |
+|:---:|:---:|:---:|
+| 18 (the floor of the student's estimate) | **74.3%** | 60.0% |
+| 20 | 71.4% | 57.1% |
+| 23 | 67.1% | 52.9% |
+| 25 | **64.3%** | 50.0% |
+| 27 | **61.4%** | 47.1% |
+| 30 | 57.1% | 42.9% |
+
+**Strategic consequence:** treating the coursework as a low-priority "filler" is a mistake — it is the **cheapest source of marks in the entire system**. Raising $S$ from 20 to 27 lowers the required final from 71.4% to 61.4% — a **10-point saving on the final for 7 marks of coursework**, and across 13 units that is roughly **+7 average points** — the difference between 63 and 70.
+
+**Priority of coursework effort follows credit units:** the *سعي* of a 3-credit course (ASE, AI) is worth 3× the *سعي* of a 1-credit course (English) in the weighted average.
 
 ---
 
@@ -88,6 +112,29 @@ Course performance is evaluated on a strict 100-point scale partitioned as follo
    - If a student passes all individual subjects with $\ge 60\%$ but their cumulative weighted GPA is $< 70.0\%$, they must sit for the second attempt in the courses with the lowest marks to elevate their cumulative GPA.
 2. **Second Attempt Failure & Status Termination (*ترقين القيد*):**
    - Failing any subject after the second attempt, or failing to attain the $70.0\%$ cumulative GPA after the second attempt, results in official termination of postgraduate status (*ترقين قيد الطالب*) according to ministerial bylaws.
+
+### 3.4. Verified Legal Basis (source-checked 2026-10-04)
+
+> **Which instructions govern grading?** *Instructions No. 27 of 1982* (study / examination / grading), **not** No. 26 of 1990 (establishment, admission, supervision). No. 27 remains in force under **Article 17 of Instructions No. 26 of 1990**, which repealed only the provisions conflicting with it.
+
+| Legal source | Provision |
+|:---|:---|
+| **Instr. 27/1982, Art. 24(1)** | Grading scale: 90–100 ممتاز · 80–89 جيد جداً · 70–79 **جيد** · 60–69 **مقبول** · 59 and below **راسب**. **No «متوسط» grade exists in postgraduate studies** — the pass floor is 60, not 50. |
+| **Instr. 27/1982, Art. 24(4)** | Dismissal if the student fails **more than half** of the *first-semester* subjects in the first attempt. (With 6 subjects in Semester 1: the hard line is 4 failures.) |
+| **Instr. 27/1982, Art. 24(5)** | Requires «مقبول» in **every** course **and** a general average of «جيد» (70). If either fails, the student re-sits at the **start of the following academic year** — in the failed courses **and in courses of their own choosing in order to raise the general average to «جيد»**. Failing again ⇒ **dismissal**. |
+| **Instr. 27/1982, Art. 24(6)** | Each course grade is **weighted by its credit units** when computing the general average. |
+| **Instr. 27/1982, Art. 25** | Compensatory (تكميلية) courses: minimum «مقبول» each; **one** re-sit only. |
+| **MOHESR announcement, 21 Jul 2026** | Adopted **60** as the passing threshold in the postgraduate preparatory year (agency-reported; underlying letter not located). |
+
+**Ministerial «معالجة» (curve) letters — verified images:**
+
+- **ب ت 5/5421, 11 Sep 2025** — result-processing of 2024–2025 (Semester 1, Semester 2, Second Attempt) put to university councils to change status to «مكمّل» or «ناجح».
+- **ب ت 5/1105, 10 May 2025** — 5 marks granted for second-attempt processing, **conditional on the status changing to passing and clearing the preparatory year**.
+- **ب ت 5/11137, 6 Oct 2025** — the processing marks are added **to the courses with the highest credit units**, for the purpose of **raising the average and changing the student's status to «النجاح بالمعدل»**.
+
+**Consequences for strategy:** (a) the 3-credit courses move the average roughly 3× as much as 1-credit courses; (b) curve marks apply **only if they change the status completely** — partial benefit is not awarded at all; (c) curve marks are discretionary and vary year to year, so they are a safety net, never a plan.
+
+> **Full Arabic analysis, the deliberate-deferral question, and the Semester-1 plan:** `00_STUDIO_HUB/POSTGRAD_RULES_AND_PLAN.md` (+ PDF).
 
 ---
 

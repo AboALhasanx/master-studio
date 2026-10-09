@@ -1,0 +1,962 @@
+
+===== AGARWAL2010 pg149 =====
+136 
+SOF TWARE ENGINEERING AND TESTING
+5.3.5 Difference Between Flowcharts and Structure Charts
+ 
+A structure chart differs from a flowchart in the following ways:  
+ 
+ It is usually difficult to identify different modules of the software from its 
+flowchart representation. 
+ 
+ Data interchange among different modules is not represented in a flowchart.
+ 
+ Sequential ordering of tasks inherent in a flowchart is suppressed in a structure 
+chart. 
+ 
+ A structure chart has no decision boxes.
+ 
+ 
+Unlike flowcharts, structure charts show how different modules within a 
+program interact and the data that is passed between them.
+5.4 
+COUPLING AND COHESION 
+5.4.1 
+Coupling
+ 
+The coupling between two modules indicates the degree of interdependence 
+between them. If two modules interchange a large amount of data, then they are 
+highly interdependent. The degree of coupling between two modules depends on 
+their interface complexity. The interface complexity is basically determined by the 
+number of types of parameters that are interchanged while invoking the functions 
+of the module.
+ 
+ 
+Highly Coupled: When the modules are highly dependent on each other then 
+they are called highly coupled.
+ 
+ 
+Loosely Coupled: When the modules are dependent on each other but the 
+interconnection among them is weak then they are called loosely coupled.
+FIGURE 5.11 Coupling
+
+
+===== AGARWAL2010 pg150 =====
+ 
+SYSTEM DESIGN 
+137
+ 
+ 
+Uncoupled: When the different modules have no interconnection among them 
+then they are called uncoupled modules.
+ 
+Factors Affecting Coupling Between Modules
+ 
+The various factors which affect the coupling between modules are depicted in 
+Table 5.1. 
+TABLE 5.1 Factors Affecting Coupling
+Interface Complexity
+Type of Connection
+Type of Communication
+Low
+Simple Obvious
+To module by name
+Data
+High
+Complicated Obscure
+To internal elements 
+ControlHybrid
+ 
+Types of Couplings
+ 
+Different types of couplings include content, common, external, control, stamp, 
+and data. The strength of a coupling from the lowest coupling (best) to the highest 
+coupling (worst) is given in Figure 5.12.
+FIGURE 5.12 The Types of Module Coupling
+ 
+1. Data Coupling. Two modules are data coupled if they communicate using 
+an elementary data item that is passed as a parameter between the two; for 
+example, an integer, a float, a character, etc. This data item should be problem 
+related and not used for a control purpose.
+FIGURE 5.13 Data Coupling
+
+
+===== AGARWAL2010 pg151 =====
+138 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ When a non-global variable is passed to a module, modules are called data 
+coupled. It is the lowest form of a coupling. For example, passing the variable 
+from one module in C and receiving the variable by value (i.e., call by value).
+ 
+2. Stamp Coupling. Two modules are stamp coupled if they communicate using 
+a composite data item, such as a record, structure, object, etc. When a module 
+passes a non-global data structure or an entire structure to another module, 
+they are said to be stamp coupled. For example, passing a record in PASCAL 
+or a structure variable in C or an object in C++ language to a module.
+ 
+3. Control Coupling. Control coupling exists between two modules if data from 
+one module is used to direct the order of instruction execution in another. An 
+example of control coupling is a flag set in one module that is tested in another 
+module.
+FIGURE 5.14  Control Coupling
+ 
+ The sending module must know a great deal about the inner workings of the 
+receiving module. A variable that controls decisions in subordinate module C 
+is set in super-ordinate module A and then passed to C.
+ 
+4. External Coupling. It occurs when modules are tied to an environment 
+external to software. External coupling is essential but should be limited to a 
+small number of modules with structures. 
+ 
+5. Common Coupling. Two modules are common coupled if they share some 
+global data items (e.g., Global variables). Diagnosing problems in structures 
+with considerable common coupling is time-consuming and difficult. 
+However, this does not mean that the use of global data is necessarily “bad.” It 
+does mean that a software designer must be aware of potential consequences 
+of common couplings and take special care to guard against them. 
+ 
+6. Content Coupling. Content coupling exists between two modules if their 
+code is shared; for example, a branch from one module into another module. 
+It is when one module directly refers to the inner workings of another 
+module. Modules are highly interdependent on each other. It is the highest 
+form of coupling. It is also the least desirable coupling as one component 
+actually modifies another and thereby the modified component is completely 
+dependent on the modifying one.
+
+
+===== AGARWAL2010 pg152 =====
+ 
+SYSTEM DESIGN 
+139
+FIGURE 5.15 Couplings
+ 
+ 
+High coupling among modules not only makes a design difficult to understand 
+and maintain, but it also increases development effort as the modules having high 
+coupling cannot be developed independently by different team members. Modules 
+having high coupling are difficult to implement and debug.
+5.4.2 Cohesion
+ 
+Cohesion is a measure of the relative functional strength of a module. The cohesion 
+of a component is a measure of the closeness of the relationships between 
+its components. A cohesive module performs a single task within a software 
+procedure, requiring little interaction with procedures being performed in other 
+parts of a program.
+ 
+ 
+A strongly cohesive module implements functionality that is related to one 
+feature of the solution and requires little or no interaction with other modules. 
+This is shown in Figure 5.16. Cohesion may be viewed as the glue that keeps the 
+module together. It is a measure of the mutual officity of the components of a 
+module.
+FIGURE 5.16 Cohesion-strength of Relation within Modules
+ 
+ 
+Thus, we want to maximize the interaction within a module. Hence, an 
+important design objective is to maximize the module cohesion and minimize the 
+module coupling. 
+
+
+===== AGARWAL2010 pg153 =====
+140 
+SOF TWARE ENGINEERING AND TESTING
+ 
+Types of Cohesion
+FIGURE 5.17 The Types of Module Cohesion
+ 
+There are seven levels of cohesion in decreasing order of desirability, which are as 
+follows:
+ 
+1. Functional Cohesion. Functional cohesion is said to exist if different elements of 
+a module cooperate to achieve a single function (e.g., managing an employee’s 
+payroll). When a module displays functional cohesion, and if we are asked to 
+describe what the module does, we can describe it using a single sentence.
+FUNCTION A Part 1
+FUNCTION A Part 2
+FUNCTION A Part 3
+FIGURE 5.18 Functional Cohesion: Sequential with Complete, 
+Related Functions
+ 
+2. Sequential Cohesion. A module is said to possess sequential cohesion if the 
+elements of a module form the parts of a sequence, where the output from one 
+element of the sequence is input to the next.
+FIGURE 5.19 Sequential Cohesion: Output of One Part is Input to Next
+ 
+3. Communicational Cohesion. A module is said to have communicational 
+cohesion if all the functions of the module refer to or update the same data 
+
+
+===== AGARWAL2010 pg154 =====
+ 
+SYSTEM DESIGN 
+141
+structure; for example, the set of functions defined on an array or a stack. 
+All the modules in communicational cohesion are bound tightly because they 
+operate on the same input or output data. For example, the set of functions 
+defined on an array or a stack.
+FIGURE 5.20 Communicational Cohesion: Access Same Data
+ 
+4. Procedural Cohesion. A module is said to possess procedural cohesion if the 
+set of functions of the module are all part of a procedure (algorithm) in which 
+a certain sequence of steps has to be carried out for achieving an objective; for 
+example, the algorithm for decoding a message.
+FUNCTION A 
+FUNCTION B
+FUNCTION C
+FIGURE 5.21 Procedural Cohesion Related by Order of Function
+ 
+5. Temporal Cohesion. When a module contains functions that are related by 
+the fact that all the functions must be executed in the same time span, the 
+module is said to exhibit temporal cohesion. The set of functions responsible 
+for initialization, start-up, shutdown of some process, etc., exhibit temporal 
+cohesion.
+TIME TO
+TIME TO+A
+TIME TO+2A
+FIGURE 5.22 Temporal Cohesion Related by Time
+ 
+6. Logical Cohesion. A module is said to be logically cohesive if all elements 
+of the module perform similar operations; for example, error handling, data 
+input, data output, etc. An example of logical cohesion is the case where a 
+
+
+===== AGARWAL2010 pg155 =====
+142 
+SOF TWARE ENGINEERING AND TESTING
+set of print functions generating different output reports are arranged into a 
+single module.
+FIGURE 5.23 Logical Cohesion Similar Functions
+ 
+7. Coincidental Cohesion. A module is said to have coincidental cohesion if it 
+performs a set of tasks that relate to each other very loosely. In this case, the 
+module contains a random collection of functions. It means that the functions 
+have been put in the module out of pure coincidence without any thought or 
+design. It is the worst type of cohesion.
+FIGURE 5.24 Coincidental Cohesion Parts Unrelated
+FIGURE 5.25 Cohesion
+5.4.3 Relationship Between Coupling and Cohesion
+ 
+A software engineer must design the modules with the goal of high cohesion and 
+low coupling.
+
+
+===== AGARWAL2010 pg156 =====
+ 
+SYSTEM DESIGN 
+143
+ 
+ 
+A good example of a system that has high cohesion and low coupling is the 
+‘plug and play’ feature of a computer system. Various slots in the motherboard of 
+the system simply facilitate to add or remove the various services/functionalities 
+without affecting the entire system. This is because the add-on components provide 
+the services in a highly cohesive manner. Figure 5.26 provides a graphical review 
+of cohesion and coupling.
+FIGURE 5.26 View of Cohesion and Coupling
+ 
+ 
+Module design with high cohesion and low coupling characterizes a module 
+as a black box when the entire structure of the system is described. Each module 
+can be dealt with separately when the module functionality is described. 
+5.5 
+FUNCTIONAL-ORIENTED VERSUS THE OBJECT-ORIENTED 
+APPROACH
+ 
+Some of the differences between the functional-oriented and the object-oriented 
+approaches, which are very indispensable, are described in Table 5.2.
+TABLE 5.2
+S. No.
+Functional-oriented Approach
+Object-oriented Approach
+1.
+In the functional-oriented design 
+approach, the basic abstractions, 
+which are given to the user, are real-
+world functions, such as sort, merge, 
+track, display, etc.
+In the object-oriented design approach, 
+the basic abstractions are not the 
+real-world functions, but are the data 
+abstraction where the real-world entities 
+are represented, such as picture, machine, 
+radar system, customer, student, employee, 
+etc.
+
+
+===== AGARWAL2010 pg157 =====
+144 
+SOF TWARE ENGINEERING AND TESTING
+2.
+In function-oriented design, functions 
+are grouped together by which a 
+higher-level function is obtained. An 
+example of this technique is SA/SD.
+In this design, the functions are grouped 
+together on the basis of the data they 
+operate on, such as in class person, function 
+displays are made member functions to 
+operate on its data members such as the 
+person name, age, etc. 
+3.
+In 
+this 
+approach, 
+the 
+state 
+information is often represented in a 
+centralized shared memory.
+In this approach, the state information 
+is not represented in a centralized shared 
+memory but is implemented/distributed 
+among the objects of the system.
+5.6 
+DESIGN SPECIFICATIONS
+ 
+Design specifications address different aspects of the design model and are 
+completed as the designer refines his representation of the software. First, the 
+overall scope of the design effort is described, which is derived from system 
+specification and the analysis model (software requirements specification).
+ 
+ 
+Then, data design is specified, which includes data structures, any external file 
+structures, internal data structures, and a cross-reference that connects data objects 
+to specific files. 
+ 
+ 
+Then architectural design indicates how the program architecture has been 
+derived from the analysis model. Structure charts are used to represent the module 
+hierarchy.
+ 
+ 
+Interface design indicates the design of external and internal program interfaces 
+along with a detailed design of the human/machine interface. A detailed prototype 
+of a GUI may also be represented.
+ 
+ 
+Procedural design specifies components—separately addressable elements of 
+software—such as subroutines, functions, or procedures in the form of English-
+language processing narratives. This narrative explains the procedural function of 
+a component (module).
+ 
+ 
+Design specification contains a requirements cross-reference. The purpose of 
+this cross-reference is: 
+ 
+ To establish that all requirements are satisfied by the software design.
+ 
+ To indicate which components are critical to the implementation of specific 
+requirements.
+ 
+ 
+The final section of the design specification contains supplementary data, 
+such as algorithm descriptions, alternative procedures, tabular data, excerpts from 
+
+
+===== AGARWAL2010 pg158 =====
+ 
+SYSTEM DESIGN 
+145
+other documents, and other relevant information presented as a special note or a 
+separate appendix.
+TABLE 5.3
+System objective
+Human-machine interface
+Major software requirements design
+Constraints, limitations
+Data design
+Data 
+objects 
+and 
+resultant 
+data 
+structures
+File and database structures
+External file structures
+Logical structures
+Specification and design
+External interface design
+Interfaces to external/systems
+Internal design rules
+Processing narrative
+Interface description
+Design language description
+Modules used
+Access method
+Global data
+File and data cross-reference
+Data structures used
+Comments
+Requirements cross-reference
+5.7 
+VERIFICATION FOR DESIGN
+ 
+The output of the system design phase, such as the output of other phases in the 
+development process, should be verified before proceeding with the activities of 
+the next phase. If the design is expressed in some formal notation for which analysis 
+tools are available, then through tools it can be checked for internal consistency 
+(e.g., those modules used by another are defined, the interface of a module is 
+consistent with the way others use it, data usage is consistent with declaration, 
+etc.). If the design is not specified in a formal, executable language, it cannot be 
+processed through tools, and other means for verification have to be used. 
+ 
+ 
+There are two fundamental approaches to verification. The first consists of 
+experimenting with the behavior of a product to see whether the product performs 
+as expected (i.e., testing the product). The other consists of analyzing the product—
+or any design documentation related to it—to deduce its correct operation as a 
+logical consequence of the design decisions. The two categories of verification 
+techniques are also classified as dynamic or static, since the former requires—by 
+definition—executing the system to be verified, while the latter does not. Not 
+surprisingly, the two techniques turn out to be nicely complementary. 
+
+
+===== AGARWAL2010 pg159 =====
+146 
+SOF TWARE ENGINEERING AND TESTING
+5.8 
+MONITORING AND CONTROL FOR DESIGN
+ 
+Software project management is crucial to the success of a project. The basic task 
+is to plan the detailed implementation of the development process to ensure that 
+the cost and quality objectives are met. It specifies what is needed to meet the 
+cost, quality, and schedule objectives. For this purpose we need monitoring and 
+control. Monitoring obtains information from the development process and exerts 
+the required control over it. Figure 5.27 shows where monitoring and control is 
+carried out in project management:
+FIGURE 5.27 Phases of Project Management
+ 
+ 
+Monitoring and control systems are an important class of a real-time system. 
+They check sensors and provide information about the system’s environment and 
+take actions depending on the sensor reading. Monitoring systems take action 
+when some exceptional sensor value is detected. Control systems continuously 
+control hardware actuators depending on the value of associated sensors. 
+ 
+ 
+Consider the following example: A burglar alarm system is to be implemented 
+for a building. This uses several different types of sensors. These include movement 
+detectors in individual rooms, window sensors on ground floor windows, which 
+detect if a window has been broken, and door sensors, which detect a door 
+opening on corridor doors. There are 50 window sensors, 30 door sensors, and 200 
+movement detectors in the system.
+ 
+ 
+When a sensor detects the presence of an intruder, the system automatically 
+calls the local police and, using a voice synthesizer, reports the location of the 
+alarm. It switches on lights in the rooms around the active sensor and sets off an 
+audible alarm. The alarm system is normally powered by the main power source 
+but is equipped with a battery backup. Power loss is detected using a separate 
+power circuit monitor that monitors the main voltage. It interrupts the alarm 
+system when a voltage drop is detected.
+
+
+===== AGARWAL2010 pg160 =====
+ 
+SYSTEM DESIGN 
+147
+EXERCISES
+ 
+1. What is system design?
+ 
+2. Explain, in detail, the three design principles in system design.
+ 
+3. What is abstraction? What are the verification metrics for system design?
+ 
+4. Define:
+ 
+(i) Problem partitioning
+ 
+(ii) Abstraction
+ 
+(iii) Top-down and bottom-up design
+ 
+5. Define architectural design.
+ 
+6. What are the objectives of architectural design?
+ 
+7. Explain the various design techniques that come under the category of low-level 
+design.
+ 
+8. Define:
+ 
+(i) Modularization 
+(ii) Structure charts
+ 
+(iii) Pseudo-code 
+(iv) Flowcharts 
+ 
+9. Give any two important differences between the function-oriented and object-oriented 
+design approaches.
+ 
+10. Discuss the major advantages of the object-oriented design approach over the function-
+oriented design approach.
+ 
+11. What is a flowchart? Explain some of its symbols. Also give a suitable example. 
+ 
+12. Give the hierarchical format of a structure chart. Also, give the basic building blocks of 
+a structure chart.
+ 
+13. Explain the term design specification. 
+ 
+14. Discuss the term verification in reference to system design.
+ 
+15. Enumerate the term monitoring and control in system design.
+ 
+16. Discuss some methods of monitoring and control of a software-development process.
+ 
+17. What is meant by the term coupling in software design? Is it true that in a good design, 
+the modules should have low coupling? Why?
+ 
+18. Explain the different types of coupling that two modules might exhibit.
+ 
+19. Explain the different types of cohesion that a module might exhibit.
+ 
+20. What is coupling and cohesion in reference to software design? How are these concepts 
+useful in arriving at a good design of a system?
+ 
+21. Is it true that whenever we increase the cohesion of different modules in our design, 
+coupling between these modules automatically decreases? Justify your answer with 
+the help of an appropriate example.
+ 
+22. What is a flowchart? How is the flow-charting technique useful for software 
+development?
+ 
+23. Discuss the major advantages of the object-oriented design (OOD) methodology over 
+the data flow-oriented design methodologies.
+
+
+===== AGARWAL2010 pg161 =====
+4 
+SOF TWARE ENGINEERING AND TESTING
+
+
+===== AGARWAL2010 pg162 =====
+Chapter 6
+SOFTWARE MEASUREMENT
+AND METRICS
+6.1 
+ SOFTWARE METRICS
+ 
+S
+oftware metrics are quantifiable measures that could be used to measure different 
+characteristics of a software system or the software-development process.
+ 
+ 
+Metrics and measurements are necessary aspects of managing a software- 
+development project. For effective monitoring, management needs to get information 
+about the project: how far it has progressed, how much development has taken 
+place, how far behind schedule it is, and the quality of the development so far. 
+Based on this information, decisions can be made about the project. Without 
+proper metrics to quantify the required information, subjective opinion would 
+have to be used, which is often unreliable and goes against the fundamental goals 
+of engineering. Hence, we can say that metrics-based management is also a key 
+component in the software-engineering strategy to achieve its objectives.
+6.1.1 Definition
+ 
+Software metrics can be defined as “The continuous application of measurement-based 
+techniques to the software-development process and its products to supply meaningful and 
+149
+
+
+===== AGARWAL2010 pg163 =====
+150 
+SOF TWARE ENGINEERING AND TESTING
+timely management information, together with the use of those techniques to improve that 
+process and its products.”
+ 
+ 
+Metrics ensure that the final product is of high quality and the productivity 
+of the project stays high. In this sequence metrics for intermediate products of 
+requirements and design is to predict or get some idea about the metrics of the final 
+product. Several metrics have been designed for coding; namely, size, complexity, 
+style, and reliability.
+6.1.2  Categories of Metrics 
+ 
+There are three categories of software metrics, which are as follows:
+ 
+1.  Product Metrics. Product metrics describe the characteristics of the product, 
+such as size, complexity, design features, performance, efficiency, reliability, 
+portability, etc.
+ 
+2.  Process Metrics. Process metrics describe the effectiveness and quality of the 
+processes that produce the software product. Examples are:
+ 
+ Effort required in the process
+ 
+ Time to produce the product 
+ 
+ Effectiveness of defect removal during development
+ 
+ Number of defects found during testing
+ 
+ Maturity of the process
+ 
+3.  Project Metrics. Project metrics describe the project characteristics and 
+execution. Examples are: 
+ 
+ Number of software developers
+ 
+ Staffing pattern over the life-cycle of the software
+ 
+ Cost and schedule
+ 
+ Productivity
+6.1.3 
+Attributes of Effective Software Metrics
+ 
+Hundreds of metrics have been proposed for computer software, but not all 
+provide practical support to the software engineer. Some demand measurement 
+that is too complex, others are so esoteric that few real-world professionals have 
+any hope of understanding them, and others violate the basic intuitive notions of 
+what high-quality software really is. 
+ 
+ 
+Ejiogu defines a set of attributes that should be encompassed by effective 
+software metrics. The derived metric and the measures that lead to it should be:
+
+
+===== AGARWAL2010 pg164 =====
+ 
+SOFTWARE MEASUREMENT AND METRICS 
+151
+ 
+ Simple and computable: It should be relatively easy to learn how to derive the 
+metric, and its computation should not demand inordinate effort or time.
+ 
+ Empirically and intuitively persuasive: The metrics should satisfy the engineer’s 
+intuitive notions about the product attribute under consideration. 
+ 
+ Consistent and objective: The metric should always yield results that are 
+unambiguous. 
+ 
+ Consistent in the use of units and dimensions: The mathematical computation of 
+the metric should use measures that do not lead to bizarre combinations of 
+units.
+ 
+ Programming-language independent: Metrics should be based on the analysis 
+model, the design model, or the structure of the program itself. 
+ 
+ An effective mechanism for high-quality feedback: That is, the metric should lead to 
+a higher-quality end product. 
+6.2 
+ HALSTEAD’S SOFTWARE SCIENCE
+ 
+Software science is an approach—based on Halstead’s theories—measuring 
+software qualities on the basis of objective code measures. It is based on information 
+theory, which in turn is based on the following measurable quantities, defined for 
+a given program coded in any programming language:
+ 
+ 1, the number of unique, distinct operators appearing in the program;
+ 
+ 2, the number of unique, distinct operands appearing in the program;
+ 
+ N1, the total number of occurrences of operators in the program;
+ 
+ N2, the total number of occurrences of operands in the program.
+ 
+ 
+The terms “operator” and “operand” have intuitive meanings and are to be 
+defined for different programming languages. The distinction is that the operator 
+works on the operand.
+ 
+ 
+Once we have defined 1 and 2 precisely, we can define the program 
+vocabulary  and the program length N as
+ 
+ 
+ = 1 + 2
+ 
+and
+ 
+ 
+N = N1 + N2.
+ 
+ 
+At this point, we can already consider some relations between the above 
+quantities. A first obvious relation is
+ 
+ 
+1 < =  N.
+
+
+===== AGARWAL2010 pg165 =====
+152 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Using these definitions, Halstead suggests the equation
+ 
+ 
+Ñ = 1 log2 1 + 2 log2 2,
+ 
+where the “hat” has been placed on N to distinguish the quantity obtained, the 
+calculated length, with this equation from the value of the length N obtained by 
+direct observation.
+ 
+ 
+We decided to quote Halstead’s reasoning directly since, in spite of its intuitive 
+attractiveness, it suffers from flaws that make it questionable. The major flaw is 
+that a program is not a “single ordered set of n [distinct!] elements,” but a string, 
+with possible repetitions.
+ 
+ 
+Disregarding this observation, Ñ is an estimate of the length of the program 
+and not actual measured value of the length of the program. So, when we compare 
+Ñ versus N on the same sample codes or programs our published algorithms 
+shows (N  Ñ)/N is less than 10%.
+ 
+ 
+Program level ‘L’ is a measure of the ‘Level of abstraction’ of the formulation 
+of an algorithm. Another important measure Halstead’s theory introduces is the 
+effort ‘E’ defined as
+ 
+ 
+Effort = E = V .
+L 
+ 
+ 
+Halstead argues that E may be interpreted as the number of mental 
+discriminations required to implement a program and also as the effort required 
+to read and understand the program.
+ 
+ 
+In conclusion, Halstead’s theory tries to provide a formal definition for such 
+qualitative, empirical, and subjective software qualities as program complexity, 
+eases of understanding, and level of abstraction, based on the count of some low-
+level quantities, such as the number of operators and operands appearing in a 
+program. The goal is to be able to predict the level of these qualities a program will 
+have before the start of a project and then measure the level mechanically to assess 
+the quality of the resulting product.
+ 
+ 
+Example 6.1. Table 6.1 illustrates a simple Fortran routine and the associated 
+values of N1, N2, n1, and n2. Halstead defines several quantities using these 
+numbers. For example, program length N is defined as N1 + N2; (N1 + N2 = 50 in 
+Table 6.1).
+ 
+ 
+Halstead’s estimator of program length is:
+ 
+ 
+N = n1 log2 n1 + n2 log2 n2.
+ 
+ 
+For example, in Table 6.1
+ 
+ 
+ N  = 10 (3.2) + 7 (2.8)  
+ 
+ 
+ = 52.9.
+
+
+===== AGARWAL2010 pg166 =====
+ 
+SOFTWARE MEASUREMENT AND METRICS 
+153
+ 
+ 
+Program volume is defined as
+ 
+ 
+V = (N1 + N2) log2 (n1 + n2).
+ 
+Subroutine sort(X, N)
+ 
+Dimension X(N)
+ 
+If (N, I.T. 2) RETURN
+ 
+  Do 20 I  = 2, N
+ 
+  Do 10 J = 1, 1
+ 
+IF (X (1), GE X (J)) GOTO 10
+ 
+  SAVE  = X (I)
+ 
+  X (I)  = X (J)
+ 
+  X (J)  = SAVE
+ 
+10 continue
+ 
+20 continue
+ 
+RETURN
+ 
+END
+TABLE 6.1 Operator and Operand Count for a Fortran Routine
+ 
+ Operand
+Count
+ Operator
+ Count
+1 X
+6
+1 End of statement
+7
+2 I
+5
+2 Array subscript
+6
+3 J
+4
+3 =
+5
+4 N
+2
+4 Lf ()
+2
+5 2
+2
+5 DO
+2
+6 save
+2
+6
+2
+n2 = 7 I
+1
+7 End of program
+1
+22 = N2
+8. LT.
+1
+3. GE.
+1
+n1 = 10 goto 10
+1
+28 = N1
+ 
+and language level (the level of language abstraction) is
+ 
+ 
+L = (2*n2)/(n1*N2).
+ 
+ Program effort is defined as  V ;
+L
+ 
+ 
+E = (n1*N2*(N1 + N2)*log2 (n1 + n2)) / (2*n2).
+
+
+===== AGARWAL2010 pg167 =====
+154 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Program effort is interpreted to be the number of mental discriminations 
+required to implement the program. Alternatively, it can be interpreted as the effort 
+required for reading and understanding a program. Experiments have shown that 
+Halstead’s effort metric is well-correlated with the observed effort required to 
+debug and modify small programs. Program effort thus appears to be a measure 
+of interest for software maintenance.
+6.3 
+ FUNCTION-POINT BASED MEASURES
+6.3.1 
+Function Points
+ 
+Function points and feature points are methods of estimating the “amount 
+of functionality” required for a program, and are thus used to estimate project 
+completion time. The basic idea involves counting inputs, outputs, and other 
+features of a description of functionality.
+6.3.2 Function-Point Metric
+ 
+The function-point metric was proposed by Allan Albrecht (1983) when he worked 
+for IBM. Function-oriented software metrics use a measure of the functionality 
+delivered by the application as a normalization value. Since functionality cannot 
+be measured directly, it must be derived indirectly using other direct measures. 
+Function points are derived using an empirical relationship based on direct 
+measures of the software’s information domain and assessments of software 
+complexity.
+ 
+ 
+Function points are computed by completing Table 6.2.
+   TABLE 6.2 Function-Point Contribution of an Element
+Function type
+Simple
+Average
+Complex
+External input
+3
+4
+6
+External output
+4
+5
+7
+Logical internal file
+7
+10
+15
+External interface file
+5
+7
+10
+External inquiry
+3
+4
+6
+ 
+ 
+The different function types mentioned in Table 6.2 are discussed as follows:  
+ 
+ External types are input transactions that update internal computer files.
+ 
+ External output types are transactions where data is output to the user. 
+Typically, these would be printed reports.
+
+
+===== AGARWAL2010 pg168 =====
+ 
+SOFTWARE MEASUREMENT AND METRICS 
+155
+ 
+  Logical internal file types are the standing files used by the system. The 
+term ‘file’ does not sit easily with modern information systems. It refers to 
+a group of data that is usually accessed together. It might be made up of 
+one or more record types. 
+ 
+ External interface file types allow for output and input that might pass to 
+and from other computer applications. 
+ 
+ External inquiry types note the U.S. spelling of inquiry and are transactions 
+initiated by the user that provide information but do not update the 
+internal files. The user inputs some information that directs the system to 
+the details required.
+6.3.3 Special Features 
+ 
+ The function-point approach is independent of the language, tools, or 
+methodologies used for implementation, i.e., they do not take into consideration 
+programming languages, database-management systems, processing hardware, 
+or any other database technology. 
+ 
+ Function points can be estimated from requirement specifications or design 
+specifications, thus making it possible to estimate development effort in early 
+phases of development.
+ 
+ Function points are directly linked to the statement of requirements; any 
+change of requirements can easily be followed by the estimate.
+ 
+ Function points are based on the system user’s external view of the system; 
+non-technical users of the software system have a better understanding of 
+what function points are measuring. 
+6.3.4  Advantages of Function Points
+ 
+ Are not restricted to code.
+ 
+ Are language independent. 
+ 
+ The necessary data is available early in a project and thus only a detailed 
+specification is needed.
+ 
+ Are more accurate than estimated LOC.
+ 
+ Can be used to easily estimate the size of a software product directly from the 
+problem specification. 
+6.3.5  Drawbacks of Function Points
+ 
+ Subjective counting—different people can come up with different estimates 
+for the same problem.

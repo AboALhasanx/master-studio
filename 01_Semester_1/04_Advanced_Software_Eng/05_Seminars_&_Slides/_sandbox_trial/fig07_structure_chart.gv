@@ -1,0 +1,27 @@
+
+digraph UpdateFile {
+  rankdir=TB; nodesep=0.45; ranksep=0.55; bgcolor="white";
+  node [shape=box style=filled fillcolor="white" fontname="Helvetica" fontsize=11 height=0.5];
+  edge [fontname="Helvetica" fontsize=9 color="#111111"];
+  UpdateFile [label="Update File"];
+  getValidTrans [label="getValidTrans"];
+  getMaster [label="getMaster"];
+  updateMaster [label="updateMaster"];
+  putNewMaster [label="putNewMaster" peripheries=2];
+  getTrans [label="getTrans"];
+  validateTrans [label="validate Trans"];
+  formatMaster [label="format Master"];
+  writeMaster [label="write Master"];
+  askContinue [label="ask if User\nwants to\ncontinue"];
+  UpdateFile -> getValidTrans [label="trans"];
+  UpdateFile -> getMaster [label="master"];
+  UpdateFile -> updateMaster [label="valid-trans"];
+  UpdateFile -> putNewMaster [label="new-master"];
+  getValidTrans -> getTrans [label="trans"];
+  getValidTrans -> validateTrans [label="valid-trans"];
+  putNewMaster -> formatMaster [label="new-master"];
+  putNewMaster -> writeMaster [label="format"];
+  putNewMaster -> askContinue [label="continue"];
+  { rank=same; getValidTrans; getMaster; updateMaster; putNewMaster; }
+  { rank=same; getTrans; validateTrans; formatMaster; writeMaster; askContinue; }
+}

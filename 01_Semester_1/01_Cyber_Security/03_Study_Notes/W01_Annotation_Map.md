@@ -130,8 +130,9 @@ The student's own worked example:
 
 **→ Strategic conclusion: low risk.** Show up having read, write something structured, and you are fine. Don't lose sleep — but don't skip it either.
 
-### 6.6 The $R(t)$ formula
-> *"اي علمود هيج بس نعرف هذا القانون هنا يستخدم"* — she only wants you to know that this law is used here. **Superficial awareness only.** Matches the student's margin note (*"مو مفيد… غير مستخدم"*).
+### 6.6 The $R(t)$ formula — ✅ CORRECTED (2026-10-07)
+> **The law is REQUIRED in full** — you must know it and use it. The **superficial part is ONLY the time variable `t`**: its sole job is to tell you **which** law to use. If the question contains **time (`t`)** → use THIS law (`R(t)`), not the previous one (`min R`). The `t` is a *marker inside the question*, not a quantity to compute on its own.
+> ⚠️ My earlier reading — *"the whole law is superficial awareness only"* — was **WRONG**. Corrected by the student.
 
 ### 6.7 What this means for how we study this subject
 The `00_Doctor_Profile.md` claim ("analytical, not rote memorization") is **correct — but incomplete.** The full picture:

@@ -1,0 +1,1632 @@
+
+===== SLIDE 1 =====
+1
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+===== SLIDE 2 =====
+2
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+ More creative than analysis
+ Problem solving activity
+‘HOW’
+Software design document (SDD)
+WHAT IS DESIGN
+
+===== SLIDE 3 =====
+3
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Gather data on user requirements
+Analyze requirements data
+Conceive of a high level design
+Refine & document the design
+Initial requirements
+Obtain answers to 
+requirement 
+questions
+Validate the design 
+against the 
+requirements
+Completed design
+Fig. 1 : Design framework
+
+===== SLIDE 4 =====
+4
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+design
+Customer
+Developers
+(Implementers)
+Satisfy
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 5 =====
+5
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 2 : A two part design process
+A two part design 
+process
+Customer
+System 
+Builders
+How
+Technical 
+design
+D
+e
+s
+i
+g
+n
+e
+r
+s
+What 
+Conceptual 
+design
+Conceptual Design and Technical Design
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 6 =====
+6
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Conceptual design answers :
+
+Where will the data come from ?
+
+What will happen to data in the system?
+
+How will the system look to users?
+
+What choices will be offered to users?
+
+What is the timings of events?
+
+How will the reports & screens look like?
+
+===== SLIDE 7 =====
+7
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Technical design describes :
+
+Hardware configuration 
+
+Software needs
+
+Communication interfaces
+
+I/O of the system
+
+Software architecture
+
+Network architecture
+
+Any other thing that translates the requirements in to a 
+solution to the customer’s problem.
+
+===== SLIDE 8 =====
+8
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+The design needs to be
+ Correct & complete
+ Understandable
+ At the right level
+ Maintainable
+
+===== SLIDE 9 =====
+9
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Informal 
+design 
+outline
+Informal 
+design
+More 
+formal 
+design
+Finished 
+design
+Fig. 3 : The transformation of an informal design to a detailed 
+design.
+
+===== SLIDE 10 =====
+10
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+MODULARITY
+There are many definitions of the term module. Range is from :
+i.
+Fortran subroutine
+ii.
+Ada package
+iii. Procedures & functions of PASCAL & C
+iv. C++ / Java classes
+v.
+Java packages
+vi. Work assignment for an individual programmer
+
+===== SLIDE 11 =====
+11
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+All these definitions are correct. A modular 
+system consist of well defined manageable 
+units with well defined interfaces among 
+the units.
+
+===== SLIDE 12 =====
+12
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Properties :
+i.
+Well defined subsystem
+ii. Well defined purpose
+iii. Can be separately compiled and stored in a 
+library.
+iv. Module can use other modules
+v. Module should be easier to use than to build
+vi. Simpler from outside than from the inside.
+
+===== SLIDE 13 =====
+13
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Modularity is the single attribute of software that 
+allows a program to be intellectually manageable.
+It enhances design clarity, which in turn eases 
+implementation, 
+debugging, 
+testing, 
+documenting, and maintenance of software 
+product.
+
+===== SLIDE 14 =====
+14
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 4 : Modularity and software cost
+
+===== SLIDE 15 =====
+15
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Module Coupling
+(Uncoupled : no dependencies)
+(a)
+Coupling is the measure of the degree of 
+interdependence between modules.
+
+===== SLIDE 16 =====
+16
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Loosely coupled: 
+some dependencies
+(B)
+Highly coupled: 
+many dependencies
+(C)
+Fig. 5 : Module coupling
+
+===== SLIDE 17 =====
+17
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+This can be achieved as:
+ Controlling the number of parameters passed 
+amongst modules.
+ Avoid passing undesired data to calling 
+module.
+ Maintain parent / child relationship between 
+calling & called modules.
+ Pass data, not the control information.
+
+===== SLIDE 18 =====
+18
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Consider the example of editing a student record in a 
+‘student information system’.
+Edit student 
+record
+Retrieve 
+student record
+Student name, 
+student ID, 
+address, 
+course
+Student 
+record 
+EOF
+Edit student 
+record
+Retrieve 
+student record
+Student 
+record 
+EOF
+Student 
+ID
+Poor design: Tight Coupling
+Good design: Loose Coupling
+Fig. 6 : Example of coupling
+
+===== SLIDE 19 =====
+19
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Given two procedures A & B, we can identify number of 
+ways in which they can be coupled.
+Worst 
+Content coupling
+Common coupling
+External coupling
+Control coupling
+Stamp coupling
+Best
+Data coupling
+Fig. 7 : The types of module coupling
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 20 =====
+20
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Data coupling
+Stamp coupling
+The dependency between module A and B is said to be data 
+coupled if their dependency is based on the fact they 
+communicate 
+by 
+only 
+passing 
+of 
+data. 
+Other 
+than 
+communicating 
+through 
+data, 
+the 
+two 
+modules 
+are 
+independent.
+Stamp coupling occurs between module A and B when 
+complete data structure is passed from one module to another.
+
+===== SLIDE 21 =====
+21
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Control coupling
+Module A and B are said to be control coupled if they 
+communicate by passing of control information. This is usually 
+accomplished by means of flags that are set by one module and 
+reacted upon by the dependent module.
+Common coupling
+With common coupling, module A and module B have shared 
+data. Global data areas are commonly found in programming 
+languages. Making a change to the common data means tracing 
+back to all the modules which access that data to evaluate the 
+effect of changes.
+
+===== SLIDE 22 =====
+22
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 8 : Example of common coupling
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 23 =====
+23
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Content coupling
+Content coupling occurs when module A changes data of 
+module B or when control is passed from one module to the 
+middle of another. In Fig. 9, module B branches into D, even 
+though D is supposed to be under the control of C.
+
+===== SLIDE 24 =====
+24
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 9 : Example of content coupling
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 25 =====
+25
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Cohesion is a measure of the degree to which the 
+elements of a module are functionally related.
+Software Design
+Software Design
+Software Design
+Software Design
+Module Cohesion
+Fig. 10 : Cohesion=Strength of relations within modules
+Module 
+strength
+
+===== SLIDE 26 =====
+26
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Types of cohesion
+
+Functional cohesion
+
+Sequential cohesion
+
+Procedural cohesion
+
+Temporal cohesion
+
+Logical cohesion
+
+Coincident cohesion
+
+===== SLIDE 27 =====
+27
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 11 : Types of module cohesion
+Software Design
+Software Design
+Software Design
+Software Design
+Worst (low)
+Coincidental Cohesion
+Logical Cohesion
+Temporal Cohesion
+Procedural Cohesion
+Communicational Cohesion
+Sequential Cohesion
+Best (high)
+Functional Cohesion
+
+===== SLIDE 28 =====
+28
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Functional Cohesion 
+ A and B are part of a single functional task. This is very good 
+reason for them to be contained in the same procedure.
+Sequential Cohesion 
+ Module A outputs some data which forms the input to B. This is 
+the reason for them to be contained in the same procedure.
+
+===== SLIDE 29 =====
+29
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Procedural Cohesion 
+Procedural Cohesion occurs in modules whose instructions 
+although accomplish different tasks yet have been combined 
+because there is a specific order in which the tasks are to be 
+completed.
+Temporal Cohesion 
+Module exhibits temporal cohesion when it contains tasks that 
+are related by the fact that all tasks must be executed in the 
+same time-span.
+
+===== SLIDE 30 =====
+30
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Logical Cohesion 
+ Logical cohesion occurs in modules that contain instructions 
+that appear to be related because they fall into the same logical 
+class of functions.
+Coincidental Cohesion 
+ Coincidental 
+cohesion 
+exists 
+in 
+modules 
+that 
+contain 
+instructions that have little or no relationship to one another.
+
+===== SLIDE 31 =====
+31
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Relationship between Cohesion & Coupling
+Fig. 12 : View of cohesion and coupling
+If the software is not properly modularized, a host of seemingly
+trivial enhancement or changes will result into death of the project. 
+Therefore, a software engineer must design the modules with goal of 
+high cohesion and low coupling.
+
+===== SLIDE 32 =====
+32
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+STRATEGY OF DESIGN
+A good system design strategy is to organize the program modules
+in such a way that are easy to develop and latter to, change. 
+Structured design techniques help developers to deal with the size 
+and complexity of programs. Analysts create instructions for the
+developers about how code should be written and how pieces of 
+code should fit together to form a program. It is important for two 
+reasons:
+ First, even pre-existing code, if any, needs to be understood, 
+organized and pieced together.
+ Second, it is still common for the project team to have to write
+some code and produce original programs that support the 
+application logic of the system.
+
+===== SLIDE 33 =====
+33
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Bottom-Up Design
+Fig. 13 : Bottom-up tree structure
+These modules are collected together in the form of a “library”.
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 34 =====
+34
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Top-Down Design
+A top down design approach starts by identifying the major modules 
+of the system, decomposing them into their lower level modules and 
+iterating until the desired level of detail is achieved. This is stepwise 
+refinement; starting from an abstract design, in each step the design 
+is refined to a more concrete level, until we reach a level where no 
+more refinement is needed and the design can be implemented 
+directly.
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 35 =====
+35
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Hybrid Design
+For top-down approach to be effective, some bottom-up approach is 
+essential for the following reasons:
+Software Design
+Software Design
+Software Design
+Software Design
+
+To permit common sub modules.
+
+Near the bottom of the hierarchy, where the intuition is simpler, 
+and the need for bottom-up testing is greater, because there are 
+more number of modules at low levels than high levels.
+
+In the use of pre-written library modules, in particular, reuse of 
+modules.
+
+===== SLIDE 36 =====
+36
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+FUNCTION ORIENTED DESIGN
+Function Oriented design is an approach to software design where
+the design is decomposed into a set of interacting units where each 
+unit has a clearly defined function. Thus, system is designed from 
+a functional viewpoint.
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 37 =====
+37
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 38 =====
+38
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+We continue the refinement of each module until we reach the statement 
+level of our programming language. At that point, we can describe the 
+structure of our program as a tree of refinement as in design top-down 
+structure as shown in fig. 14.
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 14 : Top-down structure
+
+===== SLIDE 39 =====
+39
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+If a program is created top-down, the modules become very specialized. 
+As one can easily see in top down design structure, each module is used 
+by at most one other module, its parent. For a module, however, we 
+must require that several other modules as in design reusable structure 
+as shown in fig. 15.
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 15 : Design reusable structure
+
+===== SLIDE 40 =====
+40
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Design Notations
+Design notations are largely meant to be used during the process
+of design and are used to represent design or design decisions. 
+For a function oriented design, the design can be represented 
+graphically or mathematically by the following: 
+Software Design
+Software Design
+Software Design
+Software Design
+
+Data flow diagrams
+
+Data Dictionaries
+
+Structure Charts
+
+Pseudocode
+
+===== SLIDE 41 =====
+41
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Structure Chart
+It partition a system into block boxes. A black box means that 
+functionality is known to the user without the knowledge of internal 
+design.
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 16 : Hierarchical format of a structure chart
+
+===== SLIDE 42 =====
+42
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 17 : Structure chart notations
+
+===== SLIDE 43 =====
+43
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 18 : Update file
+A structure chart for “update file” is given in fig. 18.
+
+===== SLIDE 44 =====
+44
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 19 : Transaction-centered structure
+A transaction centered structure describes a system that processes a 
+number of different types of transactions. It is illustrated in Fig.19.
+
+===== SLIDE 45 =====
+45
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+In the above figure the MAIN module controls the system operation 
+its functions is to:
+Software Design
+Software Design
+Software Design
+Software Design
+
+invoke the INPUT module to read a transaction;
+
+determine the kind of transaction and select one of a number 
+of transaction modules to process that transaction, and
+
+output the results of the processing by calling OUTPUT 
+module.
+
+===== SLIDE 46 =====
+46
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Pseudocode
+Pseudocode notation can be used in both the preliminary and detailed 
+design phases.
+Software Design
+Software Design
+Software Design
+Software Design
+Using pseudocode, the designer describes system characteristics 
+using short, concise, English language phrases that are structured by 
+key words such as It-Then-Else, While-Do, and End.
+
+===== SLIDE 47 =====
+47
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Functional Procedure Layers
+Software Design
+Software Design
+Software Design
+Software Design
+
+Function are built in layers, Additional notation is used to 
+specify details.
+
+Level 0
+
+Function or procedure name
+
+Relationship to other system components (e.g., part of 
+which system, called by which routines, etc.)
+
+Brief description of the function purpose.
+
+Author, date
+
+===== SLIDE 48 =====
+48
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+Level 1
+
+Function Parameters (problem variables, types, purpose, 
+etc.)
+
+Global variables (problem variable, type, purpose, 
+sharing information)
+
+Routines called by the function
+
+Side effects
+
+Input/Output Assertions
+
+===== SLIDE 49 =====
+49
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+Level 2
+
+Local data structures (variable etc.)
+
+Timing constraints
+
+Exception handling (conditions, responses, events)
+
+Any other limitations
+
+Level 3
+
+Body (structured chart, English pseudo code, decision 
+tables, flow charts, etc.)
+
+===== SLIDE 50 =====
+50
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+IEEE Recommended practice for software design 
+descriptions (IEEE STD 1016-1998)
+An SDD is a representation of a software system that is used as a medium 
+for communicating software design information.
+Software Design
+Software Design
+Software Design
+Software Design
+ Scope
+ References
+i.
+IEEE std 830-1998, IEEE recommended practice for 
+software requirements specifications.
+ii.
+IEEE 
+std 
+610.12-1990, 
+IEEE 
+glossary 
+of 
+software 
+engineering terminology.
+
+===== SLIDE 51 =====
+51
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+ Definitions
+i.
+Design entity. An element (Component) of a design that is 
+structurally and functionally distinct from other elements and 
+that is separately named and referenced.
+ii.
+Design View. A subset of design entity attribute information 
+that is specifically suited to the needs of a software project 
+activity.
+iii. Entity attributes. A named property or characteristics of a 
+design entity. It provides a statement of fact about the entity.
+iv. Software design description (SDD). A representation of a 
+software system created to facilitate analysis, planning, 
+implementation and decision making.
+
+===== SLIDE 52 =====
+52
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The SDD shows how the software system will be structured to 
+satisfy the requirements identified in the SRS. It is basically the 
+translation of requirements into a description of the software 
+structure, software components, interfaces, and data necessary for 
+the implementation phase. Hence, SDD becomes the blue print for 
+the implementation activity.
+Software Design
+Software Design
+Software Design
+Software Design
+ Purpose of an SDD
+ Design Description Information Content
+
+Introduction
+
+Design entities
+
+Design entity attributes
+
+===== SLIDE 53 =====
+53
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+a)
+Identification
+b)
+Type
+c)
+Purpose
+d)
+Function
+e)
+Subordinates
+f)
+Dependencies
+Software Design
+Software Design
+Software Design
+Software Design
+The attributes and associated information items are defined in the 
+following subsections:
+g)
+Interface
+h)
+Resources
+i)
+Processing
+j)
+Data
+
+===== SLIDE 54 =====
+54
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Each design description writer may have a different view of what
+are considered the essential aspects of a software design. The 
+organization of SDD is given in table 1. This is one of the possible 
+ways to organize and format the SDD.
+Software Design
+Software Design
+Software Design
+Software Design
+ Design Description Organization
+A recommended organization of the SDD into separate design 
+views to facilitate information access and assimilation is given in 
+table 2.
+
+===== SLIDE 55 =====
+55
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Cont…
+
+===== SLIDE 56 =====
+56
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Table 1: 
+Organization of 
+SDD
+
+===== SLIDE 57 =====
+57
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Table 2: Design views
+Flow charts, PDL etc.
+Identification, 
+processing, data
+Description of the internal 
+design details of an entity
+Detail 
+description
+Interface files, 
+parameter tables
+Identification, 
+function, interfaces
+List of everything a 
+designer, developer, tester 
+needs to know to use design 
+entities that make up the 
+system
+Interface 
+description
+Structure chart, data 
+flow diagrams, 
+transaction diagrams
+Identification, type, 
+purpose, dependencies, 
+resources
+Description of relationships 
+among entities of system 
+resources
+Dependency 
+description
+Hierarchical 
+decomposition diagram, 
+natural language
+Identification, type 
+purpose, function, 
+subordinate
+Partition of the system into 
+design entities
+Decomposition 
+description 
+Example 
+representation
+Entity attribute
+Scope
+Design View
+
+===== SLIDE 58 =====
+58
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Object Oriented Design
+Object oriented design is the result of focusing attention not on the 
+function performed by the program, but instead on the data that are 
+to do manipulated by the program. Thus, it is orthogonal to function 
+oriented design.
+Software Design
+Software Design
+Software Design
+Software Design
+Object Oriented Design begins with an examination of the real 
+world “things” that are part of the problem to be solved. These 
+things (which we will call objects) are characterized individually in 
+terms of their attributes and behavior.
+
+===== SLIDE 59 =====
+59
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Object 
+Oriented 
+Design 
+is 
+not 
+dependent 
+on 
+any 
+specific 
+implementation language. Problems are modeled using objects. 
+Objects have:
+Software Design
+Software Design
+Software Design
+Software Design
+ Basic Concepts
+
+Behavior (they do things)
+
+State (which changes when they do things)
+
+===== SLIDE 60 =====
+60
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+i.
+Objects
+Software Design
+Software Design
+Software Design
+Software Design
+The various terms related to object design are:
+The word “Object” is used very frequently and conveys different 
+meaning in different circumstances. Here, meaning is an entity able to 
+save a state (information) and which offers a number of operations 
+(behavior) to either examine or affect this state. An object is 
+characterized by number of operations and a state which remembers 
+the effect of these operations.
+
+===== SLIDE 61 =====
+61
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Objects communicate by message passing. Messages consist of the 
+identity of the target object, the name of the requested operation and 
+any other operation needed to perform the function. Message are often 
+implemented as procedure or function calls.
+ii.
+Messages
+iii.
+Abstraction
+In object oriented design, complexity is managed using abstraction. 
+Abstraction is the elimination of the irrelevant and the amplification of 
+the essentials.
+
+===== SLIDE 62 =====
+62
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+In any system, there shall be number of objects. Some of the objects 
+may have common characteristics and we can group the objects 
+according to these characteristics. This type of grouping is known as a 
+class. Hence, a class is a set of objects that share a common structure 
+and a common behavior.
+iv. Class
+We may define a class “car” and each object that represent a car 
+becomes an instance of this class. In this class “car”, Indica, Santro, 
+Maruti, Indigo are instances of this class as shown in fig. 20.
+Classes are useful because  they act as a blueprint for objects. If we 
+want a new square we may use the square class and simply fill in the 
+particular details (i.e. colour and position) fig. 21 shows how can we 
+represent the square class.
+
+===== SLIDE 63 =====
+63
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig.20: Indica, Santro, Maruti, Indigo are all instances of the class “car”
+
+===== SLIDE 64 =====
+64
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 21: The square class
+
+===== SLIDE 65 =====
+65
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+An attributes is a data value held by the objects in a class. The square 
+class has two attributes: a colour and array of points. Each attributes 
+has a value for each object instance. The attributes are shown as 
+second part of the class as shown in fig. 21.
+v.
+Attributes
+An operation is a function or transformation that may be applied to or 
+by objects in a class. In the square class, we have two operations: set 
+colour() and draw(). All objects in a class share the same operations. 
+An object “knows” its class, and hence the right implementation of the 
+operation. Operation are shown in the third part of the class as
+indicated in fig. 21.
+vi. Operations
+
+===== SLIDE 66 =====
+66
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Imagine that, as well as squares, we have triangle class. Fig. 22 shows 
+the class for a triangle.
+vii. Inheritance
+Fig. 22: The triangle class
+
+===== SLIDE 67 =====
+67
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Now, comparing fig. 21 and 22, we can see that there is some 
+difference between triangle and squares classes.
+For example, at a high level of abstraction, we might want to think of a 
+picture as made up of shapes and to draw the picture, we draw each 
+shape in turn. We want to eliminate the irrelevant details: we do not 
+care that one shape is a square and the other is a triangle as long as 
+both can draw themselves.
+To do this, we consider the important parts out of these classes in to a 
+new class called Shape. Fig. 23 shows the results.
+
+===== SLIDE 68 =====
+68
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 23: Abstracting common features in a new class
+This sort of abstraction is called inheritance. The low level classes 
+(known as subclasses or derived classes) inherit state and behavior 
+from this high level class (known as a super class or base class).
+
+===== SLIDE 69 =====
+69
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+When we abstract just the interface of an operation and leave the 
+implementation to subclasses it is called a polymorphic operation and 
+process is called polymorphism.
+Encapsulation is also commonly referred to as “Information Hiding”. It 
+consists of the separation of the external aspects of an object from the 
+internal implementation details of the object.
+viii. Polymorphism
+ix. Encapsulation (Information Hiding)
+x.
+Hierarchy
+Hierarchy involves organizing something according to some particular 
+order or rank. It is another mechanism for reducing the complexity of 
+software by being able to treat and express sub-types in a generic way.
+
+===== SLIDE 70 =====
+70
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 24: Hierarchy
+
+===== SLIDE 71 =====
+71
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+There are various steps in the analysis and design of an object 
+oriented system and are given in fig. 25
+Software Design
+Software Design
+Software Design
+Software Design
+ Steps to Analyze and Design Object Oriented System
+
+===== SLIDE 72 =====
+72
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 25: Steps for analysis & design of object 
+oriented system
+
+===== SLIDE 73 =====
+73
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+i.
+Create use case model
+Software Design
+Software Design
+Software Design
+Software Design
+First step is to identify the actors interacting with the system. We 
+should then write the use case and draw the use case diagram.
+Activity Diagram illustrate the dynamic nature of a system by modeling 
+the flow of control form activity to activity. An activity represents an 
+operation on some class in the system that results in a change in the 
+state of the system. Fig. 26 shows the activity diagram processing an 
+order to deliver some goods.
+ii.
+Draw activity diagram (If required)
+
+===== SLIDE 74 =====
+74
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Fig. 26: Activity diagram
+
+===== SLIDE 75 =====
+75
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+iii.
+Draw the interaction diagram
+An interaction diagram shows an interaction, consisting of a set of 
+objects and their relationship, including the messages that may be 
+dispatched among them. Interaction diagrams address the dynamic 
+view of a system.
+a)
+Firstly, we should identify that the objects with respects to every 
+use case.
+b)
+We draw the sequence diagrams for every use case.
+d)
+We draw the collaboration diagrams for every use case.
+Steps to draws interaction diagrams are as under:
+
+===== SLIDE 76 =====
+76
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+The object types used in this analysis model are entity objects,
+interface objects and control objects as given in fig. 27.
+Fig. 27: Object types
+
+===== SLIDE 77 =====
+77
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+The class diagram shows the relationship amongst classes. There are 
+four types of relationships in class diagrams.
+iv. Draw the class diagram
+a)
+Association are semantic connection between classes. When 
+an association connects two classes, each class can send 
+messages to the other in a sequence or a collaboration 
+diagram. Associations can be bi-directional or unidirectional.
+
+===== SLIDE 78 =====
+78
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+b)
+Dependencies connect two classes. Dependencies are 
+always unidirectional and show that one class, depends on the 
+definitions in another class.
+c)
+Aggregations
+are 
+stronger 
+form 
+of 
+association. 
+An 
+aggregation is a relationship between a whole and its parts.
+d)
+Generalizations are used to show an inheritance relationship 
+between two classes.
+
+===== SLIDE 79 =====
+79
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+A state chart diagram is used to show the state space of a given class, 
+the event that cause a transition from one state to another, and the 
+action that result from a state change. A state transition diagram for a 
+“book” in the library system is given in fig. 28.
+v.
+Design of state chart diagrams
+Fig. 28: Transition chart for “book” in a library system.
+
+===== SLIDE 80 =====
+80
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Component diagrams address the static implementation view of a 
+system they are related to class diagrams in that a component typically 
+maps to one or more classes, interfaces or collaboration.
+vi. Draw component and development diagram
+Deployment 
+Diagram 
+Captures 
+relationship 
+between 
+physical 
+components and the hardware.
+
+===== SLIDE 81 =====
+81
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+A software has to be developed for automating the manual library of a 
+University. The system should be stand alone in nature. It should be 
+designed to provide functionality’s as explained below:
+Issue of Books:
+ A student of any course should be able to get books issued.
+ Books from General Section are issued to all but Book bank 
+books are  issued only for their respective courses.
+ A limitation is imposed on the number of books a student can 
+issue.
+ A maximum of 4 books from Book bank and 3 books from 
+General section is issued for 15 days only.The software takes 
+the current system date as the date of issue and calculates date
+of return.
+
+===== SLIDE 82 =====
+82
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+ A bar code detector is used to save the student as well as book 
+information.
+ The due date for return of the book is stamped on the book.
+Return of Books:
+ Any person can return the issued books.
+ The student information is displayed using the bar code 
+detector.
+ The system displays the student details on whose name the 
+books were issued as well as the date of issue and return of the
+book.
+ The system operator verifies the duration for the issue.
+ The information is saved and the corresponding updating take 
+place in the database.
+
+===== SLIDE 83 =====
+83
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+Query Processing:
+ The system should be able to provide information like:
+ Availability of a particular book.
+ Availability of book of any particular author.
+ Number of copies available of the desired book.
+The system should also be able to generate reports regarding the
+details of the books available in the library at any given time. The 
+corresponding printouts for each entry (issue/return) made in the 
+system should be generated. Security provisions like the ‘login 
+authenticity should be provided. Each user should have a user id and 
+a password. Record of the users of the system should be kept in the 
+log file. Provision should be made for full backup of the system.
+
+===== SLIDE 84 =====
+84
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 85 =====
+85
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 86 =====
+86
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 87 =====
+87
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 88 =====
+88
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 89 =====
+89
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 90 =====
+90
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 91 =====
+91
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 92 =====
+92
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 93 =====
+93
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Design
+Software Design
+Software Design
+Software Design
+
+===== SLIDE 94 =====
+94
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+5.1  The most desirable form of coupling is
+(a) Control Coupling
+(b) Data Coupling
+(c) Common Coupling
+(d) Content Coupling
+5.2  The worst type of coupling is
+(a) Content coupling
+(b) Common coupling
+(c) External coupling
+(d) Data coupling
+Multiple Choice Questions
+Note: Choose most appropriate answer of the following questions:
+5.3  The most desirable form of cohesion is
+(a) Logical cohesion
+(b) Procedural cohesion
+(c) Functional cohesion
+(d) Temporal cohesion
+5.4  The worst type of cohesion is
+(a) Temporal cohesion
+(b) Coincidental cohesion
+(c) Logical cohesion
+(d) Sequential cohesion
+5.5  Which one is not a strategy for design?
+(a) Bottom up design
+(b) Top down design
+(c) Embedded design
+(d) Hybrid design
+
+===== SLIDE 95 =====
+95
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+5.6 Temporal cohesion means
+(a) Cohesion between temporary variables
+(b) Cohesion between local variable
+(c) Cohesion with respect to time 
+(d) Coincidental cohesion
+5.7 Functional cohesion means
+(a) Operations are part of single functional task and are placed in same procedures
+(b) Operations are part of single functional task and are placed in multiple procedures
+(c) Operations are part of multiple tasks
+(d) None of the above
+5.8  When two modules refer to the same global data area, they are related as
+(a) External coupled
+(b) Data coupled
+(c) Content coupled
+(d) Common coupled
+5.9  The module in which instructions are related through flow of control is 
+(a) Temporal cohesion
+(b) Logical cohesion
+(c) Procedural cohesion
+(d) Functional cohesion
+
+===== SLIDE 96 =====
+96
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+5.10  The relationship of data elements in a module is called
+(a) Coupling
+(b) Cohesion
+(c) Modularity
+(d) None of the above
+5.12 The extent to which different modules are dependent upon each other is called
+(a) Coupling
+(b) Cohesion
+(c) Modularity
+(d) Stability
+5.11 A system that does not interact with external environment is called
+(a) Closed system
+(b) Logical system
+(c) Open system
+(d) Hierarchal system
+
+===== SLIDE 97 =====
+97
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+5.1 What is design? Describe the difference between conceptual design and 
+technical design.
+5.2 Discuss the objectives of software design. How do we transform an 
+informal design to a detailed design?
+5.3 Do we design software when we “write” a program? What makes 
+software design different from coding?
+5.4 What is modularity? List the important properties of a modular system.
+5.5 Define module coupling and explain different types of coupling.
+5.6 Define module cohesion and explain different types of cohesion.
+5.7 Discuss the objectives of modular software design. What are the effects 
+of module coupling and cohesion?
+5.8 If a module has logical cohesion, what kind of coupling is this module 
+likely to have with others?
+5.9 What problems are likely to arise if two modules have high coupling?
+
+===== SLIDE 98 =====
+98
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+5.10 What problems are likely to arise if a module has low cohesion?
+5.11 Describe the various strategies of design. Which design strategy is most 
+popular and practical?
+5.12 If some existing modules are to be re-used in building a new system, 
+which design strategy is used and why?
+5.13 What is the difference between a flow chart and a structure chart?
+5.14 Explain why it is important to use different notations to describe 
+software designs.
+5.15 List a few well-established function oriented software design 
+techniques.
+5.16 Define the following terms: Objects, Message, Abstraction, Class, 
+Inheritance and Polymorphism.
+5.17 What is the relationship between abstract data types and classes?
+
+===== SLIDE 99 =====
+99
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+5.18 Can we have inheritance without polymorphism? Explain.
+5.19 Discuss the reasons for improvement using object-oriented design.
+5.20 Explain the design guidelines that can be used to produce “good 
+quality” classes or reusable classes.
+5.21 List the points of a simplified design process.
+5.22 Discuss the differences between object oriented and function oriented 
+design.
+5.23 What documents should be produced on completion of the design 
+phase?
+5.24 Can a system ever be completely “decoupled”? That is, can the degree 
+of coupling be reduced so much that there is no coupling between
+modules?

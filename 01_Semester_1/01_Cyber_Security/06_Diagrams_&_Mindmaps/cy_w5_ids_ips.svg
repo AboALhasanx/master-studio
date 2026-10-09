@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="920" height="420" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">IDS / IPS — Detection and Prevention</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">IDS detects and alerts · IPS detects and blocks, inline</text>
+
+  <!-- Architectures -->
+  <rect x="18" y="74" width="288" height="176" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="162" y="100" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1e40af">Architectures</text>
+  <text x="38" y="128" font-size="12.5" fill="#374151">HIDS — host-based, sees the host</text>
+  <text x="38" y="150" font-size="12.5" fill="#374151">NIDS — network-based, sees the wire</text>
+  <text x="38" y="172" font-size="12.5" fill="#374151">Hybrid — both, correlated</text>
+  <text x="38" y="198" font-size="12.5" fill="#1e40af">IPS modes</text>
+  <text x="38" y="220" font-size="12" fill="#374151">inline (blocking) · passive (tap)</text>
+  <text x="38" y="240" font-size="12" fill="#6b7280">inline = availability risk if it fails</text>
+
+  <!-- Detection -->
+  <rect x="316" y="74" width="288" height="176" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="460" y="100" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5b21b6">Detection techniques</text>
+  <text x="336" y="128" font-size="12.5" fill="#374151">Signature-based — match known patterns</text>
+  <text x="336" y="148" font-size="11.5" fill="#6b7280">precise, but blind to zero-days</text>
+  <text x="336" y="172" font-size="12.5" fill="#374151">Anomaly-based — statistical deviation</text>
+  <text x="336" y="192" font-size="11.5" fill="#6b7280">catches novel attacks, noisy</text>
+  <text x="336" y="216" font-size="12.5" fill="#374151">ML-based — classifier f(x) → class</text>
+  <text x="336" y="236" font-size="11.5" fill="#6b7280">needs labelled data, can be evaded</text>
+
+  <!-- Metrics -->
+  <rect x="614" y="74" width="288" height="176" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="758" y="100" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Performance metrics</text>
+  <text x="634" y="128" font-size="12.5" fill="#374151">TPR (recall) — attacks caught</text>
+  <text x="634" y="150" font-size="12.5" fill="#374151">FPR — false alarms</text>
+  <text x="634" y="172" font-size="12.5" fill="#374151">ROC curve — TPR vs FPR trade-off</text>
+  <text x="634" y="198" font-size="12.5" fill="#0f766e">Bayesian model</text>
+  <text x="634" y="220" font-size="12.5" fill="#374151">P(A|D) = P(D|A)·P(A) / P(D)</text>
+  <text x="634" y="240" font-size="11.5" fill="#6b7280">base-rate fallacy: rare attacks ⇒ many FPs</text>
+
+  <!-- Encrypted -->
+  <rect x="18" y="262" width="884" height="70" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="460" y="288" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">The encrypted-traffic problem (TLS 1.3 / QUIC)</text>
+  <text x="460" y="310" text-anchor="middle" font-size="12.5" fill="#78350f">payload inspection dies → shift to metadata, flow features, timing, and Gaussian-mixture anomaly models</text>
+  <text x="460" y="328" text-anchor="middle" font-size="12" fill="#6b7280">plus TLS interception (a trust and privacy trade-off), or on-host telemetry (EDR)</text>
+
+  <rect x="18" y="344" width="884" height="60" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="460" y="368" text-anchor="middle" font-size="12.5" fill="#374151">Integration: SIEM correlates alerts · SOAR automates the response · Zero Trust shifts the decision to per-request policy</text>
+  <text x="460" y="390" text-anchor="middle" font-size="12.5" fill="#374151">Cases to remember: Snort / Suricata adoption · Heartbleed (2014) · Stuxnet (2010) stealth</text>
+</svg>

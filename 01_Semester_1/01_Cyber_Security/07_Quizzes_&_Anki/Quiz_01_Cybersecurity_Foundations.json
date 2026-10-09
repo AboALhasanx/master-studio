@@ -624,7 +624,7 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "GDPR (الاتحاد الأوروبي) لحماية البيانات والخصوصية · HIPAA (أمريكا) لحماية معلومات الرعاية الصحية · NIST/ISO 27001 معايير دولية. المنظورات: US → NIST CSF · EU → GDPR/ENISA · الشرق الأوسط → مجالس الأمن السيبراني الوطنية."
+      "explanation": "GDPR (الاتحاد الأوروبي) لحماية البيانات والخصوصية · HIPAA (أمريكا) لحماية معلومات الرعاية الصحية · NIST/ISO 27001 معايير دولية. المنظورات: US ← NIST CSF · EU ← GDPR/ENISA · الشرق الأوسط ← مجالس الأمن السيبراني الوطنية."
     },
     {
       "id": "q23",
@@ -680,7 +680,7 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "دالة المنفعة تبقى نفسها، لكن الأوزان α, β, γ تتغير حسب المجال: مستشفى → السرية، بورصة/مصرف → السلامة، طوارئ → التوفر. فالاستنتاج أن الأوزان domain-dependent وليست ثابتة."
+      "explanation": "دالة المنفعة تبقى نفسها، لكن الأوزان α, β, γ تتغير حسب المجال: مستشفى ← السرية، بورصة/مصرف ← السلامة، طوارئ ← التوفر. فالاستنتاج أن الأوزان domain-dependent وليست ثابتة."
     },
     {
       "id": "q25",
@@ -736,35 +736,35 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "قاعدة الدكتورة: الناتج فوق 100 → فيه استثمار؛ تحت 100 → ما فيه استثمار. وتُفهم كعتبة قرار (decision threshold). ملاحظة: القاعدة تُسجَّل كما هي — كلامها هو المرجع ولا يُجادل به."
+      "explanation": "قاعدة الدكتورة: الناتج فوق 100 ← فيه استثمار؛ تحت 100 ← ما فيه استثمار. وتُفهم كعتبة قرار (decision threshold). ملاحظة: القاعدة تُسجَّل كما هي — كلامها هو المرجع ولا يُجادل به."
     },
     {
       "id": "q27",
       "concept_id": "risk_exposure_over_time",
       "bloom_level": "Understand",
-      "question": "The model R(t) = ΣPᵢ(t)·Iᵢ(t) introduces a time variable t. What depth of treatment does the lecture require for this model?",
-      "question_ar": "النموذج R(t) = ΣPᵢ(t)·Iᵢ(t) يُدخل متغيّر الزمن t. ما مستوى التعامل الذي تطلبه المحاضرة مع هذا النموذج؟",
+      "question": "The model R(t) = ΣPᵢ(t)·Iᵢ(t) contains a time variable t. What is the lecture's position on this model and on the role of t?",
+      "question_ar": "النموذج R(t) = ΣPᵢ(t)·Iᵢ(t) يحتوي متغيّر الزمن t. ما موقف المحاضرة من هذا النموذج ومن دور الـ t؟",
       "options": [
-        "حفظ كامل، لأنه أكثر معادلة يُختبر عليها لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
-        "اشتقاق كامل وتطبيق يومي، مثل معادلة سطح الهجوم للنظام المتأثر فقط في ظروف التشغيل المعتادة.",
-        "عدم أهمية، لأن الدكتورة قالت إنه لا يجب أن يظهر في المنهج إطلاقاً وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
-        "وعي سطحي فقط: معرفة أن النموذج موجود ويعبّر عن تعرّض يتغيّر بالزمن كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً."
+        "القانون مطلوب بالكامل، والـ t وظيفتها فقط أن تدلّك على استخدام هذا القانون (لا السابق) عندما يتضمّن السؤال زمناً.",
+        "حفظ كامل مع اشتقاق رياضي كامل للنموذج في كل امتحان.",
+        "عدم أهمية، لأن الدكتورة قالت إنه لا يجب أن يظهر في المنهج إطلاقاً.",
+        "وعي سطحي للنموذج كله: مجرّد معرفة أنه موجود دون حفظ أو استخدام."
       ],
       "options_ar": [
-        "حفظ كامل، لأنه أكثر معادلة يُختبر عليها لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
-        "اشتقاق كامل وتطبيق يومي، مثل معادلة سطح الهجوم للنظام المتأثر فقط في ظروف التشغيل المعتادة.",
-        "عدم أهمية، لأن الدكتورة قالت إنه لا يجب أن يظهر في المنهج إطلاقاً وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
-        "وعي سطحي فقط: معرفة أن النموذج موجود ويعبّر عن تعرّض يتغيّر بالزمن كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً."
+        "القانون مطلوب بالكامل، والـ t وظيفتها فقط أن تدلّك على استخدام هذا القانون (لا السابق) عندما يتضمّن السؤال زمناً.",
+        "حفظ كامل مع اشتقاق رياضي كامل للنموذج في كل امتحان.",
+        "عدم أهمية، لأن الدكتورة قالت إنه لا يجب أن يظهر في المنهج إطلاقاً.",
+        "وعي سطحي للنموذج كله: مجرّد معرفة أنه موجود دون حفظ أو استخدام."
       ],
       "options_en": [
-        "Complete memorisation, since it is the most heavily tested formula for that specific component in the standard reference model.",
-        "Full derivation and daily application, as with the attack-surface equation for the affected system only under the usual operating assumptions.",
-        "Irrelevance, because the doctor said it must never appear in the syllabus in the standard reference model for that specific component.",
-        "Surface awareness only: know that the model exists and states time-varying exposure as formally defined in the material for that specific component."
+        "The law is required in full; the variable t only signals that THIS law applies (not the previous one) when the question contains time.",
+        "Complete memorisation plus full mathematical derivation of the model in every exam.",
+        "Irrelevance, because the doctor said it must never appear in the syllabus at all.",
+        "Surface awareness of the whole model: merely knowing it exists, without memorising or using it."
       ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "وصف الطالب: «السؤال مالته بيه وقت بس مو مفيد... غير مستخدم بس علمود نعرف هذا القانون» — والدكتورة قالت «بس نعرف هذا القانون هنا يستخدم». يعني وعي سطحي فقط، لا حفظ ولا اشتقاق."
+      "answer": "A",
+      "correct": 0,
+      "explanation": "تصحيح (2026-10-07): القانون مطلوب بالكامل. الجزء السطحي هو الـ t فقط — وظيفتها أنها تدلّك أي قانون تستخدم: إذا السؤال بيه زمن ← تستخدم R(t) وليس min R. (القراءة السابقة «النموذج كله وعي سطحي» كانت غلط.)"
     },
     {
       "id": "q28",
@@ -792,7 +792,7 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "تغيّرت بياناته بغير وجه حق → Integrity (hashing SHA-256, digital signatures, version control). والنظام بيه مشكلة ما اشتغل صح → Availability (redundancy, load balancing, DDoS mitigation). مثال تدريب مباشر من الملزمة."
+      "explanation": "تغيّرت بياناته بغير وجه حق ← Integrity (hashing SHA-256, digital signatures, version control). والنظام بيه مشكلة ما اشتغل صح ← Availability (redundancy, load balancing, DDoS mitigation). مثال تدريب مباشر من الملزمة."
     },
     {
       "id": "q29",
@@ -820,7 +820,7 @@
       ],
       "answer": "D",
       "correct": 3,
-      "explanation": "البيانات تغيّرت بعد التأكيد → Integrity (hashing SHA-256, digital signatures, version control). و version control تحديداً يبيّن متى تغيّر السعر ومَن غيّره. مثال تدريب مباشر من الملزمة."
+      "explanation": "البيانات تغيّرت بعد التأكيد ← Integrity (hashing SHA-256, digital signatures, version control). و version control تحديداً يبيّن متى تغيّر السعر ومَن غيّره. مثال تدريب مباشر من الملزمة."
     },
     {
       "id": "q30",
@@ -848,7 +848,7 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "بيانات المرضى انكشفت لغير المصرّح لهم → Confidentiality (encryption, access controls, VPNs). السبب فشل ضبط الوصول (حساب قديم فعّال)، فيُعالَج بـ access controls + مراجعة دورية وتعطيل الحسابات. مثال تدريب مباشر من الملزمة (سيناريو المستشفى)."
+      "explanation": "بيانات المرضى انكشفت لغير المصرّح لهم ← Confidentiality (encryption, access controls, VPNs). السبب فشل ضبط الوصول (حساب قديم فعّال)، فيُعالَج بـ access controls + مراجعة دورية وتعطيل الحسابات. مثال تدريب مباشر من الملزمة (سيناريو المستشفى)."
     }
   ]
 }

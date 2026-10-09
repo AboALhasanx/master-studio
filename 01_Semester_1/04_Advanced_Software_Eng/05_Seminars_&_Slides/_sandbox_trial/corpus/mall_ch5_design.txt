@@ -1,0 +1,1178 @@
+\n== MALL p284 ==\nthis word processing software.
+1 Note that the customer and the users of a software may, in general, be different. For example,
+the customer may be an organisation and the users may be a few select employees of the
+organisation.
+2 A safety-critical system is one whose improper working can result in financial loss, loss of
+property, or life.
+3 Sections 4.3–4.5 can be omitted in a first level course on software engineering.
+4 Programming languages are generally classified into four generations. The first generation (1GL)
+programming languages consist of machine language programs. The second generation (2GL)
+started when the assembly language was introduced. All procedural languages are classified as
+3GLs. In procedural languages, in order to solve a problem, you would have to precisely write
+down “how” the required result can be obtained. This requires writing the exact procedures or the
+algorithmic steps that need to be followed to arrive at the result. In contrast, using a 4GL only the
+“what” parts have to be specified.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p285 ==\nChapter
+5
+SOFTWARE DESIGN
+During the software design phase, the design document is produced, based
+on the customer requirements as documented in the SRS document. We can
+state the main objectives of the design phase, in other words, as follows.
+The activities carried out during the design phase (called as design process )
+transform the SRS document into the design document.
+This view of a design process has been shown schematically in Figure 5.1.
+As shown in Figure 5.1, the design process starts using the SRS document and
+completes with the production of the design document. The design document
+produced at the end of the design phase should be implementable using a
+programming language in the subsequent (coding) phase.
+Figure 5.1: The design process.
+5.1 OVERVIEW OF THE DESIGN PROCESS
+The design process essentially transforms the SRS document into a
+design document. In the following sections and subsections, we will
+discuss a few important issues associated with the design process.
+5.1.1 Outcome of the Design Process
+The following items are designed and documented during the design
+phase.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p286 ==\nDifferent modules required: The different modules in the solution should
+be clearly identified. Each module is a collection of functions and the data
+shared by the functions of the module. Each module should accomplish some
+well-defined task out of the overall responsibility of the software. Each
+module should be named according to the task it performs. For example, in
+an academic automation software, the module consisting of the functions and
+data necessary to accomplish the task of registration of the students should
+be named handle student registration.
+Control relationships among modules: A control relationship between
+two modules essentially arises due to function calls across the two modules.
+The control relationships existing among various modules should be identified
+in the design document.
+Interfaces among different modules: The interfaces between two
+modules identifies the exact data items that are exchanged between the two
+modules when one module invokes a function of the other module.
+Data structures of the individual modules: Each module normally stores
+some data that the functions of the module need to share to accomplish the
+overall responsibility of the module. Suitable data structures for storing and
+managing the data of a module need to be properly designed and
+documented.
+Algorithms 
+required to implement the individual modules: Each
+function in a module usually performs some processing activity. The
+algorithms required to accomplish the processing activities of various modules
+need to be carefully designed and documented with due considerations given
+to the accuracy of the results, space and time complexities.
+Starting with the SRS document (as shown in Figure 5.1), the design
+documents are produced through iterations over a series of steps that we are
+going to discuss in this chapter and the subsequent three chapters. The
+design documents are reviewed by the members of the development team to
+ensure that the design solution conforms to the requirements specification.
+5.1.2 Classification of Design Activities
+A good software design is seldom realised by using a single step
+procedure, rather it requires iterating over a series of steps called the
+design activities. Let us first classify the design activities before
+discussing them in detail. Depending on the order in which various
+design activities are performed, we can broadly classify them into two
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p287 ==\nimportant stages.
+• Preliminary (or high-level) design, and
+• Detailed design.
+The meaning and scope of these two stages can vary considerably from one
+design methodology to another. However, for the traditional function-oriented
+design approach, it is possible to define the objectives of the high-level
+design as follows:
+Through high-level design, a problem is decomposed into a set of modules. The
+control relationships among the modules are identified, and also the interfaces among
+various modules are identified.
+The outcome of high-level design is called the program structure or the
+software architecture. High-level design is a crucial step in the overall design
+of a software. When the high-level design is complete, the problem should
+have been decomposed into many small functionally independent modules
+that are cohesive, have low coupling among themselves, and are arranged in
+a hierarchy. Many different types of notations have been used to represent a
+high-level design. A notation that is widely being used for procedural
+development is a tree-like diagram called the structure chart. Another popular
+design representation techniques called UML that is being used to document
+object-oriented design, involves developing several types of diagrams to
+document the object-oriented design of a systems. Though other notations
+such as Jackson diagram [1975] or Warnier-Orr [1977, 1981] diagram are
+available to document a software design, we confine our attention in this text
+to structure charts and UML diagrams only.
+Once the high-level design is complete, detailed design is undertaken.
+During detailed design each module is examined carefully to design its data structures
+and the algorithms.
+The outcome of the detailed design stage is usually documented in the
+form of a module specification (MSPEC) document. After the high-level design
+is complete, the problem would have been decomposed into small modules,
+and the data structures and algorithms to be used described using MSPEC and
+can be easily grasped by programmers for initiating coding. In this text, we
+do not discuss MSPECs and confine our attention to high-level design only.
+5.1.3 Classification of Design Methodologies
+The design activities vary considerably based on the specific design
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p288 ==\nmethodology being used. A large number of software design
+methodologies 
+are 
+available. 
+We 
+can 
+roughly 
+classify 
+these
+methodologies into procedural and object-oriented approaches. These
+two approaches are two fundamentally different design paradigms. In
+this chapter, we shall discuss the important characteristics of these two
+fundamental design approaches. Over the next three chapters, we shall
+study these two approaches in detail.
+Do design techniques result in unique solutions?
+Even while using the same design methodology, different designers
+usually arrive at very different design solutions. The reason is that a
+design technique often requires the designer to make many subjective
+decisions and work out compromises to contradictory objectives. As a
+result, it is possible that even the same designer can work out many
+different solutions to the same problem. Therefore, obtaining a good
+design would involve trying out several alternatives (or candidate
+solutions) and picking out the best one. However, a fundamental
+question that arises at this point is—how to distinguish superior design
+solution from an inferior one? Unless we know what a good software
+design is and how to distinguish a superior design solution from an
+inferior one, we can not possibly design one. We investigate this issue
+in the next section.
+Analysis versus design
+Analysis and design activities differ in goal and scope.
+The goal of any analysis technique is to elaborate the customer requirements through
+careful thinking and at the same time consciously avoiding making any decisions
+regarding the exact way the system is to be implemented.
+The analysis results are generic and does not consider implementation or
+the issues associated with specific platforms. The analysis model is usually
+documented using some graphical formalism. In case of the function-oriented
+approach that we are going to discuss, the analysis model would be
+documented using data flow diagrams (DFDs), whereas the design would be
+documented using structure chart. On the other hand, for object-oriented
+approach, both the design model and the analysis model will be documented
+using unified modelling language (UML). The analysis model would normally
+be very difficult to implement using a programming language.
+The design model is obtained from the analysis model through
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p289 ==\ntransformations over a series of steps. In contrast to the analysis model, the
+design model reflects several decisions taken regarding the exact way system
+is to be implemented. The design model should be detailed enough to be
+easily implementable using a programming language.
+5.2 HOW TO CHARACTERISE A GOOD SOFTWARE DESIGN?
+Coming up with an accurate characterisation of a good software design
+that would hold across diverse problem domains is certainly not easy. In
+fact, the definition of a “good” software design can vary depending on
+the exact application being designed. For example, “memory size used
+up by a program” may be an important issue to Characterise a good
+solution for embedded software development—since embedded
+applications are often required to work under severely limited memory
+sizes due to cost, space, or power consumption considerations. For
+embedded applications, factors such as design comprehensibility may
+take a back seat while judging the goodness of design. Thus for
+embedded applications, one may sacrifice design comprehensibility to
+achieve code compactness. Similarly, it is not usually true that a
+criterion that is crucial for some application, needs to be almost
+completely ignored for another application. It is therefore clear that the
+criteria used to judge a design solution can vary widely across different
+types of applications. Not only do the criteria used to judge a design
+solution depend on the exact application being designed, but to make
+the matter worse, there is no general agreement among software
+engineers and researchers on the exact criteria to use for judging a
+design even for a specific category of application. However, most
+researchers and software engineers agree on a few desirable
+characteristics that every good software design for general applications
+must possess. These characteristics are listed below:
+Correctness: A good design should first of all be correct. That is, it should
+correctly implement all the functionalities of the system.
+Understandability: A good design should be easily understandable. Unless
+a design solution is easily understandable, it would be difficult to implement
+and maintain it.
+Efficiency: A good design solution should adequately address resource,
+time, and cost optimisation issues.
+Maintainability: A good design should be easy to change. This is an
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p290 ==\nimportant requirement, since change requests usually keep coming from the
+customer even after product release.
+5.2.1 Understandability of a Design: A Ma jor Concern
+While performing the design of a certain problem, assume that we have
+arrived at a large number of design solutions and need to choose the best
+one. Obviously all incorrect designs have to be discarded first. Out of the
+correct design solutions, how can we identify the best one?
+Given that we are choosing from only correct design solutions, understandability of a
+design solution is possibly the most important issue to be considered while judging
+the goodness of a design.
+Recollect from our discussions in Chapter 1 that a good design should help
+overcome the human cognitive limitations that arise due to limited short-term
+memory. A large problem overwhelms the human mind, and a poor design
+would make the matter worse. Unless a design solution is easily
+understandable, it could lead to an implementation having a large number of
+defects and at the same time tremendously pushing up the development
+costs. Therefore, a good design solution should be simple and easily
+understandable. A design that is easy to understand is also easy to develop
+and maintain. A complex design would lead to severely increased life cycle
+costs. Unless a design is easily understandable, it would require tremendous
+effort to implement, test, debug, and maintain it. We had already pointed out
+in Chapter 2 that about 60 per cent of the total effort in the life cycle of a
+typical product is spent on maintenance. If the software is not easy to
+understand, not only would it lead to increased development costs, the effort
+required to maintain the product would also increase manifold. Besides, a
+design solution that is difficult to understand would lead to a program that is
+full of bugs and is unreliable. Recollect that we had already discussed in
+Chapter 1 that understandability of a design solution can be enhanced
+through clever applications of the principles of abstraction and decomposition.
+An understandable design is modular and layered
+How can the understandability of two different designs be compared, so
+that we can pick the better one? To be able to compare the
+understandability of two design solutions, we should at least have an
+understanding of the general features that an easily understandable
+design should possess. A design solution should have the following
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p291 ==\ncharacteristics to be easily understandable:
+It should assign consistent and meaningful names to various design
+components.
+It should make use of the principles of decomposition and abstraction
+in good measures to simplify the design.
+We had discussed the essential concepts behind the principles of
+abstraction and decomposition principles in Chapter 1. But, how can the
+abstraction and decomposition principles are used in arriving at a design
+solution? These two principles are exploited by design methodologies to
+make a design modular and layered. (Though there are also a few other
+forms in which the abstraction and decomposition principles can be used in
+the design solution, we discuss those later). We can now define the
+characteristics of an easily understandable design as follows: A design
+solution is understandable, if it is modular and the modules are arranged in
+distinct layers.
+A design solution should be modular and layered to be understandable.
+We now elaborate the concepts of modularity and layering of modules:
+Modularity
+A modular design is an effective decomposition of a problem. It is a basic
+characteristic of any good design solution. A modular design, in simple
+words, implies that the problem has been decomposed into a set of
+modules that have only limited interactions with each other.
+Decomposition of a problem into modules facilitates taking advantage
+of the divide and conquer principle. If different modules have either no
+interactions or little interactions with each other, then each module can
+be understood separately. This reduces the perceived complexity of the
+design solution greatly. To understand why this is so, remember that it
+may be very difficult to break a bunch of sticks which have been tied
+together, but very easy to break the sticks individually.
+It is not difficult to argue that modularity is an important characteristic of a
+good design solution. But, even with this, how can we compare the
+modularity of two alternate design solutions? From an inspection of the
+module structure, it is at least possible to intuitively form an idea as to which
+design is more modular For example, consider two alternate design solutions
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p292 ==\nto a problem that are represented in Figure 5.2, in which the modules M1 ,
+M2 etc. have been drawn as rectangles. The invocation of a module by
+another module has been shown as an arrow. It can easily be seen that the
+design solution of Figure 5.2(a) would be easier to understand since the
+interactions among the different modules is low. But, can we quantitatively
+measure the modularity of a design solution? Unless we are able to
+quantitatively measure the modularity of a design solution, it will be hard to
+say which design solution is more modular than another. Unfortunately, there
+are no quantitative metrics available yet to directly measure the modularity
+of a design. However, we can quantitatively characterise the modularity of a
+design solution based on the cohesion and coupling existing in the design.
+A design solution is said to be highly modular, if the different modules in the solution
+have high cohesion and their inter-module couplings are low.
+A software design with high cohesion and low coupling among modules is
+the effective problem decomposition we discussed in Chapter 1. Such a
+design would lead to increased productivity during program development by
+bringing down the perceived problem complexity.
+Figure 5.2: Two design solutions to the same problem.
+Based on this classification, we would be able to easily judge the cohesion
+and coupling existing in a design solution. From a knowledge of the cohesion
+and coupling in a design, we can form our own opinion about the modularity
+of the design solution. We shall define the concepts of cohesion and coupling
+and the various classes of cohesion and coupling in Section 5.3. Let us now
+discuss the other important characteristic of a good design solution—layered
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p293 ==\ndesign.
+Layered design
+A layered design is one in which when the call relations among different
+modules are represented graphically, it would result in a tree-like
+diagram with clear layering. In a layered design solution, the modules
+are arranged in a hierarchy of layers. A module can only invoke
+functions of the modules in the layer immediately below it. The higher
+layer modules can be considered to be similar to managers that invoke
+(order) the lower layer modules to get certain tasks done. A layered
+design can be considered to be implementing control abstraction, since
+a module at a lower layer is unaware of (about how to call) the higher
+layer modules.
+A layered design can make the design solution easily understandable, since
+to understand the working of a module, one would at best have to
+understand how the immediately lower layer modules work without having to
+worry about the functioning of the upper layer modules.
+When a failure is detected while executing a module, it is obvious that the
+modules below it can possibly be the source of the error. This greatly
+simplifies debugging since one would need to concentrate only on a few
+modules to detect the error. We shall elaborate these concepts governing
+layered design of modules in Section 5.4.
+5.3 COHESION AND COUPLING
+We have so far discussed that effective problem decomposition is an
+important characteristic of a good design. Good module decomposition
+is indicated through high cohesion of the individual modules and low
+coupling of the modules with each other. Let us now define what is
+meant by cohesion and coupling.
+Cohesion is a measure of the functional strength of a module, whereas the
+coupling between two modules is a measure of the degree of interaction (or
+interdependence) between the two modules.
+In this section, we first elaborate the concepts of cohesion and coupling.
+Subsequently, we discuss the classification of cohesion and coupling.
+Coupling: Intuitively, we can think of coupling as follows. Two modules are
+said to be highly coupled, if either of the following two situations arise:
+If the function calls between two modules involve passing large chunks
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p294 ==\nof shared data, the modules are tightly coupled.
+If the interactions occur through some shared data, then also we say
+that they are highly coupled.
+If two modules either do not interact with each other at all or at best
+interact by passing no data or only a few primitive data items, they are said
+to have low coupling.
+Cohesion: To understand cohesion, let us first understand an analogy.
+Suppose you listened to a talk by some speaker. You would call the speech to
+be cohesive, if all the sentences of the speech played some role in giving the
+talk a single and focused theme. Now, we can extend this to a module in a
+design solution. When the functions of the module co-operate with each other
+for performing a single objective, then the module has good cohesion. If the
+functions of the module do very different things and do not co-operate with
+each other to perform a single piece of work, then the module has very poor
+cohesion.
+Functional independence
+By the term functional independence, we mean that a module performs a
+single task and needs very little interaction with other modules.
+A module that is highly cohesive and also has low coupling with other modules is said
+to be functionally independent of the other modules.
+Functional independence is a key to any good design primarily due to the
+following advantages it offers:
+Error 
+isolation: Whenever an error exists in a module, functional
+independence reduces the chances of the error propagating to the other
+modules. The reason behind this is that if a module is functionally
+independent, its interaction with other modules is low. Therefore, an error
+existing in the module is very unlikely to affect the functioning of other
+modules.
+Further, once a failure is detected, error isolation makes it very easy to
+locate the error. On the other hand, when a module is not functionally
+independent, once a failure is detected in a functionality provided by the
+module, the error can be potentially in any of the large number of modules
+and propagated to the functioning of the module.
+Scope of reuse: Reuse of a module for the development of other
+applications becomes easier. The reasons for this is as follows. A functionally
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p295 ==\nindependent module performs some well-defined and precise task and the
+interfaces of the module with other modules are very few and simple. A
+functionally independent module can therefore be easily taken out and
+reused in a different program. On the other hand, if a module interacts with
+several other modules or the functions of a module perform very different
+tasks, then it would be difficult to reuse it. This is especially so, if the module
+accesses the data (or code) internal to other modules.
+Understandability: When modules are functionally independent, complexity
+of the design is greatly reduced. This is because of the fact that different
+modules can be understood in isolation, since the modules are independent
+of each other. We have already pointed out in Section 5.2 that
+understandability is a major advantage of a modular design. Besides the
+three we have listed here, there are many other advantages of a modular
+design as well. We shall not list those here, and leave it as an assignment to
+the reader to identify them.
+5.3.1 Classification of Cohesiveness
+Cohesiveness of a module is the degree to which the different functions of the
+module co-operate to work towards a single objective. The different modules
+of a design can possess different degrees of freedom. However, the different
+classes of cohesion that modules can possess are depicted in Figure 5.3. The
+cohesiveness increases from coincidental to functional cohesion. That is,
+coincidental is the worst type of cohesion and functional is the best cohesion
+possible. These different classes of cohesion are elaborated below.
+Figure 5.3: Classification of cohesion.
+Coincidental cohesion: A module is said to have coincidental cohesion,
+if it performs a set of tasks that relate to each other very loosely, if at
+all. In this case, we can say that the module contains a random
+collection of functions. It is likely that the functions have been placed in
+the module out of pure coincidence rather than through some thought
+or design. The designs made by novice programmers often possess this
+category of cohesion, since they often bundle functions to modules
+rather arbitrarily. An example of a module with coincidental cohesion
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p296 ==\nhas been shown in Figure 5.4(a).Observe that the different functions of
+the module carry out very different and unrelated activities starting
+from issuing of library books to creating library member records on one
+hand, and handling librarian leave request on the other.
+Figure 5.4: Examples of cohesion.
+Logical cohesion: A module is said to be logically cohesive, if all
+elements of the module perform similar operations, such as error
+handling, data input, data output, etc. As an example of logical
+cohesion, consider a module that contains a set of print functions to
+generate various types of output reports such as grade sheets, salary
+slips, annual reports, etc.
+Temporal cohesion: When a module contains functions that are related by
+the fact that these functions are executed in the same time span, then the
+module is said to possess temporal cohesion. As an example, consider the
+following situation. When a computer is booted, several functions need to be
+performed. These include initialisation of memory and devices, loading the
+operating system, etc. When a single module performs all these tasks, then
+the module can be said to exhibit temporal cohesion. Other examples of
+modules having temporal cohesion are the following. Similarly, a module
+would exhibit temporal cohesion, if it comprises functions for performing
+initialisation, or start-up, or shut-down of some process.
+Procedural cohesion: A module is said to possess procedural cohesion, if
+the set of functions of the module are executed one after the other, though
+these functions may work towards entirely different purposes and operate on
+very different data. Consider the activities associated with order processing in
+a trading house. The functions login(), place-order(), check-order(), print-
+bill(), place-order-on-vendor(), update-inventory(), 
+and logout() all do
+different thing and operate on different data. However, they are normally
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p297 ==\nexecuted one after the other during typical order processing by a sales clerk.
+Communicational cohesion: A module is said to have communicational
+cohesion, if all functions of the module refer to or update the same data
+structure. As an example of procedural cohesion, consider a module named
+student in which the different functions in the module such as admitStudent,
+enterMarks, printGradeSheet, etc. access and manipulate data stored in an
+array named studentRecords defined within the module.
+Sequential cohesion: A module is said to possess sequential cohesion, if
+the different functions of the module execute in a sequence, and the output
+from one function is input to the next in the sequence. As an example
+consider the following situation. In an on-line store consider that after a
+customer requests for some item, it is first determined if the item is in stock.
+In this case, if the functions create-order(), check-item-availability(), place-
+order-on-vendor() are placed in a single module, then the module would
+exhibit sequential cohesion. Observe that the function create-order() creates
+an order that is processed by the function check-item-availability() (whether
+the items are available in the required quantities in the inventory) is input to
+place-order-on-vendor().
+Functional cohesion: A module is said to possess functional cohesion, if
+different functions of the module co-operate to complete a single task. For
+example, a module containing all the functions required to manage
+employees’ pay-roll displays functional cohesion. In this case, all the functions
+of 
+the 
+module 
+(e.g., computeOvertime(), 
+computeWorkHours(),
+computeDeductions(), etc.) work together to generate the payslips of the
+employees. Another example of a module possessing functional cohesion has
+been shown in Figure 5.4(b). In this example, the functions issue-book(),
+return-book(), query-book(), 
+and find-borrower(), together manage all
+activities concerned with book lending. When a module possesses functional
+cohesion, then we should be able to describe what the module does using
+only one simple sentence. For example, for the module of Figure 5.4(a), we
+can describe the overall responsibility of the module by saying “It manages
+the book lending procedure of the library.”
+A simple way to determine the cohesiveness of any given module is as
+follows. First examine what do the functions of the module perform. Then, try
+to write down a sentence to describe the overall work performed by the
+module. If you need a compound sentence to describe the functionality of the
+module, then it has sequential or communicational cohesion. If you need
+words such as “first”, “next”, “after”, “then”, etc., then it possesses sequential
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p298 ==\nor temporal cohesion. If it needs words such as “initialise”, “setup”, “shut
+down”, etc., to define its functionality, then it has temporal cohesion.
+We can now make the following observation. A cohesive module is one in
+which the functions interact among themselves heavily to achieve a single
+goal. As a result, if any of these functions is removed to a different module,
+the coupling would increase as the functions would now interact across two
+different modules.
+5.3.2 Classification of Coupling
+The coupling between two modules indicates the degree of interdependence
+between them. Intuitively, if two modules interchange large amounts of data,
+then they are highly interdependent or coupled. We can alternately state this
+concept as follows.
+The degree of coupling between two modules depends on their interface complexity.
+The interface complexity is determined based on the number of parameters
+and the complexity of the parameters that are interchanged while one
+module invokes the functions of the other module.
+Let us now classify the different types of coupling that can exist between
+two modules. Between any two interacting modules, any of the following five
+different types of coupling can exist. These different types of coupling, in
+increasing order of their severities have also been shown in Figure 5.5.
+Figure 5.5: Classification of coupling.
+Data coupling: Two modules are data coupled, if they communicate using
+an elementary data item that is passed as a parameter between the two, e.g.
+an integer, a float, a character, etc. This data item should be problem related
+and not used for control purposes.
+Stamp coupling: Two modules are stamp coupled, if they communicate
+using a composite data item such as a record in PASCAL or a structure in C.
+Control coupling: Control coupling exists between two modules, if data
+from one module is used to direct the order of instruction execution in
+another. An example of control coupling is a flag set in one module and
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p299 ==\ntested in another module.
+Common coupling: Two modules are common coupled, if they share some
+global data items.
+Content coupling: Content coupling exists between two modules, if they
+share code. That is, a jump from one module into the code of another module
+can occur. Modern high-level programming languages such as C do not
+support such jumps across modules.
+The different types of coupling are shown schematically in Figure 5.5. The
+degree of coupling increases from data coupling to content coupling. High
+coupling among modules not only makes a design solution difficult to
+understand and maintain, but it also increases development effort and also
+makes it very difficult to get these modules developed independently by
+different team members.
+5.4 LAYERED ARRANGEMENT OF MODULES
+T h e control hiera r ch y represents the organisation of program
+components in terms of their call relationships. Thus we can say that
+the control hierarchy of a design is determined by the order in which
+different modules call each other. Many different types of notations
+have been used to represent the control hierarchy. The most common
+notation is a tree-like diagram known as a structure chart which we
+shall study in some detail in Chapter 6. However, other notations such
+as Warnier-Orr [1977, 1981] or Jackson diagrams [1975] may also be
+used. Since, Warnier-Orr and Jackson’s notations are not widely used
+nowadays, we shall discuss only structure charts in this text.
+In a layered design solution, the modules are arranged into several layers
+based on their call relationships. A module is allowed to call only the modules
+that are at a lower layer. That is, a module should not call a module that is
+either at a higher layer or even in the same layer. Figure 5.6(a) shows a
+layered design, whereas Figure 5.6(b) shows a design that is not layered.
+Observe that the design solution shown in Figure 5.6(b), is actually not
+layered since all the modules can be considered to be in the same layer. In
+the following, we state the significance of a layered design and subsequently
+we explain it.
+An important characteristic feature of a good design solution is layering of the
+modules. A layered design achieves control abstraction and is easier to understand
+and debug.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p300 ==\nIn a layered design, the top-most module in the hierarchy can be
+considered as a manager that only invokes the services of the lower level
+module to discharge its responsibility. The modules at the intermediate layers
+offer services to their higher layer by invoking the services of the lower layer
+modules and also by doing some work themselves to a limited extent. The
+modules at the lowest layer are the worker modules. These do not invoke
+services of any module and entirely carry out their responsibilities by
+themselves.
+Understanding a layered design is easier since to understand one module,
+one would have to at best consider the modules at the lower layers (that is,
+the modules whose services it invokes). Besides, in a layered design errors
+are isolated, since an error in one module can affect only the higher layer
+modules. As a result, in case of any failure of a module, only the modules at
+the lower levels need to be investigated for the possible error. Thus,
+debugging time reduces significantly in a layered design. On the other hand,
+if the different modules call each other arbitrarily, then this situation would
+correspond to modules arranged in a single layer. Locating an error would be
+both difficult and time consuming. This is because, once a failure is observed,
+the cause of failure (i.e. error) can potentially be in any module, and all
+modules would have to be investigated for the error. In the following, we
+discuss some important concepts and terminologies associated with a layered
+design:
+Superordinate and subordinate modules: In a control hierarchy, a
+module that controls another module is said to be superordinate to it.
+Conversely, a module controlled by another module is said to be subordinate
+to the controller.
+Visibility: A module B is said to be visible to another module A, if A directly
+calls B. Thus, only the immediately lower layer modules are said to be visible
+to a module.
+Control abstraction: In a layered design, a module should only invoke the
+functions of the modules that are in the layer immediately below it. In other
+words, the modules at the higher layers, should not be visible (that is,
+abstracted out) to the modules at the lower layers. This is referred to as
+control abstraction.
+Depth and width: Depth and width of a control hierarchy provide an
+indication of the number of layers and the overall span of control respectively.
+For the design of Figure 5.6(a), the depth is 3 and width is also 3.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p301 ==\nFan-out: Fan-out is a measure of the number of modules that are directly
+controlled by a given module. In Figure 5.6(a), the fan-out of the module M1
+is 3. A design in which the modules have very high fan-out numbers is not a
+good design. The reason for this is that a very high fan-out is an indication
+that the module lacks cohesion. A module having a large fan-out (greater
+than 7) is likely to implement several different functions and not just a single
+cohesive function.
+Fan-in: Fan-in indicates the number of modules that directly invoke a given
+module. High fan-in represents code reuse and is in general, desirable in a
+good design. In Figure 5.6(a), the fan-in of the module M1 is 0, that of M2 is
+1, and that of M5 is 2.
+Figure 5.6: Examples of good and poor control abstraction.
+5.5 APPROACHES TO SOFTWARE DESIGN
+There are two fundamentally different approaches to software design
+that are in use today— function-oriented design, and object-oriented
+design. Though these two design approaches are radically different,
+they are complementary rather than competing techniques. The object-
+oriented approach is a relatively newer technology and is still evolving.
+For development of large programs, the object- oriented approach is
+becoming increasingly popular due to certain advantages that it offers.
+On the other hand, function-oriented designing is a mature technology
+and has a large following. Salient features of these two approaches are
+discussed in subsections 5.5.1 and 5.5.2 respectively.
+5.5.1 Function-oriented Design
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p302 ==\nThe following are the salient features of the function-oriented design
+approach:
+Top-down decomposition: A system, to start with, is viewed as a black
+box that provides certain services (also known as high-level functions) to the
+users of the system.
+In top-down decomposition, starting at a high-level view of the system,
+each high-level function is successively refined into more detailed functions.
+For example, consider a function create-new-library member which
+essentially creates the record for a new member, assigns a unique
+membership number to him, and prints a bill towards his membership charge.
+This high-level function may be refined into the following subfunctions:
+• assign-membership-number
+• create-member-record
+• print-bill
+Each of these subfunctions may be split into more detailed subfunctions and
+so on.
+Centralised system state: The system state can be defined as the values
+of certain data items that determine the response of the system to a user
+action or external event. For example, the set of books (i.e. whether
+borrowed by different users or available for issue) determines the state of a
+library automation system. Such data in procedural programs usually have
+global scope and are shared by many modules.
+The system state is centralised and shared among different functions.
+For example, in the library management system, several functions such as
+the following share data such as member-records for reference and updation:
+• create-new-member
+• delete-member
+• update-member-record
+A large number of function-oriented design approaches have been proposed
+in the past. A
+few of the well-established function-oriented design approaches are as
+following:
+• Structured design by Constantine and Yourdon, [1979]
+• Jackson’s structured design by Jackson [1975]
+• Warnier-Orr methodology [1977, 1981]
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p303 ==\n• Step-wise refinement by Wirth [1971]
+• Hatley and Pirbhai’s Methodology [1987]
+5.5.2 Object-oriented Design
+In the object-oriented design (OOD) approach, a system is viewed as
+being made up of a collection of objects (i.e. entities). Each object is
+associated with a set of functions that are called its methods. Each
+object contains its own data and is responsible for managing it. The
+data internal to an object cannot be accessed directly by other objects
+and only through invocation of the methods of the object. The system
+state is decentralised since there is no globally shared data in the
+system and data is stored in each object. For example, in a library
+automation software, each library member may be a separate object
+with its own data and functions to operate on the stored data. The
+methods defined for one object cannot directly refer to or change the
+data of other objects.
+The object-oriented design paradigm makes extensive use of the principles
+of abstraction and decomposition as explained below. Objects decompose a
+system into functionally independent modules. Objects can also be
+considered as instances of abstract data types (ADTs). The ADT concept did
+not originate from the object-oriented approach. In fact, ADT concept was
+extensively used in the ADA programming language introduced in the 1970s.
+ADT is an important concept that forms an important pillar of object-
+orientation. Let us now discuss the important concepts behind an ADT. There
+are, in fact, three important concepts associated with an ADT—data
+abstraction, data structure, data type. We discuss these in the following
+subsection:
+Data abstraction: The principle of data abstraction implies that how
+data is exactly stored is abstracted away. This means that any entity
+external to the object (that is, an instance of an ADT) would have no
+knowledge about how data is exactly stored, organised, and
+manipulated inside the object. The entities external to the object can
+access the data internal to an object only by calling certain well-defined
+methods supported by the object. Consider an ADT such as a stack. The
+data of a stack object may internally be stored in an array, a linearly
+linked list, or a bidirectional linked list. The external entities have no
+knowledge of this and can access data of a stack object only through
+the supported operations such as push and pop.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p304 ==\nData structure: A data structure is constructed from a collection of primitive
+data items. Just as a civil engineer builds a large civil engineering structure
+using primitive building materials such as bricks, iron rods, and cement; a
+programmer can construct a data structure as an organised collection of
+primitive data items such as integer, floating point numbers, characters, etc.
+Data type: A type is a programming language terminology that refers to
+anything that can be instantiated. For example, int, float, char etc., are the
+basic data types supported by C programming language. Thus, we can say
+that ADTs are user defined data types.
+In object-orientation, classes are ADTs. But, what is the advantage of
+developing an application using ADTs? Let us examine the three main
+advantages of using ADTs in programs:
+The data of objects are encapsulated within the methods. The
+encapsulation principle is also known as data hiding. The encapsulation
+principle requires that data can be accessed and manipulated only
+through the methods supported by the object and not directly. This
+localises the errors. The reason for this is as follows. No program
+element is allowed to change a data, except through invocation of one
+of the methods. So, any error can easily be traced to the code segment
+changing the value. That is, the method that changes a data item,
+making it erroneous can be easily identified.
+An ADT-based design displays high cohesion and low coupling.
+Therefore, object- oriented designs are highly modular.
+Since the principle of abstraction is used, it makes the design solution
+easily understandable and helps to manage complexity.
+Similar objects constitute a class. In other words, each object is a member
+of some class. Classes may inherit features from a super class. Conceptually,
+objects communicate by message passing. Objects have their own internal
+data. Thus an object may exist in different states depending the values of the
+internal data. In different states, an object may behave differently. We shall
+elaborate these concepts in Chapter 7 and subsequently we discuss an
+object-oriented design methodology in Chapter 8.
+Ob je ct -orie nt e d v e r s u s function-oriented 
+design
+approaches
+The following are some of the important differences between the
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p305 ==\nfunction-oriented and object-oriented design:
+Unlike function-oriented design methods in OOD, the basic abstraction
+is not the services available to the users of the system such as issue-
+book, 
+display-book-details, find-issued-books, etc., but real-world
+entities such as member, book, book-register, etc. For example in
+OOD, an employee pay-roll software is not developed by designing
+functions such as update-employee-record, get-employee-address,
+etc., but by designing objects such as employees, departments, etc.
+In OOD, state information exists in the form of data distributed among
+several objects of the system. In contrast, in a procedural design, the
+state information is available in a centralised shared data store. For
+example, while developing an employee pay-roll system, the employee
+data such as the names of the employees, their code numbers, basic
+salaries, etc., are usually implemented as global data in a traditional
+programming system; whereas in an object-oriented design, these
+data are distributed among different employee objects of the system.
+Objects communicate by message passing. Therefore, one object may
+discover the state information of another object by sending a message
+to it. Of course, somewhere or other the real-world functions must be
+implemented.
+Function-oriented techniques group functions together if, as a group,
+they constitute a higher level function. On the other hand, object-
+oriented techniques group functions together on the basis of the data
+they operate on.
+To illustrate the differences between the object-oriented and the function-
+oriented design approaches, let us consider an example—that of an
+automated fire-alarm system for a large building.
+Automated fire-alarm system—customer requirements
+The owner of a large multi-storied building wants to have a
+computerised fire alarm system designed, developed, and installed in
+his building. Smoke detectors and fire alarms would be placed in each
+room of the building. The fire alarm system would monitor the status of
+these smoke detectors. Whenever a fire condition is reported by any of
+the smoke detectors, the fire alarm system should determine the
+location at which the fire has been sensed and then sound the alarms
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p306 ==\nonly in the neighbouring locations. The fire alarm system should also
+flash an alarm message on the computer console. Fire fighting
+personnel would man the console round the clock. After a fire condition
+has been successfully handled, the fire alarm system should support
+resetting the alarms by the fire fighting personnel.
+Function-oriented approach: In this approach, the different high-level
+functions are first identified, and then the data structures are designed.
+The functions which operate on the system state are:
+interrogate_detectors();
+get_detector_location();
+determine_neighbour_alarm();
+determine_neighbour_sprinkler();
+ring_alarm();
+activate_sprinkler();
+reset_alarm();
+reset_sprinkler();
+report_fire_location();
+Object-oriented approach: In the object-oriented approach, the different
+classes of objects are identified. Subsequently, the methods and data for
+each object are identified. Finally, an appropriate number of instances of each
+class is created.
+class detector
+attributes: status, location, neighbours
+operations: create, sense-status, get-location,
+find-neighbours
+class alarm
+attributes: location, status
+operations: create, ring-alarm, get_location, reset-
+alarm
+class sprinkler
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p307 ==\nattributes: location, status
+operations: create, activate-sprinkler, get_location,
+reset-sprinkler
+We can now compare the function-oriented and the object-oriented
+approaches based on the two examples discussed above, and easily observe
+the following main differences:
+In a function-oriented program, the system state (data) is centralised
+and several functions access and modify this central data. In case of an
+object-oriented program, the state information (data) is distributed
+among various objects.
+In the object-oriented design, data is private in different objects and
+these are not available to the other objects for direct access and
+modification.
+The basic unit of designing an object-oriented program is objects,
+whereas it is functions and modules in procedural designing. Objects
+appear as nouns in the problem description; whereas functions appear
+as verbs.
+At this point, we must emphasise that it is not necessary that an object-
+oriented design be implemented by using an object-oriented language only.
+However, an object-oriented language such as C++ and Java support the
+definition of all the basic mechanisms of class, inheritance, objects, methods,
+etc. and also support all key object-oriented concepts that we have just
+discussed. Thus, an object-oriented language facilitates the implementation
+of an OOD. However, an OOD can as well be implemented using a
+conventional procedural languages—though it may require more effort to
+implement an OOD using a procedural language as compared to the effort
+required for implementing the same design using an object-oriented
+language. In fact, the older C++ compilers were essentially pre-processors
+that translated C++ code into C code.
+Even though object-oriented and function-oriented techniques are
+remarkably different approaches to software design, yet one does not replace
+the other; but they complement each other in some sense. For example,
+usually one applies the top-down function oriented techniques to design the
+internal methods of a class, once the classes are identified. In this case,
+though outwardly the system appears to have been developed in an object-
+oriented fashion, but inside each class there may be a small hierarchy of
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p308 ==\nfunctions designed in a top-down manner.
+SUMMARY
+software design is typically carried out through two stages—high-level
+design, and detailed design. During high-level design, the important
+components (modules) of the system and their interactions are
+identified. During detailed design, the algorithms and data structures
+are identified.
+We discussed that there is no unique design solution to any problem
+and one needs to choose the best solution among a set of candidate
+solutions. To be able to achieve this, we identified the factors based on
+which a superior design can be distinguished from a inferior design.
+We discussed that understandability of a design is a major criterion
+determining the goodness of a design. We Characterised the
+understandability of design in terms of satisfactory usage of
+decomposition and abstraction principles. Later, we Characterised
+these in terms of cohesion, coupling, layering, control abstraction, fan-
+in, fan-out, etc.
+We identified two fundamentally different approaches to software
+design—function- oriented design and object-oriented design. We
+discussed the essential philosophy governing these two approaches
+and argued that these two approaches to software design are not
+really competing approaches but complementary approaches.
+EXERCISES
+1. Choose the correct option
+(a) The extent of data interchange between two modules is called:
+(i) Coupling
+(ii) Cohesion
+(iii) Structure
+(iv) Union
+(b) Which of the following type of cohesion can be considered as the
+strongest cohesion:
+(i) Logical
+(ii) Coincidental
+(iii) Temporal
+(iv) Functional
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p309 ==\n(c) The modules in a good software design should have which of the
+following characteristics:
+(i) High cohesion, low coupling
+(ii) Low cohesion, high coupling
+(iii) Low cohesion, low coupling
+(iv) High cohesion, high coupling
+2 . Do you agree with the following assertion? A design solution that is
+difficult to under- stand would lead to increased development and
+maintenance cost. Give reasonings for your answer.
+3. What do you mean by the terms cohesion and coupling in the context of
+software design?
+How are these concepts useful in arriving at a good design of a system?
+4 . What do you mean by a modular design? How can you determine
+whether a given design is modular or not?
+5 . Enumerate the different types of cohesion that a module in a design
+might exhibit. Give examples of each.
+6. Enumerate the different types of coupling that might exist between two
+modules. Give examples of each.
+7 . Is it true that whenever you increase the cohesion of your design,
+coupling in the design would automatically decrease? Justify your answer
+by using suitable examples.
+8. What according to you are the characteristics of a good software design?
+9 . What do you understand by the term functional independence in the
+context of software design? What are the advantages of functional
+independence? How can functional independence in a software design be
+achieved?
+10. Explain how the principles of abstraction and decomposition are used
+to arrive at a good design.
+1 1 . What do you understand by information hiding in the context of
+software design?
+Explain why a design approach based on the information hiding principle
+is likely to lead to a reusable and maintainable design. Illustrate your
+answer with a suitable example.
+12. In the context of software development, distinguish between analysis
+and design with respect to intention, methodology, and the
+documentation technique used.
+13. State whether the following statements are TRUE o r FALSE. Give
+reasons for your answer.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p310 ==\n(a) The essence of any good function-oriented design technique is to
+map the functions performing similar activities into a module.
+(b) Traditional procedural design is carried out top-down whereas
+object-oriented design is normally carried out bottom-up.
+(c) Common coupling is the worst type of coupling between two
+modules.
+(d) Temporal cohesion is the worst type of cohesion that a module can
+have.
+(e) The extent to which two modules depend on each other determines
+the cohesion of the two modules.
+14. Compare relative advantages of the object-oriented and function-
+oriented approaches to software design.
+15. Name a few well-established function-oriented software design
+techniques.
+16. Explain the important causes of and remedies for high coupling
+between two software modules.
+17. What problems are likely to arise if two modules have high coupling?
+18. What problems are likely to occur if a module has low cohesion?
+19. Distinguish between high-level and detailed designs. What documents
+should be produced on completion of high-level and detailed designs
+respectively?
+20. What is meant by the term cohesion in the context of software design?
+Is it true that in a good design, the modules should have low cohesion?
+Why?
+21. What is meant by the term coupling in the context of software design?
+Is it true that in a good design, the modules should have low coupling?
+Why?
+22. What do you mean by modular design? What are the different factors
+that affect the modularity of a design? How can you assess the
+modularity of a design? What are the advantages of a modular design?
+23. How would you improve a software design that displays very low
+cohesion and high coupling?
+24. Explain how the overall cohesion and coupling of a design would be
+impacted if all modules of the design are merged into a single module.
+25. Explain what do you understand by the terms decomposition and
+abstraction in the context of software design. How are these two
+principles used in arriving good procedural designs?
+26. What is an ADT? What advantages accrue when a software design
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p311 ==\ntechnique is based on ADTs? Explain why the object paradigm is said to
+be based on ADTs.
+27. By using suitable examples explain the following terms associated with
+an abstract data type (ADT)—data abstraction, data structure, data
+type.
+28. What do you understand by the term top-down decomposition in the
+context of function- oriented design? Explain your answer using a
+suitable example.
+29. What do you understand by a layered software design? What are the
+advantages of a layered design? Explain your answer by using suitable
+examples.
+30. What is the principal difference between the software design
+methodologies based on functional abstraction and those based on data
+abstraction? Name at least one popular design technique based on each
+of these two software design paradigms.
+31. What are the main advantages of using an object-oriented approach to
+software design over a function-oriented approach?
+32. Point out three important differences between the function oriented
+and the object- oriented approaches to software design. Corroborate
+your answer through suitable examples.
+33. Identify the criteria that you would use to decide which one of two
+alternate function- oriented design solutions to a problem is superior.
+34. Explain the main differences between architectural design, high-level-
+design, and detailed design of a software system.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p312 ==\nChapter
+6
+FUNCTION-ORIENTED SOFTWARE
+DESIGN
+Function-oriented design techniques were proposed nearly four decades ago.
+These techniques are at the present time still very popular and are currently
+being used in many software development organisations. These techniques,
+to start with, view a system as a black-box that provides a set of services to
+the users of the software. These services provided by a software (e.g., issue
+book, serach book, etc., for a Library Automation Software to its users are also
+known as the high-level functions supported by the software. During the
+design process, these high-level functions are successively decomposed into
+more detailed functions.
+The 
+term top-down 
+decomposition i s often used to denote the successive
+decomposition of a set of high-level functions into more detailed functions.
+After top-down decomposition has been carried out, the different identified
+functions are mapped to modules and a module structure is created. This
+module structure would possess all the characteristics of a good design
+identified in the last chapter.
+In this text, we shall not focus on any specific design methodology. Instead,
+we shall discuss a methodology that has the essential features of several
+important function-oriented design methodologies. Such an approach shall
+enable us to easily assimilate any specific design methodology in the future
+whenever the need arises. Learning a specific methodology may become
+necessary for you later, since different software development houses follow
+different methodologies. After all, the different procedural design techniques
+can be considered as sister techniques that have only minor differences with
+respect to the methodology and notations. We shall call the design technique
+discussed in this text a s structured analysis/structured design (SA/SD)
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p313 ==\nmethodology. This technique draws heavily from the design methodologies
+proposed by the following authors:
+DeMarco and Yourdon [1978]
+Constantine and Yourdon [1979]
+Gane and Sarson [1979]
+Hatley and Pirbhai [1987]
+The SA/SD technique can b e used to perform the high-level design of a
+software. The details of SA/SD technique are discussed further.
+6.1 OVERVIEW OF SA/SD METHODOLOGY
+As the name itself implies, SA/SD methodology involves carrying out two
+distinct activities:
+Structured analysis (SA)
+Structured design (SD)
+The roles of structured analysis (SA) and structured design (SD) have been
+shown schematically in Figure 6.1. Observe the following from the figure:
+During structured analysis, the SRS document is transformed into a
+data flow diagram (DFD) model.
+During structured design, the DFD model is transformed into a
+structure chart.
+Figure 6.1: Structured analysis and structured design methodology.
+As shown in Figure 6.1, the structured analysis activity transforms the SRS
+document into a graphic model called the DFD model. During structured
+analysis, functional decomposition of the system is achieved. That is, each
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p314 ==\nfunction that the system needs to perform is analysed and hierarchically
+decomposed into more detailed functions. On the other hand, during
+structured design, all functions identified during structured analysis are
+mapped to a module structure. This module structure is also called the high-
+level design or the software architecture for the given problem. This is
+represented using a structure chart.
+The high-level design stage is normally followed by a detailed design stage.
+During the detailed design stage, the algorithms and data structures for the
+individual modules are designed. The detailed design can directly be
+implemented as a working system using a conventional programming
+language.
+It is important to understand that the purpose of structured analysis is to capture the
+detailed structure of the system as perceived by the user, whereas the purpose of
+structured design is to define the structure of the solution that is suitable for
+implementation in some programming language.
+The results of structured analysis can therefore, be easily understood by
+the user. In fact, the different functions and data in structured analysis are
+named using the user’s terminology. The user can therefore even review the
+results of the structured analysis to ensure that it captures all his
+requirements.
+In the following section, w e first discuss how to carry out structured
+analysis to construct the DFD model. Subsequently, we discuss how the DFD
+model can be transformed into structured design.
+6.2 STRUCTURED ANALYSIS
+We have already mentioned that during structured analysis, the major
+processing tasks (high-level functions) of the system are analysed, and
+t h e data flow among these processing tasks are represented
+graphically. Significant contributions to the development of the
+structured analysis techniques have been made by Gane and Sarson
+[1979], and DeMarco and Yourdon [1978]. The structured analysis
+technique is based on the following underlying principles:
+Top-down decomposition approach.
+Application of divide and conquer principle. Through this each high-
+level function is independently decomposed into detailed functions.
+Graphical representation 
+of the analysis results using data flow
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p315 ==\ndiagrams (DFDs).
+DFD representation of a problem, as we shall see shortly, is very easy to
+construct. Though extremely simple, it is a very powerful tool to tackle the
+complexity of industry standard problems.
+A DFD is a hierarchical graphical model of a system that shows the different
+processing activities or functions that the system performs and the data interchange
+among those functions.
+Please note that a DFD model only represents the data flow aspects and
+does not show the sequence of execution of the different functions and the
+conditions based on which a function may or may not be executed. In fact, it
+completely ignores aspects such as control flow, the specific algorithms used
+by the functions, etc. In the DFD terminology, each function is called a
+process or a bubble. It is useful to consider each function as a processing
+station (or process) that consumes some input data and produces some
+output data.
+DFD is an elegant modelling technique that can be used not only to
+represent the results of structured analysis of a software problem, but also
+useful for several other applications such as showing the flow of documents
+or items in an organisation. Recall that in Chapter 1 we had given an example
+(see Figure 1.10) to illustrate how a DFD can be used t o represent the
+processing activities and flow of material in an automated car assembling
+plant. We now elaborate how a DFD model can be constructed.
+6.2.1 Data Flow Diagrams (DFDs)
+The DFD (also known as the bubble chart) is a simple graphical
+formalism that can be used to represent a system in terms of the input
+data to the system, various processing carried out on those data, and
+the output data generated by the system. The main reason why the
+DFD technique is so popular is probably because of the fact that DFD is
+a very simple formalism— it is simple to understand and use. A DFD
+model uses a very limited number of primitive symbols (shown in Figure
+6.2) to represent the functions performed by a system and the data
+flow among these functions.
+Starting with a set of high-level functions that a system performs, a DFD
+model represents the subfunctions performed by the functions using a
+hierarchy of diagrams. We had pointed out while discussing the principle of
+abstraction in Section 1.3.2 that any hierarchical representation is an
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+\n== MALL p316 ==\neffective means to tackle complexity. Human mind is such that it can easily
+understand any hierarchical model of a system—because in a hierarchical
+model, starting with a very abstract model of a system, various details of the
+system are slowly introduced through different levels of the hierarchy. The
+DFD technique is also based on a very simple set of intuitive concepts and
+rules. We now elaborate the different concepts associated with building a
+DFD model of a system.
+Primitive symbols used for constructing DFDs
+There are essentially five different types of symbols used for constructing
+DFDs. These primitive symbols are depicted in Figure 6.2. The meaning of
+these symbols are explained as follows:
+Figure 6.2: Symbols used for designing DFDs.
+Function symbol: A function is represented using a circle. This symbol is
+called a process or a bubble. Bubbles are annotated with the names of
+the corresponding functions (see Figure 6.3).
+External entity symbol: An external entity such as a librarian, a library
+member, etc. is represented by a rectangle. The external entities are
+essentially those physical entities external to the software system which
+interact with the system by inputting data to the system or by consuming the
+data produced by the system. In addition to the human users, the external
+entity symbols can be used to represent external hardware and software such
+as another application software that would interact with the software being
+modelled.
+Data flow symbol: A directed arc (or an arrow) is used as a data flow symbol.
+A data flow symbol represents the data flow occurring between two processes
+or between an external entity and a process in the direction of the data flow
+arrow. Data flow symbols are usually annotated with the corresponding data
+names. For example the DFD in Figure 6.3(a) shows three data flows—the
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******

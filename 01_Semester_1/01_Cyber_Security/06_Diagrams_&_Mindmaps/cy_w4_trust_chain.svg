@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="c-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="920" height="400" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Hash → Signature → Certificate → PKI — سلسلة الثقة</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">integrity · authenticity · non-repudiation · trust assurance</text>
+
+  <!-- 1 hash -->
+  <rect x="18" y="76" width="200" height="132" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="118" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">1 · Hash</text>
+  <text x="118" y="124" text-anchor="middle" font-size="12.5" fill="#334155">h : {0,1}* → {0,1}ⁿ</text>
+  <text x="118" y="146" text-anchor="middle" font-size="12" fill="#475569">gives INTEGRITY</text>
+  <text x="118" y="168" text-anchor="middle" font-size="11.5" fill="#6b7280">SHA-256 · SHA-3</text>
+  <text x="118" y="186" text-anchor="middle" font-size="11.5" fill="#6b7280">broken: MD5 · SHA-1</text>
+  <text x="118" y="202" text-anchor="middle" font-size="11.5" fill="#9ca3af">P_int ≈ 2⁻ⁿ</text>
+
+  <!-- 2 signature -->
+  <rect x="240" y="76" width="200" height="132" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="340" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">2 · Digital Signature</text>
+  <text x="340" y="124" text-anchor="middle" font-size="12.5" fill="#334155">Sig = E_Priv( h(M) )</text>
+  <text x="340" y="146" text-anchor="middle" font-size="12" fill="#475569">gives AUTHENTICITY</text>
+  <text x="340" y="168" text-anchor="middle" font-size="11.5" fill="#6b7280">+ NON-REPUDIATION</text>
+  <text x="340" y="188" text-anchor="middle" font-size="11.5" fill="#6b7280">RSA · DSA · ECDSA</text>
+
+  <!-- 3 certificate -->
+  <rect x="462" y="76" width="200" height="132" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="562" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">3 · Certificate (X.509)</text>
+  <text x="562" y="124" text-anchor="middle" font-size="12" fill="#475569">binds a public key</text>
+  <text x="562" y="142" text-anchor="middle" font-size="12" fill="#475569">to an identity</text>
+  <text x="562" y="164" text-anchor="middle" font-size="11.5" fill="#6b7280">Subject · Public key · Issuer</text>
+  <text x="562" y="182" text-anchor="middle" font-size="11.5" fill="#6b7280">Validity · CA signature</text>
+
+  <!-- 4 PKI -->
+  <rect x="684" y="76" width="218" height="132" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="793" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">4 · PKI</text>
+  <text x="793" y="124" text-anchor="middle" font-size="12" fill="#475569">Issuance</text>
+  <text x="793" y="144" text-anchor="middle" font-size="12" fill="#475569">Validation (chain → root)</text>
+  <text x="793" y="164" text-anchor="middle" font-size="12" fill="#475569">Revocation (CRL · OCSP)</text>
+  <text x="793" y="188" text-anchor="middle" font-size="11.5" fill="#6b7280">weak point: CA compromise</text>
+
+  <line x1="220" y1="142" x2="236" y2="142" stroke="#0d9488" stroke-width="2.5" marker-end="url(#c-arw)"/>
+  <line x1="442" y1="142" x2="458" y2="142" stroke="#0d9488" stroke-width="2.5" marker-end="url(#c-arw)"/>
+  <line x1="664" y1="142" x2="680" y2="142" stroke="#0d9488" stroke-width="2.5" marker-end="url(#c-arw)"/>
+
+  <!-- model -->
+  <rect x="18" y="228" width="884" height="80" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="460" y="256" text-anchor="middle" font-size="14.5" font-weight="700" fill="#3730a3">P_secure = (1 − P_int) · (1 − P_sig) · (1 − P_trust)</text>
+  <text x="460" y="280" text-anchor="middle" font-size="12.5" fill="#312e81">P_trust = (1 − P_ca)(1 − P_val)   ·   T_forge ≈ 2^b_sig / R</text>
+  <text x="460" y="300" text-anchor="middle" font-size="12" fill="#6b7280">each factor close to 1  →  overall assurance close to 1</text>
+
+  <!-- cases -->
+  <rect x="18" y="322" width="884" height="58" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="460" y="348" text-anchor="middle" font-size="13.5" font-weight="700" fill="#991b1b">Case: DigiNotar (2011) — a compromised CA issued fraudulent certificates → MITM on Gmail</text>
+  <text x="460" y="369" text-anchor="middle" font-size="12.5" fill="#7f1d1d">Lesson: weak PKI governance undermines the entire trust chain</text>
+</svg>

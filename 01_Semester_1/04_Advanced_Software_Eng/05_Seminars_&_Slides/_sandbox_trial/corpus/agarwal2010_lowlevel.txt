@@ -1,0 +1,512 @@
+\n== AGARWAL2010 p138 ==\n 
+SYSTEM DESIGN 
+125
+ 
+ 
+The objective of architectural design is also to control the relationship between 
+modules. One module may control another module or may be controlled by 
+another module. These characteristics are defined by the fan-in and fan-out of a 
+particular module. The organization of a module can be represented by a tree-like 
+structure.
+ 
+ 
+The number of levels of a component in the structure is called depth and the 
+number of components across the horizontal section is called width. The number 
+of components, which controls the component, is called fan-in, i.e., the number of 
+incoming edges to a component. The number of components that are controlled by 
+the module is called fan-out, i.e., the number of outgoing edges.
+FIGURE 5.7 Fan-in and Fan-out
+ 
+ 
+S0 controls three components, hence, the fan-out is 3. S2 is controlled by two 
+components, namely, S1 and S2, hence, the fan-in is 2 (see Figure 5.7).
+5.3 
+LOW-LEVEL DESIGN 
+5.3.1 
+Modularization
+ 
+A system is considered modular if it consists of discreet components so that each 
+component can be implemented separately, and a change to one component has 
+minimal impact on other components.
+ 
+ 
+There are many definitions of the term module.  They range from “a module is 
+a FORTRAN subroutine” to “a module is an ADA package” to “a module is a work 
+assignment for an individual programmer.” All of these definitions are correct, in 
+the sense that modular systems incorporate collections of abstractions in which 
+each functional abstraction, each data abstraction, and each control abstraction 
+handles a local aspect of the problem being solved. Modular system consists of 
+well-defined, manageable units with well-defined interfaces among the units. 
+Desirable properties of a modular system include: 
+ 
+ Each function in each abstraction has a single, well-defined purpose. 
+ 
+ Each function manipulates no more than one major data structure.
+
+\n== AGARWAL2010 p139 ==\n126 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Functions share global data selectively. It is easy to identify all routines 
+that share a major data structure. 
+ 
+ Functions that manipulate instances of abstract data types are encapsulated 
+with the data structure being manipulated. 
+ 
+ 
+Modularity enhances design clarity, which in turn eases implementation, 
+debugging, testing, documenting, and maintenance of the software product. 
+ 
+ 
+Modules that may be created during program modularizations are: 
+ 
+ Process support modules: In these all the functions and data items that are 
+required to support a particular business process are grouped together. 
+ 
+ Data abstraction modules: These are abstract types that are created by 
+associating data with processing components. 
+ 
+ Functional modules: In these all the functions that carry out similar or 
+closely related tasks are grouped together. 
+ 
+ Hardware modules: In these all the functions, which control particular 
+hardware are grouped together. 
+ 
+Classification of Modules
+ 
+A module can be classified into three types depending on the activating 
+mechanism.
+ 
+ An incremental module is activated by an interruption and can be interrupted 
+by another interrupt during the execution prior to completion. 
+ 
+ A sequential module is a module that is referenced by another module and 
+without interruption of any external software. 
+ 
+ Parallel modules are executed in parallel with other modules.
+ 
+ 
+The main purpose of modularity is that it allows the principle of separation 
+of concerns to be applied in two phases: when dealing with the details of each 
+module in isolation (and ignoring the details of other modules) and when dealing 
+with the overall characteristics of all modules and their relationships in order to 
+integrate them into a coherent system. If the two phases are temporally executed 
+in the order mentioned, then we say that the system is designed bottom-up; the 
+converse denotes top-down design. 
+ 
+Advantages of Modular Systems
+ 
+ Modular systems are easier to understand and explain because their parts are 
+functionally independent.
+ 
+ Modular systems are easier to document because each part can be documented 
+as an independent unit.
+ 
+ Programming individual modules is easier because the programmer can focus 
+on just one small, simple problem rather than a large complex problem.
+
+\n== AGARWAL2010 p140 ==\n 
+SYSTEM DESIGN 
+127
+ 
+ Testing and debugging individual modules is easier because they can be dealt 
+with in isolation from the rest of the program.
+ 
+ Bugs are easier to isolate and understand, and they can be fixed without fear 
+of introducing problems outside the module.
+ 
+ Well-composed modules are more reusable because they are more likely to 
+comprise part of a solution to many problems. Also, a good module should be 
+easy to extract from one program and insert into another. 
+ 
+ 
+Modularity is an important property of most engineering processes and 
+products. For example, in the automobile industry, the construction of cars proceeds 
+by assembling building blocks that are designed and built separately. Furthermore, 
+parts are often reused from model to model, perhaps after minor changes. Most 
+industrial processes are essentially modular, made out of work packages that are 
+combined in simple ways (sequentially or overlapping) to achieve the desired 
+result. 
+5.3.2 Structure Charts
+ 
+The structure chart is one of the most commonly used methods for system design. 
+Structure charts are used during architectural design to document hierarchical 
+structures, parameters, and interconnections in a system. 
+ 
+ 
+It partitions a system into black boxes. A black box means that functionality is 
+known to the user without the knowledge of internal design. Inputs are given to 
+a black box and appropriate outputs are generated by the black box. This concept 
+reduces complexity because details are hidden from those who have no need or 
+desire to know. Thus, systems are easy to construct and easy to maintain. Here, black 
+boxes are arranged in hierarchical format as shown in Figures 5.8 (a) and (b).
+FIGURE 5.8 (a) Hierarchical Format of a Structure Chart
+
+\n== AGARWAL2010 p141 ==\n128 
+SOF TWARE ENGINEERING AND TESTING
+FIGURE 5.8 (b) Format of a Structure Chart
+ 
+ 
+Modules at the top level call the modules at the lower level. The connections 
+between modules are represented by lines between the rectangular boxes. The 
+components are generally read from top to bottom, left to right. Modules are 
+numbered in a hierarchical numbering scheme. In any structure chart there is one 
+and only one module at the top called the root. 
+ 
+Basic Building Blocks of a Structure Chart
+ 
+The basic building blocks of a structure chart are the following:  
+ 
+1. Rectangular Boxes. A rectangular box represents a module. Usually a 
+rectangular box is annotated with the name of the module it represents. 
+ 
+2. Arrows. An arrow connecting two modules implies that during program 
+execution, control is passed from one module to the other in the direction of 
+the connecting arrow. 
+ 
+3. Data-flow Arrows. Data-flow arrows represent that the named data passes 
+from one module to the other in the direction of the arrow.
+ 
+4. Library Modules. Library modules are the frequently called modules and are 
+usually represented by a rectangle with double edges. Usually when a module 
+is invoked by many other modules, it is made into a library module.
+
+\n== AGARWAL2010 p142 ==\n 
+SYSTEM DESIGN 
+129
+ 
+5. Selection. The diamond symbol represents that one module out of several 
+modules connected with the diamond symbol are invoked depending on the 
+condition satisfied, which is written in the diamond symbol.
+ 
+6. Repetitions. A loop around the control-flow arrows denotes that the respective 
+modules are invoked repeatedly. 
+ 
+ 
+Example 5.1. A software system called RMS calculating software reads 
+three integral numbers from the user in the range between –1000 and +1000 and 
+determines the root mean square (rms) of the three input numbers and then 
+displays it. 
+FIGURE 5.9 Structure Chart For Example 5.1
+
+\n== AGARWAL2010 p143 ==\n130 
+SOF TWARE ENGINEERING AND TESTING
+5.3.3 Pseudo-Code
+ 
+“Pseudo” means imitation or false and “code” refers to the instructions written in a 
+programming language. Pseudo-code notation can be used in both the preliminary 
+and detailed design phases. Using pseudo-code, the designer describes system 
+characteristics using short, concise English language phrases that are structured 
+by keywords, such as If-Then-Else, While-Do, and End. Keywords and indentation 
+describe the flow of control, while the English phrases describe processing actions. 
+Pseudo-code is also known as program-design language or structured English. A 
+program-design language should have the following characteristics:  
+ 
+ A fixed syntax of keywords that provide for all structured constructs, data 
+declarations, and modularity characteristics.
+ 
+ A free syntax of natural language that describes a processing feature.
+ 
+ A data-declaration facility. 
+ 
+ A subprogram definition and calling techniques.
+ 
+Advantages of Pseudo-Code
+ 
+The various advantages of pseudo-code are as follows:  
+ 
+ Converting a pseudo-code to a programming language is much easier compared 
+to converting a flowchart or decision table.
+ 
+ Compared to a flowchart, it is easier to modify the pseudo-code of program 
+logic whenever program modifications are necessary.
+ 
+ Writing of pseudo-code involves much less time and effort than the equivalent 
+flowchart. 
+ 
+ Pseudo-code is easier to write than writing a program in a programming 
+language because pseudo-code as a method has only a few rules to follow.
+ 
+Disadvantages of Pseudo-Code
+ 
+The various disadvantages of pseudo-code are as follows:  
+ 
+ In the case of pseudo-code, a graphic representation of program logic is not 
+available as with flowcharts.
+ 
+ There are no standard rules to follow in using pseudo-code. Different pro-
+grammers use their own style of writing pseudo-code and hence communication 
+problems occur due to lack of standardization.
+ 
+ For a beginner, it is more difficult to follow the logic or write the pseudo-code 
+as compared to flowcharting.
+
+\n== AGARWAL2010 p144 ==\n 
+SYSTEM DESIGN 
+131
+ 
+The use of pseudo-code for detailed design specification is illustrated in 
+Figure 5.9 (a).
+ 
+INITIALIZE tables and counters; OPEN files
+ 
+READ the first text record
+ 
+WHILE there are more text records DO
+ 
+WHILE there are more words in the text record DO
+ 
+EXTRACT the next word
+ 
+SEARCH word_table for the extracted word
+ 
+IF the extracted word is found THEN
+ 
+INCREMENT the extracted word’s occurrence count
+ 
+ELSE
+ 
+INSERT the extracted word into the word_table
+ 
+ENDIF
+ 
+INCREMENT the words_processed counter
+ 
+ENDWHILE at the end of the text record
+ 
+ENDWHILE when all text records have been processed
+ 
+PRINT the word_table and the words_processed counter
+ 
+CLOSE files
+ 
+TERMINATE the program
+FIGURE 5.9 (a) An Example of a Pseudo-Code Design Specification
+ 
+ 
+Pseudo-code consists of English-like statements describing an algorithm. It 
+is written using simple phrases and avoids cryptic symbols. It is independent of 
+high-level languages and is a very good means of expressing an algorithm. It is 
+written in a structured manner and indentation is used to increase clarity. 
+5.3.4 Flowcharts 
+ 
+A flowchart is a convenient technique to represent the flow of control in a program. 
+A flowchart is a pictorial representation of an algorithm that uses symbols to show 
+the operations and decisions to be followed by a computer in solving a problem. 
+The actual instructions are written within symbols/boxes using clear statements. 
+These boxes are connected by solid lines having arrow marks to indicate the flow 
+of operation in a sequence.
+ 
+ 
+In fact, flowcharts are the plan to be followed when the program is written. 
+Expert programmers may write programs without drawing the flowcharts. 
+But for a beginner it is recommended that a flowchart should be drawn before 
+writing a program, which in turn will reduce the number of errors and omissions 
+
+\n== AGARWAL2010 p145 ==\n132 
+SOF TWARE ENGINEERING AND TESTING
+in the program. Flowcharts also help during testing and modifications in the 
+programs.
+ 
+Flowchart Symbols 
+ 
+1. Terminal Symbol. Terminal symbols are used for two purposes: to define the 
+starting (START or BEGIN) point of the flowchart and to define the ending 
+point (END) of the flowchart.
+ 
+2. Input/Output Symbol. Input/output symbols are used to indicate the logical 
+positioning of input/output operations. The input operation is the entry of 
+computer data and the output operation is the displayed output operation. 
+ 
+3. Processing Symbol. Processing symbols are used to indicate the arithmetic and 
+data-movement instructions. Therefore, all arithmetic processing of adding, 
+subtracting, multiplying, and dividing are represented with a processing 
+symbol box. 
+ 
+4. Decision Symbol. Decision symbols have one entry point and there will be 
+at least two exit points depending upon the decision taken inside the symbol. 
+When a condition is tested, if the condition is true, the path for “yes” is 
+followed. If the condition is false, the path for “no” is followed.
+ 
+5. Flow Lines. Flow lines, which have arrowheads, are used to indicate the flow 
+of program logic in a flowchart. These arrows are used to indicate the direction 
+of the flow of control. This means these statements indicate the next statement 
+to be executed. 
+
+\n== AGARWAL2010 p146 ==\n 
+SYSTEM DESIGN 
+133
+ 
+6. Connector Symbol. If a flowchart is discontinued at some point and continued 
+again in another place, the connector symbol is used. It is a circle with a number 
+written inside it. If a flowchart is discontinued at some point, a circle is drawn 
+pointing away from the chart. Another circle with the same number inside is 
+placed where the flowchart is continued. 
+ 
+7. Hexagon (Flat). This is the preparation box. This box contains the loop-setting 
+statement, i.e., some iterative statement.
+ 
+Flowchart Drawing Rules
+ 
+Important rules and guidelines used for drawing flowcharts are:  
+ 
+ Only conventional flowchart symbols should be used.
+ 
+ Arrows can be used to indicate the flow of control in the problem. However, 
+flow lines should not cross each other.
+ 
+ Processing logic should flow from top to bottom and from left to right. 
+ 
+ Words in the flowchart symbols should be common statements and easy to 
+understand. These should be independent of programming languages.
+ 
+ Be consistent in using names and variables in the flowchart. 
+ 
+ If the flowchart becomes large and complex then connector symbols should be 
+used to avoid crossing of flow lines.
+ 
+ Properly labeled connectors should be used to link the portions of the flowchart 
+on different pages.
+ 
+ Flowcharts should have start and stop points.
+
+\n== AGARWAL2010 p147 ==\n134 
+SOF TWARE ENGINEERING AND TESTING
+ 
+Advantages of Flowcharts
+ 
+The various advantages of flowcharts are as follows:  
+ 
+ Synthesis. Flowcharts are used as working models in designing new programs 
+and software systems.
+ 
+ Documentation. Program documentation consists of activities, such as collecting, 
+organizing, storing, and maintaining all related records of a program. 
+ 
+ Coding. Flowcharts guide the programmer in writing the actual code in a high-
+level language, which is supposed to give an error-free program developed 
+expeditiously. 
+ 
+ Debugguing. The errors in a program are detected only after its execution on 
+a computer. These errors are called bugs and the process of removing these 
+errors is called debugging. In the debugging process, a flowchart acts as an 
+important tool in detecting, locating, and removing bugs from a program.
+ 
+ Communication. A flowchart is a pictorial representation of a program. 
+Therefore, it is an excellent communication technique to explain the logic of a 
+program to other programmers/people.
+ 
+ Analysis. Effective analysis of a logical problem can be easily done with the 
+help of a related flowchart. 
+ 
+ Testing. A flowchart is an important tool in the hands of a programmer, which 
+helps him in designing the test data for systematic testing of programs. 
+ 
+Limitations of Flowcharts
+ 
+The various limitations of flowcharts are as follows:  
+ 
+ The drawing of flowcharts is a very time-consuming process and laborious 
+especially for large, complex problems. 
+ 
+ The redrawing of flowcharts is even more difficult and time consuming. It is 
+very difficult to include any new step in the existing flowchart; redrawing of 
+the flowchart is the only solution. 
+ 
+ There are no standards, which specify the detail that should be included in 
+any flowchart.
+ 
+ If an algorithm has complex branches and loops, flowcharts become very 
+difficult to draw.
+ 
+ Sometimes flowcharts are not as detailed as desired. 
+ 
+Example of a Flowchart
+ 
+As an example, consider an algorithm to find the average of n numbers. The 
+flowchart is shown in Figure 5.10 followed by the algorithm. Here n is the integer 
+
+\n== AGARWAL2010 p148 ==\n 
+SYSTEM DESIGN 
+135
+variable denoting the number of values considered for computing the average. 
+Count is another integer variable denoting the number of values that are processed 
+at any instant. The number is an integer variable for storing the values.
+FIGURE 5.10 Flowchart to Find the Average of n Numbers
+
+\n== AGARWAL2010 p149 ==\n136 
+SOF TWARE ENGINEERING AND TESTING
+5.3.5 Difference Between Flowcharts and Structure Charts
+ 
+A structure chart differs from a flowchart in the following ways:  
+ 
+ It is usually difficult to identify different modules of the software from its 
+flowchart representation. 
+ 
+ Data interchange among different modules is not represented in a flowchart.
+ 
+ Sequential ordering of tasks inherent in a flowchart is suppressed in a structure 
+chart. 
+ 
+ A structure chart has no decision boxes.
+ 
+ 
+Unlike flowcharts, structure charts show how different modules within a 
+program interact and the data that is passed between them.
+5.4 
+COUPLING AND COHESION 
+5.4.1 
+Coupling
+ 
+The coupling between two modules indicates the degree of interdependence 
+between them. If two modules interchange a large amount of data, then they are 
+highly interdependent. The degree of coupling between two modules depends on 
+their interface complexity. The interface complexity is basically determined by the 
+number of types of parameters that are interchanged while invoking the functions 
+of the module.
+ 
+ 
+Highly Coupled: When the modules are highly dependent on each other then 
+they are called highly coupled.
+ 
+ 
+Loosely Coupled: When the modules are dependent on each other but the 
+interconnection among them is weak then they are called loosely coupled.
+FIGURE 5.11 Coupling
+
+\n== AGARWAL2010 p150 ==\n 
+SYSTEM DESIGN 
+137
+ 
+ 
+Uncoupled: When the different modules have no interconnection among them 
+then they are called uncoupled modules.
+ 
+Factors Affecting Coupling Between Modules
+ 
+The various factors which affect the coupling between modules are depicted in 
+Table 5.1. 
+TABLE 5.1 Factors Affecting Coupling
+Interface Complexity
+Type of Connection
+Type of Communication
+Low
+Simple Obvious
+To module by name
+Data
+High
+Complicated Obscure
+To internal elements 
+ControlHybrid
+ 
+Types of Couplings
+ 
+Different types of couplings include content, common, external, control, stamp, 
+and data. The strength of a coupling from the lowest coupling (best) to the highest 
+coupling (worst) is given in Figure 5.12.
+FIGURE 5.12 The Types of Module Coupling
+ 
+1. Data Coupling. Two modules are data coupled if they communicate using 
+an elementary data item that is passed as a parameter between the two; for 
+example, an integer, a float, a character, etc. This data item should be problem 
+related and not used for a control purpose.
+FIGURE 5.13 Data Coupling

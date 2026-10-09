@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="920" height="470" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Symmetric vs. Asymmetric — المتماثل مقابل غير المتماثل</text>
+
+  <!-- SYMMETRIC -->
+  <rect x="18" y="52" width="434" height="300" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="18" y="52" width="434" height="40" rx="14" fill="#16a34a"/>
+  <rect x="18" y="78" width="434" height="14" fill="#16a34a"/>
+  <text x="235" y="79" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">SYMMETRIC — مفتاح واحد مشترك</text>
+
+  <text x="40" y="118" font-size="12.5" fill="#374151">C = E_K(P)        P = D_K(C)</text>
+  <text x="40" y="140" font-size="12.5" fill="#374151">Secure if  D_K(E_K(P)) = P</text>
+
+  <text x="40" y="170" font-size="13" font-weight="700" fill="#166534">Algorithms</text>
+  <text x="40" y="191" font-size="12.5" fill="#374151">DES (1977) — block, 56-bit — broken by brute force</text>
+  <text x="40" y="211" font-size="12.5" fill="#374151">AES (2001) — block, 128/192/256 — the standard</text>
+  <text x="40" y="231" font-size="12.5" fill="#374151">ChaCha20 (2014) — stream, fast — TLS 1.3</text>
+
+  <text x="40" y="261" font-size="13" font-weight="700" fill="#166534">Strengths</text>
+  <text x="40" y="281" font-size="12.5" fill="#374151">Fast (gigabits/sec) · simple · compact keys · IoT</text>
+
+  <text x="40" y="311" font-size="13" font-weight="700" fill="#b91c1c">Weaknesses</text>
+  <text x="40" y="331" font-size="12.5" fill="#374151">Key distribution · n users need n(n−1)/2 keys · revocation</text>
+
+  <!-- ASYMMETRIC -->
+  <rect x="468" y="52" width="434" height="300" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="468" y="52" width="434" height="40" rx="14" fill="#7c3aed"/>
+  <rect x="468" y="78" width="434" height="14" fill="#7c3aed"/>
+  <text x="685" y="79" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">ASYMMETRIC — زوج مفاتيح</text>
+
+  <text x="490" y="118" font-size="12.5" fill="#374151">K_pub  → encrypt      K_priv → decrypt</text>
+  <text x="490" y="140" font-size="12.5" fill="#374151">No pre-shared secret needed</text>
+
+  <text x="490" y="170" font-size="13" font-weight="700" fill="#5b21b6">Algorithms</text>
+  <text x="490" y="191" font-size="12.5" fill="#374151">RSA (1978) — hard problem: factoring large integers</text>
+  <text x="490" y="211" font-size="12.5" fill="#374151">ECC (1985) — ECDLP · 256-bit ECC ≈ 3072-bit RSA</text>
+
+  <text x="490" y="241" font-size="13" font-weight="700" fill="#5b21b6">Strengths</text>
+  <text x="490" y="261" font-size="12.5" fill="#374151">Solves key distribution · digital signatures · PKI base</text>
+
+  <text x="490" y="291" font-size="13" font-weight="700" fill="#b91c1c">Weaknesses</text>
+  <text x="490" y="311" font-size="12.5" fill="#374151">Much slower · not for bulk data · Shor breaks RSA/ECC</text>
+
+  <!-- HYBRID strip -->
+  <rect x="18" y="368" width="884" height="84" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="2"/>
+  <text x="460" y="394" text-anchor="middle" font-size="15" font-weight="700" fill="#155e75">HYBRID — asymmetric exchanges the session key, symmetric encrypts the bulk</text>
+  <text x="460" y="418" text-anchor="middle" font-size="12.5" fill="#334155">TLS handshake:  certificate (K_pub)  ←  client generates session key  ←  encrypts it with K_pub  ←  both use AES / ChaCha20</text>
+  <text x="460" y="440" text-anchor="middle" font-size="12.5" fill="#6b7280">S_system = min(S_sym , S_asym , S_hash)  —  the weakest link dominates</text>
+</svg>

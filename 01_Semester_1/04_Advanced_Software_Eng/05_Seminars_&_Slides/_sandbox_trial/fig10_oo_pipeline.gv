@@ -1,0 +1,16 @@
+
+digraph OO {
+  rankdir=TB; nodesep=0.3; ranksep=0.4; bgcolor="white";
+  node [shape=box style="filled,rounded" fillcolor="#F1F5F9" fontname="Helvetica"
+        fontsize=11 color="#1E3A8A" penwidth=1.2];
+  edge [color="#1E3A8A" penwidth=1.2];
+  P [label="Problem statement", fillcolor="#FEF08A"];
+  U [label="1. Create use-case model"];
+  A [label="2. Draw activity diagram (if reqd.)"];
+  I [label="3. Draw interaction diagrams\n(sequence + collaboration)"];
+  C [label="4. Draw the class diagram"];
+  S [label="5. Draw state chart / object\ndiagram (if reqd.)"];
+  D [label="6. Draw component &\ndeployment diagram"];
+  Doc [label="Design documents", fillcolor="#FEF08A"];
+  P -> U -> A -> I -> C -> S -> D -> Doc;
+}

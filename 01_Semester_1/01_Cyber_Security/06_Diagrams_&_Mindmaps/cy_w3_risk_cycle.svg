@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" width="920" height="580" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0e7490"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="920" height="580" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">The Risk Management Cycle — دورة إدارة المخاطر (5 خطوات)</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13.5" fill="#6b7280">continuous · cyclical · never one-time</text>
+
+  <g transform="translate(0,56)">
+    <!-- arrows (drawn first, under nodes) -->
+    <path d="M 512 116 A 150 150 0 0 1 604 200" fill="none" stroke="#0e7490" stroke-width="2.5" marker-end="url(#arw)"/>
+    <path d="M 596 380 A 150 150 0 0 1 470 392" fill="none" stroke="#0e7490" stroke-width="2.5" marker-end="url(#arw)"/>
+    <path d="M 340 366 A 150 150 0 0 1 302 240" fill="none" stroke="#0e7490" stroke-width="2.5" marker-end="url(#arw)"/>
+    <path d="M 300 176 A 150 150 0 0 1 388 100" fill="none" stroke="#0e7490" stroke-width="2.5" marker-end="url(#arw)"/>
+
+    <!-- 1 Identify -->
+    <circle cx="450" cy="80" r="60" fill="#ecfeff" stroke="#0e7490" stroke-width="2.5"/>
+    <text x="450" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#155e75">1</text>
+    <text x="450" y="94" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Identify</text>
+    <text x="450" y="113" text-anchor="middle" font-size="12.5" fill="#4b5563">تحديد</text>
+
+    <!-- 2 Assess -->
+    <circle cx="593" cy="184" r="60" fill="#ecfeff" stroke="#0e7490" stroke-width="2.5"/>
+    <text x="593" y="176" text-anchor="middle" font-size="16" font-weight="700" fill="#155e75">2</text>
+    <text x="593" y="198" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Assess</text>
+    <text x="593" y="217" text-anchor="middle" font-size="12.5" fill="#4b5563">تقييم</text>
+
+    <!-- 3 Prioritize -->
+    <circle cx="538" cy="351" r="60" fill="#ecfeff" stroke="#0e7490" stroke-width="2.5"/>
+    <text x="538" y="343" text-anchor="middle" font-size="16" font-weight="700" fill="#155e75">3</text>
+    <text x="538" y="365" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Prioritize</text>
+    <text x="538" y="384" text-anchor="middle" font-size="12.5" fill="#4b5563">ترتيب</text>
+
+    <!-- 4 Mitigate -->
+    <circle cx="362" cy="351" r="60" fill="#ecfeff" stroke="#0e7490" stroke-width="2.5"/>
+    <text x="362" y="343" text-anchor="middle" font-size="16" font-weight="700" fill="#155e75">4</text>
+    <text x="362" y="365" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Mitigate</text>
+    <text x="362" y="384" text-anchor="middle" font-size="12.5" fill="#4b5563">تخفيف</text>
+
+    <!-- 5 Monitor -->
+    <circle cx="307" cy="184" r="60" fill="#ecfeff" stroke="#0e7490" stroke-width="2.5"/>
+    <text x="307" y="176" text-anchor="middle" font-size="16" font-weight="700" fill="#155e75">5</text>
+    <text x="307" y="198" text-anchor="middle" font-size="14.5" font-weight="700" fill="#0f766e">Monitor</text>
+    <text x="307" y="217" text-anchor="middle" font-size="12.5" fill="#4b5563">مراقبة</text>
+
+    <!-- centre -->
+    <text x="450" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">Risk</text>
+    <text x="450" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">Management</text>
+
+    <!-- standards note -->
+    <rect x="150" y="440" width="620" height="58" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+    <text x="460" y="463" text-anchor="middle" font-size="13.5" fill="#374151">Integration with Standards:  ISO/IEC 27005 (information-security risk) · NIST SP 800-37 (RMF)</text>
+    <text x="460" y="484" text-anchor="middle" font-size="12.5" fill="#6b7280">⚠ لا تخلط بينها وبين PDCA (4 مراحل) — هذي 5 خطوات</text>
+  </g>
+</svg>

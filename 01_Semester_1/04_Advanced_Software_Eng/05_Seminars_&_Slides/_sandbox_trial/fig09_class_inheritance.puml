@@ -1,0 +1,24 @@
+
+@startuml
+skinparam style strictuml
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam classAttributeIconSize 0
+class Shape {
+  - Colour
+  + SetColour()
+  + Draw()
+}
+class Square {
+  - Point[4]
+  + Draw()
+}
+class Triangle {
+  - Point[3]
+  + Draw()
+}
+Shape <|-- Square
+Shape <|-- Triangle
+note right of Shape : Base class (super class)
+note bottom of Square : Desired class (subclass)
+@enduml

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="920" height="340" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2937">Transport Protocols — TCP · UDP · QUIC</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#6b7280">the protocol's own design choices create the attack surface</text>
+
+  <!-- TCP -->
+  <rect x="18" y="74" width="288" height="196" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <rect x="18" y="74" width="288" height="34" rx="12" fill="#2563eb"/>
+  <rect x="18" y="96" width="288" height="12" fill="#2563eb"/>
+  <text x="162" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">TCP — stateful</text>
+  <text x="38" y="134" font-size="12.5" fill="#1e3a8a">3-way handshake: SYN · SYN-ACK · ACK</text>
+  <text x="38" y="158" font-size="12.5" fill="#374151">Reliable, ordered, connection state</text>
+  <text x="38" y="182" font-size="12.5" fill="#374151">State table = resource to exhaust</text>
+  <text x="38" y="214" font-size="13" font-weight="700" fill="#b91c1c">Attack</text>
+  <text x="38" y="236" font-size="12.5" fill="#374151">SYN flood — half-open connections</text>
+  <text x="38" y="256" font-size="12.5" fill="#6b7280">Erlang loss formula models overflow</text>
+
+  <!-- UDP -->
+  <rect x="316" y="74" width="288" height="196" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <rect x="316" y="74" width="288" height="34" rx="12" fill="#d97706"/>
+  <rect x="316" y="96" width="288" height="12" fill="#d97706"/>
+  <text x="460" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">UDP — stateless</text>
+  <text x="336" y="134" font-size="12.5" fill="#78350f">No handshake, no session semantics</text>
+  <text x="336" y="158" font-size="12.5" fill="#374151">Fire-and-forget datagrams</text>
+  <text x="336" y="182" font-size="12.5" fill="#374151">Cheap, fast, no memory per flow</text>
+  <text x="336" y="214" font-size="13" font-weight="700" fill="#b91c1c">Attack</text>
+  <text x="336" y="236" font-size="12.5" fill="#374151">Reflection &amp; amplification</text>
+  <text x="336" y="256" font-size="12.5" fill="#6b7280">spoofed source → victim gets the flood</text>
+
+  <!-- QUIC -->
+  <rect x="614" y="74" width="288" height="196" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="614" y="74" width="288" height="34" rx="12" fill="#16a34a"/>
+  <rect x="614" y="96" width="288" height="12" fill="#16a34a"/>
+  <text x="758" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">QUIC (over UDP) — HTTP/3</text>
+  <text x="634" y="134" font-size="12.5" fill="#166534">Runs on UDP, encrypts the transport</text>
+  <text x="634" y="158" font-size="12.5" fill="#374151">TLS 1.3 built in, 0-RTT resumption</text>
+  <text x="634" y="182" font-size="12.5" fill="#374151">Multiplexed streams, no head-of-line</text>
+  <text x="634" y="214" font-size="13" font-weight="700" fill="#166534">Trade-off</text>
+  <text x="634" y="236" font-size="12.5" fill="#374151">Visibility for middleboxes drops</text>
+  <text x="634" y="256" font-size="12.5" fill="#6b7280">encrypted transport = blind inspection</text>
+
+  <rect x="18" y="286" width="884" height="42" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="460" y="313" text-anchor="middle" font-size="13" fill="#374151">Lesson: a protocol's statefulness, handshake and header design <tspan font-weight="700">are</tspan> the vulnerability class</text>
+</svg>

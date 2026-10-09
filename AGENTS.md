@@ -39,7 +39,7 @@ Agents operating in this vault must function not merely as generic text generato
 > - If the student says: *"Make a Word doc / PowerPoint"* $\rightarrow$ YOU execute `office_exporter.py` in the background.
 > - If the student says: *"Teach me [topic]"* $\rightarrow$ YOU teach from first principles using the Feynman technique (explain like I'm 9 years old first + concrete worked examples), deconstruct all academic terms, and do not stop at dry summaries unless the student says *"I know this"*.
 - If the student says: *"Quiz me on [topic]"* / *"Test me"* / *"Open quiz on phone"* / *"افتح الكوز"* $\rightarrow$ YOU conduct the quiz interactively in chat (oral viva), OR execute `python 90_Shared_Toolbox/tools/quiz_qr.py <Subject> <Quiz> --open` to pop it up directly in the default browser (Chromium/Chrome) for 1-click device sharing, and YOU update `LEARNER_MODEL.md` based on results.
-> - If the student says: *"Sync my phone / انقل التحديث للموبايل / حدث ملفاتي"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/phone_sync.py` in the background.
+> - If the student says: *"Sync my phone / انقل التحديث للموبايل / حدث ملفاتي"* $\rightarrow$ YOU execute `python 90_Shared_Toolbox/tools/phone_sync.py` in the background. It is **incremental** (`adb push --sync`) and **honest**: a non-zero exit means files really failed, so never report success on exit 1. Useful flags: `--dry-run` (preview), `--all` (adds toolbox/dashboard/docs), `--prune` (list phone files that no longer exist in the vault), `--clean --yes` (delete them), `--pull` (bring phone files back into `_inbox_from_phone/`), `--wifi IP` (connect wirelessly first).
 > - If the student says: *"Save my progress / push to GitHub"* $\rightarrow$ YOU execute the `git` commit and push commands in the background.
 
 
@@ -251,6 +251,10 @@ When generating quiz banks (`Quiz_NN_<Topic>.json`):
      - Industry-standard technical terms, acronyms, and proper nouns without direct Arabic equivalents (e.g. `Scrum`, `OTP`, `MapReduce`, `K-Means`, `BKT`, `Raft`, `FP-Growth`, `Pipeline`, `Overclocking`, `Stack Overflow`) MUST be written directly in **clean English** within the sentence without awkward brackets.
      - General Arabic concepts MUST be written in clean, natural Arabic without appending redundant English words in parentheses.
      - Eliminating parenthetical bloat prevents the "3-line giveaway" tell and eliminates BiDi punctuation jumping in browser viewports.
+
+6. **RTL Direction & Source-Format Fidelity (Mandatory Typography Invariants — ALL AGENTS):**
+   - **RTL Arrow Invariant (Arabic = `←`):** In any **Arabic / RTL** line, a flow or "leads-to" arrow MUST be the **leftwards arrow `←`** — Arabic reads right-to-left, so `←` points *forward*. **NEVER** use `→` inside an Arabic line (it renders pointing **backwards**). In **English / LTR** lines and English table cells, keep `→`. Test: if the sentence is Arabic, the arrow points **left**. *(Auto-enforced & auto-fixed by `note_linter.py` — the Delivery Gate fails otherwise.)*
+   - **Source-Format Fidelity Invariant:** When quoting or reproducing source material (lecture slides, textbook, regulation, PDF), carry over the source's **formatting**, not only its words. A bulleted/numbered **list** in the source MUST remain a **list** (`-` / `1.` or a Markdown table); a heading stays a heading; an enumerated sequence stays enumerated. **NEVER flatten a source list into a run-on paragraph.**
 
 ### 6.2.1. Inviolable Zero-Chance Delivery Gate (MANDATORY FOR ALL AGENTS)
 NO QUIZ ARTIFACT MAY BE DELIVERED, ANNOUNCED, OR COMMITTED WITHOUT PASSING:

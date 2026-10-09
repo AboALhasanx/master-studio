@@ -63,6 +63,14 @@ def lint_and_fix_markdown(file_path: Path, auto_fix: bool = False) -> Tuple[int,
         if re.match(r"^##\s+.*?(?:retrieval|active\s*recall|أسئلة|الاسترجاع)", line, re.IGNORECASE):
             has_retrieval_set = True
 
+        # 1a. RTL Arrow Invariant (MANDATORY): Arabic/RTL lines must use '←', never '→'.
+        # In an RTL sentence the rightwards arrow renders pointing BACKWARDS; the leftwards
+        # arrow '←' is the correct forward direction. English/LTR lines keep '→' (untouched).
+        if "\u2192" in line and re.search(r"[\u0600-\u06FF]", line):
+            errors.append(f"Line {line_num}: RTL arrow violation — Arabic line uses '→'. Use '←' (reading direction).")
+            line = line.replace("\u2192", "\u2190")
+            fixes.append(f"Line {line_num}: RTL arrow '→' -> '←' (Arabic reading direction).")
+
         # 1. Unbalanced / Broken Asterisks inside blockquotes or text
         # Pattern A: ***Text** (3 opened, 2 closed)
         if re.search(r"\*\*\*([^*\n]+?)\*\*(?!\*)", line):
