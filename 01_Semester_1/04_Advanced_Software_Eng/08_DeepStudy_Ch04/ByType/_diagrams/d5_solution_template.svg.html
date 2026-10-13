@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="700" viewBox="0 0 1080 700" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="40" text-anchor="middle" font-size="29" font-weight="700" fill="#1e3a8a">The Step-by-Step Solution Template</text>
+<text x="540" y="68" text-anchor="middle" font-size="15" fill="#64748b">how every calculation in this chapter is written out &#8212; no skipped steps</text>
+<line x1="30" y1="92" x2="1050" y2="92" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- 6 steps -->
+<rect x="40" y="120" width="1000" height="72" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+<text x="65" y="150" font-size="15" font-weight="700" fill="#1e3a8a">&#9312; EXTRACT THE GIVENS</text>
+<text x="65" y="174" font-size="12.5" fill="#334155">list size / mode / drivers / ratings in a small table &#8212; never start computing before this is complete</text>
+
+<rect x="40" y="206" width="1000" height="72" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+<text x="65" y="236" font-size="15" font-weight="700" fill="#1e3a8a">&#9313; WRITE THE SYMBOLIC FORMULA</text>
+<text x="65" y="260" font-size="12.5" fill="#334155">e.g. E = a(KLOC)^b  &#8212; then say what each symbol is. Don't plug numbers yet.</text>
+
+<rect x="40" y="292" width="1000" height="100" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+<text x="65" y="322" font-size="15" font-weight="700" fill="#92400e">&#9314; SUBSTITUTE STEP BY STEP</text>
+<text x="65" y="348" font-size="12.5" fill="#334155">Line 1: E = 2.4 &#215; (400)^1.05</text>
+<text x="65" y="370" font-size="12.5" fill="#334155">Line 2:   = 2.4 &#215; 546.8          &#8592; show every intermediate arithmetic</text>
+<text x="65" y="388" font-size="12.5" fill="#334155">Line 3:   = 1312 PM</text>
+
+<rect x="40" y="406" width="1000" height="72" rx="10" fill="#ecfdf5" stroke="#22c55e" stroke-width="1.6"/>
+<text x="65" y="436" font-size="15" font-weight="700" fill="#15803d">&#9315; STATE THE RESULT WITH UNITS</text>
+<text x="65" y="460" font-size="12.5" fill="#334155">"Effort = 1312 person-months" &#8212; units matter (PM vs PY vs months vs persons)</text>
+
+<rect x="40" y="492" width="1000" height="72" rx="10" fill="#faf5ff" stroke="#8b5cf6" stroke-width="1.6"/>
+<text x="65" y="522" font-size="15" font-weight="700" fill="#6d28d9">&#9316; SANITY-CHECK</text>
+<text x="65" y="546" font-size="12.5" fill="#334155">is the magnitude reasonable? does it scale as expected? (embedded should exceed organic)</text>
+
+<rect x="40" y="578" width="1000" height="72" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.6"/>
+<text x="65" y="608" font-size="15" font-weight="700" fill="#b91c1c">&#9317; NAME THE COMMON MISTAKE</text>
+<text x="65" y="632" font-size="12.5" fill="#334155">e.g. "forgot PY&#8594;PM &#215;12", "used a_b instead of a_i", "used K instead of K_d"</text>
+
+<text x="540" y="682" text-anchor="middle" font-size="12.5" fill="#94a3b8">Rule: a solution with a skipped line is a solution you cannot re-check under exam pressure.</text>
+</svg>
+</div></body></html>

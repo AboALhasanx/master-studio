@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="720" viewBox="0 0 1080 720" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="40" text-anchor="middle" font-size="29" font-weight="700" fill="#1e3a8a">The COCOMO Family &#8212; One Map</text>
+<text x="540" y="68" text-anchor="middle" font-size="15" fill="#64748b">COCOMO 81 (three levels) and COCOMO II (three stages) side by side</text>
+<line x1="30" y1="92" x2="1050" y2="92" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- COCOMO 81 -->
+<text x="265" y="126" text-anchor="middle" font-size="18" font-weight="700" fill="#92400e">COCOMO 81 (Boehm, 1981)</text>
+<rect x="30" y="140" width="470" height="230" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+<rect x="50" y="160" width="430" height="62" rx="8" fill="#fef3c7" stroke="#fbbf24"/>
+<text x="70" y="184" font-size="14" font-weight="700" fill="#92400e">BASIC</text>
+<text x="70" y="206" font-size="12" fill="#334155">E = a&#8342;(KLOC)^b&#8342;   &#183;   D = c&#8342;(E)^d&#8342;</text>
+<rect x="50" y="230" width="430" height="62" rx="8" fill="#fef3c7" stroke="#fbbf24"/>
+<text x="70" y="254" font-size="14" font-weight="700" fill="#92400e">INTERMEDIATE</text>
+<text x="70" y="276" font-size="12" fill="#334155">E = a&#7522;(KLOC)^b&#7522; &#215; EAF   (15 cost drivers)</text>
+<rect x="50" y="300" width="430" height="58" rx="8" fill="#fef3c7" stroke="#fbbf24"/>
+<text x="70" y="324" font-size="14" font-weight="700" fill="#92400e">DETAILED</text>
+<text x="70" y="346" font-size="12" fill="#334155">phase-sensitive multipliers, 3-level hierarchy</text>
+
+<!-- modes table -->
+<text x="540" y="126" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">THREE MODES (basic coefficients)</text>
+<rect x="520" y="140" width="530" height="230" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+<g font-size="12.5" fill="#334155">
+<text x="545" y="170" font-weight="700" fill="#1e3a8a">Mode</text>
+<text x="700" y="170" font-weight="700" fill="#1e3a8a">a&#8342;</text>
+<text x="760" y="170" font-weight="700" fill="#1e3a8a">b&#8342;</text>
+<text x="820" y="170" font-weight="700" fill="#1e3a8a">c&#8342;</text>
+<text x="880" y="170" font-weight="700" fill="#1e3a8a">d&#8342;</text>
+<text x="960" y="170" font-weight="700" fill="#1e3a8a">when?</text>
+<line x1="540" y1="180" x2="1035" y2="180" stroke="#93c5fd"/>
+<text x="545" y="204">Organic</text><text x="700" y="204">2.4</text><text x="760" y="204">1.05</text><text x="820" y="204">2.5</text><text x="880" y="204">0.38</text><text x="948" y="204" font-size="10.5" fill="#64748b">small, familiar</text>
+<text x="545" y="234">Semidetached</text><text x="700" y="234">3.0</text><text x="760" y="234">1.12</text><text x="820" y="234">2.5</text><text x="880" y="234">0.35</text><text x="948" y="234" font-size="10.5" fill="#64748b">medium mix</text>
+<text x="545" y="264">Embedded</text><text x="700" y="264">3.6</text><text x="760" y="264">1.20</text><text x="820" y="264">2.5</text><text x="880" y="264">0.32</text><text x="948" y="264" font-size="10.5" fill="#64748b">tight constraints</text>
+<line x1="540" y1="280" x2="1035" y2="280" stroke="#93c5fd"/>
+<text x="545" y="302" font-size="11.5" fill="#64748b">Intermediate coefficients differ! a&#7522; = 3.2 / 3.0 / 2.8  (because EAF compensates)</text>
+<text x="545" y="326" font-size="11.5" fill="#64748b">b&#7522; = 1.05 / 1.12 / 1.20 &#183; c&#7522; = 2.5 &#183; d&#7522; = 0.38 / 0.35 / 0.32</text>
+<text x="545" y="352" font-size="11.5" fill="#b91c1c">&#9888; Don't mix a&#8342; (2.4) with a&#7522; (3.2) for organic!</text>
+
+<!-- COCOMO II -->
+<line x1="30" y1="392" x2="1050" y2="392" stroke="#e2e8f0" stroke-width="1.4"/>
+<text x="540" y="426" text-anchor="middle" font-size="18" font-weight="700" fill="#115e59">COCOMO II</text>
+<rect x="30" y="440" width="1020" height="70" rx="10" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.6"/>
+<text x="50" y="466" font-size="13.5" font-weight="700" fill="#115e59">4 CATEGORIES:</text>
+<text x="50" y="492" font-size="12.5" fill="#334155">End-user programming &#183; Infrastructure &#183; Application generators &#183; System integration</text>
+
+<rect x="30" y="524" width="330" height="130" rx="10" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.5"/>
+<text x="195" y="552" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0e7490">Stage 1: Application Composition</text>
+<text x="195" y="578" text-anchor="middle" font-size="12" fill="#334155">object points &#8594; NOP</text>
+<text x="195" y="600" text-anchor="middle" font-size="12" fill="#334155">Effort = NOP / PROD</text>
+<text x="195" y="624" text-anchor="middle" font-size="11" fill="#64748b">size in object points</text>
+
+<rect x="375" y="524" width="330" height="130" rx="10" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.5"/>
+<text x="540" y="552" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0e7490">Stage 2: Early Design</text>
+<text x="540" y="578" text-anchor="middle" font-size="12" fill="#334155">PM = 2.5 &#215; size^B</text>
+<text x="540" y="600" text-anchor="middle" font-size="12" fill="#334155">B = 0.91 + 0.01&#931;SF (5 factors)</text>
+<text x="540" y="624" text-anchor="middle" font-size="11" fill="#64748b">&#215; 7 effort multipliers</text>
+
+<rect x="720" y="524" width="330" height="130" rx="10" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.5"/>
+<text x="885" y="552" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0e7490">Stage 3: Post-Architecture</text>
+<text x="885" y="578" text-anchor="middle" font-size="12" fill="#334155">most detailed</text>
+<text x="885" y="600" text-anchor="middle" font-size="12" fill="#334155">&#215; 17 effort multipliers</text>
+<text x="885" y="624" text-anchor="middle" font-size="11" fill="#64748b">after architecture done</text>
+
+<text x="540" y="688" text-anchor="middle" font-size="12" fill="#94a3b8">TDEV = [&#966; &#215; PM_adjusted^(0.28+0.2(B&#8722;0.91))] &#215; SCED%   with &#966; = 3.67</text>
+</svg>
+</div></body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="700" viewBox="0 0 1080 700" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">The Six Steps of Object-Oriented Design</text>
+<text x="540" y="72" text-anchor="middle" font-size="16" fill="#64748b">Fig. 25 &#183; identical on slide 72 and in the book, printed p.232 &#183; six steps, not seven</text>
+<line x1="30" y1="96" x2="1050" y2="96" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- vertical flow -->
+<text x="70" y="128" font-size="13" font-weight="700" fill="#64748b" letter-spacing="1">PROBLEM STATEMENT</text>
+<rect x="70" y="138" width="360" height="58" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8"/>
+<text x="90" y="164" font-size="16" font-weight="700" fill="#1e40af">1 &#183; Create use case model</text>
+<text x="90" y="184" font-size="12" fill="#334155">identify actors &#183; write use cases &#183; draw use-case diagram</text>
+
+<line x1="250" y1="196" x2="250" y2="220" stroke="#94a3b8" stroke-width="2.4"/>
+<path d="M250 228 l-6 -11 l12 0 z" fill="#94a3b8"/>
+
+<rect x="70" y="228" width="360" height="58" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.8"/>
+<text x="90" y="254" font-size="16" font-weight="700" fill="#6d28d9">2 &#183; Draw activity diagram</text>
+<text x="90" y="274" font-size="12" fill="#334155">flow of control activity&#8594;activity &#183; (if required)</text>
+
+<line x1="250" y1="286" x2="250" y2="310" stroke="#94a3b8" stroke-width="2.4"/>
+<path d="M250 318 l-6 -11 l12 0 z" fill="#94a3b8"/>
+
+<rect x="70" y="318" width="360" height="58" rx="10" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.8"/>
+<text x="90" y="344" font-size="16" font-weight="700" fill="#0e7490">3 &#183; Draw interaction diagrams</text>
+<text x="90" y="364" font-size="12" fill="#334155">sequence + collaboration &#183; messages over time</text>
+
+<line x1="250" y1="376" x2="250" y2="400" stroke="#94a3b8" stroke-width="2.4"/>
+<path d="M250 408 l-6 -11 l12 0 z" fill="#94a3b8"/>
+
+<rect x="70" y="408" width="360" height="58" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.8"/>
+<text x="90" y="434" font-size="16" font-weight="700" fill="#15803d">4 &#183; Draw the class diagram</text>
+<text x="90" y="454" font-size="12" fill="#334155">static structure &#183; association/dependency/aggregation/generalisation</text>
+
+<line x1="250" y1="466" x2="250" y2="490" stroke="#94a3b8" stroke-width="2.4"/>
+<path d="M250 498 l-6 -11 l12 0 z" fill="#94a3b8"/>
+
+<rect x="70" y="498" width="360" height="58" rx="10" fill="#fef9c3" stroke="#eab308" stroke-width="1.8"/>
+<text x="90" y="524" font-size="16" font-weight="700" fill="#a16207">5 &#183; Draw state chart / object diagram</text>
+<text x="90" y="544" font-size="12" fill="#334155">states of an object &#183; events causing transitions &#183; (if required)</text>
+
+<line x1="250" y1="556" x2="250" y2="580" stroke="#94a3b8" stroke-width="2.4"/>
+<path d="M250 588 l-6 -11 l12 0 z" fill="#94a3b8"/>
+<rect x="70" y="590" width="360" height="70" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.8"/>
+<text x="90" y="616" font-size="15" font-weight="700" fill="#b91c1c">6 &#183; Draw component &amp; deployment diagrams</text>
+<text x="90" y="640" font-size="12" fill="#7f1d1d">&#8594; produces the design documents</text>
+
+<!-- right: notes -->
+<rect x="500" y="138" width="520" height="150" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<text x="520" y="166" font-size="15" font-weight="700" fill="#1e40af">Why these six and no more</text>
+<text x="520" y="194" font-size="13" fill="#334155">&#8226; Each step feeds the next: use cases define the actors,</text>
+<text x="520" y="214" font-size="13" fill="#334155">   activity/interaction capture behaviour, the class diagram</text>
+<text x="520" y="234" font-size="13" fill="#334155">   captures structure, state/component capture lifecycle &amp; build.</text>
+<text x="520" y="262" font-size="13" fill="#334155">&#8226; Steps 2 and 5 are marked &#8220;if required&#8221; — they are optional.</text>
+
+<rect x="500" y="304" width="520" height="132" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+<text x="520" y="332" font-size="15" font-weight="700" fill="#b91c1c">&#9888; The exam trap</text>
+<text x="520" y="360" font-size="13" fill="#7f1d1d">The slide (75) prints the interaction-diagram sub-steps as</text>
+<text x="520" y="380" font-size="13" fill="#7f1d1d">&#8220;a) b) d)&#8221; — it skips the letter (c). The chapter has no (c);</text>
+<text x="520" y="400" font-size="13" fill="#7f1d1d">the content is still exactly six stages. Do not invent a seventh.</text>
+<text x="520" y="424" font-size="12" fill="#64748b">Verified by re-rendering the book pages.</text>
+
+<rect x="500" y="452" width="520" height="178" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+<text x="520" y="480" font-size="15" font-weight="700" fill="#15803d">Diagram types produced (slide 75)</text>
+<text x="520" y="508" font-size="13" fill="#334155">&#8226; Use-case diagram &#8594; actors &amp; system boundary</text>
+<text x="520" y="530" font-size="13" fill="#334155">&#8226; Activity diagram &#8594; dynamic control flow</text>
+<text x="520" y="552" font-size="13" fill="#334155">&#8226; Sequence / collaboration &#8594; message exchange</text>
+<text x="520" y="574" font-size="13" fill="#334155">&#8226; Class diagram &#8594; classes, attributes, operations</text>
+<text x="520" y="596" font-size="13" fill="#334155">&#8226; State chart &#8594; object lifecycle</text>
+<text x="520" y="618" font-size="13" fill="#334155">&#8226; Component / deployment &#8594; physical layout</text>
+</svg>
+</div></body></html>

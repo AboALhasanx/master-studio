@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="600" viewBox="0 0 1080 600" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">The Software Design Description (SDD)</text>
+<text x="540" y="72" text-anchor="middle" font-size="16" fill="#64748b">IEEE STD 1016-1998 &#183; four design views &#183; ten entity attributes (a&#8211;j) &#183; slides 50&#8211;57</text>
+<line x1="30" y1="96" x2="1050" y2="96" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<text x="30" y="132" font-size="15" font-weight="700" fill="#1e3a8a" letter-spacing="1">THE FOUR DESIGN VIEWS</text>
+<rect x="30" y="146" width="240" height="150" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+<text x="50" y="176" font-size="15" font-weight="700" fill="#1e40af">1 &#183; Decomposition</text>
+<text x="50" y="202" font-size="12" fill="#334155">How the system is broken into</text>
+<text x="50" y="220" font-size="12" fill="#334155">modules and sub-modules.</text>
+<text x="50" y="248" font-size="11.5" fill="#64748b">&#8220;What are the parts?&#8221;</text>
+
+<rect x="285" y="146" width="240" height="150" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.6"/>
+<text x="305" y="176" font-size="15" font-weight="700" fill="#6d28d9">2 &#183; Dependency</text>
+<text x="305" y="202" font-size="12" fill="#334155">How modules depend on and</text>
+<text x="305" y="220" font-size="12" fill="#334155">interact with each other.</text>
+<text x="305" y="248" font-size="11.5" fill="#64748b">&#8220;Who calls whom?&#8221;</text>
+
+<rect x="540" y="146" width="240" height="150" rx="10" fill="#ecfeff" stroke="#06b6d4" stroke-width="1.6"/>
+<text x="560" y="176" font-size="15" font-weight="700" fill="#0e7490">3 &#183; Interface</text>
+<text x="560" y="202" font-size="12" fill="#334155">The signatures and contracts</text>
+<text x="560" y="220" font-size="12" fill="#334155">each module exposes.</text>
+<text x="560" y="248" font-size="11.5" fill="#64748b">&#8220;How do I use it?&#8221;</text>
+
+<rect x="795" y="146" width="240" height="150" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.6"/>
+<text x="815" y="176" font-size="15" font-weight="700" fill="#15803d">4 &#183; Detail</text>
+<text x="815" y="202" font-size="12" fill="#334155">The internal processing logic</text>
+<text x="815" y="220" font-size="12" fill="#334155">of each module.</text>
+<text x="815" y="248" font-size="11.5" fill="#64748b">&#8220;How does it work?&#8221;</text>
+
+<line x1="30" y1="320" x2="1050" y2="320" stroke="#e2e8f0" stroke-width="1.4"/>
+<text x="30" y="352" font-size="15" font-weight="700" fill="#1e3a8a" letter-spacing="1">THE TEN ENTITY ATTRIBUTES (a&#8211;j)</text>
+<text x="30" y="380" font-size="12.5" fill="#334155">Each design entity is described by ten attributes:</text>
+<g font-size="12.5" fill="#334155">
+<text x="40" y="412">(a) Identification</text>
+<text x="40" y="440">(b) Type</text>
+<text x="40" y="468">(c) Purpose</text>
+<text x="40" y="496">(d) Function</text>
+<text x="40" y="524">(e) Subordinates</text>
+<text x="300" y="412">(f) Dependencies</text>
+<text x="300" y="440">(g) Interface</text>
+<text x="300" y="468">(h) Resources</text>
+<text x="300" y="496">(i) Processing</text>
+<text x="300" y="524">(j) Data</text>
+</g>
+<rect x="560" y="386" width="475" height="158" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.4"/>
+<text x="580" y="414" font-size="13.5" font-weight="700" fill="#1e40af">Why the SDD matters</text>
+<text x="580" y="442" font-size="12.5" fill="#334155">&#8226; It is the design-phase deliverable (with the design itself).</text>
+<text x="580" y="466" font-size="12.5" fill="#334155">&#8226; It is the bridge from design to coding and testing.</text>
+<text x="580" y="490" font-size="12.5" fill="#334155">&#8226; It records the design so it can be reviewed and maintained.</text>
+<text x="580" y="514" font-size="12.5" fill="#334155">&#8226; Views 1&#8211;2 answer structure; views 3&#8211;4 answer behaviour.</text>
+<text x="580" y="538" font-size="11.5" fill="#64748b">A design is &#8220;complete&#8221; only when all four views are documented.</text>
+</svg>
+</div></body></html>

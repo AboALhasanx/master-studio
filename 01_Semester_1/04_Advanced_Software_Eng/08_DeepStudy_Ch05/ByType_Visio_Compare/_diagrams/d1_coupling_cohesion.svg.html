@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="720" viewBox="0 0 1080 720" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">The Two Master Tables</text>
+<text x="540" y="72" text-anchor="middle" font-size="16" fill="#64748b">Coupling (between modules) and Cohesion (inside a module) &#183; Aggarwal &amp; Singh, Fig. 7 (slide 19) &amp; Fig. 11 (slide 27)</text>
+<line x1="30" y1="96" x2="1050" y2="96" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- LEFT: COUPLING -->
+<text x="60" y="132" font-size="20" font-weight="700" fill="#b91c1c">COUPLING &#8594; aim for the TOP</text>
+<text x="60" y="156" font-size="13" fill="#64748b">6 types &#183; best = Data, worst = Content</text>
+
+<rect x="60" y="176" width="450" height="60" rx="9" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+<text x="80" y="203" font-size="17" font-weight="700" fill="#166534">1 &#183; Data coupling</text>
+<text x="80" y="224" font-size="12" fill="#166534">BEST &#8212; modules exchange only primitive data</text>
+
+<rect x="60" y="244" width="450" height="52" rx="9" fill="#ecfccb" stroke="#84cc16" stroke-width="1.6"/>
+<text x="80" y="268" font-size="16" font-weight="700" fill="#4d7c0f">2 &#183; Stamp coupling</text>
+<text x="80" y="287" font-size="12" fill="#4d7c0f">a whole data structure is passed, not just fields</text>
+
+<rect x="60" y="304" width="450" height="52" rx="9" fill="#fef9c3" stroke="#eab308" stroke-width="1.6"/>
+<text x="80" y="328" font-size="16" font-weight="700" fill="#a16207">3 &#183; Control coupling</text>
+<text x="80" y="347" font-size="12" fill="#a16207">a flag is passed to steer the other module's logic</text>
+
+<rect x="60" y="364" width="450" height="52" rx="9" fill="#ffedd5" stroke="#f97316" stroke-width="1.6"/>
+<text x="80" y="388" font-size="16" font-weight="700" fill="#c2410c">4 &#183; External coupling</text>
+<text x="80" y="407" font-size="12" fill="#c2410c">two modules share an external interface / format</text>
+
+<rect x="60" y="424" width="450" height="52" rx="9" fill="#fee2e2" stroke="#ef4444" stroke-width="1.6"/>
+<text x="80" y="448" font-size="16" font-weight="700" fill="#b91c1c">5 &#183; Common coupling</text>
+<text x="80" y="467" font-size="12" fill="#b91c1c">both read/write a shared global data area</text>
+
+<rect x="60" y="484" width="450" height="60" rx="9" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
+<text x="80" y="511" font-size="17" font-weight="700" fill="#7f1d1d">6 &#183; Content coupling</text>
+<text x="80" y="532" font-size="12" fill="#7f1d1d">WORST &#8212; one module reaches into another's internals</text>
+
+<!-- arrow best->worst left -->
+<line x1="30" y1="176" x2="30" y2="544" stroke="#94a3b8" stroke-width="3"/>
+<path d="M30 552 l-7 -12 l14 0 z" fill="#94a3b8"/>
+<text x="18" y="200" font-size="11" font-weight="700" fill="#16a34a" transform="rotate(-90 18 200)">BEST</text>
+<text x="18" y="540" font-size="11" font-weight="700" fill="#dc2626" transform="rotate(-90 18 540)">WORST</text>
+
+<!-- RIGHT: COHESION -->
+<text x="590" y="132" font-size="20" font-weight="700" fill="#15803d">COHESION &#8594; aim for the TOP</text>
+<text x="590" y="156" font-size="13" fill="#64748b">7 types &#183; best = Functional, worst = Coincidental</text>
+
+<rect x="590" y="176" width="450" height="48" rx="9" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+<text x="610" y="206" font-size="16" font-weight="700" fill="#166534">1 &#183; Functional &#8212; BEST (one single task)</text>
+
+<rect x="590" y="230" width="450" height="42" rx="9" fill="#d9f99d" stroke="#84cc16" stroke-width="1.6"/>
+<text x="610" y="257" font-size="15" font-weight="700" fill="#4d7c0f">2 &#183; Sequential (output&#8594;input chain)</text>
+
+<rect x="590" y="278" width="450" height="42" rx="9" fill="#fef9c3" stroke="#eab308" stroke-width="1.6"/>
+<text x="610" y="305" font-size="15" font-weight="700" fill="#a16207">3 &#183; Communicational (same data used)</text>
+
+<rect x="590" y="326" width="450" height="42" rx="9" fill="#ffedd5" stroke="#f97316" stroke-width="1.6"/>
+<text x="610" y="353" font-size="15" font-weight="700" fill="#c2410c">4 &#183; Procedural (same execution order)</text>
+
+<rect x="590" y="374" width="450" height="42" rx="9" fill="#fee2e2" stroke="#ef4444" stroke-width="1.6"/>
+<text x="610" y="401" font-size="15" font-weight="700" fill="#b91c1c">5 &#183; Temporal (must run at same time)</text>
+
+<rect x="590" y="422" width="450" height="42" rx="9" fill="#fecaca" stroke="#dc2626" stroke-width="1.6"/>
+<text x="610" y="449" font-size="15" font-weight="700" fill="#7f1d1d">6 &#183; Logical (same logical class)</text>
+
+<rect x="590" y="470" width="450" height="48" rx="9" fill="#fca5a5" stroke="#b91c1c" stroke-width="2"/>
+<text x="610" y="500" font-size="16" font-weight="700" fill="#7f1d1d">7 &#183; Coincidental &#8212; WORST (no relation)</text>
+
+<!-- arrow best->worst right -->
+<line x1="1060" y1="176" x2="1060" y2="518" stroke="#94a3b8" stroke-width="3"/>
+<path d="M1060 526 l-7 -12 l14 0 z" fill="#94a3b8"/>
+<text x="1072" y="200" font-size="11" font-weight="700" fill="#16a34a" transform="rotate(90 1072 200)">BEST</text>
+<text x="1072" y="516" font-size="11" font-weight="700" fill="#dc2626" transform="rotate(90 1072 516)">WORST</text>
+
+<line x1="30" y1="570" x2="1050" y2="570" stroke="#e2e8f0" stroke-width="1.5"/>
+<rect x="60" y="588" width="960" height="100" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<text x="80" y="616" font-size="15" font-weight="700" fill="#1e40af">THE GOLDEN RULE (slide 31)</text>
+<text x="80" y="644" font-size="14" fill="#334155">&#8220;A software engineer must design the modules with the goal of HIGH cohesion and LOW coupling.&#8221;</text>
+<text x="80" y="670" font-size="13" fill="#475569">High cohesion = one module &#183; one job &#183; nothing unrelated.   Low coupling = few, simple, data-only links between modules.</text>
+</svg>
+</div></body></html>

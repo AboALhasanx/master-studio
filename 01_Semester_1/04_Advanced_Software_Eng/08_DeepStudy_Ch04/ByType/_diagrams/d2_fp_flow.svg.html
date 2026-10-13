@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="700" viewBox="0 0 1080 700" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="40" text-anchor="middle" font-size="29" font-weight="700" fill="#1e3a8a">Function Point Pipeline &#8212; from requirements to FP</text>
+<text x="540" y="68" text-anchor="middle" font-size="15" fill="#64748b">the steps the slides jump over &#8212; written out in full</text>
+<line x1="30" y1="92" x2="1050" y2="92" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- Step 1 -->
+<rect x="30" y="112" width="330" height="120" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="48" y="140" font-size="14" font-weight="700" fill="#1e3a8a">STEP 1 &#8212; COUNT the 5 units</text>
+<text x="48" y="166" font-size="12.5" fill="#334155">EI (inputs) &#183; EO (outputs) &#183; EQ (inquiries)</text>
+<text x="48" y="188" font-size="12.5" fill="#334155">ILF (internal files) &#183; EIF (external interfaces)</text>
+<text x="48" y="214" font-size="11.5" fill="#64748b">count each occurrence, one by one</text>
+
+<!-- Step 2 -->
+<rect x="375" y="112" width="330" height="120" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="393" y="140" font-size="14" font-weight="700" fill="#1e3a8a">STEP 2 &#8212; RATE complexity</text>
+<text x="393" y="166" font-size="12.5" fill="#334155">each unit = Low / Average / High</text>
+<text x="393" y="188" font-size="12.5" fill="#334155">look up its weight in the UFP table</text>
+<text x="393" y="214" font-size="11.5" fill="#64748b">combine count &#215; weight, sum all &#8594; UFP</text>
+
+<!-- Step 3 -->
+<rect x="720" y="112" width="330" height="120" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="738" y="140" font-size="14" font-weight="700" fill="#1e3a8a">STEP 3 &#8212; RATE 14 factors</text>
+<text x="738" y="166" font-size="12.5" fill="#334155">F1&#8230;F14, each from 0 to 5</text>
+<text x="738" y="188" font-size="12.5" fill="#334155">sum them &#8594; &#931;Fi  (0 &#8230; 70)</text>
+<text x="738" y="214" font-size="11.5" fill="#64748b">(data comm, performance, reuse&#8230;)</text>
+
+<!-- arrows -->
+<g stroke="#94a3b8" stroke-width="2" fill="none">
+<path d="M360 172 L373 172" marker-end="url(#a1)"/>
+<path d="M705 172 L718 172" marker-end="url(#a1)"/>
+</g>
+<defs><marker id="a1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="#94a3b8"/></marker></defs>
+
+<!-- UFP + CAF boxes -->
+<rect x="140" y="272" width="360" height="96" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+<text x="320" y="306" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">UFP = &#931;&#931; ( Z&#7522;&#8336; &#215; w&#7522;&#8336; )</text>
+<text x="320" y="334" text-anchor="middle" font-size="12" fill="#334155">unadjusted function points</text>
+<text x="320" y="354" text-anchor="middle" font-size="11.5" fill="#64748b">Z = count, w = complexity weight</text>
+
+<rect x="580" y="272" width="360" height="96" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+<text x="760" y="306" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">CAF = 0.65 + 0.01 &#215; &#931;F&#7522;</text>
+<text x="760" y="334" text-anchor="middle" font-size="12" fill="#334155">complexity adjustment factor</text>
+<text x="760" y="354" text-anchor="middle" font-size="11.5" fill="#64748b">range: 0.65 (&#931;F=0) &#8230; 1.35 (&#931;F=70)</text>
+
+<!-- final -->
+<rect x="290" y="404" width="500" height="80" rx="12" fill="#ecfdf5" stroke="#22c55e" stroke-width="2"/>
+<text x="540" y="446" text-anchor="middle" font-size="26" font-weight="700" fill="#15803d">FP = UFP &#215; CAF</text>
+<text x="540" y="470" text-anchor="middle" font-size="12.5" fill="#334155">the deliverable &#8212; a language-independent size</text>
+
+<!-- derived metrics -->
+<line x1="30" y1="508" x2="1050" y2="508" stroke="#e2e8f0" stroke-width="1.4"/>
+<text x="30" y="538" font-size="14" font-weight="700" fill="#1e3a8a">WHAT FP LETS YOU COMPUTE (slide 22)</text>
+<rect x="30" y="552" width="238" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="149" y="578" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">Productivity = FP / PM</text>
+<text x="149" y="598" text-anchor="middle" font-size="11" fill="#64748b">how much function per effort</text>
+<rect x="281" y="552" width="238" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="400" y="578" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">Quality = Defects / FP</text>
+<text x="400" y="598" text-anchor="middle" font-size="11" fill="#64748b">defect density</text>
+<rect x="532" y="552" width="238" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="651" y="578" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">Cost = $ / FP</text>
+<text x="651" y="598" text-anchor="middle" font-size="11" fill="#64748b">unit cost</text>
+<rect x="783" y="552" width="267" height="58" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="916" y="578" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">Documentation = pages / FP</text>
+<text x="916" y="598" text-anchor="middle" font-size="11" fill="#64748b">doc load</text>
+
+<text x="540" y="640" text-anchor="middle" font-size="12" fill="#94a3b8">UFP table weights: EI 3/4/6 &#183; EO 4/5/7 &#183; EQ 3/4/6 &#183; ILF 7/10/15 &#183; EIF 5/7/10  (Low/Avg/High)</text>
+<text x="540" y="664" text-anchor="middle" font-size="12" fill="#94a3b8">IFPUG = International Function Point Users Group &#8212; the standard body (slide 15)</text>
+</svg>
+</div></body></html>

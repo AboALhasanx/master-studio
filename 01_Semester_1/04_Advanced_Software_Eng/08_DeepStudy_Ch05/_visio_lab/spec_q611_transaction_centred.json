@@ -1,0 +1,29 @@
+{
+  "title": "Transaction-Centred Structure Chart for LIBRARY FRONT DESK\nslide 44 and Figure 19 of the chapter",
+  "page": { "w": 11.6, "h": 8.1 },
+  "nodes": [
+    { "id": "main", "text": "LIBRARY-FRONT-DESK  as MAIN\nthe three MAIN functions are listed below", "level": 0, "x_frac": 0.50, "w": 4.9, "h": 0.95, "fill": "RGB(219,234,254)", "line": "RGB(30,64,175)", "fontsize": 10 },
+
+    { "id": "in",   "text": "INPUT\nreads the transaction record", "level": 1, "x_frac": 0.165, "w": 2.55, "h": 0.85 },
+    { "id": "disp", "text": "TRANSACTION-DISPATCH\nselects one module on transaction type", "level": 1, "x_frac": 0.500, "w": 3.60, "h": 0.95, "fill": "RGB(254,243,199)", "line": "RGB(161,98,7)" },
+    { "id": "out",  "text": "OUTPUT\nprints the transaction result", "level": 1, "x_frac": 0.835, "w": 2.55, "h": 0.85 },
+
+    { "id": "t1", "text": "ISSUE-BOOK",      "level": 2, "x_frac": 0.145, "w": 1.75, "h": 0.70, "fill": "RGB(236,253,245)", "line": "RGB(15,118,110)" },
+    { "id": "t2", "text": "RETURN-BOOK",     "level": 2, "x_frac": 0.375, "w": 1.85, "h": 0.70, "fill": "RGB(236,253,245)", "line": "RGB(15,118,110)" },
+    { "id": "t3", "text": "QUERY-BOOK",      "level": 2, "x_frac": 0.620, "w": 1.75, "h": 0.70, "fill": "RGB(236,253,245)", "line": "RGB(15,118,110)" },
+    { "id": "t4", "text": "GENERATE-REPORT", "level": 2, "x_frac": 0.865, "w": 2.15, "h": 0.70, "fill": "RGB(236,253,245)", "line": "RGB(15,118,110)" }
+  ],
+  "edges": [
+    { "from": "main", "to": "in",   "label": "" },
+    { "from": "main", "to": "disp", "label": "" },
+    { "from": "main", "to": "out",  "label": "" },
+
+    { "from": "disp", "to": "t1", "label": "record" },
+    { "from": "disp", "to": "t2", "label": "record" },
+    { "from": "disp", "to": "t3", "label": "record" },
+    { "from": "disp", "to": "t4", "label": "record" }
+  ],
+  "side_notes": [
+    { "x": 2.40, "y": 6.85, "w": 4.6, "h": 1.0, "text": "The three MAIN functions\n  invoke INPUT to read a transaction\n  determine the kind and dispatch one module\n  output results by calling OUTPUT", "fontsize": 9.0 }
+  ]
+}

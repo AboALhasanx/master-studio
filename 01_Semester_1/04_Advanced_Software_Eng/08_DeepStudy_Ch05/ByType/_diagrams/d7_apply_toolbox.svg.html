@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#fff} #diagram{width:1080px;background:#fff}
+text{font-family:'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif}
+</style></head><body><div id="diagram">
+<svg width="1080" height="600" viewBox="0 0 1080 600" xmlns="http://www.w3.org/2000/svg">
+<text x="540" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#1e3a8a">The Apply / Calculation Toolbox</text>
+<text x="540" y="72" text-anchor="middle" font-size="16" fill="#64748b">fan-in &amp; fan-out &#183; the one-sentence cohesion test &#183; the Design Quality Score (a declared convention)</text>
+<line x1="30" y1="96" x2="1050" y2="96" stroke="#e2e8f0" stroke-width="1.5"/>
+
+<!-- fan-in/out -->
+<text x="30" y="130" font-size="15" font-weight="700" fill="#1e3a8a" letter-spacing="1">FAN-IN AND FAN-OUT</text>
+<rect x="30" y="144" width="500" height="200" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="230" y="168" width="100" height="40" rx="7" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.4"/>
+<text x="280" y="193" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">MAIN</text>
+<!-- fan-out arrows down -->
+<g stroke="#3b82f6" stroke-width="1.6">
+<line x1="248" y1="208" x2="160" y2="250"/><line x1="265" y1="208" x2="235" y2="250"/>
+<line x1="295" y1="208" x2="325" y2="250"/><line x1="312" y1="208" x2="400" y2="250"/>
+</g>
+<rect x="120" y="250" width="80" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="160" y="273" text-anchor="middle" font-size="11" fill="#1e3a8a">M1</text>
+<rect x="195" y="250" width="80" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="235" y="273" text-anchor="middle" font-size="11" fill="#1e3a8a">M2</text>
+<rect x="285" y="250" width="80" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="325" y="273" text-anchor="middle" font-size="11" fill="#1e3a8a">M3</text>
+<rect x="360" y="250" width="80" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="400" y="273" text-anchor="middle" font-size="11" fill="#1e3a8a">M4</text>
+<!-- fan-in arrows -->
+<g stroke="#22c55e" stroke-width="1.6">
+<line x1="160" y1="286" x2="240" y2="322"/><line x1="325" y1="286" x2="300" y2="322"/>
+</g>
+<rect x="240" y="322" width="80" height="36" rx="6" fill="#bbf7d0" stroke="#4ade80"/>
+<text x="280" y="345" text-anchor="middle" font-size="11" fill="#14532d">Shared</text>
+<text x="44" y="200" font-size="12" fill="#b91c1c"><tspan font-weight="700">fan-out(MAIN) = 4</tspan></text>
+<text x="44" y="222" font-size="11.5" fill="#7f1d1d">OUT = how many it calls</text>
+<text x="44" y="242" font-size="11.5" fill="#7f1d1d">&#8250; 7 is a warning</text>
+<text x="44" y="288" font-size="12" fill="#15803d"><tspan font-weight="700">fan-in(Shared) = 2</tspan></text>
+<text x="44" y="310" font-size="11.5" fill="#166534">IN = how many call it</text>
+<text x="44" y="330" font-size="11.5" fill="#166534">high = good for reuse</text>
+
+<!-- one sentence test -->
+<text x="565" y="130" font-size="15" font-weight="700" fill="#1e3a8a" letter-spacing="1">THE ONE-SENTENCE COHESION TEST</text>
+<rect x="565" y="144" width="485" height="200" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+<text x="585" y="174" font-size="13" fill="#334155">Describe the module in ONE sentence:</text>
+<text x="585" y="202" font-size="12.5" fill="#334155">&#8226; &#8220;This module does X.&#8221;  &#8594; <tspan font-weight="700" fill="#15803d">Functional</tspan></text>
+<text x="585" y="226" font-size="12.5" fill="#334155">&#8226; &#8220;X then Y, using X's output.&#8221; &#8594; <tspan font-weight="700" fill="#4d7c0f">Sequential</tspan></text>
+<text x="585" y="250" font-size="12.5" fill="#334155">&#8226; &#8220;X and Y on the same data.&#8221; &#8594; <tspan font-weight="700" fill="#a16207">Communicational</tspan></text>
+<text x="585" y="274" font-size="12.5" fill="#334155">&#8226; &#8220;X then Y, in that order.&#8221; &#8594; <tspan font-weight="700" fill="#c2410c">Procedural</tspan></text>
+<text x="585" y="298" font-size="12.5" fill="#334155">&#8226; &#8220;All of X, Y, Z at startup.&#8221; &#8594; <tspan font-weight="700" fill="#b91c1c">Temporal</tspan></text>
+<text x="585" y="322" font-size="12.5" fill="#334155">&#8226; &#8220;All the input routines.&#8221; &#8594; <tspan font-weight="700" fill="#7f1d1d">Logical / Coincidental</tspan></text>
+
+<!-- DQS -->
+<line x1="30" y1="366" x2="1050" y2="366" stroke="#e2e8f0" stroke-width="1.4"/>
+<text x="30" y="398" font-size="15" font-weight="700" fill="#1e3a8a" letter-spacing="1">DESIGN QUALITY SCORE (a declared convention &#8212; not a chapter formula)</text>
+<rect x="30" y="412" width="1020" height="66" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.4"/>
+<text x="60" y="452" font-size="20" font-weight="700" fill="#1e40af">DQS  =  (8 &#8722; cohesion_rank)  +  (7 &#8722; coupling_rank)</text>
+<text x="700" y="446" font-size="12" fill="#334155">cohesion rank 1&#8211;7 (Functional&#8230;Coincidental)</text>
+<text x="700" y="466" font-size="12" fill="#334155">coupling rank 1&#8211;6 (Data&#8230;Content)</text>
+
+<rect x="30" y="494" width="330" height="88" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.4"/>
+<text x="48" y="522" font-size="13" font-weight="700" fill="#15803d">Best possible = 13</text>
+<text x="48" y="544" font-size="12" fill="#334155">Functional (1) + Data (1)</text>
+<text x="48" y="566" font-size="11.5" fill="#64748b">(8&#8722;1)+(7&#8722;1) = 7+6 = 13</text>
+
+<rect x="375" y="494" width="330" height="88" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.4"/>
+<text x="393" y="522" font-size="13" font-weight="700" fill="#b91c1c">Worst possible = 2</text>
+<text x="393" y="544" font-size="12" fill="#334155">Coincidental (7) + Content (6)</text>
+<text x="393" y="566" font-size="11.5" fill="#64748b">(8&#8722;7)+(7&#8722;6) = 1+1 = 2</text>
+
+<rect x="720" y="494" width="330" height="88" rx="10" fill="#faf5ff" stroke="#8b5cf6" stroke-width="1.4"/>
+<text x="738" y="522" font-size="13" font-weight="700" fill="#6d28d9">System score = average</text>
+<text x="738" y="544" font-size="12" fill="#334155">avg DQS = &#931; DQS / N modules</text>
+<text x="738" y="566" font-size="11.5" fill="#64748b">Higher = healthier design</text>
+</svg>
+</div></body></html>
