@@ -34,36 +34,47 @@
 
 ## الجدولان الحاسمان (احفظهما)
 
-**Fig 7 — Coupling (best → worst):** ⚠️ *تم التحقق من الصورة (سلايد 19) — الترتيب في الجدول مُثبَّت بسهم "Best" فوق و"Worst" تحت*
+**Fig 7 — Coupling (best ← worst):** ⚠️ *تم التحقق من الصورة (سلايد 19) — الترتيب في الجدول مُثبَّت بسهم "Best" فوق و"Worst" تحت*
 Data → Stamp → Control → External → Common → Content
 
-**Fig 11 — Cohesion (best → worst):** ⚠️ *تم التحقق من الصورة (سلايد 27) — 7 مستويات، "Best (high)" فوق و"Worst (low)" تحت*
+**Fig 11 — Cohesion (best ← worst):** ⚠️ *تم التحقق من الصورة (سلايد 27) — 7 مستويات، "Best (high)" فوق و"Worst (low)" تحت*
 Functional → Sequential → Communicational → Procedural → Temporal → Logical → Coincidental
 
 **Fig 4 (سلايد 14) — Modularity & cost:** منحنى U — "Cost of Effort" ضد "Number of Modules"، مع **Region of Minimum Cost (M)**؛ يزيد cost-to-integrate والـcost الكلي بعد النقطة M. **معنى:** ما تزيد الوحدات "لأقصى حد" — أكو نطقة مثلى.
 
 **Fig 12 (سلايد 31) — Relationship C&C:** شكلان — يسار "High Coupling" (روابط كثيرة متشابكة) ويمين "Low Coupling" (روابط قليلة). النص: *"a software engineer must design the modules with goal of high cohesion and low coupling"*.
 
-**Fig 25 (سلايد 72) — OOD steps:** ⚠️ *تم التحقق* — السلايد يعرض **6 صناديق**: (1) Create use case model (2) Draw Activity Diagram (if reqd.) (3) Draw the interaction diagrams (4) Draw the class diagram (5) Draw the state chart/object diagram (if required) (6) Draw component & Deployment Diagram → Design documents. **الكتاب أيضًا يعرض 6 خطوات** (Fig 5.25 على ص.232 = 6 صناديق، والنص يستخدم الحروف a→f) — فالكتاب والسلايدات **متطابقان**: 6 خطوات. الفرق الوحيد: سلايد 75 يكتب "a) b) d)" (ينط الحرف c) لكن المحتوى نفسه).
+**Fig 25 (سلايد 72) — OOD steps:** ⚠️ *تم التحقق* — السلايد يعرض **6 صناديق**: (1) Create use case model (2) Draw Activity Diagram (if reqd.) (3) Draw the interaction diagrams (4) Draw the class diagram (5) Draw the state chart/object diagram (if required) (6) Draw component & Deployment Diagram ← Design documents. **الكتاب أيضًا يعرض 6 خطوات** (Fig 5.25 على ص.232 = 6 صناديق، والنص يستخدم الحروف a←f) — فالكتاب والسلايدات **متطابقان**: 6 خطوات. الفرق الوحيد: سلايد 75 يكتب "a) b) d)" (ينط الحرف c) لكن المحتوى نفسه).
 
 **Fig 29 (سلايد 81) — Library case study:** نص المتطلبات (Issue of Books — حد أقصى 4 كتب book bank و3 عامة لمدة 15 يوم، إلخ). السلايدات تعرض المخططات فقط؛ الكتاب يعرض **وصف الـuse cases الكامل**.
 
 ## مسار المجلدات
 
-```
-04_Advanced_Software_Eng/
-├── 02_Raw_Materials/
-│   ├── Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf   (99 سلايد)
-│   └── Reference_Textbooks/AliFahim_Software_Engineering.pdf          (سكان، ص.202–248 = PDF 107–153)
-├── 03_Study_Notes/
-│   ├── Ch05_MCQ_Solved.md/pdf                 (الأسئلة الرسمية محلولة — 36)
-│   └── Ch05_AliFahim_vs_Slides_Audit.md       (فحص الكتاب مقابل السلايدات)
-└── 08_DeepStudy_Ch05/                          (هذا المجلد — الساندبوكس)
-    ├── 00_STUDY_SYSTEM.md
-    ├── 01_TIER1_MODEL_QUESTIONS.md
-    ├── 02_TIER2_DEEP_QUESTIONS.md
-    └── 99_SOURCE_MAP.md
-```
+| المسار | الوصف |
+|---|---|
+| `04_Advanced_Software_Eng/` | مجلد المادة |
+| `02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf` | 99 سلايد |
+| `02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf` | سكان — ص.202–248 = PDF 107–153 |
+| `03_Study_Notes/Ch05_MCQ_Solved.md` | الأسئلة الرسمية محلولة — 36 |
+| `03_Study_Notes/Ch05_AliFahim_vs_Slides_Audit.md` | فحص الكتاب مقابل السلايدات |
+| `08_DeepStudy_Ch05/` | الساندبوكس (هذا المجلد) |
+| `08_DeepStudy_Ch05/00_STUDY_SYSTEM.md` | ملف النظام |
+| `08_DeepStudy_Ch05/01_TIER1_MODEL_QUESTIONS.md` | الطبقة النموذجية |
+| `08_DeepStudy_Ch05/02_TIER2_DEEP_QUESTIONS.md` | الطبقة العميقة |
+| `08_DeepStudy_Ch05/99_SOURCE_MAP.md` | خريطة المصادر |
 
 ---
 *بُني 2026-10-12*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| الجدولان الحاسمان؟ | جدول الاقتران (Fig. 7) + جدول التلاحم (Fig. 11) |
+| أين ترتيب الاقتران؟ | Fig. 7 · سلايد 19 · كتاب ص.208–209 |
+| أين ترتيب التلاحم؟ | Fig. 11 · سلايد 27 · كتاب ص.211 |
+| أين خطوات OOD الست؟ | سلايد 72 (Fig. 25) · كتاب ص.232 |
+| مدى الفصل؟ | 99 سلايد · كتاب ص.202–251 |

@@ -125,9 +125,9 @@
 حكم على ترابط أي وحدة بهاي الطريقة:
 1. شوف شنو تسوي الدوال فعلاً.
 2. حاول توصف شغل الوحدة **بجملة واحدة**.
-- إذا احتجت **جملة مركّبة** → cohesion = Sequential أو Communicational.
-- إذا احتجت كلمات **"first / next / after / then"** → Sequential أو Temporal.
-- إذا احتجت **"initialise / setup / shut down"** → Temporal.
+- إذا احتجت **جملة مركّبة** ← cohesion = Sequential أو Communicational.
+- إذا احتجت كلمات **"first / next / after / then"** ← Sequential أو Temporal.
+- إذا احتجت **"initialise / setup / shut down"** ← Temporal.
 
 ### 4.4 الفرق الدقيق بين Flowchart و Structure Chart
 - صعب تحدد الوحدات من الـflowchart.
@@ -143,6 +143,7 @@
 3. **Understandability** — تفهم الوحدة لحالها.
 
 ### 4.6 عوامل الـCoupling (جدول من Agarwal 2010)
+
 | العامل | low (زين) | high (سيء) |
 |---|---|---|
 | Interface complexity | Simple / Obvious | Complicated / Obscure |
@@ -150,7 +151,7 @@
 | Type of communication | **Data** | **Control / Hybrid** |
 
 ### 4.7 الـDesign Framework (cyclic)
-التصميم **مو خطوة واحدة** — هو إطار دوري: تجمع متطلبات → تحلل → تصميم عالي المستوى → تنقّح وتوثّق → **تتحقق (validate)** ضد المتطلبات → لأن التحقق ممكن يرفع أسئلة متطلبات جديدة → ترجع تنقّح. **دوري بطبيعته، مو عيب.**
+التصميم **مو خطوة واحدة** — هو إطار دوري: تجمع متطلبات ← تحلل ← تصميم عالي المستوى ← تنقّح وتوثّق ← **تتحقق (validate)** ضد المتطلبات ← لأن التحقق ممكن يرفع أسئلة متطلبات جديدة ← ترجع تنقّح. **دوري بطبيعته، مو عيب.**
 
 ---
 
@@ -173,8 +174,8 @@
 **الحصيلة:** الجابتر هذا **أغنى بكثير** مما بالسلايدات، وامتحانه **متوقع النمط جداً** (6 محاور متكررة).
 
 **التوصية:**
-1. **Tier1** (الملف 01) = ضمان أسئلة الكتاب.
-2. **Tier2** (الملف 02) = العمق.
+1. **Tier1** (ملزمة الأسئلة النموذجية) = ضمان أسئلة الكتاب.
+2. **Tier2** (ملزمة الأسئلة العميقة) = العمق.
 3. **هذا الملف** = أسئلة خارجية + محتوى أعمق (fan-in/out, layered, functional independence) — يغطي الـ6 محاور الامتحانية.
 4. **الأولوية القصوى للمذاكرة:** Coupling/Cohesion (أكثر محور متكرر) ثم OOD process ثم Architecture/styles ثم UI golden rules.
 

@@ -38,7 +38,7 @@
 
 **مصادر الرسوم (SVG/HTML + PNG):** مجلد `_diagrams/` — 7 رسوم:
 `d1_coupling_cohesion` · `d2_ood_steps` · `d3_ucurve` · `d4_strategies` · `d5_sdd` · `d6_ood_notation` · `d7_apply_toolbox`.
-كلها مُصيَّرة 1080px @2x، وتم **فحصها بصريًا** (تصحيح تجاوز نص في d2 وحروف `**` في d6).
+كلها مُصيَّرة 1080px @2x، وتم **فحصها بصريًا** (تصحيح تجاوز نص في d2 ونجمة زائدة في d6).
 
 **التحقق:** كل ملف PDF خضع لـ **5 جولات** (بنية الصفحات + صور مدمجة / فحص بصري للصفحات / اكتمال المحتوى 180 سؤال / وجود الرسوم / مسح التناقضات). صفر مشاكل.
 
@@ -46,13 +46,13 @@
 
 ## القواعد الثابتة (نفسها بكل الملفات — لا تُخالف)
 
-- **الاقتران (Coupling) الأفضل→الأسوأ =** Data > Stamp > Control > External > Common > Content  *(Fig 7، سلايد 19)*
-- **التلاحم (Cohesion) الأفضل→الأسوأ =** Functional > Sequential > Communicational > Procedural > Temporal > Logical > Coincidental  *(Fig 11، سلايد 27)*
+- **الاقتران (Coupling) الأفضل←الأسوأ =** Data > Stamp > Control > External > Common > Content  *(Fig 7، سلايد 19)*
+- **التلاحم (Cohesion) الأفضل←الأسوأ =** Functional > Sequential > Communicational > Procedural > Temporal > Logical > Coincidental  *(Fig 11، سلايد 27)*
 - **استراتيجيات التصميم:** Bottom-up / Top-down / **Hybrid (الأكثر عملية)**.
 - **أهداف التصميم الأربعة (§5.1.2):** Correct & complete · Understandable · At the right level · Maintainable.
 - **سمات Vitruvius = ثلاث** (durability, utility, charm) — **مو أربع**.
 - **SDD** = IEEE STD 1016-1998 · 4 views · 10 entity attributes (a–j).
-- **عملية OOD = ست خطوات بالضبط** (سلايد 72 + كتاب ص.232): use case model → activity → interaction → class → state chart/object → component & deployment.
+- **عملية OOD = ست خطوات بالضبط** (سلايد 72 + كتاب ص.232): use case model ← activity ← interaction ← class ← state chart/object ← component & deployment.
 - **قاعدة إرشادية (مو من نص الفصل):** fan-out > 7 = تحذير، fan-in عالي = إعادة استخدام. موسومة `[Foundational Knowledge / Standard Concept]`.
 
 ---
@@ -68,3 +68,15 @@
 ---
 
 *بُني 2026-10-12 بـ 7 وكلاء متوازيين · 5 جولات تحقق لكل ملف · 180 سؤال*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| كم ملف بنوع الأسئلة؟ | 7 (T1..T7) |
+| الأنواع السبعة؟ | MCQ · Essay · Understand · Analyze · Evaluate · Create/Design · Apply/Calc |
+| أثقل نوع بالفصل؟ | T6 (Create/Design) |
+| كيف بُنيت الملفات؟ | 7 وكلاء متوازيين + 5 جولات تحقق لكل ملف |

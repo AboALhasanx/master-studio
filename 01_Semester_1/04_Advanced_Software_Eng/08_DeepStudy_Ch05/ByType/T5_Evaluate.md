@@ -306,3 +306,15 @@
 ---
 
 *المصدر: Aggarwal & Singh, Software Engineering 3rd ed., Ch.5 — سلايدات 1–99 + كتاب ص.202–251. كل ادّعاء داخل الأجوبة مُتحقق منه بالنص، وما خارجه موسوم `[Foundational Knowledge / Standard Concept]`.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| معايير الحكم؟ | coupling · cohesion · design objectives |
+| أفضل اقتران + أفضل تلاحم؟ | Data coupling + Functional cohesion |
+| كيف تحكم بين تصميمين؟ | قارن بالمعايير ثم برّر ثم انقد الطرف المقابل |
+| ترتيب التلاحم (أفضل←أسوأ)؟ | Functional · Sequential · Communicational · Procedural · Temporal · Logical · Coincidental |

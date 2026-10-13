@@ -710,3 +710,15 @@ Raw call sheet: Z4, Z5, Z6, Z7, Z1, Z2, Z5. Distinct callees = {Z4, Z5, Z6, Z7, 
 ---
 
 *المصدر: Aggarwal & Singh, Software Engineering 3rd ed., Ch.5 — سلايدات 1–99 (Fig 4 ص14، Fig 7 ص19، Fig 11 ص27، خطوات OOD ص73–80) + book p.202–251. كل رتبة قوبلت مع Fig 7/Fig 11، وكل حساب fan-in/out وDQS أُعيد حسابه مرتين قبل التثبيت.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| ترتيب الاقتران (أفضل←أسوأ)؟ | Data · Stamp · Control · External · Common · Content |
+| ترتيب التلاحم (أفضل←أسوأ)؟ | Functional · Sequential · Communicational · Procedural · Temporal · Logical · Coincidental |
+| شنو DQS؟ | درجة جودة التصميم (Design Quality Score) |
+| شنو Region of Minimum Cost؟ | المنطقة المثلى على منحنى المعيارية–الكلفة |

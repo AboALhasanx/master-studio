@@ -64,7 +64,7 @@
 3. **Result:** **Sequential cohesion** (2nd best).
 4. **The elevating evidence:** the *direct output→input dependency between consecutive elements*. This is stronger than merely sharing a common source because it proves an intrinsic ordering, making the group a genuine processing chain rather than an arbitrary collection around one datum.
 
-**التبرير العربي:** الدليل اللي يرفعه من Communicational إلى **Sequential** هو أن *مخرجات كل خطوة هي مدخلات اللي بعدها*. هذا يثبت ترتيب ذاتي داخلي (readers→compute→format)، فالتجميع له سبب حقيقي — مو مجرد اشتراك بمدخل واحد.
+**التبرير العربي:** الدليل اللي يرفعه من Communicational إلى **Sequential** هو أن *مخرجات كل خطوة هي مدخلات اللي بعدها*. هذا يثبت ترتيب ذاتي داخلي (readers←compute←format)، فالتجميع له سبب حقيقي — مو مجرد اشتراك بمدخل واحد.
 
 ---
 
@@ -125,13 +125,15 @@
 
 **Worked answer:**
 1. **Enumerate the defects:**
-   - | # | Location | Defect | Type | Rank |
-     |---|---|---|---|---|
-     | D1 | `utils` (38 unrelated fns) | Coincidental cohesion | intra-module (worst) | 2 |
-     | D2 | everyone → `utils` | high fan-in on a non-cohesive unit ⇒ shared dependency, change ripples everywhere | systemic | 1 (impact) |
-     | D3 | `utils` internal | any change to one helper can break unrelated callers | maintainability | 1 |
-     | D4 | `report` reads `g_report[]` | Common coupling | inter-module | 3 |
-     | D5 | `login` + `audit` share `g_session` | Common coupling | inter-module | 3 |
+
+| # | Location | Defect | Type | Rank |
+|---|---|---|---|---|
+| D1 | `utils` (38 unrelated fns) | Coincidental cohesion | intra-module (worst) | 2 |
+| D2 | everyone → `utils` | high fan-in on a non-cohesive unit ⇒ shared dependency, change ripples everywhere | systemic | 1 (impact) |
+| D3 | `utils` internal | any change to one helper can break unrelated callers | maintainability | 1 |
+| D4 | `report` reads `g_report[]` | Common coupling | inter-module | 3 |
+| D5 | `login` + `audit` share `g_session` | Common coupling | inter-module | 3 |
+
 2. **Rank by severity.** Severity ∝ *hidden + bidirectional* dependencies (the principle from Q1.1 of Tier 2). The utility module is worst because it is **simultaneously** the worst on the cohesion axis (Coincidental) *and* the hub of a fan-in that converts its internal changes into system-wide ripple. The two Common-coupling pairs are next: visible but global.
 3. **Cross-check against the four design objectives (slide 8):** *Correct & complete* — cannot be certified (no single purpose per unit); *Understandable* ✗ (nothing unifies 38 functions); *Right level* ✗ (mixing string, DB and UI concerns at one level); *Maintainable* ✗ (every change high-risk).
 4. **Fix order:** (a) split `utils` by function into cohesive modules (Functional cohesion) — removes D1/D2/D3; (b) replace the two globals `g_report`/`g_session` with parameters or a controlled repository — removes D4/D5.
@@ -312,7 +314,7 @@
 | Q4.8 | خلل | Control + Stamp + Content (البارامترات) | s17, s20, s21, s23 |
 | Q4.9 | خلل | تعدد الأنماط + fan-out (وسم عدم يقين) | s17, s23, s30 |
 | Q4.10 | خلل | دورات + fan-out + Common + الاستقرار | s21, s31 |
-| Q4.11 | ripple | Data vs Content على سلسلة A→B→C→D | s20, s21, s23, s69 |
+| Q4.11 | ripple | Data vs Content على سلسلة A←B←C←D | s20, s21, s23, s69 |
 | Q4.12 | ripple | Common يقفز اتجاه النداء والتوقيت | s21, s29 |
 | Q4.13 | ripple | Data = جدار الاحتواء | s20, s21, s23 |
 | Q4.14 | مخطط |structure chart vs transaction-centred | s38–39, s41, s44–45 |
@@ -333,3 +335,15 @@
 ---
 
 *المصدر: Aggarwal & Singh, Software Engineering 3rd ed., Ch.5 — سلايدات 1–99 (تم استخراج النص والتحقق) + كتاب ص.202–251. كل حكم تصنيف قوبل مع تعريفات سلايدات 19–30 قبل التثبيت.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| أقسام التحليل؟ | تصنيف · تحليل الخلل · تتبّع الأثر · تحليل المخططات |
+| الفرق بين fan-in و fan-out؟ | fan-in = عدد من ينادي الوحدة · fan-out = عدد الوحدات اللي تناديها |
+| شنو ripple effect؟ | أثر تغيير وحدة على البقية — يقلّ مع low coupling |
+| ترتيب الاقتران (أفضل←أسوأ)؟ | Data · Stamp · Control · External · Common · Content |

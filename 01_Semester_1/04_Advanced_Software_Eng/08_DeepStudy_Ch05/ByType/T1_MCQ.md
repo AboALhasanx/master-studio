@@ -849,3 +849,16 @@
 ---
 
 *المصدر الأساسي: `Ch05_Software_Design.pdf` (99 سلايد) — الأسئلة الرسمية في السلايدات 94–96، والأجوبة مشتقّة من السلايدات 14–57 و 77–78 وslide 19 و 27. الملفات المُستخدمة للمقارنة: `01_TIER1_MODEL_QUESTIONS.md`، `03_EXTERNAL_QUESTIONS_AND_DEEPER_CONTENT.md`، `Ch05_MCQ_Solved.md`.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| أفضل اقتران؟ | Data |
+| أسوأ اقتران؟ | Content |
+| أفضل تلاحم؟ | Functional |
+| أسوأ تلاحم؟ | Coincidental |
+| عدد MCQ الرسمية؟ | 12 (5.1–5.12) |

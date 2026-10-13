@@ -137,3 +137,17 @@ Relationships: `ParkingSpot` **aggregates** `Vehicle` (aggregation — a spot co
 
 ---
 *المصدر: Aggarwal & Singh, Software Engineering 3rd ed., Ch.5 — سلايدات 1–99 + كتاب ص.202–251. كل جواب مُتحقق منه بالنص.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| ترتيب الاقتران من الأفضل للأسوأ؟ | Data > Stamp > Control > External > Common > Content |
+| ترتيب التلاحم من الأفضل للأسوأ؟ | Functional > Sequential > Communicational > Procedural > Temporal > Logical > Coincidental |
+| كم خطوة OOD وشنو ترتيبها؟ | 6 — use case · activity · interaction · class · state · component/deployment |
+| شنو SDD؟ | مستند تصميم البرمجية — IEEE 1016 |
+| خصائص Vitruvius الثلاث؟ | Durability · Utility · Charm |
+| شنو الهدف الأعلى للتصميم؟ | high cohesion + low coupling (سلايد 31) |

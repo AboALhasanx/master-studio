@@ -112,3 +112,16 @@ Worked example: the Library Management System (issue-book sequence diagram, clas
 
 ---
 *مصدر النمط: 19 ورقة امتحان MRCET (R17/R18) + بنوك NRCMEC و GitHub و MAIT. كل جواب مُتحقق منه من الكتاب/السلايدات.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| كم محور امتحاني متكرر؟ | 6 |
+| أثقل محور بالامتحان؟ | Software Architecture |
+| أكثر محور جوهرية؟ | Coupling & Cohesion |
+| مصدر الأنماط؟ | 19 ورقة امتحان (MRCAT/R18/R17) + 3 بنوك أسئلة |
+| شنو الأولوية للمذاكرة؟ | Coupling/Cohesion ثم OOD process ثم Architecture ثم UI |

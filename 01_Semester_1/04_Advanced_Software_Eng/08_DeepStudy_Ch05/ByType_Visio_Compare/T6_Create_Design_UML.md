@@ -68,28 +68,15 @@ Four typed lifelines — actor, boundary, control, entity (slide 75's object typ
 
 **Artefact — class model (text form):**
 
-```
-CLASS Customer
-  Attributes : custId, name, email, address
-  Operations : register(), login(), placeOrder()
-
-CLASS Order
-  Attributes : orderId, orderDate, status, total
-  Operations : addLine(), removeLine(), checkout(), computeTotal()   <-- POLYMORPHIC
-      subclass DiscountedOrder overrides computeTotal() (applies a coupon)
-      subclass InternationalOrder overrides computeTotal() (adds duty)
-
-CLASS OrderLine
-  Attributes : productId, qty, unitPrice
-  Operations : lineTotal()
-
-CLASS Product
-  Attributes : productId, name, price, stockQty
-  Operations : isAvailable(), reserve(), release()
-
-CLASS PaymentGateway   (external boundary)
-  Operations : authorise(amount, token), refund(txnId)
-```
+| Class | Attributes | Operations | Note |
+|---|---|---|---|
+| `Customer` | custId, name, email, address | register(), login(), placeOrder() | — |
+| `Order` | orderId, orderDate, status, total | addLine(), removeLine(), checkout(), computeTotal() | **POLYMORPHIC** |
+| `DiscountedOrder` | subclass of `Order` | overrides computeTotal() — applies a coupon | — |
+| `InternationalOrder` | subclass of `Order` | overrides computeTotal() — adds duty | — |
+| `OrderLine` | productId, qty, unitPrice | lineTotal() | — |
+| `Product` | productId, name, price, stockQty | isAvailable(), reserve(), release() | — |
+| `PaymentGateway` | — | authorise(amount, token), refund(txnId) | external boundary |
 
 **Artefact — relationships used (one of each, per slides 77–78):**
 
@@ -114,24 +101,17 @@ CLASS PaymentGateway   (external boundary)
 
 **Artefact:**
 
-```
-== ENTITY classes (data that outlives the transaction) ==
-CLASS Account         : acctNo, holderName, balance, type
-                        Operations: debit(), credit(), getBalance()
-CLASS SavingsAccount  : minBalance, interestRate     (GENERALISATION ▷ Account)
-CLASS CurrentAccount  : overdraftLimit               (GENERALISATION ▷ Account)
-CLASS Card            : cardNo, pin, expiry, status
-                        Operations: validatePin(), isActive()
-CLASS CashBin         : binId, denomMap               (AGGREGATION owner)
-
-== BOUNDARY (interface) classes ==
-CLASS KeypadScreen    : Operations: readInput(), showMessage()
-CLASS CardReader      : Operations: readCard()
-CLASS CashDispenser   : Operations: dispense(amount)
-
-== CONTROL classes (coordinate the use case) ==
-CLASS TransactionController : Operations: withdraw(), deposit(), transfer()
-```
+| Kind | Class | Attributes | Operations / Note |
+|---|---|---|---|
+| ENTITY | `Account` | acctNo, holderName, balance, type | debit(), credit(), getBalance() |
+| ENTITY | `SavingsAccount` | minBalance, interestRate | generalisation ▷ Account |
+| ENTITY | `CurrentAccount` | overdraftLimit | generalisation ▷ Account |
+| ENTITY | `Card` | cardNo, pin, expiry, status | validatePin(), isActive() |
+| ENTITY | `CashBin` | binId, denomMap | aggregation owner |
+| BOUNDARY | `KeypadScreen` | — | readInput(), showMessage() |
+| BOUNDARY | `CardReader` | — | readCard() |
+| BOUNDARY | `CashDispenser` | — | dispense(amount) |
+| CONTROL | `TransactionController` | — | withdraw(), deposit(), transfer() |
 
 **Relationship map (each must match slide 77–78 wording):**
 
@@ -207,55 +187,16 @@ CLASS TransactionController : Operations: withdraw(), deposit(), transfer()
 
 **Artefact — use-case description:**
 
-```
-USE CASE : Issue Book                          (Library Management System)
---------------------------------------------------------------------------
-1. INTRODUCTION
-   Allows an Operator to issue a book to a student using the bar-code
-   detector. The system computes the return date (issue date + 15 days)
-   and stamps the due date.
-
-2. ACTORS
-   Primary   : Operator
-   Secondary : Bar code reader   (machine actor, slide 84 use case diagram)
-
-3. PRE-CONDITION
-   - Operator is logged in (Login use case completed).
-   - Student detail and Book detail exist (Maintain student detail /
-     Maintain catalogue completed).
-   - Bar-code detector is online.
-
-4. POST-CONDITION (success)
-   - An Issued Book Details record is created (Book Id, Barcode Id, Issued).
-   - A Student Issued Book Details record links the student to the book.
-   - Book's "Copies in General / Book Bank" count is decremented.
-
-5. BASIC FLOW
-   1. Operator reads the student barcode.               (seq. 1)
-   2. System submits student details to Student Info controller. (seq. 2)
-   3. System fetches and validates student details.     (seq. 3-4)
-   4. System checks the book can be issued to that student's course.
-   5. Operator reads the book barcode.                  (seq. 8)
-   6. System submits book code and re-checks issue rules. (seq. 9-10)
-   7. System updates details, adds Issued Book record, adds Student Issued
-      Book record, stamps the due date.                (seq. 12-14)
-   8. System reports "Issue successfully".              (seq. 15)
-
-6. ALTERNATE FLOWS
-   6a. Invalid student detail  -> show "Invalid student" (seq. 5); abort.
-   6b. Book cannot be issued   -> show "Can't issue" (seq. 7); abort.
-   6c. Book-bank book requested for a different course -> route to 6b.
-   6d. Issue limit reached (4 Book-bank / 3 General)    -> show limit error.
-
-7. SPECIAL REQUIREMENTS
-   - Issue period is fixed at 15 days; due date = system date + 15.
-   - Due date is physically stamped on the book (slide 82).
-   - Bar-code input is mandatory for both student and book.
-
-8. RELATED USE CASES
-   <<include>> Login ;  <<extend>> Print receipt ;
-   <<uses>> Maintain student detail, Maintain catalogue.
-```
+| Section | Content |
+|---|---|
+| 1. Introduction | Allows an Operator to issue a book to a student using the bar-code detector. The system computes the return date (issue date + 15 days) and stamps the due date. |
+| 2. Actors | Primary: `Operator` · Secondary: `Bar code reader` (machine actor, slide 84 use case diagram) |
+| 3. Pre-condition | Operator is logged in (Login use case completed) · Student detail and Book detail exist · Bar-code detector is online |
+| 4. Post-condition (success) | An Issued Book Details record is created (Book Id, Barcode Id, Issued) · A Student Issued Book Details record links the student to the book · Book's "Copies in General / Book Bank" count is decremented |
+| 5. Basic flow | 1. Operator reads the student barcode (seq. 1) · 2. System submits student details to Student Info controller (seq. 2) · 3. System fetches and validates student details (seq. 3-4) · 4. System checks the book can be issued to that student's course · 5. Operator reads the book barcode (seq. 8) · 6. System submits book code and re-checks issue rules (seq. 9-10) · 7. System updates details, adds Issued Book record, adds Student Issued Book record, stamps the due date (seq. 12-14) · 8. System reports "Issue successfully" (seq. 15) |
+| 6. Alternate flows | 6a. Invalid student detail — show "Invalid student" (seq. 5); abort · 6b. Book cannot be issued — show "Can't issue" (seq. 7); abort · 6c. Book-bank book requested for a different course — route to 6b · 6d. Issue limit reached (4 Book-bank / 3 General) — show limit error |
+| 7. Special requirements | Issue period is fixed at 15 days; due date = system date + 15 · Due date is physically stamped on the book (slide 82) · Bar-code input is mandatory for both student and book |
+| 8. Related use cases | `<<include>>` Login · `<<extend>>` Print receipt · `<<uses>>` Maintain student detail, Maintain catalogue |
 
 **التبرير العربي:** الوصف يطابق بنية الكتاب المطلوبة، وكل سطر مُشتق من سلايد 81–82 + تسلسل سلايد 86. الفائدة الهندسية: هذا المستند هو الحدّ الفاصل بين النطاق والداخل — الـalternate flows تمنع تكديس الشروط داخل الـbasic flow (نفس فكرة تجنّب logical cohesion على مستوى النموذج).
 
@@ -298,14 +239,14 @@ USE CASE : Issue Book                          (Library Management System)
 
 **Artefact — module decomposition with classification:**
 
-```
-MAIN (transaction dispatcher)
- ├── register_student(studentRecord) : void
- ├── record_course(courseRecord)     : void
- ├── enrol_student(studentId, courseId) : Result
- ├── generate_transcript(studentId)  : Transcript
- └── storage_layer  (accessed only via parameters)
-```
+| Module | Signature / Note |
+|---|---|
+| MAIN | transaction dispatcher |
+| `register_student` | (studentRecord) : void |
+| `record_course` | (courseRecord) : void |
+| `enrol_student` | (studentId, courseId) : Result |
+| `generate_transcript` | (studentId) : Transcript |
+| `storage_layer` | accessed only via parameters |
 
 | Module | Cohesion | Justification | Coupling (to callers) | Justification |
 |---|---|---|---|---|
@@ -333,7 +274,7 @@ MAIN (transaction dispatcher)
 | Module | Cohesion | Coupling | Contract |
 |---|---|---|---|
 | `compute_gross(empRecord)` | Functional | Data | one employee record in; gross out |
-| `apply_tax(gross, taxTable) | Functional | Data | passes the tax table **by parameter** (never reads a global) |
+| `apply_tax(gross, taxTable)` | Functional | Data | passes the tax table **by parameter** (never reads a global) |
 | `run_payroll(masterFile)` | Sequential | Data | drives compute→tax→slip in order |
 | `print_payslip(empRecord, gross, tax)` | Procedural | Data | three data parameters, no flags |
 | `select_employees(filterMode)` | **Logical** | **Control** | `filterMode` is a **control flag** → this is the one permitted Control coupling (slide 20) |
@@ -358,14 +299,12 @@ MAIN (transaction dispatcher)
 
 **Artefact — refactor plan:**
 
-```
-BEFORE                                   AFTER
---------                                 -----
-utility_module (12 helpers)      -->     file_io_utils        (Functional)
-global config_string  <-- read           validation_utils     (Functional)
-  by every module                        math_utils           (Functional)
-                                         config = 5 params passed explicitly
-```
+| Before | After |
+|---|---|
+| `utility_module` (12 helpers) | `file_io_utils` (Functional) |
+| global `config_string` read by every module | `validation_utils` (Functional) |
+| — | `math_utils` (Functional) |
+| — | `config` = 5 params passed explicitly |
 
 | Aspect | Before | After | Scale movement |
 |---|---|---|---|
@@ -389,21 +328,16 @@ global config_string  <-- read           validation_utils     (Functional)
 
 **Artefact — structure chart as an indented tree (slide 41: "partition a system into block boxes… black box = functionality known without internal design"):**
 
-```
-UPDATE FILE  (root / level 0)
-├── INPUT
-│     reads record key
-│     (data pass: recordKey  downward)
-├── VALIDATE
-│     checks key against file
-│     (data pass: recordKey → validFlag)
-├── UPDATE-RECORD
-│     ├── READ-RECORD      (data: recordKey → record)
-│     ├── MODIFY-FIELDS    (data: newValues → record)
-│     └── WRITE-RECORD     (data: record → status)
-└── OUTPUT
-      prints status message        (data: status)
-```
+| Level | Module | Data couple |
+|---|---|---|
+| 0 | UPDATE FILE (root) | — |
+| 1 | INPUT | reads record key (recordKey downward) |
+| 1 | VALIDATE | checks key against file (recordKey → validFlag) |
+| 1 | UPDATE-RECORD | — |
+| 2 | READ-RECORD | recordKey → record |
+| 2 | MODIFY-FIELDS | newValues → record |
+| 2 | WRITE-RECORD | record → status |
+| 1 | OUTPUT | prints status message (status) |
 
 **Artefact — structure chart vs flowchart:**
 
@@ -425,19 +359,16 @@ UPDATE FILE  (root / level 0)
 
 **Artefact — transaction-centred structure:**
 
-```
-LIBRARY-FRONT-DESK (MAIN)
-│   (1) invoke INPUT to read a transaction
-│   (2) determine the kind of transaction, select one transaction module
-│   (3) output results by calling OUTPUT
-├── INPUT                (reads the transaction record)
-├── TRANSACTION-DISPATCH (selects one of the below on transaction type)
-│     ├── ISSUE-BOOK
-│     ├── RETURN-BOOK
-│     ├── QUERY-BOOK
-│     └── GENERATE-REPORT
-└── OUTPUT               (prints the transaction result)
-```
+| Level | Module | Note |
+|---|---|---|
+| 0 | LIBRARY-FRONT-DESK (MAIN) | (1) invoke INPUT to read a transaction · (2) determine the kind of transaction, select one transaction module · (3) output results by calling OUTPUT |
+| 1 | INPUT | reads the transaction record |
+| 1 | TRANSACTION-DISPATCH | selects one of the below on transaction type |
+| 2 | ISSUE-BOOK | — |
+| 2 | RETURN-BOOK | — |
+| 2 | QUERY-BOOK | — |
+| 2 | GENERATE-REPORT | — |
+| 1 | OUTPUT | prints the transaction result |
 
 **MAIN's three functions (verbatim from slide 45):** (i) invoke the `INPUT` module to read a transaction; (ii) determine the kind of transaction and select one of a number of transaction modules to process it; (iii) output the results by calling the `OUTPUT` module.
 
@@ -497,22 +428,24 @@ LIBRARY-FRONT-DESK (MAIN)
 
 **Artefact — sequence (text form), objects typed per slide 75:**
 
-```
-:User                 (actor)
-:Query book interface (BOUNDARY / interface object)  — lifeline 1
-:Query operator       (CONTROL object)               — lifeline 2
-:Book details         (ENTITY object)                — lifeline 3
+| Lifeline | Object type (slide 75) |
+|---|---|
+| `:User` | actor |
+| `:Query book interface` | BOUNDARY / interface object |
+| `:Query operator` | CONTROL object |
+| `:Book details` | ENTITY object |
 
-1. User           -> :Query book interface : enter name/author
-2. :Query book interface -> :Query operator : get details
-3. :Query operator       -> :Book details   : search details
-4. :Book details         -> :Query operator : result
-5. :Query operator       -> :Query book interface : show result  (to User)
-```
+| # | From | To | Message |
+|---|---|---|---|
+| 1 | User | :Query book interface | enter name/author |
+| 2 | :Query book interface | :Query operator | get details |
+| 3 | :Query operator | :Book details | search details |
+| 4 | :Book details | :Query operator | result |
+| 5 | :Query operator | :Query book interface | show result (to User) |
 
 **Object-type check (slide 75):** `Query book interface` = interface/boundary; `Query operator` = control; `Book details` = entity. This is the same pattern used across the case study (slides 85–92 all show one boundary, one control and one entity per use case).
 
-**التبرير العربي:** كل use case في حالة الدراسة له ثلاثة أنواع كائنات: **boundary** (النموذج/الواجهة)، **control** (المتحكّم)، **entity** (البيانات). نمط الرسائل موحّد: المستخدم → الحدّ → المتحكّم → الكيان ثم الرجوع. هذا يعطي اقترانًا أحاديّ الاتجاه واضحًا قبل كتابة الشيفرة (سلايد 75).
+**التبرير العربي:** كل use case في حالة الدراسة له ثلاثة أنواع كائنات: **boundary** (النموذج/الواجهة)، **control** (المتحكّم)، **entity** (البيانات). نمط الرسائل موحّد: المستخدم ← الحدّ ← المتحكّم ← الكيان ثم الرجوع. هذا يعطي اقترانًا أحاديّ الاتجاه واضحًا قبل كتابة الشيفرة (سلايد 75).
 
 ---
 
@@ -524,29 +457,13 @@ LIBRARY-FRONT-DESK (MAIN)
 
 **Artefact — entity classes (matches slide 93):**
 
-```
-CLASS Book Details
-  Book Id, Book Name, Author Name, Publisher,
-  Copies in Book Bank, Copies in General
-  Add Book(), Update No. of Copies()
-
-CLASS Student Details
-  Student Barcode Id, Student Roll no., Name, Course,
-  No. of Book Bank Issued, No. of General Issued
-  Get Student Details(), Add Student(), Delete Student(), Update Student()
-
-CLASS Issued Book Details
-  Book Id, Barcode Id, Issued
-  Add(), Delete(), Issue(), Return()
-
-CLASS Student Issued Book Details
-  Student Bar Code Id, Book Bar Code Id
-  Add(), Delete()
-
-CLASS Login Details
-  User Id, User Name, Password, User Role
-  Add(), Delete(), Update()
-```
+| Class | Attributes | Operations |
+|---|---|---|
+| `Book Details` | Book Id, Book Name, Author Name, Publisher, Copies in Book Bank, Copies in General | Add Book(), Update No. of Copies() |
+| `Student Details` | Student Barcode Id, Student Roll no., Name, Course, No. of Book Bank Issued, No. of General Issued | Get Student Details(), Add Student(), Delete Student(), Update Student() |
+| `Issued Book Details` | Book Id, Barcode Id, Issued | Add(), Delete(), Issue(), Return() |
+| `Student Issued Book Details` | Student Bar Code Id, Book Bar Code Id | Add(), Delete() |
+| `Login Details` | User Id, User Name, Password, User Role | Add(), Delete(), Update() |
 
 **Artefact — relationships:**
 
@@ -554,7 +471,7 @@ CLASS Login Details
 |---|---|---|---|
 | `Issued Book Details` | `Book Details` | Dependency (unidirectional) | "always unidirectional… depends on definitions in another" |
 | `Student Issued Book Details` | `Student Details` | Dependency (unidirectional) | same |
-| `Issued Book Details` ↔ `Student Issued Book Details` | Association | "semantic connection between classes" (slide 77) |
+| `Issued Book Details` | `Student Issued Book Details` | Association (bidirectional) | "semantic connection between classes" (slide 77) |
 
 **التبرير العربي:** المخطط طابق ما في سلايد 93 حرفيًا. العلاقة بين تفاصيل الكتاب الصادر وتفاصيل الكتاب = **dependency** (أحادية الاتجاه، سلايد 78)، والربط بين الكتاب الصادر والطالب = **association** (سلايد 77). هذا يفصل "بيانات الكيان" عن "سجل الحركة" بفصل نظيف.
 
@@ -568,31 +485,14 @@ CLASS Login Details
 
 **Artefact — memo:**
 
-```
-DESIGN DECISION MEMO — Library Management System
-DECISION: Adopt object-oriented design (6-step process, slide 72).
-
-1. ORTHOGONALITY (slide 58): OOD focuses on the data ("things"), not the
-   function; the library's things (Book, Student, Loan) are stable while
-   the functions change -- so the decomposition is more durable.
-
-2. ENCAPSULATION / INFORMATION HIDING (slide 69): each entity keeps its own
-   state; the fine rule lives inside the Loan class, so changing it does
-   not ripple to unrelated modules.
-
-3. INHERITANCE + POLYMORPHISM (slides 68-69): Book Bank Book and General
-   Book are subclasses of Book; the issue-limit rule becomes a polymorphic
-   operation, so a new book category is added by subclassing -- no edit to
-   existing code.
-
-4. USE-CASE-DRIVEN TRACEABILITY (slides 73-75): the 6 steps start from the
-   use case model, so every class traces to a requirement -- protecting the
-   design from scope creep (the model-level source of coincidental cohesion).
-
-RISK: OOD adds modelling overhead and requires discipline; if the team
-documents classes but not their interfaces, class coupling can silently
-become Content coupling -- the exact defect the chapter ranks worst.
-```
+| Section | Content |
+|---|---|
+| DECISION | Adopt object-oriented design (6-step process, slide 72). |
+| 1. Orthogonality (slide 58) | OOD focuses on the data ("things"), not the function; the library's things (Book, Student, Loan) are stable while the functions change — so the decomposition is more durable. |
+| 2. Encapsulation / information hiding (slide 69) | each entity keeps its own state; the fine rule lives inside the Loan class, so changing it does not ripple to unrelated modules. |
+| 3. Inheritance + polymorphism (slides 68–69) | Book Bank Book and General Book are subclasses of Book; the issue-limit rule becomes a polymorphic operation, so a new book category is added by subclassing — no edit to existing code. |
+| 4. Use-case-driven traceability (slides 73–75) | the 6 steps start from the use case model, so every class traces to a requirement — protecting the design from scope creep (the model-level source of coincidental cohesion). |
+| RISK | OOD adds modelling overhead and requires discipline; if the team documents classes but not their interfaces, class coupling can silently become Content coupling — the exact defect the chapter ranks worst. |
 
 **التبرير العربي:** اخترنا OOD لأن **الأشياء ثابتة والوظائف متغيّرة** (سلايد 58)، والـ**encapsulation** تحصر أثر التغيير (سلايد 69)، والـ**inheritance/polymorphism** تضيف سلوكًا بدون تعديل الكود القائم. الخطر الوحيد: إهمال توثيق الواجهات يخلق **Content coupling** — أسوأ نوع (سلايد 24).
 
@@ -617,32 +517,29 @@ become Content coupling -- the exact defect the chapter ranks worst.
 
 **Artefact — (B) class model:**
 
-```
-CLASS Student       : rollNo, name, hostelBlock ; enrol(), getPlan()
-CLASS MealPlan      : planId, mealsPerDay, rate   ; monthlyAmount()   <-- POLYMORPHIC
-       subclass VegPlan     overrides monthlyAmount()
-       subclass NonVegPlan  overrides monthlyAmount()
-CLASS Bill          : billId, month, amount, status ; generate(), settle()
-CLASS Payment       : payId, amount, mode, date    ; record()
-```
+| Class | Attributes | Operations | Note |
+|---|---|---|---|
+| `Student` | rollNo, name, hostelBlock | enrol(), getPlan() | — |
+| `MealPlan` | planId, mealsPerDay, rate | monthlyAmount() | **POLYMORPHIC** |
+| `VegPlan` | subclass of `MealPlan` | overrides monthlyAmount() | — |
+| `NonVegPlan` | subclass of `MealPlan` | overrides monthlyAmount() | — |
+| `Bill` | billId, month, amount, status | generate(), settle() | — |
+| `Payment` | payId, amount, mode, date | record() | — |
 
 Relationships: `Student` ◆— `MealPlan` (**aggregation** — whole/parts of a student's plan); `Bill` ➜ `MealPlan` (**dependency** — needs the plan to compute the amount); `Student` ↔ `Bill` (**association**); `VegPlan`/`NonVegPlan` ▷ `MealPlan` (**generalisation**).
 
 **Artefact — (C) use-case description (abridged, "Record Payment"):**
 
-```
-Introduction   : Records a student's mess payment against an open bill.
-Actors         : Primary Cashier ; Secondary none
-Pre-condition  : Bill exists with status Generated or PartlyPaid
-Post-condition : Payment recorded; bill status advanced or Settled
-Basic flow     : 1 enter rollNo -> 2 system shows open bill -> 3 enter amount
-                 and mode -> 4 system validates -> 5 system records payment
-                 -> 6 shows receipt
-Alternate flow : 4a amount exceeds dues -> error, return to 3
-                 4b no open bill -> show message, abort
-Special req.   : partial payments allowed; receipt is printed
-Related        : <<include>> Login ; <<uses>> Query Dues
-```
+| Section | Content |
+|---|---|
+| Introduction | Records a student's mess payment against an open bill. |
+| Actors | Primary Cashier; Secondary none |
+| Pre-condition | Bill exists with status Generated or PartlyPaid |
+| Post-condition | Payment recorded; bill status advanced or Settled |
+| Basic flow | 1 enter rollNo — 2 system shows open bill — 3 enter amount and mode — 4 system validates — 5 system records payment — 6 shows receipt |
+| Alternate flow | 4a amount exceeds dues — error, return to 3 · 4b no open bill — show message, abort |
+| Special req. | partial payments allowed; receipt is printed |
+| Related | `<<include>>` Login; `<<uses>>` Query Dues |
 
 **Artefact — (D) module classification:**
 
@@ -677,3 +574,15 @@ Related        : <<include>> Login ; <<uses>> Query Dues
 ---
 
 *المصدر: Aggarwal & Singh, Software Engineering 3rd ed., Ch.5 — سلايدات 1–99 (التركيز 72–93) + كتاب ص.202–251. كل صنف/علاقة/خطوة مُتحقَّق منه بنص الفصل.*
+
+
+---
+
+## Retrieval set (active recall)
+
+| السؤال | الجواب |
+|---|---|
+| كم خطوة OOD؟ | 6 |
+| ترتيب الخطوات؟ | use case · activity · interaction · class · state · component/deployment |
+| العلاقات الأربعة؟ | Association · Dependency · Aggregation · Generalisation |
+| أنواع الكائنات الثلاثة؟ | Entity · Boundary · Control |
