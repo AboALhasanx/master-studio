@@ -32,49 +32,58 @@ subtitle: أين يركّز الدكتور + الأنماط المتكررة + �
 ### النمط 1 — "احسب FP" ★★★
 **القالب:** "Consider a project with: Number of user inputs = X, outputs = Y, enquiries = Z, files = W, external interfaces = V. Compute FP."
 **الخطوات:**
+
 | الخطوة | التفصيل |
 |---|---|
 | أولاً | صنّف كل وحدة (low / avg / high) وخذ الوزن من جدول UFP |
 | ثانياً | UFP = Σ(count × weight) |
 | ثالثاً | CAF = 0.65 + 0.01 × ΣFi |
 | رابعاً | FP = UFP × CAF |
+
 **فخ:** التعقيدات المعطاة مختلطة (مثل Exercise 4.3) ⇒ لا تخلط الأوزان. **تدرّب على:** Exercise 4.5, 4.10, 4.11.
 
 ### النمط 2 — "احسب E وD بـCOCOMO" ★★★
 **القالب:** "A project of X KLOC is to be developed in [mode]. Calculate effort and development time."
 **الخطوات:**
+
 | الخطوة | التفصيل |
 |---|---|
 | أولاً | اختر الموديل (organic / semidetached / embedded) من الحجم + البيئة |
 | ثانياً | E = a_b(KLOC)^b_b — خذ a,b من جدول المعاملات |
 | ثالثاً | D = c_b(E)^d_b |
 | رابعاً | (اختياري) SS = E/D · P = KLOC/E |
+
 **فخ:** جداول **Basic ≠ Intermediate** (a مختلف!). إذا السؤال ذكر cost drivers ⇒ Intermediate (استخدم a_i).
 **تدرّب على:** Exercise 4.16, 4.20, 4.21 + Example 4.5.
 
 ### النمط 3 — "احسب EAF ثم E" ★★☆
 **القالب:** "A project has [drivers ratings]. Use intermediate COCOMO to estimate effort."
 **الخطوات:**
+
 | الخطوة | التفصيل |
 |---|---|
 | أولاً | EAF = حاصل ضرب قيم كل الـ15 driver (1.0 للـnominal) |
 | ثانياً | E = a_i(KLOC)^b_i × EAF |
+
 **فخ:** اضرب **كل** الـ15 driver (الـnominal = 1.0، فما تأثر لكن لا تنساها).
 
 ### النمط 4 — "احسب COCOMO II" ★★☆
 **القالب:** "A project of [category] with X KLOC has scale factors [ratings]. Cost drivers [ratings]. Calculate effort."
 **الخطوات:**
+
 | الخطوة | التفصيل |
 |---|---|
 | أولاً | B = 0.91 + 0.01 × Σ(scale factor ratings) — 5 factors |
 | ثانياً | PM_nominal = 2.5 × (size)^B |
 | ثالثاً | EM = حاصل ضرب الـ7 (early) أو الـ17 (post-arch) driver |
 | رابعاً | PM_adjusted = PM_nominal × EM |
+
 **فخ:** عدد الـscale factors = **5**؛ عدد الـearly drivers = **7**؛ عدد الـpost-arch drivers = **17**. **احفظ الأرقام.**
 
 ### النمط 5 — "احسب Putnam" ★★☆
 **القالب:** "Assuming the Putnam model with S=…, C=…, Do=…, compute td and Kd." أو "K=… PY, td=… years — calculate peak manning and difficulty."
 **الخطوات:**
+
 | المصدر | الصيغ |
 |---|---|
 | من S و C و D₀ | td = [ (S/C)³ / D₀ ]^(1/7) · K = D₀ × td³ |

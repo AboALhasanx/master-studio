@@ -39,6 +39,7 @@
 ## الجداول الحاسمة (احفظها غيباً)
 
 ### الجدول A — UFP weights (سلايد 17 / كتاب ص.147)
+
 | Functional Unit | Low | Average | High |
 |---|---|---|---|
 | External Inputs (EI) | 3 | 4 | 6 |
@@ -55,6 +56,7 @@
 **مقاييس مشتقة من FP:** `Productivity = FP / person-months` · `Quality = Defects / FP` · `Cost = $ / FP` · `Documentation = pages of documentation / FP`
 
 ### الجدول B — Basic COCOMO coefficients (سلايد 45 / كتاب ص.152)
+
 | Mode | a_b | b_b | c_b | d_b |
 |---|---|---|---|---|
 | Organic | 2.4 | 1.05 | 2.5 | 0.38 |
@@ -66,6 +68,7 @@
 **اختيار الموديل (سلايد 43):** Organic = مشروع صغير/فريق صغير/بيئة مألوفة · Semidetached = وسط (حجم متوسط، خبرة متوسطة) · Embedded = معقّد، قيود صارمة (hardware/tight constraints)، حجم كبير.
 
 ### الجدول C — Intermediate COCOMO coefficients (سلايد 57 / كتاب ص.156)
+
 | Mode | a_i | b_i | c_i | d_i |
 |---|---|---|---|---|
 | Organic | 3.2 | 1.05 | 2.5 | 0.38 |
@@ -77,6 +80,7 @@
 **⚠️ انتبه:** a في Intermediate **مختلف** عن a في Basic (3.2 vs 2.4 للـorganic، 2.8 vs 3.6 للـembedded) — لأن الـEAF يعوّض الفرق.
 
 **15 cost driver (سلايد 53–56) — 4 مجموعات:**
+
 | المجموعة | Drivers |
 |---|---|
 | Product | RELY (reliability) · DATA (database size) · CPLX (complexity) |
@@ -85,6 +89,7 @@
 | Project | MODP (modern programming practices) · TOOL (use of tools) · SCED (required schedule) |
 
 ### الجدول D — Putnam / Norden-Rayleigh (سلايد 123–156)
+
 | الحد | الصيغة |
 |---|---|
 | Rayleigh curve `m(t)` | `m(t) = 2·K·a·t·e^(-a·t²)` (مع a = 1/(2td²) ⇒ `m(t)= (2K·t/td²)·e^(-t²/td²)`) — **شكل السلايد 128** |
@@ -114,10 +119,12 @@
 - **FP→LOC** (Table 19): 128 C · 29 C++ · 91 Pascal · 80 Report Generator · 6 Spreadsheet · 53 Ada · 71 AI Shell…
 
 ### الجدول F — Empirical models (سلايد 36 / كتاب ص.??)
+
 | Model | Effort | Duration | Docs |
 |---|---|---|---|
 | Walston-Felix | `E = 5.2·L^0.91` | `D = 4.1·L^0.36` | — |
 | SEL / Doty | `E = 1.4·L^0.93` | `D = 4.6·L^0.26` | `DOC = 30.4·L^0.90` |
+
 (L = KLOC، E = person-months)
 
 **ملاحظة:** لاحظ الفرق — Walston-Felix يعطي **LOC أقل لنفس الجهد** (لأن a=5.2 أكبر)، SEL أكثر تفاؤلاً.

@@ -15,7 +15,7 @@ subtitle: الـMCQ الرسمية 4.1–4.25 + أسئلة إضافية بنفس
 ## أ) MCQ الرسمية 4.1 ← 4.25
 
 | # | السؤال | أ | ب | ج | د | **الجواب** |
-|---|---|---|---|:---:|---|
+|---|---|---|---|---|---|:---:|
 | 4.1 | بعد SRS، شنو نقدّر؟ | Size | Cost | Dev.time | All | **d** |
 | 4.2 | مو مقياس حجم؟ | LOC | Function Count | Cyclomatic Complexity | Halstead length | **c** |
 | 4.3 | Function count طوّرها | B.Beizer | B.Boehm | M.Halstead | Alan Albrecht | **d** |
@@ -77,6 +77,7 @@ subtitle: الـMCQ الرسمية 4.1–4.25 + أسئلة إضافية بنفس
 ---
 
 ## ج) أخطاء شائعة يجب الحذر منها
+
 | الفخ | الصحيح |
 |---|---|
 | "أنشطة risk = 5" | **2** (Assessment + Control) |
