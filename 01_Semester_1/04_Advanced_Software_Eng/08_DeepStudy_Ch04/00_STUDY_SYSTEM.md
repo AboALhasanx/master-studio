@@ -69,15 +69,13 @@
 
 ## 1.5 مواقع المصادر بالضبط
 
-```
-السلايدات:     02_Raw_Materials/Aggarwal_Singh_Slides/chapter_4_software_project_planning.pdf   (207 سلايد)
-نسخة الفصل:    02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch04_Software_Project_Planning.pdf
-الكتاب (سكان): 02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf
-               → فصل Planning = المطبوع ص.140–196 = PDF ص.76–130   (offset ≈ +64 للمطبوع من PDF)
-مراجع Planning: 02_Raw_Materials/Aggarwal_Singh_Slides/exam_papers/03_Planning_References/
-               → 1_COCOMO_II_Manual_Otago.pdf · 2_Putnam_Empirical_Estimation_IGULMS.pdf
-               → 3_Rayleigh_Curves_Tutorial_ICEAA.pdf · 4_Basili_Models_Metrics_P15.pdf
-```
+| المصدر | المسار / الملاحظة |
+|---|---|
+| السلايدات | `02_Raw_Materials/Aggarwal_Singh_Slides/chapter_4_software_project_planning.pdf` — 207 سلايد |
+| نسخة الفصل | `02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch04_Software_Project_Planning.pdf` |
+| الكتاب (سكان) | `02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf` — فصل Planning = المطبوع ص.140–196 = PDF ص.76–130 (offset ≈ +64) |
+| مراجع Planning | `02_Raw_Materials/Aggarwal_Singh_Slides/exam_papers/03_Planning_References/` — COCOMO II Manual (Otago) · Putnam Empirical Estimation (IGULMS) · Rayleigh Curves Tutorial (ICEAA) · Basili Models & Metrics (P15) |
+
 
 **⚠️ مسألة حسّاسة:** الكتاب سكان **بلا طبقة نص** (chars=0) ← تقرأه بالعين (render + vision)، ما تتشقلب عليه بالبحث.
 **⚠️ الأوفست يتغيّر** داخل الفصل — لا تفترض رقم ثابت. (تحقق دائماً من رقم الصفحة المطبوع بالعين.)
@@ -107,14 +105,14 @@
 **قاعدة التصنيف (مهمة):** المستوى يعتمد على **شنو لازم يسوي الطالب**، مو على فعل السؤال. "احسب FP" = Apply إذا المعطيات جاهزة، و Analyze إذا لازم تستنتج عدد الوحدات من الوصف.
 
 ### الخوارزمية (اللي أمشيها لكل فصل)
-```
-1. CHUNK   → كسّر الفصل لوحدات معرفة (concept units) + علاقاتها
-2. TAG     → كل وحدة: {تعريف, صيغة, جدول, خطوات حل, مثال محلول, علاقة بمفهوم ثاني}
-3. GENERATE→ لكل عنصر ولّد أسئلة من مطالب مستويات Bloom (روحي بالسلّم)
-4. VERIFY  → كل جواب يُقابل بالنص (الكتاب/السلايد) — لا اختراع
-5. TIER    → وزّع: Tier1 = Remember+Understand الصريح | Tier2 = Apply+Analyze+Evaluate+Create
-6. BALANCE → عدّ الأسئلة لكل مستوى — إذا كله Remember، أعد الكتابة
-```
+| المرحلة | الوصف |
+|---|---|
+| CHUNK | كسّر الفصل لوحدات معرفة (concept units) + علاقاتها |
+| TAG | كل وحدة: تعريف · صيغة · جدول · خطوات حل · مثال محلول · علاقة بمفهوم ثاني |
+| GENERATE | لكل عنصر ولّد أسئلة من مطالب مستويات Bloom (روحي بالسلّم) |
+| VERIFY | كل جواب يُقابل بالنص (الكتاب/السلايد) — لا اختراع |
+| TIER | وزّع: Tier1 = Remember+Understand الصريح · Tier2 = Apply+Analyze+Evaluate+Create |
+| BALANCE | عدّ الأسئلة لكل مستوى — إذا كله Remember، أعد الكتابة |
 
 ---
 
@@ -145,18 +143,16 @@
 
 يعني كل مسألة حسابية لازم تنعرض بهذا القالب (مو مثل السلايدات اللي تنطّ خطوات وتخربط):
 
-```
-### المسألة 4.x  (المصدر: سلايد NN / كتاب ص.NN)
-**المعطيات المُستخرَجة:**   جدول يفرز: size / mode / drivers / ratings
-**المعادلة المستخدمة:**      الصيغة الرمزية أولاً، ثم قيم كل رمز
-**التعويض بالتدريج:**
-   الخطوة 1: …
-   الخطوة 2: …
-   الخطوة 3: …
-**النتيجة:**                  الرقم النهائي بوحدة صحيحة
-**التحقق:**                    تقدير معقولية (هل الرقم منطقي؟)
-**الخطأ الشائع:**              شنو يغلط الطالب هون
-```
+| الحقل | الوصف |
+|---|---|
+| العنوان | المسألة 4.x — (المصدر: سلايد NN / كتاب ص.NN) |
+| المعطيات المُستخرَجة | جدول يفرز: size / mode / drivers / ratings |
+| المعادلة المستخدمة | الصيغة الرمزية أولاً، ثم قيم كل رمز |
+| التعويض بالتدريج | الخطوة 1: … · الخطوة 2: … · الخطوة 3: … |
+| النتيجة | الرقم النهائي بوحدة صحيحة |
+| التحقق | تقدير معقولية (هل الرقم منطقي؟) |
+| الخطأ الشائع | شنو يغلط الطالب هون |
+
 
 **قاعدة:** لا تختصر خطوة. حتى لو السلايد ينطها — إحنا نكتبها كاملة.
 
@@ -164,14 +160,15 @@
 
 ## 4. بروتوكول الدراسة الفعلي (لأي فصل)
 
-```
-المرحلة 1 — القراءة              اقرأ الكتاب (نص + جداول + معادلات) مرور أول، لا تحفظ.
-المرحلة 2 — الأسئلة النموذجية    حل Tier1 كامل، ورجّع للنص عند الشك.
-المرحلة 3 — الفجوات               كل غلط = فجوة → ارجع اقرأ ذاك الجزء.
-المرحلة 4 — الأسئلة العميقة       حل Tier2 — هنا تنتقل من "حافظ" لـ"فاهم".
-المرحلة 5 — الشكل                ارسم من ذاكرتك: جدول COCOMO، منحنى Rayleigh، شجرة FP.
-المرحلة 6 — الإغلاق              اختبر نفسك بصوت عالي بشرح الفصل — إذا تعثرت، ارجع.
-```
+| المرحلة | المهمة |
+|---|---|
+| القراءة | اقرأ الكتاب (نص + جداول + معادلات) مرور أول، لا تحفظ. |
+| الأسئلة النموذجية | حل Tier1 كامل، ورجّع للنص عند الشك. |
+| الفجوات | كل غلط = فجوة ← ارجع اقرأ ذاك الجزء. |
+| الأسئلة العميقة | حل Tier2 — هنا تنتقل من "حافظ" لـ"فاهم". |
+| الشكل | ارسم من ذاكرتك: جدول COCOMO، منحنى Rayleigh، شجرة FP. |
+| الإغلاق | اختبر نفسك بصوت عالي بشرح الفصل — إذا تعثرت، ارجع. |
+
 
 **قاعدة حديدية:** **ممنوع تحل أسئلة قبل تقرأ.** السؤال بلا قراءة = حفظ قصير الأمد.
 
@@ -181,24 +178,17 @@
 
 ## 5. بنية المجلد
 
-```
-08_DeepStudy_Ch04/
-├── 00_STUDY_SYSTEM.md                  ← هذا الملف (النظام)
-├── 01_TIER1_MODEL_QUESTIONS.md          ← الطبقة النموذجية (MCQ 4.1–4.25 + تمارين 4.1–4.36)
-├── 02_TIER2_DEEP_QUESTIONS.md           ← الطبقة العميقة (Comprehension/Analysis/Eval/Design/Calc)
-├── 03_EXTERNAL_QUESTIONS_AND_DEEPER_CONTENT.md  ← البنوك الخارجية + ربط Pressman (Risk)
-├── 04_EXAM_PATTERN_BANK.md              ← الأنماط المتكررة بالامتحان
-├── 99_SOURCE_MAP.md                     ← خريطة صفحة-صفحة للكتاب + السلايدات
-└── ByType/                              ← تقسيم حسب نوع السؤال (7 ملفات)
-    ├── 00_INDEX_BY_TYPE.md
-    ├── T1_MCQ.md
-    ├── T2_Essay_Descriptive.md
-    ├── T3_Understand.md
-    ├── T4_Analyze.md
-    ├── T5_Evaluate.md
-    ├── T6_Create_Design.md
-    └── T7_Apply_Calc.md                 ← ★ بطل هذا الفصل
-```
+| المجلد / الملف | الوصف |
+|---|---|
+| `08_DeepStudy_Ch04/` | الساندبوكس (الجذر) |
+| `00_STUDY_SYSTEM.md` | ملف النظام (هذا الملف) |
+| `01_TIER1_MODEL_QUESTIONS.md` | الطبقة النموذجية (MCQ 4.1–4.25 + تمارين 4.1–4.36) |
+| `02_TIER2_DEEP_QUESTIONS.md` | الطبقة العميقة (Comprehension / Analysis / Eval / Design / Calc) |
+| `03_EXTERNAL_QUESTIONS_AND_DEEPER_CONTENT.md` | البنوك الخارجية + ربط Pressman (Risk) |
+| `04_EXAM_PATTERN_BANK.md` | الأنماط المتكررة بالامتحان |
+| `99_SOURCE_MAP.md` | خريطة صفحة-صفحة للكتاب + السلايدات |
+| `ByType/` | تقسيم حسب نوع السؤال (7 ملفات) |
+| `ByType/T7_Apply_Calc.md` | ★ بطل هذا الفصل |
 
 **ملاحظة:** المجلد «ساندبوكس» — كل شي تجريبي/مطوّر هنا، وما نلمس مجلد المادة الأصلي إلا بالنهائي.
 

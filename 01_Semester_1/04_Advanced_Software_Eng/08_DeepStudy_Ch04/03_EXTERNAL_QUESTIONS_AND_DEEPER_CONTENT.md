@@ -61,17 +61,10 @@ subtitle: بنوك الأسئلة الخارجية + جسر Pressman للـRisk 
 
 ### 2.3 كيف تجمع الاثنين بالامتحان؟
 لو جاء سؤال "risk management activities" — الجواب الأساسي = **Aggarwal: فئتان (Assessment + Control) وفيهن 6 أنشطة** (Fig 9):
-```
-Risk Management
-├── Risk Assessment
-│   ├── Risk Identification
-│   ├── Risk Analysis
-│   └── Risk Prioritization
-└── Risk Control
-    ├── Risk Management Planning
-    ├── Risk Monitoring
-    └── Risk Resolution
-```
+| الفئة | الأنشطة (بالترتيب) |
+|---|---|
+| **Risk Assessment** | Risk Identification · Risk Analysis · Risk Prioritization |
+| **Risk Control** | Risk Management Planning · Risk Monitoring · Risk Resolution |
 وبعدها **تضيف** (للتفوق): "وبصياغة Pressman، هذا يقابل RMMM plan حيث Mitigation↔planning، Monitoring↔monitoring، Management↔resolution".
 
 ---
@@ -82,13 +75,10 @@ Risk Management
 
 ### 3.1 عائلات موديلات التقدير (سلايد 34)
 
-```
-Cost Estimation Models
-├── Static, Single-Variable Models
-│   └── علاقة واحدة: Effort = f(size)   [مثل Walston-Felix, SEL]
-└── Static, Multivariable Models
-    └── علاقات متعددة: Effort = f(size, drivers)   [مثل COCOMO intermediate/detailed]
-```
+| العائلة | التعريف | أمثلة |
+|---|---|---|
+| **Static, Single-Variable** | علاقة واحدة: Effort = f(size) | Walston-Felix · SEL |
+| **Static, Multivariable** | علاقات متعددة: Effort = f(size, drivers) | COCOMO intermediate / detailed |
 **الفرق:** Single-variable تعتمد على الحجم فقط؛ Multivariable تضيف cost drivers (reliability, experience…).
 
 ### 3.2 تقنيات التقدير (من مرجع Putnam — `2_Putnam_Empirical_Estimation_IGULMS.pdf`)

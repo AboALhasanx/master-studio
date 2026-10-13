@@ -140,22 +140,21 @@
 
 ## مسار المجلدات
 
-```
-04_Advanced_Software_Eng/
-├── 02_Raw_Materials/
-│   ├── Aggarwal_Singh_Slides/chapter_4_software_project_planning.pdf   (207 سلايد)
-│   ├── Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch04_Software_Project_Planning.pdf
-│   ├── Aggarwal_Singh_Slides/exam_papers/03_Planning_References/  (4 مراجع)
-│   └── Reference_Textbooks/AliFahim_Software_Engineering.pdf  (سكان، فصل Planning = PDF 76–130 = مطبوع 140–196)
-└── 08_DeepStudy_Ch04/                          (هذا المجلد — الساندبوكس)
-    ├── 00_STUDY_SYSTEM.md
-    ├── 01_TIER1_MODEL_QUESTIONS.md
-    ├── 02_TIER2_DEEP_QUESTIONS.md
-    ├── 03_EXTERNAL_QUESTIONS_AND_DEEPER_CONTENT.md
-    ├── 04_EXAM_PATTERN_BANK.md
-    ├── 99_SOURCE_MAP.md
-    └── ByType/  (T1..T7 + 00_INDEX)
-```
+| المسار | الوصف |
+|---|---|
+| `04_Advanced_Software_Eng/` | مجلد المادة |
+| `02_Raw_Materials/Aggarwal_Singh_Slides/chapter_4_software_project_planning.pdf` | 207 سلايد |
+| `02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch04_Software_Project_Planning.pdf` | نسخة الفصل |
+| `02_Raw_Materials/Aggarwal_Singh_Slides/exam_papers/03_Planning_References/` | 4 مراجع (COCOMO II · Putnam · Rayleigh · Basili) |
+| `02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf` | سكان — فصل Planning = PDF 76–130 = مطبوع 140–196 |
+| `08_DeepStudy_Ch04/` | الساندبوكس (هذا المجلد) |
+| `08_DeepStudy_Ch04/00_STUDY_SYSTEM.md` | ملف النظام |
+| `08_DeepStudy_Ch04/01_TIER1_MODEL_QUESTIONS.md` | الطبقة النموذجية |
+| `08_DeepStudy_Ch04/02_TIER2_DEEP_QUESTIONS.md` | الطبقة العميقة |
+| `08_DeepStudy_Ch04/03_EXTERNAL_QUESTIONS_AND_DEEPER_CONTENT.md` | البنوك الخارجية + Pressman |
+| `08_DeepStudy_Ch04/04_EXAM_PATTERN_BANK.md` | بنك أنماط الامتحان |
+| `08_DeepStudy_Ch04/99_SOURCE_MAP.md` | خريطة المصادر |
+| `08_DeepStudy_Ch04/ByType/` | T1..T7 + 00_INDEX |
 
 
 ---

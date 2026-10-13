@@ -33,22 +33,29 @@ subtitle: صمّم خطة تقدير / RMMM / استراتيجية — سينا�
 ← **Iterative estimation:** تقدير مبدئي خشن (range) ← prototype ← تحديث بعد كل iteration ← استخدم story points بدل LOC. لا تعتمد LOC.
 
 **Q6.4** أعطيتك: 50 KLOC، تعقيد عالٍ، موثوقية عالية، خبرة مبرمجين منخفضة، الباقي nominal. صمّم التقدير كاملاً.
-```
 الموديل: semidetached (حجم كبير + تعقيد) أو embedded إن كان فيه قيود hardware
+
 EAF: CPLX(high=1.15) × RELY(high=1.15) × PCAP(low=1.17) × الباقي(1.0) = 1.55
+
 50^1.12 = 79.9551 ≈ 79.96
+
 E = 3.0 × (50)^1.12 × 1.55 = 3.0 × 79.96 × 1.55 = 371.79 PM
+
 D = 2.5 × (371.79)^0.35 = 2.5 × 7.9360 = 19.84 months
+
 SS = 371.79/19.84 = 18.74 persons
-```
+
 
 **Q6.5** صمّم خطة بناء فريق (manpower profile) باستخدام Rayleigh لمشروع K=200 PY، td=3 years.
-```
+
 m₀ = 200/(3×1.648) = 40.5 persons (ذروة)
+
 منحنى: يبدأ قليلاً، يذرو عند t=3y، ينزل.
-الفريق: ~10 (سنة1) → ~40 (ذروة) → ~10 (نهاية).
+
+الفريق: ~10 (سنة1) ← ~40 (ذروة) ← ~10 (نهاية).
+
 المجموع (المساحة تحت المنحنى) = 200 PY = K.
-```
+
 
 **Q6.6** اعمل جدول مقارنة لاختيار mode لمشروعين.
 | | مشروع A | مشروع B |
@@ -82,25 +89,28 @@ m₀ = 200/(3×1.648) = 40.5 persons (ذروة)
 **التبرير:** هذي كلها تخفض الـEAF (معامل < 1) بلا ضغط الجدول.
 
 **Q6.10** صمّم خطة تحويل FP ← LOC لمشروع مكتوب بـC++.
-```
+
 FP المحسوبة = 500
+
 من Table 19: C++ = 29 SLOC/UFP
+
 LOC = 500 × 29 = 14,500 LOC
+
 ثم E = a(KLOC)^b مع KLOC = 14.5
-```
+
 
 **Q6.11** اقترح معايير قبول (acceptance criteria) لموديل تقدير.
 ← ① لا يزيد عبر المشاريع المماثلة >25% من الفعلي ② يُعاد معايرته بمشروعنا ③ يُستخدم كـrange لا رقم واحد ④ يُقاس مقابل مقاييس حقيقية (productivity, defects).
 
 **Q6.12** اكتب skeleton لبرنامج COCOMO (Exercise 4.19).
-```
-INPUT: KLOC, mode, driver ratings
-1. select (a_b, b_b, c_b, d_b) by mode
-2. E = a_b × KLOC^b_b ; D = c_b × E^d_b
-3. if drivers provided: EAF = Π(ratings) ; E *= EAF
-4. SS = E/D ; P = KLOC×1000/E
-OUTPUT: E (PM), D (months), SS (persons), P (LOC/PM)
-```
+| الأمر |
+|---|
+| INPUT — KLOC, mode, driver ratings |
+| STEP 1 — select (a_b, b_b, c_b, d_b) by mode |
+| STEP 2 — E = a_b × KLOC^b_b ; D = c_b × E^d_b |
+| STEP 3 — if drivers provided: EAF = Π(ratings) ; E *= EAF |
+| STEP 4 — SS = E/D ; P = KLOC×1000/E |
+| OUTPUT — E (PM), D (months), SS (persons), P (LOC/PM) |
 
 
 ---
