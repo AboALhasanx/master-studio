@@ -545,12 +545,13 @@ class TestShippedCards:
 class TestReferenceLedger:
     """Every published source book is tracked by the post it lives in.
 
-    The 13 textbooks were posted into topics 86/87/88/89 on 2026-10-02, and the
+    The 13 textbooks were posted into topics 86/87/88/89 on 2026-10-02, the
     two English course books (New Headway Upper-Intermediate + Q Skills 4) into
-    topic 85 on 2026-10-09; each catalog records the post ids beside the source
-    and edition from its caption, so the JSON — not a chat scroll — is the
-    inventory. The editions were read out of each PDF, so a mismatch here is a
-    real defect, not a cosmetic one.
+    topic 85 on 2026-10-09, and the two English teacher books (their printed
+    answer keys) into topic 85 on 2026-10-15; each catalog records the post ids
+    beside the source and edition from its caption, so the JSON — not a chat
+    scroll — is the inventory. The editions were read out of each PDF, so a
+    mismatch here is a real defect, not a cosmetic one.
     """
 
     def test_the_five_subjects_that_received_sources_carry_them(self):
@@ -563,10 +564,10 @@ class TestReferenceLedger:
         for key in ("01-Cyber-Security",):
             assert by_key[key].references == ()
 
-    def test_the_ledger_covers_all_fifteen_posts(self):
+    def test_the_ledger_covers_all_seventeen_posts(self):
         ids = [ref.message_id for _k, cat, _c in shipped()
                for ref in cat.references]
-        assert len(ids) == 15, f"expected 15 source posts, got {len(ids)}"
+        assert len(ids) == 17, f"expected 17 source posts, got {len(ids)}"
         assert len(set(ids)) == len(ids), "a post is listed twice"
 
     def test_every_reference_is_traceable(self):
