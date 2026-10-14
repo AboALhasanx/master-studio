@@ -20,13 +20,18 @@ while ``gs -sDEVICE=pdfwrite`` (10.08.0) *altered the extracted text* and pushed
 the page-render delta to 11.9 — i.e. Ghostscript fails the gate below. So the
 pure-Python path is the single engine this tool ships with.
 
-Safety gate (nothing is written unless all four pass)
+Safety gate (nothing is written unless all five pass)
 -----------------------------------------------------
 1. page count unchanged;
 2. per-page extracted text identical;
 3. per-page link count unchanged;
-4. every page still renders like the original (mean absolute pixel delta on a
-   low-DPI grayscale render stays under ``--tolerance``).
+4. image resolution honoured — no image that we shrank may land below the target
+   DPI (a silent over-shrink is exactly what makes scanned text unreadable);
+5. every page still renders like the original at 100 dpi — both the mean page
+   delta and the worst single page must stay inside tolerance. The render check
+   runs at 100 dpi on purpose: at low resolution a blurred scan looks "close" to
+   the original, which is how an over-shrunk file once passed and reached the
+   student unreadable.
 
 A rejected candidate is deleted and the tool exits non-zero, so "success" means
 "smaller *and* provably still the same document".
@@ -41,6 +46,7 @@ Exit codes: 0 = verified output written, 1 = rejected (nothing written),
 """
 
 import argparse
+import io
 import json
 import shutil
 import sys
@@ -48,6 +54,7 @@ import tempfile
 from pathlib import Path
 
 import pymupdf
+from PIL import Image
 
 try:
     import pikepdf
@@ -57,9 +64,10 @@ except ImportError:  # pragma: no cover - optional dependency
 
 DEFAULT_DPI_THRESHOLD = 170
 DEFAULT_DPI_TARGET = 150
-DEFAULT_QUALITY = 85
-DEFAULT_TOLERANCE = 6.0
-RENDER_DPI = 36
+DEFAULT_QUALITY = 80
+DEFAULT_TOLERANCE = 1.5
+DEFAULT_MAX_TOLERANCE = 5.0
+RENDER_DPI = 100
 
 
 # --------------------------------------------------------------- inspection --
@@ -129,8 +137,30 @@ def image_report(doc):
 # ------------------------------------------------------------------- passes --
 
 
+def _resample_image(raw_bytes, effective_dpi, target_dpi, quality):
+    """Resize one embedded image to exactly ``target_dpi`` with a Lanczos filter.
+
+    ``Pixmap.shrink(n)`` is *not* used: it divides by ``2**n`` (shrink(2) is a
+    quarter in each axis), which silently destroys scanned text. Here the scale is
+    ``target_dpi / effective_dpi``, and JPEG chroma subsampling is disabled so
+    coloured small print stays sharp.
+    """
+    scale = target_dpi / effective_dpi
+    if scale >= 0.95:
+        return None
+    img = Image.open(io.BytesIO(raw_bytes))
+    if img.mode not in ("RGB", "L"):
+        img = img.convert("RGB")
+    size = (max(1, round(img.width * scale)), max(1, round(img.height * scale)))
+    img = img.resize(size, Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG", quality=quality, subsampling=0, optimize=True,
+             dpi=(target_dpi, target_dpi))
+    return buf.getvalue()
+
+
 def _image_pass(src, out, dpi_threshold, dpi_target, quality):
-    """Downsample only the oversized images, in place, with PyMuPDF."""
+    """Downsample only the oversized images, in place, with PyMuPDF + Pillow."""
     doc = pymupdf.open(str(src))
     replaced = 0
     for pno in range(doc.page_count):
@@ -147,17 +177,14 @@ def _image_pass(src, out, dpi_threshold, dpi_target, quality):
             effective = info["width"] / (bbox.width / 72)
             if effective <= dpi_threshold:
                 continue
-            factor = int(round(effective / dpi_target))
-            if factor < 2:
+            try:
+                stream = _resample_image(info["image"], effective, dpi_target, quality)
+            except Exception:
+                continue
+            if stream is None:
                 continue
             try:
-                pix = pymupdf.Pixmap(info["image"])
-                if pix.colorspace is None:
-                    continue
-                if pix.colorspace.n not in (1, 3):
-                    pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
-                pix.shrink(factor)
-                page.replace_image(xref, stream=pix.tobytes("jpeg", jpg_quality=quality))
+                page.replace_image(xref, stream=stream)
                 replaced += 1
             except Exception:
                 continue
@@ -182,8 +209,49 @@ def _structure_pass(src, out):
 # -------------------------------------------------------------------- gate ---
 
 
-def verify(original, candidate, tolerance=DEFAULT_TOLERANCE):
-    """Compare candidate against original; return (checks, worst_delta, worst_pages)."""
+def _page_max_dpi(doc, pno):
+    """Highest effective DPI among the images on one page."""
+    page = doc[pno]
+    best = None
+    for item in page.get_images(full=True):
+        try:
+            info = doc.extract_image(item[0])
+            bbox = page.get_image_bbox(item)
+        except Exception:
+            continue
+        if not bbox.width or not bbox.height:
+            continue
+        dpi = info["width"] / (bbox.width / 72)
+        best = dpi if best is None else max(best, dpi)
+    return best
+
+
+def _resolution_pairs(original, candidate, dpi_threshold):
+    """(page, dpi before, dpi after) for every page whose images were oversized.
+
+    The check reads the *original* to decide which pages matter — measuring the
+    candidate alone would miss an over-shrunk image, because a 61-DPI image is no
+    longer "above the threshold" and would simply be skipped.
+    """
+    pairs = []
+    for pno in range(original.page_count):
+        before = _page_max_dpi(original, pno)
+        if before is None or before <= dpi_threshold:
+            continue
+        after = _page_max_dpi(candidate, pno)
+        pairs.append((pno + 1, round(before), round(after) if after is not None else None))
+    return pairs
+
+
+def verify(original, candidate, tolerance=DEFAULT_TOLERANCE,
+           max_tolerance=DEFAULT_MAX_TOLERANCE,
+           dpi_target=None, dpi_threshold=DEFAULT_DPI_THRESHOLD):
+    """Compare candidate against original; return (checks, worst_delta, worst_pages).
+
+    The render comparison runs at 100 dpi on purpose: at low resolution a blurred
+    scan looks "close" to the original, which is how an over-shrunk file once
+    passed a 36-dpi check while being unreadable on a phone.
+    """
     a = pymupdf.open(str(original))
     b = pymupdf.open(str(candidate))
     checks = []
@@ -197,12 +265,31 @@ def verify(original, candidate, tolerance=DEFAULT_TOLERANCE):
     links_ok = same_pages and _links_of(a) == _links_of(b)
     checks.append(("links unchanged", links_ok, ""))
 
+    if dpi_target:
+        # The images we were asked to shrink must not end up below the target:
+        # a silent over-shrink is exactly what makes scanned text unreadable.
+        pairs = _resolution_pairs(a, b, dpi_threshold)
+        floor = dpi_target * 0.9
+        after_values = [after for _p, _before, after in pairs]
+        lowest = min(after_values) if after_values else None
+        honoured = all(after is not None and after >= floor for after in after_values)
+        checks.append((
+            f"image resolution honoured (lowest {lowest if lowest is not None else '-'} >= {floor:.0f} dpi)",
+            honoured,
+            "",
+        ))
+
     diffs = _render_diffs(a, b) if same_pages else []
+    mean_delta = sum(diffs) / len(diffs) if diffs else float("inf")
     worst = max(diffs) if diffs else float("inf")
-    fidelity_ok = bool(diffs) and worst <= tolerance
     checks.append((
-        f"render fidelity (worst page mean delta {worst:.2f} <= {tolerance:.2f})",
-        fidelity_ok,
+        f"render fidelity, mean (mean page delta {mean_delta:.2f} <= {tolerance:.2f})",
+        bool(diffs) and mean_delta <= tolerance,
+        "",
+    ))
+    checks.append((
+        f"render fidelity, worst page ({worst:.2f} <= {max_tolerance:.2f})",
+        bool(diffs) and worst <= max_tolerance,
         "",
     ))
     worst_pages = sorted(range(1, len(diffs) + 1), key=lambda n: diffs[n - 1], reverse=True)[:3]
@@ -217,8 +304,8 @@ def verify(original, candidate, tolerance=DEFAULT_TOLERANCE):
 
 
 def compress(src, out, dpi_threshold=DEFAULT_DPI_THRESHOLD, dpi_target=DEFAULT_DPI_TARGET,
-             quality=DEFAULT_QUALITY, tolerance=DEFAULT_TOLERANCE, structure=True,
-             keep_original=False):
+             quality=DEFAULT_QUALITY, tolerance=DEFAULT_TOLERANCE,
+             max_tolerance=DEFAULT_MAX_TOLERANCE, structure=True, keep_original=False):
     """Compress ``src`` into ``out`` and keep it only if verification passes."""
     src, out = Path(src), Path(out)
     before = src.stat().st_size
@@ -233,7 +320,8 @@ def compress(src, out, dpi_threshold=DEFAULT_DPI_THRESHOLD, dpi_target=DEFAULT_D
             shutil.copyfile(stage, out)
 
     after = out.stat().st_size
-    checks, worst, worst_pages = verify(src, out, tolerance)
+    checks, worst, worst_pages = verify(src, out, tolerance, max_tolerance,
+                                        dpi_target=dpi_target, dpi_threshold=dpi_threshold)
     failed = [name for name, ok, _ in checks if not ok]
 
     report = {
@@ -252,6 +340,8 @@ def compress(src, out, dpi_threshold=DEFAULT_DPI_THRESHOLD, dpi_target=DEFAULT_D
             "dpi_target": dpi_target,
             "quality": quality,
             "tolerance": tolerance,
+            "max_tolerance": max_tolerance,
+            "render_dpi": RENDER_DPI,
         },
         "checks": [{"name": name, "passed": ok, "detail": detail} for name, ok, detail in checks],
         "worst_pages": worst_pages,
@@ -282,7 +372,9 @@ def main(argv=None):
     parser.add_argument("--quality", type=int, default=DEFAULT_QUALITY,
                         help=f"JPEG quality for lossy images (default {DEFAULT_QUALITY})")
     parser.add_argument("--tolerance", type=float, default=DEFAULT_TOLERANCE,
-                        help=f"max mean pixel delta per page (default {DEFAULT_TOLERANCE})")
+                        help=f"max mean page delta at {RENDER_DPI} dpi (default {DEFAULT_TOLERANCE})")
+    parser.add_argument("--max-tolerance", type=float, default=DEFAULT_MAX_TOLERANCE,
+                        help=f"max delta allowed on any single page (default {DEFAULT_MAX_TOLERANCE})")
     parser.add_argument("--no-structure", action="store_true",
                         help="skip the pikepdf/qpdf container pass")
     parser.add_argument("--keep-original", action="store_true",
@@ -318,6 +410,7 @@ def main(argv=None):
         dpi_target=args.dpi_target,
         quality=args.quality,
         tolerance=args.tolerance,
+        max_tolerance=args.max_tolerance,
         structure=not args.no_structure,
         keep_original=args.keep_original,
     )

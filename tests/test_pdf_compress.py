@@ -75,6 +75,37 @@ def test_gate_rejects_a_candidate_that_is_not_the_same_document(tmp_path):
     assert "page count unchanged" in failed
 
 
+def test_gate_rejects_an_over_shrunk_candidate(tmp_path):
+    """Regression: Pixmap.shrink(n) divides by 2**n, which once turned 244-DPI
+    scans into 61-DPI mush that still passed a coarse check. The gate must catch
+    a candidate whose images fall below the requested target DPI."""
+    src = _scanned_like_pdf(tmp_path / "scan.pdf", pages=2)
+    over_shrunk = tmp_path / "over-shrunk.pdf"
+
+    pdf_compress._image_pass(src, over_shrunk, 170, 75, 85)      # 75 dpi: far too low
+
+    checks, _worst, _pages = pdf_compress.verify(src, over_shrunk, 1.5, 5.0, dpi_target=150)
+    failed = [name for name, passed, _ in checks if not passed]
+    assert any("image resolution honoured" in name for name in failed), failed
+
+
+def test_compressed_images_keep_the_requested_resolution(tmp_path):
+    src = _scanned_like_pdf(tmp_path / "scan.pdf", pages=2)
+    out = tmp_path / "scan-light.pdf"
+
+    report = pdf_compress.compress(src, out, dpi_target=150, quality=85)
+    assert report["accepted"], report["failed"]
+
+    src_doc = pymupdf.open(str(src))
+    out_doc = pymupdf.open(str(out))
+    pairs = pdf_compress._resolution_pairs(src_doc, out_doc, 170)
+    src_doc.close()
+    out_doc.close()
+
+    assert pairs, "the fixture should have oversized images"
+    assert all(after is not None and after >= 150 * 0.9 for _page, _before, after in pairs), pairs
+
+
 def test_images_below_the_threshold_are_left_alone(tmp_path):
     """A file whose images are already light must survive untouched in size."""
     src = _scanned_like_pdf(tmp_path / "scan.pdf", pages=1, dpi=100)
