@@ -135,3 +135,62 @@ doctor_profile:
     formal_scenario_precision: 30%
     standards_and_literature_grounding: 25%
 ```
+
+---
+
+## 7. Observed Chapter Pattern, Vocabulary Maps & Source Expectations
+
+> **Why this section exists:** recorded from the Chapter 5 (Design) seminar review and the Chapter 6 (Metrics) vocabulary drop. It captures *how Dr. Ali Fahim builds a chapter and expects it to be presented* — for exam preparation and for any future chapter artefact. It is a record, not a task.
+
+### 7.1 The pattern (observed)
+
+1. For each chapter he hands a **detailed vocabulary list** that is effectively **the exam scope** — and it is **noticeably broader than the Aggarwal chapter** it is based on.
+2. He expects the material to **follow the book's topic order**, but to be **synthesised from multiple sources**. Reproducing the book alone is rejected.
+3. He **requires sources explicitly**: *"ما يقبل من غير المصادر"* — content presented without a cited source is not accepted. Cite the book (author, chapter, page).
+4. He **reviews semantically**: his feedback names **missing concepts**, not wording. Two teams that copied the textbook verbatim were caught by exactly this.
+
+### 7.2 Chapter 5 (Software Design) — the feedback that confirms the pattern
+
+A submitted seminar reproduced **Aggarwal Ch. 5 verbatim** (including the book's own figures). His review flagged, as missing:
+
+| Flagged as missing | Where it actually lives (PDF pages) |
+|:--|:--|
+| **abstraction** (procedural · data · control) | **Pressman §13.4.1** PDF 370–371 |
+| **stepwise refinement** | **Pressman §13.4.2** PDF 371 |
+| **information hiding** | **Pressman §13.4.9** PDF 379–380 |
+| **fan-in / fan-out** | **Mall §5.4** PDF 300–301 · **Pressman §13.4.5** PDF 375 |
+| **depth / width** | same pages |
+| **design review** | **Mall §6.6** PDF 349–352 |
+| **DFD → structure chart methodology** (transform / transaction analysis) | **Mall §6.4.1** PDF 344–348 |
+| *"الخصائص"* (properties) | Most likely **Meyer's five modularity criteria** (Pressman PDF 373); note the modular-system properties were **already present** in the submission |
+
+**Lesson:** Aggarwal Ch. 5 does **not** contain these; the doctor expects the standard SE sources (**Pressman / Mall**) to fill them in.
+
+### 7.3 Chapter 6 (Software Metrics) — future vocabulary map (recorded)
+
+The Ch. 6 vocabulary list (12 sections, ~60 items) is roughly **twice** the Aggarwal Ch. 6 scope. Source map:
+
+| Vocabulary block | In Aggarwal Ch.6? | Where else (PDF pages) |
+|:--|:--:|:--|
+| 1. Fundamentals of Measurement (scales, representation condition, GQM) | ❌ (definition only) | **No source in the vault** → *Fenton & Pfleeger*; GQM → Sommerville PDF 691 |
+| 2. Categories of Metrics (product/process/project; internal/external; predictor/control) | ✅ partial | external for internal/external + predictor/control |
+| 3. Size Metrics (LOC, Function Points, Feature/Mark II/Object Points, backfiring) | ❌ | **Pressman 107–162 · Mall 142–166 · Leach 153–180 · CS-Agarwal 167–170** |
+| 4. Halstead's Software Science | ✅ **full** | (reinforce: Mall 167–169 · Pressman 559–565) |
+| 5. Data Structure Metrics (live variables, span, program weakness) | ✅ **exclusive to Aggarwal** | — |
+| 6. Information Flow Metrics (Henry & Kafura, IF4, Shepperd) | ✅ | Henry/Kafura: Pressman ~8 · Leach |
+| 7. Control Flow / Cyclomatic (McCabe), essential complexity, knot | ❌ | **Mall 568–576 · Pressman 465–477 · Sommerville 685–690** |
+| 8. Object-Oriented Metrics (CK, MOOD, Lorenz & Kidd) | ✅ partial | **Pressman 681–696** (MOOD, Lorenz) |
+| 9. Use-Case Oriented Metrics (Use Case Points) | ✅ (slides 89–91) | — |
+| 10. Quality & Defect Metrics (defect density, DRE, phase containment, MTBF) | ❌ | **Mall 84–127** (phase containment) · **Pressman 123–133** (DRE) · **MTBF: Mall 616–642** |
+| 11. Productivity & Process Metrics | ❌ | **Pressman / Mall / Sommerville** |
+| 12. Metrics Analysis & Program (validation, baselines, ethics) | ✅ partial | **Pressman 127–139 · Sommerville 688–697** (ethics in Sommerville) |
+
+**Note:** "Fundamentals of Measurement" (scales, representation condition) has **no source inside the vault** — it is the classic **Fenton & Pfleeger, *Software Metrics***. The doctor is following the classic metrics literature, not only Aggarwal.
+
+### 7.4 Exam-relevant, calculable topics (Chapter 6)
+
+Halstead metrics · Function Points · Cyclomatic complexity $V(G)$ · Information-flow (fan-in / fan-out) · the CK suite (WMC, DIT, NOC, CBO, RFC, LCOM) · Use Case Points · Defect Density / Defect Removal Efficiency. These are the numeric, examinable cores.
+
+### 7.5 Working method that this profile implies
+
+For any chapter the doctor assigns: (1) take his vocabulary list as the exam scope; (2) follow the book's topic order; (3) fill every block from the **richest** source (Aggarwal where it is richest, otherwise Pressman / Mall / Sommerville / Leach / Fenton); (4) cite the source and page for anything not in the lecture source; (5) expect concept-level review, not word-level.
