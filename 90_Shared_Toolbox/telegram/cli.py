@@ -264,6 +264,23 @@ def build_parser() -> argparse.ArgumentParser:
                                       "answers with a two-step challenge "
                                       "(verb login) — one-time, never persisted")
 
+    # `library` is the *personal* shelf: the student's own chat with the bot,
+    # where the same final files land in a form he can search by hashtag. It is
+    # manifest-driven on purpose — a human approves the list before anything
+    # leaves the machine (see telegram/library.py).
+    p = sub.add_parser("library",
+                       help="publish a manifest of files into the personal bot "
+                            "library (a DM), tagged by subject")
+    p.add_argument("--manifest", required=True,
+                   help="JSON manifest: a list of items, each with file, "
+                        "subject and title")
+    p.add_argument("--chat", type=int, dest="chat_id",
+                   help="library chat id (default: TELEGRAM_LIBRARY_CHAT)")
+    p.add_argument("--send", action="store_true",
+                   help="actually publish; without it the command only "
+                        "proposes the batch and sends nothing")
+    p.add_argument("--subject", help="limit the run to one registry subject")
+
     return parser
 
 
@@ -653,6 +670,106 @@ def _exit_code_for(result: dict[str, Any]) -> int:
     return 7 if result.get("status") == "error" else 0
 
 
+def _run_library(args: argparse.Namespace) -> int:
+    """Publish a manifest into the personal library, or just propose it.
+
+    The default is a **proposal**. That is the whole point of the manifest: a
+    human approves what leaves the machine, so ``--send`` is a separate and
+    explicit act — an agent can build the list, show it, and stop.
+    """
+    from .library import (build_caption, library_chat_from_env, load_manifest,
+                          resolve_file, summary_table, validate_items)
+
+    try:
+        items = load_manifest(args.manifest)
+    except (OSError, ValueError) as exc:
+        _emit({"status": "error", "code": 1, "verb": "library",
+               "error": f"{type(exc).__name__}: {exc}"}, args.as_json)
+        return 1
+
+    if args.subject:
+        items = [i for i in items if str(i.get("subject")) == args.subject]
+
+    chat_id = args.chat_id if args.chat_id is not None else library_chat_from_env()
+    if not items:
+        _emit({"status": "error", "code": 1, "verb": "library",
+               "error": "manifest holds no items (after --subject filtering)"},
+              args.as_json)
+        return 1
+    if chat_id is None:
+        _emit({"status": "error", "code": 1, "verb": "library",
+               "error": "no library chat: pass --chat or set TELEGRAM_LIBRARY_CHAT"},
+              args.as_json)
+        return 1
+
+    print(summary_table(items), flush=True)
+    problems = validate_items(items)
+    if problems:
+        for problem in problems:
+            print(f"  BLOCKED  {problem}", flush=True)
+        _emit({"status": "error", "code": 1, "verb": "library",
+               "error": f"{len(problems)} item(s) blocked", "problems": problems},
+              args.as_json)
+        return 1
+
+    if not args.send:
+        print(f"(proposal only — {len(items)} file(s) would go to chat "
+              f"{chat_id}; pass --send to publish)", flush=True)
+        return 0
+
+    transport = build_transport(live=args.live)
+    acl = ACL.from_env()
+    registry = Registry(args.registry)
+    store = Store(args.db)
+    limiter = ChatRateLimiter()
+
+    sent: list[dict[str, Any]] = []
+    failed: list[dict[str, Any]] = []
+    for item in items:
+        path = resolve_file(item)
+        action = parse_action({
+            "verb": "publish",
+            "actor": args.actor,
+            "confirm": True,
+            "target": {"chat_id": chat_id},
+            "file": upload_uri(str(path)),
+            "caption": build_caption(item),
+            "parse_mode": "HTML",
+            "kind": "document",
+        })
+        try:
+            result = execute(
+                action, transport=transport, acl=acl, registry=registry,
+                store=store, limiter=limiter,
+                allowed_chats=chat_allowlist_from_env(),
+            )
+        except GatewayError as exc:
+            failed.append({"title": item.get("title"), "error": str(exc)})
+            print(f"  FAIL  {item.get('title')}: {exc}", flush=True)
+            continue
+        if result.get("status") == "error":
+            failed.append({"title": item.get("title"),
+                           "error": result.get("error")})
+            print(f"  FAIL  {item.get('title')}: {result.get('error')}", flush=True)
+        else:
+            sent.append({"title": item.get("title"),
+                         "message_id": result.get("message_id")})
+            print(f"  sent  {item.get('title')} -> {result.get('message_id')}",
+                  flush=True)
+
+    payload = {
+        "status": "sent" if not failed else "error",
+        "verb": "library",
+        "chat_id": chat_id,
+        "sent": len(sent),
+        "failed": len(failed),
+        "messages": [row["message_id"] for row in sent],
+        "failures": failed,
+    }
+    _emit(payload, args.as_json)
+    return 0 if not failed else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     load_dotenv()
     args = build_parser().parse_args(argv)
@@ -665,6 +782,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "human":
         return _run_human(args)
+
+    if args.command == "library":
+        return _run_library(args)
 
     try:
         action = _action_from_args(args)

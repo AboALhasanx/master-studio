@@ -520,6 +520,61 @@ augmented — when the real merged file arrives.
 
 ---
 
+### 4.12 `tg.py library` — the personal shelf (the student's own DM, tagged)
+
+The topics are the **public shelf**. This is the other one: the student's own chat with the bot,
+holding the final files in a form he can *search*. It exists because Telegram hashtags are
+**per-chat** — the global tag soup (`#ذكاء_اصطناعي` across every channel that ever posted it) is
+exactly what he does not want; inside his own chat, tapping `#أمن_المعلومات` lists his material and
+nothing else.
+
+**Nothing goes out without an approved manifest.** The command is manifest-driven and the default
+is a *proposal*: it prints the batch — subject, title, size, display-name bytes, tag — and sends
+nothing. `--send` is a separate, explicit act, and the standing rule is that the student confirms
+that proposal first:
+
+```bash
+# 1. propose (safe: no transport is even built)
+python 90_Shared_Toolbox/tools/tg.py --actor <id> \
+    library --manifest 00_STUDIO_HUB/telegram/library/lectures.json
+
+# 2. send — only after he approves the list
+python 90_Shared_Toolbox/tools/tg.py --live --actor <id> \
+    library --manifest 00_STUDIO_HUB/telegram/library/lectures.json --send
+```
+
+A manifest is a JSON list (`{"items": [...]}`) of `file`, `subject`, `title` and optional `kind`,
+`note`, `catalog_link` / `link`. Validation blocks the whole run before a single upload when a file
+is missing, a subject is unknown, a title is empty, a display name passes Telegram's **62-byte**
+budget, or a caption passes 1024 characters.
+
+**The caption keeps the published shape** — the same `●` bullets and the same trailing
+`الفهرس : كتالوج المادة` line the topics use — and appends the tags on the last line:
+
+```
+● أمن المعلومات
+● الجابتر الثاني
+
+الفهرس : <a href="https://t.me/c/3710711332/181">كتالوج المادة</a>
+#أمن_المعلومات · #محاضرة
+```
+
+Subject tags and labels live in `telegram/library.py` (`SUBJECT_TAGS`, `SUBJECT_LABELS`) and mirror
+the wording of the published cards; a test keeps the labels equal to the catalog JSON, which stays
+the source of truth. The second tag is the *kind* (`#محاضرة`, `#ملخص`, `#كتاب`, `#حلول`, `#كويز`,
+`#امتحان`), so a subject view can be narrowed to lectures only.
+
+**The library chat is configuration, not an argument**: `TELEGRAM_LIBRARY_CHAT` in `.env` (the
+student's DM). It must also be on `TELEGRAM_CHAT_ALLOWLIST` — a personal DM is still a chat, and the
+allowlist is not bypassed by it being his.
+
+**A `queued` item is not a failure.** A batch of 18 files trips the local pacing ceiling
+(20/minute, ≥1 s apart), so some items answer `queued` instead of a message id. Drain them with
+`queue run` and the missing files land. Do **not** re-run `library --send` to "fix" it: the
+idempotency key makes the already-sent ones answer `duplicate` while the queued one stays queued.
+
+---
+
 ## 5. Persona — how the bot behaves (issue #17)
 
 
