@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from typing import Any
 
 from .acl import ACL, chat_allowlist_from_env
@@ -280,6 +281,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="actually publish; without it the command only "
                         "proposes the batch and sends nothing")
     p.add_argument("--subject", help="limit the run to one registry subject")
+    p.add_argument("--pace", type=float, default=3.5,
+                   help="seconds to keep between sends (default 3.5, i.e. "
+                        "under the 20/min pacing ceiling). Adaptive: a slow "
+                        "upload already spent the wait. 0 disables")
 
     return parser
 
@@ -678,7 +683,8 @@ def _run_library(args: argparse.Namespace) -> int:
     explicit act — an agent can build the list, show it, and stop.
     """
     from .library import (build_caption, library_chat_from_env, load_manifest,
-                          resolve_file, summary_table, validate_items)
+                          resolve_file, stage_copy, summary_table, unstage,
+                          validate_items)
 
     try:
         items = load_manifest(args.manifest)
@@ -725,33 +731,49 @@ def _run_library(args: argparse.Namespace) -> int:
 
     sent: list[dict[str, Any]] = []
     failed: list[dict[str, Any]] = []
+    last_sent = 0.0
     for item in items:
+        # Pacing is ours, not the queue's. A bulk run that trips the local
+        # limiter comes back `queued` and then needs a separate `queue run`
+        # drain (with the other sessions' dead jobs mixed in); holding the gap
+        # here lets one command finish the whole batch.
+        if args.pace > 0 and last_sent:
+            wait = args.pace - (time.monotonic() - last_sent)
+            if wait > 0:
+                time.sleep(wait)
         path = resolve_file(item)
-        action = parse_action({
-            "verb": "publish",
-            "actor": args.actor,
-            "confirm": True,
-            "target": {"chat_id": chat_id},
-            "file": upload_uri(str(path)),
-            "caption": build_caption(item),
-            "parse_mode": "HTML",
-            "kind": "document",
-        })
+        # A shortened display name only exists on Telegram's side of the wire:
+        # stage a byte-identical copy under that name, send it, drop it.
+        staged = stage_copy(path, str(item.get("display") or ""))
         try:
-            result = execute(
-                action, transport=transport, acl=acl, registry=registry,
-                store=store, limiter=limiter,
-                allowed_chats=chat_allowlist_from_env(),
-            )
-        except GatewayError as exc:
-            failed.append({"title": item.get("title"), "error": str(exc)})
-            print(f"  FAIL  {item.get('title')}: {exc}", flush=True)
-            continue
+            action = parse_action({
+                "verb": "publish",
+                "actor": args.actor,
+                "confirm": True,
+                "target": {"chat_id": chat_id},
+                "file": upload_uri(str(staged or path)),
+                "caption": build_caption(item),
+                "parse_mode": "HTML",
+                "kind": "document",
+            })
+            try:
+                result = execute(
+                    action, transport=transport, acl=acl, registry=registry,
+                    store=store, limiter=limiter,
+                    allowed_chats=chat_allowlist_from_env(),
+                )
+            except GatewayError as exc:
+                failed.append({"title": item.get("title"), "error": str(exc)})
+                print(f"  FAIL  {item.get('title')}: {exc}", flush=True)
+                continue
+        finally:
+            unstage(staged)
         if result.get("status") == "error":
             failed.append({"title": item.get("title"),
                            "error": result.get("error")})
             print(f"  FAIL  {item.get('title')}: {result.get('error')}", flush=True)
         else:
+            last_sent = time.monotonic()
             sent.append({"title": item.get("title"),
                          "message_id": result.get("message_id")})
             print(f"  sent  {item.get('title')} -> {result.get('message_id')}",

@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
+import tempfile
 from pathlib import Path
 
 __all__ = [
@@ -36,8 +38,10 @@ __all__ = [
     "library_chat_from_env",
     "load_manifest",
     "resolve_file",
+    "stage_copy",
     "subject_tag",
     "summary_table",
+    "unstage",
     "validate_items",
 ]
 
@@ -50,7 +54,10 @@ CAPTION_LIMIT = 1024
 #: One label per registry subject — the exact words the published subject cards
 #: carry, so the library and the topics read the same (a test keeps them in
 #: sync with the catalog JSON, which is the source of truth).
+#: ``00-University`` has no card: university documents get a shelf of their own
+#: so they validate as items instead of being rejected as "unknown subject".
 SUBJECT_LABELS = {
+    "00-University": "وثائق الجامعة",
     "01-Cyber-Security": "أمن المعلومات",
     "02-English-Language": "اللغة الإنجليزية",
     "03-Data-Mining": "تنقيب البيانات",
@@ -62,6 +69,7 @@ SUBJECT_LABELS = {
 #: Hashtags carry no spaces, so multi-word subjects use underscores. They are
 #: Arabic on purpose: they are read by a human tapping them, not by a parser.
 SUBJECT_TAGS = {
+    "00-University": "#وثائق_الجامعة",
     "01-Cyber-Security": "#أمن_المعلومات",
     "02-English-Language": "#انكليزي",
     "03-Data-Mining": "#تنقيب_البيانات",
@@ -75,11 +83,18 @@ SUBJECT_TAGS = {
 KIND_TAGS = {
     "lecture": "#محاضرة",
     "chapter": "#محاضرة",
+    "source": "#مصدر",
     "summary": "#ملخص",
     "book": "#كتاب",
     "solutions": "#حلول",
     "quiz": "#كويز",
     "exam": "#امتحان",
+    "paper": "#بحث",
+    "slides": "#شرائح",
+    "diagram": "#مخطط",
+    "rules": "#لائحة",
+    "card": "#بطاقة",
+    "other": "#ملف",
 }
 
 ENV_LIBRARY_CHAT = "TELEGRAM_LIBRARY_CHAT"
@@ -103,7 +118,8 @@ def subject_tag(subject: str) -> str:
 
 
 def kind_tag(kind: str | None) -> str:
-    return KIND_TAGS.get(str(kind or "lecture").lower(), "#مادة")
+    """Unknown kinds still get *a* tag — the tag line is never allowed to be blank."""
+    return KIND_TAGS.get(str(kind or "lecture").lower(), "#ملف")
 
 
 def resolve_file(item: dict, root: Path | None = None) -> Path:
@@ -114,6 +130,29 @@ def resolve_file(item: dict, root: Path | None = None) -> Path:
         return path
     base = root or Path(__file__).resolve().parents[2]
     return base / raw
+
+
+def stage_copy(path: Path, display: str | None) -> Path | None:
+    """A byte-identical copy under the manifest's *display* name.
+
+    Telegram names a file after the path it was uploaded from and caps the
+    display name at 62 **bytes**, so a long vault name has to be shortened
+    before the first send — renaming afterwards means re-uploading the whole
+    file (per the official docs). Returns ``None`` when the real name already
+    fits, so the common case touches no disk at all.
+    """
+    if not display or display == path.name:
+        return None
+    folder = Path(tempfile.mkdtemp(prefix="tglib_"))
+    target = folder / display
+    shutil.copy2(path, target)
+    return target
+
+
+def unstage(staged: Path | None) -> None:
+    """Remove a staged copy (and its throwaway folder). Safe to call always."""
+    if staged is not None:
+        shutil.rmtree(staged.parent, ignore_errors=True)
 
 
 def build_caption(item: dict) -> str:

@@ -39,6 +39,9 @@ opencode.json
 # Only the 830-byte blank placeholders stay tracked; the real pages never ship.
 00_STUDIO_HUB/telegram/catalog/files/
 00_STUDIO_HUB/telegram/lectures/
+# Library publish copies: compressed to clear the Bot API's 50 MB ceiling. The
+# originals stay in the vault, so these are staging, not source.
+00_STUDIO_HUB/telegram/library/_compressed/
 *.zip
 *.rar
 *.7z

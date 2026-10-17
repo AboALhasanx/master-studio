@@ -130,3 +130,30 @@ def test_a_proposal_never_touches_the_transport(tmp_path, monkeypatch, capsys):
     out = capsys.readouterr().out
     assert code == 0
     assert "proposal only" in out
+
+
+def test_stage_copy_renames_only_when_it_has_to(tmp_path):
+    doc = tmp_path / "Q Skills for Success 4 - Reading and Writing (Teacher Book).pdf"
+    doc.write_bytes(b"%PDF-1.4 payload")
+    assert library.stage_copy(doc, doc.name) is None, "name fits -> touch no disk"
+    assert library.stage_copy(doc, "") is None
+
+    staged = library.stage_copy(doc, "Q Skills 4 Teacher Book.pdf")
+    try:
+        assert staged is not None and staged.name == "Q Skills 4 Teacher Book.pdf"
+        assert staged.read_bytes() == doc.read_bytes(), "bytes must be identical"
+        assert staged.parent != doc.parent, "staged outside the vault"
+    finally:
+        library.unstage(staged)
+    assert not staged.parent.exists()
+    library.unstage(None)
+
+
+def test_every_shelf_the_manifests_use_has_a_tag():
+    """The scan writes subjects and kinds the tool must be able to caption."""
+    for key in library.SUBJECT_LABELS:
+        assert library.subject_tag(key).startswith("#")
+    for kind in ("lecture", "source", "summary", "paper", "slides", "diagram",
+                 "quiz", "exam", "rules", "card", "other"):
+        assert library.kind_tag(kind).startswith("#"), kind
+    assert library.kind_tag("something-else") == "#ملف"
