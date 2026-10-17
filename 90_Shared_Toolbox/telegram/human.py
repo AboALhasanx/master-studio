@@ -151,6 +151,12 @@ class HumanRequest:
     # name (``dm_ch1.pdf``) reads as scaffolding, not as "الجابتر الأول".
     file: str | None = None
     filename: str | None = None
+    # ``sendfile``: how many connections to upload over. Telethon is strictly
+    # sequential and one stream here runs at ~160 KB/s while the line does
+    # 1.34 MB/s, so the server throttles per connection — None keeps the old
+    # single-stream behaviour, a number opts into parallel parts (see
+    # ``parallel_upload``; the count is clamped to the safe 1..8 band).
+    workers: int | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -300,7 +306,8 @@ def _dispatch_table(req: HumanRequest, gateway):
         return lambda: gateway.send_file(req.chat_id, req.file,
                                          caption=req.text,
                                          filename=req.filename,
-                                         thread_id=req.thread_id)
+                                         thread_id=req.thread_id,
+                                         workers=req.workers)
     if req.verb == "login":
         # password wins: Telethon's sign_in is an if/elif chain (see the
         # adapter), so handing it a code as well would clear nothing.
@@ -549,26 +556,50 @@ class TelethonGateway:
     def send_file(self, chat_id: int, path: str, *,
                   caption: str | None = None,
                   filename: str | None = None,
-                  thread_id: int | None = None) -> dict:
+                  thread_id: int | None = None,
+                  workers: int | None = None) -> dict:
         """Upload a document as the spare account (the file publisher).
 
         ``attributes`` is the only way to set the *display* name: Telethon
         otherwise reuses the on-disk name, and a chapter shipped as
         ``dm_ch1.pdf`` reads as scaffolding. ``force_document=True`` keeps
         Telegram from recompressing a PDF into an image.
+
+        ``workers`` sends the parts over several connections instead of one
+        (see ``parallel_upload``). Measured on 2026-10-17 after ``cryptg`` was
+        installed, that buys nothing here — a single stream already reaches
+        1.04 MB/s against a 1.34 MB/s line — so it stays an explicit opt-in.
+        The transfer itself always goes out in 512 KB parts: Telethon's 128 KB
+        default doubles the number of round trips and cost 22.7 s against
+        12.8 s for the same 11.63 MB deck.
         """
         async def body(client):
             from telethon.tl.types import DocumentAttributeFilename
+            from .parallel_upload import PART_SIZE_KB
             await self._require(client)
             attributes = None
             if filename:
                 attributes = [DocumentAttributeFilename(filename)]
+            size = Path(path).stat().st_size
+            started = time.time()
+            if workers:
+                from .parallel_upload import upload_parallel
+                source = await upload_parallel(client, path, workers=workers)
+            else:
+                source = await client.upload_file(str(path),
+                                                  part_size_kb=PART_SIZE_KB)
             sent = await client.send_file(
-                chat_id, path, caption=caption, parse_mode="html",
+                chat_id, source, caption=caption, parse_mode="html",
                 reply_to=thread_id, force_document=True,
                 attributes=attributes,
             )
-            return {"message_id": sent.id, "chat_id": chat_id}
+            return {
+                "message_id": sent.id,
+                "chat_id": chat_id,
+                "mb": round(size / 1e6, 2),
+                "seconds": round(time.time() - started, 1),
+                "workers": workers or 1,
+            }
 
         return self._call(body)
 

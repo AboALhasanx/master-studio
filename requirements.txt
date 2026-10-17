@@ -35,4 +35,9 @@ pytest==8.3.4
 
 # 7. Spare human account via MTProto (issue #22; the Bot API client in
 #    90_Shared_Toolbox/telegram/transport.py does not need this).
+#    cryptg is not optional in practice: without it Telethon falls back to
+#    pure-Python AES, measured at 0.20 MB/s (vs 202 MB/s with cryptg), which
+#    pinned every upload to ~65 s per 11 MB. With it the same file lands in
+#    ~14 s. Keep it installed.
 telethon==1.41.2
+cryptg==0.6.0

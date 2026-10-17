@@ -83,9 +83,11 @@ class FakeGateway:
         return {"message_id": 4242, "chat_id": chat_id}
 
     def send_file(self, chat_id: int, path: str, *, caption=None,
-                  filename=None, thread_id=None) -> dict:
-        self._hit("send_file", chat_id, path, caption, filename, thread_id)
-        return {"message_id": 4343, "chat_id": chat_id}
+                  filename=None, thread_id=None, workers=None) -> dict:
+        self._hit("send_file", chat_id, path, caption, filename, thread_id,
+                  workers)
+        return {"message_id": 4343, "chat_id": chat_id, "mb": 1.0,
+                "seconds": 2.0, "workers": workers or 1}
 
     def edit_message(self, chat_id: int, message_id: int, text: str) -> dict:
         self._hit("edit_message", chat_id, message_id, text)
@@ -399,13 +401,30 @@ class TestStructuralSeparation:
                              filename="تنقيب البيانات - الجابتر الاول.pdf",
                              thread_id=86), gateway=gw)
         assert result["ok"] is True
-        name, chat, path, caption, filename, thread = gw.calls[0]
+        name, chat, path, caption, filename, thread, workers = gw.calls[0]
         assert name == "send_file"
         assert chat == ALLOWED_CHAT
         assert path == str(doc)
         assert caption == "الفهرس : كتالوج المادة"
         assert filename == "تنقيب البيانات - الجابتر الاول.pdf"
         assert thread == 86
+        # no --workers means the plain single-stream path, unchanged
+        assert workers is None
+
+    def test_sendfile_workers_reach_the_gateway(self, tmp_path):
+        """--workers is the parallel-upload switch; it must arrive intact."""
+        doc = tmp_path / "deck.pdf"
+        doc.write_bytes(b"%PDF-1.4 test")
+        gw = FakeGateway()
+        result = run(request("sendfile", chat_id=ALLOWED_CHAT, file=str(doc),
+                             workers=6),
+                     gateway=gw)
+        name, _chat, _path, _caption, _filename, _thread, workers = gw.calls[0]
+        assert name == "send_file"
+        assert workers == 6
+        # the ledger keeps the measured speed, not just "it worked"
+        assert result["result"]["workers"] == 6
+        assert result["result"]["seconds"] == 2.0
 
     def test_sendfile_outside_the_allowlist_is_denied(self, tmp_path):
         doc = tmp_path / "x.pdf"

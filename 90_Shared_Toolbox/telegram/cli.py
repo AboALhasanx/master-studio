@@ -247,6 +247,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--file", help="local file to upload (verb sendfile)")
     p.add_argument("--filename", help="display name Telegram shows for "
                                       "--file (verb sendfile)")
+    p.add_argument("--workers", type=int,
+                   help="connections to upload --file over (verb sendfile). "
+                        "Telethon is sequential and one stream is throttled to "
+                        "~160 KB/s here, so 4-8 is a large speed-up; clamped to "
+                        "1..8, omit for the plain single-stream path")
     p.add_argument("--thread", type=int, dest="thread_id",
                    help="forum topic id to post into (verbs say, sendfile); "
                         "omit to post to the general topic")
@@ -548,6 +553,7 @@ def _run_human(args: argparse.Namespace) -> int:
         thread_id=getattr(args, "thread_id", None),
         file=getattr(args, "file", None),
         filename=getattr(args, "filename", None),
+        workers=getattr(args, "workers", None),
     )
     gate = dict(
         live=bool(args.live),
@@ -614,8 +620,14 @@ def _human_detail(req, result: dict) -> str:
         # the card said before the next edit overwrites it again.
         return f"message_id={payload.get('message_id')} text={req.text}"
     if req.verb == "sendfile" and isinstance(payload, dict):
+        # The transfer speed belongs in the ledger: "parallel is faster" is a
+        # claim until a row says 11.63 MB in 19.4 s over 6 connections.
+        speed = ""
+        if payload.get("seconds"):
+            speed = (f" {payload.get('mb')}MB/{payload.get('seconds')}s"
+                     f" workers={payload.get('workers')}")
         return (f"message_id={payload.get('message_id')} "
-                f"file={req.filename or req.file}")
+                f"file={req.filename or req.file}{speed}")
     if isinstance(payload, list):
         return f"count={len(payload)}"
     if isinstance(payload, dict):

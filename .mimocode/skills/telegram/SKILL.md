@@ -325,6 +325,9 @@ python 90_Shared_Toolbox/tools/tg.py --live human --verb say --chat -10037107113
 
 # publish a FILE as the spare account (the file publisher): --filename is the
 # display name Telegram shows — a chapter sent as dm_ch1.pdf reads as scaffolding
+# --workers spreads the upload over several connections (1..8). Measured
+# 2026-10-17: no gain on this line once cryptg is installed, so it is opt-in;
+# the default path (512 KB parts, one stream) is the fast one
 python 90_Shared_Toolbox/tools/tg.py --live human --verb sendfile \
     --chat -1003710711332 --thread 86 \
     --file "C:\path\dm_ch1.pdf" \
@@ -360,14 +363,25 @@ the session journal.**
 **and** `--limit` (default `10`); `say` needs `--chat` **and** `--text`; `edit` needs `--chat`,
 `--message-id` **and** `--text` (the replacement body, HTML — the pinned card is a document, so an
 in-place update must render the same markup it shipped with); `sendfile` needs
-`--chat` **and** `--file` (an existing path) and takes `--filename` (the display name) and
-`--text` (the caption); `login` needs `--phone`, and `--code` on the second step. Both `say`
+`--chat` **and** `--file` (an existing path) and takes `--filename` (the display name),
+`--workers <n>` (see below) and `--text` (the caption); `login` needs `--phone`, and
+`--code` on the second step. Both `say`
 and `sendfile` also take `--thread <topic id>`, which posts into that forum topic; omit it and
 the message goes to the general topic as before. `--thread` is refused for every other verb and
 for a non-positive id — a `--thread` that quietly did nothing would leave you believing a reply
 landed inside a topic while it came out under the wrong header. The chat
 must be on `TELEGRAM_CHAT_ALLOWLIST` — **a human account
 is not an ACL bypass**: an empty allowlist denies every chat, exactly as it does for the bot.
+
+**Uploading large files: `cryptg` is the real fix, plus 512 KB parts.** Telethon silently falls
+back to **pure-Python AES** when `cryptg` is missing, and that was the bottleneck all along:
+measured 2026-10-17, AES-IGE ran at **0.20 MB/s** in Python vs **202 MB/s** with `cryptg`, and the
+same 11.63 MB deck went from **65.8 s to 13.7 s** (the line itself does 1.34 MB/s, so the transfer
+is now network-bound). Keep `cryptg` installed — see `requirements.txt` §7. `sendfile` also uploads
+in **512 KB parts** instead of Telethon's 128 KB default: fewer round trips, 22.7 s → 12.8 s on the
+same file. `--workers 4..8` opens several connections for the case Telegram throttles a single
+stream, but on this link it measured **no gain** (4 workers was actually slower), so it stays an
+explicit opt-in and the plain path is the default.
 
 **The kill switch.** Human mode is **off by default**. Set `TELEGRAM_HUMAN_ENABLED=1` in
 `.env` to enable it; set it back to `0` (or delete the line) to stop everything at once. Only
