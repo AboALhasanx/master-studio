@@ -16,7 +16,7 @@ footer_right: "Page {page} of {topage}"
 This pack contains the **architectural drawing, process geometry, and figure interpretation exercises** from the primary course textbook (B.B. Agarwal et al., 2010, p. 52: Exercises 7 and 9, and the diagrammatic components of Exercise 8), along with critical diagram interpretation tasks from the K.K. Aggarwal & Yogesh Singh companion materials (Exercises 2.8, 2.10, and 2.20).
 
 > **Inviolable Diagram Standard:**
-> - Per vault governance, **no raw ASCII text art** is permitted in study packs. All diagrams are presented via structured vector figure embeddings (`source_figures/`) and formal Mermaid.js architecture diagrams.
+> - Per vault governance, **no raw ASCII text art or pseudo-code blocks** are permitted. All architectural models and schematics are presented via high-resolution vector figures from primary course materials.
 > - Source-grounded content is formatted in **bold**; synthesis and structural descriptions remain in plain text.
 > - Detailed Arabic notes and exam traps are placed separately outside the English model answers.
 
@@ -26,14 +26,7 @@ This pack contains the **architectural drawing, process geometry, and figure int
 
 **The Waterfall Model structures software engineering as an unbranching, linear cascade where the output of each preceding phase becomes the frozen input to the subsequent phase:**
 
-```mermaid
-graph TD
-    A[Feasibility Study] --> B[Requirements Analysis & Specification]
-    B --> C[Design & Specification]
-    C --> D[Coding & Module Testing]
-    D --> E[Integration & System Testing]
-    E --> F[Delivery & Maintenance]
-```
+![Waterfall Model Life Cycle Architecture](_diagrams/d01_waterfall_flow.png)
 
 ![Waterfall Model Architecture](source_figures/S06_Waterfall.png)
 
@@ -59,14 +52,7 @@ graph TD
 
 **A prototype is an early, working approximation or exploratory mock-up of a software system built specifically to help customers and developers visualize, understand, and clarify uncertain requirements.** **In a classic throw-away prototyping paradigm, the prototype code is not intended to serve as the final delivered product; instead, the insights gained are used to write a stable SRS, after which the actual system is cleanly developed:**
 
-```mermaid
-graph LR
-    A[Communication] --> B[Quick Design]
-    B --> C[Construct Prototype]
-    C --> D[Customer Evaluation]
-    D -->|Refine Requirements| B
-    D -->|Requirements Stabilized| E[Full Engineering & Delivery]
-```
+![Prototyping Model Life Cycle Architecture](_diagrams/d02_prototyping_flow.png)
 
 ![Prototyping Model Architecture](source_figures/S19_Prototyping.png)
 
@@ -122,14 +108,7 @@ graph LR
 
 **The Unified Process (UP / RUP) organizes software development across two orthogonal dimensions: horizontal time phases (Inception, Elaboration, Construction, Transition) and vertical technical workflows (Requirements, Analysis, Design, Implementation, Test, Deployment):**
 
-```mermaid
-graph LR
-    subgraph Unified Process Life Cycle
-        I[Inception<br>Scope & Vision] --> E[Elaboration<br>Architecture Baseline]
-        E --> C[Construction<br>Beta Capability]
-        C --> T[Transition<br>Product Release]
-    end
-```
+![Unified Process Two-Dimensional Architecture](_diagrams/d03_unified_process_flow.png)
 
 ![Unified Process Phases and Milestones](source_figures/S25_UP_Phases.png)
 

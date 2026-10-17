@@ -12,7 +12,7 @@ updated: 2026-10-17
 
 This document records the chapter-specific plan, source hierarchy, confirmed instructor vocabulary, exercise mapping, and artifact status for printable question-and-answer packs.
 
-**Current Status (2026-10-17): CLOSED for study and printing.** The six printable packs are authored and exported (54 PDF pages). Coverage includes all 20 B.B. Agarwal exercises, all 25 K.K. Aggarwal & Singh slide MCQs, and the professor’s eight vocabulary blocks. This closure pass corrected the Incremental/Iterative source distinction and source locators, aligned Scrum terms to Sommerville 9e, corrected the maintenance-cost locator to printed p.40, and added five concise authored synthesis questions for Agile response to change, Build & Fix, Incremental vs Iterative Enhancement, XP/TDD, and Scrum/XP. All six pack Markdown files pass strict lint; T2/V2 PDFs were regenerated and their affected pages visually reviewed. The closure record does not claim a blind audit or a fresh full-page visual review of every pack.
+**Current Status (2026-10-17): CLOSED for study and printing.** The six printable packs are authored and exported (55 PDF pages). Coverage includes all 20 B.B. Agarwal exercises, all 25 K.K. Aggarwal & Singh slide MCQs, and the professor’s eight vocabulary blocks. This closure pass corrected the Incremental/Iterative source distinction and source locators, aligned Scrum terms to Sommerville 9e, corrected the maintenance-cost locator to printed p.40, and added five concise authored synthesis questions for Agile response to change, Build & Fix, Incremental vs Iterative Enhancement, XP/TDD, and Scrum/XP. All six pack Markdown files pass strict lint; T2/V2 PDFs were regenerated and their affected pages visually reviewed. The closure record does not claim a blind audit or a fresh full-page visual review of every pack.
 
 ## Sources and authority
 
@@ -143,7 +143,7 @@ Build the primary book's 20 exercises into T2–T4 by their tags, including Q13'
 ## Artifact delivery status
  
 - All five question packs (`T1` through `T5`), `V2_Vocabulary_Coverage`, and `V2_Doctor_Vocabulary` are authored, critically revised, and published on disk in both Markdown and PDF formats.
-- Master index `00_INDEX.md` provides file mappings, source cross-references, and verification summaries. Total volume: 54 PDF pages across the 6 printable deliverables.
+- Master index `00_INDEX.md` provides file mappings, source cross-references, and verification summaries. Total volume: 55 PDF pages across the 6 printable deliverables.
 - Status: CLOSED — source/citation corrections and authored synthesis coverage completed on 2026-10-17; current pack PDFs pass the publication gates recorded in `00_INDEX.md`.
 
 ## Remaining verification limits (non-blocking)

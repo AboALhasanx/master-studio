@@ -138,14 +138,7 @@ This pack contains the **14 direct descriptive, definitional, and procedural exe
 
 **The Waterfall Model is a classic linear sequential life-cycle model that structures development as a cascade of discrete phases: Feasibility Study $\rightarrow$ Requirements Analysis and Specification $\rightarrow$ Design and Specification $\rightarrow$ Coding and Module Testing $\rightarrow$ Integration and System Testing $\rightarrow$ Delivery $\rightarrow$ Maintenance.** **The output of each preceding phase serves as the frozen, formally documented input to the next.**
 
-```mermaid
-graph TD
-    A[Feasibility Study] --> B[Requirements Analysis & Specification]
-    B --> C[Design & Specification]
-    C --> D[Coding & Module Testing]
-    D --> E[Integration & System Testing]
-    E --> F[Delivery & Maintenance]
-```
+![Waterfall Model Life Cycle Architecture](_diagrams/d01_waterfall_flow.png)
 
 **Key Advantages:**
 1. **Simplicity and Structure:** Highly intuitive, logical, and easy to manage due to rigid linear milestones.
@@ -165,8 +158,6 @@ graph TD
 *Source: B.B. Agarwal et al. (2010), §2.2, pp. 36–41.*
 
 ---
-
-<div class="page-break"></div>
 
 ### Exercise 10: What are the major advantages of first constructing a working prototype before developing the actual product?
 
@@ -238,6 +229,8 @@ graph TD
 > - الربع الرابع (Quadrant 4) وظيفته تحديد أهداف الدورة القادمة لاستكمال بناء النظام.
 
 *Source: B.B. Agarwal et al. (2010), §2.4, pp. 44–46.*
+
+---
 
 <div class="page-break"></div>
 

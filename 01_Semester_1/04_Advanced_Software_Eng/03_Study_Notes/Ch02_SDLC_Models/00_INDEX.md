@@ -16,7 +16,7 @@
 | **`T1_MCQ`** | Multiple Choice Questions | K.K. Aggarwal & Yogesh Singh (2007) pp. 37–39 & Slides 41–45 (Official Key on printed p. 499) | 25 MCQs (2 Synthesis Recall Qs) | [MD](T1_MCQ.md) | [PDF](T1_MCQ.pdf) | PRISTINE (9 pp) |
 | **`T2_Descriptive`** | Descriptive, Procedural & Definitional | B.B. Agarwal et al. (2010), p. 52 (Q1–6, 8, 10–12, 14–16, 18) | 14 Exercises (2 Synthesis Recall Qs) | [MD](T2_Descriptive.md) | [PDF](T2_Descriptive.pdf) | PRISTINE (12 pp) |
 | **`T3_Compare_Analyze`** | Trade-offs & Model Comparisons | B.B. Agarwal et al. (2010), p. 52 (Q17, 19, 20) + Slides (Ex 2.7, 2.9) | 5 Analyses (2 Synthesis Recall Qs) | [MD](T3_Compare_Analyze.md) | [PDF](T3_Compare_Analyze.pdf) | PRISTINE (6 pp) |
-| **`T4_Diagrams`** | Architecture Schematics & Figure Geometry | B.B. Agarwal (2010) Q7, 9 + Slides 6, 18, 20, 21, 25, 28 | 4 Visual Units (2 Synthesis Recall Qs) | [MD](T4_Diagrams.md) | [PDF](T4_Diagrams.pdf) | PRISTINE (11 pp) |
+| **`T4_Diagrams`** | Architecture Schematics & Figure Geometry | B.B. Agarwal (2010) Q7, 9 + Slides 6, 18, 20, 21, 25, 28 | 4 Visual Units (2 Synthesis Recall Qs) | [MD](T4_Diagrams.md) | [PDF](T4_Diagrams.pdf) | PRISTINE (12 pp) |
 | **`T5_Apply_Select`** | Applied Scenarios & Justified Selection | B.B. Agarwal et al. (2010) Q13 (i–iv) + Selection Matrices | 4 Scenarios + Selection Matrix (2 Synthesis Recall Qs) | [MD](T5_Apply_Select.md) | [PDF](T5_Apply_Select.pdf) | PRISTINE (7 pp) |
 
 **Source Counts (Not Exam Marks):** 
@@ -24,7 +24,7 @@
 - Supplemental textbook & slides: **25 MCQs** (printed pp. 37–39 & Slides 41–45; keys verified against official key on printed p. 499; Q2.18 noted as unverified empirical claim in textbook prose).
 - Confirmed instructor vocabulary: **8 core topic blocks**.
 - Focused Active Recall drills: **Duplicate prompts removed; unique synthesis questions provided with answers directly underneath**.
-Total generated artifact volume: **54 PDF pages**.
+Total generated artifact volume: **55 PDF pages**.
 
 ---
 

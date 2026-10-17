@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="570" viewBox="0 0 1000 570" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="54" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="42" font-size="16" font-weight="700" fill="#0f172a">Prototyping Model — Life Cycle Architecture &amp; Iteration Feedback Loop</text>
+  <text x="965" y="42" font-size="12" font-weight="600" fill="#64748b" text-anchor="end">B.B. Agarwal et al. (Fig. 2.4, p. 41) · Throw-Away Model</text>
+
+  <!-- ==================== LEFT COLUMN: PROTOTYPING LOOP CONTAINER ==================== -->
+  <rect x="25" y="75" width="480" height="425" rx="12" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.6"/>
+  <rect x="40" y="65" width="220" height="24" rx="4" fill="#7c3aed"/>
+  <text x="150" y="81" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">EXPLORATORY PROTOTYPING LOOP</text>
+
+  <!-- Step 1: Communication -->
+  <g transform="translate(45, 105)" filter="url(#cShadow)">
+    <rect width="360" height="52" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="34" height="52" rx="8" fill="#64748b"/>
+    <text x="17" y="32" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="46" y="26" font-size="14.5" font-weight="700" fill="#1e293b">Communication</text>
+    <text x="46" y="44" font-size="11.5" fill="#64748b">Initial meeting &amp; requirements elicitation</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="225" y1="157" x2="225" y2="183" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Step 2: Quick Design -->
+  <g transform="translate(45, 185)" filter="url(#cShadow)">
+    <rect width="360" height="52" rx="8" fill="#ffffff" stroke="#c084fc" stroke-width="1.8"/>
+    <rect x="0" y="0" width="34" height="52" rx="8" fill="#9333ea"/>
+    <text x="17" y="32" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="46" y="26" font-size="14.5" font-weight="700" fill="#581c87">Quick Design</text>
+    <text x="46" y="44" font-size="11.5" fill="#64748b">Focus on user visible GUI, I/O, &amp; data formats</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="225" y1="237" x2="225" y2="263" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Step 3: Construct Prototype -->
+  <g transform="translate(45, 265)" filter="url(#cShadow)">
+    <rect width="360" height="52" rx="8" fill="#ffffff" stroke="#c084fc" stroke-width="1.8"/>
+    <rect x="0" y="0" width="34" height="52" rx="8" fill="#9333ea"/>
+    <text x="17" y="32" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="46" y="26" font-size="14.5" font-weight="700" fill="#581c87">Construction of Prototype</text>
+    <text x="46" y="44" font-size="11.5" fill="#64748b">Rapid mock-up build using 4GL tools / scripts</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="225" y1="317" x2="225" y2="343" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Step 4: Customer Evaluation -->
+  <g transform="translate(45, 345)" filter="url(#cShadow)">
+    <rect width="360" height="52" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="0" y="0" width="34" height="52" rx="8" fill="#d97706"/>
+    <text x="17" y="32" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="46" y="26" font-size="14.5" font-weight="700" fill="#78350f">Customer Evaluation of Prototype</text>
+    <text x="46" y="44" font-size="11.5" fill="#64748b">User interacts directly &amp; tests behavior</text>
+  </g>
+
+  <!-- REFINEMENT FEEDBACK LOOP (Path A): from Step 4 right, up, into Step 2 right -->
+  <path d="M 405 371 L 450 371 L 450 211 L 413 211" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrP)"/>
+  <rect x="420" y="275" width="60" height="28" rx="4" fill="#7c3aed"/>
+  <text x="450" y="287" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">REFINE</text>
+  <text x="450" y="297" font-size="8.5" font-weight="600" fill="#ffffff" text-anchor="middle">LOOP</text>
+
+  <!-- Lower Note inside Loop Container -->
+  <rect x="45" y="420" width="440" height="65" rx="6" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+  <text x="60" y="442" font-size="12" font-weight="700" fill="#6b21a8">Exploratory Loop Mechanics:</text>
+  <text x="60" y="460" font-size="11" fill="#475569">• If requirements are ambiguous: iterate Steps 2 → 3 → 4.</text>
+  <text x="60" y="476" font-size="11" fill="#475569">• Customer feedback clarifies missing features and UI dialogues.</text>
+
+
+  <!-- ==================== CONNECTING TRANSITION ARROW (Path B) ==================== -->
+  <path d="M 405 385 L 470 385 L 470 145 L 532 145" fill="none" stroke="#16a34a" stroke-width="2.6" marker-end="url(#arrG)"/>
+  <rect x="450" y="195" width="85" height="42" rx="5" fill="#16a34a"/>
+  <text x="492" y="212" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">REQUIREMENTS</text>
+  <text x="492" y="226" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="middle">STABILIZED</text>
+
+
+  <!-- ==================== RIGHT COLUMN: PRODUCTION PIPELINE ==================== -->
+  <rect x="525" y="75" width="460" height="425" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.6"/>
+  <rect x="540" y="65" width="220" height="24" rx="4" fill="#16a34a"/>
+  <text x="650" y="81" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">PRODUCTION DEVELOPMENT PIPELINE</text>
+
+  <!-- Stage A: Prototype Discarded -->
+  <g transform="translate(545, 115)" filter="url(#cShadow)">
+    <rect width="420" height="70" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="6 4"/>
+    <text x="20" y="30" font-size="15" font-weight="700" fill="#991b1b">A. Throw-Away: Prototype Discarded</text>
+    <text x="20" y="50" font-size="12" fill="#b91c1c">Mock-up code is thrown away; it lacks production quality &amp; scalability.</text>
+  </g>
+
+  <!-- Arrow A -> B -->
+  <line x1="755" y1="185" x2="755" y2="215" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrG)"/>
+
+  <!-- Stage B: Rigorous SRS Baseline -->
+  <g transform="translate(545, 218)" filter="url(#cShadow)">
+    <rect width="420" height="70" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="20" y="30" font-size="15" font-weight="700" fill="#1e40af">B. Stable Software Requirements Specification (SRS)</text>
+    <text x="20" y="50" font-size="12" fill="#1e3a8a">Insights from prototype are codified into formal, frozen SRS documents.</text>
+  </g>
+
+  <!-- Arrow B -> C -->
+  <line x1="755" y1="288" x2="755" y2="318" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrG)"/>
+
+  <!-- Stage C: Full Engineering & Delivery -->
+  <g transform="translate(545, 321)" filter="url(#cShadow)">
+    <rect width="420" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="20" y="30" font-size="15" font-weight="700" fill="#14532d">C. Full Engineering Development &amp; Delivery</text>
+    <text x="20" y="50" font-size="12" fill="#15803d">Clean architectural design, structured coding, comprehensive verification.</text>
+  </g>
+
+  <!-- Right Column Footer Takeaway -->
+  <rect x="545" y="415" width="420" height="70" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+  <text x="560" y="438" font-size="12" font-weight="700" fill="#14532d">Core Architectural Takeaway (B.B. Agarwal §2.3):</text>
+  <text x="560" y="456" font-size="11" fill="#334155">The prototype serves solely as a requirements discovery tool.</text>
+  <text x="560" y="472" font-size="11" fill="#475569">The actual software product is engineered from scratch following the frozen SRS.</text>
+
+  <!-- Overall Footer -->
+  <rect x="15" y="518" width="970" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="500" y="544" font-size="12" fill="#334155" text-anchor="middle">
+    <tspan font-weight="700" fill="#0f172a">Feynman Intuition:</tspan> Like an architect building a foam mock-up to show the client room layouts — you don't live in the foam model; you use it to draw the blueprints!
+  </text>
+
+</svg>
+</div>
+</body>
+</html>
