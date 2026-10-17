@@ -5,11 +5,11 @@
 
 | Harness | Agent identity | Marker it leaves | Last seen | Status | Role / notes |
 |:---|:---|:---|:---|:---|:---|
-| WorkBuddy | Koko 🐨 (named by student 2026-09-18) | `.workbuddy-ai/memory/` (tracked) | 2026-10-10 | ACTIVE — primary | Study notes, Telegram gateway, dashboard, `phone_sync` v2. Largest footprint. |
-| OpenCode | Build agent (DeepSeek V4.1 Flash; sessions: NH UI U2 wide-slides answer-key rebuild · one-activity-per-page + source-fidelity audit) | `opencode-archive/` (legacy config) | 2026-10-15 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds, ASE slide-pack reorg, NH U2 wide-slides (59 pages, 10 verification gates), official-source extraction (`_extract_sources.py`). |
+| WorkBuddy | Koko 🐨 (named by student 2026-09-18) | `.workbuddy-ai/memory/` (tracked) | 2026-10-16 | ACTIVE — primary | Study notes, Telegram gateway, dashboard, `phone_sync` v2. Largest footprint. |
+| OpenCode | Build agent (DeepSeek V4.1 Flash; sessions: NH UI U2 wide-slides answer-key rebuild · one-activity-per-page + source-fidelity audit · ASE Ch01 T4–T7 + V1 vocabulary) | `opencode-archive/` (legacy config) | 2026-10-16 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds, ASE slide-pack reorg, NH U2 wide-slides (59 pages, 10 verification gates), official-source extraction (`_extract_sources.py`), ASE Ch01 question-type packs T4_Analyze/T5_Evaluate/T6_Create/T7_Apply_Calc + V1_Vocabulary_Coverage. |
 | MiMo Studio / Desktop | Koko | `.mimocode/skills/` | 2026-10-02 | SEEN | Session logs, bilingual packs. Shares the Koko identity with WorkBuddy. |
-| Codex | Reviewer | none (works inside shared logs) | 2026-09-22 | SEEN — reviewer | 10-point checklists, math audits (SC W02, DM W03). Reviews, does not author notes. |
-| Oh My Pi (OMP) | Coding Assistant (google-antigravity/gemini-3.8-flash) | `00_STUDIO_HUB/sessions/` entries | 2026-10-06 | ACTIVE | Architecture planning, toolchain expansion, core engineering. |
+| Codex | Reviewer | none (works inside shared logs) | 2026-10-16 | SEEN — reviewer | 10-point checklists, math audits (SC W02, DM W03). Reviews, does not author notes. |
+| Oh My Pi (OMP) / Antigravity | Coding Assistant (google-antigravity/gemini-3.8-flash) | `00_STUDIO_HUB/sessions/` entries | 2026-10-17 | ACTIVE | Architecture planning, toolchain expansion, core engineering, ASE Ch02 audit & verification. |
 | FreeBuf | unknown | `.freebuff/project-id` (single UUID file) | never in sessions | TRACE ONLY | No session content found. If it signs in, it adds its own row. |
 | Cursor | unknown | none | never | ANNOUNCED | Named in `AGENTS.md` §8 only. Row waits for its first sign-in. |
 

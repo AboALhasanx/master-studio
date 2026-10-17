@@ -123,8 +123,32 @@ def isolate_english_tokens_in_arabic(text: str) -> str:
             result.append(transformed)
     return "".join(result)
 
+def _arabic_ratio(text: str) -> float:
+    """Share of Arabic among the letters of a string (0.0 – 1.0)."""
+    ar = len(re.findall(r"[\u0600-\u06FF]", text))
+    la = len(re.findall(r"[A-Za-z]", text))
+    if ar + la == 0:
+        return 0.0
+    return ar / (ar + la)
+
+
+# A block is treated as Arabic — and forced RTL — when Arabic is at least this
+# share of its letters. Mixed Arabic-led paragraphs qualify; an English answer
+# carrying one Arabic word does not.
+RTL_ARABIC_THRESHOLD = 0.25
+
+
 def tag_bilingual_blocks(html_text: str) -> str:
-    """Tags block elements (headings, paragraphs, blockquotes, lists) as LTR if they contain no Arabic.
+    """Tags block elements (headings, paragraphs, blockquotes, lists) by direction.
+
+    Pure-English blocks get dir="ltr" + class="ltr-block".
+    Arabic-dominant blocks get dir="rtl" — MANDATORY, added 2026-10-16.
+
+    The rtl half is the important one: the document shell is <html dir="ltr"> for an
+    English pack, so an Arabic block that is left untagged INHERITS ltr and renders
+    left-to-right — which reverses word order inside the line and flips trailing
+    punctuation and percent signs (e.g. "80%" printing as "%80"). Arabic must never
+    rely on inheritance.
 
     Recurses into nested block elements. Without the recursion the regex matched the OUTER
     element first (e.g. an Arabic <li>) and consumed the inner pure-English block (e.g. a
@@ -143,8 +167,12 @@ def tag_bilingual_blocks(html_text: str) -> str:
         if 'dir=' in attrs:
             return f'<{tag}{attrs}>{content}{closing}'
         inner_text = re.sub(r'<[^>]+>', '', content)
-        if inner_text.strip() and not has_arabic(inner_text):
+        if not inner_text.strip():
+            return f'<{tag}{attrs}>{content}{closing}'
+        if not has_arabic(inner_text):
             return f'<{tag}{attrs} dir="ltr" class="ltr-block">{content}{closing}'
+        if _arabic_ratio(inner_text) >= RTL_ARABIC_THRESHOLD:
+            return f'<{tag}{attrs} dir="rtl" class="rtl-block">{content}{closing}'
         return f'<{tag}{attrs}>{content}{closing}'
 
     return re.sub(pattern, _fix_tag, html_text, flags=re.DOTALL)
@@ -281,14 +309,21 @@ def _render_callout(kind: str, custom_title: str, body_lines: List[str], lang: s
     # Process markdown inside callout body
     body_md = "\n".join(body_lines).strip()
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
-    
+
+    # Direction is set explicitly on the card, never inherited. A callout whose title or
+    # body is Arabic must be RTL even inside an English document (added 2026-10-16): the
+    # shell is <html dir="ltr">, so an untagged Arabic card renders left-to-right and
+    # reverses the line and its punctuation.
+    title_dir = ' dir="rtl"' if _arabic_ratio(re.sub(r"<[^>]+>", "", title)) >= RTL_ARABIC_THRESHOLD else ""
+    body_dir = ' dir="rtl"' if _arabic_ratio(re.sub(r"<[^>]+>", "", body_md)) >= RTL_ARABIC_THRESHOLD else ""
+
     return f"""
 <div class="callout {cfg['class']}">
-  <div class="callout-title">
+  <div class="callout-title"{title_dir}>
     <span class="callout-icon">{cfg['icon']}</span>
     <span>{H.escape(title)}</span>
   </div>
-  <div class="callout-body">
+  <div class="callout-body"{body_dir}>
     {body_html}
   </div>
 </div>
@@ -365,6 +400,47 @@ def transform_qa_cards(html_text: str, default_lang: str = "ar") -> str:
 
     transformed_retrieval = q_unified.sub(_replace_qa, retrieval_html)
     return body_head + retrieval_heading + transformed_retrieval
+
+
+def apply_keep_next(html_text: str) -> str:
+    """Make the keep-next cohesion rule reliable regardless of attr_list.
+
+    Design intent (N-003): a `{: .keep-next }` line placed under a question
+    stem attaches `class="keep-next"` (`break-after: avoid`) to that stem, so
+    the stem is never the last thing on a page — it travels with its answer.
+
+    Problem: the attr_list extension that is *supposed* to do this is flaky.
+    It attaches the class and drops the literal for some documents, but
+    silently fails for others, leaving a visible `<p>{: .keep-next }</p>` and
+    NO class on the stem. That both (a) leaks the raw text into the PDF and
+    (b) drops the cohesion guarantee.
+
+    This pass consumes any leftover `{: .keep-next }` paragraph and attaches
+    `class="keep-next"` to the immediately preceding block-level `<p>` (the
+    stem). It is idempotent: once attr_list has already handled a stem there
+    is no leftover paragraph to match, so T1/T2 are untouched. Run it right
+    after transform_qa_cards.
+    """
+    keep_next_p = re.compile(
+        r"(<p(?:\s[^>]*)?>(?:(?!</p>).)*</p>)\s*<p>\s*\{:\s*\.keep-next\s*\}\s*</p>",
+        re.DOTALL | re.IGNORECASE,
+    )
+
+    def _attach(m) -> str:
+        stem = m.group(1)
+        open_tag = stem[: stem.find(">") + 1]
+        if "class=" in open_tag:
+            stem = re.sub(r'^<p(\s[^>]*class="[^"]*)"', r'<p\1 keep-next"', stem, count=1)
+        else:
+            stem = stem.replace("<p>", '<p class="keep-next">', 1)
+        return stem
+
+    prev = None
+    while prev != html_text:
+        prev = html_text
+        html_text = keep_next_p.sub(_attach, html_text)
+    return html_text
+
 
 def trim_image_whitespace(img_bytes: bytes, pad: int = 6) -> bytes:
     """Auto-trims solid white or near-white margins from an image before inlining."""
@@ -669,6 +745,34 @@ html, body {
 /* Page Break Policies */
 .page-break { page-break-after: always; }
 .no-break { page-break-inside: avoid; }
+
+/* Mandatory RTL for Arabic blocks (added 2026-10-16).
+   Arabic text must never inherit its direction from the document shell: in an
+   English pack the shell is dir="ltr", and an untagged Arabic paragraph then
+   renders left-to-right — reversing the word order in the line and flipping
+   trailing punctuation and percent signs ("80%" printing as "%80"). */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+/* NOTE: no flex-direction override on .callout-title[dir="rtl"]. A flex row already
+   follows the container's writing direction, so dir="rtl" alone moves the icon to the
+   right (the RTL start). Adding row-reverse on top flips the axis a second time and
+   puts the icon back on the left — verified against the render, 2026-10-16. */
+.callout-body[dir="rtl"] p,
+.callout-body[dir="rtl"] li {
+  text-align: right;
+}
+
+/* Q&A unit cohesion (added 2026-10-16, student requirement).
+   A question stem and its option row must never be separated from the answer
+   card that follows them. Apply {: .keep-next } via the attr_list extension to
+   the stem paragraph AND the option paragraph; the callout already carries
+   page-break-inside: avoid, so the three then travel as one block. */
+.keep-next {
+  break-after: avoid-page;
+  page-break-after: avoid;
+}
 
 .ltr-block {
   direction: ltr !important;
@@ -1372,11 +1476,14 @@ def export_markdown_to_pdf(
     # Step 3.5: Transform Active Recall Q&A Cards (Distinguishes Q&A from Quotes)
     qa_transformed_html = transform_qa_cards(raw_html, default_lang=lang)
 
+    # Step 3.6: Guarantee keep-next cohesion (attr_list is flaky; see apply_keep_next)
+    keep_next_applied_html = apply_keep_next(qa_transformed_html)
+
     # Step 4: BiDi English Token Isolation in Arabic text (while math is safely protected as @@MATH...@@)
     if lang == "ar":
-        bidi_html = isolate_english_tokens_in_arabic(qa_transformed_html)
+        bidi_html = isolate_english_tokens_in_arabic(keep_next_applied_html)
     else:
-        bidi_html = qa_transformed_html
+        bidi_html = keep_next_applied_html
 
     # Step 5: Tag Pure English Blocks as LTR
     tagged_html = tag_bilingual_blocks(bidi_html)

@@ -194,3 +194,7 @@ Halstead metrics · Function Points · Cyclomatic complexity $V(G)$ · Informati
 ### 7.5 Working method that this profile implies
 
 For any chapter the doctor assigns: (1) take his vocabulary list as the exam scope; (2) follow the book's topic order; (3) fill every block from the **richest** source (Aggarwal where it is richest, otherwise Pressman / Mall / Sommerville / Leach / Fenton); (4) cite the source and page for anything not in the lecture source; (5) expect concept-level review, not word-level.
+
+### 7.6 Student's depth calibration (2026-10-16)
+
+The student clarified that multi-source work must stay **selective and proportionate**: the vocabulary list sets coverage; add only enough depth to repair slide omissions or explain an item more clearly. Do not mine every book for extra detail or assume every textbook heading is examinable. For a confirmed term, choose the best source for the specific gap and retain its citation. This is the student's preferred study method, informed by prior Chapter 5/6 seminar examples; it is not a new direct quote from the professor about Chapter 2.

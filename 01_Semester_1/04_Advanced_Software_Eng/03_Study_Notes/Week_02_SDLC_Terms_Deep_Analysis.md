@@ -341,11 +341,31 @@ This is the most valuable single find in the whole analysis. Mall's end-of-chapt
 
 ---
 
-## 5. Two cautions
+## 5. Two cautions (original 2026-09-23 snapshot)
 
-1. **No lecture slides were delivered for Week 02.** The nine-term list came from your own report, not from a file the doctor distributed. So the mapping above is *my* inference from the term wording to the books — a strong inference, since phrases like "applicability of RAD" and "iterative waterfall" are Mall's own section headings, but still an inference.
-2. **Page numbers are PDF page numbers**, not printed page numbers. They will be off by the front-matter offset in each book.
+1. **At the time this analysis was created, no Week 02 slide deck had been staged or confirmed.** The nine-term list came from the student's report; therefore the old Mall mapping was an inference from the wording, not a verified instructor vocabulary list.
+2. **Page numbers in this analysis are PDF page numbers**, not printed page numbers. They may differ from the page labels in each book.
 
 ---
 
 *Deep term analysis built 2026-09-23. Every quotation above was extracted verbatim from the PDFs in `02_Raw_Materials/`; every "absent / 0 hits" claim is a full-text search over the whole book, not an impression.*
+
+---
+
+## Update — 2026-10-16: archived Week 02 lecture found; scope and hierarchy corrected
+
+The statement above records the staged material as of **2026-09-23**. The vault now contains `02_Raw_Materials/Chapter_Extracts/SE_Lec02_Software_Life_Cycle_Models (archive).pdf`, a 42-page deck with 41 pages of visible content. Its sections cover the software life cycle, Build & Fix, Waterfall, Incremental Process Models, Iterative Enhancement, RAD, Evolutionary Process Models, Prototyping, Spiral, Unified Process, and life-cycle model selection. The inspected pages do not identify the author/lecturer.
+
+The deck does **not** show V-Model, Iterative Waterfall, Agile/Manifesto, XP, or Scrum as named topics. Those remain candidates from the older reported scope, not confirmed terms from this deck. Preserve the distinction between the deck's **Iterative Enhancement** and the separately named **Iterative Waterfall** in Mall. This old mapping is useful for finding material in supporting books, but does not establish the final professor-issued vocabulary list.
+
+For the question packs, the student's later source rule controls: **Aggarwal & Singh is primary**; use Mall/Sommerville/Pressman only for a required gap confirmed in the course scope. Use the archived deck to map course coverage without attributing it to a named instructor unless confirmed. The Ch02-specific plan is `Ch02_SDLC_Models/Ch02_BUILD_PLAN.md`.
+
+### Source-war correction — 2026-10-16
+
+The older source verdicts above overstate gaps in Sommerville and Mall and must not be reused as current conclusions:
+
+- Mall is **not silent** on Agile principles: §2.4.1, printed p.64 onward, discusses principles associated with the Agile Manifesto.
+- Sommerville is **not name-only** for XP or Scrum: §3.3 (printed pp.64–71) treats XP substantively; §3.4 (printed pp.72–74) treats Scrum, including its project-management practices. Mall also has substantive XP (§2.4.3, printed p.66 onward) and Scrum (§2.4.4, printed p.69 onward).
+- The searchable 48-page Aggarwal & Singh Ch02 PDF is the publisher's **companion-slide deck**, not a searchable narrative-book copy. The local narrative book is the scanned `AliFahim_Software_Engineering.pdf`; the old searchable slide duplicates do not change that distinction.
+
+For future Ch02 use, the narrower source routing in `Ch02_SDLC_Models/Ch02_BUILD_PLAN.md` supersedes the old “Mall taxonomy / Sommerville theory” shortcut. Aggarwal & Singh remains the primary source; verify exact printed-page anchors before using a secondary source in an answer.

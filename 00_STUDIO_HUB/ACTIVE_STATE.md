@@ -3,9 +3,9 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 2
 active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS603"
-immediate_todo: "2026-10-16 student-requested focus: dedicate today to Advanced Software Engineering; folder review complete, begin with due ASE calibration and then Chapter 04 Project Planning / Chapter 05 Software Design. Resume DM W04 and English queue after today."
-next_session_focus: "W4 remainder (Wrapper/Embedded) + seminar prep for Feature Selection. Correct the IG tie in writing. Exam templates only (r, chi2, IG) — no mental-math stress."
-last_updated: "2026-10-16"
+immediate_todo: "ASE Chapter 1 and Chapter 2 are closed for study/printing. Chapter 2 source/citation corrections and five authored synthesis questions are complete; six packs pass strict lint and total 54 PDF pages. Next: begin Chapter 3 planning for Advanced Software Engineering."
+next_session_focus: "Begin Chapter 3 planning for Advanced Software Engineering; retain Chapter 2 as closed unless a concrete error is found."
+last_updated: "2026-10-17"
 status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_AUDITED · TELEGRAM_GATEWAY_G5_PILOT_CUTOVER_DONE · TELEGRAM_GATEWAY_G6_CONTENT_AND_INTERACTION_LIVE · TELEGRAM_FORUM_REBUILT_NO_NUMBERS_NO_EMOJI_CATALOG_IS_FIRST_MESSAGE · TELEGRAM_SOURCES_PUBLISHED_13 · TELEGRAM_HUMAN_EDIT_VERB_LIVE · TELEGRAM_VERIFY_GATE_PERMANENT · TELEGRAM_RETIRED_TOPICS_UNBOUND · TELEGRAM_AI_CH3_PUBLISHED_282 · TELEGRAM_DM_CH6_PUBLISHED_283 · TELEGRAM_EN_CH2_PUBLISHED_284 · TELEGRAM_EN_SOURCES_PUBLISHED_285_286 · TELEGRAM_EN_CH2_SWAPPED_TO_DOCTOR_SCAN · TELEGRAM_SC_CH4_PUBLISHED_287 · TELEGRAM_EN_TEACHER_BOOKS_PUBLISHED_288_289 · TELEGRAM_EN_LIGHT_FILES_15_54MB · TELEGRAM_EN_U1_SOLUTIONS_290 · TELEGRAM_EN_NH_U1_SOLUTIONS_291 (compressor pdf_compress.py: LANCZOS + 100-dpi gate) · NH_U2_WIDE_SLIDES_v3_59_PAGES_ONE_ACTIVITY_PER_PAGE_10_GATES · NH_UI_SOURCES_SAVED_FOR_FUTURE_UNITS · TELEGRAM_EN_NH_U2_295_PUBLISHED_BY_BOT_MISTAKE_STUDENT_DELETED (RULES: solutions decks must go out through the SPARE/human account, never the bot) · TELEGRAM_EN_NH_U2_SOLUTIONS_296_PUBLISHED_BY_SPARE_ACCOUNT_Z_8404964768"
 ---
 
@@ -29,7 +29,7 @@ status: "DM_LECTURE_SKIMMED_SELF_STUDY_MODE · TELEGRAM_HUMAN_ACCOUNT_LIVE_AND_A
 |:---|:---|:---|
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
-| **Active Subject** | `02_English_Language` | Asst. Prof. Dr. Haidar Akab Alwan (1 Credit Hour) — CS502 |
+| **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) — CS603; special collaborative question-pack sprint for Chapters 1-3 (2026-10-16) |
 | **Last Updated** | `2026-10-03` | Academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
 
 ---
