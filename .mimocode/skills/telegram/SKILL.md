@@ -561,8 +561,11 @@ budget, or a caption passes 1024 characters.
 
 Subject tags and labels live in `telegram/library.py` (`SUBJECT_TAGS`, `SUBJECT_LABELS`) and mirror
 the wording of the published cards; a test keeps the labels equal to the catalog JSON, which stays
-the source of truth. The second tag is the *kind* (`#محاضرة`, `#ملخص`, `#كتاب`, `#حلول`, `#كويز`,
-`#امتحان`), so a subject view can be narrowed to lectures only.
+the source of truth. The second tag is the *kind* — `#محاضرة` (lecture/chapter), `#مصدر`
+(raw material: the doctor's slides and the textbooks), `#ملخص`, `#كتاب`, `#حلول`, `#كويز`,
+`#امتحان` (the DeepStudy question packs), `#بحث`, `#شرائح`, `#مخطط`, `#بطاقة` (a subject card
+booklet), `#لائحة` (a university document) and `#ملف` for anything unclassified — so a subject
+view can be narrowed to one kind.
 
 **The library chat is configuration, not an argument**: `TELEGRAM_LIBRARY_CHAT` in `.env` (the
 student's DM). It must also be on `TELEGRAM_CHAT_ALLOWLIST` — a personal DM is still a chat, and the
@@ -572,6 +575,44 @@ allowlist is not bypassed by it being his.
 (20/minute, ≥1 s apart), so some items answer `queued` instead of a message id. Drain them with
 `queue run` and the missing files land. Do **not** re-run `library --send` to "fix" it: the
 idempotency key makes the already-sent ones answer `duplicate` while the queued one stays queued.
+`--pace` (below) is what keeps a large batch from ever reaching that state.
+
+**Pacing is the sender's job.** `--pace` (default 3.5 s) holds the gap between two sends, so a
+bulk run stays under the local ceiling instead of answering `queued` and needing a separate
+`queue run` drain (with the other sessions' dead jobs mixed in). The wait is adaptive — a slow
+upload has already spent it — and `--pace 0` disables it. A 384-file run therefore goes out in
+one command.
+
+**The display name is what Telegram shows**, and it caps at 62 *bytes*. A manifest may carry a
+`display` that differs from the file's own name; `--send` stages a byte-identical copy under that
+name (a temp file, deleted right after the upload) and never touches the vault. Renaming after the
+fact would mean re-uploading the file — per the official docs — which is why the name is settled
+before the first send.
+
+### Building the manifests — `tg_library_scan.py`
+
+`library --manifest` sends what a list says; `90_Shared_Toolbox/tools/tg_library_scan.py` *writes*
+those lists, so "publish everything in the folders" is one reproducible command:
+
+```bash
+python 90_Shared_Toolbox/tools/tg_library_scan.py --json
+```
+
+It walks `01_Semester_1/**` (the six subject shelves → `all.json`) and `00_STUDIO_HUB/**` outside
+`telegram/` (university documents → `official.json`), and it decides:
+
+| Rule | Why |
+|---|---|
+| `00_STUDIO_HUB/telegram/**` is **reserved, never queued** | it is publish staging — the chapters, placeholders and `_work` copies already went out; only `catalog/files/*.pdf` (the per-subject card booklets) ride along |
+| internal scaffolding is skipped | `_sandbox_trial`, `_superseded`, `_leakscan`, `_build`, `_backup`, `00_INDEX`, `99_SOURCE_MAP`, `- Copy`, `LOCKED_OLD`, `biditest` |
+| exact duplicates ship once | sha256 — the same build exported into two folders does not post twice |
+| display names are fitted to 62 bytes | the file bytes never change; `--send` stages the copy |
+| same-named files get their folder | `T1_MCQ.pdf` under `Ch01_Introduction` and under `Ch02_SDLC_Models` are two different exams |
+| files over 50 MB are **reported, not queued** | the Bot API upload ceiling; `pdf_compress.py` is the separate, explicit way through, and its honest gate may still refuse (a scanned book already at ~104 dpi cannot be shrunk without going unreadable) |
+
+A file that has to clear the 50 MB ceiling is compressed into
+`00_STUDIO_HUB/telegram/library/_compressed/` (gitignored — the vault original stays as it is) and
+listed in its own manifest, e.g. `library/big.json`.
 
 ---
 
