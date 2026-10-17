@@ -1,14 +1,26 @@
 {
   "schema_version": 2,
-  "description": "Chapter 2 collection inside a subject-wide bilingual local vector index. Sources are filtered to the life-cycle-model scope; source authority and use boundary remain explicit.",
-  "chapter": "2",
-  "student_scope_rule": "Professor vocabulary list is the scope. Add modest depth only to explain or close a demonstrated gap. Use source triangulation selectively; do not combine all sources or expand the chapter indiscriminately.",
-  "source_precedence": [
-    "B.B. Agarwal, S.P. Tayal & M. Gupta (2010) course textbook, where it covers the term",
-    "K.K. Aggarwal & Yogesh Singh companion slides and high-confidence scanned 3rd-edition book, as separate course-related material",
-    "One best supporting textbook for a verified coverage/explanation gap",
-    "Unattributed archived lecture and external Q-banks as provisional/practice only"
+  "description": "Chapter-partitioned collection inside the subject-wide bilingual local vector index. Chapters 2 and 3 sources remain filtered by chapter; source authority and use boundaries are explicit.",
+  "chapters": [
+    "2",
+    "3"
   ],
+  "student_scope_rule": "Professor vocabulary list is the scope. Add modest depth only to explain or close a demonstrated gap. Use source triangulation selectively; do not combine all sources or expand the chapter indiscriminately.",
+  "source_precedence": {
+    "2": [
+      "B.B. Agarwal, S.P. Tayal & M. Gupta (2010) course textbook, where it covers the term",
+      "K.K. Aggarwal & Yogesh Singh companion slides and high-confidence scanned 3rd-edition book, as separate course-related material",
+      "One best supporting textbook for a verified coverage/explanation gap",
+      "Unattributed archived lecture and external question banks as provisional/practice only"
+    ],
+    "3": [
+      "Dr. Ali Fahim's supplied vocabulary defines the chapter scope; it is not evidence for answers",
+      "K.K. Aggarwal & Yogesh Singh, Software Engineering, 3rd edition: inspect the scanned textbook page images and matching publisher companion slides as the course-aligned source family; distinguish book from slide-only material",
+      "B.B. Agarwal, S.P. Tayal & M. Gupta (2010), Chapter 3, as a separate supporting source used only for demonstrated gaps or clearer explanation",
+      "One other textbook only if a specific in-scope gap remains after the course source and B.B. 2010 are checked",
+      "External question banks are practice-pattern sources, not authority for the course answer or exam marks"
+    ]
+  },
   "sources": [
     {
       "id": "doctor_vocabulary_ch02",
@@ -969,6 +981,166 @@
           "title": "Figure OCR use note",
           "page_label": "slide 41",
           "content": "Local OCR index of extracted publisher-slide figure from slide 41, labeled Selection ProjectRisk. OCR may misread small text and spatial relationships; inspect the preserved PNG and original slide before describing the diagram."
+        }
+      ]
+    },
+    {
+      "id": "doctor_vocabulary_ch03",
+      "title": "Dr. Ali Fahem's Chapter 3 vocabulary list",
+      "path": "01_Semester_1/04_Advanced_Software_Eng/03_Study_Notes/Ch03_Requirements/V3_Doctor_Vocabulary.md",
+      "kind": "markdown",
+      "chapter": "3",
+      "category": "professor_vocabulary",
+      "authority": "instructor_supplied_scope",
+      "notes": [
+        {
+          "title": "Vocabulary provenance and scope boundary",
+          "page_label": "Cohort-group message, 2026-09-30 02:38 PM",
+          "content": "This ledger transcribes the student's supplied instructor vocabulary message for Software Requirements: Analysis and Specifications. It defines the course topic boundary, not exam marks or answer depth. Risk Management Activities appears under Requirements Elicitation in the supplied list; keep that placement and do not infer a full risk-management lifecycle from it."
+        }
+      ]
+    },
+    {
+      "id": "kk_scan_ch03_ocr",
+      "title": "Software Engineering, 3rd ed. — scanned Chapter 3 spread (high-confidence identity)",
+      "path": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf",
+      "kind": "pdf",
+      "chapter": "3",
+      "category": "scanned_book_ocr",
+      "authority": "supplementary_scanned_textbook",
+      "pdf_page_start": 26,
+      "pdf_page_end": 75,
+      "page_kind": "PDF spread",
+      "printed_page_start": 40,
+      "printed_page_step": 2,
+      "printed_page_span": 2,
+      "ocr_scanned_pages": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "ocr_dpi": 220,
+      "notes": [
+        {
+          "title": "Scan identity and mixed final spread",
+          "page_label": "printed pp. 40–139; PDF spreads 26–75",
+          "content": "The scan lacks its cover/title page. K.K. Aggarwal and Yogesh Singh, Software Engineering, 3rd edition is a high-confidence identification based on internal contents/pagination and the matching publisher companion slides, not a directly visible title page. The final scanned spread contains printed p.138 (end of Chapter 3) and p.139 (start of Chapter 4); inspect and exclude Chapter 4 material when using its OCR. OCR is retrieval assistance only; the page image controls wording and figures."
+        },
+        {
+          "title": "Book-only exercise 3.25 verified from page image",
+          "page_label": "printed p.138; local PDF spread 75, left half",
+          "content": "The scanned textbook page image visibly contains Exercise 3.25: “Explain why, for large software systems development, is it recommended that prototypes should be ‘throw-away’ prototype?” The companion slides and compiled publisher exercise PDF omit this item. The source image, not OCR, controls its exact wording. Count 36 textbook written exercises; only 35 are represented in the slide/handout sequence."
+        }
+      ]
+    },
+    {
+      "id": "kk_slides_ch03",
+      "title": "K.K. Aggarwal & Yogesh Singh — Chapter 3 companion slides",
+      "path": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch03_Software_Requirements.pdf",
+      "kind": "pdf",
+      "chapter": "3",
+      "category": "course_companion_slides",
+      "authority": "course_companion_source",
+      "pdf_page_start": 1,
+      "pdf_page_end": 140,
+      "page_kind": "slide",
+      "notes": [
+        {
+          "title": "Slide map and question-bank limits",
+          "page_label": "slides 1–140",
+          "content": "The PDF identifies K.K. Aggarwal and Yogesh Singh, Software Engineering, 3rd edition, New Age International Publishers, 2007. Requirements Engineering/process: slides 2–5; requirements classifications and interface specification: 6–9; feasibility: 10–15; interviews: 16–19; Use Case Approach: 27–81; requirements analysis/models: 82–100; SRS: 101–110; validation/reviews: 111–115; prototyping: 116; requirements management: 117–119; 25 MCQs: 121–133; 35 written exercise stems on slides 134–140. Slides 132–133 repeat printed MCQ number 3.23; the slides skip written Exercise 3.25, which is present in the scanned textbook on printed p.138. The slide MCQ pages do not provide a verified official answer key."
+        },
+        {
+          "title": "Feasibility statistics provenance limitation",
+          "page_label": "slide 10",
+          "content": "Slide 10 attributes claims of 31% cancellations, 53% cost overruns averaging 189%, and 94 restarts per 100 projects to an IBM report without report title/date/citation. Treat these only as uncited historical slide claims; do not present them as current universal statistics."
+        }
+      ]
+    },
+    {
+      "id": "bb_agarwal_2010_ch03",
+      "title": "Software Engineering & Testing: An Introduction — Chapter 3",
+      "path": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Reference_Textbooks/CS_Agarwal_SW_Engineering_and_Testing_2010.pdf",
+      "kind": "pdf",
+      "chapter": "3",
+      "category": "supporting_book",
+      "authority": "supporting_textbook",
+      "pdf_page_start": 66,
+      "pdf_page_end": 97,
+      "page_kind": "PDF page",
+      "printed_page_start": 53,
+      "ocr_dpi": 200,
+      "notes": [
+        {
+          "title": "Source boundary",
+          "page_label": "printed pp. 53–84; PDF pp. 66–97",
+          "content": "B.B. Agarwal, S.P. Tayal, and M. Gupta, Software Engineering & Testing: An Introduction (2010), is a distinct textbook from the K.K. Aggarwal and Yogesh Singh source used in the companion slides and scanned scan. Use selectively to clarify a demonstrated gap; keep its additional Requirements Management and RDD terminology attributed to this source rather than silently merging it into the course model."
+        }
+      ]
+    },
+    {
+      "id": "kk_exercises_ch03",
+      "title": "Publisher exercises — Software Engineering, 3rd ed., Chapter 3",
+      "path": "01_Semester_1/04_Advanced_Software_Eng/03_Study_Notes/ASE_Ch1-3_Exercises_Aggarwal.pdf",
+      "kind": "pdf",
+      "chapter": "3",
+      "category": "question_bank",
+      "authority": "publisher_exercises",
+      "pdf_page_start": 3,
+      "pdf_page_end": 4,
+      "page_kind": "PDF page",
+      "notes": [
+        {
+          "title": "Publisher exercise range and page labels",
+          "page_label": "local PDF pp. 3–4; printed textbook pp. 134–138",
+          "content": "This compiled PDF reproduces the K.K. Aggarwal and Yogesh Singh publisher Chapter 3 review questions but omits Exercise 3.25: its 35 stems are numbered 3.1–3.24 and 3.26–3.36. The scanned textbook printed p.138 visibly contains Exercise 3.25; use that page image as the source and retain the handout/slide omission as a source discrepancy."
         }
       ]
     }
