@@ -93,6 +93,8 @@ def refresh_sw(portal, bank_files):
         "'./js/lucide.min.js'", "'./js/pwa.js'",
         "'./assets/fonts/space-grotesk-500.woff2'",
         "'./assets/fonts/space-grotesk-700.woff2'",
+        "'./assets/brand-icon-light.png'",
+        "'./assets/brand-icon-dark.png'",
         "'./data/index.json'",
     ]
     data_entries = [f"'./data/banks/{p.name}'" for p in sorted(bank_files)]
