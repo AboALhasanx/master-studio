@@ -91,6 +91,8 @@ def refresh_sw(portal, bank_files):
         "'./css/quiz.css'", "'./css/portal.css'",
         "'./js/app.js'", "'./js/analytics.js'", "'./js/quiz-vault.js'",
         "'./js/lucide.min.js'", "'./js/pwa.js'",
+        "'./assets/fonts/space-grotesk-500.woff2'",
+        "'./assets/fonts/space-grotesk-700.woff2'",
         "'./data/index.json'",
     ]
     data_entries = [f"'./data/banks/{p.name}'" for p in sorted(bank_files)]
