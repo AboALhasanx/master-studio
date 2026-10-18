@@ -163,20 +163,44 @@ def main():
         print(f"  subject={args.subject} chapter={args.chapter} questions={len(bank['questions'])}")
         return 0
 
-    # prune demo banks of this subject (first real push clears test content)
+    # prune demo banks of this subject (first real push clears test content).
+    # Match by filename prefix AND by index entries (old demo names may differ).
+    subj0 = next((s for s in index["subjects"] if s["subject_id"] == args.subject), None)
+    if subj0 is None:
+        subj0 = {"subject_id": args.subject,
+                 "subject_title": SUBJECT_TITLES.get(args.subject, args.subject),
+                 "chapters": []}
+        index["subjects"].append(subj0)
     for p in banks_dir.glob(f"{args.subject}_*.json"):
-        old = json.loads(p.read_text(encoding="utf-8"))
-        if old.get("demo"):
+        try:
+            old = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            old = {}
+        if old.get("demo") and not bank.get("demo"):
             p.unlink()
             print(f"portal_push: pruned demo {p.name}")
+    for c in list(subj0.get("chapters", [])):
+        bp = portal / "data" / c.get("bank", "")
+        drop = False
+        if not bp.exists():
+            drop = True
+        else:
+            try:
+                demo_flag = bool(json.loads(bp.read_text(encoding="utf-8")).get("demo"))
+            except Exception:
+                demo_flag = False
+            if demo_flag and not bank.get("demo"):
+                try:
+                    bp.unlink()
+                except OSError:
+                    pass
+                print(f"portal_push: pruned demo {bp.name}")
+                drop = True
+        if drop:
+            subj0["chapters"].remove(c)
     (banks_dir / fname).write_text(json.dumps(bank, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    subj = next((s for s in index["subjects"] if s["subject_id"] == args.subject), None)
-    if subj is None:
-        subj = {"subject_id": args.subject,
-                "subject_title": SUBJECT_TITLES.get(args.subject, args.subject),
-                "chapters": []}
-        index["subjects"].append(subj)
+    subj = subj0
     subj["chapters"] = [c for c in subj["chapters"] if c.get("chapter_no") != args.chapter]
     subj["chapters"].append({
         "chapter_no": args.chapter,
@@ -187,13 +211,18 @@ def main():
     subj["chapters"].sort(key=lambda c: c["chapter_no"])
 
     remaining_demo = False
+    referenced = {c.get("bank", "") for s in index["subjects"] for c in s.get("chapters", [])}
     for p in banks_dir.glob("*.json"):
+        rel = f"banks/{p.name}"
         try:
-            if json.loads(p.read_text(encoding="utf-8")).get("demo"):
-                remaining_demo = True
-                break
+            is_demo = bool(json.loads(p.read_text(encoding="utf-8")).get("demo"))
         except Exception:
-            pass
+            is_demo = False
+        if rel not in referenced and is_demo:
+            p.unlink()
+            print(f"portal_push: pruned orphan demo {p.name}")
+        elif is_demo:
+            remaining_demo = True
     index["test_mode"] = bool(remaining_demo)
     index["updated"] = str(date.today())
     index["version"] = int(index.get("version", 1)) + 1
