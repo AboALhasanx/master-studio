@@ -36,3 +36,30 @@ create policy "league community update"
   on public.league_xp for update
   using (true)
   with check (true);
+
+-- Personal cross-device bundle: one row per Telegram user.
+-- Same threat model as above (friendly group; anon key is public by design).
+create table if not exists public.portal_data (
+  user_id    text        not null primary key,
+  data       jsonb       not null default '{}'::jsonb
+    check (octet_length(data::text) <= 200000),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.portal_data enable row level security;
+
+drop policy if exists "portal public read" on public.portal_data;
+create policy "portal public read"
+  on public.portal_data for select
+  using (true);
+
+drop policy if exists "portal open insert" on public.portal_data;
+create policy "portal open insert"
+  on public.portal_data for insert
+  with check (true);
+
+drop policy if exists "portal open update" on public.portal_data;
+create policy "portal open update"
+  on public.portal_data for update
+  using (true)
+  with check (true);
