@@ -4,10 +4,33 @@ The league board is the ONLY shared piece: one public Supabase table.
 Identity still comes from Telegram (no passwords). Everything else
 (saved/history/stats) stays as-is.
 
-## Status (2026-10-19) — DONE, live
+## Status (2026-10-19, 20:10) — CLOUD DISABLED after ownership check
 
-- Project: `fauomjucqcreohnvmbcb` (`smart_booking_system`) — publishable key
-  `sb_publishable_...` is already in `mcq-portal/js/supabase-config.js`.
+**Incident:** the previously used project `fauomjucqcreohnvmbcb` is NOT ours.
+It contains unrelated tables (`profiles`, `waitlist`, `admins`), i.e. it is a
+third-party product database. The student flagged the publishable key as
+belonging to another service.
+
+What was done immediately:
+- `js/supabase-config.js` set to `url: ''`, `key: ''` → the portal writes and
+  reads nothing over the network; personal data stays on the device /
+  Telegram CloudStorage.
+- The two rows we had written were **redacted in place** (empty name,
+  username, avatar, `xp = 0`, `hidden = true`; `portal_data.data = {}`).
+  Clients cannot DELETE (no delete policy), so redaction is the maximum a
+  publishable key allows.
+- Verified live on `mcq-portal-jade.vercel.app`: 0 requests to that project.
+
+**To re-enable the league, use a project the student owns:**
+1. supabase.com/dashboard → New project (`mcq-portal-yourname`, region near Iraq).
+2. SQL Editor → run `PORTAL_LEAGUE_SCHEMA.sql` (creates both tables + policies).
+3. Project Settings → API → copy **Project URL** + **publishable/anon key**
+   into `mcq-portal/js/supabase-config.js`, then `vercel --prod`.
+
+## Previous status (2026-10-19) — superseded
+
+- Project: `fauomjucqcreohnvmbcb` — the key was placed in
+  `mcq-portal/js/supabase-config.js`.
 - Tables created by running `PORTAL_LEAGUE_SCHEMA.sql` in the SQL Editor:
   `public.league_xp` (weekly board) and `public.portal_data` (personal bundle).
 - Identity = Telegram. Two paths supported:
