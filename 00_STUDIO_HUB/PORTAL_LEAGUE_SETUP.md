@@ -4,7 +4,23 @@ The league board is the ONLY shared piece: one public Supabase table.
 Identity still comes from Telegram (no passwords). Everything else
 (saved/history/stats) stays as-is.
 
-## 1. Supabase project (free tier is plenty for 20 students)
+## Status (2026-10-19) — DONE, live
+
+- Project: `fauomjucqcreohnvmbcb` (`smart_booking_system`) — publishable key
+  `sb_publishable_...` is already in `mcq-portal/js/supabase-config.js`.
+- Tables created by running `PORTAL_LEAGUE_SCHEMA.sql` in the SQL Editor:
+  `public.league_xp` (weekly board) and `public.portal_data` (personal bundle).
+- Identity = Telegram. Two paths supported:
+  `window.Telegram.WebApp` bridge (mobile/desktop app) and the
+  `#tgWebAppData=...` hash (Telegram Web K) — both verified live in the
+  user's real Telegram Web session (`linked: true`, `store: supabase`).
+- Profile photo: `photo_url` from Telegram is used for the menu avatar and
+  the league rows; falls back to the first letter of the display name.
+- Personal sync = one JSON row per user in `portal_data` (saved questions,
+  history, bests). Weekly league = rows in `league_xp` (xp, per_subject, hidden).
+- Test rows used during verification were deleted again (no DELETE policy is
+  left open on the tables; clients cannot delete rows).
+
 
 1. Open https://supabase.com/dashboard and sign in (GitHub login is fine).
 2. **New project** → name `mcq-portal` → pick a region near Iraq
