@@ -6,24 +6,26 @@ no extra tap) and their data syncs into **their own per-user Telegram cloud**.
 No server, no database, no OAuth round-trips, no keys in the bundle.
 Outside Telegram the portal keeps working as a device-local guest app.
 
-## What the owner does (one time, ~3 minutes, free)
+## What the owner does (bot already exists: `@cs_mscbot`, ~2 minutes)
 
-1. Open Telegram, talk to **@BotFather**:
-   - Send `/newbot`, follow the prompts (name + username, e.g. `MCSQuizBot`).
-   - BotFather replies with the bot link `https://t.me/MCSQuizBot`.
-2. Attach the portal to the bot menu (so students open it *inside* Telegram):
-   - Send `/mybots` → pick the bot → **Bot Settings → Menu Button**.
+The course bot already exists — the same `@cs_mscbot` used by the study
+gateway (its token stays in the vault `.env`; the portal never needs it).
+Only two BotFather steps remain, done once from your Telegram account
+(you own the bot):
+
+1. Open **@BotFather** → send `/mybots` → choose `@cs_mscbot` →
+   **Menu Button** (may appear as "Bot Settings → Menu Button"):
    - Choose **"Configure menu button"**, send the portal URL:
      `https://mcq-portal-jade.vercel.app/`
      and a short button label, e.g. `افتح الكوزات`.
-   - (Optional, recommended) Send `/setdomain` → pick the bot → send
-     `mcq-portal-jade.vercel.app` (links the domain to the bot).
-3. Put the bot username (without `@`) in the portal config file
-   `mcq-portal/js/tg-config.js`:
-   `window.PORTAL_TG_BOT = 'MCSQuizBot';`
-   then commit + `vercel --prod` (the username is public, safe to ship).
-4. Announce the bot link to the students. Opening the portal from the
-   bot's menu is what signs them in — nothing else to do.
+2. (Recommended) Still in @BotFather, send `/setdomain` → choose
+   `@cs_mscbot` → send `mcq-portal-jade.vercel.app` (links the domain).
+3. Done — no keys to copy anywhere: the portal reads the public bot
+   username from its own `js/tg-config.js` (already set to `cs_mscbot`).
+
+Announce the bot link to the students. Opening the portal **from the
+bot's menu button inside Telegram** is what signs them in — nothing else
+to do.
 
 ## How it works (for agents)
 
