@@ -2,6 +2,10 @@
 
 > The vault is the master. Supabase is the **content portal** in the middle.
 > The app reads from the portal and keeps a local copy, so it also works offline.
+>
+> **Authoring rules** (schema v2/v3, the two models per chapter, bilingual style,
+> the psychometric gates) live in `QUIZ_BANK_PROTOCOL.md` — read it before
+> writing or editing a bank. This file covers shipping only.
 
 ## The shape of it
 
