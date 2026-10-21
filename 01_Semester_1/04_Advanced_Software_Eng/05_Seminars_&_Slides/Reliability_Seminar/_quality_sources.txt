@@ -1,0 +1,1840 @@
+
+
+##### CS_Agarwal2010 PDF p101 #####
+88 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Adherence of software products and activities to the applicable standards, 
+procedures, and requirements is verified objectively.
+ 
+ Affected groups and individuals are informed of SQA activities and results.
+4.2.3 SQA Plan
+ 
+An SQA plan defines the quality processes and procedures that should be used. 
+This involves selecting and instantiating standards for products and processes and 
+defining the required quality attributes of the system.
+ 
+ 
+The SQA plan provides a roadmap for instituting software quality assurance. 
+Developed by the SQA group (or the software team if a SQA group does not exist), 
+the plan serves as a template for SQA activities that are instituted for each software 
+project.
+ 
+ 
+The quality plan should select those organizational standards that are 
+appropriate to a particular product and development process. New standards may 
+have to be defined if the project uses new methods and tools.
+ 
+ 
+An outline structure for a quality plan includes:
+ 
+1. Product introduction: A description of the product, its intended markets, 
+and the quality expectations for the product.
+ 
+2. Product plans: The critical release dates and responsibilities for the product 
+along with plans for distribution and product servicing.
+ 
+3. Process descriptions: The development and service processes that should be 
+used for product development and management.
+ 
+4. Quality goals: The quality goals and plans for the product including an 
+identification and justification of critical product quality attributes. 
+ 
+5. Risks and risk management: The key risks that might affect product quality 
+and the actions to address these risks.
+ 
+ 
+Preparation of a Software Quality Assurance Plan for each software project 
+is a primary responsibility of the software quality assurance group. Topics in a 
+Software Quality Assurance Plan include:
+ 
+ Purpose-scope of plan;
+ 
+ List of references to other documents;
+ 
+ Management, including organization, tasks, and responsibilities;
+ 
+ Documentation to be produced;
+ 
+ Standards, practices, and conventions;
+ 
+ Reviews and audits;
+ 
+ Testing;
+
+
+
+##### CS_Agarwal2010 PDF p102 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+89
+ 
+ Problem reporting and corrective action;
+ 
+ Tools, techniques, and methodologies;
+ 
+ Code, media, and supplier control;
+ 
+ Records collection, maintenance, and retention;
+ 
+ Training;
+ 
+ Risk management—the methods of risk management that are to be used.
+4.3 
+SOFTWARE QUALITY 
+ 
+We examine the qualities that are pertinent to software products and software 
+production processes. These qualities will become our goals in the practice of 
+software engineering.
+ 
+ 
+The basic goal of software engineering is to produce quality software. Software 
+quality is a broad and important field of software engineering addressed by several 
+standardization bodies, such as ISO, IEEE, ANSI, etc.
+4.3.1 
+Definition of Software Quality
+ 
+Software quality is the: 
+ 
+ 
+Conformance to explicitly stated functional and performance requirements, explicitly 
+documented development standards, and implicit characteristics that are expected of all 
+professionally developed software.
+ 
+ 
+The above definition emphasizes three important points:
+ 
+1. Software requirements are the foundation from which quality is measured. 
+Lack of conformance to requirements is lack of quality.
+ 
+2. Specified standards define a set of development criteria that guide the 
+manner in which software is engineered. If the criteria are not followed, 
+lack of quality will almost surely result. 
+ 
+3. There is a set of implicit requirements that often goes unmentioned. If 
+software conforms to its explicit requirements but fails to meet implicit 
+requirements, software quality is suspect. 
+4.3.2  Classification of Software Qualities 
+ 
+There are many desirable software qualities. Some of these apply both to the 
+product and to the process used to produce the product. The user wants the 
+software products to be reliable, efficient, and easy to use. The producer of the 
+software wants it to be verifiable, maintainable, portable, and extensible. The 
+
+
+
+##### CS_Agarwal2010 PDF p103 #####
+90 
+SOF TWARE ENGINEERING AND TESTING
+manager of the software project wants the process of software development to be 
+productive and easy to control. 
+ 
+ 
+In this section, we consider two different classifications of software-related 
+qualities: internal versus external and product versus process. 
+ 
+External versus Internal Qualities 
+ 
+We can divide software qualities into external and internal qualities. The external 
+qualities are visible to the users of the system: the internal qualities are those that 
+concern the developers of the system. In general, users of the software only care 
+about the external qualities, but it is the internal qualities, which deal largely with 
+the structure of the software, that help developers achieve the external qualities. 
+For example, the internal quality of verifiability is necessary for achieving the 
+external quality of reliability. In many cases, however, the qualities are related 
+closely and the distinction between internal and external is not sharp.
+ 
+Product and Process Qualities 
+ 
+We use a process to produce the software product. We can also attribute some 
+qualities to the process, although process qualities often are closely related to 
+product qualities. For example, if the process requires careful planning of system 
+test data before any design and development of the system starts, products 
+reliability will increase. Some qualities, such as efficiency, apply both to the product 
+and to the process.
+ 
+ 
+It is interesting to examine the word product here. It usually refers to what is 
+delivered to the customer. Even though this is an acceptable definition from the 
+customer’s perspective, it is not adequate for the developer who requires a general 
+definition of a software product that encompasses not only the object code and the 
+user manual that are delivered to the customer but also the requirements, design, 
+source code, test data, etc. In fact, it is possible to deliver different subsets of the 
+same product to different customers.
+4.3.3 Software Quality Attributes
+ 
+Software quality is comprised of six main attributes (called characteristics) as 
+shown in Figure 4.1. These six attributes have detailed characteristics which are 
+considered the basic ones and which can and should be measured using suitable 
+metrics. At the top level, for software products, these attributes can be defined as 
+follows:  
+ 
+1. Functionality: The capability to provide functions which meet stated and 
+implied needs when the software is used.
+
+
+
+##### CS_Agarwal2010 PDF p104 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+91
+FIGURE 4.1 Software Quality Attributes
+ 
+2. Reliability: The capability to maintain a specified level of performance. 
+ 
+3. Usability: The capability to be understood, learned, and used. 
+ 
+4. Efficiency: The capability to provide appropriate performance relative to the 
+amount of resources used. 
+ 
+5. Maintainability: The capability to be modified for purposes of making 
+corrections, improvements, or adaptation.
+ 
+6. Portability: The capability to be adapted for different specified environments 
+without applying actions or means other than those provided for this purpose 
+in the product.
+4.3.4 McCall’s Quality Factors 
+ 
+McCall, Richards, and Walters [MCC77] propose a useful categorization of factors 
+that affect software quality. These software quality factors, shown in Figure 4.2, 
+focus on three important aspects of a software product: its operational charac-
+teristics, its ability to undergo change, and its adaptability to new environments.
+FIGURE 4.2 McCall’s Software Quality Factors
+ 
+ 
+One attempt to identify specific product qualities that are appropriate to 
+software has been that of James A. McCall. He grouped software qualities into 
+three sets of quality factors:  
+
+
+
+##### CS_Agarwal2010 PDF p105 #####
+92 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Product operation qualities;
+ 
+ Product revision qualities; and
+ 
+ Product transition qualities.
+ 
+ 
+The definitions below are those given by McCall, but the reader may come 
+across others. These are not all inclusive: sometimes other qualities might be of 
+interest.
+ 
+Product Operation Quality Factors
+ 
+ Correctness: The extent to which a program satisfies its specifications and 
+fulfills the user’s objectives.
+ 
+ Reliability: The extent to which a program can be expected to perform its 
+intended function with required precision.
+ 
+ Efficiency: The amount of computer resources required by the software.
+ 
+ Integrity: The extent to which access to software or data by unauthorized 
+persons can be controlled. 
+ 
+ Usability: The effort required for learning, operating, preparing input, and 
+interpreting output.
+ 
+Product Revision Quality Factors
+ 
+ Maintainability: The effort required to locate and fix an error in an operational 
+program. 
+ 
+ Testability: The effort required to test a program to ensure it performs its 
+intended function. 
+ 
+ Flexibility: The efforts required to modify an operational program. 
+ 
+Product Transition Quality Factors
+ 
+ Portability: The effort required for transferring a program from one hardware 
+configuration and software system environment to another. 
+ 
+ Reusability: The extent to which a program can be used in other applications.
+ 
+ Interoperability: The efforts required to couple one system to another. 
+4.3.5 Software Quality Criteria
+ 
+The software quality criteria of various quality factors are depicted in Table 4.1.
+
+
+
+##### CS_Agarwal2010 PDF p106 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+93
+TABLE 4.1 Software Quality Criteria
+Quality Factor
+Software Quality Criteria 
+Correctness 
+Traceability, consistency, completeness 
+Reliability
+Error tolerance, consistency, accuracy, simplicity 
+Efficiency 
+Execution efficiency, storage efficiency 
+Integrity 
+Access control, access audit
+Usability 
+Operability, training, communicativeness, input/output volume, 
+input/output area
+Maintainability 
+Consistency, simplicity, conciseness, modularity, self-descriptiveness
+Testability 
+Simplicity, modularity, instrumentation, self-descriptiveness 
+Flexibility 
+Modularity, generality, expandability, self-descriptiveness
+Portability
+Modularity, self-descriptiveness, machine independence, software 
+system independence 
+Reusability 
+Generality, modularity, software system independence, machine 
+independence, self-descriptiveness
+Interoperability 
+Modularity, communications commonality, data commonality
+4.3.6 Representative Qualities
+ 
+In this section, we present the most important qualities of software products and 
+processes. 
+ 
+1. Correctness. A program is functionally correct if it behaves according to the 
+specification of the functions it should provide (called functional requirements 
+specifications). It is common simply to use the term “correct” rather than 
+“functionally correct”; similarly, in this context, the term “specifications” 
+implies “functional requirements specification.” We will follow this convention 
+when the context is clear.
+ 
+ The definition of correctness assumes that a specification of the system is 
+available and that it is possible to determine unambiguously whether or not 
+a program meets the specifications. With most current software systems, no 
+such specification exists. If a specification does exist, it is usually written in an 
+informal style using natural language.
+ 
+2. Reliability. Informally, software is reliable if the user can depend on it. The 
+specialized literature on software reliability defines reliability in terms of 
+statistical behavior—the probability that the software will operate as expected 
+over a specified time interval. 
+
+
+
+##### CS_Agarwal2010 PDF p107 #####
+94 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Figure 4.3 illustrates the relationship between reliability and correctness. This 
+figure shows that the set of all reliable programs includes the set of correct 
+programs, but not vice versa.
+FIGURE 4.3 Relationship Between Correctness and 
+Reliability in the Ideal Case
+ 
+3. Robustness. A program is robust if it behaves “reasonably,” even in 
+circumstances that were not anticipated in the requirements specification—
+for example, when it encounters incorrect input data or some hardware 
+malfunction (say, disk crash). 
+ 
+ Obviously, robustness is a difficult-to-define quality; after all, if we could state 
+precisely what we should do to make an application robust, we would be able 
+to specify its “reasonable” behavior completely. The robustness would become 
+equivalent to correctness (or reliability in the sense of Figure 4.3).
+ 
+4. Performance. Performance is important because it affects the usability of the 
+system. If a software system is too slow, it reduces the productivity of the 
+users, possibly to the point of not meeting their needs. If a software system 
+uses too much disk space, it may be too expensive to run. If a software system 
+uses too much memory, it may affect the other applications that are run on the 
+same system, or it may run slowly while the operating system tries to balance 
+the memory usage of the different applications. Performance is also important 
+because it affects the scalability of a software system. 
+ 
+5 Verifiability. A software system is verifiable if its properties can be verified 
+easily. For example, it is important to be able to verify the correctness or the 
+performance of a software system.
+ 
+ Verifiability is usually an internal quality, although it sometimes becomes an 
+external quality also. For example, in many security-critical applications, the 
+customer requires the verifiability of certain properties. The highest level of 
+the security standard for a trusted computer system requires the verifiability 
+of the operating system kernel. 
+
+
+
+##### CS_Agarwal2010 PDF p108 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+95
+ 
+6. Repairability. A software system is repairable if it allows the correction of 
+its defects with a limited amount of work. In many engineering products, 
+repairability is a major design goal. For example, automobile engines are built 
+with the parts that are most likely to fail as the most accessible. In computer 
+hardware engineering, there is a subspecialty called Repairability, Availability, 
+and Serviceability (RAS).
+ 
+7. Evolvability. Like other engineering products, software products are modified 
+over time to provide new functions or to change existing functions. Indeed, 
+the fact that software is so malleable makes modifications extremely easy to 
+apply to an implementation. 
+ 
+8. Understandability. Some software systems are easier to understand than 
+others. Of course, some tasks are inherently more complex than others. 
+ 
+ Given tasks of inherently similar difficulty, we can follow certain guidelines 
+to produce more understandable designs and to write more understandable 
+programs. For example, abstraction and modularity enhance a system’s under-
+standability. 
+ 
+9. Interoperability. “Interoperability” refers to the ability of a system to coexist 
+and cooperate with other systems.
+ 
+ With interoperability, a vendor can produce different products and allow 
+the user to combine them if necessary. This makes it easier for the vendor 
+to produce the products, and it gives the user more freedom in exactly what 
+functions to pay for and to combine. Interoperability can be achieved through 
+standardization of interfaces. 
+ 
+10. Productivity. Productivity is a quality of the software-production process; it 
+measures the efficiency of the process and, as we said before, is the performance 
+quality applied to the process. An efficient process results in faster delivery of 
+the product.
+ 
+ Productivity offers many trade-offs in the choice of a process. For example, a 
+process that requires specialization of individual team members may lead to 
+productivity in producing a certain product, but not in producing a variety of 
+products. Software reuse is a technique that leads to the overall productivity of 
+an organization that is involved in developing many products, but developing 
+reusable modules is harder than developing modules for one’s own use, thus 
+reducing the productivity of the group that is developing reusable modules as 
+part of their product development.
+ 
+11. Timeliness. Timeliness is a process-related quality that refers to the ability to 
+deliver a product on time. 
+
+
+
+##### CS_Agarwal2010 PDF p109 #####
+96 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Timeliness requires careful scheduling, accurate estimation of work, and 
+clearly specified and verifiable milestones. 
+ 
+12. Visibility. A software-development process is visible if all of its steps and its 
+current status are documented clearly. Another term used to characterize this 
+property is transparency. The idea is that the steps and the status of the project 
+are available and easily accessible for external examination. 
+4.3.7 Importance of Software Quality
+ 
+We would expect quality to be a concern of all producers of goods and services. 
+However, the special characteristics of software, and in particular, its intangibility 
+and complexity, make special demands. 
+ 
+1. Increasing Criticality of Software. The final customer or user is naturally 
+anxious about the general quality of software, especially its reliability. This 
+is increasingly the case as organizations become more dependent on their 
+computer systems and software is used more and more in areas which are 
+safety critical; for example, to control aircraft. 
+ 
+2. The Intangibility of Software. This makes it difficult to know whether a 
+particular task in a project has been completed satisfactorily. The results of 
+these tasks can be made tangible by demanding that the developers produce 
+‘deliverables’ that can be examined for quality. 
+ 
+3. Accumulating Errors During Software Development. As computer system 
+development is made up of a number of steps where the output from one 
+step is the input to the next, the errors in the earlier deliverables will be added 
+to those in the later steps leading to an accumulating detrimental effect, and 
+generally, the later in a project that an error is found the more expensive it will 
+be to fix. In addition, because the number of errors in the system is unknown 
+the debugging phases of a project are particularly difficult to control.
+ 
+ 
+For these reasons quality management is an essential part of effective overall 
+project management. 
+4.4 
+CAPABILITY MATURITY MODEL (SEI-CMM)
+ 
+SEI-CMM stands for Software Engineering Institute Capability Maturity Model. 
+The CMM was developed by the Software Engineering Institute (SEI) of the 
+Carnegie Mellon University in the USA, which is engaged in a long-term program 
+of software-process improvement. 
+
+
+
+##### CS_Agarwal2010 PDF p110 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+97
+ 
+ 
+It is a model that helps in judging the maturity of a software process of an 
+organization. It also helps to identify the main process that will help in increasing 
+the maturity of these processes. It has become a standard for assessing and 
+improving software processes. 
+ 
+ 
+SEI-CMM can be used in two ways: capability evaluation and software-process 
+assessment. Capability evaluation and software-process assessment differ in 
+motivation, objective, and the final use of the result. Capability evaluation provides 
+a way to assess the software-process capability of an organization. The results of 
+capability evaluation indicate the likely contractor performance if the contractor 
+is awarded a work. Therefore, the results of the software-process capability 
+assessment can be used to select a contractor. On the other hand, software-process 
+assessment is used by an organization with the objective to improve its process 
+capability. Thus, this type of assessment is for purely internal use.
+ 
+ 
+Five levels of process maturing have been proposed for the software industry 
+by SEI-CMM, which indicate the sophistication and quality of their software 
+production practices. These levels are defined as follows:  
+ 
+1. Level 1 (Initial). The software process is adhoc, and even chaotic at time. 
+The organization whose success depends on individual effort and whose 
+processes are not defined and documented come under this level.
+ 
+ Organizations at this level can benefit most by improving project 
+management, quality assurance, and change control. 
+ 
+2. Level 2 (Repeatable). Here basic management practices, such as tracking 
+costs, schedules, and functionality are established but not the procedures 
+for doing it. Here, the efforts done previously for the success of a project 
+may repeat.
+ 
+ Some of the characteristics of a process at this level are: project commitments 
+are realistic and based on past experience with similar projects, costs and 
+schedules are tracked and problems resolved when they arise, formal 
+configuration control mechanisms are in place, and software project 
+standards are defined and followed. 
+ 
+3. Level 3 (Defined). The organization-wide software process includes 
+management and engineering procedures. These procedures are well-
+defined, documented, standardized, and integrated. All projects make use 
+of the documented and approved version of the organization process for 
+software development and maintenance. But the process and practices 
+are not analyzed quantitatively. In this process both the development and 
+management processes are formal. ISO 9000 aims at achieving this level.
+
+
+
+##### CS_Agarwal2010 PDF p111 #####
+98 
+SOF TWARE ENGINEERING AND TESTING
+ 
+4. Level 4 (Managed). At this level, the focus is on software metrics. Two 
+types of metrics are collected. Product metrics measure the characteristics 
+of the product being developed, such as its size, reliability, time complexity, 
+understandability, etc. Process metrics reflect the effectiveness of the 
+process being used, such as the average defect correction time, productivity, 
+the average number of defects found per hour of inspection, the average 
+number of failures detected during testing per LOC, and so forth. The 
+process metrics are used to check if a project performed satisfactorily. 
+Thus, the results of process measurements are used to evaluate project 
+performance rather than to improve the process. 
+ 
+ Software processes and products are quantitatively understood, measured, 
+and controlled using detailed procedures. 
+ 
+5. Level 5 (Optimized). At this level, an organization is committed to 
+continuous process improvement. Process improvement is budgeted 
+and planned and is an integral part of the organization’s process. The 
+organizations have the means to identify weaknesses and strengthen the 
+process proactively, with the goal of preventing the occurrence of defects. 
+Best software-engineering and management practices are used throughout 
+the organization.
+FIGURE 4.4 Software Engineering Institute Levels of Maturity
+ 
+ 
+Except for Level 1, each maturity level is characterized by several Key Process 
+Areas (KPAs) that indicate the areas an organization should focus on to improve 
+its software process at the next level.
+
+
+
+##### CS_Agarwal2010 PDF p112 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+99
+ 
+ 
+This is shown in Table 4.2:  
+TABLE 4.2
+MM level
+Characteristics
+Focus 
+Key Process Areas
+1
+(Initial)
+Chaotic, 
+unrepeatable, 
+high 
+risk 
+of 
+non-
+performance
+Competent 
+people
+Not applicable
+2
+(Repeatable)
+Methodical in umbrella 
+activities and processes. 
+Performance is repeated 
+but not improved 
+Project 
+man-
+agement
+Configuration 
+manage-
+ment, quality assurance, 
+sub-contract management, 
+project tracking  and over-
+sight, project planning
+3
+(Defined)
+Improved 
+performance 
+in cost, schedule quality, 
+and risk management
+Definition 
+of 
+processes
+Peer reviews, inter-group 
+coordination, 
+software 
+product engineering, train-
+ing program, integrated 
+software 
+management, 
+and organization process 
+definition
+4
+(Managed)
+Learns from project ex-
+perience, and continuous 
+performance 
+improve-
+ment in all key areas of 
+the project
+Product 
+and 
+process quality
+Quality management, pro-
+cess measurement, and 
+analysis 
+5
+(Optimized)
+All-around performance, 
+improvement 
+through 
+learning. 
+High 
+per-
+formance in all quality 
+attributes 
+and 
+risk 
+management 
+through 
+RMMM
+C o n t i n u o u s 
+process 
+im-
+provement
+Process 
+change 
+mana-
+gement, 
+technology 
+innovation, 
+and 
+defect 
+prevention  
+4.5 
+INTERNATIONAL STANDARD ORGANIZATION (ISO)
+4.5.1 
+Introduction to the ISO
+ 
+The International Organization for Standardization (ISO) is a group of worldwide 
+federations of national standards bodies from some 100 countries. The ISO is a 
+non-governmental organization established in 1947.
+
+
+
+##### CS_Agarwal2010 PDF p113 #####
+100 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+The ISO-9000 standard specifies quality-assurance elements in generic terms, 
+which can be applied to any business, regardless of the product or services being 
+offered. In order to register for one of the quality-assurance system models 
+contained in the ISO-9000, third-party auditors examine an organization’s quality 
+system and operations for compliance to the standard and for effective operations. 
+Upon successful audit, the organization receives a certificate from a registered body 
+represented by the auditors. Thereafter, semi-annual audits ensure conformance to 
+the standard.
+ 
+ 
+The ISO-9000 standard views an organization as a set of interrelated processes. 
+In order to pass the criteria for ISO-9000 compliance, the processes must address the 
+identified areas, and document and practice them. When a process is documented, 
+it is better understood, controlled, and improved. However, the ISO-9000 standard 
+does not specify how an organization should implement its quality system. 
+Therefore, the biggest challenge is to design and implement a quality-assurance 
+system that meets the standard and gels well with the products/services of the 
+organization.
+ 
+ 
+The ISO-9001 is a quality-assurance standard that is specific to software 
+engineering. It specifies 20 standards with which an organization must comply for 
+an effective implementation of the quality assurance system.
+ 
+ 
+The ISO-9000 series of standards is a set of documents dealing with quality 
+systems that can be used for quality assurance purposes. The ISO-9000 series is not 
+just a software standard. It is a series of five related standards that are applicable to 
+a wide variety of industrial activities, including design/development, production, 
+installation, and servicing.
+4.5.2 ISO-9000 Mission
+ 
+The mission of the ISO is to promote the development of standardization and 
+related activities to facilitate the international exchange of goods and services, 
+and to develop cooperation in the spheres of intellectual, scientific, technological, 
+and economic activity. The ISO published its ISO-9000 standard in 1988. ISO-9000 
+consists of three standards for external quality assurance. These are ISO-9001, ISO-
+9002, and ISO-9003.
+ 
+1. ISO-9001. The ISO-9001 is an international quality-management system. The 
+ISO-9001 is mainly related to the software industry. It lays down the standards 
+for designing, developing, servicing, and producing a standard quality of 
+goods. It is also applicable to most software-development organizations. 
+ 
+2. ISO-9002. The ISO-9002 is basically related to manufacturing only and is 
+silent on designing issues. Examples of this category of industries include 
+steel- and car-manufacturing industries that buy the product and plant 
+
+
+
+##### CS_Agarwal2010 PDF p114 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+101
+designs from external sources and are involved in only manufacturing those 
+products. Therefore, the ISO-9002 is not applicable to software-development 
+organizations. 
+ 
+3. ISO-9003. The ISO-9003 standard applies to the service industry. The 
+organizations who are involved in only installation of products, services, and 
+testing of products are eligible for the ISO-9003 certification.
+4.5.3 Why is ISO certification required by the software industry?
+ 
+There are several reasons why the software industry must get an ISO certification. 
+Some of the important reasons include:  
+ 
+ It is sign of customer confidence. This certification has become a standard for 
+international bidding.
+ 
+ It is a motivating factor for business organizations.
+ 
+ It makes processes more focused, efficient, and cost-effective. 
+ 
+ It helps in designing high-quality repeatable software products.
+ 
+ It highlights weaknesses and suggests corrective measures for improvements. 
+ 
+ It facilitates the development of optimal processes and total quality measure-
+ment.
+ 
+ It emphasizes the need for proper documentation.
+4.5.4 How does an organization obtain  ISO-9000 certification?
+ 
+An organization intending to obtain ISO-9000 certification applies to a ISO-9000 
+registrar for registration. The ISO-9000 registration process consists of the following 
+stages: 
+ 
+1. Application. Once an organization decides to go for ISO-9000 certification, it 
+applies to a registrar for registration.
+ 
+2. Pre-assessment. During this stage, the registrar makes a rough assessment of 
+the organization. 
+ 
+3. Document Review and Adequacy of Audit. During this stage, the registrar 
+reviews the documents submitted by the organization and makes suggestions 
+for possible improvements.
+ 
+4. Compliance Audit. During this stage, the registrar checks whether the 
+suggestions made by it during review have been complied by the organization 
+or not.
+ 
+5. Registration. The registrar awards the ISO-9000 certificate after successful 
+completion of all previous phases. 
+
+
+
+##### CS_Agarwal2010 PDF p115 #####
+102 
+SOF TWARE ENGINEERING AND TESTING
+ 
+6. Continued Surveillance. The registrar continues to monitor the organization, 
+though only periodically. 
+4.5.5 Benefits of ISO-9000 Certification 
+ 
+Benefits of ISO-9000 certification include:
+ 
+1. Continuous Improvement. Business ISO-9000 certification forces an 
+organization to focus on “how they do business.” Each procedure and work 
+instruction must be documented and thus becomes the springboard for 
+continuous improvement.
+ 
+2. Eliminate Variation. Documented processes are the basis for repetition 
+and help eliminate variation within the process. As variation is eliminated, 
+efficiency improves. As efficiency improves, the cost of quality is reduced. 
+ 
+3. Higher Real and Perceived Quality
+ 
+(i) With the development of solid corrective and preventative measures, 
+permanent, company-wide solutions to quality problems are found. 
+ 
+(ii) This results in higher quality. 
+ 
+4. Boost Employee Morale. Employee morale is increased as they are asked to 
+take control of their processes and document their work processes. 
+ 
+5. Improved Customer Satisfaction. Customer satisfaction, and more importantly 
+customer loyalty, grows as a company transforms from a reactive organization 
+to a proactive, preventative organization. It becomes a company people want 
+to do business with.
+ 
+6. Increased Employee Participation. Reduced problems resulting from increased 
+employee participation, involvement, awareness, and systematic employee 
+training. 
+ 
+7. Better Product and Services. Better products and services result from 
+continuous improvement processes.
+ 
+8. Greater Quality Assurance. Fosters the understanding that quality, in and of 
+itself, is not limited to a quality department but is everyone’s responsibility.
+ 
+9. Improved Profit Levels. Improved profit levels result as productivity improves 
+and rework costs are reduced. 
+ 
+10. Improved Communication. Improved communications both internally and 
+externally which improves quality, efficiency, on-time delivery, and customer/
+supplier relations.
+ 
+11. Reduced Cost. ISO standards result in reduced costs of the product. 
+ 
+12. Competitive Edge. By offering higher customer services, ISO-9000 standards 
+add a competitive edge.
+
+
+
+##### CS_Agarwal2010 PDF p116 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+103
+4.5.6 Limitations of ISO-9000 Certification
+ 
+The limitations of ISO-9000 certification include:
+ 
+ ISO-9000 does not provide any guidelines for defining an appropriate 
+process.
+ 
+ ISO-9000 certification process is not foolproof and no international accrediting 
+agency exists.
+ 
+ ISO-9000 does not automatically lead to continuous process improvement, i.e., 
+it does not automatically lead to TQM.
+4.5.7 Uses of ISO
+ 
+ISO certification is used as a reference model for a contract between the external 
+independent parties. It must be remembered that ISO certification does not 
+guarantee a high-quality product. It focuses mainly on the processes. ISO is now 
+being used as the standard and basis of evaluation for international bidding. The 
+ISO-9000 specifies a set of guidelines for repeatable organizations. A repeatable 
+organization is one where the production process is person-independent.
+4.5.8 Salient Features of ISO-9001 Requirements 
+ 
+The salient features of ISO-9001 requirements include:  
+ 
+ All documents concerned with the development of a software product should 
+be properly managed, authorized, and controlled.
+ 
+ Proper plans should be prepared and then progress against these plans should 
+be monitored.
+ 
+ Important documents should be independently checked and reviewed for 
+effectiveness and correctness. 
+ 
+ The product should be tested against its specifications.
+4.5.9 ISO-9126
+ 
+Over the years, various lists of software quality characteristics have been put 
+forward, such as those of McCall, described previously and of Boehm. A difficulty 
+has been the lack of agreed definitions of the qualities of good software. The term 
+‘maintainability’ has been used, for example, to refer to the ease with which an 
+error can be located and corrected in a piece of software, and also in a wider sense 
+to include the ease of making any changes. For some, ‘robustness’ has meant the 
+software’s tolerance of incorrect input, while for others it has meant the ability 
+to change program code without introducing unexpected errors. The ISO-9126 
+standard was published in 1991 to tackle the question of the definition of software 
+
+
+
+##### CS_Agarwal2010 PDF p117 #####
+104 
+SOF TWARE ENGINEERING AND TESTING
+quality. This 13-page document was designed as a foundation upon which further, 
+more detailed, standards could be built. 
+ 
+ 
+ISO-9126 identifies six software quality characteristics:  
+ 
+ Functionality, which covers the functions that a software product provides 
+to satisfy user needs;
+ 
+ Reliability, which relates to the capability of the software to maintain its 
+level of performance;
+ 
+ Usability, which relates to the effort needed to use the software;
+ 
+ Efficiency, which relates to the physical resources used when the software 
+is executed;
+ 
+ Maintainability, which relates to the effort needed to make changes to the 
+software; 
+ 
+ Portability, which relates to the ability of the software to be transferred to 
+a different environment. 
+ 
+ 
+The ISO-9126 has sub-characteristics for each of the primary characteristics. 
+It is indicative of the difficulties of gaining widespread agreement that these sub-
+characteristics are outside the main standards and are provided for ‘information 
+only.’ They are useful as they clarify what is meant by the main characteristics.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Functionality 
+ 
+Suitability
+ 
+ 
+ 
+ 
+ 
+Accuracy 
+ 
+ 
+ 
+ 
+ 
+Interoperability
+ 
+ 
+ 
+ 
+ 
+Compliance
+ 
+ 
+ 
+ 
+ 
+Security
+ 
+ 
+Compliance refers to the degree to which the software adheres to 
+application-related standards or legal requirements. Typically these are auditing 
+requirements. 
+ 
+ 
+Interoperability and security are good illustrations of the efforts of the ISO-
+9126 to clarify terminology. ‘Interoperability’ refers to the ability of the software 
+to interact with other systems. The framers of the ISO-9126 have chosen this word 
+rather than compatibility because the latter causes confusion with the characteristic 
+referred to by the ISO-9126 as ‘replace ability’ (see below).
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Reliability 
+ 
+Maturity
+ 
+ 
+ 
+ 
+ 
+Fault tolerance
+ 
+ 
+ 
+ 
+ 
+Recoverability
+
+
+
+##### CS_Agarwal2010 PDF p118 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+105
+ 
+ 
+Maturity refers to the frequency of failure due to faults in a software product, 
+the implication being that the more the software has been used, the more faults will 
+have been uncovered and removed. It is also interesting to note that recoverability 
+has been clearly distinguished from security which describes the control of access 
+to a system.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Usability  
+ 
+Understandability
+ 
+ 
+ 
+ 
+ 
+Learnability
+ 
+ 
+ 
+ 
+ 
+Operability
+ 
+ 
+Understandability is a pretty clear quality to grasp, although the definition 
+“attributes that bear on the users’ efforts for recognizing the logical concept and 
+its applicability” in our view actually makes it less clear!
+ 
+ 
+Note how learnability is distinguished from operability. A software tool 
+could be easy to learn but time-consuming to use because, perhaps, it uses a large 
+number of nested menus. This might be fine for a package used intermittently, but 
+not where the system is used for many hours each day. In this case, learnability has 
+been incorporated at the expense of operability. 
+ 
+ 
+ 
+Characteristics 
+Sub-characteristics
+ 
+ 
+ 
+Efficiency 
+ 
+Time behavior
+ 
+ 
+ 
+ 
+ 
+Resource behavior
+ 
+ 
+ 
+Maintainability 
+ 
+Analyzability
+ 
+ 
+ 
+ 
+ 
+Changeability 
+ 
+ 
+ 
+ 
+ 
+Stability 
+ 
+ 
+ 
+ 
+ 
+Testability
+ 
+ 
+Analyzability is the quality that McCall called diagnosability, the ease with 
+which the cause of a failure can be determined. Changeability is the quality that 
+others have called flexibility: the latter name is perhaps a better one as changeability 
+has a slightly different connotation in plain English—it implies that the suppliers 
+of the software are always changing it! 
+ 
+ 
+Stability, on the other hand, does not mean that the software never changes: It 
+means that there is a low risk of a modification to the software having unexpected 
+effects.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Portability 
+ 
+Adaptability
+ 
+ 
+ 
+ 
+ 
+Installability
+ 
+ 
+ 
+ 
+ 
+Conformance 
+ 
+ 
+ 
+ 
+ 
+Replaceability
+
+
+
+##### CS_Agarwal2010 PDF p119 #####
+106 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Conformance, as distinguished from compliance, relates to those standards 
+that have a bearing on portability. The use of a standard programming language 
+common to many software/hardware environments would be an example of 
+conformance. Replaceability refers to the factors that give ‘upwards compatibility’ 
+between old software components and the new ones. Downwards compatibility is 
+specifically excluded from the definition. 
+ 
+ 
+The ISO-9126 provides guidelines for the use of the quality characteristics. 
+Variation in the importance of different quality characteristics depending on 
+the type of product is stressed. Thus, reliability will be of particular concern 
+with safety critical systems while efficiency will be important for some real-time 
+systems. For interactive end-user systems, the key quality might be usability. Once 
+the requirements for the software product have been established the following 
+steps are suggested:  
+ 
+ Quality metrics selection
+ 
+ Ratings level definition
+ 
+ Assessment criteria definition 
+4.6 
+COMPARISON OF ISO-9000 CERTIFICATION AND THE 
+SEI-CMM 
+ 
+Comparison of some of the key characteristics of ISO-9000 certification and the 
+SEI-CMM model are as follows:  
+ 
+ The emphasis of the SEI-CMM is on continuous process improvement, 
+whereas the ISO-9000 addresses the minimum criteria for an acceptable quality 
+system.
+ 
+ The Capability Maturity Model (CMM) is a five-level framework for measuring 
+software-engineering practices, as they relate to a process. On the other hand 
+the ISO-9000 defines a minimum level of generic attributes for a quality-
+management program.
+ 
+ The ISO-9000 is awarded by an international standard body. Therefore, ISO-
+9000 certification can be quoted by an organization in official documents, in 
+communication with external parties, and in tender quotations. However, SEI-
+CMM assessment is purely for internal use. 
+ 
+ The ISO-9000 standards were basically designed to audit manufacturing/
+service organizations, whereas the CMM was developed specifically for the 
+software industry and thus addresses several issues specific to the software 
+industry. 
+
+
+
+##### Mall PDF p620 #####
+automatically generate these test cases. However, it is also required that a
+statistically significant percentage of the unlikely inputs should also be
+included in the test suite. Creating these unlikely inputs using a test case
+generator is very difficult.
+Pros and cons of statistical testing
+Statistical testing allows one to concentrate on testing parts of the
+system that are most likely to be used. Therefore, it results in a system
+that the users can find to be more reliable (than actually it is!). Also,
+the reliability estimation arrived by using statistical testing is more
+accurate compared to those of other methods discussed. However, it is
+not easy to perform the statistical testing satisfactorily due to the
+following two reasons. There is no simple and repeatable way of
+defining operation profiles. Also, the the number of test cases with
+which the system is to be tested should be statistically significant.
+11.3 SOFTWARE QUALITY
+Traditionally, the quality of a product is defined in terms of its fitness of
+purpose. That is, a good quality product does exactly what the users
+want it to do, since for almost every product, fitness of purpose is
+interpreted in terms of satisfaction of the requirements laid down in the
+SRS document. Although “fitness of purpose” is a satisfactory definition
+of quality for many products such as a car, a table fan, a grinding
+machine, etc.—“fitness of purpose” is not a wholly satisfactory definition
+of quality for software products. To give an example of why this is so,
+consider a software product that is functionally correct. That is, it
+correctly performs all the functions that have been specified in its SRS
+document. Even though it may be functionally correct, we cannot
+consider it to be a quality product, if it has an almost unusable user
+interface. Another example is that of a product which does everything
+that the users wanted but has an almost incomprehensible and
+unmaintainable code. Therefore, the traditional concept of quality as
+“fitness of purpose” for software products is not wholly satisfactory.
+Unlike hardware products, software lasts a long time, in the sense that it
+keeps evolving to accommodate changed circumstances. The modern view of
+a quality associates with a software product several quality factors (or
+attributes) such as the following:
+Portability: A software product is said to be portable, if it can be easily
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p621 #####
+made to work in different hardware and operating system environments, and
+easily interface with external hardware devices and software products.
+Usability: A software product has good usability, if different categories of
+users (i.e., both expert and novice users) can easily invoke the functions of
+the product.
+Reusability: A software product has good reusability, if different modules of
+the product can easily be reused to develop new products.
+Correctness: A software product is correct, if different requirements as
+specified in the SRS document have been correctly implemented.
+Maintainability: A software product is maintainable, if errors can be easily
+corrected as and when they show up, new functions can be easily added to
+the product, and the functionalities of the product can be easily modified, etc.
+McCall’s quality factors
+McCall distinguishes two levels of quality attributes [McCall]. The higher-
+level attributes, known as quality factor s or external attributes can only
+be measured indirectly. The second-level quality attributes are called
+quality criteria. Quality criteria can be measured directly, either
+objectively or subjectively. By combining the ratings of several criteria,
+we can either obtain a rating for the quality factors, or the extent to
+which they are satisfied. For example, the reliability cannot be
+measured directly, but by measuring the number of defects encountered
+over a period of time. Thus, reliability is a higher-level quality factor
+and number of defects is a low-level quality factor.
+ISO 9126
+ISO 9126 defines a set of hierarchical quality characteristics. Each
+subcharacteristic in this is related to exactly one quality characteristic.
+This is in contrast to the McCall’s quality attributes that are heavily
+interrelated. Another difference is that the ISO characteristic strictly
+refers to a software product, whereas McCall’s attributes capture
+process quality issues as well.
+The users as well as the managers tend to be interested in the higher-level
+quality attributes (quality factors).
+11.4 SOFTWARE QUALITY MANAGEMENT SYSTEM
+A quality management system (often referred to as quality system) is
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Pressman PDF p123 #####
+CHAPTER 4
+SOFTWARE PROCESS AND PROJECT METRICS
+to these questions is an emphatic “No!” The reason for this response is that many
+factors inﬂuence productivity, making for "apples and oranges" comparisons that can
+be easily misinterpreted.
+Function points and LOC based metrics have been found to be relatively accu-
+rate predictors of software development effort and cost. However, in order to use
+LOC and FP for estimation (Chapter 5), a historical baseline of information must be
+established. 
+4.5   METRICS FOR SOFTWARE QUALITY
+The overriding goal of software engineering is to produce a high-quality system, appli-
+cation, or product. To achieve this goal, software engineers must apply effective meth-
+ods coupled with modern tools within the context of a mature software process. In
+addition, a good software engineer (and good software engineering managers) must
+measure if high quality is to be realized.
+The quality of a system, application, or product is only as good as the requirements
+that describe the problem, the design that models the solution, the code that leads
+to an executable program, and the tests that exercise the software to uncover errors.
+A good software engineer uses measurement to assess the quality of the analysis and
+design models, the source code, and the test cases that have been created as the soft-
+ware is engineered. To accomplish this real-time quality assessment, the engineer
+must use technical measures (Chapters 19 and 24) to evaluate quality in objective,
+rather than subjective ways.
+The project manager must also evaluate quality as the project progresses. Private
+metrics collected by individual software engineers are assimilated to provide project-
+level results. Although many quality measures can be collected, the primary thrust at
+the project level is to measure errors and defects. Metrics derived from these mea-
+sures provide an indication of the effectiveness of individual and group software qual-
+ity assurance and control activities.
+Metrics such as work product (e.g., requirements or design) errors per function
+point, errors uncovered per review hour, and errors uncovered per testing hour pro-
+vide insight into the efﬁcacy of each of the activities implied by the metric. Error data
+can also be used to compute the defect removal efﬁciency (DRE) for each process frame-
+work activity. DRE is discussed in Section 4.5.3.
+4.5.1
+An Overview of Factors That Affect Quality
+Over 25 years ago, McCall and Cavano [MCC78] deﬁned a set of quality factors that
+were a ﬁrst step toward the development of metrics for software quality. These fac-
+tors assess software from three distinct points of view: (1) product operation (using
+it), (2) product revision (changing it), and (3) product transition (modifying it to work
+in a different environment; i.e.,  "porting" it).  In their work, the authors describe the
+95
+XRef
+A detailed discussion of
+software quality
+assurance activities is
+presented in Chapter 8.
+WebRef
+An excellent source of
+information on software
+quality and related topics
+(including metrics) can be
+found at
+www.qualityworld.
+com
+
+
+
+##### Pressman PDF p124 #####
+PART TWO
+MANAGING SOFTWARE PROJECTS
+96
+relationship between these quality factors (what they call a framework) and other
+aspects of the software engineering process:
+First, the framework provides a mechanism for the project manager to identify what
+qualities are important. These qualities are attributes of the software in addition to its func-
+tional correctness and performance which have life cycle implications. Such factors as main-
+tainability and portability have been shown in recent years to have signiﬁcant life cycle cost
+impact . . .
+Secondly, the framework provides a means for quantitatively assessing how well the
+development is progressing relative to the quality goals established . . .
+Thirdly, the framework provides for more interaction of QA personnel throughout the
+development effort . . .
+Lastly, . . . quality assurance personal can use indications of poor quality to help iden-
+tify [better] standards to be enforced in the future.
+A detailed discussion of McCall and Cavano's framework, as well as other quality fac-
+tors, is presented in Chapter 19. It is interesting to note that nearly every aspect of
+computing has undergone radical change as the years have passed since McCall and
+Cavano did their seminal work in 1978. But the attributes that provide an indication
+of software quality remain the same.
+What does this mean? If a software organization adopts a set of quality factors as
+a “checklist” for assessing software quality, it is likely that software built today will
+still exhibit quality well into the ﬁrst few decades of this century. Even as computing
+architectures undergo radical change (as they surely will), software that exhibits high
+quality in operation, transition, and revision will continue to serve its users well.
+4.5.2   Measuring Quality
+Although there are many measures of software quality, correctness, maintainability,
+integrity, and usability provide useful indicators for the project team. Gilb [GIL88] sug-
+gests deﬁnitions and measures for each.
+Correctness. A program must operate correctly or it provides little value to
+its users. Correctness is the degree to which the software performs its
+required function. The most common measure for correctness is defects per
+KLOC, where a defect is deﬁned as a veriﬁed lack of conformance to require-
+ments. When considering the overall quality of a software product, defects
+are those problems reported by a user of the program after the program has
+been released for general use. For quality assessment purposes, defects are
+counted over a standard period of time, typically one year.
+Maintainability. Software maintenance accounts for more effort than any
+other software engineering activity. Maintainability is the ease with which a
+program can be corrected if an error is encountered, adapted if its environ-
+ment changes, or enhanced if the customer desires a change in require-
+Surprisingly, the factors
+that deﬁned software
+quality in the 1970s
+are the same factors
+that continue to deﬁne
+software quality in the
+ﬁrst decade of this
+century.
+
+
+
+##### Pressman PDF p136 #####
+PART TWO
+MANAGING SOFTWARE PROJECTS
+108
+[ALB79]
+Albrecht, A.J., “Measuring Application Development Productivity,” Proc.
+IBM Application Development Symposium, Monterey, CA, October 1979, pp. 83–92.
+[ALB83] Albrecht, A.J. and J.E. Gaffney, "Software Function, Source Lines of Code
+and Development Effort Prediction: A Software Science Validation," IEEE Trans.
+Software Engineering, November 1983, pp. 639–648. 
+[ART85] Arthur, L.J., Measuring Programmer Productivity and Software Quality,
+Wiley-Interscience, 1985. 
+[BOE81] Boehm, B., Software Engineering Economics, Prentice-Hall, 1981.
+[GRA87] Grady, R.B. and D.L. Caswell, Software Metrics: Establishing a Company-
+wide Program, Prentice-Hall, 1987.
+[GRA92] Grady, R.G., Practical Software Metrics for Project Management and Process
+Improvement, Prentice-Hall, 1992.
+[GRA94] Grady, R., “Successfully Applying Software Metrics,” Computer, vol. 27,
+no. 9, September 1994, pp. 18–25.
+[GRA99] Grable, R., et al., “Metrics for Small Projects: Experiences at SED,” IEEE
+Software, March 1999, pp. 21–29. 
+[GIL88]
+Gilb, T., Principles of Software Project Management, Addison-Wesley, 1988.
+[HET93]
+Hetzel, W., Making Software Measurement Work, QED Publishing Group, 1993.
+[HUM95} Humphrey, W., A Discipline for Software Engineering, Addison-Wesley, 1995.
+[IEE93]
+IEEE Software Engineering Standards, Standard 610.12-1990, pp. 47–48.
+[IFP94]
+Function Point Counting Practices Manual, Release 4.0, International Func-
+tion Point Users Group, 1994.
+[JON86]
+Jones, C., Programming Productivity, McGraw-Hill, 1986.
+[JON91]
+Jones, C., Applied Software Measurement, McGraw-Hill, 1991.
+[JON98]
+Jones, C., Estimating Software Costs, McGraw-Hill, 1998.
+[KAU99] Kautz, K., “Making Sense of Measurement for Small Organizations,” IEEE
+Software, March 1999, pp. 14–20.
+[MCC78] McCall, J.A. and J.P. Cavano, "A Framework for the Measurement of Soft-
+ware Quality," ACM Software Quality Assurance Workshop, November 1978.
+[PAR96]
+Park, R.E., W.B. Goethert, and W.A. Florac, Goal Driven Software Measure-
+ment—A Guidebook, CMU/SEI-96-BH-002, Software Engineering Institute,
+Carnegie Mellon University, August 1996.
+[PAU94] Paulish, D. and A. Carleton, “Case Studies of Software Process Improve-
+ment Measurement,” Computer, vol. 27, no. 9, September 1994, pp. 50–57.
+[RAG95] Ragland, B., “Measure, Metric or Indicator: What’s the Difference?”
+Crosstalk, vol. 8, no. 3, March 1995, p. 29–30.
+[TAJ81]
+Tajima, D. and T. Matsubara, "The Computer Software Industry in Japan,"
+Computer, May 1981, p. 96.
+[WHI95] Whitmire, S.A., “An Introduction to 3D Function Points”, Software Devel-
+opment, April 1995, pp. 43–53.
+[ZUL99]
+Zultner, R.E., “What Do Our Metrics Mean?” Cutter IT Journal, vol. 12, no.
+4, April 1999, pp. 11–19. 
+
+
+
+##### Pressman PDF p137 #####
+CHAPTER 4
+SOFTWARE PROCESS AND PROJECT METRICS
+PROBLEMS AND POINTS TO PONDER
+4.1. Suggest three measures, three metrics, and corresponding indicators that might
+be used to assess an automobile.
+4.2. Suggest three measures, three metrics, and corresponding indicators that might
+be used to assess the service department of an automobile dealership.
+4.3. Describe the difference between process and project metrics in your own words.
+4.4. Why should some software metrics be kept “private”? Provide examples of three
+metrics that should be private. Provide examples of three metrics that should be public.
+4.5. Obtain a copy of Humphrey (Introduction to the Personal Software Process, Addison-
+Wesley, 1997) and write a one- or two-page summary that outlines the PSP approach.
+4.6. Grady suggests an etiquette for software metrics. Can you add three more rules
+to those noted in Section 4.2.1?
+4.7. Attempt to complete the fishbone diagram shown in Figure 4.3. That is, fol-
+lowing the approach used for “incorrect” speciﬁcations, provide analogous informa-
+tion for “missing, ambiguous, and changed” speciﬁcations.
+4.8. What is an indirect measure and why are such measures common in software
+metrics work?
+4.9. Team A found 342 errors during the software engineering process prior to release.
+Team B found 184 errors. What additional measures would have to be made for proj-
+ects A and B to determine which of the teams eliminated errors more efﬁciently? What
+metrics would you propose to help in making the determination? What historical data
+might be useful?
+4.10. Present an argument against lines of code as a measure for software produc-
+tivity. Will your case hold up when dozens or hundreds of projects are considered?
+4.11. Compute the function point value for a project with the following information
+domain characteristics:
+Number of user inputs:  32 
+Number of user outputs:  60  
+Number of user inquiries:  24  
+Number of ﬁles:  8 
+Number of external interfaces:  2
+Assume that all complexity adjustment values are average. 
+4.12. Compute the 3D function point value for an embedded system with the fol-
+lowing characteristics:
+Internal data structures:  6 
+External data structure:  3
+109
+
+
+
+##### Pressman PDF p138 #####
+PART TWO
+MANAGING SOFTWARE PROJECTS
+110
+Number of user inputs:  12 
+Number of user outputs:  60  
+Number of user inquiries:  9  
+Number of external interfaces:  3
+Transformations:  36
+Transitions:  24
+Assume that the complexity of these counts is evenly divided between low, average,
+and high.
+4.13. The software used to control a photocopier requires 32,000 of C and 4,200
+lines of Smalltalk. Estimate the number of function points for the software inside the 
+photocopier.
+4.14. McCall and Cavano (Section 4.5.1) deﬁne a "framework" for software quality.
+Using information contained in this and other books, expand each of the three major
+"points of view" into a set of quality factors and metrics.
+4.15. Develop your own metrics (do not use those presented in this chapter) for cor-
+rectness, maintainability, integrity, and usability. Be sure that they can be translated
+into quantitative values.
+4.16. Is it possible for spoilage to increase while at the same time defects/KLOC
+decrease? Explain.
+4.17. Does the LOC measure make any sense when fourth generation techniques
+are used? Explain.
+4.18. A software organization has DRE data for 15 projects over the past two years.
+The values collected are 0.81, 0.71, 0.87, 0.54, 0.63, 0.71, 0.90, 0.82, 0.61, 0.84, 0.73,
+0.88, 0.74, 0.86, 0.83. Create mR and individual control charts to determine whether
+these data can be used to assess trends. 
+FURTHER READINGS AND INFORMATION SOURCES
+Software process improvement (SPI) has received a signiﬁcant amount of attention
+over the past decade. Since measurement and software metrics are key to success-
+fully improving the software process, many books on SPI also discuss metrics. Worth-
+while additions to the literature include:
+Burr, A. and M. Owen, Statistical Methods for Software Quality, International Thomson Pub-
+lishing, 1996. 
+El Emam, K. and N. Madhavji (eds.), Elements of Software Process Assessment and Improve-
+ment, IEEE Computer Society, 1999.
+Florac, W.A. and A.D. Carleton, Measuring the Software Process: Statistical Process Control for
+Software Process Improvement, Addison-Wesley, 1999. 
+
+
+
+##### Pressman PDF p537 #####
+CHAPTER 19
+TECHNICAL METRICS FOR SOFTWARE
+2.
+Speciﬁed standards deﬁne a set of development criteria that guide the man-
+ner in which software is engineered. If the criteria are not followed, lack of
+quality will almost surely result.
+3.
+There is a set of implicit requirements that often goes unmentioned (e.g., the
+desire for ease of use). If software conforms to its explicit requirements but
+fails to meet implicit requirements, software quality is suspect. 
+Software quality is a complex mix of factors that will vary across different applica-
+tions and the customers who request them. In the sections that follow, software qual-
+ity factors are identified and the human activities required to achieve them are
+described.
+19.1.1 McCall’s Quality Factors
+The factors that affect software quality can be categorized in two broad groups: 
+(1) factors that can be directly measured (e.g., defects per function-point) and (2) fac-
+tors that can be measured only indirectly (e.g., usability or maintainability). In each
+case measurement must occur. We must compare the software (documents, pro-
+grams, data) to some datum and arrive at an indication of quality.
+McCall, Richards, and Walters [MCC77] propose a useful categorization of fac-
+tors that affect software quality. These software quality factors, shown in 
+Figure 19.1, focus on three important aspects of a software product: its opera-
+tional characteristics, its ability to undergo change, and its adaptability to new
+environments.
+Referring to the factors noted in Figure 19.1, McCall and his colleagues provide
+the following descriptions: 
+Correctness. The extent to which a program satisfies its specification and fulfills the cus-
+tomer's mission objectives. 
+Reliability. The extent to which a program can be expected to perform its intended function
+with required precision. [It should be noted that other, more complete deﬁnitions of relia-
+bility have been proposed (see Chapter 8).]
+509
+PRODUCT OPERATION
+PRODUCT TRANSITION
+PRODUCT REVISION
+Correctness                              Usability                              Efficiency
+Reliability                              Integrity
+Maintainability
+Flexibility
+Testability
+Portability
+Reusability
+Interoperability
+FIGURE 19.1
+McCall’s 
+software 
+quality factors
+It’s interesting to note
+that McCall’s quality
+factors are as valid
+today as they were
+when they were ﬁrst
+proposed in the
+1970s. Therefore, it’s
+reasonable to assert
+that the factors that
+affect software quality
+do not change.
+
+
+
+##### Pressman PDF p538 #####
+PART THREE
+CONVENTIONAL METHODS FOR SOFTWARE ENGINEERING
+510
+Efﬁciency. The amount of computing resources and code required by a program to perform
+its function. 
+Integrity. Extent to which access to software or data by unauthorized persons can be 
+controlled. 
+Usability. Effort required to learn, operate, prepare input, and interpret output of a program. 
+Maintainability. Effort required to locate and ﬁx an error in a program. [This is a very lim-
+ited deﬁnition.] 
+Flexibility. Effort required to modify an operational program. 
+Testability. Effort required to test a program to ensure that it performs its intended function. 
+Portability. Effort required to transfer the program from one hardware and/or software sys-
+tem environment to another. 
+Reusability. Extent to which a program [or parts of a program] can be reused in other
+applications—related to the packaging and scope of the functions that the program 
+performs. 
+Interoperability. Effort required to couple one system to another.
+It is difﬁcult, and in some cases impossible, to develop direct measures of these
+quality factors. Therefore, a set of metrics are deﬁned and used to develop expres-
+sions for each of the factors according to the following relationship: 
+Fq = c1  m1 + c2  m2 + . . . + cn  mn
+where Fq is a software quality factor, cn are regression coefﬁcients, mn are the met-
+rics that affect the quality factor. Unfortunately, many of the metrics deﬁned by McCall
+et al. can be measured only subjectively. The metrics may be in the form of a check-
+list that is used to "grade" specific attributes of the software [CAV78]. The grading
+scheme proposed by McCall et al. is a 0 (low) to 10 (high) scale. The following met-
+rics are used in the grading scheme: 
+Auditability. The ease with which conformance to standards can be checked. 
+Accuracy. The precision of computations and control. 
+Communication commonality. The degree to which standard interfaces, proto-
+cols, and bandwidth are used. 
+Completeness. The degree to which full implementation of required function
+has been achieved. 
+Conciseness. The compactness of the program in terms of lines of code. 
+Consistency. The use of uniform design and documentation techniques
+throughout the software development project. 
+Data commonality. The use of standard data structures and types throughout
+the program.
+“A product’s quality is
+a function of how
+much it changes the
+world for the
+better.”
+Tom DeMarco 
+XRef
+The metrics noted can
+be assessed during
+formal technical
+reviews discussed in
+Chapter 8.
+
+
+
+##### Pressman PDF p539 #####
+CHAPTER 19
+TECHNICAL METRICS FOR SOFTWARE
+Error tolerance. The damage that occurs when the program encounters an
+error. 
+Execution efﬁciency. The run-time performance of a program.
+Expandability. The degree to which architectural, data, or procedural design
+can be extended.
+Generality. The breadth of potential application of program components.
+Hardware independence. The degree to which the software is decoupled from
+the hardware on which it operates.
+Instrumentation. The degree to which the program monitors its own opera-
+tion and identiﬁes errors that do occur.
+Modularity. The functional independence (Chapter 13) of program compo-
+nents. 
+Operability. The ease of operation of a program.
+Security. The availability of mechanisms that control or protect programs and
+data. 
+Self-documentation. The degree to which the source code provides meaning-
+ful documentation.
+Simplicity. The degree to which a program can be understood without difﬁ-
+culty. 
+Software system independence. The degree to which the program is indepen-
+dent of nonstandard programming language features, operating system char-
+acteristics, and other environmental constraints.
+Traceability. The ability to trace a design representation or actual program
+component back to requirements. 
+Training. The degree to which the software assists in enabling new users to
+apply the system.
+The relationship between software quality factors and these metrics is shown in
+Figure 19.2. It should be noted that the weight given to each metric is dependent on
+local products and concerns.
+19.1.2 FURPS
+The quality factors described by McCall and his colleagues [MCC77] represent one 
+of a number of suggested “checklists” for software quality. Hewlett-Packard [GRA87]
+developed a set of software quality factors that has been given the acronym FURPS—
+511
+Quality Factors
+
+
+
+##### Pressman PDF p540 #####
+PART THREE
+CONVENTIONAL METHODS FOR SOFTWARE ENGINEERING
+512
+functionality, usability, reliability, performance, and supportability. The FURPS qual-
+ity factors draw liberally from earlier work, deﬁning the following attributes for each
+of the ﬁve major factors:
+•
+Functionality is assessed by evaluating the feature set and capabilities of the
+program, the generality of the functions that are delivered, and the security of
+the overall system.
+•
+Usability is assessed by considering human factors (Chapter 15), overall aes-
+thetics, consistency, and documentation.
+•
+Reliability is evaluated by measuring the frequency and severity of failure, the
+accuracy of output results, the mean-time-to-failure (MTTF), the ability to
+recover from failure, and the predictability of the program.
+•
+Performance is measured by processing speed, response time, resource con-
+sumption, throughput, and efﬁciency.
+Software
+quality
+metric
+Quality
+factor
+Auditability
+Accuracy
+Communication
+commonality
+Completeness
+Complexity
+Concision
+Consistency
+Data commonality
+Error tolerance
+Execution efficiency
+Expandability
+Generality
+Hardware Indep.
+Instrumentation
+Modularity
+Operability
+Security
+Self-documentation
+Simplicity
+System Indep.
+Traceability
+Training
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+(Adapted from Arthur, L. A., Measuring Programmer Productivity and Software Quality, Wiley-
+Interscience, 1985.)
+Correctness
+Reliability
+Efficiency
+Integrity
+Maintainability
+Flexibility
+Testability
+Portability
+Reusability
+Interoperability
+Usability
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+FIGURE 19.2
+Quality factors
+and metrics
+
+
+
+##### Pressman PDF p541 #####
+CHAPTER 19
+TECHNICAL METRICS FOR SOFTWARE
+•
+Supportability combines the ability to extend the program (extensibility),
+adaptability, serviceability—these three attributes represent a more common
+term, maintainability—in addition, testability, compatibility, conﬁgurability
+(the ability to organize and control elements of the software conﬁguration,
+Chapter 9), the ease with which a system can be installed, and the ease with
+which problems can be localized.
+The FURPS quality factors and attributes just described can be used to establish
+quality metrics for each step in the software engineering process.
+19.1.3 ISO 9126 Quality Factors
+The ISO 9126 standard was developed in an attempt to identify the key quality attrib-
+utes for computer software. The standard identiﬁes six key quality attributes:
+Functionality. The degree to which the software satisﬁes stated needs as indi-
+cated by the following subattributes: suitability, accuracy, interoperability,
+compliance, and security. 
+Reliability. The amount of time that the software is available for use as indi-
+cated by the following subattributes: maturity, fault tolerance, recoverability.
+Usability. The degree to which the software is easy to use as indicated by the
+following subattributes: understandability, learnability, operability.
+Efﬁciency. The degree to which the software makes optimal use of system
+resources as indicated by the following subattributes: time behavior, resource
+behavior.
+Maintainability. The ease with which repair may be made to the software as
+indicated by the following subattributes: analyzability, changeability, stability,
+testability.
+Portability. The ease with which the software can be transposed from one
+environment to another as indicated by the following subattributes: adapt-
+ability, installability, conformance, replaceability.
+Like other software quality factors discussed in Sections 19.1.1 and 19.1.2, the ISO
+9126 factors do not necessarily lend themselves to direct measurement. However,
+they do provide a worthwhile basis for indirect measures and an excellent checklist
+for assessing the quality of a system.
+19.1.4 The Transition to a Quantitative View
+In the preceding sections, a set of qualitative factors for the "measurement" of soft-
+ware quality was discussed. We strive to develop precise measures for software qual-
+ity and are sometimes frustrated by the subjective nature of the activity. Cavano and
+McCall [CAV78] discuss this situation: 
+513
+“Any activity becomes
+creative when the
+doer cares about
+doing it right, or
+better.”
+John Updike 

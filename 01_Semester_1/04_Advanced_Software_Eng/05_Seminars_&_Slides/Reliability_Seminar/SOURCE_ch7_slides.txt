@@ -1,0 +1,4222 @@
+
+===== SLIDE 1 =====
+1
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+
+===== SLIDE 2 =====
+2
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Basic Concepts
+There are three phases in the life of any hardware component i.e., 
+burn-in, useful life & wear-out. 
+Failure rate increase in wear-out phase due to wearing out/aging of 
+components. The best period is useful life period. The shape of this 
+curve is like a “bath tub” and that is why it is known as bath tub 
+curve. The “bath tub curve” is given in Fig.7.1.
+During useful life period, failure rate is approximately constant. 
+In burn-in phase, failure rate is quite high initially, and it starts 
+decreasing gradually as the time progresses.
+
+
+===== SLIDE 3 =====
+3
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 7.1: Bath tub curve of hardware reliability.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 4 =====
+4
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 7.2: Software reliability curve (failure rate versus time)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+We do not have wear out phase in software. The expected curve for 
+software is given in fig. 7.2.
+
+
+===== SLIDE 5 =====
+5
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+change in environment
+
+change in infrastructure/technology
+
+major change in requirements
+
+increase in complexity
+
+extremely difficult to maintain
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Software may be retired only if it becomes obsolete. Some of 
+contributing factors are given below:
+
+deterioration in structure of the code
+
+slow execution speed
+
+poor graphical user interfaces
+
+
+===== SLIDE 6 =====
+6
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+What is Software Reliability?
+“Software reliability means operational reliability. Who cares how 
+many bugs are in the program?
+As per IEEE standard: “Software reliability is defined as the ability of 
+a system or component to perform its required functions under 
+stated conditions for a specified period of time”.
+
+
+===== SLIDE 7 =====
+7
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+“It is the probability of a failure free operation of a program for a 
+specified time in a specified environment”.
+Software reliability is also defined as the probability that a software 
+system fulfills its assigned task in a given environment for a 
+predefined number of input cases, assuming that the hardware and
+the inputs are free of error.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 8 =====
+8
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Failures and Faults
+A fault is the defect in the program that, when executed under 
+particular conditions, causes a failure.
+The execution time for a program is the time that is actually spent by 
+a processor in executing the instructions of that program. The 
+second kind of time is calendar time. It is the familiar time that we 
+normally experience.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 9 =====
+9
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+There are four general ways of characterising failure occurrences in 
+time:
+1.
+time of failure,
+2.
+time interval between failures,
+3.
+cumulative failure experienced up to a given time,
+4.
+failures experienced in a time interval.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 10 =====
+10
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+28
+250
+15
+25
+222
+14
+28
+197
+13
+26
+169
+12
+19
+143
+11
+20
+124
+10
+18
+104
+9
+15
+86
+8
+14
+71
+7
+12
+57
+6
+9
+45
+5
+11
+36
+4
+7
+25
+3
+10
+18
+2
+8
+8
+1
+Failure interval (sec)
+Failure Time (sec)
+Failure Number
+Table 7.1: Time based failure specification
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 11 =====
+11
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+1
+14
+240
+1
+13
+210
+1
+12
+180
+2
+11
+150
+1
+9
+120
+2
+8
+90
+3
+6
+60
+3
+3
+30
+Failure in interval (30 sec)
+Cumulative Failures
+Time (sec)
+Table 7.2: Failure based failure specification
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 12 =====
+12
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+0.13
+0.02
+9
+0.16
+0.03
+8
+Probability
+Value of random 
+variable (failures 
+in time period)
+0.12
+0.04
+7
+0.09
+0.05
+6
+0.07
+0.08
+5
+0.05
+0.11
+4
+0.04
+0.16
+3
+0.03
+0.22
+2
+0.02
+0.18
+1
+0.01
+0.10
+0
+Elapsed time tB = 5 hr
+Elapsed time tA = 1 hr
+Table 7.3: Probability distribution at times tA and tB
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 13 =====
+13
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Probability
+Value of random 
+variable (failures 
+in time period)
+7.77
+3.04
+Mean failures
+0.01
+0
+15
+0.02
+0
+14
+0.03
+0
+13
+0.05
+0
+12
+0.07
+0
+11
+0.10
+0.01
+10
+Elapsed time tB = 5 hr
+Elapsed time tA = 1 hr
+Table 7.3: Probability distribution at times tA and tB
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 14 =====
+14
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Failure behavior is affected by two principal factors:
+A random process whose probability distribution varies with time to 
+time is called non-homogeneous. Most failure processes during test 
+fit this situation. Fig. 7.3 illustrates the mean value and the related 
+failure intensity functions at time tA and tB. Note that the mean 
+failures experienced increases from 3.04 to 7.77 between these two 
+points, while the failure intensity decreases.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+ the number of faults in the software being executed.
+ the execution environment or the operational profile of 
+execution.
+
+
+===== SLIDE 15 =====
+15
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 7.3: Mean Value & failure intensity functions.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 16 =====
+16
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Environment
+The environment is described by the operational profile. The 
+proportion of runs of various types may vary, depending on the 
+functional environment. Examples of a run type might be:
+1. a particular transaction in an airline reservation system or a 
+business data processing system,
+2. a specific cycle in a closed loop control system (for 
+example, in a chemical process industry),
+3. a particular service performed by an operating system for a 
+user.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 17 =====
+17
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The run types required of the program by the environment can be 
+viewed as being selected randomly. Thus, we define the operational 
+profile as the set of run types that the program can execute along 
+with possibilities with which they will occur. In fig. 7.4, we show two 
+of many possible input states A and B, with their probabilities of 
+occurrence. 
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The part of the operational profile for just these two states is shown 
+in fig. 7.5. A realistic operational profile is illustrated in fig.7.6.
+
+
+===== SLIDE 18 =====
+18
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 7.4: Input Space
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 19 =====
+19
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig. 7.5: Portion of operational profile
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 20 =====
+20
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig. 7.6: Operational profile
+
+
+===== SLIDE 21 =====
+21
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig. 7.7: Reliability and failure intensity
+Fig.7.7 shows how failure intensity and reliability typically vary 
+during a test period, as faults are removed.
+
+
+===== SLIDE 22 =====
+22
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+There are at least four other ways in which software reliability
+measures can be of great value to the software engineer, manager
+or user.
+1.
+you can use software reliability measures to evaluate software 
+engineering technology quantitatively.
+2.
+software reliability measures offer you the possibility of 
+evaluating development status during the test phases of a 
+project. 
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Uses of Reliability Studies
+
+
+===== SLIDE 23 =====
+23
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+3.
+one can use software reliability measures to monitor the 
+operational performance of software and to control new features 
+added and design changes made to the software.
+4.
+a quantitative understanding of software quality and the various
+factors influencing it and affected by it enriches into the 
+software product and the software development process.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 24 =====
+24
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Quality
+Different people understand different meanings of quality like:
+ conformance to requirements
+ fitness for the purpose
+ level of satisfaction
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 25 =====
+25
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 26 =====
+26
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig 7.8: Software quality attributes
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 27 =====
+27
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The extent of effort required to learn, operate and 
+understand the functions of the software
+Usability
+7
+The extent to which an error is traceable in order to 
+fix it.
+Traceability
+6
+The extent to which a software is simple in its 
+operations.
+Simplicity
+5
+The extent to which a software tolerates the 
+unexpected problems.
+Robustness
+4
+The extent to which a software is consistent and give  
+results with precision.
+Consistency & 
+precision
+3
+The 
+extent 
+to 
+which 
+a 
+software 
+meets 
+its 
+specifications.
+Correctness
+2
+The extent to which a software performs its intended 
+functions without failure.
+Reliability
+1
+
+
+===== SLIDE 28 =====
+28
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The effort required to locate and fix an error during 
+maintenance phase.
+Maintainability
+14
+The effort required to test a software to ensure that it 
+performs its intended functions.
+Testability
+13
+The amount of computing resources and code required 
+by software to perform a function.
+Efficiency
+12
+The extent to which a software has specified functions.
+Completeness
+11
+The extent to which a software is in conformity of 
+operational environment.
+Conformity of 
+operational 
+environment
+10
+The extent to which documents are clearly & accurately 
+written.
+Clarity & 
+Accuracy of 
+documentation
+9
+Meeting specifications with precision.
+Accuracy
+8
+
+
+===== SLIDE 29 =====
+29
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The effort required to transfer a program from one 
+platform to another platform.
+Portability
+20
+The extent to which a software is expandable without 
+undesirable side effects.
+Expandability
+19
+The effort required to modify a software during 
+maintenance phase.
+Modifiability
+18
+The extent to which a software is adaptable to new 
+platforms & technologies.
+Adaptability
+17
+The extent to which a software is readable in order to 
+understand.
+Readability
+16
+It is the extent of ease to implement, test, debug and 
+maintain the software.
+Modularity
+15
+Table 7.4: Software quality attributes
+
+
+===== SLIDE 30 =====
+30
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig 7.9: Software quality factors
+
+McCall Software Quality Model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 31 =====
+31
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Factors which are related to the operation of a product are 
+combined. The factors are:
+
+Correctness
+
+Efficiency
+
+Integrity
+
+Reliability
+
+Usability
+i.
+Product Operation
+These five factors are related to operational performance, 
+convenience, ease of usage and its correctness. These factors play 
+a very significant role in building customer’s satisfaction.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 32 =====
+32
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The factors which are required for testing & maintenance are 
+combined and are given below:
+
+Maintainability
+
+Flexibility
+
+Testability
+ii. Product Revision
+These factors pertain to the testing & maintainability of software. 
+They give us idea about ease of maintenance, flexibility and testing 
+effort. Hence, they are combined under the umbrella of product 
+revision. 
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 33 =====
+33
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+We may have to transfer a product from one platform to an other 
+platform or from one technology to another technology. The factors 
+related to such a transfer are combined and given below:
+
+Portability
+
+Reusability
+
+Interoperability
+iii. Product Transition
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 34 =====
+34
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Most of the quality factors are explained in table 7.4. The remaining 
+factors are given in table 7.5.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The effort required to couple one system with 
+another.
+Interoperability
+4
+The extent to which a program can be reused in 
+other applications.
+Reusability
+3
+The effort required to modify an operational program.
+Flexibility
+2
+The extent to which access to software or data by 
+the unauthorized persons can be controlled.
+Integrity
+1
+Purpose
+Quality Factors
+Sr.No.
+Table 7.5: Remaining quality factors (other are in table 7.4)
+
+
+===== SLIDE 35 =====
+35
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig 7.10: McCall’s quality model
+Quality criteria
+
+
+===== SLIDE 36 =====
+36
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Table 7.5(a):
+Relation 
+between quality 
+factors and 
+quality criteria
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 37 =====
+37
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The run-time efficiency of the software.
+Execution efficiency
+9
+The run time storage requirements of the software.
+Storage efficiency
+8
+The ease with which software and data can be 
+checked for compliance with standards or other 
+requirements.
+Access audit
+7
+The provisions for control and protection of the 
+software and data.
+Access control
+6
+It is the indication of I/O rate.
+I/O rate
+5
+It is related to the I/O volume.
+I/O volume
+4
+The ease with which inputs and outputs can be 
+assimilated.
+Communicativeness
+3
+The ease with which new users can use the 
+system.
+Training 
+2
+The ease of operation of the software.
+Operability
+1
+
+
+===== SLIDE 38 =====
+38
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The degree to which the software provides for 
+measurements of its use or identification of errors.
+Instrumentation
+17
+The compactness of the source code, in terms of lines 
+of code.
+Conciseness
+16
+The ease with which the software can be understood.
+Simplicity
+15
+The use of uniform design and implementation 
+techniques and notations throughout a project.
+Consistency
+14
+The degree to which continuity of operation is ensured 
+under adverse conditions.
+Error tolerance
+13
+The precision of computations and output.
+Accuracy
+12
+The degree to which a full implementation of the 
+required functionality has been achieved.
+Completeness
+11
+The 
+ability 
+to 
+link 
+software 
+components 
+to 
+requirements.
+Traceability
+10
+
+
+===== SLIDE 39 =====
+39
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The use of standard data representations.
+Data commonality
+25
+The degree to which standard protocols and 
+interfaces are used.
+Communication 
+commonality
+24
+The degree to which software is independent of its 
+environment.
+Software system 
+independence
+23
+The degree to which software is dependent on its 
+associated hardware.
+Machine 
+independence
+22
+The provision of highly independent modules.
+Modularity
+21
+The degree to which the documents are self 
+explanatory.
+Self-
+descriptiveness
+20
+The breadth of the potential application of software 
+components.
+Generability
+19
+The degree to which storage requirements or 
+software functions can be expanded.
+Expandability
+18
+Table 7.5 (b): Software quality criteria
+
+
+===== SLIDE 40 =====
+40
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Boehm Software Quality Model
+Fig.7.11: The Boehm software quality model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 41 =====
+41
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+ISO 9126
+
+Functionality
+
+Reliability
+
+Usability
+
+Efficiency
+
+Maintainability 
+
+Portability
+
+
+===== SLIDE 42 =====
+42
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Attributes of software that bear on the frequency of failure 
+by faults in the software
+• Maturity
+Characteristics relating to capability of software to 
+maintain its level of performance under stated conditions 
+for a stated period of time
+Reliability
+Ability to prevent unauthorized access, whether accidental 
+or deliberate, to program and data.
+• Security
+Software’s ability to interact with specified systems
+• Interoperability
+The provision of right or agreed results or effects
+• Accuracy
+The presence and appropriateness of a set of functions for 
+specified tasks
+• Suitability
+Characteristics relating to achievement of the basic 
+purpose for which the software is being engineered
+Functionality
+Short Description of the Characteristics and the 
+concerns Addressed by Attributes
+Characteristic/ 
+Attribute
+
+
+===== SLIDE 43 =====
+43
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Characteristic related to the relationship between the level 
+of performance of the software and the amount of 
+resources used, under stated conditions.
+Efficiency
+The ease of operation and control by users.
+• Operability
+The effort required for a user to learn its application, 
+operation, input and output.
+• Learnability
+The effort required for a user to recognize the logical 
+concept and its applicability.
+• Understandability
+Characteristics relating to the effort needed for use, and on 
+the individual assessment of such use, by a stated implied 
+set of users.
+Usability
+Capability and effort needed to reestablish level of 
+performance and recover affected data after possible 
+failure.
+• Recoverability
+Ability to maintain a specified level of performance in cases 
+of software faults or unexpected inputs
+• Fault tolerance
+
+
+===== SLIDE 44 =====
+44
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The effort needed for validating the modified software.
+• Testability
+The risk of unexpected effect of modifications.
+• Stability
+The effort needed for modification, fault removal or for 
+environmental change.
+• Changeability
+The effort needed for diagnosis of deficiencies or causes 
+of failures, or for identification of parts to be modified.
+• Analyzability
+Characteristics related to the effort needed to make 
+modifications, including corrections, improvements or 
+adaptation of software to changes in environment, 
+requirements and functions specifications.
+Maintainability
+The amount of resources used and the duration of such 
+use in performing its function.
+• Resource 
+behavior
+The speed of response and processing times and 
+throughout rates in performing its function.
+• Time behavior
+
+
+===== SLIDE 45 =====
+45
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The opportunity and effort of using it in the place of other 
+software in a particular environment.
+• Replaceability
+The extent to which it adheres to standards or 
+conventions relating to portability.
+• Conformance
+The effort needed to install the software in a specified 
+environment.
+• Installability
+The opportunity for its adaptation to different specified 
+environments.
+• Adaptability
+Characteristics related to the ability to transfer the 
+software from one organization or hardware or software 
+environment to another.
+Portability
+Table 7.6: Software quality characteristics and attributes – The ISO 9126 
+view
+
+
+===== SLIDE 46 =====
+46
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig.7.12: ISO 9126 quality model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 47 =====
+47
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability Models
+
+Basic Execution Time Model
+
+
+
+
+
+−
+=
+0
+0 1
+)
+(
+V
+µ
+λ
+µ
+λ
+Fig.7.13: Failure intensity λ as a 
+function of µ for basic model
+(1)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 48 =====
+48
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+0
+0
+V
+d
+d
+λ
+µ
+λ
+−
+=
+Fig.7.14: Relationship between    & µ for basic model
+τ
+(2)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 49 =====
+49
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+
+
+
+
+−
+=
+0
+0
+)
+(
+1
+)
+(
+V
+d
+d
+τ
+µ
+λ
+τ
+τ
+µ
+For a derivation of this relationship, equation 1 can be written as:
+The above equation can be solved for 
+and result in :
+)
+(τ
+µ
+
+
+
+
+
+
+
+
+
+
+
+−
+−
+=
+0
+0
+0
+exp
+1
+)
+(
+V
+V
+τ
+λ
+τ
+µ
+(3)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 50 =====
+50
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Fig.7.15: Failure intensity versus execution time for basic model
+The failure intensity as a function of execution time is shown in 
+figure given below
+
+
+
+
+
+−
+=
+0
+0
+0 exp
+)
+(
+V
+τ
+λ
+λ
+τ
+λ
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 51 =====
+51
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Derived quantities
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.16: Additional failures required to be experienced to reach the 
+objective
+
+
+===== SLIDE 52 =====
+52
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+This can be derived in mathematical form as:
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln
+V
+λ
+λ
+λ
+τ
+0
+0
+Fig.7.17:
+Additional time required to reach the 
+objective
+
+
+===== SLIDE 53 =====
+53
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.1
+Assume that a program will experience 200 failures in infinite time. It has 
+now experienced 100. The initial failure intensity was 20 failures/CPU hr.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(i) Determine the current failure intensity.
+(ii) Find the decrement of failure intensity per failure.
+(iii)Calculate the failures experienced and failure intensity after 20 and 100 
+CPU hrs. of execution.
+(iv)Compute addition failures and additional execution time required to 
+reach the failure intensity objective of 5 failures/CPU hr.
+Use the basic execution time model for the above mentioned calculations.
+
+
+===== SLIDE 54 =====
+54
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Here
+Vo=200 failures
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(i) Current failure intensity:
+
+
+
+
+
+−
+=
+0
+0 1
+)
+(
+V
+µ
+λ
+µ
+λ
+failures
+100
+=
+µ
+hr.
+PU
+failures/C
+20
+0 =
+λ
+r
+h
+PU
+failures/C
+10
+)
+5.0
+1(
+20
+200
+100
+1
+20
+=
+−
+=
+
+
+
+
+
+−
+=
+
+
+===== SLIDE 55 =====
+55
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(ii) Decrement of failure intensity per failure can be calculated as:
+hr.
+CPU
+/
+1.0
+200
+20
+0
+0
+−
+=
+−
+=
+−
+= V
+d
+d
+λ
+µ
+λ
+
+
+
+
+
+
+
+
+
+
+
+−
+−
+=
+0
+0
+0
+exp
+1
+)
+(
+V
+V
+τ
+λ
+τ
+µ
+(iii) (a) Failures experienced & failure intensity after 20 CPU hr:
+))
+2
+1
+exp(
+1(
+200
+200
+20
+20
+exp
+1
+200
+−
+−
+=
+
+
+
+
+
+
+
+
+
+
+
+
+×
+−
+−
+=
+failures
+173
+)
+1353
+.0
+1(
+200
+≈
+−
+=
+
+
+===== SLIDE 56 =====
+56
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+
+
+
+−
+=
+0
+0
+0 exp
+)
+(
+V
+τ
+λ
+λ
+τ
+λ
+
+
+
+
+
+
+
+
+
+
+
+−
+−
+=
+0
+0
+0
+exp
+1
+)
+(
+V
+V
+τ
+λ
+τ
+µ
+(b) Failures experienced & failure intensity after 100 CPU hr:
+lmost)
+failures(a
+200
+200
+100
+20
+exp
+1
+200
+=
+
+
+
+
+
+
+
+
+
+
+
+
+×
+−
+−
+=
+
+
+
+
+
+−
+=
+0
+0
+0 exp
+)
+(
+V
+τ
+λ
+λ
+τ
+λ
+hr
+CPU
+failures /
+71
+.2
+)
+2
+exp(
+20
+200
+20
+20
+exp
+20
+=
+−
+=
+
+
+
+
+
+
+×
+−
+=
+
+
+===== SLIDE 57 =====
+57
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+hr
+CPU
+failures /
+000908
+.0
+200
+100
+20
+exp
+20
+=
+
+
+
+
+
+
+×
+−
+=
+(
+)
+failures
+50
+)
+5
+10
+(
+20
+200
+0
+0
+=
+−
+
+
+
+
+
+
+=
+−
+
+
+
+
+
+
+=
+∆
+F
+P
+V
+λ
+λ
+λ
+µ
+(iv) Additional failures           required to reach the failure intensity 
+objective of 5 failures/CPU hr.
+(
+)
+µ
+∆
+
+
+===== SLIDE 58 =====
+58
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+
+
+
+
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln
+V
+λ
+λ
+λ
+τ
+0
+0
+Additional execution time required to reach failure intensity objective 
+of 5 failures/CPU hr.
+hr.
+CPU
+93
+.6
+5
+10
+20
+200
+=
+
+
+
+
+
+
+=
+Ln
+
+
+===== SLIDE 59 =====
+59
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Logarithmic Poisson Execution Time Model
+Failure Intensity
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.18: Relationship between 
+)
+exp(
+)
+(
+0
+θµ
+λ
+µ
+λ
+−
+=
+
+
+===== SLIDE 60 =====
+60
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.19: Relationship between 
+)
+exp(
+0
+µθ
+θ
+λ
+µ
+λ
+−
+−
+=
+d
+d
+θλ
+µ
+λ
+−
+=
+d
+d
+
+
+===== SLIDE 61 =====
+61
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+)1
+(
+1
+)
+(
+0
++
+=
+θτ
+λ
+θ
+τ
+µ
+Ln
+)1
+/(
+)
+(
+0
+0
++
+=
+θτ
+λ
+λ
+τ
+λ
+(4)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln λ
+λ
+θ
+µ
+1
+
+
+
+
+
+
+−
+=
+∆
+P
+F
+λ
+λ
+θ
+τ
+1
+1
+1
+objective
+intensity 
+ 
+Failure
+intensity
+failure
+Present 
+=
+=
+F
+P
+λ
+λ
+
+
+===== SLIDE 62 =====
+62
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.2
+Assume that the initial failure intensity is 20 failures/CPU hr. The failure 
+intensity decay parameter is 0.02/failures. We have experienced 100 
+failures up to this time.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(i) Determine the current failure intensity.
+(ii) Calculate the decrement of failure intensity per failure.
+(iii)Find the failures experienced and failure intensity after 20 and 100 CPU 
+hrs. of execution.
+(iv)Compute the additional failures and additional execution time required to 
+reach the failure intensity objective of 2 failures/CPU hr.
+Use Logarithmic Poisson execution time model for the above mentioned 
+calculations.
+
+
+===== SLIDE 63 =====
+63
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(i) Current failure intensity:
+)
+exp(
+)
+(
+0
+θµ
+λ
+µ
+λ
+−
+=
+failures
+100
+=
+µ
+failures
+/
+02
+.0
+=
+θ
+hr.
+PU
+failures/C
+20
+0 =
+λ
+= 20 exp (-0.02 x 100)
+= 2.7 failures/CPU hr.
+
+
+===== SLIDE 64 =====
+64
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(ii) Decrement of failure intensity per failure can be calculated as:
+θλ
+d
+d
+−
+=
+µ
+λ
+(
+)1
+1
+)
+(
+0
++
+=
+θτ
+λ
+θ
+τ
+µ
+Ln
+(iii) (a) Failures experienced & failure intensity after 20 CPU hr:
+failures
+Ln
+109
+)1
+20
+02
+.0
+20
+(
+02
+.0
+1
+=
++
+×
+×
+=
+= -.02 x 2.7 = -.054/CPU hr.
+
+
+===== SLIDE 65 =====
+65
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(
+)1
+/
+)
+(
+0
+0
++
+=
+θτ
+λ
+λ
+τ
+λ
+(b) Failures experienced & failure intensity after 100 CPU hr:
+.
+/
+22
+.2
+)1
+20
+02
+.
+20
+/(
+)
+20
+(
+hr
+CPU
+failures
+=
++
+×
+×
+=
+(
+)1
+1
+)
+(
+0
++
+=
+θτ
+λ
+θ
+τ
+µ
+Ln
+failures
+Ln
+186
+)1
+100
+02
+.0
+20
+(
+02
+.0
+1
+=
++
+×
+×
+=
+(
+)1
+/
+)
+(
+0
+0
++
+=
+θτ
+λ
+λ
+τ
+λ
+.
+/
+4878
+.0
+)1
+100
+02
+.
+20
+/(
+)
+20
+(
+hr
+CPU
+failures
+=
++
+×
+×
+=
+
+
+===== SLIDE 66 =====
+66
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+failures
+15
+2
+7
+2
+02
+0
+1
+1
+=
+
+
+
+
+
+
+=
+=
+∆
+.
+.
+Ln
+Ln
+F
+P
+λ
+λ
+θ
+µ
+(iv) Additional failures           required to reach the failure intensity 
+objective of 2 failures/CPU hr.
+(
+)
+µ
+∆
+hr.
+CPU
+5
+6
+7
+2
+1
+2
+1
+02
+0
+1
+1
+1
+1
+.
+.
+.
+=
+
+
+
+
+−
+=
+
+
+
+
+−
+=
+∆
+P
+F
+λ
+λ
+θ
+τ
+
+
+===== SLIDE 67 =====
+67
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.3
+The following parameters for basic and logarithmic Poisson models are 
+given:
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(a) Determine the addition failures and additional execution time required to 
+reach the failure intensity objective of 5 failures/CPU hr. for both models.
+(b) Repeat this for an objective function of 0.5 failure/CPU hr. Assume that 
+we start with the initial failure intensity only.
+Logarithmic Poisson 
+execution time model
+Basic execution time model
+hr
+ 
+PU
+failures/C
+ 
+10
+=
+oλ
+hr
+ 
+PU
+failures/C
+ 
+30
+=
+oλ
+failures
+ 0
+10
+=
+oV
+failure
+25
+0
+/
+.
+=
+θ
+
+
+===== SLIDE 68 =====
+68
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(a) (i)  Basic execution time model
+)
+(
+0
+0
+F
+P
+V
+λ
+λ
+λ
+µ
+−
+=
+∆
+0
+λ
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln λ
+λ
+λ
+τ
+0
+0
+V
+P
+λ
+failures
+50
+)
+5
+10
+(
+10
+100
+=
+−
+=
+(Present failure intensity) in this case is same as    
+(initial 
+failure intensity).
+Now,
+
+
+===== SLIDE 69 =====
+69
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(ii) Logarithmic execution time model
+hr.
+CPU
+93
+.6
+5
+10
+10
+100
+=
+
+
+
+
+
+
+=
+Ln
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln λ
+λ
+θ
+µ
+1
+Failures
+67
+.
+71
+5
+30
+025
+.0
+1
+=
+
+
+
+
+
+
+=
+Ln
+
+
+
+
+
+
+−
+=
+∆
+P
+F
+λ
+λ
+θ
+τ
+1
+1
+1
+hr.
+CPU
+66
+.6
+30
+1
+5
+1
+025
+.0
+1
+=
+
+
+
+
+
+
+−
+=
+Ln
+
+
+===== SLIDE 70 =====
+70
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(b) Failure intensity objective          = 0.5 failures/CPU hr.
+(
+)
+F
+P
+V
+λ
+λ
+λ
+µ
+−
+=
+∆
+0
+0
+failures
+95
+)
+5.0
+10
+(
+10
+100
+=
+−
+=
+Logarithmic model has calculated more failures in almost some duration of 
+execution time initially.
+(
+)
+F
+λ
+(i) Basic execution time model
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln
+V
+λ
+λ
+λ
+τ
+0
+0
+hr
+CPU
+Ln
+/
+30
+05
+.0
+10
+10
+100
+=
+
+
+
+
+
+
+=
+
+
+===== SLIDE 71 =====
+71
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln λ
+λ
+µ
+θ
+1
+failures
+Ln
+164
+5.0
+30
+025
+.0
+1
+=
+
+
+
+
+
+
+=
+(ii) Logarithmic execution time model
+
+
+
+
+
+
+−
+=
+∆
+P
+F
+λ
+λ
+τ
+1
+1
+θ
+1
+hr
+CPU/
+66
+.
+78
+30
+1
+5.0
+1
+025
+.0
+1
+=
+
+
+
+
+
+
+−
+=
+
+
+===== SLIDE 72 =====
+72
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The calendar time component is based on a debugging process 
+model. This model takes into account:
+1.
+resources used in operating the program for a given 
+execution time and processing an associated quantity of 
+failure.
+2.
+resources quantities available, and
+3.
+the degree to which a resource can be utilized (due to 
+bottlenecks) during the period in which it is limiting.
+Table 7.7 will help in visualizing these different aspects of the 
+resources, and the parameters that result.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+Calendar Time Component
+
+
+===== SLIDE 73 =====
+73
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Pc
+Pc
+µc
+θc
+Computer time
+Pf
+Pf
+µf
+0
+Failure correction 
+personnel
+1
+PI
+µI
+θI
+Failure identification 
+personnel
+Utilisation
+Quantities 
+available
+Failure
+CPU hr
+Resource
+Planned parameters
+Usage parameters 
+requirements per
+Fig. : Calendar time component resources and parameters
+Resource usage
+
+
+===== SLIDE 74 =====
+74
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+τ
+θ
+µ
+µ
+∆
++
+∆
+=
+c
+c
+C
+X
+µ
+µ ∆
+=
+f
+f
+X
+τ
+θ
+µ
+µ
+∆
++
+∆
+=
+I
+I
+I
+X
+Hence, to be more precise, we have
+(for computer time)
+(for failure correction)
+(for failure identification)
+λ
+µ
+θ
+τ
+r
+r
+T d
+dx
++
+=
+/
+
+
+===== SLIDE 75 =====
+75
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+τ
+τ
+d
+dx
+p
+P
+d
+dt
+T
+r
+r
+/
+)
+/
+1(
+/
+=
+r
+r
+r
+r
+p
+P
+d
+dt
+/)
+(
+/
+λ
+µ
+θ
+τ
++
+=
+Calendar time to execution time relationship
+
+
+===== SLIDE 76 =====
+76
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.20: Instantaneous calendar time to execution time ratio
+
+
+===== SLIDE 77 =====
+77
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.21: Calendar time to execution time ratio for different 
+limiting resources
+
+
+===== SLIDE 78 =====
+78
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.4
+A team run test cases for 10 CPU hrs and identifies 25 failures. The effort 
+required per hour of execution time is 5 person hr. Each failure requires 2 
+hr. on an average to verify and determine its nature. Calculate the failure 
+identification effort required.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 79 =====
+79
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+As we know, resource usage is:
+µ
+µ
+τ
+θ
+r
+r
+r
+X
++
+=
+hr.
+person
+15
+θ
+Here
+=
+r
+Hence,
+failures
+25
+=
+µ
+hrs.
+CPU
+10
+=
+τ
+re
+hrs./failu
+2
+=
+r
+µ
+Xr = 5 (10) + 2 (25)
+= 50 + 50 = 100 person hr.
+
+
+===== SLIDE 80 =====
+80
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.5
+Initial failure intensity       for a given software is 20 failures/CPU hr. The 
+failure  intensity  objective        of 1 failure/CPU hr. is to be achieved. 
+Assume the following resource usage parameters.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+)
+(
+0
+λ
+)
+(
+F
+λ
+1 CPU hr.
+1.5 CPU hr.
+Computer time
+5 Person hr.
+0
+Failure Correction effort
+1 Person hr.
+2 Person hr.
+Failure identification effort
+Per failure
+Per hour
+Resource Usage
+
+
+===== SLIDE 81 =====
+81
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+(a)What resources must be expended to achieve the reliability 
+improvement? Use the logarithmic Poisson execution time model with a 
+failure intensity decay parameter of 0.025/failure.
+(b)If the failure intensity objective is cut to half, what is the effect on 
+requirement of resources ?
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 82 =====
+82
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(a)
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln λ
+λ
+θ
+µ
+1
+failures
+119
+1
+20
+0.025
+1
+=
+
+
+
+
+
+
+=
+Ln
+
+
+
+
+
+
+−
+=
+∆
+P
+F
+λ
+λ
+θ
+τ
+1
+1
+1
+(
+)
+hrs.
+CPU
+38
+05
+.0
+1
+025
+.0
+1
+20
+1
+1
+1
+025
+.0
+1
+=
+−
+=
+
+
+
+
+
+−
+=
+
+
+===== SLIDE 83 =====
+83
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Hence
+τ
+µ
+µ
+∆
++
+∆
+=
+1
+1
+1
+θ
+X
+µ
+µ ∆
+=
+F
+F
+X
+= 1 (119) + 2 (38) = 195 Person hrs.
+= 5 (119) = 595 Person hrs.
+τ
+µ
+µ
+∆
++
+∆
+=
+c
+c
+C
+X
+θ
+= 1 (119) + (1.5) (38) = 176 CPU hr.
+
+
+===== SLIDE 84 =====
+84
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+(b)
+hr.
+PU
+failures/C
+5.0
+=
+F
+λ
+failures
+148
+5.0
+20
+025
+.0
+1
+=
+
+
+
+
+
+
+=
+∆
+Ln
+µ
+.
+hr
+CPU
+78
+20
+1
+5.0
+1
+025
+.0
+1
+=
+
+
+
+
+
+
+−
+=
+∆τ
+So,
+XI = 1 (148) + 2 (78) = 304 Person hrs.
+XF = 5 (148) = 740 Person hrs.
+XC = 1 (148) + (1.5)(78) = 265 CPU hrs.
+
+
+===== SLIDE 85 =====
+85
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Hence, if we cut failure intensity objective to half, resources requirements 
+are  not  doubled  but  they  are  some  what  less.  Note  that
+is 
+approximately doubled but increases logarithmically. Thus, the resources 
+increase will be between a logarithmic increase and a linear increase for 
+changes in failure intensity objective.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+τ
+∆
+
+
+===== SLIDE 86 =====
+86
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.6
+A program is expected to have 500 faults. It is also assumed that one fault 
+may lead to one failure only. The initial failure intensity was 2 failures/CPU 
+hr. The program was to be released with a failure intensity objective of 5 
+failures/100 CPU hr. Calculated the number of failure experienced before 
+release.
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 87 =====
+87
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The number of failure experienced during testing can be calculated using 
+the equation mentioned below:
+(
+)
+F
+P
+V
+λ
+λ
+λ
+µ
+−
+=
+∆
+0
+0
+failure
+one
+to
+leads
+fault
+one
+because
+500
+V
+Here
+0 =
+hr.
+PU
+failures/C
+2
+0 =
+λ
+.
+hr
+CPU
+00
+failures/1
+5
+F =
+λ
+hr.
+PU
+failures/C
+05
+.0
+=
+
+
+===== SLIDE 88 =====
+88
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+So
+(
+)
+05
+.0
+2
+2
+500
+−
+=
+∆µ
+= 487 failures
+Hence 13 faults are expected to remain at the release instant of
+the software.
+
+
+===== SLIDE 89 =====
+89
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+The Jelinski-Moranda Model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+)1
+(
+)
+(
++
+−
+=
+i
+N
+t
+φ
+λ
+where
+φ = Constant of proportionality
+N = Total number of errors present
+I
+= number of errors found by time interval ti
+
+
+===== SLIDE 90 =====
+90
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.22: Relation between t & λ
+
+
+===== SLIDE 91 =====
+91
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Example- 7.7
+There are 100 errors estimated to be present in a program. We have 
+experienced 60 errors. Use Jelinski-Moranda model to calculate 
+failure intensity with a given value of φ=0.03. What will be failure 
+intensity after the experience of 80 errors?
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 92 =====
+92
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Solution
+N = 100 errors
+i = 60 failures
+φ = 0.03
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+We know
+= 0.03(100-60+1)
+= 1.23 failures/CPU hr.
+)
+(
+.
+)
+(
+1
+60
+100
+03
+0
++
+−
+=
+t
+λ
+After 80 failures
+)1
+80
+100
+(
+03
+.0
+)
+(
++
+−
+=
+t
+λ
+= 0.63 failures/CPU hr.
+Hence, there is continuous decrease in the failure intensity as the 
+number of failure experienced increases.
+
+
+===== SLIDE 93 =====
+93
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+The Bug Seeding Model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+t
+t
+t
+t
+n
+n
+n
+N
+N
+N
++
+=
++
+The bug seeding model is an outgrowth of a technique used to 
+estimate the number of animals in a wild life population or fish in a 
+pond.
+t
+t
+N
+n
+n
+N =
+∧
+s
+s
+N
+n
+n
+N =
+
+
+===== SLIDE 94 =====
+94
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Capability Maturity Model
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.23: Maturity levels of CMM
+It is a strategy for improving the software process, irrespective of the 
+actual life cycle model used.
+
+
+===== SLIDE 95 =====
+95
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Maturity Levels:
+
+Initial (Maturity Level 1)
+
+Repeatable (Maturity Level 2)
+
+Defined (Maturity Level 3)
+
+Managed (Maturity Level 4)
+
+Optimizing (Maturity Level 5)
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 96 =====
+96
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+Fig.7.24: The five levels of CMM
+Process Control
+Optimizing
+Process Measurement
+Managed
+Process Definition
+Defined
+Basic Project Management
+Repeatable
+Adhoc Process
+Initial
+Characterization
+Maturity Level
+
+
+===== SLIDE 97 =====
+97
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Key Process Areas
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The key process areas at level 2 focus on the software project’s 
+concerns related to establishing basic project management controls, 
+as summarized below:
+
+
+===== SLIDE 98 =====
+98
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The key process areas at level 3 address both project and 
+organizational issues, as summarized below:
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 99 =====
+99
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 100 =====
+100
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The key process areas at level 4 focus on establishing a quantitative 
+understanding of both the software process and the software work
+products being built, as summarized below:
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 101 =====
+101
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+The key process areas at level 5 cover the issues that both the 
+organization and the projects must address to implement continuous 
+and measurable software process improvement, as summarized 
+below:
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 102 =====
+102
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Common Features 
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+
+===== SLIDE 103 =====
+103
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+ISO 9000
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The SEI capability maturity model initiative is an attempt to improve 
+software quality by improving the process by which software is 
+developed. 
+ISO-9000 series of standards is a set of document dealing with 
+quality systems that can be used for quality assurance purposes.
+ISO-9000 series is not just software standard. It is a series of five 
+related standards that are applicable to a wide variety of industrial 
+activities, including design/ development, production, installation, 
+and servicing. Within the ISO 9000 Series, standard ISO 9001 for
+quality system is the standard that is most applicable to software 
+development.
+
+
+===== SLIDE 104 =====
+104
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+1.
+Management responsibility
+2.
+Quality system
+3.
+Contract review
+4.
+Design control
+5.
+Document control
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+
+Mapping ISO 9001 to the CMM
+6.
+Purchasing
+7.
+Purchaser-supplied product
+
+
+===== SLIDE 105 =====
+105
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+8.
+Product identification and traceability
+9.
+Process control
+10. Inspection and testing
+11. Inspection, measuring and test equipment
+12. Inspection and test status
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+13. Control of nonconforming product
+14. Corrective action
+
+
+===== SLIDE 106 =====
+106
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+15. Handling, storage, packaging and delivery
+16. Quality records
+17. Internal quality audits
+18. Training
+19. Servicing
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+20. Statistical techniques
+
+
+===== SLIDE 107 =====
+107
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+
+Contrasting ISO 9001 and the CMM
+Software Reliability
+Software Reliability
+Software Reliability
+Software Reliability
+The biggest difference, however, between these two documents is 
+the emphasis of the CMM on continuous process improvement.
+The biggest similarity is that for both the CMM and ISO 9001, the 
+bottom line is “Say what you do; do what you say”.
+There is a strong correlation between ISO 9001 and the CMM, 
+although some issues in ISO 9001 are not covered in the CMM, and
+some issues in the CMM are not addressed in ISO 9001.
+
+
+===== SLIDE 108 =====
+108
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+7.1  Which one is not a phase of “bath tub curve” of hardware reliability
+(a) Burn-in
+(b) Useful life
+(c) Wear-out
+(d) Test-out
+7.2  Software reliability is
+(a) the probability of failure free operation of a program for a specified time in 
+a specified environment
+(b) the probability of failure of a program for a specified time in a specified 
+environment
+(c) the probability of success of a program for a specified time in any 
+environment
+(d) None of the above
+7.3  Fault is
+(a) Defect in the program
+(b) Mistake in the program
+(c) Error in the program 
+(d) All of the above
+7.4  One fault may lead to
+(a) one failure
+(b) two failures
+(c) many failures
+(d) all of the above
+Multiple Choice Questions
+Note: Choose most appropriate answer of the following questions:
+
+
+===== SLIDE 109 =====
+109
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+7.7  Maximum possible value of reliability is
+(a) 100
+(b) 10
+(c) 1
+(d) 0
+Multiple Choice Questions
+7.5  Which ‘time’ unit is not used in reliability studies
+(a) Execution time
+(b) Machine time
+(c) Clock time
+(d) Calendar time
+7.6  Failure occurrences can be represented as
+(a) time to failure
+(b) time interval between failures
+(c) failures experienced in a time interval   (d) All of the above
+7.9  As the reliability increases, failure intensity
+(a) decreases
+(b) increases
+(c) no effect
+(d) None of the above
+7.8  Minimum possible value of reliability is
+(a) 100
+(b) 10
+(c) 1
+(d) 0
+
+
+===== SLIDE 110 =====
+110
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+7.10  If failure intensity is 0.005 failures/hour during 10 hours of operation of a 
+software, its reliability can be expressed as
+(a) 0.10
+(b) 0.92
+(c) 0.95
+(d) 0.98
+Multiple Choice Questions
+7.11  Software Quality is
+(a) Conformance to requirements
+(b) Fitness for the purpose
+(c) Level of satisfaction
+(d) All of the above
+7.12  Defect rate is 
+(a) number of defects per million lines of source code
+(b) number of defects per function point
+(c) number of defects per unit of size of software
+(d) All of the above
+7.13 How many product quality factors have been proposed in McCall quality model?
+(a) 2
+(b) 3
+(c) 11 
+(d) 6
+
+
+===== SLIDE 111 =====
+111
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+7.14 Which one is not a product quality factor of McCall quality model?
+(a) Product revision
+(b) Product operation
+(c) Product specification
+(d) Product transition
+Multiple Choice Questions
+7.15 The second level of quality attributes in McCall quality model are termed as
+(a) quality criteria
+(b) quality factors
+(c) quality guidelines
+(d) quality specifications
+7.16 Which one is not a level in Boehm software quality model ? 
+(a) Primary uses
+(b) Intermediate constructs
+(c) Primitive constructs
+(d) Final constructs
+7.17 Which one is not a software quality model?
+(a) McCall model
+(b) Boehm model
+(c) ISO 9000
+(d) ISO 9126
+7.18 Basic execution time model was developed by
+(a) Bev.Littlewood
+(b) J.D.Musa
+(c) R.Pressman
+(d) Victor Baisili
+
+
+===== SLIDE 112 =====
+112
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.19 NHPP stands for
+(a) Non Homogeneous Poisson Process
+(b) Non Hetrogeneous Poisson Process
+(c) Non Homogeneous Poisson Product
+(d) Non Hetrogeneous Poisson Product
+7.20 In Basic execution time model, failure intensity is given by 
+7.21 In Basic execution time model, additional number of failures required to 
+achieve a failure intensity objective          is expressed as
+
+
+
+
+
+−
+=
+0
+2
+0 1
+)
+(
+)
+(
+V
+a
+µ
+λ
+µ
+λ
+
+
+
+
+
+−
+=
+0
+0 1
+)
+(
+)
+(
+V
+b
+µ
+λ
+µ
+λ
+
+
+
+
+
+−
+=
+µ
+λ
+µ
+λ
+0
+0 1
+)
+(
+)
+(
+V
+c
+
+
+
+
+
+−
+=
+2
+0
+0 1
+)
+(
+)
+(
+µ
+λ
+µ
+λ
+V
+d
+)
+( µ
+∆
+)
+(
+)
+(
+0
+0
+F
+P
+V
+a
+λ
+λ
+λ
+µ
+−
+=
+∆
+)
+(
+)
+(
+0
+0
+P
+F
+V
+b
+λ
+λ
+λ
+µ
+−
+=
+∆
+)
+(
+)
+(
+0
+0
+P
+F
+V
+c
+λ
+λ
+λ
+µ
+−
+=
+∆
+)
+(
+)
+(
+0
+0
+F
+P
+V
+d
+λ
+λ
+λ
+µ
+−
+=
+∆
+
+
+===== SLIDE 113 =====
+113
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.22 In Basic execution time model, additional time required to achieve a failure 
+intensity objective           is given as
+7.23 Failure intensity function of Logarithmic Poisson execution model is given as
+)
+( τ
+∆
+)
+(
+)
+(
+)
+(
+0
+θµ
+λ
+µ
+λ
+−
+=
+LN
+a
+
+
+
+
+
+
+=
+∆
+P
+F
+Ln
+V
+c
+λ
+λ
+λ
+τ
+0
+0
+)
+(
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln
+V
+d
+λ
+λ
+λ
+τ
+0
+0
+)
+(
+
+
+
+
+
+
+=
+∆
+P
+F
+Ln
+V
+a
+λ
+λ
+λ
+τ
+0
+0
+)
+(
+
+
+
+
+
+
+=
+∆
+F
+P
+Ln
+V
+b
+λ
+λ
+λ
+τ
+0
+0
+)
+(
+)
+exp(
+)
+(
+)
+(
+0
+θµ
+λ
+µ
+λ
+=
+b
+)
+exp(
+)
+(
+)
+(
+0
+θµ
+λ
+µ
+λ
+−
+=
+c
+)
+log(
+)
+(
+)
+(
+0
+θµ
+λ
+µ
+λ
+−
+=
+d
+7.24 In Logarithmic Poisson execution model, ‘θ’ is known as
+(a) Failure intensity function parameter    (b) Failure intensity decay parameter
+(c) Failure intensity measurement
+(d) Failure intensity increment parameter
+
+
+===== SLIDE 114 =====
+114
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.25 In jelinski-Moranda model, failure intensity is defined aseneous Poisson 
+Product
+7.26 CMM level 1 has
+(a) 6 KPAs
+(b) 2 KPAs
+(c) 0 KPAs
+(d) None of the above
+7.27 MTBF stands for
+(a) Mean time between failure
+(b) Maximum time between failures
+(c) Minimum time between failures
+(d) Many time between failures
+7.28 CMM model is a technique to 
+(a) Improve the software process
+(b) Automatically develop the software
+(c) Test the software
+(d) All of the above
+7.29 Total number of maturing levels in CMM are
+(a) 1
+(b) 3
+(c) 5
+(d) 7
+)1
+(
+)
+(
+)
+(
++
+−
+=
+i
+N
+t
+a
+φ
+λ
+)1
+(
+)
+(
+)
+(
+−
++
+=
+i
+N
+t
+c
+φ
+λ
+)1
+(
+)
+(
+)
+(
++
++
+=
+i
+N
+t
+b
+φ
+λ
+)1
+(
+)
+(
+)
+(
+−
+−
+=
+i
+N
+t
+d
+φ
+λ
+
+
+===== SLIDE 115 =====
+115
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+7.30  Reliability of a software is dependent on number of errors
+(a) removed
+(b) remaining
+(c) both (a) & (b)
+(d) None of the above
+7.31  Reliability of software is usually estimated at
+(a) Analysis phase
+(b) Design phase
+(c) Coding phase
+(d) Testing phase
+Multiple Choice Questions
+7.32  CMM stands for
+(a) Capacity maturity model
+(b) Capability maturity model
+(c)  Cost management model
+(d)  Comprehensive maintenance model
+7.33 Which level of CMM is for basic project management?
+(a) Initial
+(b) Repeatable
+(c) Defined
+(d) Managed
+7.34 Which level of CMM is for process management?
+(a) Initial
+(b) Repeatable
+(c) Defined
+(d) Optimizing
+
+
+===== SLIDE 116 =====
+116
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.36 CMM was developed at
+(a) Harvard University
+(b) Cambridge University
+(c) Carnegie Mellon University
+(d) Maryland University
+7.39 The number of clauses used in ISO 9001 are
+(a) 15
+(b) 25
+(c) 20
+(d) 10
+7.35 Which level of CMM is for process management?
+(a) Initial
+(b) Defined
+(c) Managed
+(d) Optimizing
+7.38 The model to measure the software process improvement is called
+(a) ISO 9000
+(b) ISO 9126
+(c) CMM
+(d) Spiral model
+7.37 McCall has developed a
+(a) Quality model
+(b) Process improvement model
+(c) Requirement model
+(d) Design model
+
+
+===== SLIDE 117 =====
+117
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.41 In ISO 9126, each characteristics is related to 
+(a) one attributes
+(b) two attributes
+(c) three attributes
+(d) four attributes
+7.44  Each maturity model is CMM has
+(a) One KPA
+(b) Equal KPAs
+(c) Several KPAs
+(d) no KPA
+7.40 ISO 9126 contains definitions of
+(a) quality characteristics
+(b) quality factors
+(c) quality attributes
+(d) All of the above
+7.43 Which is not a software reliability model ?
+(a) The Jelinski-Moranda Model
+(b) Basic execution time model
+(c) Spiral model
+(d) None of the above
+7.42  In McCall quality model; product revision quality factor consist of
+(a) Maintainability
+(b) Flexibility
+(c) Testability
+(d) None of the above
+
+
+===== SLIDE 118 =====
+118
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.46 In reliability models, our emphasis is on
+(a) errors
+(b) faults
+(c) failures
+(d) bugs
+7.49  MTTF stands for
+(a) Mean time to failure
+(b) Maximum time to failure
+(c) Minimum time to failure
+(d) None of the above
+7.45 KPA in CMM stands for
+(a) Key Process Area
+(b) Key Product Area
+(c) Key Principal Area
+(d) Key Performance Area
+7.48 Software reliability is defined with respect to 
+(a) time 
+(b) speed
+(c) quality
+(d) None of the above
+7.47 Software does not break or wear out like hardware. What is your opinion?
+(a) True
+(b) False
+(c) Can not say
+(d) not fixed
+
+
+===== SLIDE 119 =====
+119
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Multiple Choice Questions
+7.50  ISO 9000 is a series of standards for quality management systems and has
+(a) 2 related standards
+(b) 5 related standards
+(c) 10 related standards
+(d) 25 related standards
+
+
+===== SLIDE 120 =====
+120
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.1 What is software reliability? Does it exist?
+7.2 Explain the significance of bath tube curve of reliability with the help of 
+a diagram.
+7.3 Compare hardware reliability with software reliability.
+7.6 Describe the following terms:
+(i) Operational profile
+(ii)
+Input space
+(iii) MTBF
+(iv)
+MTTF
+(v)  Failure intensity.
+7.4 What is software failure? How is it related with a fault?
+7.5 Discuss the various ways of characterising failure occurrences with 
+respect to time.
+
+
+===== SLIDE 121 =====
+121
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.7 What are uses of reliability studies? How can one use software reliability 
+measures to monitor the operational performance of software?
+7.8 What is software quality? Discuss software quality attributes.
+7.9 What do you mean by software quality standards? Illustrate their essence 
+as well as benefits.
+7.10 Describe the McCall software quality model. How many product quality 
+factors are defined and why?
+7.11 Discuss the relationship between quality factors and quality criteria in 
+McCall’s software quality model. 
+7.12 Explain the Boehm software quality model with the help of a block 
+diagram.
+7.13 What is ISO9126 ? What are the quality characteristics and attributes?
+
+
+===== SLIDE 122 =====
+122
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.14 Compare the ISO9126 with McCall software quality model and 
+highlight few advantages of ISO9126.
+7.15 Discuss the basic model of software reliability. How       
+can be 
+calculated.
+7.16 Assume that the initial failure intensity is 6 failures/CPU hr. The failure 
+intensity decay parameter is 0.02/failure. We assume that 45 failures 
+have been experienced. Calculate the current failure intensity.
+7.17 Explain the basic & logarithmic Poisson model and their significance in 
+reliability studies.
+τ
+µ
+∆
+∆
+and
+
+
+===== SLIDE 123 =====
+123
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.18 Assume that a program will experience 150 failures in infinite time. It 
+has now experienced 80. The initial failure intensity was 10 failures/CPU 
+hr.
+(i) Determine the current failure intensity
+(ii) Calculate the failures experienced and failure intensity after 25 and 
+40 CPU hrs. of execution.
+(iii) Compute additional failures and additional execution time required 
+to reach the failure intensity objective of 2 failures/CPU hr.
+Use the basic execution time model for the above mentioned 
+calculations.
+7.19 Write a short note on Logarithmic Poisson Execution time model. How 
+can we calculate
+7.20 Assume that the initial failure intensity is 10 failures/CPU hr. The 
+failure intensity decay parameter is 0.03/failure. We have experienced 75 
+failures upto this time. Find the failures experienced and failure intensity 
+after 25 and 50 CPU hrs. of execution.
+?
+&
+τ
+µ
+∆
+∆
+
+
+===== SLIDE 124 =====
+124
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.21 The following parameters for basic and logarithmic Poisson models are 
+given:
+7.22 Quality and reliability are related concepts but are fundamentally 
+different in a number of ways. Discuss them.
+7.23 Discuss the calendar time component model. Establish the relationship 
+between calendar time to execution time.
+Determine the additional failures and additional execution time required 
+to reach the failure intensity objective of 0.1 failure/CPU hr. for both 
+models.
+
+
+===== SLIDE 125 =====
+125
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.24 A program is expected to have 250 faults. It is also assumed that one 
+fault may lead to one failure. The initial failure intensity is 5 failure/CPU 
+hr. The program is released with a failure intensity objective of 4 
+failures/10 CPU hr. Calculate the number of failures experienced before 
+release.
+7.25 Explain the Jelinski-Moranda model of reliability theory. What is the 
+relation between ‘t’ and 
+7.27 Explain how the CMM encourages continuous improvement of the 
+software process.
+7.28 Discuss various key process areas of CMM at various maturity levels.
+?'
+'λ
+7.26 Describe the Mill’s bug seeding model. Discuss few advantages of this 
+model over other reliability models.
+7.30 Discuss the 20 clauses of ISO9001 and compare with the practices in the 
+CMM.
+7.29 Construct a table that correlates key process areas (KPAs) in the CMM 
+with ISO9000.
+
+
+===== SLIDE 126 =====
+126
+Software Engineering (3rd ed.), By K.K Aggarwal & Yogesh Singh, Copyright © New Age International Publishers, 2007
+Exercises
+7.31 List the difference of CMM and ISO9001. Why is it suggested that 
+CMM is the better choice than ISO9001?
+7.32 Explain the significance of software reliability engineering. Discuss the 
+advantage of using any software standard for software development?
+7.33 What are the various key process areas at defined level in CMM? 
+Describe activities associated with one key process area.
+7.34 Discuss main requirements of ISO9001 and compare it with SEI 
+capability maturity model.
+7.35 Discuss the relative merits of ISO9001 certification and the SEI CMM 
+based evaluation. Point out some of the shortcomings of the ISO9001 
+certification process as applied to the software industry.

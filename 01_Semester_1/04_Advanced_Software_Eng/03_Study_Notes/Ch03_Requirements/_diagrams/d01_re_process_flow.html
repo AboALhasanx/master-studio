@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="520" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="31" font-size="15" font-weight="700" fill="#0f172a">Crucial Process Steps of Requirements Engineering (Figure 3.1 &amp; Slide 3)</text>
+  <text x="35" y="47" font-size="11.5" font-weight="600" fill="#64748b">Problem Statement → Elicitation → Analysis → Documentation → Review → SRS</text>
+  <text x="965" y="39" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">K.K. Aggarwal &amp; Yogesh Singh (Fig. 3.1, p. 41) · Companion Slide 3</text>
+
+  <!-- Left Input: Problem Statement -->
+  <g transform="translate(20, 140)" filter="url(#cShadow)">
+    <rect width="115" height="70" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.6"/>
+    <text x="57" y="30" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">Input:</text>
+    <text x="57" y="48" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">Problem</text>
+    <text x="57" y="62" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">Statement</text>
+  </g>
+  <!-- Input Arrow -->
+  <line x1="135" y1="175" x2="165" y2="175" stroke="#64748b" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Stage 1: Requirements Elicitation -->
+  <g transform="translate(170, 85)" filter="url(#cShadow)">
+    <rect width="180" height="180" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+    <rect x="0" y="0" width="180" height="34" rx="8" fill="#2563eb"/>
+    <text x="90" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1. Requirements Elicitation</text>
+    <text x="12" y="60" font-size="11" font-weight="700" fill="#1e40af">• Stakeholder Interviews</text>
+    <text x="12" y="78" font-size="10.5" fill="#475569">Structured / Unstructured</text>
+    <text x="12" y="103" font-size="11" font-weight="700" fill="#1e40af">• FAST / JAD Workshops</text>
+    <text x="12" y="121" font-size="10.5" fill="#475569">Collaborative consensus</text>
+    <text x="12" y="146" font-size="11" font-weight="700" fill="#1e40af">• QFD &amp; Use Cases</text>
+    <text x="12" y="164" font-size="10.5" fill="#475569">Customer value &amp; scenarios</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="350" y1="175" x2="380" y2="175" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Stage 2: Requirements Analysis -->
+  <g transform="translate(385, 85)" filter="url(#cShadow)">
+    <rect width="180" height="180" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.6"/>
+    <rect x="0" y="0" width="180" height="34" rx="8" fill="#16a34a"/>
+    <text x="90" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2. Requirements Analysis</text>
+    <text x="12" y="60" font-size="11" font-weight="700" fill="#15803d">• Context &amp; DFD Modeling</text>
+    <text x="12" y="78" font-size="10.5" fill="#475569">Hierarchical functional flow</text>
+    <text x="12" y="103" font-size="11" font-weight="700" fill="#15803d">• Data Dictionary</text>
+    <text x="12" y="121" font-size="10.5" fill="#475569">Central schema repository</text>
+    <text x="12" y="146" font-size="11" font-weight="700" fill="#15803d">• ER Diagrams &amp; Prototyping</text>
+    <text x="12" y="164" font-size="10.5" fill="#475569">Data associations &amp; mockups</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="565" y1="175" x2="595" y2="175" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrG)"/>
+
+  <!-- Stage 3: Requirements Documentation -->
+  <g transform="translate(600, 85)" filter="url(#cShadow)">
+    <rect width="180" height="180" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="1.6"/>
+    <rect x="0" y="0" width="180" height="34" rx="8" fill="#9333ea"/>
+    <text x="90" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3. Documentation (SRS)</text>
+    <text x="12" y="60" font-size="11" font-weight="700" fill="#7e22ce">• IEEE Std 830-1998</text>
+    <text x="12" y="78" font-size="10.5" fill="#475569">Structured 3-tier outline</text>
+    <text x="12" y="103" font-size="11" font-weight="700" fill="#7e22ce">• Black-Box Specification</text>
+    <text x="12" y="121" font-size="10.5" fill="#475569">External behavior only</text>
+    <text x="12" y="146" font-size="11" font-weight="700" fill="#7e22ce">• Quality Attributes</text>
+    <text x="12" y="164" font-size="10.5" fill="#475569">Performance &amp; constraints</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="780" y1="175" x2="810" y2="175" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrP)"/>
+
+  <!-- Stage 4: Requirements Review -->
+  <g transform="translate(815, 85)" filter="url(#cShadow)">
+    <rect width="170" height="180" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6"/>
+    <rect x="0" y="0" width="170" height="34" rx="8" fill="#d97706"/>
+    <text x="85" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">4. Requirements Review</text>
+    <text x="10" y="60" font-size="11" font-weight="700" fill="#b45309">• 6-Stage Inspection</text>
+    <text x="10" y="78" font-size="10.5" fill="#475569">Formal peer walkthrough</text>
+    <text x="10" y="103" font-size="11" font-weight="700" fill="#b45309">• 7 Quality Checks</text>
+    <text x="10" y="121" font-size="10.5" fill="#475569">Ambiguity, consistency</text>
+    <text x="10" y="146" font-size="11" font-weight="700" fill="#b45309">• Validation Sign-off</text>
+    <text x="10" y="164" font-size="10.5" fill="#475569">Approved baseline</text>
+  </g>
+
+  <!-- Approved Output: SRS Document -->
+  <line x1="900" y1="265" x2="900" y2="305" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrG)"/>
+  <rect x="905" y="275" width="60" height="18" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="1"/>
+  <text x="935" y="288" font-size="9.5" font-weight="700" fill="#15803d" text-anchor="middle">Approved</text>
+
+  <g transform="translate(760, 310)" filter="url(#cShadow)">
+    <rect width="225" height="75" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="112" y="28" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="middle">Software Requirements</text>
+    <text x="112" y="44" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="middle">Specification (SRS)</text>
+    <text x="112" y="62" font-size="10" fill="#166534" text-anchor="middle">Official Baseline &amp; Development Contract</text>
+  </g>
+
+  <!-- REWORK FEEDBACK LOOPS FROM STAGE 4 -->
+  <!-- Inner Defect Loop: Routes from Stage 4 back to Stage 3 Documentation -->
+  <path d="M 835 265 L 835 395 L 690 395 L 690 270" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrR)"/>
+  <rect x="670" y="385" width="180" height="20" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
+  <text x="760" y="399" font-size="9" font-weight="700" fill="#dc2626" text-anchor="middle">Defect Loop: Phrasing, Ambiguity, Formatting</text>
+
+  <!-- Outer Rework Loop: Routes from Stage 4 back to Stage 1 Elicitation -->
+  <path d="M 820 265 L 820 450 L 260 450 L 260 270" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrR)"/>
+  <rect x="360" y="440" width="360" height="20" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
+  <text x="540" y="454" font-size="9.5" font-weight="700" fill="#dc2626" text-anchor="middle">Rework Loop: Missing Stakeholder Requirements &amp; Policy Conflicts</text>
+
+</svg>
+</div>
+</body>
+</html>

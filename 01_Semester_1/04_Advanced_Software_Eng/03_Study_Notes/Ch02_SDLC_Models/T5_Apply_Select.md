@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — T5 Apply & Scenario Selection Pack · Life-Cycle Models"
-subtitle: "Applied Decision Analysis and Justified Model Selection for Real-World Systems"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,17 +9,22 @@ header_left: "ASE Chapter 2 — T5 Apply & Select Pack"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "Applied Decision Analysis and Justified Model Selection for Real-World Systems"
 ---
 
 # Chapter 2 — T5 Apply & Scenario Selection Pack
 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
 This pack contains the core **applied scenario selection and decision-justification exercises** from printed page 52 of the primary course textbook (B.B. Agarwal et al., 2010, Exercise 13, covering four distinct software engineering applications), integrated with the four formal selection criteria matrices from K.K. Aggarwal & Yogesh Singh (2007, Slides 36–41).
+-->
 
+<!-- Print-hidden (opening format/source note); retained for Markdown/reference use.
 > **Formatting Standard:**
 > - Questions and justified model recommendations are strictly in English.
 > - **Bold marks source-grounded model selection rules, criteria, and characteristics**; plain text marks structural application analysis.
 > - No markdown tables are used in question/answer bodies (pure text formatting preserves question-answer cohesion).
 > - Detailed Arabic notes and exam traps are placed separately outside the English model answers.
+-->
 
 ---
 

@@ -1,0 +1,4232 @@
+
+
+##### OCR pdf p158 (book ~306) #####
+306 Software Enginees
+Ting
+Depth of inheritance tree (DIT) can be measured by:
+
+6.18.
+(6) number of successor classes
+
+(a) number of ancestor classes
+(d) number of root classes.
+
+(c) number of failure classes
+
+6.19. A dynamic page is:
+(a) where contants are not dependent on the actions of the user.
+
+(b) where contents are dependent on the actions of the user
+(c) where contents cannot be displayed
+(d) none of the above. :
+6.20. Which one is not a size measure ?
+(a) LOC
+
+(b) FP
+(c) cyclomatic complexity
+
+(d) program length.
+
+RCI
+
+6.1. Define software metrics. Why do we really need metrics in software?
+Discuss the areas of applications of software metrics. What are the problems durin
+ie
+
+implementation of metrics in any organization ‘4
+What are various categories of software metrics ? Discuss with the help of suitable examples
+
+Explain the Halstead theory of software science. Is it significant in today’s scenario of component
+based software development ?
+6.5. What is the importance of language level in Halstead theory of software science?
+6.6. Give Halstead’s software science measures for:
+(i) program length (ii) program volume
+(iii) program level (iv) effort
+
+(v) language level.
+For a program with number of unique operators 7, = 20 and number of unique operands n, = 40,
+
+6.2.
+
+6.3.
+6.4.
+
+6.7.
+compute the following: ;
+(i) program volume (ii) effort and time
+(iii) program length (iv) program level.
+6.8. Develop a small software tool that will perform a Halstead analysis on a programming languag?
+source code of your choice. ; .
+of a quadratic equation
+
+6.9. Write a program in C and also PASCAL for the calculation of the roots :
+Find out all software science metrics for both the programs. Compare the outcomes and com
+ment on the efficiency and size of both the source codes.
+
+6.10. How should a procedure identifier be considered, both when d
+_ about the identifier of a procedure that is passed as a paramete
+6.11. It is interesting to examine how the ratio (N-N)/N varies when a 5
+Actually, some experiments show that the partitioning of ‘vocabularies 5
+modularization maintains the stability of the ratio (N-N)N. Two extreme aise”
+
+a. 1), and 1), are the same for all parts.
+b. n, and n, are partitioned into disjoint subsets by modularization.
+
+alled? What
+
+?
+
+eclared and when ¢
+r to another procedure :
+divided into par'®
+
+due to program
+may occ"
+
+program is
+
+6.12.
+6.13.
+6.14.
+
+6.15.
+6.16.
+6.17.
+6.18.
+6.19.
+
+6.20.
+6.21.
+
+6.22.
+6.23.
+
+6.24,
+
+6.25.
+6.26,
+
+6.27,
+
+6.28.
+
+307 |
+
+Ki for a program with N = N = 72, n, = 4 and n, = 16 when the
+he two extreme assumptions.
+
+gram in such a way 80 as to satisfy the latter
+dcall must share an identifier.) For large values
+and 1, have small inter-
+
+variations of
+ded into two parts, under t
+difficult to divide a pro
+
+. definition an
+ion. (At least one procedure
+ont tities involved, however, we can assume that, at least, 1,
+Lt
+
+ir si 94].
+pei eee =, — amount of data in a program ?
+rs oe concept of module weakness. Is it applicable to programs also ? ‘ elise
+Write a program for the calculation of roots of a quadratic equation. Generate cross referen s
+for the program and also calculate LV, y and WM fr this program.
+Show that the value of SP at a particular statement is also ths valu
+Discuss the significance of data structure metrics during teating.
+What are information flow metrics ? Explain the basic information flow model.
+
+Discuss the problems with metrics data. Explain two methods for the analysis of such data.
+Show why and how software metrics can improve the software process. Enumerate the effect of
+
+metrics on software productivity. : :
+Why does lines of code (LOC) not measure software nesting and control structures?
+Several researchers in software metrics concentrate on data structure to measure complexity. Is
+data structure a complexity or quality issue, or both?
+List the benefits and disadvantages of using Library routines rather than writing own code.
+Compare software science measures and function points as measures of complexity. Which do
+you think more useful as a predictor of how much particular software's development will cost?
+Some experimental evidence suggests that the initial size’ estimate for a project affects the na-
+ture and results of the project. Consider two different managers charged with developing the
+same application. One estimates that the size of the application will be 50,000 lines, while the
+other estimates that it will be 100,000 lines. Discuss how these estimates affect the project
+throughout its life cycle. i -
+bea me ee most appropriate size estimation techinque and why?
+iscuss the object oriented ics. < A bait . A
+develigiiast metrics. What.is the importance of metrics in object oriented software .
+Define the following:
+re CBO, DAC, TCC, LCC and DIT.
+at is the signi cance of A . .
+gnifi use case metrics? Is it really important to design such metrics?
+
+Compute the
+program is divi
+
+Warning: It may be
+
+e of LV at that point.
+
+##### OCR pdf p159 (book ~308) #####
+Software Reliability
+
+Software reliability. Does it exist ? Computer program instructions cannot break
+Hence predicting software reliability is a different concept as compared to et out,
+ware reliability. Software becomes more reliable over time, instead of wearing out ped hard.
+obsolete as the environment for which it was developed changes. Hardware redund ecomes
+lows us to make a system reliable as we desire, if we use large number of compon ancy al.
+given reliability. We do not have such techniques in software and we may not get pan with
+niques in foreseeable future. tech.
+Initially, problems in programming were blamed to the severe constraints imposed b
+the hardware. However, hardware has now become more reliable, flexible and versatile ie
+
+the problems with programming have not decreased.
+
+7.1 BASIC CONCEPTS
+
+The term reliability is often misunderstood in the software field since software does not break
+or wear-out in the physical sense. It either works in a given environment or it does not. Hence
+traditional “bath tub” curve of hardware reliability is not applicable here. The “bath tub curve’
+is given in Fig. 7.1.
+
+As indicated, there are three phases in the life of any hardware component i.e., burn-in,
+useful life and wear-out. In burn-in phase, failure rate is quite high initially, and it starts
+decreasing gradually as the time progresses. It may be due to initial testing in the premises of
+the organisation. During useful life period, failure rate is approximately constant. Failure rate
+increases in wear-out phase due to wearing out/aging of components. The best period is useful
+life period. The shape of this curve is like a “bath tub” and that is why it is known as bath tub
+
+curve.
+«Burn-in
+
+Useful life | Wear-out /
+
+\ /
+
+r 1h /
+| . I {
+
+Failure | i _
+
+rate si 4
+
+i]
+
+| |
+
+t
+
+t
+
+—_—— Time ——»
+
+Fig. 7.1: Bath tub curve of hardware reliability
+
+308
+
+Software Reliability :
+ear out phase in software. The expected curve for software is given in
+we
+
+We do not have
+
+Fig. 72.
+4 Testing — ;
+phase Useful life '
+\ | Obsolescence
+\ t
+Failure |
+rate
+—————— oll:
+_—_— Time ———+
+Fig. 7.2: Software reliability curve (failure rate versus time)
+Software may be retired only if it becomes obsolete. Some of contributing factors are
+given below: :
+
+e change in environment
+
+change in infrastructure/technology
+* major change in requirements
+
+« increase in complexity
+
+« extremely difficult to maintain
+
+® deterioration in structure of the code
+« slow execution speed
+
+¢ poor graphical user interfaces.
+
+7.1.1 What is Software Reliability?
+According to Bev. Li i reliabili
+im soreciatiaack is 79): “Software reliability means operational reliability.
+seein in the program ? We should be concerned with their effect on its
+As «
+ee Bs teeth ea male 90): Software reliability is defined as the ability of a
+periodiel tiraa® its required functions under stated conditions for a specified
+Software reliability is al |
+; defined as th: ili
+assigned task j : in0 e probability that a softwar fulfills i
+the hardware ma aie elapag cg for a predefined number of input rr cenit, es A
+Puts are free of error [KOPE 79]. Hence it is the probability that the
+
+Software will work wi
+: without failure fi .
+®nvironment and time j © tor a specified period of time i i ;
+te e is fixed. Soh‘ Tita; * : € 1M a given environment.
+Conditions, So, reliability sei Reliability is for fixed time nah. Thats
+
+program : eee
+Sram for a specified time in a Specified environment [MUSA87]”.
+
+For ex .
+by the ay, ample, a time-sharin 8 '
+erage us ‘ 8 system may have a reliabili
+er. This system, when executed An iapacic min ea
+, withou or
+
+##### OCR pdf p160 (book ~310) #####
+erin, |
+i) |
+: ult of the general way in which |
+
+eriods out of 100. As a res vay ch we defi :
+coeinatia software reliability incorporates the notion of performance ned failure
+
+that the concept of ; : being satisfa.”
+For example, excessive response time at a given load level may be considered ansation vy,
+that a routine must be recorded in more efficient form. actory 5.
+
+7.1.2 Software Reliability and Hardware Reliability
+
+The field of hardware reliability has been established for some time. Hence, one
+software reliability relates to it. In reality, the division between hardware an
+ability is somewhat artificial. Both may be defined in the same way. Therefore, one m
+bine hardware and software component reliabilities to get system reliability. Both * AY com.
+the environment. The source of failures in software is design faults, while the priest Pend on
+in hardware has generally been physical deterioration. However, the concepts sie a
+developed for software reliability could really be applied to any design activity, includin hey
+ware design. . enti:
+
+Once a software (design) defect is properly fixed, it is in general fixed for al
+ure usually occurs only when a program (design) is exposed to an environment that it w.
+developed or tested for. Although manufacturing can affect the quality of physical wane not
+the replication process for software (design) is trivial and can be performed to very high a
+ards of quality. Since introduction and removal of design faults occurs during s se
+opment, software reliability may be expected to vary during this period.
+
+The design reliability concept has not been applied to hardware to that extent, The
+probability of failure due to wear and other physical causes has usually been much preater
+than that due to an unrecognised design problem. It was possible to keep hardware design
+failures low because hardware was generally less complex logically than software, Hardware
+design failures had to be kept low because retrofitting of manufactured items in the field was
+very expensive. Awareness of the work that is going on in software reliability, plus a growing
+realisation of the importance of design faults, may now be having an effect on hardware reli-
+ability too. This growing awareness is strengthened by the parallels that people are starting to
+draw between software engineering and chip design.
+
+A final characteristic of software reliability is that it tends to change continually during
+test periods. This happens either as new problems are introduced, when new code is written or
+when repair action removes problems that exist in the code. Hardware reliability may change
+during certain periods, such as initial burn-in or the end of useful life. However, it has a much
+greater tendency than software toward a constant value.
+
+Despite the foregoing differences, we can develop software reliability theory in a way
+that is compatible with hardware reliability theory. Thus system reliability figures may be
+computed using standard hardware combinatorial techniques [SHOO86]. Hardware and soft-
+ware reliability share many similarities and some differences [LLOY77]. One must not a
+the side of assuming that software always presents unique problems, but one must also
+careful not to carry analogies too far.
+
+might ask h
+d Software ne
+
+I time. Pai)
+
+oftware devel.
+
+7.1.3 Failures and Faults
+
+What do we mean by the term software failure? It is the departure of the external rot
+program operation from requirements. So our failure is something dynamic. The progr
+
+eee
+
+esults of
+
+aware Reliability
+sofwalse: ‘lure relates to the behaviour of the program.
+
+: term fa : : .
+ting for a failure to occur. The te Tecan include such things as deficiency in
+
+to be oy general definition of failure is pong :
+is ve sive response . .
+performance attributes and exces! when executed under particular conditions,
+
+; ‘4 the program that, : a
+A fault is the acai hae ies of conditions that cause failures, or the conditions
+causes a failure. There can be than one failure. A fault is a property
+
+source of more
+Hence a fault can be the its execution or behaviour. It is what we are really
+
+when we use the term bug. A fault is created when a programmer
+important to make the failure-fault distinction! . =
+iti ith respect to time, although it wo
+iabili tities have usually been defined wi
+: a eta with respect to other variables. We are concerned with three kinds
+i 1m a execution time for a program is the time that is actually spent by a processor in
+of time.
+
+. ae the instructions of that program. The second kind of time is calendar time. It is the
+ae e that we normally experience. Execution time is important, because it is now
+mene sate that models based on execution time are superior. However, quantities
+sae SS be related back to calendar time to be meaningful to engineers or managers.
+camediind the term clock time is used for a program. It represents the, elapsed time from start
+to end of program execution on a running computer. It includes wait time and the execution
+time of other programs. Periods during which the computer is shut down are not counted. If
+computer utilisation by the program, which is the fraction of time the processor is executing
+the program, is constant, clock time will be proportional to execution time.
+
+There are four general ways of characterising failure occurrences in time:
+
+can be repeated.
+of the program ra
+referring to in general
+
+akes an error. It’s very
+
+ther than a property of
+
+1. time of failure,
+
+2. time interval between failures,
+
+3. cumulative failures experienced upto a given time,
+4, failures experienced in a time interval.
+
+These are illustrated in Tables 7.1 and 7.2.
+
+: Note that all the foregoing four quantities are random variables. By random we mean
+: . the values of the variables are not known with certainty. There are many possible values
+ach associated with a probability of occurrence. For example, we don’t really know when the
+
+next failure will occur. If we did id i
+ne a » we would try to prevent or avoid it. We only know a set of
+
+There are at least two
+errors by programmers, and
+
+€xecution of a
+aca program, these are general] i
+
+certain machine states. ype of call will be made next in the context of
+A third ¢
+
+omplicatin : .
+failure ante g element is thus introduced that argues for the randomness of the
+
+##### OCR pdf p161 (book ~312) #####
+312,
+
+fe
+
+Failure time(sec)
+
+Failu
+
+z 1 S eel
+2 18 liane |
+2 25 eT
+4 36 ee,
+
+i 5 45 — /—
+6 57 _... ==
+7 7 a 14
+8 86. a Ae
+9 104 Pee we
+10 124 ee ee
+1 143 en
+12 169 [a
+13 197 28
+14 222 25
+
+an 15 250 28
+
+Table 7.2: Failure based failure Specification
+
+Cumulative failures
+
+Failures in interval
+
+Software Reliability
+Table 7.3: Probability distribution at times ¢,
+|
+- °
+vice (aire Elapsed time t, = 1 hr Elapsed time t, = 5 hr 4
+in time period) = —
+[er 0.18 0.02
+0.22 0.03
+; 0.16 0.04
+5 0.08 =
+6 0.05 ee
+7 0.04 £2
+8 0.03 :
+9 0.02 0.13
+10 0.01 ar
+0 le
+: v 0.05
+- S 0.03
+= : 0.02.
+= : 0.01 -
+—— one 7.77
+
+3
+6
+8
+9
+
+11
+
+12
+
+13
+
+— ie |e le
+
+14
+
+= ita
+Table 7.3 illustrates a typical probability distribution of failures that eee tro
+time period of execution. Each possible value of the random variable of number ©
+given alongwith its associated probability. The probabilities, of course, ad N
+the random variable is discrete, as the number of failures must be an integer. f
+most probable number of failures is 2 for ¢ = 1 hr. The mean or average number "
+be computed. We multiply each possible value by the probability it can occur an
+
+products. The mean is 3.04 failures for t = 1 hour.
+
+d to 1. Note that here
+
+We will look at the time variation from two different viewpoints, the mean value function
+
+and the failure intensi
+
+the mean value function or the number of failures
+0.01 failure/hr or 1 failure/100 hr, Strictly sp
+the mean value function with r
+
+eke A random process whose probability
+distribution varies with time is called non-
+
+homogeneous, Most failure Processes during
+
+netions at timet aandt,.
+‘ailures experienced increases from 3.04-7.77
+
+between these t: i
+
+j ‘WO poi whi i
+
+nity a in nts, while the failure
+Failure behaviour j
+
+Princip factors ur is affected by two
+
+Note that the mean
+
+1. the number of fa
+2. the
+
+' ults in the software bein
+execution environment or the ope
+
+illustrates the Mean failures
+
+i i i Se ieee |
+
+. Time t, :
+
+ty function. The mean value function represents the average cumulative
+
+failures associated with each time point. The failure intensity function is the rate of change of
+
+per unit time. For example, you might say
+eaking, the failure intensity is the derivative of
+espect to time, and is an instantaneous value.
+Mean value function
+
++10
+
+a Failure intensity
+_| (failures/hr)
+
+Failure intensity
+]
+
+5 10
+Time (hr)
+
+Fig. 7.3: Mean value & failure intensity functions
+
+g executed,
+rational profile of execution.
+
+##### OCR pdf p162 (book ~314) #####
+314
+
+oftware Engines,
+The number of faults in software is the difference between the number ; “ting
+the number removed. r Mtroduceg
+Faults are introduced when the code is being developed by progra. ang
+introduce the faults during original design or when they are adding cee tee ing
+design changes, or repairing faults that have been identified. In general, on] atures, akin”
+or modified results in faults introduction. Code that is inherited from pains dl code that is Ath
+not usually introduce any appreciable number of faults, except possibly in the Dlication g .
+generally has been thoroughly debugged in the previous application. Note th e terfaces i
+faults removal introduces some new faults because it involves modificati a the process ns
+code. : On oF Writing of hey
+Faults removal obviously can’t occur unless you have some means of detect;
+in the first place. Thus fault removal resulting from execution depends on bet the fay)
+the associated failure. Occurrence depends both on the length of time for whi pia of
+has been executing and on the execution environment or operational profile oh Software
+functions are executed, different faults are encountered and the failures th, H Nn different
+tend to be different; thus the environmental influence. We can often hs exhibited
+execution. They may be found through inspection, compiler diagnostics design o: aults without
+or code reading. , T code reviews,
+
+7.1.4 Environment
+
+Let us scrutinise the term environment. The environment is descri| i
+
+We need to build up to the concept of the operational profile seaaiawae eat pepsin ae
+to view the execution of a program as a single entity. The execution can last for aula _
+years for a real time system. However, it is more convenient to divide the execution roves me
+The definition of run is somewhat arbitrary, but it is generally associated with some ar
+that the program performs. Thus, it can conveniently describe the functional environment of
+the program. Runs that are identical repetitions of each other are said to form a run type. The
+proportion of runs of various types may vary, depending on the functional environment.
+Examples.of a run type might be:
+
+1. a particular transaction in an airline reservation system or a business data processing
+system,
+
+2. a specific cycle in a closed loop control system (for example, in a chemical process
+industry),
+3. * particular service performed by an operating system for a user.
+During test, the term test case is sometimes used instead of run type.
+_ We next need to understand the concept of the input variable. This is a variable that
+. external aid the program and is used by the program in executing its function. For
+oF e reservation, destination might be an input variable. One generally has a large quantity
+of input variables associated with the program, and each set of values of these variables
+characterise an input state.
+In effect, the input state identifies the particular run type that you're making. Therefor
+runs can always be classified by their input states. Again, taking the case of the oie °
+reservation system, the input state might be characterised by particular values of origi
+
+the operation
+
+ee
+
+jability
+
+gortware Fe! is known as the —
+
+possible input states
+
+, i t of all
+tion, airline, day and flight number. The se
+destin@ , :
+. put space:
+yy gimilarly, 20
+it, An output state 18 4 set 0
+1b.
+
+external to a program and is set by
+ciated with a run ofa program.
+of variables printed
+that a
+
+i i ariable that exists
+spon ied i of all output variables asso! a
+ion system, an output state might be the set of s ue a aan
+se oe sl tr orts used in operating the airline. It can
+ae f a output state from what it is expected to aioe Z pein
+ired of the program by the environment can be viewe - nie
+Ce I ie al profile as the set of run types tha
+
+the operation ’ .
+selected randomly. Thus, we ame sth which they will occur. In Fig. 7.4, we show
+program can
+
+alongwith possibilities wi ies a
+me panels A and B, with their probabilities of a a =
+apna al profile for just these two states is shown in Fig. hie 8 sees - sacri =
+ae i ‘
+i ally quite large. A realistic operational protite 18
+joeoeents vf have been located on the horizontal axis in order of the
+be done without loss of generality. They have been
+profile would appear to be a continuous curve.
+
+sible inpu ‘
+ig. 7.6. Note that the input states”
+probabilities of their occurrence. This can
+placed close together so that the operational
+
+* Input state A
+(p,= 0.12)
+
+* Input state B
+(Pg = 0.08)
+
+Fig. 7.4: Input Space
+
+; Probability of occurrence
+Probability of occurrence hy
+NN :
+
+Input state
+
+Input state
+
+7 Fig. 7.5: Portion of operational. profile
+ure intensity j
+example of ustty 18 an alternative :
+of the reliability of a parti sa ee reliability. We have discussed the
+; eing
+
+0.95 for 10 hr of time. An equivalent
+
+Fig. 7.6. Operational profile
+
+##### OCR pdf p163 (book ~316) #####
+—
+
+316
+———— 5
+statement could be the failure intensity of 0.05 failure/hr. Each specification has its aq
+The failure intensity statement 15 more ae, a8 you only have to give on Vantages
+However, the reliability statement 1s better suited to the combination of relia} i
+components to get system reliability. If the risk of failure at any point in time is of
+concern, .
+
+J ration of a system to accomplish
+
+nuclear power plant. When prorer Opera seth: Plish some funct; :
+time duration is required reliability spentieation - cai best. An example wile ns ok
+flight to the moon. Fig. 7.7 shows how failure intensity and reliability typically vary 2 Space
+test period, as faults are removed. Note that we define failure intensity, just like we do as
+
+Ba
+with respect to a specified environment. ability
+
+_, Mhe
+bilities w
+
+failure intensity may be the more appropriate measure. Such would be the ec mount
+S€ for
+
+Reliability 1.0
+
+Failure
+
+intensity Reliability
+
+Failure
+intensity
+
+Time (hr)
+
+Fig. 7.7; Reliability and failure intensity
+
+7.1.5 Uses of Reliability Studies
+
+Pressures have been increasing for achieving a more finely tuned balance among product and
+process characteristics, including reliability. Trade-offs among product components with respect
+to reliability are also becoming increasingly important. Thus an important use of software
+reliability measurement is in system engineering. However, there are at least four other yo
+in which software reliability measures can be of great value to the software engineer, manag®
+or user.
+
+: jneering
+First, you can use software reliability measures to evaluate software engine
+
+technology quantitatively. New techniques are continually being proposed for ier
+Process of developing software, but unfortunately they have been exposed to little a os
+evaluation. Because of the inability to distinguish between good and bad, new oie vebility
+often led to a general resistance to change that is counter productive. eT “ ne
+measures offer the promise of establishing at least one criterion for eval failure
+technology, For example, you might run experiments to determine the dec ‘
+
+intensity (failures per unit time) at the start of system test resulting from design
+
+vating t
+yease lf
+
+review”
+
+' 317
+
+Sorware Feliabilty
+
+tative evaluation such as this makes the benefits of good software engineering
+tita
+A quan
+technology
+Secon
+status during the tes
+percent of tests comp
+
+highly visible.
+d, software reliability meas
+t phases of a proje
+
+ures offer you the possibility of evaluating development
+ct. Methods such as intuition of designers or test team
+leted, and successful execution of critical functional tests have been used
+- ting progress. None of these have been really satisfactory and ane have been
+
+to evaluate se becp. a. whediwe reliability measure (such as failure intensity) established
+quite ania gone a sound means of determining status. Reliability generally increases
+from test da nt of testing. Thus, reliability can beeclosely linked with project schedules.
+with the se Oe cost of testing is highly correlated with failure intensity improvement. Since
+hi process attributes that a manager must control are schedule and cost, reliability
+oe s intimately tied in with project management. » .
+
+Third, one can use software reliability measures to monitor the operational performance
+of software and to control new features added and design changes made to the software. The
+reliability of software usually decreases as a result of such changes. A reliability objective can
+be used to determine when, and perhaps how large, a change will be allowed. The objective
+would be based on user and other requirements. For example, a freeze on all changes not
+related to debugging can be imposed when the failure intensity rises above the performance
+objective.
+
+Finally, a quantitative understanding of software quality and the various factors influ-
+encing it and affected by it enriches into the software product-and the software development
+process. One is then much more capable of making informed decisions.
+
+7.2 SOFTWARE QUALITY . 7
+
+ai cas e software engineering is to produce good quality maintainable sitbeiaes in time
+ea ps co Here quality is very important. What do we understand with the term
+? easy to define quality. People understand quality, appreciate quality but
+
+may not be able to clearl is li :
+hag arly express the same. It is like beauty which is very much in the eyes of
+
+Different people understand diffe
+* conformance to requirements
+* fitness for the Purpose
+
+* level of Satisfaction
+
+rent meanings of quality like:
+
+##### OCR pdf p164 (book ~318) #####
+Software En Since,
+
+318
+
+broad sense. the users views of quality must deal with the product’s ease of
+In a broa :
+
+a ——tst
+
+319 |
+
+as number of failures per ‘? hours of operation,
+
+: ae ally measured ae cified time under
+d convenience. If the product is easy to handle an 4 TStal. (ii) Reliability: generally ability of failure free operation in a specifi
+r ‘onal efficiency, 29 ‘4 : : We con, e to failure or pro’
+lation, operation: it, then customer satisfaction level may increases A mean time 10
+fortably remember how 0 USt i | a ality, a list of attributes is required to be defined that are
+; ith software quality, a - ich should be defined.
+nan a saa ——, yates There are four attribute domains ial whic
+ja ET, | Correctness appropriate ‘or y the ones most entrusted by the customer:
+res, Consistency and precision These — bility .
+\ = 7 ‘g
+\ = “a
+| Reliability ] ' = — == e Usability
+\ | i + Maintainability
+x 1 one =
+oh Traceability Adaptabilit mm
+en 2 | e ptability ae a Uta are more commonly
+ne four attribute-domains can be divided into attributes that 7
+ee _ These fo unity and are given in Fig. 7.8. The details of software quality
+ae Accuracy understood by the —— or 5
+| ion | ibutes are given in ta is
+fs. t Clarity and accuracy of documentation attri muweh een anes
+r a N Conformity of operational environment —
+lity. | -— i rforms its intended
+Usability | Biss | Reliabilit The extent to which a software pe
+y Completeness 1. | Reliability asia wtihone tathaod!
+in | a 2. | Correctness The extent to which a software meets its specifica-
+i Tey —! tions.
+, =— 3. | Consistency and precision The extent to which a software is consistent and
+give results with precision.
+— Attributes ss 4. | Robustness The extent to which a software tolerates the unex-
+——————SSS Accuracy and clarity of documentation | pected problems.
+Va : asada | 5. | Simplicity The extent to which a software is simple in its op-
+Mai tainablty : |__| erations.
+| Main t i ae.
+y Readability 8. | Traceability The extent to which an error is traceable in order
+eZ Simplicity = to fix it.
+= ——s —= ihe ili
+== — - Usability The extent of effort required to learn, operate and
+— = = = ea ri understand the functions of the software.
+= , ccura : ; :
+Messen — ra aac. : Meeting specifications with precision.
+a ‘ an 5 :
+"Adaptability | Expandability accuracy of documentation | The extent to which documents are clearly and
+) I ———— Ee TO a ; accurately written.
+ae | Portability —s of operational environment The extent to which a software is in conformity of
+nie: = Cie Supe operational environment.
+‘ 1) 88 Tl «
+Fig. 7.8: Software quality attributes — the hac | is extent to which a software has specified func-
+n software, 12, ti... -—— | ons,
+Quality has many characteristics and some are related to each — has too many fficieney The amount of :
+quality is commonly recognised as “lack of bugs” in the program. Ifa 20 on This is useel” ee facie be eeveute tcnan a and code
+functional defects, then, it is not meeting its basic requirement of functionally: estability —y perform a function.
+expressed in two ways: . int of —— nue effort required to test a software to ensure that
+‘ si de, per function pe a it performs its intended functions.
+(i) Defect rate: number of defects per million lines of source code, Per °™
+
+any other unit,
+
+(Contd...)
+
+##### OCR pdf p165 (book ~320) #####
+(44. | Maintainability og locate and fix an error during
+
+as. | Modularity and maintain the sav’, t® implement, test, debug
+
+16. | Readability wear mantoware is readable in onde.
+
+47. | Adaptability diesel aie is adaptable to no.
+The effort required to modify a so
+
+ftware during
+
+ifiabilit,
+Modifiability maintenance phase.
+
+The extent to which a software
+
+is expandable |
+without undesirable side effects, —_
+
+Expandability
+
+The effort required to transfer a Program from
+ne
+
+Portability
+platform to another platform.
+
+The attribute domain and attributes are also named as the factor and criteria, There
+are many models of software quality and some are discussed here.
+
+7.2.1 McCall Software Quality Model Coleve jn lab]
+
+McCall et. al [MCCA77] model of software quality was introduced in 1977 and many quality
+factors were incorporated. The model distinguishes between two levels of quality attributes,
+Higher level quality attributes are known as quality factors. These are external attributes and
+can be measured directly. The second level of quality attributes is named as quality criteria.
+Quality criteria can be measured either subjectively or objectively. The software quality fae-
+tors are organised in three product quality factors as shown in Fig. 7.9.
+
+é ol \ . di \
+aif i at Wi Ss Sey i
+
+' 3) / product \ Product \ |
+
+\
+oe
+
+2) \
+
+yao
+
+| P \ go | | os
+| \ \ see Product / / /
+
+Fig. 7.9: Software quality factors
+
+320 . Software Eng, ? : 321 |
+ene etng <aware Reliability
+re related to the operation of a product
+
+uct Operation: Here, factors which a
+
+A Aisin) The factors are:
+
+e Correctness
+. Efficiency
+° Integrity
+e Reliability
+» Usability. :
+ional performance, ice, eas
+factors are related to operational pertormay convenience,
+pan These factors play a very significant role in building customer's
+tisfaction. E : ;
++ Oe asada The factors which are required for testing and maintenance are
+
+convenience, ease of usage
+
+(
+
+e Testability. : “7: i
+rtain to the testing and maintainability.of software. They give us
+
+These factors pe
+idea about ease of maintenance, flexibility and testing effort. Hence, they are com-
+
+bined under the umbrella of product revision.
+
+(iit) Product Transition: We may have to transfer a product from one platform to an-
+gy to another technology. The factors related to
+
+o
+such a transfer are combined and are given below:
+° Portability
+° Reusability
+
+- « Interoperability.
+
+A tay of the quality factors are explained in Table 7.4. The remaining factors are given
+in Table 7.5. :
+
+—thble 7.5: Remaining quality factors (others are in Table 7.4)
+
+Sr. No, Quality factor, Purpose ‘
+=a, Integrity The extent to which access to software or data by the unauthorised
+s Persons can be controlled.
+4 ty = effort waqiited to modify an operational program.
+—S ——— e extent to which a program can be réused in other applications.
+’ Seal ee | The effort required to couple one system with another.
+
+The second ley
+factors and ao Ty guality attributes are-termed as quality criteria. We have eleven quality
+Rig. 7.10 F Aas many second level of quality attributes which are shown in
+
+Feat. ay gher level external quality attributes. For example, we may not directly
+
+##### OCR pdf p166 (book ~322) #####
+> «ee
+
+E
+OMe, Reliability
+measure the reliability of a software system, We may however, directly measure the ;,
+
+| $22 Sa
+
+ctors and quality criteria
+
+ie 7.5(a): Relation between qualily fa
+
+Tabl >
+of defects « encountered so far. This direct measure can be used ~oootem insig insight into the relight iccae a | 4 Te ie. 2 \2 3 =
+system. ‘his involves a theory o of how the number of defects en enco eee 1) 2 S\|S8 les|\ 8 |\3\|38\38
+of the sy. —_ d od grounds. For most oth entered) relatany, y a £ |?) §.| 3% $\238/8 1/318) é.-
+reliability, which can be as ascertained on good gri er aspects of quality See ty eriteria 3 P & e = |s5| 8 aj & e
+the relation between the < attributes that can be measured directly and the externa] eo sr. No. Quality Si/FElaelis|s=F= |&|®
+_we are interested in is less obvious, to say the least [VLIE 02]. The relationship between Tibuteg : =) head ees : !
+“factors and quality criteria are given in Table 7.5(a). The definitions and details of these Wality = ae
+criteria are discussed in Table 7.5(0). Wality ae | Operability ____ =a =a /+—— Y |
+J ining ——
+Criteria 5: Tram x — |
+Factors Fi * Se eee
+———— ———— unicativeness ————E
+__ Operability ss = x _}|—_}.—_}——
+= —— 1. | DoS —
+oe _Train ning | yO rate
+— —— —. ie ~ Communicativeness = -—] as control
+0 vauine 7 -—7_| Access Audit
+SS. * —— ————_— é : x
+———— “aa +g. | Storage efficiency -
+Efficiency = ee —~ =. _Aocess control = 8 Execution efficiency - =
+= = = __ Access audit 30, | Traceability =
+Ri ' 41. | Completeness
+= oa Execution efficiency _ 12,_| Accuracy os
+SS SJ 13. | Error tolerance
+~ ~ Traceability _
+~- = : ~ Com ae 14. | Consistency x . .
+——. poirot _] 15. | Simplicity | = | & |e
+= —S se —= —— Aoenecy 16. | Conciseness x
+Maintainability | NS —— sat = ez _Error teem == 17. | Instrumentation ‘ *
+= = i SS __ Consistency _ 18. | Expandability x
+i i ? = Simplicity 19. | Generality . x x
+Oo ann i “~~ Coneieeness 20. | Self-descriptiveness x x | x | x
+aa ____ Instrumentation _ 21. | Modularity x x x x x
+| Flexibility ——_—_So. = ~ Expandability 22._| Machine independence j ; |
+= ae — Generality 4 system independence : x x
+ae Se — oe . ommuni i 7 -
+a = | thom ;
+bes =n “Modularity } sili aie
+ney a = = a. | Machine | independence _ Table 7.5(b): Software quality criteria
+— = ee pee system m Independence) St No Quality criteria ae
+- lity | 1 Definition / Purpose
+—. —— — Communication commana : Operability Th :
+| Interoperablity }—<—— ~~ | a Ee © ease of operation of the software
+ee | Data comm sa — ; ning Ty i or
+3. Communicati ease with which new users can use the system
+Nicativene:
+\ B70: ca quality model - The wie with which inputs and outputs can be
+assimilated.
+
+(Contd...)
+
+##### OCR pdf p167 (book ~324) #####
+324
+Sr. No. Quality criteria Definition | Purpose
+
+VO volume It is related to the VO volume.
+
+VO rate It is the indication of L/O rate
+
+Access control The provisions for control
+
+ware and data, and protection of the son.
+%, Access audit The ease with which software and data ¢
+for compliance with standards or othe ‘an be checkog |
+
+T requi rements
+
+Storage efficiency The run-time storage requirements of the software
+‘are,
+
+5 Execution efficiency The run-time efficiency of the software =
+10.. Traceability The ability to link software res .
+pd components to require. |
+
+11. | Completeness The degree to which a full implementation or a
+Of the
+
+required functionality has been achieved
+The precision of computations and output, =
+
+12. Accuracy
+
+13. Error tolerance The degree to which continuity of operation is en
+under adverse conditions. iat
+14. Consistency The use of uniform design and implementation tech. >
+— niques and notations throughout a project. |
+15. Simplicity The ease with which the software can be understood, |
+
+[— 16. Conciseness The compactness of the source code, in terms of lines
+
+| of code. ;
+[ <
+i; LF, Instrumentation The degree to which the software provides for meas-
+urements of its use or identification of errors.
+18. Expandability The degree to which storage requirements or software |
+functions can be expanded. _ ; |
+19, Generability The breadth of the potential application of software
+; components. :
+20, Self-descriptiveness The degree to which the documents are self explana- |
+— tory. —
+21, Modularity The provision of highly independent modules.
+22. Machine independence The degree to which software is dependent on its
+—— associated hardware. ———
+23, Software system independence | The degree to which software is independent of its
+environment. _
+———— : ; faces
+24. .Communication commonality The degree to which standard protocols and interf
+are used. ——
+25. Data commonality The use of standard data representations.
+
+y software metrics
+
+t, but may overlap
+atively ,
+
+It is not easy to measure many quality factors. We may have to appl
+if possible, to measure such factors, The quality factors are not independen ,
+Some factors may impact others in a positive sense, while others may do s0 n°6
+
+ee
+
+‘325 |
+
+i i _ Asubjective assessment
+
+ch relationships very carefully
+
+~ erty. ing a rating on a scale from, say, 0 (extremely bad) to 10
+hog is difficult to use. Different people assessing the
+
+This renders a proper quality assessment
+
+ye to study ‘
+
+oe criteria can be obtaine : nee
+- ly good). Such a subjective m
+mnt : ikely to give different ratings.
+
+game eriterion are
+
+i ible. =
+
+ag essing quality like decomp’ obj
+
+ther methods to ass i .
+
+Oe > Gouriien of the system. It is also difficult to measure every property ob)
+— P iefioe correctly and measure effectively.
+
+osing criterion into objectively
+ectively
+
+meas.
+put aim 1s to
+7.2.2 Boehm Software Qual
+
+‘ i ality mo
+hm introduced his qu ; :
+T eibetie which are given in Fig. 7-11. The
+
+and primitive
+primitive constru
+in that it presents a
+
+Boehm’s notion of suc ae
+McCall’s, however, it also includes characteristi
+
+in McCall’s model [PFLE 02].
+
+Primary uses
+
+ity Model
+del in 1978 [BOEH78]. He has defined three levels for quality
+se levels are primary uses, intermediate constructs
+constructs. Intermediate constructs are similar to McCall's quality es “on
+
+cts are similar to quality criteria. Hence Boehm’s model is similar to l’s
+
+hierarchy of characteristics, each of which contributes to overall quality.
+cessful software includes the needs and expectations of users, as does
+cs of hardware performance that are missing
+
+Primitive constructs
+
+_-{Device independence |
+Portability L—__| Completeness |
+
+{ a?
+_A Reliability} Consistency |
+
+Asis utility .< — “Efficiency es Device efficiency
+Se 7
+
+Intermediate constructs
+
+: : |
+_ ™\ Human enginee Sy 2
+is sensi tS Communicativeness |
+
+= = 5: = Conciseness |
+~ Modiifiability Se a Legibility a
+~~{Augmentability
+
+General utility
+
+Fig. 7.11: The Boehm software Quality model
+
+* uses
+resources correctly and efficiently
+
+##### OCR pdf p168 (book ~326) #####
+326
+
+e is easy for the user to learn and use
+
+as
+?' Ng
+
+° is well designed, well coded, easily tested and maintained,
+
+25180 9126
+
+The software engineering community was in the search of a single model to s
+
+quality factors since 1980. The advantage of such a universal model is quite oby:
+easier to compare one product with another product. The result was ISO sim Vious; it Make
+archical model with six major attributes contributing to quality. These at in 1999
+
+_© Functionality
+. © Reliability
+
+_ © Usability
+
+_® Efficiency
+
+_° Maintainability
+_® Portability.
+
+" ‘The standard claims that these six factors are comprehensive; that
+software quality can be described in terms of some aspect of one or more
+
+is, any component of
+of the six factors
+
+\_ Saute 7.6: Software quality characteristics and attributes—The ISO 91 26 view
+
+Characteristic / Attribute Short description of the characteristics and)
+the concerns addressed by attributes |
+Functionality Characteristics relating to achievement of the basic
+purpose for which the software is being engineered |
+Suitability The presence and appropriateness of a set of functions for
+specified tasks |
+
+e Accuracy The provision of right or agreed results or effects
+
+* Interoperability
+
+Software's ability to interact with specified systems
+
+e Security Ability to prevent unauthorized access, whether accidental or
+deliberate, to programs and data.
+
+Reliability Characteristics relating to capability of software to, |
+maintain its level of performance under stated conditions |
+for a stated period of time
+
+* Maturity Attributes of software that bear on the frequency of failure by
+
+faults in the software ——
+
+¢ Fault tolerance
+
+Ability to maintain a specified level of performance in cases of
+software faults or unexpected inputs
+
+¢ Recoverability
+
+Capability and effort needed to reestablish level of performance
+and recover affected data after possible failure.
+
+Usability
+
+; d
+Characteristics relating to the effort needed for eee
+on the individual assessment of such use, by # §
+implied set of users.
+
+» .. sa |
+
+SS
+
+Software Reliability -
+; rt description of the characteristics a a
+—zjerasteristic (Attribute cite he concerns addressed by attributes
+
+The effort required for a user to recognize the logical concept
+
+and its applicability
+The effort required for a user to learn its applicatio
+input, and output
+The ease of operation and control by users.
+
+n, operation,
+
++ Operability
+
+Efficiency
+
+to the relationship between the
+f the software and the amount of
+ted conditions
+
+Characteristic related
+level of performance 0
+resources used, under sta
+
+“Time behaviour
+
+The speed of response and processing times and throughput
+rates in performing its function
+
+The amount of resources used and the duration of such use in
+performing its function 4
+
+ee ee M iftainability Characteristics related to the effort needed to make modi-
+fications, including corrections, improvements or adap-
+‘ tation of software to changes in environment, require-
+ments and functional specifications
+e Analyzability The effort needed for diagnosis of deficiencies or causes of fail-
+ures, or for identification of parts to be modified
+« Changeability The effort needed for modification, fault removal or for environ-
+mental change
+i. Stability The risk of unexpected effect of modifications
+e Testability The effort needed for validating the modified software.
+
+__ Portability Characteristics related to the ability to transfer the soft-
+ware from one organization or hardware or software en-
+vironment to another
+
+° Adaptability The opportunity for its adaptation to different specified envi-
+
+ronments
+
+* Installability
+
+The effort needed to install the software in a specified environ-
+ment
+
+* Conformance
+
+The extent to which it adheres to standards or conventions re-
+lating to portability
+
+* Replaceability
+
+The opportunity and effort of using it in the place of other soft-
+ware in a particular environment.
+
+The hie
+
+in Table 7.6 hical model is given in Fig. 7.12. The software quality attributes are explained
+
+##### OCR pdf p169 (book ~328) #####
+rr
+is \ An M, 4 F
+a : tty. / a
+~ _-—"T >»ptet , a
+Ke gui | graced ao "ance | Feo
+| \ous | aby" “|
+S . 2 | &
+tees * anally | Rey. |
+aa \. mars) lag
+e | <n “MeN, z
+ae ‘ io. a
+| (g ( wos \ g\ [|
+Let ie quality & | Fe
+| 2 | \2 \ model } =| | 3
+| : \ ‘S : A / |=
+a si x ~
+| \ - a \, ; ©
++ ehabiny \ nee g
+S —— 7 8.
+| a ; \ =
+2 i $$] —_—_—_—_——_——™ 4
+'/ Analyz- Change-| St- | Test-\| Time | Resource
+
+|Z "ability | ability | ability | ability behaviour behaviour
+b
+EiaeT2: ISO 9126 quality model
+One major difference between ISO model and those of McCall and Boehm is that the
+ISO hierarchy is strict. Each characteristic is related only to one attribute. More-over, outer
+attributes are related to user view of the software rather than to an internal, developer view.
+These models are helpful in articulating just what it is that we value in the software we
+build and use. But there are a number of difficulties inthe direct application of any of the
+above models. We have defined quality as “meeting requirements”, and it is not possible from
+practical point of view to define one generic model, which can fit into all types of application
+domain.
+These models take for granted that all high level quality attributes are independent o
+each other. Based on this assumption, they have decomposed higher level quality factors a
+lower level ones independently {NIHA 01]. Thus, design of a generic model is not easy due :
+various attributes of quality. Sometimes, even, quality is difficult to express, although wel a
+feel and experience. These problems also make it difficult for us to determine how mui
+given model is effective and complete. :
+
+Pa —
+7& SOFTWARE RELIABILITY MODELS
+
+To model software reliability one must first consider the principal factors th
+introduction, fault removal, and the environment. Fault introduction depen
+
+it: fault
+at affect it:
+ds primarily
+
+created or modified for the application) and
+
+i ichi i ing technologies and tools
+
+istics, which include software engineering
+: nats ersonnel. Note that code can be developed to add features or
+' operational profile, and the quality of repair
+ational profile. Since some of the foregoing
+
+are Reliability
+
+softw:
+
+naracteristics of the developed code (code
+e ¢ pment proces
+
+1 of experience 0
+a lt removal depends upon time,
+
+ove faults. Fa = on the oper aa
+sctivity = san Cece ll ete over time, software ae
+factors are pro  leiod in terms of the random processes. The models are distinguis ed rom
+
+nerally ere al terms by the nature of the variation of the random process with time.
+
+each other 10 gener: liability model specifies the general form of the dependence of the failure
+am Mian weaned: We have assumed that it is, by definition, time based (this is
+the facto time-based models may not provide useful insights). The possibilities for
+not to say that non- cribe the failure process are almost limitless.
+
+: mathematical forms to des Proc
+— with any emerging discipline, software reliability has produced its share of models.
+ability models are propounded to assess reliability of software from either specified
+
+hich are assumed to be known or from software-error generated data.
+
+t few years have seen the introduction of a number of different software reliability
+dels have been developed in response to the urgent need of software engineers,
+system engineers, and managers to quantify the concept of software reliability. In the reliabil-
+ity models, our emphasis is on failures rather than faults. The failures occur during execution
+of the program. Hence notion of time plays an important role. As-we know, reliability is the
+probability that the program will not fail during a certain period of time under stated condi-
+
+tions.
+
+develo
+
+rocess on
+
+Software reli
+parameters W
+
+The pas
+models. These mo
+
+Normally, we deal with calendar time. We may like to know the probability that a given
+system will not fail in one week time period. But models are generally based on execution time.
+The execution time is the time spent by the machine actually executing the program. Reliability
+models based on execution time yield better results than those based on calendar time. In
+many cases, a posterior translation of execution time to calendar time is possible. To empha-
+size this distinction, execution time will be denoted by t and calendar time by ¢t.
+
+When the software fails, we try to locate and repair the fault that caused this fail
+the : r ils, ; : ure. In
+particular, this situation arises during the testing phase of the life cycle. Most of the reliability
+
+models are applicable f, i a Po :
+nae one rot e tor system testing, when the individual modules have been integrated
+
+ity function (Avera :
+Th Eee ge number of failures pe i i :
+¢ reliability of a program increases through fa siete can ae ine
+
+intensity decreases, = naewse “
+a:
+1 Basic Execution Time Mode]
+
+.
+
+4 T rode] was dey e b a ! t
+elo d q 7 e
+that fa ures May occur according to a non-homogeneous Poisson process (NHPP)
+
+»
+
+##### OCR pdf p170 (book ~330) #####
+331 |
+
+| 330 oe
+ibed using poisson cctetantis Raa. [soar Reaby .
+= world events may be descri < Rinne of poisson Processes, The relationship between exécution time (1) and mean failures experienced (11) is shown
+© number of telephone calls expected in a given period of time. in Fig. 7- 14.
+* expected number of road accidents in a given period of time. .
+« expected number of persons visiting in a shopping mall in —_ veriod ge t
+In this case processes are non-homogeneous, since failure intensi ty changes time, 3
+of time. 8 function i Vo |
+In this model, the decrease in failure intensity, as a function of —— :
+observed, is constant and is given as: er of failures :
+Mu) = Xo ( - +) . 2
+Vo (7.1) 5
+where A, : Initial failure intensity at the start of execution. ;
+V, : Number of failures experienced, if program is executed for infinite time period. ; ____— Execution time (x) ———> .
+
+ut : Average or expected number of failures experienced at a given point in time
+
+The relationship between failure intensity (1) and mean failures experienced (W) is given
+in Fig. 7.13. For a derivation of this relationship, equation 7.1 can be written as:
+
+Fig. 7.14: Relationship between t and pt for basic model
+
+. au) _ 4 (qu
+The above equation can be solved for p(t) and results in:
+‘ ult) = V, (1-exp [- a (7.3)
+Vo
+
+The failure intensity as a function of execution time is shown in Fig. 7.15.
+4
+
+— Failure intensity (.) ———>
+z
+
+_—_—_——___—_*
+V, (total failures)
+
+— Mean failure experienced (uy) -*
+
+— Failure intensity (1) +>
+
+Fig. 7.13: Failure intensity 2. as a function of j1 for basic model .
+ye and 18 |
+
+d by finding its first derivati —_ |
+———— Execution time (t) ———_» >
+
+The slope of the failure intensity can be obtaine
+
+*sults in:
+
+given as: :
+di —Ao ( | The 2 ~~ — Failure intensity versus execution time for basic model
+du Vo jected equal | Tne tt exocution tr 'S useful for determining the present failure intensity at
+ee ea n time. This relati : , . are intensity at any given
+ail inp | r onship can just be derived by differentiating equation 7.3
+
+This model implies a uniform operational profile. If he correct
+el implies a pe ifesting themselves. the negativ®
+
+often, the various faults have an equal probability of Time intensity rut
+of any of those faults then contributes an equal decrease 1n the failure int@ trend in failv : - —Agt
+A : - by a decrementing Mt) = A, exp | —O-
+sign shows that there is a negative slope meaning thereby Vo : (7.4)
+
+intensity.
+
+##### OCR pdf p171 (book ~332) #####
+| 332 Is
+
+Derived quantities
+failure intensity objective for the soft
+e that we have chosen a ! —
+eg tae have been corrected through removing the associated faults. -- Assy ;
+the objective and present failure intensity to determine the additional failures that ny tse
+experienced to reach that objective. The process is explained in Fig. 7.16. Must j,
+
+dq : Initial failure intensity
+
+Jp : Present failure intensity
+
+1, : Failure intensity objective :
+
+Au : Expected number of additional failures to be experienced to reach failure intensity objective.
+
+Fig. 7.16: Additional failures required to be experienced to reach the objective
+Au can be derived in mathematical form as .
+Gs
+= ap Op — Ae)
+Ao
+
+Similarly, we can determine the additional execution time At required to reach the fail-
+ure intensity objective. This is shown in Fig. 7.17.
+
+(7.5)
+
+|
+|
+| =
+A |
+dy pened
+‘i
+de ertaeauae Ree Sl
+a
+d
+— : ——————
+j#-—At —>|
+. —t—__—_—__+
+
+Fig. 7.17: Addition time required to reach the objective
+
+- 233 |
+sof is c derived in mathematical form as:
+, : di
+ma .
+Example al will experience 200 failures in infinite time. It has now experienced
+Assume that 2 eee intensity was 20 failures/CPU hr.
+
+100. The jnitial failure intensi
+(i) Determine the current failure intensity.
+
+(ii) Find the decrement of failure intensity per failure. '
+
+ij) Calculate the failures experienced and failure intensity after 20 and 100 CPU hrs. of
+
+(Ce
+execution. ;
+(iv) Compute additional failures and additional execution time required to reach the
+
+failure intensity objective of 5 failures/CPU hr.
+Use the basic execution time model for the above mentioned calculations.
+
+Solution
+
+Here V, = 200 failures
+ut = 100 failures
+Ay = 20 failures/CPU hr.
+(i) Current failure intensity:
+pL >
+= 1 _—
+Mi) = Ag Vo
+100
+= 20 | 1- 200 } = 20: -— 0.5) = 10 failures/CPU hr.
+
+(ii) Decrement of failure intensity per failure can be calculated as:
+dri _ =o 20
+. du Vp =— 309 =~ 0-/CPU hr.
+(iii) (a) Failures experienced and failure intensity after 20 CPU hr:
+
+u(t) = V, [2 —exp (=")]
+
+0
+
+200
+= 200(1 — 0.1353) = 173 failures.
+
+: ~20 x 20
+i 200 [1-exp Gea) = 200(1 — exp (— 2))
+
+0
+
+200 =) = 20 exp (— 2) = 2.71 failures/CPU hr.
+
+##### OCR pdf p172 (book ~334) #####
+Be |
+
+(p) Failures experienced and failure intensity after 100 CPU he;
+
+ae At
+u(t) = Vo [1-er0[ Vo )
+
+—20 x 100
+= 200 | 1- exp | a 200 failures (almost)
+
+"|
+
+7 —Aogt
+Mt) = hg exp Vo
+
+(= 20 x 100
+(iv) Additional failures (Au) required to reach the failure intensity objective of 5
+
+CPU hr.
+
+} = 0.000908 failures/CPU hr.
+failures
+Vv 200
+Au = (#2) (Ap — Ag) = (2) (10 — 5) = 50 failures.
+0
+
+Additional execution time required to reach failure intensity objective of 5 fidbucey
+
+CPU hr.
+Vo Ap
+= |— |Iin| +
+(Z| fa
+
+200 10
+= — L — |='B: .
+mr o(2) 6.93 CPU hr.
+
+7.3.2 Logarithmic Poisson Execution Time Model
+
+This model is also developed by Musa et. al. [MUSA79]. The failure intensity function is differ-
+ent here as compared to Basic model. In this case, failure intensity function (decrement per
+
+failure) decreases exponentially whereas it is constant for basic model.
+The failure intensity function is given as: -
+ML) = Ay exp (— On) ua
+: failure
+where @ is called the failure intensity decay parameter. The relationship between
+intensity (1) and mean failures experienced (1) is shown in Fig. 7.18.
+
+1
+
+~.
+
+- Failure intensity (4)—»
+
+___ Mean failures experienced (1) —>
+
+Fig. 7.18: Relationship between |1 and A
+
+slope of
+
+___Sotiare Eag—~ : ; , 335 |
+
+The ‘6’ represents the relative change of failure intensity per failure experienced. The
+failure intensity function is:
+‘ dx
+— =-— — pe
+cia 2,8 exp (— 18)
+dn
+du 8
+
+The relationship between execution time and mean failures experienced is given in
+
+Fig. 7.19.
+Logarithmic Poisson model
+
+Mean failures
+experienced (1) —
+3
+a
+¢ I.
+
+v
+
+—- Execution time (t) ——+
+Fig. 7.19: Relationship between t and
+
+The expected number of failures for this model is always infinite at infinite time. The
+relation for number of failures is given by:
+
+nt) = 5 Ln(ng@t + 1). (7.9)
+
+In we observe Fig. 7.15 and 7.18, it is. clear that the failure intensity of the logarithmic
+
+poisson execution time model dr + Tey Senay :
+later it drops more slowly. Vie alee alia than that of the basic model and
+
+The expression for failure intensity is given as:
+Mt) = Ag/(A,Ot + 1) . (7.10)
+
+- . The relati iti
+dias ations for the additional number of failures and additional execution time in this
+ia(%e) , (7.11) _
+and os ah Z isiah } |
+Whe ; Slap Ap i.
+Te dp = Present failure intensity /
+teat intensity objective
+Value .” at larger values of ion ti ith:
+fp execution time, the logarithmic poisson model will have larger
+
+Gai :
+© intensity than the basic model
+
+##### OCR pdf p173 (book ~336) #####
+Example 7.2
+Assume that the initial failure intensity is 20 failures/CPU hr. The failure
+parameter is 0.02/failures. We have experienced 100 failures up to this time.
+(i) Determine the current failure intensity. a
+(ii) Calculate the decrement of failure intensity per failure.
+
+(iii) Find the failures experienced and failure intensity after 20 and 100 cpy
+
+intensity decg
+y
+
+execution. , hrs, of
+(iv) Compute the additional failures and additional execution time requ;
+- failure intensity objective of 2 failures/CPU hr. ‘uired to reach the
+
+Use logarithmic poisson execution time model for the above mentioned caleulat;
+; long,
+
+Solution
+Ay = 20 failures/CPU hr.
+p = 100 failures
+6 = 0.02/failures
+(i) Current failure intensity:
+Mp) = Ay exp (— By)
+= 20 exp (— 0.02 x 100)
+
+= 2.7 failures/CPU hr.
+(ii) Decrement of failure intensity per failure can be calculated as:
+di.
+— =-6A
+di -
+
+=— .02 x 2.7 = — .054/CPU hr.
+(iii) (a) Failures experienced and failure intensity after 20 CPU hr:
+
+u(t) = ; Ln(A,0t + 1)
+
+. _s ae Ln(20 x 0.02 x 20 + 1) = 109 failures
+Mt) = Ag/(Ag8t + 1)
+= (20)/(20 x .02 x 20 + 1) = 2.22 failures/CPU hr.
+
+(b) Failures experienced and failure intensity after 100 CPU hr:
+
+H(t) = 5 Ln(A,8t + 1)
+- ae Ln(20 x .02 x 100 + ») = 186 a
+» Mt) = Ap/(Ag@t + 1)
+
+= (20)20 x .02 x 100 + 1) = 0.4878 failures/CPU hr.
+
+(iv) Additional failures (Au) required to reach the failure intensity objective ©
+
+CPUhr. ”
+
+£02 failures
+
+i
+Software Sn att
+
+_
+
+eat) =9.02|2 2.7
+
+ip de.
+
+and logarithmic Poisson models are given:
+
+‘ the following parameters for basic
+| th es, Lo arithmic poisson execution.
+a | tate mode't
+= 10 failures/CPU hr. Ay = 30 failures/CPU hr.
+V, = 100 failures 6 = 0.025/failure
+
+(a) Determine
+the failure intensity objective of 5 failures/CPU hr for both models.
+
+(b) Repeat this for an objective function of 0.5 failure/CPU hr. Assume that we start
+
+_ with the initial failure intensity only. ! :
+
+(a) (i) Basic execution time model
+Vo .
+n= 2 Oy Ip)
+100 ‘
+= a0" (10 — 5) = 50 failures.
+4,(Present failure intensity) in this case is same as ), (initial failure intensity)
+Now, At = ao. Lan de
+r Xo Ap
+
+_ 100, - (10
+=o LO | > | = 6.93 CPU hr.
+
+(i) Logarithmic execution time model
+) Ap)
+
+F
+
+30
+Pale 71.67 failures
+
+fe" 24 ”
+025. ) =6.66 cpu br,
+
+the additional failures and additional execution time required to reach
+
+##### OCR pdf p174 (book ~338) #####
+Software E
+338 Agi
+
+thmic model hes calculated more failures in almost some duration of
+Logari a -
+time le sntensity objective (tp) = 0.5 failures/CPU hr.
+(b) —ae
+(i) Basic execution tim
+V
+
+0
+
+e model
+
+_ 100 (19 — 0,5) = 95 failures
+10 .
+Vo Ap
+o— Ln Ya
+ss= Wa}?
+
+e 100 tn( 2) = 30 CPU hr.
+10 0.5
+
+(ii) Logarithmic execution time model
+. ‘ta
+
+= 2 Ln (=) = 164 failures
+0.025 0.5
+
+wien (s- =) = 78.66 CPU hr.
+0.025 (0.5 30
+
+Note that as failure intensity objectives get smaller, the Au and At required to reach the
+objectives become substantially larger for logarithmic model than the basic model.
+
+7.3.3 Calendar Time Component
+
+The calendar time component relates execution time and calendar time by determining °
+calendar time to execution time ratio at any given point in time. The ratio ” based Se _
+constraints that are involved in applying resources to a project. To obtain calendar [ t-
+integrates this ratio with respect to execution time. The calendar time aie. rae
+est significance during phases where the software is being tested and repaired. sek The
+period one can predict the dates at which various failure intensity objectives will nd failure
+calendar time component exists during periods in which repair is not ee calendat
+intensity is constant. However, it reduces in that case to a constant ratio betwe
+time and execution time. . - dontification test
+In test, the rate of testing at any time is constrained by the failure dian available
+team personnel, the failure correction or debugging personnel, or the one established .
+The quantities of these resources available to a project are usually more or —_ because”
+‘its early stages. Increases are generally not feasible during the system test P given value ®
+the long lead times required for training and computer procurement. ney will deter™™
+execution time, one of these resources will be limiting. The limiting ee may
+the rate at which execution time can be spent per unit calendar time. A tes :
+
+ae urce-
+of from one to three periods, each characterized by a different limiting res? “aN
+
+<a
+
+ser io. At the start of testing one identifies a large number
+The i ay eivar sheen trdartalt Testing must be stopped from time to time to let
+of failures separ fixing the faults keep up with the load. As testing progresses, the intervals
+the people oo s aaaan longer and longer. The time of the failure correction personnel is no
+between wenn filled with failure correction work. The test team becomes the bottleneck.
+longer complete os to run tests and analyse the results is occupying all their time. That paces
+The effort requt™ ting done each day. Finally, at even longer intervals, the capacity of the
+the em cit becomes limiting. This resource then determines how much testing is
+computin
+
+ished. <
+eS calendar time component is based on a debugging process model. This model takes
+
+in ge used in operating the program for a given execution time and processing
+~ associated quantity of failures.
+9. resource quantities available, and
+3. the degree to which a resource can be utilised ( due to bottlenecks) during the period
+in which it is limiting.
+Table 7.7 will help in visualising these different aspects of the resources, and the
+parameters that result.
+
+Resource usage
+
+Resource usage is linearly proportional to execution time and mean failures experienced. Let
+x, be the usage of resource r. Then
+
+x,=O.T+ pH (7.13)
+
+Note that 6, is the resource usage per CPU hr. It is nonzero for failure identification
+
+personnel (8,;) and computer time (8,). The quantity 1, is the resource usage per failure. Be
+
+careful not to confuse it with mean failures experienced . It is nonzero for failure identifica-
+tion personnel (j1,), failure correction personnel (np, and computer time (y,).
+
+Table 7.7: Calendar time component resources and parameters
+
+Usage parameters Planned parameters
+’ requirements per
+Resource i
+CPU hr | Failure Quantities available | Utilization
+Failure identification personnel 8; Ly P 1
+Fai : :
+ailure correction Personne] 0 mn Pp
+ce. H P. Pe
+~“— be more Precise, we have
+=H, Au + @ Ar ,
+‘ nh ts (for computer time)
+X, = Hen i“ (for failure correction)
+
+(for failure identification)
+
+##### OCR pdf p175 (book ~340) #####
+Software Engines tn
+g
+
+: ion (unlike identification), resources required are de
+For failure correcti ad, However, computer time is used in bot}, ‘ent 0
+
+: experienc r r Pendent,
+ae gene Hence, computer time used will usually depend on — eatin =
+execution time and the number of failures. oe
+
+hen ae i i ction of execution tj
+
+cé failures experienced is a fun , n time,
+Pe atone execution time only. The intermediate step of thinking i
+- ,
+
+‘enced and execution time is useful in gaining physical insight into w
+exper
+
+Computer time re
+addition to the execution
+the execution of such sup
+
+F “Conelder the change in resource usage per unit of execution time. It can b
+
+differentiating the equation 7.13 with réspect to execution time.
+We obtain dx, jdt = 6, +H, A Se
+Since the failure intensity decreases with testing, the effort used per hour of side
+time tends to decrease with testing. It approaches the execution time coefficient of resours
+usage asymptotically as execution time increases.
+
+Y on
+
+resource Usage ;
+n terms of failny .
+; age : hat is happening
+quired per unit execution time will normally be greater than .
+
+~ Ih
+
+time for the program under test, additional time wil] be requi
+port programs as test drivers, recording routines, and data ha for
+on
+
+€ obtained by
+
+Calendar time to execution time relationship
+
+Resource quantities and utilizations are assumed to be constant for the period over which the
+model is being applied. This is a reasonable assumption, as increases are usually not feasible
+{[BROO75]. a
+The instantaneous ratio of calendar time to execution time can be obtained by dividing
+the resource usage rate of the limiting resource by the constant quantity of resources available
+that can be utilized. Let to be calendar time. Then
+' dtldt =(UP_p,) dx /dt Ban (7.15)
+The quantity P_ represents resource available. Note that P, is the utilization. The =
+ratio must be computed separately for each resource-limited period. Since x, is a function oft,
+we now have a relationship between ¢ and t in each resource limited period. _—e
+The form of the instantaneous calendar time to execution time ratio for any eatin
+ing resource and either model is shown in Fig. 7.20. It is readily obtained from
+(7.14) and (7.15) as (7.16)
+
+dt/dt = (8, + p, AYP, p,
+
+~ Instantaneous calendar time to execution time ratio ae
+“A
+
+—_>
+
+Execution time t
+
+: : ion time ratio
+Fig. 7.20: Instantaneous calendar time to execution time
+
+_—
+
+341 |
+Reliability
+
+i i allel that of the failure intensity. The curve approaches
+The shape : this talaga asymptote is 0 for the failure correction personnel
+an asymptote ¢ ee the maximum of the ratios for the three limiting resources actually
+resource: vane * a at which calendar time is expanded; this is illustrated in Fig. 7.21. The
+determines the Aw d as a solid curve. When the curve for a resource is not maximum
+qe e ie lotted thin. Note the transaction points FI and IC. Here, the calendar time
+(not a. — Y he of two resources are equal and the limiting resource changes. The
+to executl
+
+FC is a potential but not true transition point. Neither resource F nor resource C is
+5 1
+point
+
+jimiting near this point.
+
+i]
+
+software
+
+Failure’ Failure :
+
+correction : identification :
+
+personnel : personnel =: :
+
+limited : limited : Computer time
+
+segment _ | segment ‘ limited segment
+
+——>>
+
+Execution time t
+Fig. 7.21: Calendar time to execution time ratio for differrent limiting resources
+
+The calendar time component allows you to estimate the calendar time in days required
+to meet the failure intensity objective. The value of this interval is particularly useful to software
+managers and engineers. One may determine it from the additional execution time and addi-
+sis aig of failures needed to meet the objective that we found for the execution time
+be sca : mae one now determines the date on which the failure intensity objective will
+
+- +his 1s a simple variant of the first quantity that takes account of things like
+
+weekends and holidays. How is F
+. ‘e = a
+and engineers alee d. ver, it is useful quantity because it speaks in terms managers
+
+Example 7,4
+
+A te
+“ eomnie test cases for 10 CPU hrs and identifies 25 fail
+on time is 5 person hr. Each. failure
+
+mine its natur :
+Solution °. Calculate the failure ident
+
+ures. The effort required per hour
+© requires 2 hr. on an average to verify and deter-
+ification effort required.
+
+As
+we know, resource usage is:
+
+Here 9 =15 X= Ot +H
+r= +9 person hr., l= 25 faj
+teI0OPU ig. ee
+
+H, = 2 hrs./failure
+
+##### OCR pdf p176 (book ~342) #####
+342 7 Software Eng 343
+——————aEeE—t—™ Sera Software Reliability
+
+Hence, X, = 5(10) + 2(25)
+
+= 50 +50 = 100 person hr.
+Example 7.5
+Initial failure in
+objective (Ap) of 1
+rameters.
+
+tensity (A,) for a given software is 20 failures/CPU hr. The failure inte
+Tensity
+
+failure/CPU hr. is to be achieved. Assume the following resource u
+
+: Per hour Per failure
+
+Resource usage
+
+Failure identification effort 2 Person hr. 1 Person hr.
+
+0 5 person hr.
+1.5 CPU hr. 1 CPU hr.
+
+Failure Correction effort
+
+Computer time
+
+(a) What resources must be expended to achieve the reliability improvement ? Uso the
+logarithmic poisson execution time model with a failure intensity decay parameter
+
+of 0.025/failure.
+(b) If the failure intensity objective is cut to half, what is the effect on requirement of
+
+resources ?
+Solution
+
+. in fh
+(a) Au=—Ln (3)
+8 F
+
+iat (2) = 119 failures.
+
+= sas (i-a) _— = (1 — 0.05) = 38 CPU hrs.
+0.025 \1 20
+
+~ 0.025
+Hence X, = Hy Ap + 6; At
+= 1(119) + 2(38) = 195 Person hrs.
+Xp = Hp AL
+
+= 5(119) = 595 person hr.
+Xo =i, Au + 0, At
+= 1(119) + (1.5)(38) = 176 CPU hr.
+
+(b) Now A, = 0.5 failures/CPU hr.
+
+| 20
+Syl |B :
+Au 098 n(22) = 148 failures
+
+1 i: 1
+et a a |
+T ong (Ge =) 78 CPU hrs.
+
+X, = 1148) + 2(78) = 304 Person hrs.
+
+X, = 5(148) = 740 person hrs.
+
+X, = 1(148) + (1.5)(78) = 265 CPU hrs.
+
+intensity objective to half, resources requirements are not dou-
+5. Note that At is approximately doubled but increases loga-
+crease will be between a logarithmic increase and a linear
+
+So,
+
+Hence, if we cut failure
+pled put they are some what les
+
+“snmically- Thus, the resources incre: ill t
+et for changes in failure intensity objective.
+1
+
+Example 7.6
+
+A program is expected to have 500 faults. It is also assumed that one fault may lead to one
+
+failure only. The initial failure intensity was 2 failures/CPU hr. The program was to be released
+with a failure intensity objective of 5 failures/100 CPU hr. Calculate the number of failures
+
+experienced before release.
+Solution
+
+The number of fa
+mentioned below:
+
+ilures experienced during testing can be calculated using the equation
+
+”
+Ap = 4 (ap — Ag)
+
+Here V, = 500 because one fault leads to one failure.
+Ay = 2 failures/OPU hr. =
+Ap = 5 failures/100 CPU hr.
+= 0.05 failures/CPU hr.
+
+500
+a Ay = —— (2 — 0.05)
+
+ence 13 faults are expected to remain at the release instant of the software
+— The Jelinski-Moranda Model
+e Jelinski-M. i
+re oranda model [JELI72] is the earliest and probably the best
+
+el. It i i
+Proposed a failure intenstiy function in the form of
+
+Where Me) = O(N -i +1) : : ,
+; 7.17)
+
+= Constant of
+N=
+
+-known reliability
+
+te proportionality
+otal number of errors present
+
+i en
+umber of errors found by time interval t
+ie
+
+Sumes that all f;
+n and there will be an impro
+
+Tate ; This model as;
+is a Step func ee
+
+##### OCR pdf p177 (book ~344) #####
+g|
+
+Aa
+
+a a a
+
+Fig. 7.22: Relation between ¢ and A
+
+The time interval ¢,, ¢, ... ¢, may vary in duration depending upon the occurrence of ;
+failure.
+
+Between (i — 1)th and ith failure, failure intensity function is (N —i + 1).
+Example 7.7
+There are 100 errors estimated to be present in a program. We have experienced 60 errors
+
+Use Jelinski-Moranda model to calculate failure intensity with a given value of ¢ = 0.03. What
+will be failure intensity after the experience of 80 errors ?
+
+Solution
+
+N = 100 errors
+i = 60 failures
+o = 0.03
+
+We know
+At) = O(N —i + 1)
+= 0.03(100 — 60 + 1)
+= 1.23 failures/CPU hr.
+After 80 failures
+At) = 0,03(100 — 80 + 1)
+= 0,63 failures/CPU hr.
+
+Hence, there is continuous decrease in the failure intensity as the
+experienced increases.
+
+fail
+
+number of
+
+Software mo | ; 345 |
+Sting
+
+software Reliability
+
+7.3.5 The Bug Seeding Model
+
+‘ bug seeding model is an outgrowt
+The Ne wild life population or fish in a pond [FELL57). The
+animé 2 ing the estimation ofthe number of a specific species of fish, say, me
+by eee ontains no other type of fish. We begin by procuring a suitable number of bass, N,
+_ Bern ineeey and tag each one with a means of identification which will remain reliably
+
+from a — the length of the measurement period. The N, tagged fish are then added to the N
+
+attached fo’ 5 aie After an appropriate number of days a sample is
+ar dallowed to mix and disperse. ;
+
+aes re lake ( by hook or net) and separated into 7, tagged bass and n untagged bass.
+
+fishe
+
+¢ i i i i f catching of the tagged
+that there was no difference in the dispersion or ease fe)
+if ae fish, then we can set up the following equation, which equals the proportions of
+taaoad fish in the fished sample to the original fraction seeded.
+es = (7.18)
+
+“N+N, nt+n,
+We may solve the above equation for N in terms of the known quantities N,, n, and n,
+
+h of a technique used to estimate the number of
+technique is best illustrated
+bass, N, in a small
+
+yielding the following:
+N==N, . (7.19)
+ny ;
+
+By direct analogy we may consider N to be the unknown number of bugs in the program
+at the start of debugging and N, =N, to be the number of seeded bugs (unknown to the debugger).
+After y months of debugging, the bugs which have been removed are examined by someone
+(other than the debugger) who has a list of the seeded bugs. This tester classifies them as n,
+which come from the seeded group and n which were not seeded. Direct substitution yields.
+
+rh “
+N= —-N, (7.20)
+
+mt The possibility of seeding bugs in a program and of using this technique to measure the
+initial bug content was first suggested by Mills [MILL72]. The results of the early experiments
+“ one were inconclusive for two reasons. First of all, it was difficult to makeup realistic
+a aoe the analogous fish problem of matching ages of the bass, not to mention the
+a amen where one has, say, three types of fish—bass, perch, and pickerel. Now one
+
+match the unknown ratios in seeding the tagged fish unless all types of fish are
+
+equally easy to catch Also, ar
+‘ , are hatchery-
+fw Aare — oe bred fish as easy to catch as pond-bred fish? The
+
+Seeding was used to evaluate the effectiven en
+
+> 4 means of debugging programs. Thus, th
+"isp evaluation of either.
+
+##### OCR pdf p178 (book ~346) #####
+346
+
+The estimates are repeated every few weeks, and when the third analyst is aatiaf; =
+value N is sufficiently well estimated, the results of debugger number 2’s work Sa that the
+re ef.
+
+debugger number |] and debugger number 2 is reassigned. Now, reasonable est; Riven, ty
+total number of buga in the program, and knowing the number of bugs already IMate of the
+subtraction we obtain the number of remaining bugs. In addition, only a matin 2 by
+number 2's findings duplicate debugger number 1's, Thus, debugger number ] jc able deb usa,
+incorporate much of debugger number 2’s work, thereby producing almost a ne = to rapidly
+a her of bugs found. In most cases the benefits should far outweigh the conte ithe
+extra man-months of debugging time (the cost may be minor, zero, or negative if de ’ ty
+number 2 really finds many independent errors which shorten debugger number 1’. Dugger
+We now discuss a detailed development of the estimation formulas. § efforts,
+
+In order to develop our two-debugger estimation procedure, we begin with the follow:
+notation: : Wing
+
+= development time in months; interval 0 to 7, is the measurement period
+
+B, = number of bugs in program at y=0
+
+B, = number of bugs found in program by debugger number 1 upto time 7,
+
+b,, = number of bugs which debugger number 2 finds upto time y, which are common, ie.
+in set B,
+b, = number of bugs which programmer number 2 finds upto time y, which are inde.
+
+pendent, Le., not in set B,
+
+B, = 6,+6,= number of bugs found in program by debugger number 2 upto time },.
+
+If we really believe that the bugs we would seed in a bug seeding experiment are iden-
+tical to the indigenous bugs, then instead of seeding, we could merely locate a certain number
+of bugs and tag them (identify them). Of course the problem here is that much work must
+transpire in order to identify a group of bugs. Since it should not matter which set of bugs we
+choose as the tagged set ( as long as they are representative), we should be able to treat the
+identified vet as if they were a tagged set of bugs. In order to proceed, we must make some
+fundamental assumptions, which we will state as hypotheses:
+
+Bug Characteristics unchanged as debugging proceeds: When a large age
+debugged, the bugs found during the first several weeks ( months) are representative 0
+
+total bug population. ; ; dj
+
+Independent debugging results in similar programs: When two ee
+debuggers work on a large program, the evolution of the program is such that the dif
+between their two versions are small enough that they can be neglected.
+
+na
+When two independent debuggers work 0
+
+Common bugs versus representative: ; 1 population:
+Jarge program, the bugs which they find in common are representative of the tota! P spit wert”
+Assuming that the above hypotheses are valid, we'can treat the quantity ns 1M quanti
+the selected group Ng. Similarly, b, becomes n, and B, becomes n. Substituting the
+solving for the original number of bugs B, = N yields aa
+By = 7 B,
+
+Software Ens oF, eg
+
+ent
+
+cand
+
+vai ae -+y model (CMM) is not a software life cycle model. Instead, it is a strat-
+
+The capabili ty Se ete process, i ive of the actual life cycle model used. The
+
+egy for giro by Software Engineering Institute ( SED of Carnegie-Mellon University
+dev oped
+
+CMM was
+; ization and to
+jp 1986. ‘udge the maturity of the software processes of an organization an
+CMM is used to J uired to increase the maturity of these processes. The
+
+— the key 7 into five maturity levels as sho
+Optimizing
+Managed
+Defined
+
+Repeatable
+
+wn in Fig. 7.23 [PAUL94, SCHA96).
+
+Fig. 7.23: Maturity levels of CMM
+
+7.4.1 Maturity Levels
+
+1. Initial (Maturity Level 1)
+fAt this, the lowest level, there are essentially no sound software engineering management
+practices in place in the organization. evi ing is done on an adhoc basis If one
+specific project happens to be staffed by a competent manager and a good software develop-
+ment team, then that project may be successful. However; the usual pattern is time and cost
+
+* over runs caused by a lack of sound management in general, and planning in particular. Asa .
+
+pete post ae are responses to crisis, rather than preplanned tasks.(In maturity level.
+Tol sal ay tho ater rocess is unpredictable, because it depends totally on the cur-
+it we anges, SO does the process. As a consequence, it is impossible to pre-
+
+acy, the important items such as the time it will take to develop a product
+
+-or the cost of that is unf t tl aniz
+ign eee ot that product, It is unfortunate fact jori i
+ons all over the world are level 1 onppibeNaee a 7 "
+
+2. A
+*Peatable (Maturity Level'2)
+
+At thi po
+his leye] licies for managi
+
+Poligj i
+similar’ °St@blished. Plannin
+
+ccessful practices devel-
+
+One on e
+Giller. An eft, plem
+
+AN effect} i j a
+Meaoured, and amen ee be characterized as practiced, d ee aa
+
+amenable to be proved.
+
+##### OCR pdf p179 (book ~348) #####
+| 948 Software Engi
+
+Instead of functioning in crisis mode as in level 1, managers identify b
+arise and take immediate corrective action to prevent them from beng < lems
+point is that, without measurement it is impossible to detect problems be & crisis,
+
+; 2 fore
+hand. Measurements may include the careful tracking of costs, schedules aKa Pi Bet out of
+Also, measurements take netionality
+
+n during one project can be used to draw up realistic d
+cost schedules for future projects. u
+
+. . i re_installed basic softw
+Projects in level 2 organizations have ins' are managem,
+Realistic project commitments are based on the results observed on sever pale: Pac
+the requirements of the current projects. Software project standards are definnd and oy
+hey are faithfully followed. The software project team weie =
+
+with its
+
+organization ensures t
+subcontractors, if any, to establish a strong customer-supplier relationship.
+The software process capability of level 2 organizations can be summarized ae di
+igej.
+
+plined because planning and tracking of the software project is stable and earlier succe
+can be repeated. The project’s process is under the effective control of a project m Sigeann
+following realistic plans based on the performance of previous projects. ‘oi
+
+as they
+
+Tation and
+
+system,
+3. Defined (Maturity Level 3)
+
+At this level, the standard process for developing and maintaining software across the
+organization is documented, including both software engineering and management. processes,
+This standard process is referred to throughout the CMM as the organization’s standard software
+process. Processes established at level 3 are used (and changed, as appropriate) to help the
+software managers and techni cal staff to perform more effectively. The organization exploits
+
+effective software engineering practices while standardizing its processes. An organization
+wide training program is implemented to ensure that the staff and managers have the knowledge
+
+and skills required to fulfill their assigned roles.
+Projects tailor the organization’s standard software process,
+
+software process, which accounts for the unique characteristics 0:
+process is referred to, in the CMM as the project’s defined software process.
+d software engineering and ma
+
+contains a coherent, integrated set of well-define
+processes. Because the software process is well defined, management has g00
+over technical progress of all projects. .
+The software process capability of level 3 organizati
+and “constituent” because both software engineering an
+and repeatable. Within established product lines, cost, sch
+control, and software quality is tracked. This process cap
+organization-wide understanding of the activities, roles, an
+
+software process.
+
+4. Managed (Maturity Level 4).
+
+(At this level, the organization sets quantitative quality
+processes. )Productivity and quality are measured for im snk
+across all projects as part of an organizational measurement program) pad the ef
+software process database is used to collect and analyze the data aval able er define’ and
+defined software processes. Software processes are instrumented with we
+
+to develop their own defined
+f the project. This tailored
+Defined software
+nagement
+d control
+
+ons can be summarized as.‘standard
+d management activities are stable
+edule, and functionality are under
+ability is based on 2 er
+d responsibilities in a dell
+
+d
+
+ftware products
+cess activil
+
+a
+
+goals for both so:
+portant software pro ization’
+
+349 |
+
+sottware Reliability
+easurements at level 4. These measurements establish the quantitative foundation
+consistent ™ the project’s software processes and products. Projects achieve control over
+for te. and processes by narrowing the variation in their process performance to fall
+their Pv ceptable quantitative boundaries.
+within « aningful variations in process performance can be distinguished from random varia-
+Me particularly within established product lines. The risks involved in moving up the
+: ve of a new application domain are known and carefully managed. One measure
+ee ouanbet of faults detected per 1000 lines of code. A corresponding objective is to reduce
+ora oantily (number of faults) over time.
+Bi (The software process capability at level 4 organizations can be summarized as “predict-
+se the process is measured and operates within measurable limits. This level of
+bility allows an organization to predict trends of process and product quality within
+
+ds of these limits. When these limits are exceeded, action is taken to correct
+
+ducts are of predictably high quality. )
+
+able” becau
+
+rocess capa
+quantitative boun
+the situation. Software pro
+
+5. Optimizing (Maturity Level 5)
+iat this level, the entire organization is focused on continuous process improvement.)
+The organizations have the means to identify weaknesses and strengthen the process
+proactively, with the goal | of preventing the occurrence of defects. Data of the effectiveness of
+the software process is used to perform cost benefit analysis of new technologies and proposes
+changes to the organization's software process. Innovations that exploit the best software en-
+gineering practices are identified and transferred throughout the organization.
+amet in ae oe “analyze defects to determine their
+: ses are evaluate prevent known types of defects from recurrin
+and Te learned are disseminated to other projects. .
+e software process capabilit izati i
+peach orcas . % y of level 5 organizations can be characterized as “con-
+evel 5 organizations are continuously striving to i
+rings of id proces nen ‘ y ving to improve the
+rocess capability, there by improving the prac rf i j
+Improvement occurs both by i process performance of their projects.
+ac y incremental advancements in the existing proc dby i
+using new technologies and methods. Ee Ne a
+
+These five maturity models are summarized in Fig. 7.24 [SCHA96]
+
+igh, saeerty level Characterization
+Tnitial Adhoc process
+—— Basic project management
+sie Process definition
+sata Process measurement
+Process control |
+
+Fig. 7.24: The five jevels of CMM
+
+Experi
+Maturj ence with the c. ili .
+level us apability maturity model has shown that advancing a complete
+e
+
+ually takes fro
+m 18 months to 3 years, but moving from level 1 to level 2
+
+##### OCR pdf p180 (book ~350) #####
+——_—__™—S"—<“‘( ei ie!
+
+| 350 —— ering
+—__3|
+n5 years. This is a reflection of how difficult it is to instill q ~
+
+i takes 3 or eve :
+sometimes tion that up to now has functioned on a purely adhoc and ie
+react}
+
+approach in an organiza
+
+basis.
+
+7.4.2 Key Process Areas .
+ty level is decomposed into several key process areas i
+
+level 1, each maturi :
+oT EPA) an organization should focus on to improve its software process, K
+areas identify the issues that must be addressed to achieve a maturity level. Each key proce
+)
+
+area identifies a cluster of a scala wae esau oe » Achieve a set o
+goals considered important for enhancing proce Pp y. Ahe key process areas and their
+purposes are listed below. The name of each key process area is followed by its two-letter
+* abbreviation [PAUL 94, PAUL 95, WIEG 98}.
+By definition there are no key process areas for level 1.
+The key process areas at level 2 focus on the software project’s concerns related to estab.
+ect management controls, as summarized below:
+Establish a common relationship between the customer
+requirements and the developers in order to understand
+the requirements of the project.
+Establish reasonable plans for performing the software
+
+t indicate
+CY process
+
+lishing basic proj
+Requirements Management (RM)
+
+Software Project Planning (PP) !
+engineering and for managing the software project.
+
+Software Project Tracking and Establish adequate visibility into actual progress so that
+
+Oversight (PT) management can take effective actions when the soft-
+
+ware project’s performance deviates significantly from
+
+the software plans.
+
+Select qualified software subcontractors and manage
+
+them effectively.
+
+Provide management with ap
+
+process being used by the so
+
+products being built. -
+
+Establish and maintain the integrity of the es
+
+the software project throughout the project's 50
+
+life cycle. —
+The key process areas at level 3 address both project and ~ aageme in
+
+organization establishes an infrastructure that institutionalizes rl
+
+ing and management processes across all projects, as summarized below: ie
+
+izati ibili
+Organization Process Focus (PF) Establish the organizational respons! Ny ation
+process activities that improve the ors
+
+all software process capability.
+Develop and maintain a usable set °
+
+assets that improve proce
+projects and. provide a basis for
+
+benefits to the organization.
+
+Software Subcontract
+Management (SM)
+
+Software Quality Assurance (QA) propriate visibility into a
+
+ftware project and of the
+
+Software Configuration
+Management (CM)
+
+nal issues, 48 the
+gineer”
+
+software
+ver"
+
+Organization Process Definition (PD)
+
+1]
+
+Develop the skills and knowledge of individuals so that
+
+P (TP) :
+raining ee? they can perform their roles effectively and efficiently.
+Software Integrate the software engineering and management
+Integr ated t (IM) activities into.a coherent, defined software process that
+Managemen is tailored from the organization’s standard software
+process and related process assets.
+ct Engineering (PE) Consistently perform a well-defined engineering process
+Software si that integrates all the software engineering activities
+
+Inter group Coordination (IC)
+
+Peer Reviews (PR)
+
+to produce correct, consistent software products
+effectively and efficiently.
+
+Establish a means for the software engineering group
+to participate actively with the other engineering groups
+so the project is better able to satisfy the customer’s
+needs effectively and efficiently.
+
+Remove defects from the software work products early
+and efficiently. An important corollary effect is to develop
+a better understanding of the software work products
+and of the defects that can be prevented.
+
+The key process areas of level 4 focuses on establishing a quantitative understanding of
+
+both the software process and the software work products being built, as summarized below:
+
+Quantitative Process
+Management (QP)
+
+Control the process performance of the software project
+quantitatively.
+
+Software Quality Management (QM) Develop a quantitative understanding of the quality of
+
+the project's software products and achieve specific qual-
+ity goals.
+
+The key process areas at level 5 cover the issues that both the organization and the
+
+Defect Prevention (DP)
+
+Techn
+a; ology Change Management
+
+Procagg Change
+“anagement (PC)
+
+Identify the causes of defects and prevent them from
+recurring.
+
+— beneficial new technologies (i.e., tools, methods
+and processes) and transfer them into th ation
+e or;
+
+in an orderly manner. —
+Continually improve the software processes used in the
+organization with the intent of improving software
+
+quality, increasing productivity i
+[ , and decreasing th
+time for product development. sii
+
+or ¢0 ures
+ence
+are at, » Common featur i
+; es
+Nees hat biica. aan a er each of the key process areas. The common features
+ta, e implementation and institutionalization of a key process
+
+; abbrey; ve, repeatable, and lasting. The fi
+
+ations, are listed below: ve common features, followed by their two-
+
+##### OCR pdf p181 (book ~352) #####
+ia : — : . ied“
+
+Commitment to Perform (CO) Describes the actions the or.
+ommitm
+
+Banizations m
+: : u
+ensure that the process js established and i take t
+
+It includes practices on policy and lea deveks | endur
+Describes the preconditions that must exist p.
+. or organization to implement the software M the Proje
+
+petently. It includes practices Process
+
+. ON resourg,
+tional structure, training, and tools. “
+
+Describes the role and procedures Necessary ty :
+ment a key process area. It inclu "
+
+des practices oy 41°
+procedures, work performed, tracking, oa. = Plans
+action. rr
+
+Chive
+Describes the need to measure the
+
+the measurements. It includes ex
+ments.
+
+Ability to Perform (AB)
+
+* OTB,
+Activities Performed (AC)
+
+Measurement and Analysis (ME) Process and q
+
+Nalyz
+amples of Measure,
+
+Verifying Implementation (VE) Describes the steps to ensure that th
+
+performed in compliance with the proce
+established. It includes practices o
+reviews and audits.
+
+There is another reason for the growing importance of the CMM. Many software organi-
+zations have stipulated that any software development organization that wishes to be a sub.
+contractor must conform to CMM level 3 or higher. Thus, there is pressure for organizations to
+improve the maturity of their software processes.
+
+€ activities ar
+Ss that has been
+n Management
+
+7.5 1SO-9000
+
+As explained in the previous section, the SEI capability maturity model initiative is an attempt
+
+to improve software quality by improving the process by which software is developed. The |
+
+term maturity is essentially a measure of the goodness of the process itself. A — "a
+to improve software quality is based on International Standards Organization =
+Series standards. _
+
+; . cat
+The standard is important, as it is becoming the main focus in = ee ell
+judge the competence of a software developer. It has been adopted for a | . specific. Ii
+tries. One of the problems with ISO-9000 series standard is that it is not — = oducts such
+expressed in general terms, and can be interpreted by the developers to ee 94].
+as ball bearings, hair dryers, automobiles, televisions as well as software |
+
+thet
+2 ‘ it systems ;
+| 1S0-9000 series of standards is a set of documents dealing with aan Its
+can bé used for quality assurance purposes. ISO-9000 series is not just _ industrial activities
+: 4 series of five related standards that are applicable to a wide variety ©
+
+ne 1S
+. ‘«ing. Within the
+‘including design/development, production, installation, and servicing
+
+: licable to 5°
+Series, standard ISO-9001 for quality system is the standard that is most app -
+- development: - aatines to 38s
+‘ : : jdelines
+_ Because of the broadness of ISO-9001, ISO has published specific 64
+
+applying ISO-9001 to software namely ISO-9000-3.
+
+353 |
+is significant room for interpretation in using ISO-9001 in the software world.
+There 18
+
+: ide to interpret ISO-9001, yet many-to-many relationships between their
+1g0-9000-3 = apa that liberties have been taken in creating this guidance.
+
+51 Mapping 1SO-9001 to the CMM
+7.9:
+
+90 clauses in ISO-9001, which are summarized and compared to the practices in the
+cla ,
+cM in this seetion (PAUL 94],
+
+<a yement responsibility
+
+. : derstood, implemented,
+
+ires that the quality policy be defined, documented, unc od, sent
+On i that seepinaiiillitien wed authoeltion for all paracanal epsdiyiig, achieving,
+and ores quality be defined; and that in-house verification resources be defined, trained,
+we oot A designated manager ensures that the quality program is implemented and
+and fundes.
+“ww CMM, management responsibility for quality policy and verification activities is
+
+‘imarily addressed in Software Quality Assurance, although software project planning and
+P
+
+ftware project tracking and oversight also include activities that identify responsibility for
+va .
+performing all project roles.
+
+2. Quality system
+
+180-9001 requires that a documented quality system, including procedures and instructions,
+
+be established. ISO-9000-3 characterizes this quality system as an in: grated process throughout
+the entire life cycle. .
+
+Quality system activities are primarily addressed in the CMM in Software Quality
+
+Assurance. The procedures that would be used are distributed throughout the key process
+areas in the various Activities Performed practices.
+
+cribed in Software Project Planning. Compliance with these
+lards and procedures is assured in Software Quality Assurance and by the auditing
+Practices in the Verifying Implementation common feature.
+
+3. Contract review
+
+» is described in the CMM
+Tequirements allocated : are organization (supplier) ensures that the system
+to
+OUS requirements . software are documented an
+
+Plann; lrequires that
+_ €sign activi
+
+Procedures to con
+design changes
+
+ie came trol and verify the design be established. This includes
+: identifying inputs and outputs, verifying the design, and controlling
+
+##### OCR pdf p182 (book ~354) #####
+L = Software En
+
+Gineerin,
+In the CMM, the life cycle activities of requirements analysis, dedivn )
+described in Software Product Engineering. Planning these activities ig describ di *est are
+Project Planning. Software Project Tracking and Oversight describes contro] of ee 2 Software
+activities, and Software Configuration Management describes configuration m, ese life "4
+software work products generated by these activities. AMAagement of
+
+code, and
+
+5. Document control
+
+1SO-9001 requires that the distribution and modification of documents be controlled
+
+In the CMM, the configuration management practices characterizin ;
+are described in Software Configuration Management. The specific p
+and other documents that may be placed under configuration manage
+distributed throughout the key process areas in the various Activities
+
+§ document Contro]
+rocedures, Standards
+ment in the CMM a
+Performed Practices,
+
+6. Purchasing
+
+ISO-9001 requires that purchased products conform to their specified requirements. This
+includes the assessment of potential subcontractors and verification of purchased products
+In the CMM, this is addressed in Software Subcontract Management.
+
+7. Purchaser-supplied product
+
+1SO-9001 requires that any purchaser-supplied material be verified and maintained.
+Integrated Software Management is the only practice in the CMM describing the use of
+purchased software. It does so in the context of identifying off-the-shelf or reusable software
+
+as part of planning. Integration of off-the-shelf and reusable software is one of the areas where
+the CMM is weak.
+
+8. Product identification and traceability
+
+1SO-9001 requires that the product be identified and traceable during all stages of production,
+delivery, and installation. The CMM covers this clause primarily in Software Configuration
+Management. .
+
+9. Process control
+
+ISO-9001 requires that production processes be defined and planned. This includes Laon
+
+out production under controlled conditions, according to documented instructions. Specis'?
+
+esses that cannot be fully verified are continuously monitored and controlled. cask we
+The procedures defining the software production process in the d practices
+
+distributed throughout the key process areas in the various Activities jenagenen in the
+
+(see section 7.4.3). Specific procedures and standards that would be used are -
+
+software development plan.
+
+10. Inspection and testing that i"
+
+“ use an "
+1SO-9001 requires that incoming materials be inspected or certified ee perfo ed priot
+process inspection and testing be performed. Final inspection pat want
+to release of finished product. Records of inspection and testing are kep'-
+
+seal
+
+ques surrounding the inspection of incoming material have already been discussed
+The issv 30-9001. The CMM describes testing in Software Product Engineering. In-
+
+- the software development are addressed in Peer Reviews.
+
+tion, measuring, and test equipment
+Wiese ‘es that equipment used to demonstrate conformance be controlled, calibrated,
+150-9001 en test hardware or software is used, it is checked before use and rechecked
+and mir bed intervals. on et
+use is generically addressed in the CMM under the testing practices in Software
+
+product Engineering.
+12, Inspection and test status ;
+1$0-9001 requires that the status of inspections and tests be maintained for items as they
+progress through various processing steps. . . .
+
+This clause is addressed in the CMM by the testing practices in Software Product
+Engineering and on problem reporting and configuration status, respectively, in Software
+Configuration Management.
+
+13. Control of nonconforming product
+
+1S0-9001 requires that nonconforming product be controlled to prevent inadvertent use or
+installation.
+
+Design, implementation, testing, and validation are addressed in Software Product
+
+Engineering. Software Configuration Management addresses the status of configuration items,
+
+which would include the status of items that contain known defects not yet fixed. Installation
+is not addressed in the CMM.
+
+14, Corrective action
+
+I i *
+S0-9001 requires that the causes of nonconforming product be identified. Potential causes of
+
+hon i is
+conforming product are eliminated; procedures are changed resulting from corrective action.
+
+The software
+and take aa ts development group should look at field defects, analyze why they occurred,
+
+distributed te di ve action. This would typically occur through software updates and patches
+of this danee ca pee of the software. Under this interpretation, an appropriate mapping
+work products. By.1: € problem reporting, followed with controlled maintenance of baseline
+CMM,
+
+Problem reporting is described in Software Configuration Management in the
+
+5. Hana ee
+180.9901 ng, storage, Packaging, and delivery
+
+requires that .
+nd mainta: procedur dali E : :
+Maintained. Replication, “ial handling, storage, packaging, and delivery be established
+
+16. ry and installation are not covered in the CMM.
+180.990
+
+defi: Tequireg that =
+pr fining the quality quality records be collected, maintained, and dispositioned. The practices
+
+Tre - . _
+Peas in he ee onde to be maintained in the CMM are distributed throughout the key
+tious Activities Performed practices.
+
+##### OCR pdf p183 (book ~356) #####
+SS
+: Software
+17. Internal quality — ; ob to et documented procedure” and following “a written organizational policy”
+1$0-9001 requires that audits be planned and performed. The results of aya: éaccording the key process areas in the CMM.
+mmunicated to management, and any deficiencies found are corrected. Udits ate characterize
+co
+
+The auditing process is described in Software Quality Assurance, §
+
+: Pe Pecific audit. ;
+CMM are called out in the auditing practices of the Verifying Implementation Seman in the
+Pature
+
+18. Training
+
+1S0-9001 requires that training needs be identified and that training be provide d,
+
+tasks may require qualified personnel. Records of training are maintained.
+Specific training needs in the CMM are identified in the training and orientatio
+
+in the Ability to Perform common feature.
+
+since Selecteg
+
+N practices
+
+19. Servicing
+
+1S0-9001 requires that servicing activities be performed as specified. Although the CMM intent
+to apply in both the software development and maintenance environments, the practices =
+the CMM do not directly address the unique aspects that characterize the maintenance
+environment. Maintenance is embedded throughout the practices of the CMM, and they must
+be appropriately interpreted in the development or maintenance contexts. Maintenance is not,
+therefore, a separate process in the CMM.
+
+20. Statistical techniques
+
+ISO-9001 states that appropriate, adequate statistical techniques are identified and should be
+used to verify the acceptability of process capability and product characteristics.
+
+The practices describing measurement in the CMM are distributed throughout the key
+process areas. Product measurement is typically incorporated into the various Activities Per-
+formed practices (see section 7.4.3), and process measurement is described in the Measurement
+and Analysis common feature.
+
+7.5.2 Contrasting ISO-9001 and the CMM
+
+isspe:
+Clearly there is a strong correlation between ISO-9001 and the CMM, although some !ssp
+
+ess in
+ISO-9001 are not covered in the CMM, and some issues in the CMM are not addr
+ISO-9001.
+
++s of the
+
+(The biggest difference, however, between these two documents is the eon for a0
+
+CMM on continuous process improvement. ISO-9001 addresses the anne a software
+
+acceptable quality system. It should also be noted that the CMM focuses vared and services
+while ISO-9001 has a much broader scope: hardware, software, processed mare
+
+[MARQS1I.}
+
+1
+The biggest similarity is that for both’ the CMM and ISO-9001, the nae impo
+what you do; do what you say.” The fundamental premise of ISO-9001 is al ed thr
+Process should be documented and every deliverable should have its quali jns ins
+a quality control activity. ISO-9001 requires documentation that — this e™ cted
+or guidance on what should be done or how it should be done. The CMM ager as cond?
+on processes that are documented and practiced as documented. Phrases §
+
+°
+
+in
+
+ne is
+
+eeike
+es &
+S2ERE
+
+CMM also emphasizes the need to record information for later use in the process
+on ent of the process. This is equivalent to the quality records of ISO-9001 that
+for improvem ity is achi heth he quali
+and r not the required quality is achieved and whether or not the quality
+ument whether Or CK 92)
+ste operates effectively [TI .
+7.5.3 conclusion .
+
+k h there are specific issues that are not adequately addressed in the CMM, in general
+aes of ISO-9001 are encompassed by the CMM. The converse is less true. ISO-9001
+the ni the minimum criteria for an adequate quality management system rather than process
+ment, although future revisions of ISO-9001 may address this concern. The differences
+Te ean make a route mapping impractical, but the similarities provide a high degree
+are
+of overlap. ,
+
+Should software process improvement be based on the CMM, with perhaps some exten-
+sions for ISO-9001 specific concerns, or should the improvement effort focus on certification
+concerns? A market may require ISO-9001 certification, and level 1 organization would cer-
+tainly profit from addressing the concerns of ISO-9001. It is also true that addressing the
+concerns of the CMM would help organizations prepare for an ISO-9001 audit. Although ei-
+ther document could be used to structure a process improvement program, the more detailed
+guidance and greater breadth provided to software organizations by the CMM suggest that it
+is the better choice (perhaps a biased answer).
+
+In any case, building competitive advantage should be focused on improvement, not on
+achieving a score, whether the score is a maturity level or a certificate. We would advocate
+addressing the larger context encompassed by the CMM, but even then there is a need to
+address the still larger business context, as exemplified by Total Quality Management.
+
+Taare cantata natn tereenenmeneemeaen meneame
+
+(ns entsiieneeinatetteieaeneemeees BEF ERENCES
+
+(AVIZ77} Avizienis A. and “ , .
+8 s A. and Chen L., “On the Implementation of N-version Programming for
+oftware Fault Tolerance During Program Execution”, Proceedings of COMPSAC 77,
+(BELL 91 Chicago, Nov.1977.
+rein F., and Jedrcejowicz P., “An Approach to the Reliability Optimization of Software
+(BORH78} rs Redundancy”, IEEE Trans. on Software Engineering, Vol.17,No.3, March 1991.
+rate B.W., et. al, “Characteristics of Software Quality”, Amsterdam, North Holland,
+R0075) ,
+(DUNN99} — BPs Jr., The Mythical Man Month, Addison Wesley, Reading, MA, 1975.
+IECKH 91] Binks a, ‘Software Quality: Concepts and Plans”, Prentice Hall, 1990.
+mr Pr et al., “An Experimental Evaluation of Software Redundancy as a
+r Improvi iability” :
+FELL57,  No7, duly 199. Me Reliability”, IEEE Trans. on Software Engineering , Vol. 17,
+
+Feller, W., “An J :
+Sid ei ntroduction to Probabili i ications” ., Vol.1,
+Wiley, Ny ew York, 1957. o Probability ieee and its Applications”, 2nd ed., Vo
+
+##### OCR pdf p184 (book ~358) #####
+——S
+
+358
+[HYMA73]
+[INCE94]
+[JELI72]
+(JELI71
+[JONE 86]
+[LLOY77]
+[MARQ91]
+[MACATE]
+[MILL72]
+[MUSAT5]
+(MUSA79]
+[MUSA79]
+[MUSA79]
+
+[MUSA80]
+[MUSA87]
+(MUSA87]
+[MCCA77]
+[PAUL94]
+[PAUL95]
+
+[PFLE02]
+[RAND75]
+
+[SCHA96]
+[VLIE02]
+[WIEG98]
+
+Hyman, Mort: “Private Communication’, 1973. :
+ince D., “150-9001 and Software Quality Asenetin » McGraw Hil]
+Jelinek Z. A Moranda P-B., “Software Reliability Research”, in §
+Performance Evaluation, Academic Press, NE, PP465-84, 1972.
+Jelinski Z. and Moranda P.B., “Software Reliability Research in Statis tical
+
+. Performance Evaluation”, ed. W. Freiberger, New York: Academic Pregs, po Peel
+mi C., Programming Productivity, McGraw-Hill, N.Y., 1986. "
+Lloyd, D.K., and Lipow M., “Reliability Management, Methods, and Math
+Redondo Beach, CA, 1977. eMaticge
+
+D., et. al., “Vision 2000: The Strategy for the ISO-9 ,
+ergs Quality Progress, Vol. 24, No. 5, 25—31, May = Standards ix
+
+J., “A Complexity Measure”, IEEE Trans on Softw en SL
+
+ay le AN Deo.1976. are Engineering, Voip
+Mills, Harlan D., “Mathematical Foundations of Structured Programming”, 1By ‘
+eral Systems Division Document FSC72-6012, Gaithersburg, Md., February “i
+Musa J.D., “A Theory of Software Reliability and its Applications”, IEEE
+Software Engg., SE 1(3), pp.312-327, Sept.1975.
+Musa J._D., “Validity of the Execution Time Theory of Software Reliability" , TEEE Trang
+on Reliability, R-28 (3), PP. 181-191, August 1979.
+Musa J.D., “Software Reliability Data”, Report Available from Data and Analysis Center
+for Software, Rome Air Development center, Rome, N-Y., 1979.
+Musa J_D., “Validity of the Execution Time Theory for Software Reliability”, [EEE Trans,
+on Reliability R-28(3), pp.181-191, Aug.1979.
+Musa J.D., “Software Reliability measurements”, Journal of Systems and Software,
+1(3), pp.223-241, 1980.
+Musa J.D., AIannino, K. Okumoto, “Software Reliability Measurement, Prediction and
+
+Application”, McGraw-Hill Book Company, NY., pp. 183-185, 1987.
+
+Musa JD., et. al., “Engineering and Managing Software with Reliability Measure’
+
+McGraw-Hill, 1987.
+
+McCall J.A., et. al., “Factors in Software Quality”, Vol. 1, 2 and 3, AD/A-049-014/015)
+
+055, springfield, VA: National Technical Information Service, 1977. -
+
+Paulk M.C., “A Comparision of ISO-9001 and the CMM for Software’, we on
+
+port CMU/SEI-94-TR-12, ESC-TR-94-12, SEI, Carnegie Mellon University, ze “
+
+Paulk M.C. et. al., “The Capability Maturity Model: Guidelines for Improving
+
+ware Process”, Reading, MA, Addison—Wesley, 1995.
+
+Pfleceger S.L., “Software Engineering”, 2nd Edition, Pearson E
+
+Randill B., “System Structure for Software Fault Tolerance”, IEEE Tr
+
+Engineering, Vol. SE-1, June 1975. WIN, USA:
+
+Schach S., “Classical and Object Oriented Software Engineering”, RW
+
+Vliet H.V., “Software Engineering”, John Wiley and Sons, 2002.
+
+Wiegers K.E., “Molding the CMM to Your Organization”, Software
+
+zine, May, 1998. Neon
+
+Book Co, 1994
+tatistica Coma
+
+duction Asia, 2002.
+ans. on Softwar?
+
+1996:
+
+Development Mast
+
+Note?
+q.1-
+
+7.2.
+
+Td.
+
+7A.
+
+7.5.
+
+7.6.
+
+17.
+
+7.8.
+79,
+
+7.10,
+
+“li, Software Quality is
+
+“12, Defect rate is
+
+riate answer of the following questions.
+
+noose most approp -
+Choo see is not a phase of “bath tub curve” of hardware ss
+Which om ease
+° ae cut (d) test-out.
+(c) . .
+reliability 1s | | | | ,
+soe tpe probability of failure free operation of a program for a sp ac emclilial aacts
+(a) the
+ent | | ecifie | } neice
+the probability of failure of a program for a speciffed time in a specified environment
+> the probability of success of a program for a specified time in any ee
+é
+(d) none of the above.
+Fault is
+
+(6) mistake in the program
+
+defect in the program
+(d) all of the above.
+
+(c) error in the program
+
+One fault may lead to
+(a) one failure (6) two failures
+
+(c) many failures (d) all of the above.
+Which ‘time’ unit is not used in reliability studies
+
+(a) execution time (6) machine time
+(c) clock time (d) calendar time.
+Failure occurrences can be represented as
+(a) time to failure
+
+(c) failures experienced in a time interval
+
+(b) time interval between failures
+(d) all of the above.
+
+Maximum possible value of reliability is
+(a) 100 (b) 10
+(e) 1 (d) 0.
+Minimum possible value of reliability is
+(a) 100 (b) 10
+(ce) 1 (d) 0.
+= the reliability increases, failure intensity
+“3 ae (6) increases
+1 ‘tiene (d) none of the above.
+intensity i i i i
+Sil be peso ie 0.005 failures/hour during 10 hours of operation of a software, its reliability
+(a) 0.90
+(e) 0.95 = ae
+0.98.
+
+(@) conformance
+
+© to require
+(c) level of aks quirements
+
+(5) fitness for th
+sfaction or the purpose
+
+(d) all of the above.
+
+(a) number of defects
+
+©) number of defects Per million lines of source code
+
+ber function point
+
+##### OCR pdf p185 (book ~360) #####
+360
+—————
+
+Sortware FeliaDllly
+
+(c) number of defects per unit of size of software
+
+7.13.
+
+7.14.
+
+7.15.
+
+7.16.
+
+7.17.
+
+7.18.
+
+7.19.
+
+7.20.
+
+7.21.
+
+7.22.
+
+(d) all of the above. :
+
+How many product quality factors have been aa in McCall quality
+(a) 2
+
+() 11 (d) 6.
+
+Which one is not a product quality factor of McCall quality model ?
+
+(a) product revision (6) product operation
+
+(c) product specification (d) product transition,
+The second level of quality attributes in McCall quality model are termed as
+(a) quality criteria (6) quality factors
+
+(c) quality guidelines (d) quality specifications,
+Which one is not a level in Boehm software quality model ?
+
+Mode] ?
+
+(b) intermediate constructs
+(d) final constructs.
+
+(a) primary uses
+
+(c) primitive constructs
+
+Which one is not a software quality model ?
+(a) McCall model ,
+
+(c) ISO-9000
+
+Basic execution time model was developed by
+(a) Bev. Littlewood
+
+(c) R. Pressman
+
+NHPP stands for
+
+(a) non homogeneous poisson process (b) non hetrogeneous poisson process
+(c) non homogeneous poisson product (d) non hetrogeneous poisson product.
+In basic execution time model, failure intensity is given by
+
+2
+AW =[ -§-|
+0
+
+V
+(Mp) =2y (1-22) (a a) = (1- YB
+
+In basic execution time model, additional number of failures required to achieve a ene
+sity objective (Au) is expressed as
+
+V
+(a) Ay = YO (y,-
+a) A= 52 (hp ~ hy)
+
+(6) Boehm model
+(d) ISO-9126.
+
+(6) J.D. Musa
+(d) Victor Baisili.
+
+= ee
+(b) Au) = Ay [2 x)
+
+inten
+
+(b) Ap = Y2 (Ay — dp)
+Ao
+
+‘ a
+(0) Au = 52 (hy — Bp) (d) ay = 37 hp Aa.
+
+In basic execution time model, additional time required to achieve a failure intens'
+(At) is given as
+
+ty object”
+
+x x
+(a) At= We ln (e) _ do 7, ie)
+Vv, (b) At= Vo n MF
+
+X
+(d) At = 22 Ln (2)
+x F
+
+(c) At= Vo Ln Ag
+Ao Ap r
+
+7.23:
+
+7.24:
+
+Fail
+(a) Mp) = Ao Ln 3
+(c) My) = Ao EXP — OH
+
+Logarithm ;
+we failure intensity function parameter
+
+- (¢) failure intensity measurement
+
+7.25.
+
+7.26.
+
+7.27.
+
+7.28.
+
+7.29.
+
+7.31.
+
+7.32,
+
+7.33,
+
+7.34,
+
+7.35,
+
+7.36,
+
+In Jelinski-Moran
+(a) Mt) = o(N -—i+ D
+
+() Mt) = GN +2-D
+
+CMM level 1 has
+
+(a) 6 KPAs
+
+(c) 0 KPAs ¢
+
+MTBF stands for
+
+(a) mean time between failures
+
+(c) minimum time between failures
+
+CMM model is a technique to
+
+(a) improve the software process
+
+(c) test the software
+
+Total number of maturing levels in CMM are
+(a) 1
+
+(c) 5
+
+(a) removed
+
+(c) both (a) and (6b)
+
+Reliability of software is usually estimated at
+(a) analysis phase
+
+(c) coding phase
+
+CMM stands for
+
+(a) capacity maturity model
+
+(ec) cost management model
+
+Which level of CMM is fo
+(a) initia]
+
+(c) defined
+
+Which level of CMM
+
+is fo
+(a) initial r process control ?
+
+was developed at
+arvard University
+
+amegie Mellon University
+
+(a)
+(c) a
+
+- atensity function of Logarithmic Poission execution model is given as
+ine (b) A) = Ay exp (OL)
+(d) A(y1) = Ag log (— Op).
+i ‘sson execution model, ‘6’ is known as
+aime (b) failure intensity decay parameter
+(d) failure intensity increment parameter.
+
+da model, failure intensity is defined as
+
+(b) Mt) = O(N + 7 + 1)
+(d) A) = CN — i — 1).
+
+(6) 2 KPAs
+(d) none of the above.
+
+(b) maximum time between failures
+(d) many time between failures.
+
+(b) automatically develop the software
+(d) all of the above.
+
+(b) 3
+Ad) 7.
+
+. Reliability of a software is dependent on number of errors
+
+(6) remaining
+(d) none of the above.
+
+(6) design phase
+(d) testing phase.
+
+(6) capability maturity model
+(d) comprehensive maintenance model.
+
+r basic project management ?
+
+(b) repeatable
+(d) managed.
+
+() repeatable
+(d) optimizing.
+
+(b) defined
+(d) optimizing.
+
+(b) Cambridge University
+(d) Maryland University.
+
+##### OCR pdf p186 (book ~362) #####
+—————
+
+:
+
+McCall has developed 4
+(a) quality model
+
+(c) requirement model
+7.38. The model to measure
+
+7.37. (6) process improvement model
+(d) design model.
+the software process improvement is called
+
+(b) ISO-9126
+
+(a) ISO-9000
+
+(c) CMM (d) spiral model.
+7.39. The number of clauses used in ISO-9001 are
+
+(a) 15 (b) 25
+
+(c) 20 (d) 10.
+
+7.40. ISO-9126 contains definitions of
+(a) quality characteristics
+(c) quality attributes
+
+7.41. In ISO-9126, each characteristic is related to
+(a) one attribute (b) two attributes
+
+(c) three attributes (d) four attributes.
+7.42, In McCall quality model; product revision quality factor consist of
+(a) maintainability (b) flexibility
+(c) testability (d) none of the above.
+7.43. Which is not a software reliability model ?
+(a) the Jelinski-Moranda Model
+(c) spiral model
+7.44, Each maturity model in CMM has
+
+(6) quality factors
+(d) all of the above.
+
+(6) basic execution time model
+(d) none of the above.
+
+(a) one KPA (b) equal KPAs
+(c) several KPAs (d) no KPA.
+7.45. KPA in CMM stands for
+(a) key Process Area . (b) key Product Area
+
+(c) key Principal Area (d) key Performance Area.
+
+7.46. In reliability models, our emphasis is on
+
+(a) errors | (6) faults
+(c) failures (d) bugs.
+7.47. Software does not break or wearout like hardware. What is your opinion ?
+(a) true (b) false
+(c) cannot say (d) not fixed.
+7.48. Software reliability is defined with respect to
+(a) time (6) speed
+(c) quality (d) none of the above.
+
+7.49. MTTF stands for
+(a) mean time to failure (b) maximum time to failure
+(c) minimum time to failure (d) none of the above.
+
+7.50. 180-9000 is a series of standards for quality management systems and i
+(a) 2 related standards (b) 6 related standards
+(c) 10 related standards (d) 25 related standards.
+
+Cis
+
+ee t is software reliability? Does it exist?
+
+U1.
+7d
+7.3:
+7A.
+7.5.
+7.6.
+
+7.1.
+
+7.8.
+74.
+7.10.
+
+TAL.
+
+7.12,
+7.13.
+7.14,
+
+715,
+
+7.16,
+
+717,
+7.18,
+
+V19,
+
+7.29
+
+Assum, e th
+
+Wha
+Explain the
+Compare har
+What is softwar
+Discuss the various ways
+Describe the following terms:
+() Operational profile
+
+(iii) MTBF
+
+(v) Failure intensity.
+
+What are uses of reliability studies? How can one use software reliability measures to monitor
+the operational performance of software?
+
+What is software quality? Discuss software quality attributes.
+
+What do you mean by software quality standards? Illustrate their essence as well as benefits.
+Describe the McCall software quality model. How many product quality factors are defined and
+
+significance of bath tube curve of reliability with the help of a diagram.
+dware reliability with software reliability.
+e failure? How is it related with a fault?
+
+of characterising failure occurrences with respect to time.
+
+(ii) Input space
+(iv) MTTF
+
+why?
+
+Discuss the relationship between quality factors and quality criteria in McCall’s software quality
+
+model.
+
+Explain the Boehm software quality model with the help of a block diagram.
+
+What is ISO-9126? What are the quality characteristics and attributes?
+
+Sapa the ISO-9126 with McCall software quality model and highlight few advantages of
+-9126.
+
+Discuss the basic model of software reliability. How can Au and At be calculated?
+
+Assume that the initial failure intensity is 6 failures/CPU hr. The failure intensity decay param-
+
+eter is 0.02/failure., 5 :
+dic, iiteentie We assume that 45 failures have been experienced. Calculate the current
+
+Explai * ‘ F
+psig niet and logarithmic Poission model and their significance in reliability studies
+_.. av & program will experience 150 failures in infinite ti
+The ini on tiieaater-wae 10 anaes a te time. It has now experienced 80.
+t * . :
+termine the current failure intensity.
+
+(ii) Calculate : ;
+the failures experienced and failure intensity after 25 and 40 CPU hrs. of execution.
+
+? additional failure iti i i
+watts Shietivesea aa S ee execution time required to reach the failure
+© Dasic i ‘ ,
+Write a rei €xecution time model for the above mentioned calculations.
+At? note on Logarithmic Poi E ion ti
+Sson Execution time model. How can we calculate Au and
+
+e initi F ‘ a
+store oe : intensity is 10 failures/CPU hr. The failure intensity decay
+‘ ave experienced 75 failures upto this time. Find the failures
+
+ure intensity after 25 and 50 CPU hrs. of execution.
+
+at th
+Parameter is 0.9
+®XPerieng ed and
+
+##### OCR pdf p187 (book ~364) #####
+"ae ea
+Softw
+7.21. The following parameters for basic and logarithmic poisson models are given: a
+Basic execution Logarithmic Poisson execution
+time model time model
+Ay = 5 failures/CPU hr Ao = 25 failures/Cpy hr
+V, = 125 failures 6 = 0.3/failure
+: iti ilures and additional execution time reqy;
+Determine the additional fai quired to reach
+intensity objective of 0.1 failure/CPU hr. for both models. the feta
+7.22. Quality and reliability are related concepts but are fundamentally different in a number of yn,
+Discuss them. 8
+7.23. Discuss the calendar time component model. Establish the relationship between calendar tng
+to execution time.
+7.24, A program is expected to have 250 faults. It is also assumed that one fault may lead is
+: failure. The initial failure intensity is 5 failures/CPU hr. The program is released with a fain
+intensity objective of 4 failures/10 CPU hr. Calculate the number of failures experienced kn
+release. a
+7.25. Explain the Jelinski-Moranda model of reliability theory. What is the relation between and
+N?
+7.26. Describe the Mill’s bug seeding model. Discuss few advantages of this model over other reliability
+models.
+7.27. Explain how the CMM encourages continuous improvement of the software process.
+7.28. Discuss various key process areas of CMM at various maturity levels.
+7.29. Construct a table that correlates key process areas (KPAs) in the CMM with nom
+7.30. Discuss the 20 clauses of ISO-9001 and compare with the practices in the sia di
+7.81, List the difference of CMM and ISO-9001. Why is it suggested that CMM is the better
+than ISO-9001 ? , i
+r ‘ : f using any
+7.32. Explain the significance of software reliability engineering. Discuss the advantages ©
+software standard for software development ? ex sated with
+- : ties associa
+7.33. What are various key process areas at defined level in CMM? Describe activiti
+one key process area. 7 rity model.
+ee ability matu' ;
+7.34. Discuss main requirements of ISO-9001 and compare it with enpetin phased evaluation Pi
+7.35. Discuss the relative merits of ISO-9001 certification and the SE d to the softwe’
+
+7 A applie
+out some of the shortcomings of the ISO-9001 certification process as app
+
+industry.
+
+ee Prd
+
+Software Testing
+
+gis an important discipline, and consumes significant, amount of effort. A
+equired to carry out testing activities systematically and effectively. Thus,
+
+Software testin
+
+goer setiony f activities, which tial for th
+tegy provides a framework or set of activities, w are essen’ or the success of
+
+i a Be : .
+testing Str This may include planning, designing of test.cases, execution of program with test
+
+ject.
+a FT caeoewetton of the outcome and finally collection and management of data.
+cases,
+
+As we all know, software testing is the process of testing the software product. Effective
+software testing will contribute to the delivery of higher quality software products, more satisfied
+users, lower maintenance costs, more accurate, and reliable results. However, ineffective testing
+will lead to the opposite results; low quality products, unhappy users, increased maintenance
+costs, unreliable and inaccurate results. Hence, software testing is necessary and important
+activity of software development process. It is a very expensive process and consumes one-
+third to one-half of the cost of a typical development project. It is partly intuitive but largely
+systematic. Good testing involves much more than just running the program a few times to see
+whether it works. Thorough analysis of a program helps us to test. more systematically and
+more effectively.
+
+8.1 A STRATEGIC APPROACH TO SOFTWARE TESTING
+
+Sei testing is a specialised discipline requiring unique skills. Software testing should not
+
+emi es as possible and we must learn how to do it systematically. Naive managers
+
+ri mh : ink that any developer can-test software. Some may feel that if we can program,
+
+ise awk What is great in it [TAMR03]? This may not be the right way of thinking.
+
+seen Shite ecrae everywhere. However, it is written by people-so it is not perfect. We have
+
+ars Pililent failures like Intel Pentium Floating Point Division bug of 1994, NASA
+
+. r of 1999, Patriot Missile Defense system of 1991, Y2K Problem ete. [PATT01 lL
+ll What is Testing? :
+
+any People a
+
+und -
+esting ie oe d many definitions of testing. Few of them are given below
+© process of demonstrating that errors are not present.
+
+© Purpose of ee
+Correctly. of testing is to show that a program performs its intended functions
+Testing
+
+is th ‘a
+Posed to do. ® Process of establishing confidence that a program does what it is sup-
+
+365
+
+##### OCR pdf p188 (book ~366) #####
+2 , — !
+
+v
+definitions are incorrect. They describe almost the opposite of What test;
+These de tting the definitions for the moment, consider that when we
+be viewed as. it add some value to the program. Adding value means tigi, :
+eT tis iin program. Raising the reliability of the prograin means findin,
+or relia
+
+we should not test a program to show that it works; rather w
+
+:)
+
+l
+& and ny
+© Should a.
+Progr: aM to toa
+
+ae ies eee that the program contains errors and then test the
+wi
+
+fhany of the errors as possible. Thus, a more BppanyEiatS definition is:
+\ “Testing is the process of executing a ies with the intent of finding errors”
+_“luman beings are normally goal oriented. Thus, establishing the proper ‘ica
+;mportant psychological effect. If our goal is to demonstrate that a program has no errors :
+een? subconsciously steer towards this goal; that is , we will tend to select those inputs thy
+eo a low probability of causing the program to fail. On the other hand, if our goal on
+demonstrate that a program. has errors, our inputs selection will have a higher Probability gf
+finding errors. The second approach will add more value to the program than the first one
+Thus, testing cannot show the absence of errors, it can only show that errors are present
+[DAHL72]. .
+
+According to most appropriate definition, there is a fundamental entity “errors are present
+within the software under test”. This cannot be the aim of software designers. They must hav
+designed the software with the aim of producing it with zero errors. Therefore, whole effort of
+software engineering activities is to design methods and tools to eliminate errors at sour
+Software testing is becoming increasingly important in the earlier part of the software life
+cycle, aiming to discover errors before they are deeply embedded within systems. It is =
+hoped that one-day software engineering will become refined to the degree that ee -
+ing will be fully integrated within each phase of software life cycle. After all, i ene
+ing bridges do not need to test their products to destruction to predict the brea es =
+their constructs. For the moment, in software, this is the only practical method pie aa
+
+In software testing we are facing a major dilemma. On the one hand we Ties sein
+the software product that has zero errors while on the other hand we must ane il
+belief that any software product under testing certainly has errors, which nee
+
+8.1.2 Why should we Test?
+
+Although software testing is itself an expensive activity, yet Inanchiis
+testing may lead to cost: potentially much higher than that of pec tne we softw
+where human safety is involved. No one would think of allowing — economics ™
+Service without the most rigorous testing. In so-called life critical sy ed toa cus
+be the prime consideration while decidi whether a product should be re role. It is be
+In most systems, however, it SL seat factor, which plays & sae ensita e “
+driving force and the limiting factor as well. In the software life cycle t damaging oO i
+discovered and removed, ‘the lower is the cost of their removal. The eee remain a sl
+those, which are not discovered during the testing process Te ei costs ° are
+System ‘goes live’. In commercial systems itis often difficult to estima are error _ pes
+example, in a banking system, the potential cost of even a minor softw: an D
+
+covere
+mous. The consequential cost of lost business (which may never be re
+calculations,
+
+oftware withoot
+ally in s/s
+are inlé
+ust 00
+tome
+
+has a }
+
+pai aee 307 |
+
+t possible to test the software for all possible combinations of input cases. No
+
+is ae in be released by its creators if they were asked to certify that it was totally
+
+«. Testing therefore continues to the point where it is considered that the costs
+TS.
+
+It
+
+ul
+oftware WO
+Fes of all erro
+
+ing processes significantly outweigh the returns. Hence, when to release the soft-
+testing
+
+of the t, is a very important decision.
+
+ware in 5 ,
+Id do the Testing? _.~ | (~
+
+8.1.3 Wnt scant the developers to find errors from their ski ‘It is very difficult for
+|The a pas to point out errors from own creations.|Beizer [BEIZ90] explains this
+software re when he states, “There is a myth that if we were really good at programming,
+gituaon ne no bugs to catch. If only we could really concentrate, if everyone used structured
+there woul Sec agen design, decision tables, if programs were written in SQUISH, if we
+mens silver bullets, then there would be no bugs, so goes the myth. There are bugs, the
+we because we are bad at what we do; and if we are bad at it, we should feel guilty
+Aa testing and test design amount to an admission of failure, which instils a
+goodly dose of guilt. And the tedium of testing is just punishment for our errors. Punishment
+for what? For being human? Guilt for what? For not achieving inhuman perfection? For not
+distinguishing between what another developer thinks and what he says? For not being
+telepathic? For not solving human communication problems that have been kicked around by
+philosophers and theologians for 40 centuries?”
+
+(Many organisations have made a distinction between develo
+making different people responsible for each phase]
+
+with the opportunity of testing someone else’s software, our professional pride will demand
+
+that we achieve success. Success in testing is finding errors. We will therefore strive to reveal
+any errors present in the software. In other words, our ego would have been harnessed to the
+ese: process, in a very positive wey, in a way, which would be virtually impossible, were we
+a Pi: lng software [NORM89]. Therefore, most of.the times, testing persons are differ-
+lines durin nl age persons for the overall benefit of the system. Developers provide guide-
+
+& testing, however, whole responsibility is owned by testing persons.
+
+the marke
+
+pment and testing phase by
+This has an additional advantage. Faced
+
+es What should we Test?
+i ® should >
+Valid and ner = Program’s responses to eve
+
+inputs. Suppose a program r
+2° x 28. If oni
+
+ry possible input. It means, we should test for all
+equires two 8 bit integers as inputs. Total possible
+y one second is required to execute one set of inputs, it may take
+
+inputs are more than two and size is also more
+re so many combinations are possible.
+, although, we may wish to do so.
+
+xecute all possible paths of the program. A program path can
+the start of the program to
+
+“ombinations are
+
+be traced ¢
+
+Mension is to e
+differ i¢ fro
+
+°ugh the code
+
+but in the progr

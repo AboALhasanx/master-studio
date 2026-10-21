@@ -25,8 +25,10 @@ Use these terms as the chapter boundary. A listed item confirms scope wording, n
 ## Requirements Elicitation
 
 - Interviews
+- Brainstorming Sessions
+- Facilitated Application Specification Technique (FAST)
+- Quality Function Deployment (QFD)
 - The Use Case Approach
-- Risk Management Activities **(listed under elicitation; Chapter 3 slide 14 supports a bounded feasibility question about identifying/surmounting major risks, not a full lifecycle)**
 
 ## Requirements Analysis
 
@@ -47,4 +49,4 @@ Use these terms as the chapter boundary. A listed item confirms scope wording, n
 
 ### Provenance note
 
-The transcript labels the lecture **“SOFTWARE REQUIREMENTS: ANALYSIS AND SPECIFICATIONS”** and places “Risk Management Activities” beneath Requirements Elicitation. Preserve that wording and the placement as supplied. Chapter 3 slide 14 mentions identifying and surmounting major risks within the feasibility focus. Do not silently expand that into the full Spiral risk-management lifecycle.
+The transcript labels the lecture **“SOFTWARE REQUIREMENTS: ANALYSIS AND SPECIFICATIONS.”** It lists interviews, brainstorming sessions, FAST, QFD, and the Use Case Approach under Requirements Elicitation; it does **not** list “Risk Management Activities” as a Chapter 3 vocabulary item. Slide 14 mentions identifying and surmounting major risks within the feasibility focus, so keep that point under feasibility if useful without attributing it to the instructor's term list.

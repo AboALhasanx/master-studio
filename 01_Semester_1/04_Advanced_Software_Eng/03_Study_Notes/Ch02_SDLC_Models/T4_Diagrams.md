@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — T4 Diagrams & Architecture Pack · Life-Cycle Models"
-subtitle: "Schematics, Process Geometry, and Figure Interpretation Exercises"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,16 +9,21 @@ header_left: "ASE Chapter 2 — T4 Diagrams Pack"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "Schematics, Process Geometry, and Figure Interpretation Exercises"
 ---
 
 # Chapter 2 — T4 Diagrams & Architectural Models Pack
 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
 This pack contains the **architectural drawing, process geometry, and figure interpretation exercises** from the primary course textbook (B.B. Agarwal et al., 2010, p. 52: Exercises 7 and 9, and the diagrammatic components of Exercise 8), along with critical diagram interpretation tasks from the K.K. Aggarwal & Yogesh Singh companion materials (Exercises 2.8, 2.10, and 2.20).
+-->
 
+<!-- Print-hidden (opening format/source note); retained for Markdown/reference use.
 > **Inviolable Diagram Standard:**
 > - Per vault governance, **no raw ASCII text art or pseudo-code blocks** are permitted. All architectural models and schematics are presented via high-resolution vector figures from primary course materials.
 > - Source-grounded content is formatted in **bold**; synthesis and structural descriptions remain in plain text.
 > - Detailed Arabic notes and exam traps are placed separately outside the English model answers.
+-->
 
 ---
 
@@ -26,9 +31,7 @@ This pack contains the **architectural drawing, process geometry, and figure int
 
 **The Waterfall Model structures software engineering as an unbranching, linear cascade where the output of each preceding phase becomes the frozen input to the subsequent phase:**
 
-![Waterfall Model Life Cycle Architecture](_diagrams/d01_waterfall_flow.png)
-
-![Waterfall Model Architecture](source_figures/S06_Waterfall.png)
+![Figure 2.3: Waterfall Model|70%](_diagrams/figure_2_3_waterfall_agarwal_p37.png)
 
 **Brief Phase Discussion:**
 1. **Feasibility Study:** Analyzes problem scope at a global level; evaluates organizational, economic, technical, and operational viability to produce the feasibility report.
@@ -37,10 +40,6 @@ This pack contains the **architectural drawing, process geometry, and figure int
 4. **Coding and Module Testing:** Translates modular designs into source code adhering to programming standards, accompanied by unit testing and debugging.
 5. **Integration and System Testing:** Progressively integrates modules into a unified system, validating adherence to the SRS via Alpha, Beta, and Acceptance testing.
 6. **Delivery and Maintenance:** Installs the validated system at customer sites and performs long-term operational maintenance (corrective, adaptive, perfective, preventive).
-
-> **ملاحظة الطالب والفخ الامتحاني:**
-> - في كتاب أغروال (الشكل 2.3 ص.37)، شلال المراحل يبدأ بـFeasibility Study وينتهي بـDelivery and Maintenance. احفظ التتابع الخطي الصارم.
-> - التغذية الراجعة (Feedback loops) في الشلال الكلاسيكي الصرف غير مسموحة؛ كل مرحلة تجمّد وثائقها قبل الانتقال للمرحلة التالية.
 
 *Source: B.B. Agarwal et al. (2010), §2.2, pp. 36–40 (Figure 2.3); K.K. Aggarwal & Singh (2007) Slide 6.*
 
@@ -52,9 +51,7 @@ This pack contains the **architectural drawing, process geometry, and figure int
 
 **A prototype is an early, working approximation or exploratory mock-up of a software system built specifically to help customers and developers visualize, understand, and clarify uncertain requirements.** **In a classic throw-away prototyping paradigm, the prototype code is not intended to serve as the final delivered product; instead, the insights gained are used to write a stable SRS, after which the actual system is cleanly developed:**
 
-![Prototyping Model Life Cycle Architecture](_diagrams/d02_prototyping_flow.png)
-
-![Prototyping Model Architecture](source_figures/S19_Prototyping.png)
+![Figure 2.4: Prototyping Model|70%](_diagrams/figure_2_4_prototyping_agarwal_p42.png)
 
 **Brief Phase Discussion:**
 1. **Communication (Initial Requirements Gathering):** Developer and customer meet to define overall objectives and identify known functional areas, noting elements where requirements are ambiguous.
@@ -63,9 +60,6 @@ This pack contains the **architectural drawing, process geometry, and figure int
 4. **Customer Evaluation of Prototype:** The customer interacts directly with the working mock-up, clarifying misinterpretations and identifying missing or unwanted features.
 5. **Tuning and Requirements Refinement:** An iterative feedback loop where the design and prototype are adjusted until user expectations stabilize, forming the basis for the final SRS and production software.
 
-> **ملاحظة الطالب والفخ الامتحاني:**
-> - تعريف البروتوتايب: ليس المنتج النهائي، بل وسيلة استكشاف (Working model for requirements clarification).
-> - انتبه لمصطلح Throw-away: الكود يُرمى بعد تثبيت المتطلبات في الـSRS، لأن كتابته السريعة تجعله غير صالح لمعايير الصيانة والأداء.
 
 *Source: B.B. Agarwal et al. (2010), §2.3, pp. 41–44 (Figure 2.4); K.K. Aggarwal & Singh (2007) Slide 18.*
 
@@ -93,9 +87,6 @@ This pack contains the **architectural drawing, process geometry, and figure int
 - **Quadrant 3 (Bottom-Right / Risk Resolution & Engineering Development):** **Develop strategies that resolve uncertainties and risks (using prototyping, benchmarking, and simulation), and develop/verify product modules.**
 - **Quadrant 4 (Bottom-Left / Assessment & Next-Cycle Objectives):** **Customer evaluation of deliverables, and determining objectives to be fulfilled in the next cycle to complete the system.**
 
-> **ملاحظة الطالب والفخ الامتحاني:**
-> - احفظ الأبعاد الرياضية للشكل: Radial = التكلفة التراكمية (Cumulative Costs)؛ Angular = التقدم المنجز في الدورة (Process Progress).
-> - في السلايد 21 تُسمى القطاعات: (Planning, Risk Analysis, Development, Assessment)؛ بينما في نص كتاب أغروال ص. 45 يُفصّل أن الربع الثاني يقيّم البدائل حسب المخاطر، والربع الثالث يطوّر استراتيجيات حل المخاطر كالبروتوتايب والمحاكاة، والربع الرابع يحدد أهداف الدورة القادمة.
 
 *Sources: B.B. Agarwal et al. (2010), §2.4, pp. 44–46; K.K. Aggarwal & Singh (2007) Slides 20–21; Slides 46–47 (Ex 2.8, 2.10).*
 
@@ -108,11 +99,9 @@ This pack contains the **architectural drawing, process geometry, and figure int
 
 **The Unified Process (UP / RUP) organizes software development across two orthogonal dimensions: horizontal time phases (Inception, Elaboration, Construction, Transition) and vertical technical workflows (Requirements, Analysis, Design, Implementation, Test, Deployment):**
 
-![Unified Process Two-Dimensional Architecture](_diagrams/d03_unified_process_flow.png)
+![Unified Process Phases and Milestones — official slide 24|90%](source_figures/S24_UP_Phases.png)
 
-![Unified Process Phases and Milestones](source_figures/S25_UP_Phases.png)
-
-![Unified Process Iterations and Vertical Workflows](source_figures/S28_UP_Workflows.png)
+![Unified Process Iterations and Workflows — official slide 27|90%](source_figures/S27_UP_Iterations_Workflow.png)
 
 **Phases, Objectives, and Concrete Work Products (Outcomes):**
 

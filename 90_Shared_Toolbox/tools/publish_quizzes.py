@@ -39,6 +39,8 @@ sys.path.insert(0, str(HERE))
 from quiz_balancer import normalize_quiz_schema, validate_schema_v2  # noqa: E402
 
 DEFAULT_PORTAL = Path(r"C:\Users\gokoq\mcq-portal")
+# the Telegram user id that drives the owner commands (the vault's pacing.json)
+OWNER_ID = int(os.environ.get("TG_OWNER_ID", "5664798395"))
 SEMESTER_DIR = VAULT / "01_Semester_1"
 QUIZ_DIR_NAME = "07_Quizzes_&_Anki"
 
@@ -115,41 +117,56 @@ def existing_bank(portal: Path, bank_path: str):
 # --------------------------------------------------------------------------- #
 # merge: the vault is the master, but nothing already translated is lost
 # --------------------------------------------------------------------------- #
+def portal_flat(q: dict) -> dict:
+    """Flatten a portal question (v3 pairs or v2 flat) to the v2 field names."""
+    if not q:
+        return {}
+    stem = q.get("stem") if isinstance(q.get("stem"), dict) else {}
+    expl = q.get("explanation") if isinstance(q.get("explanation"), dict) else {}
+    opts = q.get("options") if isinstance(q.get("options"), list) else []
+    opts_ar = q.get("options_ar") or []
+    if not opts_ar and opts and isinstance(opts[0], dict):
+        opts_ar = [o.get("ar") or "" for o in opts]
+    explanation = q.get("explanation") if isinstance(q.get("explanation"), str) else ""
+    explanation_ar = q.get("explanation_ar") or expl.get("ar") or ""
+    if not explanation and expl.get("en"):
+        explanation = expl.get("en")
+    return {
+        "question_ar": q.get("question_ar") or stem.get("ar") or "",
+        "text": q.get("text") or q.get("question") or "",
+        "options_ar": opts_ar,
+        "explanation": explanation,
+        "explanation_ar": explanation_ar,
+    }
+
+
 def merge_question(vault_q: dict, portal_q: dict) -> dict:
     """Take the vault question and fill the gaps from the portal question."""
     out = dict(vault_q)
     if not portal_q:
         return out
-
-    def keep(target_key, source_key, arabic=None):
-        cur = out.get(target_key)
-        need = (not cur) if arabic is None else (not has_ar(cur) and has_ar(source_key_value(portal_q, source_key)))
-        if need:
-            val = portal_q.get(source_key)
-            if val is not None and val != "":
-                out[target_key] = val
-
-    def source_key_value(q, key):
-        return q.get(key)
+    p = portal_flat(portal_q)
 
     # the arabic stem
-    if not has_ar(out.get("question_ar")) and has_ar(portal_q.get("question_ar")):
-        out["question_ar"] = portal_q["question_ar"]
-    if not has_ar(out.get("text")) and has_ar(portal_q.get("text")) and not out.get("question_ar"):
-        out["text"] = portal_q["text"]
+    if not has_ar(out.get("question_ar")) and has_ar(p["question_ar"]):
+        out["question_ar"] = p["question_ar"]
+    if not out.get("text") and p["text"]:
+        out["text"] = p["text"]
     # the arabic options
     oa = out.get("options_ar") or []
-    pa = portal_q.get("options_ar") or []
+    pa = p["options_ar"] or []
     if len(oa) == len(pa):
         for i in range(len(oa)):
             if not has_ar(oa[i]) and has_ar(pa[i]):
                 oa[i] = pa[i]
         out["options_ar"] = oa
-    # the arabic explanation
-    if not has_ar(out.get("explanation_ar")) and has_ar(portal_q.get("explanation_ar")):
-        out["explanation_ar"] = portal_q["explanation_ar"]
-    if not has_ar(out.get("explanation")) and has_ar(portal_q.get("explanation")):
-        out["explanation"] = portal_q["explanation"]
+    # the explanation (the vault sometimes has none at all)
+    if not out.get("explanation") and p["explanation"]:
+        out["explanation"] = p["explanation"]
+    if not out.get("explanation_ar") and p["explanation_ar"]:
+        out["explanation_ar"] = p["explanation_ar"]
+    if not has_ar(out.get("explanation")) and has_ar(p["explanation_ar"]) and not out.get("explanation"):
+        out["explanation"] = p["explanation_ar"]
     return out
 
 
@@ -161,6 +178,16 @@ def merge_bank(vault_bank: dict, portal_bank: dict) -> dict:
     merged["questions"] = [
         merge_question(q, by_id.get(q.get("id"))) for q in vault_bank.get("questions") or []
     ]
+    # the Arabic topic title lives in the portal (the vault only carries the
+    # English one); never lose it on a publish
+    p_topic = portal_bank.get("topic") if isinstance(portal_bank.get("topic"), dict) else {}
+    p_ar = (p_topic.get("ar") if p_topic else "") or portal_bank.get("topic_ar") or ""
+    v_topic = merged.get("topic") if isinstance(merged.get("topic"), dict) else {}
+    v_ar = (v_topic.get("ar") if v_topic else "") or merged.get("topic_ar") or ""
+    if p_ar and has_ar(p_ar) and not has_ar(v_ar):
+        merged["topic_ar"] = p_ar
+        if isinstance(merged.get("topic"), dict):
+            merged["topic"]["ar"] = p_ar
     return merged
 
 
@@ -247,6 +274,9 @@ def publish(args) -> int:
                 if not bank:
                     return ""
                 parts = []
+                # the topic is the title the student reads on the card, so it
+                # counts as content too
+                parts.append({"topic": bank.get("topic")})
                 for q in bank.get("questions") or []:
                     parts.append({
                         "id": q.get("id"),
@@ -259,6 +289,10 @@ def publish(args) -> int:
 
             old_v3 = schema.to_v3(old) if old else None
             changed = fingerprint(old_v3) != fingerprint(v3)
+            if getattr(args, "bump", False) and old is not None:
+                # force every device to re-download (used when a fix changes how
+                # existing content renders, not what it says)
+                changed = True
             if not changed and old is not None:
                 v3["version"] = old_version
                 v3["updated_at"] = old.get("updated_at") or v3["updated_at"]
@@ -267,7 +301,6 @@ def publish(args) -> int:
                 print("  + %s -> v%d (%d questions%s)" % (
                     label, v3["version"], len(v3["questions"]),
                     ", math" if v3.get("has_math") else ""))
-                written.append((bank_path, v3, label, changed))
             # every bank is written in the v3 shape (that is the migration);
             # only a real content change moves the version
             written.append((bank_path, v3, label, changed))
@@ -338,7 +371,7 @@ def publish(args) -> int:
         index.get("version"), new_index["version"], len(new_index["subjects"])))
 
     if args.deploy:
-        return deploy(portal, written, new_index)
+        return deploy(portal, written, new_index, announce_too=args.announce)
     if args.announce:
         announce(written)
     return 0
@@ -347,7 +380,7 @@ def publish(args) -> int:
 # --------------------------------------------------------------------------- #
 # deploy + announce
 # --------------------------------------------------------------------------- #
-def deploy(portal: Path, written, new_index) -> int:
+def deploy(portal: Path, written, new_index, announce_too=False) -> int:
     print("\n-- deploying")
     def run(cmd):
         return subprocess.run(cmd, cwd=str(portal), shell=True)
@@ -360,7 +393,8 @@ def deploy(portal: Path, written, new_index) -> int:
         print("deploy failed")
         return 3
     print("deployed")
-    announce(written)
+    if announce_too:
+        announce(written)
     return 0
 
 
@@ -376,7 +410,10 @@ def announce(written):
             v3.get("topic", {}).get("ar") or subject,
             len(v3.get("questions") or []),
         ))
-        cmd = [sys.executable, str(HERE / "tg.py"), "publish", "--subject", subject, "--text", text]
+        # the actor is a global flag, it goes before the subcommand
+        # the vault's topic keys use hyphens (01-Cyber-Security)
+        cmd = [sys.executable, str(HERE / "tg.py"), "--actor", str(OWNER_ID),
+               "publish", "--confirm", "--subject", subject.replace("_", "-"), "--text", text]
         print("  " + " ".join(cmd[2:]))
         subprocess.run(cmd, cwd=str(VAULT))
 
@@ -390,6 +427,7 @@ def main() -> int:
     ap.add_argument("--announce", action="store_true", help="post the notice into Telegram")
     ap.add_argument("--write-back", action="store_true", help="merge the result back into the vault")
     ap.add_argument("--force", action="store_true", help="write even if some banks fail the gate")
+    ap.add_argument("--bump", action="store_true", help="force a new version for every bank (re-download)")
     args = ap.parse_args()
     return publish(args)
 

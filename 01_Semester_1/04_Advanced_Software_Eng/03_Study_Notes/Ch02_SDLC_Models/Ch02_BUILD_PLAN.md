@@ -2,8 +2,8 @@
 title: ASE Chapter 2 — Question-Pack Plan · Software Life-Cycle Models
 course: Advanced Software Engineering
 chapter: 2
-status: CLOSED — source corrections, authored synthesis questions, and print gates completed (2026-10-17)
-updated: 2026-10-17
+status: CLOSED — authored packs and print gates complete; source figures refreshed 2026-10-20
+updated: 2026-10-20
 ---
 
 # Chapter 2 — Software Life-Cycle Models
@@ -12,7 +12,7 @@ updated: 2026-10-17
 
 This document records the chapter-specific plan, source hierarchy, confirmed instructor vocabulary, exercise mapping, and artifact status for printable question-and-answer packs.
 
-**Current Status (2026-10-17): CLOSED for study and printing.** The six printable packs are authored and exported (55 PDF pages). Coverage includes all 20 B.B. Agarwal exercises, all 25 K.K. Aggarwal & Singh slide MCQs, and the professor’s eight vocabulary blocks. This closure pass corrected the Incremental/Iterative source distinction and source locators, aligned Scrum terms to Sommerville 9e, corrected the maintenance-cost locator to printed p.40, and added five concise authored synthesis questions for Agile response to change, Build & Fix, Incremental vs Iterative Enhancement, XP/TDD, and Scrum/XP. All six pack Markdown files pass strict lint; T2/V2 PDFs were regenerated and their affected pages visually reviewed. The closure record does not claim a blind audit or a fresh full-page visual review of every pack.
+**Current Status (2026-10-20): CLOSED for study and printing; student visual review remains personal.** The original content closure was recorded on 2026-10-17 at 55 PDF pages. The source-figure export checkpoint on 2026-10-20 was 49 pages: T1 8, T2 12, T3 6, T4 7, T5 7, V2 9. The student’s current print-optimized PDFs are 34 pages: T1 8, T2 8, T3 4, T4 5, T5 4, V2 5. Coverage remains all 20 B.B. Agarwal exercises, all 25 K.K. Aggarwal & Singh slide MCQs, and the professor’s eight vocabulary blocks. The earlier closure pass corrected the Incremental/Iterative source distinction and source locators, aligned Scrum terms to Sommerville 9e, corrected the maintenance-cost locator to printed p.40, and added five concise authored synthesis questions. The latest refresh changed only the T2/T4 source figures and print layout; it is not a new full-content audit. Both refreshed Markdown packs passed strict lint, their PDFs were checked for content/page integrity and the affected figure pages were visually reviewed.
 
 ## Sources and authority
 
@@ -143,7 +143,7 @@ Build the primary book's 20 exercises into T2–T4 by their tags, including Q13'
 ## Artifact delivery status
  
 - All five question packs (`T1` through `T5`), `V2_Vocabulary_Coverage`, and `V2_Doctor_Vocabulary` are authored, critically revised, and published on disk in both Markdown and PDF formats.
-- Master index `00_INDEX.md` provides file mappings, source cross-references, and verification summaries. Total volume: 55 PDF pages across the 6 printable deliverables.
+- Master index `00_INDEX.md` provides file mappings, source cross-references, and verification summaries. Current print-optimized volume: 34 PDF pages across the 6 deliverables. Prior checkpoints were 49 pages after the figure refresh and 55 pages at original closure.
 - Status: CLOSED — source/citation corrections and authored synthesis coverage completed on 2026-10-17; current pack PDFs pass the publication gates recorded in `00_INDEX.md`.
 
 ## Remaining verification limits (non-blocking)
@@ -152,3 +152,15 @@ Build the primary book's 20 exercises into T2–T4 by their tags, including Q13'
 - Question 2.18's assertion regarding "Specifications accounting for the maximum percentage of project errors" is confirmed as the official key on p. 499, but lacks an independent empirical statistics table or survey in Chapter 2 textbook prose; it is documented with its evidentiary limits.
 - Primary textbook exercises (B.B. Agarwal et al., 2010, p. 52, Q1–Q20) do not assign individual numerical marks or exam point weights; exercise shares represent practice item proportions only.
 
+
+
+## Source-figure refresh — 2026-10-20
+
+The student clarified that stable, general diagrams should be reused from the authoritative textbook or lecture slides rather than redrawn. Rebuild only when a question requires a customized diagram. For this refresh, T2 and T4 now use direct source crops: B.B. Agarwal et al. (2010) Figure 2.3 (Waterfall, printed p.37), Figure 2.4 (Prototyping, printed p.42), and Figure 2.5 (Spiral, printed p.45); T4 also uses the original K.K. Aggarwal & Singh slides 20–21 (Spiral), 24 (UP phases), and 27 (UP iterations/workflows). The UP workflow asset was corrected from slide 28 to slide 27. Duplicate custom drawings and redundant diagram reminders were removed from the printable T4 content; source MD and historic assets remain available.
+
+At the source-figure export checkpoint, T2 was 12 pages and T4 was 7 pages, for 49 pages across six packs. The student’s later print-optimized PDFs now total **34 pages** (T1 8, T2 8, T3 4, T4 5, T5 4, V2 5), a 15-page reduction from that checkpoint. The merged print pack uses these current on-disk PDFs. The source-figure refresh passed strict lint and the changed diagrams were visually reviewed; the later reduction is a page/layout count, not a new content audit.
+
+
+## Current combined print pack — 2026-10-20
+
+Created `Ch02_Complete_Print_Pack.pdf` from the six current on-disk PDFs in order T1, T2, T3, T4, T5, V2. It has 34 pages and bookmarks for all six sections; the index is excluded. Every merged page's extracted text and rendered pixels match its source page; there are no blank pages. The current per-pack counts supersede the earlier 49-page source-figure export checkpoint. This operation verifies assembly and page parity, not the scientific completeness of every answer.

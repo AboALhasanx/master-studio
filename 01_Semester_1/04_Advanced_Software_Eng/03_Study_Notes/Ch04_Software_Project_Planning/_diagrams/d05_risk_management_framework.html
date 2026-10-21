@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="520" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#9333ea"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="32" font-size="15" font-weight="700" fill="#0f172a">Software Risk Management Framework &amp; Two-Stage Activity Workflow</text>
+  <text x="35" y="48" font-size="11.5" font-weight="600" fill="#64748b">Primary Activities: Risk Assessment (Identify → Analyze → Prioritize) &amp; Risk Control (Plan → Resolve → Monitor)</text>
+  <text x="965" y="40" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="end">Aggarwal §4.7.3, pp. 196–198 · Slides 190–191</text>
+
+  <!-- Central Root: Risk Definition Box -->
+  <g transform="translate(370, 75)" filter="url(#cShadow)">
+    <rect width="260" height="65" rx="8" fill="#1e293b" stroke="#0f172a" stroke-width="1.6"/>
+    <text x="130" y="24" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">Software Risk Definition</text>
+    <text x="130" y="42" font-size="10.5" font-weight="700" fill="#38bdf8" text-anchor="middle">A potential problem not yet occurred</text>
+    <text x="130" y="56" font-size="9.5" fill="#94a3b8" text-anchor="middle">May cause loss or threaten project success</text>
+  </g>
+
+  <!-- Connecting Lines from Root to Assessment & Control -->
+  <path d="M 430 140 L 430 165 L 250 165 L 250 185" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+  <path d="M 570 140 L 570 165 L 750 165 L 750 185" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrG)"/>
+
+  <!-- Left Branch: Category 1 - Risk Assessment -->
+  <g transform="translate(25, 190)" filter="url(#cShadow)">
+    <rect width="455" height="315" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+    <rect x="0" y="0" width="455" height="34" rx="8" fill="#2563eb"/>
+    <text x="227" y="22" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Category 1: Risk Assessment (Evaluation Phase)</text>
+
+    <!-- Step 1.1: Identification -->
+    <rect x="15" y="46" width="425" height="74" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="25" y="66" font-size="11.5" font-weight="700" fill="#1e40af">1. Risk Identification</text>
+    <text x="25" y="84" font-size="10.5" fill="#334155">• Uses a checklist of common risk areas or an organizational risk database.</text>
+    <text x="25" y="100" font-size="10.5" fill="#334155">• Identifies potential risks in the project.</text>
+
+    <!-- Step 1.2: Analysis -->
+    <rect x="15" y="130" width="425" height="74" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="25" y="150" font-size="11.5" font-weight="700" fill="#1e40af">2. Risk Analysis</text>
+    <text x="25" y="168" font-size="10.5" fill="#334155">• Examines how project outcomes change when risk inputs vary.</text>
+    <text x="25" y="184" font-size="10.5" fill="#334155">• Considers the potential consequences of identified risks.</text>
+
+    <!-- Step 1.3: Prioritization -->
+    <rect x="15" y="214" width="425" height="88" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="25" y="234" font-size="11.5" font-weight="700" fill="#1e40af">3. Risk Prioritization</text>
+    <rect x="25" y="242" width="230" height="26" rx="4" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+    <text x="140" y="260" font-size="11.5" font-weight="800" fill="#1e3a8a" text-anchor="middle">Risk Exposure: RE = P × L</text>
+    <text x="25" y="284" font-size="10.5" fill="#334155">• Considers risks with the largest estimated exposure first.</text>
+  </g>
+
+  <!-- Right Branch: Category 2 - Risk Control -->
+  <g transform="translate(520, 190)" filter="url(#cShadow)">
+    <rect width="455" height="315" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.6"/>
+    <rect x="0" y="0" width="455" height="34" rx="8" fill="#16a34a"/>
+    <text x="227" y="22" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Category 2: Risk Control (Action &amp; Mitigation Phase)</text>
+
+    <!-- Step 2.1: Management Planning -->
+    <rect x="15" y="46" width="425" height="74" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="25" y="66" font-size="11.5" font-weight="700" fill="#15803d">1. Risk Management Planning</text>
+    <text x="25" y="84" font-size="10.5" fill="#334155">• Prepares a plan for dealing with each significant risk.</text>
+    <text x="25" y="100" font-size="10.5" fill="#334155">• Records the selected decision in the plan.</text>
+
+    <!-- Step 2.2: Resolution -->
+    <rect x="15" y="130" width="425" height="74" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="25" y="150" font-size="11.5" font-weight="700" fill="#15803d">2. Risk Resolution</text>
+    <text x="25" y="168" font-size="10.5" fill="#334155">• Executes the plan for dealing with the risk.</text>
+    <text x="25" y="184" font-size="10.5" fill="#334155">• Avoidance may rely on proven rather than cutting-edge technology.</text>
+
+    <!-- Step 2.3: Monitoring -->
+    <rect x="15" y="214" width="425" height="88" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="25" y="234" font-size="11.5" font-weight="700" fill="#15803d">3. Risk Monitoring</text>
+    <text x="25" y="254" font-size="10.5" fill="#334155">• Tracks risks as the project proceeds.</text>
+  </g>
+
+</svg>
+</div>
+</body>
+</html>

@@ -1,0 +1,707 @@
+{
+  "schema_version": "1.0",
+  "chapter": "5",
+  "items": [
+    {
+      "figure_id": "CH05-FIG02",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf",
+        "kind": "slide",
+        "locator": "slide 5; caption Fig. 2 : A two part design process; book p. 204",
+        "image": "source_figures/slide-005.png"
+      },
+      "learning_task": "Explain the two design views and the source figure relationships: designers connect to both; Conceptual Design points to Customer; Technical Design points to System Builders.",
+      "diagram_type": "concept_process_model",
+      "notation": {
+        "name": "Typed concept architecture flow with distinct actor and design stage boxes; custom SVG rendering",
+        "source_defined_conventions": [
+          "Customer communicates with Conceptual design answering What.",
+          "System Builders receive Technical design answering How.",
+          "Designers bridge conceptual and technical representations."
+        ],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "Customer",
+            "kind": "actor",
+            "label": "Customer (System Users & Clients)",
+            "required": true
+          },
+          {
+            "id": "ConceptualDesign",
+            "kind": "design_view",
+            "label": "Conceptual Design (WHAT)",
+            "required": true
+          },
+          {
+            "id": "Designers",
+            "kind": "actor",
+            "label": "Designers (Software Architects)",
+            "required": true
+          },
+          {
+            "id": "TechnicalDesign",
+            "kind": "design_view",
+            "label": "Technical Design (HOW)",
+            "required": true
+          },
+          {
+            "id": "SystemBuilders",
+            "kind": "actor",
+            "label": "System Builders (Programmers & Testers)",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "from": "Designers",
+            "to": "ConceptualDesign",
+            "kind": "design relation",
+            "label": "conceptual design",
+            "required": true
+          },
+          {
+            "from": "Designers",
+            "to": "TechnicalDesign",
+            "kind": "design relation",
+            "label": "technical design",
+            "required": true
+          },
+          {
+            "from": "ConceptualDesign",
+            "to": "Customer",
+            "kind": "design relation",
+            "label": "customer perspective",
+            "required": true
+          },
+          {
+            "from": "TechnicalDesign",
+            "to": "SystemBuilders",
+            "kind": "design relation",
+            "label": "builder perspective",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "Conceptual Design concerns what the system should do.",
+          "Technical Design concerns how the software is organized for construction.",
+          "The source figure links Designers with both views, Conceptual Design with Customer, and Technical Design with System Builders."
+        ],
+        "assumptions": [
+          "Additional descriptions of actor roles are explanatory labels, not claims reproduced from the figure."
+        ]
+      },
+      "code": {
+        "path": "diagrams/CH05-FIG02_Two-Part-Design-Process.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 1200 --scale 2",
+        "output_path": "diagrams/CH05-FIG02_Two-Part-Design-Process.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "All five core entities (Customer, Conceptual Design, Designers, Technical Design, System Builders) present.",
+          "What vs How distinct labeling verified.",
+          "Flow directions match source slide 5."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered a 2400x1360 PNG at 2x.",
+        "visual_review": "Redrawn after cross-check against source slide 5; directional relationships were corrected on 2026-10-19.",
+        "reviewer_date": "Codex cross-review, 2026-10-19",
+        "limitations": [
+          "Custom SVG has no specialized process parser; verified against slide 5 image and contract."
+        ]
+      }
+    },
+    {
+      "figure_id": "CH05-FIG04",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf",
+        "kind": "slide",
+        "locator": "slide 14; caption Fig. 4 : Modularity and software cost; book p. 206",
+        "image": "source_figures/slide-014.png"
+      },
+      "learning_task": "Explain the trade-off between modular decomposition and software cost, showing development cost, integration cost, and the total cost minimum region M.",
+      "diagram_type": "economic_curve",
+      "notation": {
+        "name": "Qualitative 2D curve plot without invented coordinates; custom SVG rendering",
+        "source_defined_conventions": [
+          "X-axis is Number of Modules.",
+          "Y-axis is Cost or Effort.",
+          "Optimal modularity region M is indicated at the total cost minimum."
+        ],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "XAxis",
+            "kind": "axis",
+            "label": "Number of modules",
+            "required": true
+          },
+          {
+            "id": "YAxis",
+            "kind": "axis",
+            "label": "Cost of Effort",
+            "required": true
+          },
+          {
+            "id": "RegionM",
+            "kind": "marker",
+            "label": "M (minimum-cost region)",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "from": "DevelopmentCost",
+            "to": "XAxis",
+            "kind": "curve",
+            "label": "Development-related cost (decreasing)",
+            "required": true
+          },
+          {
+            "from": "IntegrationCost",
+            "to": "XAxis",
+            "kind": "curve",
+            "label": "Cost to integrate (increasing)",
+            "required": true
+          },
+          {
+            "from": "TotalCost",
+            "to": "XAxis",
+            "kind": "curve",
+            "label": "Total software cost with minimum region M",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "Axes are Cost of Effort and Number of modules.",
+          "No numerical scale is added.",
+          "The three cost curves and the minimum region M are shown qualitatively."
+        ],
+        "assumptions": [
+          "Qualitative curves plotted using smooth cubic Bezier paths approximating slide 14."
+        ]
+      },
+      "code": {
+        "path": "diagrams/CH05-FIG04_Modularity-and-Software-Cost.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 1200 --scale 2",
+        "output_path": "diagrams/CH05-FIG04_Modularity-and-Software-Cost.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "Both axes labeled with correct units and directions.",
+          "Three curves (development, integration, total) verified.",
+          "Optimal point M labeled at minimum of total cost curve."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered a 2400x1520 PNG at 2x.",
+        "visual_review": "Updated after comparison with source slide 14; unsupported card text and labels were removed on 2026-10-19.",
+        "reviewer_date": "Codex cross-review, 2026-10-19",
+        "limitations": [
+          "Qualitative vector curve; numerical values are intentionally omitted to avoid fabricating unsupported empirical constants."
+        ]
+      }
+    },
+    {
+      "figure_id": "CH05-FIG23",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf",
+        "kind": "slide",
+        "locator": "slide 68; caption Fig. 23",
+        "image": "source_figures/slide-068.png"
+      },
+      "learning_task": "Explain abstraction of shared features into a superclass and inheritance by specialized subclasses.",
+      "diagram_type": "uml_class",
+      "notation": {
+        "name": "Class diagram using generalization arrows; custom SVG rendering",
+        "source_defined_conventions": [
+          "The source labels both inheritance links 'inherits'."
+        ],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "Shape",
+            "kind": "superclass",
+            "label": "Shape",
+            "required": true,
+            "members": [
+              "Colour",
+              "Set Colour()",
+              "Draw()"
+            ]
+          },
+          {
+            "id": "Square",
+            "kind": "subclass",
+            "label": "Square",
+            "required": true,
+            "members": [
+              "Point[4]",
+              "Draw()"
+            ]
+          },
+          {
+            "id": "Triangle",
+            "kind": "subclass",
+            "label": "Triangle",
+            "required": true,
+            "members": [
+              "Point[3]",
+              "Draw()"
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "Square",
+            "to": "Shape",
+            "kind": "generalization",
+            "direction": "subclass-to-superclass; hollow triangle at Shape",
+            "label": "inherits",
+            "required": true
+          },
+          {
+            "from": "Triangle",
+            "to": "Shape",
+            "kind": "generalization",
+            "direction": "subclass-to-superclass; hollow triangle at Shape",
+            "label": "inherits",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "Exactly three classes are shown.",
+          "Both generalization arrows point to Shape.",
+          "No extra associations or members are invented."
+        ],
+        "assumptions": [
+          "The source's 'Point[4]' and 'Point[3]' spellings are preserved without adding types or visibility markers."
+        ]
+      },
+      "code": {
+        "path": "diagrams/CH05-FIG23_Shape-Inheritance.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 1200 --scale 2",
+        "output_path": "diagrams/CH05-FIG23_Shape-Inheritance.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "Required three class names and all six member strings are present in editable SVG source.",
+          "Two class-to-superclass generalization paths terminate in hollow triangle markers attached to Shape.",
+          "No ungrounded class relation or class member added."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered a 2400×1480 PNG at 2x.",
+        "visual_review": "Pass — opened slide-068.png and output side by side; class names, members, arrow directions, and both inheritance relations match. Layout is redrawn, not pixel-copied.",
+        "reviewer_date": "Codex, 2026-10-19",
+        "limitations": [
+          "Custom SVG rendering has no UML semantic parser; semantic conformance is checked against this contract and the source image."
+        ]
+      }
+    },
+    {
+      "figure_id": "CH05-FIG19",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch05_Software_Design.pdf",
+        "kind": "slide",
+        "locator": "slide 44; Fig. 19; notation key slide 42",
+        "image": "source_figures/slide-044.png"
+      },
+      "learning_task": "Read the transaction-centered structure chart: MAIN directly calls Input and Output, and the diamond conditionally selects among three alternative modules.",
+      "diagram_type": "structure_chart",
+      "notation": {
+        "name": "Structure-chart module rectangles, transaction discriminator diamond, directed module-call branches",
+        "source_defined_conventions": [],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "MAIN",
+            "kind": "root_module",
+            "label": "MAIN",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "transaction_discriminator",
+            "kind": "conditional_call_symbol",
+            "label": "",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "Input",
+            "kind": "module",
+            "label": "Input",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "Module 1",
+            "kind": "module",
+            "label": "Module 1",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "Module 2",
+            "kind": "module",
+            "label": "Module 2",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "Module 3",
+            "kind": "module",
+            "label": "Module 3",
+            "required": true,
+            "members": []
+          },
+          {
+            "id": "Output",
+            "kind": "module",
+            "label": "Output",
+            "required": true,
+            "members": []
+          }
+        ],
+        "relations": [
+          {
+            "from": "MAIN",
+            "to": "Input",
+            "kind": "module call",
+            "direction": "direct call",
+            "label": "",
+            "required": true
+          },
+          {
+            "from": "MAIN",
+            "to": "transaction_discriminator",
+            "kind": "control/conditional-call",
+            "direction": "top-down",
+            "label": "",
+            "required": true
+          },
+          {
+            "from": "transaction_discriminator",
+            "to": "Module 1",
+            "kind": "conditional module call",
+            "direction": "alternative branch",
+            "label": "",
+            "required": true
+          },
+          {
+            "from": "transaction_discriminator",
+            "to": "Module 2",
+            "kind": "conditional module call",
+            "direction": "alternative branch",
+            "label": "",
+            "required": true
+          },
+          {
+            "from": "transaction_discriminator",
+            "to": "Module 3",
+            "kind": "conditional module call",
+            "direction": "alternative branch",
+            "label": "",
+            "required": true
+          },
+          {
+            "from": "MAIN",
+            "to": "Output",
+            "kind": "module call",
+            "direction": "direct call",
+            "label": "",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "MAIN is the root.",
+          "Input and Output are direct calls from MAIN.",
+          "The diamond selects only among Module 1, Module 2, and Module 3.",
+          "Call edges are module relationships, not a sequential flowchart."
+        ],
+        "assumptions": []
+      },
+      "code": {
+        "path": "diagrams/CH05-FIG19_Transaction-Centered-Structure-Chart.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 2200 --scale 2",
+        "output_path": "diagrams/CH05-FIG19_Transaction-Centered-Structure-Chart.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "Exact module labels and branch count match slide 44.",
+          "A diamond is used for the transaction discriminator per slide 42.",
+          "No data couples are invented because Fig. 19 does not label any."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered the editable SVG source to PNG.",
+        "visual_review": "Corrected after cross-check against source slide 44 and conditional-call notation in slide 42 on 2026-10-19.",
+        "reviewer_date": "Codex cross-review, 2026-10-19",
+        "limitations": [
+          "Custom SVG has no structure-chart semantic parser; validate module-call and conditional-branch meaning against the contract and source image."
+        ]
+      }
+    },
+    {
+      "figure_id": "CH05-GAP-RMS-DFD",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Reference_Textbooks/RajibMall_Fundamentals_of_SE_4th.pdf",
+        "kind": "supporting textbook",
+        "locator": "Figure 6.8(b), PDF p.329; Example 6.1",
+        "image": "source_figures/mall-pdf-329.png"
+      },
+      "learning_task": "Visual comparison against source_figures/mall-pdf-329.png: three process bubbles and four flow directions/labels checked.",
+      "diagram_type": "dfd_level_1_yourdon_demarc",
+      "notation": {
+        "name": "Level-1 DFD in Mall’s bubble-process style; directed labelled data-flow arrows",
+        "source_defined_conventions": [],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "validate-input",
+            "kind": "process",
+            "label": "validate-input 0.1",
+            "required": true
+          },
+          {
+            "id": "compute-rms",
+            "kind": "process",
+            "label": "compute-rms 0.2",
+            "required": true
+          },
+          {
+            "id": "display-result",
+            "kind": "process",
+            "label": "display-result 0.3",
+            "required": true
+          },
+          {
+            "id": "input-boundary",
+            "kind": "external/dangling flow boundary",
+            "label": "data-items",
+            "required": true
+          },
+          {
+            "id": "output-boundary",
+            "kind": "external/dangling flow boundary",
+            "label": "rms",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "from": "input-boundary",
+            "to": "validate-input",
+            "kind": "data_flow",
+            "label": "data-items",
+            "required": true
+          },
+          {
+            "from": "validate-input",
+            "to": "compute-rms",
+            "kind": "data_flow",
+            "label": "valid-data",
+            "required": true
+          },
+          {
+            "from": "compute-rms",
+            "to": "display-result",
+            "kind": "data_flow",
+            "label": "rms",
+            "required": true
+          },
+          {
+            "from": "display-result",
+            "to": "output-boundary",
+            "kind": "data_flow",
+            "label": "rms",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "Three numbered process bubbles appear in source order 0.1, 0.2, 0.3.",
+          "Every data-flow arrow points left-to-right in this rendering, matching the source.",
+          "Dangling arrows denote diagram-boundary input/output; no data store is introduced."
+        ],
+        "assumptions": []
+      },
+      "code": {
+        "path": "diagrams/CH05-GAP_RMS_DFD-to-Structure-Chart.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 2200 --scale 2",
+        "output_path": "diagrams/CH05-GAP_RMS_DFD-to-Structure-Chart.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "Labels, process identifiers, flow labels, and source ordering checked against Mall Fig. 6.8(b), PDF p.329.",
+          "Input and final output arrows point into and out of the DFD in the correct directions."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered the editable SVG source to PNG.",
+        "visual_review": "Visual comparison against source_figures/mall-pdf-329.png: three process bubbles and four flow directions/labels checked.",
+        "reviewer_date": "Codex, 2026-10-19",
+        "limitations": [
+          "Custom SVG has no DFD semantic parser; validate process/data-flow meaning and arrow direction against the contract and source image."
+        ]
+      }
+    },
+    {
+      "figure_id": "CH05-GAP-RMS-TRANSFORM",
+      "source": {
+        "file": "01_Semester_1/04_Advanced_Software_Eng/02_Raw_Materials/Reference_Textbooks/RajibMall_Fundamentals_of_SE_4th.pdf",
+        "kind": "supporting textbook",
+        "locator": "§6.4.1, Example 6.6, Figure 6.19, PDF pp.344–346",
+        "image": "source_figures/mall-fig619-zoom.png"
+      },
+      "learning_task": "Visual review of the rendered composite against Mall PDF p.329 and Fig. 6.19 zoom: process order, mapping, call hierarchy, arrows, and labels inspected; this is a cross-page teaching redraw, not a pixel copy.",
+      "diagram_type": "dfd_to_structure_chart_transform_analysis",
+      "notation": {
+        "name": "Transform-analysis mapping plus source-faithful RMS structure chart; DFD flows, module calls, and data couples are distinct edge types",
+        "source_defined_conventions": [],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "main",
+            "kind": "root_module",
+            "label": "main",
+            "required": true
+          },
+          {
+            "id": "get-good-data",
+            "kind": "module",
+            "label": "get-good-data",
+            "required": true
+          },
+          {
+            "id": "compute-rms",
+            "kind": "module",
+            "label": "compute-rms",
+            "required": true
+          },
+          {
+            "id": "write-result",
+            "kind": "module",
+            "label": "write-result",
+            "required": true
+          },
+          {
+            "id": "read-input",
+            "kind": "module",
+            "label": "read-input",
+            "required": true
+          },
+          {
+            "id": "validate-input",
+            "kind": "module",
+            "label": "validate-input",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "from": "main",
+            "to": "get-good-data",
+            "kind": "module_call",
+            "required": true
+          },
+          {
+            "from": "main",
+            "to": "compute-rms",
+            "kind": "module_call",
+            "required": true
+          },
+          {
+            "from": "main",
+            "to": "write-result",
+            "kind": "module_call",
+            "required": true
+          },
+          {
+            "from": "get-good-data",
+            "to": "read-input",
+            "kind": "module_call",
+            "required": true
+          },
+          {
+            "from": "get-good-data",
+            "to": "validate-input",
+            "kind": "module_call",
+            "required": true
+          },
+          {
+            "from": "read-input",
+            "to": "get-good-data",
+            "kind": "data_couple",
+            "label": "data-items",
+            "required": true
+          },
+          {
+            "from": "get-good-data",
+            "to": "validate-input",
+            "kind": "data_couple",
+            "label": "data-items",
+            "required": true
+          },
+          {
+            "from": "validate-input",
+            "to": "get-good-data",
+            "kind": "data_couple",
+            "label": "valid-data",
+            "required": true
+          },
+          {
+            "from": "get-good-data",
+            "to": "main",
+            "kind": "data_couple",
+            "label": "valid-data",
+            "required": true
+          },
+          {
+            "from": "compute-rms",
+            "to": "main",
+            "kind": "data_couple",
+            "label": "rms",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "The DFD and structure chart refer to the same RMS software: Mall Example 6.6 explicitly references the Level-1 DFD of Example 6.1.",
+          "Transform analysis maps validate-input to afferent/get-good-data; compute-rms remains the central transform; display-result becomes the output/efferent write-result module.",
+          "The hierarchy and labelled data couples match Fig. 6.19.",
+          "DFD data-flow arrows are not represented as module-call arrows; separate panels and legend distinguish edge semantics.",
+          "Transform analysis is a design method, not an automatic graph rewrite."
+        ],
+        "assumptions": []
+      },
+      "code": {
+        "path": "diagrams/CH05-GAP_RMS_DFD-to-Structure-Chart.html",
+        "renderer": "diagram_forge.py local Playwright renderer; inline SVG source",
+        "render_command": "python 90_Shared_Toolbox/tools/diagram_forge.py <input.html> <output.png> --width 2200 --scale 2",
+        "output_path": "diagrams/CH05-GAP_RMS_DFD-to-Structure-Chart.png"
+      },
+      "validation": {
+        "semantic_checks": [
+          "Source chapter text pp.345–346 names RMS Example 6.1, its three regions, and the mapping used for Figure 6.19.",
+          "Structure-chart nodes, hierarchy, and data-couple labels are checked against the source zoom.",
+          "The DFD panel’s data-flow order and the chart panel’s call/data-couple layers are semantically distinct."
+        ],
+        "parser_render": "Pass — diagram_forge.py rendered the editable SVG source to PNG.",
+        "visual_review": "Visual review of the rendered composite against Mall PDF p.329 and Fig. 6.19 zoom: process order, mapping, call hierarchy, arrows, and labels inspected; this is a cross-page teaching redraw, not a pixel copy.",
+        "reviewer_date": "Codex, 2026-10-19",
+        "limitations": [
+          "Custom SVG has no DFD/structure-chart semantic parser; conformance is checked against the typed contract and source images.",
+          "The source itself teaches the transform-analysis mapping; the combined drawing is our pedagogical synthesis."
+        ]
+      }
+    }
+  ]
+}

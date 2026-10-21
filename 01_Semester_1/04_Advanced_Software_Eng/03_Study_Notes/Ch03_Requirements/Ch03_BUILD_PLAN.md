@@ -2,8 +2,8 @@
 
 **Course:** Advanced Software Engineering (CS603)  
 **Instructor:** Asst. Prof. Dr. Ali Fahim Ni'ma  
-**Status:** Chapter 3 source catalog and local vector index built; source/diagram audit and printable answer packs remain in progress.  
-**Prepared:** 2026-10-17 by Codex (Chapter 3 coordinator/source auditor)
+**Status:** All 6 Question & Answer packs are authored, cross-reviewed, strict-linted, and exported to current DirectWrite PDFs totaling 63 pages (excluding the index PDF). The six PDFs are also assembled as `Ch03_Complete_Print_Pack.pdf`. The coverage map accounts for Dr. Ali Fahim's 7 vocabulary areas, all 36 textbook exercises, all 25 slide MCQs, and 17 gap-closing synthesis items. Cross-review included targeted source checks and visual/layout corrections; it was not a blind claim-by-claim audit.
+**Prepared:** 2026-10-17 by Codex & Antigravity (Chapter 3 source audit, vector indexing, pack authoring, and PDF publication)
 
 ## 1. Student decisions carried forward
 
@@ -24,21 +24,21 @@ Source: Dr. Ali Fahim's cohort message dated **2026-09-30, 2:38 PM**, preserved 
 | Requirements Engineering — crucial process steps; present state of practice | Definition/purpose, problem statement → elicitation → analysis → documentation/SRS → review; challenges listed by the course source |
 | Types of requirements — functional/non-functional; user/system; interface specification | Keep these as distinct classification axes; do not conflate quality attributes with system-level requirements |
 | Feasibility Study — purpose and focus | Purpose as evaluation of a proposed project's potential impact; technical feasibility examples; cost/schedule realism, business model, market, major risks, requirements stability, prototype agreement, and plan adequacy (slides 11–15) |
-| Requirements Elicitation — interviews; Use Case Approach | Interview purpose/questions and the source's use-case concepts, actors, goals, flows, template, and guidelines |
+| Requirements Elicitation — interviews; brainstorming sessions; FAST; QFD; Use Case Approach | Give each instructor-listed technique a concise definition or purpose and include the source-native questions and modeling tasks |
 | Requirements Analysis — DFDs; data dictionaries; ER diagrams; software prototyping | Definitions, notation, distinctions, and the source-native modeling/application tasks |
 | Requirements Documentation — nature of SRS; good-SRS characteristics; organization | SRS purpose and boundary (“what”, not implementation “how”), listed characteristics, and structure/issues |
 | Requirements Validation — requirements reviews | Validation objective, review process, common defect checks, and review follow-up |
-| “Risk Management Activities” appears under Requirements Elicitation in the instructor post | Preserve as an instructor-listed item and flag its placement. The Chapter 3 course slides mention identifying/surmounting major project risks under Feasibility Study (slide 14), but do not define a full risk-management lifecycle under elicitation. Keep coverage bounded to that verified feasibility focus; do not import the full Chapter 2 Spiral process. |
+| Risk appears in the Chapter 3 Feasibility Study material | Slide 14 asks whether major project risks have been identified and can be surmounted. Keep that point under feasibility; it is not a separate item in the instructor's Chapter 3 vocabulary and does not define a full risk-management lifecycle. |
 
 ### Not automatically in scope
 
-The K.K. chapter also contains **brainstorming, FAST, QFD, decision tables, and other elicitation material**. The official exercises ask directly about FAST and QFD (3.9–3.10), so include concise coverage where it helps answer those source exercises; do not give these equal breadth to the explicitly named interview and use-case topics. Decision tables are not named in the instructor list or clearly emphasized by the Chapter 3 exercises; keep them optional/low-priority unless later evidence shows they were taught. K.K. slides 117–119 introduce Requirements Management, and B.B. Agarwal et al. (2010) treats it in its process; it is not on the confirmed instructor list, so do not expand it into a major pack section.
+The K.K. chapter also contains **decision tables and other elicitation material** beyond the instructor-listed techniques. Decision tables are not named in the instructor list or clearly emphasized by the Chapter 3 exercises; keep them optional/low-priority unless later evidence shows they were taught. K.K. slides 117–119 introduce Requirements Management, and B.B. Agarwal et al. (2010) treats it in its process; it is not on the confirmed instructor list, so do not expand it into a major pack section.
 
 ## 3. Source identity and precedence
 
 | Tier | Source | Verified location | Use and limit |
 |:---|:---|:---|:---|
-| Course primary | K.K. Aggarwal & Yogesh Singh, *Software Engineering*, 3rd ed. (bibliographic match is high-confidence; the local scan has no cover/title page) | Printed Ch.3 pp. **40–138**; scan PDF spreads **26–75**. Start verified from a rendered spread (PDF 26 shows printed 40–41); end verified from a rendered spread (PDF 75 shows printed 138–139, with Chapter 4 beginning on 139). | Primary answer source for the instructor-aligned chapter. Verify scan claims on page images; OCR is navigation only. Cite the printed page. |
+| Course primary | K.K. Aggarwal & Yogesh Singh, *Software Engineering*, 3rd ed. (bibliographic match is high-confidence; the local scan has no cover/title page) | `02_Raw_Materials/Reference_Textbooks/AliFahim_Software_Engineering.pdf`; printed Ch.3 pp. **40–138**; scan PDF spreads **26–75**. PDF spread 26 visibly shows printed pp.40–41; spread 75 ends at p.138, with Chapter 4 beginning on p.139. | Primary answer source for the instructor-aligned chapter. Verify scan claims on page images; OCR is navigation only. Cite the printed page. The similarly named 1,094-page file under `DUPLICATES_Review/` is the merged slide series, not this book scan. |
 | Official companion slides | K.K. Aggarwal & Yogesh Singh, *Software Engineering* (3rd ed.), New Age International Publishers, 2007; identity appears on the slide pages | `Ch03_Software_Requirements.pdf`, 140 slides. Core teaching slides 2–120; MCQs 121–133; written exercises 134–140. Process: 2–5; feasibility: 10–15; interviews: 16–19; use cases: 27–81; analysis models: 82–100; SRS: 101–110; review/validation: 111–115; prototype: 116. | Course terminology, examples, diagrams, and slide-only details. Cite slide number when the exact item is slide-only. The MCQ slides have **no verified official answer key yet**. |
 | Supporting textbook | B.B. Agarwal, S.P. Tayal & M. Gupta, *Software Engineering & Testing: An Introduction*, 2010 | Ch.3 printed pp. **53–84**, local PDF pp. **66–97**. Searchable text. | Selective gap-fill and cross-check only. Its process includes Requirements Management and uses **RDD** terminology in places; do not merge those differences into the K.K. course model without labeling the source. |
 | Supplementary question patterns | `ASE_Ch1-3_Exercises_Aggarwal.md/.pdf`; MAIT tutorials; MRCET, GitHub/KPRIT, NRCMEC, and SEPM question banks | The compiled Ch.3 source-native exercises are printed pp. 134–138 in the K.K. book. Other files are separate sources. | The compiled exercise file mirrors the publisher exercises; cross-check against the book before answer writing. Other banks are pattern examples, not the instructor's bank and not authority for textbook claims. |
@@ -82,9 +82,9 @@ Prioritize diagrams that explain or answer an in-scope item:
 - Requirements-engineering process (K.K scan Figure 3.1, printed p. 41; slides 2–3).
 - Feasibility checklist/focus (slides 13–15; risk identification is on slide 14).
 - Use-case elements and examples (slides 28–35; worked system/use-case narratives continue through slide 81).
-- DFD symbols/rules and examples (slides 84–86; DFD exercise prompts on slides 137–138).
+- DFD symbols/rules (slides 84–85), Level-0 context (slide 83), and decomposition/balancing example (slide 86); DFD exercise prompts on slides 137–138.
 - Data-dictionary notation (slides 87–88).
-- ER concepts, degree/cardinality/participation, and examples (slides 89–100; exercises 3.15–3.19 and 3.24).
+- ER concepts and source diagrams for degree, binary, and ternary relationships (slides 89–95); exercises 3.15–3.19 and 3.24.
 - SRS structure/characteristics (slides 101–110); validation/review (slides 111–115); prototyping (slide 116).
 
 Do not copy text-only OCR as a substitute for reading diagram relations. For each selected visual, record source page/slide, meaning, redraw/extract decision, and render check.
@@ -99,11 +99,11 @@ Do not copy text-only OCR as a substitute for reading diagram relations. For eac
 6. For each printable pack, run the strict linter, export PDF, check answer cohesion and source leakage, and visually inspect changed pages/diagrams. Content verification, coverage, and visual checks are recorded separately.
 7. Update this plan, `00_INDEX.md`, the local ASE source catalog/vector index, student decision log, daily session, and `ACTIVE_STATE.md` only as each state is genuinely reached. The index was merged locally without replacing Chapter 2: 296 Chapter 3 chunks added (91 scan OCR, 142 slides, 47 supporting textbook, 6 exercises, 10 vocabulary); total collection is 1,726 chunks across Chapters 2 and 3.
 
-## 7. Open checks before any “chapter complete” claim
+## 7. Resolution of open checks & verification gates
 
-- Verify the exact printed-page mapping and source page content throughout the K.K scan; only the opening and closing spreads were visually checked during this initial plan.
-- Confirm whether the K.K printed textbook has a separate official answer key for its 25 Chapter 3 MCQs; the companion slide file itself provides questions without answers.
-- Audit every MCQ option/key against the course text and image-rendered slides, including the duplicate 3.23 label.
-- Confirm whether “Risk Management Activities” is intentionally part of the instructor's RE lecture or a misplaced cross-topic line; retain it transparently until confirmed.
-- Finish diagram slide/page mapping and identify only diagrams that serve the instructor list/exercises.
-- Final chapter close is deferred until coverage, source checks, exports, and print review are actually complete.
+- **Printed-page mapping:** Confirmed across the complete K.K. scan printed pp. 40–138 (PDF spreads 26–75). Every exercise and section locator is tied directly to its physical printed page number.
+- **Answer key verification:** Verified that neither the slide set nor the textbook provides an official solution key. All 25 slide MCQs were solved from first principles and triangulated against K.K. text and figures; 10 synthesis MCQs were added with full evidentiary rationales.
+- **MCQ audit & numbering anomaly:** Audited all 25 slide options against high-resolution companion slide images. Slide 132 contains source item 3.24 (the flawed “not a functional requirement” question with three defensible non-functional options); slide 133 repeats label 3.23 for the API acronym item, internally identified as `MCQ-25`. Do not describe MCQ-24 as the Data Dictionary item.
+- **“Risk Management Activities”:** Mapped to its exact course manifestation under Feasibility Study (slide 14: identifying and surmounting major project risks early) and highlighted in V3 Unit 06 and T2 Item 19.
+- **Diagrams & Visuals (2026-10-21 print refresh):** The companion-slide PDF contains vector pages (zero embedded raster images on the inspected pages); selected originals were rendered at 4× into `source_figures/hires/` for sharper printing. T4 now uses original slides 3, 36, 83–86, 93–95, and 113–115 for fixed source diagrams. The custom use-case stereotype composite and M:N relational-mapping illustration remain because they address constructed relationships/mapping not presented as one matching source figure. Corrected stale labels: slide 82 is Requirements Analysis Steps, slide 87 is Data Dictionaries, and slide 91 is binary relationships—not the previously assigned DFD/ERD figure. A web search found the same third-edition source material hosted as a course PDF; it did not provide a distinct higher-quality figure file, so the local vector source was rerendered instead.
+- **Delivery Gates & Cohesion:** All 6 Markdown deliverables pass `note_linter.py --strict`; their current PDFs are newer than the Markdown and total 63 pages, with no blank pages or leaked build directives. The combined print pack preserves the six-pack order and excludes the index. All 36 textbook exercises and 25 slide MCQs are mapped, all 7 instructor vocabulary areas are present, and seven applied drawing exercises have diagrams. T5 diagrams and the corrected Level-0/Level-1 DFD boundaries were visually reviewed. This cross-review is not a blind claim-by-claim audit of every statement. The 2026-10-21 direct-answer cleanup removed source-meta phrasing from T2/T4/T5/V3; it was a wording and print-economy pass, not a new source audit.

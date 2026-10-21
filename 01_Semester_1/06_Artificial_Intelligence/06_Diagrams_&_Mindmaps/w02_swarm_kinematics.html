@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #ffffff; padding: 24px; width: 1080px; }
+  .container { display: flex; flex-direction: column; gap: 20px; border: 2px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #fafafa; }
+  .header { text-align: center; margin-bottom: 10px; }
+  .header h1 { font-size: 22px; color: #1e293b; font-weight: 700; margin-bottom: 4px; }
+  .header p { font-size: 13px; color: #64748b; font-weight: 500; }
+  .panels { display: flex; gap: 24px; }
+  .panel { flex: 1; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .panel-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+  .badge { font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: 600; text-transform: uppercase; }
+  .badge-aco { background: #fef3c7; color: #92400e; }
+  .badge-pso { background: #e0e7ff; color: #3730a3; }
+  .svg-container { width: 100%; height: 260px; display: flex; justify-content: center; align-items: center; }
+  .formula-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 14px; font-size: 12px; color: #334155; line-height: 1.6; }
+  .formula-title { font-weight: 700; color: #1e293b; margin-bottom: 4px; font-size: 12px; }
+  .math { font-family: "Courier New", Courier, monospace; font-weight: 600; color: #0369a1; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 11px; color: #475569; }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Swarm Intelligence Mathematical Kinematics (ACO vs. PSO)</h1>
+    <p>Algorithmic Decision Models & Trajectory Formulations | Master Studio Intelligence</p>
+  </div>
+  
+  <div class="panels">
+    <!-- Panel 1: ACO -->
+    <div class="panel">
+      <div class="panel-title">
+        <span>Ant Colony Optimization (ACO)</span>
+        <span class="badge badge-aco">Graph Traversal</span>
+      </div>
+      
+      <div class="svg-container">
+        <svg viewBox="0 0 440 240" width="100%" height="100%">
+          <!-- Nodes -->
+          <circle cx="50" cy="120" r="22" fill="#0284c7" />
+          <text x="50" y="125" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Nest (i)</text>
+          
+          <circle cx="390" cy="120" r="22" fill="#16a34a" />
+          <text x="390" y="125" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Food</text>
+          
+          <circle cx="220" cy="50" r="18" fill="#f8fafc" stroke="#0284c7" stroke-width="2" />
+          <text x="220" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Node j1</text>
+          
+          <circle cx="220" cy="190" r="18" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+          <text x="220" y="195" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Node j2</text>
+          
+          <!-- Path 1 (Short path: strong pheromone) -->
+          <path d="M 70 110 Q 140 50 200 50" fill="none" stroke="#d97706" stroke-width="6" stroke-linecap="round" />
+          <path d="M 240 50 Q 300 50 370 110" fill="none" stroke="#d97706" stroke-width="6" stroke-linecap="round" />
+          <text x="130" y="65" fill="#b45309" font-size="11" font-weight="bold">High Pheromone (τ12)</text>
+          <text x="130" y="80" fill="#64748b" font-size="10">Short Distance: d12=2 (η=0.50)</text>
+          
+          <!-- Path 2 (Long path: weak pheromone / evaporating) -->
+          <path d="M 70 130 Q 140 190 200 190" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" />
+          <path d="M 240 190 Q 300 190 370 130" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" />
+          <text x="130" y="180" fill="#64748b" font-size="11">Low Pheromone (τ13)</text>
+          <text x="130" y="195" fill="#94a3b8" font-size="10">Long Distance: d13=6 (η=0.17)</text>
+          
+          <!-- Ant indicator -->
+          <rect x="95" y="70" width="14" height="8" rx="4" fill="#1e293b" transform="rotate(-25 102 74)" />
+        </svg>
+      </div>
+      
+      <div class="formula-box">
+        <div class="formula-title">Stochastic Path Selection Invariant:</div>
+        <div class="math">p_ij^k = ( [τ_ij]^α · [η_ij]^β ) / Σ ( [τ_il]^α · [η_il]^β )</div>
+        <p>• <strong>τ_ij:</strong> Cumulative pheromone trail (social history).</p>
+        <p>• <strong>η_ij = 1/d_ij:</strong> Heuristic visibility (local greediness).</p>
+        <p>• <strong>Evaporation:</strong> τ_ij ← (1 - ρ) · τ_ij prevents stagnation.</p>
+      </div>
+    </div>
+
+    <!-- Panel 2: PSO -->
+    <div class="panel">
+      <div class="panel-title">
+        <span>Particle Swarm Optimization (PSO)</span>
+        <span class="badge badge-pso">Continuous Kinematics</span>
+      </div>
+      
+      <div class="svg-container">
+        <svg viewBox="0 0 440 240" width="100%" height="100%">
+          <!-- Current Position -->
+          <circle cx="120" cy="150" r="10" fill="#2563eb" />
+          <text x="120" y="175" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="bold">Current (X_t)</text>
+          
+          <!-- Pbest -->
+          <circle cx="100" cy="40" r="8" fill="#16a34a" />
+          <text x="100" y="25" text-anchor="middle" fill="#15803d" font-size="11" font-weight="bold">P_best (Personal)</text>
+          
+          <!-- Gbest -->
+          <circle cx="360" cy="60" r="9" fill="#9333ea" />
+          <text x="360" y="45" text-anchor="middle" fill="#7e22ce" font-size="11" font-weight="bold">G_best (Swarm)</text>
+          
+          <!-- Inertia Vector (w * V_t) -->
+          <line x1="120" y1="150" x2="200" y2="150" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-blue)" />
+          <text x="165" y="165" fill="#0284c7" font-size="10" font-weight="bold">w · V_t (Inertia)</text>
+          
+          <!-- Cognitive Pull -->
+          <line x1="120" y1="150" x2="100" y2="40" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="3,3" />
+          <line x1="120" y1="150" x2="108" y2="85" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow-green)" />
+          <text x="60" y="105" fill="#15803d" font-size="10" font-weight="bold">c1·r1·(Pbest - X)</text>
+          
+          <!-- Social Pull -->
+          <line x1="120" y1="150" x2="360" y2="60" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="3,3" />
+          <line x1="120" y1="150" x2="240" y2="105" stroke="#9333ea" stroke-width="2.5" marker-end="url(#arrow-purple)" />
+          <text x="210" y="130" fill="#7e22ce" font-size="10" font-weight="bold">c2·r2·(Gbest - X)</text>
+          
+          <!-- Resultant Vector V_{t+1} -->
+          <line x1="120" y1="150" x2="270" y2="90" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)" />
+          <circle cx="270" cy="90" r="10" fill="#dc2626" />
+          <text x="280" y="115" fill="#dc2626" font-size="12" font-weight="bold">Next Pos (X_t+1)</text>
+          
+          <!-- Defs for markers -->
+          <defs>
+            <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7" />
+            </marker>
+            <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
+            </marker>
+            <marker id="arrow-purple" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea" />
+            </marker>
+            <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      
+      <div class="formula-box">
+        <div class="formula-title">Velocity & Position Update Kinematics:</div>
+        <div class="math">V_t+1 = w·V_t + c1·r1·(Pbest - X_t) + c2·r2·(Gbest - X_t)</div>
+        <div class="math">X_t+1 = X_t + V_t+1</div>
+        <p>• <strong>Inertia (w):</strong> Momentum preservation across steps.</p>
+        <p>• <strong>Cognitive (c1):</strong> Trust in personal historical best.</p>
+        <p>• <strong>Social (c2):</strong> Alignment towards global colony leader.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

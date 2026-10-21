@@ -162,7 +162,7 @@ A submitted seminar reproduced **Aggarwal Ch. 5 verbatim** (including the book's
 | **depth / width** | same pages |
 | **design review** | **Mall §6.6** PDF 349–352 |
 | **DFD → structure chart methodology** (transform / transaction analysis) | **Mall §6.4.1** PDF 344–348 |
-| *"الخصائص"* (properties) | Most likely **Meyer's five modularity criteria** (Pressman PDF 373); note the modular-system properties were **already present** in the submission |
+| *"الخصائص"* (properties) | **Confirmed by student 2026-10-19: Meyer's five modularity criteria**; Pressman 5th ed. §13.4.3, printed p.345 / PDF p.373. Keep distinct from architectural-design properties; note the modular-system properties were **already present** in the submission. |
 
 **Lesson:** Aggarwal Ch. 5 does **not** contain these; the doctor expects the standard SE sources (**Pressman / Mall**) to fill them in.
 

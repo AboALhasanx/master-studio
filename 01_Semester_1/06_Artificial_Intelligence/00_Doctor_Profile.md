@@ -8,14 +8,19 @@
 
 ---
 
-## 0. ⚠️ Current Delivery Status — as of 2026-09-18
+## 0. ✅ Active Course Delivery & Exam Method Updates — as of 2026-10-20
 
-- **The professor has not started delivering the course.** No slides, no lecture notes, no syllabus, no reading list — nothing has been posted.
-- **Course Telegram group:** *"ماجستير برمجيات ١٠٦ Artificial intelligent"* — 14 members, all joined 2026-09-09. The only message from Dr. Saif so far is a request for members to use their real names so he knows who he is speaking to. No academic content has been shared.
-- **Student's position (correct):** this is the instructor's shortfall, not the student's. He is not behind on AI.
-- **Consequence for planning:** AI is **excluded** from the active study plan (`00_STUDIO_HUB/STUDY_PLAN.md`) until material actually appears. The Telegram group should be checked daily; the moment anything is posted, AI moves to the top of the plan.
-- **Student also reports Dr. Saif is the Dean (*العميد*) of the College.** Treat scheduling slippage accordingly — his administrative load is likely the cause.
-- **Everything below this line is pre-existing dossier intelligence** (his research pillars, exam style, textbook) — it is *not* derived from any delivered lecture. It remains a strong starting position if the course begins.
+- **Course Active & Delivered:** Prof. Dr. Saif Ali Al-Saidi is actively delivering the course in-person.
+  - **Lecture 01:** Single-Solution Metaheuristics (`AI_W02_Metaheuristics_DeanSlides.pdf` — Local Search, Simulated Annealing, Tabu Search, GRASP; based on El-Ghazali Talbi 2009).
+  - **Lecture 02 (2026-10-20):** Population-Based Metaheuristics & Swarm Intelligence (Bonabeau & Gilbert, Millonas's 5 Principles, ACO, ABC, PSO, Cuckoo Search, Meerkat).
+- **Direct Exam Philosophy (Confirmed by the Professor in Class):**
+  - **Zero Equation Derivations:** He explicitly confirmed he will *never* ask students to derive formulas on examinations (*"بالامتحان مستحيل أكلك اشتق معادلة"*).
+  - **High-Order Bloom Question Prototypes:**
+    1. *"Propose an algorithm optimization/development scheme for Bee/Ant algorithm."*
+    2. *"Propose a Hybridization scheme (e.g., Swarm + Single-Solution Metaheuristic like Simulated Annealing, or Swarm + Machine Learning for feature selection/hyperparameters)."*
+  - **Requirement for Mastery:** Must be mastered through concrete step-by-step mathematical examples (*"ما تفتهمها لو تقرأ 100 ساعة، إذا ما تحل أو تشوف مثال بالرياضيات... تشوفها صوت وصورة"*).
+- **Upcoming Deliverable (Student-Led):** Students are assigned to prepare and present the next lecture on **Supervised Machine Learning — Classification (KNN, SVM, Naive Bayes)**.
+- **Textbook Attribution Confirmed:** El-Ghazali Talbi, *Metaheuristics: From Design to Implementation* (Wiley, 2009) alongside Russell & Norvig's AIMA.
 
 ---
 

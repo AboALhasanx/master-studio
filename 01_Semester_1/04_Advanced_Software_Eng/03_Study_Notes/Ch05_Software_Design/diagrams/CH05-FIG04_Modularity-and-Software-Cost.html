@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; background:#fff; font-family: Arial, Helvetica, sans-serif; }
+  #diagram { width:1200px; height:620px; margin:0 auto; background:#fff; }
+  svg { width:1200px; height:620px; display:block; }
+  .axis { stroke:#1e293b; stroke-width:3; marker-end:url(#axis-arrow); }
+  .axis-label { font-size:20px; font-weight:700; fill:#0f172a; }
+  .grid { stroke:#e2e8f0; stroke-width:1.5; stroke-dasharray:4,4; }
+  .curve-total { fill:none; stroke:#dc2626; stroke-width:4; }
+  .curve-dev { fill:none; stroke:#2563eb; stroke-width:3; stroke-dasharray:6,4; }
+  .curve-int { fill:none; stroke:#059669; stroke-width:3; stroke-dasharray:6,4; }
+  .label-total { font-size:20px; font-weight:700; fill:#dc2626; }
+  .label-dev { font-size:18px; font-weight:700; fill:#2563eb; }
+  .label-int { font-size:18px; font-weight:700; fill:#059669; }
+  .opt-line { stroke:#dc2626; stroke-width:2; stroke-dasharray:5,5; }
+  .opt-label { font-size:22px; font-weight:700; fill:#dc2626; }
+  .region-box { fill:#f8fafc; stroke:#cbd5e1; stroke-width:2; rx:8; }
+  .region-title { font-size:18px; font-weight:700; fill:#334155; }
+  .region-desc { font-size:15px; fill:#64748b; }
+  .caption { font-size:26px; font-weight:700; fill:#0f172a; }
+  .sub-caption { font-size:18px; fill:#64748b; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Modularity and Software Cost Curve</title>
+  <desc id="desc">Plot of software development cost, module integration cost, and total software cost as a function of the number of modules, showing optimal modularity region M.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="14" markerHeight="14" refX="10" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L11 7 L1 13 Z" fill="#1e293b"/>
+    </marker>
+  </defs>
+
+  <!-- Title and Header -->
+  <text class="caption" x="600" y="45" text-anchor="middle">Fig. 4 : Modularity and Software Cost</text>
+  <text class="sub-caption" x="600" y="75" text-anchor="middle">K.K. Aggarwal &amp; Yogesh Singh (3rd ed.), Chapter 5, Slide 14 / Book p. 206</text>
+
+  <!-- Coordinate Axes -->
+  <!-- Y Axis: Cost or Effort -->
+  <line class="axis" x1="140" y1="560" x2="140" y2="120"/>
+  <text class="axis-label" x="140" y="105" text-anchor="middle">Cost of Effort</text>
+
+  <!-- X Axis: Number of Modules -->
+  <line class="axis" x1="140" y1="560" x2="1080" y2="560"/>
+  <text class="axis-label" x="1080" y="595" text-anchor="end">Number of modules</text>
+
+  <!-- Region of Minimum Cost Shading -->
+  <rect x="520" y="140" width="160" height="420" fill="#fef2f2" opacity="0.6"/>
+  <line x1="600" y1="140" x2="600" y2="560" class="opt-line"/>
+  <circle cx="600" cy="305" r="7" fill="#dc2626"/>
+  <text class="opt-label" x="600" y="590" text-anchor="middle">M</text>
+
+  <!-- Curve 1: Cost of Module Development (Decreasing) -->
+  <!-- Path from (170, 160) curving down to (1020, 520) -->
+  <path class="curve-dev" d="M170 170 C300 420, 480 480, 1020 520"/>
+  <text class="label-dev" x="840" y="505">Cost of development</text>
+
+  <!-- Curve 2: Cost of Integration / Interfaces (Increasing) -->
+  <!-- Path from (170, 550) curving up to (1020, 170) -->
+  <path class="curve-int" d="M170 550 C360 540, 680 460, 1020 170"/>
+  <text class="label-int" x="780" y="240">Cost to integrate</text>
+
+  <!-- Curve 3: Total software cost (U-shaped, min at M) -->
+  <path class="curve-total" d="M180 180 C320 320, 480 305, 600 305 C720 305, 880 340, 1020 190"/>
+  <text class="label-total" x="600" y="275" text-anchor="middle">Total software cost</text>
+  <text class="label-total" x="600" y="335" text-anchor="middle" font-size="16px">Region of Minimum Cost</text>
+
+</svg>
+</div>
+</body>
+</html>

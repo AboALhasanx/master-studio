@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #ffffff; padding: 24px; width: 1080px; }
+  .card { border: 2px solid #e2e8f0; border-radius: 14px; background: #fafafa; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+  .header { text-align: center; margin-bottom: 20px; }
+  .header h1 { font-size: 22px; color: #0f172a; font-weight: 800; margin-bottom: 4px; }
+  .header p { font-size: 13px; color: #64748b; font-weight: 500; }
+  .canvas-wrapper { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 20px; display: flex; justify-content: center; align-items: center; }
+  .legend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .legend-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .legend-title { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .legend-desc { font-size: 11px; color: #475569; line-height: 1.5; }
+  .badge { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .badge-blue { background: #0284c7; }
+  .badge-green { background: #16a34a; }
+  .badge-purple { background: #9333ea; }
+  .formula-banner { margin-top: 18px; background: #f1f5f9; border-left: 4px solid #dc2626; padding: 12px 18px; border-radius: 6px; font-family: "Courier New", Courier, monospace; font-size: 13px; font-weight: 700; color: #1e293b; text-align: center; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>Particle Swarm Optimization (PSO) Kinematic Vector Decomposition</h1>
+    <p>The Three-Force Attractor Model in Continuous Search Space | Kennedy & Eberhart (1995)</p>
+  </div>
+
+  <div class="canvas-wrapper">
+    <svg viewBox="0 0 960 380" width="100%" height="380">
+      <defs>
+        <!-- Gradients -->
+        <linearGradient id="grid-fade" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f8fafc" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+        <!-- Arrowhead Markers -->
+        <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+        <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#16a34a" />
+        </marker>
+        <marker id="arr-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#9333ea" />
+        </marker>
+        <marker id="arr-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+        </marker>
+      </defs>
+
+      <!-- Background Grid Subtlety -->
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+      <rect width="960" height="380" fill="url(#grid)" />
+
+      <!-- Anchor Points -->
+      <!-- Current Position: X(t) -->
+      <g transform="translate(180, 240)">
+        <circle cx="0" cy="0" r="14" fill="#0f172a" stroke="#e2e8f0" stroke-width="3"/>
+        <circle cx="0" cy="0" r="5" fill="#38bdf8"/>
+        <text x="-15" y="30" font-size="14" font-weight="800" fill="#0f172a">X(t)</text>
+        <text x="-40" y="46" font-size="11" font-weight="600" fill="#64748b">[Current Position / الموقع الراهن]</text>
+      </g>
+
+      <!-- Personal Best: P_best -->
+      <g transform="translate(320, 60)">
+        <circle cx="0" cy="0" r="13" fill="#16a34a" stroke="#bbf7d0" stroke-width="3"/>
+        <text x="20" y="5" font-size="13" font-weight="800" fill="#15803d">P_best,i</text>
+        <text x="20" y="20" font-size="10" font-weight="600" fill="#166534">[Personal Best / أفضل موقع شخصي]</text>
+      </g>
+
+      <!-- Global Best: G_best -->
+      <g transform="translate(800, 70)">
+        <circle cx="0" cy="0" r="15" fill="#9333ea" stroke="#f3e8ff" stroke-width="4"/>
+        <polygon points="0,-7 5,5 -6,5" fill="#ffffff" transform="translate(0,-1) scale(0.9)"/>
+        <text x="-40" y="-18" font-size="14" font-weight="800" fill="#7e22ce">G_best (Swarm Leader)</text>
+        <text x="-55" y="-4" font-size="11" font-weight="600" fill="#6b21a8">[أفضل موقع وصل إليه السرب]</text>
+      </g>
+
+      <!-- Vectors from X(t) -->
+      <!-- 1. Inertia Vector (w * V(t)) -->
+      <line x1="180" y1="240" x2="350" y2="240" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arr-blue)"/>
+      <rect x="210" y="248" width="130" height="22" rx="4" fill="#e0f2fe"/>
+      <text x="275" y="263" text-anchor="middle" font-size="11" font-weight="700" fill="#0369a1">w · V(t)  [القصور الذاتي]</text>
+
+      <!-- Dashed guidance line to Pbest -->
+      <line x1="180" y1="240" x2="320" y2="60" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <!-- 2. Cognitive Vector -->
+      <line x1="180" y1="240" x2="250" y2="150" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arr-green)"/>
+      <rect x="135" y="160" width="150" height="22" rx="4" fill="#dcfce7"/>
+      <text x="210" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">c1·r1·(Pbest - X) [معرفي]</text>
+
+      <!-- Dashed guidance line to Gbest -->
+      <line x1="180" y1="240" x2="800" y2="70" stroke="#d8b4fe" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <!-- 3. Social Vector -->
+      <line x1="180" y1="240" x2="490" y2="155" stroke="#9333ea" stroke-width="3.5" marker-end="url(#arr-purple)"/>
+      <rect x="365" y="175" width="145" height="22" rx="4" fill="#f3e8ff"/>
+      <text x="437" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#7e22ce">c2·r2·(Gbest - X) [اجتماعي]</text>
+
+      <!-- Vector Addition Parallelogram Simulation -->
+      <!-- Intermediate sum of Cognitive + Social -->
+      <!-- Final Resultant Vector V(t+1) -->
+      <line x1="180" y1="240" x2="620" y2="135" stroke="#dc2626" stroke-width="4.5" marker-end="url(#arr-red)"/>
+      
+      <!-- New Position: X(t+1) -->
+      <g transform="translate(620, 135)">
+        <circle cx="0" cy="0" r="14" fill="#dc2626" stroke="#fecaca" stroke-width="3"/>
+        <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+        <text x="18" y="5" font-size="14" font-weight="800" fill="#b91c1c">X(t+1)</text>
+        <text x="18" y="20" font-size="10" font-weight="600" fill="#7f1d1d">[Next Position / الموقع القادم]</text>
+      </g>
+
+      <!-- Resultant Velocity Tag -->
+      <rect x="370" y="115" width="190" height="24" rx="5" fill="#fee2e2" stroke="#f87171" stroke-width="1"/>
+      <text x="465" y="131" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">V(t+1) = Inertia + Cognitive + Social</text>
+    </svg>
+  </div>
+
+  <div class="formula-banner">
+    V_i(t+1) = w · V_i(t) + c_1 · r_1 · (P_{best,i} - X_i(t)) + c_2 · r_2 · (G_{best} - X_i(t))
+  </div>
+
+  <div class="legend-grid">
+    <div class="legend-box">
+      <div class="legend-title"><span class="badge badge-blue"></span> 1. مركبة القصور الذاتي (Inertia)</div>
+      <div class="legend-desc">يمثلها المعامل <strong>w</strong>؛ تحفظ الزخم والسرعة السابقة للمحافظة على اتجاه الحركة وتجنب الانعطافات الحادة المفاجئة.</div>
+    </div>
+    <div class="legend-box">
+      <div class="legend-title"><span class="badge badge-green"></span> 2. مركبة الجذب المعرفي (Cognitive)</div>
+      <div class="legend-desc">يمثلها المعامل <strong>c1</strong> والذاكرة <strong>P_best</strong>؛ تعبر عن حنين الجسيم الأناني لأفضل موقع وصل إليه بنفسه.</div>
+    </div>
+    <div class="legend-box">
+      <div class="legend-title"><span class="badge badge-purple"></span> 3. مركبة الانصياع الاجتماعي (Social)</div>
+      <div class="legend-desc">يمثلها المعامل <strong>c2</strong> والقمة <strong>G_best</strong>؛ تعبر عن انصياع الجسيم لذكاء الجماعة وجذبه نحو قائد السرب.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — T2 Descriptive Questions Pack · Life-Cycle Models"
-subtitle: "14 Core Descriptive Exercises from Course Textbook B.B. Agarwal et al. (2010)"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,11 +9,14 @@ header_left: "ASE Chapter 2 — T2 Descriptive Pack"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "14 Core Descriptive Exercises from Course Textbook B.B. Agarwal et al. (2010)"
 ---
 
 # Chapter 2 — T2 Descriptive Questions Pack
 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
 This pack contains the **14 direct descriptive, definitional, and procedural exercises** from printed page 52 of the primary course textbook: **B.B. Agarwal, S.P. Tayal, and M. Gupta, *Software Engineering & Testing: An Introduction* (2010)**.
+-->
 
 ---
 
@@ -138,7 +141,7 @@ This pack contains the **14 direct descriptive, definitional, and procedural exe
 
 **The Waterfall Model is a classic linear sequential life-cycle model that structures development as a cascade of discrete phases: Feasibility Study $\rightarrow$ Requirements Analysis and Specification $\rightarrow$ Design and Specification $\rightarrow$ Coding and Module Testing $\rightarrow$ Integration and System Testing $\rightarrow$ Delivery $\rightarrow$ Maintenance.** **The output of each preceding phase serves as the frozen, formally documented input to the next.**
 
-![Waterfall Model Life Cycle Architecture](_diagrams/d01_waterfall_flow.png)
+![Figure 2.3: Waterfall Model|75%](_diagrams/figure_2_3_waterfall_agarwal_p37.png)
 
 **Key Advantages:**
 1. **Simplicity and Structure:** Highly intuitive, logical, and easy to manage due to rigid linear milestones.
@@ -248,9 +251,7 @@ This pack contains the **14 direct descriptive, definitional, and procedural exe
 - **Radial Dimension:** **Represents cumulative costs incurred so far in the project.**
 - **Angular Dimension:** **Represents the progress made in completing each cycle of the spiral.**
 
-> **ملاحظة الطالب والفخ الامتحاني:**
-> - التزم بنص أغروال ص. 45 للقطاعات الأربعة: الربع الأول لتحديد الأهداف والبدائل، الثاني لتقييم البدائل حسب المخاطر، الثالث لتطوير استراتيجيات حل المخاطر (Benchmarking, Simulation, Prototyping)، والرابع لتحديد أهداف الدورة التالية.
-> - أبعاد الرسم: نصف القطر (Radial) = التكلفة المتراكمة، والزاوية (Angular) = التقدم المحرز في العملية.
+![Figure 2.5: Spiral Model, showing cumulative cost, cycle progress, and activity sectors|80%](_diagrams/spiral_model_agarwal_p45.png)
 
 *Source: B.B. Agarwal et al. (2010), §2.4, pp. 44–46.*
 

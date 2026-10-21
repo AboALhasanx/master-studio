@@ -1,0 +1,3999 @@
+
+
+##### CS_Agarwal2010 PDF p100 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+87
+4.2 
+SOFTWARE QUALITY ASSURANCE
+ 
+The aim of the Software Quality Assurance (SQA) process is to develop a high-
+quality software product. Software Quality Assurance is a set of activities designed to 
+evaluate the process by which software is developed and/or maintained.
+ 
+ 
+Quality assurance is a planned and systematic pattern of all actions necessary to 
+provide adequate confidence that the item or product conforms to established technical 
+requirements (IEE83).
+ 
+ 
+The purpose of a software quality assurance group is to provide assurance 
+that the procedures, tools, and techniques used during product development and 
+modification are adequate to provide the desired level of confidence in the work 
+products. 
+ 
+ 
+The process of the SQA:
+ 
+1. Defines the requirements for software controlled system fault/failure 
+detection, isolation, and recovery;
+ 
+2. Reviews the software-development processes and products for software-
+error prevention and/or controlled change to reduced functionality states; 
+and
+ 
+3. Defines the process for measuring and analyzing defects as well as 
+reliability and maintainability factors.
+4.2.1 
+SQA Objectives 
+ 
+The various objectives of SQA are as follows:  
+ 
+ Quality management approach.
+ 
+ Measurement and reporting mechanisms.
+ 
+ Effective software-engineering technology.
+ 
+ A procedure to assure compliance with software-development standards 
+where applicable. 
+ 
+ A multi-testing strategy is drawn.
+ 
+ Formal technical reviews that are applied throughout the software process.
+4.2.2 SQA Goals
+ 
+The major goals of SQA are as follows:  
+ 
+ SQA activities are planned.
+ 
+ Non-compliance issues that cannot be resolved within the software project are 
+addressed by senior management.
+
+
+
+##### CS_Agarwal2010 PDF p101 #####
+88 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Adherence of software products and activities to the applicable standards, 
+procedures, and requirements is verified objectively.
+ 
+ Affected groups and individuals are informed of SQA activities and results.
+4.2.3 SQA Plan
+ 
+An SQA plan defines the quality processes and procedures that should be used. 
+This involves selecting and instantiating standards for products and processes and 
+defining the required quality attributes of the system.
+ 
+ 
+The SQA plan provides a roadmap for instituting software quality assurance. 
+Developed by the SQA group (or the software team if a SQA group does not exist), 
+the plan serves as a template for SQA activities that are instituted for each software 
+project.
+ 
+ 
+The quality plan should select those organizational standards that are 
+appropriate to a particular product and development process. New standards may 
+have to be defined if the project uses new methods and tools.
+ 
+ 
+An outline structure for a quality plan includes:
+ 
+1. Product introduction: A description of the product, its intended markets, 
+and the quality expectations for the product.
+ 
+2. Product plans: The critical release dates and responsibilities for the product 
+along with plans for distribution and product servicing.
+ 
+3. Process descriptions: The development and service processes that should be 
+used for product development and management.
+ 
+4. Quality goals: The quality goals and plans for the product including an 
+identification and justification of critical product quality attributes. 
+ 
+5. Risks and risk management: The key risks that might affect product quality 
+and the actions to address these risks.
+ 
+ 
+Preparation of a Software Quality Assurance Plan for each software project 
+is a primary responsibility of the software quality assurance group. Topics in a 
+Software Quality Assurance Plan include:
+ 
+ Purpose-scope of plan;
+ 
+ List of references to other documents;
+ 
+ Management, including organization, tasks, and responsibilities;
+ 
+ Documentation to be produced;
+ 
+ Standards, practices, and conventions;
+ 
+ Reviews and audits;
+ 
+ Testing;
+
+
+
+##### CS_Agarwal2010 PDF p102 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+89
+ 
+ Problem reporting and corrective action;
+ 
+ Tools, techniques, and methodologies;
+ 
+ Code, media, and supplier control;
+ 
+ Records collection, maintenance, and retention;
+ 
+ Training;
+ 
+ Risk management—the methods of risk management that are to be used.
+4.3 
+SOFTWARE QUALITY 
+ 
+We examine the qualities that are pertinent to software products and software 
+production processes. These qualities will become our goals in the practice of 
+software engineering.
+ 
+ 
+The basic goal of software engineering is to produce quality software. Software 
+quality is a broad and important field of software engineering addressed by several 
+standardization bodies, such as ISO, IEEE, ANSI, etc.
+4.3.1 
+Definition of Software Quality
+ 
+Software quality is the: 
+ 
+ 
+Conformance to explicitly stated functional and performance requirements, explicitly 
+documented development standards, and implicit characteristics that are expected of all 
+professionally developed software.
+ 
+ 
+The above definition emphasizes three important points:
+ 
+1. Software requirements are the foundation from which quality is measured. 
+Lack of conformance to requirements is lack of quality.
+ 
+2. Specified standards define a set of development criteria that guide the 
+manner in which software is engineered. If the criteria are not followed, 
+lack of quality will almost surely result. 
+ 
+3. There is a set of implicit requirements that often goes unmentioned. If 
+software conforms to its explicit requirements but fails to meet implicit 
+requirements, software quality is suspect. 
+4.3.2  Classification of Software Qualities 
+ 
+There are many desirable software qualities. Some of these apply both to the 
+product and to the process used to produce the product. The user wants the 
+software products to be reliable, efficient, and easy to use. The producer of the 
+software wants it to be verifiable, maintainable, portable, and extensible. The 
+
+
+
+##### CS_Agarwal2010 PDF p103 #####
+90 
+SOF TWARE ENGINEERING AND TESTING
+manager of the software project wants the process of software development to be 
+productive and easy to control. 
+ 
+ 
+In this section, we consider two different classifications of software-related 
+qualities: internal versus external and product versus process. 
+ 
+External versus Internal Qualities 
+ 
+We can divide software qualities into external and internal qualities. The external 
+qualities are visible to the users of the system: the internal qualities are those that 
+concern the developers of the system. In general, users of the software only care 
+about the external qualities, but it is the internal qualities, which deal largely with 
+the structure of the software, that help developers achieve the external qualities. 
+For example, the internal quality of verifiability is necessary for achieving the 
+external quality of reliability. In many cases, however, the qualities are related 
+closely and the distinction between internal and external is not sharp.
+ 
+Product and Process Qualities 
+ 
+We use a process to produce the software product. We can also attribute some 
+qualities to the process, although process qualities often are closely related to 
+product qualities. For example, if the process requires careful planning of system 
+test data before any design and development of the system starts, products 
+reliability will increase. Some qualities, such as efficiency, apply both to the product 
+and to the process.
+ 
+ 
+It is interesting to examine the word product here. It usually refers to what is 
+delivered to the customer. Even though this is an acceptable definition from the 
+customer’s perspective, it is not adequate for the developer who requires a general 
+definition of a software product that encompasses not only the object code and the 
+user manual that are delivered to the customer but also the requirements, design, 
+source code, test data, etc. In fact, it is possible to deliver different subsets of the 
+same product to different customers.
+4.3.3 Software Quality Attributes
+ 
+Software quality is comprised of six main attributes (called characteristics) as 
+shown in Figure 4.1. These six attributes have detailed characteristics which are 
+considered the basic ones and which can and should be measured using suitable 
+metrics. At the top level, for software products, these attributes can be defined as 
+follows:  
+ 
+1. Functionality: The capability to provide functions which meet stated and 
+implied needs when the software is used.
+
+
+
+##### CS_Agarwal2010 PDF p104 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+91
+FIGURE 4.1 Software Quality Attributes
+ 
+2. Reliability: The capability to maintain a specified level of performance. 
+ 
+3. Usability: The capability to be understood, learned, and used. 
+ 
+4. Efficiency: The capability to provide appropriate performance relative to the 
+amount of resources used. 
+ 
+5. Maintainability: The capability to be modified for purposes of making 
+corrections, improvements, or adaptation.
+ 
+6. Portability: The capability to be adapted for different specified environments 
+without applying actions or means other than those provided for this purpose 
+in the product.
+4.3.4 McCall’s Quality Factors 
+ 
+McCall, Richards, and Walters [MCC77] propose a useful categorization of factors 
+that affect software quality. These software quality factors, shown in Figure 4.2, 
+focus on three important aspects of a software product: its operational charac-
+teristics, its ability to undergo change, and its adaptability to new environments.
+FIGURE 4.2 McCall’s Software Quality Factors
+ 
+ 
+One attempt to identify specific product qualities that are appropriate to 
+software has been that of James A. McCall. He grouped software qualities into 
+three sets of quality factors:  
+
+
+
+##### CS_Agarwal2010 PDF p105 #####
+92 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Product operation qualities;
+ 
+ Product revision qualities; and
+ 
+ Product transition qualities.
+ 
+ 
+The definitions below are those given by McCall, but the reader may come 
+across others. These are not all inclusive: sometimes other qualities might be of 
+interest.
+ 
+Product Operation Quality Factors
+ 
+ Correctness: The extent to which a program satisfies its specifications and 
+fulfills the user’s objectives.
+ 
+ Reliability: The extent to which a program can be expected to perform its 
+intended function with required precision.
+ 
+ Efficiency: The amount of computer resources required by the software.
+ 
+ Integrity: The extent to which access to software or data by unauthorized 
+persons can be controlled. 
+ 
+ Usability: The effort required for learning, operating, preparing input, and 
+interpreting output.
+ 
+Product Revision Quality Factors
+ 
+ Maintainability: The effort required to locate and fix an error in an operational 
+program. 
+ 
+ Testability: The effort required to test a program to ensure it performs its 
+intended function. 
+ 
+ Flexibility: The efforts required to modify an operational program. 
+ 
+Product Transition Quality Factors
+ 
+ Portability: The effort required for transferring a program from one hardware 
+configuration and software system environment to another. 
+ 
+ Reusability: The extent to which a program can be used in other applications.
+ 
+ Interoperability: The efforts required to couple one system to another. 
+4.3.5 Software Quality Criteria
+ 
+The software quality criteria of various quality factors are depicted in Table 4.1.
+
+
+
+##### CS_Agarwal2010 PDF p106 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+93
+TABLE 4.1 Software Quality Criteria
+Quality Factor
+Software Quality Criteria 
+Correctness 
+Traceability, consistency, completeness 
+Reliability
+Error tolerance, consistency, accuracy, simplicity 
+Efficiency 
+Execution efficiency, storage efficiency 
+Integrity 
+Access control, access audit
+Usability 
+Operability, training, communicativeness, input/output volume, 
+input/output area
+Maintainability 
+Consistency, simplicity, conciseness, modularity, self-descriptiveness
+Testability 
+Simplicity, modularity, instrumentation, self-descriptiveness 
+Flexibility 
+Modularity, generality, expandability, self-descriptiveness
+Portability
+Modularity, self-descriptiveness, machine independence, software 
+system independence 
+Reusability 
+Generality, modularity, software system independence, machine 
+independence, self-descriptiveness
+Interoperability 
+Modularity, communications commonality, data commonality
+4.3.6 Representative Qualities
+ 
+In this section, we present the most important qualities of software products and 
+processes. 
+ 
+1. Correctness. A program is functionally correct if it behaves according to the 
+specification of the functions it should provide (called functional requirements 
+specifications). It is common simply to use the term “correct” rather than 
+“functionally correct”; similarly, in this context, the term “specifications” 
+implies “functional requirements specification.” We will follow this convention 
+when the context is clear.
+ 
+ The definition of correctness assumes that a specification of the system is 
+available and that it is possible to determine unambiguously whether or not 
+a program meets the specifications. With most current software systems, no 
+such specification exists. If a specification does exist, it is usually written in an 
+informal style using natural language.
+ 
+2. Reliability. Informally, software is reliable if the user can depend on it. The 
+specialized literature on software reliability defines reliability in terms of 
+statistical behavior—the probability that the software will operate as expected 
+over a specified time interval. 
+
+
+
+##### CS_Agarwal2010 PDF p107 #####
+94 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Figure 4.3 illustrates the relationship between reliability and correctness. This 
+figure shows that the set of all reliable programs includes the set of correct 
+programs, but not vice versa.
+FIGURE 4.3 Relationship Between Correctness and 
+Reliability in the Ideal Case
+ 
+3. Robustness. A program is robust if it behaves “reasonably,” even in 
+circumstances that were not anticipated in the requirements specification—
+for example, when it encounters incorrect input data or some hardware 
+malfunction (say, disk crash). 
+ 
+ Obviously, robustness is a difficult-to-define quality; after all, if we could state 
+precisely what we should do to make an application robust, we would be able 
+to specify its “reasonable” behavior completely. The robustness would become 
+equivalent to correctness (or reliability in the sense of Figure 4.3).
+ 
+4. Performance. Performance is important because it affects the usability of the 
+system. If a software system is too slow, it reduces the productivity of the 
+users, possibly to the point of not meeting their needs. If a software system 
+uses too much disk space, it may be too expensive to run. If a software system 
+uses too much memory, it may affect the other applications that are run on the 
+same system, or it may run slowly while the operating system tries to balance 
+the memory usage of the different applications. Performance is also important 
+because it affects the scalability of a software system. 
+ 
+5 Verifiability. A software system is verifiable if its properties can be verified 
+easily. For example, it is important to be able to verify the correctness or the 
+performance of a software system.
+ 
+ Verifiability is usually an internal quality, although it sometimes becomes an 
+external quality also. For example, in many security-critical applications, the 
+customer requires the verifiability of certain properties. The highest level of 
+the security standard for a trusted computer system requires the verifiability 
+of the operating system kernel. 
+
+
+
+##### CS_Agarwal2010 PDF p108 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+95
+ 
+6. Repairability. A software system is repairable if it allows the correction of 
+its defects with a limited amount of work. In many engineering products, 
+repairability is a major design goal. For example, automobile engines are built 
+with the parts that are most likely to fail as the most accessible. In computer 
+hardware engineering, there is a subspecialty called Repairability, Availability, 
+and Serviceability (RAS).
+ 
+7. Evolvability. Like other engineering products, software products are modified 
+over time to provide new functions or to change existing functions. Indeed, 
+the fact that software is so malleable makes modifications extremely easy to 
+apply to an implementation. 
+ 
+8. Understandability. Some software systems are easier to understand than 
+others. Of course, some tasks are inherently more complex than others. 
+ 
+ Given tasks of inherently similar difficulty, we can follow certain guidelines 
+to produce more understandable designs and to write more understandable 
+programs. For example, abstraction and modularity enhance a system’s under-
+standability. 
+ 
+9. Interoperability. “Interoperability” refers to the ability of a system to coexist 
+and cooperate with other systems.
+ 
+ With interoperability, a vendor can produce different products and allow 
+the user to combine them if necessary. This makes it easier for the vendor 
+to produce the products, and it gives the user more freedom in exactly what 
+functions to pay for and to combine. Interoperability can be achieved through 
+standardization of interfaces. 
+ 
+10. Productivity. Productivity is a quality of the software-production process; it 
+measures the efficiency of the process and, as we said before, is the performance 
+quality applied to the process. An efficient process results in faster delivery of 
+the product.
+ 
+ Productivity offers many trade-offs in the choice of a process. For example, a 
+process that requires specialization of individual team members may lead to 
+productivity in producing a certain product, but not in producing a variety of 
+products. Software reuse is a technique that leads to the overall productivity of 
+an organization that is involved in developing many products, but developing 
+reusable modules is harder than developing modules for one’s own use, thus 
+reducing the productivity of the group that is developing reusable modules as 
+part of their product development.
+ 
+11. Timeliness. Timeliness is a process-related quality that refers to the ability to 
+deliver a product on time. 
+
+
+
+##### CS_Agarwal2010 PDF p109 #####
+96 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ Timeliness requires careful scheduling, accurate estimation of work, and 
+clearly specified and verifiable milestones. 
+ 
+12. Visibility. A software-development process is visible if all of its steps and its 
+current status are documented clearly. Another term used to characterize this 
+property is transparency. The idea is that the steps and the status of the project 
+are available and easily accessible for external examination. 
+4.3.7 Importance of Software Quality
+ 
+We would expect quality to be a concern of all producers of goods and services. 
+However, the special characteristics of software, and in particular, its intangibility 
+and complexity, make special demands. 
+ 
+1. Increasing Criticality of Software. The final customer or user is naturally 
+anxious about the general quality of software, especially its reliability. This 
+is increasingly the case as organizations become more dependent on their 
+computer systems and software is used more and more in areas which are 
+safety critical; for example, to control aircraft. 
+ 
+2. The Intangibility of Software. This makes it difficult to know whether a 
+particular task in a project has been completed satisfactorily. The results of 
+these tasks can be made tangible by demanding that the developers produce 
+‘deliverables’ that can be examined for quality. 
+ 
+3. Accumulating Errors During Software Development. As computer system 
+development is made up of a number of steps where the output from one 
+step is the input to the next, the errors in the earlier deliverables will be added 
+to those in the later steps leading to an accumulating detrimental effect, and 
+generally, the later in a project that an error is found the more expensive it will 
+be to fix. In addition, because the number of errors in the system is unknown 
+the debugging phases of a project are particularly difficult to control.
+ 
+ 
+For these reasons quality management is an essential part of effective overall 
+project management. 
+4.4 
+CAPABILITY MATURITY MODEL (SEI-CMM)
+ 
+SEI-CMM stands for Software Engineering Institute Capability Maturity Model. 
+The CMM was developed by the Software Engineering Institute (SEI) of the 
+Carnegie Mellon University in the USA, which is engaged in a long-term program 
+of software-process improvement. 
+
+
+
+##### CS_Agarwal2010 PDF p110 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+97
+ 
+ 
+It is a model that helps in judging the maturity of a software process of an 
+organization. It also helps to identify the main process that will help in increasing 
+the maturity of these processes. It has become a standard for assessing and 
+improving software processes. 
+ 
+ 
+SEI-CMM can be used in two ways: capability evaluation and software-process 
+assessment. Capability evaluation and software-process assessment differ in 
+motivation, objective, and the final use of the result. Capability evaluation provides 
+a way to assess the software-process capability of an organization. The results of 
+capability evaluation indicate the likely contractor performance if the contractor 
+is awarded a work. Therefore, the results of the software-process capability 
+assessment can be used to select a contractor. On the other hand, software-process 
+assessment is used by an organization with the objective to improve its process 
+capability. Thus, this type of assessment is for purely internal use.
+ 
+ 
+Five levels of process maturing have been proposed for the software industry 
+by SEI-CMM, which indicate the sophistication and quality of their software 
+production practices. These levels are defined as follows:  
+ 
+1. Level 1 (Initial). The software process is adhoc, and even chaotic at time. 
+The organization whose success depends on individual effort and whose 
+processes are not defined and documented come under this level.
+ 
+ Organizations at this level can benefit most by improving project 
+management, quality assurance, and change control. 
+ 
+2. Level 2 (Repeatable). Here basic management practices, such as tracking 
+costs, schedules, and functionality are established but not the procedures 
+for doing it. Here, the efforts done previously for the success of a project 
+may repeat.
+ 
+ Some of the characteristics of a process at this level are: project commitments 
+are realistic and based on past experience with similar projects, costs and 
+schedules are tracked and problems resolved when they arise, formal 
+configuration control mechanisms are in place, and software project 
+standards are defined and followed. 
+ 
+3. Level 3 (Defined). The organization-wide software process includes 
+management and engineering procedures. These procedures are well-
+defined, documented, standardized, and integrated. All projects make use 
+of the documented and approved version of the organization process for 
+software development and maintenance. But the process and practices 
+are not analyzed quantitatively. In this process both the development and 
+management processes are formal. ISO 9000 aims at achieving this level.
+
+
+
+##### CS_Agarwal2010 PDF p111 #####
+98 
+SOF TWARE ENGINEERING AND TESTING
+ 
+4. Level 4 (Managed). At this level, the focus is on software metrics. Two 
+types of metrics are collected. Product metrics measure the characteristics 
+of the product being developed, such as its size, reliability, time complexity, 
+understandability, etc. Process metrics reflect the effectiveness of the 
+process being used, such as the average defect correction time, productivity, 
+the average number of defects found per hour of inspection, the average 
+number of failures detected during testing per LOC, and so forth. The 
+process metrics are used to check if a project performed satisfactorily. 
+Thus, the results of process measurements are used to evaluate project 
+performance rather than to improve the process. 
+ 
+ Software processes and products are quantitatively understood, measured, 
+and controlled using detailed procedures. 
+ 
+5. Level 5 (Optimized). At this level, an organization is committed to 
+continuous process improvement. Process improvement is budgeted 
+and planned and is an integral part of the organization’s process. The 
+organizations have the means to identify weaknesses and strengthen the 
+process proactively, with the goal of preventing the occurrence of defects. 
+Best software-engineering and management practices are used throughout 
+the organization.
+FIGURE 4.4 Software Engineering Institute Levels of Maturity
+ 
+ 
+Except for Level 1, each maturity level is characterized by several Key Process 
+Areas (KPAs) that indicate the areas an organization should focus on to improve 
+its software process at the next level.
+
+
+
+##### CS_Agarwal2010 PDF p112 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+99
+ 
+ 
+This is shown in Table 4.2:  
+TABLE 4.2
+MM level
+Characteristics
+Focus 
+Key Process Areas
+1
+(Initial)
+Chaotic, 
+unrepeatable, 
+high 
+risk 
+of 
+non-
+performance
+Competent 
+people
+Not applicable
+2
+(Repeatable)
+Methodical in umbrella 
+activities and processes. 
+Performance is repeated 
+but not improved 
+Project 
+man-
+agement
+Configuration 
+manage-
+ment, quality assurance, 
+sub-contract management, 
+project tracking  and over-
+sight, project planning
+3
+(Defined)
+Improved 
+performance 
+in cost, schedule quality, 
+and risk management
+Definition 
+of 
+processes
+Peer reviews, inter-group 
+coordination, 
+software 
+product engineering, train-
+ing program, integrated 
+software 
+management, 
+and organization process 
+definition
+4
+(Managed)
+Learns from project ex-
+perience, and continuous 
+performance 
+improve-
+ment in all key areas of 
+the project
+Product 
+and 
+process quality
+Quality management, pro-
+cess measurement, and 
+analysis 
+5
+(Optimized)
+All-around performance, 
+improvement 
+through 
+learning. 
+High 
+per-
+formance in all quality 
+attributes 
+and 
+risk 
+management 
+through 
+RMMM
+C o n t i n u o u s 
+process 
+im-
+provement
+Process 
+change 
+mana-
+gement, 
+technology 
+innovation, 
+and 
+defect 
+prevention  
+4.5 
+INTERNATIONAL STANDARD ORGANIZATION (ISO)
+4.5.1 
+Introduction to the ISO
+ 
+The International Organization for Standardization (ISO) is a group of worldwide 
+federations of national standards bodies from some 100 countries. The ISO is a 
+non-governmental organization established in 1947.
+
+
+
+##### CS_Agarwal2010 PDF p113 #####
+100 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+The ISO-9000 standard specifies quality-assurance elements in generic terms, 
+which can be applied to any business, regardless of the product or services being 
+offered. In order to register for one of the quality-assurance system models 
+contained in the ISO-9000, third-party auditors examine an organization’s quality 
+system and operations for compliance to the standard and for effective operations. 
+Upon successful audit, the organization receives a certificate from a registered body 
+represented by the auditors. Thereafter, semi-annual audits ensure conformance to 
+the standard.
+ 
+ 
+The ISO-9000 standard views an organization as a set of interrelated processes. 
+In order to pass the criteria for ISO-9000 compliance, the processes must address the 
+identified areas, and document and practice them. When a process is documented, 
+it is better understood, controlled, and improved. However, the ISO-9000 standard 
+does not specify how an organization should implement its quality system. 
+Therefore, the biggest challenge is to design and implement a quality-assurance 
+system that meets the standard and gels well with the products/services of the 
+organization.
+ 
+ 
+The ISO-9001 is a quality-assurance standard that is specific to software 
+engineering. It specifies 20 standards with which an organization must comply for 
+an effective implementation of the quality assurance system.
+ 
+ 
+The ISO-9000 series of standards is a set of documents dealing with quality 
+systems that can be used for quality assurance purposes. The ISO-9000 series is not 
+just a software standard. It is a series of five related standards that are applicable to 
+a wide variety of industrial activities, including design/development, production, 
+installation, and servicing.
+4.5.2 ISO-9000 Mission
+ 
+The mission of the ISO is to promote the development of standardization and 
+related activities to facilitate the international exchange of goods and services, 
+and to develop cooperation in the spheres of intellectual, scientific, technological, 
+and economic activity. The ISO published its ISO-9000 standard in 1988. ISO-9000 
+consists of three standards for external quality assurance. These are ISO-9001, ISO-
+9002, and ISO-9003.
+ 
+1. ISO-9001. The ISO-9001 is an international quality-management system. The 
+ISO-9001 is mainly related to the software industry. It lays down the standards 
+for designing, developing, servicing, and producing a standard quality of 
+goods. It is also applicable to most software-development organizations. 
+ 
+2. ISO-9002. The ISO-9002 is basically related to manufacturing only and is 
+silent on designing issues. Examples of this category of industries include 
+steel- and car-manufacturing industries that buy the product and plant 
+
+
+
+##### CS_Agarwal2010 PDF p114 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+101
+designs from external sources and are involved in only manufacturing those 
+products. Therefore, the ISO-9002 is not applicable to software-development 
+organizations. 
+ 
+3. ISO-9003. The ISO-9003 standard applies to the service industry. The 
+organizations who are involved in only installation of products, services, and 
+testing of products are eligible for the ISO-9003 certification.
+4.5.3 Why is ISO certification required by the software industry?
+ 
+There are several reasons why the software industry must get an ISO certification. 
+Some of the important reasons include:  
+ 
+ It is sign of customer confidence. This certification has become a standard for 
+international bidding.
+ 
+ It is a motivating factor for business organizations.
+ 
+ It makes processes more focused, efficient, and cost-effective. 
+ 
+ It helps in designing high-quality repeatable software products.
+ 
+ It highlights weaknesses and suggests corrective measures for improvements. 
+ 
+ It facilitates the development of optimal processes and total quality measure-
+ment.
+ 
+ It emphasizes the need for proper documentation.
+4.5.4 How does an organization obtain  ISO-9000 certification?
+ 
+An organization intending to obtain ISO-9000 certification applies to a ISO-9000 
+registrar for registration. The ISO-9000 registration process consists of the following 
+stages: 
+ 
+1. Application. Once an organization decides to go for ISO-9000 certification, it 
+applies to a registrar for registration.
+ 
+2. Pre-assessment. During this stage, the registrar makes a rough assessment of 
+the organization. 
+ 
+3. Document Review and Adequacy of Audit. During this stage, the registrar 
+reviews the documents submitted by the organization and makes suggestions 
+for possible improvements.
+ 
+4. Compliance Audit. During this stage, the registrar checks whether the 
+suggestions made by it during review have been complied by the organization 
+or not.
+ 
+5. Registration. The registrar awards the ISO-9000 certificate after successful 
+completion of all previous phases. 
+
+
+
+##### CS_Agarwal2010 PDF p115 #####
+102 
+SOF TWARE ENGINEERING AND TESTING
+ 
+6. Continued Surveillance. The registrar continues to monitor the organization, 
+though only periodically. 
+4.5.5 Benefits of ISO-9000 Certification 
+ 
+Benefits of ISO-9000 certification include:
+ 
+1. Continuous Improvement. Business ISO-9000 certification forces an 
+organization to focus on “how they do business.” Each procedure and work 
+instruction must be documented and thus becomes the springboard for 
+continuous improvement.
+ 
+2. Eliminate Variation. Documented processes are the basis for repetition 
+and help eliminate variation within the process. As variation is eliminated, 
+efficiency improves. As efficiency improves, the cost of quality is reduced. 
+ 
+3. Higher Real and Perceived Quality
+ 
+(i) With the development of solid corrective and preventative measures, 
+permanent, company-wide solutions to quality problems are found. 
+ 
+(ii) This results in higher quality. 
+ 
+4. Boost Employee Morale. Employee morale is increased as they are asked to 
+take control of their processes and document their work processes. 
+ 
+5. Improved Customer Satisfaction. Customer satisfaction, and more importantly 
+customer loyalty, grows as a company transforms from a reactive organization 
+to a proactive, preventative organization. It becomes a company people want 
+to do business with.
+ 
+6. Increased Employee Participation. Reduced problems resulting from increased 
+employee participation, involvement, awareness, and systematic employee 
+training. 
+ 
+7. Better Product and Services. Better products and services result from 
+continuous improvement processes.
+ 
+8. Greater Quality Assurance. Fosters the understanding that quality, in and of 
+itself, is not limited to a quality department but is everyone’s responsibility.
+ 
+9. Improved Profit Levels. Improved profit levels result as productivity improves 
+and rework costs are reduced. 
+ 
+10. Improved Communication. Improved communications both internally and 
+externally which improves quality, efficiency, on-time delivery, and customer/
+supplier relations.
+ 
+11. Reduced Cost. ISO standards result in reduced costs of the product. 
+ 
+12. Competitive Edge. By offering higher customer services, ISO-9000 standards 
+add a competitive edge.
+
+
+
+##### CS_Agarwal2010 PDF p116 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+103
+4.5.6 Limitations of ISO-9000 Certification
+ 
+The limitations of ISO-9000 certification include:
+ 
+ ISO-9000 does not provide any guidelines for defining an appropriate 
+process.
+ 
+ ISO-9000 certification process is not foolproof and no international accrediting 
+agency exists.
+ 
+ ISO-9000 does not automatically lead to continuous process improvement, i.e., 
+it does not automatically lead to TQM.
+4.5.7 Uses of ISO
+ 
+ISO certification is used as a reference model for a contract between the external 
+independent parties. It must be remembered that ISO certification does not 
+guarantee a high-quality product. It focuses mainly on the processes. ISO is now 
+being used as the standard and basis of evaluation for international bidding. The 
+ISO-9000 specifies a set of guidelines for repeatable organizations. A repeatable 
+organization is one where the production process is person-independent.
+4.5.8 Salient Features of ISO-9001 Requirements 
+ 
+The salient features of ISO-9001 requirements include:  
+ 
+ All documents concerned with the development of a software product should 
+be properly managed, authorized, and controlled.
+ 
+ Proper plans should be prepared and then progress against these plans should 
+be monitored.
+ 
+ Important documents should be independently checked and reviewed for 
+effectiveness and correctness. 
+ 
+ The product should be tested against its specifications.
+4.5.9 ISO-9126
+ 
+Over the years, various lists of software quality characteristics have been put 
+forward, such as those of McCall, described previously and of Boehm. A difficulty 
+has been the lack of agreed definitions of the qualities of good software. The term 
+‘maintainability’ has been used, for example, to refer to the ease with which an 
+error can be located and corrected in a piece of software, and also in a wider sense 
+to include the ease of making any changes. For some, ‘robustness’ has meant the 
+software’s tolerance of incorrect input, while for others it has meant the ability 
+to change program code without introducing unexpected errors. The ISO-9126 
+standard was published in 1991 to tackle the question of the definition of software 
+
+
+
+##### CS_Agarwal2010 PDF p117 #####
+104 
+SOF TWARE ENGINEERING AND TESTING
+quality. This 13-page document was designed as a foundation upon which further, 
+more detailed, standards could be built. 
+ 
+ 
+ISO-9126 identifies six software quality characteristics:  
+ 
+ Functionality, which covers the functions that a software product provides 
+to satisfy user needs;
+ 
+ Reliability, which relates to the capability of the software to maintain its 
+level of performance;
+ 
+ Usability, which relates to the effort needed to use the software;
+ 
+ Efficiency, which relates to the physical resources used when the software 
+is executed;
+ 
+ Maintainability, which relates to the effort needed to make changes to the 
+software; 
+ 
+ Portability, which relates to the ability of the software to be transferred to 
+a different environment. 
+ 
+ 
+The ISO-9126 has sub-characteristics for each of the primary characteristics. 
+It is indicative of the difficulties of gaining widespread agreement that these sub-
+characteristics are outside the main standards and are provided for ‘information 
+only.’ They are useful as they clarify what is meant by the main characteristics.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Functionality 
+ 
+Suitability
+ 
+ 
+ 
+ 
+ 
+Accuracy 
+ 
+ 
+ 
+ 
+ 
+Interoperability
+ 
+ 
+ 
+ 
+ 
+Compliance
+ 
+ 
+ 
+ 
+ 
+Security
+ 
+ 
+Compliance refers to the degree to which the software adheres to 
+application-related standards or legal requirements. Typically these are auditing 
+requirements. 
+ 
+ 
+Interoperability and security are good illustrations of the efforts of the ISO-
+9126 to clarify terminology. ‘Interoperability’ refers to the ability of the software 
+to interact with other systems. The framers of the ISO-9126 have chosen this word 
+rather than compatibility because the latter causes confusion with the characteristic 
+referred to by the ISO-9126 as ‘replace ability’ (see below).
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Reliability 
+ 
+Maturity
+ 
+ 
+ 
+ 
+ 
+Fault tolerance
+ 
+ 
+ 
+ 
+ 
+Recoverability
+
+
+
+##### CS_Agarwal2010 PDF p118 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+105
+ 
+ 
+Maturity refers to the frequency of failure due to faults in a software product, 
+the implication being that the more the software has been used, the more faults will 
+have been uncovered and removed. It is also interesting to note that recoverability 
+has been clearly distinguished from security which describes the control of access 
+to a system.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Usability  
+ 
+Understandability
+ 
+ 
+ 
+ 
+ 
+Learnability
+ 
+ 
+ 
+ 
+ 
+Operability
+ 
+ 
+Understandability is a pretty clear quality to grasp, although the definition 
+“attributes that bear on the users’ efforts for recognizing the logical concept and 
+its applicability” in our view actually makes it less clear!
+ 
+ 
+Note how learnability is distinguished from operability. A software tool 
+could be easy to learn but time-consuming to use because, perhaps, it uses a large 
+number of nested menus. This might be fine for a package used intermittently, but 
+not where the system is used for many hours each day. In this case, learnability has 
+been incorporated at the expense of operability. 
+ 
+ 
+ 
+Characteristics 
+Sub-characteristics
+ 
+ 
+ 
+Efficiency 
+ 
+Time behavior
+ 
+ 
+ 
+ 
+ 
+Resource behavior
+ 
+ 
+ 
+Maintainability 
+ 
+Analyzability
+ 
+ 
+ 
+ 
+ 
+Changeability 
+ 
+ 
+ 
+ 
+ 
+Stability 
+ 
+ 
+ 
+ 
+ 
+Testability
+ 
+ 
+Analyzability is the quality that McCall called diagnosability, the ease with 
+which the cause of a failure can be determined. Changeability is the quality that 
+others have called flexibility: the latter name is perhaps a better one as changeability 
+has a slightly different connotation in plain English—it implies that the suppliers 
+of the software are always changing it! 
+ 
+ 
+Stability, on the other hand, does not mean that the software never changes: It 
+means that there is a low risk of a modification to the software having unexpected 
+effects.
+ 
+ 
+ 
+Characteristic 
+Sub-characteristics
+ 
+ 
+ 
+Portability 
+ 
+Adaptability
+ 
+ 
+ 
+ 
+ 
+Installability
+ 
+ 
+ 
+ 
+ 
+Conformance 
+ 
+ 
+ 
+ 
+ 
+Replaceability
+
+
+
+##### CS_Agarwal2010 PDF p119 #####
+106 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Conformance, as distinguished from compliance, relates to those standards 
+that have a bearing on portability. The use of a standard programming language 
+common to many software/hardware environments would be an example of 
+conformance. Replaceability refers to the factors that give ‘upwards compatibility’ 
+between old software components and the new ones. Downwards compatibility is 
+specifically excluded from the definition. 
+ 
+ 
+The ISO-9126 provides guidelines for the use of the quality characteristics. 
+Variation in the importance of different quality characteristics depending on 
+the type of product is stressed. Thus, reliability will be of particular concern 
+with safety critical systems while efficiency will be important for some real-time 
+systems. For interactive end-user systems, the key quality might be usability. Once 
+the requirements for the software product have been established the following 
+steps are suggested:  
+ 
+ Quality metrics selection
+ 
+ Ratings level definition
+ 
+ Assessment criteria definition 
+4.6 
+COMPARISON OF ISO-9000 CERTIFICATION AND THE 
+SEI-CMM 
+ 
+Comparison of some of the key characteristics of ISO-9000 certification and the 
+SEI-CMM model are as follows:  
+ 
+ The emphasis of the SEI-CMM is on continuous process improvement, 
+whereas the ISO-9000 addresses the minimum criteria for an acceptable quality 
+system.
+ 
+ The Capability Maturity Model (CMM) is a five-level framework for measuring 
+software-engineering practices, as they relate to a process. On the other hand 
+the ISO-9000 defines a minimum level of generic attributes for a quality-
+management program.
+ 
+ The ISO-9000 is awarded by an international standard body. Therefore, ISO-
+9000 certification can be quoted by an organization in official documents, in 
+communication with external parties, and in tender quotations. However, SEI-
+CMM assessment is purely for internal use. 
+ 
+ The ISO-9000 standards were basically designed to audit manufacturing/
+service organizations, whereas the CMM was developed specifically for the 
+software industry and thus addresses several issues specific to the software 
+industry. 
+
+
+
+##### CS_Agarwal2010 PDF p120 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+107
+ 
+ The SEI-CMM focuses strictly on software, while the ISO-9000 has a much 
+wider scope: hardware, software, processed materials, and services. 
+ 
+ The SEI-CMM model provides a list of key process areas (KPAs) on which 
+an organization at any maturity level needs to concentrate to take it from 
+one maturity level to the next. Thus, it provides a way for achieving gradual 
+quality improvement.
+ 
+ The SEI-CMM model aims for achieving Total Quality Management (TQM), 
+which is beyond quality assurance, whereas the ISO-9000 aims at Level 3 
+(defined level) of the SEI-CMM model.
+ 
+ The ISO-9000 requires that procedures for handling, storage, packaging, 
+and delivery be established and maintained, while replication, delivery, and 
+installation are not covered in the SEI-CMM.
+ 
+ The ISO-9000 requires that the product be identified and traceable during all 
+stages of production, delivery, and installation while the SEI-CMM covers this 
+clause primarily in software-configuration management.
+4.7 
+RELIABILITY ISSUES
+4.7.1 
+Software Reliability
+ 
+Software reliability is defined as the probability of failure-free operation of a computer 
+program in a specified environment for a specified time.
+OR
+ 
+ 
+Reliability of a software product essentially denotes its trustworthiness or dependability. 
+OR
+ 
+ 
+Reliability of a software product can also be defined as the probability of the product 
+working “correctly” over a given period of time.
+ 
+ 
+The expected curve for software is given in Figure 4.5. 
+FIGURE 4.5 Software Reliability Curve (Failure Rate Versus Time)
+
+
+
+##### CS_Agarwal2010 PDF p121 #####
+108 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Software may be retired only if it becomes obsolete. Some of the contributing 
+factors are given below:  
+ 
+ Change in environment
+ 
+ Change in infrastructure/technology
+ 
+ Major change in requirements
+ 
+ Increase in complexity
+ 
+ Extremely difficult to maintain
+ 
+ Deterioration in structure of the code
+ 
+ Slow execution speed 
+ 
+ Poor graphical user interfaces
+4.7.2 Software-Reliability Specifications
+ 
+Reliability is a complex concept, which should always be considered at the system 
+level rather than the individual component level. Because the components in a 
+system are interdependent, a failure in one component can be propagated through 
+the system and affect the operation of other components. In a computer-based 
+system, you have to consider three dimensions when specifying the overall system 
+reliability: 
+ 
+1. Hardware Reliability. What is the probability of a hardware component failing 
+and how long does it take to repair that component?
+ 
+2. Software Reliability. How likely is it that a software component will produce 
+an incorrect output? Software failures are different from hardware failures in 
+that software does not wear out. It can continue operating correctly after an 
+incorrect result has been produced.
+ 
+3. Operator Reliability. How likely is it that the operator of a system will make 
+an error?
+ 
+ 
+The reliability of a system depends upon a number of factors rather than the 
+sum of all the probabilities (failure probabilities of each factor).
+ 
+ 
+PS  = PA + PR + ................ + PN, 
+ 
+where 
+ 
+ 
+PS = Probability of system failure
+ 
+ 
+PA = Probability of component A failure
+ 
+ 
+PB  = Probability of component B failure
+ 
+ 
+PN = Probability of component N failure
+
+
+
+##### CS_Agarwal2010 PDF p122 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+109
+ 
+ 
+As the number of factors increase, the overall probability of system failure 
+increases.
+4.7.3 Reliability Terminologies
+TABLE 4.3 Reliability Terminologies
+Term
+Description
+System failure
+An event that occurs at some point in time when the system does 
+not deliver a service as expected by its users. 
+System error 
+Erroneous system behavior where the behavior of the system 
+does not conform to its specifications.
+System fault
+An incorrect system state, i.e., a system state that is unexpected 
+by the designers of the system.
+Human errors or mistakes
+Human behavior that results in the introduction of faults into a 
+system.
+4.7.4 Classification of Failures
+ 
+When a system specifies the reliability then the engineer should identify the failure 
+type and consider whether it should be treated differently in specification. Many 
+large systems are divided into small subsystems and each subsystem has different 
+reliability requirements. It is easy and cheap to assess the reliability requirements 
+of each subsystem separately. 
+TABLE 4.4 Failure Classifications
+Failure Class
+Description
+Recoverable
+The system can recover with or without operator intervention.
+Transient
+Occurs only with certain inputs.
+Unrecoverable 
+The system cannot recover without operator intervention or the 
+system may need to be restarted.
+Corrupting
+Failure corrupts system data.
+Non-corrupting
+Failure does not corrupt system data.
+Permanent
+Occurs for all input values while invoking a function of the system.
+
+
+
+##### CS_Agarwal2010 PDF p123 #####
+110 
+SOF TWARE ENGINEERING AND TESTING
+4.8 
+RELIABILITY METRICS
+ 
+Reliability metrics are used to quantitatively express the reliability of a software product.
+ 
+ 
+Some reliability metrics, which can be used to quantify the reliability of a 
+software product are: 
+ 
+1. MTTF (Mean Time to Failure). Components have an average lifetime 
+and this is reflected in the most widely used hardware reliability metric, 
+Mean Time to Failure (MTTF). The MTTF is the mean time for which a 
+component is expected to be operational.
+ 
+ The MTTF is the average time between observed system failures. An 
+MTTF of 500 means that one failure can be expected every 500 time units. 
+The time units are totally dependent on the system and it can even be 
+specified in the number of transactions, as is the case of database query 
+systems.
+ 
+ MTTF is relevant for systems with long transactions, i.e., where system 
+processing takes a long time. MTTF should be longer than transaction 
+length. For example, it is suitable for computer-aided design systems 
+where a designer will work on a design for several hours as well as for 
+word-processor systems. 
+ 
+2. MTTR (Mean Time to Repair). Once failure occurs, some time is required 
+to fix the error. MTTR measures the average time it takes to track the errors 
+causing the failure and then to fix them.
+OR
+ 
+ MTTR is the average time to replace a defective component.
+ 
+ Once a hardware component fails then the failure is usually permanent 
+so the Mean Time to Repair (MTTR) reflects the time taken to repair or 
+replace the component.
+ 
+3. MTBF (Mean Time Between Failures). We can combine the MTTF and 
+MTTR metrics to get the MTBF metric:
+ 
+ 
+MTBF = MTTF + MTTR 
+ 
+ Thus, a MTBF of 300 hours indicates that once a failure occurs, the next 
+failure is expected to occur only after 300 hours. In this case, the time 
+measurements are real time and not the execution time as in MTTF.
+ 
+4. POFOD (Probability of Failure on Demand). POFOD is the likelihood 
+that the system will fail when a service request is made. A POFOD of 0.001 
+means that one out of a thousand service requests may result in failure. 
+
+
+
+##### CS_Agarwal2010 PDF p124 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+111
+ 
+ POFOD is an important measure for safety critical systems and should 
+be kept as low as possible. It is relevant for many safety-critical systems 
+with the exception of management components, such as an emergency 
+shutdown system in a chemical plant.
+ 
+5. ROCOF (Rate of Occurrences of Failure). ROCOF is the frequency of 
+occurrence with which unexpected behavior is likely to occur. A ROCOF 
+of 2/100 means that two failures are likely to occur in each 100 operational 
+time units. This metric is sometimes called the failure intensity. 
+ 
+ It is relevant for operating systems and transaction-processing systems 
+where the system has to process a large number of similar requests that are 
+relatively frequent; for example, credit-card processing systems, airline-
+booking systems, etc.
+ 
+6. AVAIL (Availability). Availability is the probability that the system is 
+available for use at a given time. An availability of 0.998 means that in 
+every 1000 time units, the system is likely to be available for 998 of these.
+4.8.1 
+Measurements of Reliability and Availability
+ 
+Measurement of Reliability
+ 
+Most hardware-related reliability models are predicted on failure due to wear 
+rather than failure due to design defects. In hardware, failures due to physical wear 
+(e.g., effect of temperature corrosion) are more likely than a design-related failure. 
+There has been debate over the relationship between key concepts in hardware 
+reliability and their applicability to software. Although an irrefutable link has yet 
+to be established.
+ 
+ 
+If we consider a computer-based system, a simple measure of reliability is 
+mean-time-between-failure (MTBF) and it can be expressed as:
+ 
+ 
+MTBF = MTTF + MTTR,
+ 
+where
+ 
+ 
+MTTF = Mean Time to Failure
+ 
+ 
+MTTR  = Mean Time to Repair.
+ 
+Measurement of Availability
+ 
+Many researchers argue that MTBF is a far more useful measure than defects/
+KLOC or defects/FP because an end-user is concerned with failures, not with the 
+total error count. Because each error contained within a program does not have the 
+
+
+
+##### CS_Agarwal2010 PDF p125 #####
+112 
+SOF TWARE ENGINEERING AND TESTING
+same failure rate, the total error count provides little indication of the reliability 
+of a system. In addition to the reliability measure, we must develop a measure of 
+availability. Software availability is the probability that a program is operating 
+according to requirements at a given point in time and is defined as:
+ 
+ 
+Availability =  
+×
+MTTF
+100%
+(MTTF + MTTR)
+.
+ 
+ 
+The MTBF reliability measure is equally sensitive to MTTF and MTTR. The 
+availability measure is somewhat more sensitive to MTTR.
+4.9 
+RELIABILITY GROWTH MODELING
+ 
+A reliability growth model is a mathematical model of how software reliability 
+improves as errors are detected and repaired. A reliability growth model can be 
+used to predict when a particular level of reliability is likely to be attained. Thus, 
+reliability growth modeling can be used to determine when to stop testing to 
+attain a given reliability level. Although several reliability growth models have 
+been proposed as discussed in the following sections.
+4.9.1 
+Jelinski-Moranda Model
+ 
+The Jelinski-Moranda model is the earliest and probably the best-known reliability 
+model. It proposes a failure intensity function in the form of 
+ 
+ 
+λ (t) =  φ (N – i + 1), 
+ 
+where
+ 
+ 
+φ = Constant of proportionality
+ 
+ 
+N = Total number of errors present 
+ 
+ 
+i = Number of errors found by time interval ti
+ 
+ 
+This model assumes that all failures have the same failure rate. It means that 
+failure rate is a step function and there will be an improvement in reliability after 
+fixing a fault. So, every failure contributes equally to the overall reliability. 
+ 
+ 
+Here, failure intensity is directly proportional to the number of remaining 
+errors in a program. The relation between time and failure intensity is shown in 
+Figure 4.6.
+
+
+
+##### CS_Agarwal2010 PDF p126 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+113
+FIGURE 4.6 Relation Between T and λ 
+ 
+ 
+The time interval t1, t2 ... tk may vary in duration depending upon the occurrence 
+of a failure. 
+ 
+ 
+Between the (i – 1)th and ith failure, the failure intensity function is (N – i + 1)φ.
+ 
+ 
+Example 4.1. There are 50 errors estimated to be present in a program. We have 
+experienced 30 errors. Use the Jelinski-Moranda model to calculate the failure intensity 
+with a given value of φ = 0.03. What will be the failure intensity after the experience of 
+40 errors? 
+ 
+ 
+Solution.
+ 
+ 
+N = 50 errors
+ 
+ 
+i = 30 failures 
+ 
+ 
+φ = 0.03
+ 
+ 
+We know
+ 
+ 
+λ (t) = φ (N – i + 1)
+ 
+  
+ = 0.03 (50 –  30 + 1)
+ 
+  
+ = 0.63 failures/CPU hr. 
+ 
+ 
+After 40 failures
+ 
+ 
+λ (t) = 0.03 (50 – 40 + 1)
+ 
+ 
+ = 0.33 failures/CPU hr.
+
+
+
+##### CS_Agarwal2010 PDF p127 #####
+114 
+SOF TWARE ENGINEERING AND TESTING
+ 
+ 
+Hence, there is a continuous decrease in the failure intensity as the number of 
+failures experienced increases. 
+4.9.2 Little Wood and Verall’s Model
+ 
+This model allows for negative reliability growth to reflect the fact that when a 
+repair is carried out, it may introduce additional errors. It also models the fact that 
+as errors are repaired, the average improvement in reliability per repair decreases. 
+It treats an error’s contribution to reliability improvement as an independent 
+random variable having Gamma distribution. This distribution models the fact 
+that error corrections with large contributions to reliability growth are removed 
+first. This represents diminishing return as testing continues. 
+ 
+ 
+There are more complex reliability growth models that give greater accurate 
+approximations to reliability growth. However, these models are beyond the scope 
+of this text. 
+4.9.3 Step Function Model
+ 
+The simplest reliability growth model is a step function model, where it is assumed 
+that the reliability increases by a constant increment each time an error is detected 
+and repaired. Such a model is shown in Figure 4.7.
+FIGURE 4.7 Step Function Model of Reliability Growth
+ 
+ 
+However, this simple model of reliability, which implicitly assumes that 
+all errors contribute equally to reliability growth, is highly unrealistic since we 
+already know that corrections of different errors contribute differently to reliability 
+growth. 
+
+
+
+##### CS_Agarwal2010 PDF p128 #####
+ 
+SOFTWARE RELIABILITY AND QUALITY ASSURANCE 
+115
+4.10 
+RELIABILITY ASSESSMENT
+ 
+In general, many properties of engineering artifacts, such as reliability, are measured 
+and verified in this way. For instance, the reliability of an electrical appliance may 
+be measured in terms of its probability of failure within a given time. This measure 
+is helpful whenever we cannot guarantee absence of failures absolutely. Software 
+reliability is the probability of the failure-free operation of a computer program for 
+a specified time in a specified environment.
+ 
+ 
+The process of measuring the reliability of a system is illustrated in 
+Figure 4.8. 
+FIGURE 4.8 The Reliability Measurement Process
+ 
+ 
+This process involves four stages:  
+ 
+ Existing systems of the same type are studied to establish an operational 
+profile. An operational profile identifies different classes of system inputs 
+and the probability of these inputs in normal use.
+ 
+ A set of test data is constructed (sometimes with the help of test-data 
+generators) that reflects the operational profile.
+ 
+ The system is tested with these data and the number of failures is observed. 
+The times of these failures are also logged; the time units chosen should be 
+appropriate for the reliability metric used.
+ 
+ After a statistically significant number of failures have been observed, 
+the software reliability can then be computed. You can then work out the 
+appropriate reliability metric value.
+ 
+ 
+This approach to reliability measurement is not easy to apply in practice. The 
+principal difficulties that arise are due to:
+ 
+ Operational profile uncertainty. The operational profiles may not be an 
+accurate reflection of the real use of the system.
+ 
+ High costs of test-data generation. Defining a large amount of test data 
+takes a long time if it is not possible to generate this data automatically.
+ 
+ Statistical uncertainty when high reliability is specified. It is important 
+to generate a statistically significant number of failures to allow accurate 
+reliability measurements.
+
+
+
+##### CS_Agarwal2010 PDF p129 #####
+116 
+SOF TWARE ENGINEERING AND TESTING
+EXERCISES
+ 
+1. State some of the software quality factors that are proposed by McCall.
+ 
+2. Define representative qualities.
+ 
+3. Describe the various classifications of software quality. 
+ 
+4. How do you define reliability? Discuss various models for reliability allocation.
+ 
+5. What is software quality assurance?
+ 
+6. What are the goals of software quality assurance?
+ 
+7. What are the objectives of software quality assurance?
+ 
+8. Define an SQA plan.
+ 
+9. Why is it important for a software-development organization to obtain ISO-9000 
+certification?
+ 
+10. Discuss the main requirements of the ISO-9001 and compare it with the SEI-CMM. 
+ 
+11. Discuss how reliability changes over the lifetime of a software product and a hardware 
+product.
+ 
+12. Define:
+ 
+(i) Software quality
+ 
+(ii) Reliability metrics
+ 
+(iii) Software reliability
+ 
+13. Compare:
+ 
+(i) ISO and SEI-CMM
+ 
+(ii) Software and hardware reliability
+ 
+14. Explain, in detail, the SEI-CMM model. Also, differentiate it with ISO.
+ 
+15. Give the shortcomings of ISO-9000 certification.
+ 
+16. Explain any two types of reliability growth models.
+ 
+17. What is software reliability and software availability? Also, discuss how they are 
+measured.
+ 
+18. What is software quality?
+ 
+19. Explain the steps an organization will take in order to obtain ISO-9000 certification.
+ 
+20. Answer the following questions:
+ 
+(i) Can a program be correct and still not be reliable? Explain.
+ 
+(ii) What is ISO-9000 certification?
+ 
+(iii) What are the salient features of ISO-9001 requirements?
+ 
+(iv) What is software reliability? Explain.
+ 
+
+
+
+##### Pressman PDF p728 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+700
+When software fails in the real world, immediate and long-term hazards abound.
+The hazards can be related to human safety, economic loss, or effective operation of
+business and societal infrastructure. Cleanroom software engineering is a process
+model that removes defects before they can precipitate serious hazards. 
+26.1
+THE CLEANROOM APPROACH
+The philosophy of the “cleanroom” in hardware fabrication technologies is really quite
+simple: It is cost-effective and time-effective to establish a fabrication approach that
+precludes the introduction of product defects. Rather than fabricating a product and
+then working to remove defects, the cleanroom approach demands the discipline
+required to eliminate defects in speciﬁcation and design and then fabricate in a “clean”
+manner.
+The cleanroom philosophy was ﬁrst proposed for software engineering by Mills,
+Dyer, and Linger [MIL87] during the 1980s. Although early experiences with this dis-
+ciplined approach to software work showed signiﬁcant promise [HAU94], it has not
+gained widespread usage. Henderson [HEN95] suggests three possible reasons: 
+1. A belief that the cleanroom methodology is too theoretical, too mathematical, and too
+radical for use in real software development.
+2. It advocates no unit testing by developers but instead replaces it with correctness veri-
+ﬁcation and statistical quality control—concepts that represent a major departure from the
+way most software is developed today.
+3. The maturity of the software development industry. The use of cleanroom processes
+requires rigorous application of defined processes in all life cycle phases. Since most of
+the industry is still operating at the ad hoc level (as defined by the Software Engineer-
+ing  Institute Capability Maturity Model), the industry has not been ready to apply those
+techniques.
+Despite elements of truth in each of these concerns, the potential beneﬁts of clean-
+room software engineering far outweigh the investment required to overcome the
+cultural resistance that is at the core of these concerns.
+error records that result are ana-
+lyzed to enable mathematical
+computation of projected relia-
+bility for the software component. 
+What is the work product? Black-box, state-box, and
+clear-box speciﬁcations are developed. The results
+of formal correctness proofs and statistical use tests
+are recorded.
+How do I ensure that I’ve done it right? Formal proof
+of correctness is applied to the box structure
+specification. Statistical use testing exercises
+usage scenarios to ensure that errors in user func-
+tionality are uncovered and corrected. Test data
+are used to provide an indication of software
+reliability.
+Q U I C K
+L O O K
+“Cleanroom
+engineering achieves
+statistical quality
+control over software
+development by
+strictly separating
+the design process
+from the testing
+process in a pipeline
+of incremental
+software
+development.”
+Harlan Mills 
+
+
+
+##### Pressman PDF p729 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+26.1.1 The Cleanroom Strategy
+The cleanroom approach makes use of a specialized version of the incremental soft-
+ware model (Chapter 2). A “pipeline of software increments” [LIN94] is developed by
+small independent software engineering teams. As each increment is certiﬁed, it is
+integrated in the whole. Hence, functionality of the system grows with time.
+The sequence of cleanroom tasks for each increment is illustrated in Figure 26.1.
+Overall system or product requirements are developed using the system engineering
+methods discussed in Chapter 10. Once functionality has been assigned to the soft-
+ware element of the system, the pipeline of cleanroom increments is initiated. The
+following tasks occur:
+Increment planning. A project plan that adopts the incremental strategy is
+developed. The functionality of each increment, its projected size, and a
+cleanroom development schedule are created. Special care must be taken to
+ensure that certiﬁed increments will be integrated in a timely manner.
+Requirements gathering. Using techniques similar to those introduced in
+Chapter 11, a more-detailed description of customer-level requirements (for
+each increment) is developed.
+Box structure speciﬁcation. A speciﬁcation method that makes use of box
+structures [HEV93] is used to describe the functional speciﬁcation. Conforming
+701
+BSS
+RG
+Increment 1
+SE
+FD
+CV
+TP
+CG
+CI
+SUT
+C
+BSS
+RG
+Increment 2
+FD
+CV
+TP
+CG
+CI
+SUT
+C
+BSS
+RG
+Increment 3
+SE — system engineering
+RG — requirements gathering
+BSS — box structure specification
+FD — formal design
+CV — correctness verification
+CG — code generation
+CI — code inspection
+SUT — statistical use testing
+C — certification
+TP — test planning
+FD
+CV
+TP
+CG
+CI
+SUT
+C
+FIGURE 26.1
+The cleanroom
+process model
+What are 
+the major
+tasks conducted
+as part of
+cleanroom
+software
+engineering?
+?
+
+
+
+##### Pressman PDF p730 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+702
+to the operational analysis principles discussed in Chapter 11, box structures
+“isolate and separate the creative deﬁnition of behavior, data, and procedures
+at each level of reﬁnement.”
+Formal design. Using the box structure approach, cleanroom design is a
+natural and seamless extension of speciﬁcation. Although it is possible to
+make a clear distinction between the two activities, speciﬁcations (called
+black boxes) are iteratively reﬁned (within an increment) to become analo-
+gous to architectural and component-level designs (called state boxes and
+clear boxes, respectively).
+Correctness veriﬁcation. The cleanroom team conducts a series of rigor-
+ous correctness veriﬁcation activities on the design and then the code. Veriﬁ-
+cation (Sections 26.3 and 26.4) begins with the highest-level box structure
+(speciﬁcation) and moves toward design detail and code. The ﬁrst level of
+correctness veriﬁcation occurs by applying a set of “correctness questions”
+[LIN88]. If these do not demonstrate that the speciﬁcation is correct, more
+formal (mathematical) methods for veriﬁcation are used.
+Code generation, inspection, and veriﬁcation. The box structure speciﬁ-
+cations, represented in a specialized language, are translated into the 
+appropriate programming language. Standard walkthrough or inspection
+techniques (Chapter 8) are then used to ensure semantic conformance of the
+code and box structures and syntactic correctness of the code. Then correct-
+ness veriﬁcation is conducted for the source code.
+Statistical test planning. The projected usage of the software is analyzed and
+a suite of test cases that exercise a “probability distribution” of usage are planned
+and designed (Section 26.4). Referring to Figure 26.1, this cleanroom activity is
+conducted in parallel with speciﬁcation, veriﬁcation, and code generation.
+Statistical use testing. Recalling that exhaustive testing of computer soft-
+ware is impossible (Chapter 17), it is always necessary to design a ﬁnite num-
+ber of test cases. Statistical use techniques [POO88] execute a series of tests
+derived from a statistical sample (the probability distribution noted earlier) of
+all possible program executions by all users from a targeted population (Sec-
+tion 26.4).
+Certiﬁcation. Once veriﬁcation, inspection, and usage testing have been
+completed (and all errors are corrected), the increment is certiﬁed as ready
+for integration.
+Like other software process models discussed elsewhere in this book, the cleanroom
+process relies heavily on the need to produce high-quality analysis and design models.
+As we will see later in this chapter, box structure notation is simply another way for a
+software engineer to represent requirements and design. The real distinction of the
+cleanroom approach is that formal veriﬁcation is applied to engineering models. 
+“Quality is not an act.
+It is a habit.”
+Aristotle 
+Cleanroom emphasizes
+tests that exercise the
+way the software is
+really used. Use-cases
+provide excellent input
+to the statistical test
+planning process.
+WebRef
+An excellent source of
+information and resources
+for cleanroom software
+engineering can be found
+at 
+www.cleansoft.com
+
+
+
+##### Pressman PDF p731 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+26.1.2 What Makes Cleanroom Different?
+Dyer [DYE92] alludes to the differences of the cleanroom approach when he deﬁnes
+the process:
+Cleanroom represents the ﬁrst practical attempt at putting the software development process
+under statistical quality control with a well-deﬁned strategy for continuous process improve-
+ment. To reach this goal, a cleanroom unique life cycle was deﬁned which focused on math-
+ematics-based software engineering for correct software designs and on statistics-based
+software testing for certiﬁcation of software reliability.
+Cleanroom software engineering differs from the conventional and object-oriented
+views presented in Parts Three and Four of this book because
+1.
+It makes explicit use of statistical quality control.
+2.
+It veriﬁes design speciﬁcation using a mathematically based proof of correct-
+ness.
+3.
+It relies heavily on statistical use testing to uncover high-impact errors.
+Obviously, the cleanroom approach applies most, if not all, of the basic software
+engineering principles and concepts presented throughout this book. Good analy-
+sis and design procedures are essential if high quality is to result. But cleanroom
+engineering diverges from conventional software practices by deemphasizing (some
+would say, eliminating) the role of unit testing and debugging and dramatically
+reducing (or eliminating) the amount of testing performed by the developer of the
+software.1
+In conventional software development, errors are accepted as a fact of life. Because
+errors are deemed to be inevitable, each program module should be unit tested (to
+uncover errors) and then debugged (to remove errors). When the software is ﬁnally
+released, ﬁeld use uncovers still more defects and another test and debug cycle begins.
+The rework associated with these activities is costly and time consuming. Worse, it
+can  be degenerative—error correction can (inadvertently) lead to the introduction of
+still more errors.
+In cleanroom software engineering, unit testing and debugging are replaced by
+correctness veriﬁcation and statistically based testing. These activities, coupled with
+the record keeping necessary for continuous improvement, make the cleanroom
+approach unique.
+26.2
+FUNCTIONAL SPECIFICATION
+Regardless of the analysis method that is chosen, the operational principles presented
+in Chapter 11 apply. Data, function, and behavior are modeled. The resultant 
+703
+1
+Testing is conducted but by an independent testing team.
+The most important
+distinguishing
+characteristics of
+cleanroom are proof of
+correctness and
+statistical use testing.
+“It’s a funny thing
+about life: if you
+refuse to accept
+anything but the
+best, you very often
+get it.”
+W. Somerset
+Maugham 
+
+
+
+##### Pressman PDF p732 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+704
+models must be partitioned (reﬁned) to provide increasingly greater detail. The over-
+all objective is to move from a speciﬁcation that captures the essence of a problem
+to a speciﬁcation that provides substantial implementation detail.
+Cleanroom software engineering complies with the operational analysis princi-
+ples by using a method called box structure specification. A “box” encapsulates the
+system (or some aspect of the system) at some level of detail. Through a process of
+stepwise reﬁnement, boxes are reﬁned into a hierarchy where each box has referen-
+tial transparency. That is, “the information content of each box speciﬁcation is sufﬁ-
+cient to deﬁne its reﬁnement, without depending on the implementation of any other
+box” [LIN94]. This enables the analyst to partition a system hierarchically, moving
+from essential representation at the top to implementation-speciﬁc detail at the bot-
+tom. Three types of boxes are used:
+Black box. The black box speciﬁes the behavior of a system or a part of a
+system. The system (or part) responds to speciﬁc stimuli (events) by applying
+a set of transition rules that map the stimulus into a response. 
+State box. The state box encapsulates state data and services (operations)
+in a manner that is analogous to objects. In this speciﬁcation view, inputs to
+the state box (stimuli) and outputs (responses) are represented. The state box
+also represents the “stimulus history” of the black box; that is, the data
+encapsulated in the state box that must be retained between the transitions
+implied.
+Clear box. The transition functions that are implied by the state box are
+deﬁned in the clear box. Stated simply, a clear box contains the procedural
+design for the state box.
+Figure 26.2 illustrates the reﬁnement approach using box structure speciﬁcation.
+A black box (BB1) deﬁnes responses for a complete set of stimuli. BB1 can be reﬁned
+into a set of black boxes, BB1.1 to BB1.n, each of which addresses a class of behav-
+ior. Reﬁnement continues until a cohesive class of behavior is identiﬁed (e.g., BB1.1.1).
+A state box (SB1.1.1) is then deﬁned for the black box (BB1.1.1). In this case, SB1.1.1
+contains all data and services required to implement the behavior deﬁned by BB1.1.1.
+Finally, SB1.1.1 is reﬁned into clear boxes (CB1.1.1.n) and procedural design details are 
+speciﬁed.
+As each of these reﬁnement steps occurs, veriﬁcation of correctness also occurs.
+State-box specifications are verified to ensure that each conforms to the behavior
+deﬁned by the parent black-box speciﬁcation. Similarly, clear-box speciﬁcations are
+veriﬁed against the parent state box.
+It should be noted that speciﬁcation methods based on formal methods (Chapter
+25) can be used in lieu of the box structure speciﬁcation approach. The only require-
+ment is that each level of speciﬁcation can be formally veriﬁed.
+Box structure
+reﬁnement and
+veriﬁcation of
+correctness occur
+simultaneously.
+How is
+reﬁnement
+accomplished as
+part of box
+structure
+speciﬁcation?
+?
+
+
+
+##### Pressman PDF p733 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+26.2.1 Black-Box Speciﬁcation
+A black-box speciﬁcation describes an abstraction, stimuli, and response using the
+notation shown in Figure 26.3 [MIL88]. The function f is applied to a sequence, S*,
+of inputs (stimuli), S, and transforms them into an output (response), R. For simple
+software components, f may be a mathematical function, but in general, f is described
+using natural language (or a formal speciﬁcation language).
+Many of the concepts introduced for object-oriented systems are also applicable
+for the black box. Data abstractions and the operations that manipulate those abstrac-
+tions are encapsulated by the black box. Like a class hierarchy, the black box speci-
+ﬁcation can exhibit usage hierarchies in which low-level boxes inherit the properties
+of those boxes higher in the tree structure.
+26.2.2 State-Box Speciﬁcation
+The state box is “a simple generalization of a state machine” [MIL88]. Recalling the
+discussion of behavioral modeling and state transition diagrams in Chapter 12, a state
+is some observable mode of system behavior. As processing occurs, a system responds
+705
+BB1
+CB1.1.1.1
+CB1.1.1.2
+CB1.1.1.3
+SB1.1.1
+BB1.1.1
+BB1.1.2
+BB1.1.3
+BB1.1
+BB1.2
+BB1.n
+FIGURE 26.2
+Box structure
+reﬁnement
+f : S*          R
+S
+R
+FIGURE 26.3
+A black-box
+speciﬁcation
+XRef
+Object-oriented
+concepts are discussed
+in Chapter 20.
+
+
+
+##### Pressman PDF p734 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+706
+to events (stimuli) by making a transition from the current state to some new state.
+As the transition is made, an action may occur. The state box uses a data abstrac-
+tion to determine the transition to the next state and the action (response) that will
+occur as a consequence of the transition.
+Referring to Figure 26.4, the state box incorporates a black box. The stimulus, S,
+that is input to the black box arrives from some external source and a set of internal
+system states, T. Mills [MIL88] provides a mathematical description of the function,
+f, of the black box contained within the state box:
+g : S*  T*  R  T
+where g is a subfunction that is tied to a specific state, t. When considered collec-
+tively, the state-subfunction pairs (t, g) deﬁne the black box function f.
+26.2.3 Clear-Box Speciﬁcation
+The clear-box speciﬁcation is closely aligned with procedural design and structured
+programming. In essence, the subfunction g within the state box is replaced by the
+structured programming constructs that implement g.
+As an example, consider the clear box shown in Figure 26.5. The black box, g,
+shown in Figure 26.4, is replaced by a sequence construct that incorporates a condi-
+tional. These, in turn, can be reﬁned into lower-level clear boxes as stepwise reﬁne-
+ment proceeds.
+It is important to note that the procedural speciﬁcation described in the clear-box
+hierarchy can be proved to be correct. This topic is considered in the next section. 
+26.3
+CLEANROOM DESIGN
+The design approach used in cleanroom software engineering makes heavy use of
+the structured programming philosophy. But in this case, structured programming is
+applied far more rigorously.
+S
+R
+Black box, g
+T
+State
+FIGURE 26.4
+A state box
+speciﬁcation
+XRef
+Procedural design and
+structured
+programming are
+discussed in Chapter
+16.
+
+
+
+##### Pressman PDF p735 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+Basic processing functions (described during earlier reﬁnements of the speciﬁca-
+tion) are reﬁned using a “stepwise expansion of mathematical functions into struc-
+tures of logical connectives [e.g., if-then-else] and subfunctions, where the expansion
+[is] carried out until all identified subfunctions could be directly stated in the pro-
+gramming language used for implementation” [DYE92]. 
+The structured programming approach can be used effectively to reﬁne function,
+but what about data design? Here a number of fundamental design concepts (Chap-
+ter 13) come into play. Program data are encapsulated as a set of abstractions that
+are serviced by subfunctions. The concepts of data encapsulation, information hid-
+ing, and data typing are used to create the data design.
+26.3.1 Design Reﬁnement and Veriﬁcation
+Each clear-box specification represents the design of a procedure (subfunction)
+required to accomplish a state box transition. With the clear box, the structured pro-
+gramming constructs and stepwise reﬁnement are used as illustrated in Figure 26.6.
+A program function, f, is reﬁned into a sequence of subfunctions g and h. These in
+turn are reﬁned into conditional constructs (if-then-else and do-while). Further reﬁne-
+ment illustrates continuing logical reﬁnement. 
+At each level of reﬁnement, the cleanroom team2 performs a formal correctness
+veriﬁcation. To accomplish this, a set of generic correctness conditions are attached
+to the structured programming constructs. If a function f is expanded into a sequence
+g and h, the correctness condition for all input to f is
+•
+Does g followed by h do f ?
+When a function p is reﬁned into a conditional of the form, if  c  then q, else r, the
+correctness condition for all input to p is
+707
+S
+R
+T
+State
+g11
+cg1
+g12
+g13
+FIGURE 26.5
+A clear-box
+speciﬁcation
+2
+Because the entire team is involved in the veriﬁcation process, it is less likely that an error will be
+made in conducting the veriﬁcation itself.
+WebRef
+The DoD STARS program
+has developed a variety
+of cleanroom guides and
+documents: 
+ftp.cdrom.com/pub/
+ada/docs/cleanrm/
+What
+conditions
+are applied to
+prove structured
+constructs
+correct?
+?
+
+
+
+##### Pressman PDF p736 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+708
+•
+Whenever condition c is true, does q do p; and whenever c is false,
+does r do p?
+When function m is reﬁned as a loop, the correctness conditions for all input to m are
+•
+Is termination guaranteed?
+•
+Whenever c is true, does n followed by m do m; and whenever c is
+false, does skipping the loop still do m?
+Each time a clear box is reﬁned to the next level of detail, these correctness condi-
+tions are applied.
+It is important to note that the use of the structured programming constructs con-
+strains the number of correctness tests that must be conducted. A single condition
+is checked for sequences; two conditions are tested for if-then-else, and three con-
+ditions are veriﬁed for loops.
+To illustrate correctness veriﬁcation for a procedural design, we use a simple exam-
+ple ﬁrst introduced by Linger, Mills, and Witt [LIN79]. The intent is to design and ver-
+ify a small program that ﬁnds the integer part, y, of a square root of a given integer,
+x. The procedural design is represented using the ﬂowchart in Figure 26.7.
+h2
+c5
+h1
+h2
+h12
+c2
+g11
+g12
+g13
+g1n
+c4
+c3
+c1
+c2
+h11
+g2
+g1
+c1
+h
+g
+f
+g2
+FIGURE 26.6
+Stepwise
+reﬁnement
+If you limit yourself to
+just the structured
+constructs as you
+create a procedural
+design, proof of
+correctness is
+straightforward. If you
+“violate” the
+constructs, correctness
+proofs are difﬁcult or
+impossible.
+
+
+
+##### Pressman PDF p737 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+To verify the correctness of this design, we must deﬁne entry and exit conditions
+as noted in Figure 26.8. The entry condition notes that x must be greater than or equal
+to 0. The exit condition requires that x remain unchanged and take on a value within
+the range noted in the ﬁgure. To prove the design to be correct, it is necessary to prove
+the conditions init, loop, cont, yes, and exit shown in Figure 26.8 are true in all cases.
+These are sometimes called subproofs.
+709
+(y + 1)2 ≤ x
+y := y + 1
+(y + 1)2 ≤ x
+y := 0
+sqrt
+FIGURE 26.7
+Computing the
+integer part of
+a square root
+[LIN79]
+y := y + 1
+(y + 1)2 ≤ x
+y := 0
+sqrt
+exit: x unchanged and y2 ≤ x ≤ (y + 1)2
+yes: (y + 1)2 ≤ x
+loop: [y2 ≤ x]
+cont: [y2 ≤ x]
+init:  [x ≥ 0, and y = 0]
+entry:  [x ≥ 0]
+FIGURE 26.8
+Proving the
+design correct
+[LIN79]
+
+
+
+##### Pressman PDF p738 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+710
+1.
+The condition init demands that [x ≥0 and y = 0]. Based on the requirements
+of the problem, the entry condition is assumed correct.3 Therefore, the ﬁrst
+part of the init condition, x ≥0, is satisﬁed. Referring to the ﬂowchart, the
+statement immediately preceding the init condition, sets y = 0. Therefore, the
+second part of the init condition is also satisﬁed. Hence, init is true.
+2.
+The loop condition may be encountered in one of two ways: (1) directly from
+init (in this case, the loop condition is satisﬁed directly) or via control ﬂow
+that passes through the condition cont. Since the cont condition is identical to
+the loop condition, loop is true regardless of the ﬂow path that leads to it.
+3.
+The cont condition is encountered only after the value of y is incremented by
+1. In addition, the control ﬂow path that leads to cont can be invoked only if
+the yes condition is also true. Hence, if (y + 1)2 ≤x, it follows that y2 ≤x. The
+cont condition is satisﬁed.
+4.
+The yes condition is tested in the conditional logic shown. Hence, the yes
+condition must be true when control ﬂow moves along the path shown.
+5.
+The exit condition ﬁrst demands that x remain unchanged. An examination of
+the design indicates that x appears nowhere to the left of an assignment
+operator. There are no function calls that use x. Hence, it is unchanged. Since
+the conditional test (y + 1)2 ≤x must fail to reach the exit condition, it follows
+that (y + 1)2 ≤x. In addition, the loop condition must still be true (i.e., y2 ≤x).
+Therefore, (y + 1)2 > x and y2 ≤x can be combined to satisfy the exit condition.
+We must further ensure that the loop terminates. An examination of the loop condi-
+tion indicates that, because y is incremented and x ≥0, the loop must eventually ter-
+minate. 
+The ﬁve steps just noted are a proof of the correctness of the design of the algo-
+rithm noted in Figure 26.7. We are now certain that the design will, in fact, compute
+the integer part of a square root.
+A more rigorous mathematical approach to design veriﬁcation is possible. How-
+ever, a discussion of this topic is beyond the scope of this book. Interested readers
+should refer to [LIN79].
+26.3.2 Advantages of Design Veriﬁcation4
+Rigorous correctness veriﬁcation of each reﬁnement of the clear-box design has a num-
+ber of distinct advantages. Linger [LIN94] describes these in the following manner:
+•
+It reduces veriﬁcation to a ﬁnite process. The nested, sequential way
+that control structures are organized in a clear box naturally deﬁnes a hierar-
+3
+A negative value for a square root has no meaning in this context.
+4
+This section and Figures 26.7 through 26.9 have been adapted from [LIN94]. Used with permis-
+sion.
+To prove a design
+correct, you must ﬁrst
+identify all conditions
+and then prove that
+each takes on the
+appropriate Boolean
+value. These are called
+subproofs.
+What do we
+gain by
+doing correctness
+proofs?
+?
+
+
+
+##### Pressman PDF p739 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+chy that reveals the correctness conditions that must be veriﬁed. An axiom of
+replacement [LIN79] lets us substitute intended functions with their control
+structure reﬁnements in the hierarchy of subproofs. For example, the sub-
+proof for the intended function f1 in Figure 26.9 requires proving that the
+composition of the operations g1 and g2 with the intended function f2 has
+the same effect on data as f1. Note that f2 substitutes for all the details of its
+reﬁnement in the proof. This substitution localizes the proof argument to the
+control structure at hand. In fact, it lets the software engineer carry out the
+proofs in any order.
+•
+It is impossible to overemphasize the positive effect that reducing
+veriﬁcation to a ﬁnite process has on quality. Even though all but the
+most trivial programs exhibit an essentially inﬁnite number of execution
+paths, they can be veriﬁed in a ﬁnite number of steps.
+•
+It lets cleanroom teams verify every line of design and code. Teams
+can carry out the veriﬁcation through group analysis and discussion on the
+basis of the correctness theorem, and they can produce written proofs when
+extra conﬁdence in a life- or mission-critical system is required.
+•
+It results in a near zero defect level. During a team review, every cor-
+rectness condition of every control structure is veriﬁed in turn. Every team
+member must agree that each condition is correct, so an error is possible
+711
+Subproofs:
+f1 = [DO g1; g2; [f2] END] ?
+f2 = [WHILE p1 DO [f3] END] ?
+f3 = [DO g3; [f4]; g8 END] ?
+f4 = [IF p2; THEN [f5] ELSE [f6] END] ?
+f5 = [DO g4; g5 END] ?
+f6 = [DO g6; g7 END] ?    
+[f1]
+  DO
+    g1
+    g2
+    [f2]
+      WHILE
+        p1
+    DO [f3]
+        g3
+        [f4]
+        IF
+          p2
+        THEN [f5]
+          g4
+          g5
+        ELSE [f6]
+          g6
+          g7
+        END
+        g8
+    END
+END
+FIGURE 26.9
+A design with
+subproofs
+[LIN94]
+Despite the extremely
+large number of
+execution paths in a
+program, the number
+of steps to prove the
+program correct is
+quite small.
+
+
+
+##### Pressman PDF p740 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+712
+only if every team member incorrectly veriﬁes a condition. The requirement
+for unanimous agreement based on individual veriﬁcation results in software
+that has few or no defects before ﬁrst execution.
+•
+It scales up. Every software system, no matter how large, has top-level,
+clear-box procedures composed of sequence, alternation, and iteration struc-
+tures. Each of these typically invokes a large subsystem with thousands of
+lines of code—and each of those subsystems has its own top-level intended
+functions and procedures. So the correctness conditions for these high-level
+control structures are veriﬁed in the same way as are those of low-level
+structures. Veriﬁcation at high levels may take, and well be worth, more time,
+but it does not take more theory.
+•
+It produces better code than unit testing. Unit testing checks the effects
+of executing only selected test paths out of many possible paths. By basing
+veriﬁcation on function theory, the cleanroom approach can verify every pos-
+sible effect on all data, because while a program may have many execution
+paths, it has only one function. Veriﬁcation is also more efﬁcient than unit
+testing. Most veriﬁcation conditions can be checked in a few minutes, but
+unit tests take substantial time to prepare, execute, and check.
+It is important to note that design veriﬁcation must ultimately be applied to the source
+code itself. In this context, it is often called correctness veriﬁcation.
+26.4
+CLEANROOM TESTING
+The strategy and tactics of cleanroom testing are fundamentally different from con-
+ventional testing approaches. Conventional methods derive a set of test cases to
+uncover design and coding errors. The goal of cleanroom testing is to validate soft-
+ware requirements by demonstrating that a statistical sample of use-cases (Chapter
+11) have been executed successfully.
+26.4.1 Statistical Use Testing
+The user of a computer program rarely needs to understand the technical details of
+the design. The user-visible behavior of the program is driven by inputs and events
+that are often produced by the user. But in complex systems, the possible spectrum
+of input and events (i.e., the use-cases) can be extremely wide. What subset of use-
+cases will adequately verify the behavior of the program? This is the ﬁrst question
+addressed by statistical use testing.
+Statistical use testing “amounts to testing software the way users intend to use it”
+[LIN94]. To accomplish this, cleanroom testing teams (also called certiﬁcation teams)
+must determine a usage probability distribution for the software. The speciﬁcation
+(black box) for each increment of the software is analyzed to deﬁne a set of stimuli
+
+
+
+##### Pressman PDF p741 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+(inputs or events) that cause the software to change its behavior. Based on interviews
+with potential users, the creation of usage scenarios, and a general understanding
+of the application domain, a probability of use is assigned to each stimuli.
+Test cases are generated for each stimuli5 according to the usage probability dis-
+tribution. To illustrate, consider the SafeHome security  system discussed earlier in
+this book. Cleanroom software engineering is being used to develop a software incre-
+ment that manages user interaction with the security system keypad. Five stimuli
+have been identiﬁed for this increment. Analysis indicates the percent probability dis-
+tribution of each stimulus. To make selection of test cases easier, these probabilities
+are mapped into intervals numbered between 1 and 99 [LIN94] and illustrated in the
+following table:
+Program Stimulus
+Probability
+Interval
+Arm/disarm (AD)
+50%
+1–49
+Zone set (ZS)
+15%
+50–63
+Query (Q)
+15%
+64–78
+Test (T)
+15%
+79–94
+Panic alarm
+5%
+95–99
+To generate a sequence of usage test cases that conform to the usage probability
+distribution, a series of random numbers between 1 and 99 is generated. The ran-
+dom number corresponds to an interval on the preceding probability distribution.
+Hence, the sequence of usage test cases is deﬁned randomly but corresponds to the
+appropriate probability of stimuli occurrence. For example, assume the following ran-
+dom number sequences are generated:
+13-94-22-24-45-56
+81-19-31-69-45-9
+38-21-52-84-86-4
+Selecting the appropriate stimuli based on the distribution interval shown in the table,
+the following use-cases are derived:
+AD–T–AD–AD–AD–ZS
+T–AD–AD–AD–Q–AD–AD
+AD–AD–ZS–T–T–AD
+The testing team executes these use-cases and veriﬁes software behavior against the
+speciﬁcation for the system. Timing for tests is recorded so that interval times may
+be determined. Using interval times, the certiﬁcation team can compute  mean-time-
+to-failure. If a long sequence of tests is conducted without failure, the MTTF is low
+and software reliability may be assumed high.
+713
+5
+Automated tools are used to accomplish this. For further information, see [DYE92].
+
+
+
+##### Pressman PDF p742 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+714
+26.4.2 Certiﬁcation 
+The veriﬁcation and testing techniques discussed earlier in this chapter lead to soft-
+ware components (and entire increments) that can be certiﬁed. Within the context of
+the cleanroom software engineering approach, certiﬁcation implies that the reliabil-
+ity (measured by mean-time-to-failure, MTTF) can be speciﬁed for each component.
+The potential impact of certiﬁable software components goes far beyond a single
+cleanroom project. Reusable software components can be stored along with their
+usage scenarios, program stimuli, and probability distributions. Each component
+would have a certiﬁed reliability under the usage scenario and testing regime described.
+This information is invaluable to others who intend to use the components.
+The certiﬁcation approach involves ﬁve steps [WOH94]:
+1.
+Usage scenarios must be created.
+2.
+A usage proﬁle is speciﬁed.
+3.
+Test cases are generated from the proﬁle.
+4.
+Tests are executed and failure data are recorded and analyzed.
+5.
+Reliability is computed and certiﬁed.
+Steps 1 through 4 have been discussed in an earlier section. In this section, we con-
+centrate on reliability certiﬁcation.  
+Certification for cleanroom software engineering requires the creation of three
+models [POO93]:
+Sampling model. Software testing executes m random test cases and is
+certiﬁed if no failures or a speciﬁed numbers of failures occur. The value of m
+is derived mathematically to ensure that required reliability is achieved.
+Component model. A system composed of n components is to be certiﬁed.
+The component model enables the analyst to determine the probability that
+component i will fail prior to completion.
+Certiﬁcation model. The overall reliability of the system is projected and
+certiﬁed.
+At the completion of statistical use testing, the certification team has the infor-
+mation required to deliver software that has a certiﬁed MTTF computed using each
+of these models. 
+A detailed discussion of the computation of the sampling, component, and certi-
+ﬁcation models is beyond the scope of this book. The interested reader should see
+[MUS87], [CUR86], and [POO93] for additional detail. 
+26.5
+SUMMARY
+Cleanroom software engineering is a formal approach to software development that
+can lead to software that has remarkably high quality. It uses box structure speciﬁ-
+How do we
+certify a
+software
+component?
+?
+
+
+
+##### Pressman PDF p743 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+cation (or formal methods) for analysis and design modeling and emphasizes cor-
+rectness veriﬁcation, rather than testing, as the primary mechanism for ﬁnding and
+removing errors. Statistical use testing is applied to develop the failure rate infor-
+mation necessary to certify the reliability of delivered software.
+The cleanroom approach begins with analysis and design models that use a box
+structure representation. A “box” encapsulates the system (or some aspect of the sys-
+tem) at a speciﬁc level of abstraction. Black boxes are used to represent the exter-
+nally observable behavior of a system. State boxes encapsulate state data and
+operations. A clear box is used to model the procedural design that is implied by the
+data and operations of a state box.
+Correctness veriﬁcation is applied once the box structure design is complete. The
+procedural design for a software component is partitioned into a series of subfunc-
+tions. To prove the correctness of the subfunctions, exit conditions are deﬁned for
+each subfunction and a set of subproofs is applied. If each exit condition is satisﬁed,
+the design must be correct.
+Once correctness veriﬁcation is complete, statistical use testing commences. Unlike
+conventional testing, cleanroom software engineering does not emphasize unit or
+integration testing. Rather, the software is tested by deﬁning a set of usage scenar-
+ios, determining the probability of use for each scenario, and then deﬁning random
+tests that conform to the probabilities. The error records that result are combined
+with sampling, component, and certiﬁcation models to enable mathematical com-
+putation of projected reliability for the software component.
+The cleanroom philosophy is a rigorous approach to software engineering. It is a
+software process model that emphasizes mathematical verification of correctness
+and certiﬁcation of software reliability. The bottom line is extremely low failure rates
+that would be difﬁcult or impossible to achieve using less formal methods. 
+REFERENCES
+[CUR86] Curritt, P.A., M. Dyer, and H.D. Mills, “Certifying the Reliability of Software,”
+IEEE Trans, Software Engineering, vol. SE-12, no. 1, January 1994.
+[DYE92] Dyer, M., The Cleanroom Approach to Quality Software Development, Wiley,
+1992.
+[HAU94] Hausler, P.A., R. Linger, and C. Trammel, “Adopting Cleanroom Software
+Engineering with a Phased Approach,” IBM Systems Journal, vol. 33, no.1, January
+1994, pp. 89–109.
+[HEN95] Henderson, J., “Why Isn’t Cleanroom the Universal Software Development
+Methodology?” Crosstalk, vol. 8, No. 5, May 1995, pp. 11–14.
+[HEV93] Hevner, A.R. and H.D. Mills, “Box Structure Methods for System Develop-
+ment with Objects,” IBM Systems Journal, vol. 31, no.2, February 1993, pp. 232–251.
+{LIN79]
+Linger, R.M., H.D. Mills, and B.I. Witt, Structured Programming: Theory and
+Practice, Addison-Wesley, 1979.
+715
+
+
+
+##### Pressman PDF p744 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+716
+[LIN88]
+Linger, R.M. and H.D. Mills, “A Case Study in Cleanroom Software Engi-
+neering: The IBM COBOL Structuring Facility,” Proc. COMPSAC ’88, Chicago, October
+1988.
+[LIN94]
+Linger, R., “Cleanroom Process Model,” IEEE Software, vol. 11, no. 2, March
+1994, pp. 50–58.
+[MIL87]
+Mills, H.D., M. Dyer, and R. Linger, “Cleanroom Software Engineering,” IEEE
+Software, vol. 4, no. 5, September 1987, pp. 19–24.
+[MIL88]
+Mills, H.D., “Stepwise Reﬁnement and Veriﬁcation in Box Structured Sys-
+tems,” Computer, vol. 21, no. 6, June 1988, pp. 23–35.
+[MUS87]  Musa, J.D., A. Iannino, and K. Okumoto, Engineering and Managing Software
+with Reliability Measures, McGraw-Hill, 1987. 
+[POO88] Poore, J.H. and H.D. Mills, “Bringing Software Under Statistical Quality Con-
+trol,” Quality Progress, November 1988, pp. 52–55.
+[POO93] Poore, J.H., H.D. Mills, and D. Mutchler, “Planning and Certifying Software
+System Reliability,” IEEE Software, vol. 10, no. 1, January 1993, pp. 88–99. 
+[WOH94] Wohlin, C. and P. Runeson, “Certiﬁcation of Software Components,” IEEE
+Trans. Software Engineering, vol. SE-20, no. 6, June 1994, pp. 494–499.
+PROBLEMS AND POINTS TO PONDER
+26.1. If you had to pick one aspect of cleanroom software engineering that makes
+it radically different from conventional or object-oriented software engineering
+approaches, what would it be?
+26.2. How do an incremental process model and certiﬁcation work together to pro-
+duce high-quality software?
+26.3. Using box structure speciﬁcation, develop “ﬁrst-pass” analysis and design mod-
+els for the SafeHome system.
+26.4. Develop a box structure speciﬁcation for a portion of the PHTRS system intro-
+duced in Problem 12.13.
+26.5. Develop a box structure speciﬁcation for the e-mail system presented in Prob-
+lem 21.15.
+26.6.
+A bubble sort algorithm is deﬁned in the following manner:
+procedure bubblesort;
+var i, t, integer;
+begin
+repeat until t=a[1]
+t:=a[1];
+for j:= 2 to n do
+if a[j-1] > a[j] then begin
+t:=a[j-1];
+
+
+
+##### Pressman PDF p745 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+a[j-1]:=a[j];
+a[j]:=t;
+end
+endrep
+end
+Partition the design into subfunctions and deﬁne a set of conditions that would enable
+you to prove that this algorithm is correct.
+26.7. Document a correctness verification proof for the bubble sort discussed in
+Problem 26.6.
+26.8. Select a program component that you have designed in another context (or
+one assigned by your instructor) and develop a complete proof of correctness for it.
+26.9. Select a program that you use regularly (e.g., an e-mail handler, a word proces-
+sor, a spreadsheet program). Create a set of usage scenarios for the program. Deﬁne
+the probability of use for each scenario and then develop a program stimuli and prob-
+ability distribution table similar to the one shown in Section 26.4.1.
+26.10. For the program stimuli and probability distribution table developed in Prob-
+lem 26.9, use a random number generator to develop a set of test cases for use in
+statistical use testing.
+26.11. In your own words, describe the intent of certiﬁcation in the cleanroom soft-
+ware engineering context.
+26.12. Write a short paper that describes the mathematics used to deﬁne the certi-
+ﬁcation models described brieﬂy in Section 26.4.2. Use [MUS87], [CUR86], and [POO93]
+as a starting point.
+FURTHER READINGS AND INFORMATION SOURCES
+Prowell et al. (Cleanroom Software Engineering: Technology and Process, Addison-Wes-
+ley, 1999) provides an in-depth treatment of all important aspects of the cleanroom
+approach. Useful discussions of cleanroom topics have been edited by Poore and
+Trammell (Cleanroom Software Engineering: A Reader, Blackwell Publishing, 1996).
+Becker and Whittaker (Cleanroom Software Engineering Practices, Idea Group Pub-
+lishing, 1996) present an excellent overview for those who are unfamiliar with clean-
+room practices.
+The Cleanroom Pamphlet (Software Technology Support Center, Hill AF Base, April
+1995) contains reprints of a number of important articles. Linger [LIN94] produced
+one of the better introductions to the subject. Asset Source for Software Engineering
+Technology, ASSET, (United States Department of Defense) offers an excellent six vol-
+ume set of Cleanroom Engineering Handbooks. ASSET can be contacted at
+info@source.asset.com. Lockheed Martin's Guide to the Integration of Object-Oriented
+717
+
+
+
+##### Pressman PDF p746 #####
+PART FIVE
+ADVANCED TOPICS IN SOFTWARE ENGINEERING
+718
+Methods and Cleanroom Software Engineering (1997) contains a generic cleanroom
+process for OO systems and is available at
+http://www.asset.com/stars/loral/cleanroom/oo/guidhome.htm.
+Linger and Trammell (Cleanroom Software Engineering Reference Model, SEI Tech-
+nical Report CMU/SEI-96-TR-022, 1996) have deﬁned a set of 14 cleanroom processes
+and 20 work products that form the basis for the SEI CMM for cleanroom software
+engineering (CMU/SEI-96-TR-023).
+Michael Deck of Cleanroom Software Engineering has prepared a bibliography on
+cleanroom topics. Among the references are the following:
+General and Introductory
+Deck, M.D., "Cleanroom Software Engineering Myths and Realities," Quality Week 1997, May
+1997.
+Deck, M.D, and J. A. Whittaker, "Lessons Learned from Fifteen Years of Cleanroom Testing,"
+Software Testing, Analysis, and Review (STAR) '97, San Jose, CA, May 5–9, 1997.
+Lokan, C.J., "The Cleanroom Process for Software Development," The Australian Computer
+Journal, vol. 25, no. 4, November 1993. 
+Linger, Richard C., "Cleanroom Software Engineering for Zero-Defect Software," Proc. 15th
+International Conference on Software Engineering, May 1993. 
+Keuffel, W., "Clean Your Room: Formal Methods for the '90s," Computer Language, July 1992,
+pp. 39–46. 
+Hevner, A.R., S.A. Becker, and L.B. Pedowitz, "Integrated CASE for Cleanroom Development,"
+IEEE Software, March 1992, pp. 69–76. 
+Cobb, R.H. and H.D. Mills, "Engineering Software under Statistical Quality Control," IEEE Soft-
+ware, November 1990, pp. 44–54. 
+Management Practices
+Becker, S.A., Deck, M.D., and Janzon, T., "Cleanroom and Organizational Change," Proc. 14th
+Paciﬁc Northwest Software Quality Conference, Portland, OR, October 29–30, 1996.
+Linger, R.C., "Cleanroom Process Model," IEEE Software. March 1994, pp. 50–58. 
+Linger, R.C. and R.A. Spangler, "The IBM Cleanroom Software Engineering Technology Trans-
+fer Program," Sixth SEI Conference on Software Engineering Education, San Diego, CA, Octo-
+ber 1992. 
+Speciﬁcation, Design, and Review
+Deck, M.D., "Cleanroom and Object-Oriented Software Engineering: A Unique Synergy," 1996
+Software Technology Conference, Salt Lake City, UT, April 24, 1996.
+Deck, M.D., "Using Box Structures to Link Cleanroom and Object-Oriented Software Engi-
+neering," Technical Report 94.01b, Cleanroom Software Engineering, 1994. 
+Dyer, M., "Designing Software for Provable Correctness: The Direction for Quality Software,"
+Information and Software Technology, vol. 30 no. 6, July–August 1988, pp. 331–340. 
+
+
+
+##### Pressman PDF p747 #####
+CHAPTER 26
+CLEANROOM SOFTWARE ENGINEERING
+Testing and Certiﬁcation
+Dyer, M., "An Approach to Software Reliability Measurement," Information and Software Tech-
+nology, vol. 29 no. 8, October 1987, pp. 415–420. 
+Head, G.E., "Six-Sigma Software Using Cleanroom Software Engineering Techniques," Hewlett-
+Packard Journal, June 1994, pp. 40–50. 
+Oshana, R., "Quality Software via a Cleanroom Methodology," Embedded Systems Program-
+ming, September. 1996, pp. 36–52.
+Whittaker, J.A. and M.G. Thomason, "A Markov Chain Model for Statistical Software Testing,"
+IEEE Trans. Software Engineering, vol. SE-20 October 1994, pp. 812–824. 
+Case Studies and Experience Reports 
+Head, G.E., "Six-Sigma Software Using Cleanroom Software Engineering Techniques," Hewlett-
+Packard Journal, June 1994, pp. 40–50. 
+Hevner, A.R. and H.D. Mills, "Box-Structured Methods for Systems Development with Objects,"
+IBM Systems Journal, vol. 32, no. 2, 1993, p. 232–251.
+Tann, L-G., "OS32 and Cleanroom," Proc. First Annual European Industrial Symposium on Clean-
+room Software Engineering, Copenhagen, Denmark, 1993, pp. 1–40.
+Hausler, P.A., "A Recent Cleanroom Success Story: The Redwing Project," Proc. 17th Annual
+Software Engineering Workshop, NASA Goddard Space Flight Center, December 1992. 
+Trammel, C.J., L.H. Binder, and C.E. Snyder, "The Automated Production Control Documen-
+tation System: A Case Study in Cleanroom Software Engineering," ACM Trans. on Software
+Engineering and Methodology, vol. 1, no. 1, January 1992, pp. 81–94. 
+Design verification via proof of correctness lies at the heart of the cleanroom
+approach. Books by Baber (Error-Free Software, Wiley, 1991) and Schulmeyer (Zero
+Defect Software, McGraw-Hill, 1990) discuss proof of correctness in considerable detail.
+A wide variety of information sources on cleanroom software engineering and
+related subjects is available on the Internet. An up-to-date list of World Wide Web
+references that are relevant to cleanroom software engineering can be found at the
+SEPA Web site:
+http://www.mhhe.com/engcs/compsci/pressman/resources/
+cleanroom.mhtml
+719
+
+
+
+##### Mall PDF p611 #####
+Chapter
+11
+SOFTWARE RELIABILITY AND
+QUALITY MANAGEMENT
+Reliability of a software product is an important concern for most users.
+Users not only want the products they purchase to be highly reliable,
+but for certain categories of products they may even require a
+quantitative guarantee on the reliability of the product before making
+their buying decision. This may especially be true for safety-critical and
+embedded software products. However, as we discuss in this Chapter, it
+is very difficult to accurately measure the reliability of any software
+product. One of the main problems encountered while quantitatively
+measuring the reliability of a software product is the fact that reliability
+is observer-dependent. That is, different groups of users may arrive at
+different reliability estimates for the same product. Besides this, several
+other problems (such as frequently changing reliability values due to
+bug corrections) make accurate measurement of the reliability of a
+software product difficult. We investigate these issues in this chapter.
+Even though no entirely satisfactory metric to measure the reliability of
+a software product exists, we shall discuss some metrics that are being
+used at present to quantify the reliability of a software product. We
+shall also address the problem of reliability growth modelling and
+examine how to predict when (and if at all) a given level of reliability
+will be achieved. We shall also examine the statistical testing approach
+to reliability estimation.
+In this chapter, in addition to software reliability issues, we shall also
+discuss various issues associated with software quality assurance (SQA).
+Software quality assurance (SQA) has emerged as one of the most talked
+about topics in recent years in software industry circle. The major aim of SQA
+is to help an organisation develop high quality software products in a
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p612 #####
+repeatable manner. A software development organisation can be called
+repeatable when its software development process is person-independent.
+That is, the success of a project does not depend on who exactly are the
+team members of the project. Besides, the quality of the developed software
+and the cost of development are important issues addressed by SQA. In this
+chapter, we first discuss a few important issues concerning software reliability
+measurement and prediction before starting our discussion on software
+quality assurance.
+11.1 SOFTWARE RELIABILITY
+The reliability of a software product essentially denotes its trustworthiness
+or dependability. Alternatively, the reliability of a software product can
+also be defined as the probability of the product working “correctly”
+over a given period of time.
+Intuitively, it is obvious that a software product having a large number of
+defects is unreliable. It is also very reasonable to assume that the reliability
+of a system improves, as the number of defects in it is reduced. It would have
+been very nice if we could mathematically characterise this relationship
+between reliability and the number of bugs present in the system using a
+simple 
+closed 
+form 
+expression. Unfortunately, it is very difficult to
+characterise the observed reliability of a system in terms of the number of
+latent defects in the system using a simple mathematical expression. To get
+an insight into this issue, consider the following. Removing errors from those
+parts of a software product that are very infrequently executed, makes little
+difference to the perceived reliability of the product. It has been
+experimentally observed by analysing the behaviour of a large number of
+programs that 90 per cent of the execution time of a typical program is spent
+in executing only 10 per cent of the instructions in the program. The most used
+10 per cent instructions are often called the core1 of a program. The rest 90
+per cent of the program statements are called non-core and are on the
+average executed only for 10 per cent of the total execution time. It therefore
+may not be very surprising to note that removing 60 per cent product defects
+from the least used parts of a system would typically result in only 3 per cent
+improvement to the product reliability. It is clear that the quantity by which
+the overall reliability of a program improves due to the correction of a single
+error depends on how frequently the instruction having the error is executed.
+If an error is removed from an instruction that is frequently executed (i.e.,
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p613 #####
+belonging to the core of the program), then this would show up as a large
+improvement to the reliability figure. On the other hand, removing errors
+from parts of the program that are rarely used, may not cause any
+appreciable change to the reliability of the product.
+Based on the above discussion we can say that reliability of a product
+depends not only on the number of latent errors but also on the the exact
+location of the errors. Apart from this, reliability also depends upon how the
+product is used, or on its execution profile. If the users execute only those
+features of a program that are “correctly” implemented, none of the errors
+will be exposed and the perceived reliability of the product will be high. On
+the other hand, if only those functions of the software which contain errors
+are invoked, then a large number of failures will be observed and the
+perceived reliability of the system will be very low. Different categories of
+users of a software product typically execute different functions of a software
+product. For example, for a Library Automation Software the library members
+would use functionalities such as issue book, search book, etc., on the other
+hand the librarian would normally execute features such as create member,
+create book record, delete member record, etc. So defects which show up for
+the librarian, may not show up for the members. Suppose the functions of a
+Library Automation Software which the library members use are error-free;
+a nd functions used by the Librarian have many bugs. Then, these two
+categories of users would have very different opinions about the reliability of
+the software. Therefore,
+Based on the above discussions, we can summarise the main reasons that
+make software reliability more difficult to measure than hardware reliability:
+The reliability improvement due to fixing a single bug depends on
+where the bug is located in the code.
+The perceived reliability of a software product is observer-dependent.
+The reliability of a product keeps changing as errors are detected and
+fixed.
+In the following subsection, we shall discuss why software reliability
+measurement is a harder problem than hardware reliability measurement.
+11.1.1 Hardware versus Software Reliability
+An important characteristic feature that sets hardware and software reliability
+issues apart is the difference between their failure patterns.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p614 #####
+Hardware components fail due to very different reasons as compared to software
+components. Hardware components fail mostly due to wear and tear, whereas
+software components fail due to bugs.
+A logic gate may be stuck at 1 or 0, or a resistor might short circuit. To fix a
+hardware fault, one has to either replace or repair the failed part. In contrast,
+a software product would continue to fail until the error is tracked down and
+either the design or the code is changed to fix the bug. For this reason, when
+a hardware part is repaired its reliability would be maintained at the level
+that existed before the failure occurred; whereas when a software failure is
+repaired, the reliability may either increase or decrease (reliability may
+decrease if a bug fix introduces new errors). To put this fact in a different
+perspective, hardware reliability study is concerned with stability (for
+example, the inter-failure times remain constant). On the other hand, the aim
+of software reliability study would be reliability growth (that is, increase in
+inter-failure times).
+A comparison of the changes in failure rate over the product life time for a
+typical hardware product as well as a software product are sketched in Figure
+11.1. Observe that the plot of change of reliability with time for a hardware
+component (Figure 11.1(a)) appears like a “bath tub”. For a software
+component the failure rate is initially high, but decreases as the faulty
+components identified are either repaired or replaced. The system then
+enters its useful life, where the rate of failure is almost constant. After some
+time (called product life time ) the major components wear out, and the
+failure rate increases. The initial failures are usually covered through
+manufacturer’s warranty. A corollary of this observation (though a digression
+from our topic of discussion) is that it may be unwise to buy a product (even
+at a good discount to its face value) towards the end of its life time, That is,
+one need not feel happy to buy a ten year old car at one tenth of the price of
+a new car, since it would be near the rising edge of the bath tub curve, and
+one would have to spend unduly large time, effort, and money on repairing
+and end up as the loser. In contrast to the hardware products, the software
+product show the highest failure rate just after purchase and installation (see
+the initial portion of the plot in Figure 11.1 (b)). As the system is used, more
+and more errors are identified and removed resulting in reduced failure rate.
+This error removal continues at a slower pace during the useful life of the
+product. As the software becomes obsolete no more error correction occurs
+and the failure rate remains unchanged.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p615 #####
+Figure 11.1: Change in failure rate of a product.
+11.1.2 Reliability Metrics of Software Products
+The reliability requirements for different categories of software products
+may be different. For this reason, it is necessary that the level of
+reliability required for a software product should be specified in the
+software requirements specification (SRS) document. In order to be
+able to do this, we need some metrics to quantitatively express the
+reliability of a software product. A good reliability measure should be
+observer-independent, so that different people can agree on the degree
+of reliability a system has. However, in practice, it is very difficult to
+formulate a metric using which precise reliability measurement would
+be possible. In the absence of such measures, we discuss six metrics
+that correlate with reliability as follows:
+Rate of occurrence of failure (ROCOF): ROCOF measures the frequency
+of occurrence of failures. ROCOF measure of a software product can be
+obtained by observing the behaviour of a software product in operation over
+a specified time interval and then calculating the ROCOF value as the ratio of
+the total number of failures observed and the duration of observation.
+However, many software products do not run continuously (unlike a car or a
+mixer), but deliver certain service when a demand is placed on them. For
+example, a library software is idle until a book issue request is made.
+Therefore, for a typical software product such as a pay-roll software,
+applicability of ROCOF is very limited.
+Mean time to failure (MTTF): MTTF is the time between two successive
+failures, averaged over a large number of failures. To measure MTTF, we can
+record the failure data for n failures. Let the failures occur at the time
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p616 #####
+instants t1, t2, ..., tn. Then, MTTF can be calculated as
+.
+It is important to note that only run time is considered in the time
+measurements. That is, the time for which the system is down to fix the
+error, the boot time, etc. are not taken into account in the time
+measurements and the clock is stopped at these times.
+Mean time to repair (MTTR): Once failure occurs, some time is required to
+fix the error. MTTR measures the average time it takes to track the errors
+causing the failure and to fix them.
+Mean time between failure (MTBF): The MTTF and MTTR metrics can be
+combined to get the MTBF metric: MTBF=MTTF+MTTR. Thus, MTBF of 300
+hours indicates that once a failure occurs, the next failure is expected after
+300 hours. In this case, the time measurements are real time and not the
+execution time as in MTTF
+Probability of failure on demand (POFOD): Unlike the other metrics
+discussed, this metric does not explicitly involve time measurements. POFOD
+measures the likelihood of the system failing when a service request is made.
+For example, a POFOD of 0.001 would mean that 1 out of every 1000 service
+requests would result in a failure. We have already mentioned that the
+reliability of a software product should be determined through specific service
+invocations, rather than making the software run continuously. Thus, POFOD
+metric is very appropriate for software products that are not required to run
+continuously.
+Availability: Availability of a system is a measure of how likely would the
+system be available for use over a given period of time. This metric not only
+considers the number of failures occurring during a time interval, but also
+takes into account the repair time (down time) of a system when a failure
+occurs. This metric is important for systems such as telecommunication
+systems, and operating systems, and embedded controllers, etc. which are
+supposed to be never down and where repair and restart time are significant
+and loss of service during that time cannot be overlooked.
+Shortcomings of reliability metrics of software products
+All the above reliability metrics suffer from several shortcomings as far
+as their use in software reliability measurement is concerned. One of
+the reasons is that these metrics are centered around the probability of
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Mall PDF p617 #####
+occurrence of system failures but take no account of the consequences
+of failures. That is, these reliability models do not distinguish the
+relative severity of different failures. Failures which are transient and
+whose consequences are not serious are in practice of little concern in
+the operational use of a software product. These types of failures can at
+best be minor irritants. On the other hand, more severe types of failures
+may render the system totally unusable. In order to estimate the
+reliability of a software product more accurately, it is necessary to
+classify various types of failures. Please note that the different classes
+of failures may not be mutually exclusive. The classification is based on
+widely different set of criteria. As a result, a failure type can at the
+same time belong to more than one class. A scheme of classification of
+failures is as follows:
+Transient: Transient failures occur only for certain input values while
+invoking a function of the system.
+Permanent: Permanent failures occur for all input values while invoking a
+function of the system.
+Recoverable: When a recoverable failure occurs, the system can recover
+without having to shutdown and restart the system (with or without operator
+intervention).
+Unrecoverable: In unrecoverable failures, the system may need to be
+restarted.
+Cosmetic: These classes of failures cause only minor irritations, and do not
+lead to incorrect results. An example of a cosmetic failure is the situation
+where the mouse button has to be clicked twice instead of once to invoke a
+given function through the graphical user interface.
+11.1.3 Reliability Growth Modelling
+A reliability growth model is a mathematical model of how software reliability
+improves as errors are detected and repaired.
+A reliability growth model can be used to predict when (or if at all) a particular level
+of reliability is likely to be attained. Thus, reliability growth modelling can be used to
+determine when to stop testing to attain a given reliability level.
+Although several different reliability growth models have been proposed, in
+this text we will discuss only two very simple reliability growth models.
+******Created by ebook converter - www.ebook-converter.com******
+******ebook converter DEMO - www.ebook-converter.com*******
+
+
+
+##### Sommerville PDF p434 #####
+Chapter 15 I Key points
+417
+before the administerInsulin method is executed. You can ignore computations,
+such as if-statement 1 in Figure 15.10, in the safety argument because their results
+are over-written in later program statements.
+In the safety argument shown in Figure 15.11, there are three possible program
+paths that lead to the call to the administerInsulin method. You have to show that the
+amount of insulin delivered never exceeds maxDose. All possible program paths to
+administerInsulin are considered:
+1.
+Neither branch of if-statement 2 is executed. This can only happen if
+currentDose is either greater than or equal to minimumDose and less than or
+equal to maxDose. This is the post-condition—an assertion that is true after the
+statement has been executed.
+2.
+The then-branch of if-statement 2 is executed. In this case, the assignment
+setting currentDose to zero is executed. Therefore, its post-condition is
+currentDose  0.
+3.
+The else-if-branch of if-statement 2 is executed. In this case, the assignment set-
+ting currentDose to maxDose is executed. Therefore, after this statement has
+been executed, we know that the post-condition is currentDose  maxDose.
+In all three cases, the post-conditions contradict the unsafe pre-condition that the
+dose administered is greater than maxDose. We can therefore claim that the compu-
+tation is safe.
+Structured arguments can be used in the same way to demonstrate that certain
+security properties of a system are true. For example, if you wish to show that a com-
+putation will never lead to the permissions on a resource being changed, you may be
+able to use a structured security argument to show this. However, the evidence from
+structured arguments is less reliable for security validation. This is because there is a
+possibility that the attacker may corrupt the code of the system. In such a case, the
+code executed is not the code that you have claimed is secure.
+KEY POINTS
+I
+Static analysis is an approach to V & V that examines the source code (or other representation)
+of a system, looking for errors and anomalies. It allows all parts of a program to be checked, not
+just those parts that are exercised by system tests.
+I
+Model checking is a formal approach to static analysis that exhaustively checks all states in a
+system for potential errors.
+I
+Statistical testing is used to estimate software reliability. It relies on testing the system with a
+test data set that reflects the operational profile of the software. Test data may be generated
+automatically.
+
+
+
+##### Sommerville PDF p435 #####
+418
+Chapter 15 I Dependability and security assurance
+I
+Security validation is difficult because security requirements state what should not happen in a
+system, rather than what should. Furthermore, system attackers are intelligent and may have
+more time to probe for weaknesses than is available for security testing.
+I
+Security validation may be carried out using experience-based analysis, tool-based analysis, or
+‘tiger teams’ that simulate attacks on a system.
+I
+It is important to have a well-defined, certified process for safety-critical systems development.
+The process must include the identification and monitoring of potential hazards.
+I
+Safety and dependability cases collect all of the evidence that demonstrates a system is safe
+and dependable. Safety cases are required when an external regulator must certify the system
+before it is used.
+I
+Safety cases are usually based on structured arguments. Structured safety arguments show that
+an identified hazardous condition can never occur by considering all program paths that lead to
+an unsafe condition, and showing that the condition cannot hold.
+FURTHER RE ADING
+Software Reliability Engineering: More Reliable Software, Faster and Cheaper, 2nd edition. This is
+probably the definitive book on the use of operational profiles and reliability models for reliability
+assessment. It includes details of experiences with statistical testing. (J. D. Musa, McGraw-Hill,
+2004.)
+‘NASA’s Mission Reliable’. A discussion of how NASA has used static analysis and model checking
+for assuring the reliability of spacecraft software. (P. Regan and S. Hamilton, IEEE Computer, 37 (1),
+January 2004.) http://dx.doi.org/10.1109/MC.2004.1260727.
+Dependability cases. An example-based introduction to defining a dependability case. (C. B.
+Weinstock, J. B. Goodenough, J. J. Hudak, Software Engineering Institute, CMU/SEI-2004-TN-016,
+2004.) http://www.sei.cmu.edu/publications/documents/04.reports/04tn016.html.
+How to Break Web Software: Functional and Security Testing of Web Applications and Web Services.
+A short book that provides good practical advice on how to run security tests on networked
+applications. (M. Andrews and J. A. Whittaker, Addison-Wesley, 2006.)
+‘Using static analysis to find bugs’. This paper describes Findbugs, a Java static analyzer that uses
+simple techniques to find potential security violations and runtime errors. (N. Ayewah et al., IEEE
+Software, 25 (5), Sept/Oct 2008.) http://dx.doi.org/10.1109/MS.2008.130.
+
+
+
+##### Sommerville PDF p436 #####
+E XERCISES
+15.1. Explain when it may be cost effective to use formal specification and verification in the
+development of safety-critical software systems. Why do you think that critical systems
+engineers are against the use of formal methods?
+15.2. Suggest a list of conditions that could be detected by a static analyzer for Java, C++, or any
+another programming language that you use. Comment on this list compared to the list given
+in Figure 15.2.
+15.3. Explain why it is practically impossible to validate reliability specifications when these are
+expressed in terms of a very small number of failures over the total lifetime of a system.
+15.4. Explain why ensuring system reliability is not a guarantee of system safety.
+15.5. Using examples, explain why security testing is a very difficult process.
+15.6. Suggest how you would go about validating a password protection system for an application
+that you have developed. Explain the function of any tools that you think may be useful.
+15.7. The MHC-PMS has to be secure against attacks that might reveal confidential patient
+information. Some of these attacks have been discussed in Chapter 14. Using this information,
+extend the checklist in Figure 15.5 to guide testers of the MHC-PMS.
+15.8. List four types of systems that may require software safety cases, explaining why safety cases
+are required.
+15.9. The door lock control mechanism in a nuclear waste storage facility is designed for safe
+operation. It ensures that entry to the storeroom is only permitted when radiation shields
+are in place or when the radiation level in the room falls below some given value
+(dangerLevel). So:
+i. If remotely controlled radiation shields are in place within a room, an authorized operator
+may open the door.
+ii. If the radiation level in a room is below a specified value, an authorized operator may open
+the door.
+iii. An authorized operator is identified by the input of an authorized door entry code.
+The code shown in Figure 15.12 (see below) controls the door-locking mechanism. Note that
+the safe state is that entry should not be permitted. Using the approach discussed in section
+15.5.2, develop a safety argument for this code. Use the line numbers to refer to specific
+statements. If you find that the code is unsafe, suggest how it should be modified to make
+it safe.
+Chapter 15 I Exercises
+419
+
+
+
+##### Sommerville PDF p437 #####
+420
+Chapter 15 I Dependability and security assurance
+Figure 15.12 Door
+entry code
+15.10. Assume you were part of a team that developed software for a chemical plant, which failed,
+causing a serious pollution incident. Your boss is interviewed on television and states that
+the validation process is comprehensive and that there are no faults in the software. She
+asserts that the problems must be due to poor operational procedures. A newspaper
+approaches you for your opinion. Discuss how you should handle such an interview.
+1
+entryCode = lock.getEntryCode () ; 
+2
+if (entryCode == lock.authorizedCode) 
+3
+{
+4
+shieldStatus = Shield.getStatus ();
+5
+radiationLevel = RadSensor.get ();
+6
+if (radiationLevel < dangerLevel)
+7
+state = safe;
+8
+else
+9
+state = unsafe; 
+10
+if (shieldStatus == Shield.inPlace() )
+11
+state = safe;
+12
+if (state == safe)
+13
+{
+14
+Door.locked = false ;
+15
+Door.unlock ();
+16
+}
+17
+else
+18
+{
+19
+Door.lock ( );
+20
+Door.locked := true ;
+21
+}
+22
+}
+REFERENCES
+Abrial, J. R. (2005). The B Book: Assigning Programs to Meanings. Cambridge, UK: Cambridge
+University Press.
+Anderson, R. (2001). Security Engineering: A Guide to Building Dependable Distributed Systems.
+Chichester, UK: John Wiley & Sons.
+Baier, C. and Katoen, J.-P. (2008). Principles of Model Checking. Cambridge, Mass.: MIT Press.
+Ball, T., Bounimova, E., Cook, B., Levin, V., Lichtenberg, J., McGarvey, C., Ondrusek, B., S. K., R.
+and Ustuner, A. (2006). ‘Thorough Static Analysis of Device Drivers’. Proc. EuroSys 2006, Leuven,
+Belgium.
+Bishop, P. and Bloomfield, R. E. (1998). ‘A methodology for safety case development’. Proc.
+Safety-critical Systems Symposium, Birmingham, UK: Springer. 
+
+
+
+##### Sommerville PDF p438 #####
+Chapter 15 I References
+421
+Chandra, S., Godefroid, P. and Palm, C. (2002). ‘Software model checking in practice: An industrial
+case study’. Proc. 24th Int. Conf. on Software Eng. (ICSE 2002), Orland, Fla.: IEEE Computer Society,
+431–41.
+Croxford, M. and Sutton, J. (2006). ‘Breaking Through the V and V Bottleneck’. Proc. 2nd Int.
+Eurospace—Ada-Europe Symposium on Ada in Europe, Frankfurt, Germany: Springer-LNCS, 
+344–54.
+Evans, D. and Larochelle, D. (2002). ‘Improving Security Using Extensible Lightweight Static 
+Analysis’. IEEE Software, 19 (1), 42–51.
+Graydon, P. J., Knight, J. C. and Strunk, E. A. (2007). ‘Assurance Based Development of Critical
+Systems’. Proc. 37th Annual IEEE Conf. on Dependable Systems and Networks, Edinburgh, Scotland:
+347–57.
+Holzmann, G. J. (2003). The SPIN Model Checker. Boston: Addison-Wesley.
+Knight, J. C. and Leveson, N. G. (2002). ‘Should software engineers be licensed?’ Comm. ACM, 
+45 (11), 87–90.
+Larus, J. R., Ball, T., Das, M., Deline, R., Fahndrich, M., Pincus, J., Rajamani, S. K. and Venkatapathy, R.
+(2003). ‘Righting Software’. IEEE Software, 21 (3), 92–100.
+Musa, J. D. (1998). Software Reliability Engineering: More Reliable Software, Faster Development
+and Testing. New York: McGraw-Hill.
+Nguyen, T. and Ourghanlian, A. (2003). ‘Dependability assessment of safety-critical system software
+by static analysis methods’. Proc. IEEE Conf. on Dependable Systems and Networks (DSN’2003), 
+San Francisco, Calif.: IEEE Computer Society, 75–9.
+Pfleeger, C. P. and Pfleeger, S. L. (2007). Security in Computing, 4th edition. Boston: 
+Addison-Wesley.
+Prowell, S. J., Trammell, C. J., Linger, R. C. and Poore, J. H. (1999). Cleanroom Software Engineering:
+Technology and Process. Reading, Mass.: Addison-Wesley.
+Regan, P. and Hamilton, S. (2004). ‘NASA’s Mission Reliable’. IEEE Computer, 37 (1), 59–68.
+Schneider, S. (1999). Concurrent and Real-time Systems: The CSP Approach. Chichester, UK: John
+Wiley and Sons.
+Visser, W., Havelund, K., Brat, G., Park, S. and Lerda, F. (2003). ‘Model Checking Programs’.
+Automated Software Engineering J., 10 (2), 203–32.
+Voas, J. (1997). ‘Fault Injection for the Masses’. IEEE Computer, 30 (12), 129–30.
+Wordsworth, J. (1996). Software Engineering with B. Wokingham: Addison-Wesley.
+Zheng, J., Williams, L., Nagappan, N., Snipes, W., Hudepohl, J. P. and Vouk, M. A. (2006). ‘On the 
+value of static analysis for fault detection in software’. IEEE Trans. on Software Eng., 32 (4), 240–5.
+
+
+
+##### Leach PDF p403 #####
+375
+References
+Ada, Reference Manual for the Ada Programming Language, ANSI-MIL-STD-1815A, 1983.
+Ada, Reference Manual for the Ada Programming Language, ANSI-MIL-STD-1815B, 1995.
+Ada, 2005 Language Reference Manual, 2005, http://www.adaic.org/ada-resources/standards/ada05/.
+Ada, 2012 Language Reference Manual, 2012, http://www.ada-auth.org/standards/ada12.html.
+Albrecht, A. J., Measuring application development productivity, Proceedings of the IBM Applications 
+Development Joint SHARE/GUIDE Symposium, 83–92, Monterey, California, 1979.
+Albrecht, A. J., and Gaffney, Jr., J. E., Source lines of code, and development effort prediction: A soft­
+ware science validation, IEEE Transactions on Software Engineering, vol. SE-9, 639–648, 1983.
+American National Standards Institute, Standard Glossary of Software Engineering Terminology, 
+ANSI/IEEE Standard 729–1991.
+American National Standards Institute, Recommended Practice for Software Reliability, ANSI Standard 
+R-012-1992.
+Armour, P. G., The business of software: When faster is slower, Communications of the ACM, vol. 56, 
+no. 10, 30–32, October 2013.
+Arnold, R. S., ed., Software Reengineering, IEEE Press, Los Alamitos, California, 1992.
+Arnold, R. S., and Bohner, S., Software Change Impact Analysis, IEEE Press, Los Alamitos, California, 
+1997.
+Arnold, T. R., and Fuson, W. A., Testing “in a perfect world,” Communications of the ACM, vol. 37, 
+no. 9, 78–86, September 1994.
+Atkinson, C., Object-Oriented Reuse, Concurrency, and Distribution, ACM Press, New York, 1991.
+Babar, M. A., Kitchenham, B., Zhu, L., and Jeffery, R., An exploratory study of groupware support 
+for distributed software architecture evaluation process, Proceedings of the 11th Asia-Pacific 
+Software Engineering Conference (APSEC ’04), 222–229, November 30–December 3, 2004.
+Baker, A. L., and Zweben, S. H., The use of software science in evaluating modularity, IEEE 
+Transactions on Software Engineering, vol. SE-5, no. 3, 110–120, 1979.
+Barbey, S., and Strohmeier, A., The problematics of testing object-oriented software, Proceedings 
+of the Second Conference on Software Quality Management (SQM ’94), Edinburgh, Scotland, 
+vol. 2, 411–426, July 26–28, 1994.
+Barker, T. T., and Dragga, S., Writing Software Documentation: A Task-Oriented Approach, Allyn & 
+Bacon, New York, 1997.
+Barnard, J., and Price, A., Managing code inspection information, IEEE Software, vol. 11, no. 2, 
+59–69, March 1994.
+Basili, V. R., and Selby, R. W., Comparing the effectiveness of software testing strategies, University 
+of Maryland at College Park, Department of Computer Science, Technical Report Number 
+TR-1501, 1985.
+Basili, V. R., and Rombach, H. D., The TAME project: Towards improvement-oriented software 
+development, IEEE Transactions on Software Engineering, vol. SE-14, no. 6, 758–773, 1988.
+Basili, V. R., Viewing maintenance as reuse-oriented software development, IEEE Software, vol. 7, 
+no. 1, 19–25, January 1990.
+
+
+
+##### Leach PDF p404 #####
+376    ◾    References
+Basili, V. R., Caldiera, G., and Cantone, G., A reference architecture for the component factory, ACM 
+Transactions on Software Engineering and Methodology, vol. 1, no. 1, 53–80, January 1992.
+Batory, D., and O’Malley, S., The design and implementation of hierarchical software systems with 
+reusable components, ACM Transactions on Software Engineering and Methodology, October 
+1992.
+Beck, K., Test Driven Development: By Example, Addison-Wesley, Boston, 2003.
+Behrens, C. A., Measuring the productivity of computer systems development activities with func­
+tion points, IEEE Transactions on Software Engineering, vol. SE-13, no. 1, 311–323, 1987.
+Beizer, B., Software Testing Techniques, Van Nostrand Reinhold, New York, 1983.
+Beizer, B., Software Testing Techniques, 2nd ed., Van Nostrand Reinhold, New York, 1990.
+Bell Communications Research Technical Standard for Software Engineering, 1988.
+Berard, E. V., Essays on Object-Oriented Software Engineering, vol. I, Prentice-Hall, Englewood Cliffs, 
+New Jersey, 1993.
+Bergin, J., Polymorphism: As It Is Played, Slant Flying Press, New York, 2015.
+Berry, D. M., The importance of ignorance in requirements engineering, Journal of Systems and 
+Software, vol. 28, no. 2, 179–184, February 1995.
+Bethea, R. M., Duran, B. S., and Boullon, T. L., Statistical Methods for Engineers and Scientists, 2nd 
+ed., Marcel Dekker, New York, 1985.
+Bieman, J. M., and Zhao, J. X., Reuse through inheritance: A quantitative study of C++ software, 
+Proceedings of the ACM-SIGSOFT Symposium on Software Reusability, Seattle, Washington, 
+April 28–30, 1995.
+Bieman, J. M., and Karunanithi, S., Measurement of language-supported reuse in object-oriented and 
+object-based software, Journal of Systems and Software, vol. 30, no. 3, 271–293, September 1995.
+Biggerstaff, T., and Richter, C., Reusability framework, assessment, and directions, IEEE Software, 
+vol. 4, no. 2, 41–49, March 1987.
+Biggerstaff, T., and A. Perlis, A., eds., Software Reusability, vols. 1 and 2, ACM Press, New York, 1989.
+Binder, R. V., Design for testability in object-oriented systems, Communications of the ACM, vol. 37, 
+no. 9, 87–101, September 1994.
+Bleser, T. W., Human-Computer Interface Guidelines Evaluation, Century Computing, Laurel, 
+Maryland, 1994.
+Boehm, B., Brown, J. R., MacLeod, G. J., and Merritt, M. J., Characteristics of Software Quality, 
+Elsevier, North-Holland, 1978.
+Boehm, B., Software Engineering Economics, Prentice Hall, Englewood Cliffs, New Jersey, 1981.
+Boehm, B., A spiral model of software development and enhancement, IEEE Computer, vol. 21, no. 2, 
+61–72, February 1988.
+Boehm, B., Egyed, A., Kwan, J., Port, D., Shah, A., and Madachy, R., Using the WinWin spiral model: 
+A case study, IEEE Computer, vol. 31, no. 7, 33–44, July 1998.
+Boehm, B., and In, H., Identifying quality-requirement conflicts, Proceedings of the Second Annual 
+Conference on Requirements Engineering, Colorado Springs, Colorado, April 15–18, 1996. 
+(Most Influential Paper Award given 2006.)
+Bollinger, T., and Pfleeger, S. L., Economics of reuse: Issues and alternatives, Information and Software 
+Technology, vol. 32, no. 10, 643–652, December 1990.
+Booch, G., Software Engineering with Ada, 3rd ed., (with D. Bryan and C. G. Petersen), Benjamin 
+Cummings, Redwood City, California, 1991.
+Booch, G., Object-Oriented Analysis and Design with Applications, Benjamin Cummings, Redwood 
+City, California, 1993.
+Box, G. E. P., Hunter, W. J., and Hunter, J. S., Statistics for Experimenters, John Wiley & Sons, New 
+York, 1978.
+Bracken, M. R., Hoge, S. L., Sary, C., Rashkin, R., Pendley, R. D., and Werking, R. D., IMACCS: 
+An  operational COTS-based ground system proof-of-concept project, Proceedings of the 
+European Space Conference, pp. 37.1–37.8, 1995.
+
+
+
+##### Leach PDF p405 #####
+References    ◾    377
+Brooks, F., The Mythical Man-Month, Addison-Wesley, Reading, Massachusetts, 1975.
+Budd, T., Classic Data Structures in C++, Addison-Wesley, Reading, Massachusetts, 1994.
+Burnstein, I., Practical Software Testing, Springer-Verlag, New York, 2003.
+Burton, B. A. et al., The reusable software library, IEEE Software, vol. 4, no. 4, 25–33, July 1987.
+Campbell, R., Client-Server Systems User Interface Style Guide (DSTL-95-DRAFT), NASA/Goddard 
+Space Flight Center, Greenbelt, Maryland, 1994.
+Card, S. K., User perceptual mechanisms in the search of computer command menus, Proceedings of 
+the Human Factors Conference, Washington, D.C., 1982.
+Card, D., Church, V. E., and Agresti, W. W., An empirical study of software design practices, IEEE 
+Transactions on Software Engineering, vol. SE-12, 264–271, 1986.
+Chikofsky, E., and Cross, J., Reverse engineering and design recovery: A taxonomy, IEEE Software, 
+vol. 7, no. 1, January 1990.
+Chisnall, D., The challenge of cross-language interoperability, Communications of ACM, vol. 56, 
+no. 12, 50–56, December 2013.
+Coad, P., and Yourdon, E., Object-Oriented Analysis, 2nd ed., Prentice-Hall, Englewood Cliffs, New 
+Jersey, 1990.
+Cohen, D., Lindvall, M., and Costa, P., An introduction to agile methods. In Advances in Computers, 
+1–66. Elsevier Science, New York, 2004.
+Computer Science Corporation (CSC), Systems Engineering and Analysis Support Contract, NASA 
+Goddard Space Flight Center, Greenbelt, Maryland, 1991.
+Conte, S. D., Dunsmore, H. E., and Shen, V. Y., Software Engineering Metrics and Models, Benjamin 
+Cummings, Menlo Park, California, 1986.
+Coplien, J., Hoffman, D., and Weiss, D., Commonality and variability in software engineering, IEEE 
+Software, 37–45, November/December 1999.
+CORBA (Common Object-Oriented Request Broker Architecture), Object Management Group, 
+http://www.omg.org, 1997.
+Cusumano, M. A., and Selby, R. W., Microsoft Secrets: How the World’s Most Powerful Software 
+Company Creates Technology, Shapes Markets and Manages People, Touchstone, New York, 1995.
+Cusumano, M. A., and Selby, R. W., How Microsoft builds software, Communications of ACM, 
+vol. 40, no. 6, 53–61, June 1997.
+Czarnul, P., Integration of Services into Workflow Applications, Chapman & Hall/CRC, Boca Raton, 
+Florida, 2015.
+Date, C. J., An Introduction to Database Systems, 6th ed., Addison-Wesley, Reading, Massachusetts, 
+1995.
+Davis, A. M., Software Requirements: Analysis and Specification, Prentice-Hall, Englewood Cliffs, 
+New Jersey, 1990.
+Davis, M. J., Adaptable, reusable code, Proceedings of the Symposium on Software Reusability, SSR ’95, 
+Seattle, Washington, 38–46, April 28–30, 1995.
+Deitel, H. M., and Deitel, P. J., C++ How to Program, Prentice-Hall, Englewood Cliffs, New Jersey, 1994.
+DeMarco, T., Structured Analysis and System Specification, Prentice Hall, Englewood Cliffs, New 
+Jersey, 1979.
+DeMillo, R. A., McCracken, W. M., Martin, R. J., and Passafiume, J. F., Software Testing and Evaluation, 
+Benjamin Cummings, Menlo Park, California, 1987.
+Denning, P. J., The profession of IT: Design thinking, Communications of the ACM, vol. 56, no. 12, 
+29–31, December 2012.
+Department of Defense Architectural Framework (DoDAF), version 2.0, dodcio.defense.gov​/Portals​
+/0/Documents/DODAF/DoDAF_v2-02_web.pdf.
+Dhama, H., Quantitative models of cohesion and coupling in software, Journal of Systems and 
+Software, vol. 29, 65–74, 1995.
+Dingsøyr, T., Dybå, T., and Moe, N. B., eds., Agile Software Development: Current Research and Future 
+Directions, Springer, Berlin, 2010.
+
+
+
+##### Leach PDF p406 #####
+378    ◾    References
+Dijkstra, E. W., Guarded commands, nondeterminism, and formal derivation of programs, 
+Communications of the ACM, vol. 21, no. 8, 453–457, 1990.
+DISA, Domain analysis and design process, Defense Information Systems Agency Center for 
+Information Management (CIM) Software Reuse Office, Document #1222-04-210/30.1, 1993.
+Donat, M., Husein, J., and Coatta, T., Automated QA testing at Electronic Arts: A discussion with 
+Michael Donat, Jafar Husein, and Terry Coatta, Communications of the ACM, vol. 57, no. 7, 
+50–57, July 2014.
+Dougherty, D., sed & awk, O’Reilly & Associates, Sebastopol, California, 1992.
+Dromey, R. G., A model for software product quality, IEEE Transactions on Software Engineering, 
+vol. SE-21, no. 2, 146–162, February 1995.
+Ellis, M., and Stroustrup, B., The Annotated C++ Reference Manual, Addison-Wesley, Reading, 
+Massachusetts, 1990.
+Ellis, T., COTS integration in software solutions—A cost model, Systems Engineering in the Global 
+Marketplace, NCOSE International Symposium, St. Louis, Missouri, July 24–26, 1995.
+Erl, T., Carlyle, B., Pautasso, C., and Balasubramanian, R., “5.1,” in Thomas Erl, REST Constraints and 
+Goals, Prentice Hall, 2013.
+Ezran, M., Morisio, M., and Tully, C., Failure and success patterns in reuse programs: A synthesis 
+of industrial experiences, Tutorial TTF3, Twenty-First International Conference on Software 
+Engineering, ICSE ’99, Los Angeles, May 17–21, 1999.
+Fagan, M., Design and code inspections to reduce errors in program development, IBM Systems 
+Journal, vol. 15, no. 3, 182–211, 1976.
+Farchamps, D., Organizational factors and reuse, IEEE Software, vol. 11, no. 5, 31–41, September 
+1994.
+Fenton, N. E., and Pfleeger, S. L., Software Metrics: A Rigorous Approach, 2nd ed., International 
+Thomson Press, London, 1996.
+Fenton, N. E., and Bieman, J., Software Metrics: A Rigorous Approach, 3rd ed., Chapman & Hall/CRC 
+Press, London, 2014.
+Finelli, G. B., NASA software failure characterization experiments, in Software Reliability and Safety, 
+B. Littlewood and D. R. Miller, eds., Elsevier Science, London, 1991.
+Fowler, G. S., Korn, D. G., and Vo, K.-P., Principles for writing reusable libraries, Proceedings of the 
+Symposium on Software Reusability, SSR ’95, Seattle, Washington, 150–159, April 28–30, 1995.
+Fowler, M., Is design dead?, in Extreme Programming Explained, G. Succi and M. Marchesi, eds., 
+Addison-Wesley, Boston, 2001.
+Frakes, W. B., and Gandel, P. B., Representing reusable software, Information and Software Technology, 
+vol. 32, no. 10, 653–661, December 1990.
+Frakes, W. B., ed., Advances in Software Reuse: Selected Papers from the Second International Workshop 
+on Software Reusability, Luccia, Italy, March 24–26, 1993.
+Frakes, W. B., ed., Advances in Software Reuse: Selected Papers from the Third International Workshop 
+on Software Reusability, Rio de Janeiro, Brazil, November 1–4, 1994.
+Frakes, W. B., and Isoda, S., Success factors for systematic reuse, IEEE Software, vol. 11, no. 5, 14–22, 
+September 1994.
+Frakes, W. B., and Pole, T. P., An empirical study of representation methods for reusable software com­
+ponents, IEEE Transactions on Software Engineering, vol. SE-20, no. 8, 617–630, August 1994.
+Frakes, W. B., and Fox, C. J., Modeling reuse across the software life cycle, Journal of Systems and 
+Software, vol. 30, no. 3, 295–301, September 1995.
+Frakes, W. B., and Fox, C. J., Sixteen questions about software reuse, Communications of the ACM, 
+vol. 38, no. 6, 75–87, June 1995.
+Freeman, P., Reusable software engineering: Concepts and research directions, ITT Proceedings of the 
+Workshop on Reusability in Programming, 129–137, 1983.
+Freeman, P., Reusable software engineering: Concepts and research directions, Tutorial: Software 
+Reusability, IEEE Computer Society, Los Alamitos, California, 10–23, 1987.
+
+
+
+##### Leach PDF p407 #####
+References    ◾    379
+Freeman, S., and Pryce, N., Growing Object-Oriented Software, Guided by Tests, Addison-Wesley, 
+Upper Saddle River, New Jersey, 2009.
+Gaffney, J., and Cruickshank, R. D., A general economics model for software reuse, Software 
+Productivity Consortium, 1991.
+Galorath, D. D., and Evans, M. W., Software Sizing, Estimation, and Risk Management, Auerbach, 
+Boca Raton, Florida, 2006.
+Gamma, E., Helm, R., Johnson, R., and Vlissides, J., Design Patterns: Elements of Reusable Object-
+Oriented Software, Addison-Wesley Professional, Boston, 1998.
+General Accounting Office, Software Reuse—Major Issues Need to Be Resolved Before Benefits Can Be 
+Achieved, GAO Report Number GAO/IMTEC-93-16, Washington, D.C., 1993.
+Ghezzi, C., Jazayeri, M., and Mandrioli, D., Fundamentals of Software Engineering, Pearson Prentice 
+Hall, Upper Saddle River, New Jersey, 2002.
+Gilb, T., Principles of Software Engineering Management, Addison-Wesley, Reading, Massachusetts, 
+1987.
+Goguen, J. A., Reusing and interconnecting software components, IEEE Computer, 16–28, February 
+1986.
+Gold-Bernstein, B., and Ruh, W. A., Enterprise Integration: The Essential Guide to Integration 
+Solutions, Addison-Wesley, Reading, Massachusetts, 2005.
+Goldberg, A., and Rubin, K. S., Taming object-oriented technology, Computer Language, vol. 7, 
+no. 10, 34–35, October 1990.
+Gomaa, H., Methods and tools for domain-specific software architectures, Proceedings of the Fifth 
+Workshop on Software Reuse, WISR-5, 1992.
+Goodman, M. A., Goyal, M., and Massoudi, R. A., Solaris Porting Guide, SunSoft Press, Mountain 
+View, California, 1993.
+Gotel, O. C. Z., and Finkelstein, A. C. W., An analysis of the requirements traceability problem, 
+Requirements Engineering, 1994, Proceedings of the First Annual Conference on Requirements 
+Engineering, Colorado Springs, Colorado, 94–101, April 18–22, 1994. (Most Influential Paper 
+Award given 2004.)
+Gothelf, J., How we finally made agile development work, Harvard Business Review, October 11, 
+2012. Accessed December 2014 from https://hbr.org/2012/10/how-we-finally-made-agile​
+-development-work.
+Goulde, M., Developing a reuse strategy, Open Computing, vol. 12, no. 8, 29, August 1, 1995.
+Grady, R. B., and Caswell, D. L., Software Metrics: Establishing a Company-Wide Policy, Prentice-
+Hall, Englewood Cliffs, New Jersey, 1987.
+Grady, R. B., Successfully applying software metrics, IEEE Computer, vol. 27, no. 9, 28–26, September 
+1994.
+Green, M., University of Alberta user interface management system, Proceedings SIGGRAPH 
+Conference—Computer Graphics (ACM), vol. 19, no. 3, 205–213, July 1985.
+Griss, M. L., A multi-disciplinary software reuse research program, Proceedings of the Fifth Workshop 
+on Software Reuse, WISR-5, 1992.
+Guerrieri, E., Case study: Digital’s application generator, IEEE Software, vol. 11, no. 5, 95–96, 
+September 1994.
+Hall, P. A. V., Software Reuse and Reverse Engineering in Practice, Chapman & Hall, London, 1992.
+Halstead, M. H., Elements of Software Science, Elsevier, North-Holland, 1977.
+Hardy, Q., Business software keeps evolving quickly, The New York Times, May 12, 2014a.
+Hardy, Q., Free software’s big challenge, The New York Times, July 28, 2014b.
+Harms, D. E., and Weide, B. W., Copying and swapping: Influence on the design of reusable software 
+components, IEEE Transactions on Software Engineering, vol. SE-17, no. 5, 424–435, May 1991.
+Harrold, M. J., McGregor, J. D., and Fitzpatrick, K. J., Incremental testing of object-oriented class 
+structures, Proceedings of the 14th International Conference on Software Engineering, Melbourne, 
+Australia, 68–79, May 11–15, 1992.
+
+
+
+##### Leach PDF p408 #####
+380    ◾    References
+Hartson, H. R., and Hix, D., Human-computer interface development concepts and systems for its 
+management, ACM Computing Surveys, vol. 21, no. 1, 5–92, March 1989.
+Hashemi, R., and Leach, R. J., Issues in porting software from C to C++, Software: Practice & 
+Experience, vol. 22, no. 7, 599–602, 1992.
+Hecht, H., Hecht, M., and Wallace, D., Toward more effective testing for high assurance systems, 
+Proceedings of the High Assurance Systems Engineering Workshop, HASE ’97, Washington, D.C., 
+176–181, August 11–12, 1997.
+Hennel, M. A., Testing for the achievement of software reliability, in Software Reliability and Safety, 
+B. Littlewood and D. R. Miller, eds., Elsevier Science, London, 1991.
+Henninger, S., Developing domain knowledge through the reuse of project experience, Proceedings 
+of the Symposium on Software Reusability, SSR ’95, Seattle, Washington, 186–195, April 28–30, 
+1995a.
+Henninger, S., Information access tools for software reuse, Journal of Systems and Software, vol. 30, 
+231–247, 1995b.
+Henricson, M., and Nyquist, E., Industrial Strength C++: Rules and Recommendations (Prentice Hall 
+Series in Innovative Technology), Prentice-Hall, Englewood Cliffs, New Jersey, 1996.
+Henry, S., and Kafura, D., Software metrics based on information flow, IEEE Transactions on Software 
+Engineering, vol. SE-7, no. 5, 510–518, September 1981.
+Hoare, C. A. R., Algorithm 64: Quicksort, Communications of the ACM, vol. 4, no. 7, 321, 1961.
+Hoare, C. A. R., Communicating Sequential Processes, Prentice-Hall, Englewood Cliffs, New Jersey, 
+1985.
+Hollingsworth, J. E., Weide, B. W., and Zweben, S. H., Confessions of some used-program clients, 
+Proceedings of the 4th Annual Workshop on Software Reuse, Herndon, Virginia, November 1991.
+Hooper, J. W., and Chester, R., Software Reuse: Guidelines and Methods, Plenum Press, New York, 
+1991.
+Horton, W. K., Designing and Writing Online Documentation for Self-Supporting Products, John Wiley 
+& Sons, New York, 1994.
+Howden, W. E., Functional Program Testing and Analysis, McGraw-Hill, New York, 1987.
+Hull, S., 20 obstacles to scalability, Communications of the ACM, vol. 56, no. 9, 54–58, September 
+2013.
+Humphrey, W., Managing the Software Process, Addison-Wesley, Reading, Massachusetts, 1989.
+Humphrey, W., A Discipline for Software Engineering, Addison-Wesley, Reading, Massachusetts, 
+1995.
+Ichbiah, J. D., Barnes, J. G. P., Firth, R. J., and Woodger, M., Rationale for the Design of the Ada 
+Programming Language, Alsys, France, 1986.
+IEEE, IEEE Standard Dictionary of Measures to Produce Reliable Software, IEEE STD 982.1-1988.
+IEEE, Standard Glossary of Software Engineering Technology, IEEE STD 610.12-1990.
+IEEE, Standards for Software Productivity Metrics, IEEE STD 1045-1992a.
+IEEE, Standard for a Software Engineering Methodology, IEEE STD 1061-1992b.
+International Organization for Standardization, Quality Management and Quality Assurance 
+Standards—Guidelines for Selection and Use, ISO 9000, 1987a.
+International Organization for Standardization, Quality Systems—Model for Quality Assurance in 
+Design/Development, Production, Installation, and Servicing, ISO 9001, 1987b.
+International Organization for Standardization, Quality Systems—Model for Quality Assurance in 
+Production and Installation, ISO 9002, 1987c.
+International Organization for Standardization, Quality Systems—Model for Quality Assurance in 
+Final Inspection and Test, ISO 9003, 1987d.
+International Standards Organization, ISO/IEC IS 10040: 1991a, Information Technology—Open 
+Systems Interconnection—Systems Management Overview.
+International Standards Organization, ISO/IEC IS 10164: 1991b, Information Technology—Open 
+Systems Interconnection—Systems Management Details.
+
+
+
+##### Leach PDF p409 #####
+References    ◾    381
+International Standards Organization, ISO/IEC IS 10165-1: 1991c, Information Technology—Open 
+Systems Interconnection—Structure of Management Information—Part 1: Management Infor­
+mation Model.
+International Standards Organization, ISO/IEC IS 10165-4: 1991d, Information Technology—Open 
+Systems Interconnection—Part 4: Guidelines for the Definition of Managed Objects.
+Jackson, M. A., System Development, Prentice Hall, Englewood Cliffs, New Jersey, 1983.
+Jacobson, I., Spence, I., and Ng, P.-W., Agile and SEMAT—Perfect partners, Communications of the 
+ACM, vol. 56, no. 11, 53–59, November 2013.
+Jacobson, I., Ng, P.-W., Spence, I., and McMahon, P., Major-league SEMAT—Why should an execu­
+tive care, Communications of the ACM, vol. 57, no. 4, 44–50, April 2014a.
+Jacobson, I., Ng, P.-W., Spence, I., and Lidman, S., The Essence of Software Engineering: Applying the 
+SEMAT Kernel, Addison-Wesley, Upper Saddle River, New Jersey, 2014b.
+Jalote, P., An Integrated Approach to Software Engineering, Springer, New York, 1991.
+Jelinski, F., and Moranda, P. B., Software reliability research, in Statistical Computer Performance 
+Evaluation, W. Freiberger, ed., Academic Press, New York, 465–484, 1972.
+Jeng, J.-J., and Chen, B. H. C., Specification matching for software reuse: A foundation, Proceedings 
+of the ACM-SIGSOFT Symposium on Software Reusability, Seattle, Washington, April 28–30, 
+1995.
+Johnson, L. F., and Cooper, R. H., File Techniques for Data Base Organization in COBOL, 2nd ed., 
+Prentice-Hall, Englewood Cliffs, New Jersey, 1986.
+Johnson, R. E., and Foote, B., Designing reusable classes, Journal of Object-Oriented Programming, 
+vol. 1, no. 2, 22–35, 1988.
+Johnson, J. A., Nardi, B. A., Zarmer, C. L., and Miller, J. R., ACE: An application construction envi­
+ronment, Proceedings of the Fifth Workshop on Software Reuse, WISR-5, 1992.
+Johnson, B., Ornburn, S., and Rugaber, S., A quick tools strategy for program analysis and soft­
+ware maintenance, Proceedings of the Conference on Software Maintenance, 206–213, Orlando, 
+Florida, November 9–12, 1992.
+Jones, T. Capers, Reusability in programming: A survey of the state of the art, IEEE Transactions on 
+Software Engineering, vol. SE-10, no. 5, 488–494, September 1984.
+Jones, T. Capers, Assessment and Control of Software Risks, Yourdon Press, Prentice-Hall, Englewood 
+Cliffs, New Jersey, 1994.
+Jones, T. Capers, Bad days for software, IEEE Spectrum, 47–52, September 1998.
+Joos, R., Software reuse at Motorola, IEEE Software, vol. 11, no. 5, 42–47, September 1994.
+Jorgenson, P. C., and Erikson, C., Object-oriented integration testing, Communications of the ACM, 
+vol. 37, no. 9, 30–38, September 1994.
+Kaczmarczyk, L., Questioning our assumptions about introverts and computing, ACM Inroads, 
+vol. 4, no. 4, December, 2013, 24–25.
+Kafura, D., and Henry, S., Software quality metrics based on interconnectivity, Journal of Systems and 
+Software, vol. 2, no. 2, 121–131, 1981.
+Kaiser, G. E., and Garland, D., Melding software systems from reusable building blocks, IEEE 
+Software, vol. 4, no. 4, 17–24, July 1987.
+Kamath, Y. H., Smilan, R. E., and Smith, J. G., Reaping benefits with object-oriented technology, 
+AT&T Technical Journal, vol. 72, no. 5, 14–24, September/October 1993.
+Kaner, C., and Fiedler, R., Foundations of Software Testing, BBST, 2013.
+Karlsonn, E.-A., Software Reuse: A Holistic Approach, John Wiley & Sons, New York, 1995.
+Karolak, D., Shifting paradigm in software engineering management, keynote address at International 
+Association of Science and Technology for Development (IASTED) Conference on Software 
+Engineering, ACTA Press, Las Vegas, Nevada, October 28–31, 1998.
+Keiller, P. A., Littlewood, B., Miller, D. R., and Sofer, A., Comparison of software reliability pre­
+dictions, Proceedings of the Thirteenth International Symposium on Fault-Tolerant Computing, 
+IEEE Computer Society Press, 128–134, Washington, D.C., 1983.
+
+
+
+##### Leach PDF p410 #####
+382    ◾    References
+Keiller, P. A., and Miller, D. R., Software reliability growth models, in Software Reliability and Safety, 
+B. Littlewood and D. R. Miller, eds., Elsevier Science, London, 1991.
+Kernighan, B., and Ritchie, D., The C Programming Language, Prentice-Hall, Englewood Cliffs, New 
+Jersey, 1982.
+Kernighan, B., The UNIX system and software reusability, IEEE Transactions on Software Engineering, 
+vol. SE-10, no. 5, 51–3518, September 1984.
+Kernighan, B., and Ritchie, D., The C Programming Language, 2nd ed., Prentice-Hall, Englewood 
+Cliffs, New Jersey, 1988.
+Kitchenham, B. A., Pfleeger, S. L., and Fenton, N. E., Towards a framework for software measurement 
+validation, IEEE Transactions on Software Engineering, vol. 21, no. 12, 929–944, 1995.
+Knuth, D. E., The Art of Computer Programming. Vol. 1, Fundamental Algorithms, 2nd ed., Addison-
+Wesley, Reading, Massachusetts, 1973.
+Kontio, J., OTSO: A systematic process for reusable software component selection, University of 
+Maryland, College Park Technical Report CS-TR-3478, UMIACS-TR-95-63, December 1995.
+Krishnamurthy, B., Practical Reusable UNIX Software, John Wiley & Sons, New York, 1995.
+Krueger, C. W., Software reuse, ACM Computing Surveys, vol. 24, no. 2, 131–183, June, 1992.
+LaMonica, M., Object code is not spurring reuse by IS, Infoworld, vol. 17, no. 39, 19–20, August 21, 1995.
+Laplante, P. A., Licensing software engineers: Seize the opportunity, Communications of the ACM, 
+vol. 57, no. 7, 38–40, July 2014.
+Larman, C., and Basili, V. R., Iterative and incremental development: A brief history, IEEE Computer, 
+June 2003.
+Lea, D., and de Champeaux, D., Object-oriented software reuse technical opportunities, Proceedings 
+of the Fifth Workshop on Software Reuse, WISR-5, 1992.
+Leach, R. J., Using C in Software Design, Academic Press Professional, Boston, 1993.
+Leach, R. J., Advanced Topics in UNIX, John Wiley & Sons, New York, 1994.
+Leach, R. J., Object-Oriented Design and Programming in C++, Academic Press Professional, Boston, 
+1995.
+Leach, R. J., Software Reuse: Methods, Models, Costs, McGraw-Hill, New York, 1997.
+Leach, R. J., Assessment of COTS products from an operating systems perspective, Pacific Northwest 
+Quality Conference, Portland, Oregon, 235–243, October 12–15, 1998a.
+Leach, R. J., Using reuse for requirements, IASTED Conference, Las Vegas, Nevada, October 28–31, 1998b.
+Leach, R. J., Measurement of requirements: A case study, Proceedings of the International Function 
+Point Users Group Conference, Orlando, Florida, 141–148, September 22–25, 1998c.
+Leach, R. J., Software cost estimation, Encyclopedia of Electrical and Electronics Engineering, John 
+Wiley, New York, 1999.
+Leach, R. J., Using software reuse for requirements, Fourth Baltic Conference on Databases and 
+Information Systems (IEEE), Vilnius, Lithuania, May 1–5, 2000.
+Leach, R. J., Using software reuse to drive requirements, in Databases and Information Systems, 
+J. Barzdins and A. Caplinskas, eds., Kluwer Academic, Dordrecht, The Netherlands, 2001.
+Leach, R. J., Separate money tubs hurt software productivity, CrossTalk, vol. 17, no. 12, 19–22, 
+December 2004.
+Leach, R. J., Can this COTS-based system be saved?, PC/104 Embedded Solutions, vol. 9, no. 4, 38–44, 
+Fall 2005.
+Leach, R. J., A model relating software quality and reuse, CrossTalk, 27–28, April 2006.
+Leach, R. J., Software cost estimation, in Encyclopedia of Electrical and Electronics Engineering, John 
+Wiley, New York, 2007a, http://www.mrw.interscience.wiley.com/emrw/9780471346081/home.
+Leach, R. J., Reuse perspectives—How much has changed in fifteen years?, Tenth Annual Joint 
+Conference on Information Systems, JCIS2007, July 2007b, http://eproceedings.worldscinet.com
+/9789812709677/978981209677_0106.html.
+Leach, R. J., Experiences analyzing faults in a hybrid distributed system with access only to sanitized 
+data, Journal of Software Engineering and Applications (JSEA), vol. 3, no. 5, 446–454, 2010.
+
+
+
+##### Leach PDF p411 #####
+References    ◾    383
+Leach, R. J., Advanced Topics in UNIX, 2nd ed., AfterMath, 2012.
+Leach, R. J., Charles, C., Fagan, K., Kimbrough, T., and Thomas, K. R., A reengineering process using 
+early decomposition and simple tools, Information and Software Technology, vol. 40, no. 14, 
+871–875, 1998.
+Leach, R. J., Burge, L. L., and Keeling, H. N., Can students reengineer?, Proceedings of the 39th 
+Technical Symposium on Computer Science Education, SIGCSE 2008, Portland, Oregon, March 
+12–15, 2008.
+Ledbetter, L., and Cox, B., Software-ICs: A plan for building reusable software components, BYTE, 
+28–35, June 1985.
+Leffingwell, D., Agile Software Requirements: Lean Requirements Practices for Teams, Programs, and 
+the Enterprise (Agile Software Development Series), Pearson Education, Boston, 2001.
+Leveson, N. G., Software safety: What, why and how, ACM Computing Surveys, vol. 18, no. 2, 125–163, 
+1986.
+Leveson, N., Engineering a Safer World, MIT Press, Cambridge, Massachusetts, 2012.
+Levine, J. R., Mason, T., and Brown, D., lex & yacc, 2nd ed., O’Reilly & Associates, Sebastopol, 
+California, 1992.
+Lillie, C., Software reuse, Proceedings of the Second Annual Reuse Education and Training Workshop, 
+Morgantown, West Virginia, October 1993.
+Lim, W. C., Effects of reuse on quality, productivity, and economics, IEEE Software, vol. 11, no. 5, 
+23–30, September 1994.
+Lim, W. C., Managing Software Reuse, Prentice-Hall, Englewood Cliffs, New Jersey, 1995.
+Lindholm, E., Snap-on code, Datamation, vol. 40, 63, February 1, 1994.
+Littlewood, B., and Miller, D. R., eds., Software Reliability and Safety, Elsevier Science, London, 1991. 
+(Also in Reliability Engineering and System Safety, vol. 32, nos. 1 and 2, 1991.)
+Liu, M., Hansen, S., and Tu, Q., The community source approach to software development and the 
+Kuali experience, Communications of the ACM, vol. 57, no. 5, 88–96, May 2014.
+Lorenz, M., Object-Oriented Software Development: A Practical Guide, Prentice Hall, Englewood 
+Cliffs, New Jersey, 1993.
+Luqi, and Ketabchi, M., A computer-aided prototyping system, IEEE Software, vol. 5, no. 2, 66–72, 
+March 1988.
+Mandl, D., NASA Goddard Space Flight Center Internal Technical Report, 1998.
+Marick, B., The Craft of Software Testing, Prentice-Hall, Englewood Cliffs, New Jersey, 1997.
+Matsumoto, Y., and Ohno, Y., Japanese Perspectives in Software Engineering, Prentice-Hall, Englewood 
+Cliffs, New Jersey, 1989.
+McCabe, T. J., A complexity measure, IEEE Transactions on Software Engineering, vol. SE-2, 308–320, 
+December 1976.
+McCarthy, J., Dynamics of Software Development, Microsoft Press, Redmond, Washington, 1995.
+McClure, C., The Three R’s of Software Automation: Re-Engineering, Repository, Reusability, Prentice-
+Hall, Englewood Cliffs, New Jersey, 1992.
+McConnell, S., Open source methodology: Ready for prime time?, IEEE Software, vol. 16, no. 4, 6–8, 
+July–August 1999.
+McGregor, J. D., and Korson, T. D., Integrating object-oriented testing and development processes, 
+Communications of the ACM, vol. 37, no. 9, 59–77, September 1994.
+McIlroy, M. D., Mass produced software components, in Software Engineering Concepts and Techniques, 
+Proceedings of the 1968 NATO Conference on Software Engineering, Petrocelli/Charter, Brussels, 
+Belgium, 88–98, 1968.
+Meyer, B., Reusability: The case for object-oriented design, IEEE Software, vol. 4, 50–63, March 1987.
+Meyer, B., and Arnout, K., Componentization: The visitor example, IEEE Computer, vol. 39, no. 7, 
+23–30, July 2006.
+Mili, H., Mili, F., and Mili, A., Reusing software: Issues and research directions, IEEE Transactions on 
+Software Engineering, vol. SE-21, no. 6, 528–561, June 1995.
+
+
+
+##### Leach PDF p412 #####
+384    ◾    References
+Miller, G., The magic number seven, plus or minus two: Some limits on our capacity for processing 
+information, The Psychological Review, vol. 63, 81–97, March 1956.
+Miller, R. B., Response time in man-computer conversational transactions, AFIPS Conference Pro­
+ceedings, vol. 22, 267–277, December 1968.
+Miller, E., and Howden, W. E., Software Testing and Validation Techniques, IEEE Computer Society, 
+Long Beach, California, 1978.
+Miller, E., and Howden, W. E., Software Testing and Validation Techniques, 2nd ed., IEEE Computer 
+Society, Long Beach, California, 1983.
+Mills, H. D., Dyer, M., and Linger, R. C., Cleanroom software engineering, IEEE Software, vol. 4, 
+19–24, September 1987.
+Milner, R., A Calculus of Communicating Systems, Springer-Verlag, New York, 1980.
+Montgomery, D. C., Introduction to Statistical Quality Control, John Wiley & Sons, New York, 1991.
+Moore, J. M., and Bailin, S. C., Domain analysis: Framework for reuse, in Domain Analysis and Software 
+Systems Modeling, R. Prieto-Diaz and G. Arango, eds., IEEE Press, Los Alamitos, California, 1991.
+Murphy, G. C., Townsend, P., and Wong, P. S., Experiences with cluster and class testing, Commu­
+nications of the ACM, vol. 37, no. 9, 39–47, September 1994.
+Musa, J. D., Iannino, A., and Okumoto, K., Software Reliability: Measurement, Prediction, Application, 
+McGraw-Hill, New York, 1987.
+Musa, J. D., Operational profiles in software reliability engineering, IEEE Software, vol. 10, no. 2, 
+14–32, March 1993.
+Musen, M. A., Dimensions of knowledge sharing and reuse, Computers and Biomedical Research, 
+vol. 25, 435–467, 1992.
+Myers, G. J., Software Reliability: Principles and Practices, Wiley, New York, 1976.
+Myers, G. J., The Art of Software Testing, John Wiley & Sons, New York, 1979.
+Myers, W., Taligent’s CommonPoint: The promise of objects, IEEE Computer, vol. 28, no. 3, 77–83, 
+March 1995.
+NASA, Software reuse issues, Proceedings of the 1988 Workshop on Software Reuse, sponsored by 
+NASA Langley Research Center, Melbourne, Florida, November 17–18, 1988.
+NASA, Proceedings of the Second NASA Workshop on Software Reuse, Research Triangle Park, North 
+Carolina, May 5–6, 1992a.
+NASA, Software engineering program: Profile of software within Code 500 at Goddard Space Flight 
+Center, NASA SEP Report R01-92, December 1992b.
+National Institute for Standards and Technology, Management Information Catalog, Issue 1.0, NIST, 
+OIW, and Network Management Forum, Gaithersburg, Maryland, June 1992. (There are sub­
+sequent catalogs.)
+National Institute for Standards and Technology, Glossary of Software Reuse Terms, S. Katz, C. 
+Dabrowski, K. Miles, and M. Law, eds., Gaithersburg, Maryland, 1995.
+Navarro, J. J., Organization design for software reuse, Proceedings of the Fifth Workshop on Software 
+Reuse, WISR-5, 1992.
+Neville-Neil, G., Kode Vicious: A lesson in resource management, Communications of the ACM, 
+vol. 56, no. 12, 32–33, December 2013.
+Neville-Neil, G., Kode Vicious: This is the foo field, Communications of the ACM, vol. 57, no. 4, 
+20–21, April 2014.
+Nielsen, J., Usability Engineering, Academic Press, San Diego, California, 1994.
+Nielsen, J., and Budiu, R., Mobile Usability, New Riders, Berkeley, California, 2012.
+Olsen, D. R., MIKE: The menu interaction kontrol environment, ACM Transactions on Graphics, 
+vol. 5, no. 4, 318–344, October 1986.
+Parnas, D. L., On the criteria for decomposing systems into modules, Communications of the ACM, 
+vol. 15, no. 12, 1052–1058, 1972.
+Parnas, D. L., The modular structure of complex systems, IEEE Transactions on Software Engineering, 
+259–266, March 1985.
+
+
+
+##### Leach PDF p413 #####
+References    ◾    385
+Perry, D., and Kaiser, G., Adequate testing and object-oriented programming, Journal of Object-
+Oriented Programming, vol. 3., no. 1, January/February 1990.
+Petri Nets, Conference on Petri Nets and Related Methods, MIT July, 1975.
+Pfleeger, C. P., Pfleeger, S. L., and Margulies, J., Security in Computing, 5th ed., Prentice-Hall, 
+Englewood Cliffs, New Jersey, 2015.
+Pfleeger, S. L., Software Engineering: The Production of Quality Software, Macmillan, New York, 1989.
+Pfleeger, S. L., Model of software effort and productivity, Information Software and Technology, 
+vol. 33, no. 3, 224–231, April 1991.
+Pfleeger, S. L., and Bollinger, T. B., Economics of reuse: New approaches to modelling and assessing 
+cost, Information and Software Technology, August 1994.
+Pfleeger, S. L., Fenton, N., and Page, S., Evaluating software engineering standards, IEEE Computer, 
+vol. 27, no. 9, 71–79, September 1994.
+Pfleeger, S. L., Measuring reuse: A cautionary tale, IEEE Software, 118–127, July 1996.
+Pfleeger, S. L., and Atlee, J. M., Software Engineering: Theory and Practice, 4th ed., Prentice Hall, 
+Englewood Cliffs, New Jersey, 2010.
+Pigoski, T. M., Practical Software Maintenance, IEEE Press, Los Alamitos, California, 1997.
+Plauger, P. J., The Standard C Library, Prentice Hall, Englewood Cliffs, New Jersey, 1992.
+Plauger, P. J., The Standard C++ Template Library, Prentice Hall, Englewood Cliffs, New Jersey, 1994.
+Pleszkoch, M. G., Linger, R. C., and Hevner, A. R., Eliminating non-transferable paths from struc­
+tured programs, Proceedings of the IEEE Conference on Software Maintenance, 156–164, Orlando, 
+Florida, November 9–12, 1992.
+Pohl, I., C++ for C Programmers, Benjamin Cummings, Redwood City, California, 1989.
+Poston, R. M., Automated testing from object models, Communications of the ACM, vol. 37, no. 9, 
+48–58, September 1994.
+Poulin, J. S., Measuring software reusability, Proceedings of the Third International Workshop on 
+Software Reuse, Rio de Janeiro, Brazil, November 1–4, 1994.
+Poulin, J. S., and Werkman, K. J., Melding structured abstracts and the world wide web for retrieval 
+of reusable components, Proceedings of the Symposium on Software Reusability, SSR ’95, Seattle, 
+Washington, 160–168, April 28–30, 1995.
+Pressman, R. S., and Maxim, B. R., Software Engineering: A Practitioner’s Approach, 8th ed., McGraw-
+Hill, New York, 2015.
+Prieto-Diaz, R., Implementing faceted classification for software reuse, Communications of the ACM, 
+vol. 34, no. 5, 88–97, May 1991.
+Prieto-Diaz, R., and Arango, G., eds., Domain Analysis and Software Systems Modeling, IEEE Press, 
+Los Alamitos, California, 1991.
+Prieto-Diaz, R., Some experiences in domain analysis, Proceedings of the Sixth Workshop on Software 
+Reuse, WISR-6, 1993a.
+Prieto-Diaz, R., Status report: Software reusability, IEEE Software, 61–66, May 1993b.
+Putnam, L. H., A general empirical solution to the macro software size and estimation problem, IEEE 
+Transactions on Software Engineering, vol. SE-4, no. 4, 345–361, 1978.
+Rada, R., Software Reuse, Ablex, 1995.
+Ramamoorthy, C. V., and Bastiani, F. B., Software reliability—Status and perspectives, IEEE Trans­
+actions on Software Engineering, vol. SE-8, no. 4, 354–371, July 1982.
+Ramamoorthy, C. V., Garg, V., and Prakash, A., Support for reusability: Genesis, IEEE Transactions 
+on Software Engineering, vol. SE-14, no. 8, 1145–1154, 1988.
+Randell, B., System structure for software fault tolerance, Transactions on Software Engineering, 
+vol. SE-11, no. 2, June 1975.
+Ratcliffe, B., and Rollo, A. L., Adapting function point analysis to the Jackson system development, 
+Software Engineering Journal, vol. 5, no. 1, 1990.
+Ray, G., Software reuse not a panacea: Some firms pursue it as a development goal; others question 
+its viability, Computerworld, vol. 26, 47, December 21, 1992.

@@ -4,7 +4,7 @@
 **Academic Supervisor:** Asst. Prof. Dr. Ali Fahim Ni'ma  
 **Institution:** College of Computer Science & IT — University of Wasit  
 **Authoring Engine:** Master Studio (Oh My Pi — 2026-10-16)  
-**Status:** CLOSED — source corrections, five authored synthesis questions, and print gates completed (2026-10-17)
+**Status:** CLOSED for study and printing; source-figure refresh completed 2026-10-20 (student visual review pending)
 
 ---
 
@@ -12,19 +12,21 @@
 
 | Pack Slug | Question Form | Source Authority & Anchor | Total Items | Markdown | Clean PDF | Status |
 |:---|:---|:---|:---:|:---:|:---:|:---:|
-| **`V2_Vocabulary_Coverage`** | Confirmed Doctor's Vocabulary | Dr. Ali Fahim (2026-09-23) + B.B. Agarwal (2010) + Supporting Sources | 8 Core Blocks (5 Synthesis Recall Qs) | [MD](V2_Vocabulary_Coverage.md) | [PDF](V2_Vocabulary_Coverage.pdf) | PRISTINE (9 pp) |
-| **`T1_MCQ`** | Multiple Choice Questions | K.K. Aggarwal & Yogesh Singh (2007) pp. 37–39 & Slides 41–45 (Official Key on printed p. 499) | 25 MCQs (2 Synthesis Recall Qs) | [MD](T1_MCQ.md) | [PDF](T1_MCQ.pdf) | PRISTINE (9 pp) |
-| **`T2_Descriptive`** | Descriptive, Procedural & Definitional | B.B. Agarwal et al. (2010), p. 52 (Q1–6, 8, 10–12, 14–16, 18) | 14 Exercises (2 Synthesis Recall Qs) | [MD](T2_Descriptive.md) | [PDF](T2_Descriptive.pdf) | PRISTINE (12 pp) |
-| **`T3_Compare_Analyze`** | Trade-offs & Model Comparisons | B.B. Agarwal et al. (2010), p. 52 (Q17, 19, 20) + Slides (Ex 2.7, 2.9) | 5 Analyses (2 Synthesis Recall Qs) | [MD](T3_Compare_Analyze.md) | [PDF](T3_Compare_Analyze.pdf) | PRISTINE (6 pp) |
-| **`T4_Diagrams`** | Architecture Schematics & Figure Geometry | B.B. Agarwal (2010) Q7, 9 + Slides 6, 18, 20, 21, 25, 28 | 4 Visual Units (2 Synthesis Recall Qs) | [MD](T4_Diagrams.md) | [PDF](T4_Diagrams.pdf) | PRISTINE (12 pp) |
-| **`T5_Apply_Select`** | Applied Scenarios & Justified Selection | B.B. Agarwal et al. (2010) Q13 (i–iv) + Selection Matrices | 4 Scenarios + Selection Matrix (2 Synthesis Recall Qs) | [MD](T5_Apply_Select.md) | [PDF](T5_Apply_Select.pdf) | PRISTINE (7 pp) |
+| **`V2_Vocabulary_Coverage`** | Confirmed Doctor's Vocabulary | Dr. Ali Fahim (2026-09-23) + B.B. Agarwal (2010) + Supporting Sources | 8 Core Blocks (5 Synthesis Recall Qs) | [MD](V2_Vocabulary_Coverage.md) | [PDF](V2_Vocabulary_Coverage.pdf) | PRISTINE (5 pp) |
+| **`T1_MCQ`** | Multiple Choice Questions | K.K. Aggarwal & Yogesh Singh (2007) pp. 37–39 & Slides 41–45 (Official Key on printed p. 499) | 25 MCQs (2 Synthesis Recall Qs) | [MD](T1_MCQ.md) | [PDF](T1_MCQ.pdf) | PRISTINE (8 pp) |
+| **`T2_Descriptive`** | Descriptive, Procedural & Definitional | B.B. Agarwal et al. (2010), p. 52 (Q1–6, 8, 10–12, 14–16, 18) | 14 Exercises (2 Synthesis Recall Qs) | [MD](T2_Descriptive.md) | [PDF](T2_Descriptive.pdf) | PRISTINE (8 pp) |
+| **`T3_Compare_Analyze`** | Trade-offs & Model Comparisons | B.B. Agarwal et al. (2010), p. 52 (Q17, 19, 20) + Slides (Ex 2.7, 2.9) | 5 Analyses (2 Synthesis Recall Qs) | [MD](T3_Compare_Analyze.md) | [PDF](T3_Compare_Analyze.pdf) | PRISTINE (4 pp) |
+| **`T4_Diagrams`** | Architecture Schematics & Figure Geometry | B.B. Agarwal (2010) Figs. 2.3–2.5 + Slides 6, 18, 20, 21, 24, 27 | 4 Visual Units (2 Synthesis Recall Qs) | [MD](T4_Diagrams.md) | [PDF](T4_Diagrams.pdf) | PRISTINE (5 pp) |
+| **`T5_Apply_Select`** | Applied Scenarios & Justified Selection | B.B. Agarwal et al. (2010) Q13 (i–iv) + Selection Matrices | 4 Scenarios + Selection Matrix (2 Synthesis Recall Qs) | [MD](T5_Apply_Select.md) | [PDF](T5_Apply_Select.pdf) | PRISTINE (4 pp) |
+
+**Combined print file:** [Ch02_Complete_Print_Pack.pdf](Ch02_Complete_Print_Pack.pdf) — 34 pages, six pack sections bookmarked; index excluded.
 
 **Source Counts (Not Exam Marks):** 
 - Primary textbook: **20 written exercises** (p. 52, including Q13 with 4 scenarios).
 - Supplemental textbook & slides: **25 MCQs** (printed pp. 37–39 & Slides 41–45; keys verified against official key on printed p. 499; Q2.18 noted as unverified empirical claim in textbook prose).
 - Confirmed instructor vocabulary: **8 core topic blocks**.
 - Focused Active Recall drills: **Duplicate prompts removed; unique synthesis questions provided with answers directly underneath**.
-Total generated artifact volume: **55 PDF pages**.
+Total generated artifact volume: **34 PDF pages** in the current print-optimized pack set.
 
 ---
 

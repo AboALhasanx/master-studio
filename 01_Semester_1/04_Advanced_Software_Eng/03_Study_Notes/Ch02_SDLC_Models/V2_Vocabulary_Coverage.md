@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — V2 Vocabulary Coverage · Software Life-Cycle Models"
-subtitle: "Direct study answers for Dr. Ali Fahim's confirmed eight vocabulary blocks"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,17 +9,22 @@ header_left: "ASE Chapter 2 — V2 Vocabulary Coverage"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "Direct study answers for Dr. Ali Fahim's confirmed eight vocabulary blocks"
 ---
 
 # Chapter 2 — V2 Doctor's Vocabulary Coverage
 
-This pack provides concise, rigorous, examinable answers for the eight core vocabulary blocks confirmed directly from **Dr. Ali Fahim** (cohort message, 2026-09-23). 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
+This pack provides concise, rigorous, examinable answers for the eight core vocabulary blocks confirmed directly from **Dr. Ali Fahim** (cohort message, 2026-09-23).
+-->
 
+<!-- Print-hidden (opening format/source note); retained for Markdown/reference use.
 > **Formatting Standard:**
 > - Direct English answers responding immediately to the technical concept.
 > - **Bold text** represents source-grounded definitions, mechanisms, and rules. Plain text represents framing or synthesis.
 > - Concise Arabic notes and exam traps are placed separately outside the English answer.
 > - Exact source locators follow each entry.
+-->
 
 ---
 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="530" viewBox="0 0 1000 530" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#9333ea"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="32" font-size="15" font-weight="700" fill="#0f172a">COCOMO '81 Architectural Hierarchy: Modes &amp; Progressive Model Tiers</text>
+  <text x="35" y="48" font-size="11.5" font-weight="600" fill="#64748b">3 Operating Modes (Organic / Semidetached / Embedded) across Basic → Intermediate → Detailed Models</text>
+  <text x="965" y="40" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">Barry Boehm (1981) · K.K. Aggarwal &amp; Yogesh Singh (pp. 152–160)</text>
+
+  <!-- Column 1: Operating Modes -->
+  <g transform="translate(20, 80)" filter="url(#cShadow)">
+    <rect width="250" height="425" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6"/>
+    <rect x="0" y="0" width="250" height="36" rx="8" fill="#475569"/>
+    <text x="125" y="23" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Three Operating Modes</text>
+
+    <!-- Organic -->
+    <rect x="12" y="48" width="226" height="110" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.4"/>
+    <text x="22" y="70" font-size="12" font-weight="700" fill="#15803d">1. Organic Mode</text>
+    <text x="22" y="88" font-size="10.5" fill="#334155">• Size: Typically ≤ 50 KLOC</text>
+    <text x="22" y="104" font-size="10.5" fill="#334155">• Team: Experienced, familiar domain</text>
+    <text x="22" y="120" font-size="10.5" fill="#334155">• Environment: Relaxed, flexible</text>
+    <text x="22" y="142" font-size="11" font-weight="700" fill="#166534">E = 2.4 (KLOC)¹·⁰⁵ · D = 2.5 E⁰·³⁸</text>
+
+    <!-- Semidetached -->
+    <rect x="12" y="168" width="226" height="110" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.4"/>
+    <text x="22" y="190" font-size="12" font-weight="700" fill="#1d4ed8">2. Semidetached Mode</text>
+    <text x="22" y="208" font-size="10.5" fill="#334155">• Size: Intermediate, 50–300 KLOC</text>
+    <text x="22" y="224" font-size="10.5" fill="#334155">• Team: Mixed experience &amp; skills</text>
+    <text x="22" y="240" font-size="10.5" fill="#334155">• Environment: Medium constraints</text>
+    <text x="22" y="262" font-size="11" font-weight="700" fill="#1e40af">E = 3.0 (KLOC)¹·¹² · D = 2.5 E⁰·³⁵</text>
+
+    <!-- Embedded -->
+    <rect x="12" y="288" width="226" height="122" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+    <text x="22" y="310" font-size="12" font-weight="700" fill="#b91c1c">3. Embedded Mode</text>
+    <text x="22" y="328" font-size="10.5" fill="#334155">• Size: Typically &gt; 300 KLOC</text>
+    <text x="22" y="344" font-size="10.5" fill="#334155">• Constraint: Tight hardware/regulations</text>
+    <text x="22" y="360" font-size="10.5" fill="#334155">• Environment: Highly rigid &amp; complex</text>
+    <text x="22" y="380" font-size="10.5" font-weight="700" fill="#991b1b">Mode choice also depends on constraints.</text>
+    <text x="22" y="398" font-size="11" font-weight="700" fill="#b91c1c">E = 3.6 (KLOC)¹·²⁰ · D = 2.5 E⁰·³²</text>
+  </g>
+
+  <!-- Arrow Modes -> Tier 1 -->
+  <line x1="275" y1="290" x2="310" y2="290" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Column 2: Basic COCOMO -->
+  <g transform="translate(315, 120)" filter="url(#cShadow)">
+    <rect width="200" height="340" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+    <rect x="0" y="0" width="200" height="34" rx="8" fill="#2563eb"/>
+    <text x="100" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tier 1: Basic COCOMO</text>
+
+    <rect x="12" y="46" width="176" height="75" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="100" y="68" font-size="11" font-weight="700" fill="#1e3a8a" text-anchor="middle">Pure Size Function</text>
+    <text x="100" y="88" font-size="11.5" font-weight="700" fill="#2563eb" text-anchor="middle">E = ab · (KLOC)ᵇᵇ</text>
+    <text x="100" y="106" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">D = cb · (E)ᵈᵇ</text>
+
+    <rect x="12" y="132" width="176" height="115" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="100" y="152" font-size="10.5" font-weight="700" fill="#1e293b" text-anchor="middle">Key Characteristics</text>
+    <text x="20" y="172" font-size="10" fill="#475569">• Quick, rough estimates</text>
+    <text x="20" y="190" font-size="10" fill="#475569">• Uses size (KLOC) as its main input</text>
+    <text x="20" y="208" font-size="10" fill="#475569">• No explicit cost-driver adjustment</text>
+    <text x="20" y="226" font-size="10" fill="#475569">• Mode-specific effort and schedule</text>
+
+    <rect x="12" y="258" width="176" height="68" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="100" y="278" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">Productivity Rate</text>
+    <text x="100" y="296" font-size="10" font-weight="700" fill="#0284c7" text-anchor="middle">Prod = (1000/ab)·(KLOC)¹⁻ᵇ</text>
+    <text x="100" y="314" font-size="9" fill="#64748b" text-anchor="middle">Decreases with size (1-b &lt; 0)</text>
+  </g>
+
+  <!-- Arrow Tier 1 -> Tier 2 -->
+  <line x1="520" y1="290" x2="550" y2="290" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrB)"/>
+
+  <!-- Column 3: Intermediate COCOMO -->
+  <g transform="translate(555, 95)" filter="url(#cShadow)">
+    <rect width="210" height="395" rx="8" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.6"/>
+    <rect x="0" y="0" width="210" height="34" rx="8" fill="#9333ea"/>
+    <text x="105" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tier 2: Intermediate COCOMO</text>
+
+    <rect x="12" y="44" width="186" height="85" rx="6" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+    <text x="105" y="64" font-size="11" font-weight="700" fill="#6b21a8" text-anchor="middle">15 Cost Drivers (EAF)</text>
+    <text x="105" y="84" font-size="11" font-weight="700" fill="#9333ea" text-anchor="middle">E = ai · (KLOC)ᵇⁱ × EAF</text>
+    <text x="105" y="102" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">EAF = Π Emi (15 factors)</text>
+    <text x="105" y="118" font-size="9" fill="#64748b" text-anchor="middle">ai: Org=3.2 · Semi=3.0 · Emb=2.8</text>
+
+    <!-- 4 Categories breakdown -->
+    <rect x="12" y="138" width="186" height="235" rx="6" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+    <text x="20" y="158" font-size="10.5" font-weight="700" fill="#7e22ce">Product Attributes (3):</text>
+    <text x="20" y="174" font-size="9.5" fill="#475569">• RELY, DATA, CPLX</text>
+
+    <text x="20" y="200" font-size="10.5" font-weight="700" fill="#7e22ce">Computer Attributes (4):</text>
+    <text x="20" y="216" font-size="9.5" fill="#475569">• TIME, STOR, VIRT, TURN</text>
+
+    <text x="20" y="242" font-size="10.5" font-weight="700" fill="#7e22ce">Personnel Attributes (5):</text>
+    <text x="20" y="258" font-size="9.5" fill="#475569">• ACAP, AEXP, PCAP, VEXP, LEXP</text>
+
+    <text x="20" y="284" font-size="10.5" font-weight="700" fill="#7e22ce">Project Attributes (3):</text>
+    <text x="20" y="300" font-size="9.5" fill="#475569">• MODP, TOOL, SCED</text>
+
+    <rect x="20" y="318" width="170" height="44" rx="4" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+    <text x="105" y="334" font-size="9.5" font-weight="700" fill="#6b21a8" text-anchor="middle">Rating Scale: 6 Levels</text>
+    <text x="105" y="350" font-size="9" fill="#475569" text-anchor="middle">Very Low to Extra High (Nominal=1.0)</text>
+  </g>
+
+  <!-- Arrow Tier 2 -> Tier 3 -->
+  <line x1="770" y1="290" x2="800" y2="290" stroke="#9333ea" stroke-width="2.2" marker-end="url(#arrP)"/>
+
+  <!-- Column 4: Detailed COCOMO -->
+  <g transform="translate(805, 110)" filter="url(#cShadow)">
+    <rect width="180" height="365" rx="8" fill="#f0fdf4" stroke="#4ade80" stroke-width="1.6"/>
+    <rect x="0" y="0" width="180" height="34" rx="8" fill="#16a34a"/>
+    <text x="90" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tier 3: Detailed COCOMO</text>
+
+    <rect x="12" y="46" width="156" height="70" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="90" y="66" font-size="10.5" font-weight="700" fill="#15803d" text-anchor="middle">Phase-Sensitive Drivers</text>
+    <text x="90" y="84" font-size="9.5" fill="#475569" text-anchor="middle">Drivers impact different</text>
+    <text x="90" y="98" font-size="9.5" fill="#475569" text-anchor="middle">phases with varying multipliers</text>
+
+    <!-- Phase distribution -->
+    <rect x="12" y="126" width="156" height="150" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+    <text x="90" y="146" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">5 Life Cycle Phases:</text>
+    <text x="20" y="168" font-size="9.5" fill="#334155">1. Plan &amp; Requirement</text>
+    <text x="20" y="188" font-size="9.5" fill="#334155">2. System Design</text>
+    <text x="20" y="208" font-size="9.5" fill="#334155">3. Detail Design</text>
+    <text x="20" y="228" font-size="9.5" font-weight="700" fill="#15803d">4. Module Code &amp; Test</text>
+    <text x="20" y="248" font-size="9.5" fill="#334155">5. Integration &amp; Test</text>
+
+    <rect x="12" y="286" width="156" height="65" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="90" y="304" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="middle">Table 4.7 Source Note</text>
+    <text x="90" y="322" font-size="9" fill="#7f1d1d" text-anchor="middle">Organic-Small effort = 106%</text>
+    <text x="90" y="338" font-size="9" fill="#7f1d1d" text-anchor="middle">Schedule allocation = 110%</text>
+  </g>
+</svg>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="520" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="31" font-size="15" font-weight="700" fill="#0f172a">Requirements Review &amp; Validation Process</text>
+  <text x="35" y="47" font-size="11.5" font-weight="600" fill="#64748b">6 Structured Inspection Stages &amp; Formal Problem Resolution Actions</text>
+  <text x="965" y="39" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">K.K. Aggarwal &amp; Yogesh Singh (Fig. 3.21, p. 93) · Slides 112–115</text>
+
+  <!-- 6 Stages Horizontal Pipeline -->
+  <g transform="translate(25, 80)">
+    <!-- Stage 1 -->
+    <rect x="0" y="0" width="140" height="70" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="70" y="25" font-size="12.5" font-weight="700" fill="#1e40af" text-anchor="middle">1. Plan Review</text>
+    <text x="70" y="45" font-size="10.5" fill="#475569" text-anchor="middle">Scope, dates, team</text>
+
+    <line x1="140" y1="35" x2="160" y2="35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Stage 2 -->
+    <rect x="160" y="0" width="140" height="70" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="230" y="25" font-size="12.5" font-weight="700" fill="#1e40af" text-anchor="middle">2. Distribute</text>
+    <text x="230" y="45" font-size="10.5" fill="#475569" text-anchor="middle">SRS to inspectors</text>
+
+    <line x1="300" y1="35" x2="320" y2="35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Stage 3 -->
+    <rect x="320" y="0" width="145" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="392" y="25" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle">3. Read Docs</text>
+    <text x="392" y="45" font-size="10.5" fill="#475569" text-anchor="middle">Individual audit</text>
+
+    <line x1="465" y1="35" x2="485" y2="35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Stage 4 -->
+    <rect x="485" y="0" width="145" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="557" y="25" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="middle">4. Review Mtg</text>
+    <text x="557" y="45" font-size="10.5" fill="#475569" text-anchor="middle">Formal walkthrough</text>
+
+    <line x1="630" y1="35" x2="650" y2="35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Stage 5 -->
+    <rect x="650" y="0" width="140" height="70" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="720" y="25" font-size="12.5" font-weight="700" fill="#1e40af" text-anchor="middle">5. Follow-up</text>
+    <text x="720" y="45" font-size="10.5" fill="#475569" text-anchor="middle">Remediate actions</text>
+
+    <line x1="790" y1="35" x2="810" y2="35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Stage 6 -->
+    <rect x="810" y="0" width="140" height="70" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="880" y="25" font-size="12.5" font-weight="700" fill="#15803d" text-anchor="middle">6. Revise SRS</text>
+    <text x="880" y="45" font-size="10.5" fill="#166534" text-anchor="middle">Final approved baseline</text>
+  </g>
+
+  <!-- LEFT BOX: 7-POINT QUALITY CHECKLIST -->
+  <g transform="translate(35, 185)" filter="url(#cShadow)">
+    <rect width="430" height="310" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.8"/>
+    <rect x="0" y="0" width="430" height="34" rx="8" fill="#d97706"/>
+    <text x="215" y="23" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">THE 7-POINT QUALITY REVIEW CHECKLIST (Slide 115)</text>
+    <text x="20" y="65" font-size="12" font-weight="700" fill="#b45309">1. Redundancy:</text>
+    <text x="135" y="65" font-size="11.5" fill="#334155">Are statements repeated unnecessarily?</text>
+    <text x="20" y="100" font-size="12" font-weight="700" fill="#b45309">2. Completeness:</text>
+    <text x="135" y="100" font-size="11.5" fill="#334155">Are all inputs, outputs, &amp; states defined?</text>
+    <text x="20" y="135" font-size="12" font-weight="700" fill="#b45309">3. Ambiguity:</text>
+    <text x="135" y="135" font-size="11.5" fill="#334155">Can any statement have multiple meanings?</text>
+    <text x="20" y="170" font-size="12" font-weight="700" fill="#b45309">4. Consistency:</text>
+    <text x="135" y="170" font-size="11.5" fill="#334155">Do any requirements directly conflict?</text>
+    <text x="20" y="205" font-size="12" font-weight="700" fill="#b45309">5. Organization:</text>
+    <text x="135" y="205" font-size="11.5" fill="#334155">Does it follow IEEE Std 830 structure?</text>
+    <text x="20" y="240" font-size="12" font-weight="700" fill="#b45309">6. Conformance:</text>
+    <text x="135" y="240" font-size="11.5" fill="#334155">Does it adhere to organizational standards?</text>
+    <text x="20" y="275" font-size="12" font-weight="700" fill="#b45309">7. Traceability:</text>
+    <text x="135" y="275" font-size="11.5" fill="#334155">Are all tags uniquely traceable?</text>
+  </g>
+
+  <!-- RIGHT BOX: PROBLEM RESOLUTION ACTIONS -->
+  <g transform="translate(535, 185)" filter="url(#cShadow)">
+    <rect width="430" height="310" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.8"/>
+    <rect x="0" y="0" width="430" height="34" rx="8" fill="#dc2626"/>
+    <text x="215" y="23" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">PROBLEM RESOLUTION ACTIONS (Slide 114)</text>
+    <text x="20" y="65" font-size="12" font-weight="700" fill="#991b1b">• Requirements Clarification:</text>
+    <text x="35" y="85" font-size="11.5" fill="#475569">Rewrite vague phrases into measurable test criteria.</text>
+    <text x="20" y="115" font-size="12" font-weight="700" fill="#991b1b">• Missing Information:</text>
+    <text x="35" y="135" font-size="11.5" fill="#475569">Consult domain stakeholders to retrieve omitted rules.</text>
+    <text x="20" y="165" font-size="12" font-weight="700" fill="#991b1b">• Requirements Conflicts:</text>
+    <text x="35" y="185" font-size="11.5" fill="#475569">Convene negotiation session to reconcile opposing demands.</text>
+    <text x="20" y="215" font-size="12" font-weight="700" fill="#991b1b">• Unrealistic Requirements:</text>
+    <text x="35" y="235" font-size="11.5" fill="#475569">Re-negotiate scope with management and scale back features.</text>
+    <text x="20" y="265" font-size="12" font-weight="700" fill="#991b1b">• Security Issues:</text>
+    <text x="35" y="285" font-size="11.5" fill="#475569">Audit against ISO/IEC security standards and harden rules.</text>
+  </g>
+
+</svg>
+</div>
+</body>
+</html>

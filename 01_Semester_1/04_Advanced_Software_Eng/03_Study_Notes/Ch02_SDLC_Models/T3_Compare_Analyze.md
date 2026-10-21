@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — T3 Compare & Analyze Pack · Life-Cycle Models"
-subtitle: "Comprehensive Comparative and Trade-off Analysis Across SDLC Models"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,11 +9,14 @@ header_left: "ASE Chapter 2 — T3 Compare & Analyze Pack"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "Comprehensive Comparative and Trade-off Analysis Across SDLC Models"
 ---
 
 # Chapter 2 — T3 Compare & Analyze Questions Pack
 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
 This pack contains comparative, evaluative, and trade-off analysis exercises from printed page 52 of B.B. Agarwal et al. (2010), supplemented with comparative exercises from K.K. Aggarwal & Yogesh Singh (2007). Questions and answers are strictly in English, with bold indicating source-grounded content, plain text for structural framing, and concise Arabic notes for exam traps.
+-->
 
 ---
 

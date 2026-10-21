@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "chapter": "5",
+  "purpose": "Require semantic fidelity, reproducibility, and visual inspection for any Chapter 5 diagram reconstruction.",
+  "items": [
+    {
+      "figure_id": "CH05-FIG-XXX",
+      "source": {
+        "file": "vault-relative source PDF path",
+        "kind": "book_printed_page | slide",
+        "locator": "printed page or slide number",
+        "image": "source_figures/source-image.png"
+      },
+      "learning_task": "What a student must understand, explain, interpret, or produce",
+      "diagram_type": "uml_class | uml_use_case | uml_activity | uml_sequence | uml_state_machine | uml_component | uml_deployment | dfd | structure_chart | flowchart | concept_model | curve | taxonomy_table",
+      "notation": {
+        "name": "exact notation family and version, when relevant",
+        "source_defined_conventions": [
+          "list any conventions stated by the course/source"
+        ],
+        "legend_required": true
+      },
+      "semantic_contract": {
+        "nodes": [
+          {
+            "id": "stable-id",
+            "kind": "typed element",
+            "label": "visible label",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "from": "stable-id",
+            "to": "stable-id",
+            "kind": "typed relation",
+            "direction": "from-to",
+            "label": "optional text",
+            "multiplicity_guard_event_or_payload": "when relevant",
+            "required": true
+          }
+        ],
+        "invariants": [
+          "testable semantic rule; e.g. exactly seven cohesion types, in source order"
+        ],
+        "assumptions": [
+          "explicit assumptions; empty if none"
+        ]
+      },
+      "code": {
+        "path": "editable source path (.puml, .dot, .mmd, .svg.html, or plot script)",
+        "renderer": "PlantUML | Graphviz DOT | Mermaid | diagram_forge SVG/HTML | Python plotting",
+        "render_command": "reproducible command or documented invocation",
+        "output_path": "generated SVG or PNG path"
+      },
+      "validation": {
+        "semantic_checks": [
+          "required IDs/edges/count/order/directions checked against source"
+        ],
+        "parser_render": "pass/fail and renderer version",
+        "visual_review": "source and output opened side by side at print scale; legibility result",
+        "reviewer_date": "record reviewer and date",
+        "limitations": [
+          "what was not verified"
+        ]
+      }
+    }
+  ],
+  "type_specific_rules": {
+    "uml_class": [
+      "Classes, attributes, operations, relationship kinds, arrowheads, and multiplicities are explicit; subclass generalization points to the superclass."
+    ],
+    "uml_use_case": [
+      "Actor-goal associations and system boundary are explicit; include/extend are used only when supported."
+    ],
+    "uml_activity": [
+      "Actions, control flows, decisions/merges, guards, and initial/final nodes are typed; do not substitute a generic flowchart."
+    ],
+    "uml_sequence": [
+      "Lifelines, message order, activations, returns, and interaction fragments preserve time/order semantics."
+    ],
+    "uml_state_machine": [
+      "States, transitions, trigger events, guards, effects, and initial/final pseudostates are typed when present."
+    ],
+    "uml_component": [
+      "Implementation components and provided/required interfaces remain distinct from runtime nodes."
+    ],
+    "uml_deployment": [
+      "Artifacts/components are mapped to deployment nodes; do not conflate with a component diagram."
+    ],
+    "dfd": [
+      "Declare Yourdon/DeMarco or Gane-Sarson; entities, processes, stores, and directed data flows are typed; no call/control-flow arrows; check balancing across levels."
+    ],
+    "structure_chart": [
+      "Module hierarchy/calls, data couples, control couples, selection/iteration annotations are distinct; do not reinterpret as DFD or flowchart."
+    ],
+    "flowchart": [
+      "Process, input/output, decision, connector, and terminal symbols describe algorithmic control flow."
+    ],
+    "curve": [
+      "Axes, units, source-defined qualitative/quantitative scale, sampled points, extrema, and assumptions are recorded; never invent numeric values from a qualitative sketch."
+    ],
+    "taxonomy_table": [
+      "Every category and source order are preserved; ranking direction and its legend are explicit."
+    ]
+  }
+}

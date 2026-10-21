@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif}#diagram{width:2200px;height:1040px;margin:0 auto;background:#fff}svg{width:2200px;height:1040px;display:block}.panel{fill:#fbfdff;stroke:#94a3b8;stroke-width:2}.proc{fill:#fff;stroke:#172554;stroke-width:2.5}.module{fill:#fff;stroke:#172554;stroke-width:2.5}.flow{fill:none;stroke:#111827;stroke-width:2.5;marker-end:url(#flow)}.call{fill:none;stroke:#334155;stroke-width:2.5;marker-end:url(#call)}.data{fill:none;stroke:#b45309;stroke-width:2.5;marker-end:url(#data)}.title{font-size:30px;font-weight:700;fill:#172554}.subtitle{font-size:19px;fill:#475569}.node{font-size:20px;fill:#111827}.label{font-size:17px;fill:#111827}.mapping{font-size:18px;fill:#334155}.heading{font-size:21px;font-weight:700;fill:#0f172a}
+</style></head><body><div id="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1040" role="img" aria-labelledby="title desc">
+<title id="title">RMS example: DFD transform analysis mapped to a structure chart</title>
+<desc id="desc">Left: a level 1 Yourdon-DeMarco DFD with validate-input, compute-rms and display-result processes in source order, linked left-to-right by data-items, valid-data and rms; the final rms flow exits the boundary. Center: transformation mapping identifies input/afferent, central transform, and output/efferent regions. Right: the source structure chart has main, get-good-data, compute-rms, write-result, read-input, and validate-input modules with call hierarchy and labelled data couples.</desc>
+<defs>
+ <marker id="flow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L12 7 L1 13 Z" fill="#111827"/></marker>
+ <marker id="call" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L12 7 L1 13 Z" fill="#334155"/></marker>
+ <marker id="data" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L12 7 L1 13 Z" fill="#b45309"/></marker>
+</defs>
+<!-- Panels are separate: DFD data-flow semantics are never merged with module-call semantics. -->
+<rect class="panel" x="30" y="48" width="790" height="720" rx="8"/>
+<rect class="panel" x="1380" y="48" width="790" height="720" rx="8"/>
+<text class="title" x="425" y="98" text-anchor="middle">DFD — Level 1</text>
+<text class="subtitle" x="425" y="130" text-anchor="middle">Yourdon/DeMarco style · source: Mall Fig. 6.8(b), PDF p.329</text>
+<!-- DFD Level 1 faithfully follows Mall Fig. 6.8(b): left-to-right flows. -->
+<path class="flow" d="M75 390 L160 390"/><text class="label" x="78" y="365">data-items</text>
+<circle class="proc" cx="230" cy="390" r="68"/><text class="node" x="230" y="383" text-anchor="middle">validate-</text><text class="node" x="230" y="412" text-anchor="middle">input 0.1</text>
+<path class="flow" d="M298 390 L387 390"/><text class="label" x="342" y="320">valid-data</text>
+<circle class="proc" cx="455" cy="390" r="68"/><text class="node" x="455" y="383" text-anchor="middle">compute-</text><text class="node" x="455" y="412" text-anchor="middle">rms 0.2</text>
+<path class="flow" d="M523 390 L582 390"/><text class="label" x="544" y="350">rms</text>
+<circle class="proc" cx="680" cy="390" r="68"/><text class="node" x="680" y="383" text-anchor="middle">display-</text><text class="node" x="680" y="412" text-anchor="middle">result 0.3</text>
+<path class="flow" d="M748 390 L790 390"/><text class="label" x="758" y="365">rms</text>
+<!-- Transform-analysis mapping is prose/typed mapping, not a third diagram notation. -->
+<text class="heading" x="1100" y="205" text-anchor="middle">Transform analysis</text>
+<text class="mapping" x="1100" y="260" text-anchor="middle">input / afferent</text>
+<text class="mapping" x="1100" y="290" text-anchor="middle">validate-input → get-good-data</text>
+<line x1="900" y1="322" x2="1300" y2="322" stroke="#cbd5e1" stroke-width="2"/>
+<text class="mapping" x="1100" y="375" text-anchor="middle">central transform</text>
+<text class="mapping" x="1100" y="405" text-anchor="middle">compute-rms → compute-rms</text>
+<line x1="900" y1="437" x2="1300" y2="437" stroke="#cbd5e1" stroke-width="2"/>
+<text class="mapping" x="1100" y="490" text-anchor="middle">output / efferent</text>
+<text class="mapping" x="1100" y="520" text-anchor="middle">display-result → write-result</text>
+<text class="subtitle" x="1100" y="615" text-anchor="middle">Factor input branch into read-input +</text><text class="subtitle" x="1100" y="642" text-anchor="middle">validate-input (Mall Fig. 6.19, PDF p.346).</text>
+
+<text class="title" x="1775" y="98" text-anchor="middle">Structure chart</text>
+<text class="subtitle" x="1775" y="130" text-anchor="middle">Source-faithful hierarchy + labelled data couples · Mall Fig. 6.19, PDF p.346</text>
+<!-- Module calls form a hierarchy; these edges are not DFD data flows. -->
+<rect class="module" x="1665" y="170" width="220" height="66"/><text class="node" x="1775" y="212" text-anchor="middle">main</text>
+<path class="call" d="M1710 236 L1515 335"/><path class="call" d="M1775 236 L1775 335"/><path class="call" d="M1840 236 L2035 335"/>
+<rect class="module" x="1410" y="335" width="210" height="66"/><text class="node" x="1515" y="377" text-anchor="middle">get-good-data</text>
+<rect class="module" x="1670" y="335" width="210" height="66"/><text class="node" x="1775" y="377" text-anchor="middle">compute-rms</text>
+<rect class="module" x="1930" y="335" width="210" height="66"/><text class="node" x="2035" y="377" text-anchor="middle">write-result</text>
+<path class="call" d="M1470 401 L1450 540"/><path class="call" d="M1560 401 L1610 540"/>
+<rect class="module" x="1375" y="540" width="160" height="66"/><text class="node" x="1455" y="582" text-anchor="middle">read-input</text>
+<rect class="module" x="1550" y="540" width="190" height="66"/><text class="node" x="1645" y="582" text-anchor="middle">validate-input</text>
+<!-- Data couples are orange, distinct from gray module-call relations. -->
+<path class="data" d="M1455 526 L1500 415"/><text class="label" x="1388" y="470">data-items</text>
+<path class="data" d="M1645 526 L1585 415"/><text class="label" x="1600" y="470">data-items</text>
+<path class="data" d="M1645 540 C1635 472 1585 430 1540 401"/><text class="label" x="1605" y="438">valid-data</text>
+<path class="data" d="M1515 335 C1550 260 1640 250 1690 236"/><text class="label" x="1565" y="278">valid-data</text>
+<path class="data" d="M1775 335 L1775 236"/><text class="label" x="1790" y="292">rms</text>
+
+<rect x="60" y="830" width="2070" height="120" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<line x1="110" y1="875" x2="250" y2="875" class="flow"/><text class="label" x="270" y="882">DFD data-flow arrow (black)</text>
+<line x1="720" y1="875" x2="860" y2="875" class="call"/><text class="label" x="880" y="882">structure-chart module call (blue-gray)</text>
+<line x1="1450" y1="875" x2="1590" y2="875" class="data"/><text class="label" x="1610" y="882">structure-chart data couple (orange)</text>
+<text class="subtitle" x="1095" y="925" text-anchor="middle">Both panels represent the same RMS example: DFD flows are data transformations; structure-chart arrows are module calls and labelled data couples.</text>
+</svg></div></body></html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; background:#fff; font-family: Arial, Helvetica, sans-serif; }
+  #diagram { width:1200px; height:680px; margin:0 auto; background:#fff; }
+  svg { width:1200px; height:680px; display:block; }
+  .panel { fill:#f8fafc; stroke:#94a3b8; stroke-width:2; }
+  .actor-box { fill:#1e293b; stroke:#0f172a; stroke-width:2.5; }
+  .actor-title { font-size:22px; font-weight:700; fill:#ffffff; }
+  .actor-desc { font-size:16px; fill:#94a3b8; }
+  .design-box { fill:#ffffff; stroke:#2563eb; stroke-width:2.5; }
+  .design-box-tech { fill:#ffffff; stroke:#059669; stroke-width:2.5; }
+  .phase-title { font-size:24px; font-weight:700; fill:#1e3a8a; }
+  .phase-title-tech { font-size:24px; font-weight:700; fill:#064e3b; }
+  .question-tag { font-size:20px; font-weight:700; fill:#dc2626; }
+  .item-text { font-size:16px; fill:#334155; }
+  .flow-arrow { fill:none; stroke:#2563eb; stroke-width:3; marker-end:url(#blue-arrow); }
+  .flow-arrow-tech { fill:none; stroke:#059669; stroke-width:3; marker-end:url(#green-arrow); }
+  .bridge-arrow { fill:none; stroke:#475569; stroke-width:2.5; stroke-dasharray:6,6; marker-end:url(#gray-arrow); }
+  .caption { font-size:26px; font-weight:700; fill:#0f172a; }
+  .sub-caption { font-size:18px; fill:#64748b; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">A Two-Part Design Process: Conceptual Design and Technical Design</title>
+  <desc id="desc">Designers connect to both design views; Conceptual Design points to Customer and Technical Design points to System Builders.</desc>
+  <defs>
+    <marker id="blue-arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L12 7 L1 13 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="green-arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L12 7 L1 13 Z" fill="#059669"/>
+    </marker>
+    <marker id="gray-arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L12 7 L1 13 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Title and Header -->
+  <text class="caption" x="600" y="48" text-anchor="middle">Fig. 2 : A Two-Part Design Process</text>
+  <text class="sub-caption" x="600" y="80" text-anchor="middle">K.K. Aggarwal &amp; Yogesh Singh (3rd ed.), Chapter 5, Slide 5 / Book p. 204</text>
+
+  <!-- Actor 1: Customer -->
+  <g transform="translate(60, 140)">
+    <rect class="actor-box" width="220" height="120" rx="8"/>
+    <text class="actor-title" x="110" y="55" text-anchor="middle">Customer</text>
+    <text class="actor-desc" x="110" y="85" text-anchor="middle">(System Users &amp; Clients)</text>
+  </g>
+
+  <!-- Conceptual Design points to Customer -->
+  <path class="flow-arrow" d="M360 200 L280 200"/>
+
+  <!-- Conceptual Design Box (What) -->
+  <g transform="translate(360, 120)">
+    <rect class="design-box" width="300" height="210" rx="8"/>
+    <text class="question-tag" x="150" y="40" text-anchor="middle">"WHAT"</text>
+    <text class="phase-title" x="150" y="75" text-anchor="middle">Conceptual Design</text>
+    <line x1="20" y1="92" x2="280" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text class="item-text" x="30" y="125">• User problem domain understanding</text>
+    <text class="item-text" x="30" y="155">• External screen &amp; report mockups</text>
+    <text class="item-text" x="30" y="185">• Input data formats &amp; outputs</text>
+  </g>
+
+  <!-- Actor 2: Designers (Center Bridge) -->
+  <g transform="translate(490, 390)">
+    <rect class="actor-box" width="220" height="110" rx="8"/>
+    <text class="actor-title" x="110" y="50" text-anchor="middle">Designers</text>
+    <text class="actor-desc" x="110" y="80" text-anchor="middle">(Software Architects)</text>
+  </g>
+
+  <!-- Designers connect outward to both design views -->
+  <path class="bridge-arrow" d="M540 390 L510 330"/>
+  <path class="bridge-arrow" d="M660 390 L860 330"/>
+
+  <!-- Technical Design Box (How) -->
+  <g transform="translate(710, 120)">
+    <rect class="design-box-tech" width="300" height="210" rx="8"/>
+    <text class="question-tag" x="150" y="40" text-anchor="middle" fill="#059669">"HOW"</text>
+    <text class="phase-title-tech" x="150" y="75" text-anchor="middle">Technical Design</text>
+    <line x1="20" y1="92" x2="280" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text class="item-text" x="30" y="125">• Module &amp; subsystem architecture</text>
+    <text class="item-text" x="30" y="155">• Data structures &amp; database schemas</text>
+    <text class="item-text" x="30" y="185">• Interfaces &amp; algorithmic logic</text>
+  </g>
+
+  <!-- Actor 3: System Builders -->
+  <g transform="translate(930, 390)">
+    <rect class="actor-box" width="220" height="110" rx="8"/>
+    <text class="actor-title" x="110" y="50" text-anchor="middle">System Builders</text>
+    <text class="actor-desc" x="110" y="80" text-anchor="middle">(Programmers &amp; Testers)</text>
+  </g>
+
+  <!-- Flow from Tech Design down to System Builders -->
+  <path class="flow-arrow-tech" d="M860 330 L930 410"/>
+
+  <!-- Bottom Explanatory Banner -->
+  <rect x="60" y="550" width="1080" height="85" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <text class="item-text" x="600" y="585" text-anchor="middle" font-weight="700">Designers contribute to both design views.</text>
+  <text class="item-text" x="600" y="612" text-anchor="middle">Conceptual Design tells the customer WHAT will be delivered; Technical Design instructs builders HOW to construct it.</text>
+</svg>
+</div>
+</body>
+</html>

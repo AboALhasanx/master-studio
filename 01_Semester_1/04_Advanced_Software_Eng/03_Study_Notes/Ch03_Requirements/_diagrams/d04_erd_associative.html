@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="520" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="31" font-size="15" font-weight="700" fill="#0f172a">Entity-Relationship (ER) Modeling — Chen Notation</text>
+  <text x="35" y="47" font-size="11.5" font-weight="600" fill="#64748b">Relationship Degrees (1, 2, 3) &amp; Optional Relational Mapping of M:N</text>
+  <text x="965" y="39" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">K.K. Aggarwal &amp; Yogesh Singh §3.5.2, pp. 66–68 · Slides 92–98</text>
+
+  <!-- SECTION 1: RELATIONSHIP DEGREES -->
+  <rect x="25" y="75" width="950" height="170" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="40" y="65" width="220" height="22" rx="4" fill="#2563eb"/>
+  <text x="150" y="80" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">RELATIONSHIP DEGREES (1, 2, 3)</text>
+
+  <!-- Unary Degree 1: Clean, Well-Proportioned Recursive Relationship -->
+  <g transform="translate(60, 105)">
+    <rect x="15" y="15" width="105" height="45" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="67" y="42" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">EMPLOYEE</text>
+
+    <!-- Branch 1: Role = Manager (1) -->
+    <line x1="120" y1="37.5" x2="144" y2="37.5" stroke="#334155" stroke-width="1.8"/>
+    <text x="132" y="30" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">1</text>
+
+    <!-- Relationship Diamond: Proportioned 66x35 matching Binary -->
+    <polygon points="177,20 210,37.5 177,55 144,37.5" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="177" y="41.5" font-size="9.5" font-weight="700" fill="#b45309" text-anchor="middle">Manages</text>
+
+    <!-- Branch 2: Role = Subordinates (N) with Clean Return Loop -->
+    <path d="M 210 37.5 L 230 37.5 L 230 82 L 67 82 L 67 60" fill="none" stroke="#334155" stroke-width="1.8"/>
+    <text x="220" y="30" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">N</text>
+
+    <text x="110" y="105" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle">Unary (Degree 1)</text>
+  </g>
+
+  <!-- Binary Degree 2 -->
+  <g transform="translate(320, 110)">
+    <rect width="110" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="55" y="30" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">STUDENT</text>
+    <line x1="110" y1="25" x2="160" y2="25" stroke="#334155" stroke-width="1.8"/>
+    <polygon points="190,10 220,25 190,40 160,25" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="190" y="29" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">Enrolls</text>
+    <line x1="220" y1="25" x2="270" y2="25" stroke="#334155" stroke-width="1.8"/>
+    <rect x="270" y="0" width="110" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="325" y="30" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">COURSE</text>
+    <text x="190" y="95" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle">Binary (Degree 2)</text>
+  </g>
+
+  <!-- Ternary Degree 3 -->
+  <g transform="translate(730, 95)">
+    <polygon points="90,15 125,35 90,55 55,35" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="90" y="39" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">Prescribes</text>
+    <rect x="0" y="10" width="50" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="25" y="35" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">DOC</text>
+    <rect x="130" y="10" width="50" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="155" y="35" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">PAT</text>
+    <rect x="65" y="75" width="50" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="90" y="100" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">MED</text>
+    <line x1="50" y1="35" x2="55" y2="35" stroke="#334155" stroke-width="1.5"/>
+    <line x1="125" y1="35" x2="130" y2="35" stroke="#334155" stroke-width="1.5"/>
+    <line x1="90" y1="55" x2="90" y2="75" stroke="#334155" stroke-width="1.5"/>
+    <text x="90" y="135" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle">Ternary (Degree 3)</text>
+  </g>
+
+  <!-- SECTION 2: ASSOCIATIVE ENTITY DECOMPOSITION -->
+  <rect x="25" y="265" width="950" height="240" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="40" y="255" width="340" height="22" rx="4" fill="#16a34a"/>
+  <text x="210" y="270" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">OPTIONAL RELATIONAL MAPPING OF M:N</text>
+
+  <!-- Entity 1: Student -->
+  <g transform="translate(60, 310)" filter="url(#cShadow)">
+    <rect width="210" height="150" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    <rect x="0" y="0" width="210" height="32" rx="8" fill="#2563eb"/>
+    <text x="105" y="22" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">STUDENT</text>
+    <text x="15" y="60" font-size="11.5" font-weight="700" fill="#1e40af">Student_ID (PK)</text>
+    <text x="15" y="85" font-size="11" fill="#475569">Student_Name</text>
+    <text x="15" y="110" font-size="11" fill="#475569">Major_Department</text>
+  </g>
+
+  <!-- Associative Entity: Enrollment -->
+  <g transform="translate(390, 295)" filter="url(#cShadow)">
+    <rect width="220" height="180" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2.2"/>
+    <rect x="0" y="0" width="220" height="34" rx="8" fill="#16a34a"/>
+    <text x="110" y="23" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">ENROLLMENT (Junction)</text>
+    <text x="15" y="58" font-size="11.5" font-weight="700" fill="#166534">Student_ID (FK, PK1)</text>
+    <text x="15" y="80" font-size="11.5" font-weight="700" fill="#166534">Course_ID (FK, PK2)</text>
+    <line x1="15" y1="92" x2="205" y2="92" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="15" y="112" font-size="11" font-weight="700" fill="#d97706">Semester</text>
+    <text x="15" y="132" font-size="11" font-weight="700" fill="#d97706">Grade_Earned</text>
+    <text x="15" y="152" font-size="11" font-weight="700" fill="#d97706">Enrollment_Date</text>
+    <text x="15" y="172" font-size="9.5" fill="#64748b">(Association Attributes)</text>
+  </g>
+
+  <!-- Entity 2: Course -->
+  <g transform="translate(730, 310)" filter="url(#cShadow)">
+    <rect width="210" height="150" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    <rect x="0" y="0" width="210" height="32" rx="8" fill="#2563eb"/>
+    <text x="105" y="22" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">COURSE</text>
+    <text x="15" y="60" font-size="11.5" font-weight="700" fill="#1e40af">Course_ID (PK)</text>
+    <text x="15" y="85" font-size="11" fill="#475569">Course_Title</text>
+    <text x="15" y="110" font-size="11" fill="#475569">Credit_Hours</text>
+  </g>
+
+  <!-- 1:N Connection Lines -->
+  <line x1="270" y1="385" x2="390" y2="385" stroke="#334155" stroke-width="2"/>
+  <text x="285" y="375" font-size="13" font-weight="700" fill="#334155">1</text>
+  <text x="375" y="375" font-size="13" font-weight="700" fill="#334155">N</text>
+
+  <line x1="610" y1="385" x2="730" y2="385" stroke="#334155" stroke-width="2"/>
+  <text x="625" y="375" font-size="13" font-weight="700" fill="#334155">N</text>
+  <text x="715" y="375" font-size="13" font-weight="700" fill="#334155">1</text>
+
+</svg>
+</div>
+</body>
+</html>

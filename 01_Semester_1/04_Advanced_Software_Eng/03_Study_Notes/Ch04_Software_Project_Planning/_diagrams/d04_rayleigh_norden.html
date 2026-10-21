@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  #diagram { width: 1040px; background: #ffffff; padding: 20px; box-sizing: border-box; }
+  text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<div id="diagram">
+<svg width="1000" height="540" viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0f172a"/>
+    </marker>
+    <filter id="cShadow" x="-2%" y="-4%" width="104%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Header -->
+  <rect x="15" y="10" width="970" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="35" y="32" font-size="15" font-weight="700" fill="#0f172a">Putnam / Norden Rayleigh Resource Allocation Model &amp; Manpower Curve</text>
+  <text x="35" y="48" font-size="11.5" font-weight="600" fill="#64748b">Rayleigh Manpower Distribution · Peak Manning m₀ = K / (td · √e) · Separate Development Sub-Cycle (K = 6Kd)</text>
+  <text x="965" y="40" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">K.K. Aggarwal &amp; Yogesh Singh (pp. 182–191) · Slides 123–140</text>
+
+  <!-- Left: The Visual Rayleigh Curve Plot -->
+  <g transform="translate(25, 80)" filter="url(#cShadow)">
+    <rect width="560" height="430" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+    
+    <!-- Plot Title -->
+    <rect x="0" y="0" width="560" height="34" rx="8" fill="#1e293b"/>
+    <text x="280" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Manpower Utilization Curve m(t) over Time</text>
+
+    <!-- Plot Axes -->
+    <!-- Y Axis: Manpower m(t) -->
+    <line x1="70" y1="360" x2="70" y2="60" stroke="#0f172a" stroke-width="2" marker-end="url(#arrD)"/>
+    <text x="40" y="70" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">m(t)</text>
+    <text x="30" y="85" font-size="9.5" fill="#64748b" text-anchor="middle">(Persons)</text>
+
+    <!-- X Axis: Time t -->
+    <line x1="70" y1="360" x2="520" y2="360" stroke="#0f172a" stroke-width="2" marker-end="url(#arrD)"/>
+    <text x="525" y="375" font-size="11.5" font-weight="700" fill="#0f172a">Time (t)</text>
+    <text x="525" y="390" font-size="9.5" fill="#64748b">(Years)</text>
+
+    <!-- Origin (0,0) -->
+    <text x="60" y="375" font-size="10.5" fill="#64748b">0</text>
+
+    <!-- Shaded area: full-project curve accumulated by td; distinct from development-sub-cycle Kd. -->
+    <!-- td is at x = 240, peak y = 140 -->
+    <!-- Path from (70,360) curve up to (240,140) then down to (240,360) -->
+    <path d="M 70 360 C 130 340, 180 180, 240 140 L 240 360 Z" fill="#dbeafe" opacity="0.85"/>
+
+    <!-- Remaining tail of full-project curve after td. -->
+    <path d="M 240 140 C 300 170, 380 320, 500 355 L 500 360 L 240 360 Z" fill="#f1f5f9" opacity="0.9"/>
+
+    <!-- Actual Rayleigh Curve Line -->
+    <path d="M 70 360 C 130 340, 180 180, 240 140 C 300 170, 380 320, 500 355" fill="none" stroke="#2563eb" stroke-width="3.2"/>
+
+    <!-- Peak Dashed Lines -->
+    <!-- Vertical line at t = td -->
+    <line x1="240" y1="140" x2="240" y2="360" stroke="#b91c1c" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <!-- Horizontal line at m = m0 -->
+    <line x1="70" y1="140" x2="240" y2="140" stroke="#b91c1c" stroke-width="1.8" stroke-dasharray="4 3"/>
+
+    <!-- Peak Dot -->
+    <circle cx="240" cy="140" r="5" fill="#b91c1c"/>
+
+    <!-- Labels on Axes -->
+    <text x="240" y="378" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle">td</text>
+    <text x="240" y="394" font-size="10" font-weight="600" fill="#b91c1c" text-anchor="middle">(System Release)</text>
+
+    <text x="58" y="145" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="end">m₀</text>
+
+    <!-- Peak Formula Callout Banner -->
+    <rect x="255" y="85" width="230" height="52" rx="6" fill="#fef2f2" stroke="#f87171" stroke-width="1.4"/>
+    <text x="265" y="105" font-size="11" font-weight="700" fill="#991b1b">Peak Manning Formula (at t = td):</text>
+    <text x="265" y="126" font-size="13" font-weight="800" fill="#b91c1c">m₀ = K / ( td · √e ) ≈ 0.6065 K/td</text>
+
+    <!-- Shaded Area Labels -->
+    <rect x="95" y="270" width="130" height="50" rx="4" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+    <text x="160" y="290" font-size="10.5" font-weight="700" fill="#1d4ed8" text-anchor="middle">Full-Curve Effort by Release</text>
+    <text x="160" y="308" font-size="11" font-weight="800" fill="#1e40af" text-anchor="middle">E(td) ≈ 39.35% of K</text>
+
+    <rect x="310" y="270" width="150" height="50" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="385" y="290" font-size="10.5" font-weight="700" fill="#475569" text-anchor="middle">Development Sub-Cycle</text>
+    <text x="385" y="308" font-size="11" font-weight="800" fill="#334155" text-anchor="middle">Kd = K / 6</text>
+
+  </g>
+
+  <!-- Right: Mathematical Formulas & Governance Card -->
+  <g transform="translate(605, 80)" filter="url(#cShadow)">
+    <rect width="375" height="430" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6"/>
+    <rect x="0" y="0" width="375" height="34" rx="8" fill="#2563eb"/>
+    <text x="187" y="22" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Mathematical Formulations &amp; Invariants</text>
+
+    <!-- Box 1: Rayleigh Differential Equation -->
+    <rect x="15" y="46" width="345" height="72" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="25" y="66" font-size="11" font-weight="700" fill="#1e40af">1. Rayleigh Manpower Equation</text>
+    <text x="25" y="86" font-size="12" font-weight="700" fill="#0f172a">m(t) = 2 K a t · e^(−at²)</text>
+    <text x="25" y="104" font-size="10" fill="#475569">Where a = 1 / (2 td²)  ⇒  m(t) = (K/td²) · t · e^(−t² / 2td²)</text>
+
+    <!-- Box 2: Metrics D and D0 -->
+    <rect x="15" y="126" width="345" height="74" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+    <text x="25" y="146" font-size="11" font-weight="700" fill="#1e40af">2. Difficulty &amp; Manpower Build-Up</text>
+    <text x="25" y="166" font-size="11.5" font-weight="700" fill="#0f172a">• Difficulty Metric: D = K / td²</text>
+    <text x="25" y="186" font-size="11.5" font-weight="700" fill="#0f172a">• Manpower Build-Up: D₀ = K / td³  (persons/yr²)</text>
+
+    <!-- Box 3: Software Equation & 4th Power Law -->
+    <rect x="15" y="208" width="345" height="110" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.4"/>
+    <text x="25" y="228" font-size="11.5" font-weight="700" fill="#1d4ed8">3. Putnam's Software Equation</text>
+    <text x="25" y="250" font-size="13" font-weight="800" fill="#1e3a8a">S = Ck · K¹/³ · td⁴/³</text>
+    <text x="25" y="270" font-size="11" font-weight="700" fill="#b91c1c">The 4th Power Law:  K = S³ / ( Ck³ · td⁴ )</text>
+    <text x="25" y="288" font-size="9.5" fill="#334155">• Halving td increases effort K by 2⁴ = 16 times!</text>
+    <text x="25" y="304" font-size="9.5" fill="#334155">• Compressing schedule beyond tmin enters Impossible Region</text>
+
+    <!-- Box 4: Peak staffing interpretation -->
+    <rect x="15" y="326" width="345" height="90" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.2"/>
+    <text x="25" y="346" font-size="10.5" font-weight="800" fill="#166534">Reading the Peak-Staffing Result</text>
+    <text x="25" y="366" font-size="9.5" fill="#334155">• Peak staffing occurs at t = td on this Rayleigh curve.</text>
+    <text x="25" y="382" font-size="9.5" fill="#334155">• The peak value m₀ is measured in persons.</text>
+    <text x="25" y="400" font-size="9.5" font-weight="700" fill="#166534">• Keep whole-project K separate from sub-cycle Kd.</text>
+  </g>
+</svg>
+</div>
+</body>
+</html>

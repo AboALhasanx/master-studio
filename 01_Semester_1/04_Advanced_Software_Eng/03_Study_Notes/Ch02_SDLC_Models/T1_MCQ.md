@@ -1,6 +1,6 @@
 ---
 title: "ASE Chapter 2 — T1 MCQ Question Pack · Life-Cycle Models"
-subtitle: "25 Companion Slide MCQs with Content-Derived Solutions and Analytical Rationales"
+subtitle: ""
 course: "Advanced Software Engineering (CS603)"
 author: "Master Studio — Academic Tutoring Engine"
 date: "2026-10-16"
@@ -9,11 +9,14 @@ header_left: "ASE Chapter 2 — T1 MCQ Pack"
 header_right: "Life-Cycle Models"
 footer_left: "College of Computer Science & IT — University of Wasit"
 footer_right: "Page {page} of {topage}"
+# Print-hidden subtitle retained: "25 Companion Slide MCQs with Content-Derived Solutions and Analytical Rationales"
 ---
 
 # Chapter 2 — T1 Multiple Choice Questions (MCQ)
 
+<!-- Print-hidden (opening pack description); retained for Markdown/reference use.
 This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yogesh Singh (*Software Engineering*, 3rd ed., pp. 37–39, and companion slides 41–45). Note on Official Key: The official textbook answer key on printed p. 499 confirms the keys (2.1 to 2.25), cross-referenced with chapter prose and selection matrices.
+-->
 
 ---
 
@@ -24,7 +27,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Roger Pressman
 - (d) Victor Basili
 
-**Correct Answer:** **(b) Barry Boehm**
+<!-- Print-hidden label: Correct Answer --> **(b) Barry Boehm**
 
 **Technical Rationale:** **The spiral model was formulated and published by Barry Boehm in 1986 to incorporate risk analysis and management into the software development process.**
 
@@ -42,7 +45,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Quick and fix model
 - (d) Prototyping model
 
-**Correct Answer:** **(c) Quick and fix model**
+<!-- Print-hidden label: Correct Answer --> **(c) Quick and fix model**
 
 **Technical Rationale:** **The quick and fix model (also referred to as Build & Fix) is the most popular approach for small student programming exercises of 100 to 200 lines because code is written immediately without requiring formal specifications or architectural design.**
 
@@ -60,7 +63,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Prototyping model
 - (d) Capability maturity model
 
-**Correct Answer:** **(d) Capability maturity model**
+<!-- Print-hidden label: Correct Answer --> **(d) Capability maturity model**
 
 **Technical Rationale:** **Waterfall, Spiral, and Prototyping are software development process/life-cycle models defining phases of development.** **The Capability Maturity Model (CMM) is an organizational process improvement and maturity appraisal framework developed by the SEI, not an SDLC process model.**
 
@@ -78,12 +81,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Spiral model
 - (d) Iterative enhancement model
 
-**Correct Answer:** **(c) Spiral model**
+<!-- Print-hidden label: Correct Answer --> **(c) Spiral model**
 
 **Technical Rationale:** **The primary defining feature of the spiral model is explicit, structured risk management.** **Quadrant 2 of each 360-degree loop is specifically dedicated to identifying, analyzing, and resolving technical and management risks.**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - كلما اقترن السؤال بعامل المخاطرة (Project Risk / Risk Analysis)، فالإجابة القطعية هي Spiral Model.
+-->
 
 *Source: K.K. Aggarwal & Singh (2007) Slide 19, 21; Slide 41 (Q2.4).*
 
@@ -96,12 +101,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) System development life cycle
 - (d) System design life cycle
 
-**Correct Answer:** **(b) Software development life cycle**
+<!-- Print-hidden label: Correct Answer --> **(b) Software development life cycle**
 
 **Technical Rationale:** **Within software engineering, SDLC standardly denotes the Software Development Life Cycle, representing the structured phases from software conception to delivery and maintenance.**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - في سياق هندسة البرمجيات، الحرف S يرمز لـSoftware و D لـDevelopment.
+-->
 
 *Source: K.K. Aggarwal & Singh (2007) Slide 3; Slide 41 (Q2.5).*
 
@@ -114,12 +121,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) 2 phases
 - (d) 4 phases
 
-**Correct Answer:** **(c) 2 phases**
+<!-- Print-hidden label: Correct Answer --> **(c) 2 phases**
 
 **Technical Rationale:** **The Build & Fix model is defined as a simple two-phase ad-hoc model: write code (Build), and then modify code to repair errors (Fix).**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - نص السلايد 4 واضح تماماً: "Simple two phase model: Build Code $\leftarrow$ Fix".
+-->
 
 *Source: K.K. Aggarwal & Singh (2007) Slide 4; Slide 42 (Q2.6).*
 
@@ -132,7 +141,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) System requirements specification
 - (d) None of the above
 
-**Correct Answer:** **(a) Software requirements specification**
+<!-- Print-hidden label: Correct Answer --> **(a) Software requirements specification**
 
 **Technical Rationale:** **SRS standardly stands for Software Requirements Specification, the formal document produced at the conclusion of requirements analysis detailing what a system will do.**
 
@@ -150,7 +159,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Complex projects
 - (d) None of the above
 
-**Correct Answer:** **(b) Accommodating change**
+<!-- Print-hidden label: Correct Answer --> **(b) Accommodating change**
 
 **Technical Rationale:** **A major recognized weakness of the classical waterfall model is that requirements are frozen early and development proceeds strictly linearly, making it unsuitable for accommodating frequent changes during project execution.**
 
@@ -168,12 +177,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Ready application development
 - (d) Repeated application development
 
-**Correct Answer:** **(a) Rapid application development**
+<!-- Print-hidden label: Correct Answer --> **(a) Rapid application development**
 
 **Technical Rationale:** **RAD denotes Rapid Application Development, a model designed to reduce development time through rapid prototyping, active user participation, and component reuse.**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - اختصار RAD يعني Rapid Application Development (تطوير التطبيقات السريع).
+-->
 
 *Source: K.K. Aggarwal & Singh (2007) Slide 12; Slide 42 (Q2.9).*
 
@@ -186,7 +197,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) IBM
 - (d) Microsoft
 
-**Correct Answer:** **(c) IBM**
+<!-- Print-hidden label: Correct Answer --> **(c) IBM**
 
 **Technical Rationale:** **The Rapid Application Development model was developed by IBM in 1980.**
 
@@ -204,7 +215,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Spiral model
 - (d) None of the above
 
-**Correct Answer:** **(a) Waterfall model**
+<!-- Print-hidden label: Correct Answer --> **(a) Waterfall model**
 
 **Technical Rationale:** **When requirements are completely understood, stable, and clearly defined upfront, the linear sequential waterfall model is best suited because it offers clean, disciplined phase execution.**
 
@@ -222,7 +233,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) RAD model
 - (d) Iterative enhancement model
 
-**Correct Answer:** **(b) Prototyping model**
+<!-- Print-hidden label: Correct Answer --> **(b) Prototyping model**
 
 **Technical Rationale:** **When requirements change frequently or are unstable, the prototyping model is selected to construct rapid throw-away versions that allow users to evaluate features and stabilize requirements before full development.**
 
@@ -240,7 +251,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Spiral model
 - (d) RAD model
 
-**Correct Answer:** **(d) RAD model**
+<!-- Print-hidden label: Correct Answer --> **(d) RAD model**
 
 **Technical Rationale:** **The RAD model strictly mandates active and continuous user involvement across all phases (Joint Application Development) to evaluate progress and guide component construction.**
 
@@ -258,7 +269,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Iterative enhancement model
 - (d) Any of the above
 
-**Correct Answer:** **(d) Any of the above**
+<!-- Print-hidden label: Correct Answer --> **(d) Any of the above**
 
 **Technical Rationale:** **According to the selection matrix based on user involvement, Waterfall, Spiral, and Iterative Enhancement all permit execution under limited user participation (unlike RAD, which strictly fails without heavy user involvement).**
 
@@ -276,7 +287,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Iterative enhancement model
 - (d) Spiral model
 
-**Correct Answer:** **(c) Iterative enhancement model**
+<!-- Print-hidden label: Correct Answer --> **(c) Iterative enhancement model**
 
 **Technical Rationale:** **When a project represents an upgrade or enhancement to an existing, already operational software system, the iterative enhancement model is designed specifically to deliver added capabilities across successive increments.**
 
@@ -294,12 +305,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Performance management
 - (d) Efficiency management
 
-**Correct Answer:** **(b) Risk management**
+<!-- Print-hidden label: Correct Answer --> **(b) Risk management**
 
 **Technical Rationale:** **Risk management is the foundational, indispensable characteristic of Boehm’s spiral model; the process is explicitly designed to identify and mitigate risks in every cycle before incurring further costs.**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - النموذج الحلزوني يُعرف بأنه Risk-Driven Process، وإدارة المخاطر هي وظيفته الجوهرية.
+-->
 
 *Source: K.K. Aggarwal & Singh (2007) Slide 19, 21; Slide 44 (Q2.16).*
 
@@ -312,7 +325,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Iterative enhancement model
 - (d) Evolutionary development model
 
-**Correct Answer:** **(d) Evolutionary development model**
+<!-- Print-hidden label: Correct Answer --> **(d) Evolutionary development model**
 
 **Technical Rationale:** **The evolutionary development model is recommended when a project utilizes novel or poorly understood technology, as it enables developers to explore technical feasibility iteratively and evolve functionality by category.**
 
@@ -330,7 +343,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Specifications
 - (d) Installation and maintenance
 
-**Correct Answer:** **(c) Specifications**
+<!-- Print-hidden label: Correct Answer --> **(c) Specifications**
 
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - مفتاح الكتاب الرسمي (ص. 499) والشريحة 44 يحددان الخيار (c) كإجابة معتمدة للامتحان.
@@ -347,7 +360,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Maintenance
 - (d) Abstraction
 
-**Correct Answer:** **(d) Abstraction**
+<!-- Print-hidden label: Correct Answer --> **(d) Abstraction**
 
 **Technical Rationale:** **Coding, Testing, and Maintenance are canonical operational phases of software life cycles.** **Abstraction is a fundamental software engineering principle and mental technique, not a designated chronological SDLC phase.**
 
@@ -365,12 +378,14 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Prototyping model
 - (d) None of the above
 
-**Correct Answer:** **(b) Waterfall model**
+<!-- Print-hidden label: Correct Answer --> **(b) Waterfall model**
 
 **Technical Rationale:** **The waterfall model is inherently structured as a linear-sequential process where development is assumed to flow in a strict, unbranching cascade from one phase to the next.**
 
+<!-- Print-hidden (redundant note repeats the adjacent answer); retained for Markdown/reference use.
 > **ملاحظة الطالب والفخ الامتحاني:**
 > - نموذج الشلال هو النموذج الخطي النموذجي (Linear Sequential Model). النماذج الأخرى (الحلزوني والبروتوتايب) دائرية أو تكرارية.
+-->
 
 *Source: B.B. Agarwal et al. (2010), §2.2, p. 36; K.K. Aggarwal & Singh (2007) Slide 6; Slide 44 (Q2.20).*
 
@@ -383,7 +398,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) SUN Microsystems
 - (d) None of the above
 
-**Correct Answer:** **(b) Rational software corporation**
+<!-- Print-hidden label: Correct Answer --> **(b) Rational software corporation**
 
 **Technical Rationale:** **The Unified Process was enhanced, maintained, and productized by the Rational Software Corporation (which was subsequently acquired by IBM), and is commonly known as the Rational Unified Process (RUP).**
 
@@ -401,7 +416,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Evolutionary
 - (d) All of the above
 
-**Correct Answer:** **(d) All of the above**
+<!-- Print-hidden label: Correct Answer --> **(d) All of the above**
 
 **Technical Rationale:** **The Unified Process integrates multiple paradigms: it is iterative (structured as successive iterations), incremental (delivering expanded capability cycle by cycle), and evolutionary (advancing the architectural baseline over time).**
 
@@ -419,7 +434,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) B. Boehm
 - (d) J. Rumbaugh
 
-**Correct Answer:** **(c) B. Boehm**
+<!-- Print-hidden label: Correct Answer --> **(c) B. Boehm**
 
 **Technical Rationale:** **The Unified Process and UML were created by the "Three Amigos": Ivar Jacobson, Grady Booch, and James Rumbaugh.** **Barry Boehm is the creator of the Spiral Model and COCOMO, not an author of the Unified Process.**
 
@@ -437,7 +452,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) 2
 - (d) None of the above
 
-**Correct Answer:** **(a) 4**
+<!-- Print-hidden label: Correct Answer --> **(a) 4**
 
 **Technical Rationale:** **The Unified Process divides the life cycle into exactly four chronological phases: Inception, Elaboration, Construction, and Transition.**
 
@@ -455,7 +470,7 @@ This pack contains the **25 multiple choice questions** from K.K. Aggarwal & Yog
 - (c) Alpha release
 - (d) All of the above
 
-**Correct Answer:** **(b) Beta release**
+<!-- Print-hidden label: Correct Answer --> **(b) Beta release**
 
 **Technical Rationale:** **The milestone of the Construction phase is Initial Operational Capability (IOC), producing an operational software product release distributed for beta testing and user evaluation prior to final transition.**
 
