@@ -1,0 +1,335 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_ModelB_DrHuda",
+  "topic": "Cybersecurity Risks and Threats — Model B",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "source_grounding": "W02_Risks_DrHuda_Booklet2.pdf, the instructor booklet for the second chapter, covering the definition of risk, the severity and residual risk relations, the risk matrices, the four threat families, countermeasures, the five mitigation strategies, systematic analysis frameworks such as COBIT, COSO, FAIR, ISO/IEC 27002 and OCTAVE, the PDCA cycle, and physical and logical access control.",
+  "language_mode": "English-only deliverable requested by the instructor as a special case. The _ar fields mirror the English text so that canonical schema v2 stays structurally valid and no tooling breaks.",
+  "_difficulty_distribution": {
+    "levels": 5,
+    "scale": {
+      "1": "Easy",
+      "2": "Easy-Medium",
+      "3": "Medium",
+      "4": "Above-Medium",
+      "5": "Hard"
+    },
+    "planned_counts": {
+      "1": 2,
+      "2": 3,
+      "3": 5,
+      "4": 6,
+      "5": 4
+    },
+    "policy": "Easy items are deliberately rare. Medium and Above-Medium items carry the largest share of the bank so that the paper discriminates between students instead of rewarding recall alone."
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "vulnerability_definition",
+      "bloom_level": "Remember",
+      "difficulty": 1,
+      "difficulty_label": "Easy",
+      "question": "Which definition of a vulnerability is correct?",
+      "question_ar": "Which definition of a vulnerability is correct?",
+      "options": [
+        "A countermeasure that reduces the frequency of attack attempts",
+        "A colour code that classifies a threat inside the risk matrix",
+        "A contract that transfers the residual risk to an outside party",
+        "A weakness that can be exploited in order to damage the system"
+      ],
+      "options_ar": [
+        "A countermeasure that reduces the frequency of attack attempts",
+        "A colour code that classifies a threat inside the risk matrix",
+        "A contract that transfers the residual risk to an outside party",
+        "A weakness that can be exploited in order to damage the system"
+      ],
+      "options_en": [
+        "A countermeasure that reduces the frequency of attack attempts",
+        "A colour code that classifies a threat inside the risk matrix",
+        "A contract that transfers the residual risk to an outside party",
+        "A weakness that can be exploited in order to damage the system"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The booklet states that damage occurs when a threat is realised against a weakness in the system and that a weakness which can be exploited to damage the system is known as a vulnerability. The remaining options describe a control, a colour convention inside the risk matrix, and the mechanism of risk transfer, none of which is a weakness in the system."
+    },
+    {
+      "id": "q2",
+      "concept_id": "damage_policy_breach",
+      "bloom_level": "Understand",
+      "difficulty": 2,
+      "difficulty_label": "Easy-Medium",
+      "question": "In IT security, what is synonymous with damage?",
+      "question_ar": "In IT security, what is synonymous with damage?",
+      "options": [
+        "A delay in the delivery of services to external paying customers",
+        "A reduction in the performance of the affected computer system",
+        "A financial loss that is recorded in the annual budget of the firm",
+        "A breach of the security policy defined by the organisation"
+      ],
+      "options_ar": [
+        "A delay in the delivery of services to external paying customers",
+        "A reduction in the performance of the affected computer system",
+        "A financial loss that is recorded in the annual budget of the firm",
+        "A breach of the security policy defined by the organisation"
+      ],
+      "options_en": [
+        "A delay in the delivery of services to external paying customers",
+        "A reduction in the performance of the affected computer system",
+        "A financial loss that is recorded in the annual budget of the firm",
+        "A breach of the security policy defined by the organisation"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The booklet states that in IT security damage is synonymous with a breach of the security policy, which is what makes the definition objective and measurable. Performance loss, financial loss and service delay are possible consequences of an incident, but the booklet defines damage by the policy breach itself rather than by whichever downstream effect happens to be observed."
+    },
+    {
+      "id": "q3",
+      "concept_id": "residual_risk_expression",
+      "bloom_level": "Apply",
+      "difficulty": 3,
+      "difficulty_label": "Medium",
+      "question": "A threat is evaluated to give a basic risk S, and countermeasures of level M are applied. Which expression gives the residual risk R?",
+      "question_ar": "A threat is evaluated to give a basic risk S, and countermeasures of level M are applied. Which expression gives the residual risk R?",
+      "options": [
+        "The basic risk reduced by the number of countermeasures",
+        "The basic risk multiplied by the level of countermeasures",
+        "The basic risk divided by the level of countermeasures",
+        "The basic risk added to the level of countermeasures"
+      ],
+      "options_ar": [
+        "The basic risk reduced by the number of countermeasures",
+        "The basic risk multiplied by the level of countermeasures",
+        "The basic risk divided by the level of countermeasures",
+        "The basic risk added to the level of countermeasures"
+      ],
+      "options_en": [
+        "The basic risk reduced by the number of countermeasures",
+        "The basic risk multiplied by the level of countermeasures",
+        "The basic risk divided by the level of countermeasures",
+        "The basic risk added to the level of countermeasures"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The booklet defines the residual risk as the reduced risk that remains after controls are introduced and writes it as the basic risk divided by the level of countermeasures, so stronger protection produces a smaller residual value. Multiplication would make controls increase the residual risk, addition would leave it larger than the basic risk, and subtraction would allow the residual risk to become negative."
+    },
+    {
+      "id": "q4",
+      "concept_id": "countermeasure_matching_network",
+      "bloom_level": "Apply",
+      "difficulty": 3,
+      "difficulty_label": "Medium",
+      "question": "An organisation wants to block attacks that arrive from the internet. Which countermeasure is appropriate?",
+      "question_ar": "An organisation wants to block attacks that arrive from the internet. Which countermeasure is appropriate?",
+      "options": [
+        "Deploy firewalls in the network to stop hostile traffic from reaching the target",
+        "Deploy antivirus programs that scan files for known malicious code on hosts",
+        "Place the equipment inside a secure room with restricted physical access",
+        "Take regular backup copies of the data and software held on the systems"
+      ],
+      "options_ar": [
+        "Deploy firewalls in the network to stop hostile traffic from reaching the target",
+        "Deploy antivirus programs that scan files for known malicious code on hosts",
+        "Place the equipment inside a secure room with restricted physical access",
+        "Take regular backup copies of the data and software held on the systems"
+      ],
+      "options_en": [
+        "Deploy firewalls in the network to stop hostile traffic from reaching the target",
+        "Deploy antivirus programs that scan files for known malicious code on hosts",
+        "Place the equipment inside a secure room with restricted physical access",
+        "Take regular backup copies of the data and software held on the systems"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The booklet matches threats from attackers outside the system who attack through the internet with firewalls in the network, used so that traffic from the attacker never reaches the target. Antivirus programs answer the malware threat, a secure room answers vandalism, theft and other physical damage, and regular backups answer unauthorised modification or deletion of data and software."
+    },
+    {
+      "id": "q5",
+      "concept_id": "mitigation_strategy_avoidance",
+      "bloom_level": "Apply",
+      "difficulty": 3,
+      "difficulty_label": "Medium",
+      "question": "Forbidding risky behaviour such as the use of WiFi is one way of handling risk. Which mitigation strategy does that example illustrate?",
+      "question_ar": "Forbidding risky behaviour such as the use of WiFi is one way of handling risk. Which mitigation strategy does that example illustrate?",
+      "options": [
+        "Risk transfer, since the risk is handed over to an outside party",
+        "Risk avoidance, since the target system is kept away from the risk",
+        "Risk retention, since a small agreed residual risk is accepted",
+        "Risk reduction, since proactive steps are taken to limit future losses"
+      ],
+      "options_ar": [
+        "Risk transfer, since the risk is handed over to an outside party",
+        "Risk avoidance, since the target system is kept away from the risk",
+        "Risk retention, since a small agreed residual risk is accepted",
+        "Risk reduction, since proactive steps are taken to limit future losses"
+      ],
+      "options_en": [
+        "Risk transfer, since the risk is handed over to an outside party",
+        "Risk avoidance, since the target system is kept away from the risk",
+        "Risk retention, since a small agreed residual risk is accepted",
+        "Risk reduction, since proactive steps are taken to limit future losses"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The booklet lists risk avoidance first and gives forbidding risky behaviour such as the use of WiFi as its example, because the system is kept away from the risk instead of being defended against it. Reduction would instead add proactive measures such as backups and encryption, retention would accept a defined residual risk, and transfer would move the risk to another party through a contract."
+    },
+    {
+      "id": "q6",
+      "concept_id": "data_threat_inference",
+      "bloom_level": "Analyze",
+      "difficulty": 4,
+      "difficulty_label": "Above-Medium",
+      "question": "Inference is classified as a data related threat. What does inference mean in that context?",
+      "question_ar": "Inference is classified as a data related threat. What does inference mean in that context?",
+      "options": [
+        "Deleting confidential records from a database without authorisation",
+        "Copying licensed software between machines without a valid licence",
+        "Deducing confidential information from data that is legitimately accessible",
+        "Pretending to be another user in order to obtain access rights"
+      ],
+      "options_ar": [
+        "Deleting confidential records from a database without authorisation",
+        "Copying licensed software between machines without a valid licence",
+        "Deducing confidential information from data that is legitimately accessible",
+        "Pretending to be another user in order to obtain access rights"
+      ],
+      "options_en": [
+        "Deleting confidential records from a database without authorisation",
+        "Copying licensed software between machines without a valid licence",
+        "Deducing confidential information from data that is legitimately accessible",
+        "Pretending to be another user in order to obtain access rights"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The booklet defines inference as collecting accessible data from which it is possible to deduce confidential information that is not directly accessible, so the leak is produced by combination rather than by breaking in. The second option describes unwanted deletion, the third describes masquerading, and the fourth describes unauthorised copying of software, all of which are separate entries on the same lists."
+    },
+    {
+      "id": "q7",
+      "concept_id": "physical_access_technology",
+      "bloom_level": "Analyze",
+      "difficulty": 4,
+      "difficulty_label": "Above-Medium",
+      "question": "Several physical access-control technologies are used at building entrances. Which statement correctly describes a smart card?",
+      "question_ar": "Several physical access-control technologies are used at building entrances. Which statement correctly describes a smart card?",
+      "options": [
+        "It uses radio signals to identify tags from a distance without any contact",
+        "Its intelligent circuitry hides user data until the authentication process succeeds",
+        "Its magnetic stripe stores coded spots that any stripe reader can copy",
+        "It relies on a personal access code that is typed on a keypad at the door"
+      ],
+      "options_ar": [
+        "It uses radio signals to identify tags from a distance without any contact",
+        "Its intelligent circuitry hides user data until the authentication process succeeds",
+        "Its magnetic stripe stores coded spots that any stripe reader can copy",
+        "It relies on a personal access code that is typed on a keypad at the door"
+      ],
+      "options_en": [
+        "It uses radio signals to identify tags from a distance without any contact",
+        "Its intelligent circuitry hides user data until the authentication process succeeds",
+        "Its magnetic stripe stores coded spots that any stripe reader can copy",
+        "It relies on a personal access code that is typed on a keypad at the door"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The booklet states that smart cards resemble magnetic stripe cards but offer improved data security because intelligent circuitry can hide the user data until an authentication process has been performed. The second option describes the magnetic stripe card, the third describes the RFID badge, and the fourth describes the cipher lock, so each of them names a different technology from the one the question asks about."
+    },
+    {
+      "id": "q8",
+      "concept_id": "pdca_check_phase",
+      "bloom_level": "Analyze",
+      "difficulty": 4,
+      "difficulty_label": "Above-Medium",
+      "question": "Risk management is often organised as a PDCA process. Which activity belongs to the Check phase?",
+      "question_ar": "Risk management is often organised as a PDCA process. Which activity belongs to the Check phase?",
+      "options": [
+        "Monitoring the implemented solution to confirm that the security level is maintained",
+        "Identifying the threats, analysing the risks and planning the countermeasures",
+        "Implementing the countermeasures and the related risk management activities",
+        "Adjusting the solution or deciding to start a completely new cycle of work"
+      ],
+      "options_ar": [
+        "Monitoring the implemented solution to confirm that the security level is maintained",
+        "Identifying the threats, analysing the risks and planning the countermeasures",
+        "Implementing the countermeasures and the related risk management activities",
+        "Adjusting the solution or deciding to start a completely new cycle of work"
+      ],
+      "options_en": [
+        "Monitoring the implemented solution to confirm that the security level is maintained",
+        "Identifying the threats, analysing the risks and planning the countermeasures",
+        "Implementing the countermeasures and the related risk management activities",
+        "Adjusting the solution or deciding to start a completely new cycle of work"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The booklet assigns monitoring of the implemented solution, to check that the desired level of security is maintained, to the Check phase. The second option is the Plan phase, the third is the Do phase and the fourth is the Act phase, so the three distractors are the remaining steps of the same cycle rather than the checking step."
+    },
+    {
+      "id": "q9",
+      "concept_id": "strategy_selection_constraints",
+      "bloom_level": "Evaluate",
+      "difficulty": 5,
+      "difficulty_label": "Hard",
+      "question": "A clinic cannot afford full redundancy but must keep patient data recoverable. Which pair of strategies fits both constraints best?",
+      "question_ar": "A clinic cannot afford full redundancy but must keep patient data recoverable. Which pair of strategies fits both constraints best?",
+      "options": [
+        "Reduction through backups and encryption, with retention of the remaining risk",
+        "Transfer of every risk to an outsourcer, with no internal controls retained",
+        "Sharing of the risk with regulators, with no additional technical measures",
+        "Avoidance of all digital records, with transfer of the risk to an insurer only"
+      ],
+      "options_ar": [
+        "Reduction through backups and encryption, with retention of the remaining risk",
+        "Transfer of every risk to an outsourcer, with no internal controls retained",
+        "Sharing of the risk with regulators, with no additional technical measures",
+        "Avoidance of all digital records, with transfer of the risk to an insurer only"
+      ],
+      "options_en": [
+        "Reduction through backups and encryption, with retention of the remaining risk",
+        "Transfer of every risk to an outsourcer, with no internal controls retained",
+        "Sharing of the risk with regulators, with no additional technical measures",
+        "Avoidance of all digital records, with transfer of the risk to an insurer only"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Because redundancy is ruled out by cost while recoverability is mandatory, the booklet's reduction strategy fits through backups and encryption, and whatever residual exposure remains is then deliberately accepted through retention, which the booklet defines as allowing a certain agreed amount of residual risk. Abandoning digital records destroys the clinical service, and the last two options drop internal controls altogether, which contradicts the booklet's principle that controls must match the threat."
+    },
+    {
+      "id": "q10",
+      "concept_id": "multifactor_authentication_config",
+      "bloom_level": "Evaluate",
+      "difficulty": 5,
+      "difficulty_label": "Hard",
+      "question": "A facility must verify identity by combining knowledge, possession and inheritance factors. Which configuration satisfies that requirement?",
+      "question_ar": "A facility must verify identity by combining knowledge, possession and inheritance factors. Which configuration satisfies that requirement?",
+      "options": [
+        "A smart card, an identity badge and a magnetic stripe card used together",
+        "A password, a smart card and a fingerprint scan used together at the entry point",
+        "A fingerprint scan, an iris scan and a voice recognition check used together",
+        "A password, a personal identification number and a second secret password"
+      ],
+      "options_ar": [
+        "A smart card, an identity badge and a magnetic stripe card used together",
+        "A password, a smart card and a fingerprint scan used together at the entry point",
+        "A fingerprint scan, an iris scan and a voice recognition check used together",
+        "A password, a personal identification number and a second secret password"
+      ],
+      "options_en": [
+        "A smart card, an identity badge and a magnetic stripe card used together",
+        "A password, a smart card and a fingerprint scan used together at the entry point",
+        "A fingerprint scan, an iris scan and a voice recognition check used together",
+        "A password, a personal identification number and a second secret password"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The booklet lists knowledge as something you know, possession as something you have and inheritance as something you are, so the only mixture that draws one factor from each class is the password, the smart card and the fingerprint scan. The second option stacks three knowledge factors, the third stacks three possession factors, and the fourth stacks three inheritance factors, so each of them verifies the same kind of evidence three times."
+    }
+  ],
+  "topic_ar": "مخاطر وتهديدات الأمن السيبراني — النموذج ب"
+}

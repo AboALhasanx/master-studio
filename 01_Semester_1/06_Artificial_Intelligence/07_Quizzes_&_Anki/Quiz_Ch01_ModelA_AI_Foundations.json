@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "subject_id": "06_Artificial_Intelligence",
+  "subject_title": "الذكاء الاصطناعي",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch01_ModelA_AI_Foundations",
+  "topic": "AI Foundations: Definitions, Turing Test & Rationality — Model A",
+  "topic_ar": "أسس الذكاء الاصطناعي: الوكلاء والبيئات والمهام — النموذج أ",
+  "instructor_ar": "أ.د. سيف علي السعيدي",
+  "instructor": "Prof. Dr. Saif Ali Al-Saidi",
+  "subject": "06_Artificial_Intelligence",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "four_definitions_grid",
+      "bloom_level": "Understand",
+      "question": "The Turing Test is the standard operational measure for which of the four historical definitions of AI?",
+      "question_ar": "اختبار Turing هو المقياس العملي المعياري لأي تعريف من التعريفات التاريخية الأربعة للذكاء الاصطناعي؟",
+      "options": [
+        "Acting rationally",
+        "Thinking humanly",
+        "Thinking rationally",
+        "Acting humanly"
+      ],
+      "options_ar": [
+        "التصرف بشكل عقلاني",
+        "التفكير بشكل إنساني",
+        "التفكير بشكل عقلاني",
+        "التصرف بشكل إنساني"
+      ],
+      "options_en": [
+        "Acting rationally",
+        "Thinking humanly",
+        "Thinking rationally",
+        "Acting humanly"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The Turing Test judges visible behaviour against a human interrogator, so it belongs to the acting humanly family. Thinking rationally is the laws-of-thought tradition, acting rationally is the rational agent tradition, and thinking humanly models human cognition.",
+      "explanation_ar": "يحكم اختبار Turing على السلوك الظاهر أمام محاوِر بشري، لذلك ينتمي إلى عائلة التصرف بشكل إنساني. أما التفكير بشكل عقلاني فيقوم على قوانين الفكر، والتصرف بشكل عقلاني على نموذج الوكيل العقلاني، والتفكير بشكل إنساني على نمذجة الإدراك البشري."
+    },
+    {
+      "id": "q2",
+      "concept_id": "turing_test_behaviourism",
+      "bloom_level": "Analyze",
+      "question": "What does passing the Turing Test actually demonstrate about a machine?",
+      "question_ar": "ماذا يثبت اجتياز الآلة لاختبار Turing فعلياً؟",
+      "options": [
+        "Its knowledge base contains every human fact",
+        "Its answers are indistinguishable from a person's",
+        "Its hardware mimics the human brain closely",
+        "Its internal reasoning matches human thought steps"
+      ],
+      "options_ar": [
+        "أن قاعدة معرفتها تحتوي على كل حقيقة بشرية",
+        "أن أجوبتها لا يمكن تمييزها عن أجوبة إنسان",
+        "أن عتادها يحاكي الدماغ البشري بدقة",
+        "أن استدلالها الداخلي يطابق خطوات التفكير البشري"
+      ],
+      "options_en": [
+        "Its knowledge base contains every human fact",
+        "Its answers are indistinguishable from a person's",
+        "Its hardware mimics the human brain closely",
+        "Its internal reasoning matches human thought steps"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The test only compares the observable question-answer behaviour of the machine with that of a person. It deliberately inspects neither the internal reasoning nor the knowledge base nor the hardware, so the other three options claim far more than the test shows.",
+      "explanation_ar": "يقارن الاختبار السلوك الظاهر في الحوار بين الآلة والإنسان فقط، ولا يفحص الاستدلال الداخلي ولا حجم قاعدة المعرفة ولا نوع العتاد. لذلك فإن ادعاء مطابقة خطوات التفكير البشري أو محاكاة الدماغ يتجاوز ما يقيسه الاختبار فعلاً."
+    },
+    {
+      "id": "q3",
+      "concept_id": "chinese_room_argument",
+      "bloom_level": "Analyze",
+      "question": "Searle's Chinese Room argument challenges which claim?",
+      "question_ar": "حجة الغرفة الصينية التي طرحها Searle تشكّك في أي ادعاء؟",
+      "options": [
+        "Human minds operate on formal symbols only",
+        "Symbols can be processed by a machine at all",
+        "A program with correct outputs thereby understands",
+        "Logic can represent knowledge inside a computer"
+      ],
+      "options_ar": [
+        "أن العقل البشري يعمل بالرموز الصورية فقط",
+        "أن الآلة قادرة على معالجة الرموز أصلاً",
+        "أن برنامجاً بمخرجات صحيحة يفهم ما يعالجه",
+        "أن المنطق يستطيع تمثيل المعرفة داخل الحاسوب"
+      ],
+      "options_en": [
+        "Human minds operate on formal symbols only",
+        "Symbols can be processed by a machine at all",
+        "A program with correct outputs thereby understands",
+        "Logic can represent knowledge inside a computer"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "In the thought experiment a person follows symbol-manipulation rules and produces correct Chinese answers without understanding Chinese, so correct outputs alone do not establish understanding. Symbol processing, formal symbols and logical representation are all assumed by the argument rather than attacked.",
+      "explanation_ar": "في التجربة الذهنية يتبع الشخص قواعد لمعالجة الرموز فينتج أجوبة صينية صحيحة دون أن يفهم الصينية، ومن هنا لا يكفي الإخراج الصحيح لإثبات الفهم. أما معالجة الرموز والرموز الصورية والتمثيل المنطقي فهي أمور تفترضها الحجة ولا تهاجمها."
+    },
+    {
+      "id": "q4",
+      "concept_id": "thinking_rationally_law_of_thought",
+      "bloom_level": "Understand",
+      "question": "The thinking rationally approach to AI rests mainly on which discipline?",
+      "question_ar": "يعتمد منهج التفكير بشكل عقلاني في الذكاء الاصطناعي أساساً على أي حقل معرفي؟",
+      "options": [
+        "Formal logic and laws of thought",
+        "Neuroscience and brain imaging",
+        "Economics and utility theory",
+        "Cybernetics and control loops"
+      ],
+      "options_ar": [
+        "المنطق الصوري وقوانين الفكر",
+        "علم الأعصاب والتصوير الدماغي",
+        "الاقتصاد ونظرية المنفعة",
+        "السيبرنطيقا وحلقات التحكم"
+      ],
+      "options_en": [
+        "Formal logic and laws of thought",
+        "Neuroscience and brain imaging",
+        "Economics and utility theory",
+        "Cybernetics and control loops"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "This tradition, going back to Aristotle's syllogisms, intends to encode correct inference as formal logic and then build systems that reason by those laws. Neuroscience supports thinking humanly, economics supports the rational agent view, and cybernetics supports the acting rationally view.",
+      "explanation_ar": "يعود هذا التقليد إلى قياسات أرسطو، وهدفه ترميز الاستدلال الصحيح في منطق صوري ثم بناء أنظمة تستنتج وفق قوانينه. أما علم الأعصاب فيدعم التفكير بشكل إنساني، والاقتصاد يدعم منظور الوكيل العقلاني، والسيبرنطيقا تدعم التصرف بشكل عقلاني."
+    },
+    {
+      "id": "q5",
+      "concept_id": "rationality_vs_omniscience",
+      "bloom_level": "Evaluate",
+      "question": "A rational agent differs from an omniscient agent because the rational agent...",
+      "question_ar": "يختلف الوكيل العقلاني عن الوكيل العليم لأن الوكيل العقلاني...",
+      "options": [
+        "acts to maximize expected performance from what it perceives",
+        "always selects the action with the best real outcome",
+        "never makes a mistake in a deterministic environment",
+        "knows the actual outcome of every action before acting"
+      ],
+      "options_ar": [
+        "يتصرف بما يعظّم الأداء المتوقع وفق ما يدركه",
+        "يختار دائماً الفعل ذا النتيجة الحقيقية الأفضل",
+        "لا يخطئ أبداً في بيئة حتمية كاملة المعلومات",
+        "يعرف النتيجة الفعلية لكل فعل قبل تنفيذه"
+      ],
+      "options_en": [
+        "acts to maximize expected performance from what it perceives",
+        "always selects the action with the best real outcome",
+        "never makes a mistake in a deterministic environment",
+        "knows the actual outcome of every action before acting"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Rationality is defined over the information available: the agent chooses the action expected to maximize its performance measure given its percept sequence and built-in knowledge. Omniscience would be knowledge of the actual outcome, which no real agent has, so the remaining options describe an omniscient rather than a rational agent.",
+      "explanation_ar": "تُعرَّف العقلانية بالنسبة إلى المعلومات المتاحة، فيختار الوكيل الفعل الذي يعظّم الأداء المتوقع وفق تسلسل إدراكه ومعرفته المسبقة. أما علم الغيب بنتيجة كل فعل فهو صفة الوكيل العليم لا العقلاني، ولذلك تصف الخيارات الأخرى وكيلاً عليماً لا عقلانياً."
+    }
+  ]
+}

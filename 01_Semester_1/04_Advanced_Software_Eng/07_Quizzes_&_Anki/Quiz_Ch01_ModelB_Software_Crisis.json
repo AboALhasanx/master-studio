@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch01_ModelB_Software_Crisis",
+  "topic": "Ch01 Model B: Software as an Asset, Process Activities and Myths",
+  "topic_ar": "الفصل الأول: البرمجيات كأصل هندسي وأنشطة العملية والخرافات — النموذج ب",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "tripartite_software_asset",
+      "bloom_level": "Understand",
+      "question": "In graduate software engineering, software is defined as a tripartite asset. Which set names its three pillars?",
+      "question_ar": "يُعرَّف البرنامج في هندسة البرمجيات للدراسات العليا كأصل هندسي ثلاثي. أي مجموعة تسمي أضلاعه الثلاثة؟",
+      "options": [
+        "Algorithms, hardware registers, and test reports",
+        "Requirements, design models, and deployment scripts",
+        "Programs, data structures, and complete documentation",
+        "Source code, user manuals, and maintenance budgets"
+      ],
+      "options_ar": [
+        "الخوارزميات وسجلات العتاد وتقارير الاختبار",
+        "المتطلبات ونماذج التصميم وسكربتات النشر",
+        "البرامج وبنى البيانات والتوثيق الكامل",
+        "الكود المصدري وأدلة المستخدم وميزانيات الصيانة"
+      ],
+      "options_en": [
+        "Algorithms, hardware registers, and test reports",
+        "Requirements, design models, and deployment scripts",
+        "Programs, data structures, and complete documentation",
+        "Source code, user manuals, and maintenance budgets"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Software is defined as programs plus data structures plus complete documentation. Documentation carries architectural knowledge and is what makes later maintenance possible.",
+      "explanation_ar": "يُعرَّف البرنامج بأنه برامج وبنى بيانات وتوثيق كامل. والتوثيق هو الذي يحفظ المعرفة المعمارية ويجعل الصيانة اللاحقة ممكنة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "four_fundamental_process_activities",
+      "bloom_level": "Remember",
+      "question": "Sommerville describes four fundamental process activities that appear in some form in every software process. Which sequence lists them correctly?",
+      "question_ar": "يصف Sommerville أربعة أنشطة عملية جوهرية تظهر بشكل أو بآخر في كل عملية برمجية. أي تسلسل يذكرها بشكل صحيح؟",
+      "options": [
+        "Specification, design and implementation, validation, evolution",
+        "Analysis, architectural design, coding, maintenance",
+        "Inception, elaboration, construction, transition",
+        "Feasibility study, requirements analysis, coding, integration testing"
+      ],
+      "options_ar": [
+        "التوصيف والتصميم والتنفيذ والتحقق والتطور",
+        "التحليل والتصميم المعماري والترميز والصيانة",
+        "البدء والتنقيح والبناء والانتقال",
+        "دراسة الجدوى وتحليل المتطلبات والترميز واختبار التكامل"
+      ],
+      "options_en": [
+        "Specification, design and implementation, validation, evolution",
+        "Analysis, architectural design, coding, maintenance",
+        "Inception, elaboration, construction, transition",
+        "Feasibility study, requirements analysis, coding, integration testing"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The four fundamental activities are specification, design and implementation, validation, and evolution. They are fundamental because some form of each belongs to every software process.",
+      "explanation_ar": "الأنشطة الجوهرية الأربعة هي التوصيف والتصميم والتنفيذ والتحقق والتطور، وهي جوهرية لأن شكلاً من كل منها يظهر في كل عملية برمجية."
+    },
+    {
+      "id": "q3",
+      "concept_id": "computer_science_vs_software_engineering",
+      "bloom_level": "Analyze",
+      "question": "A researcher proves a sorting algorithm optimal in asymptotic complexity, yet the delivered product misses deadlines and resists maintenance. Which distinction does this case illustrate?",
+      "question_ar": "يُثبت باحث أن خوارزمية فرز مثالية من حيث التعقيد التقاربي، لكن المنتج المسلَّم يتجاوز المواعيد ويقاوم الصيانة. أي تمييز يوضحه هذا الموقف؟",
+      "options": [
+        "Software engineering measures complexity, while computer science measures delivery cost",
+        "Computer science optimises theory, while software engineering manages lifecycle and quality",
+        "Computer science optimises algorithms, while software engineering proves formal theorems",
+        "Software engineering avoids algorithms, while computer science builds large systems"
+      ],
+      "options_ar": [
+        "هندسة البرمجيات تقيس التعقيد، وعلوم الحاسوب تقيس كلفة التسليم",
+        "علوم الحاسوب تُحسّن النظرية، وهندسة البرمجيات تدير دورة الحياة والجودة",
+        "علوم الحاسوب تُحسّن الخوارزميات، وهندسة البرمجيات تُثبت النظريات الشكلية",
+        "هندسة البرمجيات تتجنب الخوارزميات، وعلوم الحاسوب تبني أنظمة كبيرة"
+      ],
+      "options_en": [
+        "Software engineering measures complexity, while computer science measures delivery cost",
+        "Computer science optimises theory, while software engineering manages lifecycle and quality",
+        "Computer science optimises algorithms, while software engineering proves formal theorems",
+        "Software engineering avoids algorithms, while computer science builds large systems"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Computer science measures success by asymptotic complexity and formal correctness, whereas software engineering measures availability, maintainability, schedule, and budget in multi-person systems.",
+      "explanation_ar": "تقيس علوم الحاسوب النجاح بالتعقيد التقاربي والصحة الشكلية، بينما تقيس هندسة البرمجيات الإتاحية وقابلية الصيانة والجدول والميزانية في الأنظمة كبيرة الحجم."
+    },
+    {
+      "id": "q4",
+      "concept_id": "socio_technical_system_layers",
+      "bloom_level": "Understand",
+      "question": "Sommerville argues that advanced software forms a socio-technical system. Which trio correctly names its layers?",
+      "question_ar": "يؤكد Sommerville أن البرمجيات المتقدمة تشكل نظاماً اجتماعياً تقنياً. أي ثلاثية تسمي طبقاته بشكل صحيح؟",
+      "options": [
+        "Technical core, operational process, and human element",
+        "Algorithm, data structure, and documentation set",
+        "Source code, database schema, and network topology",
+        "Compiler, operating system, and hardware platform"
+      ],
+      "options_ar": [
+        "النواة التقنية والعملية التشغيلية والعنصر البشري",
+        "الخوارزمية وبنية البيانات ومجموعة التوثيق",
+        "الكود المصدري ومخطط قاعدة البيانات وطوبولوجيا الشبكة",
+        "المترجم ونظام التشغيل ومنصة العتاد"
+      ],
+      "options_en": [
+        "Technical core, operational process, and human element",
+        "Algorithm, data structure, and documentation set",
+        "Source code, database schema, and network topology",
+        "Compiler, operating system, and hardware platform"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The socio-technical view adds the operational process and the human element to the technical core of code, databases, and services. Software is therefore never a purely mathematical artefact.",
+      "explanation_ar": "يضيف المنظور الاجتماعي التقني العملية التشغيلية والعنصر البشري إلى النواة التقنية المتمثلة في الكود وقواعد البيانات والخدمات، فالبرمجية ليست أثراً رياضياً معزولاً."
+    },
+    {
+      "id": "q5",
+      "concept_id": "customer_requirements_myth",
+      "bloom_level": "Evaluate",
+      "question": "A client insists that a general objective is enough and that details can wait. Which software myth does this statement express?",
+      "question_ar": "يصرّ العميل على أن الهدف العام يكفي وأن التفاصيل يمكن تأجيلها. أي خرافة برمجية يعبّر عنها هذا القول؟",
+      "options": [
+        "The developer myth that documentation is the main deliverable",
+        "The management myth that extra staff shortens a late schedule",
+        "The developer myth that a compiling program ends the work",
+        "The customer myth that vague objectives can be clarified later"
+      ],
+      "options_ar": [
+        "خرافة المطور بأن التوثيق هو المُخرَج الأساسي",
+        "خرافة الإدارة بأن زيادة الموظفين تقصّر الجدول المتأخر",
+        "خرافة المطور بأن نجاح الترجمة يعني انتهاء العمل",
+        "خرافة العميل بأن الأهداف الغامضة يمكن توضيحها لاحقاً"
+      ],
+      "options_en": [
+        "The developer myth that documentation is the main deliverable",
+        "The management myth that extra staff shortens a late schedule",
+        "The developer myth that a compiling program ends the work",
+        "The customer myth that vague objectives can be clarified later"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The customer myth holds that a vague general objective suffices, yet ambiguous requirements are the primary cause of architectural rework.",
+      "explanation_ar": "تفترض خرافة العميل أن الهدف العام الغامض يكفي، لكن المتطلبات الغامضة هي السبب الأول لإعادة العمل المعماري."
+    }
+  ]
+}

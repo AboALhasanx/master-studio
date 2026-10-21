@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_ModelB_Software_Design",
+  "topic": "Ch05 Model B: Control Coupling, Ripple Effect, OOD and Design Notation",
+  "topic_ar": "الفصل الخامس: اقتران التحكم وأثر التموج والتصميم الكائني وتمثيل التصميم — النموذج ب",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "logical_cohesion_control_coupling",
+      "bloom_level": "Analyze",
+      "question": "A module bundles all input routines and selects one through a flag passed by its caller. Which coupling does this design most likely create?",
+      "question_ar": "تجمع وحدة كل إجراءات الإدخال وتختار أحدها عبر flag يمرره المستدعي. أي اقتران ينشئه هذا التصميم على الأرجح؟",
+      "options": [
+        "Control coupling, because a flag directs the callee execution path",
+        "Stamp coupling, because a record structure is passed whole",
+        "External coupling, because a device protocol is involved",
+        "Data coupling, because the flag is a single primitive value"
+      ],
+      "options_ar": [
+        "Control coupling لأن flag يوجّه مسار تنفيذ الوحدة المستدعاة",
+        "Stamp coupling لأن بنية سجل تُمرَّر كاملة",
+        "External coupling لأن بروتوكول جهاز خارجي معني",
+        "Data coupling لأن flag قيمة أولية واحدة فقط"
+      ],
+      "options_en": [
+        "Control coupling, because a flag directs the callee execution path",
+        "Stamp coupling, because a record structure is passed whole",
+        "External coupling, because a device protocol is involved",
+        "Data coupling, because the flag is a single primitive value"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A flag that selects a branch inside the callee is control information, so the design creates control coupling. Logical cohesion commonly produces exactly this coupling.",
+      "explanation_ar": "تمرير flag يختار فرعاً داخل الوحدة المستدعاة يمثل معلومة تحكم، لذا ينشأ Control coupling، وهو ما ينتج عادة عن Logical cohesion."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ripple_effect_high_coupling",
+      "bloom_level": "Understand",
+      "question": "A defect in one module triggers failures in four distant modules. Which consequence of high coupling does this illustrate?",
+      "question_ar": "يسبب عيب في وحدة واحدة فشلاً في أربع وحدات بعيدة. أي نتيجة للاقتران العالي يوضح هذا؟",
+      "options": [
+        "The blocking state, where finished members wait for the phase",
+        "Scope creep, where new requirements expand the baseline",
+        "The ripple effect, where an error propagates across module boundaries",
+        "The 99 per cent complete syndrome, where progress looks finished"
+      ],
+      "options_ar": [
+        "حالة التعطيل حيث ينتظر الأعضاء المنتهون المرحلة",
+        "زحف النطاق حيث توسّع متطلبات جديدة الأساس",
+        "Ripple effect حيث ينتشر الخطأ عبر حدود الوحدات",
+        "متلازمة 99 بالمئة حيث يبدو التقدم منجزاً"
+      ],
+      "options_en": [
+        "The blocking state, where finished members wait for the phase",
+        "Scope creep, where new requirements expand the baseline",
+        "The ripple effect, where an error propagates across module boundaries",
+        "The 99 per cent complete syndrome, where progress looks finished"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "High coupling produces the ripple effect: a fault in one module propagates to modules that depend on it, which makes debugging expensive and reuse difficult.",
+      "explanation_ar": "ينتج عن الاقتران العالي Ripple effect، حيث ينتشر العيب من وحدة إلى الوحدات المعتمدة عليها، فتصبح عملية التنقيح مكلفة وإعادة الاستخدام صعبة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ood_vs_function_oriented",
+      "bloom_level": "Analyze",
+      "question": "How does object-oriented design decompose a system differently from function-oriented design?",
+      "question_ar": "كيف يحلل التصميم الكائني النظام بشكل مختلف عن التصميم الوظيفي؟",
+      "options": [
+        "Around verbs and global procedures rather than nouns and classes",
+        "Around hardware layers and device drivers rather than domain entities",
+        "Around test cases and coverage goals rather than responsibilities",
+        "Around nouns and encapsulated objects rather than verbs and shared state"
+      ],
+      "options_ar": [
+        "حول الأفعال والإجراءات الشاملة لا حول الأسماء والأصناف",
+        "حول طبقات العتاد ومشغلات الأجهزة لا حول كيانات المجال",
+        "حول حالات الاختبار وأهداف التغطية لا حول المسؤوليات",
+        "حول الأسماء والكائنات المغلفة لا حول الأفعال والحالة المشتركة"
+      ],
+      "options_en": [
+        "Around verbs and global procedures rather than nouns and classes",
+        "Around hardware layers and device drivers rather than domain entities",
+        "Around test cases and coverage goals rather than responsibilities",
+        "Around nouns and encapsulated objects rather than verbs and shared state"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Object-oriented design decomposes around nouns and encapsulated objects, while function-oriented design decomposes around verbs and shared global state. The two perspectives are orthogonal.",
+      "explanation_ar": "يحلل التصميم الكائني حول الأسماء والكائنات المغلفة، بينما يحلل التصميم الوظيفي حول الأفعال والحالة الشاملة المشتركة، والمنظوران متعامدان."
+    },
+    {
+      "id": "q4",
+      "concept_id": "inheritance_without_polymorphism",
+      "bloom_level": "Evaluate",
+      "question": "Can a class hierarchy use inheritance without exhibiting polymorphism?",
+      "question_ar": "هل يمكن لهرمية أصناف أن تستخدم الوراثة دون إظهار polymorphism؟",
+      "options": [
+        "Yes, but only when the base class is declared abstract",
+        "Yes, if no operation is overridden and binding stays static",
+        "No, because polymorphism is required to define any subclass",
+        "No, because inheritance always forces dynamic method binding"
+      ],
+      "options_ar": [
+        "نعم لكن فقط عندما يُعلن الصنف الأساس abstract",
+        "نعم إذا لم تُعَد تعريف أي عملية وبقي الربط ساكناً",
+        "لا لأن polymorphism شرط لتعريف أي صنف مشتق",
+        "لا لأن الوراثة تفرض دائماً ربطاً ديناميكياً للدوال"
+      ],
+      "options_en": [
+        "Yes, but only when the base class is declared abstract",
+        "Yes, if no operation is overridden and binding stays static",
+        "No, because polymorphism is required to define any subclass",
+        "No, because inheritance always forces dynamic method binding"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Inheritance is a reuse mechanism and can exist without overriding, so binding may stay static. Polymorphism requires inheritance, but inheritance does not require polymorphism.",
+      "explanation_ar": "الوراثة آلية إعادة استخدام ويمكن أن توجد دون إعادة تعريف، فيبقى الربط ساكناً، وpolymorphism يفترض وراثة لكن الوراثة لا تفترض polymorphism."
+    },
+    {
+      "id": "q5",
+      "concept_id": "structure_chart_vs_flow_chart",
+      "bloom_level": "Understand",
+      "question": "Which statement contrasts a structure chart with a flow chart correctly?",
+      "question_ar": "أي عبارة تقارن structure chart مع flow chart بشكل صحيح؟",
+      "options": [
+        "A structure chart shows module hierarchy, while a flow chart shows logic sequence",
+        "A structure chart shows logic sequence, while a flow chart shows module hierarchy",
+        "A structure chart shows data storage, while a flow chart shows staffing plans",
+        "A structure chart shows project schedule, while a flow chart shows cost estimates"
+      ],
+      "options_ar": [
+        "structure chart يعرض الهرمية، وflow chart يعرض تسلسل المنطق",
+        "structure chart يعرض تسلسل المنطق، وflow chart يعرض الهرمية",
+        "structure chart يعرض تخزين البيانات، وflow chart يعرض خطط التوظيف",
+        "structure chart يعرض جدول المشروع، وflow chart يعرض تقديرات الكلفة"
+      ],
+      "options_en": [
+        "A structure chart shows module hierarchy, while a flow chart shows logic sequence",
+        "A structure chart shows logic sequence, while a flow chart shows module hierarchy",
+        "A structure chart shows data storage, while a flow chart shows staffing plans",
+        "A structure chart shows project schedule, while a flow chart shows cost estimates"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A structure chart documents the hierarchical module decomposition, its parameters, and its interfaces during architectural design. A flow chart documents the logic and control sequence instead.",
+      "explanation_ar": "يوثق structure chart التفكيك الهرمي للوحدات ومعاملاتها وواجهاتها في التصميم المعماري، بينما يوثق flow chart تسلسل المنطق والتحكم."
+    }
+  ]
+}

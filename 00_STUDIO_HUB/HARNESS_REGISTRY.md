@@ -6,10 +6,10 @@
 | Harness | Agent identity | Marker it leaves | Last seen | Status | Role / notes |
 |:---|:---|:---|:---|:---|:---|
 | WorkBuddy | Koko 🐨 (named by student 2026-09-18) | `.workbuddy-ai/memory/` (tracked) | 2026-10-16 | ACTIVE — primary | Study notes, Telegram gateway, dashboard, `phone_sync` v2. Largest footprint. |
-| OpenCode | Build agent (DeepSeek V4.1 Flash; sessions: NH UI U2 wide-slides answer-key rebuild · one-activity-per-page + source-fidelity audit · ASE Ch01 T4–T7 + V1 vocabulary) | `opencode-archive/` (legacy config) | 2026-10-16 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds, ASE slide-pack reorg, NH U2 wide-slides (59 pages, 10 verification gates), official-source extraction (`_extract_sources.py`), ASE Ch01 question-type packs T4_Analyze/T5_Evaluate/T6_Create/T7_Apply_Calc + V1_Vocabulary_Coverage. |
+| OpenCode | Build agent (DeepSeek V4.1 Flash; sessions: NH UI U2 wide-slides answer-key rebuild · one-activity-per-page + source-fidelity audit · ASE Ch01 T4–T7 + V1 vocabulary) | `opencode-archive/` (legacy config) | 2026-10-21 | ACTIVE | Vault tidy, zero-leakage fixes, PDF rebuilds, ASE slide-pack reorg, NH U2 wide-slides (59 pages, 10 verification gates), official-source extraction (`_extract_sources.py`), ASE Ch01 question-type packs T4_Analyze/T5_Evaluate/T6_Create/T7_Apply_Calc + V1_Vocabulary_Coverage. |
 | MiMo Studio / Desktop | Koko | `.mimocode/skills/` | 2026-10-02 | SEEN | Session logs, bilingual packs. Shares the Koko identity with WorkBuddy. |
-| Codex | Reviewer / study coordinator | none (works inside shared logs) | 2026-10-17 | ACTIVE — ASE Ch03 | Chapter 3 source mapping, coverage planning, and independent verification across harnesses. |
-| Oh My Pi (OMP) / Antigravity | Coding Assistant (google-antigravity/gemini-3.8-flash) | `00_STUDIO_HUB/sessions/` entries | 2026-10-17 | ACTIVE | Architecture planning, toolchain expansion, core engineering, ASE Ch02 audit & verification. |
+| Codex | Reviewer / study coordinator | none (works inside shared logs) | 2026-10-21 | ACTIVE | ASE Ch07 source audit and vector preparation; Ch03 print-pack visual review pending. |
+| Oh My Pi (OMP) / Antigravity | Coding Assistant (google-antigravity/gemini-3.8-flash) | `00_STUDIO_HUB/sessions/` entries | 2026-10-21 | ACTIVE — ASE Ch07 Question Packs Authoring | Authoring study packs for Chapter 7 Software Reliability, independent formula verification, diagram extraction, and strict delivery gates. |
 | FreeBuf | unknown | `.freebuff/project-id` (single UUID file) | never in sessions | TRACE ONLY | No session content found. If it signs in, it adds its own row. |
 | Cursor | unknown | none | never | ANNOUNCED | Named in `AGENTS.md` §8 only. Row waits for its first sign-in. |
 
@@ -25,3 +25,4 @@
 2. **One canonical file per day** (`sessions/YYYY-MM-DD.md`) — append with your harness heading, never fork `session-01` variants.
 3. **Marker files are owned.** Don't delete another harness's marker dir (`.workbuddy-ai/`, `.mimocode/`, `.freebuff/`) — announce first per MEMORY.md rule §3.
 4. **Registry is append-mostly.** Update your own `Last seen`; never rewrite another harness's row.
+

@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_ModelB_Feature_Extraction",
+  "topic": "Feature Extraction and Portability — Model B",
+  "topic_ar": "استخراج السمات واختيارها وقابلية النقل — النموذج ب",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "one_hot_nominal",
+      "bloom_level": "Apply",
+      "question": "Blood type A, B, or O must be encoded numerically. Why does the lecture prefer one-hot over the codes A = 1, B = 2, O = 3?",
+      "question_ar": "يجب ترميز فصائل الدم A وB وO عددياً. لماذا تفضّل المحاضرة One-hot على الأكواد A = 1 وB = 2 وO = 3؟",
+      "options": [
+        "Integer codes need scaling; one-hot removes the need for normalization",
+        "Integer codes lose too much storage; one-hot keeps every value as plain text",
+        "Integer codes ignore frequency; one-hot ranks categories by their occurrence",
+        "Integer codes imply a false order; one-hot gives one binary column per category"
+      ],
+      "options_ar": [
+        "الأكواد الرقمية تحتاج تحجيماً، وOne-hot يغني عن Normalization",
+        "الأكواد الرقمية تُفقد مساحة التخزين، وOne-hot يحفظ كل قيمة كنص صريح",
+        "الأكواد الرقمية تتجاهل التكرار، وOne-hot يرتب الفئات حسب شيوعها",
+        "الأكواد الرقمية تُوهم بترتيب غير موجود، وOne-hot يعطي عموداً ثنائياً لكل فئة"
+      ],
+      "options_en": [
+        "Integer codes need scaling; one-hot removes the need for normalization",
+        "Integer codes lose too much storage; one-hot keeps every value as plain text",
+        "Integer codes ignore frequency; one-hot ranks categories by their occurrence",
+        "Integer codes imply a false order; one-hot gives one binary column per category"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Blood type is nominal, so A = 1, B = 2, O = 3 incorrectly suggests an order; one-hot encoding uses one binary column per category instead.",
+      "explanation_ar": "فصيلة الدم سمة اسمية، والأكواد 1 و2 و3 تُوهم بترتيب غير موجود؛ لذلك يستخدم One-hot عموداً ثنائياً لكل فئة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "text_to_numeric",
+      "bloom_level": "Understand",
+      "question": "Which family of techniques does the lecture use to convert text into numerical vectors?",
+      "question_ar": "أي عائلة تقنيات تستخدمها المحاضرة لتحويل النص إلى متجهات عددية؟",
+      "options": [
+        "Symbolic representation with Low, Medium, and High levels",
+        "Bag of Words, TF-IDF, and word or document embeddings",
+        "Equal-width bins, equal-frequency bins, and smoothing",
+        "Graph embedding, centrality, and node degree counts"
+      ],
+      "options_ar": [
+        "التمثيل الرمزي بمستويات منخفض ومتوسط ومرتفع",
+        "Bag of Words وTF-IDF وembeddings للكلمات والمستندات",
+        "الفترات المتساوية العرض والفترات المتساوية التكرار والتمهيد",
+        "Graph embedding والمركزية وعدد درجات العقد"
+      ],
+      "options_en": [
+        "Symbolic representation with Low, Medium, and High levels",
+        "Bag of Words, TF-IDF, and word or document embeddings",
+        "Equal-width bins, equal-frequency bins, and smoothing",
+        "Graph embedding, centrality, and node degree counts"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Text has no numerical form for most algorithms, so the lecture lists Bag of Words, TF-IDF, and word or document embeddings as vectorization approaches.",
+      "explanation_ar": "النص لا يصلح مباشرة لمعظم الخوارزميات العددية، فتذكر المحاضرة Bag of Words وTF-IDF وembeddings للكلمات والمستندات كأساليب ترميز."
+    },
+    {
+      "id": "q3",
+      "concept_id": "timeseries_symbolic",
+      "bloom_level": "Apply",
+      "question": "A daily series 20, 22, 21, 25, 27, 30 is mapped with Low = A, Medium = B, High = C. Which symbolic sequence results?",
+      "question_ar": "تُحوَّل السلسلة اليومية 20 و22 و21 و25 و27 و30 بالخريطة منخفض = A ومتوسط = B ومرتفع = C. أي تسلسل رمزي ينتج؟",
+      "options": [
+        "A, B, C, A, B, C",
+        "C, B, B, A, A, A",
+        "A, A, A, B, B, C",
+        "B, B, B, C, C, A"
+      ],
+      "options_ar": [
+        "A, B, C, A, B, C",
+        "C, B, B, A, A, A",
+        "A, A, A, B, B, C",
+        "B, B, B, C, C, A"
+      ],
+      "options_en": [
+        "A, B, C, A, B, C",
+        "C, B, B, A, A, A",
+        "A, A, A, B, B, C",
+        "B, B, B, C, C, A"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The first three values fall in the Low band, the next two in Medium, and the last value in High, producing A, A, A, B, B, C.",
+      "explanation_ar": "تقع القيم الثلاث الأولى في النطاق المنخفض، والقيمتان التاليتان في النطاق المتوسط، والقيمة الأخيرة في النطاق المرتفع، فينتج A, A, A, B, B, C."
+    },
+    {
+      "id": "q4",
+      "concept_id": "similarity_graph_rule",
+      "bloom_level": "Understand",
+      "question": "How is a similarity graph built from objects of any data type?",
+      "question_ar": "كيف يُبنى رسم تشابه من كائنات بأي نوع بيانات؟",
+      "options": [
+        "Connect two objects with an edge when their distance is below a threshold",
+        "Connect two objects with an edge when their labels are in alphabetical order",
+        "Connect every object to all others and weight each edge by record count",
+        "Connect objects only when they share the same number of attributes"
+      ],
+      "options_ar": [
+        "نصل الكائنين بحافة عندما تكون المسافة بينهما أقل من عتبة",
+        "نصل الكائنين بحافة عندما تكون تسميتاهما مرتبة أبجدياً",
+        "نصل كل كائن بجميع الكائنات ونزن كل حافة بعدد السجلات",
+        "نصل الكائنات فقط عندما تتساوى في عدد السمات"
+      ],
+      "options_en": [
+        "Connect two objects with an edge when their distance is below a threshold",
+        "Connect two objects with an edge when their labels are in alphabetical order",
+        "Connect every object to all others and weight each edge by record count",
+        "Connect objects only when they share the same number of attributes"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Nodes represent objects and edges represent similarity; a similarity or distance measure decides which pairs are connected, typically when the distance falls below a threshold.",
+      "explanation_ar": "العقد تمثّل الكائنات والحواف تمثّل التشابه، ويحدد مقياس المسافة أو التشابه الأزواج التي تُوصل، عادةً عندما تقل المسافة عن عتبة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "information_loss_discretization",
+      "bloom_level": "Evaluate",
+      "question": "Ages 21, 22, and 39 all become Adult after discretization. What is the correct reading of this outcome?",
+      "question_ar": "تتحول الأعمار 21 و22 و39 جميعها إلى فئة Adult بعد Discretization. ما القراءة الصحيحة لهذه النتيجة؟",
+      "options": [
+        "Information is lost, so a conversion must preserve what the task needs",
+        "The conversion failed, since discretization must keep exact values",
+        "No information is lost, since every age keeps its original bin label",
+        "The bins are invalid, since adjacent ages never share a category"
+      ],
+      "options_ar": [
+        "تحدث خسارة معلومات، لذا يجب أن يحفظ التحويل ما تحتاجه المهمة",
+        "فشل التحويل، لأن Discretization يجب أن يحفظ القيم الدقيقة",
+        "لا تحدث خسارة معلومات، لأن كل عمر يحتفظ بتسمية فئته الأصلية",
+        "الفترات غير صحيحة، لأن الأعمار المتقاربة لا تشترك في فئة"
+      ],
+      "options_en": [
+        "Information is lost, so a conversion must preserve what the task needs",
+        "The conversion failed, since discretization must keep exact values",
+        "No information is lost, since every age keeps its original bin label",
+        "The bins are invalid, since adjacent ages never share a category"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Discretization merges distinct values into one interval, so detail inside the bin disappears; a good conversion preserves the information the mining task requires.",
+      "explanation_ar": "يدمج Discretization قيماً مختلفة في فترة واحدة، فتختفي التفاصيل داخل الفترة؛ والتحويل الجيد يحفظ المعلومات التي تحتاجها مهمة التنقيب."
+    }
+  ]
+}
