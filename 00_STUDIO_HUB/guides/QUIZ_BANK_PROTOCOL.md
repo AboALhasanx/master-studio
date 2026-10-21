@@ -10,6 +10,7 @@
 2. Read `00_STUDIO_HUB/guides/PORTAL_PUBLISH.md` for the publishing mechanics — this file governs **what a question is**, that file governs **how it ships**.
 3. One shared map, no private copies: the live truth is `python 90_Shared_Toolbox/tools/portal_content.py status` plus `01_Semester_1/*/07_Quizzes_&_Anki/`. Do not create `Quiz_*_v2.json`, `_new.json`, or per-harness variants.
 4. When you find another harness's bank, name it with the date (*"found work from OpenCode 2026-10-21, left intact"*) and do not silently rewrite it. Fixing a factual error is allowed — say so in the session log and in the commit message.
+5. Handing the work to a model outside the vault (Gemini, another chat model): give it `00_STUDIO_HUB/handoffs/GEMINI_QUIZ_HANDOFF.md` and the matching prompt from `00_STUDIO_HUB/handoffs/GEMINI_QUIZ_PROMPT.md`. It writes the bank (or prints the JSON); the receiving vault agent runs the gates, publishes, and mirrors.
 
 ## 2. Where a bank lives, and what it is called
 

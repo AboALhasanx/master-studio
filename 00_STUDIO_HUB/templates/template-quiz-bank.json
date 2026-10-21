@@ -5,8 +5,8 @@
   "subject_title": "{{Subject_Arabic_Title}}",
   "semester": 1,
   "semester_label": "كورس أول",
-  "quiz_id": "Quiz_01_{{Topic_Slug}}",
-  "topic": "{{Topic_Title_and_Week}}",
+  "quiz_id": "Quiz_Ch{{NN}}_Model{{A|B}}_{{Topic_Slug}}",
+  "topic": "{{Topic_Title_and_Week}} — Model {{A|B}}",
   "instructor_ar": "{{Professor_Arabic_Name}}",
   "instructor": "{{Professor_Full_Name}}",
   "subject": "{{Subject_Folder_Name}}",
@@ -44,7 +44,8 @@
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "Detailed bilingual explanation of why the correct option wins and why each distractor is technically flawed."
+      "explanation": "Detailed bilingual explanation of why the correct option wins and why each distractor is technically flawed.",
+      "explanation_ar": "الشرح العربي: لماذا الإجابة الصحيحة صحيحة، ولماذا كل مشتّت خاطئ — مصطلحات تقنية بالإنجليزية بدون أقواس."
     },
     {
       "id": "q2",
@@ -72,7 +73,8 @@
       ],
       "answer": "B",
       "correct": 1,
-      "explanation": "Technical and conceptual explanation..."
+      "explanation": "Technical and conceptual explanation...",
+      "explanation_ar": "الشرح العربي: لماذا الإجابة الصحيحة صحيحة، ولماذا كل مشتّت خاطئ — مصطلحات تقنية بالإنجليزية بدون أقواس."
     },
     {
       "id": "q3",
@@ -100,7 +102,8 @@
       ],
       "answer": "C",
       "correct": 2,
-      "explanation": "Technical and conceptual explanation..."
+      "explanation": "Technical and conceptual explanation...",
+      "explanation_ar": "الشرح العربي: لماذا الإجابة الصحيحة صحيحة، ولماذا كل مشتّت خاطئ — مصطلحات تقنية بالإنجليزية بدون أقواس."
     },
     {
       "id": "q4",
@@ -128,7 +131,11 @@
       ],
       "answer": "D",
       "correct": 3,
-      "explanation": "Technical and conceptual explanation..."
+      "explanation": "Technical and conceptual explanation...",
+      "explanation_ar": "الشرح العربي: لماذا الإجابة الصحيحة صحيحة، ولماذا كل مشتّت خاطئ — مصطلحات تقنية بالإنجليزية بدون أقواس."
     }
-  ]
+  ],
+  "_protocol": "00_STUDIO_HUB/guides/QUIZ_BANK_PROTOCOL.md — read it first. This file only shows the shape; the protocol carries the rules, the gates and the publish steps.",
+  "_delete_before_saving": "Remove every key that starts with \"_\" (and this one) before saving the bank; the validator ignores them but they must not ship.",
+  "topic_ar": "{{العنوان العربي للجابتر}} — النموذج {{أ|ب}}"
 }
