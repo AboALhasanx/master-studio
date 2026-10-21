@@ -26,6 +26,7 @@ token. It never ships in the app.
 from __future__ import annotations
 
 import argparse
+import datetime
 import io
 import json
 import os
@@ -326,50 +327,129 @@ def set_hidden(args, hidden: bool) -> int:
     return 0
 
 
+def now_iso() -> str:
+    return datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
+
+
+def refresh_sw_list(portal: Path) -> tuple:
+    """Point the service worker's precache list at the banks that exist now.
+
+    Returns (changed, new_cache). Bumps `mcq-portal-vNN` (and the app's
+    SHELL_VERSION) only when the list really changed.
+    """
+    sw = portal / "sw.js"
+    if not sw.exists():
+        return False, ""
+    text = io.open(sw, encoding="utf-8").read()
+    banks = sorted(p.name for p in (portal / "data" / "banks").glob("*.json"))
+    lines = text.split("\n")
+    try:
+        first = next(i for i, l in enumerate(lines) if l.strip().startswith("'./data/banks/"))
+    except StopIteration:
+        return False, ""
+    last = first
+    while last < len(lines) and lines[last].strip().startswith("'./data/banks/"):
+        last += 1
+    block = ["  './data/banks/%s'," % n for n in banks]
+    if lines[first:last] == block:
+        m = re.search(r"mcq-portal-v(\d+)", text)
+        return False, m.group(0) if m else ""
+    out = "\n".join(lines[:first] + block + lines[last:])
+    m = re.search(r"mcq-portal-v(\d+)", out)
+    old_cache = m.group(0) if m else ""
+    new_cache = old_cache
+    if m:
+        new_cache = "mcq-portal-v%d" % (int(m.group(1)) + 1)
+        out = out.replace(old_cache, new_cache, 1)
+        app = portal / "js" / "app.js"
+        if app.exists():
+            app_text = io.open(app, encoding="utf-8").read()
+            app_text = app_text.replace("SHELL_VERSION = '%s'" % old_cache.replace("mcq-portal-", ""),
+                                        "SHELL_VERSION = '%s'" % new_cache.replace("mcq-portal-", ""))
+            io.open(app, "w", encoding="utf-8", newline="\n").write(app_text)
+    io.open(sw, "w", encoding="utf-8", newline="\n").write(out)
+    return True, new_cache
+
+
 def pull(args) -> int:
-    """Copy what is published back into the portal repo (a backup / a mirror)."""
+    """Refresh the bundled fallback copy in the portal repo from what is live.
+
+    The app reads the portal first; this mirror is what a device falls back to
+    when the portal is unreachable and nothing is cached yet. It keeps the real
+    chapter numbers, prunes banks that were retired, and re-points the service
+    worker's precache list.
+    """
     portal = Path(args.portal).resolve()
     rest = Rest()
-    status, rows = rest.select("/content_banks?select=payload,quiz_id,subject_id,subject_title")
+    status, rows = rest.select("/content_banks?select=payload,quiz_id,subject_id,subject_title,"
+                               "chapter_no,version,hidden,has_math,question_count")
     if status != 200 or not isinstance(rows, list):
         print("pull failed:", status, rows)
         return 1
-    written = 0
-    index = {"portal": "MCQ Portal", "test_mode": False, "version": current_meta(rest).get("version", 1),
-             "updated_at": "pulled", "subjects": []}
+    rows = [r for r in rows if not r.get("hidden") and (r.get("payload") or {}).get("questions")]
+
+    data = portal / "data"
+    banks_dir = data / "banks"
+    banks_dir.mkdir(parents=True, exist_ok=True)
     subjects = {}
+    keep = set()
     for row in rows:
         bank = row.get("payload") or {}
-        name = "banks/%s_%s.json" % (row.get("subject_id"), row.get("quiz_id"))
-        target = portal / "data" / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        with io.open(target, "w", encoding="utf-8", newline="\n") as fh:
-            json.dump(bank, fh, ensure_ascii=False, indent=2)
-            fh.write("\n")
-        written += 1
-        subj = subjects.setdefault(row.get("subject_id"), {
-            "subject_id": row.get("subject_id"),
-            "subject_title": row.get("subject_title") or row.get("subject_id"),
+        sid = row.get("subject_id") or bank.get("subject_id") or "00"
+        chapter = int(row.get("chapter_no") or 1)
+        name = "%s_Ch%02d_%s.json" % (sid, chapter, row.get("quiz_id"))
+        bank["subject_id"] = sid
+        (banks_dir / name).write_text(json.dumps(bank, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        keep.add(name)
+        subj = subjects.setdefault(sid, {
+            "subject_id": sid,
+            "subject_title": row.get("subject_title") or bank.get("subject_title") or sid,
             "chapters": [],
         })
         subj["chapters"].append({
-            "chapter_no": len(subj["chapters"]) + 1,
+            "chapter_no": chapter,
             "quiz_id": row.get("quiz_id"),
-            "bank": name,
+            "bank": "banks/" + name,
             "topic": bank.get("topic") or {},
-            "count": len(bank.get("questions") or []),
-            "version": bank.get("version", 1),
-            "has_math": bool(bank.get("has_math")),
+            "count": int(row.get("question_count") or len(bank.get("questions") or [])),
+            "version": int(row.get("version") or 1),
+            "updated_at": bank.get("updated_at") or "",
+            "has_math": bool(row.get("has_math") or bank.get("has_math")),
+            "material_url": bank.get("material_url") or "",
         })
-    index["subjects"] = [subjects[k] for k in sorted(subjects)]
-    with io.open(portal / "data" / "index.json", "w", encoding="utf-8", newline="\n") as fh:
-        json.dump(index, fh, ensure_ascii=False, indent=2)
-        fh.write("\n")
-    print("pulled %d banks into %s" % (written, portal / "data"))
+    pruned = 0
+    for old in banks_dir.glob("*.json"):
+        if old.name not in keep:
+            old.unlink()
+            pruned += 1
+
+    index = {
+        "portal": "MCQ Portal",
+        "test_mode": False,
+        "version": int(current_meta(rest).get("version") or 1),
+        "updated_at": now_iso(),
+        "subjects": [],
+    }
+    for sid in sorted(subjects):
+        subj = subjects[sid]
+        subj["chapters"].sort(key=lambda c: (c["chapter_no"], c["quiz_id"] or ""))
+        index["subjects"].append(subj)
+    (data / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    changed, cache = (False, "")
+    if not getattr(args, "no_sw", False):
+        changed, cache = refresh_sw_list(portal)
+
+    print("pulled %d banks into %s (%d pruned)" % (len(keep), data, pruned))
+    for sid in sorted(subjects):
+        chs = subjects[sid]["chapters"]
+        print("  %-28s %2d banks, chapters %s" % (sid, len(chs), sorted({c["chapter_no"] for c in chs})))
+    if changed:
+        print("service worker precache list updated -> %s (deploy the shell)" % cache)
+    elif not getattr(args, "no_sw", False):
+        print("service worker precache list already current")
     return 0
 
-
-# --------------------------------------------------------------------------- #
 def main() -> int:
     ap = argparse.ArgumentParser(description="The content portal (agent side)")
     ap.add_argument("command", choices=["sync", "status", "hide", "show", "pull"])
@@ -382,6 +462,7 @@ def main() -> int:
     ap.add_argument("--notify", action="store_true", help="post the Telegram notice")
     ap.add_argument("--force", action="store_true", help="write even if some banks fail the gate")
     ap.add_argument("--write-back", action="store_true", help="merge the result into the vault files")
+    ap.add_argument("--no-sw", action="store_true", help="pull only: do not touch the service worker list")
     args = ap.parse_args()
 
     if args.command == "sync":
