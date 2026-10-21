@@ -1,70 +1,98 @@
 # Publishing questions to the portal (بوابة MSCQuiz)
 
-> One command. The vault is the master copy, the portal is the consumer.
+> The vault is the master. Supabase is the **content portal** in the middle.
+> The app reads from the portal and keeps a local copy, so it also works offline.
 
-## The command
+## The shape of it
 
-```bash
-# see what would change (validates everything, writes nothing)
-python 90_Shared_Toolbox/tools/publish_quizzes.py --dry-run
-
-# publish everything, then push it live and announce it
-python 90_Shared_Toolbox/tools/publish_quizzes.py --deploy --announce
-
-# one subject only
-python 90_Shared_Toolbox/tools/publish_quizzes.py --subject 01_Cyber_Security --deploy
+```
+01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_*.json      (the master copy)
+        |
+        |  portal_content.py sync      (the agent, one command)
+        v
+Supabase:  content_banks  +  content_publishes  +  content_meta (a version)
+        |
+        |  content_manifest()  ->  only the chapters whose version changed
+        v
+PWA: manifest + banks cached on the device (IndexedDB/localStorage)  ->  offline
 ```
 
-The agent runs it; the student never sees a command line.
+The shell (HTML/CSS/JS/fonts/KaTeX) still lives on Vercel and changes rarely.
+**The questions never need a deploy**: publish them and the next visit shows them.
 
-## What it does, in order
+## The commands (agent side)
 
-1. **Reads** the canonical banks from
-   `01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_*.json`.
-2. **Validates** them three times over:
-   - the vault's schema gate (`quiz_balancer.validate_schema_v2`),
-   - the portal's **Canonical Schema v3** gate,
-   - every LaTeX formula between `$...$` (a broken formula never reaches a student).
-3. **Merges** with what the portal already has. The vault is the master for the
-   content, but an Arabic translation that only exists in the portal is never
-   dropped. `--write-back` copies the merged bank back into the vault, so the
-   translation work accumulates in the master copy too.
-4. **Writes** `mcq-portal/data/banks/*.json` in Schema v3 and rebuilds
-   `data/index.json` with a **version per chapter**. The version only moves when
-   what the student sees actually changed — a formatting change is not "new
-   questions".
-5. `--deploy` commits, pushes and runs the Vercel deploy.
-6. `--announce` posts the notice into the subject's Telegram topic
-   (`tg.py publish`), so the group gets the update on their phones.
+```bash
+# publish everything that changed
+python 90_Shared_Toolbox/tools/portal_content.py sync
+
+# one subject only
+python 90_Shared_Toolbox/tools/portal_content.py sync --subject 03_Data_Mining
+
+# what is live right now (version, chapters, counts, drafts)
+python 90_Shared_Toolbox/tools/portal_content.py status
+
+# keep a chapter out of the app (draft) and put it back
+python 90_Shared_Toolbox/tools/portal_content.py hide Quiz_Ch02_DrHuda_20MCQ
+python 90_Shared_Toolbox/tools/portal_content.py show Quiz_Ch02_DrHuda_20MCQ
+
+# copy what is published back into mcq-portal/data (a backup / a mirror)
+python 90_Shared_Toolbox/tools/portal_content.py pull
+
+# optional: also post the Telegram notice
+python 90_Shared_Toolbox/tools/portal_content.py sync --notify
+```
+
+`sync` always: validates (vault gate + v3 gate + every LaTeX formula) →
+merges with what is live (an Arabic translation or a topic title that only
+exists in the portal is never dropped) → upserts → moves the global content
+version **only when something really changed** → logs the publish.
 
 ## What the student sees
 
-- The portal asks for `data/index.json` fresh on every open (the service worker
-  never serves a stale `?v=` URL).
-- If a chapter's version is newer than the one stored on the device, the chapter
-  is downloaded and flagged: a **«جديد»** chip on its card and a **«نزلت أسئلة
-  جديدة»** notice at the top of the catalogue, with the subject, the chapter and
-  the count.
-- Opening the chapter marks it seen, so the notice clears itself.
-- Everything is kept on the device, so the new questions also work offline.
+- Next visit: the **bell** shows the unread count.
+- The sheet lists: subject · chapter · number of questions, each opening the quiz.
+- «قراءة الكل» clears them; opening one marks it read.
+- The questions are also cached on the device, so the new chapter works offline.
 
-## Canonical Schema v3 (the format the portal reads)
+## The store (Supabase, project `gywniovuupjmllbmjmai`)
 
-One bilingual shape, no aliases:
+| object | what |
+|---|---|
+| `content_banks` | one row per chapter: `payload` (v3 jsonb), `version`, `chapter_no`, `topic_ar/en`, `question_count`, `has_math`, `material_url`, `hidden` |
+| `content_meta` | a single row: the global publish version the app compares against |
+| `content_publishes` | the audit log (actor, action, quiz, version, at) |
+| `content_manifest()` | RPC: the tiny manifest (version + every chapter's version/count/topic) |
+| `content_bank(p_quiz_id)` | RPC: one bank payload |
+
+**Security:** anon can only `select`, and never a `hidden` chapter; the publish
+log has no anon policy. **Writes never happen from the browser** — the agent
+uses the service key fetched at run time with the Supabase Management token.
+
+## Fallbacks (nothing takes the app down)
+
+1. Portal unreachable → the manifest this device saw last time (cached).
+2. No cached manifest (first visit, no network) → the bundled
+   `mcq-portal/data/index.json` + `data/banks/*` that ship with the shell.
+3. A single bank fails → the cached copy of that bank is kept.
+
+The older `publish_quizzes.py` (git + Vercel, writing `data/*.json`) still works
+and is what keeps the bundled fallback fresh. It is no longer the primary path.
+
+## The question format (Canonical Schema v3)
 
 ```json
 {
   "schema_version": 3,
-  "subject_id": "01_Cyber_Security",
-  "quiz_id": "Quiz_Ch02_DrHuda_20MCQ",
-  "topic":   { "ar": "…", "en": "…" },
-  "instructor": { "ar": "…", "en": "…" },
-  "updated_at": "2026-10-21T12:00:00Z",
-  "has_math": false,
+  "subject_id": "03_Data_Mining",
+  "quiz_id": "Quiz_01_Introduction_to_Data_Mining",
+  "topic": { "ar": "مقدمة في التنقيب عن البيانات", "en": "Introduction to Data Mining" },
   "version": 3,
+  "has_math": true,
+  "updated_at": "2026-10-21T12:00:00Z",
   "questions": [{
     "id": "q1",
-    "concept_id": "risk_vs_threat",
+    "concept_id": "support_measure",
     "bloom": "Apply",
     "stem":        { "ar": "… $R = L \\times I$ …", "en": "…" },
     "options":     [{ "ar": "…", "en": "…" }, … 4],
@@ -74,22 +102,8 @@ One bilingual shape, no aliases:
 }
 ```
 
-**Math** goes inline between `$...$` (or `$$...$$` for a display block) inside any
-Arabic or English string. The portal renders it with KaTeX, wrapped in
-`<bdi dir="ltr">` so a formula keeps its own direction inside an Arabic line.
-A question can mix Arabic prose, English technical terms and formulas freely.
-
-**Older files** (v2 and the previous alias soup: `text`/`question`/`question_ar`,
-`options`/`options_ar`/`options_en`, …) are converted on read by
-`mcq-portal/tools/portal_schema.py`, so nothing breaks while the shelf is being
-republished.
-
-## Files
-
-| Path | Role |
-|---|---|
-| `90_Shared_Toolbox/tools/publish_quizzes.py` | the publish command (vault side) |
-| `mcq-portal/tools/portal_schema.py` | v3 conversion + validation (shared) |
-| `mcq-portal/data/index.json` | the manifest: version per chapter, counts, math flag |
-| `mcq-portal/data/banks/*.json` | the published banks (v3) |
-| `mcq-portal/js/vendor/katex/` | the math renderer, vendored for offline |
+Math goes between `$...$` (or `$$...$$` for a block) inside any Arabic or
+English string; the app renders it with KaTeX, isolated (`<bdi dir="ltr">`) so
+it keeps its direction inside the Arabic line. Older v2 banks (and the alias
+soup: `text`/`question`/`question_ar`, `options_ar`…) are converted on read by
+`mcq-portal/tools/portal_schema.py`, so nothing breaks mid-migration.
