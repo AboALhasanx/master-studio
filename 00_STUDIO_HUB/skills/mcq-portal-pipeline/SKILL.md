@@ -17,6 +17,16 @@ description: Author, validate, publish, mirror and verify MCSQuiz question banks
 2. The live truth is `python 90_Shared_Toolbox/tools/portal_content.py status`
    plus `01_Semester_1/*/07_Quizzes_&_Anki/`. Never invent a second map.
 
+## 0. Ask first — never assume the count
+
+The number of questions is **the student's decision, not a default**. Before
+writing anything, ask: subject, chapter, bank shape (models A/B or topic
+banks), rough scope, and **how many questions**. Propose a range if it helps
+(5 for a quick drill, 10–15 for a rich chapter, 16 for a ملزمة-section topic
+bank), then **wait for the student's confirmation** and only then scaffold.
+A bank under 5 questions needs explicit student approval (the answer-key rule
+needs at least one key per letter).
+
 ## 1. Scaffold the file — do not hand-type the envelope
 
 ```bash

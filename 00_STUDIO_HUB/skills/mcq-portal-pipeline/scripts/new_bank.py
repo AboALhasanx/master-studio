@@ -55,7 +55,8 @@ def main() -> int:
     ap.add_argument('--slug', required=True, help='Pascal_Slug, e.g. Data_Types')
     ap.add_argument('--title-ar', required=True)
     ap.add_argument('--title-en', required=True)
-    ap.add_argument('--questions', type=int, default=5)
+    ap.add_argument('--questions', required=True, type=int,
+                    help='agreed with the student first (skill §0); minimum 4 so every letter can hold a key')
     ap.add_argument('--instructor-ar', default='')
     ap.add_argument('--instructor-en', default='')
     args = ap.parse_args()
@@ -65,8 +66,8 @@ def main() -> int:
         return fail('unknown subject folder: %s' % args.subject)
     if args.chapter < 1:
         return fail('chapter must be >= 1')
-    if args.questions < 5:
-        return fail('a bank carries at least 5 questions')
+    if args.questions < 4:
+        return fail('at least 4 questions (one key per letter); confirm the count with the student first')
     if args.kind == 'model' and args.model not in ('A', 'B'):
         return fail('kind=model needs --model A|B')
     if args.kind == 'topic' and not (args.topic_num and args.topic_num >= 1):

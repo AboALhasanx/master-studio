@@ -102,7 +102,7 @@ Every question object:
 }
 ```
 
-**Size:** 5 questions minimum per bank (5 is normal, 10–15 when the material is rich, 16 for a ملزمة-section topic bank). The whole bank must stay playable in one sitting.
+**Size:** agreed with the student first (see §0) — 5 is a normal drill, 10–15 when the material is rich, 16 for a ملزمة-section topic bank. The whole bank must stay playable in one sitting.
 
 ## 5. Schema v3 — generated, never hand-written
 
@@ -215,7 +215,8 @@ python "90_Shared_Toolbox/tools/portal_content.py" sync --notify
 ## 13. Delivery checklist
 
 - [ ] File name + `quiz_id` follow the chapter's shape (`Model<A|B>` or `T<NN>`); chapter number is the book's.
-- [ ] Titles: no subject name, no model suffix on topic banks; unique `concept_id`s across the whole chapter.
+- [ ] Titles: no subject name, no model suffix on topic banks.
+- [ ] Count, chapter and shape confirmed with the student first (never assumed); `concept_id`s unique across the whole chapter.
 - [ ] 5+ questions per bank; unique `concept_id`s across the chapter's two models.
 - [ ] Every question grounded in a named source; nothing invented.
 - [ ] Arabic-first bilingual, MSA, English terms without parentheses, `←` in Arabic lines.
