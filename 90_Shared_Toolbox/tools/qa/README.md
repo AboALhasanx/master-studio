@@ -14,6 +14,8 @@ deployed site; run them from a shell.
 | `sync_cross_device.py` | the same account on the **computer and the tablet** (login by handle + PIN), the newest-change-wins rules (stale loses, newer wins, a tie goes to the server), and a second account that must start empty and never leak into the first | `adb forward` then `python sync_cross_device.py` |
 | `tablet_tour_check.js` | walks the guided tour on the tablet, step by step: every tip, the spotlight target, the counter, previous/skip and the replay from the drawer | `node tablet_tour_check.js` |
 | `tablet_lang_all.js` | the icon is fixed in every bar (home included): visible everywhere, yellow in Arabic / plain in English, toggling works from home | `node tablet_lang_all.js` |
+| `tablet_verify_140.js` | end-to-end on the tablet: the transparent tab icon, the new notification wording (topic + chapter + subject), the topic badge in the chip row with clean titles, and the visit that clears the badge | `node tablet_verify_140.js` |
+| `web_verify_ui.js` | desktop pass of the catalogue/cards/modals incl. the topic-number badges | `node web_verify_ui.js` |
 | `tablet_lang_icon.js` | the translation icon toggle on the tablet: the old pill is gone, the icon sits before the bell, yellow in Arabic / plain in English, and a quiz refresh shows the right header at once | `node tablet_lang_icon.js` |
 | `portal_db_clean.py` | sweeps the QA guests out of the content portal (keeps the student's account and the real league row) | `python portal_db_clean.py` (dry run), `APPLY=1 python portal_db_clean.py` |
 
