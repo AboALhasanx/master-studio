@@ -9,6 +9,8 @@ deployed site; run them from a shell.
 | `tablet_results_flow.js` | the quiz → results → review → retry-wrong → retry-quiz → home flow, on the tablet | same |
 | `web_lang_bar.js` | the ع/EN switch is in the bar for quiz/results/saved, hidden on home, and gone from the drawer (desktop/headless is fine) | `PORTAL_URL=https://mcq-portal-jade.vercel.app node web_lang_bar.js` |
 | `web_content_structure.js` | subject/chapter/card structure: six subjects, one chip per chapter, exactly two cards per chapter, KaTeX renders | same |
+| `tablet_offline_sweep.js` | the same sweep with Wi-Fi **off**: the shell must come from the cache, every screen must open, a quiz must answer and explain, and the league/account actions must say they need the network instead of going silent | `adb shell svc wifi disable` then `node tablet_offline_sweep.js` |
+| `tablet_new_badge.js` | the «جديد» badge is stateful: a fresh chapter shows it, opening the quiz clears it at once, the notification leaves the sheet and the visit is remembered after a reload | `node tablet_new_badge.js` |
 | `portal_db_clean.py` | sweeps the QA guests out of the content portal (keeps the student's account and the real league row) | `python portal_db_clean.py` (dry run), `APPLY=1 python portal_db_clean.py` |
 
 Notes
