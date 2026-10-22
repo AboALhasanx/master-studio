@@ -6,7 +6,7 @@ active_subject_code: "CS601"
 immediate_todo: "Review the revised 38-page Chapters 1–6 formula guide; Chapter 6 printed pp.12–13 are excluded, with all 108 examples in English LTR. Chapter 7 remains excluded."
 next_session_focus: "Run an interactive formula and scenario drill for Cyber Security Chapters 1–6 using the revised 38-page guide and the instructor-marked scope."
 last_updated: "2026-10-22"
-status: "CYBER_CH03_QUIZ_COMPLETE_9_BANKS_150Q_T07_RETIRED_BY_RULING_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH08_COMPLETE_PRINT_PACK_97PP_READY_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
+status: "CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH08_COMPLETE_PRINT_PACK_97PP_READY_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
 ---
 
 # Master Studio: Active Session State
@@ -91,7 +91,7 @@ status: "CYBER_CH03_QUIZ_COMPLETE_9_BANKS_150Q_T07_RETIRED_BY_RULING_2026-10-22;
 - [ ] **`06_Artificial_Intelligence`** — Tuesday lecture did not take place because the dean had other commitments; lecture postponed to Sunday. No material reported; do not proactively check the group.
 
 ### Next Session Focus
-- **Cyber quiz banks (MCSQuiz portal, content v24):** Ch01 6 banks / 96 q · Ch02 8 banks / 135 q · **Ch03 9 banks / 150 q** — Cyber Security totals 25 banks / 411 q. Ch03 `T07_Hospital_Quantification` (18 q) was retired by the student's ruling «محذوف — المثال يروح والمعادلة تبقى»; the `Risk = T×V×I`, `EFL = Σ Pᵢ·Iᵢ` and aggregate equations remain covered in T02/T03 with clean numbers. **Open question for him:** replace the T07 slot with an applied bank on new training numbers, or leave Ch03 at 9 banks.
+- **Cyber quiz banks (MCSQuiz portal, content v25):** Ch01 6 banks / 96 q · Ch02 8 banks / 135 q · **Ch03 10 banks / 167 q** — Cyber Security totals 26 banks / 428 q. Ch03 `T07` was retired by the student's ruling «محذوف — المثال يروح والمعادلة تبقى» and the slot refilled at his request with `T07_Risk_Quantification_Method` (17 q) on fresh training numbers (Meridian Freight scenario, all figures mine). The `Risk = T×V×I`, `EFL = Σ Pᵢ·Iᵢ` and aggregate equations remain covered in T02/T03 with clean numbers. The retired hospital bank sits in `_retired/`, recoverable.
 - **Cyber Ch03 verification gap:** no marked-up W03 exists anywhere in the subject (`W03_Risks.pdf` = 0 annotations, 0 coloured pixels, 14 pp); only `W01_Intro_Annotated.pdf` (49 marks) and `W02_Chapter2_TriLayer.pdf` (2) carry annotations. 9 of 22 W03 sections have no annotation record — their in/out status rests on my transcription and is unverified.
 - **ASE Week 02 is COMPLETE** — ten unit PDFs + the 146-page merged Master Lecture. No further ASE work queued until the student asks.
 - **Cyber: materials renumbered 2026-09-27.** W02 = `W02_Risks_DrHuda_Booklet2.pdf` (exam booklet 2). Lecture source = **`W03_Risks.pdf`**. Student notes for the unfinished W03 lecture **due Wednesday** — synthesise only after handover. Quiz today covered Booklets 1+2 (2 forgotten Qs, not graded).
