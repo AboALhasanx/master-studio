@@ -1,0 +1,595 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_ModelA_Cybersecurity_Foundations",
+  "topic": "Cybersecurity Foundations — Model A",
+  "topic_ar": "مقدمة في الأمن السيبراني: الأسس وثالوث CIA والمخاطر — النموذج أ",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "cybersecurity_multidimensional_scope",
+      "bloom_level": "Understand",
+      "question": "Cybersecurity extends beyond purely technical firewalls and antivirus software. According to the foundational definition, which four dimensions constitute its complete operational scope?",
+      "question_ar": "يتجاوز الأمن السيبراني مجرد جدران الحماية التقنية ومضادات الفيروسات. وفق التعريف التأسيسي، ما الأبعاد الأربعة التي تشكّل نطاقه التشغيلي الكامل؟",
+      "options": [
+        "Operational, tactical, strategic, and financial aspects.",
+        "Physical, infrastructural, algorithmic, and statistical aspects.",
+        "Defensive, offensive, investigative, and regulatory aspects.",
+        "Technical, legal, managerial, and social aspects."
+      ],
+      "options_ar": [
+        "الجوانب التشغيلية والتكتيكية والاستراتيجية والمالية.",
+        "الجوانب المادية والبنيوية والخوارزمية والإحصائية.",
+        "الجوانب الدفاعية والهجومية والتحقيقية والتنظيمية.",
+        "الجوانب التقنية والقانونية والإدارية والاجتماعية."
+      ],
+      "options_en": [
+        "Operational, tactical, strategic, and financial aspects.",
+        "Physical, infrastructural, algorithmic, and statistical aspects.",
+        "Defensive, offensive, investigative, and regulatory aspects.",
+        "Technical, legal, managerial, and social aspects."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The official definition specifies four interlocking dimensions: technical controls, legal awareness, managerial policies, and social responsibility. The other triplets describe military or business divisions rather than the comprehensive cybersecurity definition.",
+      "explanation_ar": "ينص التعريف التأسيسي صراحةً على أن الأمن السيبراني يضم أربعة أبعاد متكاملة: التقني والقانوني والإداري والاجتماعي. الخيارات الأخرى تخلط بين مستويات التخطيط الاستراتيجي أو التصنيفات الميدانية العامة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "cybersecurity_formal_definition",
+      "bloom_level": "Remember",
+      "question": "Which statement accurately represents the comprehensive formal definition of cybersecurity provided in the lecture?",
+      "question_ar": "أي عبارة تمثل بدقة التعريف الرسمي الشامل للأمن السيبراني كما ورد في المحاضرة المعتمدة؟",
+      "options": [
+        "The automated software mechanisms deployed to detect unauthorized intrusion attempts across boundary network routing devices.",
+        "The set of tools, policies, security concepts, safeguards, and risk management approaches used to protect the cyber environment.",
+        "The administrative procedures mandated to ensure full compliance with regional governmental data storage security requirements.",
+        "The algorithmic cryptographic protocols implemented to verify user authentication identity during distributed database access."
+      ],
+      "options_ar": [
+        "الآليات البرمجية المؤتمتة المخصصة لكشف محاولات التسلل غير المصرّح بها عبر أجهزة توجيه الشبكات الحدودية.",
+        "مجموعة الأدوات والسياسات والمفاهيم الأمنية والضمانات ومناهج إدارة المخاطر المستخدمة لحماية البيئة السيبرانية.",
+        "الإجراءات الإدارية الإلزامية الهادفة لضمان الامتثال التام لمتطلبات تخزين البيانات الحكومية على المستوى الإقليمي.",
+        "البروتوكولات التشفيرية الخوارزمية المطبقة للتحقق من هوية المستخدمين أثناء الوصول إلى قواعد البيانات الموزعة."
+      ],
+      "options_en": [
+        "The automated software mechanisms deployed to detect unauthorized intrusion attempts across boundary network routing devices.",
+        "The set of tools, policies, security concepts, safeguards, and risk management approaches used to protect the cyber environment.",
+        "The administrative procedures mandated to ensure full compliance with regional governmental data storage security requirements.",
+        "The algorithmic cryptographic protocols implemented to verify user authentication identity during distributed database access."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The lecture defines cybersecurity as the set of tools, policies, security concepts, safeguards, risk management approaches, and technologies to protect the cyber environment. The alternatives describe partial mechanisms such as firewalls, compliance routines, or access control.",
+      "explanation_ar": "التعريف الرسمي يحدد الأمن السيبراني بأنه مجموعة متكاملة من الأدوات والسياسات والمفاهيم الأمنية ووسائل الحماية ومناهج إدارة المخاطر لحماية البيئة السيبرانية. أما بقية الخيارات فتصف إجراءات جزئية مثل جدران الحماية أو الامتثال الروتيني."
+    },
+    {
+      "id": "q3",
+      "concept_id": "cybersecurity_evolution_milestones",
+      "bloom_level": "Understand",
+      "question": "During the historical evolution of cybersecurity, what primary transformation characterized the decade of the 2000s?",
+      "question_ar": "خلال مسار التطور التاريخي للأمن السيبراني، ما التحول الجوهري الذي ميز حقبة الألفينيات؟",
+      "options": [
+        "Cybersecurity emerged primarily to secure packet switching across early ARPANET nodes.",
+        "Cybersecurity focused on combating personal computer boot sector viruses and file worms.",
+        "Cybersecurity became an integral foundation for e-commerce and digital banking systems.",
+        "Cybersecurity shifted toward defending against AI-driven threats and Zero Trust models."
+      ],
+      "options_ar": [
+        "نشأ الأمن السيبراني لأول مرة بهدف حماية تبادل الحزم عبر العقد الأولى لشبكة ARPANET العسكرية.",
+        "تركز الأمن السيبراني بصورة حصرية على مكافحة فيروسات قطاع الإقلاع والديدان في الحواسيب الشخصية.",
+        "أصبح الأمن السيبراني ركيزة أساسية لا غنى عنها لأنظمة التجارة الإلكترونية والخدمات المصرفية الرقمية.",
+        "تحول الأمن السيبراني كلياً نحو مواجهة التهديدات المدفوعة بالذكاء الاصطناعي ونماذج Zero Trust الحديثة."
+      ],
+      "options_en": [
+        "Cybersecurity emerged primarily to secure packet switching across early ARPANET nodes.",
+        "Cybersecurity focused on combating personal computer boot sector viruses and file worms.",
+        "Cybersecurity became an integral foundation for e-commerce and digital banking systems.",
+        "Cybersecurity shifted toward defending against AI-driven threats and Zero Trust models."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The 2000s marked the commercial boom where cybersecurity became vital for e-commerce and e-banking. The 1960s featured ARPANET, the 1980s-90s dealt with viruses and antivirus, and 2010s-present introduced Zero Trust and AI threats.",
+      "explanation_ar": "تميّزت الألفينيات بازدهار التجارة الرقمية فصار الأمن السيبراني متطلباً حتمياً للتجارة الإلكترونية والخدمات المصرفية. بينما تعود ARPANET للستينيات، والفيروسات للثمانينيات والتسعينيات، و Zero Trust لما بعد 2010."
+    },
+    {
+      "id": "q4",
+      "concept_id": "early_vs_modern_defense_paradigms",
+      "bloom_level": "Analyze",
+      "question": "How does early cybersecurity defense (1960s–1990s) fundamentally differ from modern cybersecurity architecture (2010s–present)?",
+      "question_ar": "كيف يختلف نموذج الدفاع في الأمن السيبراني المبكر (الستينيات–التسعينيات) جوهرياً عن المعمارية السيبرانية الحديثة (2010–الآن)؟",
+      "options": [
+        "Early security focused on perimeter defense, whereas modern security addresses decentralized Cloud, IoT, and Zero Trust.",
+        "Early security relied on continuous behavioral analytics, whereas modern security operates purely on static edge firewalls.",
+        "Early security eliminated software vulnerabilities, whereas modern security ignores application logic flaws entirely.",
+        "Early security prioritized biometric authentication, whereas modern security relies solely on basic plaintext credentials."
+      ],
+      "options_ar": [
+        "ركز الدفاع المبكر على محيط الشبكة فقط، بينما يعالج الدفاع الحديث البيئات اللامركزية كالسحابة وإنترنت الأشياء ونموذج Zero Trust.",
+        "اعتمد الدفاع المبكر على التحليل السلوكي المستمر، بينما يعمل الدفاع الحديث حصرياً على جدران الحماية الثابتة عند حدود الشبكة.",
+        "اهتم الدفاع المبكر بالقضاء الجذري على الثغرات البرمجية، بينما يتجاهل الدفاع الحديث عيوب المنطق البرمجي في التطبيقات تماماً.",
+        "فضّل الدفاع المبكر استخدام تقنيات التحقق البيومتري المتقدم، بينما يكتفي الدفاع الحديث بكلمات المرور النصية غير المشفرة فقط."
+      ],
+      "options_en": [
+        "Early security focused on perimeter defense, whereas modern security addresses decentralized Cloud, IoT, and Zero Trust.",
+        "Early security relied on continuous behavioral analytics, whereas modern security operates purely on static edge firewalls.",
+        "Early security eliminated software vulnerabilities, whereas modern security ignores application logic flaws entirely.",
+        "Early security prioritized biometric authentication, whereas modern security relies solely on basic plaintext credentials."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Early security relied heavily on boundary perimeter defense (firewalls and antivirus). Modern security must protect diverse decentralized environments (Cloud, IoT, mobile) under a strict Zero Trust philosophy.",
+      "explanation_ar": "الدفاع السيبراني المبكر اعتمد على تحصين محيط الشبكة (جدران نارية ومضادات فيروسات)، بينما المعمارية الحديثة تحمي بيئات سحابية وأجهزة إنترنت الأشياء ومحمولة قائمة على مبدأ Zero Trust ← عدم الوثوق بأي طرف والتحقق الدائم."
+    },
+    {
+      "id": "q5",
+      "concept_id": "cyber_scope_hierarchy",
+      "bloom_level": "Understand",
+      "question": "Across the four operational levels of cybersecurity scope, which level is specifically tasked with ensuring business continuity, customer trust, and regulatory compliance?",
+      "question_ar": "ضمن المستويات الأربعة لنطاق الأمن السيبراني، أي مستوى يُعنى تحديداً بضمان استمرارية الأعمال وثقة العملاء والامتثال القانوني؟",
+      "options": [
+        "Global Trade, which regulates cross-border currency exchanges and international treaties.",
+        "Enterprises, which protect operational workflows, client confidentiality, and legal obligations.",
+        "Governments, which safeguard military assets, national borders, and public defense databases.",
+        "Individuals, who protect personal mobile devices, private emails, and personal bank accounts."
+      ],
+      "options_ar": [
+        "التجارة العالمية، التي تلتزم بتنظيم تبادل العملات الرقمية عبر الحدود، والاتفاقيات الدولية التجارية.",
+        "المؤسسات، التي تلتزم بحماية سير العمليات التشغيلية، وثقة العملاء، والامتثال للتشريعات القانونية.",
+        "الحكومات، التي تلتزم بحماية المنشآت العسكرية والسيادية، والحدود، وقواعد بيانات الدفاع الوطني.",
+        "الأفراد، الذين يلتزمون بحماية الأجهزة الذكية الشخصية، والبريد الإلكتروني، والحسابات المصرفية الخاصة."
+      ],
+      "options_en": [
+        "Global Trade, which regulates cross-border currency exchanges and international treaties.",
+        "Enterprises, which protect operational workflows, client confidentiality, and legal obligations.",
+        "Governments, which safeguard military assets, national borders, and public defense databases.",
+        "Individuals, who protect personal mobile devices, private emails, and personal bank accounts."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The lecture defines four scope levels: Individuals (personal devices/accounts), Enterprises (business continuity, customer trust, compliance), Governments (national defense, e-governance), and Global Trade (cross-border finance).",
+      "explanation_ar": "حددت المادة أربعة مستويات: الأفراد (أجهزة وحسابات شخصية)، المؤسسات (استمرارية العمل وثقة العملاء والامتثال القانوني)، الحكومات (الأمن والدفاع الوطني)، والتجارة العالمية (المعاملات المالية العابرة للحدود)."
+    },
+    {
+      "id": "q6",
+      "concept_id": "six_core_domains_tools",
+      "bloom_level": "Remember",
+      "question": "Which of the six key cybersecurity domains relies predominantly on lightweight encryption and anomaly detection techniques?",
+      "question_ar": "أي مجال من المجالات الستة الأساسية للأمن السيبراني يعتمد بصورة رئيسية على التشفير خفيف الوزن وكشف الشذوذ؟",
+      "options": [
+        "Cloud Security, due to multi-tenant hypervisor isolation requirements.",
+        "IoT Security, due to resource constraints on embedded hardware sensors.",
+        "Network Security, due to high-throughput boundary inspection protocols.",
+        "Application Security, due to secure coding and OWASP verification checks."
+      ],
+      "options_ar": [
+        "أمن السحابة Cloud Security، نظراً لمتطلبات عزل البيئات الافتراضية وإدارة الهويات التشاركية.",
+        "أمن إنترنت الأشياء IoT Security، نظراً لمحدودية موارد المعالجة والطاقة في الأجهزة المدمجة.",
+        "أمن الشبكات Network Security، نظراً لسرعة تدفق حزم البيانات عبر أجهزة التوجيه وجدران الحماية.",
+        "أمن التطبيقات Application Security، نظراً للالتزام بقواعد الترميز الآمن وفحوصات معايير OWASP."
+      ],
+      "options_en": [
+        "Cloud Security, due to multi-tenant hypervisor isolation requirements.",
+        "IoT Security, due to resource constraints on embedded hardware sensors.",
+        "Network Security, due to high-throughput boundary inspection protocols.",
+        "Application Security, due to secure coding and OWASP verification checks."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "IoT Security is uniquely characterized by lightweight encryption and anomaly detection to accommodate constrained sensor hardware. Network uses firewalls/IDS, Application uses OWASP/secure coding, and Cloud uses IAM/virtualization.",
+      "explanation_ar": "أمن أجهزة إنترنت الأشياء يتميز بتقنيات التشفير خفيف الوزن Lightweight Encryption وكشف الشذوذ لملاءمة موارد الحساسات المحدودة. بينما أمن الشبكات يعتمد جدران الحماية، والسحابة تعتمد IAM، والتطبيقات تعتمد OWASP."
+    },
+    {
+      "id": "q7",
+      "concept_id": "risk_exposure_time_metric",
+      "bloom_level": "Apply",
+      "question": "In the cyber risk exposure formula $R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$, what does the presence of the time variable $t$ signify to the security analyst?",
+      "question_ar": "في معادلة التعرض للمخاطر السيبرانية $R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$، ماذا يمثّل وجود المتغير الزمني $t$ لمحلل الأمان؟",
+      "options": [
+        "Signifies the exact execution duration in milliseconds required by malicious exploit payloads to compromise a host.",
+        "Signifies the total system operational uptime achieved before scheduled server maintenance procedures take effect.",
+        "Signifies the statutory retention period required by data privacy legislation before logs are permanently deleted.",
+        "Signifies that risk fluctuates dynamically over time, distinguishing this model from static optimization formulas."
+      ],
+      "options_ar": [
+        "يشير إلى المدة الزمنية الدقيقة بالمللي ثانية التي تستغرقها حمولة الهجوم البرمجية لاختراق نظام تشغيل الخادم المستهدف.",
+        "يشير إلى إجمالي ساعات تشغيل النظام المستمرة بنجاح قبل موعد إجراء عمليات الصيانة والتحديث الدورية المجدولة.",
+        "يشير إلى الفترة القانونية الإلزامية التي يفرضها تشريع الخصوصية للاحتفاظ بسجلات النشاط قبل حذفها نهائياً من النظام.",
+        "يشير إلى أن الخطر يتغير ديناميكياً بمرور الوقت، مما يحدد وجوب تطبيق هذا النموذج بدلاً من معادلة التحسين الثابتة."
+      ],
+      "options_en": [
+        "Signifies the exact execution duration in milliseconds required by malicious exploit payloads to compromise a host.",
+        "Signifies the total system operational uptime achieved before scheduled server maintenance procedures take effect.",
+        "Signifies the statutory retention period required by data privacy legislation before logs are permanently deleted.",
+        "Signifies that risk fluctuates dynamically over time, distinguishing this model from static optimization formulas."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The formula $R(t) = \\sum P_i(t) \\cdot I_i(t)$ captures risk exposure as a dynamic function of time. In exam problem solving, the presence of a time parameter explicitly signals using this formula rather than the static optimization formula.",
+      "explanation_ar": "المعادلة $R(t) = \\sum P_i(t) \\cdot I_i(t)$ تعبّر عن التعرّض للخطر كدالة زمنية ديناميكية تتغير باستمرار. كما أوضحت الملاحظات، وجود مؤشر الزمن $t$ في السؤال هو العلامة الدالة على استخدام هذا القانون تحديداً وليس قانون $\\min R$."
+    },
+    {
+      "id": "q8",
+      "concept_id": "cia_integrity_mechanisms",
+      "bloom_level": "Understand",
+      "question": "Which explicit set of engineering techniques is designated in the course syllabus to enforce and verify the Integrity pillar of the CIA Triad?",
+      "question_ar": "أي مجموعة محددة من التقنيات الهندسية مخصصة في منهج المادة لفرض سلامة البيانات والتحقق منها ضمن ثالوث CIA؟",
+      "options": [
+        "Dynamic anomaly detection, biometric authentication scanners, and air-gapped backups.",
+        "Symmetric cipher encryption, strict role-based access controls, and IPsec VPN tunnels.",
+        "Hashing algorithms such as SHA-256, digital signatures, and version control systems.",
+        "Hardware failover redundancy, server load balancing, and automated DDoS mitigation systems."
+      ],
+      "options_ar": [
+        "آليات كشف الشذوذ الديناميكي، والماسحات البيومترية المتقدمة، ووسائط التخزين المعزولة كلياً عن الشبكة.",
+        "التشفير المتناظر للبيانات، وضوابط الوصول المستندة إلى الأدوار، والأنفاق الافتراضية المشفرة VPNs.",
+        "خوارزميات التجزئة مثل SHA-256، والتوقيعات الرقمية، وأنظمة التحكم بالإصدارات Version Control.",
+        "النسخ الاحتياطي المتكرر للخوادم Redundancy، وموازنة الأحمال Load Balancing، وتخفيف هجمات DDoS."
+      ],
+      "options_en": [
+        "Dynamic anomaly detection, biometric authentication scanners, and air-gapped backups.",
+        "Symmetric cipher encryption, strict role-based access controls, and IPsec VPN tunnels.",
+        "Hashing algorithms such as SHA-256, digital signatures, and version control systems.",
+        "Hardware failover redundancy, server load balancing, and automated DDoS mitigation systems."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Integrity guarantees that data remains accurate and unaltered; its textbook techniques are hashing (SHA-256), digital signatures, and version control. Encryption/access controls/VPNs belong to Confidentiality; redundancy/load balancing/DDoS mitigation belong to Availability.",
+      "explanation_ar": "ركن السلامة Integrity يضمن دقة البيانات وعدم تعديلها، وتقنياته الثلاث المعتمدة نصياً هي: التجزئة Hashing (SHA-256)، التوقيع الرقمي Digital Signatures، والتحكم بالإصدارات Version Control. أما بقية الخيارات فتخص السرية والتوافر."
+    },
+    {
+      "id": "q9",
+      "concept_id": "cia_confidentiality_controls",
+      "bloom_level": "Remember",
+      "question": "What triplet of technical safeguards is canonically specified to guarantee Confidentiality within the CIA Triad?",
+      "question_ar": "ما الثلاثية التقنية من وسائل الحماية المحددة معيارياً لضمان السرية Confidentiality ضمن ثالوث CIA؟",
+      "options": [
+        "Active load balancers, server virtualization, and automated site replication.",
+        "Anomaly detection filters, network sandboxing, and perimeter firewalls.",
+        "Encryption, access controls, and Virtual Private Networks.",
+        "Cryptographic hashing, digital watermarking, and continuous log auditing."
+      ],
+      "options_ar": [
+        "موازنات الحمل النشطة، والبيئات الافتراضية للخوادم، وتكرار المواقع الجغرافية المؤتمتة بالكامل.",
+        "مرشحات كشف الشذوذ البرمجي، والعزل الأمني للتطبيقات Sandboxing، وجدران الحماية الخارجية.",
+        "تقنيات التشفير Encryption، وضوابط الوصول Access Controls، والشبكات الخاصة الافتراضية VPNs.",
+        "التجزئة التشفيرية للبيانات، والعلامات المائية الرقمية، والتدقيق المستمر لسجلات حركة المرور."
+      ],
+      "options_en": [
+        "Active load balancers, server virtualization, and automated site replication.",
+        "Anomaly detection filters, network sandboxing, and perimeter firewalls.",
+        "Encryption, access controls, and Virtual Private Networks (VPNs).",
+        "Cryptographic hashing, digital watermarking, and continuous log auditing."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Confidentiality prevents unauthorized data access; its designated canonical techniques are encryption, access controls, and VPNs. Hashing and digital signatures protect integrity, while load balancing and replication protect availability.",
+      "explanation_ar": "السرية Confidentiality تعني منع الوصول غير المصرّح به للبيانات، وتقنياتها الثلاث المحددة حرفياً في المنهج هي: التشفير Encryption، ضوابط الوصول Access Controls، والشبكات الافتراضية VPNs."
+    },
+    {
+      "id": "q10",
+      "concept_id": "utility_weights_sector_priorities",
+      "bloom_level": "Analyze",
+      "question": "In the security utility function $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$, why does a healthcare hospital system assign a significantly higher weight to $\\alpha$ than to $\\gamma$?",
+      "question_ar": "في دالة المنفعة الأمنية $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$، لماذا تمنح أنظمة المستشفيات الصحية وزناً أعلى للمعامل $\\alpha$ مقارنة بالمعامل $\\gamma$؟",
+      "options": [
+        "Patient medical privacy breach results in severe irreparable legal harm that outweighs temporary system downtime.",
+        "Hospital databases lack technical capacity to implement automated redundancy or failover clustering mechanisms.",
+        "Regulatory frameworks mandate that clinical telemetry sensors operate without any user access authentication.",
+        "Medical diagnostic equipment suffers permanent hardware destruction whenever network connectivity is interrupted."
+      ],
+      "options_ar": [
+        "تسريب الخصوصية الطبية للمريض يُحدث ضرراً قانونياً وأخلاقياً لا يمكن جبره، ويفوق أثر التوقف المؤقت للخدمة.",
+        "قواعد بيانات المستشفيات تفتقر تقنياً للقدرة على تطبيق آليات التكرار العتادي والنسخ الاحتياطي المتزامن للأنظمة.",
+        "الأطر التنظيمية الصحية تلزم حساسات الفحص السريري بالعمل دون الحاجة إلى أي مصادقة أو تسجيل دخول للمستخدمين.",
+        "أجهزة التشخيص الطبي تتعرض لتلف مادي دائم في دوائرها الإلكترونية بمجرد انقطاع الاتصال المؤقت بالشبكة المركزية."
+      ],
+      "options_en": [
+        "Patient medical privacy breach results in severe irreparable legal harm that outweighs temporary system downtime.",
+        "Hospital databases lack technical capacity to implement automated redundancy or failover clustering mechanisms.",
+        "Regulatory frameworks mandate that clinical telemetry sensors operate without any user access authentication.",
+        "Medical diagnostic equipment suffers permanent hardware destruction whenever network connectivity is interrupted."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "As emphasized in lecture annotations, healthcare prioritizes confidentiality (alpha) above availability (gamma) because exposing sensitive patient diagnostic records causes permanent privacy and legal violations, whereas brief outages can be mitigated procedurally.",
+      "explanation_ar": "كما أكدت الدكتورة في المحاضرة، في الرعاية الصحية يكون وزن السرية $\\alpha$ أعلى من التوافر $\\gamma$، لأن خرق سرية السجلات الطبية للمرضى يُرتّب أضراراً قانونية واجتماعية جسيمة لا يمكن استدراكها، بخلاف التوقف المؤقت."
+    },
+    {
+      "id": "q11",
+      "concept_id": "cia_availability_resilience",
+      "bloom_level": "Apply",
+      "question": "A critical public service web portal experiences an unexpected 500% surge in user traffic. Which availability safeguards maintain uptime without service collapse?",
+      "question_ar": "شهدت بوابة خدمة عامة حيوية طفرة غير متوقعة في حركة المرور بنسبة 500%. أي حزمة من ضمانات التوافر كفيلة بمنع انهيار الخدمة واستمرار عملها؟",
+      "options": [
+        "SHA-256 integrity hash verification, asymmetric digital signatures, and revision rollbacks.",
+        "Redundancy of server nodes, dynamic load balancing, and automated DDoS mitigation filters.",
+        "Strict mandatory access control policies, multi-factor biometric challenges, and VPN tunneling.",
+        "Endpoint client sandboxing, local antivirus file quarantining, and source code obfuscation."
+      ],
+      "options_ar": [
+        "التحقق من تجزئة البيانات عبر SHA-256، والتوقيعات الرقمية اللامتناظرة، والتراجع عن التعديلات.",
+        "تكرار العقد والخوادم Redundancy، والتوزيع المتوازن للحمل Load Balancing، وتخفيف هجمات DDoS.",
+        "تطبيق ضوابط وصول صارمة، وتحديات التحقق البيومتري متعدد العوامل، وتشفير الاتصال عبر قنوات VPN.",
+        "عزل تطبيقات العميل في بيئة Sandboxing، وحجز الملفات المشبوهة بمضاد الفيروسات، والتعمية البرمجية."
+      ],
+      "options_en": [
+        "SHA-256 integrity hash verification, asymmetric digital signatures, and revision rollbacks.",
+        "Redundancy of server nodes, dynamic load balancing, and automated DDoS mitigation filters.",
+        "Strict mandatory access control policies, multi-factor biometric challenges, and VPN tunneling.",
+        "Endpoint client sandboxing, local antivirus file quarantining, and source code obfuscation."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Availability ensures systems remain accessible under stress; the designated safeguards are redundancy, load balancing, and DDoS mitigation. Hashing and signatures ensure integrity; access controls and VPNs ensure confidentiality.",
+      "explanation_ar": "التوافر Availability يضمن بقاء الموارد متاحة للمستخدمين عند الحاجة؛ وتقنياته المعتمدة نصياً هي: التكرار Redundancy لمضاعفة السيرفرات، وموازنة الأحمال Load Balancing لتوزيع الضغط، والتخفيف من هجمات DDoS."
+    },
+    {
+      "id": "q12",
+      "concept_id": "modern_threat_actors_apt",
+      "bloom_level": "Understand",
+      "question": "What defining characteristic distinguishes an Advanced Persistent Threat (APT) from ordinary automated malware attacks?",
+      "question_ar": "ما الخاصية الجوهرية التي تميز التهديد المتقدم المستمر APT عن هجمات البرمجيات الخبيثة المؤتمتة المعتادة؟",
+      "options": [
+        "APTs are self-replicating scripts that immediately overwrite all accessible master boot records upon arrival.",
+        "APTs are opportunistic phishing emails sent indiscriminately to millions of personal consumer accounts.",
+        "APTs are stealthy, state-sponsored campaigns designed for prolonged, undetected presence inside target networks.",
+        "APTs are local insider pranks conducted without advanced technical knowledge or external command infrastructure."
+      ],
+      "options_ar": [
+        "برمجيات ذاتية النسخ تقوم فور وصولها بحذف وتخريب قطاع الإقلاع الرئيسي لكافة محركات الأقراص المتاحة في النظام.",
+        "رسائل تصيد عشوائية غير موجهة يتم إرسالها بكثافة وبصورة عشوائية لملايين من حسابات البريد الإلكتروني الاستهلاكية.",
+        "هجمات مدعومة من دول State-sponsored وتتسم بالسرية التامة والبقاء طويل الأمد داخل شبكة الهدف لجمع المعلومات.",
+        "سلوكيات تخريبية عفوية ينفذها مستخدمون داخليون دون امتلاك مهارات برمجية متقدمة أو بنية تحتية للقيادة والتحكم."
+      ],
+      "options_en": [
+        "APTs are self-replicating scripts that immediately overwrite all accessible master boot records upon arrival.",
+        "APTs are opportunistic phishing emails sent indiscriminately to millions of personal consumer accounts.",
+        "APTs are stealthy, state-sponsored campaigns designed for prolonged, undetected presence inside target networks.",
+        "APTs are local insider pranks conducted without advanced technical knowledge or external command infrastructure."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The lecture defines APTs as state-sponsored, stealthy, long-term attacks. Unlike noisy viruses or mass phishing, APT operators remain hidden for months or years to exfiltrate strategic intelligence.",
+      "explanation_ar": "تُعرّف المحاضرة الـ APT بأنها هجمات مدعومة من دول (State-sponsored) وتتميز بأنها خفية وتستمر لفترات زمنية طويلة داخل بيئة الهدف دون إثارة انتباه، بخلاف الفيروسات التي تسبب تخريباً سريعاً أو رسائل التصيد العشوائية."
+    },
+    {
+      "id": "q13",
+      "concept_id": "threat_landscape_trends_2024",
+      "bloom_level": "Remember",
+      "question": "According to the global cybersecurity trends (2023–2024) covered in the lecture, what primary root cause is driving the rise in cloud-related security breaches?",
+      "question_ar": "وفق الاتجاهات العالمية للأمن السيبراني (2023–2024) الواردة في المحاضرة، ما السبب الجذري لتصاعد الخروقات الأمنية السحابية؟",
+      "options": [
+        "Physical hardware destruction inside multi-tenant tier-four data center server facilities.",
+        "Security misconfigurations in cloud access permissions, storage buckets, and virtualization settings.",
+        "Complete theoretical mathematical breakdown of established AES-256 block cipher standards.",
+        "Sudden global shortage in undersea fiber optic telecommunication transmission cable lines."
+      ],
+      "options_ar": [
+        "الأضرار المادية والتخريب المباشر للعتاد الصلب داخل منشآت مراكز البيانات السحابية العملاقة.",
+        "سوء الإعدادات والتهيئات الأمنية Misconfigurations في أذونات الوصول وحاويات التخزين السحابية.",
+        "الانهيار الرياضي المفاجئ لخوارزميات التشفير المتناظرة المعيارية المعتمدة عالمياً مثل AES-256.",
+        "العجز التقني العالمي الحاد في كابلات الألياف الضوئية البحرية الناقلة لحركة المرور الدولية."
+      ],
+      "options_en": [
+        "Physical hardware destruction inside multi-tenant tier-four data center server facilities.",
+        "Security misconfigurations in cloud access permissions, storage buckets, and virtualization settings.",
+        "Complete theoretical mathematical breakdown of established AES-256 block cipher standards.",
+        "Sudden global shortage in undersea fiber optic telecommunication transmission cable lines."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The trends section specifically notes: 'Cloud-related attacks rising due to misconfigurations.' It also highlights ransomware exceeding $20B and the growth of AI-powered attacks.",
+      "explanation_ar": "نصت الاتجاهات العالمية (2023–2024) في المنهج صراحةً على: 'ارتفاع الهجمات السحابية بسبب سوء الإعدادات (Misconfigurations)'. كما تضمنت تجاوز أضرار الفدية 20 مليار دولار وتنامي الهجمات بالذكاء الاصطناعي."
+    },
+    {
+      "id": "q14",
+      "concept_id": "attack_surface_multiplicative_logic",
+      "bloom_level": "Analyze",
+      "question": "In the attack surface formula $AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$, why does the metric use multiplication between entry points $E_j$, vulnerability severity $V_j$, and asset value $A_j$ instead of addition?",
+      "question_ar": "في معادلة قياس سطح الهجوم $AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$، لماذا تُضرب نقاط الدخول $E_j$ وشدة الثغرة $V_j$ وقيمة الأصل $A_j$ بدلاً من جمعها؟",
+      "options": [
+        "Multiplication accelerates software runtime calculation speed across large distributed computing database cluster architectures.",
+        "Addition is statistically invalid when combining discrete counting integers with continuous decimal rating parameters.",
+        "Multiplication guarantees that overall system exposure remains strictly bounded between zero and one hundred arbitrary units.",
+        "Risk requires all three conditions simultaneously; if any single factor equals zero, the exploitable surface for that component becomes zero."
+      ],
+      "options_ar": [
+        "لأن عملية الضرب الحسابية تزيد من سرعة المعالجة البرمجية للمعادلة عبر أنظمة قواعد البيانات الموزعة الضخمة.",
+        "لأن عملية الجمع الرياضي تُعد غير مقبولة إحصائياً عند دمج الأعداد الصحيحة مع درجات التقييم العشرية للثغرات.",
+        "لأن عملية الضرب تضمن بقاء الناتج النهائي لمستوى التعرض الكلي محصوراً دوماً ضمن مقياس ثابت بين صفر ومئة وحدة.",
+        "لأن استغلال الخطر يتطلب تحقق العوامل الثلاثة معاً؛ فإذا كان أي عامل مساوياً للصفر تصبح قيمة سطح الهجوم للمكوّن صفراً."
+      ],
+      "options_en": [
+        "Multiplication accelerates software runtime calculation speed across large distributed computing database cluster architectures.",
+        "Addition is statistically invalid when combining discrete counting integers with continuous decimal rating parameters.",
+        "Multiplication guarantees that overall system exposure remains strictly bounded between zero and one hundred arbitrary units.",
+        "Risk requires all three conditions simultaneously; if any single factor equals zero, the exploitable surface for that component becomes zero."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "As explained in lecture notes: if a component has no entry points ($E=0$), no vulnerabilities ($V=0$), or carries zero asset value ($A=0$), its effective contribution to attack surface is zero. Multiplication accurately models this necessary intersection.",
+      "explanation_ar": "السبب الهندسي للضرب هو أن الخطر الفعلي يحتاج اجتماع الأركان الثلاثة: فلو كان النظام محصناً بلا ثغرات ($V=0$)، أو معزولاً بلا نقاط دخول ($E=0$)، أو بياناته بلا قيمة ($A=0$) ← ينعدم سطح الهجوم للمكوّن ($AS=0$). الجمع كان سيعطي قيمة خطر وهمية."
+    },
+    {
+      "id": "q15",
+      "concept_id": "risk_vulnerability_exploit_distinction",
+      "bloom_level": "Understand",
+      "question": "How do cybersecurity engineering standards conceptually distinguish between a Vulnerability and an Exploit?",
+      "question_ar": "كيف تفرّق المعايير الهندسية للأمن السيبراني مفاهيمياً بين الثغرة Vulnerability وأداة الاستغلال Exploit؟",
+      "options": [
+        "A vulnerability represents monetary loss incurred after a breach, whereas an exploit is the legal penalty imposed by regulators.",
+        "A vulnerability applies exclusively to physical hardware devices, whereas an exploit refers strictly to employee social errors.",
+        "A vulnerability is an internal system weakness or flaw, whereas an exploit is the external tool or method used to take advantage of it.",
+        "A vulnerability is an active network denial attack, whereas an exploit is the defensive firewall patch installed to prevent it."
+      ],
+      "options_ar": [
+        "الثغرة تمثل الخسائر المالية الناجمة عن حدوث واقعة الخرق، بينما الاستغلال يمثل الغرامة القانونية المفروضة من الهيئات التنظيمية.",
+        "الثغرة تنطبق حصرياً على الأعطال المادية في الدوائر الإلكترونية، بينما الاستغلال يقتصر فقط على الأخطاء السلوكية للموظفين.",
+        "الثغرة هي نقطة ضعف أو خلل كامن في النظام أو البرمجيات، بينما أداة الاستغلال هي الوسيلة أو الطريقة المستخدمة للاستفادة من هذا الخلل.",
+        "الثغرة هي هجوم حجب خدمة نشط ينفذه مخترق خارجي، بينما الاستغلال هو التحديث الأمني الداخلي المثبت في جدار الحماية لمنعه."
+      ],
+      "options_en": [
+        "A vulnerability represents monetary loss incurred after a breach, whereas an exploit is the legal penalty imposed by regulators.",
+        "A vulnerability applies exclusively to physical hardware devices, whereas an exploit refers strictly to employee social errors.",
+        "A vulnerability is an internal system weakness or flaw, whereas an exploit is the external tool or method used to take advantage of it.",
+        "A vulnerability is an active network denial attack, whereas an exploit is the defensive firewall patch installed to prevent it."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The notes define: Vulnerabilities are weaknesses in software, hardware, or human factors (e.g. OWASP Top 10, CVEs). Exploits are tools or methods used to take advantage of vulnerabilities. Risk is the function of likelihood and impact.",
+      "explanation_ar": "وفق تصنيف المحاضرة: الثغرة Vulnerability هي نقطة ضعف أو خلل في البرمجيات أو العتاد أو الجانب البشري (مثل ثغرات OWASP و CVEs)؛ أما الاستغلال Exploit فهو الأداة أو الكود أو المنهجية المستخدمة للسيطرة على النظام عبر تلك الثغرة."
+    },
+    {
+      "id": "q16",
+      "concept_id": "risk_assessment_frameworks_comparison",
+      "bloom_level": "Remember",
+      "question": "Which recognized risk assessment methodology is distinguished by conducting asset-driven, organizational evaluation across three structured phases?",
+      "question_ar": "أي منهجية معتمدة لتقييم المخاطر السيبرانية تتميز بإجراء تقييم تنظيمي مبني على الأصول الاستراتيجية عبر ثلاث مراحل محددة؟",
+      "options": [
+        "OCTAVE, which evaluates organizational threat profiles, infrastructure vulnerabilities, and security plans.",
+        "FAIR, which evaluates risk strictly through quantitative financial Monte Carlo loss distributions.",
+        "NIST RMF, which prescribes a continuous six-step lifecycle authorization process for federal information systems.",
+        "OWASP Top 10, which catalogs common web development vulnerabilities without organizational risk scoring."
+      ],
+      "options_ar": [
+        "منهجية OCTAVE، التي تركز على تقييم ملفات التهديد المبنية على أصول المؤسسة، وفحص البنية التحتية، وبناء الخطط الأمنية.",
+        "منهجية FAIR، التي تركز حصرياً على الحساب الكمي والمالي الدقيق لعوامل الخطر وتوزيعات الخسائر المحتملة رقمياً.",
+        "إطار NIST RMF، الذي يحدد دورة حياة إلزامية مكونة من ست خطوات متتالية لتصنيف الأنظمة واعتماد تشغيلها رسمياً.",
+        "دليل OWASP Top 10، الذي يختص بتوثيق أشهر عشر ثغرات برمجية في تطبيقات الويب دون معالجة المخاطر التنظيمية الشاملة."
+      ],
+      "options_en": [
+        "OCTAVE, which evaluates organizational threat profiles, infrastructure vulnerabilities, and security plans.",
+        "FAIR, which evaluates risk strictly through quantitative financial Monte Carlo loss distributions.",
+        "NIST RMF, which prescribes a continuous six-step lifecycle authorization process for federal information systems.",
+        "OWASP Top 10, which catalogs common web development vulnerabilities without organizational risk scoring."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The three risk assessment models cited in lecture are OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation, asset-driven in 3 phases), FAIR (Factor Analysis of Information Risk, quantitative), and NIST RMF (6-step lifecycle).",
+      "explanation_ar": "منهجية OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation) تعتمد تقييم المخاطر المبني على أصول المنشأة عبر 3 مراحل متسلسلة. بينما يركز FAIR على التحليل الكمي، و NIST RMF على دورة خطوات إدارة الخطر."
+    },
+    {
+      "id": "q17",
+      "concept_id": "risk_tail_probability_model",
+      "bloom_level": "Understand",
+      "question": "In the risk probability distribution model $P(R > r) = 1 - F(r)$, what does $F(r)$ designate and what mathematical domain bounds its values?",
+      "question_ar": "في نموذج التوزيع الاحتمالي للمخاطر $P(R > r) = 1 - F(r)$، ماذا تمثّل الدالة $F(r)$ وما النطاق الرياضي الذي يحصر قيمها؟",
+      "options": [
+        "Probability Density Function (PDF) representing instantaneous rate of incident occurrence, with values extending from zero to infinity.",
+        "Empirical system failure rate metric, whose values are expressed as arbitrary unbounded percentage multiples.",
+        "Annual financial depreciation factor of hardware security modules, whose values decrease monotonically below zero.",
+        "Cumulative Distribution Function (CDF) representing $P(R \\le r)$, with values strictly bounded within the interval  \\\\le F(r) \\\\le 1$."
+      ],
+      "options_ar": [
+        "دالة كثافة الاحتمال PDF التي تمثل معدل الحدوث اللحظي للتهديد، وتكون قيمها ممتدة من الصفر إلى ما لا نهاية رياضياً.",
+        "معامل معدل فشل النظام التشغيلي المقاس تجريبياً، وتكون قيمه معبراً عنها بنسب مئوية مضاعفة وغير مقيدة بسقف محدد.",
+        "معامل الإهلاك المالي السنوي لقيمة أجهزة التشفير المادية، وتكون قيمه متناقصة بشكل مستمر تحت الصفر في السجلات.",
+        "دالة التوزيع التراكمي CDF التي تمثل احتمال ألا يتجاوز الخطر القيمة $r$، وتكون قيمها محصورة حصراً ضمن المجال  \\\\le F(r) \\\\le 1$."
+      ],
+      "options_en": [
+        "Probability Density Function (PDF) representing instantaneous rate of incident occurrence, with values extending from zero to infinity.",
+        "Empirical system failure rate metric, whose values are expressed as arbitrary unbounded percentage multiples.",
+        "Annual financial depreciation factor of hardware security modules, whose values decrease monotonically below zero.",
+        "Cumulative Distribution Function (CDF) representing $P(R \\le r)$, with values strictly bounded within the interval  \\\\le F(r) \\\\le 1$."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "In probability theory and as highlighted in the annotations, $F(r)$ is the Cumulative Distribution Function (CDF) of risk impact, bounded between 0 and 1. The tail probability that risk exceeds threshold $r$ is therefore $1 - F(r)$.",
+      "explanation_ar": "كما نصت حاشية المحاضرة نصاً: 'الـ $F(r)$ محصورة بين 0 و 1'، وهي تمثل دالة التوزيع التراكمي CDF لاحتمال أن يكون الخطر ضمن الحد $r$. وبذلك يمثل $1 - F(r)$ احتمال ذيل التوزيع ← أي احتمال تجاوز الخطر لهذا الحد."
+    },
+    {
+      "id": "q18",
+      "concept_id": "optimization_threshold_rule",
+      "bloom_level": "Apply",
+      "question": "In the optimization formula $\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$, how does the instructor's decision rule interpret an evaluation score exceeding 100?",
+      "question_ar": "في معادلة تحسين الخطر $\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$، كيف تفسر قاعدة اتخاذ القرار المعتمدة لدى أستاذة المادة نتيجة حسابية تزيد عن 100؟",
+      "options": [
+        "A score exceeding 100 indicates active, positive security investment, whereas a score below 100 signifies absence of investment.",
+        "A score exceeding 100 indicates imminent catastrophic system collapse requiring immediate full infrastructure shutdown.",
+        "A score exceeding 100 indicates excessive compliance spending that violates international corporate fiscal responsibility guidelines.",
+        "A score exceeding 100 indicates complete mathematical elimination of all known vulnerabilities across corporate endpoints."
+      ],
+      "options_ar": [
+        "إذا تجاوز الناتج 100 فهذا يدل على وجود استثمار أمني إيجابي وفعال، بينما إذا كان الناتج أقل من 100 فلا يوجد استثمار حقيقي.",
+        "إذا تجاوز الناتج 100 فهذا يدل على خطر انهيار كارثي وشيك في النظام يستدعي الإيقاف الفوري لكافة الخوادم والخدمات.",
+        "إذا تجاوز الناتج 100 فهذا يدل على إنفاق أمني مفرط وغير مبرر ينتهك إرشادات الإدارة المالية المعتمدة للشركات عالمياً.",
+        "إذا تجاوز الناتج 100 فهذا يدل على اختفاء تام ومطلق لكافة الثغرات الأمنية في كافة الأجهزة والتطبيقات المؤسسية."
+      ],
+      "options_en": [
+        "A score exceeding 100 indicates active, positive security investment, whereas a score below 100 signifies absence of investment.",
+        "A score exceeding 100 indicates imminent catastrophic system collapse requiring immediate full infrastructure shutdown.",
+        "A score exceeding 100 indicates excessive compliance spending that violates international corporate fiscal responsibility guidelines.",
+        "A score exceeding 100 indicates complete mathematical elimination of all known vulnerabilities across corporate endpoints."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The instructor's explicit decision rule (captured verbatim in student annotations) states: 'If the result exceeds 100, there is investment; if it is below 100, there is no investment.' The goal of the optimization is minimizing expected threat loss while factoring in security investment.",
+      "explanation_ar": "وفق قاعدة الدكتورة الموثقة نصاً في الملاحظات: 'إذا الناتج ازداد عن 100 يعني اكو استثمار، وإذا أقل من 100 يعني مفيش استثمار'. المعادلة تطرح تكلفة الضوابط الأمنية $C_j$ من حاصل ضرب الاحتمال بالتأثير."
+    },
+    {
+      "id": "q19",
+      "concept_id": "policy_compliance_index_calculation",
+      "bloom_level": "Understand",
+      "question": "What mathematical principle governs the Policy Compliance Index formula $PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$?",
+      "question_ar": "ما المبدأ الرياضي الذي يحكم معادلة مؤشر الامتثال للسياسات $PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$؟",
+      "options": [
+        "Calculates the weighted average of individual compliance scores normalized by the sum of requirement weights.",
+        "Calculates the geometric mean of unweighted audit pass-fail flags across all departmental corporate business units.",
+        "Measures the exponential rate of non-compliance incident discovery per fiscal operating quarter across divisions.",
+        "Determines the total raw currency expenditure invested in external regulatory legal defense counsel during litigation."
+      ],
+      "options_ar": [
+        "حساب متوسط موزون لدرجات الامتثال يمنح المتطلبات والسياسات الأكثر خطورة وزناً وأهمية نسبية أعلى في النتيجة النهائية.",
+        "حساب المتوسط الهندسي لنتائج اجتياز التدقيق غير الموزونة بالتساوي عبر كافة الأقسام الإدارية والفنية في المؤسسة.",
+        "قياس معدل النمو الأسي لعدد حوادث عدم الامتثال المكتشفة دورياً لتحديد مسار التراجع الأمني العام في المؤسسة بدقة.",
+        "تحديد إجمالي النفقات المالية المباشرة المدفوعة للجهات القانونية والاستشارية الخارجية للدفاع في قضايا المخالفات."
+      ],
+      "options_en": [
+        "Calculates the weighted average of individual compliance scores normalized by the sum of requirement weights.",
+        "Calculates the geometric mean of unweighted audit pass-fail flags across all departmental corporate business units.",
+        "Measures the exponential rate of non-compliance incident discovery per fiscal operating quarter across divisions.",
+        "Determines the total raw currency expenditure invested in external regulatory legal defense counsel during litigation."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "PCI represents a weighted average where each requirement's compliance level $c_k \\in [0, 1]$ is weighted by its strategic importance $w_k$. The sum of products is divided by the sum of weights, producing a normalized index between 0 and 1.",
+      "explanation_ar": "مؤشر الامتثال للسياسات $PCI$ هو متوسط مرجح (موزون): حيث يُضرب مستوى التزام المؤسسة بكل بند $c_k$ (بين 0 و 1) بوزن ذلك البند $w_k$، ثم يُقسم الناتج على مجموع الأوزان ليقيس جودة الالتزام العام."
+    },
+    {
+      "id": "q20",
+      "concept_id": "applied_scenario_patient_records",
+      "bloom_level": "Apply",
+      "question": "A post-incident review at a hospital discovers that sensitive diagnostic health files were viewed by unauthorized staff via an active decommissioned employee login. Which CIA pillar was breached, and what primary control rectifies this deficiency?",
+      "question_ar": "أظهرت مراجعة أمنية في مستشفى أن ملفات تشخيصية حساسة لمرضى قد تم الاطلاع عليها من موظفين غير مخولين عبر حساب نشط لموظف سابق. أي ركن من ثالوث CIA تم انتهاكه، وما الضابط الرئيسي لمعالجة هذا الخلل؟",
+      "options": [
+        "Non-repudiation was breached; rectified primarily through acquiring commercial insurance coverage against financial malpractice.",
+        "Integrity was breached; rectified primarily through applying SHA-256 cryptographic hashes to diagnostic database records.",
+        "Availability was breached; rectified primarily through installing redundant power supplies and deploying server load balancers.",
+        "Confidentiality was breached; rectified primarily through strict access controls, account lifecycle reviews, and role permissions."
+      ],
+      "options_ar": [
+        "انتُهك ركن عدم الإنكار Non-repudiation؛ ويُعالج الخلل أساساً بالحصول على وثيقة تأمين تجارية لتغطية الخسائر المالية.",
+        "انتُهك ركن السلامة Integrity؛ ويُعالج الخلل أساساً بتطبيق دوال التجزئة التشفيرية SHA-256 على سجلات التشخيص الطبي.",
+        "انتُهك ركن التوافر Availability؛ ويُعالج الخلل أساساً بتوفير مزودات طاقة إضافية وتوزيع الأحمال عبر عدة خوادم بديلة.",
+        "انتُهك ركن السرية Confidentiality؛ ويُعالج الخلل أساساً بفرض ضوابط وصول Access Controls صارمة ومراجعة دورية للحسابات."
+      ],
+      "options_en": [
+        "Non-repudiation was breached; rectified primarily through acquiring commercial insurance coverage against financial malpractice.",
+        "Integrity was breached; rectified primarily through applying SHA-256 cryptographic hashes to diagnostic database records.",
+        "Availability was breached; rectified primarily through installing redundant power supplies and deploying server load balancers.",
+        "Confidentiality was breached; rectified primarily through strict access controls, account lifecycle reviews, and role permissions."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "In this classic scenario from the lecture notes, unauthorized disclosure of records breaches Confidentiality. The designated countermeasure is access controls (along with encryption and VPNs) combined with auditing employee account status.",
+      "explanation_ar": "في هذا السيناريو التحليلي المشروح في الملزمة: الاطلاع غير المصرّح به ينتهك ركن السرية Confidentiality (الذي تقنياته: التشفير، ضوابط الوصول Access Controls، والـ VPN). والسبب فشل في سحب الصلاحيات، فيُعالج بضبط الوصول ومراجعة الحسابات دورياً."
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution",
+  "topic": "Cybersecurity: Definition, Scope & Evolution",
+  "topic_ar": "الأمن السيبراني: التعريف، النطاق، والتطور التاريخي",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "cybersecurity_core_definition",
+      "bloom_level": "Remember",
+      "question": "Which statement represents the core formal definition of cybersecurity provided in the lecture?",
+      "question_ar": "أي عبارة تمثل التعريف الجوهري الرسمي للأمن السيبراني كما ورد في المحاضرة المعتمدة؟",
+      "options": [
+        "The operational management of local server database clusters to prevent unintentional storage media loss.",
+        "The formal legal registration of intellectual software patents to maintain national commercial trade rights.",
+        "The automated configuration of boundary perimeter firewalls to filter unauthorized incoming web traffic.",
+        "The practice of protecting systems, networks, applications, and data from unauthorized access or damage."
+      ],
+      "options_ar": [
+        "الإدارة التشغيلية لمجموعات قواعد بيانات الخوادم المحلية لمنع الفقدان غير المقصود لوسائط التخزين.",
+        "التسجيل القانوني الرسمي لبراءات الاختراع البرمجية للحفاظ على حقوق الملكية التجارية للمؤسسات الوطنية.",
+        "الإعداد المؤتمت لجدران الحماية عند حدود الشبكة لفلترة حركة مرور الويب الواردة غير المصرّح بها.",
+        "ممارسة حماية الأنظمة والشبكات والتطبيقات والبيانات من التهديدات والوصول غير المصرّح به أو التلف."
+      ],
+      "options_en": [
+        "The operational management of local server database clusters to prevent unintentional storage media loss.",
+        "The formal legal registration of intellectual software patents to maintain national commercial trade rights.",
+        "The automated configuration of boundary perimeter firewalls to filter unauthorized incoming web traffic.",
+        "The practice of protecting systems, networks, applications, and data from unauthorized access or damage."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The definition establishes cybersecurity as protecting four core assets: systems, networks, applications, and data from threats and unauthorized access.",
+      "explanation_ar": "ينص التعريف الرسمي على أن الأمن السيبراني هو ممارسة حماية الأنظمة والشبكات والتطبيقات والبيانات من التهديدات السيبرانية والوصول غير المصرّح به أو الضرر."
+    },
+    {
+      "id": "q2",
+      "concept_id": "cybersecurity_continuous_practice",
+      "bloom_level": "Understand",
+      "question": "Why does the foundational definition specifically describe cybersecurity as a practice rather than a static product?",
+      "question_ar": "لماذا يصف التعريف التأسيسي الأمن السيبراني بأنه ممارسة Practice وليس مجرد منتج أمني ثابت؟",
+      "options": [
+        "Security vendors avoid commercial liability by categorizing hardware firewalls as conceptual services.",
+        "Cybersecurity requires ongoing operational vigilance, proactive updates, and continuous threat monitoring.",
+        "Software products guarantee absolute lifetime protection without requiring operational oversight.",
+        "Regulatory legal statutes mandate purchasing annual recurring consulting contracts from certified firms."
+      ],
+      "options_ar": [
+        "شركات الحماية تتهرب من المسؤولية القانونية بتصنيف جدران الحماية المادية كخدمات استشارية نظرية.",
+        "الأمن السيبراني يتطلب يقظة تشغيلية مستمرة وتحديثات استباقية ومراقبة دائمة للتهديدات المتجددة.",
+        "المنتجات البرمجية تضمن حماية نهائية ومطلقة مدى الحياة دون حاجة لأي إشراف تشغيلي من الكوادر.",
+        "التشريعات التنظيمية تلزم المؤسسات بشراء عقود صيانة سنوية متكررة مع شركات استشارية معتمدة حصراً."
+      ],
+      "options_en": [
+        "Security vendors avoid commercial liability by categorizing hardware firewalls as conceptual services.",
+        "Cybersecurity requires ongoing operational vigilance, proactive updates, and continuous threat monitoring.",
+        "Software products guarantee absolute lifetime protection without requiring operational oversight.",
+        "Regulatory legal statutes mandate purchasing annual recurring consulting contracts from certified firms."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Cybersecurity is an active, ongoing discipline (practice) because cyber adversaries and attack surfaces continuously evolve over time.",
+      "explanation_ar": "الأمن السيبراني ممارسة مستمرة تتطلب يقظة دائمة وتحديثات استباقية؛ فالأمن ليس برنامجاً يُثبّت لمرة واحدة بل عملية تشغيلية متواصلة لمواكبة تطور التهديدات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "cyber_comprehensive_dimensions_four",
+      "bloom_level": "Remember",
+      "question": "Which set accurately lists the four interlocking dimensions that constitute cybersecurity scope?",
+      "question_ar": "أي مجموعة تذكر بدقة الأبعاد الأربعة المتكاملة التي تشكّل نطاق الأمن السيبراني الشامل؟",
+      "options": [
+        "Military, economic, geopolitical, and historical dimensions.",
+        "Technical, legal, managerial, and social dimensions.",
+        "Physical, architectural, environmental, and statistical dimensions.",
+        "Tactical, operational, developmental, and financial dimensions."
+      ],
+      "options_ar": [
+        "الأبعاد العسكرية، والاقتصادية، والجيوسياسية، والتاريخية.",
+        "الأبعاد التقنية، والقانونية، والإدارية، والاجتماعية.",
+        "الأبعاد المادية، والمعمارية، والبيئية، والإحصائية التطبيقية.",
+        "الأبعاد التكتيكية، والتشغيلية، والتطويرية، والمالية المؤسسية."
+      ],
+      "options_en": [
+        "Military, economic, geopolitical, and historical dimensions.",
+        "Technical, legal, managerial, and social dimensions.",
+        "Physical, architectural, environmental, and statistical dimensions.",
+        "Tactical, operational, developmental, and financial dimensions."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The lecture specifies four foundational dimensions: technical controls, legal awareness, managerial policies, and social responsibility.",
+      "explanation_ar": "ينص المنهج صراحةً على أن الأمن السيبراني يشمل أربعة جوانب مترابطة: الجانب التقني، والجانب القانوني، والجانب الإداري، والجانب الاجتماعي."
+    },
+    {
+      "id": "q4",
+      "concept_id": "dimension_technical_controls",
+      "bloom_level": "Understand",
+      "question": "Which operational measure illustrates the technical dimension of cybersecurity implementation?",
+      "question_ar": "أي إجراء تشغيلي يجسّد التطبيق العملي للبعد التقني في منظومة الأمن السيبراني؟",
+      "options": [
+        "Complying with regional personal data privacy protection legislative acts.",
+        "Conducting employee social engineering phishing simulation workshops.",
+        "Deploying next-generation firewalls, intrusion detection systems, and encryption.",
+        "Drafting employee workplace acceptable computer usage policy documents."
+      ],
+      "options_ar": [
+        "الامتثال لبنود القوانين والتشريعات الإلزامية الخاصة بحماية خصوصية بيانات الأفراد.",
+        "تنظيم ورش عمل تدريبية دورية لتوعية الموظفين بمخاطر رسائل التصيد الاحتيالي.",
+        "نشر جدران الحماية المتقدمة وأنظمة كشف التسلل وتطبيق خوارزميات التشفير للبيانات.",
+        "صياغة وثائق السياسات التنظيمية للاستخدام المقبول للأجهزة والحواسيب في العمل."
+      ],
+      "options_en": [
+        "Complying with regional personal data privacy protection legislative acts.",
+        "Conducting employee social engineering phishing simulation workshops.",
+        "Deploying next-generation firewalls, intrusion detection systems, and encryption.",
+        "Drafting employee workplace acceptable computer usage policy documents."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Technical dimensions encompass software and hardware safeguards like firewalls, IDS/IPS, and cryptographic protocols.",
+      "explanation_ar": "البعد التقني يشمل الأدوات البرمجية والمادية ووسائل الحماية المباشرة مثل جدران الحماية، وأنظمة IDS/IPS، والتشفير؛ بينما صياغة السياسات إدارية، والامتثال قانوني، والتوعية اجتماعية."
+    },
+    {
+      "id": "q5",
+      "concept_id": "dimension_legal_compliance",
+      "bloom_level": "Understand",
+      "question": "Why is the legal dimension critical to comprehensive enterprise cybersecurity governance?",
+      "question_ar": "لماذا يمثل البعد القانوني ركيزة حيوية في الحوكمة الشاملة للأمن السيبراني في المؤسسات؟",
+      "options": [
+        "Eliminates all internal employee password sharing vulnerabilities across departmental network hosts.",
+        "Replaces technical firewalls with legally binding non-disclosure agreements signed by end users.",
+        "Guarantees compliance with mandatory privacy regulations and avoids financial penalties and liability.",
+        "Forces external threat actors to discontinue targeted cyber reconnaissance operations voluntarily."
+      ],
+      "options_ar": [
+        "يقضي تماماً على ثغرات مشاركة كلمات المرور بين الموظفين داخل الأقسام الإدارية للمؤسسة.",
+        "يستبدل جدران الحماية التقنية باتفاقيات قانونية ملزمة لعدم الإفصاح يوقعها جميع المستخدمين.",
+        "يضمن الامتثال للوائح الخصوصية والتشريعات الإلزامية ويتجنب الغرامات المالية والمساءلة القضائية.",
+        "يجبر جهات التهديد السيبراني الخارجية على إيقاف عمليات الاستطلاع والهجوم الإلكتروني طواعية."
+      ],
+      "options_en": [
+        "Eliminates all internal employee password sharing vulnerabilities across departmental network hosts.",
+        "Replaces technical firewalls with legally binding non-disclosure agreements signed by end users.",
+        "Guarantees compliance with mandatory privacy regulations and avoids financial penalties and liability.",
+        "Forces external threat actors to discontinue targeted cyber reconnaissance operations voluntarily."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The legal dimension ensures adherence to statutory mandates (like GDPR and HIPAA), mitigating liability and penalties following security incidents.",
+      "explanation_ar": "البعد القانوني يضمن توافق المؤسسة مع القوانين والتشريعات الإلزامية كقوانين حماية الخصوصية، ويحمي المؤسسة من الغرامات الباهظة والمساءلة القانونية عند وقوع خروقات."
+    },
+    {
+      "id": "q6",
+      "concept_id": "dimension_managerial_aspects",
+      "bloom_level": "Understand",
+      "question": "Which organizational activity directly embodies the managerial dimension of cybersecurity?",
+      "question_ar": "أي نشاط تنظيمي يجسّد بصورة مباشرة البعد الإداري للأمن السيبراني؟",
+      "options": [
+        "Filing patent infringement lawsuits against foreign commercial software developers.",
+        "Configuring dynamic packet routing tables across core backbone telecommunication lines.",
+        "Formulating comprehensive security policies, risk management, and response strategies.",
+        "Writing low-level cryptographic microcode for embedded microcontroller chips."
+      ],
+      "options_ar": [
+        "رفع دعاوى قضائية لانتهاك براءات الاختراع ضد مطوري البرمجيات التجارية الأجنبية.",
+        "ضبط جداول توجيه حزم البيانات الديناميكية عبر خطوط الاتصالات السلكية الأساسية.",
+        "صياغة سياسات الأمان الشاملة، وخطط إدارة المخاطر، واستراتيجيات الاستجابة للحوادث.",
+        "كتابة شيفرات التشفير التجميعية الدقيقة للشرائح الإلكترونية المدمجة في الأجهزة."
+      ],
+      "options_en": [
+        "Filing patent infringement lawsuits against foreign commercial software developers.",
+        "Configuring dynamic packet routing tables across core backbone telecommunication lines.",
+        "Formulating comprehensive security policies, risk management, and response strategies.",
+        "Writing low-level cryptographic microcode for embedded microcontroller chips."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The managerial dimension focuses on policies, risk management methodologies, resource allocation, and incident response planning.",
+      "explanation_ar": "البعد الإداري يُعنى بالسياسات الأمنية، وأطر إدارة المخاطر، والتخطيط الاستراتيجي، والإشراف المؤسسي على الاستجابة للطوارئ السيبرانية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "dimension_social_aspects",
+      "bloom_level": "Understand",
+      "question": "Why is the social dimension considered indispensable in defending organizational cyber assets?",
+      "question_ar": "لماذا يُعد البعد الاجتماعي عنصراً لا غنى عنه في حماية الأصول السيبرانية للمؤسسة؟",
+      "options": [
+        "Human behavior represents a primary attack vector exploited by phishing and social engineering.",
+        "Social media marketing campaigns generate necessary advertising revenue for technology infrastructure.",
+        "Social platforms automatically detect and filter malicious network intrusion attempts across hosts.",
+        "Social engineering techniques eliminate the necessity of installing enterprise cryptographic safeguards."
+      ],
+      "options_ar": [
+        "السلوك البشري يمثل هدفاً رئيسياً وثغرة أولى تستغلها هجمات التصيد والهندسة الاجتماعية.",
+        "حملات التسويق عبر وسائل التواصل الاجتماعي توفر الموارد المالية اللازمة للبنية التحتية.",
+        "المنصات الاجتماعية تقوم تلقائياً باكتشاف ومصادرة محاولات التسلل الإلكتروني عبر الخوادم.",
+        "تقنيات الهندسة الاجتماعية تلغي الحاجة إلى تثبيت وتطبيق بروتوكولات التشفير في المؤسسات."
+      ],
+      "options_en": [
+        "Human behavior represents a primary attack vector exploited by phishing and social engineering.",
+        "Social media marketing campaigns generate necessary advertising revenue for technology infrastructure.",
+        "Social platforms automatically detect and filter malicious network intrusion attempts across hosts.",
+        "Social engineering techniques eliminate the necessity of installing enterprise cryptographic safeguards."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Attackers exploit human trust via phishing and social engineering; thus, social awareness and user education are essential security components.",
+      "explanation_ar": "البعد الاجتماعي يركز على الوعي البشري؛ فحتى مع وجود أقوى جدار حماية تقني، فإن خداع الموظف عبر الهندسة الاجتماعية أو التصيد كفيل بكسر المنظومة الأمنية."
+    },
+    {
+      "id": "q8",
+      "concept_id": "cyber_scope_spectrum",
+      "bloom_level": "Remember",
+      "question": "What range defines the comprehensive operational scope of cybersecurity as established in lecture notes?",
+      "question_ar": "ما النطاق الشامل الذي يمتد عبره الأمن السيبراني كما ورد في ملاحظات المحاضرة المعتمدة؟",
+      "options": [
+        "Spans everything from personal devices to enterprise systems and national critical infrastructure.",
+        "Confined exclusively to military command defense bunkers and national intelligence facilities.",
+        "Limited strictly to internal university local area networks and student academic record databases.",
+        "Restricted solely to commercial banking transactions and consumer credit card payment processing."
+      ],
+      "options_ar": [
+        "يمتد من الأجهزة الشخصية للأفراد، إلى أنظمة المؤسسات، وصولاً إلى البنية التحتية الوطنية الحرجة.",
+        "يقتصر حصرياً على غرف العمليات العسكرية المحصنة والمنشآت الاستخباراتية التابعة للدولة.",
+        "يقتصر بشكل صارم على الشبكات المحلية في الجامعات وقواعد بيانات سجلات الطلاب الأكاديمية.",
+        "ينحصر فقط في المعاملات المصرفية التجارية وعمليات معالجة بطاقات الائتمان الاستهلاكية."
+      ],
+      "options_en": [
+        "Spans everything from personal devices to enterprise systems and national critical infrastructure.",
+        "Confined exclusively to military command defense bunkers and national intelligence facilities.",
+        "Limited strictly to internal university local area networks and student academic record databases.",
+        "Restricted solely to commercial banking transactions and consumer credit card payment processing."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The scope explicitly includes personal consumer devices, corporate enterprise networks, and national critical infrastructure (power, water, transportation).",
+      "explanation_ar": "نطاق الأمن السيبراني شامل ويتدرج: يبدأ من الأجهزة الشخصية، مروراً بأنظمة المؤسسات وشركات الأعمال، وصولاً إلى البنية التحتية الوطنية الحرجة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "cyber_triad_importance",
+      "bloom_level": "Remember",
+      "question": "Which three strategic domains are directly linked to cybersecurity importance in the primary text?",
+      "question_ar": "ما المجالات الاستراتيجية الثلاثة التي يرتبط بها الأمن السيبراني ارتباطاً مباشراً في المنهج؟",
+      "options": [
+        "Academic publishing indices, campus physical surveillance, and postal transit.",
+        "National security, economic stability, and personal privacy protection.",
+        "Urban transportation scheduling, cellular hardware manufacturing, and real estate.",
+        "Agricultural productivity, international maritime shipping, and space exploration."
+      ],
+      "options_ar": [
+        "مؤشرات النشر الأكاديمي، والمراقبة المادية للمباني، وحركة الطرود البريدية.",
+        "الأمن الوطني، والاستقرار الاقتصادي، وحماية الخصوصية الشخصية للأفراد.",
+        "جدولة النقل الحضري، وتصنيع أجهزة الهواتف الخلوية، وتجارة العقارات السكنية.",
+        "الإنتاجية الزراعية، والشحن البحري الدولي، ومشاريع استكشاف الفضاء الخارجي."
+      ],
+      "options_en": [
+        "Academic publishing indices, campus physical surveillance, and postal transit.",
+        "National security, economic stability, and personal privacy protection.",
+        "Urban transportation scheduling, cellular hardware manufacturing, and real estate.",
+        "Agricultural productivity, international maritime shipping, and space exploration."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The notes state verbatim: Importance is directly linked to national security, economic stability, and privacy protection.",
+      "explanation_ar": "نصت المحاضرة حرفياً على أن أهمية الأمن السيبراني ترتبط مباشرةً بثلاث ركائز استراتيجية: الأمن الوطني، والاستقرار الاقتصادي، وحماية الخصوصية."
+    },
+    {
+      "id": "q10",
+      "concept_id": "evolution_1960s_arpanet_origin",
+      "bloom_level": "Remember",
+      "question": "What computing breakthrough marked the earliest historical mentions of cybersecurity in the 1960s?",
+      "question_ar": "ما الإنجاز الحوسبي الذي ارتبطت به البدايات التاريخية الأولى للأمن السيبراني في الستينيات؟",
+      "options": [
+        "The widespread release of autonomous malware worm detection applications on microcomputers.",
+        "The global deployment of public World Wide Web commercial hyperlinked web portals.",
+        "The emergence of ARPANET and early multi-user mainframe computing architectures.",
+        "The introduction of decentralized blockchain distributed ledger financial transaction networks."
+      ],
+      "options_ar": [
+        "الانتشار الواسع لبرمجيات مكافحة الديدان الخبيثة على الحواسيب الشخصية الدقيقة.",
+        "الإطلاق العالمي للشبكة العنكبوتية العامة والبوابات الإلكترونية التجارية المترابطة.",
+        "ظهور شبكة ARPANET وأجهزة الحوسبة المركزية Mainframe الأولى متعددة المستخدمين.",
+        "ابتكار شبكات سلاسل الكتل اللامركزية وتطبيقات المعاملات المالية الموزعة الرقمية."
+      ],
+      "options_en": [
+        "The widespread release of autonomous malware worm detection applications on microcomputers.",
+        "The global deployment of public World Wide Web commercial hyperlinked web portals.",
+        "The emergence of ARPANET and early multi-user mainframe computing architectures.",
+        "The introduction of decentralized blockchain distributed ledger financial transaction networks."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The 1960s timeline explicitly records: First mentions with ARPANET and early mainframes.",
+      "explanation_ar": "بدأ التاريخ الأمني في الستينيات مع شبكة ARPANET التابعة لوزارة الدفاع الأمريكية وظهور أجهزة Mainframe المركزية ومحاولات تأمين تبادل البيانات بينها."
+    },
+    {
+      "id": "q11",
+      "concept_id": "evolution_1980s_1990s_malware_rise",
+      "bloom_level": "Remember",
+      "question": "What security development prominently characterized the cybersecurity landscape during the 1980s and 1990s?",
+      "question_ar": "ما التطور الأمني الذي تصدّر مشهد الأمن السيبراني بوضوح خلال حقبتي الثمانينيات والتسعينيات؟",
+      "options": [
+        "The total replacement of physical perimeter hardware firewalls with generative AI agents.",
+        "The proliferation of computer viruses, worms, and the creation of antivirus defense solutions.",
+        "The emergence of state-sponsored advanced persistent threats targeting satellite communications.",
+        "The exclusive adoption of Zero Trust access policies across all public internet services."
+      ],
+      "options_ar": [
+        "الاستبدال الكامل لجدران الحماية المادية الحدودية بوكلاء الذكاء الاصطناعي التوليدي.",
+        "انتشار الفيروسات والديدان الحاسوبية وظهور حلول وبرمجيات مضادات الفيروسات Antivirus.",
+        "ظهور التهديدات المتقدمة المستمرة المدعومة من الدول لاستهداف الاتصالات الفضائية.",
+        "الاعتماد الحصري لسياسات الثقة الصفرية Zero Trust عبر كافة خدمات الإنترنت العامة."
+      ],
+      "options_en": [
+        "The total replacement of physical perimeter hardware firewalls with generative AI agents.",
+        "The proliferation of computer viruses, worms, and the creation of antivirus defense solutions.",
+        "The emergence of state-sponsored advanced persistent threats targeting satellite communications.",
+        "The exclusive adoption of Zero Trust access policies across all public internet services."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The timeline records the 1980s-90s as the era of viruses, worms, and early commercial antivirus products.",
+      "explanation_ar": "شهدت الثمانينيات والتسعينيات ظهور الفيروسات الحاسوبية والديدان Worms، وبرزت في مقابلها الحلول الأولى لمضادات الفيروسات كصناعة دفاعية متخصصة."
+    },
+    {
+      "id": "q12",
+      "concept_id": "evolution_2000s_ecommerce_banking",
+      "bloom_level": "Understand",
+      "question": "In the historical evolution of cybersecurity, what industrial demand elevated cybersecurity into a core business requirement in the 2000s?",
+      "question_ar": "في التطور التاريخي للأمن السيبراني، ما الاحتياج الصناعي الذي رفع الأمن لضرورة تجارية ملحة في الألفينيات؟",
+      "options": [
+        "The global agreement to standardize cryptographic block sizes across mechanical telegraph circuits.",
+        "The mandate to transition all legacy government filing records into physical microfilm archives.",
+        "The legal obligation to monitor employee workstation productivity via continuous keystroke loggers.",
+        "The rapid expansion of commercial e-commerce, digital retail transactions, and online banking systems."
+      ],
+      "options_ar": [
+        "الاتفاق الدولي على توحيد أطوال كتل التشفير عبر دوائر أجهزة التلغراف الميكانيكية القديمة.",
+        "القرار الحكومي الإلزامي بتحويل كافة الأرشيفات الورقية إلى وسائط مصغرة ميكروفيلمية مادية.",
+        "الالتزام القانوني بمراقبة إنتاجية الموظفين عبر تسجيل ضربات المفاتيح المستمر في محطات العمل.",
+        "النمو السريع لمنصات التجارة الإلكترونية، وعمليات التجزئة الرقمية، والخدمات المصرفية عبر الإنترنت."
+      ],
+      "options_en": [
+        "The global agreement to standardize cryptographic block sizes across mechanical telegraph circuits.",
+        "The mandate to transition all legacy government filing records into physical microfilm archives.",
+        "The legal obligation to monitor employee workstation productivity via continuous keystroke loggers.",
+        "The rapid expansion of commercial e-commerce, digital retail transactions, and online banking systems."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "In the 2000s, cybersecurity became integral to e-commerce and e-banking, protecting real-time financial transactions.",
+      "explanation_ar": "مع مطلع الألفينيات ودخول الإنترنت مجال التجارة والمال (E-commerce و E-banking)، تحول الأمن السيبراني من رفاهية تقنية إلى متطلب تجاري استراتيجي لحماية المعاملات الرقمية."
+    },
+    {
+      "id": "q13",
+      "concept_id": "evolution_2010s_present_apt_ransomware",
+      "bloom_level": "Remember",
+      "question": "Which combination of advanced threats and paradigms defines the current cybersecurity era (2010s to present)?",
+      "question_ar": "أي حزمة من التهديدات والنماذج المتقدمة تميز الحقبة السيبرانية الراهنة (2010 إلى الآن)؟",
+      "options": [
+        "Advanced Persistent Threats, ransomware extortion campaigns, IoT exploits, AI threats, and Zero Trust.",
+        "Mainframe operating system boot viruses, magnetic floppy disk infections, and analog telephone eavesdropping.",
+        "Single-segment ethernet sniffing, unauthenticated email relay exploits, and physical token spoofing.",
+        "Standalone desktop file worms, unencrypted telnet administration sessions, and manual log inspection."
+      ],
+      "options_ar": [
+        "التهديدات المتقدمة المستمرة APTs، وبرمجيات الفدية Ransomware، وهجمات إنترنت الأشياء والذكاء الاصطناعي، ونموذج Zero Trust.",
+        "فيروسات إقلاع أنظمة Mainframe، وعدوى الأقراص المرنة الممغنطة، والتنصت على خطوط الهاتف التناظرية.",
+        "اعتراض حزم إيثرنت المحلية، وخوادم ترحيل البريد المفتوحة، والتزوير المادي لبطاقات الدخول.",
+        "ديدان الملفات في الحواسيب المعزولة، وجلسات Telnet غير المشفرة، والتفتيش اليدوي لسجلات الخوادم."
+      ],
+      "options_en": [
+        "Advanced Persistent Threats (APTs), ransomware extortion campaigns, IoT exploits, AI threats, and Zero Trust.",
+        "Mainframe operating system boot viruses, magnetic floppy disk infections, and analog telephone eavesdropping.",
+        "Single-segment ethernet sniffing, unauthenticated email relay exploits, and physical token spoofing.",
+        "Standalone desktop file worms, unencrypted telnet administration sessions, and manual log inspection."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The contemporary era (2010s–present) features APTs, sophisticated ransomware, IoT proliferation, AI-driven attacks, and Zero Trust security architectures.",
+      "explanation_ar": "المرحلة الحالية (من 2010 إلى الآن) تتسم بهجمات نوعية معقدة: APTs، برمجيات الفدية، أجهزة IoT، الذكاء الاصطناعي، وتبني معمارية الثقة الصفرية Zero Trust."
+    },
+    {
+      "id": "q14",
+      "concept_id": "evolution_zero_trust_origin",
+      "bloom_level": "Understand",
+      "question": "What fundamental architectural philosophy governs the modern Zero Trust security model?",
+      "question_ar": "ما الفلسفة المعمارية الجوهرية التي تحكم نموذج الأمان الحديث المعروف باسم الثقة الصفرية Zero Trust؟",
+      "options": [
+        "Trust all internal network traffic once an initial hardware VPN connection is established at the boundary.",
+        "Grant permanent superuser administrative credentials to all domain users to accelerate organizational workflow.",
+        "Implicitly trust all internal network devices while strictly blocking all external foreign internet IP addresses.",
+        "Never trust, always verify: every access request must be explicitly authenticated and authorized regardless of location."
+      ],
+      "options_ar": [
+        "الوثوق التام بكافة حزم البيانات الداخلية بمجرد إنشاء اتصال أولي ناجح عبر شبكة VPN عند المحيط.",
+        "منح صلاحيات المسؤول المطلقة لجميع مستخدمي النطاق لتسريع إنجاز المعاملات التشغيلية في المؤسسة.",
+        "الثقة التلقائية بكافة أجهزة الشبكة الداخلية مع فرض حظر صارم على عناوين الإنترنت الخارجية فقط.",
+        "لا تثق بأحد، تحقق من كل شيء دائماً: كل طلب وصول يجب التحقق منه والمصادقة عليه بصرف النظر عن موقعه."
+      ],
+      "options_en": [
+        "Trust all internal network traffic once an initial hardware VPN connection is established at the boundary.",
+        "Grant permanent superuser administrative credentials to all domain users to accelerate organizational workflow.",
+        "Implicitly trust all internal network devices while strictly blocking all external foreign internet IP addresses.",
+        "Never trust, always verify: every access request must be explicitly authenticated and authorized regardless of location."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Zero Trust eliminates implicit trust based on network location; every transaction, user, and device is continuously authenticated and authorized.",
+      "explanation_ar": "مبدأ Zero Trust (عدم الثقة الافتراضية) يقوم على قاعدة: لا تثق بأي مستخدم أو جهاز افتراضياً (حتى داخل الشبكة المحلية)، بل تحقق وصادق على كل طلب وصول باستمرار."
+    },
+    {
+      "id": "q15",
+      "concept_id": "perimeter_defense_limitations",
+      "bloom_level": "Analyze",
+      "question": "Why did traditional perimeter defense models prove inadequate for modern computing environments?",
+      "question_ar": "لماذا أثبتت نماذج الدفاع المحيطي التقليدية عدم كفايتها في البيئات الحوسبية المعاصرة؟",
+      "options": [
+        "Cloud migration, remote work, mobile devices, and IoT dissolved the traditional static network boundary.",
+        "International trade treaties prohibited corporate deployment of boundary edge packet inspection hardware.",
+        "Modern microprocessors execute cryptographic instructions faster than older telecommunication hardware switches.",
+        "Perimeter firewalls consume excessive electrical energy compared to internal application logic filters."
+      ],
+      "options_ar": [
+        "الانتقال للسحابة والعمل عن بعد والأجهزة المحمولة وإنترنت الأشياء أدى إلى تلاشي محيط الشبكة الثابت.",
+        "المعاهدات التجارية الدولية حظرت الاستخدام التجاري لأجهزة فحص الحزم عند حواف الشبكات.",
+        "المعالجات الحديثة تنفذ تعليمات التشفير بسرعة تفوق قدرة محولات الاتصالات السلكية القديمة.",
+        "جدران الحماية المحيطية تستهلك طاقة كهربائية تفوق بكثير مرشحات منطق التطبيقات الداخلية."
+      ],
+      "options_en": [
+        "Cloud migration, remote work, mobile devices, and IoT dissolved the traditional static network boundary.",
+        "International trade treaties prohibited corporate deployment of boundary edge packet inspection hardware.",
+        "Modern microprocessors execute cryptographic instructions faster than older telecommunication hardware switches.",
+        "Perimeter firewalls consume excessive electrical energy compared to internal application logic filters."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Traditional perimeter security assumed an internal trusted zone. Cloud adoption and mobile endpoints eroded this perimeter, necessitating endpoint-level and data-centric defenses.",
+      "explanation_ar": "الدفاع المحيطي القديم اعتمد على افتراض وجود شبكة داخلية آمنة؛ لكن التحول إلى السحابة، والعمل عن بُعد، وانتشار إنترنت الأشياء، ألغى الحدود الثابتة للشبكة."
+    },
+    {
+      "id": "q16",
+      "concept_id": "formal_cyber_environment_protection",
+      "bloom_level": "Remember",
+      "question": "According to the formal definition in the lecture, what composite elements are deployed to protect the cyber environment?",
+      "question_ar": "وفق التعريف الرسمي الوارد في المحاضرة، ما العناصر المتكاملة التي تُوظّف لحماية البيئة السيبرانية؟",
+      "options": [
+        "Hardware memory overclocking utilities, high-speed storage buses, and redundant power generators.",
+        "Purely manual paper audit logs, physical door locks, and security guard shifts.",
+        "Strictly commercial insurance indemnity contracts and public relations corporate communication channels.",
+        "Tools, policies, security concepts, safeguards, risk management approaches, and technologies."
+      ],
+      "options_ar": [
+        "أدوات زيادة سرعة تردد الذاكرة، وخطوط نقل البيانات الفائقة، ومولدات الطاقة الكهربائية الاحتياطية.",
+        "سجلات التدقيق الورقية اليدوية، وأقفال الأبواب الميكانيكية، ونوبات حراس الأمن الميدانيين.",
+        "عقود التأمين التجاري ضد الحوادث، وقنوات التواصل الإعلامي مع الجمهور بعد وقوع الكوارث.",
+        "الأدوات، والسياسات، والمفاهيم الأمنية، والضمانات، ومناهج إدارة المخاطر، والتقنيات المتطورة."
+      ],
+      "options_en": [
+        "Hardware memory overclocking utilities, high-speed storage buses, and redundant power generators.",
+        "Purely manual paper audit logs, physical door locks, and security guard shifts.",
+        "Strictly commercial insurance indemnity contracts and public relations corporate communication channels.",
+        "Tools, policies, security concepts, safeguards, risk management approaches, and technologies."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The verbatim lecture definition states: The set of tools, policies, security concepts, safeguards, risk management approaches, and technologies to protect the cyber environment.",
+      "explanation_ar": "التعريف النصي في المحاضرة يحددها بأنها: مجموعة الأدوات، والسياسات، والمفاهيم الأمنية، ووسائل الحماية، ومناهج إدارة المخاطر، والتقنيات لحماية البيئة السيبرانية."
+    }
+  ]
+}
