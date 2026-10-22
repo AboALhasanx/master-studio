@@ -1,0 +1,102 @@
+# Master Studio — Deep Reference (companion to MEMORY.md)
+
+> Split out of `MEMORY.md` on 2026-10-22 because MEMORY.md hit the injection size cap. **This file is read on demand**, when a task actually touches the area. MEMORY.md holds the laws and pointers; this file holds the numbers, maps and quirks.
+
+## 1 · ASE source-of-truth map (full)
+- **Source of truth = `02_Raw_Materials/`.** Question origin = **K.K. Aggarwal & Yogesh Singh, *Software Engineering*, 3rd ed.**
+- **The book itself is the scan** `Reference_Textbooks/AliFahim_Software_Engineering.pdf` — 256 pp, 2-up portrait, **no text layer** (chars = 0) → cite via high-DPI render + vision (2× ≈ 144 DPI sufficed). **Page offset DRIFTS** (≈ PDF = printed − 95 early, − 116 later) — never assume a constant. Scan mapping: **PDF page N → left printed `2N−12`, right printed `2N−11`.**
+- **`CS_Agarwal_SW_Engineering_and_Testing_2010.pdf` is a DIFFERENT book** — B. B. Agarwal / S. P. Tayal / M. Gupta, Jones & Bartlett 2010, 529 pp, searchable. Different chapter order (Ch1 at p.3, Ch2 at p.29), no MCQ section. Settled in N-024. Supporting source only, never the citation source.
+- The `Aggarwal_Singh_SE_3rd_ed_By_Chapter/Ch01–10` PDFs and the 1094-page `00_SOURCE_Full_1094pp_Slides.pdf` (MD5 `d154ed3d…`, byte-identical to all three `DUPLICATES_Review/` copies; Ch02 slides = PDF 82–129, 48/48 matched) are **publisher SLIDES, not book prose** — cite them as slides.
+- **Official answer key exists**: *Answers* section, printed **pp.497–500**; **Ch1 key is on p.498** (p.497 is still Ch10); full range = PDF 255–256. No other Aggarwal file in the vault has one.
+- Other textbooks WITH text: Rajib Mall 4th (strongest for Aggarwal terms), Pressman 5th, Sommerville 9th (weak for Aggarwal terms), Leach 2nd.
+- Question banks: `02_Raw_Materials/Question_Banks/` — SEPM ModuleWise · NRCMEC UnitWise (with Bloom BT) · GitHub KPRIT. Real papers: `Aggarwal_Singh_Slides/exam_papers/02_Exam_Question_Papers/MRCET_SE_EndTerm_Paper_2022Dec.pdf` (19 MRCET papers, R17/R18/R20); `01_MAIT_ETCS252_Tutorials/` = MCQs.
+- `05_Seminars_&_Slides/_sandbox_trial/` = pre-existing grounded Ch5 notes (303 lines, `[S:n]` anchors, 6-book `corpus/`) — **sweep before building any chapter**.
+- `04_Academic_Papers/` is EMPTY despite the dossier expectation.
+
+## 2 · Book facts frozen (don't regress)
+- Fig. 1.8 order = **People(1) → Product(2) → Process(3) → Project(4)** (p.15).
+- §1.6.3 = *"The process priority is after people and product…"* (p.16).
+- Product metrics = size, reliability, complexity, **functionality** (p.13).
+- Ch1 prose = printed 1–16; Ch1 MCQ = 17–18; Ch1 Exercise = 19; Ch4 Planning = printed 139–202 (PDF 76–107).
+
+## 3 · Ch06 (Metrics) map
+Book Ch6 = printed **250–307** (spread 131–159). Vocabulary also needs Ch4 pp.140–149 (size/LOC/Function Count/FP), Ch7 from p.308 (reliability/MTBF), Ch8 §8.4.2 pp.422–425 (cyclomatic — Aggarwal gives `V(G)=E−N+2P`, decision nodes +1, region count; don't add Mall for these).
+Slide bank = **20 MCQ (slides 96–100) + 28 exercises (101–106)**, no publisher key.
+Supporting slices: Pressman Ch4 (PDF 107–139: size/FP/feature points/backfiring, DRE), Pressman Ch24 (PDF 686–695: CK/MOOD/Lorenz–Kidd), Mall (PDF 142–166: LOC/FP/Object Points), Sommerville (PDF 685–689: predictor/control, internal/external attributes), Leach (PDF 67–68: GQM), Pressman 5e §19.4.2 (PDF 552 / printed 524: `HKM = length(i) × [fin(i)+fout(i)]²`).
+**Known source defects (never silently rewrite):** MCQ 6.7 asks *Program* weakness but every option is *Module* weakness (`WM`); slide 97 repeats label `(a)`. MCQ 6.15 (international size standard) and 6.17 (TCC/LCC) remain open.
+**Still unsourced:** Mark II FP (Leach p.39 "Mark II" is the Mark II computer + moth, NOT Mark II Function Points), measurement theory 5 properties, UCP adjustment factors, Shepperd/IF4, essential/design complexity, knot/nesting, measurement ethics.
+Slide 74 convention: that procedure sets fan-in = 1 for the top level when raw count is 0, and fan-out = 1 for a component that calls nothing — a property of that procedure, not a general definition, and not to be merged with HKM.
+
+## 4 · Ch04 frozen constants (numeric-heavy, 207 slides)
+`FP = UFP × CAF`, `CAF = 0.65 + 0.01 ΣFi`. Basic COCOMO a = 2.4 / 3.0 / 3.6, b = 1.05 / 1.12 / 1.20. Intermediate a_i = 3.2 / 3.0 / **2.8**. 15 cost drivers, 7 in the intermediate set used, 17 total in the table, 5 scale factors. `B = 0.91 + 0.01 ΣSF`. `m₀ = K/(td·e)`, `D = K/td²`, `D₀ = K/td³` (8 / 15 / 27), `Kd = K/6`, `tod = td/√6`, `S = C·K^(1/3)·td^(4/3)`. Risk = 2 groups / 6 activities; Jones 5 risk categories.
+**Verified powers (arithmetic audit):** `200^1.12 = 377.71` · `50^1.12 = 79.96` · `600^1.05 = 826.15` · `600^1.12 = 1292.79` · `600^1.20 = 2156.66` · `22^0.91 = 16.6573` · `22^0.93 = 17.7196` · `32^1.05 = 38.0546` · `7^1.05 = 7.7153`.
+Round-3 fixes already applied: MCQ 4.14 b, 4.22 c, 4.23 a; missing Example 4.2; a fabricated Example 4.5 table; Q7.8 phase split.
+
+## 5 · Ch05 frozen lists (Design)
+Coupling best→worst: **data > stamp > control > external > common > content**.
+Cohesion: **functional > sequential > communicational > procedural > temporal > logical > coincidental**.
+Design strategies: top-down / bottom-up / **hybrid (most practical)**. SDD = IEEE 1016. **OOD = SIX steps** (not 7). Vitruvius = **THREE** attributes. Book Ch5 questions = slides 94–99 verbatim.
+**Meyer's five modularity properties (N-033):** modular decomposability, composability, understandability, continuity, protection — Pressman 5e §13.4.3, printed p.345 (PDF 373). Do **not** mix with the software-architecture properties in §13.4.4 (next page), and do not add them as a 26th vocabulary item.
+⚠️ `08_DeepStudy_Ch05/_leakscan/` = 91 MB, git-tracked, awaiting his delete/keep decision.
+
+## 6 · Visio COM quirks (ASE diagrams)
+`Visio.InvisibleApp` 16.0. `Documents.OpenEx(path, 2|8)` requires the stencil copied OUT of `C:\Program Files\...` into a writable dir. `page.Drop(master, x, y)`; `DrawLine` + `EndArrow` beats dynamic connectors. Artifacts: collapses space before a digit, reorders commas, `<<include>>` → `>>include<<`, labels auto-rotate. UML stencils: `UUSEME_M.VSSX`, `USEQME_M.VSSX`, `UML_CLASS_M.VSTX`, `ASSOCIATIONS_UML_CLASS_M.VSTX`. **No dedicated DFD stencil.** Lab: `08_DeepStudy_Ch05/_visio_lab/`.
+
+## 7 · Subsystem internals
+**Telegram** (`00_STUDIO_HUB/telegram/`): D14 owns the folder, reads memory, **never writes `MEMORY.md`**; D15 = ONE bounded fail-closed session with persisted `update_id`; D16 admin verbs → owner approval. Bot `cs_mscbot`; spare human MTProto account `8404964768`. Contract `proposals/TELEGRAM_INTERACTIVE_ARCHITECTURE.md`. **Solutions decks go out via the spare/human account, never the bot.** `editMessageText` has no time limit (the 48 h wall is `deleteMessage` only); `editMessageMedia` swaps an attachment while keeping id/pin/position. ACL needs `--actor` on every non-local verb; pacing stamps persist to `pacing.json`; Telethon takes `reply_to`, not `message_thread_id`.
+**Quiz (live):** "يلا" → Flask (`start-quiz-server.bat`) + QR (`show-quiz-qr.bat <Sub> <Quiz>`) + `_wait_quiz_result.py`; kill both afterwards; trust `curl /api/health`. Skill `master-studio-quiz-session`. APK `MSCQuiz_Signed.apk`; PWA cache `master-studio-v10+`.
+**Mirror translation** (gitignored sandbox `99_Archives/sandbox_mirror_translate/`): ① facsimile ≥150 DPI screenshot ② literal Arabic ③ comprehension. Unit = TOPIC, not pages. Skill `master-studio-mirror-translation`.
+**Phone sync** `90_Shared_Toolbox/tools/phone_sync.py` v2: `adb push --sync`, **exit 1 = real failure** (never report success on it). Flags `--dry-run / --all / --full / --prune / --clean --yes / --pull / --wifi / --serial / --json / --no-repair`. Tests `tests/test_phone_sync_plan.py`. adb facts: push summary goes to stderr; `--sync` compares timestamps only → size-verify + force re-push is mandatory; `adb push src/. dst` needs raw `"/."`; full run ≈ 3 min.
+**Local indexes** (`00_STUDIO_HUB/indexes/04_Advanced_Software_Eng/`): `ase_vector_index.py` → `ase_knowledge_vectors.sqlite3`, model `intfloat/multilingual-e5-small` rev `614241f6…`, 384-d, fully local, catalogue rebuildable from `knowledge_sources.json` (1,430+ chunks / 53 sources at last count). **Retrieval is for navigation, not verification** — open the source page before quoting. `ase_index.py` = separate FTS5 lexical index, metadata only, no book text.
+
+## 8 · Postgrad grading law (detail)
+Rules = **تعليمات 27/1982**, kept alive by Art.17 of 26/1990.
+**Art.24(1)** scale: ممتاز / جيد جداً / جيد 70–79 / **مقبول 60–69** / راسب ≤59 — **floor is 60, not 50**. 24(4) dismissal if failing more than half of S1. 24(5): needs مقبول in every course **and** year average ≥70, otherwise re-sit failed + chosen courses at the start of the next academic year; fail again ⇒ dismissal. 24(6) weights by credit units. Art.25 = one re-sit only.
+Field practice: a low «متوسط» band exists; prep-year average = ONE figure over BOTH semesters; failing any course drags متوسط courses into the re-sit; **69 ⇒ dismissal (ترقين قيد)**. Parking a subject is the worst move → ≥60 in every course and protect the year average ≥70.
+His split: **30 % سعي / 70 % نهائي**; continuous ≈ 18–22/30. Passing (≥60 total) needs ~54–60 % on the final; جيد (≥70) needs ~69–74 %.
+Curriculum: prep year = 2 courses × 6 subjects = 12 subjects / 24 units. Course 1: Cyber(2), Software-dev-techniques(2), Data-mining(2), Multimedia(2), **Adv-SE(3)**, English(1). Course 2: Adv-AI(2), Adv-algorithms(2), **Software-architecture(3)**, Web-dev(2), Cloud(2), Research-methodology(1). **Levers = the two 3-credit subjects (25 % combined).**
+Canonical: `00_STUDIO_HUB/ACADEMIC_REGULATIONS.md` §3.4. `SEM1_FOCUS_AND_MARKS_PLAN.md` roster is WRONG — needs rewriting.
+
+## 9 · Exporter / RTL pitfalls — full text (render-verified)
+**No ASCII code in ملازم** (2026-10-13, his explicit order, said twice): zero fenced code blocks in any study note. Calc/derivation → plain paragraphs, one line per paragraph, blank line between. Step lists & folder trees → two-column text tables. Never a `#`/digit column when row content is Latin (bidi reverses the row) · never a blockquote `>` with consecutive lines · never a markdown ordered list `1.` · never a table cell starting with a digit (`200^1.12` → `1.12^200`). A Latin paragraph separated by blank lines does **not** flip.
+**No tables in student-facing packs** (2026-10-16: «كجدول وبس أشوفها شكل بدائي»). Replacement law: answer → exporter callout card (`[!NOTE]` / `[!TRAP]` / `[!WARN]` / `[!CONCEPT]` / `[!CALC]` / `[!FEYNMAN]`, per `CALLOUT_CONFIGS`; custom title = `> [!NOTE] Title`); question → bold stem line + one options line separated by `·`; comparison → bold-lead-in paragraphs.
+**Callout bodies:** every line prefixed `>`, **blank `>` between paragraphs** or consecutive lines merge into one run-on. `attr_list` is **not active inside callout bodies** — `{: ... }` renders literally; it works only on top-level blocks.
+**TABLE PARSING LAW** (32 broken tables in Ch04): the exporter skips a markdown table if (a) it touches the neighbouring line without a blank line → collapses into scrambled bidi text, (b) the separator row's cell count ≠ the header's, (c) it is nested inside a list item (`- | # | ...`). Always blank line before **and** after · separator cells == header cells · never inside a list. Detector: scan the PDF text layer for a literal `|` — a parsed table never leaves pipes. Unclosed backticks (odd count on a line) swallow the rest of the row.
+**RTL is mandatory, never inherited (N-009):** `tag_bilingual_blocks()` tags Arabic-dominant blocks (≥25 % Arabic letters, `RTL_ARABIC_THRESHOLD`) with `dir="rtl"`; `_render_callout()` does the same for card titles + bodies; CSS `[dir="rtl"] { direction: rtl; text-align: right; }`. Why: an untagged Arabic block inside an English pack inherits `ltr` → the line reverses and `80%` prints as `%80`. **Never add `flex-direction: row-reverse` to `.callout-title[dir="rtl"]`** — it flips the flex axis a second time and moves the icon back to the left.
+**Q/A cohesion (N-003, fixed N-015):** `{: .keep-next }` on a stem line → `class="keep-next"` (`break-after: avoid-page`); the callout's `page-break-inside: avoid` then makes stem + options + answer one block that jumps pages whole. Whitespace at the page foot is explicitly acceptable to him. `attr_list` is flaky (works for numeric `1.N` stems, fails silently for letter `U.N` stems → literal leak + orphaned stems), so `pdf_exporter.py` runs `apply_keep_next(html)` after `transform_qa_cards` to consume leftovers (idempotent). `transform_qa_cards` itself is **inert** on these packs (answers are callout `<div>`s, not `<blockquote>`s → 0 qa-cards). Chromium honours the rule (control-probe verified).
+**Other bidi traps:** ordered lists scramble → table; consecutive bold Q/A lines merge → blank line or table; `inline code` containing `_` or `/` reverses in Arabic → name the file in prose; a trailing `(ص 103)` jumps to the line start → drop it.
+**Frontmatter:** always a REAL `title:` (`ملزمة الويك N — <topic>`) + `course:` + `subtitle:`; never the exporter default title. Content-type label per section; EN lists SEPARATE from Arabic; verbatim label INSIDE the `>` block; "صفحة صفحة" = ① verbatim ② literal translation ③ my understanding.
+**Slide reading:** image-heavy pages → composite 4–6 pp/sheet at 150–200 DPI; digits/equations → 380–400 DPI zoom.
+
+## 10 · AI course (CS605, Dr. Saif Al-Saidi)
+Lecture origin = Diane J. Cook, *CptS 440/540 AI*, WSU EECS Fall 2009; textbook AIMA (Russell & Norvig). 2026-10-20 lecture = Swarm Intelligence (ACO, ABC, PSO, Cuckoo, Meerkat) after Talbi (2009); next assignment = student-led presentation on Supervised ML (KNN, SVM, Naive Bayes).
+Banks: `aimacode.github.io/aima-exercises/` · Berkeley CS188 exams · WSU `angelxd84130/WSU-cpts-540-Artificial-Intelligence` · UW-Madison CS540. Report `06_Artificial_Intelligence/AI_EXTERNAL_QUESTION_BANKS.md`.
+
+## 11 · Cyber Security MCSQuiz bank gate laws (Ch01–Ch03 proven, Ch04 in progress)
+**Architecture:** vault = master, Supabase = live copy, app = reader. `portal_content.py sync` publishes; `pull` mirrors back into `mcq-portal/data` + SW precache list. Vault schema **v2** → generated **v3 payload** (app reads v3 only, built from `options_en`).
+**Live v3 shape (gate law #8):** `stem {ar,en}` · `answer` = **integer index** · `options` = list of `{ar,en}` · `explanation` {ar,en} · `bloom` (not `bloom_level`) · `concept_id`. Vault bank stays v2; only the bundle is v3.
+**Three mandatory gates:** `quiz_balancer.py <file> --check --strict` · `validate_schema_v2(bank)` · `portal_schema.validate_v3(ps.to_v3(bank))`.
+**Gate law #6:** the balancer measures the **`options`** field, **not** `options_en`/`options_ar`. Patching only the *_en mirrors leaves the gate reporting old numbers.
+**Gate law #7 (signatures):** `validate_schema_v2(d)` returns a **tuple** `(ok, errors)`; `validate_v3(payload)` takes the **whole v3 bank payload**, never one question.
+**Canonical multi-bank gate:** `publish_quizzes.py --dry-run` runs `validate_bank` (v2 + v3) over every vault bank, exit 0 = clean.
+**Balancer content laws:** no parenthetical glosses inside options · no currency `$` inside `$…$` math · correct option ≤ **1.30×** average distractor length · no answer letter above **32 %** of keys · zero duplicate `concept_id`.
+**Key-rotation authoring convention:** write the correct option at index 0, then rotate every option array with one permutation to the target key pattern (`rot = lambda seq: [seq[(j-shift)%n] for j in range(n)]`; set `'options': list(opts_en)` for the balancer, `'answer': want`, `'correct': shift`).
+**Retirement flow:** move file to `07_Quizzes_&_Anki/_retired/` → `portal_content.py hide <quiz_id>` → `sync` → `pull` → redeploy shell. Verify absence in the live `index.json`.
+**Scope-discipline law (new, 2026-10-22):** when an example is excluded by the student, its numbers are **contaminated** — never reuse them, not even as coincidental distractors. Self-caught case: invented distractors 2.6 / 0.67 collided digit-for-digit with the retired hospital example's signature figures (2.6 M baseline, 0.67 M residual).
+**Deploy:** `vercel --prod` failed `fetch failed` **4×** on 2026-10-22; always retry, and never report a deploy done without the production URL.
+**Mis-filing disease (three found so far):** a `Quiz_ChNN_*` id does **not** guarantee ChNN content. `Quiz_Ch04_ModelB_Risk_Assessment.json` is **W02 risk material under a Ch04 id** (residual-risk equation, risk matrix, hardware/data threats). Always read the concept_ids before trusting a filename.
+
+## 12 · ASE authoring law — full text (compressed summary in MEMORY.md §C)
+**Language split by function (N-020):** EN = question stem, options, model answer. AR (brief) = traps `[!TRAP]`, warnings `[!WARN]`, concept notes `[!CONCEPT]`, "how to use" lines — always OUTSIDE the English answer, never inside it.
+**Typography carries attribution (N-011/N-013/N-020):** bold = source-grounded words · plain = our wording or short label · **italic banned outright**. Answers carry ZERO essay framing — no "Aggarwal states…", no "In §…, the book explains…", no "the chapter". The book is named only in the source line, the Arabic note cards and the frontmatter.
+**Source line (N-009):** `**Aggarwal, §1.2.1, p.4.**` — book + section + page. The word `printed` is BANNED.
+**Simplification convention (N-013/N-020):** bold + quotation marks = exact quote · bold without quotation marks = same source content with hard words simplified · plain = label or link. Verbatim quoting is NOT required. The `استنتاجي — مو نص أغروال` tag is DROPPED (N-020 supersedes N-013) — the answer must still answer the question and be justifiable.
+**Direct-answer rule (N-012, the most important format rule):** if one source sentence answers the question, quote it WHOLE and CONTIGUOUS — never cut it in half and stitch it with connective prose. Zero meta-discourse. Banned openers: "The change is…", "so the objective is now…", "The premise:", "A worked example from §…". Only two kinds of text allowed: source words (bold) and a short plain label.
+**Answers are short** — enough to answer + justify. No repetition, no cross-referencing, no exam-coaching filler. Banned: "the exam-ready conclusion", "why this matters for marks", "the framing to reproduce".
+**Bold-ratio diagnostic (N-011):** bold share of an answer. Low ratio = mostly my prose = where invention hides. A diagnostic, not a target; the real job is catching ZERO. Reference: T2 descriptive ≈ 69 %, T1 MCQ ≈ 52 %.
+**Scope = the doctor's vocabulary list (N-025):** depth = slightly deeper than the slides — define the term, explain its mechanism/conditions, distinguish it from look-alikes. NO encyclopaedic sweep; when a gap appears, compare sources and pick the single clearest supporting one.
+**Fixed diagrams are extracted, never redrawn (N-037/N-039):** find the original figure in book or slides, take the clearest highest-resolution copy into `source_figures/hires/`, reuse it. Two versions only when they show complementary aspects. Coverage-mapping tables are PRINT-HIDDEN (Markdown comments) — reference only, never printed.
+**Calculation solutions (N-032):** Given → Required → Model & assumptions → Equation → Substitution & working → Result → Check/interpretation → independent source. Questions and solutions stay English; no Arabic maths notes inside the answer.
+**Never solve before reading** the source pages. Coverage and mathematical correctness are TWO SEPARATE gates (N-032).
+**Pack titles (N-045):** small blue chapter eyebrow + large black pack title, no duplicate body H1/H2, no extra rule. Stems left-aligned with natural wrap; "centred" means the content block sits balanced on the page, NOT centred text (N-042 → N-043).
+**`note_linter.py` DEFECT:** pattern C (`\*"\*`) corrupts bold nested at the end of an italic quote. Never end an italic quoted phrase with `**bold**`.
