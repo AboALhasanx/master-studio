@@ -11,6 +11,7 @@ deployed site; run them from a shell.
 | `web_content_structure.js` | subject/chapter/card structure: six subjects, one chip per chapter, exactly two cards per chapter, KaTeX renders | same |
 | `tablet_offline_sweep.js` | the same sweep with Wi-Fi **off**: the shell must come from the cache, every screen must open, a quiz must answer and explain, and the league/account actions must say they need the network instead of going silent | `adb shell svc wifi disable` then `node tablet_offline_sweep.js` |
 | `tablet_new_badge.js` | the «جديد» badge is stateful: a fresh chapter shows it, opening the quiz clears it at once, the notification leaves the sheet and the visit is remembered after a reload | `node tablet_new_badge.js` |
+| `sync_cross_device.py` | the same account on the **computer and the tablet** (login by handle + PIN), the newest-change-wins rules (stale loses, newer wins, a tie goes to the server), and a second account that must start empty and never leak into the first | `adb forward` then `python sync_cross_device.py` |
 | `portal_db_clean.py` | sweeps the QA guests out of the content portal (keeps the student's account and the real league row) | `python portal_db_clean.py` (dry run), `APPLY=1 python portal_db_clean.py` |
 
 Notes
@@ -28,3 +29,4 @@ Notes
   (`grant_type=refresh_token` + the `clientInfo` credentials in that file) and
   write the new `accessToken` / `refreshToken` / `expiresAt` back.
 - Any browser run creates a guest account in the portal; run the cleaner after.
+- Logging in through the UI also **updates the account's display name** to the name you type. `sync_cross_device.py` passes the account's existing name for that reason; if you change it, restore it afterwards.
