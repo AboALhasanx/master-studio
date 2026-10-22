@@ -334,8 +334,8 @@ def now_iso() -> str:
 def refresh_sw_list(portal: Path) -> tuple:
     """Point the service worker's precache list at the banks that exist now.
 
-    Returns (changed, new_cache). Bumps `mcq-portal-vNN` (and the app's
-    SHELL_VERSION) only when the list really changed.
+    Returns (changed, cache). The cache name follows the release version
+    (mcq-portal-<version>), so a release is what invalidates the old shell.
     """
     sw = portal / "sw.js"
     if not sw.exists():
@@ -351,22 +351,14 @@ def refresh_sw_list(portal: Path) -> tuple:
     while last < len(lines) and lines[last].strip().startswith("'./data/banks/"):
         last += 1
     block = ["  './data/banks/%s'," % n for n in banks]
+    version = ""
+    vm = re.search(r"const VERSION = '([^']+)'", text)
+    if vm:
+        version = vm.group(1)
+    new_cache = ("mcq-portal-" + version) if version else ""
     if lines[first:last] == block:
-        m = re.search(r"mcq-portal-v(\d+)", text)
-        return False, m.group(0) if m else ""
+        return False, new_cache
     out = "\n".join(lines[:first] + block + lines[last:])
-    m = re.search(r"mcq-portal-v(\d+)", out)
-    old_cache = m.group(0) if m else ""
-    new_cache = old_cache
-    if m:
-        new_cache = "mcq-portal-v%d" % (int(m.group(1)) + 1)
-        out = out.replace(old_cache, new_cache, 1)
-        app = portal / "js" / "app.js"
-        if app.exists():
-            app_text = io.open(app, encoding="utf-8").read()
-            app_text = app_text.replace("SHELL_VERSION = '%s'" % old_cache.replace("mcq-portal-", ""),
-                                        "SHELL_VERSION = '%s'" % new_cache.replace("mcq-portal-", ""))
-            io.open(app, "w", encoding="utf-8", newline="\n").write(app_text)
     io.open(sw, "w", encoding="utf-8", newline="\n").write(out)
     return True, new_cache
 
