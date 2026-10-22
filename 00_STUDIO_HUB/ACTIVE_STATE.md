@@ -1,12 +1,12 @@
 ---
 current_semester: "Semester 1 (Fall 2026)"
-active_week: 2
-active_subject: "04_Advanced_Software_Eng"
-active_subject_code: "CS603"
-immediate_todo: "ASE Chapter 2 formally CLOSED: all 20 textbook exercises, 25 MCQs, and diagrams (vector cascade & AI-generated UP matrix) verified 100% PRISTINE (54 pp total). Standing by for student instructions on Chapter 3 Requirements packs."
-next_session_focus: "Begin authoring Chapter 3 Requirements Engineering question packs (T1-T5, V3) following the agreed ASE Question Pack Protocol."
-last_updated: "2026-10-17"
-status: "ASE_CH02_SDLC_MODELS_CLOSED_PRISTINE · ASE_CH03_STAGED_READY_FOR_AUTHORING"
+active_week: 6
+active_subject: "01_Cyber_Security"
+active_subject_code: "CS601"
+immediate_todo: "Review the revised 38-page Chapters 1–6 formula guide; Chapter 6 printed pp.12–13 are excluded, with all 108 examples in English LTR. Chapter 7 remains excluded."
+next_session_focus: "Run an interactive formula and scenario drill for Cyber Security Chapters 1–6 using the revised 38-page guide and the instructor-marked scope."
+last_updated: "2026-10-22"
+status: "CYBER_CH03_QUIZ_COMPLETE_9_BANKS_150Q_T07_RETIRED_BY_RULING_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH08_COMPLETE_PRINT_PACK_97PP_READY_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
 ---
 
 # Master Studio: Active Session State
@@ -17,9 +17,9 @@ status: "ASE_CH02_SDLC_MODELS_CLOSED_PRISTINE · ASE_CH03_STAGED_READY_FOR_AUTHO
 +-------------------------------------------------------------------------------+
 |                            FAST-BOOT CURRENT POINTER                          |
 |                                                                               |
-|  Semester: Semester 1 (Fall 2026)      Active Week: Week 02                   |
-|  Subject:  02_English_Language  Target Path: 01_Semester_1/02_English_Language      |
-|  Status:  MATERIALS RENUMBERED · W03 NOTES DUE WED · TELEGRAM SOURCES LIVE  Date: 2026-10-03                   |
+|  Semester: Semester 1 (Fall 2026)      Active Week: Week 06                   |
+|  Subject:  01_Cyber_Security  Target Path: 01_Semester_1/01_Cyber_Security        |
+|  Status: Chapters 1–6 Cyber formula guide ready for Sunday's exam; Ch. 7 excluded. ASE Chapters 4–7 combined print packs (343 pp) and Chapter 3 visual review await the student. Date: 2026-10-22 |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -30,7 +30,7 @@ status: "ASE_CH02_SDLC_MODELS_CLOSED_PRISTINE · ASE_CH03_STAGED_READY_FOR_AUTHO
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) — CS603; special collaborative question-pack sprint for Chapters 1-3 (2026-10-16) |
-| **Last Updated** | `2026-10-03` | Academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
+| **Last Updated** | `2026-10-21` | Chapter 7 audit/export/agent visual review complete; student visual review remains pending. Chapter 3 print-pack visual review also remains pending. Earlier academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
 
 ---
 
@@ -62,7 +62,7 @@ status: "ASE_CH02_SDLC_MODELS_CLOSED_PRISTINE · ASE_CH03_STAGED_READY_FOR_AUTHO
 - [x] **Establish agent identity (Koko) + student profile** — `SOUL.md` / `IDENTITY.md` / `USER.md`
 - [x] **Decode Dr. Huda's exam method + build `01_Cyber_Security` Week 01 master note & question bank**
 - [x] **Build the 6-subject inventory + rolling `STUDY_PLAN.md`**
-- [x] **Put `06_Artificial_Intelligence` on hold** — the professor has delivered no material
+- [x] **`06_Artificial_Intelligence` activated (2026-10-20)** — Dr. Saif delivered Swarm Intelligence lecture (ACO, ABC, PSO, Cuckoo, Meerkat) based on Talbi (2009); Supervised ML presentation assigned for next week.
 - [x] **Correct `COLLEGE_BUDDY.md`** — removed two agent-inferred fake deadlines
 - [x] **Add the external free-chatbot ingestion guide to `README.md`** (Gitingest, with measured digest sizes)
 - [x] **`01_Cyber_Security` Week 01 — all theory Topics 1–6 covered** (master note + question bank + formula deep-dives); Chapter 7 excluded by the doctor
@@ -91,10 +91,12 @@ status: "ASE_CH02_SDLC_MODELS_CLOSED_PRISTINE · ASE_CH03_STAGED_READY_FOR_AUTHO
 - [ ] **`06_Artificial_Intelligence`** — Tuesday lecture did not take place because the dean had other commitments; lecture postponed to Sunday. No material reported; do not proactively check the group.
 
 ### Next Session Focus
+- **Cyber quiz banks (MCSQuiz portal, content v24):** Ch01 6 banks / 96 q · Ch02 8 banks / 135 q · **Ch03 9 banks / 150 q** — Cyber Security totals 25 banks / 411 q. Ch03 `T07_Hospital_Quantification` (18 q) was retired by the student's ruling «محذوف — المثال يروح والمعادلة تبقى»; the `Risk = T×V×I`, `EFL = Σ Pᵢ·Iᵢ` and aggregate equations remain covered in T02/T03 with clean numbers. **Open question for him:** replace the T07 slot with an applied bank on new training numbers, or leave Ch03 at 9 banks.
+- **Cyber Ch03 verification gap:** no marked-up W03 exists anywhere in the subject (`W03_Risks.pdf` = 0 annotations, 0 coloured pixels, 14 pp); only `W01_Intro_Annotated.pdf` (49 marks) and `W02_Chapter2_TriLayer.pdf` (2) carry annotations. 9 of 22 W03 sections have no annotation record — their in/out status rests on my transcription and is unverified.
 - **ASE Week 02 is COMPLETE** — ten unit PDFs + the 146-page merged Master Lecture. No further ASE work queued until the student asks.
 - **Cyber: materials renumbered 2026-09-27.** W02 = `W02_Risks_DrHuda_Booklet2.pdf` (exam booklet 2). Lecture source = **`W03_Risks.pdf`**. Student notes for the unfinished W03 lecture **due Wednesday** — synthesise only after handover. Quiz today covered Booklets 1+2 (2 forgotten Qs, not graded).
 - **English paper (CS502) deferred to next week** (Dr. Haidar no-show). Christakis & Fowler PLOS ONE 2010 still the standing deliverable. Soft Computing deferred.
-- **Artificial Intelligence:** Dean's Sunday make-up also a no-show (rescheduled from last Tue). Still ON HOLD, no material.
+- **Artificial Intelligence (CS605):** ACTIVE (2026-10-20). Dr. Saif delivered Swarm Intelligence & Population Metaheuristics. Assigned next session: student-led presentation on Supervised Machine Learning (KNN, SVM, Naive Bayes).
 - **Data Mining:** record-only for Feature Selection until the student directs.
 - [x] Cross-subject current-status mind map (`00_STUDIO_HUB/CURRENT_MATERIALS_MAP.md`) — delivered.
 - [x] Wednesday–Sunday dated plan (`PLAN_2026-09-23_to_27.md`) — delivered.
