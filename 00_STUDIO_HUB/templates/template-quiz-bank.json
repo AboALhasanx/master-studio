@@ -5,8 +5,8 @@
   "subject_title": "{{Subject_Arabic_Title}}",
   "semester": 1,
   "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch{{NN}}_Model{{A|B}}_{{Topic_Slug}}",
-  "topic": "{{Topic_Title_and_Week}} — Model {{A|B}}",
+  "quiz_id": "Quiz_Ch{{NN}}_Model{{A|B}}_{{Topic_Slug}}  // or Quiz_Ch{{NN}}_T{{NN}}_{{Topic_Slug}} for a topic bank",
+  "topic": "{{Short English title}} — Model {{A|B}}  // topic banks: plain title, no suffix",
   "instructor_ar": "{{Professor_Arabic_Name}}",
   "instructor": "{{Professor_Full_Name}}",
   "subject": "{{Subject_Folder_Name}}",
@@ -137,5 +137,5 @@
   ],
   "_protocol": "00_STUDIO_HUB/guides/QUIZ_BANK_PROTOCOL.md — read it first. This file only shows the shape; the protocol carries the rules, the gates and the publish steps.",
   "_delete_before_saving": "Remove every key that starts with \"_\" (and this one) before saving the bank; the validator ignores them but they must not ship.",
-  "topic_ar": "{{العنوان العربي للجابتر}} — النموذج {{أ|ب}}"
+  "topic_ar": "{{ARABIC_TITLE}}  // model banks append Model A/B suffix; topic banks: plain title, never repeat the subject name"
 }

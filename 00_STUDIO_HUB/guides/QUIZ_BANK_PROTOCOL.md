@@ -2,7 +2,7 @@
 
 > **Scope:** how any harness (OpenCode, WorkBuddy, Codex, MiMo, Antigravity, FreeBuf, …) authors and publishes question banks for the MCSQuiz PWA. Read this **before** writing or editing anything under `01_Semester_1/<Subject>/07_Quizzes_&_Anki/`. The vault is the master; Supabase is the content portal in the middle; the app is the reader.
 
-**ملخص عربي:** هذا البروتوكول يحدد كيف تُكتب بنوك الأسئلة: الملفات في المجلد `07_Quizzes_&_Anki` بصيغة v2، وكل جابتر له نموذجان (أ/ب)، والأسئلة عربية أولاً مع الإنجليزية، ومصدرها ملاحظات المادة، وتُفحص بأدوات `quiz_balancer` و`portal_content` قبل النشر.
+**ملخص عربي:** هذا البروتوكول يحدد كيف تُكتب بنوك الأسئلة: الملفات في المجلد `07_Quizzes_&_Anki` بصيغة v2، والجابتر إما نموذجان (أ/ب) أو بنوك مواضيع مرقمة، والأسئلة عربية أولاً مع الإنجليزية، ومصدرها ملاحظات المادة، وتُفحص بأدوات `quiz_balancer` و`portal_content` قبل النشر.
 
 ## 1. Boot and coordinate
 
@@ -15,7 +15,7 @@
 ## 2. Where a bank lives, and what it is called
 
 ```
-01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_<ChNN>_Model<A|B>_<Slug>.json   <- master (schema v2)
+01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_<ChNN>_(Model<A|B>|T<NN>)_<Slug>.json   <- master (schema v2)
         |
         |  portal_content.py sync      (validate -> merge -> publish)
         v
@@ -28,11 +28,12 @@ mcq-portal/data/banks/*.json   (the bundled fallback that ships with the shell)
 
 | rule | value |
 |---|---|
-| file name | `Quiz_Ch<NN>_Model<A\|B>_<Slug>.json`, e.g. `Quiz_Ch03_ModelA_Feature_Extraction.json` |
+| file name | model: `Quiz_Ch<NN>_Model<A\|B>_<Slug>.json` (e.g. `Quiz_Ch03_ModelA_Feature_Extraction.json`); topic: `Quiz_Ch<NN>_T<NN>_<Slug>.json` (e.g. `Quiz_Ch01_T03_CIA_Triad_and_Utility_Function.json`) — never mix the two shapes in one chapter without asking the student first |
 | `quiz_id` | identical to the file stem |
 | chapter number | taken from `Ch<NN>` in the name; legacy ids (`Quiz_01_…`) keep the chapter recorded in `mcq-portal/data/index.json` |
-| models per chapter | **exactly two** — «النموذج أ» and «النموذج ب», never a third |
-| `topic` / `topic_ar` | must end with `— Model A` / `— النموذج أ` (respectively `B` / `ب`) so the two cards are distinguishable |
+| models per chapter | either **exactly two models** («النموذج أ», «النموذج ب») **or** a run of **numbered topic banks** (`T01`, `T02`, …) that tile the chapter's sections in ملزمة order — never a Model A next to a T-bank for the same material | 
+| `topic` / `topic_ar` | model banks end with `— Model A` / `— النموذج أ` (`B` / `ب`); **topic banks carry a plain title with no suffix** (e.g. `ثالوث CIA ودالة المنفعة الأمنية U(C,I,A) والتقنيات المعيارية`) | 
+| title hygiene | **never repeat the subject name** in `topic_ar` — the card already shows the subject chip, and the app adds the `موضوع: N` badge itself. `التعريف، النطاق، والتطور التاريخي` ✓, `الأمن السيبراني: التعريف…` ✗ |
 | retired bank | move the file to `07_Quizzes_&_Anki/_retired/` (never delete), then `hide`/remove its portal row and say so |
 
 Chapter numbers are the **book's** chapter numbers, not a running counter: Advanced Software Engineering legitimately uses 1, 2, 5 — a gap is correct, not a bug.
@@ -77,7 +78,7 @@ Every question object:
   "semester": 1,
   "semester_label": "كورس أول",
   "quiz_id": "Quiz_Ch01_ModelA_AI_Foundations",
-  "topic": "AI Foundations — Model A",
+  "topic": "AI Foundations — Model A",   // topic banks: plain title, no suffix
   "topic_ar": "أسس الذكاء الاصطناعي: الوكلاء والبيئات والمهام — النموذج أ",
   "instructor_ar": "أ.د. سيف علي السعيدي",
   "instructor": "Prof. Dr. Saif Ali Al-Saidi",
@@ -101,7 +102,7 @@ Every question object:
 }
 ```
 
-**Size:** a chapter's model carries **5 questions minimum**; a bank of 5 is normal for a new chapter, 10–15 when the material is rich. The whole bank must stay playable in one sitting.
+**Size:** 5 questions minimum per bank (5 is normal, 10–15 when the material is rich, 16 for a ملزمة-section topic bank). The whole bank must stay playable in one sitting.
 
 ## 5. Schema v3 — generated, never hand-written
 
@@ -126,8 +127,8 @@ Every question object:
 | exactly 5 | every letter appears at least once, none more than twice (2/1/1/1) |
 
 - Option-length parity: the correct option's length must stay within **1.30×** the average distractor length (target ±25 %); fix it by rewriting distractors, not by padding the correct one.
-- Two models of a chapter must not repeat concepts: 10 distinct `concept_id`s across A + B.
-- Never split a bank into two models by topic half — alternate the questions (`0,2,4…` / `1,3,5…`) so both models cover the whole chapter.
+- `concept_id`s must be unique across **every bank of the chapter** (A+B, or T01…T0N) — never test the same idea twice in one chapter.
+- Split rule, model chapters: alternate the questions (`0,2,4…` / `1,3,5…`) so both models cover the whole chapter. Split rule, topic chapters: one bank per ملزمة section, in ملزمة order (`T01`, `T02`, …), each covering only its section.
 
 ## 8. The mandatory gates (run them, paste the output)
 
@@ -172,28 +173,28 @@ python "90_Shared_Toolbox/tools/portal_content.py" sync --notify
 ```
 
 - **Content needs no deploy.** The next visit pulls the new manifest; the bell shows the unread count.
-- **`pull` is not optional bookkeeping:** it rewrites `mcq-portal/data/*` and, when the bank list changed, bumps the worker cache (`mcq-portal-vNN` + `SHELL_VERSION`). If it reports *"precache list updated"*, deploy the shell once:
+- **`pull` is not optional bookkeeping:** it rewrites `mcq-portal/data/*` and refreshes the worker precache list. The cache name follows the release `VERSION` (`mcq-portal-<version>`), so a precache change takes effect with the next `tools/release.py` bump — deploy the shell once after that:
   `cd C:\Users\gokoq\mcq-portal; npx -y vercel@latest --prod --yes`
 - Writes only ever happen from the agent, with the service key fetched at run time. The browser can only read.
 
 ## 10. Verify in the app (not only in the JSON)
 
-1. Open the app (or a headless browser): the subject chips must list the subject, the chapter bar must list **each chapter number once**, and selecting a chapter must show **exactly two cards** («النموذج أ» before «النموذج ب»).
-2. Start a quiz from the new bank, answer one question, confirm the explanation renders (KaTeX included) and that the **ع / EN** switch in the bar translates stem, options and explanation.
+1. Open the app (or a headless browser): the subject chips must list the subject, the chapter bar must list **each chapter number once, plain** (`1`, `2`, … — never `1.1`), and selecting a chapter must show its cards each carrying the app-rendered **`موضوع: N` badge** («النموذج أ» before «النموذج ب» where models exist).
+2. Start the new quiz **twice** and confirm the question order **and** the option order differ between runs while the correct-answer **text** stays the key (per-launch Fisher–Yates with key remap — the stored key is only the intent). Then answer one question, confirm the explanation renders (KaTeX included) and that the **translation-icon toggle** (yellow = Arabic, plain = English) translates stem, options and explanation.
 3. Offline: the new chapter must open with the network off (portal → cached manifest → bundled fallback).
 4. Report the evidence: the exact commands and their output, plus what you saw in the app.
 
 ## 11. Current map (snapshot — refresh it when you add a subject or a chapter)
 
-| subject | chapters | banks |
-|---|---|---|
-| الأمن السيبراني | 1, 2, 3, 4 | 8 |
-| اللغة الإنجليزية | 1, 2 | 4 |
-| تنقيب البيانات | 1, 2, 3 | 6 |
-| هندسة البرمجيات | 1, 2, 5 | 6 |
-| الحوسبة اللينة | 1, 2 | 4 |
-| الذكاء الاصطناعي | 1, 2 | 4 |
-| **total** | 16 chapters | **32 banks / 238 questions** |
+| subject | chapters (shape) | banks | questions |
+|---|---|---|---|
+| الأمن السيبراني | 1 = 6 topics (T01–T06), 2 = أ/ب, 3 = أ/ب, 4 = أ/ب | 12 | 176 |
+| اللغة الإنجليزية | 1 = أ/ب, 2 = أ/ب | 4 | 20 |
+| تنقيب البيانات | 1 = أ + ModelB, 2 = أ/ب, 3 = أ/ب | 6 | 46 |
+| هندسة البرمجيات | 1 = أ + ModelB, 2 = أ/ب, 5 = أ/ب | 6 | 30 |
+| الحوسبة اللينة | 1 = أ + ModelB, 2 = 6q + ModelB | 4 | 22 |
+| الذكاء الاصطناعي | 1 = أ/ب, 2 = أ/ب | 4 | 20 |
+| **total** | 16 chapters | **36 banks / 314 questions** | content v12 |
 
 `python 90_Shared_Toolbox/tools/portal_content.py status` is authoritative; if this table disagrees with it, fix the table.
 
@@ -213,8 +214,8 @@ python "90_Shared_Toolbox/tools/portal_content.py" sync --notify
 
 ## 13. Delivery checklist
 
-- [ ] File name + `quiz_id` follow `Quiz_Ch<NN>_Model<A|B>_<Slug>`; chapter number correct.
-- [ ] Two models only; `topic`/`topic_ar` carry `— Model A/B` / `— النموذج أ/ب`.
+- [ ] File name + `quiz_id` follow the chapter's shape (`Model<A|B>` or `T<NN>`); chapter number is the book's.
+- [ ] Titles: no subject name, no model suffix on topic banks; unique `concept_id`s across the whole chapter.
 - [ ] 5+ questions per bank; unique `concept_id`s across the chapter's two models.
 - [ ] Every question grounded in a named source; nothing invented.
 - [ ] Arabic-first bilingual, MSA, English terms without parentheses, `←` in Arabic lines.
@@ -222,5 +223,5 @@ python "90_Shared_Toolbox/tools/portal_content.py" sync --notify
 - [ ] v2 + v3 validation lists empty.
 - [ ] `portal_content.py sync` run; `status` shows the new counts.
 - [ ] `portal_content.py pull` run; deploy only if it reported a precache change.
-- [ ] App checked: two cards per chapter, أ before ب, EN switch works, offline works.
+- [ ] App checked: plain chapter chips, `موضوع: N` badges, أ before ب, two launches shuffle questions + options with a stable key, translation icon works, offline works.
 - [ ] Session log updated (what was added, where, and the evidence).
