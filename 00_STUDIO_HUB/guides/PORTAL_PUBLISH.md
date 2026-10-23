@@ -73,6 +73,21 @@ version **only when something really changed** → logs the publish.
 log has no anon policy. **Writes never happen from the browser** — the agent
 uses the service key fetched at run time with the Supabase Management token.
 
+**Credentials (`90_Shared_Toolbox/tools/supabase_auth.py`):** the management
+token is resolved in this order — `SUPABASE_ACCESS_TOKEN` → a personal access
+token in `~/.config/opencode/supabase-pat` → the OAuth tokens that
+`opencode mcp auth supabase` stores in `mcp-auth.json`. An expired OAuth token
+is refreshed automatically and the **rotated** refresh token is written back
+immediately (Supabase invalidates the old one on every use, so a refresh that
+is not persisted breaks the chain for good). A 401 retries once after a forced
+refresh. If nothing works the tool prints exactly which of the two fixes to
+apply instead of a traceback.
+
+**Retirement:** `sync` now compares the vault with the portal and **hides any
+live bank whose file left the vault** (moved to `07_Quizzes_&_Anki/_retired/`),
+so the vault and the portal can no longer disagree. A whole subject is never
+hidden just because its folder failed to read.
+
 ## Fallbacks (nothing takes the app down)
 
 1. Portal unreachable → the manifest this device saw last time (cached).

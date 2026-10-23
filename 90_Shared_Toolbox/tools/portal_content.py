@@ -54,33 +54,14 @@ from publish_quizzes import (  # noqa: E402
 
 PROJECT = os.environ.get("SUPABASE_PROJECT", "gywniovuupjmllbmjmai")
 API = "https://api.supabase.com/v1"
-MCP_AUTH = Path(os.environ.get("MCP_AUTH", r"C:\Users\gokoq\.local\share\opencode\mcp-auth.json"))
 
-
-# --------------------------------------------------------------------------- #
-# supabase plumbing
-# --------------------------------------------------------------------------- #
-def management_token() -> str:
-    data = json.loads(MCP_AUTH.read_text(encoding="utf-8"))
-    return data["supabase"]["tokens"]["accessToken"]
-
-
-def service_key() -> str:
-    req = urllib.request.Request(
-        "%s/projects/%s/api-keys" % (API, PROJECT),
-        headers={"Authorization": "Bearer " + management_token()},
-    )
-    with urllib.request.urlopen(req) as r:
-        keys = json.loads(r.read().decode("utf-8"))
-    for k in keys:
-        if k.get("name") in ("service_role", "service_role_key") or k.get("type") == "secret":
-            return k["api_key"]
-    raise RuntimeError("service role key not found")
+# one credential chain for every tool: env -> PAT file -> refreshed OAuth token
+from supabase_auth import CredentialError, access_token, describe, service_key  # noqa: E402,F401
 
 
 class Rest:
     def __init__(self):
-        self.key = service_key()
+        self.key = service_key(PROJECT)
         self.base = "https://%s.supabase.co/rest/v1" % PROJECT
 
     def call(self, method, path, body=None, prefer=None):
@@ -142,7 +123,7 @@ def current_meta(rest: Rest):
 
 
 def current_banks(rest: Rest):
-    status, rows = rest.select("/content_banks?select=quiz_id,payload,version,hidden,topic_ar,topic_en,updated_at")
+    status, rows = rest.select("/content_banks?select=quiz_id,subject_id,chapter_no,payload,version,hidden,topic_ar,topic_en,updated_at,published_at")
     if status != 200 or not isinstance(rows, list):
         return {}
     return {r["quiz_id"]: r for r in rows}
@@ -152,6 +133,20 @@ def log_publish(rest: Rest, actor, action, quiz_id=None, version=None):
     rest.upsert("content_publishes", [{
         "actor": actor, "action": action, "quiz_id": quiz_id, "version": version,
     }])
+
+
+def retire_candidates(published, vault_ids, scanned_subjects):
+    """Portal rows that are still live but have no file in the vault any more."""
+    out = []
+    for quiz_id, row in sorted(published.items()):
+        row = row or {}
+        if quiz_id in vault_ids or row.get("hidden"):
+            continue
+        # a subject whose folder vanished is not proof of retirement
+        if row.get("subject_id") not in scanned_subjects:
+            continue
+        out.append(quiz_id)
+    return out
 
 
 # --------------------------------------------------------------------------- #
@@ -183,10 +178,12 @@ def sync(args) -> int:
     rows = []
     changed = 0
     problems = 0
+    vault_ids = set()
     for sid, entries in banks_by_subject.items():
         subject_title = sid
         for path, raw in entries:
             quiz_id = raw.get("quiz_id") or path.stem
+            vault_ids.add(quiz_id)
             label = "%s / %s" % (sid, path.name)
             existing = published.get(quiz_id)
             old_payload = existing.get("payload") if existing else None
@@ -219,6 +216,15 @@ def sync(args) -> int:
             if args.bump and existing:
                 really_changed = True
             version = old_version + 1 if really_changed else max(old_version, 1)
+            # an untouched bank keeps its stamps, so publishing one chapter does
+            # not rewrite the mirror of all 74 banks
+            stamp = schema.now_iso()
+            if existing and not really_changed:
+                v3["updated_at"] = (old_v3 or {}).get("updated_at") or stamp
+                row_updated = existing.get("updated_at") or stamp
+                row_published = existing.get("published_at") or stamp
+            else:
+                row_updated = row_published = stamp
             if really_changed:
                 changed += 1
                 print("  + %s -> v%d (%d questions%s)" % (
@@ -250,14 +256,22 @@ def sync(args) -> int:
                 "material_url": (existing or {}).get("material_url") or v3.get("material_url") or "",
                 "hidden": bool((existing or {}).get("hidden", False)),
                 "payload": v3,
-                "updated_at": schema.now_iso(),
-                "published_at": schema.now_iso(),
+                "updated_at": row_updated,
+                "published_at": row_published,
             })
 
     if problems and not args.force:
         print("\n%d bank(s) failed the gate - nothing was written." % problems)
         return 2
+
+    # a bank whose file left the vault (moved to _retired/) must stop being
+    # offered, otherwise the vault and the portal disagree. Only a full scan
+    # may retire, and never a whole subject whose folder merely failed to read.
+    stale = retire_candidates(published, vault_ids, set(banks_by_subject)) if not args.subject else []
+
     if args.dry_run:
+        for quiz_id in stale:
+            print("  - %s would be retired (no vault file)" % quiz_id)
         print("\n(dry run: nothing written)")
         return 0
 
@@ -267,6 +281,17 @@ def sync(args) -> int:
             print("upsert failed:", status, err)
             return 3
         print("\nwrote %d banks" % len(rows))
+
+    if stale:
+        for quiz_id in stale:
+            status, err = rest.patch("/content_banks?quiz_id=eq." + urllib.parse.quote(quiz_id), {"hidden": True})
+            if status not in (200, 204):
+                print("  ! could not retire %s: %s %s" % (quiz_id, status, err))
+                problems += 1
+                continue
+            log_publish(rest, args.actor, "retire", quiz_id, None)
+            print("  - %s retired (hidden, no vault file)" % quiz_id)
+        changed += len(stale)
 
     if changed:
         new_version = int(meta.get("version") or 0) + 1
@@ -458,15 +483,24 @@ def main() -> int:
     args = ap.parse_args()
 
     if args.command == "sync":
-        return sync(args)
+        return _guard(sync, args)
     if args.command == "status":
-        return status(args)
+        return _guard(status, args)
     if args.command == "pull":
-        return pull(args)
+        return _guard(pull, args)
     if not args.quiz_id:
         print("hide/show needs a quiz_id")
         return 1
-    return set_hidden(args, args.command == "hide")
+    return _guard(lambda a: set_hidden(a, args.command == "hide"), args)
+
+
+def _guard(command, args) -> int:
+    """A missing/expired credential is a message, never a traceback."""
+    try:
+        return command(args)
+    except CredentialError as exc:
+        print("\n%s" % exc)
+        return 2
 
 
 if __name__ == "__main__":
