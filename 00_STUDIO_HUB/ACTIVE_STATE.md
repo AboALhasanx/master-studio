@@ -3,10 +3,10 @@ current_semester: "Semester 1 (Fall 2026)"
 active_week: 6
 active_subject: "01_Cyber_Security"
 active_subject_code: "CS601"
-immediate_todo: "Review the revised 38-page Chapters 1–6 formula guide; Chapter 6 printed pp.12–13 are excluded, with all 108 examples in English LTR. Chapter 7 remains excluded."
-next_session_focus: "Run an interactive formula and scenario drill for Cyber Security Chapters 1–6 using the revised 38-page guide and the instructor-marked scope."
+immediate_todo: "Review the revised Cyber Security Chapters 1–6 formula guide; the W08 Soft Computing English seminar is ready for a 10-minute rehearsal."
+next_session_focus: "Run the Cyber Security Chapters 1–6 formula drill; rehearse the W08 Fuzzy-GA servo seminar if the student chooses."
 last_updated: "2026-10-23"
-status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
+status: "ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; ASE_CH08_PACKS_99PP_OPEN_PENDING_DOCTOR_VOCAB_NOTES_AND_T4_T7_FIXES_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING; NH_U3_WIDE_SLIDES_BUILT_37_PAGES_10_GATES_UNPUBLISHED_2026-10-23"
 ---
 
 # Master Studio: Active Session State
@@ -19,7 +19,7 @@ status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; 
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 06                   |
 |  Subject:  01_Cyber_Security  Target Path: 01_Semester_1/01_Cyber_Security        |
-|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 63 banks / 1182 questions, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch.4-7 combined print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
+|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 63 banks / 1182 questions, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch08 packs exist (99pp) but remain OPEN: instructor vocabulary/notes missing; T4 citation/diagram and T7 wording fixes remain. ASE Ch09 print remediation complete: six component packs and a 42-page merged print PDF. T2 numbering/source wording corrected, T4 source figure crops and diagram-only layout fixed, and T5/T7 Arabic academic-note boxes suppressed in print while preserved in Markdown comments. V9 remains predictive pending the instructor vocabulary/notes; confirmed syllabus coverage and student visual review remain open. Ch.4-7 print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -119,3 +119,4 @@ status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; 
 
 ## 4. College Buddy Pointer
 - **Interactive Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks upcoming professor dates, oral defense rehearsals, and post-event debrief check-ins).
+
