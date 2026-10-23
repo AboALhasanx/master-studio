@@ -19,7 +19,7 @@ status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; 
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 06                   |
 |  Subject:  01_Cyber_Security  Target Path: 01_Semester_1/01_Cyber_Security        |
-|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 64 banks, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch.4-7 combined print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
+|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 63 banks / 1182 questions, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch.4-7 combined print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
 +-------------------------------------------------------------------------------+
 ```
 
