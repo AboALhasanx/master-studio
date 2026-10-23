@@ -6,7 +6,7 @@ active_subject_code: "CS601"
 immediate_todo: "Review the revised 38-page Chapters 1–6 formula guide; Chapter 6 printed pp.12–13 are excluded, with all 108 examples in English LTR. Chapter 7 remains excluded."
 next_session_focus: "Run an interactive formula and scenario drill for Cyber Security Chapters 1–6 using the revised 38-page guide and the instructor-marked scope."
 last_updated: "2026-10-23"
-status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
+status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING"
 ---
 
 # Master Studio: Active Session State
@@ -19,7 +19,7 @@ status: "ASE_CH08_STUDENT_AUDIT_FIXES_APPLIED_ALL_GATES_PASSED_99PP_2026-10-23; 
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 06                   |
 |  Subject:  01_Cyber_Security  Target Path: 01_Semester_1/01_Cyber_Security        |
-|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v28, Cyber 51 banks, chapters 1-5). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q, content v28; the retired Risk_Assessment bank is hidden). Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch.4-7 combined print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
+|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 64 banks, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch.4-7 combined print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
 +-------------------------------------------------------------------------------+
 ```
 
