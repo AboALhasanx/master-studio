@@ -17,6 +17,7 @@ deployed site; run them from a shell.
 | `tablet_verify_140.js` | end-to-end on the tablet: the transparent tab icon, the new notification wording (topic + chapter + subject), the topic badge in the chip row with clean titles, and the visit that clears the badge | `node tablet_verify_140.js` |
 | `web_verify_ui.js` | desktop pass of the catalogue/cards/modals incl. the topic-number badges | `node web_verify_ui.js` |
 | `tablet_lang_icon.js` | the translation icon toggle on the tablet: the old pill is gone, the icon sits before the bell, yellow in Arabic / plain in English, and a quiz refresh shows the right header at once | `node tablet_lang_icon.js` |
+| `web_chapter_verify.js` | end-to-end check of one published chapter: card count, `موضوع: N` badges, subject chip, no subject name in titles, retired bank absent, two launches reshuffle questions+options with a stable key, translation toggle | `SUBJECT=01_Cyber_Security CHAPTER=5 QUIZ=<quiz_id> EXPECT=17 node web_chapter_verify.js` (local server on :8081 or `PORTAL_URL=https://mcq-portal-jade.vercel.app`) |
 | `web_shuffle_check.js` | launches the same quiz 3x headless: question order and option order must vary while the correct-answer text stays identical (proves the per-launch Fisher-Yates + key remap) | `node web_shuffle_check.js` (needs the local server on :8081) |
 | `portal_db_clean.py` | sweeps the QA guests out of the content portal (keeps the student's account and the real league row) | `python portal_db_clean.py` (dry run), `APPLY=1 python portal_db_clean.py` |
 
