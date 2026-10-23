@@ -1,9 +1,20 @@
-﻿// Verify the published Chapter 5 (Cyber) in the real app:
+﻿// Verify one published chapter in the real app (defaults: Cyber chapter 5):
 //  - 17 cards in chapter 5, each with a "Ù…ÙˆØ¶ÙˆØ¹: N" badge, no subject name in titles
 //  - the retired bank (Quiz_02_Risk_Assessment) is gone from the catalogue
 //  - two launches reshuffle questions AND options while the correct text is stable
 //  - the translation toggle switches the stem to English
-const { chromium } = require('playwright-core');
+function loadChromium() {
+  const path = require('path');
+  const roots = [
+    process.env.PLAYWRIGHT_CORE,
+    path.join(process.env.TEMP || 'C:\\Windows\\Temp', 'opencode', 'shot', 'node_modules', 'playwright-core'),
+  ].filter(Boolean);
+  try { return require('playwright-core').chromium; } catch (e) {}
+  for (const r of roots) { try { return require(r).chromium; } catch (e) {} }
+  console.error('playwright-core not found: npm i playwright-core   (or set PLAYWRIGHT_CORE=<path to the package>)');
+  process.exit(2);
+}
+const chromium = loadChromium();
 const EXE = 'C:\\Users\\gokoq\\AppData\\Local\\Thorium\\Application\\thorium.exe';
 const BASE = process.env.PORTAL_URL || 'http://127.0.0.1:8081';
 const SUBJ = process.env.SUBJECT || '01_Cyber_Security';
@@ -30,7 +41,7 @@ const check = (name, ok, detail) => {
   await p.goto(BASE + '/?debug=1&v=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 60000 });
   await p.waitForFunction(() => window.__portal && window.__portal.S && window.__portal.S.index, null, { timeout: 45000 });
 
-  const info = await p.evaluate(() => {
+  const info = await p.evaluate((CHAPTER) => {
     const S = window.__portal.S;
     const sub = S.index.subjects.find((s) => s.subject_id === '01_Cyber_Security');
     const chs = sub ? sub.chapters : [];
@@ -42,9 +53,9 @@ const check = (name, ok, detail) => {
       risk: chs.some((c) => c.quiz_id === 'Quiz_02_Risk_Assessment'),
       subjectTitle: sub ? sub.subject_title : '',
     };
-  });
+  }, CHAPTER);
   console.log('content version:', info.version, '| source:', info.source, '| chapters:', info.chapters.join(','));
-  check('chapter has EXPECT banks', info.ch5.length === EXPECT, info.ch5.length);
+  check('chapter ' + CHAPTER + ' has ' + EXPECT + ' banks', info.ch5.length === EXPECT, info.ch5.length);
   check('retired Risk_Assessment not listed', info.risk === false);
   const nums = info.ch5.map((c) => (c.label.match(/\d+/) || [''])[0]);
   check('topic badges are 1..N', nums.join(',') === Array.from({ length: EXPECT }, (_, i) => String(i + 1)).join(','), nums.join(' '));
@@ -58,7 +69,7 @@ const check = (name, ok, detail) => {
     titles: [...document.querySelectorAll('.sketch-title')].map((e) => e.textContent.trim()),
     subjectTags: [...document.querySelectorAll('.sketch-subject-tag')].map((e) => e.textContent.trim()),
   }));
-  check('DOM shows EXPECT cards', dom.rows === EXPECT, dom.rows);
+  check('DOM shows ' + EXPECT + ' cards', dom.rows === EXPECT, dom.rows);
   check('DOM badges match', dom.badges.join('|') === info.ch5.map((c) => c.label).join('|'), dom.badges.slice(0, 3).join(' '));
   check('every card carries the subject chip', dom.subjectTags.length === EXPECT && dom.subjectTags.every((t) => t === info.subjectTitle), dom.subjectTags[0]);
   console.log('first three cards:', JSON.stringify(dom.titles.slice(0, 3), null, 0));
