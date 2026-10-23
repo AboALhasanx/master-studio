@@ -148,7 +148,7 @@
       "options_en": [
         "Static code linters and OWASP Top 10 secure software programming guidelines.",
         "Identity and Access Management (IAM) and multi-tenant hypervisor virtualization.",
-        "Firewalls and Intrusion Detection / Intrusion Prevention Systems (IDS/IPS).",
+        "Firewalls and Intrusion Detection / Intrusion Prevention Systems.",
         "Mobile application runtime sandboxing and local cellular malware scanning engines."
       ],
       "answer": "C",
@@ -340,7 +340,7 @@
         "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
         "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
         "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
-        "$$R = \\sum_{i=1}^n P_i \\cdot I_i$$"
+        "$$R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$$"
       ],
       "options_ar": [
         "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
@@ -424,10 +424,10 @@
       "question": "How does the Cyber Risk Exposure equation $R(t) = \\sum P_i(t) \\cdot I_i(t)$ fundamentally contrast with the risk optimization formula $\\min R = \\sum P_i I_i - \\sum C_j$?",
       "question_ar": "كيف تختلف معادلة التعرض للمخاطر $R(t) = \\sum P_i(t) I_i(t)$ جوهرياً عن معادلة تحسين الخطر $\\min R = \\sum P_i I_i - \\sum C_j$؟",
       "options": [
-        "$R$ models dynamic threat exposure over time without subtracting security investment costs $C_j$.",
-        "$R$ requires integer counter variables, whereas $\\min R$ requires logarithmic probability distributions.",
-        "$R$ measures only financial insurance premiums, whereas $\\min R$ calculates hardware server temperatures.",
-        "$R$ applies solely to physical door access, whereas $\\min R$ governs software compilation routines."
+        "$R(t)$ models dynamic threat exposure over time without subtracting security investment costs $C_j$.",
+        "$R(t)$ requires integer counter variables, whereas $\\min R$ requires logarithmic probability distributions.",
+        "$R(t)$ measures only financial insurance premiums, whereas $\\min R$ calculates hardware server temperatures.",
+        "$R(t)$ applies solely to physical door access, whereas $\\min R$ governs software compilation routines."
       ],
       "options_ar": [
         "معادلة $R$ تقيس التعرض الديناميكي للتهديدات عبر الزمن دون خصم تكاليف الاستثمار الأمني $C_j$.",

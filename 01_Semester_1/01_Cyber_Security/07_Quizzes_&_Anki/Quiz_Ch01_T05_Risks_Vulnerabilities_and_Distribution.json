@@ -204,7 +204,7 @@
         "اللائحة الأوروبية GDPR، وقانون التأمين الصحي HIPAA، وقانون كاليفورنيا CCPA."
       ],
       "options_en": [
-        "OCTAVE, FAIR, and NIST RMF (Risk Management Framework).",
+        "OCTAVE, FAIR, and NIST RMF.",
         "Waterfall, Agile Scrum, and Extreme Programming (XP).",
         "SHA-256, AES-GCM, and RSA-4096 cryptographic suites.",
         "GDPR, HIPAA, and California Consumer Privacy Act (CCPA)."
@@ -216,119 +216,119 @@
     },
     {
       "id": "q8",
-      "concept_id": "model_octave_acronym_meaning",
-      "bloom_level": "Remember",
-      "question": "What does the formal acronym OCTAVE stand for in cybersecurity risk assessment methodology?",
-      "question_ar": "ما الذي يرمز إليه الاختصار الأكاديمي OCTAVE في منهجيات تقييم المخاطر السيبرانية؟",
+      "concept_id": "risk_likelihood_impact_comparison",
+      "bloom_level": "Apply",
+      "question": "The lecture defines Risk as a function of likelihood and impact. Threat 1 has likelihood 0.2 and impact 500,000; Threat 2 has likelihood 0.4 and impact 100,000. Which one carries the greater risk?",
+      "question_ar": "تُعرّف المحاضرة الخطر بأنه دالة للاحتمالية والتأثير. التهديد الأول احتماليته 0.2 وتأثيره 500,000، والتهديد الثاني احتماليته 0.4 وتأثيره 100,000. أيّهما أخطر؟",
       "options": [
-        "Operationally Critical Threat, Asset, and Vulnerability Evaluation.",
-        "Operational Cybersecurity Testing And Verification Engine.",
-        "Optimized Cryptographic Tunneling And VPN Architecture Engine.",
-        "Organizational Compliance Tracking And Virtualization Environment."
+        "Threat 1, because $0.2 \\times 500{,}000 = 100{,}000$ exceeds $0.4 \\times 100{,}000 = 40{,}000$.",
+        "Threat 2, because $0.4 \\times 100{,}000 = 40{,}000$ exceeds $0.2 \\times 500{,}000 = 100{,}000$.",
+        "Threat 2, because the higher likelihood always dominates the impact term.",
+        "Neither, because risk cannot be compared without the time variable $t$."
       ],
       "options_ar": [
-        "تقييم التهديدات والأصول والثغرات الحرجة تشغيلياً للمنظمة.",
-        "محرك الاختبارات والتحقق والتدقيق السيبراني للعمليات المؤسسية التشغيلية الميدانية.",
-        "معمارية قنوات التشفير المتطورة والأنفاق الافتراضية للشبكات الخاصة الآمنة.",
-        "بيئة تتبع ومراقبة الامتثال التنظيمي وعزل الأنظمة الافتراضية في مراكز البيانات."
+        "التهديد الأول، لأن $0.2 \\times 500{,}000 = 100{,}000$ أكبر من $0.4 \\times 100{,}000 = 40{,}000$.",
+        "التهديد الثاني، لأن $0.4 \\times 100{,}000 = 40{,}000$ أكبر من $0.2 \\times 500{,}000 = 100{,}000$.",
+        "التهديد الثاني، لأن الاحتمالية الأعلى تتغلّب دائماً على حدّ التأثير.",
+        "لا هذا ولا ذاك، لأن الخطر لا يُقارن دون متغيّر الزمن $t$."
       ],
       "options_en": [
-        "Operationally Critical Threat, Asset, and Vulnerability Evaluation.",
-        "Operational Cybersecurity Testing And Verification Engine.",
-        "Optimized Cryptographic Tunneling And VPN Architecture Engine.",
-        "Organizational Compliance Tracking And Virtualization Environment."
+        "Threat 1, because $0.2 \\times 500{,}000 = 100{,}000$ exceeds $0.4 \\times 100{,}000 = 40{,}000$.",
+        "Threat 2, because $0.4 \\times 100{,}000 = 40{,}000$ exceeds $0.2 \\times 500{,}000 = 100{,}000$.",
+        "Threat 2, because the higher likelihood always dominates the impact term.",
+        "Neither, because risk cannot be compared without the time variable $t$."
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "OCTAVE stands for: Operationally Critical Threat, Asset, and Vulnerability Evaluation.",
-      "explanation_ar": "الاختصار OCTAVE يعني حرفياً: Operationally Critical Threat, Asset, and Vulnerability Evaluation (تقييم التهديدات والأصول والثغرات الحيوية للعمليات)."
+      "explanation": "Risk is the product of likelihood and impact, the same structure as the time-dependent form with the time dimension left out. Threat 1 gives 100,000 and Threat 2 gives 40,000, so Threat 1 is the greater risk: a higher likelihood does not by itself dominate. Option D confuses this with the time-dependent model.",
+      "explanation_ar": "الخطر = الاحتمالية × التأثير، وهو نفس تركيب الصيغة المعتمدة على الزمن من دون بُعد الزمن. الأول: 0.2 × 500,000 = 100,000، والثاني: 0.4 × 100,000 = 40,000، فالتهديد الأول أخطر. والخيار D يخلط بين هذا وبين الصيغة الزمنية."
     },
     {
       "id": "q9",
-      "concept_id": "model_octave_three_phases_structure",
-      "bloom_level": "Understand",
-      "question": "How is the OCTAVE risk assessment methodology structured across organizational operations?",
-      "question_ar": "كيف يتم هيكلة وتطبيق منهجية OCTAVE لتقييم المخاطر عبر العمليات التنظيمية للمؤسسة؟",
+      "concept_id": "vulnerability_human_factor_classification",
+      "bloom_level": "Apply",
+      "question": "An employee writes a system password on a note stuck to the monitor. Under the lecture's definition of a vulnerability, which category of weakness does this represent?",
+      "question_ar": "كتب موظف كلمة مرور النظام على ورقة ملصقة على الشاشة. وفق تعريف المحاضرة للثغرة، أي صنف من نقاط الضعف يمثّل هذا؟",
       "options": [
-        "A continuous mathematical linear regression model calculating monetary balance sheet loss.",
-        "Three phases: asset-based threat profiles, infrastructure vulnerability review, and security strategy.",
-        "Six lifecycle stages focusing strictly on federal government defense software authorization.",
-        "A single-step automated scanning process executed solely by perimeter hardware firewalls."
+        "A software flaw introduced during application development.",
+        "A human-factor weakness.",
+        "A hardware design defect in the display device.",
+        "An exploit tool used against the operating system."
       ],
       "options_ar": [
-        "نموذج انحدار خطي رياضي مستمر يحسب الخسائر المالية التقديرية في الميزانية السنوية.",
-        "ثلاث مراحل: بناء ملفات التهديد المبنية على الأصول، فحص البنية التحتية، وصياغة الاستراتيجية.",
-        "ست مراحل متعاقبة تركز حصرياً على اعتماد تصاريح تشغيل البرمجيات العسكرية الفدرالية.",
-        "عملية فحص مؤتمتة من خطوة واحدة تنفذها جدران الحماية الخارجية على الشبكة حصراً."
+        "خلل برمجي أُدخل أثناء تطوير التطبيق.",
+        "نقطة ضعف في العامل البشري.",
+        "عيب تصميمي في عتاد جهاز العرض.",
+        "أداة استغلال مستخدمة ضد نظام التشغيل."
       ],
       "options_en": [
-        "A continuous mathematical linear regression model calculating monetary balance sheet loss.",
-        "Three phases: asset-based threat profiles, infrastructure vulnerability review, and security strategy.",
-        "Six lifecycle stages focusing strictly on federal government defense software authorization.",
-        "A single-step automated scanning process executed solely by perimeter hardware firewalls."
+        "A software flaw introduced during application development.",
+        "A human-factor weakness.",
+        "A hardware design defect in the display device.",
+        "An exploit tool used against the operating system."
       ],
       "answer": "B",
       "correct": 1,
-      "explanation": "OCTAVE operates in three phases: 1) Build asset-based threat profiles, 2) Identify infrastructure vulnerabilities, and 3) Develop security strategy and plans.",
-      "explanation_ar": "منهجية OCTAVE مبنية على تقييم الأصول وتعمل في 3 مراحل: 1) بناء ملفات تهديد موجهة للأصول، 2) تحديد ثغرات البنية التحتية، 3) تطوير الاستراتيجية والخطط الأمنية."
+      "explanation": "The lecture defines vulnerabilities as weaknesses in software, hardware, or human factors. A password left in plain view is a human-factor weakness: it is not a code defect, not a hardware fault, and not an exploit, because exploits are the tools or methods used to take advantage of a weakness, not the weakness itself.",
+      "explanation_ar": "المحاضرة تعرّف الثغرات بأنها نقاط ضعف في البرمجيات أو العتاد أو العامل البشري. وكلمة المرور المكشوفة نقطة ضعف بشرية، وليست خللاً برمجياً ولا عيب عتاد ولا استغلالاً — فالاستغلال أداة أو طريقة تُستثمر بها الثغرة، لا الثغرة نفسها."
     },
     {
       "id": "q10",
-      "concept_id": "model_fair_factor_analysis_quantitative",
-      "bloom_level": "Understand",
-      "question": "What is the defining analytical characteristic of the Factor Analysis of Information Risk (FAIR) methodology?",
-      "question_ar": "ما الخاصية التحليلية المميزة لمنهجية تحليل عوامل مخاطر المعلومات FAIR مقارنة بغيرها؟",
+      "concept_id": "vulnerability_catalogue_identification",
+      "bloom_level": "Apply",
+      "question": "A newly discovered flaw in a web server is published with a unique identifier so that every vendor refers to it by the same name. Which lecture concept does that identifier belong to?",
+      "question_ar": "نُشر خلل مكتشف حديثاً في خادم ويب بمعرّف فريد حتى يشير إليه كل المزوّدين بالاسم نفسه. إلى أي مفهوم من مفاهيم المحاضرة ينتمي هذا المعرّف؟",
       "options": [
-        "Eliminating cryptographic algorithms in favor of manual physical paper record storage.",
-        "Conducting purely qualitative emotional surveys among non-technical departmental employees.",
-        "Decomposing cyber risk into discrete factors to conduct rigorous quantitative financial risk analysis.",
-        "Mandating physical security guard escorts for all visitors inside server room facilities."
+        "An exploit toolkit distributed to attackers.",
+        "A risk assessment model applied to the server.",
+        "A catalogued vulnerability entry.",
+        "A security control deployed to remediate it."
       ],
       "options_ar": [
-        "إلغاء خوارزميات التشفير الحاسوبية والاعتماد كلياً على الأرشفة الورقية اليدوية للملفات.",
-        "إجراء استبيانات رأي نوعية وانطباعية غير رقمية بين الموظفين غير الفنيين في الأقسام.",
-        "تفكيك الخطر إلى عوامل محددة لإجراء تحليل كمي رقمي دقيق يقيس الخسارة المالية المتوقعة.",
-        "إلزام الزوار بوجود مرافقين أمنيين ماديين طوال فترة تواجدهم داخل غرف الخوادم."
+        "حزمة أدوات استغلال تُوزّع على المهاجمين.",
+        "نموذج تقييم مخاطر يُطبّق على الخادم.",
+        "ثغرة مُفهرسة في سجل الثغرات.",
+        "ضابط أمني يُنشر لمعالجة الخلل."
       ],
       "options_en": [
-        "Eliminating cryptographic algorithms in favor of manual physical paper record storage.",
-        "Conducting purely qualitative emotional surveys among non-technical departmental employees.",
-        "Decomposing cyber risk into discrete factors to conduct rigorous quantitative financial risk analysis.",
-        "Mandating physical security guard escorts for all visitors inside server room facilities."
+        "An exploit toolkit distributed to attackers.",
+        "A risk assessment model applied to the server.",
+        "A catalogued vulnerability entry.",
+        "A security control deployed to remediate it."
       ],
       "answer": "C",
       "correct": 2,
-      "explanation": "FAIR (Factor Analysis of Information Risk) is celebrated for quantitative risk analysis, breaking risk into loss event frequency and loss magnitude.",
-      "explanation_ar": "نموذج FAIR (Factor Analysis of Information Risk) يتميز بأنه منهجية تحليل كمي رقمي؛ حيث يفكك الخطر لعوامل (احتمالية الحدث × حجم الخسارة المالية) ويحسبها رقمياً."
+      "explanation": "The lecture cites CVEs as its example of vulnerabilities, and a CVE is a standardized, globally unique identifier for a publicly known vulnerability. The identifier therefore names a catalogued vulnerability, not the exploit that abuses it, not a risk model, and not the control that fixes it.",
+      "explanation_ar": "المحاضرة تستشهد بـCVEs كمثال على الثغرات، وCVE معرّف معياري فريد عالمياً لثغرة معلنة. فالمعرّف يسمّي ثغرة مُفهرسة، لا أداة الاستغلال ولا نموذج التقييم ولا الضابط العلاجي."
     },
     {
       "id": "q11",
-      "concept_id": "model_nist_rmf_six_steps_lifecycle",
-      "bloom_level": "Understand",
-      "question": "What operational framework defines the NIST Risk Management Framework (RMF)?",
-      "question_ar": "ما الإطار التشغيلي العام الذي يحدد منهجية إطار إدارة المخاطر الأمريكي NIST RMF؟",
+      "concept_id": "cdf_boundary_implication",
+      "bloom_level": "Analyze",
+      "question": "The lecture annotates that $F(r)$ is bounded between 0 and 1. What does the value $F(r) = 1$ imply for $P(R > r)$?",
+      "question_ar": "تنص حاشية المحاضرة على أن $F(r)$ محصورة بين 0 و1. ماذا تعني القيمة $F(r) = 1$ بالنسبة إلى $P(R > r)$؟",
       "options": [
-        "An international treaty regulating oceanic fiber optic telecommunication cable installation rights.",
-        "A structured, continuous 6-step lifecycle for categorizing, selecting, implementing, and monitoring controls.",
-        "A proprietary software scanning tool that automatically rewrites defective source code logic.",
-        "A set of three asset evaluation questionnaires administered exclusively to corporate finance officers."
+        "It implies that $P(R > r)$ reaches its maximum possible value of 1.",
+        "It implies that $P(R > r)$ is 0, since no loss exceeds the threshold $r$.",
+        "It implies that $P(R > r)$ becomes undefined because the distribution collapses.",
+        "It implies that $P(R > r)$ equals 1 because the two expressions are complementary."
       ],
       "options_ar": [
-        "معاهدة دولية تنظم حقوق مد وتثبيت كابلات الألياف الضوئية البحرية في المياه الدولية.",
-        "دورة حياة منظمة ومستمرة من 6 خطوات: تصنيف، اختيار الضوابط، تنفيذ، تقييم، اعتماد، ومراقبة.",
-        "أداة فحص برمجية تجارية مغلقة تقوم تلقائياً بإعادة كتابة منطق الشيفرة البرمجية المعيبة.",
-        "مجموعة استبيانات لتقييم الأصول مكونة من 3 أجزاء تُسلّم حصرياً للمديرين الماليين."
+        "تعني أن $P(R > r)$ تبلغ أقصى قيمة ممكنة وهي 1.",
+        "تعني أن $P(R > r)$ تساوي 0، لأنه لا توجد خسارة تتجاوز الحد $r$.",
+        "تعني أن $P(R > r)$ تصبح غير معرّفة لأن التوزيع ينهار.",
+        "تعني أن $P(R > r)$ تساوي 1 لأن التعبيرين متتامّان."
       ],
       "options_en": [
-        "An international treaty regulating oceanic fiber optic telecommunication cable installation rights.",
-        "A structured, continuous 6-step lifecycle for categorizing, selecting, implementing, and monitoring controls.",
-        "A proprietary software scanning tool that automatically rewrites defective source code logic.",
-        "A set of three asset evaluation questionnaires administered exclusively to corporate finance officers."
+        "It implies that $P(R > r)$ reaches its maximum possible value of 1.",
+        "It implies that $P(R > r)$ is 0, since no loss exceeds the threshold $r$.",
+        "It implies that $P(R > r)$ becomes undefined because the distribution collapses.",
+        "It implies that $P(R > r)$ equals 1 because the two expressions are complementary."
       ],
       "answer": "B",
       "correct": 1,
-      "explanation": "NIST RMF (Risk Management Framework) is a 6-step lifecycle: Categorize, Select, Implement, Assess, Authorize, and Monitor security controls.",
-      "explanation_ar": "إطار NIST RMF هو إطار إدارة المخاطر التابع للمعهد الأمريكي للمعايير، ويقوم على دورة حياة من 6 خطوات متتالية: تصنيف الأنظمة، اختيار الضوابط، تنفيذها، تقييمها، اعتمادها، ومراقبتها."
+      "explanation": "$P(R > r) = 1 - F(r)$. If $F(r) = 1$ the cumulative distribution has absorbed the whole probability mass up to $r$, so $P(R > r) = 1 - 1 = 0$: nothing is left above the threshold. Option D reverses the complement, because the two expressions sum to 1 rather than being equal.",
+      "explanation_ar": "$P(R > r) = 1 - F(r)$. وإذا كان $F(r) = 1$ فقد استوعب التوزيع التراكمي كل الكتلة الاحتمالية حتى $r$، فتصير $P(R > r) = 1 - 1 = 0$. والخيار D يعكس التتامّ: التعبيران مجموعهما 1 ولا يتساويان."
     },
     {
       "id": "q12",
@@ -340,7 +340,7 @@
         "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
         "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
         "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-        "$$P(R > r) = 1 - F$$"
+        "$$P(R > r) = 1 - F(r)$$"
       ],
       "options_ar": [
         "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
@@ -398,7 +398,7 @@
         "A linear cost slope function with values expressed in unconstrained currency units.",
         "An exponential frequency metric with values ranging between negative one and positive one.",
         "A probability density function (PDF) with values spanning from zero to positive infinity.",
-        "The Cumulative Distribution Function (CDF) of risk impact, bounded strictly within $0 \\le F \\le 1$."
+        "The Cumulative Distribution Function (CDF) of risk impact, bounded strictly within $0 \\le F(r) \\le 1$."
       ],
       "options_ar": [
         "دالة انحدار التكلفة الخطية المعبر عن قيمها بوحدات العملة المالية غير المقيدة بسقف.",
@@ -436,7 +436,7 @@
         "احتمال عدم وقوع أي حادث أو تهديد أمني إطلاقاً خلال الربع المالي التشغيلي القادم."
       ],
       "options_en": [
-        "The probability that the realized risk loss will exceed an acceptable threshold $r$ (tail risk).",
+        "The probability that the realized risk loss will exceed an acceptable threshold $r$.",
         "The probability that employee credential passwords will be successfully decrypted within one hour.",
         "The probability that all perimeter network firewalls will experience simultaneous power loss.",
         "The probability that zero security incidents will occur during the upcoming fiscal quarter."

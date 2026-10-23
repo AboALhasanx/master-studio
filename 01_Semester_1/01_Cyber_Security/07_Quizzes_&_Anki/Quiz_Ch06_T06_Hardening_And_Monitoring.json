@@ -1,0 +1,537 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T06_Hardening_And_Monitoring",
+ "topic": "Secure configuration, hardening, monitoring and incident response",
+ "topic_ar": "التحصين والمراقبة والاستجابة للحوادث",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_hardening_goal",
+   "bloom_level": "Understand",
+   "question": "What is the goal of configuration hardening?",
+   "question_ar": "شنو هدف تقوية الإعدادات؟",
+   "options": [
+    "Adding more authentication factors to logins.",
+    "Minimising the attack surface the application presents.",
+    "Maximising the number of security tools deployed.",
+    "Encrypting every field in the database."
+   ],
+   "options_ar": [
+    "إضافة عوامل مصادقة أكثر للدخول.",
+    "تقليل سطح الهجوم اللي يعرضه التطبيق.",
+    "تكبير عدد الأدوات الأمنية المنصّبة.",
+    "تشفير كل حقل بقاعدة البيانات."
+   ],
+   "options_en": [
+    "Adding more authentication factors to logins.",
+    "Minimising the attack surface the application presents.",
+    "Maximising the number of security tools deployed.",
+    "Encrypting every field in the database."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It closes what does not need to be open, so the attacker has fewer reachable things to attack.",
+   "explanation_ar": "يسكّر اللي ما يحتاج يكون مفتوحاً، فيبقى للمهاجم أشياء أقل يقدر يوصلها."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_hard_disable_services",
+   "bloom_level": "Remember",
+   "question": "Why does the chapter recommend disabling unused services?",
+   "question_ar": "ليش يوصي الفصل بتعطيل الخدمات غير المستخدمة؟",
+   "options": [
+    "Because each running service is a potential entry point.",
+    "Because unused services consume valuable licence seats.",
+    "Because they slow down the whole build pipeline.",
+    "Because they become impossible to patch later on."
+   ],
+   "options_ar": [
+    "لأن كل خدمة شغّالة نقطة دخول محتملة.",
+    "لأن الخدمات غير المستخدمة تستهلك مقاعد ترخيص.",
+    "لأنها تبطّئ خط البناء كله.",
+    "لأنها تصير مستحيلة الترقيع لاحقاً."
+   ],
+   "options_en": [
+    "Because each running service is a potential entry point.",
+    "Because unused services consume valuable licence seats.",
+    "Because they slow down the whole build pipeline.",
+    "Because they become impossible to patch later on."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A service nobody uses still listens, still parses input and still needs patching, so it is pure downside.",
+   "explanation_ar": "الخدمة اللي ما يستخدمها أحد تظل تسمع وتظل تحلّل مدخلات وتظل تحتاج ترقيع، فما عندها إلا الضرر."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_hard_least_functionality",
+   "bloom_level": "Remember",
+   "question": "What does the principle of least functionality mean?",
+   "question_ar": "شنو يعني مبدأ أقل وظيفة؟",
+   "options": [
+    "Giving users the fewest permissions possible.",
+    "Logging the fewest events required by law.",
+    "Deploying the fewest servers that can cope.",
+    "Running only the features and protocols needed."
+   ],
+   "options_ar": [
+    "منح المستخدمين أقل صلاحيات ممكنة.",
+    "تسجيل أقل عدد أحداث يفرضه القانون.",
+    "نشر أقل عدد سيرفرات يكفي.",
+    "تشغيل الميزات والبروتوكولات المطلوبة فقط."
+   ],
+   "options_en": [
+    "Giving users the fewest permissions possible.",
+    "Logging the fewest events required by law.",
+    "Deploying the fewest servers that can cope.",
+    "Running only the features and protocols needed."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It is about the software's own surface — which features and protocols are enabled — rather than about user permissions.",
+   "explanation_ar": "يتعلّق بسطح البرمجية نفسها — أي ميزات وبروتوكولات مفعّلة — مو بصلاحيات المستخدم."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_hard_tls13",
+   "bloom_level": "Remember",
+   "question": "Which transport requirement does the chapter impose for hardening?",
+   "question_ar": "أي شرط نقل يفرضه الفصل للتقوية؟",
+   "options": [
+    "Disable TLS and rely on network isolation.",
+    "Use TLS only for authentication endpoints.",
+    "Enforce TLS 1.3 for all communications.",
+    "Allow TLS 1.0 for backward compatibility."
+   ],
+   "options_ar": [
+    "تعطيل TLS والاعتماد على عزل الشبكة.",
+    "استخدام TLS لنقاط المصادقة فقط.",
+    "فرض TLS 1.3 لكل الاتصالات.",
+    "السماح بـ TLS 1.0 للتوافق مع القديم."
+   ],
+   "options_en": [
+    "Disable TLS and rely on network isolation.",
+    "Use TLS only for authentication endpoints.",
+    "Enforce TLS 1.3 for all communications.",
+    "Allow TLS 1.0 for backward compatibility."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Modern TLS removes the legacy protocol versions and weak cipher suites that older deployments still permit.",
+   "explanation_ar": "TLS الحديث يحذف إصدارات البروتوكول القديمة ومجموعات التشفير الضعيفة اللي ما زالت النشرات القديمة تسمح بها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_hard_asr_formula",
+   "bloom_level": "Remember",
+   "question": "How is attack surface reduction expressed for hardening?",
+   "question_ar": "كيف يُعبَّر عن تقليل سطح الهجوم للتقوية؟",
+   "options": [
+    "Total endpoints divided by the exposed ones.",
+    "One minus exposed endpoints over total endpoints.",
+    "Exposed endpoints over the total number of endpoints.",
+    "One plus exposed endpoints over total endpoints."
+   ],
+   "options_ar": [
+    "الإجمالي مقسوماً على النقاط المكشوفة.",
+    "واحد ناقص النقاط المكشوفة على الإجمالي.",
+    "النقاط المكشوفة على إجمالي النقاط.",
+    "واحد زائد النقاط المكشوفة على الإجمالي."
+   ],
+   "options_en": [
+    "Total endpoints divided by the exposed ones.",
+    "One minus exposed endpoints over total endpoints.",
+    "Exposed endpoints over the total number of endpoints.",
+    "One plus exposed endpoints over total endpoints."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The score is the fraction of the surface that has been closed, so it rises as exposure falls.",
+   "explanation_ar": "الدرجة هي نسبة السطح اللي انسكّر، فترتفع كل ما قلّ التعرّض."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_hard_asr_meaning",
+   "bloom_level": "Understand",
+   "question": "What does a value approaching one indicate?",
+   "question_ar": "شنو تدلّ عليه قيمة تقترب من الواحد؟",
+   "options": [
+    "Near-optimal hardening of the configuration.",
+    "Almost every endpoint is exposed to attack.",
+    "The application has no endpoints at all.",
+    "The model has been applied incorrectly."
+   ],
+   "options_ar": [
+    "تقوية شبه مثالية للإعداد.",
+    "تقريباً كل نقطة مكشوفة للهجوم.",
+    "التطبيق ما عنده نقاط أبداً.",
+    "النموذج مطبَّق بشكل خاطئ."
+   ],
+   "options_en": [
+    "Near-optimal hardening of the configuration.",
+    "Almost every endpoint is exposed to attack.",
+    "The application has no endpoints at all.",
+    "The model has been applied incorrectly."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A score near one means almost nothing exploitable remains reachable, which is the objective of hardening.",
+   "explanation_ar": "درجة قرب الواحد تعني إن تقريباً ماكو شي قابل للاستغلال يبقى قابلاً للوصول، وهذا هدف التقوية."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_hard_asr_zero",
+   "bloom_level": "Analyze",
+   "question": "What does a score of zero mean?",
+   "question_ar": "شنو تعني درجة صفر؟",
+   "options": [
+    "The application is perfectly hardened already.",
+    "Only half of the endpoints are reachable.",
+    "The endpoint count could not be measured.",
+    "Every endpoint is exposed, so nothing is hardened."
+   ],
+   "options_ar": [
+    "التطبيق مقوّى تماماً من قبل.",
+    "نصف النقاط فقط قابلة للوصول.",
+    "عدد النقاط ما انقاس.",
+    "كل نقطة مكشوفة، فماكو تقوية."
+   ],
+   "options_en": [
+    "The application is perfectly hardened already.",
+    "Only half of the endpoints are reachable.",
+    "The endpoint count could not be measured.",
+    "Every endpoint is exposed, so nothing is hardened."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "With the whole surface open there is nothing closed, which is the state hardening is meant to change.",
+   "explanation_ar": "بسطح مفتوح بالكامل ماكو شي مسكّر، وهذي الحالة اللي جاية التقوية تغيّرها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_hard_close_vs_patch",
+   "bloom_level": "Analyze",
+   "question": "Why can closing a service be better than patching its flaw?",
+   "question_ar": "ليش إغلاق خدمة يقدر يكون أفضل من ترقيع عيبها؟",
+   "options": [
+    "Because patches introduce new vulnerabilities.",
+    "Because scanners cannot detect closed ports.",
+    "Because an unreachable flaw cannot be exploited at all.",
+    "Because closing a service is always cheaper."
+   ],
+   "options_ar": [
+    "لأن الترقيعات تجيب ثغرات جديدة.",
+    "لأن الفاحصات ما تكشف المنافذ المسكّرة.",
+    "لأن عيباً غير قابل للوصول ما ينستغل أبداً.",
+    "لأن إغلاق الخدمة أرخص دائماً."
+   ],
+   "options_en": [
+    "Because patches introduce new vulnerabilities.",
+    "Because scanners cannot detect closed ports.",
+    "Because an unreachable flaw cannot be exploited at all.",
+    "Because closing a service is always cheaper."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Removing the exposure removes the attack path itself, which is more durable than fixing one specific defect in reachable code.",
+   "explanation_ar": "إزالة التعرّض تزيل مسار الهجوم نفسه، وهذا أدوم من إصلاح عيب معيّن بكود يظل قابلاً للوصول."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_mon_prevention_not_enough",
+   "bloom_level": "Understand",
+   "question": "Why does the chapter say prevention alone is insufficient?",
+   "question_ar": "ليش يقول الفصل إن المنع وحده ما يكفي؟",
+   "options": [
+    "Because prevention has become too expensive.",
+    "Because not every attack can be prevented.",
+    "Because prevention controls are always misconfigured.",
+    "Because attackers never target prevention controls."
+   ],
+   "options_ar": [
+    "لأن المنع صار مكلفاً جداً.",
+    "لأن ما كل هجوم يمكن منعه.",
+    "لأن ضوابط المنع دائماً معطوبة الإعداد.",
+    "لأن المهاجمين ما يستهدفون ضوابط المنع."
+   ],
+   "options_en": [
+    "Because prevention has become too expensive.",
+    "Because not every attack can be prevented.",
+    "Because prevention controls are always misconfigured.",
+    "Because attackers never target prevention controls."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Since some attacks will get through, the speed of noticing and reacting becomes the real differentiator.",
+   "explanation_ar": "بما إن بعض الهجمات راح تعدّي، فسرعة الملاحظة وردّ الفعل تصير هي الفرق الحقيقي."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_mon_behavioral",
+   "bloom_level": "Remember",
+   "question": "What does behavioral analytics do?",
+   "question_ar": "شنو تسوي التحليلات السلوكية؟",
+   "options": [
+    "AI models analyse request anomalies.",
+    "Compress logs before archiving them.",
+    "Rotate credentials on a schedule.",
+    "Patch dependencies automatically."
+   ],
+   "options_ar": [
+    "نماذج ذكاء اصطناعي تحلّل شذوذ الطلبات.",
+    "تضغط السجلات قبل أرشفتها.",
+    "تدوّر بيانات الاعتماد بجدول.",
+    "ترقّع التبعيات تلقائياً."
+   ],
+   "options_en": [
+    "AI models analyse request anomalies.",
+    "Compress logs before archiving them.",
+    "Rotate credentials on a schedule.",
+    "Patch dependencies automatically."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It looks for requests that do not fit the established pattern rather than only matching known bad signatures.",
+   "explanation_ar": "يدوّر على الطلبات اللي ما تطابق النمط المعتاد بدل ما يطابق بصمات سيئة معروفة فقط."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_mon_forensic",
+   "bloom_level": "Remember",
+   "question": "What does forensic logging provide?",
+   "question_ar": "شنو يوفّره التسجيل الجنائي؟",
+   "options": [
+    "Real-time blocking of malicious requests.",
+    "Automated containment of infected hosts.",
+    "Encrypted backups of the database.",
+    "Tamper-proof records for post-incident analysis."
+   ],
+   "options_ar": [
+    "حجب فوري للطلبات الخبيثة.",
+    "احتواء آلي للمضيفين المصابين.",
+    "نسخ احتياطية مشفّرة لقاعدة البيانات.",
+    "سجلات غير قابلة للتلاعب للتحليل بعد الحادث."
+   ],
+   "options_en": [
+    "Real-time blocking of malicious requests.",
+    "Automated containment of infected hosts.",
+    "Encrypted backups of the database.",
+    "Tamper-proof records for post-incident analysis."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "After an incident the logs are the evidence, so an attacker who can edit them can erase the story of what happened.",
+   "explanation_ar": "بعد الحادثة السجلات هي الدليل، فمهاجم يقدر يعدّلها يقدر يمسح قصة اللي صار."
+  },
+  {
+   "id": "q12",
+   "concept_id": "w6_mon_soar",
+   "bloom_level": "Remember",
+   "question": "What do playbooks and SOAR platforms automate?",
+   "question_ar": "شنو تؤتمته كتب اللعب ومنصّات SOAR؟",
+   "options": [
+    "Certificate issuance and renewal.",
+    "Capacity planning and autoscaling.",
+    "Containment and recovery actions.",
+    "Code review and merge approvals."
+   ],
+   "options_ar": [
+    "إصدار الشهادات وتجديدها.",
+    "تخطيط السعة والتوسّع التلقائي.",
+    "إجراءات الاحتواء والاستعادة.",
+    "مراجعة الكود وموافقات الدمج."
+   ],
+   "options_en": [
+    "Certificate issuance and renewal.",
+    "Capacity planning and autoscaling.",
+    "Containment and recovery actions.",
+    "Code review and merge approvals."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Automating the response shortens the time between noticing an incident and stopping its spread.",
+   "explanation_ar": "أتمتة الاستجابة تقصّر الزمن بين ملاحظة الحادثة وإيقاف انتشارها."
+  },
+  {
+   "id": "q13",
+   "concept_id": "w6_mon_mttd",
+   "bloom_level": "Remember",
+   "question": "What does mean time to detect measure?",
+   "question_ar": "شنو يقيس متوسط زمن الكشف؟",
+   "options": [
+    "The mean cost of a single incident.",
+    "The mean time taken to detect an incident.",
+    "The mean time taken to recover from it.",
+    "The mean number of alerts per day."
+   ],
+   "options_ar": [
+    "متوسط كلفة الحادثة الواحدة.",
+    "متوسط الزمن اللازم لكشف الحادثة.",
+    "متوسط الزمن اللازم للتعافي منها.",
+    "متوسط عدد التنبيهات يومياً."
+   ],
+   "options_en": [
+    "The mean cost of a single incident.",
+    "The mean time taken to detect an incident.",
+    "The mean time taken to recover from it.",
+    "The mean number of alerts per day."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It is a detection metric, so shortening it means the organisation learns about a breach sooner.",
+   "explanation_ar": "هو مقياس كشف، فتقصيره يعني إن المؤسسة تعرف بالاختراق أبكر."
+  },
+  {
+   "id": "q14",
+   "concept_id": "w6_mon_mttr",
+   "bloom_level": "Remember",
+   "question": "What does mean time to respond measure?",
+   "question_ar": "شنو يقيس متوسط زمن الاستجابة؟",
+   "options": [
+    "The mean time taken to respond to an incident.",
+    "The mean time taken to detect an incident.",
+    "The mean time between two failures.",
+    "The mean time to deploy a new release."
+   ],
+   "options_ar": [
+    "متوسط الزمن اللازم للاستجابة للحادثة.",
+    "متوسط الزمن اللازم لكشف الحادثة.",
+    "متوسط الزمن بين فشلين.",
+    "متوسط الزمن لنشر إصدار جديد."
+   ],
+   "options_en": [
+    "The mean time taken to respond to an incident.",
+    "The mean time taken to detect an incident.",
+    "The mean time between two failures.",
+    "The mean time to deploy a new release."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It is a response metric, so shortening it means the organisation contains damage faster once it knows.",
+   "explanation_ar": "هو مقياس استجابة، فتقصيره يعني إن المؤسسة تحتوي الضرر أسرع بعد ما تعرف."
+  },
+  {
+   "id": "q15",
+   "concept_id": "w6_mon_resilience_formula",
+   "bloom_level": "Remember",
+   "question": "How is operational resilience expressed from those metrics?",
+   "question_ar": "كيف تُعبَّر المرونة التشغيلية من تلك المقاييس؟",
+   "options": [
+    "The sum of detection and response time.",
+    "The product of detection and response time.",
+    "The difference between detection and response time.",
+    "One over the sum of detection and response time."
+   ],
+   "options_ar": [
+    "مجموع زمن الكشف والاستجابة.",
+    "حاصل ضرب زمن الكشف والاستجابة.",
+    "الفرق بين زمن الكشف والاستجابة.",
+    "واحد على مجموع زمن الكشف والاستجابة."
+   ],
+   "options_en": [
+    "The sum of detection and response time.",
+    "The product of detection and response time.",
+    "The difference between detection and response time.",
+    "One over the sum of detection and response time."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Resilience is defined as the reciprocal, so it is a rate of recovery rather than a duration.",
+   "explanation_ar": "المرونة معرّفة كمقلوب، فهي معدّل تعافٍ مو مدة."
+  },
+  {
+   "id": "q16",
+   "concept_id": "w6_mon_inverse",
+   "bloom_level": "Analyze",
+   "question": "Why is the relation between resilience and those times inverse?",
+   "question_ar": "ليش العلاقة بين المرونة وتلك الأزمنة عكسية؟",
+   "options": [
+    "Because resilience is measured in the same units.",
+    "Because detection and response are unrelated.",
+    "Because faster detection and response leave less damage.",
+    "Because slower response gives analysts more evidence."
+   ],
+   "options_ar": [
+    "لأن المرونة تُقاس بنفس الوحدات.",
+    "لأن الكشف والاستجابة غير مترابطين.",
+    "لأن الكشف والاستجابة الأسرع يتركان ضرراً أقل.",
+    "لأن الاستجابة الأبطأ تعطي المحلّلين أدلة أكثر."
+   ],
+   "options_en": [
+    "Because resilience is measured in the same units.",
+    "Because detection and response are unrelated.",
+    "Because faster detection and response leave less damage.",
+    "Because slower response gives analysts more evidence."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Damage accumulates while an incident is undetected and unhandled, so time is the variable that matters.",
+   "explanation_ar": "الضرر يتراكم ما دامت الحادثة غير مكتشفة وغير معالَجة، فالزمن هو المتغيّر المهم."
+  },
+  {
+   "id": "q17",
+   "concept_id": "w6_mon_investment",
+   "bloom_level": "Understand",
+   "question": "Why do organisations invest in SIEM and SOAR for this?",
+   "question_ar": "ليش تستثمر المؤسسات بـ SIEM و SOAR لهذا الغرض؟",
+   "options": [
+    "Because both reduce the number of endpoints.",
+    "Because both shorten detection and response times.",
+    "Because both replace the need for prevention.",
+    "Because both are required by every standard."
+   ],
+   "options_ar": [
+    "لأن الاثنين يقلّلان عدد النقاط.",
+    "لأن الاثنين يقصّران زمن الكشف والاستجابة.",
+    "لأن الاثنين يغنيان عن المنع.",
+    "لأن كل المعايير تشترطهما."
+   ],
+   "options_en": [
+    "Because both reduce the number of endpoints.",
+    "Because both shorten detection and response times.",
+    "Because both replace the need for prevention.",
+    "Because both are required by every standard."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Correlation finds incidents sooner and automation responds sooner, which is exactly the pair the resilience formula rewards.",
+   "explanation_ar": "الربط يكتشف الحوادث أبكر والأتمتة تستجيب أبكر، وهذي بالضبط الثنائية اللي تكافئها معادلة المرونة."
+  },
+  {
+   "id": "q18",
+   "concept_id": "w6_mon_tamperproof",
+   "bloom_level": "Understand",
+   "question": "Why must forensic logs be tamper-proof?",
+   "question_ar": "ليش لازم السجلات الجنائية تكون غير قابلة للتلاعب؟",
+   "options": [
+    "Because they are the evidence after an incident.",
+    "Because regulations forbid log rotation.",
+    "Because they are the largest data store.",
+    "Because analysts read them in real time."
+   ],
+   "options_ar": [
+    "لأنها الدليل بعد الحادثة.",
+    "لأن الأنظمة تمنع تدوير السجلات.",
+    "لأنها أكبر مخزن بيانات.",
+    "لأن المحلّلين يقرأونها بالزمن الحقيقي."
+   ],
+   "options_en": [
+    "Because they are the evidence after an incident.",
+    "Because regulations forbid log rotation.",
+    "Because they are the largest data store.",
+    "Because analysts read them in real time."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "If the attacker can rewrite the log, the investigation has no trustworthy timeline to reconstruct.",
+   "explanation_ar": "لو قدر المهاجم يعيد كتابة السجل، فالتحقيق ما عنده خط زمني موثوق يعيد بناء الأحداث."
+  }
+ ]
+}

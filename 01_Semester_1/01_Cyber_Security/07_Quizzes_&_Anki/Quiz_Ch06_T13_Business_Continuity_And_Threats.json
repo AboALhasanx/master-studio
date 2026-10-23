@@ -1,0 +1,595 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T13_Business_Continuity_And_Threats",
+ "topic": "Business continuity, continuity threats and modern perspectives",
+ "topic_ar": "استمرارية العمل وتهديداتها والمنظورات الحديثة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_bc_drp",
+   "bloom_level": "Remember",
+   "question": "What does disaster recovery planning cover?",
+   "question_ar": "شنو يغطّي تخطيط التعافي من الكوارث؟",
+   "options": [
+    "Scanning frequency, patch cadence and release gates.",
+    "Hiring plans, training budgets and audit schedules.",
+    "Encryption strength, key length and rotation policy.",
+    "Data replication, recovery time and recovery point objectives."
+   ],
+   "options_ar": [
+    "وتيرة الفحص ودورية الترقيع وبوابات الإصدار.",
+    "خطط التوظيف وميزانيات التدريب وجداول التدقيق.",
+    "قوة التشفير وطول المفتاح وسياسة التدوير.",
+    "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي."
+   ],
+   "options_en": [
+    "Scanning frequency, patch cadence and release gates.",
+    "Hiring plans, training budgets and audit schedules.",
+    "Encryption strength, key length and rotation policy.",
+    "Data replication, recovery time and recovery point objectives."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It ensures recovery from catastrophic events through replication across sites plus the two objectives that bound acceptable loss.",
+   "explanation_ar": "يضمن التعافي من الأحداث الكارثية عبر التكرار بين المواقع مع الهدفين اللي يحدّان الخسارة المقبولة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_bc_rto",
+   "bloom_level": "Remember",
+   "question": "What does the recovery time objective specify?",
+   "question_ar": "شنو يحدّده هدف زمن التعافي؟",
+   "options": [
+    "The number of replicas required.",
+    "The cost of the recovery site.",
+    "The maximum tolerable downtime.",
+    "The maximum acceptable data loss."
+   ],
+   "options_ar": [
+    "عدد النسخ المطلوبة.",
+    "كلفة موقع التعافي.",
+    "أقصى زمن توقّف يمكن تحمّله.",
+    "أقصى فقدان بيانات مقبول."
+   ],
+   "options_en": [
+    "The number of replicas required.",
+    "The cost of the recovery site.",
+    "The maximum tolerable downtime.",
+    "The maximum acceptable data loss."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It answers how long the service may stay down before recovery has failed the objective.",
+   "explanation_ar": "يجيب على سؤال شكد يجوز تبقى الخدمة واقفة قبل ما يفشل التعافي بالهدف."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_bc_rpo",
+   "bloom_level": "Remember",
+   "question": "What does the recovery point objective specify?",
+   "question_ar": "شنو يحدّده هدف نقطة التعافي؟",
+   "options": [
+    "The speed at which replication must run.",
+    "The maximum acceptable data loss measured in time.",
+    "The maximum tolerable service downtime.",
+    "The number of backup sites to maintain."
+   ],
+   "options_ar": [
+    "السرعة اللي لازم يشتغل بها التكرار.",
+    "أقصى فقدان بيانات مقبول مقيساً بالزمن.",
+    "أقصى توقّف خدمة يمكن تحمّله.",
+    "عدد مواقع النسخ الاحتياطي المطلوبة."
+   ],
+   "options_en": [
+    "The speed at which replication must run.",
+    "The maximum acceptable data loss measured in time.",
+    "The maximum tolerable service downtime.",
+    "The number of backup sites to maintain."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It answers how far back you may have to restore, which in turn dictates backup frequency.",
+   "explanation_ar": "يجيب على سؤال لأي نقطة زمنية قد تضطر ترجع، وهذا بدوره يفرض وتيرة النسخ الاحتياطي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_bc_rto_vs_rpo",
+   "bloom_level": "Analyze",
+   "question": "What separates the two objectives?",
+   "question_ar": "شنو يفصل الهدفين؟",
+   "options": [
+    "One bounds downtime; the other bounds lost data.",
+    "One bounds lost data; the other bounds downtime.",
+    "Both bound downtime but for different teams.",
+    "Both bound data loss but for different regions."
+   ],
+   "options_ar": [
+    "واحد يحدّ التوقّف؛ والثاني يحدّ البيانات المفقودة.",
+    "واحد يحدّ البيانات المفقودة؛ والثاني يحدّ التوقّف.",
+    "الاثنان يحدّان التوقّف لكن لفرق مختلفة.",
+    "الاثنان يحدّان فقدان البيانات لكن لمناطق مختلفة."
+   ],
+   "options_en": [
+    "One bounds downtime; the other bounds lost data.",
+    "One bounds lost data; the other bounds downtime.",
+    "Both bound downtime but for different teams.",
+    "Both bound data loss but for different regions."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "They measure different things: one is about time without service, the other about how much history is unrecoverable.",
+   "explanation_ar": "الاثنان يقيسان أشياء مختلفة: واحد عن الزمن بلا خدمة، والثاني عن كم من التاريخ غير قابل للاستعادة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_bc_rpo_implication",
+   "bloom_level": "Analyze",
+   "question": "If the recovery point objective is one hour, what does that force?",
+   "question_ar": "لو كان هدف نقطة التعافي ساعة، شنو يفرض؟",
+   "options": [
+    "A recovery time of no more than one single hour.",
+    "Exactly one replica held in a second region.",
+    "Hourly penetration testing of the whole service.",
+    "Backups at least hourly, or the loss exceeds the bound."
+   ],
+   "options_ar": [
+    "زمن تعافٍ لا يزيد على ساعة.",
+    "نسخة واحدة بالضبط بمنطقة ثانية.",
+    "اختبار اختراق كل ساعة للخدمة.",
+    "نسخاً احتياطية كل ساعة على الأقل، وإلا تجاوز الفقدان الحد."
+   ],
+   "options_en": [
+    "A recovery time of no more than one single hour.",
+    "Exactly one replica held in a second region.",
+    "Hourly penetration testing of the whole service.",
+    "Backups at least hourly, or the loss exceeds the bound."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Anything written after the last recoverable point is lost, so the backup interval has to be shorter than the objective.",
+   "explanation_ar": "أي شي يُكتب بعد آخر نقطة قابلة للاستعادة يُفقد، فالفاصل بين النسخ لازم يكون أقصر من الهدف."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_bc_ir_integration",
+   "bloom_level": "Understand",
+   "question": "How does incident response integration affect continuity?",
+   "question_ar": "كيف يؤثّر تكامل الاستجابة للحوادث على الاستمرارية؟",
+   "options": [
+    "It guarantees the service never goes down at all.",
+    "It removes the requirement for data replication.",
+    "Fast containment decides whether an incident stays isolated.",
+    "It replaces the need for any disaster recovery plan."
+   ],
+   "options_ar": [
+    "يضمن إن الخدمة ما توقف أبداً.",
+    "يزيل شرط تكرار البيانات.",
+    "الاحتواء السريع يحدّد هل تبقى الحادثة معزولة.",
+    "يغني عن أي خطة تعافٍ من الكوارث."
+   ],
+   "options_en": [
+    "It guarantees the service never goes down at all.",
+    "It removes the requirement for data replication.",
+    "Fast containment decides whether an incident stays isolated.",
+    "It replaces the need for any disaster recovery plan."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A ransomware infection that is contained early is a limited outage, while the same infection uncontained becomes a full stoppage.",
+   "explanation_ar": "عدوى فدية تُحتوى مبكراً تكون عطلاً محدوداً، ونفس العدوى بلا احتواء تصير توقّفاً كاملاً."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_bc_iso",
+   "bloom_level": "Remember",
+   "question": "Which two standards does the chapter pair for continuity?",
+   "question_ar": "أي معيارين يقرنهما الفصل للاستمرارية؟",
+   "options": [
+    "PCI DSS and GDPR for data protection only.",
+    "ISO 22301 for continuity and ISO 27001 for security.",
+    "ISO 9001 for quality and ISO 14001 for environment.",
+    "NIST SP 800-41 and FIPS 140-3 for cryptography."
+   ],
+   "options_ar": [
+    "PCI DSS و GDPR لحماية البيانات فقط.",
+    "ISO 22301 للاستمرارية و ISO 27001 للأمن.",
+    "ISO 9001 للجودة و ISO 14001 للبيئة.",
+    "NIST SP 800-41 و FIPS 140-3 للتشفير."
+   ],
+   "options_en": [
+    "PCI DSS and GDPR for data protection only.",
+    "ISO 22301 for continuity and ISO 27001 for security.",
+    "ISO 9001 for quality and ISO 14001 for environment.",
+    "NIST SP 800-41 and FIPS 140-3 for cryptography."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Continuity management and information security management are complementary frameworks, so a serious programme adopts both.",
+   "explanation_ar": "إدارة الاستمرارية وإدارة أمن المعلومات إطاران متكاملان، فالبرنامج الجدّي يتبنّى الاثنين."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_th_ddos",
+   "bloom_level": "Understand",
+   "question": "What does a distributed denial-of-service attack strike?",
+   "question_ar": "شنو تضربه هجمة حجب الخدمة الموزّعة؟",
+   "options": [
+    "Availability, by overwhelming the service with traffic.",
+    "Confidentiality, by reading the stored records.",
+    "Integrity, by altering the database rows.",
+    "Non-repudiation, by forging user signatures."
+   ],
+   "options_ar": [
+    "التوافر، بإغراق الخدمة بالترافيك.",
+    "السرية، بقراءة السجلات المخزّنة.",
+    "السلامة، بتعديل صفوف قاعدة البيانات.",
+    "عدم الإنكار، بتزوير توقيعات المستخدمين."
+   ],
+   "options_en": [
+    "Availability, by overwhelming the service with traffic.",
+    "Confidentiality, by reading the stored records.",
+    "Integrity, by altering the database rows.",
+    "Non-repudiation, by forging user signatures."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The service is not broken, it is simply made unreachable, which is why mitigation is absorption and rate limiting rather than patching.",
+   "explanation_ar": "الخدمة مو مكسورة، بس تصير غير قابلة للوصول، ولهذا التخفيف امتصاص وتحديد معدّل مو ترقيع."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_th_ransomware",
+   "bloom_level": "Understand",
+   "question": "Why does ransomware threaten continuity rather than only confidentiality?",
+   "question_ar": "ليش الفدية تهدّد الاستمرارية مو السرية فقط؟",
+   "options": [
+    "Because it silently copies data to an external server.",
+    "Because it deletes the logs of every earlier event.",
+    "Because it changes the application source code.",
+    "Because it encrypts critical data and halts the operation."
+   ],
+   "options_ar": [
+    "لأنها تنسخ البيانات بصمت لسيرفر خارجي.",
+    "لأنها تحذف سجلات كل حدث سابق.",
+    "لأنها تغيّر الكود المصدري للتطبيق.",
+    "لأنها تشفّر البيانات الحرجة وتوقف العمل."
+   ],
+   "options_en": [
+    "Because it silently copies data to an external server.",
+    "Because it deletes the logs of every earlier event.",
+    "Because it changes the application source code.",
+    "Because it encrypts critical data and halts the operation."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The payload stops the business working, so recovery depends on offline backups, immutable storage and a tested restore workflow.",
+   "explanation_ar": "الحمولة توقف شغل المؤسسة، فالتعافي يعتمد على نسخ غير متصلة وتخزين غير قابل للتغيير وسير استرداد مُختبَر."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_th_insider",
+   "bloom_level": "Remember",
+   "question": "What makes insider threats distinctive?",
+   "question_ar": "شنو يميّز تهديدات الداخليين؟",
+   "options": [
+    "They require a supply chain compromise first.",
+    "They can only be detected by external auditors.",
+    "They already hold legitimate access and permissions.",
+    "They always act from outside the corporate network."
+   ],
+   "options_ar": [
+    "يشترطون اختراق سلسلة التوريد أولاً.",
+    "ما يكشفهم إلا مدقّقون خارجيون.",
+    "يملكون أصلاً وصولاً وصلاحيات شرعية.",
+    "يعملون دائماً من خارج شبكة الشركة."
+   ],
+   "options_en": [
+    "They require a supply chain compromise first.",
+    "They can only be detected by external auditors.",
+    "They already hold legitimate access and permissions.",
+    "They always act from outside the corporate network."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Whether malicious or merely negligent, the insider can change configuration or disable a control because they were trusted to.",
+   "explanation_ar": "سواء بنيّة خبيثة أو بإهمال، الداخلي يقدر يغيّر الإعداد أو يعطّل ضابطاً لأنه كان موثوقاً أصلاً."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_th_supply_chain",
+   "bloom_level": "Remember",
+   "question": "What did the SolarWinds case illustrate about continuity?",
+   "question_ar": "شنو بيّنت حادثة SolarWinds عن الاستمرارية؟",
+   "options": [
+    "Updates are the safest channel in any organisation.",
+    "A trusted update channel can deliver systemic disruption.",
+    "Third-party components are always reviewed before release.",
+    "Supply chain attacks only affect the vendor itself."
+   ],
+   "options_ar": [
+    "التحديثات أسلم قناة بأي مؤسسة.",
+    "قناة تحديث موثوقة تقدر تنقل تعطّلاً نُظُمياً.",
+    "مكوّنات الطرف الثالث دائماً تُراجَع قبل النشر.",
+    "هجمات سلسلة التوريد تصيب المورّد فقط."
+   ],
+   "options_en": [
+    "Updates are the safest channel in any organisation.",
+    "A trusted update channel can deliver systemic disruption.",
+    "Third-party components are always reviewed before release.",
+    "Supply chain attacks only affect the vendor itself."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Adversarial infiltration of the update process reached every customer through the very mechanism meant to keep them current.",
+   "explanation_ar": "التسلّل العدائي لعملية التحديث وصل لكل عميل عبر نفس الآلية اللي المفروض تحافظ على حداثتهم."
+  },
+  {
+   "id": "q12",
+   "concept_id": "w6_cm_lambda_total",
+   "bloom_level": "Remember",
+   "question": "How is the total failure rate composed?",
+   "question_ar": "كيف يتكوّن معدّل الفشل الكلي؟",
+   "options": [
+    "Operational failure rate plus cybersecurity failure rate.",
+    "Operational failure rate multiplied by cyber failure rate.",
+    "The larger of the operational and cyber rates.",
+    "The average of the operational and cyber rates."
+   ],
+   "options_ar": [
+    "معدّل الفشل التشغيلي زائد معدّل الفشل السيبراني.",
+    "معدّل الفشل التشغيلي مضروباً بالسيبراني.",
+    "الأكبر بين المعدّلين التشغيلي والسيبراني.",
+    "متوسط المعدّلين التشغيلي والسيبراني."
+   ],
+   "options_en": [
+    "Operational failure rate plus cybersecurity failure rate.",
+    "Operational failure rate multiplied by cyber failure rate.",
+    "The larger of the operational and cyber rates.",
+    "The average of the operational and cyber rates."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Both sources of failure act on the same system, so their rates add before the exponential decay is applied.",
+   "explanation_ar": "المصدران يؤثّران على نفس النظام، فمعدّلاهما يُجمعان قبل تطبيق التلاشي الأُسّي."
+  },
+  {
+   "id": "q13",
+   "concept_id": "w6_cm_lambda_implication",
+   "bloom_level": "Analyze",
+   "question": "Why does that composition put cybersecurity inside reliability engineering?",
+   "question_ar": "ليش هذا التركيب يضع الأمن السيبراني داخل هندسة الموثوقية؟",
+   "options": [
+    "Because security tools measure uptime more accurately.",
+    "Because reliability engineers own the firewall rules.",
+    "Because attacks only affect hardware components.",
+    "Because an attack raises the same rate that hardware faults raise."
+   ],
+   "options_ar": [
+    "لأن أدوات الأمن تقيس الجهوزية بدقة أعلى.",
+    "لأن مهندسي الموثوقية يملكون قواعد الجدار.",
+    "لأن الهجمات تصيب مكوّنات العتاد فقط.",
+    "لأن الهجوم يرفع نفس المعدّل اللي ترفعه أعطال العتاد."
+   ],
+   "options_en": [
+    "Because security tools measure uptime more accurately.",
+    "Because reliability engineers own the firewall rules.",
+    "Because attacks only affect hardware components.",
+    "Because an attack raises the same rate that hardware faults raise."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "If both contributions enter the same exponent, then improving security is literally improving reliability rather than a separate concern.",
+   "explanation_ar": "لو دخل المساهمان بنفس الأس، فتحسين الأمن هو حرفياً تحسين للموثوقية مو شأن منفصل."
+  },
+  {
+   "id": "q14",
+   "concept_id": "w6_cm_bci",
+   "bloom_level": "Remember",
+   "question": "How is the business continuity index computed?",
+   "question_ar": "كيف يُحسب مؤشّر استمرارية الأعمال؟",
+   "options": [
+    "The lowest compliance level among all requirements.",
+    "The count of requirements that are fully satisfied.",
+    "A weighted average of compliance with each continuity requirement.",
+    "The product of compliance across all continuity requirements."
+   ],
+   "options_ar": [
+    "أدنى مستوى التزام بين كل المتطلبات.",
+    "عدد المتطلبات الملبّاة بالكامل.",
+    "متوسط مرجّح للالتزام بكل متطلب استمرارية.",
+    "حاصل ضرب الالتزام عبر كل متطلبات الاستمرارية."
+   ],
+   "options_en": [
+    "The lowest compliance level among all requirements.",
+    "The count of requirements that are fully satisfied.",
+    "A weighted average of compliance with each continuity requirement.",
+    "The product of compliance across all continuity requirements."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Each requirement contributes its compliance level scaled by its weight, and the total is normalised by the sum of weights.",
+   "explanation_ar": "كل متطلب يساهم بمستوى التزامه مقيساً بوزنه، والمجموع يُعيّر بمجموع الأوزان."
+  },
+  {
+   "id": "q15",
+   "concept_id": "w6_cm_bci_weights",
+   "bloom_level": "Understand",
+   "question": "Why do the weights matter in that index?",
+   "question_ar": "ليش الأوزان تهم بذلك المؤشّر؟",
+   "options": [
+    "Because weights remove the need for compliance levels.",
+    "Because not every continuity requirement matters equally.",
+    "Because weights convert the index into a percentage.",
+    "Because unweighted averages are mathematically invalid."
+   ],
+   "options_ar": [
+    "لأن الأوزان تلغي الحاجة لمستويات الالتزام.",
+    "لأن ما كل متطلب استمرارية متساوي الأهمية.",
+    "لأن الأوزان تحوّل المؤشّر لنسبة مئوية.",
+    "لأن المتوسطات غير المرجّحة غير صحيحة رياضياً."
+   ],
+   "options_en": [
+    "Because weights remove the need for compliance levels.",
+    "Because not every continuity requirement matters equally.",
+    "Because weights convert the index into a percentage.",
+    "Because unweighted averages are mathematically invalid."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A weighted average lets a weak requirement that matters a lot pull the score down harder than a weak one that barely matters.",
+   "explanation_ar": "المتوسط المرجّح يخلي المتطلب الضعيف المهم ينزّل النتيجة أكثر من ضعيف قليل الأهمية."
+  },
+  {
+   "id": "q16",
+   "concept_id": "w6_cm_resilience_opt",
+   "bloom_level": "Understand",
+   "question": "What does the resilience optimisation model balance?",
+   "question_ar": "شنو يوازن نموذج تحسين المرونة؟",
+   "options": [
+    "Residual risk against a budget constraint on mitigation cost.",
+    "Detection speed against the number of analysts hired.",
+    "Replication count against the size of each region.",
+    "Backup frequency against the storage vendor chosen."
+   ],
+   "options_ar": [
+    "الخطر المتبقي مقابل قيد الميزانية على كلفة التخفيف.",
+    "سرعة الكشف مقابل عدد المحلّلين المعيّنين.",
+    "عدد النسخ مقابل حجم كل منطقة.",
+    "وتيرة النسخ مقابل مورّد التخزين المختار."
+   ],
+   "options_en": [
+    "Residual risk against a budget constraint on mitigation cost.",
+    "Detection speed against the number of analysts hired.",
+    "Replication count against the size of each region.",
+    "Backup frequency against the storage vendor chosen."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Each vulnerability keeps the share of risk that mitigation leaves behind, and the chosen set must be affordable together.",
+   "explanation_ar": "كل ثغرة تبقي حصة الخطر اللي يتركها التخفيف، والمجموعة المختارة لازم تكون ميسورة معاً."
+  },
+  {
+   "id": "q17",
+   "concept_id": "w6_mo_cloud",
+   "bloom_level": "Remember",
+   "question": "What does the cloud-native perspective offer continuity, and at what cost?",
+   "question_ar": "شنو يقدّم منظور السحابة للاستمرارية، وبأي ثمن؟",
+   "options": [
+    "Cheaper storage and faster CPUs, at the cost of less redundancy.",
+    "Full isolation from third parties, at the cost of elasticity.",
+    "Unlimited bandwidth, at the cost of weaker encryption.",
+    "Elasticity, redundancy and failover, at the cost of shared responsibility."
+   ],
+   "options_ar": [
+    "تخزيناً أرخص ومعالجات أسرع، بثمن تكرار أقل.",
+    "عزلاً كاملاً عن الأطراف، بثمن فقدان المرونة.",
+    "عرض نطاق غير محدود، بثمن تشفير أضعف.",
+    "مرونة وتكراراً وتحويلاً عند الفشل، بثمن مسؤولية مشتركة."
+   ],
+   "options_en": [
+    "Cheaper storage and faster CPUs, at the cost of less redundancy.",
+    "Full isolation from third parties, at the cost of elasticity.",
+    "Unlimited bandwidth, at the cost of weaker encryption.",
+    "Elasticity, redundancy and failover, at the cost of shared responsibility."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The provider supplies the resilience machinery, but you remain responsible for how your own workloads are configured on it.",
+   "explanation_ar": "المزوّد يوفّر آليات الصمود، لكن تبقى مسؤولاً عن كيفية إعداد أحمالك عليها."
+  },
+  {
+   "id": "q18",
+   "concept_id": "w6_mo_ai",
+   "bloom_level": "Understand",
+   "question": "How does predictive analytics support continuity?",
+   "question_ar": "كيف تدعم التحليلات التنبّؤية الاستمرارية؟",
+   "options": [
+    "It replaces the need for any redundancy strategy.",
+    "It encrypts the logs so attackers cannot read them.",
+    "It forecasts disruptions from logs, behaviour and performance.",
+    "It automatically restores the service after every outage."
+   ],
+   "options_ar": [
+    "تغني عن أي استراتيجية تكرار.",
+    "تشفّر السجلات حتى ما يقرأها المهاجم.",
+    "تتنبّأ بالتعطّلات من السجلات والسلوك والأداء.",
+    "تستعيد الخدمة تلقائياً بعد كل انقطاع."
+   ],
+   "options_en": [
+    "It replaces the need for any redundancy strategy.",
+    "It encrypts the logs so attackers cannot read them.",
+    "It forecasts disruptions from logs, behaviour and performance.",
+    "It automatically restores the service after every outage."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Patterns that precede an outage become visible early enough to act, which turns continuity from reactive to proactive.",
+   "explanation_ar": "الأنماط اللي تسبق الانقطاع تصير مرئية مبكراً بما يكفي للتصرف، فيتحوّل الصمود من ردّ فعل إلى استباق."
+  },
+  {
+   "id": "q19",
+   "concept_id": "w6_mo_zt",
+   "bloom_level": "Understand",
+   "question": "How does Zero Trust help continuity?",
+   "question_ar": "كيف تساعد الثقة الصفرية الاستمرارية؟",
+   "options": [
+    "It replaces incident response entirely.",
+    "It limits what a stolen credential can reach.",
+    "It removes the need for any backups.",
+    "It guarantees the service never becomes unavailable."
+   ],
+   "options_ar": [
+    "تستبدل الاستجابة للحوادث بالكامل.",
+    "تحدّ ما يقدر توصله بيانات اعتماد مسروقة.",
+    "تلغي الحاجة لأي نسخ احتياطي.",
+    "تضمن إن الخدمة ما تصير غير متاحة أبداً."
+   ],
+   "options_en": [
+    "It replaces incident response entirely.",
+    "It limits what a stolen credential can reach.",
+    "It removes the need for any backups.",
+    "It guarantees the service never becomes unavailable."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "If a session is compromised, continuous verification keeps the damage local instead of letting it spread across the estate.",
+   "explanation_ar": "لو انخترقت جلسة، التحقّق المستمر يبقي الضرر محلياً بدل ما ينتشر بكل المؤسسة."
+  },
+  {
+   "id": "q20",
+   "concept_id": "w6_mo_blockchain",
+   "bloom_level": "Remember",
+   "question": "What does the blockchain perspective contribute?",
+   "question_ar": "شنو يقدّم منظور البلوكتشين؟",
+   "options": [
+    "Immutable logs that stay trustworthy through disruption.",
+    "Faster transaction processing than any relational database.",
+    "Automatic failover between the cloud regions.",
+    "Cheaper long-term storage for backup archives."
+   ],
+   "options_ar": [
+    "سجلات غير قابلة للتغيير تبقى موثوقة أثناء الاضطراب.",
+    "معالجة معاملات أسرع من أي قاعدة بيانات.",
+    "تحويل تلقائي بين مناطق السحابة.",
+    "تخزين أرخص لأرشيفات النسخ."
+   ],
+   "options_en": [
+    "Immutable logs that stay trustworthy through disruption.",
+    "Faster transaction processing than any relational database.",
+    "Automatic failover between the cloud regions.",
+    "Cheaper long-term storage for backup archives."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Tamper-proof records preserve the continuity of trust even when the surrounding systems are in disorder.",
+   "explanation_ar": "السجلات المقاومة للتلاعب تحفظ استمرارية الثقة حتى لمّا تكون الأنظمة المحيطة مضطربة."
+  }
+ ]
+}

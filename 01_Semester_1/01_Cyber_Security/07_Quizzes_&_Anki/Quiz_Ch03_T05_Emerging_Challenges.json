@@ -1,0 +1,537 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_T05_Emerging_Challenges",
+  "topic": "Emerging challenges and the enterprise response",
+  "topic_ar": "التحديات الناشئة والاستجابة المؤسسية",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "cloud_misconfiguration",
+      "bloom_level": "Remember",
+      "question": "What does the chapter name as a leading cause of breaches in cloud environments?",
+      "question_ar": "ماذا يسمّي الفصل سبباً رئيسياً للاختراقات في بيئات السحابة؟",
+      "options": [
+        "Misconfigured cloud storage, such as open AWS S3 buckets.",
+        "The absence of antivirus software on cloud virtual machines.",
+        "The use of encryption inside cloud storage buckets.",
+        "The physical theft of disks from cloud data centres."
+      ],
+      "options_ar": [
+        "سوء إعداد التخزين السحابي، مثل دلاء AWS S3 المفتوحة.",
+        "غياب برامج مكافحة الفيروسات عن الأجهزة الافتراضية السحابية.",
+        "استخدام التشفير داخل دلاء التخزين السحابي.",
+        "السرقة المادية للأقراص من مراكز البيانات السحابية."
+      ],
+      "options_en": [
+        "Misconfigured cloud storage, such as open AWS S3 buckets.",
+        "The absence of antivirus software on cloud virtual machines.",
+        "The use of encryption inside cloud storage buckets.",
+        "The physical theft of disks from cloud data centres."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Both sections name misconfigured cloud storage, with open AWS S3 buckets as the example, as a leading cause of cloud breaches. It is a configuration failure, not a missing product.",
+      "explanation_ar": "يسمّي القسمان سوء إعداد التخزين السحابي، بمثال دلاء AWS S3 المفتوحة، سبباً رئيسياً لاختراقات السحابة. وهو إخفاق إعداد لا منتج ناقص."
+    },
+    {
+      "id": "q2",
+      "concept_id": "iot_ot_risk",
+      "bloom_level": "Remember",
+      "question": "What does the chapter say about IoT and operational technology risk?",
+      "question_ar": "ماذا يقول الفصل عن مخاطر إنترنت الأشياء والتقنيات التشغيلية؟",
+      "options": [
+        "IoT devices are too small to be attacked and OT systems are already well protected.",
+        "Billions of IoT devices expand the attack surface, and industrial control systems lack robust security.",
+        "IoT and OT risks are limited to consumer gadgets and do not affect industry.",
+        "Both are covered completely by the existing firewall and antivirus controls."
+      ],
+      "options_ar": [
+        "أجهزة إنترنت الأشياء أصغر من أن تُهاجَم وأنظمة التشغيل محمية جيداً أصلاً.",
+        "مليارات أجهزة إنترنت الأشياء توسّع سطح الهجوم، وأنظمة التحكم الصناعي تفتقر لأمن قوي.",
+        "مخاطر إنترنت الأشياء والتقنيات التشغيلية محصورة بالأجهزة الاستهلاكية ولا تمسّ الصناعة.",
+        "كلاهما مغطّى بالكامل بالجدران النارية ومكافحة الفيروسات القائمة."
+      ],
+      "options_en": [
+        "IoT devices are too small to be attacked and OT systems are already well protected.",
+        "Billions of IoT devices expand the attack surface, and industrial control systems lack robust security.",
+        "IoT and OT risks are limited to consumer gadgets and do not affect industry.",
+        "Both are covered completely by the existing firewall and antivirus controls."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The chapter's point is scale plus neglect: billions of IoT devices expand the attack surface, while industrial control systems lack robust security. That combination is why OT is treated as a distinct challenge.",
+      "explanation_ar": "مقصود الفصل الحجم مع الإهمال: مليارات أجهزة إنترنت الأشياء توسّع سطح الهجوم، وأنظمة التحكم الصناعي تفتقر لأمن قوي. وهذا التركيب هو سبب معاملة التقنيات التشغيلية كتحدٍّ مستقل."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ai_driven_attacks",
+      "bloom_level": "Remember",
+      "question": "Which two AI-driven attack forms does the chapter name?",
+      "question_ar": "أي شكلين للهجمات المدفوعة بالذكاء الاصطناعي يسمّيهما الفصل؟",
+      "options": [
+        "Ransomware and supply chain compromise.",
+        "Brute force and credential stuffing.",
+        "Polymorphic malware and deepfake phishing.",
+        "SQL injection and cross-site scripting."
+      ],
+      "options_ar": [
+        "برامج الفدية واختراق سلسلة التوريد.",
+        "القوة الغاشمة وحشو بيانات الاعتماد.",
+        "البرمجيات الخبيثة متعددة الأشكال والتصيّد بالتزييف العميق.",
+        "حقن SQL والبرمجة عبر المواقع."
+      ],
+      "options_en": [
+        "Ransomware and supply chain compromise.",
+        "Brute force and credential stuffing.",
+        "Polymorphic malware and deepfake phishing.",
+        "SQL injection and cross-site scripting."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The chapter names polymorphic malware, which changes form to evade detection, and deepfake phishing built with AI. Both are ways AI is weaponised rather than a new class of vulnerability.",
+      "explanation_ar": "يسمّي الفصل البرمجيات الخبيثة متعددة الأشكال التي تغيّر شكلها لتفادي الكشف، والتصيّد بالتزييف العميق المبني بالذكاء الاصطناعي. وكلاهما توظيف للذكاء الاصطناعي كسلاح لا صنف جديد من الثغرات."
+    },
+    {
+      "id": "q4",
+      "concept_id": "quantum_threat",
+      "bloom_level": "Remember",
+      "question": "Which encryption does the chapter say quantum computing will break?",
+      "question_ar": "أي تشفير يقول الفصل إن الحوسبة الكمومية ستكسره؟",
+      "options": [
+        "AES and ChaCha20 only.",
+        "Hashing algorithms such as SHA-256.",
+        "Physical locks and cipher keypads.",
+        "RSA and ECC."
+      ],
+      "options_ar": [
+        "AES وChaCha20 فقط.",
+        "خوارزميات التجزئة مثل SHA-256.",
+        "الأقفال المادية ولوحات الأرقام الشفرية.",
+        "RSA وECC."
+      ],
+      "options_en": [
+        "AES and ChaCha20 only.",
+        "Hashing algorithms such as SHA-256.",
+        "Physical locks and cipher keypads.",
+        "RSA and ECC."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The chapter says quantum computing will break traditional encryption, naming RSA and ECC, and that risk management must plan for post-quantum cryptography. Symmetric ciphers and hashes are not what it names.",
+      "explanation_ar": "يقول الفصل إن الحوسبة الكمومية ستكسر التشفير التقليدي، ويسمّي RSA وECC، وإن إدارة المخاطر يجب أن تخطط للتشفير ما بعد الكمومي. ولا يسمّي الشفرات المتماثلة ولا دوال التجزئة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "dynamic_discipline",
+      "bloom_level": "Understand",
+      "question": "What two qualities does the chapter require of risk management because of these challenges?",
+      "question_ar": "أي صفتين يشترطها الفصل في إدارة المخاطر بسبب هذه التحديات؟",
+      "options": [
+        "Dynamic and forward-looking.",
+        "Static and repeatable.",
+        "Centralised and confidential.",
+        "Reactive and cost-minimal."
+      ],
+      "options_ar": [
+        "ديناميكية وناظرة إلى المستقبل.",
+        "ثابتة وقابلة للتكرار.",
+        "مركزية وسرّية.",
+        "تفاعلية وأقل كلفة."
+      ],
+      "options_en": [
+        "Dynamic and forward-looking.",
+        "Static and repeatable.",
+        "Centralised and confidential.",
+        "Reactive and cost-minimal."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The challenges underscore the need for risk management as a dynamic, forward-looking discipline: it must move with the change and prepare for threats that are not yet realised.",
+      "explanation_ar": "التحديات تبيّن الحاجة إلى إدارة المخاطر كتخصص ديناميكي ناظر إلى المستقبل: يتحرك مع التغيير ويستعد لتهديدات لم تتحقق بعد."
+    },
+    {
+      "id": "q6",
+      "concept_id": "supply_chain_solarwinds",
+      "bloom_level": "Remember",
+      "question": "Which supply chain incident does the chapter name?",
+      "question_ar": "أي حادث سلسلة توريد يسمّيه الفصل؟",
+      "options": [
+        "The Equifax breach in 2017.",
+        "The SolarWinds breach in 2020.",
+        "The WannaCry outbreak in 2017.",
+        "The Stuxnet attack in 2010."
+      ],
+      "options_ar": [
+        "اختراق Equifax سنة 2017.",
+        "اختراق SolarWinds سنة 2020.",
+        "انتشار WannaCry سنة 2017.",
+        "هجوم Stuxnet سنة 2010."
+      ],
+      "options_en": [
+        "The Equifax breach in 2017.",
+        "The SolarWinds breach in 2020.",
+        "The WannaCry outbreak in 2017.",
+        "The Stuxnet attack in 2010."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "SolarWinds in 2020 is the chapter's supply chain example, where a trusted vendor became the attack path. Equifax is the enterprise-wide example, WannaCry is healthcare and Stuxnet is critical infrastructure.",
+      "explanation_ar": "SolarWinds سنة 2020 هو مثال سلسلة التوريد في الفصل، حيث صار مورّد موثوق مسار الهجوم. أما Equifax فمثال المؤسسة، وWannaCry للرعاية الصحية، وStuxnet للبنية التحتية الحيوية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "zero_trust_response",
+      "bloom_level": "Remember",
+      "question": "Which architecture does the chapter name as part of the enterprise response?",
+      "question_ar": "أي معمارية يسمّيها الفصل ضمن الاستجابة المؤسسية؟",
+      "options": [
+        "A hardened perimeter with a single strong firewall at the edge.",
+        "Full outsourcing of security operations to a third party.",
+        "Zero Trust Architecture, expressed as never trust and always verify.",
+        "Air-gapping every system that holds customer data."
+      ],
+      "options_ar": [
+        "محيط مقوّى بجدار ناري واحد قوي عند الحافة.",
+        "إسناد عمليات الأمن بالكامل إلى طرف ثالث.",
+        "معمارية الثقة الصفرية، بعبارة لا تثق أبداً وتحقّق دائماً.",
+        "عزل هوائي لكل نظام يحمل بيانات عملاء."
+      ],
+      "options_en": [
+        "A hardened perimeter with a single strong firewall at the edge.",
+        "Full outsourcing of security operations to a third party.",
+        "Zero Trust Architecture, expressed as never trust and always verify.",
+        "Air-gapping every system that holds customer data."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The enterprise response includes adopting Zero Trust Architecture, glossed as never trust and always verify. A hardened perimeter is the model Zero Trust rejects, not the response.",
+      "explanation_ar": "تشمل الاستجابة المؤسسية تبنّي معمارية الثقة الصفرية، بتفسير لا تثق أبداً وتحقّق دائماً. أما المحيط المقوّى فهو النموذج الذي ترفضه الثقة الصفرية لا الاستجابة."
+    },
+    {
+      "id": "q8",
+      "concept_id": "crq",
+      "bloom_level": "Understand",
+      "question": "What does CRQ stand for in the chapter's enterprise response?",
+      "question_ar": "ماذا يعني CRQ في الاستجابة المؤسسية للفصل؟",
+      "options": [
+        "Central Risk Quarantine.",
+        "Certified Resilience Quotient.",
+        "Continuous Response Quality.",
+        "Cyber Risk Quantification."
+      ],
+      "options_ar": [
+        "الحجر المركزي للمخاطر.",
+        "حاصل المرونة المعتمد.",
+        "جودة الاستجابة المستمرة.",
+        "التحديد الكمّي للمخاطر السيبرانية."
+      ],
+      "options_en": [
+        "Central Risk Quarantine.",
+        "Certified Resilience Quotient.",
+        "Continuous Response Quality.",
+        "Cyber Risk Quantification."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "CRQ is Cyber Risk Quantification, and the chapter pairs the investment in CRQ models with the FAIR model for financial quantification. The other three expansions do not appear.",
+      "explanation_ar": "CRQ هي التحديد الكمّي للمخاطر السيبرانية، ويقرن الفصل الاستثمار في نماذج CRQ بنموذج FAIR للتحديد الكمّي المالي. والتوسيعات الثلاثة الأخرى لا تظهر."
+    },
+    {
+      "id": "q9",
+      "concept_id": "standards_alignment",
+      "bloom_level": "Understand",
+      "question": "Which standards does the chapter name under alignment with global frameworks?",
+      "question_ar": "أي معايير يسمّيها الفصل ضمن التوافق مع الأطر العالمية؟",
+      "options": [
+        "ISO 27001, NIST CSF and the FAIR model.",
+        "ISO 27005, PCI-DSS and COBIT only.",
+        "COSO, OCTAVE and COBIT only.",
+        "GDPR, HIPAA and PCI-DSS only."
+      ],
+      "options_ar": [
+        "ISO 27001 وNIST CSF ونموذج FAIR.",
+        "ISO 27005 وPCI-DSS وCOBIT فقط.",
+        "COSO وOCTAVE وCOBIT فقط.",
+        "GDPR وHIPAA وPCI-DSS فقط."
+      ],
+      "options_en": [
+        "ISO 27001, NIST CSF and the FAIR model.",
+        "ISO 27005, PCI-DSS and COBIT only.",
+        "COSO, OCTAVE and COBIT only.",
+        "GDPR, HIPAA and PCI-DSS only."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The chapter names ISO 27001, NIST CSF and the FAIR model for financial quantification. GDPR, HIPAA and PCI-DSS are the compliance regimes used elsewhere in the chapter, not this alignment list.",
+      "explanation_ar": "يسمّي الفصل ISO 27001 وNIST CSF ونموذج FAIR للتحديد الكمّي المالي. أما GDPR وHIPAA وPCI-DSS فهي أنظمة الامتثال المستخدمة في مواضع أخرى من الفصل لا في قائمة التوافق هذه."
+    },
+    {
+      "id": "q10",
+      "concept_id": "overlap_of_lists",
+      "bloom_level": "Analyze",
+      "question": "Sections 5 and 11 both list emerging challenges. How do the two lists relate?",
+      "question_ar": "القسمان 5 و11 يعدّدان تحديات ناشئة. كيف تتعلق القائمتان؟",
+      "options": [
+        "They are identical lists with no difference between the two sections at all.",
+        "They overlap on cloud, AI and quantum, and section 11 adds supply chain and the response.",
+        "They are entirely different, sharing no challenge between them.",
+        "Section 5 covers technology and section 11 covers only regulation."
+      ],
+      "options_ar": [
+        "هما قائمتان متطابقتان بلا أي فرق بين القسمين.",
+        "يتقاطعان في السحابة والذكاء الاصطناعي والكمومي، ويضيف القسم 11 سلسلة التوريد والاستجابة.",
+        "مختلفتان تماماً ولا تشتركان في أي تحدٍّ.",
+        "القسم 5 يغطي التقنية والقسم 11 يغطي الأنظمة فقط."
+      ],
+      "options_en": [
+        "They are identical lists with no difference between the two sections at all.",
+        "They overlap on cloud, AI and quantum, and section 11 adds supply chain and the response.",
+        "They are entirely different, sharing no challenge between them.",
+        "Section 5 covers technology and section 11 covers only regulation."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Cloud, AI and quantum appear in both, so asking them twice would be repetition. Section 11 adds supply chain risk and, more importantly, the three-part enterprise response that section 5 lacks.",
+      "explanation_ar": "السحابة والذكاء الاصطناعي والكمومي تظهر في القسمين، فالسؤال عنها مرتين تكرار. ويضيف القسم 11 مخاطر سلسلة التوريد، والأهم الاستجابة المؤسسية الثلاثية التي يفتقدها القسم 5."
+    },
+    {
+      "id": "q11",
+      "concept_id": "cloud_top_cause",
+      "bloom_level": "Understand",
+      "question": "In section 11, how is cloud misconfiguration ranked?",
+      "question_ar": "في القسم 11، كيف تُرتَّب مرتبة سوء إعداد السحابة؟",
+      "options": [
+        "As a minor issue compared with password reuse.",
+        "As a problem that only affects small providers.",
+        "As the top cause of cloud breaches.",
+        "As a risk that encryption has already eliminated."
+      ],
+      "options_ar": [
+        "كمسألة ثانوية أمام إعادة استخدام كلمات المرور.",
+        "كمشكلة تصيب المزوّدين الصغار فقط.",
+        "كسبب أول لاختراقات السحابة.",
+        "كخطر أزاله التشفير أصلاً."
+      ],
+      "options_en": [
+        "As a minor issue compared with password reuse.",
+        "As a problem that only affects small providers.",
+        "As the top cause of cloud breaches.",
+        "As a risk that encryption has already eliminated."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Section 11 states that misconfiguration of cloud services, with open S3 buckets as the example, is the top cause of cloud breaches. That ranking is stronger than the general statement in section 5.",
+      "explanation_ar": "يذكر القسم 11 أن سوء إعداد الخدمات السحابية، بمثال دلاء S3 المفتوحة، هو السبب الأول لاختراقات السحابة. وهذه المرتبة أقوى من العبارة العامة في القسم 5."
+    },
+    {
+      "id": "q12",
+      "concept_id": "iot_attack_surface",
+      "bloom_level": "Apply",
+      "question": "A hospital connects thousands of infusion pumps and monitors to its network. What does the chapter predict?",
+      "question_ar": "يصل مستشفى آلاف مضخات التسريب وأجهزة المراقبة بشبكته. ماذا يتوقّع الفصل؟",
+      "options": [
+        "The devices reduce risk because they replace manual record keeping.",
+        "The network becomes safer because each device runs its own firewall.",
+        "Nothing changes unless a device is directly connected to the internet.",
+        "The attack surface expands with every device added to the estate."
+      ],
+      "options_ar": [
+        "الأجهزة تخفّض الخطر لأنها تستبدل السجلات اليدوية.",
+        "الشبكة تصير أكثر أماناً لأن كل جهاز يشغّل جداره الناري.",
+        "لا شيء يتغير ما لم يكن الجهاز متصلاً بالإنترنت مباشرة.",
+        "سطح الهجوم يتوسّع مع كل جهاز يُضاف إلى المنظومة."
+      ],
+      "options_en": [
+        "The devices reduce risk because they replace manual record keeping.",
+        "The network becomes safer because each device runs its own firewall.",
+        "Nothing changes unless a device is directly connected to the internet.",
+        "The attack surface expands with every device added to the estate."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The chapter's IoT argument is scale: billions of devices expand the attack surface, and the same applies inside one hospital. Each connected device is another entry point that has to be accounted for.",
+      "explanation_ar": "حجّة الفصل في إنترنت الأشياء هي الحجم: مليارات الأجهزة توسّع سطح الهجوم، والأمر نفسه داخل مستشفى واحد. فكل جهاز متصل نقطة دخول إضافية يجب حسابها."
+    },
+    {
+      "id": "q13",
+      "concept_id": "polymorphic_evasion",
+      "bloom_level": "Understand",
+      "question": "Why is polymorphic malware harder to detect than a fixed signature?",
+      "question_ar": "لماذا يصعب كشف البرمجيات الخبيثة متعددة الأشكال أكثر من توقيع ثابت؟",
+      "options": [
+        "Because it changes its form so that a stored pattern no longer matches it.",
+        "Because it only runs on operating systems that have no antivirus support.",
+        "Because it encrypts the entire network before any scan can start.",
+        "Because it requires physical access to install on the target host."
+      ],
+      "options_ar": [
+        "لأنها تغيّر شكلها فلا يطابقها النمط المخزَّن بعد ذلك.",
+        "لأنها تعمل فقط على أنظمة لا تدعمها برامج مكافحة الفيروسات.",
+        "لأنها تشفّر الشبكة كلها قبل أن يبدأ أي فحص.",
+        "لأنها تحتاج وصولاً مادياً للتثبيت على الجهاز المستهدف."
+      ],
+      "options_en": [
+        "Because it changes its form so that a stored pattern no longer matches it.",
+        "Because it only runs on operating systems that have no antivirus support.",
+        "Because it encrypts the entire network before any scan can start.",
+        "Because it requires physical access to install on the target host."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Polymorphic malware changes form to evade detection, which is why AI weaponised this way is a distinct challenge. A signature that matched yesterday's file no longer matches today's variant.",
+      "explanation_ar": "البرمجيات الخبيثة متعددة الأشكال تغيّر شكلها لتفادي الكشف، ولهذا يكون توظيف الذكاء الاصطناعي بهذه الطريقة تحدياً مستقلاً. فالتوقيع الذي طابق ملف الأمس لا يطابق نسخة اليوم."
+    },
+    {
+      "id": "q14",
+      "concept_id": "quantum_symmetric_note",
+      "bloom_level": "Understand",
+      "question": "The chapter names RSA and ECC as broken by quantum computing. What does it recommend instead?",
+      "question_ar": "يسمّي الفصل RSA وECC مكسورتين بالحوسبة الكمومية. بماذا يوصي بدلاً منهما؟",
+      "options": [
+        "Replacing them with longer RSA keys only.",
+        "Planning for post-quantum cryptography now.",
+        "Abandoning encryption until quantum hardware exists.",
+        "Relying on physical locks instead of cryptography."
+      ],
+      "options_ar": [
+        "استبدالهما بمفاتيح RSA أطول فقط.",
+        "التخطيط للتشفير ما بعد الكمومي من الآن.",
+        "ترك التشفير حتى يوجد عتاد كمومي.",
+        "الاعتماد على الأقفال المادية بدل التشفير."
+      ],
+      "options_en": [
+        "Replacing them with longer RSA keys only.",
+        "Planning for post-quantum cryptography now.",
+        "Abandoning encryption until quantum hardware exists.",
+        "Relying on physical locks instead of cryptography."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The chapter says risk management must plan for post-quantum cryptography, and it frames the threat as forward-looking rather than immediate. Lengthening RSA keys is the option the threat itself defeats.",
+      "explanation_ar": "يقول الفصل إن إدارة المخاطر يجب أن تخطط للتشفير ما بعد الكمومي، ويؤطّر التهديد كنظرة مستقبلية لا كواقع فوري. وإطالة مفاتيح RSA هي الخيار الذي يهزمه التهديد نفسه."
+    },
+    {
+      "id": "q15",
+      "concept_id": "post_quantum_action",
+      "bloom_level": "Apply",
+      "question": "An organization wants to act on the quantum threat today, before any quantum computer can break RSA. What does the chapter support?",
+      "question_ar": "تريد مؤسسة التصرف تجاه التهديد الكمومي اليوم، قبل أن يكسر أي حاسوب كمومي RSA. ماذا يدعم الفصل؟",
+      "options": [
+        "Waiting for a public incident before allocating any budget to the problem.",
+        "Removing encryption so that no key exists to be broken later.",
+        "Planning a migration to post-quantum cryptography as part of risk management.",
+        "Replacing RSA with ECC, which the chapter treats as quantum-safe."
+      ],
+      "options_ar": [
+        "الانتظار حتى وقوع حادث معلن قبل تخصيص أي ميزانية للمسألة.",
+        "إزالة التشفير حتى لا يبقى مفتاح يمكن كسره لاحقاً.",
+        "التخطيط للانتقال إلى التشفير ما بعد الكمومي ضمن إدارة المخاطر.",
+        "استبدال RSA بـECC الذي يعامله الفصل كآمن كمومياً."
+      ],
+      "options_en": [
+        "Waiting for a public incident before allocating any budget to the problem.",
+        "Removing encryption so that no key exists to be broken later.",
+        "Planning a migration to post-quantum cryptography as part of risk management.",
+        "Replacing RSA with ECC, which the chapter treats as quantum-safe."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The chapter's forward-looking framing means preparing now: post-quantum cryptography is planned before the threat lands. It also names ECC as broken by quantum, so swapping RSA for ECC solves nothing.",
+      "explanation_ar": "التأطير النظري للمستقبل في الفصل يعني الاستعداد الآن: التشفير ما بعد الكمومي يُخطَّط له قبل وقوع التهديد. ويسمّي الفصل ECC مكسورة كمومياً أيضاً، فاستبدال RSA بها لا يحل شيئاً."
+    },
+    {
+      "id": "q16",
+      "concept_id": "forward_looking",
+      "bloom_level": "Analyze",
+      "question": "Why does the chapter insist that risk management must be forward-looking rather than only current?",
+      "question_ar": "لماذا يصرّ الفصل على أن إدارة المخاطر يجب أن تنظر إلى المستقبل لا إلى الحاضر فقط؟",
+      "options": [
+        "Because current threats have already been solved completely by the existing controls.",
+        "Because forward-looking teams end up spending less on controls in each year.",
+        "Because regulators require a formal five-year technology forecast from every firm.",
+        "Because some named threats are not yet realised but are already foreseeable and plannable."
+      ],
+      "options_ar": [
+        "لأن التهديدات الحالية حُلّت بالكامل بالضوابط القائمة.",
+        "لأن الفرق الناظرة للمستقبل تنفق أقل على الضوابط كل سنة.",
+        "لأن الأنظمة تطلب توقّعاً تقنياً لخمس سنوات.",
+        "لأن بعض التهديدات المذكورة لم تتحقق بعد لكنها متوقعة وقابلة للتخطيط."
+      ],
+      "options_en": [
+        "Because current threats have already been solved completely by the existing controls.",
+        "Because forward-looking teams end up spending less on controls in each year.",
+        "Because regulators require a formal five-year technology forecast from every firm.",
+        "Because some named threats are not yet realised but are already foreseeable and plannable."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Quantum computing is the clearest case: it has not broken RSA yet, but the chapter says risk management must plan for it now. That is what forward-looking means here, preparing for a threat that is foreseeable but not yet realised.",
+      "explanation_ar": "الحوسبة الكمومية أوضح حالة: لم تكسر RSA بعد، لكن الفصل يقول إن إدارة المخاطر يجب أن تخطط لها الآن. وهذا معنى النظر إلى المستقبل هنا، الاستعداد لتهديد متوقع لم يتحقق بعد."
+    },
+    {
+      "id": "q17",
+      "concept_id": "supply_chain_logic",
+      "bloom_level": "Analyze",
+      "question": "Why is a vendor compromise so damaging in the chapter's account?",
+      "question_ar": "لماذا يكون اختراق مورّد مدمّراً إلى هذا الحد في وصف الفصل؟",
+      "options": [
+        "Because the attack arrives through a relationship the organization already trusts.",
+        "Because vendors are legally responsible for all downstream losses.",
+        "Because suppliers always hold the largest share of the security budget.",
+        "Because vendor systems are exempt from the organization's risk register."
+      ],
+      "options_ar": [
+        "لأن الهجوم يصل عبر علاقة تثق بها المؤسسة أصلاً.",
+        "لأن الموردين مسؤولون قانوناً عن كل الخسائر اللاحقة.",
+        "لأن الموردين يحملون دائماً أكبر حصة من ميزانية الأمن.",
+        "لأن أنظمة الموردين معفاة من سجل مخاطر المؤسسة."
+      ],
+      "options_en": [
+        "Because the attack arrives through a relationship the organization already trusts.",
+        "Because vendors are legally responsible for all downstream losses.",
+        "Because suppliers always hold the largest share of the security budget.",
+        "Because vendor systems are exempt from the organization's risk register."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "SolarWinds is the example of an attack on a trusted vendor: the trust relationship is the delivery mechanism, which is why the chapter pairs supply chain risk with ecosystem dependence earlier in the chapter.",
+      "explanation_ar": "SolarWinds مثال على هجوم على مورّد موثوق: فعلاقة الثقة هي آلية التوصيل، ولهذا يقرن الفصل مخاطر سلسلة التوريد بالاعتماد على المنظومة في موضع سابق من الفصل."
+    },
+    {
+      "id": "q18",
+      "concept_id": "zero_trust_meaning",
+      "bloom_level": "Understand",
+      "question": "What does the never trust and always verify principle reject?",
+      "question_ar": "ماذا ترفض قاعدة لا تثق أبداً وتحقّق دائماً؟",
+      "options": [
+        "The use of strong encryption for all data in transit between systems.",
+        "The assumption that anything inside the perimeter is automatically trusted.",
+        "The practice of authenticating every user before granting them access.",
+        "The need to log every access request for later audit and review."
+      ],
+      "options_ar": [
+        "استخدام التشفير للبيانات أثناء النقل بين الأنظمة.",
+        "افتراض أن أي شيء داخل المحيط موثوق تلقائياً.",
+        "ممارسة مصادقة المستخدمين قبل منح الوصول.",
+        "الحاجة إلى تسجيل طلبات الوصول للتدقيق لاحقاً."
+      ],
+      "options_en": [
+        "The use of strong encryption for all data in transit between systems.",
+        "The assumption that anything inside the perimeter is automatically trusted.",
+        "The practice of authenticating every user before granting them access.",
+        "The need to log every access request for later audit and review."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Zero Trust rejects the traditional assumption that inside equals trusted, and applies continuous verification to every request instead. Authenticating users and encrypting traffic are things it keeps, not things it rejects.",
+      "explanation_ar": "الثقة الصفرية ترفض الافتراض التقليدي أن الداخل يساوي موثوقاً، وتطبّق تحقّقاً مستمراً على كل طلب بدلاً منه. أما مصادقة المستخدمين وتشفير الحركة فمن ما تُبقيه لا ما ترفضه."
+    }
+  ]
+}

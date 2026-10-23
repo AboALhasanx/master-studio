@@ -1,0 +1,653 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T09_API_SupplyChain_CloudNative",
+ "topic": "API, supply chain and cloud-native vulnerabilities",
+ "topic_ar": "ثغرات الـAPI وسلسلة التوريد والسحابة الأصلية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_api_primary_interface",
+   "bloom_level": "Understand",
+   "question": "Why have APIs become the main security concern in microservice estates?",
+   "question_ar": "ليش صارت الـAPIs الهم الأمني الأساسي ببيئات الخدمات المصغّرة؟",
+   "options": [
+    "Because they bypass the need for authentication.",
+    "Because they are now the primary interface for business logic.",
+    "Because they replace the database in most designs.",
+    "Because they are always exposed to the public internet."
+   ],
+   "options_ar": [
+    "لأنها تتجاوز الحاجة للمصادقة.",
+    "لأنها صارت الواجهة الأساسية لمنطق الأعمال.",
+    "لأنها تستبدل قاعدة البيانات بمعظم التصاميم.",
+    "لأنها مكشوفة دائماً على الإنترنت العام."
+   ],
+   "options_en": [
+    "Because they bypass the need for authentication.",
+    "Because they are now the primary interface for business logic.",
+    "Because they replace the database in most designs.",
+    "Because they are always exposed to the public internet."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Once business logic moves behind APIs, those endpoints become the surface an attacker actually talks to.",
+   "explanation_ar": "بعد ما ينتقل منطق الأعمال ورا الـAPIs، تلك النقاط تصير السطح اللي يتكلّم معه المهاجم فعلاً."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_bola_definition",
+   "bloom_level": "Remember",
+   "question": "What is broken object-level authorization?",
+   "question_ar": "شنو انكسار التخويل على مستوى الكائن؟",
+   "options": [
+    "A user receives more fields than the page needs.",
+    "A user calls an endpoint that no longer exists.",
+    "A user reaches an object they are not authorised for.",
+    "A user authenticates with a stolen password."
+   ],
+   "options_ar": [
+    "مستخدم يستلم حقولاً أكثر من حاجة الصفحة.",
+    "مستخدم يستدعي نقطة ما عادت موجودة.",
+    "مستخدم يوصل لكائن غير مخوّل له.",
+    "مستخدم يصادق بكلمة مرور مسروقة."
+   ],
+   "options_en": [
+    "A user receives more fields than the page needs.",
+    "A user calls an endpoint that no longer exists.",
+    "A user reaches an object they are not authorised for.",
+    "A user authenticates with a stolen password."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The request is legitimate and the identity is valid, but the application never checks that this object belongs to this principal.",
+   "explanation_ar": "الطلب شرعي والهوية صحيحة، بس التطبيق ما يتحقّق أبداً إن هذا الكائن يخص هذا المستخدم."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_bola_example",
+   "bloom_level": "Analyze",
+   "question": "Why does requesting another user's order by identifier succeed under BOLA?",
+   "question_ar": "ليش طلب طلبية مستخدم ثاني بالمعرّف ينجح تحت BOLA؟",
+   "options": [
+    "Because ownership of the object is never checked.",
+    "Because the identifier is encrypted incorrectly.",
+    "Because the session cookie has expired already.",
+    "Because the database has no primary keys."
+   ],
+   "options_ar": [
+    "لأن ملكية الكائن ما تُفحص أبداً.",
+    "لأن المعرّف مشفّر بشكل خاطئ.",
+    "لأن كوكي الجلسة منتهي أصلاً.",
+    "لأن قاعدة البيانات بلا مفاتيح أساسية."
+   ],
+   "options_en": [
+    "Because ownership of the object is never checked.",
+    "Because the identifier is encrypted incorrectly.",
+    "Because the session cookie has expired already.",
+    "Because the database has no primary keys."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Changing the identifier in the path is enough, because the endpoint trusts the caller without asking whether the record is theirs.",
+   "explanation_ar": "تغيير المعرّف بالمسار يكفي، لأن النقطة تثق بالمتصل بلا ما تسأل هل السجل يخصه."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_excessive_exposure",
+   "bloom_level": "Remember",
+   "question": "What is excessive data exposure?",
+   "question_ar": "شنو الكشف المفرط عن البيانات؟",
+   "options": [
+    "The API returns data belonging to another user.",
+    "The API returns an error with a stack trace.",
+    "The API returns nothing at all when called.",
+    "The API returns more data than the client needs."
+   ],
+   "options_ar": [
+    "الـAPI ترجّع بيانات مستخدم ثاني.",
+    "الـAPI ترجّع خطأً مع تتبّع مكدّس.",
+    "الـAPI ما ترجّع شي أبداً عند الاستدعاء.",
+    "الـAPI ترجّع بيانات أكثر من حاجة العميل."
+   ],
+   "options_en": [
+    "The API returns data belonging to another user.",
+    "The API returns an error with a stack trace.",
+    "The API returns nothing at all when called.",
+    "The API returns more data than the client needs."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The endpoint serialises the whole internal object and trusts the front end to hide the extra fields, which anyone can read directly.",
+   "explanation_ar": "النقطة تُسلسل الكائن الداخلي كله وتترك للواجهة إخفاء الحقول الزايدة، وأي أحد يقدر يقرأها مباشرة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_excessive_vs_bola",
+   "bloom_level": "Analyze",
+   "question": "How does excessive data exposure differ from BOLA?",
+   "question_ar": "كيف يختلف الكشف المفرط عن BOLA؟",
+   "options": [
+    "BOLA affects databases; exposure affects only the UI.",
+    "BOLA is an authorization failure; exposure is a filtering failure.",
+    "BOLA is a filtering failure; exposure is an authorization failure.",
+    "Both are the same defect described with different words."
+   ],
+   "options_ar": [
+    "BOLA يصيب قواعد البيانات؛ والكشف يصيب الواجهة فقط.",
+    "BOLA فشل تخويل؛ والكشف المفرط فشل تصفية.",
+    "BOLA فشل تصفية؛ والكشف المفرط فشل تخويل.",
+    "الاثنان نفس العيب بكلمات مختلفة."
+   ],
+   "options_en": [
+    "BOLA affects databases; exposure affects only the UI.",
+    "BOLA is an authorization failure; exposure is a filtering failure.",
+    "BOLA is a filtering failure; exposure is an authorization failure.",
+    "Both are the same defect described with different words."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "In BOLA the user should not have the record at all, while in excessive exposure they may own it but receive fields they should never see.",
+   "explanation_ar": "بـ BOLA المفروض المستخدم ما يحصل السجل أصلاً، أما بالكشف المفرط فقد يكون السجل له لكن يستلم حقولاً ما لازم يشوفها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_api_governance",
+   "bloom_level": "Remember",
+   "question": "Which controls mitigate API vulnerabilities?",
+   "question_ar": "أي ضوابط تخفّف ثغرات الـAPI؟",
+   "options": [
+    "Parameterised queries and stored procedures.",
+    "SameSite cookies and anti-CSRF tokens.",
+    "Schema validation, strong auth and rate limiting.",
+    "Output encoding, CSP headers and sanitisation."
+   ],
+   "options_ar": [
+    "استعلامات مُعامَلة وإجراءات مخزّنة.",
+    "كوكيز SameSite ورموز مكافحة CSRF.",
+    "التحقّق من المخطط ومصادقة قوية وتحديد المعدّل.",
+    "ترميز المخرجات وترويسات CSP والتعقيم."
+   ],
+   "options_en": [
+    "Parameterised queries and stored procedures.",
+    "SameSite cookies and anti-CSRF tokens.",
+    "Schema validation, strong auth and rate limiting.",
+    "Output encoding, CSP headers and sanitisation."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "API governance combines schema validation, strong authentication and rate limiting, with gateways adding anomaly detection.",
+   "explanation_ar": "حكامة الـAPI تجمع التحقّق من المخطط والمصادقة القوية وتحديد المعدّل، والبوّابات تضيف كشف الشذوذ."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_api_gateway_anomaly",
+   "bloom_level": "Understand",
+   "question": "What do API gateways increasingly add beyond validation?",
+   "question_ar": "شنو تضيف بوّابات الـAPI عادةً بعد التحقّق؟",
+   "options": [
+    "Anomaly detection to prevent abuse.",
+    "Compression to reduce bandwidth.",
+    "Caching to reduce database load.",
+    "Versioning to manage deprecation."
+   ],
+   "options_ar": [
+    "كشف الشذوذ لمنع إساءة الاستخدام.",
+    "ضغطاً لتقليل عرض النطاق.",
+    "تخزيناً مؤقتاً لتقليل حمل القاعدة.",
+    "إدارة إصدارات للتعامل مع الإيقاف."
+   ],
+   "options_en": [
+    "Anomaly detection to prevent abuse.",
+    "Compression to reduce bandwidth.",
+    "Caching to reduce database load.",
+    "Versioning to manage deprecation."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Once volume and shape are observed at the gateway, deviations from normal call patterns become detectable there.",
+   "explanation_ar": "بعد ما يُلاحظ الحجم والشكل عند البوّابة، صار الانحراف عن أنماط الاستدعاء الطبيعية قابلاً للكشف هناك."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_api_rate_limiting",
+   "bloom_level": "Understand",
+   "question": "What does rate limiting protect an API against?",
+   "question_ar": "من شنو يحمي تحديد المعدّل الـAPI؟",
+   "options": [
+    "Authorization errors on individual objects.",
+    "Schema violations in the request body.",
+    "Expired certificates on the gateway.",
+    "Abuse through volume rather than a single flaw."
+   ],
+   "options_ar": [
+    "أخطاء تخويل على كائنات منفردة.",
+    "مخالفات المخطط في جسم الطلب.",
+    "شهادات منتهية على البوّابة.",
+    "إساءة الحجم بدل عيب منفرد."
+   ],
+   "options_en": [
+    "Authorization errors on individual objects.",
+    "Schema violations in the request body.",
+    "Expired certificates on the gateway.",
+    "Abuse through volume rather than a single flaw."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It caps how much an authenticated caller can consume, which addresses enumeration and scraping that no single request reveals.",
+   "explanation_ar": "يحدّ شكثر يقدر متصل مصادَق عليه يستهلك، وهذا يعالج الاستنطاق والسحب اللي ما يكشفه طلب واحد."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_sc_definition",
+   "bloom_level": "Understand",
+   "question": "Why are supply chain vulnerabilities described as systemic?",
+   "question_ar": "ليش ثغرات سلسلة التوريد توصف بأنها نُظُمية؟",
+   "options": [
+    "Because they require physical access to exploit.",
+    "Because the risk lives in code you did not write.",
+    "Because they affect every system at the same moment.",
+    "Because they cannot be detected by any scanner."
+   ],
+   "options_ar": [
+    "لأنها تشترط وصولاً فيزيائياً للاستغلال.",
+    "لأن الخطر يعيش بكود ما كتبته أنت.",
+    "لأنها تصيب كل الأنظمة بنفس اللحظة.",
+    "لأن أي فاحص ما يقدر يكشفها."
+   ],
+   "options_en": [
+    "Because they require physical access to exploit.",
+    "Because the risk lives in code you did not write.",
+    "Because they affect every system at the same moment.",
+    "Because they cannot be detected by any scanner."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Third-party libraries enter without sufficient vetting, so your assurance is only as good as the assurance of everyone you depend on.",
+   "explanation_ar": "مكتبات الطرف الثالث تدخل بلا تدقيق كافٍ، فطمأنينتك بقدر طمأنينة كل من تعتمد عليه."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_sc_dependency_confusion",
+   "bloom_level": "Remember",
+   "question": "How does dependency confusion work?",
+   "question_ar": "كيف يشتغل تشويش التبعيات؟",
+   "options": [
+    "A container image is rebuilt from an old base.",
+    "A certificate expires during the deployment.",
+    "A public package impersonates an internal one by name.",
+    "A private key is stolen from the build server."
+   ],
+   "options_ar": [
+    "صورة حاوية تُعاد من أساس قديم.",
+    "شهادة تنتهي أثناء النشر.",
+    "حزمة عامة تنتحل اسم حزمة داخلية.",
+    "مفتاح خاص يُسرق من سيرفر البناء."
+   ],
+   "options_en": [
+    "A container image is rebuilt from an old base.",
+    "A certificate expires during the deployment.",
+    "A public package impersonates an internal one by name.",
+    "A private key is stolen from the build server."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The package manager resolves the public name first, so the hostile package is pulled instead of the intended internal one.",
+   "explanation_ar": "مدير الحزم يحلّ الاسم العام أولاً، فتُسحب الحزمة العدائية بدل الداخلية المقصودة."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_sc_malicious_injection",
+   "bloom_level": "Remember",
+   "question": "What does malicious package injection mean?",
+   "question_ar": "شنو يعني حقن حزم خبيثة؟",
+   "options": [
+    "A hostile package is inserted into the dependency chain.",
+    "A hostile user is inserted into the admin group.",
+    "A hostile rule is inserted into the firewall.",
+    "A hostile record is inserted into the database."
+   ],
+   "options_ar": [
+    "حزمة عدائية تُدسّ داخل سلسلة التبعيات.",
+    "مستخدم عدائي يُدسّ بمجموعة الإدارة.",
+    "قاعدة عدائية تُدسّ بالجدار الناري.",
+    "سجل عدائي يُدسّ بقاعدة البيانات."
+   ],
+   "options_en": [
+    "A hostile package is inserted into the dependency chain.",
+    "A hostile user is inserted into the admin group.",
+    "A hostile rule is inserted into the firewall.",
+    "A hostile record is inserted into the database."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The build itself carries the attack, so it ships with the product and arrives inside the trust boundary.",
+   "explanation_ar": "البناء نفسه يحمل الهجوم، فينزل مع المنتج ويوصل داخل حدود الثقة."
+  },
+  {
+   "id": "q12",
+   "concept_id": "w6_sc_vetting",
+   "bloom_level": "Remember",
+   "question": "Which controls does the chapter give for supply chain risk?",
+   "question_ar": "أي ضوابط يعطيها الفصل لخطر سلسلة التوريد؟",
+   "options": [
+    "Image scanning, policy enforcement and runtime monitoring.",
+    "Schema validation, authentication and rate limiting.",
+    "Output encoding, CSP and input sanitisation.",
+    "Dependency vetting, software composition analysis and pinning."
+   ],
+   "options_ar": [
+    "فحص الصور وإنفاذ السياسة والرصد وقت التشغيل.",
+    "التحقّق من المخطط والمصادقة وتحديد المعدّل.",
+    "ترميز المخرجات و CSP وتعقيم المدخلات.",
+    "تدقيق التبعيات وتحليل تركيب البرمجيات وتثبيت النسخ."
+   ],
+   "options_en": [
+    "Image scanning, policy enforcement and runtime monitoring.",
+    "Schema validation, authentication and rate limiting.",
+    "Output encoding, CSP and input sanitisation.",
+    "Dependency vetting, software composition analysis and pinning."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Vetting decides what may enter, composition analysis reveals what already did, and pinning stops it changing underneath you.",
+   "explanation_ar": "التدقيق يقرّر شنو يُسمح له يدخل، وتحليل التركيب يكشف اللي دخل فعلاً، والتثبيت يمنعه يتغيّر تحتك."
+  },
+  {
+   "id": "q13",
+   "concept_id": "w6_sc_pinning",
+   "bloom_level": "Understand",
+   "question": "Why does version pinning reduce supply chain risk?",
+   "question_ar": "ليش تثبيت النسخ يقلّل خطر سلسلة التوريد؟",
+   "options": [
+    "Because pinning removes transitive dependencies.",
+    "Because a build cannot silently pick another package.",
+    "Because pinned versions are automatically patched.",
+    "Because pinning encrypts the package download."
+   ],
+   "options_ar": [
+    "لأن التثبيت يزيل التبعيات غير المباشرة.",
+    "لأن البناء ما يقدر ياخذ حزمة ثانية بصمت.",
+    "لأن النسخ المثبَّتة تُرقَّع تلقائياً.",
+    "لأن التثبيت يشفّر تنزيل الحزمة."
+   ],
+   "options_en": [
+    "Because pinning removes transitive dependencies.",
+    "Because a build cannot silently pick another package.",
+    "Because pinned versions are automatically patched.",
+    "Because pinning encrypts the package download."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A range specifier lets the resolver choose something new at build time, which is exactly the gap dependency confusion exploits.",
+   "explanation_ar": "المدى المفتوح يخلي الحلّال يختار شي جديد وقت البناء، وهذا بالضبط الفراغ اللي يستغله تشويش التبعيات."
+  },
+  {
+   "id": "q14",
+   "concept_id": "w6_sc_sbom",
+   "bloom_level": "Understand",
+   "question": "Why does an inventory of dependencies matter for supply chain security?",
+   "question_ar": "ليش جرد التبعيات مهم لأمن سلسلة التوريد؟",
+   "options": [
+    "Because it satisfies the audit requirement only.",
+    "Because it encrypts every transitive dependency.",
+    "Because you cannot patch what you did not know you had.",
+    "Because it proves the build is reproducible."
+   ],
+   "options_ar": [
+    "لأنه يلبّي شرط التدقيق فقط.",
+    "لأنه يشفّر كل تبعية غير مباشرة.",
+    "لأنك ما تقدر ترقّع شي ما تعرف إنه عندك.",
+    "لأنه يثبت إن البناء قابل للإعادة."
+   ],
+   "options_en": [
+    "Because it satisfies the audit requirement only.",
+    "Because it encrypts every transitive dependency.",
+    "Because you cannot patch what you did not know you had.",
+    "Because it proves the build is reproducible."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "When a widely used library is disclosed as vulnerable, the inventory is what tells you whether you are exposed within minutes or weeks.",
+   "explanation_ar": "لمّا تُكشف مكتبة واسعة الاستخدام كضعيفة، الجرد هو اللي يقولك إنك متعرّض خلال دقائق أو أسابيع."
+  },
+  {
+   "id": "q15",
+   "concept_id": "w6_cn_container_misconfig",
+   "bloom_level": "Remember",
+   "question": "Which cloud-native weakness does the chapter name first?",
+   "question_ar": "أي ضعف سحابي المنشأ يذكره الفصل أولاً؟",
+   "options": [
+    "Container misconfigurations.",
+    "Container image compression errors.",
+    "Container network address exhaustion.",
+    "Container clock synchronisation drift."
+   ],
+   "options_ar": [
+    "إساءة ضبط الحاويات.",
+    "أخطاء ضغط صور الحاويات.",
+    "نفاد عناوين شبكة الحاويات.",
+    "انحراف مزامنة ساعة الحاويات."
+   ],
+   "options_en": [
+    "Container misconfigurations.",
+    "Container image compression errors.",
+    "Container network address exhaustion.",
+    "Container clock synchronisation drift."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The image is usually fine; what is wrong is how it was configured and what it was granted when it ran.",
+   "explanation_ar": "الصورة عادةً سليمة؛ الغلط بإعدادها وبالصلاحيات اللي انمنحتها لمّا اشتغلت."
+  },
+  {
+   "id": "q16",
+   "concept_id": "w6_cn_orchestration",
+   "bloom_level": "Remember",
+   "question": "What does insecure orchestration refer to?",
+   "question_ar": "إلى شنو تشير الحوكمة غير الآمنة للتنسيق؟",
+   "options": [
+    "Slow scheduling of pods across the cluster.",
+    "Missing backups of the persistent volumes.",
+    "Excessive logging from the control plane.",
+    "Exposure of the orchestration API such as Kubernetes."
+   ],
+   "options_ar": [
+    "بطء جدولة الـpods عبر العنقود.",
+    "غياب نسخ احتياطية للمجلدات الدائمة.",
+    "تسجيل مفرط من مستوى التحكّم.",
+    "تعرّض واجهة التنسيق مثل Kubernetes."
+   ],
+   "options_en": [
+    "Slow scheduling of pods across the cluster.",
+    "Missing backups of the persistent volumes.",
+    "Excessive logging from the control plane.",
+    "Exposure of the orchestration API such as Kubernetes."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "An exposed control plane API hands the attacker cluster-level power, which is far beyond any single application flaw.",
+   "explanation_ar": "واجهة تحكّم مكشوفة تعطي المهاجم سلطة على مستوى العنقود، وهذا أبعد بكثير من أي عيب تطبيق منفرد."
+  },
+  {
+   "id": "q17",
+   "concept_id": "w6_cn_event_injection",
+   "bloom_level": "Remember",
+   "question": "Which weakness is specific to serverless platforms?",
+   "question_ar": "أي ضعف خاص بمنصّات serverless؟",
+   "options": [
+    "Image layer tampering.",
+    "Event injection.",
+    "Container escape.",
+    "Pod scheduling abuse."
+   ],
+   "options_ar": [
+    "التلاعب بطبقات الصورة.",
+    "حقن الأحداث.",
+    "الهروب من الحاوية.",
+    "إساءة جدولة الـpods."
+   ],
+   "options_en": [
+    "Image layer tampering.",
+    "Event injection.",
+    "Container escape.",
+    "Pod scheduling abuse."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Functions are triggered by events, so a crafted event payload becomes the injection vector that a request body would be elsewhere.",
+   "explanation_ar": "الدوال تُشغَّل بأحداث، فحمولة حدث مُصمَّمة تصير ناقل الحقن اللي يكون جسم الطلب بمكان ثاني."
+  },
+  {
+   "id": "q18",
+   "concept_id": "w6_cn_shared_responsibility",
+   "bloom_level": "Analyze",
+   "question": "Why does moving to serverless not remove configuration risk?",
+   "question_ar": "ليش الانتقال لـserverless ما يزيل خطر الإعداد؟",
+   "options": [
+    "Because serverless functions cannot be monitored.",
+    "Because serverless removes all authentication needs.",
+    "Because the provider secures the platform, not your settings.",
+    "Because providers refuse to patch their own hosts."
+   ],
+   "options_ar": [
+    "لأن دوال serverless ما يمكن مراقبتها.",
+    "لأن serverless تلغي كل حاجة للمصادقة.",
+    "لأن المزوّد يؤمّن المنصّة مو إعداداتك.",
+    "لأن المزوّدين يرفضون ترقيع مضيفاتهم."
+   ],
+   "options_en": [
+    "Because serverless functions cannot be monitored.",
+    "Because serverless removes all authentication needs.",
+    "Because the provider secures the platform, not your settings.",
+    "Because providers refuse to patch their own hosts."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The shared responsibility boundary puts the runtime on the provider and the identity, permissions and input handling firmly on you.",
+   "explanation_ar": "حدّ المسؤولية المشتركة يضع وقت التشغيل على المزوّد والهوية والصلاحيات ومعالجة المدخلات عليك أنت."
+  },
+  {
+   "id": "q19",
+   "concept_id": "w6_cn_image_scanning",
+   "bloom_level": "Remember",
+   "question": "Which control does the chapter give for container images?",
+   "question_ar": "أي ضابط يعطيه الفصل لصور الحاويات؟",
+   "options": [
+    "Image scanning.",
+    "Image compression.",
+    "Image versioning.",
+    "Image encryption."
+   ],
+   "options_ar": [
+    "فحص الصور.",
+    "ضغط الصور.",
+    "إدارة إصدارات الصور.",
+    "تشفير الصور."
+   ],
+   "options_en": [
+    "Image scanning.",
+    "Image compression.",
+    "Image versioning.",
+    "Image encryption."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Scanning inspects the layers and packages baked into the image before it is allowed to run.",
+   "explanation_ar": "الفحص يفتّش الطبقات والحزم المخبوزة بالصورة قبل ما يُسمح لها تشتغل."
+  },
+  {
+   "id": "q20",
+   "concept_id": "w6_cn_policy_enforcement",
+   "bloom_level": "Remember",
+   "question": "Where is policy enforced for orchestrated workloads?",
+   "question_ar": "وين تُفرض السياسة على أحمال العمل المنسَّقة؟",
+   "options": [
+    "In the developer's local editor.",
+    "In the load balancer configuration.",
+    "In the DNS resolver zone file.",
+    "In the orchestration platform itself."
+   ],
+   "options_ar": [
+    "بمحرّر المطوّر المحلي.",
+    "بإعداد موازن الحمل.",
+    "بملف منطقة محلّل DNS.",
+    "داخل منصّة التنسيق نفسها."
+   ],
+   "options_en": [
+    "In the developer's local editor.",
+    "In the load balancer configuration.",
+    "In the DNS resolver zone file.",
+    "In the orchestration platform itself."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The orchestrator is the only place that sees every workload before it starts, which is why admission policy belongs there.",
+   "explanation_ar": "المنسّق هو المكان الوحيد اللي يشوف كل حِمل قبل ما يبدأ، ولهذا سياسة القبول تنتمي هناك."
+  },
+  {
+   "id": "q21",
+   "concept_id": "w6_cn_dynamic_exposure",
+   "bloom_level": "Understand",
+   "question": "Why do dynamic architectures complicate vulnerability management?",
+   "question_ar": "ليش المعماريات الديناميكية تعقّد إدارة الثغرات؟",
+   "options": [
+    "Because they run only during business hours.",
+    "Because the exposure profile changes continuously.",
+    "Because they forbid automated scanning entirely.",
+    "Because they store no logs of any kind."
+   ],
+   "options_ar": [
+    "لأنها تشتغل بسوقات العمل فقط.",
+    "لأن ملف التعرّض يتغيّر باستمرار.",
+    "لأنها تمنع الفحص الآلي بالكامل.",
+    "لأنها ما تخزّن أي سجلات."
+   ],
+   "options_en": [
+    "Because they run only during business hours.",
+    "Because the exposure profile changes continuously.",
+    "Because they forbid automated scanning entirely.",
+    "Because they store no logs of any kind."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Workloads appear and disappear faster than a periodic scan cycle, so a snapshot is stale before the report is written.",
+   "explanation_ar": "الأحمال تظهر وتختفي أسرع من دورة فحص دورية، فالصورة تصير قديمة قبل ما يُكتب التقرير."
+  },
+  {
+   "id": "q22",
+   "concept_id": "w6_cn_vs_traditional",
+   "bloom_level": "Analyze",
+   "question": "What makes these modern classes different from classic web flaws?",
+   "question_ar": "شنو يخلي هذي الفئات الحديثة مختلفة عن العيوب الكلاسيكية؟",
+   "options": [
+    "They can only be exploited by insiders.",
+    "They are all prevented by a web application firewall.",
+    "They arise from architecture and dependencies, not bad input.",
+    "They only affect applications written in JavaScript."
+   ],
+   "options_ar": [
+    "ما يستغلها إلا الداخليون.",
+    "كلها يمنعها جدار حماية تطبيقات الويب.",
+    "تنشأ من المعمارية والتبعيات، مو من مدخل سيئ.",
+    "تؤثّر فقط على التطبيقات المكتوبة بـJavaScript."
+   ],
+   "options_en": [
+    "They can only be exploited by insiders.",
+    "They are all prevented by a web application firewall.",
+    "They arise from architecture and dependencies, not bad input.",
+    "They only affect applications written in JavaScript."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "You cannot encode or validate your way out of a poisoned dependency or an exposed control plane, so the fix is architectural.",
+   "explanation_ar": "ما تقدر تعالج تبعية مسمومة أو واجهة تحكّم مكشوفة بالترميز أو التحقّق، فالإصلاح معماري."
+  }
+ ]
+}

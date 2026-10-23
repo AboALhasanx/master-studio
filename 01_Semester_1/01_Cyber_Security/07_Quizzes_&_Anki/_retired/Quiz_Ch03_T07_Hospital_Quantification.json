@@ -1,0 +1,537 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_T07_Hospital_Quantification",
+  "topic": "Quantifying hospital cyber risk",
+  "topic_ar": "تكميم خطر المستشفى",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "eal_definition",
+      "bloom_level": "Remember",
+      "question": "In the hospital example, how is each risk's expected annual loss calculated?",
+      "question_ar": "في مثال المستشفى، كيف تُحسب الخسارة السنوية المتوقعة لكل خطر؟",
+      "options": [
+        "Probability multiplied by impact, in millions per year.",
+        "Impact divided by probability, in millions per year.",
+        "Probability added to impact, in millions per year.",
+        "The average of probability and impact, per year."
+      ],
+      "options_ar": [
+        "الاحتمالية مضروبة بالتأثير، بملايين الدولارات سنوياً.",
+        "التأثير مقسوماً على الاحتمالية، بملايين الدولارات سنوياً.",
+        "الاحتمالية مضافة إلى التأثير، بملايين الدولارات سنوياً.",
+        "متوسط الاحتمالية والتأثير، سنوياً."
+      ],
+      "options_en": [
+        "Probability multiplied by impact, in millions per year.",
+        "Impact divided by probability, in millions per year.",
+        "Probability added to impact, in millions per year.",
+        "The average of probability and impact, per year."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The example uses EAL equals P times I for every row: ransomware gives 0.20 times 10 equals 2.00 million, and the same multiplication is applied to the other two risks.",
+      "explanation_ar": "يستخدم المثال EAL تساوي P × I لكل صف: الفدية تعطي 0.20 × 10 = 2.00 مليون، والضرب نفسه يُطبَّق على الخطرين الآخرين."
+    },
+    {
+      "id": "q2",
+      "concept_id": "baseline_ransomware",
+      "bloom_level": "Apply",
+      "question": "Ransomware has probability 0.20 and impact 10 million. What is its baseline expected annual loss?",
+      "question_ar": "الفدية احتماليها 0.20 وتأثيرها 10 ملايين. ما خسارتها السنوية المتوقعة الأساسية؟",
+      "options": [
+        "0.20 million.",
+        "2.00 million.",
+        "10.20 million.",
+        "50.00 million."
+      ],
+      "options_ar": [
+        "0.20 مليون.",
+        "2.00 مليون.",
+        "10.20 مليون.",
+        "50.00 مليون."
+      ],
+      "options_en": [
+        "0.20 million.",
+        "2.00 million.",
+        "10.20 million.",
+        "50.00 million."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "0.20 times 10 equals 2.00 million. Adding gives 10.20 and dividing 10 by 0.20 gives 50, which are the two operations the example does not use.",
+      "explanation_ar": "0.20 × 10 = 2.00 مليون. والجمع يعطي 10.20، وقسمة 10 على 0.20 تعطي 50، وهما عمليتان لا يستخدمهما المثال."
+    },
+    {
+      "id": "q3",
+      "concept_id": "baseline_total",
+      "bloom_level": "Apply",
+      "question": "The three baseline losses are 2.00, 0.50 and 0.10 million. What is the total baseline aggregate risk?",
+      "question_ar": "الخسائر الأساسية الثلاث هي 2.00 و0.50 و0.10 مليون. ما إجمالي الخطر التجميعي الأساسي؟",
+      "options": [
+        "2.00 million.",
+        "3.60 million.",
+        "2.60 million.",
+        "0.60 million."
+      ],
+      "options_ar": [
+        "2.00 مليون.",
+        "3.60 مليون.",
+        "2.60 مليون.",
+        "0.60 مليون."
+      ],
+      "options_en": [
+        "2.00 million.",
+        "3.60 million.",
+        "2.60 million.",
+        "0.60 million."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The three expected losses sum to 2.60 million per year, which is the aggregate risk the hospital starts from. It is a sum of products, not the largest product alone.",
+      "explanation_ar": "مجموع الخسائر المتوقعة الثلاث 2.60 مليون سنوياً، وهو الخطر التجميعي الذي يبدأ منه المستشفى. وهو مجموع حواصل ضرب لا أكبر حاصل وحده."
+    },
+    {
+      "id": "q4",
+      "concept_id": "baseline_largest",
+      "bloom_level": "Understand",
+      "question": "Which risk dominates the hospital's baseline, and by how much?",
+      "question_ar": "أي خطر يهيمن على خط الأساس في المستشفى، وبأي مقدار؟",
+      "options": [
+        "Insider data theft, at 0.50 million of the total.",
+        "Power outage, at 0.10 million of the total.",
+        "All three contribute equally at roughly 0.87 million each.",
+        "Ransomware, at 2.00 million of the 2.60 million total."
+      ],
+      "options_ar": [
+        "سرقة البيانات الداخلية، بـ0.50 مليون من الإجمالي.",
+        "انقطاع الكهرباء، بـ0.10 مليون من الإجمالي.",
+        "الثلاثة تساهم بالتساوي بنحو 0.87 مليون لكل واحد.",
+        "الفدية، بـ2.00 مليون من أصل 2.60 مليون."
+      ],
+      "options_en": [
+        "Insider data theft, at 0.50 million of the total.",
+        "Power outage, at 0.10 million of the total.",
+        "All three contribute equally at roughly 0.87 million each.",
+        "Ransomware, at 2.00 million of the 2.60 million total."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Ransomware carries 2.00 of the 2.60 million, so it dominates the baseline and is the first thing the example attacks. That is why the recommendation later puts ransomware first.",
+      "explanation_ar": "تحمل الفدية 2.00 من أصل 2.60 مليون، فتهيمن على خط الأساس وهي أول ما يعالجه المثال. ولهذا تضع التوصية الفدية أولاً."
+    },
+    {
+      "id": "q5",
+      "concept_id": "framing_models",
+      "bloom_level": "Remember",
+      "question": "Which two models does the example use to frame the risk?",
+      "question_ar": "أي نموذجين يستخدمهما المثال لتأطير الخطر؟",
+      "options": [
+        "Risk equals likelihood times impact, and aggregate risk equals the sum of probability times impact.",
+        "Risk equals threat plus vulnerability plus impact, and residual risk equals risk minus controls.",
+        "Risk equals impact divided by controls, and aggregate risk equals the average of all rows.",
+        "Risk equals policy effectiveness times compliance index, and aggregate risk is a maximum."
+      ],
+      "options_ar": [
+        "الخطر = الاحتمالية × التأثير، والخطر التجميعي = مجموع احتمال × تأثير.",
+        "الخطر = التهديد + الثغرة + التأثير، والخطر المتبقي = الخطر − الضوابط.",
+        "الخطر = التأثير ÷ الضوابط، والخطر التجميعي = متوسط كل الصفوف.",
+        "الخطر = فعالية السياسة × مؤشر الامتثال، والتجميعي قيمة عظمى."
+      ],
+      "options_en": [
+        "Risk equals likelihood times impact, and aggregate risk equals the sum of probability times impact.",
+        "Risk equals threat plus vulnerability plus impact, and residual risk equals risk minus controls.",
+        "Risk equals impact divided by controls, and aggregate risk equals the average of all rows.",
+        "Risk equals policy effectiveness times compliance index, and aggregate risk is a maximum."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The example states its framing explicitly: the basic model Risk equals Likelihood times Impact, and the aggregate model Aggregate Risk equals the sum of P times I. Those are the two forms from the earlier topic.",
+      "explanation_ar": "يعلن المثال تأطيره صريحاً: النموذج الأساسي الخطر = الاحتمالية × التأثير، والنموذج التجميعي الخطر التجميعي = مجموع P × I. وهما الصيغتان من الموضوع السابق."
+    },
+    {
+      "id": "q6",
+      "concept_id": "c1_residual",
+      "bloom_level": "Apply",
+      "question": "Control C1 moves ransomware to probability 0.08 and impact 6 million. What is the residual expected annual loss?",
+      "question_ar": "يحرّك الضابط C1 الفدية إلى احتمال 0.08 وتأثير 6 ملايين. ما الخسارة السنوية المتوقعة المتبقية؟",
+      "options": [
+        "0.80 million.",
+        "0.48 million.",
+        "6.08 million.",
+        "1.52 million."
+      ],
+      "options_ar": [
+        "0.80 مليون.",
+        "0.48 مليون.",
+        "6.08 مليون.",
+        "1.52 مليون."
+      ],
+      "options_en": [
+        "0.80 million.",
+        "0.48 million.",
+        "6.08 million.",
+        "1.52 million."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "0.08 times 6 equals 0.48 million. Both factors moved: probability fell from 0.20 to 0.08 and impact fell from 10 to 6, so the product dropped from 2.00 to 0.48.",
+      "explanation_ar": "0.08 × 6 = 0.48 مليون. وقد تحرّك العاملان: الاحتمالية هبطت من 0.20 إلى 0.08 والتأثير من 10 إلى 6، فالحاصل هبط من 2.00 إلى 0.48."
+    },
+    {
+      "id": "q7",
+      "concept_id": "c1_benefit",
+      "bloom_level": "Apply",
+      "question": "What is C1's benefit against the baseline?",
+      "question_ar": "ما فائدة C1 مقابل خط الأساس؟",
+      "options": [
+        "0.48 million.",
+        "2.00 million.",
+        "1.52 million.",
+        "0.90 million."
+      ],
+      "options_ar": [
+        "0.48 مليون.",
+        "2.00 مليون.",
+        "1.52 مليون.",
+        "0.90 مليون."
+      ],
+      "options_en": [
+        "0.48 million.",
+        "2.00 million.",
+        "1.52 million.",
+        "0.90 million."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The benefit is the baseline loss minus the residual loss: 2.00 minus 0.48 equals 1.52 million. The 0.90 is the control's cost, which is subtracted later in the ROI, not here.",
+      "explanation_ar": "الفائدة هي خسارة الأساس ناقص الخسارة المتبقية: 2.00 − 0.48 = 1.52 مليون. وأما 0.90 فهي كلفة الضابط، وتُطرح لاحقاً في حساب ROI لا هنا."
+    },
+    {
+      "id": "q8",
+      "concept_id": "c1_roi",
+      "bloom_level": "Apply",
+      "question": "C1 costs 0.90 million and returns a benefit of 1.52 million. What is its ROI?",
+      "question_ar": "كلفة C1 هي 0.90 مليون وفائدته 1.52 مليون. ما العائد على الاستثمار؟",
+      "options": [
+        "Approximately 0.59.",
+        "Approximately 2.42.",
+        "Approximately 0.90.",
+        "Approximately 1.69."
+      ],
+      "options_ar": [
+        "نحو 0.59.",
+        "نحو 2.42.",
+        "نحو 0.90.",
+        "نحو 1.69."
+      ],
+      "options_en": [
+        "Approximately 0.59.",
+        "Approximately 2.42.",
+        "Approximately 0.90.",
+        "Approximately 1.69."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "ROI is benefit divided by cost: 1.52 divided by 0.90 gives about 1.69. Dividing the other way, 0.90 by 1.52, gives 0.59, which is the inverted ratio.",
+      "explanation_ar": "العائد هو الفائدة مقسومة على الكلفة: 1.52 ÷ 0.90 ≈ 1.69. والقسمة بالعكس 0.90 ÷ 1.52 تعطي 0.59، وهي النسبة المقلوبة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "c2_residual",
+      "bloom_level": "Understand",
+      "question": "Control C2 targets insider theft and leaves a residual of 0.15 million from a baseline of 0.50 million. What does that residual represent?",
+      "question_ar": "يستهدف الضابط C2 السرقة الداخلية ويترك متبقياً 0.15 مليون من أساس 0.50 مليون. ماذا يمثّل هذا المتبقي؟",
+      "options": [
+        "The expected loss that remains after the control is applied.",
+        "The cost of implementing the control over one year.",
+        "The benefit that the control delivers in the first year.",
+        "The amount the insurer will pay after an incident."
+      ],
+      "options_ar": [
+        "الخسارة المتوقعة التي تبقى بعد تطبيق الضابط.",
+        "كلفة تنفيذ الضابط خلال سنة واحدة.",
+        "الفائدة التي يحققها الضابط في السنة الأولى.",
+        "المبلغ الذي سيدفعه المؤمّن بعد الحادث."
+      ],
+      "options_en": [
+        "The expected loss that remains after the control is applied.",
+        "The cost of implementing the control over one year.",
+        "The benefit that the control delivers in the first year.",
+        "The amount the insurer will pay after an incident."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The residual is what is still expected to be lost after the control acts: 0.05 times 3 equals 0.15 million. The benefit is the difference, 0.35 million, and the cost is a separate 0.40 million.",
+      "explanation_ar": "المتبقي هو ما يُتوقّع خسارته بعد عمل الضابط: 0.05 × 3 = 0.15 مليون. والفائدة هي الفرق 0.35 مليون، والكلفة 0.40 مليون منفصلة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "c3_lowest_roi",
+      "bloom_level": "Understand",
+      "question": "Which control has the lowest ROI in the example, and why does that not make it useless?",
+      "question_ar": "أي ضابط له أقل عائد في المثال، ولماذا لا يعني ذلك أنه بلا فائدة؟",
+      "options": [
+        "C1 on ransomware, because it costs the most of the four controls in the set.",
+        "C3 on power resilience, whose benefit is small because the power risk was already tiny.",
+        "C2 on insider theft, because it leaves the largest residual loss of the three.",
+        "C4 on the human layer, because it cannot be measured or verified at all."
+      ],
+      "options_ar": [
+        "C1 للفدية، لأنه الأغلى بين الضوابط الأربعة.",
+        "C3 لمرونة الطاقة، وفائدته صغيرة لأن خطر الكهرباء كان ضئيلاً أصلاً.",
+        "C2 للسرقة الداخلية، لأنه يترك أكبر خسارة متبقية.",
+        "C4 للطبقة البشرية، لأنه لا يمكن قياسه إطلاقاً."
+      ],
+      "options_en": [
+        "C1 on ransomware, because it costs the most of the four controls in the set.",
+        "C3 on power resilience, whose benefit is small because the power risk was already tiny.",
+        "C2 on insider theft, because it leaves the largest residual loss of the three.",
+        "C4 on the human layer, because it cannot be measured or verified at all."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "C3 has the lowest ROI at about 0.23 because the baseline power loss was only 0.10 million, so there is little to save. It still removes a real risk and appears in Portfolio B, so low ROI is not the same as no value.",
+      "explanation_ar": "عائد C3 الأدنى نحو 0.23 لأن خسارة الكهرباء الأساسية كانت 0.10 مليون فقط، فالقليل مما يُوفَّر. ومع ذلك يزيل خطراً حقيقياً ويظهر في المحفظة B، فانخفاض العائد لا يعني انعدام القيمة."
+    },
+    {
+      "id": "q11",
+      "concept_id": "c4_incremental",
+      "bloom_level": "Apply",
+      "question": "C4 trims ransomware probability from 0.08 to 0.07 while the impact stays at 6 million. What is its incremental benefit?",
+      "question_ar": "يخفّض C4 احتمال الفدية من 0.08 إلى 0.07 مع بقاء التأثير 6 ملايين. ما فائدته الإضافية؟",
+      "options": [
+        "0.07 million.",
+        "0.42 million.",
+        "0.06 million.",
+        "0.20 million."
+      ],
+      "options_ar": [
+        "0.07 مليون.",
+        "0.42 مليون.",
+        "0.06 مليون.",
+        "0.20 مليون."
+      ],
+      "options_en": [
+        "0.07 million.",
+        "0.42 million.",
+        "0.06 million.",
+        "0.20 million."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The change in probability is 0.01 and the impact is 6, so the incremental benefit is 0.06 million. The 0.20 is C4's cost, which is why its ROI is only about 0.30.",
+      "explanation_ar": "التغيّر في الاحتمالية 0.01 والتأثير 6، فالفائدة الإضافية 0.06 مليون. وأما 0.20 فهي كلفة C4، ولهذا عائده نحو 0.30 فقط."
+    },
+    {
+      "id": "q12",
+      "concept_id": "portfolio_a_cost",
+      "bloom_level": "Apply",
+      "question": "Portfolio A combines C1, C2 and C4. What does it cost against a 1.5 million cap?",
+      "question_ar": "تضم المحفظة A الضوابط C1 وC2 وC4. كم تكلّف مقابل سقف 1.5 مليون؟",
+      "options": [
+        "1.30 million, leaving slack.",
+        "1.70 million, over the cap.",
+        "0.90 million, well under it.",
+        "1.50 million, exactly on the cap."
+      ],
+      "options_ar": [
+        "1.30 مليون، مع فائض.",
+        "1.70 مليون، فوق السقف.",
+        "0.90 مليون، أقل بكثير.",
+        "1.50 مليون، على السقف تماماً."
+      ],
+      "options_en": [
+        "1.30 million, leaving slack.",
+        "1.70 million, over the cap.",
+        "0.90 million, well under it.",
+        "1.50 million, exactly on the cap."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "0.90 plus 0.40 plus 0.20 equals 1.50 million, which spends the cap exactly. That is why the example calls A risk-minimizing under budget rather than cheap.",
+      "explanation_ar": "0.90 + 0.40 + 0.20 = 1.50 مليون، أي يصرف السقف بالكامل. ولهذا يصف المثال A بأنها الأقل مخاطرة ضمن الميزانية لا الأرخص."
+    },
+    {
+      "id": "q13",
+      "concept_id": "portfolio_a_residual",
+      "bloom_level": "Apply",
+      "question": "What is Portfolio A's aggregate residual risk?",
+      "question_ar": "ما الخطر التجميعي المتبقي للمحفظة A؟",
+      "options": [
+        "0.67 million.",
+        "1.01 million.",
+        "0.42 million.",
+        "1.93 million."
+      ],
+      "options_ar": [
+        "0.67 مليون.",
+        "1.01 مليون.",
+        "0.42 مليون.",
+        "1.93 مليون."
+      ],
+      "options_en": [
+        "0.67 million.",
+        "1.01 million.",
+        "0.42 million.",
+        "1.93 million."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The residual rows are 0.42 for ransomware with C1 plus C4, 0.15 for insider and 0.10 for power, which sum to 0.67 million. The 1.93 is the reduction, not the residual.",
+      "explanation_ar": "الصفوف المتبقية هي 0.42 للفدية مع C1 وC4، و0.15 للداخلي، و0.10 للكهرباء، ومجموعها 0.67 مليون. وأما 1.93 فهي مقدار التخفيض لا المتبقي."
+    },
+    {
+      "id": "q14",
+      "concept_id": "portfolio_b_residual",
+      "bloom_level": "Apply",
+      "question": "Portfolio B combines C1 and C3. What is its aggregate residual risk?",
+      "question_ar": "تضم المحفظة B الضابطين C1 وC3. ما خطرها التجميعي المتبقي؟",
+      "options": [
+        "0.67 million.",
+        "1.01 million.",
+        "1.59 million.",
+        "1.20 million."
+      ],
+      "options_ar": [
+        "0.67 مليون.",
+        "1.01 مليون.",
+        "1.59 مليون.",
+        "1.20 مليون."
+      ],
+      "options_en": [
+        "0.67 million.",
+        "1.01 million.",
+        "1.59 million.",
+        "1.20 million."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "With C1 and C3 applied, ransomware stays at 0.48, insider stays at its untouched 0.50 and power drops to 0.03, giving 1.01 million. Leaving insider risk untreated is what makes B riskier than A.",
+      "explanation_ar": "بتطبيق C1 وC3 يبقى احتمال الفدية عند 0.48، والداخلي عند 0.50 دون معالجة، والكهرباء تهبط إلى 0.03، فالمجموع 1.01 مليون. وترك الخطر الداخلي بلا معالجة هو ما يجعل B أخطر من A."
+    },
+    {
+      "id": "q15",
+      "concept_id": "roi_vs_residual",
+      "bloom_level": "Analyze",
+      "question": "Portfolio B has a higher ROI than A but a higher residual risk. How does the example resolve that trade-off?",
+      "question_ar": "المحفظة B أعلى عائداً من A لكن خطرها المتبقي أعلى. كيف يحلّ المثال هذه المقايضة؟",
+      "options": [
+        "It chooses B, because ROI is the only measure that matters to a board.",
+        "It rejects both and asks for a larger budget before deciding.",
+        "It chooses A, because the objective is the lowest residual risk within the budget.",
+        "It averages the two portfolios into a single third option."
+      ],
+      "options_ar": [
+        "يختار B، لأن العائد هو المقياس الوحيد الذي يهم المجلس.",
+        "يرفض الاثنتين ويطلب ميزانية أكبر قبل القرار.",
+        "يختار A، لأن الهدف أقل خطر متبقٍ ضمن الميزانية.",
+        "يوحّد المحفظتين في خيار ثالث واحد."
+      ],
+      "options_en": [
+        "It chooses B, because ROI is the only measure that matters to a board.",
+        "It rejects both and asks for a larger budget before deciding.",
+        "It chooses A, because the objective is the lowest residual risk within the budget.",
+        "It averages the two portfolios into a single third option."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The example states that the decision is the lowest residual risk, not the highest ROI, and that is why A wins despite B's marginally better 1.33 against 1.29. ROI ranks controls; residual risk decides the portfolio.",
+      "explanation_ar": "يذكر المثال أن القرار هو أقل خطر متبقٍ لا أعلى عائد، ولهذا تفوز A رغم تفوّق B الطفيف 1.33 مقابل 1.29. فالعائد يرتّب الضوابط، والخطر المتبقي يحسم المحفظة."
+    },
+    {
+      "id": "q16",
+      "concept_id": "recommendation_reason",
+      "bloom_level": "Analyze",
+      "question": "Why does the example prefer Portfolio A for a hospital specifically?",
+      "question_ar": "لماذا يفضّل المثال المحفظة A لمستشفى تحديداً؟",
+      "options": [
+        "Because a hospital is legally barred from buying power resilience controls at all.",
+        "Because C2 happens to be the cheapest control in the whole set of four.",
+        "Because portfolio A costs less than portfolio B overall in the same year.",
+        "Because patient safety and regulatory exposure outweigh a marginally higher ROI elsewhere."
+      ],
+      "options_ar": [
+        "لأن المستشفى ممنوع قانوناً من شراء ضوابط مرونة الطاقة.",
+        "لأن C2 هو أرخص ضابط في المجموعة كلها.",
+        "لأن المحفظة A أقل كلفة من B إجمالاً.",
+        "لأن سلامة المريض والتعرّض التنظيمي يتجاوزان عائداً أعلى بشكل طفيف في مكان آخر."
+      ],
+      "options_en": [
+        "Because a hospital is legally barred from buying power resilience controls at all.",
+        "Because C2 happens to be the cheapest control in the whole set of four.",
+        "Because portfolio A costs less than portfolio B overall in the same year.",
+        "Because patient safety and regulatory exposure outweigh a marginally higher ROI elsewhere."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A costs more than B, 1.50 against 1.20, yet it is preferred because for a hospital the alignment with patient safety and regulatory exposure matters more than a marginally higher ROI. That is a domain judgement, not arithmetic.",
+      "explanation_ar": "كلفة A أعلى من B، 1.50 مقابل 1.20، ومع ذلك تُفضَّل لأن التوافق مع سلامة المريض والتعرّض التنظيمي يهمّ المستشفى أكثر من عائد أعلى بشكل طفيف. وهذا حكم مجال لا حساب."
+    },
+    {
+      "id": "q17",
+      "concept_id": "control_mechanism",
+      "bloom_level": "Understand",
+      "question": "How does the example say controls actually reduce risk?",
+      "question_ar": "كيف يقول المثال إن الضوابط تخفّض الخطر فعلاً؟",
+      "options": [
+        "By lowering probability, impact, or both.",
+        "By removing the threat from the environment entirely.",
+        "By transferring the loss to an insurance contract.",
+        "By increasing the budget available for later controls."
+      ],
+      "options_ar": [
+        "بتخفيض الاحتمالية أو التأثير أو الاثنين معاً.",
+        "بإزالة التهديد من البيئة كلياً.",
+        "بنقل الخسارة إلى عقد تأمين.",
+        "بزيادة الميزانية المتاحة للضوابط اللاحقة."
+      ],
+      "options_en": [
+        "By lowering probability, impact, or both.",
+        "By removing the threat from the environment entirely.",
+        "By transferring the loss to an insurance contract.",
+        "By increasing the budget available for later controls."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The example's takeaway is that controls act by lowering P, I or both, and each has to be quantified so they can be compared like for like. Removing the threat entirely is not on offer in the model.",
+      "explanation_ar": "خلاصة المثال أن الضوابط تعمل بتخفيض P أو I أو الاثنين، ويجب قياس كل منهما لتُقارن المقارنة الصحيحة. أما إزالة التهديد كلياً فليست مطروحة في النموذج."
+    },
+    {
+      "id": "q18",
+      "concept_id": "quarterly_rerun",
+      "bloom_level": "Understand",
+      "question": "What does the example recommend doing every quarter?",
+      "question_ar": "بماذا يوصي المثال كل ثلاثة أشهر؟",
+      "options": [
+        "Rebuilding the risk register from scratch with a completely new team.",
+        "Re-running the calculator with fresh incident intelligence and control efficacy.",
+        "Replacing every control that has not yet delivered a positive ROI.",
+        "Re-negotiating the insurance contract with the current provider."
+      ],
+      "options_ar": [
+        "إعادة بناء سجل المخاطر من الصفر بفريق جديد.",
+        "إعادة تشغيل الحاسبة بمعلومات حوادث جديدة وفعالية ضوابط محدّثة.",
+        "استبدال كل ضابط لم يحقق عائده بعد.",
+        "إعادة التفاوض على عقد التأمين مع المزوّد."
+      ],
+      "options_en": [
+        "Rebuilding the risk register from scratch with a completely new team.",
+        "Re-running the calculator with fresh incident intelligence and control efficacy.",
+        "Replacing every control that has not yet delivered a positive ROI.",
+        "Re-negotiating the insurance contract with the current provider."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The last takeaway is to re-run the calculator quarterly with fresh incident intelligence and control efficacy, so priorities stay current. The model is a living instrument, not a one-off study.",
+      "explanation_ar": "الخلاصة الأخيرة هي إعادة تشغيل الحاسبة كل ثلاثة أشهر بمعلومات حوادث جديدة وفعالية محدّثة للضوابط، حتى تبقى الأولويات محدّثة. فالنموذج أداة حيّة لا دراسة لمرة واحدة."
+    }
+  ]
+}

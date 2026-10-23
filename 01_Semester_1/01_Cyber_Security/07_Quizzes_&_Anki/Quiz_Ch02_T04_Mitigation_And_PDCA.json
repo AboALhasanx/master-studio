@@ -1,0 +1,479 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_T04_Mitigation_And_PDCA",
+  "topic": "Mitigation strategies and the PDCA cycle",
+  "topic_ar": "استراتيجيات التخفيف ودورة PDCA",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "risk_management_scope",
+      "bloom_level": "Remember",
+      "question": "What does the lecture mean by risk management?",
+      "question_ar": "ماذا تعني المحاضرة بإدارة المخاطر؟",
+      "options": [
+        "All the activities related to evaluating and reducing risks.",
+        "Only the purchase and installation of countermeasures.",
+        "The annual audit of financial statements.",
+        "The process of insuring every identified asset."
+      ],
+      "options_ar": [
+        "كل الأنشطة المتعلقة بتقييم المخاطر وتقليلها.",
+        "شراء التدابير المضادة وتثبيتها فقط.",
+        "التدقيق السنوي للكشوف المالية.",
+        "عملية تأمين كل أصل محدَّد."
+      ],
+      "options_en": [
+        "All the activities related to evaluating and reducing risks.",
+        "Only the purchase and installation of countermeasures.",
+        "The annual audit of financial statements.",
+        "The process of insuring every identified asset."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Risk management covers all the activities related to evaluating and reducing risks. Buying countermeasures is one activity inside it, and insurance is one of its strategies, not the whole discipline.",
+      "explanation_ar": "إدارة المخاطر تشمل كل الأنشطة المتعلقة بتقييم المخاطر وتقليلها. وشراء التدابير نشاط واحد داخلها، والتأمين استراتيجية من استراتيجياتها لا التخصص كله."
+    },
+    {
+      "id": "q2",
+      "concept_id": "risk_mitigation_definition",
+      "bloom_level": "Understand",
+      "question": "What is the part of risk management whose aim is to reduce risk to an acceptable level called?",
+      "question_ar": "ماذا يُسمّى الجزء من إدارة المخاطر الذي هدفه تقليل الخطر إلى مستوى مقبول؟",
+      "options": [
+        "Risk transfer.",
+        "Risk mitigation.",
+        "Risk identification.",
+        "Risk retention."
+      ],
+      "options_ar": [
+        "نقل المخاطر.",
+        "تخفيف المخاطر.",
+        "تحديد المخاطر.",
+        "الاحتفاظ بالمخاطر."
+      ],
+      "options_en": [
+        "Risk transfer.",
+        "Risk mitigation.",
+        "Risk identification.",
+        "Risk retention."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The lecture calls this part risk mitigation, and it is the branch that carries the five recognised strategies. Transfer and retention are two of those strategies, and identification belongs to the evaluation side.",
+      "explanation_ar": "تسمّي المحاضرة هذا الجزء تخفيف المخاطر، وهو الفرع الذي يحمل الاستراتيجيات الخمس المعترف بها. والنقل والاحتفاظ استراتيجيتان منها، والتحديد يعود إلى جانب التقييم."
+    },
+    {
+      "id": "q3",
+      "concept_id": "strategies_order",
+      "bloom_level": "Remember",
+      "question": "Which sequence gives the five mitigation strategies in the lecture's order?",
+      "question_ar": "أي تسلسل يعطي استراتيجيات التخفيف الخمس بترتيب المحاضرة؟",
+      "options": [
+        "Avoidance, retention, reduction, sharing, transfer.",
+        "Reduction, avoidance, transfer, retention, sharing.",
+        "Avoidance, reduction, retention, transfer, sharing.",
+        "Sharing, transfer, retention, reduction, avoidance."
+      ],
+      "options_ar": [
+        "التجنّب، الاحتفاظ، التخفيض، المشاركة، النقل.",
+        "التخفيض، التجنّب، النقل، الاحتفاظ، المشاركة.",
+        "التجنّب، التخفيض، الاحتفاظ، النقل، المشاركة.",
+        "المشاركة، النقل، الاحتفاظ، التخفيض، التجنّب."
+      ],
+      "options_en": [
+        "Avoidance, retention, reduction, sharing, transfer.",
+        "Reduction, avoidance, transfer, retention, sharing.",
+        "Avoidance, reduction, retention, transfer, sharing.",
+        "Sharing, transfer, retention, reduction, avoidance."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The lecture lists them as avoidance, reduction, retention, transfer and sharing, and the order is examinable. Only the PDCA elements are the other ordered list in this chapter.",
+      "explanation_ar": "تعدّدها المحاضرة: التجنّب ثم التخفيض ثم الاحتفاظ ثم النقل ثم المشاركة، والترتيب مطلوب. وعناصر PDCA هي القائمة المرتّبة الأخرى في هذا الجابتر."
+    },
+    {
+      "id": "q4",
+      "concept_id": "avoidance_example",
+      "bloom_level": "Apply",
+      "question": "An organisation forbids the use of WiFi on its premises as a way of handling a risk. Which strategy does this illustrate?",
+      "question_ar": "تمنع مؤسسة استخدام WiFi في مبانيها كطريقة للتعامل مع خطر. أي استراتيجية يمثّل هذا؟",
+      "options": [
+        "Risk avoidance, because the system is kept away from the risk.",
+        "Risk reduction, because the loss is made smaller.",
+        "Risk retention, because the remainder is accepted.",
+        "Risk sharing, because the risk is split with others."
+      ],
+      "options_ar": [
+        "التجنّب، لأن النظام يُبعَد عن الخطر.",
+        "التخفيض، لأن الخسارة تصير أصغر.",
+        "الاحتفاظ، لأن المتبقي يُقبل.",
+        "المشاركة، لأن الخطر يُقسَّم مع آخرين."
+      ],
+      "options_en": [
+        "Risk avoidance, because the system is kept away from the risk.",
+        "Risk reduction, because the loss is made smaller.",
+        "Risk retention, because the remainder is accepted.",
+        "Risk sharing, because the risk is split with others."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The lecture gives forbidding risky behaviour such as the use of WiFi as its own example of avoidance: the target system is kept away from the risk instead of being defended against it.",
+      "explanation_ar": "تعطي المحاضرة منع السلوك الخطير كاستخدام WiFi كمثالها على التجنّب: النظام المستهدف يُبعَد عن الخطر بدل الدفاع ضده."
+    },
+    {
+      "id": "q5",
+      "concept_id": "reduction_example",
+      "bloom_level": "Apply",
+      "question": "A team introduces backups and encryption to prevent losses and shrink their extent. Which strategy is this?",
+      "question_ar": "يُدخل فريق نسخاً احتياطية وتشفيراً لمنع الخسائر وتقليص حجمها. أي استراتيجية هذه؟",
+      "options": [
+        "Risk avoidance, because the risk is removed entirely.",
+        "Risk reduction, because proactive steps prevent or shrink the loss.",
+        "Risk transfer, because a third party carries the loss.",
+        "Risk retention, because no action is taken."
+      ],
+      "options_ar": [
+        "التجنّب، لأن الخطر يُزال كلياً.",
+        "التخفيض، لأن خطوات استباقية تمنع الخسارة أو تقلّصها.",
+        "النقل، لأن طرفاً ثالثاً يحمل الخسارة.",
+        "الاحتفاظ، لأن لا إجراء يُتخذ."
+      ],
+      "options_en": [
+        "Risk avoidance, because the risk is removed entirely.",
+        "Risk reduction, because proactive steps prevent or shrink the loss.",
+        "Risk transfer, because a third party carries the loss.",
+        "Risk retention, because no action is taken."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Backups and encryption are the lecture's examples of reduction: proactive steps taken before the event to prevent loss or reduce its extent. Nothing is removed and nothing is handed to another party.",
+      "explanation_ar": "النسخ الاحتياطي والتشفير مثالا المحاضرة على التخفيض: خطوات استباقية قبل الحادث لمنع الخسارة أو تقليص حجمها. ولا شيء يُزال ولا يُسلَّم لطرف آخر."
+    },
+    {
+      "id": "q6",
+      "concept_id": "retention_example",
+      "bloom_level": "Apply",
+      "question": "An organisation uses reliable but not redundant communication equipment and accepts the resulting exposure. Which strategy is this?",
+      "question_ar": "تستخدم مؤسسة معدات اتصال موثوقة لكن غير مكرّرة وتقبل التعرض الناتج. أي استراتيجية هذه؟",
+      "options": [
+        "Risk reduction, because the communication equipment was improved.",
+        "Risk avoidance, because the exposure was removed completely.",
+        "Risk retention, because an agreed amount of residual risk is accepted.",
+        "Risk sharing, because the exposure is divided between the parties."
+      ],
+      "options_ar": [
+        "التخفيض، لأن المعدات حُسّنت.",
+        "التجنّب، لأن التعرض أُزيل.",
+        "الاحتفاظ، لأن قدراً متفقاً عليه من الخطر المتبقي يُقبل.",
+        "المشاركة، لأن التعرض يُقسَّم."
+      ],
+      "options_en": [
+        "Risk reduction, because the communication equipment was improved.",
+        "Risk avoidance, because the exposure was removed completely.",
+        "Risk retention, because an agreed amount of residual risk is accepted.",
+        "Risk sharing, because the exposure is divided between the parties."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The lecture's own example of retention is exactly this: reliable but not redundant equipment, where a certain agreed amount of residual risk is deliberately accepted rather than reduced further.",
+      "explanation_ar": "مثال المحاضرة على الاحتفاظ هو هذا بالضبط: معدات موثوقة لكن غير مكرّرة، حيث يُقبل عمداً قدر متفق عليه من الخطر المتبقي بدل تخفيضه أكثر."
+    },
+    {
+      "id": "q7",
+      "concept_id": "transfer_example",
+      "bloom_level": "Apply",
+      "question": "An organisation signs an outsourcing contract so that another company carries part of a risk. Which strategy is this?",
+      "question_ar": "توقّع مؤسسة عقد إسناد خارجي لتحمل شركة أخرى جزءاً من الخطر. أي استراتيجية هذه؟",
+      "options": [
+        "Risk sharing, because both parties deal with the risk jointly.",
+        "Risk retention, because the risk stays inside.",
+        "Risk avoidance, because the activity stops.",
+        "Risk transfer, because the risk is handed to others."
+      ],
+      "options_ar": [
+        "المشاركة، لأن الطرفين يتعاملان مع الخطر معاً.",
+        "الاحتفاظ، لأن الخطر يبقى بالداخل.",
+        "التجنّب، لأن النشاط يتوقف.",
+        "النقل، لأن الخطر يُسلَّم إلى آخرين."
+      ],
+      "options_en": [
+        "Risk sharing, because both parties deal with the risk jointly.",
+        "Risk retention, because the risk stays inside.",
+        "Risk avoidance, because the activity stops.",
+        "Risk transfer, because the risk is handed to others."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The lecture pairs transfer with setting up a contract for outsourcing, where the risk moves to another party. Sharing would require the organisation to keep dealing with the risk jointly rather than hand it over.",
+      "explanation_ar": "تقرن المحاضرة النقل بإعداد عقد للإسناد الخارجي، حيث ينتقل الخطر إلى طرف آخر. أما المشاركة فتقتضي أن تبقى المؤسسة تتعامل مع الخطر معاً لا أن تسلّمه."
+    },
+    {
+      "id": "q8",
+      "concept_id": "sharing_example",
+      "bloom_level": "Apply",
+      "question": "Two firms agree on common facilities and mutual insurance to handle a risk together. Which strategy is this?",
+      "question_ar": "تتفق شركتان على مرافق مشتركة وتأمين متبادل للتعامل مع خطر معاً. أي استراتيجية هذه؟",
+      "options": [
+        "Risk transfer, because the risk leaves the organisation.",
+        "Risk reduction, because the loss is made smaller.",
+        "Risk avoidance, because the risk is never faced.",
+        "Risk sharing, because the parties deal with the risk jointly."
+      ],
+      "options_ar": [
+        "النقل، لأن الخطر يخرج من المؤسسة.",
+        "التخفيض، لأن الخسارة تصير أصغر.",
+        "التجنّب، لأن الخطر لا يُواجَه.",
+        "المشاركة، لأن الأطراف تتعامل مع الخطر معاً."
+      ],
+      "options_en": [
+        "Risk transfer, because the risk leaves the organisation.",
+        "Risk reduction, because the loss is made smaller.",
+        "Risk avoidance, because the risk is never faced.",
+        "Risk sharing, because the parties deal with the risk jointly."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Common facilities and mutual insurance are the lecture's examples of sharing, where the parties agree to deal with the risks jointly. Transfer would move the risk to one other party rather than hold it together.",
+      "explanation_ar": "المرافق المشتركة والتأمين المتبادل مثالا المحاضرة على المشاركة، حيث تتفق الأطراف على التعامل مع المخاطر معاً. والنقل ينقل الخطر إلى طرف آخر بدل حمله معاً."
+    },
+    {
+      "id": "q9",
+      "concept_id": "transfer_vs_sharing",
+      "bloom_level": "Analyze",
+      "question": "What separates risk transfer from risk sharing?",
+      "question_ar": "ما الذي يفصل نقل المخاطر عن مشاركتها؟",
+      "options": [
+        "Transfer hands the risk to others, while sharing keeps the organisation dealing with it jointly.",
+        "Transfer keeps the risk inside the organisation, while sharing sends it outside.",
+        "Transfer accepts the residual risk, while sharing removes it entirely from the account.",
+        "Transfer and sharing are simply two names for the same mitigation strategy."
+      ],
+      "options_ar": [
+        "النقل يسلّم الخطر لآخرين، والمشاركة تُبقي المؤسسة تتعامل معه معاً.",
+        "النقل يُبقي الخطر بالداخل، والمشاركة ترسله للخارج.",
+        "النقل يقبل الخطر المتبقي، والمشاركة تزيله.",
+        "النقل والمشاركة اسمان للاستراتيجية نفسها."
+      ],
+      "options_en": [
+        "Transfer hands the risk to others, while sharing keeps the organisation dealing with it jointly.",
+        "Transfer keeps the risk inside the organisation, while sharing sends it outside.",
+        "Transfer accepts the residual risk, while sharing removes it entirely from the account.",
+        "Transfer and sharing are simply two names for the same mitigation strategy."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "In transfer the risk moves to another party, as with an outsourcing contract. In sharing the organisation stays involved and the parties agree to deal with the risk jointly, as with common facilities or mutual insurance.",
+      "explanation_ar": "في النقل ينتقل الخطر إلى طرف آخر، كما في عقد الإسناد. وفي المشاركة تبقى المؤسسة معنية وتتفق الأطراف على التعامل مع الخطر معاً، كما في المرافق المشتركة أو التأمين المتبادل."
+    },
+    {
+      "id": "q10",
+      "concept_id": "retention_vs_reduction",
+      "bloom_level": "Analyze",
+      "question": "What separates risk retention from risk reduction?",
+      "question_ar": "ما الذي يفصل الاحتفاظ بالمخاطر عن تخفيضها؟",
+      "options": [
+        "Retention acts before the event takes place, while reduction acts only after it.",
+        "Retention deliberately accepts the remaining risk, while reduction acts to lower it.",
+        "Retention removes the risk entirely, while reduction transfers it elsewhere.",
+        "Retention is a legal requirement, while reduction remains entirely optional."
+      ],
+      "options_ar": [
+        "الاحتفاظ يعمل قبل الحادث، والتخفيض بعده.",
+        "الاحتفاظ يقبل الخطر المتبقي عمداً، والتخفيض يعمل على خفضه.",
+        "الاحتفاظ يزيل الخطر، والتخفيض ينقله.",
+        "الاحتفاظ التزام قانوني، والتخفيض اختياري."
+      ],
+      "options_en": [
+        "Retention acts before the event takes place, while reduction acts only after it.",
+        "Retention deliberately accepts the remaining risk, while reduction acts to lower it.",
+        "Retention removes the risk entirely, while reduction transfers it elsewhere.",
+        "Retention is a legal requirement, while reduction remains entirely optional."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Reduction takes proactive steps such as backups and encryption to lower the loss. Retention stops there on purpose and accepts a certain agreed amount of residual risk, as with reliable but not redundant equipment.",
+      "explanation_ar": "التخفيض يتخذ خطوات استباقية كالنسخ الاحتياطي والتشفير لخفض الخسارة. أما الاحتفاظ فيتوقف عند ذلك عمداً ويقبل قدراً متفقاً عليه من الخطر المتبقي، كما في المعدات الموثوقة غير المكرّرة."
+    },
+    {
+      "id": "q11",
+      "concept_id": "pdca_four_elements",
+      "bloom_level": "Remember",
+      "question": "Which four elements make up the PDCA cycle?",
+      "question_ar": "أي أربعة عناصر تشكّل دورة PDCA؟",
+      "options": [
+        "Prevent, Detect, Respond, Recover.",
+        "Identify, Assess, Prioritize, Monitor.",
+        "Avoid, Reduce, Retain, Transfer.",
+        "Plan, Do, Check, Act."
+      ],
+      "options_ar": [
+        "امنع، اكتشف، استجب، استعد.",
+        "حدّد، قيّم، رتّب الأولويات، راقب.",
+        "تجنّب، خفّض، احتفظ، انقل.",
+        "خطّط، نفّذ، تحقّق، عدّل."
+      ],
+      "options_en": [
+        "Prevent, Detect, Respond, Recover.",
+        "Identify, Assess, Prioritize, Monitor.",
+        "Avoid, Reduce, Retain, Transfer.",
+        "Plan, Do, Check, Act."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "PDCA stands for Plan, Do, Check and Act, and the lecture gives each one its risk-management content. The other sequences are the incident-handling cycle, a general risk process and the mitigation strategies.",
+      "explanation_ar": "PDCA تعني خطّط ونفّذ وتحقّق وعدّل، وتعطي المحاضرة لكل عنصر مضمونه في إدارة المخاطر. والتسلسلات الأخرى هي دورة معالجة الحوادث وعملية إدارة مخاطر عامة واستراتيجيات التخفيف."
+    },
+    {
+      "id": "q12",
+      "concept_id": "pdca_plan",
+      "bloom_level": "Understand",
+      "question": "Which activities belong to the Plan phase of the risk-management cycle?",
+      "question_ar": "أي أنشطة تنتمي إلى مرحلة التخطيط في دورة إدارة المخاطر؟",
+      "options": [
+        "Monitoring the solution to confirm that the security level still holds.",
+        "Adjusting the solution or starting a completely new cycle of work.",
+        "Implementing the countermeasures that were planned earlier.",
+        "Identifying threats, analysing risks and planning countermeasures."
+      ],
+      "options_ar": [
+        "مراقبة الحل للتأكد من بقاء مستوى الأمان.",
+        "تعديل الحل أو بدء دورة جديدة.",
+        "تنفيذ التدابير المضادة.",
+        "تحديد التهديدات وتحليل المخاطر وتخطيط التدابير."
+      ],
+      "options_en": [
+        "Monitoring the solution to confirm that the security level still holds.",
+        "Adjusting the solution or starting a completely new cycle of work.",
+        "Implementing the countermeasures that were planned earlier.",
+        "Identifying threats, analysing risks and planning countermeasures."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Plan is where threats are identified, risks are analysed and countermeasures are planned. Implementation is Do, monitoring is Check, and adjusting is Act.",
+      "explanation_ar": "التخطيط هو حيث تُحدَّد التهديدات وتُحلَّل المخاطر وتُخطَّط التدابير. والتنفيذ هو Do، والمراقبة هي Check، والتعديل هو Act."
+    },
+    {
+      "id": "q13",
+      "concept_id": "pdca_check",
+      "bloom_level": "Understand",
+      "question": "Which activity belongs to the Check phase?",
+      "question_ar": "أي نشاط ينتمي إلى مرحلة التحقّق؟",
+      "options": [
+        "Monitoring the implemented solution to confirm the required security level is maintained.",
+        "Identifying the threats that the system currently faces in its environment.",
+        "Implementing the countermeasures that were chosen during the earlier phase.",
+        "Deciding to carry out a completely new Plan phase from the start."
+      ],
+      "options_ar": [
+        "مراقبة الحل المنفَّذ للتأكد من بقاء مستوى الأمان المطلوب.",
+        "تحديد التهديدات التي يواجهها النظام.",
+        "تنفيذ التدابير المضادة التي اختيرت.",
+        "اتخاذ قرار بمرحلة تخطيط جديدة كلياً."
+      ],
+      "options_en": [
+        "Monitoring the implemented solution to confirm the required security level is maintained.",
+        "Identifying the threats that the system currently faces in its environment.",
+        "Implementing the countermeasures that were chosen during the earlier phase.",
+        "Deciding to carry out a completely new Plan phase from the start."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Check monitors the implemented solution to verify that the desired level of security is maintained. Identification and choosing controls belong to Plan and Do, and restarting belongs to Act.",
+      "explanation_ar": "التحقّق يراقب الحل المنفَّذ للتثبّت من بقاء مستوى الأمان المطلوب. أما التحديد واختيار الضوابط فيعودان إلى التخطيط والتنفيذ، وإعادة البدء تعود إلى التعديل."
+    },
+    {
+      "id": "q14",
+      "concept_id": "pdca_act",
+      "bloom_level": "Understand",
+      "question": "What does the Act phase allow?",
+      "question_ar": "ماذا تتيح مرحلة التعديل؟",
+      "options": [
+        "It identifies all of the threats for the very first time in the cycle.",
+        "It adjusts the solution to keep the security level, or starts a new Plan phase.",
+        "It installs the countermeasures that were selected during the earlier phase.",
+        "It measures the basic risk before any control has been put in place."
+      ],
+      "options_ar": [
+        "تحدّد التهديدات لأول مرة.",
+        "تعدّل الحل ليبقى مستوى الأمان، أو تبدأ مرحلة تخطيط جديدة كلياً.",
+        "تثبّت التدابير المضادة المختارة سابقاً.",
+        "تقيس الخطر الأساسي قبل وجود أي ضابط."
+      ],
+      "options_en": [
+        "It identifies all of the threats for the very first time in the cycle.",
+        "It adjusts the solution to keep the security level, or starts a new Plan phase.",
+        "It installs the countermeasures that were selected during the earlier phase.",
+        "It measures the basic risk before any control has been put in place."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Act closes the loop in one of two ways: the solution is adjusted so it keeps giving the desired security level, or a decision is taken to run a completely new Plan phase.",
+      "explanation_ar": "التعديل يغلق الحلقة بإحدى طريقتين: يُعدَّل الحل ليستمر في إعطاء مستوى الأمان المطلوب، أو يُتخذ قرار بتنفيذ مرحلة تخطيط جديدة كلياً."
+    },
+    {
+      "id": "q15",
+      "concept_id": "why_pdca",
+      "bloom_level": "Analyze",
+      "question": "Why does the lecture say risk management takes the form of a repeating cycle?",
+      "question_ar": "لماذا تقول المحاضرة إن إدارة المخاطر تأخذ شكل دورة متكررة؟",
+      "options": [
+        "Because a single pass through the cycle is enough once the controls are installed.",
+        "Because the repeating cycle is explicitly required by the ISO standard.",
+        "Because the risk profile changes as new attack forms appear and known threats grow.",
+        "Because each phase of the cycle must be audited by a different department."
+      ],
+      "options_ar": [
+        "لأن مروراً واحداً يكفي بعد تثبيت الضوابط.",
+        "لأن الدورة يفرضها معيار ISO.",
+        "لأن ملف المخاطر يتغير بظهور أشكال هجوم جديدة وزيادة تكرار تهديدات معروفة.",
+        "لأن كل مرحلة يجب أن يدققها قسم مختلف."
+      ],
+      "options_en": [
+        "Because a single pass through the cycle is enough once the controls are installed.",
+        "Because the repeating cycle is explicitly required by the ISO standard.",
+        "Because the risk profile changes as new attack forms appear and known threats grow.",
+        "Because each phase of the cycle must be audited by a different department."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The lecture's reason is that the risk profile changes with time, as new forms of attack are developed or known threats appear more often, so the situation must be re-evaluated at regular intervals. That is what makes the process cyclic rather than one-off.",
+      "explanation_ar": "سبب المحاضرة أن ملف المخاطر يتغير بمرور الوقت، إذ تتطور أشكال هجوم جديدة أو تظهر تهديدات معروفة أكثر، فيجب إعادة تقييم الوضع على فترات منتظمة. وهذا ما يجعل العملية دائرية لا لمرة واحدة."
+    },
+    {
+      "id": "q16",
+      "concept_id": "scenario_strategy_choice",
+      "bloom_level": "Evaluate",
+      "question": "A clinic cannot afford full redundancy but must keep patient records recoverable. Which pairing fits both constraints?",
+      "question_ar": "لا تستطيع عيادة تحمّل التكرار الكامل لكن يجب أن تبقى سجلات المرضى قابلة للاستعادة. أي اقتران يلائم القيدين؟",
+      "options": [
+        "Avoidance by stopping record keeping, with no residual risk left.",
+        "Transfer of the whole risk to an insurer, with no action inside.",
+        "Reduction through backups and encryption, with retention of the remaining exposure.",
+        "Sharing through common facilities, with redundancy purchased jointly."
+      ],
+      "options_ar": [
+        "التجنّب بإيقاف حفظ السجلات، دون أي خطر متبقٍ.",
+        "نقل الخطر كله إلى مؤمّن، دون أي إجراء داخلي.",
+        "التخفيض بالنسخ الاحتياطي والتشفير، مع الاحتفاظ بالتعرض المتبقي.",
+        "المشاركة بمرافق مشتركة، مع شراء التكرار بشكل مشترك."
+      ],
+      "options_en": [
+        "Avoidance by stopping record keeping, with no residual risk left.",
+        "Transfer of the whole risk to an insurer, with no action inside.",
+        "Reduction through backups and encryption, with retention of the remaining exposure.",
+        "Sharing through common facilities, with redundancy purchased jointly."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Redundancy is ruled out by cost, so avoidance and joint redundancy do not fit. Backups and encryption are the lecture's reduction example and they satisfy recoverability, and whatever exposure remains is accepted deliberately, which is retention.",
+      "explanation_ar": "التكرار مستبعد بالكلفة، فالتجنّب والتكرار المشترك لا يلائمان. والنسخ الاحتياطي والتشفير هما مثال المحاضرة على التخفيض ويحققان قابلية الاستعادة، وما يتبقى من تعرض يُقبل عمداً، وهذا هو الاحتفاظ."
+    }
+  ]
+}

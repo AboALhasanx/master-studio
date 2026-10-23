@@ -148,7 +148,7 @@
       "options_en": [
         "INTERPOL, handling international criminal forensic ballistics and fugitives.",
         "NATO, coordinating physical military allied artillery logistics and infantry readiness.",
-        "ENISA (The European Union Agency for Cybersecurity), paired with GDPR privacy mandates.",
+        "ENISA, paired with GDPR privacy mandates.",
         "UNESCO, preserving cultural heritage sites and international historical libraries."
       ],
       "answer": "C",
@@ -195,7 +195,7 @@
         "PCI = \\frac{\\sum w_k \\cdot c_k}{\\sum w_k}",
         "Risk = \\frac{\\sum P_i \\cdot I_i}{\\sum P_i}",
         "AS = \\frac{\\sum E_j \\cdot V_j}{\\sum A_j}",
-        "CDF = \\frac{1 - F}{1 + F}"
+        "CDF = \\frac{1 - F(r)}{1 + F(r)}"
       ],
       "options_ar": [
         "PCI = \\frac{\\sum w_k \\cdot c_k}{\\sum w_k}",
@@ -363,30 +363,30 @@
       "id": "q13",
       "concept_id": "scenario_banking_accidental_glitch",
       "bloom_level": "Apply",
-      "question": "A bank customer notices their balance dropped by $100,000 due to an unhandled software crash, which the bank patched before restoring funds. What CIA pillar was primarily breached?",
-      "question_ar": "لاحظ عميل مصرفي اختفاء 100 ألف دولار من حسابه إثر خلل برمجي مفاجئ، وقام المصرف بإصلاحه وإعادة المبلغ. أي ركن من ثالوث CIA تضرر بصورة أساسية؟",
+      "question": "A bank's overnight batch job writes a customer's balance as $100,000 instead of $1,000, and the wrong figure stays in the ledger until the customer reports it. The banking service itself never stopped responding. Which CIA pillar was breached?",
+      "question_ar": "كتبت وظيفة المعالجة الليلية في المصرف رصيد العميل 100,000 دولار بدل 1,000 دولار، وبقي الرقم الخاطئ في السجل حتى أبلغ العميل. ولم تتوقف خدمة المصرف عن الاستجابة إطلاقاً. أي ركن من ثالوث CIA تضرر؟",
       "options": [
-        "Integrity was primarily breached because the recorded financial data was altered and inaccurate.",
-        "Confidentiality was breached because bank tellers viewed account statements.",
-        "Non-repudiation was breached because the branch manager signed the manual credit adjustment.",
-        "Regulatory compliance was breached because interest calculations were computed in dollars."
+        "Integrity was breached because the recorded balance was altered and no longer accurate.",
+        "Availability was breached because the overnight batch job did not complete as intended.",
+        "Confidentiality was breached because branch staff could read the customer's ledger.",
+        "Non-repudiation was breached because the batch job left no signed audit record."
       ],
       "options_ar": [
-        "تضررت السلامة Integrity بالدرجة الأولى لأن البيانات المالية المخزنة تغيرت وصارت غير دقيقة.",
-        "تضررت السرية Confidentiality لأن موظفي الفرع اطلعوا على كشوفات حساب العميل.",
-        "تضرر عدم الإنكار Non-repudiation لأن مدير الفرع وقّع يدوياً على استرجاع الرصيد.",
-        "تضرر الامتثال التنظيمي لأن احتساب الفوائد المصرفية جرى بالعملة الأجنبية."
+        "تضررت السلامة Integrity لأن الرصيد المسجّل تغيّر وصار غير دقيق.",
+        "تضرر التوافر Availability لأن وظيفة المعالجة الليلية لم تكتمل كما هو مطلوب.",
+        "تضررت السرية Confidentiality لأن موظفي الفرع اطّلعوا على سجل العميل.",
+        "تضرر عدم الإنكار Non-repudiation لأن وظيفة المعالجة لم تترك سجلاً موقّعاً."
       ],
       "options_en": [
-        "Integrity was primarily breached because the recorded financial data was altered and inaccurate.",
-        "Confidentiality was breached because bank tellers viewed account statements.",
-        "Non-repudiation was breached because the branch manager signed the manual credit adjustment.",
-        "Regulatory compliance was breached because interest calculations were computed in dollars."
+        "Integrity was breached because the recorded balance was altered and no longer accurate.",
+        "Availability was breached because the overnight batch job did not complete as intended.",
+        "Confidentiality was breached because branch staff could read the customer's ledger.",
+        "Non-repudiation was breached because the batch job left no signed audit record."
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "Account balances unexpectedly changed without legitimate transactions, violating Integrity (hashing, digital signatures, version control). System malfunctioning also touches Availability.",
-      "explanation_ar": "الركن المتضرر أساساً هو السلامة Integrity لأن رصيد الحساب المالي تغيّر بشكل غير صحيح إثر خلل برمجي. (وتقنيات معالجته: التجزئة SHA-256، التوقيع الرقمي، والتحكم بالإصدارات)."
+      "explanation": "The ledger now holds a figure that does not match the real transaction, while the service kept responding throughout. That is data altered and inaccurate, which is Integrity (hashing, digital signatures, version control). Availability is excluded by the stem, confidentiality because nothing was disclosed, and non-repudiation because no signature is disputed.",
+      "explanation_ar": "السجل صار يحمل رقماً لا يطابق المعاملة الحقيقية، والخدمة ظلّت تستجيب طوال الوقت — فهذا تغيير في البيانات وعدم دقة، أي السلامة Integrity (التجزئة SHA-256، التوقيع الرقمي، التحكم بالإصدارات). ولا توافر (الخدمة لم تتوقف)، ولا سرية (لا كشف)، ولا عدم إنكار (لا توقيع متنازع عليه)."
     },
     {
       "id": "q14",

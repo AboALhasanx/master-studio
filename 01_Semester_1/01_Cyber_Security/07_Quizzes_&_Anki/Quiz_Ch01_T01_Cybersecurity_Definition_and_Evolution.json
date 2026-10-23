@@ -378,7 +378,7 @@
         "ديدان الملفات في الحواسيب المعزولة، وجلسات Telnet غير المشفرة، والتفتيش اليدوي لسجلات الخوادم."
       ],
       "options_en": [
-        "Advanced Persistent Threats (APTs), ransomware extortion campaigns, IoT exploits, AI threats, and Zero Trust.",
+        "Advanced Persistent Threats, ransomware extortion campaigns, IoT exploits, AI threats, and Zero Trust.",
         "Mainframe operating system boot viruses, magnetic floppy disk infections, and analog telephone eavesdropping.",
         "Single-segment ethernet sniffing, unauthenticated email relay exploits, and physical token spoofing.",
         "Standalone desktop file worms, unencrypted telnet administration sessions, and manual log inspection."
@@ -390,61 +390,61 @@
     },
     {
       "id": "q14",
-      "concept_id": "evolution_zero_trust_origin",
-      "bloom_level": "Understand",
-      "question": "What fundamental architectural philosophy governs the modern Zero Trust security model?",
-      "question_ar": "ما الفلسفة المعمارية الجوهرية التي تحكم نموذج الأمان الحديث المعروف باسم الثقة الصفرية Zero Trust؟",
+      "concept_id": "evolution_era_driver_shift",
+      "bloom_level": "Analyze",
+      "question": "Which statement best explains why the focus of cybersecurity kept shifting from era to era in the lecture's historical timeline?",
+      "question_ar": "أي العبارات تفسّر على نحو أفضل سبب تبدّل محور الأمن السيبراني من عقد إلى آخر في الخط الزمني التاريخي للمحاضرة؟",
       "options": [
-        "Trust all internal network traffic once an initial hardware VPN connection is established at the boundary.",
-        "Grant permanent superuser administrative credentials to all domain users to accelerate organizational workflow.",
-        "Implicitly trust all internal network devices while strictly blocking all external foreign internet IP addresses.",
-        "Never trust, always verify: every access request must be explicitly authenticated and authorized regardless of location."
+        "Because every era simply inherited the cryptographic standards of the era before it.",
+        "Because the timeline records unrelated technological fashions with no shared driver.",
+        "Because governments periodically forced a complete redesign of network protocols.",
+        "Because each era produced its own dominant threat, and with it its own defensive response."
       ],
       "options_ar": [
-        "الوثوق التام بكافة حزم البيانات الداخلية بمجرد إنشاء اتصال أولي ناجح عبر شبكة VPN عند المحيط.",
-        "منح صلاحيات المسؤول المطلقة لجميع مستخدمي النطاق لتسريع إنجاز المعاملات التشغيلية في المؤسسة.",
-        "الثقة التلقائية بكافة أجهزة الشبكة الداخلية مع فرض حظر صارم على عناوين الإنترنت الخارجية فقط.",
-        "لا تثق بأحد، تحقق من كل شيء دائماً: كل طلب وصول يجب التحقق منه والمصادقة عليه بصرف النظر عن موقعه."
+        "لأن كل عقد ورث ببساطة المعايير التشفيرية التي أرساها العقد الذي قبله.",
+        "لأن الخط الزمني يسجّل اتجاهات تقنية غير مترابطة ولا يجمعها محرّك مشترك.",
+        "لأن الحكومات فرضت دورياً إعادة تصميم شاملة لبروتوكولات الشبكات.",
+        "لأن كل عقد أنتج تهديده الغالب، وأنتج معه استجابته الدفاعية الخاصة به."
       ],
       "options_en": [
-        "Trust all internal network traffic once an initial hardware VPN connection is established at the boundary.",
-        "Grant permanent superuser administrative credentials to all domain users to accelerate organizational workflow.",
-        "Implicitly trust all internal network devices while strictly blocking all external foreign internet IP addresses.",
-        "Never trust, always verify: every access request must be explicitly authenticated and authorized regardless of location."
+        "Because every era simply inherited the cryptographic standards of the era before it.",
+        "Because the timeline records unrelated technological fashions with no shared driver.",
+        "Because governments periodically forced a complete redesign of network protocols.",
+        "Because each era produced its own dominant threat, and with it its own defensive response."
       ],
       "answer": "D",
       "correct": 3,
-      "explanation": "Zero Trust eliminates implicit trust based on network location; every transaction, user, and device is continuously authenticated and authorized.",
-      "explanation_ar": "مبدأ Zero Trust (عدم الثقة الافتراضية) يقوم على قاعدة: لا تثق بأي مستخدم أو جهاز افتراضياً (حتى داخل الشبكة المحلية)، بل تحقق وصادق على كل طلب وصول باستمرار."
+      "explanation": "The timeline pairs every stage with both its threat and its answer: ARPANET and early mainframes (1960s), then viruses and worms answered by antivirus (1980s-90s), then e-commerce and e-banking making security a business requirement (2000s), then APTs, ransomware, IoT, AI and Zero Trust (2010s-present). The driver is the threat of each era, not inherited standards or a mandated redesign.",
+      "explanation_ar": "الخط الزمني يقرن كل مرحلة بتهديدها وبالاستجابة التي ولّدها: ARPANET وأجهزة الـmainframe (الستينيات) ← الفيروسات والديدان ومضادات الفيروسات (الثمانينيات-التسعينيات) ← التجارة الإلكترونية والمصرفية (الألفينيات) ← APT وبرامج الفدية وIoT والذكاء الاصطناعي وZero Trust (2010-الآن). المحرّك هو تهديد كل عقد، لا معايير موروثة ولا إعادة تصميم مفروضة."
     },
     {
       "id": "q15",
-      "concept_id": "perimeter_defense_limitations",
-      "bloom_level": "Analyze",
-      "question": "Why did traditional perimeter defense models prove inadequate for modern computing environments?",
-      "question_ar": "لماذا أثبتت نماذج الدفاع المحيطي التقليدية عدم كفايتها في البيئات الحوسبية المعاصرة؟",
+      "concept_id": "dimension_gap_diagnosis",
+      "bloom_level": "Apply",
+      "question": "A hospital deploys firewalls, encryption and access controls, but writes no security policy and runs no user-awareness training. Which two of the four cybersecurity dimensions are missing?",
+      "question_ar": "يستعمل مستشفى جدراناً نارية وتشفيراً وضوابط وصول، لكنه لا يكتب سياسة أمنية ولا ينفّذ تدريباً لتوعية الموظفين. أي بُعدين من أبعاد الأمن السيبراني الأربعة غائبان؟",
       "options": [
-        "Cloud migration, remote work, mobile devices, and IoT dissolved the traditional static network boundary.",
-        "International trade treaties prohibited corporate deployment of boundary edge packet inspection hardware.",
-        "Modern microprocessors execute cryptographic instructions faster than older telecommunication hardware switches.",
-        "Perimeter firewalls consume excessive electrical energy compared to internal application logic filters."
+        "Managerial and social.",
+        "Technical and legal.",
+        "Technical and managerial.",
+        "Legal and social."
       ],
       "options_ar": [
-        "الانتقال للسحابة والعمل عن بعد والأجهزة المحمولة وإنترنت الأشياء أدى إلى تلاشي محيط الشبكة الثابت.",
-        "المعاهدات التجارية الدولية حظرت الاستخدام التجاري لأجهزة فحص الحزم عند حواف الشبكات.",
-        "المعالجات الحديثة تنفذ تعليمات التشفير بسرعة تفوق قدرة محولات الاتصالات السلكية القديمة.",
-        "جدران الحماية المحيطية تستهلك طاقة كهربائية تفوق بكثير مرشحات منطق التطبيقات الداخلية."
+        "الإداري والاجتماعي.",
+        "التقني والقانوني.",
+        "التقني والإداري.",
+        "القانوني والاجتماعي."
       ],
       "options_en": [
-        "Cloud migration, remote work, mobile devices, and IoT dissolved the traditional static network boundary.",
-        "International trade treaties prohibited corporate deployment of boundary edge packet inspection hardware.",
-        "Modern microprocessors execute cryptographic instructions faster than older telecommunication hardware switches.",
-        "Perimeter firewalls consume excessive electrical energy compared to internal application logic filters."
+        "Managerial and social.",
+        "Technical and legal.",
+        "Technical and managerial.",
+        "Legal and social."
       ],
       "answer": "A",
       "correct": 0,
-      "explanation": "Traditional perimeter security assumed an internal trusted zone. Cloud adoption and mobile endpoints eroded this perimeter, necessitating endpoint-level and data-centric defenses.",
-      "explanation_ar": "الدفاع المحيطي القديم اعتمد على افتراض وجود شبكة داخلية آمنة؛ لكن التحول إلى السحابة، والعمل عن بُعد، وانتشار إنترنت الأشياء، ألغى الحدود الثابتة للشبكة."
+      "explanation": "The lecture names four dimensions: technical, legal, managerial and social. Firewalls, encryption and access controls are the technical dimension; a written security policy is the managerial dimension; user awareness is the social dimension. The stem describes no legal failure, so the missing pair is managerial and social.",
+      "explanation_ar": "المحاضرة تسمّي أربعة أبعاد: تقني وقانوني وإداري واجتماعي. الجدران النارية والتشفير وضوابط الوصول = البعد التقني؛ السياسة المكتوبة = البعد الإداري؛ توعية الموظفين = البعد الاجتماعي. ولا ذكر لخلل قانوني في نص السؤال، فالناقص هو الإداري والاجتماعي."
     },
     {
       "id": "q16",

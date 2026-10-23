@@ -1,0 +1,537 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T11_Modern_Techniques_And_Challenges",
+ "topic": "Modern techniques and persistent challenges",
+ "topic_ar": "التقنيات الحديثة والتحديات المستمرة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_mt_ssdlc",
+   "bloom_level": "Remember",
+   "question": "What does a secure software development lifecycle do?",
+   "question_ar": "شنو تسوي دورة حياة تطوير البرمجيات الآمنة؟",
+   "options": [
+    "Embeds security into every development phase.",
+    "Adds a penetration test after the release ships.",
+    "Replaces the need for any code review process.",
+    "Runs security checks only on the production tier."
+   ],
+   "options_ar": [
+    "تدمج الأمن في كل مرحلة تطوير.",
+    "تضيف اختبار اختراق بعد نزول الإصدار.",
+    "تغني عن أي عملية مراجعة كود.",
+    "تشغّل فحوصات الأمن على طبقة الإنتاج فقط."
+   ],
+   "options_en": [
+    "Embeds security into every development phase.",
+    "Adds a penetration test after the release ships.",
+    "Replaces the need for any code review process.",
+    "Runs security checks only on the production tier."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Security becomes a property of requirements, design, coding, testing, deployment and maintenance rather than a late gate.",
+   "explanation_ar": "الأمن يصير صفة المتطلبات والتصميم والكود والاختبار والنشر والصيانة، مو بوّابة متأخرة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_mt_ssdlc_phases",
+   "bloom_level": "Understand",
+   "question": "Why does covering every phase matter more than covering the last one?",
+   "question_ar": "ليش تغطية كل مرحلة أهم من تغطية الأخيرة؟",
+   "options": [
+    "Because testing is the most expensive phase overall.",
+    "Because requirements never change after approval.",
+    "Because maintenance is handled by a different team.",
+    "Because a design flaw cannot be fixed by testing later."
+   ],
+   "options_ar": [
+    "لأن الاختبار أغلى مرحلة عموماً.",
+    "لأن المتطلبات ما تتغيّر بعد الموافقة.",
+    "لأن الصيانة يتولاها فريق مختلف.",
+    "لأن عيب التصميم ما ينصلح باختبار لاحق."
+   ],
+   "options_en": [
+    "Because testing is the most expensive phase overall.",
+    "Because requirements never change after approval.",
+    "Because maintenance is handled by a different team.",
+    "Because a design flaw cannot be fixed by testing later."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A flaw introduced in design survives every later test that only checks whether the code matches that design.",
+   "explanation_ar": "العيب اللي يدخل بالتصميم ينجو من كل اختبار لاحق يفحص بس هل الكود مطابق لذلك التصميم."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_mt_ssdlc_effect",
+   "bloom_level": "Understand",
+   "question": "What does SSDLC ensure about vulnerabilities?",
+   "question_ar": "شنو تضمنه دورة الحياة الآمنة بخصوص الثغرات؟",
+   "options": [
+    "That every flaw is documented in the release notes.",
+    "That scanning becomes unnecessary after the first sprint.",
+    "That they are addressed proactively rather than discovered late.",
+    "That no vulnerability can ever reach production code."
+   ],
+   "options_ar": [
+    "إن كل عيب يُوثَّق بملاحظات الإصدار.",
+    "إن الفحص يصير غير ضروري بعد أول سبرنت.",
+    "إنها تُعالَج استباقياً بدل ما تُكتشف متأخراً.",
+    "إن ماكو ثغرة تقدر توصل كود الإنتاج أبداً."
+   ],
+   "options_en": [
+    "That every flaw is documented in the release notes.",
+    "That scanning becomes unnecessary after the first sprint.",
+    "That they are addressed proactively rather than discovered late.",
+    "That no vulnerability can ever reach production code."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Proactive treatment means the flaw is handled at the stage that created it, where the fix is cheapest and safest.",
+   "explanation_ar": "المعالجة الاستباقية تعني إن العيب يُعالَج بالمرحلة اللي أنشأته، حيث الإصلاح أرخص وأسلم."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_mt_patch_management",
+   "bloom_level": "Remember",
+   "question": "What does automated patch management do?",
+   "question_ar": "شنو تدير إدارة الترقيع الآلية؟",
+   "options": [
+    "It reports patch status to the regulator each month.",
+    "It monitors the software inventory and applies patches promptly.",
+    "It writes the patches itself from vulnerability reports.",
+    "It disables any component that has a known flaw."
+   ],
+   "options_ar": [
+    "تبلّغ حالة الترقيع للجهة التنظيمية شهرياً.",
+    "تراقب جرد البرمجيات وتطبّق الترقيعات بسرعة.",
+    "تكتب الترقيعات بنفسها من تقارير الثغرات.",
+    "تعطّل أي مكوّن عنده عيب معروف."
+   ],
+   "options_en": [
+    "It reports patch status to the regulator each month.",
+    "It monitors the software inventory and applies patches promptly.",
+    "It writes the patches itself from vulnerability reports.",
+    "It disables any component that has a known flaw."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Knowing which versions are installed is the precondition, which is why inventory and patching are one capability rather than two.",
+   "explanation_ar": "معرفة أي النسخ منصّبة هي الشرط المسبق، ولهذا الجرد والترقيع قدرة واحدة مو اثنتين."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_mt_patch_window",
+   "bloom_level": "Understand",
+   "question": "What does automated patch management primarily reduce?",
+   "question_ar": "شنو تقلّله إدارة الترقيع الآلية أساساً؟",
+   "options": [
+    "The exposure window between disclosure and remediation.",
+    "The number of applications running in production.",
+    "The cost of the operating system licences.",
+    "The frequency of security awareness training."
+   ],
+   "options_ar": [
+    "نافذة التعرّض بين الكشف والمعالجة.",
+    "عدد التطبيقات الشغّالة بالإنتاج.",
+    "كلفة تراخيص نظام التشغيل.",
+    "تواتر تدريب التوعية الأمنية."
+   ],
+   "options_en": [
+    "The exposure window between disclosure and remediation.",
+    "The number of applications running in production.",
+    "The cost of the operating system licences.",
+    "The frequency of security awareness training."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Most exploited flaws have a patch available; the damage comes from the delay before it is applied.",
+   "explanation_ar": "أغلب الثغرات المستغلة عندها ترقيع متاح؛ والضرر يجي من التأخير قبل تطبيقه."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_mt_runtime",
+   "bloom_level": "Remember",
+   "question": "Which technologies does the chapter name for runtime protection?",
+   "question_ar": "أي تقنيات يذكرها الفصل للحماية وقت التشغيل؟",
+   "options": [
+    "WAF and SIEM.",
+    "SCA and SAST.",
+    "IDS and IPS.",
+    "RASP and XDR."
+   ],
+   "options_ar": [
+    "WAF و SIEM.",
+    "SCA و SAST.",
+    "IDS و IPS.",
+    "RASP و XDR."
+   ],
+   "options_en": [
+    "WAF and SIEM.",
+    "SCA and SAST.",
+    "IDS and IPS.",
+    "RASP and XDR."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Runtime application self-protection and extended detection and response both act on live behaviour rather than on static artefacts.",
+   "explanation_ar": "الحماية الذاتية للتطبيقات والكشف والاستجابة الموسّعة كلاهما يتصرّف على السلوك الحيّ مو على مخرجات ساكنة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_mt_runtime_timing",
+   "bloom_level": "Understand",
+   "question": "Why is runtime protection valuable before a permanent patch exists?",
+   "question_ar": "ليش الحماية وقت التشغيل قيّمة قبل وجود ترقيع دائم؟",
+   "options": [
+    "Because it rewrites the vulnerable source code in place.",
+    "Because it disables the application until patching is done.",
+    "Because it mitigates live exploitation during the exposure window.",
+    "Because it removes the need to ever apply the patch."
+   ],
+   "options_ar": [
+    "لأنها تعيد كتابة الكود المصاب بمكانه.",
+    "لأنها تعطّل التطبيق لحد إكمال الترقيع.",
+    "لأنها تخفّف الاستغلال الحيّ خلال نافذة التعرّض.",
+    "لأنها تلغي الحاجة لتطبيق الترقيع أبداً."
+   ],
+   "options_en": [
+    "Because it rewrites the vulnerable source code in place.",
+    "Because it disables the application until patching is done.",
+    "Because it mitigates live exploitation during the exposure window.",
+    "Because it removes the need to ever apply the patch."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "There is always a period between disclosure and a deployable fix, and that is precisely when runtime controls earn their place.",
+   "explanation_ar": "دائماً أكو فترة بين الكشف ووجود إصلاح قابل للنشر، وهذي بالضبط لمّا تثبت ضوابط وقت التشغيل قيمتها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_mt_container_security",
+   "bloom_level": "Understand",
+   "question": "What does securing containerised environments require?",
+   "question_ar": "شنو يتطلّب تأمين بيئات الحاويات؟",
+   "options": [
+    "Encrypting the container images with a shared key.",
+    "Image scanning, orchestration policy, runtime monitoring.",
+    "A single firewall rule set applied at the network edge.",
+    "Disabling all orchestration and deploying manually."
+   ],
+   "options_ar": [
+    "تشفير صور الحاويات بمفتاح مشترك.",
+    "فحص الصور وسياسة التنسيق ورصد شذوذ وقت التشغيل.",
+    "مجموعة قواعد جدار واحدة عند حافة الشبكة.",
+    "تعطيل التنسيق كله والنشر يدوياً."
+   ],
+   "options_en": [
+    "Encrypting the container images with a shared key.",
+    "Image scanning, orchestration policy, runtime monitoring.",
+    "A single firewall rule set applied at the network edge.",
+    "Disabling all orchestration and deploying manually."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The three cover the artefact before it runs, the admission decision when it starts, and the behaviour afterwards.",
+   "explanation_ar": "الثلاثة تغطّي المخرَج قبل التشغيل، وقرار القبول عند البدء، والسلوك بعدها."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_mt_api_governance",
+   "bloom_level": "Remember",
+   "question": "Which controls does API security governance apply?",
+   "question_ar": "أي ضوابط تطبّقها حكامة أمن الـAPI؟",
+   "options": [
+    "Schema validation, strong authentication and rate limiting.",
+    "Output encoding, CSP headers and sanitisation.",
+    "Parameterised queries and least privilege on the database.",
+    "SameSite cookies and anti-CSRF tokens."
+   ],
+   "options_ar": [
+    "التحقّق من المخطط ومصادقة قوية وتحديد المعدّل.",
+    "ترميز المخرجات وترويسات CSP والتعقيم.",
+    "استعلامات مُعامَلة وأقل صلاحية على القاعدة.",
+    "كوكيز SameSite ورموز مكافحة CSRF."
+   ],
+   "options_en": [
+    "Schema validation, strong authentication and rate limiting.",
+    "Output encoding, CSP headers and sanitisation.",
+    "Parameterised queries and least privilege on the database.",
+    "SameSite cookies and anti-CSRF tokens."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Those three are the direct answer to BOLA, weak identity on endpoints and abuse through volume.",
+   "explanation_ar": "هذي الثلاثة هي الجواب المباشر على BOLA وضعف الهوية على النقاط والإساءة بالحجم."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_mt_five_techniques",
+   "bloom_level": "Remember",
+   "question": "Which five modern techniques does the chapter list?",
+   "question_ar": "أي خمس تقنيات حديثة يذكرها الفصل؟",
+   "options": [
+    "Firewalls, proxies, VPNs, IDS and SIEM.",
+    "Hashing, salting, signing, encrypting and rotating.",
+    "Backup, replication, failover, recovery and archiving.",
+    "SSDLC, patching, runtime, containers, API governance."
+   ],
+   "options_ar": [
+    "جدارات وبروكسيات و VPN و IDS و SIEM.",
+    "هاش وتمليح وتوقيع وتشفير وتدوير.",
+    "نسخ احتياطي وتكرار وتجاوز فشل وتعافٍ وأرشفة.",
+    "SSDLC والترقيع الآلي وحماية التشغيل والحاويات وحكامة API."
+   ],
+   "options_en": [
+    "Firewalls, proxies, VPNs, IDS and SIEM.",
+    "Hashing, salting, signing, encrypting and rotating.",
+    "Backup, replication, failover, recovery and archiving.",
+    "SSDLC, patching, runtime, containers, API governance."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "They span the lifecycle from how code is built to how it is defended and governed once running.",
+   "explanation_ar": "تمتد على دورة الحياة من كيف يُبنى الكود إلى كيف يُدافَع عنه ويُحكَم بعد التشغيل."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_mt_shift_systemic",
+   "bloom_level": "Understand",
+   "question": "What do these techniques collectively show?",
+   "question_ar": "شنو تبيّنه هذي التقنيات مجتمعة؟",
+   "options": [
+    "A shift from prevention toward detection only.",
+    "A shift away from the software lifecycle entirely.",
+    "A shift from isolated remediation to systemic management.",
+    "A shift from automation back to manual expert review."
+   ],
+   "options_ar": [
+    "تحوّلاً من المنع نحو الكشف فقط.",
+    "تحوّلاً بعيداً عن دورة حياة البرمجيات كلياً.",
+    "تحوّلاً من المعالجة المعزولة إلى الإدارة النُظُمية.",
+    "تحوّلاً من الأتمتة رجوعاً للمراجعة اليدوية."
+   ],
+   "options_en": [
+    "A shift from prevention toward detection only.",
+    "A shift away from the software lifecycle entirely.",
+    "A shift from isolated remediation to systemic management.",
+    "A shift from automation back to manual expert review."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "No single technique covers a modern estate, so the discipline becomes managing the whole chain rather than closing individual tickets.",
+   "explanation_ar": "ماكو تقنية واحدة تغطّي مؤسسة حديثة، فالتخصّص يصير إدارة السلسلة كلها بدل إغلاق تذاكر منفردة."
+  },
+  {
+   "id": "q12",
+   "concept_id": "w6_ch_zero_day",
+   "bloom_level": "Remember",
+   "question": "What is the zero-day challenge?",
+   "question_ar": "شنو تحدّي ثغرة اليوم صفر؟",
+   "options": [
+    "Attackers only exploit flaws older than one year.",
+    "Unknown flaws stay unaddressed until disclosure or detection.",
+    "Known vulnerabilities are patched far too quickly.",
+    "Vendors refuse to publish any security advisories."
+   ],
+   "options_ar": [
+    "المهاجمون يستغلون فقط عيوباً أقدم من سنة.",
+    "ثغرات مجهولة تبقى بلا معالجة لحد الإفصاح أو الكشف.",
+    "ثغرات معروفة تُرقَّع بسرعة زائدة.",
+    "المصنّعون يرفضون نشر أي تنبيهات أمنية."
+   ],
+   "options_en": [
+    "Attackers only exploit flaws older than one year.",
+    "Unknown flaws stay unaddressed until disclosure or detection.",
+    "Known vulnerabilities are patched far too quickly.",
+    "Vendors refuse to publish any security advisories."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "No signature, score or patch exists yet, so every technique that depends on knowing the flaw is temporarily blind.",
+   "explanation_ar": "ماكو توقيع ولا درجة ولا ترقيع بعد، فكل تقنية تعتمد على معرفة العيب تكون عمياء مؤقتاً."
+  },
+  {
+   "id": "q13",
+   "concept_id": "w6_ch_supply_chain",
+   "bloom_level": "Remember",
+   "question": "What is the complex supply chain challenge?",
+   "question_ar": "شنو تحدّي سلسلة التوريد المعقّدة؟",
+   "options": [
+    "Dependence on third-party code increases systemic risk.",
+    "Third-party libraries are always reviewed line by line.",
+    "Supply chains only affect hardware procurement.",
+    "Dependencies are removed automatically at build time."
+   ],
+   "options_ar": [
+    "الاعتماد على كود طرف ثالث يزيد الخطر النُظُمي.",
+    "مكتبات الطرف الثالث دائماً تُراجَع سطراً بسطر.",
+    "سلاسل التوريد تؤثّر على شراء العتاد فقط.",
+    "التبعيات تُزال تلقائياً وقت البناء."
+   ],
+   "options_en": [
+    "Dependence on third-party code increases systemic risk.",
+    "Third-party libraries are always reviewed line by line.",
+    "Supply chains only affect hardware procurement.",
+    "Dependencies are removed automatically at build time."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Your product inherits whatever assurance the entire dependency tree actually has, which is usually less than assumed.",
+   "explanation_ar": "منتجك يرث الطمأنينة اللي عندها شجرة التبعيات كلها فعلاً، وهي عادةً أقل مما يُفترض."
+  },
+  {
+   "id": "q14",
+   "concept_id": "w6_ch_resources",
+   "bloom_level": "Remember",
+   "question": "What is the resource constraint challenge?",
+   "question_ar": "شنو تحدّي قيود الموارد؟",
+   "options": [
+    "Budgets grow faster than the number of vulnerabilities.",
+    "Tools are free, so cost is no longer a factor.",
+    "Headcount is unlimited in mature organisations.",
+    "Limited budgets force quantitative prioritisation."
+   ],
+   "options_ar": [
+    "الميزانيات تنمو أسرع من عدد الثغرات.",
+    "الأدوات مجانية، فالكلفة ما عادت عاملاً.",
+    "عدد الكوادر غير محدود بالمؤسسات الناضجة.",
+    "الميزانيات المحدودة تفرض ترتيباً كمّياً للأولويات."
+   ],
+   "options_en": [
+    "Budgets grow faster than the number of vulnerabilities.",
+    "Tools are free, so cost is no longer a factor.",
+    "Headcount is unlimited in mature organisations.",
+    "Limited budgets force quantitative prioritisation."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Because not everything can be fixed, the ranking has to be defensible with numbers rather than with intuition.",
+   "explanation_ar": "لأن ما كل شي ينصلح، فالترتيب لازم يكون قابلاً للدفاع بالأرقام مو بالحدس."
+  },
+  {
+   "id": "q15",
+   "concept_id": "w6_ch_dynamic",
+   "bloom_level": "Analyze",
+   "question": "Why do dynamic architectures make the exposure profile unstable?",
+   "question_ar": "ليش المعماريات الديناميكية تخلي ملف التعرّض غير مستقر؟",
+   "options": [
+    "Because serverless functions cannot be inventoried at all.",
+    "Because containers disable the operating system firewall.",
+    "Because workloads and endpoints appear and disappear continuously.",
+    "Because cloud providers change their prices every hour."
+   ],
+   "options_ar": [
+    "لأن دوال serverless ما يمكن جردها أبداً.",
+    "لأن الحاويات تعطّل جدار نظام التشغيل.",
+    "لأن الأحمال والنقاط تظهر وتختفي باستمرار.",
+    "لأن مزوّدي السحابة يغيّرون أسعارهم كل ساعة."
+   ],
+   "options_en": [
+    "Because serverless functions cannot be inventoried at all.",
+    "Because containers disable the operating system firewall.",
+    "Because workloads and endpoints appear and disappear continuously.",
+    "Because cloud providers change their prices every hour."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Any assessment is a snapshot, and in a system that reshapes itself hourly the snapshot describes a state that no longer exists.",
+   "explanation_ar": "أي تقييم هو صورة لحظية، وبنظام يعيد تشكيل نفسه كل ساعة فالصورة تصف حالة ما عادت موجودة."
+  },
+  {
+   "id": "q16",
+   "concept_id": "w6_ch_zero_day_implication",
+   "bloom_level": "Analyze",
+   "question": "What does the zero-day challenge imply for a purely signature-based strategy?",
+   "question_ar": "شنو يعني تحدّي اليوم صفر لاستراتيجية قائمة على التوقيعات فقط؟",
+   "options": [
+    "It improves once the CVSS score is published.",
+    "It is structurally blind until someone else is attacked first.",
+    "It becomes stronger because signatures arrive faster.",
+    "It is unaffected because zero-days are rare events."
+   ],
+   "options_ar": [
+    "إنها تتحسّن بمجرد نشر درجة CVSS.",
+    "إنها عمياء بنيوياً لحد ما يُهاجَم أحد غيرك أولاً.",
+    "إنها تصير أقوى لأن التوقيعات توصل أسرع.",
+    "إنها غير متأثرة لأن اليوم صفر أحداث نادرة."
+   ],
+   "options_en": [
+    "It improves once the CVSS score is published.",
+    "It is structurally blind until someone else is attacked first.",
+    "It becomes stronger because signatures arrive faster.",
+    "It is unaffected because zero-days are rare events."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A signature is written after observation, so the first victim is always the one who supplies it.",
+   "explanation_ar": "التوقيع يُكتب بعد المشاهدة، فالضحية الأولى هي دائماً اللي توفّره."
+  },
+  {
+   "id": "q17",
+   "concept_id": "w6_close_beyond_patch_scan",
+   "bloom_level": "Understand",
+   "question": "What does the closing say vulnerability management transcends?",
+   "question_ar": "شنو يقول الختام إن إدارة الثغرات تتجاوزه؟",
+   "options": [
+    "Traditional patch-and-scan approaches.",
+    "The need for any quantitative model.",
+    "The software development lifecycle itself.",
+    "The requirement for continuous monitoring."
+   ],
+   "options_ar": [
+    "أساليب الترقيع والفحص التقليدية.",
+    "الحاجة لأي نموذج كمّي.",
+    "دورة حياة تطوير البرمجيات نفسها.",
+    "شرط المراقبة المستمرة."
+   ],
+   "options_en": [
+    "Traditional patch-and-scan approaches.",
+    "The need for any quantitative model.",
+    "The software development lifecycle itself.",
+    "The requirement for continuous monitoring."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It becomes a dynamic, continuous process built on contextual prioritisation, automation, predictive analytics and systemic resilience.",
+   "explanation_ar": "تصير عملية ديناميكية مستمرة مبنية على الترتيب السياقي والأتمتة والتحليلات التنبّؤية والمرونة النُظُمية."
+  },
+  {
+   "id": "q18",
+   "concept_id": "w6_close_intelligence_driven",
+   "bloom_level": "Remember",
+   "question": "What defines success in that intelligence-driven discipline?",
+   "question_ar": "شنو يحدّد النجاح بذلك التخصّص المدفوع بالاستخبارات؟",
+   "options": [
+    "The number of tools deployed per application.",
+    "The speed of closing tickets after an audit.",
+    "The size of the security budget each year.",
+    "Proactive defence, monitoring and quantitative rigour."
+   ],
+   "options_ar": [
+    "عدد الأدوات المنصّبة لكل تطبيق.",
+    "سرعة إغلاق التذاكر بعد التدقيق.",
+    "حجم ميزانية الأمن كل سنة.",
+    "الدفاع الاستباقي والرصد المستمر والصرامة الكمّية."
+   ],
+   "options_en": [
+    "The number of tools deployed per application.",
+    "The speed of closing tickets after an audit.",
+    "The size of the security budget each year.",
+    "Proactive defence, monitoring and quantitative rigour."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "As adversaries adopt automation, AI and supply chain manipulation, only a continuously measured and monitored posture keeps pace.",
+   "explanation_ar": "بما إن الخصوم يتبنّون الأتمتة والذكاء الاصطناعي والتلاعب بسلاسل التوريد، فما يلحق إلا وضع يُقاس ويُراقَب باستمرار."
+  }
+ ]
+}

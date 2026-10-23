@@ -1,0 +1,537 @@
+{
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_T09_Strategic_Role_Of_Policies",
+  "topic": "The strategic role and core functions of policies",
+  "topic_ar": "الدور الاستراتيجي ووظائف السياسة",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "characteristics_count",
+      "bloom_level": "Remember",
+      "question": "How many characteristics of security policies does the chapter list?",
+      "question_ar": "كم خاصية للسياسات الأمنية يعدّدها الفصل؟",
+      "options": [
+        "Four characteristics.",
+        "Three characteristics.",
+        "Five characteristics.",
+        "Six characteristics."
+      ],
+      "options_ar": [
+        "أربع خصائص.",
+        "ثلاث خصائص.",
+        "خمس خصائص.",
+        "ست خصائص."
+      ],
+      "options_en": [
+        "Four characteristics.",
+        "Three characteristics.",
+        "Five characteristics.",
+        "Six characteristics."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The four characteristics are high-level guidance, alignment with risk, organization-wide reach, and the living-document nature. Five is the count of the strategic benefits listed at the end of the chapter.",
+      "explanation_ar": "الخصائص الأربع هي الإرشاد عالي المستوى، والتوافق مع المخاطر، والشمول التنظيمي، وكونها وثيقة حيّة. وأما خمسة فهو عدد الفوائد الاستراتيجية المذكورة في نهاية الفصل."
+    },
+    {
+      "id": "q2",
+      "concept_id": "high_level_guidance",
+      "bloom_level": "Understand",
+      "question": "What does high-level guidance mean as a policy characteristic?",
+      "question_ar": "ماذا يعني الإرشاد عالي المستوى كخاصية للسياسة؟",
+      "options": [
+        "It specifies every command and configuration step in detail.",
+        "It focuses on what must be done, not necessarily how to do it technically.",
+        "It applies only to senior managers and excludes other staff.",
+        "It is written at a level that only engineers can understand."
+      ],
+      "options_ar": [
+        "تحدّد كل أمر وخطوة إعداد بالتفصيل.",
+        "تركّز على ماذا يجب أن يُفعَل، لا بالضرورة كيف تقنياً.",
+        "تنطبق على المديرين الكبار فقط وتستثني بقية الموظفين.",
+        "مكتوبة بمستوى لا يفهمه إلا المهندسون."
+      ],
+      "options_en": [
+        "It specifies every command and configuration step in detail.",
+        "It focuses on what must be done, not necessarily how to do it technically.",
+        "It applies only to senior managers and excludes other staff.",
+        "It is written at a level that only engineers can understand."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A policy focuses on what must be done rather than necessarily how, which is why the chapter calls it a governance tool and not a technical manual. The how is where procedures and configurations live.",
+      "explanation_ar": "السياسة تركّز على ماذا يجب أن يُفعَل لا بالضرورة كيف، ولهذا يسمّيها الفصل أداة حوكمة لا دليلاً تقنياً. والكيف مكانه الإجراءات والإعدادات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "alignment_with_risk",
+      "bloom_level": "Understand",
+      "question": "What does alignment with risk require of a policy?",
+      "question_ar": "ماذا يشترط التوافق مع المخاطر في السياسة؟",
+      "options": [
+        "That it matches the risk appetite of the nearest competitor.",
+        "That it is rewritten every time a new tool is purchased.",
+        "That it is derived from risk assessments so it addresses actual threats.",
+        "That it lists every possible risk regardless of likelihood."
+      ],
+      "options_ar": [
+        "أن تطابق شهية المخاطر عند أقرب منافس.",
+        "أن تُعاد كتابتها كل مرة يُشترى فيها أداة جديدة.",
+        "أن تكون مستمدّة من تقييمات المخاطر فتعالج تهديدات فعلية.",
+        "أن تعدّد كل خطر ممكن بصرف النظر عن احتماليته."
+      ],
+      "options_en": [
+        "That it matches the risk appetite of the nearest competitor.",
+        "That it is rewritten every time a new tool is purchased.",
+        "That it is derived from risk assessments so it addresses actual threats.",
+        "That it lists every possible risk regardless of likelihood."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Alignment with risk means the policy is derived from risk assessments so that it addresses actual threats rather than a generic checklist. That is also why the lifecycle's draft step begins with a risk assessment.",
+      "explanation_ar": "التوافق مع المخاطر يعني أن السياسة مستمدّة من تقييمات المخاطر لتعالج تهديدات فعلية لا قائمة عامة. ولهذا أيضاً تبدأ خطوة الصياغة في دورة الحياة بتقييم مخاطر."
+    },
+    {
+      "id": "q4",
+      "concept_id": "organization_wide",
+      "bloom_level": "Understand",
+      "question": "Whom does an organization-wide policy cover?",
+      "question_ar": "مَن تشمل السياسة الشاملة للمنظمة؟",
+      "options": [
+        "Employees only, because contractors have their own rules.",
+        "The IT department only, because it enforces the policy.",
+        "Senior management only, because they approve the policy.",
+        "Departments, employees, contractors and even third parties."
+      ],
+      "options_ar": [
+        "الموظفين فقط، لأن للمتعاقدين قواعدهم.",
+        "قسم تقنية المعلومات فقط، لأنه يفرض السياسة.",
+        "الإدارة العليا فقط، لأنها تعتمد السياسة.",
+        "الأقسام والموظفين والمتعاقدين وحتى الأطراف الثالثة."
+      ],
+      "options_en": [
+        "Employees only, because contractors have their own rules.",
+        "The IT department only, because it enforces the policy.",
+        "Senior management only, because they approve the policy.",
+        "Departments, employees, contractors and even third parties."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Organization-wide means the policy applies across departments, employees, contractors and even third parties. Enforcing or approving the policy does not limit who is bound by it.",
+      "explanation_ar": "الشمول التنظيمي يعني أن السياسة تنطبق على الأقسام والموظفين والمتعاقدين وحتى الأطراف الثالثة. وفرض السياسة أو اعتمادها لا يحدّد مَن يلزمه."
+    },
+    {
+      "id": "q5",
+      "concept_id": "living_document",
+      "bloom_level": "Understand",
+      "question": "Why is a policy described as a living document?",
+      "question_ar": "لماذا توصف السياسة بأنها وثيقة حيّة؟",
+      "options": [
+        "Because it evolves as threats, technologies and regulations change.",
+        "Because it must be printed again whenever the logo changes.",
+        "Because it is stored in a system that is always powered on.",
+        "Because it is written by employees rather than by managers."
+      ],
+      "options_ar": [
+        "لأنها تتطور مع تغيّر التهديدات والتقنيات واللوائح.",
+        "لأنه يجب طبعها من جديد كلما تغيّر الشعار.",
+        "لأنها محفوظة في نظام يبقى يعمل دائماً.",
+        "لأن الموظفين يكتبونها لا المديرون."
+      ],
+      "options_en": [
+        "Because it evolves as threats, technologies and regulations change.",
+        "Because it must be printed again whenever the logo changes.",
+        "Because it is stored in a system that is always powered on.",
+        "Because it is written by employees rather than by managers."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A living document evolves as threats, technologies and regulations change, which is what links this characteristic to the review-and-update step of the lifecycle. Nothing here concerns printing or authorship.",
+      "explanation_ar": "الوثيقة الحيّة تتطور مع تغيّر التهديدات والتقنيات واللوائح، وهذا ما يربط هذه الخاصية بخطوة المراجعة والتحديث في دورة الحياة. ولا علاقة لما هنا بالطبع ولا بمن كتبها."
+    },
+    {
+      "id": "q6",
+      "concept_id": "not_technical_manual",
+      "bloom_level": "Understand",
+      "question": "How does the chapter distinguish a policy from a technical manual?",
+      "question_ar": "كيف يميّز الفصل السياسة عن الدليل التقني؟",
+      "options": [
+        "The policy is shorter; the manual is longer than the policy.",
+        "The policy is a governance tool; the manual is a set of technical instructions.",
+        "The policy is confidential; the manual is public to all staff.",
+        "The policy is optional; the manual is mandatory for engineers."
+      ],
+      "options_ar": [
+        "السياسة أقصر؛ والدليل أطول منها.",
+        "السياسة أداة حوكمة؛ والدليل مجموعة تعليمات تقنية.",
+        "السياسة سرّية؛ والدليل متاح لكل الموظفين.",
+        "السياسة اختيارية؛ والدليل إلزامي للمهندسين."
+      ],
+      "options_en": [
+        "The policy is shorter; the manual is longer than the policy.",
+        "The policy is a governance tool; the manual is a set of technical instructions.",
+        "The policy is confidential; the manual is public to all staff.",
+        "The policy is optional; the manual is mandatory for engineers."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The chapter says a security policy is not a technical manual but a governance tool, ensuring that people, processes and technologies work toward the same security objectives. The difference is kind, not length or secrecy.",
+      "explanation_ar": "يقول الفصل إن السياسة الأمنية ليست دليلاً تقنياً بل أداة حوكمة، تضمن أن يعمل الأفراد والعمليات والتقنيات نحو أهداف الأمان نفسها. والفرق في النوع لا في الطول ولا السرّية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "translation_layer",
+      "bloom_level": "Remember",
+      "question": "Between which two worlds do policies act as a translation layer?",
+      "question_ar": "بين أي عالمين تعمل السياسات كطبقة ترجمة؟",
+      "options": [
+        "Customers and external regulators only.",
+        "Software vendors and hardware suppliers only.",
+        "Technical controls and organizational governance.",
+        "Employees and the internal audit team only."
+      ],
+      "options_ar": [
+        "العملاء والجهات التنظيمية الخارجية فقط.",
+        "موردو البرمجيات وموردو العتاد فقط.",
+        "الضوابط التقنية والحوكمة التنظيمية.",
+        "الموظفون وفريق التدقيق الداخلي فقط."
+      ],
+      "options_en": [
+        "Customers and external regulators only.",
+        "Software vendors and hardware suppliers only.",
+        "Technical controls and organizational governance.",
+        "Employees and the internal audit team only."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Policies translate between technical controls such as firewalls, IDS and VPNs, and organizational governance covering risk management, compliance and board oversight. Without that layer each side works alone.",
+      "explanation_ar": "تترجم السياسات بين الضوابط التقنية كالجدران النارية وأنظمة كشف التسلل والشبكات الافتراضية، والحوكمة التنظيمية التي تشمل إدارة المخاطر والامتثال وإشراف المجلس. وبلا هذه الطبقة يعمل كل جانب وحده."
+    },
+    {
+      "id": "q8",
+      "concept_id": "four_provisions",
+      "bloom_level": "Remember",
+      "question": "Which four things does the chapter say policies provide?",
+      "question_ar": "أي أربعة أشياء يقول الفصل إن السياسات توفّرها؟",
+      "options": [
+        "Speed, savings, scalability and simplicity.",
+        "Detection, prevention, response and recovery.",
+        "Confidentiality, integrity, availability and non-repudiation.",
+        "Consistency, accountability, compliance and culture."
+      ],
+      "options_ar": [
+        "السرعة والتوفير وقابلية التوسع والبساطة.",
+        "الكشف والمنع والاستجابة والتعافي.",
+        "السرية والسلامة والتوافر وعدم الإنكار.",
+        "الاتساق والمساءلة والامتثال والثقافة."
+      ],
+      "options_en": [
+        "Speed, savings, scalability and simplicity.",
+        "Detection, prevention, response and recovery.",
+        "Confidentiality, integrity, availability and non-repudiation.",
+        "Consistency, accountability, compliance and culture."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Policies provide consistency, accountability, compliance and culture. The final section adds a fifth, resilience, to the same list, which is why the two lists must not be counted as different things.",
+      "explanation_ar": "توفّر السياسات الاتساق والمساءلة والامتثال والثقافة. ويضيف القسم الأخير خامساً هو الصمود إلى القائمة نفسها، ولهذا لا تُعدّ القائمتان شيئين مختلفين."
+    },
+    {
+      "id": "q9",
+      "concept_id": "consistency_meaning",
+      "bloom_level": "Understand",
+      "question": "What does consistency mean as something policies provide?",
+      "question_ar": "ماذا يعني الاتساق كأحد ما توفّره السياسات؟",
+      "options": [
+        "Standardizing practices across the whole enterprise.",
+        "Making every department write its own version of the rules.",
+        "Keeping the policy text unchanged for as long as possible.",
+        "Applying the strictest rule in every possible situation."
+      ],
+      "options_ar": [
+        "توحيد الممارسات على مستوى المنظمة كلها.",
+        "جعل كل قسم يكتب نسخته من القواعد.",
+        "إبقاء نص السياسة بلا تغيير أطول مدة ممكنة.",
+        "تطبيق أشد قاعدة في كل حالة ممكنة."
+      ],
+      "options_en": [
+        "Standardizing practices across the whole enterprise.",
+        "Making every department write its own version of the rules.",
+        "Keeping the policy text unchanged for as long as possible.",
+        "Applying the strictest rule in every possible situation."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Consistency is standardizing practices across the enterprise, so every department works to the same rules. Keeping the text unchanged would contradict the living-document characteristic.",
+      "explanation_ar": "الاتساق هو توحيد الممارسات على مستوى المنظمة، فيعمل كل قسم بالقواعد نفسها. وإبقاء النص بلا تغيير يناقض خاصية الوثيقة الحيّة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "accountability_meaning",
+      "bloom_level": "Understand",
+      "question": "What does accountability mean in the chapter's list?",
+      "question_ar": "ماذا تعني المساءلة في قائمة الفصل؟",
+      "options": [
+        "Punishing employees publicly after every incident.",
+        "Defining who can access what, and under which conditions.",
+        "Assigning all security duties to a single named officer.",
+        "Recording every action for the external auditor only."
+      ],
+      "options_ar": [
+        "معاقبة الموظفين علناً بعد كل حادث.",
+        "تحديد مَن يصل إلى ماذا، وتحت أي شروط.",
+        "إسناد كل واجبات الأمن إلى ضابط واحد بالاسم.",
+        "تسجيل كل إجراء للمدقق الخارجي فقط."
+      ],
+      "options_en": [
+        "Punishing employees publicly after every incident.",
+        "Defining who can access what, and under which conditions.",
+        "Assigning all security duties to a single named officer.",
+        "Recording every action for the external auditor only."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Accountability is defining responsibilities: who can access what, and under which conditions. That definition is what removes ambiguity, and the chapter treats ambiguity as a feeder of human error.",
+      "explanation_ar": "المساءلة هي تحديد المسؤوليات: مَن يصل إلى ماذا وتحت أي شروط. وهذا التحديد هو ما يزيل الغموض، والفصل يعامل الغموض كمغذٍّ للخطأ البشري."
+    },
+    {
+      "id": "q11",
+      "concept_id": "culture_meaning",
+      "bloom_level": "Understand",
+      "question": "What does culture mean as a policy provision?",
+      "question_ar": "ماذا تعني الثقافة كأحد ما توفّره السياسة؟",
+      "options": [
+        "Running a single annual awareness day for every employee in the company.",
+        "Publishing the policy document on the wall of every meeting room.",
+        "Embedding security into everyday behaviour rather than a department's duty.",
+        "Hiring only staff who already hold recognized security certifications."
+      ],
+      "options_ar": [
+        "تشغيل يوم توعية سنوي واحد لكل موظف في الشركة.",
+        "تعليق وثيقة السياسة على حائط كل قاعة اجتماعات.",
+        "دمج الأمن في السلوك اليومي لا كواجب قسم واحد.",
+        "توظيف موظفين فقط يحملون شهادات أمنية معتمدة أصلاً."
+      ],
+      "options_en": [
+        "Running a single annual awareness day for every employee in the company.",
+        "Publishing the policy document on the wall of every meeting room.",
+        "Embedding security into everyday behaviour rather than a department's duty.",
+        "Hiring only staff who already hold recognized security certifications."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Culture means embedding security into everyday behaviour, which is the answer to the cultural barrier of treating security as IT's job. Awareness days and posters are activities, not the embedding itself.",
+      "explanation_ar": "الثقافة تعني دمج الأمن في السلوك اليومي، وهي الجواب على الحاجز الثقافي الذي يعتبر الأمن شغل تقنية المعلومات. وأيام التوعية والملصقات أنشطة لا الدمج نفسه."
+    },
+    {
+      "id": "q12",
+      "concept_id": "reactive_to_proactive",
+      "bloom_level": "Analyze",
+      "question": "What shift does the chapter say policies cause in how cybersecurity is treated?",
+      "question_ar": "أي تحوّل يقول الفصل إن السياسات تُحدثه في معاملة الأمن السيبراني؟",
+      "options": [
+        "From a proactive strategy to a reactive compliance exercise.",
+        "From an organizational strategy to a purely technical function.",
+        "From a board-level concern to an operational support task.",
+        "From a reactive IT function to a proactive organizational strategy."
+      ],
+      "options_ar": [
+        "من استراتيجية استباقية إلى تمرين امتثال تفاعلي.",
+        "من استراتيجية تنظيمية إلى وظيفة تقنية بحتة.",
+        "من شأن على مستوى المجلس إلى مهمة دعم تشغيلي.",
+        "من وظيفة تقنية تفاعلية إلى استراتيجية تنظيمية استباقية."
+      ],
+      "options_en": [
+        "From a proactive strategy to a reactive compliance exercise.",
+        "From an organizational strategy to a purely technical function.",
+        "From a board-level concern to an operational support task.",
+        "From a reactive IT function to a proactive organizational strategy."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Policies shift cybersecurity from a reactive IT function into a proactive organizational strategy. The direction of the shift matters: the chapter is arguing against the reactive reading, not toward it.",
+      "explanation_ar": "تنقل السياسات الأمن السيبراني من وظيفة تقنية تفاعلية إلى استراتيجية تنظيمية استباقية. واتجاه التحوّل مهم: فالفصل يحتجّ ضد القراءة التفاعلية لا لصالحها."
+    },
+    {
+      "id": "q13",
+      "concept_id": "core_functions_count",
+      "bloom_level": "Remember",
+      "question": "How many core functions of enterprise security policies does the chapter list?",
+      "question_ar": "كم وظيفة أساسية للسياسات الأمنية المؤسسية يعدّد الفصل؟",
+      "options": [
+        "Four functions.",
+        "Three functions.",
+        "Five functions.",
+        "Six functions."
+      ],
+      "options_ar": [
+        "أربع وظائف.",
+        "ثلاث وظائف.",
+        "خمس وظائف.",
+        "ست وظائف."
+      ],
+      "options_en": [
+        "Four functions.",
+        "Three functions.",
+        "Five functions.",
+        "Six functions."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The four core functions are defining responsibilities, aligning security with business objectives, ensuring legal and regulatory compliance, and reducing insider threats.",
+      "explanation_ar": "الوظائف الأربع هي تحديد المسؤوليات، ومواءمة الأمن مع أهداف العمل، وضمان الامتثال القانوني والتنظيمي، وتقليل التهديدات الداخلية."
+    },
+    {
+      "id": "q14",
+      "concept_id": "responsibilities_example",
+      "bloom_level": "Apply",
+      "question": "Which set does the chapter give as the division of responsibility under defining responsibilities?",
+      "question_ar": "أي مجموعة يعطيها الفصل كتوزيع للمسؤولية تحت تحديد المسؤوليات؟",
+      "options": [
+        "The board patches, the CISO follows acceptable use, and employees ensure incident readiness.",
+        "System administrators patch, employees follow acceptable use, and the CISO ensures incident readiness.",
+        "The auditor patches, the board follows acceptable use, and vendors ensure incident readiness.",
+        "Everyone patches, nobody follows acceptable use, and the CISO audits the result."
+      ],
+      "options_ar": [
+        "المجلس يرقّع، ومدير الأمن يتبع الاستخدام المقبول، والموظفون يضمنون جهوزية الاستجابة.",
+        "مسؤولو الأنظمة يرقّعون، والموظفون يتبعون الاستخدام المقبول، ومدير الأمن يضمن جهوزية الاستجابة.",
+        "المدقق يرقّع، والمجلس يتبع الاستخدام المقبول، والموردون يضمنون جهوزية الاستجابة.",
+        "الجميع يرقّع، ولا أحد يتبع الاستخدام المقبول، ومدير الأمن يدقق النتيجة."
+      ],
+      "options_en": [
+        "The board patches, the CISO follows acceptable use, and employees ensure incident readiness.",
+        "System administrators patch, employees follow acceptable use, and the CISO ensures incident readiness.",
+        "The auditor patches, the board follows acceptable use, and vendors ensure incident readiness.",
+        "Everyone patches, nobody follows acceptable use, and the CISO audits the result."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The chapter's division is that system administrators manage patching, employees must follow acceptable use and data handling policies, and the CISO ensures incident response readiness. Each role has one clear duty.",
+      "explanation_ar": "توزيع الفصل أن مسؤولي الأنظمة يديرون الترقيع، والموظفين ملزمون بسياسات الاستخدام المقبول والتعامل مع البيانات، ومدير الأمن يضمن جهوزية الاستجابة. ولكل دور واجب واضح واحد."
+    },
+    {
+      "id": "q15",
+      "concept_id": "human_error_link",
+      "bloom_level": "Analyze",
+      "question": "How does defining responsibilities connect to the chapter's claim about human error?",
+      "question_ar": "كيف يرتبط تحديد المسؤوليات بادعاء الفصل عن الخطأ البشري؟",
+      "options": [
+        "Clear responsibility removes the need for any technical control.",
+        "Clear responsibility proves that human error is not a real cause.",
+        "Clear responsibility reduces ambiguity, and ambiguity is a leading cause of breaches.",
+        "Clear responsibility transfers human error to the legal department."
+      ],
+      "options_ar": [
+        "المسؤولية الواضحة تزيل الحاجة إلى أي ضابط تقني.",
+        "المسؤولية الواضحة تثبت أن الخطأ البشري ليس سبباً حقيقياً.",
+        "المسؤولية الواضحة تقلّل الغموض، والغموض سبب رئيسي للاختراقات.",
+        "المسؤولية الواضحة تنقل الخطأ البشري إلى القسم القانوني."
+      ],
+      "options_en": [
+        "Clear responsibility removes the need for any technical control.",
+        "Clear responsibility proves that human error is not a real cause.",
+        "Clear responsibility reduces ambiguity, and ambiguity is a leading cause of breaches.",
+        "Clear responsibility transfers human error to the legal department."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The chapter says that by defining responsibilities, policies reduce ambiguity, strengthen accountability and minimize the risk of human error, which it calls a leading cause of breaches. Ambiguity is the link, not a replacement for controls.",
+      "explanation_ar": "يقول الفصل إن السياسات، بتحديد المسؤوليات، تقلّل الغموض وتقوّي المساءلة وتقلّل خطر الخطأ البشري الذي يسمّيه سبباً رئيسياً للاختراقات. فالغموض هو الرابط، لا بديل عن الضوابط."
+    },
+    {
+      "id": "q16",
+      "concept_id": "business_enabler",
+      "bloom_level": "Apply",
+      "question": "A board calls security a cost centre. Which of the chapter's functions answers that charge?",
+      "question_ar": "يصف مجلس الإدارة الأمن كمركز تكلفة. أي وظائف الفصل تردّ على هذا الاتهام؟",
+      "options": [
+        "Defining responsibilities, so every employee knows their task.",
+        "Reducing insider threats, so fewer incidents reach the board.",
+        "Ensuring compliance, so fines are avoided entirely.",
+        "Aligning security with business objectives, so it enables rather than blocks."
+      ],
+      "options_ar": [
+        "تحديد المسؤوليات، فيعرف كل موظف مهمته.",
+        "تقليل التهديدات الداخلية، فتصل حوادث أقل إلى المجلس.",
+        "ضمان الامتثال، فتُتجنّب الغرامات كلياً.",
+        "مواءمة الأمن مع أهداف العمل، فيصير ممكِّناً لا معطِّلاً."
+      ],
+      "options_en": [
+        "Defining responsibilities, so every employee knows their task.",
+        "Reducing insider threats, so fewer incidents reach the board.",
+        "Ensuring compliance, so fines are avoided entirely.",
+        "Aligning security with business objectives, so it enables rather than blocks."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The alignment function exists precisely to reframe security from a cost centre into a business enabler that builds trust and competitiveness. The other three functions are real but do not answer the cost-centre charge.",
+      "explanation_ar": "وظيفة المواءمة موجودة تحديداً لإعادة تأطير الأمن من مركز تكلفة إلى ممكِّن للعمل يبني الثقة والتنافسية. والوظائف الثلاث الأخرى حقيقية لكنها لا تجيب على تهمة مركز التكلفة."
+    },
+    {
+      "id": "q17",
+      "concept_id": "insider_controls",
+      "bloom_level": "Understand",
+      "question": "Which three measures does the chapter give for reducing insider threats?",
+      "question_ar": "أي ثلاثة تدابير يعطيها الفصل لتقليل التهديدات الداخلية؟",
+      "options": [
+        "Least privilege access, logging and auditing, and consequences for violations.",
+        "Firewalls, antivirus updates, and quarterly penetration tests.",
+        "Insurance cover, legal review, and public disclosure of incidents.",
+        "Password rotation, badge checks, and visitor escorts."
+      ],
+      "options_ar": [
+        "وصول الامتياز الأدنى، والتسجيل والتدقيق، وعواقب للمخالفات.",
+        "الجدران النارية وتحديثات مكافحة الفيروسات واختبارات اختراق ربعية.",
+        "تغطية تأمينية ومراجعة قانونية وإفصاح علني عن الحوادث.",
+        "تدوير كلمات المرور وفحص الشارات ومرافقة الزوار."
+      ],
+      "options_en": [
+        "Least privilege access, logging and auditing, and consequences for violations.",
+        "Firewalls, antivirus updates, and quarterly penetration tests.",
+        "Insurance cover, legal review, and public disclosure of incidents.",
+        "Password rotation, badge checks, and visitor escorts."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The three insider measures are restricting access through least privilege, monitoring activity through logging and auditing, and enforcing consequences for violations. The chapter's example is preventing copying sensitive data to USB drives.",
+      "explanation_ar": "التدابير الثلاثة هي تقييد الوصول بالامتياز الأدنى، ومراقبة النشاط بالتسجيل والتدقيق، وفرض عواقب على المخالفات. ومثال الفصل منع نسخ بيانات حساسة على أقراص USB."
+    },
+    {
+      "id": "q18",
+      "concept_id": "resilience_benefit",
+      "bloom_level": "Understand",
+      "question": "What does resilience mean in the chapter's final list of strategic benefits?",
+      "question_ar": "ماذا يعني الصمود في قائمة الفوائد الاستراتيجية الختامية؟",
+      "options": [
+        "Recovering every lost record without any backup investment.",
+        "Supporting business continuity and crisis response when disruption hits.",
+        "Resisting all attacks so that no incident can ever occur.",
+        "Returning the policy to its original version after each review."
+      ],
+      "options_ar": [
+        "استعادة كل سجل مفقود دون أي استثمار في النسخ الاحتياطي.",
+        "دعم استمرارية العمل والاستجابة للأزمات عند وقوع انقطاع.",
+        "مقاومة كل الهجمات بحيث لا يقع أي حادث إطلاقاً.",
+        "إعادة السياسة إلى نسختها الأصلية بعد كل مراجعة."
+      ],
+      "options_en": [
+        "Recovering every lost record without any backup investment.",
+        "Supporting business continuity and crisis response when disruption hits.",
+        "Resisting all attacks so that no incident can ever occur.",
+        "Returning the policy to its original version after each review."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Resilience is the fifth benefit and it means supporting business continuity and crisis response, not preventing every incident. It is the one item the earlier four-item list did not include.",
+      "explanation_ar": "الصمود هو الفائدة الخامسة ويعني دعم استمرارية العمل والاستجابة للأزمات، لا منع كل حادث. وهو البند الوحيد الذي لم تتضمنه القائمة الرباعية السابقة."
+    }
+  ]
+}
