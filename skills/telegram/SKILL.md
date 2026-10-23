@@ -614,6 +614,26 @@ A file that has to clear the 50 MB ceiling is compressed into
 `00_STUDIO_HUB/telegram/library/_compressed/` (gitignored — the vault original stays as it is) and
 listed in its own manifest, e.g. `library/big.json`.
 
+### The shelf is opt-in — the group is the default
+
+**The student's DM with the bot is never a broadcast target.** Nothing goes there unless he asks
+for it by name; the library is a shelf he opens when he wants it, not a channel that pushes at him.
+(His rule, set 2026-10-23: *"البوت لا تخليه يرسلي بالخاص إلا لما أطلب فقط… هسه الشغل بس بالحساب
+الاحتياطي بالكروب والتوبكات"*.)
+
+So the default publishing path is the **spare MTProto account into the group topics**:
+
+| What | Path |
+|---|---|
+| chapters, sources, handouts, solutions decks | `human --verb sendfile --chat -1003710711332 --thread <topic> --file … --filename … --text <caption>` |
+| catalog card edits | MTProto as the spare account — **the bot cannot edit a card it did not send** (`can_edit: false` even for admins; all six cards are `out=True`, i.e. authored by the spare account) |
+| moving a file that already lives in a topic | `copy --from https://t.me/c/<chat>/<id> --chat <target>` — Telegram copies server-side, so a flaky upload link cannot break it |
+
+**Captions follow the series, they are not written fresh.** Read the sibling post back
+(`get_messages(ids=[…])`), keep its bullets and links, and change only the parts that must change —
+`حلول NewHeadway Unit2` → `Unit3`, and the chapter link `…/284` → `…/304`. An invented caption is a
+defect even when it reads well.
+
 ---
 
 ## 5. Persona — how the bot behaves (issue #17)
