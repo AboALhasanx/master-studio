@@ -50,6 +50,30 @@ EN_RATIO = 1.40
 AR_RATIO = 1.40
 CORRECT_BAND = (0.88, 1.12)
 
+# A question must stand on its own. Any reference to the handout ("the lecture
+# says", "according to the notes", "in the booklet") turns the item into a test
+# of whether the student read the source rather than whether they understand it.
+META_RE = re.compile(
+    # direct: naming the source
+    r"\bthe lecture|\blecture notes|\bthe notes\b|\bthe booklet\b|\bthe handout\b|"
+    r"\bthe file\b|\baccording to\b|\bthe doctor\b|\bthe syllabus\b|\bthe slides?\b|"
+    r"\bthe material\b|\bthe source\b|\bthe text\b|\bthe book\b|\bthe course\b|"
+    r"\bthe module\b|\bthe curriculum\b|\bthe reading\b|"
+    # indirect: pointing at the document or at the person
+    r"\bthis chapter|\bthe chapter|\bthis section|\bthis week|\bas we saw|\bas covered|"
+    r"\bas discussed|\bas presented|\bher own\b|\bher rule\b|\bshe said\b|\bshe states\b|"
+    r"\bher vocabulary\b|\bin her\b|"
+    # Arabic
+    r"المحاضرة|المحاضرات|الملزمة|الملزمه|الدكتورة|الشرائح|المصدر|الجابتر|المذكور|"
+    r"قاعدتها|قالت إن|قالت ال|هذا الفصل|هذا القسم|هذا الأسبوع",
+    re.I)
+
+
+def _check_meta(cid, fields):
+    for name, text in fields:
+        if text and META_RE.search(str(text)):
+            raise AssertionError((cid, "refers to the handout in " + name, str(text)[:90]))
+
 
 def rot(seq, shift):
     n = len(seq)
@@ -135,6 +159,9 @@ def build(quiz_id, topic_en, topic_ar, items, target):
             assert len(q_en) <= 200, (cid, "stem too long", len(q_en))
             assert "$" not in q_en and "$" not in q_ar, (cid, "formula in stem")
             _check_options(quiz_id, cid, oe, oa)
+            _check_meta(cid, [("stem", q_en), ("stem_ar", q_ar), ("explanation", ee),
+                              ("explanation_ar", ea)] +
+                             [("option", o) for o in oe + oa])
         except AssertionError as exc:
             failures.append(exc.args[0] if exc.args else exc)
 

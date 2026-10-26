@@ -112,8 +112,8 @@ I = [
       "مجال أمن السحابة.",
       "مجال أمن الموبايل.",
       "مجال أمن التطبيقات."],
-     "Firewalls and IDS/IPS are the two tools the lecture names for network security.",
-     "الجدران النارية وأنظمة كشف ومنع التطفل هما الأداتان اللتان تذكرهما المحاضرة لأمن الشبكات."),
+     "Firewalls and IDS/IPS are the two defining tools of network security.",
+     "الجدران النارية وأنظمة كشف ومنع التطفل هما أداتا أمن الشبكات المميّزتان."),
 
     # 8 -------------------------------------------------------------------
     ("domain_iot_scope", "Understand",
@@ -127,23 +127,23 @@ I = [
       "مجال أمن السحابة العامة.",
       "مجال أمن الشبكات الداخلية.",
       "مجال أمن التطبيقات."],
-     "IoT devices are small and low-powered, so the lecture pairs lightweight encryption with anomaly detection.",
-     "أجهزة إنترنت الأشياء صغيرة وقليلة الطاقة، لذلك تقرن المحاضرة التشفير الخفيف بكشف الشذوذ."),
+     "IoT devices are small and low-powered, so their security rests on lightweight encryption and anomaly detection.",
+     "أجهزة إنترنت الأشياء صغيرة وقليلة الطاقة، لذلك يعتمد أمنها على التشفير الخفيف وكشف الشذوذ."),
 
     # 9 -------------------------------------------------------------------
     ("domains_list_is_open", "Understand",
-     "The lecture says the list of domains is not fixed. What follows from that?",
-     "المحاضرة تقول إن قائمة المجالات ليست ثابتة. ماذا ينتج عن ذلك؟",
+     "Why are the six security domains best read as examples?",
+     "لماذا تُقرأ المجالات الستة كأمثلة لا كقائمة مغلقة؟",
      ["New domains appear as technology develops, so the six are examples.",
       "Only the six listed domains exist and no others will ever be added.",
       "The six domains are replaced every year by a completely new six.",
       "The domains are fixed but their order of importance changes."],
      ["تظهر مجالات جديدة مع تطور التقنية، فالستة أمثلة فقط.",
-      "لا توجد إلا المجالات الستة المذكورة ولن يُضاف غيرها.",
+      "لا توجد إلا المجالات الستة نفسها ولن يُضاف غيرها.",
       "المجالات الستة تُستبدل كل سنة بستة مجالات جديدة.",
       "المجالات ثابتة لكن ترتيب أهميتها هو الذي يتغيّر."],
-     "She said the number of domains can grow, so treat the six as the current set of examples, not a closed list.",
-     "قالت إن عدد المجالات قابل للزيادة، فالستة هي المجموعة الحالية من الأمثلة وليست قائمة مغلقة."),
+     "The number of domains can grow, so the six are the current set of examples, not a closed list.",
+     "عدد المجالات قابل للزيادة، فالستة هي المجموعة الحالية من الأمثلة وليست قائمة مغلقة."),
 
     # 10 ------------------------------------------------------------------
     ("risk_exposure_model_symbols", "Remember",

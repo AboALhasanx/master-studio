@@ -27,23 +27,23 @@ I = [
 
     # 2 -------------------------------------------------------------------
     ("categories_count", "Remember",
-     "Within how many categories does the lecture say ISO/IEC 27002 works?",
-     "داخل كم قسماً تقول المحاضرة إن ISO/IEC 27002 يعمل؟",
+     "Within how many categories does ISO/IEC 27002 define what has to be done?",
+     "داخل كم قسماً يحدد ISO/IEC 27002 ما يجب عمله؟",
      ["Fourteen categories.", "Twelve categories.",
       "Sixteen categories.", "Eighteen categories."],
      ["أربعة عشر قسماً.", "اثنا عشر قسماً.",
       "ستة عشر قسماً.", "ثمانية عشر قسماً."],
-     "The lecture says the latest version describes what has to be done within fourteen categories.",
-     "المحاضرة تقول إن أحدث إصدار يصف ما يجب عمله داخل أربعة عشر قسماً."),
+     "The latest version describes what has to be done within fourteen categories.",
+     "أحدث إصدار يصف ما يجب عمله داخل أربعة عشر قسماً."),
 
     # 3 -------------------------------------------------------------------
     ("version_year", "Remember",
-     "Which year does the lecture give for that version of ISO/IEC 27002?",
-     "أي سنة تعطيها المحاضرة لذلك الإصدار من ISO/IEC 27002؟",
+     "Which edition year is paired with those fourteen categories?",
+     "أي سنة إصدار تقترن بالأقسام الأربعة عشر؟",
      ["2022", "2013", "2019", "2005"],
      ["2022", "2013", "2019", "2005"],
-     "The lecture dates the version it describes to 2022.",
-     "المحاضرة تؤرّخ الإصدار الذي تصفه بسنة 2022."),
+     "The edition that describes those categories is dated 2022.",
+     "الإصدار الذي يصف تلك الأقسام يعود لسنة 2022."),
 
     # 4 -------------------------------------------------------------------
     ("category_cryptography", "Remember",
@@ -122,18 +122,18 @@ I = [
 
     # 9 -------------------------------------------------------------------
     ("count_honest_position", "Analyze",
-     "The lecture says the 2022 version works within fourteen categories. What is the honest position?",
-     "المحاضرة تقول إن إصدار 2022 يعمل بأربعة عشر قسماً. ما الموقف الصحيح؟",
+     "Fourteen categories are attributed to the 2022 edition. What is the accurate position?",
+     "تُنسب أربعة عشر قسماً لإصدار 2022. ما الموقف الدقيق؟",
      ["It matches 2013; 2022 uses four themes.",
       "It is correct and current for the 2022 edition.",
-      "It is a printing error in the lecture notes.",
+      "It is a printing error in the printed table.",
       "It counts controls, not the categories."],
      ["يطابق 2013، أما 2022 فبأربعة محاور.",
       "صحيح وحديث تماماً لإصدار سنة 2022.",
-      "خطأ مطبعي في ملاحظات المحاضرة كلها.",
+      "خطأ مطبعي في الجدول المطبوع نفسه.",
       "يعدّ الضوابط وليس الأقسام نفسها."],
-     "Fourteen is the 2013 structure. The 2022 edition reorganised into four themes with 93 controls. Answer in her vocabulary, but know the fact.",
-     "الأربعة عشر هي بنية 2013. وإصدار 2022 أعاد التنظيم إلى أربعة محاور و93 ضابطاً. أجب بمفرداتها، لكن اعرف الحقيقة."),
+     "Fourteen is the 2013 structure. The 2022 edition reorganised into four themes with 93 controls. Use the familiar wording, but know the fact.",
+     "الأربعة عشر هي بنية 2013. وإصدار 2022 أعاد التنظيم إلى أربعة محاور و93 ضابطاً. استخدم الصياغة المتداولة، لكن اعرف الحقيقة."),
 
     # 10 ------------------------------------------------------------------
     ("ordering_logic", "Understand",

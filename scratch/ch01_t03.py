@@ -12,12 +12,12 @@ TOPIC_AR = "ثالوث CIA وقوائم التقنيات وأوزان المنف
 I = [
     # 1 -------------------------------------------------------------------
     ("cia_triad_is_backbone", "Remember",
-     "Which construct does the lecture call the backbone of cybersecurity?",
-     "أي بناء تسمّيه المحاضرة العمود الفقري للأمن السيبراني؟",
+     "Which model is the backbone of cybersecurity?",
+     "أي نموذج هو العمود الفقري للأمن السيبراني؟",
      ["The CIA triad.", "The OSI model.", "The TCP stack.", "The NIST model."],
      ["ثالوث CIA.", "نموذج OSI.", "حزمة TCP.", "نموذج NIST."],
-     "The lecture states plainly that the CIA triad is the backbone of cybersecurity, and it highlights the whole block.",
-     "المحاضرة تنص صريحاً على أن ثالوث CIA هو العمود الفقري للأمن السيبراني، وقد ظلّلت الكتلة بأكملها."),
+     "The CIA triad is the backbone of cybersecurity: every control serves one of its three pillars.",
+     "ثالوث CIA هو العمود الفقري للأمن السيبراني: كل ضابط يخدم أحد أركانه الثلاثة."),
 
     # 2 -------------------------------------------------------------------
     ("cia_confidentiality_definition", "Remember",
@@ -66,8 +66,8 @@ I = [
 
     # 5 -------------------------------------------------------------------
     ("cia_confidentiality_techniques", "Remember",
-     "Which techniques does the lecture list under confidentiality?",
-     "أي تقنيات تسردها المحاضرة تحت السرية؟",
+     "Which techniques enforce confidentiality?",
+     "أي تقنيات تحقق السرية؟",
      ["Encryption, access controls, and VPN tunnels.",
       "Hashing, digital signatures, and version control.",
       "Redundancy, load balancing, and DDoS mitigation.",
@@ -81,8 +81,8 @@ I = [
 
     # 6 -------------------------------------------------------------------
     ("cia_integrity_techniques", "Remember",
-     "Which techniques does the lecture list under integrity?",
-     "أي تقنيات تسردها المحاضرة تحت السلامة؟",
+     "Which techniques enforce integrity?",
+     "أي تقنيات تحقق السلامة؟",
      ["Hashing, digital signatures, and version control.",
       "Encryption, access controls, and VPN tunnels.",
       "Redundancy, load balancing, and DDoS mitigation.",
@@ -92,12 +92,12 @@ I = [
       "التكرار وموازنة الحمل والتخفيف من هجمات الحجب.",
       "التحديث والتحصين وفحص الثغرات الأمنية."],
      "Integrity uses hashing, digital signatures, and version control. Hashing is the one named with its algorithm, SHA-256.",
-     "السلامة تستخدم التجزئة والتواقيع الرقمية والتحكم بالإصدارات. والتجزئة هي المذكورة مع خوارزميتها SHA-256."),
+     "السلامة تستخدم التجزئة والتواقيع الرقمية والتحكم بالإصدارات. والتجزئة هي المقترنة بخوارزميتها SHA-256."),
 
     # 7 -------------------------------------------------------------------
     ("cia_availability_techniques", "Remember",
-     "Which techniques does the lecture list under availability?",
-     "أي تقنيات تسردها المحاضرة تحت التوافر؟",
+     "Which techniques enforce availability?",
+     "أي تقنيات تحقق التوافر؟",
      ["Redundancy, load balancing, and DDoS mitigation.",
       "Encryption, access controls, and VPN tunnels.",
       "Hashing, digital signatures, and version control.",
@@ -181,8 +181,8 @@ I = [
       "أنظمة المستشفى غالباً غير متصلة، فالاستمرارية لا تهم.",
       "القانون الطبي يمنع استخدام التشفير على بيانات المرضى.",
       "الأطباء نادراً ما يحتاجون فتح السجلات في الدوام."],
-     "The lecture gives healthcare as the example: confidentiality carries more weight because a disclosed diagnosis can never be taken back, while an outage can be repaired.",
-     "المحاضرة تعطي الرعاية الصحية كمثال: السرية وزنها أعلى لأن التشخيص المكشوف لا يمكن سحبه، بينما الانقطاع يمكن إصلاحه."),
+     "In healthcare confidentiality carries more weight: a disclosed diagnosis can never be taken back, while an outage can be repaired.",
+     "في الرعاية الصحية وزن السرية أعلى: التشخيص المكشوف لا يمكن سحبه، بينما الانقطاع يمكن إصلاحه."),
 
     # 13 ------------------------------------------------------------------
     ("utility_weight_banking_beta", "Analyze",

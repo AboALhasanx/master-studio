@@ -48,8 +48,8 @@ I = [
       "لوائح GDPR و HIPAA الأوروبية المعتمدة.",
       "قواعد OWASP و CVE المعتمدة للثغرات.",
       "نماذج OCTAVE و FAIR لتقييم المخاطر."],
-     "The international standards in the lecture are NIST and ISO 27001. The others are laws, vulnerability catalogues, or risk models.",
-     "المعايير الدولية في المحاضرة هي NIST و ISO 27001. أما البقية فقوانين أو قواعد ثغرات أو نماذج مخاطر."),
+     "The international standards are NIST and ISO 27001. The others are laws, vulnerability catalogues, or risk models.",
+     "المعايير الدولية هي NIST و ISO 27001. أما البقية فقوانين أو قواعد ثغرات أو نماذج مخاطر."),
 
     # 4 -------------------------------------------------------------------
     ("perspective_us", "Remember",
@@ -63,8 +63,8 @@ I = [
       "لائحة GDPR ووكالة ENISA الأوروبية.",
       "مجالس الأمن السيبراني الوطنية.",
       "قواعد ISO 27001 و HIPAA المعتمدة."],
-     "The lecture lists the NIST Cybersecurity Framework and the Federal Cybersecurity Strategy for the United States.",
-     "المحاضرة تذكر إطار NIST للأمن السيبراني والاستراتيجية الفدرالية للولايات المتحدة."),
+     "The United States works through the NIST Cybersecurity Framework and the Federal Cybersecurity Strategy.",
+     "الولايات المتحدة تعمل بإطار NIST للأمن السيبراني والاستراتيجية الفدرالية."),
 
     # 5 -------------------------------------------------------------------
     ("perspective_eu", "Remember",
@@ -83,8 +83,8 @@ I = [
 
     # 6 -------------------------------------------------------------------
     ("perspective_middle_east", "Remember",
-     "How does the lecture describe the Middle East approach?",
-     "كيف تصف المحاضرة مقاربة الشرق الأوسط؟",
+     "How is cyber governance organised in the Middle East?",
+     "كيف تُنظَّم الحوكمة السيبرانية في الشرق الأوسط؟",
      ["National cybersecurity councils.",
       "A single regional data protection law.",
       "Outsourced foreign cloud firms.",
@@ -152,8 +152,8 @@ I = [
 
     # 11 ------------------------------------------------------------------
     ("optimisation_threshold_rule", "Remember",
-     "The lecture gives a rule of thumb for the optimisation result. What is it?",
-     "المحاضرة تعطي قاعدة تقريبية لنتيجة التحسين. ما هي؟",
+     "In the optimisation model, what does a result above 100 indicate?",
+     "في نموذج التحسين، ماذا تعني نتيجة فوق 100؟",
      ["A result above 100 means there is investment.",
       "A result above 100 means there is no investment.",
       "A result above 100 means risk cannot be reduced.",
@@ -162,8 +162,8 @@ I = [
       "نتيجة فوق 100 تعني غياب الاستثمار.",
       "نتيجة فوق 100 تعني أن الخطر لا يُخفَّض.",
       "نتيجة فوق 100 تعني أن النموذج غير صالح."],
-     "Her rule: above 100 means there is investment, below 100 means there is none. It is stated as given and taken as given.",
-     "قاعدتها: فوق 100 يعني هناك استثمار، وتحت 100 يعني لا يوجد. تُؤخذ كما وردت."),
+     "The rule: above 100 means there is investment, below 100 means there is none.",
+     "القاعدة: فوق 100 يعني هناك استثمار، وتحت 100 يعني لا يوجد."),
 ]
 
 KEY = "ACBDABDCABC"

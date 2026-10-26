@@ -12,19 +12,19 @@ TOPIC_AR = "مجموعات التهديد الأربع والتدابير الم
 I = [
     # 1 -------------------------------------------------------------------
     ("threat_groups_count", "Remember",
-     "Into how many main groups does the lecture divide threats?",
-     "إلى كم مجموعة رئيسية تقسم المحاضرة التهديدات؟",
+     "Into how many main groups are threats to IT systems divided?",
+     "إلى كم مجموعة رئيسية تُقسَم التهديدات على أنظمة المعلومات؟",
      ["Four main groups.", "Three main groups.",
       "Five main groups.", "Six main groups."],
      ["أربع مجموعات رئيسية.", "ثلاث مجموعات رئيسية.",
       "خمس مجموعات رئيسية.", "ست مجموعات رئيسية."],
-     "The lecture says at least four: hardware, software, data, and liveware.",
-     "المحاضرة تقول أربع على الأقل: العتاد، البرمجيات، البيانات، والعامل البشري."),
+     "There are at least four: hardware, software, data, and liveware.",
+     "هي أربع على الأقل: العتاد، البرمجيات، البيانات، والعامل البشري."),
 
     # 2 -------------------------------------------------------------------
     ("mistaken_belief", "Understand",
-     "Which mistaken belief does the lecture set out to correct?",
-     "أي اعتقاد خاطئ تحاول المحاضرة تصحيحه؟",
+     "Which common belief about threats is wrong?",
+     "أي اعتقاد شائع عن التهديدات غير صحيح؟",
      ["That only outside hackers threaten a computer.",
       "That hardware faults are the main danger.",
       "That insiders are more dangerous than hackers.",
@@ -33,8 +33,8 @@ I = [
       "أن أعطال العتاد هي الخطر الأكبر دائماً.",
       "أن الداخليين أخطر من المخترقين.",
       "أن أخطاء البرمجيات دائماً متعمّدة."],
-     "Many users think the only threat is an attacker breaking in. The lecture answers that the threat pattern is far more varied.",
-     "كثير من المستخدمين يظنون أن التهديد الوحيد هو مهاجم يخترق الجهاز. والمحاضرة تجيب أن نمط التهديدات أوسع بكثير."),
+     "Many users think the only threat is an attacker breaking in. In reality the threat pattern is far more varied.",
+     "كثير من المستخدمين يظنون أن التهديد الوحيد هو مهاجم يخترق الجهاز. والحقيقة أن نمط التهديدات أوسع بكثير."),
 
     # 3 -------------------------------------------------------------------
     ("hardware_group_content", "Remember",
@@ -93,13 +93,13 @@ I = [
       "إخفاء بيانات داخل ملف آخر قبل إرساله للضحية.",
       "تغيير سجل بحيث لا يظهر التغيير عليه.",
       "حجب خدمة بحيث لا يستطيع أحد استخدامها."],
-     "Masquerading is pretending to be someone else, and the lecture lists it under data threats next to unauthorized access.",
-     "التنكّر هو التظاهر بأنك شخص آخر، والمحاضرة تدرجه تحت تهديدات البيانات بجانب الوصول غير المصرّح."),
+     "Masquerading is pretending to be someone else, and it sits under data threats next to unauthorized access.",
+     "التنكّر هو التظاهر بأنك شخص آخر، وهو يقع تحت تهديدات البيانات بجانب الوصول غير المصرّح."),
 
     # 7 -------------------------------------------------------------------
     ("classify_storm", "Apply",
-     "A storm floods the room holding the servers. Which group does the lecture place this in?",
-     "عاصفة تُغرق الغرفة التي فيها الخوادم. في أي مجموعة تضعها المحاضرة؟",
+     "A storm floods the room holding the servers. Which group does this threat belong to?",
+     "عاصفة تُغرق الغرفة التي فيها الخوادم. إلى أي مجموعة ينتمي هذا التهديد؟",
      ["Hardware, because it acts physically on the machine.",
       "Software, because it stops the programs from running.",
       "Data, because the records on the disks are lost.",
@@ -108,8 +108,8 @@ I = [
       "البرمجيات، لأنه يوقف البرامج عن العمل.",
       "البيانات، لأن السجلات على الأقراص تضيع.",
       "العامل البشري، لأن أحداً لم يتابع حالة الطقس."],
-     "The lecture names natural disasters such as storms under hardware threats, because the damage is physical to the machine or its surroundings.",
-     "المحاضرة تذكر الكوارث الطبيعية كالعواصف تحت تهديدات العتاد، لأن الضرر مادي على الجهاز أو محيطه."),
+     "Natural disasters such as storms count as hardware threats, because the damage is physical to the machine or its surroundings.",
+     "الكوارث الطبيعية كالعواصف تُعدّ من تهديدات العتاد، لأن الضرر مادي على الجهاز أو محيطه."),
 
     # 8 -------------------------------------------------------------------
     ("classify_cleaner", "Analyze",
@@ -128,8 +128,8 @@ I = [
 
     # 9 -------------------------------------------------------------------
     ("cm_malware", "Understand",
-     "Which countermeasure does the lecture pair with threats from malware?",
-     "أي تدبير مضاد تقرنه المحاضرة بتهديدات البرمجيات الخبيثة؟",
+     "Which countermeasure answers threats from malware?",
+     "أي تدبير مضاد يواجه تهديدات البرمجيات الخبيثة؟",
      ["Antivirus and security programs.",
       "Firewalls placed in the network.",
       "Regular backup copies of the data.",
@@ -143,8 +143,8 @@ I = [
 
     # 10 ------------------------------------------------------------------
     ("cm_physical_damage", "Understand",
-     "Which countermeasure does the lecture pair with vandalism, theft, and physical damage?",
-     "أي تدبير مضاد تقرنه المحاضرة بالتخريب والسرقة والضرر المادي؟",
+     "Which countermeasure answers vandalism, theft, and physical damage?",
+     "أي تدبير مضاد يواجه التخريب والسرقة والضرر المادي؟",
      ["Place the equipment in a secure room.",
       "Take regular backup copies of data.",
       "Use encryption and access control on it.",
@@ -158,8 +158,8 @@ I = [
 
     # 11 ------------------------------------------------------------------
     ("cm_unauthorized_modification", "Understand",
-     "Which countermeasure does the lecture pair with unauthorized modification or deletion?",
-     "أي تدبير مضاد تقرنه المحاضرة بالتعديل أو الحذف غير المصرّح به؟",
+     "Which countermeasure answers unauthorized modification or deletion?",
+     "أي تدبير مضاد يواجه التعديل أو الحذف غير المصرّح به؟",
      ["Take regular backup copies of the data.",
       "Use encryption or access control on it.",
       "Place the equipment in a secure room.",
@@ -183,8 +183,8 @@ I = [
       "لأن ضابطاً قوياً واحداً يكفي لكل تهديد.",
       "لأن الضوابط يجب أن تكون رخيصة أولاً.",
       "لأن السياسة تفرض قائمة ثابتة."],
-     "The lecture says countermeasures must be adapted to suit the type of threat, which is why the list pairs a different control with each threat.",
-     "المحاضرة تقول إن التدابير المضادة يجب أن تُكيَّف بما يناسب نوع التهديد، ولهذا تقرن القائمة ضابطاً مختلفاً بكل تهديد."),
+     "Countermeasures must be adapted to suit the type of threat, which is why each threat gets a different control.",
+     "التدابير المضادة يجب أن تُكيَّف بما يناسب نوع التهديد، ولهذا يحصل كل تهديد على ضابط مختلف."),
 ]
 
 KEY = "ABCDACBDABCD"

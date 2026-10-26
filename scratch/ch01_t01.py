@@ -82,8 +82,8 @@ I = [
       "دقة البيانات وسرعة الأنظمة وثقة المورّد.",
       "المسؤولية القانونية وتدريب الموظفين والتأمين.",
       "الحصة السوقية وتصميم العلامة والتوظيف."],
-     "The lecture links it to national security, economic stability, and privacy protection. That is what raises it from an IT task to a national priority.",
-     "المحاضرة تربطه بالأمن الوطني والاستقرار الاقتصادي وحماية الخصوصية. وهذا ما يرفعه من مهمة تقنية إلى أولوية وطنية."),
+     "Cybersecurity is tied to national security, economic stability, and privacy protection. That is what raises it from an IT task to a national priority.",
+     "الأمن السيبراني مرتبط بالأمن الوطني والاستقرار الاقتصادي وحماية الخصوصية. وهذا ما يرفعه من مهمة تقنية إلى أولوية وطنية."),
 
     # 6 -------------------------------------------------------------------
     ("evolution_1960s_arpanet", "Remember",

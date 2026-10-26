@@ -12,8 +12,8 @@ TOPIC_AR = "المخاطر والثغرات ونموذج التوزيع"
 I = [
     # 1 -------------------------------------------------------------------
     ("risk_is_function_of_two", "Remember",
-     "How does the lecture define risk?",
-     "كيف تعرّف المحاضرة الخطر؟",
+     "How is risk defined?",
+     "كيف يُعرَّف الخطر؟",
      ["A function of likelihood and impact.",
       "A function of control cost and time.",
       "A function of user count and devices.",
@@ -37,13 +37,13 @@ I = [
       "أداة تُستخدم لمهاجمة نقطة ضعف قائمة.",
       "مقدار الخسارة التي يسببها الهجوم على النظام.",
       "ضابط أمني يمنع الهجوم من تحقيق هدفه."],
-     "A vulnerability is the weakness itself, and the lecture allows three places for it: software, hardware, and the human factor.",
-     "الثغرة هي الضعف نفسه، والمحاضرة تسمح بثلاثة مواضع له: البرمجيات والعتاد والعامل البشري."),
+     "A vulnerability is the weakness itself, and it can sit in software, hardware, or the human factor.",
+     "الثغرة هي الضعف نفسه، ويمكن أن يكون في البرمجيات أو العتاد أو العامل البشري."),
 
     # 3 -------------------------------------------------------------------
     ("vulnerability_examples_owasp_cve", "Remember",
-     "Which examples does the lecture give for vulnerabilities?",
-     "أي أمثلة تعطيها المحاضرة للثغرات؟",
+     "Which catalogues are the standard references for known vulnerabilities?",
+     "أي قائمتين هما المرجع القياسي للثغرات المعروفة؟",
      ["The OWASP Top 10 and the CVE list.",
       "The ISO 27001 and NIST CSF lists.",
       "The GDPR and HIPAA legal frameworks.",
@@ -87,8 +87,8 @@ I = [
 
     # 6 -------------------------------------------------------------------
     ("risk_assessment_models", "Remember",
-     "Which three risk assessment models does the lecture name?",
-     "أي ثلاثة نماذج لتقييم المخاطر تسمّيها المحاضرة؟",
+     "Which three models are used for risk assessment?",
+     "أي ثلاثة نماذج تُستخدم لتقييم المخاطر؟",
      ["OCTAVE, FAIR, and NIST RMF.", "GDPR, HIPAA, and ISO 27001.",
       "OWASP, CVE, and CVSS scores.", "NIST CSF, ENISA, and COBIT."],
      ["OCTAVE و FAIR و NIST RMF.", "GDPR و HIPAA و ISO 27001.",
@@ -104,8 +104,8 @@ I = [
       "A hardware defect in it.", "An exploit tool for it."],
      ["ضعف في العامل البشري.", "خلل في تصميم البرمجية.",
       "عيب في العتاد نفسه.", "أداة استغلال جاهزة."],
-     "The lecture allows software, hardware, or the human factor. A note on a monitor is neither code nor metal, so it is the human factor.",
-     "المحاضرة تسمح بثلاثة مواضع: البرمجيات أو العتاد أو العامل البشري. ورقة على الشاشة ليست كوداً ولا معدنًا، فهي العامل البشري."),
+     "A weakness can sit in software, hardware, or the human factor. A note on a monitor is neither code nor metal, so it is the human factor.",
+     "الضعف يكون في البرمجيات أو العتاد أو العامل البشري. ورقة على الشاشة ليست كوداً ولا معدناً، فهي العامل البشري."),
 
     # 8 -------------------------------------------------------------------
     ("risk_compare_compute", "Apply",
@@ -134,8 +134,8 @@ I = [
       "كثافة احتمالية الخسارة من الصفر صعوداً.",
       "متوسط الخسارة المتوقعة خلال سنة.",
       "أقصى خسارة يمكن أن يتعرض لها النظام."],
-     "F is the cumulative distribution function, and the lecture annotates that it is bounded between 0 and 1.",
-     "F هي دالة التوزيع التراكمي، والمحاضرة تكتب ملاحظة أنها محصورة بين 0 و1."),
+     "F is the cumulative distribution function, and by definition it is bounded between 0 and 1.",
+     "F هي دالة التوزيع التراكمي، وهي بحكم تعريفها محصورة بين 0 و1."),
 
     # 10 ------------------------------------------------------------------
     ("distribution_tail_meaning", "Understand",

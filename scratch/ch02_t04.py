@@ -31,13 +31,13 @@ I = [
      "ماذا يُسمّى الجزء من إدارة المخاطر الذي يخفّض الخطر لمستوى مقبول؟",
      ["Risk mitigation.", "Risk transference.", "Risk retention.", "Risk analysis."],
      ["تخفيف المخاطر.", "نقل المخاطر للغير.", "الاحتفاظ بها.", "تحليل المخاطر."],
-     "The lecture gives that part its own name: risk mitigation. It is one component of risk management, not a synonym for it.",
-     "المحاضرة تعطي ذلك الجزء اسماً خاصاً: تخفيف المخاطر. وهو مكوّن من إدارة المخاطر لا مرادف لها."),
+     "That part has its own name: risk mitigation. It is one component of risk management, not a synonym for it.",
+     "ذلك الجزء له اسمه الخاص: تخفيف المخاطر. وهو مكوّن من إدارة المخاطر لا مرادف لها."),
 
     # 3 -------------------------------------------------------------------
     ("strategies_order", "Remember",
-     "Which sequence gives the five mitigation strategies in the lecture's order?",
-     "أي تسلسل يعطي استراتيجيات التخفيف الخمس بترتيب المحاضرة؟",
+     "Which sequence gives the five mitigation strategies in their recognised order?",
+     "أي تسلسل يعطي استراتيجيات التخفيف الخمس بترتيبها المعتمد؟",
      ["Avoidance, reduction, retention, transfer, sharing.",
       "Avoidance, retention, reduction, sharing, transfer.",
       "Reduction, avoidance, transfer, retention, sharing.",
@@ -46,8 +46,8 @@ I = [
       "التجنّب، الاحتفاظ، التقليل، المشاركة، النقل.",
       "التقليل، التجنّب، النقل، الاحتفاظ، المشاركة.",
       "الاحتفاظ، التجنّب، المشاركة، التقليل، النقل."],
-     "The order is avoidance, reduction, retention, transfer, sharing, and it is one of only two places in this chapter where the order matters.",
-     "الترتيب هو: التجنّب، التقليل، الاحتفاظ، النقل، المشاركة، وهو أحد موضعين فقط في هذا الجابتر يكون فيهما الترتيب مهماً."),
+     "The order is avoidance, reduction, retention, transfer, sharing, and it is one of only two lists where the order matters.",
+     "الترتيب هو: التجنّب، التقليل، الاحتفاظ، النقل، المشاركة، وهو أحد موضعين فقط يكون فيهما الترتيب مهماً."),
 
     # 4 -------------------------------------------------------------------
     ("strategy_avoidance", "Apply",
@@ -55,8 +55,8 @@ I = [
      "مؤسسة تمنع استخدام WiFi في مبانيها. أي استراتيجية هذه؟",
      ["Risk avoidance.", "Risk reduction.", "Risk retention.", "Risk transfer."],
      ["استراتيجية التجنّب.", "استراتيجية التقليل.", "استراتيجية الاحتفاظ.", "استراتيجية النقل."],
-     "Avoidance keeps the system away from the risk altogether, and forbidding a risky behaviour such as WiFi is the lecture's own example.",
-     "التجنّب يُبعد النظام عن الخطر أصلاً، ومنع سلوك خطر كاستخدام WiFi هو مثال المحاضرة نفسه."),
+     "Avoidance keeps the system away from the risk altogether, and forbidding a risky behaviour such as WiFi is the standard example.",
+     "التجنّب يُبعد النظام عن الخطر أصلاً، ومنع سلوك خطر كاستخدام WiFi هو المثال القياسي."),
 
     # 5 -------------------------------------------------------------------
     ("strategy_reduction", "Apply",
@@ -64,8 +64,8 @@ I = [
      "فريق يضيف نسخاً احتياطية وتشفيراً لمنع الخسائر وتقليل حجمها. أي استراتيجية هذه؟",
      ["Risk reduction.", "Risk avoidance.", "Risk retention.", "Risk sharing."],
      ["استراتيجية التقليل.", "استراتيجية التجنّب.", "استراتيجية الاحتفاظ.", "استراتيجية المشاركة."],
-     "Reduction takes proactive steps to prevent the loss or to make it smaller. Backups and encryption are the lecture's examples for it.",
-     "التقليل يتخذ خطوات استباقية لمنع الخسارة أو تصغيرها. والنسخ الاحتياطي والتشفير هما مثالي المحاضرة له."),
+     "Reduction takes proactive steps to prevent the loss or to make it smaller. Backups and encryption are the standard examples.",
+     "التقليل يتخذ خطوات استباقية لمنع الخسارة أو تصغيرها. والنسخ الاحتياطي والتشفير هما المثالان القياسيان."),
 
     # 6 -------------------------------------------------------------------
     ("strategy_retention", "Apply",
@@ -73,8 +73,8 @@ I = [
      "مؤسسة تستخدم معدات موثوقة لكن غير مكرّرة وتقبل التعرّض الناتج. أي استراتيجية هذه؟",
      ["Risk retention.", "Risk reduction.", "Risk transfer.", "Risk sharing."],
      ["استراتيجية الاحتفاظ.", "استراتيجية التقليل.", "استراتيجية النقل.", "استراتيجية المشاركة."],
-     "Retention allows a certain agreed amount of residual risk to stay. Reliable but non-redundant equipment is the lecture's example.",
-     "الاحتفاظ يسمح ببقاء مقدار متفق عليه من الخطر المتبقي. والمعدات الموثوقة غير المكرّرة هي مثال المحاضرة."),
+     "Retention allows a certain agreed amount of residual risk to stay. Reliable but non-redundant equipment is the standard example.",
+     "الاحتفاظ يسمح ببقاء مقدار متفق عليه من الخطر المتبقي. والمعدات الموثوقة غير المكرّرة هي المثال القياسي."),
 
     # 7 -------------------------------------------------------------------
     ("strategy_transfer", "Apply",
@@ -82,8 +82,8 @@ I = [
      "مؤسسة توقّع عقد استعانة بمصادر خارجية لتتحمل شركة أخرى جزءاً من الخطر. أي استراتيجية هذه؟",
      ["Risk transfer.", "Risk avoidance.", "Risk reduction.", "Risk sharing."],
      ["استراتيجية نقل الخطر.", "استراتيجية التجنّب.", "استراتيجية التقليل.", "استراتيجية المشاركة."],
-     "Transfer hands the risk to others, and an outsourcing contract is the lecture's example of it.",
-     "النقل يحوّل الخطر إلى طرف آخر، وعقد الاستعانة بمصادر خارجية هو مثال المحاضرة عليه."),
+     "Transfer hands the risk to others, and an outsourcing contract is the standard example.",
+     "النقل يحوّل الخطر إلى طرف آخر، وعقد الاستعانة بمصادر خارجية هو المثال القياسي."),
 
     # 8 -------------------------------------------------------------------
     ("strategy_sharing", "Apply",
@@ -91,8 +91,8 @@ I = [
      "شركتان تتفقان على مرافق مشتركة وتأمين متبادل. أي استراتيجية هذه؟",
      ["Risk sharing.", "Risk avoidance.", "Risk retention.", "Risk transfer."],
      ["استراتيجية المشاركة.", "استراتيجية التجنّب.", "استراتيجية الاحتفاظ.", "استراتيجية النقل."],
-     "Sharing means dealing with the risk jointly with other parties, and common facilities or mutual insurance are the lecture's examples.",
-     "المشاركة تعني التعامل مع الخطر بشكل مشترك مع أطراف أخرى، والمرافق المشتركة أو التأمين المتبادل هما مثالي المحاضرة."),
+     "Sharing means dealing with the risk jointly with other parties, and common facilities or mutual insurance are the standard examples.",
+     "المشاركة تعني التعامل مع الخطر بشكل مشترك مع أطراف أخرى، والمرافق المشتركة أو التأمين المتبادل هما المثالان القياسيان."),
 
     # 9 -------------------------------------------------------------------
     ("transfer_vs_sharing", "Analyze",

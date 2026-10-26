@@ -27,8 +27,8 @@ I = [
 
     # 2 -------------------------------------------------------------------
     ("free_access_temptation", "Understand",
-     "Why does the lecture warn against free movement through all departments?",
-     "لماذا تحذّر المحاضرة من الحركة الحرة في كل الأقسام؟",
+     "Why is free movement through all departments a security risk?",
+     "لماذا تُعدّ الحركة الحرة في كل الأقسام خطراً أمنياً؟",
      ["It increases the temptation to take assets.",
       "It slows down the network traffic badly.",
       "It makes the audit trail harder to read.",
@@ -37,8 +37,8 @@ I = [
       "يبطئ حركة الشبكة بشكل كبير جداً.",
       "يجعل سجل التدقيق أصعب في القراءة.",
       "يرفع كلفة الحراس المعيّنين فعلياً."],
-     "When everyone can move freely inside, it becomes much harder to apply safeguards. The lecture calls this the human nature of temptation.",
-     "لما يتحرك الجميع بحرية في الداخل، يصير تطبيق الضمانات أصعب بكثير. والمحاضرة تسمي هذا طبيعة الإنسان المتمثّلة في الإغراء."),
+     "When everyone can move freely inside, it becomes much harder to apply safeguards. That is the human nature of temptation.",
+     "لما يتحرك الجميع بحرية في الداخل، يصير تطبيق الضمانات أصعب بكثير. وهذه طبيعة الإنسان المتمثّلة في الإغراء."),
 
     # 3 -------------------------------------------------------------------
     ("access_control_accidents", "Remember",
@@ -52,8 +52,8 @@ I = [
       "السرقة المتعمّدة من الداخل فقط.",
       "الهجمات القادمة من الخارج فقط.",
       "أعطال عتاد الشبكة الداخلية فقط."],
-     "The lecture names two reasons for access control: reducing temptation and preventing accidents.",
-     "المحاضرة تذكر سببين للتحكم بالوصول: تقليل الإغراء ومنع الحوادث."),
+     "Access control has two reasons: reducing temptation and preventing accidents.",
+     "للتحكم بالوصول سببان: تقليل الإغراء ومنع الحوادث."),
 
     # 4 -------------------------------------------------------------------
     ("door_alone_limits", "Understand",
@@ -202,8 +202,8 @@ I = [
       "شيء تعرفه، مثل كلمة المرور.",
       "شيء تملكه، مثل بطاقة.",
       "مكان تتواجد فيه، مثل مكتب."],
-     "The lecture calls it Inheritance: something you are, or something only the designated person is. The standard term for it is inherence, or biometrics.",
-     "المحاضرة تسميه الوراثة: شيء تكونه، أو شيء لا يكونه إلا الشخص المعني. والمصطلح القياسي له هو inherence أي الخصائص الحيوية."),
+     "It is called Inheritance here: something you are, or something only the designated person is. The standard term is inherence, or biometrics.",
+     "يُسمّى هنا الوراثة: شيء تكونه، أو شيء لا يكونه إلا الشخص المعني. والمصطلح القياسي هو inherence أي الخصائص الحيوية."),
 
     # 14 ------------------------------------------------------------------
     ("factor_location", "Remember",

@@ -27,8 +27,8 @@ I = [
 
     # 2 -------------------------------------------------------------------
     ("threat_malware_types", "Remember",
-     "Which four programs does the lecture group under malware?",
-     "أي أربعة برامج تصنّفها المحاضرة تحت البرمجيات الخبيثة؟",
+     "Which four programs are grouped under malware?",
+     "أي أربعة برامج تُصنَّف تحت البرمجيات الخبيثة؟",
      ["Viruses, worms, Trojans, and ransomware.",
       "Worms, Trojans, spyware, and rootkits.",
       "Viruses, bots, adware, and keyloggers.",
@@ -37,8 +37,8 @@ I = [
       "الديدان وأحصنة طروادة وبرامج التجسس والجذور الخفية.",
       "الفيروسات والبوتات والبرامج الإعلانية ومسجلات المفاتيح.",
       "أحصنة طروادة والفدية والديدان والأبواب الخلفية."],
-     "The lecture names exactly four: viruses, worms, Trojans, and ransomware. Spyware, adware and rootkits are real, but they are not on this list.",
-     "المحاضرة تذكر أربعة بالضبط: الفيروسات والديدان وأحصنة طروادة وبرامج الفدية. التجسس والإعلانات والجذور الخفية موجودة فعلاً لكنها ليست في هذه القائمة."),
+     "Malware covers exactly four here: viruses, worms, Trojans, and ransomware. Spyware, adware and rootkits are real, but they belong to other families.",
+     "البرمجيات الخبيثة أربعة هنا: الفيروسات والديدان وأحصنة طروادة وبرامج الفدية. والتجسس والإعلانات والجذور الخفية موجودة لكنها من عائلات أخرى."),
 
     # 3 -------------------------------------------------------------------
     ("threat_phishing_exploits_trust", "Understand",
@@ -52,8 +52,8 @@ I = [
       "أخطاء الذاكرة في البرمجيات.",
       "ضعف مفاتيح التشفير المستخدمة.",
       "بطء روابط الشبكة الداخلية."],
-     "Phishing is social engineering: it targets the person, not the machine. The lecture puts it under exploiting human trust.",
-     "التصيّد هندسة اجتماعية: يستهدف الشخص لا الآلة. والمحاضرة تضعه تحت استغلال ثقة الإنسان."),
+     "Phishing is social engineering: it targets the person, not the machine, so its raw material is human trust.",
+     "التصيّد هندسة اجتماعية: يستهدف الشخص لا الآلة، فمادته الخام ثقة الإنسان."),
 
     # 4 -------------------------------------------------------------------
     ("threat_insider_definition", "Understand",
@@ -87,8 +87,8 @@ I = [
 
     # 6 -------------------------------------------------------------------
     ("threat_iot_botnet_example", "Remember",
-     "Which example does the lecture give for IoT attacks?",
-     "أي مثال تعطيه المحاضرة لهجمات إنترنت الأشياء؟",
+     "Which botnet is the standard example of an IoT attack?",
+     "أي شبكة بوت هي المثال القياسي لهجوم إنترنت الأشياء؟",
      ["The Mirai botnet of infected devices.",
       "A worm spreading through email attachments.",
       "A Trojan hidden inside a free download.",
@@ -98,7 +98,7 @@ I = [
       "حصان طروادة مخفي داخل تنزيل مجاني.",
       "فيروس يصيب قطاع الإقلاع في القرص."],
      "Mirai is the named example: a botnet built from compromised IoT devices such as cameras and routers.",
-     "Mirai هو المثال المذكور: شبكة بوت مبنية من أجهزة إنترنت أشياء مخترقة كالكاميرات والموجّهات."),
+     "Mirai هو المثال القياسي: شبكة بوت مبنية من أجهزة إنترنت أشياء مخترقة كالكاميرات والموجّهات."),
 
     # 7 -------------------------------------------------------------------
     ("threat_scenario_insider", "Apply",
@@ -124,8 +124,8 @@ I = [
 
     # 9 -------------------------------------------------------------------
     ("trends_2023_2024", "Remember",
-     "Which three trends does the lecture record for 2023 and 2024?",
-     "أي ثلاثة اتجاهات تسجّلها المحاضرة لعامي 2023 و2024؟",
+     "Which three trends shaped the 2023-2024 threat landscape?",
+     "أي ثلاثة اتجاهات شكّلت مشهد التهديدات في 2023-2024؟",
      ["Rising ransomware losses, cloud misconfiguration, AI attacks.",
       "Falling ransomware losses, cloud migration, and AI defence.",
       "Rising malware volume, tape backups, and manual auditing.",
@@ -149,8 +149,8 @@ I = [
       "عدد نقاط الدخول المكشوفة فيه.",
       "قيمة الأصل الذي يقف خلف المكوّن.",
       "تكلفة الضابط الأمني المطبّق عليه."],
-     "The middle factor is the severity of the vulnerability, which the lecture ties to the CVSS score.",
-     "العامل الأوسط هو درجة خطورة الثغرة، والمحاضرة تربطها بدرجة CVSS."),
+     "The middle factor is the severity of the vulnerability, measured by its CVSS score.",
+     "العامل الأوسط هو درجة خطورة الثغرة، وتُقاس بدرجة CVSS."),
 
     # 11 ------------------------------------------------------------------
     ("attack_surface_compute", "Apply",

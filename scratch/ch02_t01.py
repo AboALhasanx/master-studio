@@ -22,8 +22,8 @@ I = [
       "الضرر الذي وقع فعلاً بالفعل.",
       "نقطة الضعف التي يستغلها المهاجم.",
       "تكلفة الضوابط المطبّقة حالياً."],
-     "Risk is a probability, not the damage itself. The lecture calls it the quantitative probability that an error situation occurs and gives rise to damage.",
-     "الخطر احتمال وليس الضرر نفسه. المحاضرة تسمّيه الاحتمال الكمي لوقوع حالة خطأ ينتج عنها ضرر."),
+     "Risk is a probability, not the damage itself: the quantitative probability that an error situation occurs and gives rise to damage.",
+     "الخطر احتمال وليس الضرر نفسه: الاحتمال الكمي لوقوع حالة خطأ ينتج عنها ضرر."),
 
     # 2 -------------------------------------------------------------------
     ("damage_is_policy_breach", "Remember",
@@ -37,8 +37,8 @@ I = [
       "عطل في عتاد الشبكة نفسه.",
       "فقدان كلمات مرور المستخدمين.",
       "نقص في ميزانية الأمن المخصصة."],
-     "The lecture makes damage synonymous with a breach of the security policy, so damage is defined by the rules, not by hardware failure.",
-     "المحاضرة تجعل الضرر مرادفاً لخرق سياسة الأمن، فالضرر يُعرَّف بالقواعد لا بتعطل العتاد."),
+     "Damage is synonymous with a breach of the security policy, so it is defined by the rules, not by hardware failure.",
+     "الضرر مرادف لخرق سياسة الأمن، فهو يُعرَّف بالقواعد لا بتعطل العتاد."),
 
     # 3 -------------------------------------------------------------------
     ("subjective_risk_factors", "Remember",
@@ -147,8 +147,8 @@ I = [
 
     # 10 ------------------------------------------------------------------
     ("objective_definition_basis", "Understand",
-     "The lecture calls its definition of risk objective. Why?",
-     "المحاضرة تسمّي تعريفها للخطر موضوعياً. لماذا؟",
+     "Why is risk defined as an objective quantity?",
+     "لماذا يُعرَّف الخطر كمقدار موضوعي؟",
      ["It is measured in numbers, not in feelings.",
       "It was written by an international standard body.",
       "It ignores the human factor on purpose.",

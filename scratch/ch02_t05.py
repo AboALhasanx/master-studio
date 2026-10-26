@@ -12,8 +12,8 @@ TOPIC_AR = "أطر التحليل الخمسة"
 I = [
     # 1 -------------------------------------------------------------------
     ("framework_count", "Remember",
-     "Which five frameworks does the lecture present for systematic analysis?",
-     "أي خمسة أطر تقدمها المحاضرة للتحليل المنهجي؟",
+     "Which five frameworks are used for systematic security analysis?",
+     "أي خمسة أطر تُستخدم للتحليل الأمني المنهجي؟",
      ["COBIT, COSO, FAIR, ISO/IEC 27002, and OCTAVE.",
       "COBIT, COSO, FAIR, ISO 9001, and OCTAVE too.",
       "COBIT, COSO, FAIR, NIST CSF, and OCTAVE.",
@@ -112,8 +112,8 @@ I = [
       "COSO، لأنه يصف العمليات الداخلية للمؤسسة.",
       "OCTAVE، لأنه يعمل بثلاث مراحل واضحة.",
       "COBIT، لأنه يضع أهدافاً للتدابير الأمنية."],
-     "FAIR is the only one of the five that the lecture credits with a calculation model, which is why it is the strongest for quantitative work.",
-     "FAIR هو الوحيد من الخمسة الذي تنسب له المحاضرة نموذج حساب، ولهذا هو الأقوى في العمل الكمي."),
+     "FAIR is the only one of the five with a calculation model, which is why it is the strongest for quantitative work.",
+     "FAIR هو الوحيد من الخمسة الذي يملك نموذج حساب، ولهذا هو الأقوى في العمل الكمي."),
 
     # 8 -------------------------------------------------------------------
     ("match_coso_scenario", "Apply",
@@ -147,8 +147,8 @@ I = [
 
     # 10 ------------------------------------------------------------------
     ("why_systematic", "Understand",
-     "Why does the lecture recommend a systematic method at all?",
-     "لماذا توصي المحاضرة بمنهج منهجي أصلاً؟",
+     "Why is a systematic method needed at all?",
+     "لماذا نحتاج منهجاً منهجياً أصلاً؟",
      ["Because ad hoc effort leaves gaps in coverage.",
       "Because frameworks are required by the law today.",
       "Because one framework replaces all controls.",
@@ -157,8 +157,8 @@ I = [
       "لأن القانون يفرض استخدام أطر جاهزة دائماً.",
       "لأن إطاراً واحداً يغني عن كل الضوابط.",
       "لأن المدققين يطلبون مستنداً مطبوعاً."],
-     "A systematic method covers the ground in a fixed order, so nothing is skipped. The lecture presents the five as well-known examples of such methods.",
-     "المنهج المنهجي يغطي الموضوع بترتيب ثابت فلا يُنسى شيء. والمحاضرة تقدم الخمسة كأمثلة معروفة على هذه المناهج."),
+     "A systematic method covers the ground in a fixed order, so nothing is skipped. The five are well-known examples of such methods.",
+     "المنهج المنهجي يغطي الموضوع بترتيب ثابت فلا يُنسى شيء. والخمسة أمثلة معروفة على هذه المناهج."),
 ]
 
 KEY = "ABCDABCDAB"

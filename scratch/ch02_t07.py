@@ -126,8 +126,8 @@ I = [
 
     # 9 -------------------------------------------------------------------
     ("variant_count", "Remember",
-     "How many variants of OCTAVE does the lecture list?",
-     "كم نوعاً من OCTAVE تسرد المحاضرة؟",
+     "How many variants of OCTAVE exist?",
+     "كم نوعاً من OCTAVE موجود؟",
      ["Four variants.", "Three variants.", "Five variants.", "Two variants."],
      ["أربعة أنواع.", "ثلاثة أنواع.", "خمسة أنواع.", "نوعان فقط."],
      "Four: the original, OCTAVE-S, OCTAVE ALLEGRO, and OCTAVE FORTE.",
