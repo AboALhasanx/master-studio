@@ -25,7 +25,7 @@ def rpc(n, b):
 m = rpc("content_manifest", {})
 bad = 0
 total = 0
-for ch in (1, 2):
+for ch in (1, 2, 3):
     banks = sorted([c for s in m["subjects"] if s["subject_id"] == "01_Cyber_Security"
                     for c in s["chapters"] if c.get("chapter_no") == ch],
                    key=lambda x: x["quiz_id"])

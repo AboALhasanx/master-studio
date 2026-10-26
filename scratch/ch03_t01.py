@@ -6,8 +6,8 @@ sys.path.insert(0, r"C:\Users\gokoq\Master-Studio\scratch")
 from ch03_lib import build
 
 QUIZ = "Quiz_Ch03_T01_Organizational_Risk"
-TOPIC_EN = "Cybersecurity as an Organizational Risk"
-TOPIC_AR = "الأمن السيبراني كخطر تنظيمي"
+TOPIC_EN = "Organizational Risk and the Threat Chain"
+TOPIC_AR = "الخطر التنظيمي وسلسلة التهديد"
 
 I = [
     # 1 -------------------------------------------------------------------
@@ -49,7 +49,7 @@ I = [
       "Loss of the whole IT team to much better-paying competitors.",
       "Extra training hours for the administrative staff every year."],
      ["خسارة مالية وضرر بالسمعة وعقوبات تنظيمية.",
-      "شبكات أبطأ وكلفة عتاد أعلى بكثير.",
+      "شبكات أبطأ وكلفة عتاد أعلى بكثير هنا.",
       "فقدان فريق التقنية كله لمنافسين يدفعون أكثر.",
       "ساعات تدريب إضافية للموظفين الإداريين."],
      "A failure brings financial loss, reputational damage and regulatory penalties, and at national scale it can become a systemic risk.",
@@ -162,9 +162,9 @@ I = [
       "The only layer that really matters in practice.",
       "A full replacement for the governance framework.",
       "A temporary fix until governance is written."],
-     ["طبقة واحدة داخل إطار حوكمة أوسع.",
+     ["طبقة واحدة داخل إطار حوكمة أوسع هنا.",
       "الطبقة الوحيدة المهمة عملياً في المؤسسة.",
-      "بديل كامل عن إطار الحوكمة كله.",
+      "بديل كامل عن إطار الحوكمة كله هنا.",
       "حل مؤقت حتى تُكتب الحوكمة المناسبة."],
      "Technical tools are one layer only, inside a larger framework of governance and risk management. They are necessary, not sufficient.",
      "الأدوات التقنية طبقة واحدة فقط، داخل إطار أوسع من الحوكمة وإدارة المخاطر. فهي ضرورية لكنها غير كافية."),

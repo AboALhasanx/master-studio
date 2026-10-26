@@ -47,7 +47,7 @@ HEADER = {
 
 LETTERS = "ABCD"
 EN_RATIO = 1.40
-AR_RATIO = 1.40
+AR_RATIO = 1.30
 CORRECT_BAND = (0.88, 1.12)
 
 # A question must stand on its own. Any reference to the handout ("the lecture

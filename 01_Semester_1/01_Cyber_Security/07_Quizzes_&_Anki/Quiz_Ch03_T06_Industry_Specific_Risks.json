@@ -1,450 +1,363 @@
 {
-  "schema_version": 2,
-  "subject_id": "01_Cyber_Security",
-  "subject_title": "الأمن السيبراني",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch03_T06_Industry_Specific_Risks",
-  "topic": "Industry-specific cyber risks",
-  "topic_ar": "مخاطر القطاعات",
-  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
-  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
-  "subject": "01_Cyber_Security",
-  "questions": [
-    {
-      "id": "q1",
-      "concept_id": "three_sectors",
-      "bloom_level": "Remember",
-      "question": "Which three industries does the chapter examine for industry-specific risk?",
-      "question_ar": "أي ثلاث صناعات يفحصها الفصل للمخاطر الخاصة بكل قطاع؟",
-      "options": [
-        "Banking and financial services, healthcare, and critical infrastructure.",
-        "Retail, hospitality, and commercial real estate development firms.",
-        "Education, media, and professional consulting services firms.",
-        "Agriculture, mining, and maritime shipping operators worldwide."
-      ],
-      "options_ar": [
-        "المصارف والخدمات المالية، والرعاية الصحية، والبنية التحتية الحيوية.",
-        "التجزئة والضيافة والعقارات التجارية.",
-        "التعليم والإعلام والاستشارات المهنية.",
-        "الزراعة والتعدين والشحن البحري."
-      ],
-      "options_en": [
-        "Banking and financial services, healthcare, and critical infrastructure.",
-        "Retail, hospitality, and commercial real estate development firms.",
-        "Education, media, and professional consulting services firms.",
-        "Agriculture, mining, and maritime shipping operators worldwide."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter works through banking and financial services, healthcare, and critical infrastructure. Each has a different asset, a different attacker and a different consequence, which is the section's argument.",
-      "explanation_ar": "يمرّ الفصل على المصارف والخدمات المالية، والرعاية الصحية، والبنية التحتية الحيوية. ولكل قطاع أصل مختلف ومهاجم مختلف ونتيجة مختلفة، وهذه هي حجّة القسم."
-    },
-    {
-      "id": "q2",
-      "concept_id": "banking_target_reason",
-      "bloom_level": "Remember",
-      "question": "Why does the chapter say banks are prime targets?",
-      "question_ar": "لماذا يقول الفصل إن المصارف أهداف رئيسية؟",
-      "options": [
-        "Because they employ the largest number of IT staff.",
-        "Because of the direct monetary value of their assets.",
-        "Because they are exempt from most data protection laws.",
-        "Because their networks are the least monitored of any sector."
-      ],
-      "options_ar": [
-        "لأنها توظّف أكبر عدد من موظفي تقنية المعلومات.",
-        "بسبب القيمة النقدية المباشرة لأصولها.",
-        "لأنها معفاة من معظم قوانين حماية البيانات.",
-        "لأن شبكاتها أقل القطاعات مراقبة."
-      ],
-      "options_en": [
-        "Because they employ the largest number of IT staff.",
-        "Because of the direct monetary value of their assets.",
-        "Because they are exempt from most data protection laws.",
-        "Because their networks are the least monitored of any sector."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Banks are prime targets due to the direct monetary value of their assets, which is why the attacker's motive is money rather than disruption or espionage.",
-      "explanation_ar": "المصارف أهداف رئيسية بسبب القيمة النقدية المباشرة لأصولها، ولهذا يكون دافع المهاجم المال لا التعطيل ولا التجسس."
-    },
-    {
-      "id": "q3",
-      "concept_id": "banking_risks",
-      "bloom_level": "Remember",
-      "question": "Which set lists the banking risks named in the chapter?",
-      "question_ar": "أي مجموعة تعدّد مخاطر المصارف المذكورة في الفصل؟",
-      "options": [
-        "Ransomware, HIPAA violations and IoT device exploits.",
-        "ICS attacks, energy grid attacks and GPS spoofing.",
-        "Fraud and theft, payment system attacks, and data breaches.",
-        "Phishing, insider theft and cloud misconfiguration."
-      ],
-      "options_ar": [
-        "برامج الفدية، وانتهاكات HIPAA، واستغلال أجهزة إنترنت الأشياء.",
-        "هجمات أنظمة التحكم الصناعي، وشبكة الطاقة، والتزييف بالـGPS.",
-        "الاحتيال والسرقة، وهجمات أنظمة الدفع، واختراقات البيانات.",
-        "التصيّد، والسرقة الداخلية، وسوء إعداد السحابة."
-      ],
-      "options_en": [
-        "Ransomware, HIPAA violations and IoT device exploits.",
-        "ICS attacks, energy grid attacks and GPS spoofing.",
-        "Fraud and theft, payment system attacks, and data breaches.",
-        "Phishing, insider theft and cloud misconfiguration."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The banking risks are fraud and theft through online banking, payment system attacks such as SWIFT compromises, and data breaches exposing customer financial data. The other sets belong to healthcare and critical infrastructure.",
-      "explanation_ar": "مخاطر المصارف هي الاحتيال والسرقة عبر المصرفية الإلكترونية، وهجمات أنظمة الدفع كاختراقات SWIFT، واختراقات البيانات التي تكشف بيانات العملاء المالية. والمجموعات الأخرى تخص الصحة والبنية التحتية."
-    },
-    {
-      "id": "q4",
-      "concept_id": "banking_impact",
-      "bloom_level": "Understand",
-      "question": "What does the chapter say the impact of losing trust in financial institutions can be?",
-      "question_ar": "ماذا يقول الفصل عن أثر فقدان الثقة بالمؤسسات المالية؟",
-      "options": [
-        "It affects only the bank's own share price for one quarter.",
-        "It is limited to the customers who were directly affected.",
-        "It is fully absorbed by deposit insurance schemes.",
-        "It can destabilize entire economies."
-      ],
-      "options_ar": [
-        "يؤثر فقط على سعر سهم المصرف نفسه لربع واحد.",
-        "محصور بالعملاء المتضررين مباشرة.",
-        "تمتصّه أنظمة تأمين الودائع بالكامل.",
-        "قد يزعزع اقتصادات كاملة."
-      ],
-      "options_en": [
-        "It affects only the bank's own share price for one quarter.",
-        "It is limited to the customers who were directly affected.",
-        "It is fully absorbed by deposit insurance schemes.",
-        "It can destabilize entire economies."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The chapter's impact statement for banking is that loss of trust in financial institutions can destabilize entire economies. That scale is what makes the sector systemic rather than merely commercial.",
-      "explanation_ar": "عبارة الفصل عن أثر المصارف أن فقدان الثقة بالمؤسسات المالية قد يزعزع اقتصادات كاملة. وهذا الحجم هو ما يجعل القطاع نظامياً لا تجارياً فقط."
-    },
-    {
-      "id": "q5",
-      "concept_id": "healthcare_data_value",
-      "bloom_level": "Remember",
-      "question": "Why is healthcare data attractive to attackers, according to the chapter?",
-      "question_ar": "لماذا تكون بيانات الرعاية الصحية جاذبة للمهاجمين وفق الفصل؟",
-      "options": [
-        "Because sensitive medical data is highly valuable on the dark web.",
-        "Because medical records are stored in unencrypted paper form only.",
-        "Because hospitals publish their records for research purposes.",
-        "Because medical data has no legal protection attached to it."
-      ],
-      "options_ar": [
-        "لأن البيانات الطبية الحساسة عالية القيمة في الويب المظلم.",
-        "لأن السجلات الطبية محفوظة ورقياً غير مشفّر فقط.",
-        "لأن المستشفيات تنشر سجلاتها لأغراض البحث.",
-        "لأن البيانات الطبية لا حماية قانونية لها."
-      ],
-      "options_en": [
-        "Because sensitive medical data is highly valuable on the dark web.",
-        "Because medical records are stored in unencrypted paper form only.",
-        "Because hospitals publish their records for research purposes.",
-        "Because medical data has no legal protection attached to it."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Hospitals and healthcare providers hold sensitive medical data which is highly valuable on the dark web. The value comes from the data itself, not from how it is stored or published.",
-      "explanation_ar": "تمتلك المستشفيات ومقدّمو الرعاية الصحية بيانات طبية حساسة عالية القيمة في الويب المظلم. والقيمة تأتي من البيانات نفسها لا من طريقة تخزينها أو نشرها."
-    },
-    {
-      "id": "q6",
-      "concept_id": "hipaa_penalty",
-      "bloom_level": "Apply",
-      "question": "A hospital suffers a breach of patient records covered by HIPAA. What does the chapter say follows?",
-      "question_ar": "يتعرّض مستشفى لخرق سجلات مرضى مشمولة بـHIPAA. ماذا يقول الفصل إنه يتبع ذلك؟",
-      "options": [
-        "A warning letter with no financial consequence.",
-        "Fines running into millions of dollars.",
-        "Automatic loss of the hospital's operating licence.",
-        "A requirement to migrate all records to paper."
-      ],
-      "options_ar": [
-        "رسالة تحذير دون أي نتيجة مالية.",
-        "غرامات تبلغ ملايين الدولارات.",
-        "فقدان تلقائي لرخصة تشغيل المستشفى.",
-        "إلزام بترحيل كل السجلات إلى الورق."
-      ],
-      "options_en": [
-        "A warning letter with no financial consequence.",
-        "Fines running into millions of dollars.",
-        "Automatic loss of the hospital's operating licence.",
-        "A requirement to migrate all records to paper."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The chapter states that HIPAA violations result in multimillion-dollar fines. It does not claim licence loss or a paper migration, and a warning letter understates the penalty it describes.",
-      "explanation_ar": "يذكر الفصل أن انتهاكات HIPAA تؤدي إلى غرامات بملايين الدولارات. ولا يقول بفقدان الترخيص ولا بالترحيل إلى الورق، ورسالة التحذير تهوّن العقوبة الموصوفة."
-    },
-    {
-      "id": "q7",
-      "concept_id": "wannacry_nhs",
-      "bloom_level": "Remember",
-      "question": "Which incident does the chapter cite for ransomware in healthcare?",
-      "question_ar": "أي حادث يستشهد به الفصل لبرامج الفدية في الرعاية الصحية؟",
-      "options": [
-        "Stuxnet, which hit Iranian centrifuges in 2010.",
-        "SolarWinds, which compromised a vendor in 2020.",
-        "WannaCry, which crippled the UK NHS in 2017.",
-        "The Ukraine grid attack of 2015."
-      ],
-      "options_ar": [
-        "Stuxnet التي ضربت أجهزة الطرد المركزي الإيرانية سنة 2010.",
-        "SolarWinds التي اخترقت مورّداً سنة 2020.",
-        "WannaCry التي شلّت الـNHS البريطانية سنة 2017.",
-        "هجوم شبكة كهرباء أوكرانيا سنة 2015."
-      ],
-      "options_en": [
-        "Stuxnet, which hit Iranian centrifuges in 2010.",
-        "SolarWinds, which compromised a vendor in 2020.",
-        "WannaCry, which crippled the UK NHS in 2017.",
-        "The Ukraine grid attack of 2015."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "WannaCry crippled the UK NHS in 2017 and is the chapter's healthcare ransomware example. Stuxnet and the Ukraine attack belong to critical infrastructure, and SolarWinds to supply chain.",
-      "explanation_ar": "شلّت WannaCry الـNHS البريطانية سنة 2017 وهي مثال الفصل على الفدية في الصحة. أما Stuxnet وهجوم أوكرانيا فيخصّان البنية التحتية الحيوية، وSolarWinds سلسلة التوريد."
-    },
-    {
-      "id": "q8",
-      "concept_id": "healthcare_iot",
-      "bloom_level": "Understand",
-      "question": "Which devices does the chapter name as healthcare IoT attack vectors?",
-      "question_ar": "أي أجهزة يسمّيها الفصل كنواقل هجوم في إنترنت الأشياء الطبي؟",
-      "options": [
-        "Infusion pumps, ventilators and dialysis filters.",
-        "X-ray tubes, ultrasound probes and endoscopes.",
-        "Defibrillators, CT scanners and laboratory centrifuges.",
-        "Pacemakers, insulin pumps and MRI machines."
-      ],
-      "options_ar": [
-        "مضخات التسريب وأجهزة التنفس ومرشّحات الغسيل الكلوي.",
-        "أنابيب الأشعة السينية ومجسّات الموجات فوق الصوتية والمناظير.",
-        "مزيلات الرجفان وأجهزة التصوير المقطعي وأجهزة الطرد المخبرية.",
-        "منظّمات ضربات القلب ومضخات الأنسولين وأجهزة الرنين المغناطيسي."
-      ],
-      "options_en": [
-        "Infusion pumps, ventilators and dialysis filters.",
-        "X-ray tubes, ultrasound probes and endoscopes.",
-        "Defibrillators, CT scanners and laboratory centrifuges.",
-        "Pacemakers, insulin pumps and MRI machines."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The chapter names pacemakers, insulin pumps and MRI machines as the healthcare IoT attack vectors. Those specific three are the examinable list.",
-      "explanation_ar": "يسمّي الفصل منظّمات ضربات القلب ومضخات الأنسولين وأجهزة الرنين المغناطيسي كنواقل هجوم إنترنت الأشياء الطبي. وهذه الثلاثة تحديداً هي القائمة المطلوبة."
-    },
-    {
-      "id": "q9",
-      "concept_id": "healthcare_impact",
-      "bloom_level": "Understand",
-      "question": "What makes the healthcare impact different from the banking impact?",
-      "question_ar": "ما الذي يجعل أثر قطاع الصحة مختلفاً عن أثر المصارف؟",
-      "options": [
-        "Lives can be endangered directly, not only money lost.",
-        "Healthcare breaches are always smaller in financial terms.",
-        "Healthcare data has no resale value on the dark web.",
-        "Hospitals are not covered by any regulatory framework."
-      ],
-      "options_ar": [
-        "حياة الناس قد تكون في خطر مباشرة، لا مجرد خسارة مال.",
-        "اختراقات الصحة أصغر دائماً من حيث المال.",
-        "بيانات الصحة لا قيمة لإعادة بيعها في الويب المظلم.",
-        "المستشفيات غير مشمولة بأي إطار تنظيمي."
-      ],
-      "options_en": [
-        "Lives can be endangered directly, not only money lost.",
-        "Healthcare breaches are always smaller in financial terms.",
-        "Healthcare data has no resale value on the dark web.",
-        "Hospitals are not covered by any regulatory framework."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter says lives can be endangered directly in healthcare, in addition to financial and legal costs. That direct risk to life is what distinguishes it from the banking case.",
-      "explanation_ar": "يقول الفصل إن حياة الناس قد تكون في خطر مباشرة في الصحة، إضافة إلى التكاليف المالية والقانونية. وهذا الخطر المباشر على الحياة هو ما يميّزه عن حالة المصارف."
-    },
-    {
-      "id": "q10",
-      "concept_id": "critical_infra_actor",
-      "bloom_level": "Remember",
-      "question": "Whom does the chapter name as the actors targeting critical infrastructure?",
-      "question_ar": "من يسمّي الفصل كفاعلين يستهدفون البنية التحتية الحيوية؟",
-      "options": [
-        "Individual hobbyist hackers.",
-        "Nation-state actors.",
-        "Disgruntled former employees.",
-        "Commercial competitors only."
-      ],
-      "options_ar": [
-        "مهاجمون هواة أفراد.",
-        "فاعلون من الدول.",
-        "موظفون سابقون ساخطون.",
-        "منافسون تجاريون فقط."
-      ],
-      "options_en": [
-        "Individual hobbyist hackers.",
-        "Nation-state actors.",
-        "Disgruntled former employees.",
-        "Commercial competitors only."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Utilities, energy and transportation are described as high-value targets for nation-state actors. That attribution is what makes the impact national rather than commercial.",
-      "explanation_ar": "تُوصف المرافق والطاقة والنقل بأنها أهداف عالية القيمة لفاعلين من الدول. وهذه النسبة هي ما يجعل الأثر وطنياً لا تجارياً."
-    },
-    {
-      "id": "q11",
-      "concept_id": "stuxnet_target",
-      "bloom_level": "Remember",
-      "question": "What did Stuxnet sabotage in 2010?",
-      "question_ar": "ماذا خرّب Stuxnet سنة 2010؟",
-      "options": [
-        "The Ukrainian power grid.",
-        "The UK National Health Service.",
-        "Iranian nuclear centrifuges.",
-        "A global payment network."
-      ],
-      "options_ar": [
-        "شبكة الكهرباء الأوكرانية.",
-        "خدمة الصحة الوطنية البريطانية.",
-        "أجهزة الطرد المركزي النووية الإيرانية.",
-        "شبكة دفع عالمية."
-      ],
-      "options_en": [
-        "The Ukrainian power grid.",
-        "The UK National Health Service.",
-        "Iranian nuclear centrifuges.",
-        "A global payment network."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Stuxnet in 2010 sabotaged Iranian nuclear centrifuges, and the chapter uses it as the ICS attack example. The Ukraine grid is 2015, the NHS is WannaCry and payments would be the SWIFT case.",
-      "explanation_ar": "خرّب Stuxnet سنة 2010 أجهزة الطرد المركزي النووية الإيرانية، ويستخدمه الفصل كمثال هجوم أنظمة التحكم الصناعي. أما شبكة أوكرانيا فسنة 2015، والـNHS حالة WannaCry، والمدفوعات حالة SWIFT."
-    },
-    {
-      "id": "q12",
-      "concept_id": "ukraine_2015",
-      "bloom_level": "Apply",
-      "question": "A 2015 attack left 230,000 citizens without electricity. Which sector and which risk does the chapter attach to it?",
-      "question_ar": "هجوم سنة 2015 ترك 230,000 مواطن بلا كهرباء. أي قطاع وأي خطر يربطه الفصل به؟",
-      "options": [
-        "Healthcare, as a ransomware attack.",
-        "Critical infrastructure, as an energy grid attack.",
-        "Banking, as a data breach exposing customer records.",
-        "Banking, as a payment system attack."
-      ],
-      "options_ar": [
-        "الرعاية الصحية، كهجوم فدية.",
-        "البنية التحتية الحيوية، كهجوم على شبكة الطاقة.",
-        "المصارف، كاختراق بيانات يكشف سجلات العملاء.",
-        "المصارف، كهجوم على أنظمة الدفع."
-      ],
-      "options_en": [
-        "Healthcare, as a ransomware attack.",
-        "Critical infrastructure, as an energy grid attack.",
-        "Banking, as a data breach exposing customer records.",
-        "Banking, as a payment system attack."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The Ukraine attack of 2015 left 230,000 citizens without electricity, and the chapter files it under critical infrastructure as an energy grid attack. The number and the sector belong together.",
-      "explanation_ar": "هجوم أوكرانيا سنة 2015 ترك 230,000 مواطناً بلا كهرباء، ويصنّفه الفصل تحت البنية التحتية الحيوية كهجوم على شبكة الطاقة. فالرقم والقطاع متلازمان."
-    },
-    {
-      "id": "q13",
-      "concept_id": "transportation_risk",
-      "bloom_level": "Understand",
-      "question": "Which transportation risks does the chapter name under critical infrastructure?",
-      "question_ar": "أي مخاطر نقل يسمّيها الفصل تحت البنية التحتية الحيوية؟",
-      "options": [
-        "GPS spoofing and air traffic system disruptions.",
-        "Ticket fraud and passenger data breaches.",
-        "Fleet maintenance delays and fuel price spikes.",
-        "Lost baggage tracking errors and schedule changes."
-      ],
-      "options_ar": [
-        "التزييف بالـGPS وتعطيل أنظمة الملاحة الجوية.",
-        "الاحتيال في التذاكر واختراقات بيانات المسافرين.",
-        "تأخّر صيانة الأسطول وارتفاع أسعار الوقود.",
-        "أخطاء تتبّع الأمتعة وتغييرات الجدول."
-      ],
-      "options_en": [
-        "GPS spoofing and air traffic system disruptions.",
-        "Ticket fraud and passenger data breaches.",
-        "Fleet maintenance delays and fuel price spikes.",
-        "Lost baggage tracking errors and schedule changes."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter names GPS spoofing and air traffic system disruptions as the transportation risks. Both are attacks on the navigation layer rather than on commercial records.",
-      "explanation_ar": "يسمّي الفصل التزييف بالـGPS وتعطيل أنظمة الملاحة الجوية كمخاطر النقل. وكلاهما هجوم على طبقة الملاحة لا على السجلات التجارية."
-    },
-    {
-      "id": "q14",
-      "concept_id": "sectors_common_thread",
-      "bloom_level": "Analyze",
-      "question": "What do the three sectors share in the chapter's argument?",
-      "question_ar": "ماذا تشترك فيه القطاعات الثلاثة في حجّة الفصل؟",
-      "options": [
-        "In each one the only real consequence is a financial penalty from a regulator.",
-        "In each one the impact reaches past money, to the economy, to lives or to national security.",
-        "In each one the attacker is a single insider rather than an external actor.",
-        "In each one the risk is fully transferred to an insurer."
-      ],
-      "options_ar": [
-        "في كل واحد منها النتيجة الحقيقية الوحيدة غرامة مالية من جهة تنظيمية.",
-        "في كل واحد منها يتجاوز الأثر المال إلى الاقتصاد أو الأرواح أو الأمن القومي.",
-        "في كل واحد منها المهاجم شخص داخلي واحد لا فاعل خارجي.",
-        "في كل واحد منها يُنقل الخطر بالكامل إلى مؤمّن."
-      ],
-      "options_en": [
-        "In each one the only real consequence is a financial penalty from a regulator.",
-        "In each one the impact reaches past money, to the economy, to lives or to national security.",
-        "In each one the attacker is a single insider rather than an external actor.",
-        "In each one the risk is fully transferred to an insurer."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Banking reaches the whole economy, healthcare reaches the patient's life, and critical infrastructure reaches national security and public safety. That escalation past money is the chapter's reason for calling risk management an enterprise concern.",
-      "explanation_ar": "المصارف تصل إلى الاقتصاد كله، والصحة تصل إلى حياة المريض، والبنية التحتية تصل إلى الأمن القومي والسلامة العامة. وهذا التصاعد خارج المال هو سبب وصف الفصل إدارة المخاطر بالشأن المؤسسي."
-    },
-    {
-      "id": "q15",
-      "concept_id": "why_sectors_matter",
-      "bloom_level": "Analyze",
-      "question": "Why does the chapter say comparing industries helps the enterprise-wide argument?",
-      "question_ar": "لماذا يقول الفصل إن مقارنة الصناعات تساعد حجّة الشمول المؤسسي؟",
-      "options": [
-        "Because it proves that some industries do not need risk management at all.",
-        "Because it ranks the industries by the size of their security budgets.",
-        "Because the differences show that one generic security posture cannot fit every exposure.",
-        "Because it shows that regulators apply identical rules to every sector."
-      ],
-      "options_ar": [
-        "لأنها تثبت أن بعض الصناعات لا تحتاج إدارة مخاطر إطلاقاً.",
-        "لأنها ترتّب الصناعات حسب حجم ميزانياتها الأمنية.",
-        "لأن الفروقات تُظهر أن وضعاً أمنياً عاماً واحداً لا يلائم كل تعرّض.",
-        "لأنها تبيّن أن الجهات التنظيمية تطبّق قواعد متطابقة على كل قطاع."
-      ],
-      "options_en": [
-        "Because it proves that some industries do not need risk management at all.",
-        "Because it ranks the industries by the size of their security budgets.",
-        "Because the differences show that one generic security posture cannot fit every exposure.",
-        "Because it shows that regulators apply identical rules to every sector."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The section opens by saying risk manifests differently across industries, and that understanding these differences illustrates the enterprise-wide importance of risk management. A single generic posture cannot serve a bank, a hospital and a power grid alike.",
-      "explanation_ar": "يفتتح القسم بأن المخاطر تظهر مختلفة بين الصناعات، وأن فهم هذه الفروق يوضّح أهمية إدارة المخاطر على مستوى المؤسسة. فوضع أمني عام واحد لا يخدم مصرفاً ومستشفى وشبكة كهرباء على حد سواء."
-    }
-  ]
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch03_T06_Industry_Specific_Risks",
+ "topic": "Industry-Specific Risks: Banking, Health, Infrastructure",
+ "topic_ar": "مخاطر القطاعات: المصارف والصحة والبنية التحتية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "why_banks_targeted",
+   "bloom_level": "Remember",
+   "question": "Why are banks prime targets?",
+   "question_ar": "لماذا تُعدّ المصارف أهدافاً رئيسية؟",
+   "options": [
+    "Their assets have direct monetary value.",
+    "Their networks are the oldest in the world.",
+    "Their staff are the least trained of all.",
+    "Their software is always out of date."
+   ],
+   "options_ar": [
+    "لأن أصولها ذات قيمة نقدية مباشرة.",
+    "لأن شبكاتها هي الأقدم في العالم.",
+    "لأن موظفيها الأقل تدريباً بين الجميع.",
+    "لأن برمجياتها قديمة دائماً هنا."
+   ],
+   "options_en": [
+    "Their assets have direct monetary value.",
+    "Their networks are the oldest in the world.",
+    "Their staff are the least trained of all.",
+    "Their software is always out of date."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Banks hold assets with direct monetary value, so an attack converts into money faster than in any other sector.",
+   "explanation_ar": "المصارف تحمل أصولاً ذات قيمة نقدية مباشرة، فالهجوم يتحول إلى مال أسرع من أي قطاع آخر."
+  },
+  {
+   "id": "q2",
+   "concept_id": "banking_risks",
+   "bloom_level": "Remember",
+   "question": "Which set lists the banking risks?",
+   "question_ar": "أي مجموعة تسرد مخاطر المصارف؟",
+   "options": [
+    "Phishing, patching delays, and audit findings.",
+    "Fraud, payment-system attacks, and breaches.",
+    "Ransomware, HIPAA fines, and IoT exploits.",
+    "ICS attacks, grid failure, and transport."
+   ],
+   "options_ar": [
+    "التصيّد وتأخير التحديث والتدقيق الأمني.",
+    "الاحتيال وهجمات أنظمة الدفع والاختراقات.",
+    "الفدية وغرامات HIPAA واستغلال الأجهزة.",
+    "هجمات ICS وتعطل شبكة الكهرباء والنقل هنا."
+   ],
+   "options_en": [
+    "Phishing, patching delays, and audit findings.",
+    "Fraud, payment-system attacks, and breaches.",
+    "Ransomware, HIPAA fines, and IoT exploits.",
+    "ICS attacks, grid failure, and transport."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Three banking risks: fraud and theft, attacks on the payment systems such as SWIFT, and data breaches that expose customer records.",
+   "explanation_ar": "ثلاثة مخاطر مصرفية: الاحتيال والسرقة، والهجوم على أنظمة الدفع كشبكة SWIFT، واختراق البيانات الذي يكشف سجلات العملاء."
+  },
+  {
+   "id": "q3",
+   "concept_id": "banking_impact",
+   "bloom_level": "Understand",
+   "question": "What makes the banking impact larger than a single firm's loss?",
+   "question_ar": "ما الذي يجعل أثر اختراق مصرف أكبر من خسارة شركة واحدة؟",
+   "options": [
+    "Loss of trust is limited to the IT budget.",
+    "Loss of trust has no measurable effect.",
+    "Loss of trust can destabilise whole economies.",
+    "Loss of trust affects only one bank's own shares."
+   ],
+   "options_ar": [
+    "فقدان الثقة محدود بميزانية التقنية.",
+    "فقدان الثقة بلا أثر قابل للقياس.",
+    "فقدان الثقة قد يزعزع اقتصادات كاملة.",
+    "فقدان الثقة يخص أسهم مصرف واحد فقط."
+   ],
+   "options_en": [
+    "Loss of trust is limited to the IT budget.",
+    "Loss of trust has no measurable effect.",
+    "Loss of trust can destabilise whole economies.",
+    "Loss of trust affects only one bank's own shares."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Loss of trust in a financial institution can destabilise entire economies, because the sector runs on confidence rather than on cash in a vault.",
+   "explanation_ar": "فقدان الثقة بمؤسسة مالية قد يزعزع اقتصادات كاملة، لأن القطاع يعمل على الثقة لا على نقد في خزنة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "healthcare_data_value",
+   "bloom_level": "Remember",
+   "question": "Why is healthcare data attractive to attackers?",
+   "question_ar": "لماذا تُعدّ بيانات الرعاية الصحية جاذبة للمهاجمين؟",
+   "options": [
+    "It is worthless because it is encrypted.",
+    "It is already published by the hospitals.",
+    "It is identical to banking data in value.",
+    "It is highly valuable on the dark web."
+   ],
+   "options_ar": [
+    "بلا قيمة لأنها مشفّرة دائماً هنا.",
+    "منشورة أصلاً من المستشفيات نفسها.",
+    "قيمتها مطابقة لبيانات المصارف هنا.",
+    "قيمتها عالية جداً في الويب المظلم."
+   ],
+   "options_en": [
+    "It is worthless because it is encrypted.",
+    "It is already published by the hospitals.",
+    "It is identical to banking data in value.",
+    "It is highly valuable on the dark web."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Medical records are highly valuable on the dark web, which is why hospitals hold data that is worth stealing in its own right.",
+   "explanation_ar": "السجلات الطبية عالية القيمة في الويب المظلم، ولهذا تحمل المستشفيات بيانات تستحق السرقة بذاتها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "hipaa_penalty",
+   "bloom_level": "Remember",
+   "question": "What does a HIPAA violation cost a healthcare provider?",
+   "question_ar": "ماذا تكلف مخالفة HIPAA مزوّد الرعاية الصحية؟",
+   "options": [
+    "Multimillion-dollar fines for the provider.",
+    "A short warning with no any financial penalty.",
+    "Loss of the hospital's medical licence only.",
+    "Automatic closure of the affected ward here."
+   ],
+   "options_ar": [
+    "غرامات بملايين الدولارات على المزوّد.",
+    "تحذير قصير بلا أي عقوبة مالية هنا.",
+    "فقدان ترخيص المستشفى الطبي فقط هنا.",
+    "إغلاق الجناح المتأثر تلقائياً هنا تماماً."
+   ],
+   "options_en": [
+    "Multimillion-dollar fines for the provider.",
+    "A short warning with no any financial penalty.",
+    "Loss of the hospital's medical licence only.",
+    "Automatic closure of the affected ward here."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Breaches of patient data bring multimillion-dollar fines under HIPAA, on top of the cost of the incident itself.",
+   "explanation_ar": "اختراق بيانات المرضى يجلب غرامات بملايين الدولارات بموجب HIPAA، إضافة إلى كلفة الحادث نفسه."
+  },
+  {
+   "id": "q6",
+   "concept_id": "healthcare_ransomware_example",
+   "bloom_level": "Remember",
+   "question": "Which attack locked hospital records in the UK in 2017?",
+   "question_ar": "أي هجوم أقفل سجلات المستشفيات في بريطانيا سنة 2017؟",
+   "options": [
+    "The SWIFT interbank network compromise.",
+    "WannaCry, which crippled the UK NHS in 2017.",
+    "Stuxnet, which hit Iranian centrifuges.",
+    "The Ukraine electricity grid attack of 2015."
+   ],
+   "options_ar": [
+    "اختراق شبكة SWIFT بين المصارف كلها.",
+    "WannaCry التي شلّت NHS البريطانية 2017.",
+    "Stuxnet التي ضربت أجهزة الطرد الإيرانية.",
+    "هجوم شبكة كهرباء أوكرانيا في 2015."
+   ],
+   "options_en": [
+    "The SWIFT interbank network compromise.",
+    "WannaCry, which crippled the UK NHS in 2017.",
+    "Stuxnet, which hit Iranian centrifuges.",
+    "The Ukraine electricity grid attack of 2015."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "WannaCry crippled the UK NHS in 2017: records were locked and treatment was delayed, which is the healthcare-specific damage.",
+   "explanation_ar": "WannaCry شلّت NHS البريطانية في 2017: أُقفلت السجلات وتأخّر العلاج، وهذا هو الضرر الخاص بالقطاع الصحي."
+  },
+  {
+   "id": "q7",
+   "concept_id": "healthcare_iot_vectors",
+   "bloom_level": "Remember",
+   "question": "Which devices are named as healthcare attack vectors?",
+   "question_ar": "أي أجهزة تُذكر كنواقل هجوم في القطاع الصحي؟",
+   "options": [
+    "Centrifuges, turbines, and grid relays here.",
+    "Routers, switches, and perimeter firewalls.",
+    "Pacemakers, insulin pumps, and MRI scanners.",
+    "ATMs, card readers, and payment terminals."
+   ],
+   "options_ar": [
+    "أجهزة الطرد والتوربينات ومرحّلات الشبكة هنا.",
+    "الموجّهات والمبدّلات والجدران النارية هنا.",
+    "منظّمات ضربات القلب ومضخات الأنسولين والرنين.",
+    "أجهزة الصراف وقارئات البطاقات وأجهزة الدفع."
+   ],
+   "options_en": [
+    "Centrifuges, turbines, and grid relays here.",
+    "Routers, switches, and perimeter firewalls.",
+    "Pacemakers, insulin pumps, and MRI scanners.",
+    "ATMs, card readers, and payment terminals."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Pacemakers, insulin pumps and MRI machines are all connected and all carry patient risk, so they are attack vectors rather than mere equipment.",
+   "explanation_ar": "منظّمات ضربات القلب ومضخات الأنسولين وأجهزة الرنين كلها متصلة وكلها تحمل خطراً على المريض، فهي نواقل هجوم لا مجرد أجهزة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "critical_infra_actors",
+   "bloom_level": "Remember",
+   "question": "Who targets utilities, energy, and transport?",
+   "question_ar": "من يستهدف المرافق والطاقة والنقل؟",
+   "options": [
+    "Individual hobbyists looking for a challenge.",
+    "Insider employees seeking a better pay rise.",
+    "Competitors seeking a marketing advantage here.",
+    "Nation-state actors, because of national value."
+   ],
+   "options_ar": [
+    "أفراد هواة يبحثون عن تحدٍّ شخصي.",
+    "موظفون داخليون يطلبون زيادة راتب.",
+    "منافسون يبحثون عن ميزة تسويقية هنا.",
+    "فاعلون دوليون بسبب القيمة الوطنية."
+   ],
+   "options_en": [
+    "Individual hobbyists looking for a challenge.",
+    "Insider employees seeking a better pay rise.",
+    "Competitors seeking a marketing advantage here.",
+    "Nation-state actors, because of national value."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Critical infrastructure attracts nation-state actors, because the target is national capability rather than money.",
+   "explanation_ar": "البنية التحتية الحرجة تجذب فاعلين دوليين، لأن الهدف قدرة وطنية لا مال."
+  },
+  {
+   "id": "q9",
+   "concept_id": "stuxnet_example",
+   "bloom_level": "Remember",
+   "question": "What did Stuxnet do in 2010?",
+   "question_ar": "ماذا فعل Stuxnet سنة 2010؟",
+   "options": [
+    "Stuxnet in 2010 sabotaged nuclear centrifuges.",
+    "Stuxnet in 2015 cut power to 230,000 homes.",
+    "Stuxnet in 2017 encrypted hospital records.",
+    "Stuxnet in 2020 stole interbank transfer records."
+   ],
+   "options_ar": [
+    "Stuxnet سنة 2010 خربت أجهزة الطرد النووية.",
+    "Stuxnet سنة 2015 قطعت الكهرباء عن 230,000.",
+    "Stuxnet سنة 2017 شفّرت سجلات المستشفى.",
+    "Stuxnet سنة 2020 سرقت تحويلات بين المصارف."
+   ],
+   "options_en": [
+    "Stuxnet in 2010 sabotaged nuclear centrifuges.",
+    "Stuxnet in 2015 cut power to 230,000 homes.",
+    "Stuxnet in 2017 encrypted hospital records.",
+    "Stuxnet in 2020 stole interbank transfer records."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Stuxnet in 2010 sabotaged Iranian nuclear centrifuges, which is the canonical industrial-control-system attack.",
+   "explanation_ar": "Stuxnet سنة 2010 خرّبت أجهزة الطرد المركزي النووية الإيرانية، وهو هجوم أنظمة التحكم الصناعي القياسي."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ukraine_grid_example",
+   "bloom_level": "Remember",
+   "question": "What did the 2015 grid attack achieve?",
+   "question_ar": "ماذا حقق هجوم الشبكة سنة 2015؟",
+   "options": [
+    "In 2020, draining interbank transfer accounts.",
+    "In 2015, leaving 230,000 citizens without power.",
+    "In 2010, destroying a uranium centrifuge hall.",
+    "In 2017, locking hospital records across the NHS."
+   ],
+   "options_ar": [
+    "سنة 2020 مستنزفاً حسابات التحويلات كلها.",
+    "سنة 2015 تاركاً 230,000 مواطناً بلا كهرباء.",
+    "سنة 2010 مدمّراً قاعة أجهزة طرد اليورانيوم.",
+    "سنة 2017 مقفلاً سجلات مستشفيات NHS كلها."
+   ],
+   "options_en": [
+    "In 2020, draining interbank transfer accounts.",
+    "In 2015, leaving 230,000 citizens without power.",
+    "In 2010, destroying a uranium centrifuge hall.",
+    "In 2017, locking hospital records across the NHS."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The 2015 Ukraine grid attack left 230,000 citizens without electricity, which is the canonical energy-sector example.",
+   "explanation_ar": "هجوم شبكة أوكرانيا سنة 2015 ترك 230,000 مواطناً بلا كهرباء، وهو مثال الطاقة القياسي."
+  },
+  {
+   "id": "q11",
+   "concept_id": "impact_beyond_money",
+   "bloom_level": "Analyze",
+   "question": "What does each sector's impact reach beyond money?",
+   "question_ar": "إلى ماذا يصل أثر كل قطاع بعد المال؟",
+   "options": [
+    "Shares, then licences, then the audit trail.",
+    "Budget, then staff, then the marketing plan.",
+    "Money, then life, then national security.",
+    "Money, then shares, then the IT budget."
+   ],
+   "options_ar": [
+    "الأسهم، ثم التراخيص، ثم سجل التدقيق.",
+    "الميزانية، ثم الموظفون، ثم خطة التسويق.",
+    "المال، ثم حياة المريض، ثم الأمن القومي.",
+    "المال، ثم الأسهم، ثم ميزانية التقنية."
+   ],
+   "options_en": [
+    "Shares, then licences, then the audit trail.",
+    "Budget, then staff, then the marketing plan.",
+    "Money, then life, then national security.",
+    "Money, then shares, then the IT budget."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "In banking the damage reaches the whole economy, in healthcare it reaches the patient's life, and in infrastructure it reaches national security.",
+   "explanation_ar": "في المصارف يصل الضرر للاقتصاد كله، وفي الصحة يصل لحياة المريض، وفي البنية التحتية يصل للأمن القومي."
+  },
+  {
+   "id": "q12",
+   "concept_id": "why_compare_industries",
+   "bloom_level": "Understand",
+   "question": "Why does comparing the three sectors matter?",
+   "question_ar": "لماذا تهم مقارنة القطاعات الثلاثة؟",
+   "options": [
+    "It proves that some industries need no controls.",
+    "It ranks industries by their annual revenue.",
+    "It replaces the need for any risk register at all.",
+    "It shows the enterprise-wide weight of the risk."
+   ],
+   "options_ar": [
+    "تُثبت أن بعض القطاعات لا تحتاج ضوابط.",
+    "ترتّب القطاعات حسب إيراداتها السنوية.",
+    "تُغني عن الحاجة إلى سجل مخاطر.",
+    "تُظهر ثقل الخطر على مستوى المؤسسة."
+   ],
+   "options_en": [
+    "It proves that some industries need no controls.",
+    "It ranks industries by their annual revenue.",
+    "It replaces the need for any risk register at all.",
+    "It shows the enterprise-wide weight of the risk."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The differences illustrate that the same discipline carries enterprise-wide weight: each sector loses something different, and all three lose more than money.",
+   "explanation_ar": "الاختلافات توضّح أن التخصص نفسه يحمل ثقلاً على مستوى المؤسسة: كل قطاع يخسر شيئاً مختلفاً، والثلاثة يخسرون أكثر من المال."
+  }
+ ]
 }

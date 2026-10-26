@@ -1,0 +1,363 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch03_T08_Policy_Challenges_And_Lifecycle",
+ "topic": "Policy Challenges & the Five-Step Lifecycle",
+ "topic_ar": "تحديات السياسة ودورتها الخماسية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "write_vs_enforce",
+   "bloom_level": "Understand",
+   "question": "What is the real challenge with security policies?",
+   "question_ar": "ما التحدي الحقيقي في سياسات الأمن؟",
+   "options": [
+    "Writing is easy; enforcing and maintaining is hard.",
+    "Writing is hard, and enforcing it is almost trivial.",
+    "Both writing and enforcing are equally easy.",
+    "Neither writing nor enforcing is possible at all."
+   ],
+   "options_ar": [
+    "الكتابة سهلة، والفرض والصيانة هما التحدي.",
+    "الكتابة صعبة جداً، والفرض سهل جداً هنا.",
+    "الكتابة والفرض كلاهما سهل بالقدر نفسه.",
+    "لا الكتابة ولا الفرض ممكنان إطلاقاً."
+   ],
+   "options_en": [
+    "Writing is easy; enforcing and maintaining is hard.",
+    "Writing is hard, and enforcing it is almost trivial.",
+    "Both writing and enforcing are equally easy.",
+    "Neither writing nor enforcing is possible at all."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Writing a policy is straightforward. Enforcing it and keeping it alive across an organization is the real challenge.",
+   "explanation_ar": "كتابة السياسة أمر مباشر. أما فرضها وإبقاؤها حيّة في المؤسسة فهو التحدي الحقيقي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "user_resistance",
+   "bloom_level": "Remember",
+   "question": "Why do employees resist a security policy?",
+   "question_ar": "لماذا يقاوم الموظفون سياسة الأمن؟",
+   "options": [
+    "They are usually the ones who wrote it themselves.",
+    "They see policies as a burden on convenience.",
+    "They disagree with the technical controls.",
+    "They were never told the policy even exists."
+   ],
+   "options_ar": [
+    "هم عادةً من كتب السياسة بأنفسهم.",
+    "يرون السياسات عبئاً على الراحة.",
+    "يختلفون مع الضوابط التقنية المطلوبة.",
+    "لم يُبلَّغوا بوجود السياسة أصلاً."
+   ],
+   "options_en": [
+    "They are usually the ones who wrote it themselves.",
+    "They see policies as a burden on convenience.",
+    "They disagree with the technical controls.",
+    "They were never told the policy even exists."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Employees read a policy as a burden, especially when it costs convenience, such as frequent password changes.",
+   "explanation_ar": "الموظفون يقرؤون السياسة كعبء، خصوصاً حين تكلّفهم راحة، كتغيير كلمات المرور المتكرر."
+  },
+  {
+   "id": "q3",
+   "concept_id": "resistance_grows",
+   "bloom_level": "Understand",
+   "question": "When does that resistance grow?",
+   "question_ar": "متى تزداد تلك المقاومة؟",
+   "options": [
+    "The policy is longer than ten printed pages.",
+    "The training session was optional for staff.",
+    "Convenience drops without the benefits explained.",
+    "The policy is written in English only here still."
+   ],
+   "options_ar": [
+    "السياسة أطول من عشر صفحات.",
+    "جلسة التدريب كانت اختيارية.",
+    "تنقص الراحة دون توضيح الفوائد.",
+    "السياسة مكتوبة بالإنجليزية فقط."
+   ],
+   "options_en": [
+    "The policy is longer than ten printed pages.",
+    "The training session was optional for staff.",
+    "Convenience drops without the benefits explained.",
+    "The policy is written in English only here still."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Resistance grows when a policy reduces convenience without a clear explanation of what the benefit is.",
+   "explanation_ar": "المقاومة تزداد حين تقلّل السياسة الراحة دون توضيح واضح للفائدة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "lack_of_enforcement",
+   "bloom_level": "Understand",
+   "question": "Why do well-written policies still fail?",
+   "question_ar": "لماذا تفشل السياسات الجيدة الكتابة رغم ذلك؟",
+   "options": [
+    "Too many policies written at the same time.",
+    "Policies that are too short to be followed.",
+    "Staff who never read the policy at all.",
+    "Weak monitoring and no executive backing."
+   ],
+   "options_ar": [
+    "سياسات كثيرة تُكتب دفعة واحدة.",
+    "سياسات قصيرة جداً لا تُتبَع.",
+    "موظفون لا يقرؤون السياسة.",
+    "رقابة ضعيفة ولا دعم تنفيذي."
+   ],
+   "options_en": [
+    "Too many policies written at the same time.",
+    "Policies that are too short to be followed.",
+    "Staff who never read the policy at all.",
+    "Weak monitoring and no executive backing."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Many organizations hold well-written policies that are simply not enforced, because monitoring is weak and executives do not back them.",
+   "explanation_ar": "مؤسسات كثيرة تحمل سياسات مكتوبة جيداً لكنها غير مفروضة، لأن الرقابة ضعيفة والتنفيذيون لا يدعمونها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "outdated_policy",
+   "bloom_level": "Remember",
+   "question": "Which example shows a policy going out of date?",
+   "question_ar": "أي مثال يوضّح سياسة صارت قديمة؟",
+   "options": [
+    "An AUP written before cloud and personal devices.",
+    "An AUP that is longer than the audit report.",
+    "An AUP signed by the chief executive only.",
+    "An AUP translated into three different foreign languages."
+   ],
+   "options_ar": [
+    "سياسة استخدام كُتبت قبل السحابة والأجهزة.",
+    "سياسة استخدام أطول من تقرير التدقيق.",
+    "سياسة استخدام وقّعها المدير التنفيذي فقط.",
+    "سياسة استخدام مترجمة لثلاث لغات أجنبية."
+   ],
+   "options_en": [
+    "An AUP written before cloud and personal devices.",
+    "An AUP that is longer than the audit report.",
+    "An AUP signed by the chief executive only.",
+    "An AUP translated into three different foreign languages."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "An acceptable-use policy written before cloud services and personal devices existed cannot address the risks those bring.",
+   "explanation_ar": "سياسة استخدام كُتبت قبل وجود الخدمات السحابية والأجهزة الشخصية لا تستطيع معالجة المخاطر التي تجلبها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "cultural_barrier",
+   "bloom_level": "Remember",
+   "question": "What is the cultural barrier described?",
+   "question_ar": "ما الحاجز الثقافي الموصوف؟",
+   "options": [
+    "Security is treated as a temporary project here.",
+    "Security is treated as IT's job, not everyone's.",
+    "Security is treated as the board's only job.",
+    "Security is treated as the auditor's own job."
+   ],
+   "options_ar": [
+    "يُعامَل الأمن كمشروع مؤقت عابر هنا.",
+    "يُعامَل الأمن كوظيفة التقنية لا الجميع.",
+    "يُعامَل الأمن كوظيفة المجلس وحده هنا.",
+    "يُعامَل الأمن كوظيفة المدقق وحده هنا."
+   ],
+   "options_en": [
+    "Security is treated as a temporary project here.",
+    "Security is treated as IT's job, not everyone's.",
+    "Security is treated as the board's only job.",
+    "Security is treated as the auditor's own job."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "In organizations with legacy IT practice, employees treat security as the IT department's job rather than a shared responsibility.",
+   "explanation_ar": "في المؤسسات ذات الممارسات التقنية القديمة، يعامل الموظفون الأمن كوظيفة قسم التقنية لا كمسؤولية مشتركة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "enforcement_lesson",
+   "bloom_level": "Remember",
+   "question": "What does the lesson require of enforcement?",
+   "question_ar": "ماذا يشترط الدرس من الفرض؟",
+   "options": [
+    "Enforcement should be left to the IT team alone.",
+    "Enforcement is optional if the policy is good enough.",
+    "Enforcement must be practical, consistent, updated.",
+    "Enforcement must be strict and without any review."
+   ],
+   "options_ar": [
+    "الفرض يُترك لفريق التقنية وحده هنا تماماً.",
+    "الفرض اختياري إذا كانت السياسة جيدة.",
+    "الفرض يجب أن يكون عملياً وثابتاً ومحدّثاً.",
+    "الفرض يجب أن يكون صارماً بلا أي مراجعة."
+   ],
+   "options_en": [
+    "Enforcement should be left to the IT team alone.",
+    "Enforcement is optional if the policy is good enough.",
+    "Enforcement must be practical, consistent, updated.",
+    "Enforcement must be strict and without any review."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Enforcement has to be practical, consistent, and continuously updated. Anything else decays back into a document nobody follows.",
+   "explanation_ar": "الفرض يجب أن يكون عملياً وثابتاً ومحدَّثاً باستمرار. وما دون ذلك يتحوّل إلى وثيقة لا يتبعها أحد."
+  },
+  {
+   "id": "q8",
+   "concept_id": "lifecycle_steps",
+   "bloom_level": "Remember",
+   "question": "Which five steps make up the policy lifecycle?",
+   "question_ar": "أي خمس خطوات تشكّل دورة حياة السياسة؟",
+   "options": [
+    "Plan, do, check, act, and then retire it.",
+    "Write, sign, publish, audit, and then archive.",
+    "Draft, test, deploy, monitor, and rollback.",
+    "Draft, approve, communicate, enforce, review."
+   ],
+   "options_ar": [
+    "تخطيط وتنفيذ وتحقق وتصحيح وإيقاف.",
+    "كتابة وتوقيع ونشر وتدقيق وأرشفة.",
+    "صياغة واختبار ونشر ومراقبة وتراجع.",
+    "صياغة واعتماد وإبلاغ وفرض ومراجعة."
+   ],
+   "options_en": [
+    "Plan, do, check, act, and then retire it.",
+    "Write, sign, publish, audit, and then archive.",
+    "Draft, test, deploy, monitor, and rollback.",
+    "Draft, approve, communicate, enforce, review."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The lifecycle runs draft, approve, communicate, enforce, then review and update. A policy is not static.",
+   "explanation_ar": "الدورة: صياغة، اعتماد، إبلاغ، فرض، ثم مراجعة وتحديث. فالسياسة ليست ثابتة."
+  },
+  {
+   "id": "q9",
+   "concept_id": "step_draft",
+   "bloom_level": "Remember",
+   "question": "Where does the draft step start?",
+   "question_ar": "من أين تبدأ خطوة الصياغة؟",
+   "options": [
+    "It starts from the risk assessment findings.",
+    "It starts from the board's annual budget.",
+    "It starts from the auditor's own checklist.",
+    "It starts from the vendor's ready-made template."
+   ],
+   "options_ar": [
+    "تبدأ من نتائج تقييم المخاطر.",
+    "تبدأ من ميزانية المجلس السنوية.",
+    "تبدأ من قائمة المدقق الجاهزة.",
+    "تبدأ من قالب المورّد الجاهز."
+   ],
+   "options_en": [
+    "It starts from the risk assessment findings.",
+    "It starts from the board's annual budget.",
+    "It starts from the auditor's own checklist.",
+    "It starts from the vendor's ready-made template."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Drafting begins with the risks identified by the assessment frameworks, such as OCTAVE or NIST SP 800-30.",
+   "explanation_ar": "الصياغة تبدأ من المخاطر التي تحددها أطر التقييم، مثل OCTAVE أو NIST SP 800-30."
+  },
+  {
+   "id": "q10",
+   "concept_id": "step_approval",
+   "bloom_level": "Understand",
+   "question": "Why does the approval step need senior leadership?",
+   "question_ar": "لماذا تحتاج خطوة الاعتماد القيادة العليا؟",
+   "options": [
+    "A technical review by the IT department alone.",
+    "Senior leadership endorsement, not optional.",
+    "A simple majority vote by all the employees.",
+    "A legal review by an outside law firm only."
+   ],
+   "options_ar": [
+    "مراجعة تقنية من قسم التقنية وحده هنا.",
+    "تأييد القيادة العليا، فهو ليس اختيارياً.",
+    "تصويت أغلبية بسيطة من جميع الموظفين.",
+    "مراجعة قانونية من مكتب محاماة خارجي."
+   ],
+   "options_en": [
+    "A technical review by the IT department alone.",
+    "Senior leadership endorsement, not optional.",
+    "A simple majority vote by all the employees.",
+    "A legal review by an outside law firm only."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Executive buy-in from the CIO, CISO or board is what makes a policy strategic rather than optional.",
+   "explanation_ar": "تأييد القيادة التنفيذية من مدير المعلومات أو الأمن أو المجلس هو ما يجعل السياسة استراتيجية لا اختيارية."
+  },
+  {
+   "id": "q11",
+   "concept_id": "step_communication",
+   "bloom_level": "Remember",
+   "question": "What does the communication step actually require?",
+   "question_ar": "ماذا تشترط خطوة الإبلاغ فعلاً؟",
+   "options": [
+    "Sending one email to the managers only.",
+    "Printing the policy and filing it away.",
+    "Training that explains why the rules matter.",
+    "Publishing the policy on the intranet only here."
+   ],
+   "options_ar": [
+    "إرسال بريد إلكتروني واحد للمديرين.",
+    "طباعة السياسة وحفظها في ملف فقط.",
+    "تدريب يشرح لماذا تهم القواعد فعلاً.",
+    "نشر السياسة على الشبكة الداخلية فقط."
+   ],
+   "options_en": [
+    "Sending one email to the managers only.",
+    "Printing the policy and filing it away.",
+    "Training that explains why the rules matter.",
+    "Publishing the policy on the intranet only here."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Training has to explain not only what the rules are but why they matter, which is why simulated phishing is used to make it concrete.",
+   "explanation_ar": "التدريب يجب أن يشرح ليس فقط ما القواعد بل لماذا تهم، ولهذا تُستخدم حملات التصيّد المحاكاة لتجسيدها."
+  },
+  {
+   "id": "q12",
+   "concept_id": "step_enforcement",
+   "bloom_level": "Remember",
+   "question": "What does the enforcement step involve?",
+   "question_ar": "ماذا تتضمن خطوة الفرض؟",
+   "options": [
+    "Monitoring activity and reporting it to the board.",
+    "Rewarding staff who remember the policy best.",
+    "Reviewing the policy once every five years here.",
+    "Monitoring activity and disciplining breaches."
+   ],
+   "options_ar": [
+    "مراقبة النشاط وتقديم تقرير للمجلس.",
+    "مكافأة الموظفين الذين يتذكرون السياسة.",
+    "مراجعة السياسة مرة كل خمس سنوات.",
+    "مراقبة النشاط وتطبيق إجراءات تأديبية."
+   ],
+   "options_en": [
+    "Monitoring activity and reporting it to the board.",
+    "Rewarding staff who remember the policy best.",
+    "Reviewing the policy once every five years here.",
+    "Monitoring activity and disciplining breaches."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Enforcement means monitoring activity and applying disciplinary measures when the policy is broken.",
+   "explanation_ar": "الفرض يعني مراقبة النشاط وتطبيق إجراءات تأديبية عند خرق السياسة."
+  }
+ ]
+}
