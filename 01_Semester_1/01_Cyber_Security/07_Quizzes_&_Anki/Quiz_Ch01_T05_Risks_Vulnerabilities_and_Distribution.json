@@ -1,479 +1,363 @@
 {
-  "schema_version": 2,
-  "subject_id": "01_Cyber_Security",
-  "subject_title": "الأمن السيبراني",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch01_T05_Risks_Vulnerabilities_and_Distribution",
-  "topic": "Risks, Vulnerabilities, Assessment Models & Risk Distribution",
-  "topic_ar": "المخاطر والثغرات والاستغلال ونماذج التقييم وتوزيع الخطر P(R>r)",
-  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
-  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
-  "subject": "01_Cyber_Security",
-  "questions": [
-    {
-      "id": "q1",
-      "concept_id": "risk_core_definition_function",
-      "bloom_level": "Remember",
-      "question": "According to the formal cybersecurity definitions in the lecture, how is Risk canonically defined?",
-      "question_ar": "وفق التعريفات الرسمية المعتمدة في المحاضرة، كيف يُعرّف الخطر Risk معيارياً؟",
-      "options": [
-        "The number of unauthorized login attempts detected by perimeter firewalls hourly.",
-        "The elapsed runtime duration required by cryptographic hashing functions to execute.",
-        "The total monetary insurance premium paid to cover hardware system liquid damage.",
-        "A mathematical function of incident likelihood and adverse operational impact."
-      ],
-      "options_ar": [
-        "عدد محاولات تسجيل الدخول غير المصرّح بها التي ترصدها جدران حماية الشبكة كل ساعة تشغيل.",
-        "المدة الزمنية المستغرقة لتنفيذ دوال التجزئة التشفيرية عند معالجة كتل البيانات الضخمة.",
-        "إجمالي أقساط التأمين المالي المدفوعة لتغطية الأضرار المادية الناجمة عن تلف الخوادم بالسوائل.",
-        "دالة رياضية تجمع بين احتمالية وقوع الحادث Likelihood والتأثير السلبي الناجم عنه Impact."
-      ],
-      "options_en": [
-        "The number of unauthorized login attempts detected by perimeter firewalls hourly.",
-        "The elapsed runtime duration required by cryptographic hashing functions to execute.",
-        "The total monetary insurance premium paid to cover hardware system liquid damage.",
-        "A mathematical function of incident likelihood and adverse operational impact."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "Section 5 opens verbatim: Risk: Function of likelihood and impact.",
-      "explanation_ar": "ينص المنهج حرفياً على أن: «الخطر: دالة للاحتمالية والتأثير» (Risk: Function of likelihood and impact)؛ فالخطر العالي هو نتاج احتمال مرتفع مع ضرر جسيم."
-    },
-    {
-      "id": "q2",
-      "concept_id": "vulnerability_definition_weaknesses",
-      "bloom_level": "Remember",
-      "question": "What is the comprehensive definition of a Vulnerability provided in the primary lecture text?",
-      "question_ar": "ما التعريف الشامل للثغرة الأمنية Vulnerability كما ورد في النص الأساسي للمحاضرة؟",
-      "options": [
-        "Administrative policy sanctions enforced against employees who share credentials.",
-        "Weaknesses or flaws existing in software, hardware architecture, or human factors.",
-        "Malicious executable payload code designed to overwrite operating system kernels.",
-        "Hardware electrical grounding surges that permanently damage sensitive processors."
-      ],
-      "options_ar": [
-        "العقوبات الإدارية والوظيفية المفروضة على الموظفين الذين يشاركون كلمات المرور في العمل.",
-        "نقاط ضعف أو عيوب كامنة في البرمجيات Software، أو العتاد Hardware، أو العامل البشري Human.",
-        "شيفرة برمجية تنفيذية خبيثة مصممة لحذف واستبدال ملفات نواة نظام التشغيل فور تشغيلها.",
-        "طفرات الجهد الكهربائي العالية التي تؤدي إلى تلف الدوائر الإلكترونية للمعالجات الدقيقة."
-      ],
-      "options_en": [
-        "Administrative policy sanctions enforced against employees who share credentials.",
-        "Weaknesses or flaws existing in software, hardware architecture, or human factors.",
-        "Malicious executable payload code designed to overwrite operating system kernels.",
-        "Hardware electrical grounding surges that permanently damage sensitive processors."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The text defines: Vulnerabilities: Weaknesses in software, hardware, or human factors.",
-      "explanation_ar": "تعريف الثغرة نصاً في المحاضرة هو: «نقاط ضعف في البرمجيات أو العتاد أو العامل البشري» (Weaknesses in software, hardware, or human factors)."
-    },
-    {
-      "id": "q3",
-      "concept_id": "vulnerability_examples_owasp_top_10",
-      "bloom_level": "Remember",
-      "question": "Which example is specifically cited in the lecture notes to illustrate common software application vulnerabilities?",
-      "question_ar": "أي مثال استشهدت به ملاحظات المحاضرة نصياً لتوضيح ثغرات التطبيقات البرمجية الشائعة؟",
-      "options": [
-        "The ISO 9001 quality management process documentation compliance manual.",
-        "The OWASP Top 10 catalog of critical web application security vulnerabilities.",
-        "The IEEE 802.11 wireless local area network transmission protocol standard.",
-        "The ANSI C programming language standardized syntax parsing specifications."
-      ],
-      "options_ar": [
-        "دليل التوثيق والامتثال لمعايير إدارة الجودة الشاملة للمؤسسات ISO 9001.",
-        "قائمة OWASP Top 10 التي توثق أخطر عشر ثغرات أمنية شائعة في تطبيقات الويب.",
-        "المعيار اللاسلكي IEEE 802.11 لبروتوكولات نقل البيانات في الشبكات المحلية.",
-        "المواصفات القياسية لقواعد تصريف وفحص بناء لغة البرمجة ANSI C المعتمدة."
-      ],
-      "options_en": [
-        "The ISO 9001 quality management process documentation compliance manual.",
-        "The OWASP Top 10 catalog of critical web application security vulnerabilities.",
-        "The IEEE 802.11 wireless local area network transmission protocol standard.",
-        "The ANSI C programming language standardized syntax parsing specifications."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Under Vulnerabilities, the text gives: (Examples: OWASP Top 10, CVEs).",
-      "explanation_ar": "أوردت المحاضرة مثالين رسميين على الثغرات نصاً: دليل OWASP Top 10 (لثغرات تطبيقات الويب) ومعرّفات CVEs."
-    },
-    {
-      "id": "q4",
-      "concept_id": "vulnerability_examples_cve_system",
-      "bloom_level": "Remember",
-      "question": "What is the primary industry purpose of the Common Vulnerabilities and Exposures (CVE) system cited in the notes?",
-      "question_ar": "ما الغرض التقني الأساسي لنظام ثغرات وانكشافات الأمان CVE المستشهد به في الملاحظات؟",
-      "options": [
-        "To calculate corporate financial tax liability following external ransomware extortion.",
-        "To automatically generate cryptographic public-private key pairs for web servers.",
-        "To provide standardized, globally unique identifiers for publicly known vulnerabilities.",
-        "To compile executable machine code binaries into native operating system formats."
-      ],
-      "options_ar": [
-        "حساب الالتزامات والخصومات الضريبية للشركات بعد التعرض لابتزاز برمجيات الفدية.",
-        "توليد أزواج المفاتيح التشفيرية العامة والخاصة تلقائياً لخوادم الويب المؤسسية.",
-        "توفير معرّف قياسي موحد عالمياً لكل ثغرة أمنية معروفة لتسهيل مشاركتها ومعالجتها عالمياً.",
-        "تصريف ملفات الشيفرة المصدرية التنفيذية إلى صيغ ثنائية يفهمها نظام التشغيل."
-      ],
-      "options_en": [
-        "To calculate corporate financial tax liability following external ransomware extortion.",
-        "To automatically generate cryptographic public-private key pairs for web servers.",
-        "To provide standardized, globally unique identifiers for publicly known vulnerabilities.",
-        "To compile executable machine code binaries into native operating system formats."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "CVE (Common Vulnerabilities and Exposures) assigns a unique, standardized identifier (e.g. CVE-2021-44228) to publicly known cybersecurity vulnerabilities.",
-      "explanation_ar": "نظام CVE هو سجل عالمي موحد يمنح كل ثغرة مكتشفة رقماً فريداً معتمداً، ليتسنى لمختصي الأمن حول العالم تتبعها وترقيعها دون لبس."
-    },
-    {
-      "id": "q5",
-      "concept_id": "exploit_definition_tools_methods",
-      "bloom_level": "Remember",
-      "question": "What is the exact formal definition of an Exploit according to the primary lecture materials?",
-      "question_ar": "ما التعريف الرسمي الدقيق لمفهوم أداة الاستغلال Exploit وفق المادة التعليمية المعتمدة؟",
-      "options": [
-        "Defensive software patches deployed to eliminate discovered database vulnerabilities.",
-        "Administrative employee training manuals designed to prevent social engineering scams.",
-        "Tools or methods used by threat actors to take advantage of existing vulnerabilities.",
-        "Commercial insurance policies acquired to indemnify organizations against breach loss."
-      ],
-      "options_ar": [
-        "التحديثات والترقيعات البرمجية الدفاعية المثبتة لإغلاق الثغرات المكتشفة في الخوادم.",
-        "أدلة التدريب الوظيفية المصممة لرفع وعي الموظفين بمخاطر خدع الهندسة الاجتماعية.",
-        "الأدوات أو الطرق والأساليب المستخدمة للاستفادة من الثغرات الأمنية واختراق النظام.",
-        "وثائق التأمين التجاري المبرمة لتعويض المؤسسة مالياً عن الخسائر المترتبة على الخرق."
-      ],
-      "options_en": [
-        "Defensive software patches deployed to eliminate discovered database vulnerabilities.",
-        "Administrative employee training manuals designed to prevent social engineering scams.",
-        "Tools or methods used by threat actors to take advantage of existing vulnerabilities.",
-        "Commercial insurance policies acquired to indemnify organizations against breach loss."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The lecture defines: Exploits: Tools/methods used to take advantage of vulnerabilities.",
-      "explanation_ar": "تعريف الاستغلال Exploit نصاً في المحاضرة هو: «أدوات وطرق تُستخدم للاستفادة من الثغرات» (Tools/methods used to take advantage of vulnerabilities) والسيطرة على الهدف."
-    },
-    {
-      "id": "q6",
-      "concept_id": "risk_vuln_exploit_conceptual_link",
-      "bloom_level": "Understand",
-      "question": "How do the three core concepts of Vulnerability, Exploit, and Risk conceptually interact in a security incident?",
-      "question_ar": "كيف تتفاعل المفاهيم الثلاثة الأساسية (الثغرة، الاستغلال، الخطر) مفاهيمياً عند وقوع حادث أمني؟",
-      "options": [
-        "Risk represents the physical hardware flaw, which an exploit repairs through patches.",
-        "A vulnerability causes an exploit, but the resulting risk is independent of both factors.",
-        "A vulnerability is the flaw, an exploit is the tool used against it, and risk is the resulting loss.",
-        "An exploit creates a vulnerability, which in turn automatically eliminates the overall risk."
-      ],
-      "options_ar": [
-        "الخطر يمثل العيب المادي في الأجهزة، وتقوم أداة الاستغلال بإصلاحه وتجاوزه بالتحديث.",
-        "الثغرة الأمنية تولد أداة الاستغلال تلقائياً، ولكن الخطر الناتج لا يرتبط بأي منهما.",
-        "الثغرة هي نقطة الضعف، والاستغلال هو الأداة المطبقة عليها، والخطر هو الأثر المتوقع للخرق.",
-        "أداة الاستغلال تخلق الثغرة الأمنية، وتؤدي بدورها إلى القضاء التلقائي على الخطر الكلي."
-      ],
-      "options_en": [
-        "Risk represents the physical hardware flaw, which an exploit repairs through patches.",
-        "A vulnerability causes an exploit, but the resulting risk is independent of both factors.",
-        "A vulnerability is the flaw, an exploit is the tool used against it, and risk is the resulting loss.",
-        "An exploit creates a vulnerability, which in turn automatically eliminates the overall risk."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "A vulnerability is the inherent system weakness; an exploit weaponizes that weakness; risk is the probabilistic product of likelihood and impact if exploited.",
-      "explanation_ar": "الثغرة Vulnerability هي الخلل الكامن، والاستغلال Exploit هو الكود أو الأسلوب الذي ينفذ عبر هذا الخلل، والخطر Risk هو احتمالية استغلالها مقترنة بالأثر والضرر المترتب."
-    },
-    {
-      "id": "q7",
-      "concept_id": "risk_assessment_three_models_overview",
-      "bloom_level": "Remember",
-      "question": "Which set lists the three recognized Models for Risk Assessment officially designated in the course notes?",
-      "question_ar": "أي مجموعة تضم النماذج الثلاثة المعتمدة لتقييم المخاطر Models for Risk Assessment المذكورة في المنهج؟",
-      "options": [
-        "OCTAVE, FAIR, and NIST RMF.",
-        "Waterfall, Agile Scrum, and Extreme Programming (XP).",
-        "SHA-256, AES-GCM, and RSA-4096 cryptographic suites.",
-        "GDPR, HIPAA, and California Consumer Privacy Act (CCPA)."
-      ],
-      "options_ar": [
-        "منهجية OCTAVE، ونموذج FAIR، وإطار NIST RMF لإدارة المخاطر.",
-        "نموذج الشلال Waterfall، ومنهجية Agile Scrum، والبرمجة القصوى XP.",
-        "خوارزمية التجزئة SHA-256، والتشفير AES-GCM، والتوقيع الرقمي RSA-4096.",
-        "اللائحة الأوروبية GDPR، وقانون التأمين الصحي HIPAA، وقانون كاليفورنيا CCPA."
-      ],
-      "options_en": [
-        "OCTAVE, FAIR, and NIST RMF.",
-        "Waterfall, Agile Scrum, and Extreme Programming (XP).",
-        "SHA-256, AES-GCM, and RSA-4096 cryptographic suites.",
-        "GDPR, HIPAA, and California Consumer Privacy Act (CCPA)."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The lecture designates three risk assessment frameworks: OCTAVE, FAIR, and NIST RMF.",
-      "explanation_ar": "تحدد المحاضرة نصاً ثلاثة نماذج لتقييم المخاطر (Models for Risk Assessment): الأول OCTAVE، والثاني FAIR، والثالث NIST RMF."
-    },
-    {
-      "id": "q8",
-      "concept_id": "risk_likelihood_impact_comparison",
-      "bloom_level": "Apply",
-      "question": "The lecture defines Risk as a function of likelihood and impact. Threat 1 has likelihood 0.2 and impact 500,000; Threat 2 has likelihood 0.4 and impact 100,000. Which one carries the greater risk?",
-      "question_ar": "تُعرّف المحاضرة الخطر بأنه دالة للاحتمالية والتأثير. التهديد الأول احتماليته 0.2 وتأثيره 500,000، والتهديد الثاني احتماليته 0.4 وتأثيره 100,000. أيّهما أخطر؟",
-      "options": [
-        "Threat 1, because $0.2 \\times 500{,}000 = 100{,}000$ exceeds $0.4 \\times 100{,}000 = 40{,}000$.",
-        "Threat 2, because $0.4 \\times 100{,}000 = 40{,}000$ exceeds $0.2 \\times 500{,}000 = 100{,}000$.",
-        "Threat 2, because the higher likelihood always dominates the impact term.",
-        "Neither, because risk cannot be compared without the time variable $t$."
-      ],
-      "options_ar": [
-        "التهديد الأول، لأن $0.2 \\times 500{,}000 = 100{,}000$ أكبر من $0.4 \\times 100{,}000 = 40{,}000$.",
-        "التهديد الثاني، لأن $0.4 \\times 100{,}000 = 40{,}000$ أكبر من $0.2 \\times 500{,}000 = 100{,}000$.",
-        "التهديد الثاني، لأن الاحتمالية الأعلى تتغلّب دائماً على حدّ التأثير.",
-        "لا هذا ولا ذاك، لأن الخطر لا يُقارن دون متغيّر الزمن $t$."
-      ],
-      "options_en": [
-        "Threat 1, because $0.2 \\times 500{,}000 = 100{,}000$ exceeds $0.4 \\times 100{,}000 = 40{,}000$.",
-        "Threat 2, because $0.4 \\times 100{,}000 = 40{,}000$ exceeds $0.2 \\times 500{,}000 = 100{,}000$.",
-        "Threat 2, because the higher likelihood always dominates the impact term.",
-        "Neither, because risk cannot be compared without the time variable $t$."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Risk is the product of likelihood and impact, the same structure as the time-dependent form with the time dimension left out. Threat 1 gives 100,000 and Threat 2 gives 40,000, so Threat 1 is the greater risk: a higher likelihood does not by itself dominate. Option D confuses this with the time-dependent model.",
-      "explanation_ar": "الخطر = الاحتمالية × التأثير، وهو نفس تركيب الصيغة المعتمدة على الزمن من دون بُعد الزمن. الأول: 0.2 × 500,000 = 100,000، والثاني: 0.4 × 100,000 = 40,000، فالتهديد الأول أخطر. والخيار D يخلط بين هذا وبين الصيغة الزمنية."
-    },
-    {
-      "id": "q9",
-      "concept_id": "vulnerability_human_factor_classification",
-      "bloom_level": "Apply",
-      "question": "An employee writes a system password on a note stuck to the monitor. Under the lecture's definition of a vulnerability, which category of weakness does this represent?",
-      "question_ar": "كتب موظف كلمة مرور النظام على ورقة ملصقة على الشاشة. وفق تعريف المحاضرة للثغرة، أي صنف من نقاط الضعف يمثّل هذا؟",
-      "options": [
-        "A software flaw introduced during application development.",
-        "A human-factor weakness.",
-        "A hardware design defect in the display device.",
-        "An exploit tool used against the operating system."
-      ],
-      "options_ar": [
-        "خلل برمجي أُدخل أثناء تطوير التطبيق.",
-        "نقطة ضعف في العامل البشري.",
-        "عيب تصميمي في عتاد جهاز العرض.",
-        "أداة استغلال مستخدمة ضد نظام التشغيل."
-      ],
-      "options_en": [
-        "A software flaw introduced during application development.",
-        "A human-factor weakness.",
-        "A hardware design defect in the display device.",
-        "An exploit tool used against the operating system."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The lecture defines vulnerabilities as weaknesses in software, hardware, or human factors. A password left in plain view is a human-factor weakness: it is not a code defect, not a hardware fault, and not an exploit, because exploits are the tools or methods used to take advantage of a weakness, not the weakness itself.",
-      "explanation_ar": "المحاضرة تعرّف الثغرات بأنها نقاط ضعف في البرمجيات أو العتاد أو العامل البشري. وكلمة المرور المكشوفة نقطة ضعف بشرية، وليست خللاً برمجياً ولا عيب عتاد ولا استغلالاً — فالاستغلال أداة أو طريقة تُستثمر بها الثغرة، لا الثغرة نفسها."
-    },
-    {
-      "id": "q10",
-      "concept_id": "vulnerability_catalogue_identification",
-      "bloom_level": "Apply",
-      "question": "A newly discovered flaw in a web server is published with a unique identifier so that every vendor refers to it by the same name. Which lecture concept does that identifier belong to?",
-      "question_ar": "نُشر خلل مكتشف حديثاً في خادم ويب بمعرّف فريد حتى يشير إليه كل المزوّدين بالاسم نفسه. إلى أي مفهوم من مفاهيم المحاضرة ينتمي هذا المعرّف؟",
-      "options": [
-        "An exploit toolkit distributed to attackers.",
-        "A risk assessment model applied to the server.",
-        "A catalogued vulnerability entry.",
-        "A security control deployed to remediate it."
-      ],
-      "options_ar": [
-        "حزمة أدوات استغلال تُوزّع على المهاجمين.",
-        "نموذج تقييم مخاطر يُطبّق على الخادم.",
-        "ثغرة مُفهرسة في سجل الثغرات.",
-        "ضابط أمني يُنشر لمعالجة الخلل."
-      ],
-      "options_en": [
-        "An exploit toolkit distributed to attackers.",
-        "A risk assessment model applied to the server.",
-        "A catalogued vulnerability entry.",
-        "A security control deployed to remediate it."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The lecture cites CVEs as its example of vulnerabilities, and a CVE is a standardized, globally unique identifier for a publicly known vulnerability. The identifier therefore names a catalogued vulnerability, not the exploit that abuses it, not a risk model, and not the control that fixes it.",
-      "explanation_ar": "المحاضرة تستشهد بـCVEs كمثال على الثغرات، وCVE معرّف معياري فريد عالمياً لثغرة معلنة. فالمعرّف يسمّي ثغرة مُفهرسة، لا أداة الاستغلال ولا نموذج التقييم ولا الضابط العلاجي."
-    },
-    {
-      "id": "q11",
-      "concept_id": "cdf_boundary_implication",
-      "bloom_level": "Analyze",
-      "question": "The lecture annotates that $F(r)$ is bounded between 0 and 1. What does the value $F(r) = 1$ imply for $P(R > r)$?",
-      "question_ar": "تنص حاشية المحاضرة على أن $F(r)$ محصورة بين 0 و1. ماذا تعني القيمة $F(r) = 1$ بالنسبة إلى $P(R > r)$؟",
-      "options": [
-        "It implies that $P(R > r)$ reaches its maximum possible value of 1.",
-        "It implies that $P(R > r)$ is 0, since no loss exceeds the threshold $r$.",
-        "It implies that $P(R > r)$ becomes undefined because the distribution collapses.",
-        "It implies that $P(R > r)$ equals 1 because the two expressions are complementary."
-      ],
-      "options_ar": [
-        "تعني أن $P(R > r)$ تبلغ أقصى قيمة ممكنة وهي 1.",
-        "تعني أن $P(R > r)$ تساوي 0، لأنه لا توجد خسارة تتجاوز الحد $r$.",
-        "تعني أن $P(R > r)$ تصبح غير معرّفة لأن التوزيع ينهار.",
-        "تعني أن $P(R > r)$ تساوي 1 لأن التعبيرين متتامّان."
-      ],
-      "options_en": [
-        "It implies that $P(R > r)$ reaches its maximum possible value of 1.",
-        "It implies that $P(R > r)$ is 0, since no loss exceeds the threshold $r$.",
-        "It implies that $P(R > r)$ becomes undefined because the distribution collapses.",
-        "It implies that $P(R > r)$ equals 1 because the two expressions are complementary."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "$P(R > r) = 1 - F(r)$. If $F(r) = 1$ the cumulative distribution has absorbed the whole probability mass up to $r$, so $P(R > r) = 1 - 1 = 0$: nothing is left above the threshold. Option D reverses the complement, because the two expressions sum to 1 rather than being equal.",
-      "explanation_ar": "$P(R > r) = 1 - F(r)$. وإذا كان $F(r) = 1$ فقد استوعب التوزيع التراكمي كل الكتلة الاحتمالية حتى $r$، فتصير $P(R > r) = 1 - 1 = 0$. والخيار D يعكس التتامّ: التعبيران مجموعهما 1 ولا يتساويان."
-    },
-    {
-      "id": "q12",
-      "concept_id": "risk_probability_distribution_equation",
-      "bloom_level": "Remember",
-      "question": "What is the canonical Mathematical Model for Risk Probability Distribution in the lecture?",
-      "question_ar": "ما المعادلة الرياضية المعيارية المعتمدة لتمثيل توزيع احتمالية الخطر في المحاضرة؟",
-      "options": [
-        "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
-        "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
-        "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-        "$$P(R > r) = 1 - F(r)$$"
-      ],
-      "options_ar": [
-        "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
-        "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
-        "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-        "$$P(R > r) = 1 - F$$"
-      ],
-      "options_en": [
-        "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
-        "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
-        "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-        "$$P(R > r) = 1 - F(r)$$"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The formula for Risk Probability Distribution is $P(R > r) = 1 - F(r)$, where F(r) is the Cumulative Distribution Function (CDF).",
-      "explanation_ar": "المعادلة الرياضية الخامسة لنموذج توزيع احتمالية الخطر هي: $P(R > r) = 1 - F(r)$؛ وتحدد احتمال أن يتجاوز الخطر قيمة أو عتبة معينة $r$."
-    },
-    {
-      "id": "q13",
-      "concept_id": "risk_variable_r_nature",
-      "bloom_level": "Understand",
-      "question": "In the formula $P(R > r) = 1 - F(r)$, how is the variable $R$ statistically defined?",
-      "question_ar": "في المعادلة $P(R > r) = 1 - F(r)$، كيف يُعرّف المتغير $R$ بالمعنى الإحصائي الدقيق؟",
-      "options": [
-        "A random variable representing the adverse impact or financial loss magnitude of risk.",
-        "A static integer constant recording the number of physical edge routers on the network.",
-        "The deterministic bandwidth throughput measured across local ethernet switch ports.",
-        "The calendar date in days remaining before commercial software license keys expire."
-      ],
-      "options_ar": [
-        "متغير عشوائي Random Variable يمثل حجم التأثير أو الخسارة الناتجة عن وقوع الخطر.",
-        "ثابت عددي صحيح يسجل عدد أجهزة التوجيه المادية المثبتة على أطراف الشبكة المحلية.",
-        "معدل سعة نقل البيانات المقاس بدقة وثبات عبر منافذ محولات الإيثرنت المحلية.",
-        "التاريخ التقويمي بعدد الأيام المتبقية قبل انتهاء تراخيص البرمجيات التجارية للشركة."
-      ],
-      "options_en": [
-        "A random variable representing the adverse impact or financial loss magnitude of risk.",
-        "A static integer constant recording the number of physical edge routers on the network.",
-        "The deterministic bandwidth throughput measured across local ethernet switch ports.",
-        "The calendar date in days remaining before commercial software license keys expire."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "In probability theory and lecture notes, R is a random variable modeling the uncertain severity/impact of security risk events.",
-      "explanation_ar": "الرمز $R$ هو متغيّر عشوائي (Random Variable) يمثل حجم الضرر أو التأثير المالي للخطر السيبراني؛ ولأنه متغير احتمالي يخضع لتوزيع تراكمي."
-    },
-    {
-      "id": "q14",
-      "concept_id": "cdf_f_r_definition_and_bounds",
-      "bloom_level": "Remember",
-      "question": "What is the function $F(r)$ in the risk distribution formula, and what mathematical bounds restrict its value?",
-      "question_ar": "ما الدالة $F(r)$ في معادلة توزيع الخطر، وما الحدود الرياضية التي تحصر قيمتها حتماً؟",
-      "options": [
-        "A linear cost slope function with values expressed in unconstrained currency units.",
-        "An exponential frequency metric with values ranging between negative one and positive one.",
-        "A probability density function (PDF) with values spanning from zero to positive infinity.",
-        "The Cumulative Distribution Function (CDF) of risk impact, bounded strictly within $0 \\le F(r) \\le 1$."
-      ],
-      "options_ar": [
-        "دالة انحدار التكلفة الخطية المعبر عن قيمها بوحدات العملة المالية غير المقيدة بسقف.",
-        "مقياس تكرار أسي تتراوح قيمه بين سالب واحد وموجب واحد في الحسابات الإحصائية.",
-        "دالة كثافة الاحتمال PDF التي تمتد قيمتها من الصفر إلى موجب ما لا نهاية رياضياً.",
-        "دالة التوزيع التراكمي CDF لتأثير الخطر، وتكون قيمتها محصورة حتماً ضمن المجال $0 \\le F \\le 1$."
-      ],
-      "options_en": [
-        "A linear cost slope function with values expressed in unconstrained currency units.",
-        "An exponential frequency metric with values ranging between negative one and positive one.",
-        "A probability density function (PDF) with values spanning from zero to positive infinity.",
-        "The Cumulative Distribution Function (CDF) of risk impact, bounded strictly within $0 \\le F(r) \\le 1$."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "As annotated: F(r) is bounded between 0 and 1 because it is a Cumulative Distribution Function (CDF) giving $P(R \\le r)$.",
-      "explanation_ar": "نصت حاشية الطالب والمحاضرة صراحةً على: «الـ $F(r)$ محصورة بين 0 و 1»؛ لأنها دالة التوزيع التراكمي CDF التي تعطي احتمال أن يكون الخطر دون الحد $r$ أو مساوياً له."
-    },
-    {
-      "id": "q15",
-      "concept_id": "risk_tail_probability_meaning",
-      "bloom_level": "Understand",
-      "question": "What specific operational probability does the expression $P(R > r) = 1 - F(r)$ determine for risk managers?",
-      "question_ar": "ما الاحتمال التشغيلي المحدد الذي يقيسه التعبير الرياضي $P(R > r) = 1 - F(r)$ لمديري المخاطر؟",
-      "options": [
-        "The probability that the realized risk loss will exceed an acceptable threshold $r$.",
-        "The probability that employee credential passwords will be successfully decrypted within one hour.",
-        "The probability that all perimeter network firewalls will experience simultaneous power loss.",
-        "The probability that zero security incidents will occur during the upcoming fiscal quarter."
-      ],
-      "options_ar": [
-        "احتمال أن يتجاوز أثر أو ضرر الخطر الفعلي حداً أو عتبة معينة مقبولة $r$ (احتمال الذيل التراكمي).",
-        "احتمال فك تشفير كافة كلمات مرور الموظفين بنجاح خلال ساعة واحدة من بدء الهجوم الإلكتروني.",
-        "احتمال تعرض جميع جدران حماية الشبكة المحيطية لانقطاع متزامن في التغذية الكهربائية.",
-        "احتمال عدم وقوع أي حادث أو تهديد أمني إطلاقاً خلال الربع المالي التشغيلي القادم."
-      ],
-      "options_en": [
-        "The probability that the realized risk loss will exceed an acceptable threshold $r$.",
-        "The probability that employee credential passwords will be successfully decrypted within one hour.",
-        "The probability that all perimeter network firewalls will experience simultaneous power loss.",
-        "The probability that zero security incidents will occur during the upcoming fiscal quarter."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "$P(R > r) = 1 - F(r)$ evaluates the complementary tail probability: the likelihood of facing catastrophic losses exceeding threshold r.",
-      "explanation_ar": "التعبير $P(R > r)$ يعني حرفياً: «احتمال أن يتجاوز الخطر حداً معيناً $r$»؛ وهو ما يُعرف في إدارة المخاطر باحتمال الذيل (Tail Risk) لقياس احتمالية وقوع كوارث تتجاوز قدرة المؤسسة."
-    },
-    {
-      "id": "q16",
-      "concept_id": "risk_probability_numerical_example",
-      "bloom_level": "Apply",
-      "question": "If an organization's cumulative distribution function for server failure loss evaluates to $F(50) = 0.85$, what is the probability that risk exceeds 50 ($P(R > 50)$)?",
-      "question_ar": "إذا كانت دالة التوزيع التراكمي لخسائر خوادم مؤسسة تساوي $F(50) = 0.85$، فما احتمال أن يتجاوز الخطر القيمة 50 أي ($P(R > 50)$)؟",
-      "options": [
-        "The calculated value of P(R > 50) is exactly 0.85 (85%), from F(50) directly.",
-        "The calculated value of P(R > 50) is exactly 0.50 (50%), representing median.",
-        "The calculated value of P(R > 50) is exactly 1.85 (185%), from 1 + 0.85.",
-        "The calculated value of P(R > 50) is exactly 0.15 (15%), from 1 - 0.85."
-      ],
-      "options_ar": [
-        "قيمة الاحتمال P(R > 50) تساوي 0.85 تماماً (أي 85%)، مأخوذة من F(50) مباشرة.",
-        "قيمة الاحتمال P(R > 50) تساوي 0.50 تماماً (أي 50%)، بافتراض وسيط الخطر المتناظر.",
-        "قيمة الاحتمال P(R > 50) تساوي 1.85 تماماً (أي 185%)، ناتجة عن جمع 1 + 0.85.",
-        "قيمة الاحتمال P(R > 50) تساوي 0.15 تماماً (أي 15%)، ناتجة عن طرح 1 - 0.85."
-      ],
-      "options_en": [
-        "The calculated value of P(R > 50) is exactly 0.85 (85%), from F(50) directly.",
-        "The calculated value of P(R > 50) is exactly 0.50 (50%), representing median.",
-        "The calculated value of P(R > 50) is exactly 1.85 (185%), from 1 + 0.85.",
-        "The calculated value of P(R > 50) is exactly 0.15 (15%), from 1 - 0.85."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "$P(R > 50) = 1 - F(50) = 1 - 0.85 = 0.15$.",
-      "explanation_ar": "بتطبيق المعادلة مباشرة: $P(R > 50) = 1 - F(50) = 1 - 0.85 = 0.15$ (أي احتمال بنسبة 15% أن يتجاوز الخطر العتبة 50)."
-    }
-  ]
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch01_T05_Risks_Vulnerabilities_and_Distribution",
+ "topic": "Risks, Vulnerabilities & the Distribution Model",
+ "topic_ar": "المخاطر والثغرات ونموذج التوزيع",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "risk_is_function_of_two",
+   "bloom_level": "Remember",
+   "question": "How does the lecture define risk?",
+   "question_ar": "كيف تعرّف المحاضرة الخطر؟",
+   "options": [
+    "A function of likelihood and impact.",
+    "A function of control cost and time.",
+    "A function of user count and devices.",
+    "A function of policy strength and audit."
+   ],
+   "options_ar": [
+    "دالة للاحتمالية وحجم التأثير.",
+    "دالة لتكلفة الضابط والوقت.",
+    "دالة لعدد المستخدمين والأجهزة.",
+    "دالة لقوة السياسة والتدقيق."
+   ],
+   "options_en": [
+    "A function of likelihood and impact.",
+    "A function of control cost and time.",
+    "A function of user count and devices.",
+    "A function of policy strength and audit."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Risk is a function of two things only: how likely the event is, and how much damage it would do.",
+   "explanation_ar": "الخطر دالة لشيئين فقط: احتمال وقوع الحدث، ومقدار الضرر الذي يسببه."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch01_vulnerability_definition",
+   "bloom_level": "Remember",
+   "question": "What is a vulnerability?",
+   "question_ar": "ما هي الثغرة؟",
+   "options": [
+    "The amount of loss an attack would cause.",
+    "A control that blocks an attack from landing.",
+    "A weakness in software, hardware, or people.",
+    "A tool used to attack an existing weakness."
+   ],
+   "options_ar": [
+    "مقدار الخسارة التي يسببها الهجوم على النظام.",
+    "ضابط أمني يمنع الهجوم من تحقيق هدفه.",
+    "نقطة ضعف في البرمجيات أو العتاد أو البشر.",
+    "أداة تُستخدم لمهاجمة نقطة ضعف قائمة."
+   ],
+   "options_en": [
+    "The amount of loss an attack would cause.",
+    "A control that blocks an attack from landing.",
+    "A weakness in software, hardware, or people.",
+    "A tool used to attack an existing weakness."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A vulnerability is the weakness itself, and the lecture allows three places for it: software, hardware, and the human factor.",
+   "explanation_ar": "الثغرة هي الضعف نفسه، والمحاضرة تسمح بثلاثة مواضع له: البرمجيات والعتاد والعامل البشري."
+  },
+  {
+   "id": "q3",
+   "concept_id": "vulnerability_examples_owasp_cve",
+   "bloom_level": "Remember",
+   "question": "Which examples does the lecture give for vulnerabilities?",
+   "question_ar": "أي أمثلة تعطيها المحاضرة للثغرات؟",
+   "options": [
+    "The OCTAVE and FAIR assessment models.",
+    "The OWASP Top 10 and the CVE list.",
+    "The ISO 27001 and NIST CSF lists.",
+    "The GDPR and HIPAA legal frameworks."
+   ],
+   "options_ar": [
+    "نماذج OCTAVE و FAIR المستخدمة للتقييم.",
+    "قائمة OWASP Top 10 وقائمة CVE المعتمدة.",
+    "قوائم ISO 27001 و NIST CSF المعتمدة.",
+    "أطر GDPR و HIPAA القانونية المعتمدة."
+   ],
+   "options_en": [
+    "The OCTAVE and FAIR assessment models.",
+    "The OWASP Top 10 and the CVE list.",
+    "The ISO 27001 and NIST CSF lists.",
+    "The GDPR and HIPAA legal frameworks."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Vulnerabilities are illustrated with the OWASP Top 10 for web applications and CVE for publicly known flaws.",
+   "explanation_ar": "الثغرات تُمثَّل بقائمة OWASP Top 10 لتطبيقات الويب وقاعدة CVE للثغرات المعلنة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "exploit_definition",
+   "bloom_level": "Remember",
+   "question": "What is an exploit?",
+   "question_ar": "ما هو الاستغلال؟",
+   "options": [
+    "A patch released to close a reported flaw.",
+    "A policy written to forbid a risky practice.",
+    "A backup kept in case the system is ever lost.",
+    "A tool or method that takes advantage of a flaw."
+   ],
+   "options_ar": [
+    "تحديث يُصدر لإغلاق ثغرة معلنة.",
+    "سياسة تُكتب لمنع ممارسة خطرة.",
+    "نسخة احتياطية تُحفظ لاستعادة النظام.",
+    "أداة أو طريقة تستغل ثغرة قائمة."
+   ],
+   "options_en": [
+    "A patch released to close a reported flaw.",
+    "A policy written to forbid a risky practice.",
+    "A backup kept in case the system is ever lost.",
+    "A tool or method that takes advantage of a flaw."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "An exploit is the tool or the method used against a vulnerability. The flaw already exists; the exploit is what uses it.",
+   "explanation_ar": "الاستغلال هو الأداة أو الطريقة المستخدمة ضد ثغرة. الضعف موجود أصلاً، والاستغلال هو ما يستخدمه."
+  },
+  {
+   "id": "q5",
+   "concept_id": "risk_vuln_exploit_relation",
+   "bloom_level": "Understand",
+   "question": "How do vulnerability, exploit, and risk relate?",
+   "question_ar": "كيف ترتبط الثغرة والاستغلال والخطر؟",
+   "options": [
+    "The flaw is the weakness, the exploit uses it, the risk is the loss.",
+    "The flaw is the loss, the exploit is the weakness, the risk is the tool.",
+    "The exploit is the weakness, the risk is the tool, the flaw is the loss.",
+    "The risk is the weakness, the flaw is the tool, the exploit is the loss."
+   ],
+   "options_ar": [
+    "الثغرة هي الضعف، والاستغلال يستخدمها، والخطر هو الخسارة.",
+    "الثغرة هي الخسارة، والاستغلال هو الضعف، والخطر هو الأداة.",
+    "الاستغلال هو الضعف، والخطر هو الأداة، والثغرة هي الخسارة.",
+    "الخطر هو الضعف، والثغرة هي الأداة، والاستغلال هو الخسارة."
+   ],
+   "options_en": [
+    "The flaw is the weakness, the exploit uses it, the risk is the loss.",
+    "The flaw is the loss, the exploit is the weakness, the risk is the tool.",
+    "The exploit is the weakness, the risk is the tool, the flaw is the loss.",
+    "The risk is the weakness, the flaw is the tool, the exploit is the loss."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The chain runs weakness, then tool, then loss: the flaw is the weakness, the exploit is the tool used on it, and the risk is the loss that follows.",
+   "explanation_ar": "السلسلة هي: ضعف ثم أداة ثم خسارة. الثغرة هي الضعف، والاستغلال هو الأداة المستخدمة ضدها، والخطر هو الخسارة الناتجة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "risk_assessment_models",
+   "bloom_level": "Remember",
+   "question": "Which three risk assessment models does the lecture name?",
+   "question_ar": "أي ثلاثة نماذج لتقييم المخاطر تسمّيها المحاضرة؟",
+   "options": [
+    "NIST CSF, ENISA, and COBIT.",
+    "OCTAVE, FAIR, and NIST RMF.",
+    "GDPR, HIPAA, and ISO 27001.",
+    "OWASP, CVE, and CVSS scores."
+   ],
+   "options_ar": [
+    "NIST CSF و ENISA و COBIT.",
+    "OCTAVE و FAIR و NIST RMF.",
+    "GDPR و HIPAA و ISO 27001.",
+    "OWASP و CVE و CVSS."
+   ],
+   "options_en": [
+    "NIST CSF, ENISA, and COBIT.",
+    "OCTAVE, FAIR, and NIST RMF.",
+    "GDPR, HIPAA, and ISO 27001.",
+    "OWASP, CVE, and CVSS scores."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The three are OCTAVE, FAIR and the NIST Risk Management Framework. The others are laws, catalogues or agencies.",
+   "explanation_ar": "الثلاثة هي OCTAVE و FAIR وإطار إدارة المخاطر NIST. أما البقية فقوانين أو قواعد بيانات أو هيئات."
+  },
+  {
+   "id": "q7",
+   "concept_id": "vulnerability_scenario_human",
+   "bloom_level": "Apply",
+   "question": "A password is written on a note stuck to the monitor. What kind of weakness is this?",
+   "question_ar": "كلمة مرور مكتوبة على ورقة ملصقة على الشاشة. أي نوع من الضعف هذا؟",
+   "options": [
+    "A software design flaw.",
+    "A hardware defect in it.",
+    "An exploit tool for it.",
+    "A human-factor weakness."
+   ],
+   "options_ar": [
+    "خلل في تصميم البرمجية.",
+    "عيب في العتاد نفسه.",
+    "أداة استغلال جاهزة.",
+    "ضعف في العامل البشري."
+   ],
+   "options_en": [
+    "A software design flaw.",
+    "A hardware defect in it.",
+    "An exploit tool for it.",
+    "A human-factor weakness."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The lecture allows software, hardware, or the human factor. A note on a monitor is neither code nor metal, so it is the human factor.",
+   "explanation_ar": "المحاضرة تسمح بثلاثة مواضع: البرمجيات أو العتاد أو العامل البشري. ورقة على الشاشة ليست كوداً ولا معدنًا، فهي العامل البشري."
+  },
+  {
+   "id": "q8",
+   "concept_id": "risk_compare_compute",
+   "bloom_level": "Apply",
+   "question": "Threat 1: likelihood 0.2, impact 500,000. Threat 2: likelihood 0.4, impact 100,000. Which carries more risk?",
+   "question_ar": "التهديد 1: احتمال 0.2 وتأثير 500,000. والتهديد 2: احتمال 0.4 وتأثير 100,000. أيهما أخطر؟",
+   "options": [
+    "Threat 1, because its impact is larger.",
+    "Neither, because the two cannot be compared.",
+    "Threat 1, because its expected loss is larger.",
+    "Threat 2, because its likelihood is larger."
+   ],
+   "options_ar": [
+    "التهديد 1 لأن حجم تأثيره أكبر بكثير.",
+    "لا هذا ولا ذاك لأنهما غير قابلين للمقارنة.",
+    "التهديد 1 لأن خسارته المتوقعة أكبر.",
+    "التهديد 2 لأن احتماليته أكبر بكثير."
+   ],
+   "options_en": [
+    "Threat 1, because its impact is larger.",
+    "Neither, because the two cannot be compared.",
+    "Threat 1, because its expected loss is larger.",
+    "Threat 2, because its likelihood is larger."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Expected loss is 0.2 x 500,000 = 100,000 against 0.4 x 100,000 = 40,000. Threat 1 is higher, and the reason is the expected value, not the raw impact.",
+   "explanation_ar": "الخسارة المتوقعة 0.2 × 500,000 = 100,000 مقابل 0.4 × 100,000 = 40,000. التهديد 1 أعلى، والسبب هو القيمة المتوقعة لا التأثير الخام."
+  },
+  {
+   "id": "q9",
+   "concept_id": "distribution_f_r_definition",
+   "bloom_level": "Remember",
+   "question": "In the distribution model, what is F(r)?",
+   "question_ar": "في نموذج التوزيع، ما هو F(r)؟",
+   "options": [
+    "The cumulative distribution of loss, 0 to 1.",
+    "The probability density of loss, 0 upward.",
+    "The average loss expected over one year.",
+    "The maximum loss the system could suffer."
+   ],
+   "options_ar": [
+    "التوزيع التراكمي للخسارة بين 0 و1.",
+    "كثافة احتمالية الخسارة من الصفر صعوداً.",
+    "متوسط الخسارة المتوقعة خلال سنة.",
+    "أقصى خسارة يمكن أن يتعرض لها النظام."
+   ],
+   "options_en": [
+    "The cumulative distribution of loss, 0 to 1.",
+    "The probability density of loss, 0 upward.",
+    "The average loss expected over one year.",
+    "The maximum loss the system could suffer."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "F is the cumulative distribution function, and the lecture annotates that it is bounded between 0 and 1.",
+   "explanation_ar": "F هي دالة التوزيع التراكمي، والمحاضرة تكتب ملاحظة أنها محصورة بين 0 و1."
+  },
+  {
+   "id": "q10",
+   "concept_id": "distribution_tail_meaning",
+   "bloom_level": "Understand",
+   "question": "What does the distribution model actually tell a risk manager?",
+   "question_ar": "ماذا يقول نموذج التوزيع لمدير المخاطر فعلياً؟",
+   "options": [
+    "The chance that a control will fail this year.",
+    "The chance that loss will exceed a set threshold.",
+    "The chance that loss will stay under a threshold.",
+    "The chance that no incident will occur at all."
+   ],
+   "options_ar": [
+    "احتمال أن يفشل ضابط أمني هذا العام.",
+    "احتمال أن تتجاوز الخسارة حداً معيّناً.",
+    "احتمال أن تبقى الخسارة تحت حدّ معيّن.",
+    "احتمال ألا يقع أي حادث إطلاقاً."
+   ],
+   "options_en": [
+    "The chance that a control will fail this year.",
+    "The chance that loss will exceed a set threshold.",
+    "The chance that loss will stay under a threshold.",
+    "The chance that no incident will occur at all."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The model gives the probability of exceeding a chosen threshold, which is how a manager asks whether the loss could pass what the organisation can absorb.",
+   "explanation_ar": "النموذج يعطي احتمال تجاوز حدّ مختار، وبه يسأل المدير إن كانت الخسارة قد تتجاوز ما تستطيع المؤسسة تحمّله."
+  },
+  {
+   "id": "q11",
+   "concept_id": "distribution_compute",
+   "bloom_level": "Apply",
+   "question": "If F(50) equals 0.85, what is the probability that loss exceeds 50?",
+   "question_ar": "إذا كانت F(50) تساوي 0.85، فما احتمال أن تتجاوز الخسارة 50؟",
+   "options": [
+    "0.35",
+    "1.85",
+    "0.15",
+    "0.85"
+   ],
+   "options_ar": [
+    "0.35",
+    "1.85",
+    "0.15",
+    "0.85"
+   ],
+   "options_en": [
+    "0.35",
+    "1.85",
+    "0.15",
+    "0.85"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The two parts sum to one, so the answer is 1 minus 0.85, which is 0.15.",
+   "explanation_ar": "الجزءان مجموعهما واحد، فالجواب 1 ناقص 0.85 ويساوي 0.15."
+  },
+  {
+   "id": "q12",
+   "concept_id": "distribution_boundary_case",
+   "bloom_level": "Analyze",
+   "question": "If F(r) reaches 1 at some threshold, what follows?",
+   "question_ar": "إذا وصلت F(r) إلى 1 عند حدّ ما، فماذا ينتج؟",
+   "options": [
+    "The probability of exceeding the threshold is one.",
+    "The probability of exceeding it cannot be computed.",
+    "The probability of exceeding it equals the threshold.",
+    "The probability of exceeding the threshold is zero."
+   ],
+   "options_ar": [
+    "احتمال تجاوز الحد يساوي واحداً.",
+    "احتمال التجاوز لا يمكن حسابه هنا.",
+    "احتمال التجاوز يساوي قيمة الحد نفسه.",
+    "احتمال تجاوز الحد يساوي صفراً."
+   ],
+   "options_en": [
+    "The probability of exceeding the threshold is one.",
+    "The probability of exceeding it cannot be computed.",
+    "The probability of exceeding it equals the threshold.",
+    "The probability of exceeding the threshold is zero."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "One minus one is zero, so no loss is left above the threshold. That is what the upper bound of F means in practice.",
+   "explanation_ar": "واحد ناقص واحد يساوي صفراً، فلا تبقى خسارة فوق الحد. وهذا معنى الحد الأعلى لـ F عملياً."
+  }
+ ]
 }

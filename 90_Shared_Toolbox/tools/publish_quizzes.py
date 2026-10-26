@@ -148,7 +148,12 @@ def merge_question(vault_q: dict, portal_q: dict) -> dict:
     p = portal_flat(portal_q)
 
     # the arabic stem
-    if not has_ar(out.get("question_ar")) and has_ar(p["question_ar"]):
+    # A value only counts as MISSING when it is blank. An option that carries no
+    # Arabic letters is not a missing translation: it is a deliberate value that
+    # is the same in both languages (a number, an acronym, a standard name such
+    # as "OCTAVE, FAIR, and NIST RMF."). Inheriting over those used to overwrite
+    # freshly authored content with the portal's stale translation.
+    if not str(out.get("question_ar") or "").strip() and has_ar(p["question_ar"]):
         out["question_ar"] = p["question_ar"]
     if not out.get("text") and p["text"]:
         out["text"] = p["text"]
@@ -157,7 +162,7 @@ def merge_question(vault_q: dict, portal_q: dict) -> dict:
     pa = p["options_ar"] or []
     if len(oa) == len(pa):
         for i in range(len(oa)):
-            if not has_ar(oa[i]) and has_ar(pa[i]):
+            if not str(oa[i] or "").strip() and str(pa[i] or "").strip():
                 oa[i] = pa[i]
         out["options_ar"] = oa
     # the explanation (the vault sometimes has none at all)

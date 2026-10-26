@@ -1,479 +1,421 @@
 {
-  "schema_version": 2,
-  "subject_id": "01_Cyber_Security",
-  "subject_title": "الأمن السيبراني",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch01_T03_CIA_Triad_and_Utility_Function",
-  "topic": "The CIA Triad, Security Utility Function & Standard Controls",
-  "topic_ar": "ثالوث CIA ودالة المنفعة الأمنية U(C,I,A) والتقنيات المعيارية",
-  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
-  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
-  "subject": "01_Cyber_Security",
-  "questions": [
-    {
-      "id": "q1",
-      "concept_id": "cia_triad_backbone_concept",
-      "bloom_level": "Remember",
-      "question": "Which foundational security construct is canonically recognized as the backbone of all cybersecurity engineering?",
-      "question_ar": "أي نموذج أمني تأسيسي يُعد معيارياً بمثابة العمود الفقري لكافة هندسة وتطبيقات الأمن السيبراني؟",
-      "options": [
-        "The TCP/IP Internet protocol suite four-layer transport model.",
-        "The Bell-LaPadula confidentiality formal multi-level security model.",
-        "The OSI Reference Model.",
-        "The CIA Triad (Confidentiality, Integrity, and Availability)."
-      ],
-      "options_ar": [
-        "حزمة بروتوكولات الإنترنت TCP/IP المكونة من أربع طبقات نقل للبيانات.",
-        "نموذج Bell-LaPadula الرياضي لسرية البيانات متعددة المستويات الأمنية.",
-        "النموذج المرجعي المفتوح OSI لطبقات بروتوكولات الاتصالات السبع المعيارية.",
-        "ثالوث CIA (السرية Confidentiality، والسلامة Integrity، والتوافر Availability)."
-      ],
-      "options_en": [
-        "The TCP/IP Internet protocol suite four-layer transport model.",
-        "The Bell-LaPadula confidentiality formal multi-level security model.",
-        "The OSI Reference Model.",
-        "The CIA Triad (Confidentiality, Integrity, and Availability)."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The lecture text opens Section 3 explicitly: The CIA Triad (Confidentiality, Integrity, Availability) is the backbone of cybersecurity.",
-      "explanation_ar": "تؤكد المحاضرة حرفياً أن ثالوث CIA (السرية، السلامة، التوافر) هو العمود الفقري للأمن السيبراني وأساس كل تقييم وتحليل أمني."
-    },
-    {
-      "id": "q2",
-      "concept_id": "confidentiality_formal_definition",
-      "bloom_level": "Remember",
-      "question": "What is the precise formal definition of the Confidentiality pillar within the CIA Triad?",
-      "question_ar": "ما التعريف الرسمي الدقيق لركن السرية Confidentiality ضمن ثالوث CIA؟",
-      "options": [
-        "Ensuring that recorded data records cannot be altered or modified by authors.",
-        "Preventing unauthorized observation, disclosure, and access to data assets.",
-        "Guaranteeing that data remains accessible under severe network flooding.",
-        "Verifying that the computational algorithm completes within linear execution time."
-      ],
-      "options_ar": [
-        "ضمان عدم تعديل السجلات المخزنة أو تغيير محتواها بواسطة كتابها الأصليين.",
-        "منع الوصول غير المصرّح به، أو الاطلاع، أو كشف الأصول والبيانات لأطراف غير مخولة.",
-        "ضمان بقاء البيانات والخدمات متاحة للمستخدمين تحت وطأة طوفان حزم الشبكة.",
-        "التحقق من أن الخوارزمية الحسابية تكمل معالجتها ضمن زمن تنفيذ خطي محدد."
-      ],
-      "options_en": [
-        "Ensuring that recorded data records cannot be altered or modified by authors.",
-        "Preventing unauthorized observation, disclosure, and access to data assets.",
-        "Guaranteeing that data remains accessible under severe network flooding.",
-        "Verifying that the computational algorithm completes within linear execution time."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Confidentiality is verbatim: Preventing unauthorized access to data. Integrity handles alteration, and Availability handles accessibility.",
-      "explanation_ar": "تعريف السرية نصاً هو: منع الوصول غير المصرّح به إلى البيانات. بينما التعديل يخص السلامة، وإتاحة الخدمة تخص التوافر."
-    },
-    {
-      "id": "q3",
-      "concept_id": "confidentiality_encryption_mechanism",
-      "bloom_level": "Understand",
-      "question": "How does cryptographic encryption directly enforce the Confidentiality requirement for stored or transmitted data?",
-      "question_ar": "كيف يفرض التشفير التشفيري ركن السرية Confidentiality بصورة مباشرة على البيانات المخزنة أو المنقولة؟",
-      "options": [
-        "Generates immutable version history snapshots across distributed git repositories.",
-        "Transforms plaintext into unreadable ciphertext decryptable only with the secret key.",
-        "Reroutes excess network user traffic dynamically to secondary server replicas.",
-        "Detects and drops malformed network packets at the perimeter routing boundary."
-      ],
-      "options_ar": [
-        "إنشاء لقطات تاريخية غير قابلة للتغيير لإصدارات الملفات في المستودعات الموزعة.",
-        "تحويل النص الصريح إلى نص معمي غير مفهوم لا يمكن فكه إلا بالمفتاح السري المخصص.",
-        "إعادة توجيه حركة المرور الفائضة ديناميكياً إلى خوادم وسيطة بديلة متزامنة.",
-        "اكتشاف حزم البيانات المشوهة وإسقاطها فوراً عند حدود موجهات الشبكة الخارجية."
-      ],
-      "options_en": [
-        "Generates immutable version history snapshots across distributed git repositories.",
-        "Transforms plaintext into unreadable ciphertext decryptable only with the secret key.",
-        "Reroutes excess network user traffic dynamically to secondary server replicas.",
-        "Detects and drops malformed network packets at the perimeter routing boundary."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Encryption is the primary confidentiality control, scrambling plaintext into ciphertext so intercepted data cannot be read without the key.",
-      "explanation_ar": "التشفير Encryption هو التقنية الأساسية لحفظ السرية؛ حيث يحول البيانات الصريحة إلى صيغة غير مفهومة Ciphertext تمنع المتلصصين من قراءتها بدون المفتاح."
-    },
-    {
-      "id": "q4",
-      "concept_id": "confidentiality_access_controls_role",
-      "bloom_level": "Understand",
-      "question": "What role do access controls perform in maintaining confidentiality across enterprise information systems?",
-      "question_ar": "ما الدور الذي تؤديه ضوابط الوصول Access Controls في الحفاظ على السرية في أنظمة المؤسسة؟",
-      "options": [
-        "Maintain uninterrupted cooling and diesel generator power during municipal electric outages.",
-        "Calculate cryptographic SHA-256 hashes to detect unauthorized database row modifications.",
-        "Enforce authentication and least privilege permissions, restricting sensitive data to authorized roles.",
-        "Distribute computational batch jobs evenly across idle graphics processing cluster units."
-      ],
-      "options_ar": [
-        "ضمان التبريد المستمر ومولدات الديزل الاحتياطية أثناء انقطاع التيار الكهربائي العام.",
-        "حساب بصمات التجزئة SHA-256 لكشف أي تعديل غير مصرح به في حقول قواعد البيانات.",
-        "فرض المصادقة وصلاحيات الحد الأدنى، لمنع وصول أي مستخدم لبيانات لا تخص دوره الوظيفي.",
-        "توزيع مهام المعالجة الحسابية بالتساوي على وحدات معالجة الرسوميات غير المشغولة."
-      ],
-      "options_en": [
-        "Maintain uninterrupted cooling and diesel generator power during municipal electric outages.",
-        "Calculate cryptographic SHA-256 hashes to detect unauthorized database row modifications.",
-        "Enforce authentication and least privilege permissions, restricting sensitive data to authorized roles.",
-        "Distribute computational batch jobs evenly across idle graphics processing cluster units."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Access controls (like RBAC/ACLs) ensure that only authorized, authenticated users with legitimate operational needs view confidential assets.",
-      "explanation_ar": "ضوابط الوصول Access Controls تحدد هوية المستخدم وتفرض صلاحيات الحد الأدنى Least Privilege؛ بحيث لا يطّلع على البيانات إلا المخولون رسمياً."
-    },
-    {
-      "id": "q5",
-      "concept_id": "confidentiality_vpn_secure_tunneling",
-      "bloom_level": "Understand",
-      "question": "How do Virtual Private Networks (VPNs) protect data confidentiality over untrusted public transmission channels?",
-      "question_ar": "كيف تحمي الشبكات الخاصة الافتراضية VPNs سرية البيانات عبر قنوات الاتصال العامة غير الموثوقة؟",
-      "options": [
-        "Replicate corporate web portals onto multiple geographical edge data centers worldwide.",
-        "Calculate continuous parity check bits to correct corrupted packet payloads on arrival.",
-        "Encapsulate and encrypt data traffic inside secure virtual tunnels, protecting it from interception.",
-        "Block employee workstation internet browsing during standard operational business hours."
-      ],
-      "options_ar": [
-        "استنساخ البوابات الإلكترونية للشركة على مراكز بيانات جغرافية موزعة حول العالم.",
-        "حساب بتات التكافؤ باستمرار لتصحيح حزم البيانات التالفة تلقائياً فور وصولها للهدف.",
-        "تغليف وتشفير حركة البيانات داخل أنفاق افتراضية آمنة، مما يحميها من التنصت أثناء نقلها.",
-        "حظر تصفح الإنترنت لموظفي محطات العمل أثناء ساعات الدوام التشغيلية الرسمية للشركة."
-      ],
-      "options_en": [
-        "Replicate corporate web portals onto multiple geographical edge data centers worldwide.",
-        "Calculate continuous parity check bits to correct corrupted packet payloads on arrival.",
-        "Encapsulate and encrypt data traffic inside secure virtual tunnels, protecting it from interception.",
-        "Block employee workstation internet browsing during standard operational business hours."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "VPNs build encrypted tunnels across untrusted networks (e.g. public internet), preserving confidentiality against eavesdropping and man-in-the-middle attacks.",
-      "explanation_ar": "الشبكات الافتراضية VPNs تنشئ نفقاً مشفراً Secure Tunnel عبر الإنترنت العام، فتمنع أي طرف وسيط من التجسس على البيانات المنقولة أو الاطلاع عليها."
-    },
-    {
-      "id": "q6",
-      "concept_id": "integrity_formal_definition",
-      "bloom_level": "Remember",
-      "question": "What is the exact textbook definition of the Integrity pillar in the CIA Triad?",
-      "question_ar": "ما التعريف النصي الدقيق في المنهج لركن السلامة Integrity ضمن ثالوث CIA؟",
-      "options": [
-        "Restricting application administrative settings strictly to verified senior corporate directors.",
-        "Retaining archived digital communication transcripts for a statutory duration of seven years.",
-        "Ensuring that data remains accurate, complete, trustworthy, and completely unaltered.",
-        "Ensuring that resources remain responsive to continuous external web query requests."
-      ],
-      "options_ar": [
-        "قصر إعدادات إدارة التطبيقات حصرياً على كبار المديرين التنفيذيين المعتمدين في الشركة.",
-        "الاحتفاظ بسجلات المراسلات الرقمية المؤرشفة لمدة قانونية إلزامية قدرها سبع سنوات.",
-        "ضمان أن البيانات دقيقة وكاملة وجديرة بالثقة ولم تتعرض لأي تعديل أو تلاعب غير مصرّح.",
-        "ضمان استجابة الموارد والخدمات لطلبات استعلام الويب الخارجية المستمرة بدون تأخير."
-      ],
-      "options_en": [
-        "Restricting application administrative settings strictly to verified senior corporate directors.",
-        "Retaining archived digital communication transcripts for a statutory duration of seven years.",
-        "Ensuring that data remains accurate, complete, trustworthy, and completely unaltered.",
-        "Ensuring that resources remain responsive to continuous external web query requests."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Integrity is verbatim: Ensuring data is accurate and unaltered.",
-      "explanation_ar": "تعريف السلامة Integrity نصاً في الملزمة هو: ضمان أن البيانات دقيقة ولم تتغيّر (Ensuring data is accurate and unaltered)."
-    },
-    {
-      "id": "q7",
-      "concept_id": "integrity_hashing_sha256_fingerprint",
-      "bloom_level": "Understand",
-      "question": "Why is cryptographic hashing with algorithms like SHA-256 the primary mechanism for verifying data integrity?",
-      "question_ar": "لماذا يُعد التجزئة بخوارزميات مثل SHA-256 الآلية الأساسية للتحقق من سلامة البيانات Integrity؟",
-      "options": [
-        "Generates a unique fixed-length digest; even a single bit change alters the resulting hash output.",
-        "Produces a variable-length ciphertext that automatically compresses bulk multimedia storage files.",
-        "Translates high-level programming instructions into low-level machine assembly code modules.",
-        "Allocates memory dynamically to prevent buffer overflow exceptions in compiled C routines."
-      ],
-      "options_ar": [
-        "تنتج بصمة رقمية ثابتة الطول؛ وأي تعديل ولو بحرف أو بت واحد يغيّر البصمة الناتجة بالكامل.",
-        "تنتج نصاً معمى متغير الطول يضغط ملفات الوسائط المتعددة التخزينية الضخمة تلقائياً.",
-        "تترجم تعليمات البرمجة عالية المستوى إلى شيفرة لغة التجميع المنفذة مباشرة على المعالج.",
-        "تخصص الذاكرة ديناميكياً لمنع حدوث أخطاء طفح الذاكرة المؤقتة في دوال لغة C البرمجية."
-      ],
-      "options_en": [
-        "Generates a unique fixed-length digest; even a single bit change alters the resulting hash output.",
-        "Produces a variable-length ciphertext that automatically compresses bulk multimedia storage files.",
-        "Translates high-level programming instructions into low-level machine assembly code modules.",
-        "Allocates memory dynamically to prevent buffer overflow exceptions in compiled C routines."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Cryptographic hash functions are one-way and avalanche-sensitive: changing a single bit produces a completely different hash digest, exposing any unauthorized tampering.",
-      "explanation_ar": "دوال التجزئة مثل SHA-256 تُنتج بصمة فريدة ثابتة الحجم (256 بت)؛ ولو تغيّر في الملف حرف واحد فقط، تتغير البصمة جذرياً، مما يكشف التعديل فوراً."
-    },
-    {
-      "id": "q8",
-      "concept_id": "integrity_digital_signatures_origin",
-      "bloom_level": "Understand",
-      "question": "What dual security guarantees do digital signatures provide to the Integrity pillar?",
-      "question_ar": "ما الضمانتان الأمنيتان اللتان يقدمهما التوقيع الرقمي Digital Signature لتعزيز ركن السلامة؟",
-      "options": [
-        "Verify the authentic origin of the data message and prove that contents were not altered in transit.",
-        "Provide automatic network traffic load balancing and hardware failover clustering capabilities.",
-        "Encrypt server memory caches to prevent cold-boot hardware side-channel attacks on endpoints.",
-        "Ensure data compression to minimize storage footprints while speeding up physical tape reads."
-      ],
-      "options_ar": [
-        "إثبات المصدر الحقيقي المرسل للرسالة والتحقق من عدم تعرض محتواها لأي تعديل أثناء النقل.",
-        "توفير موازنة الأحمال التلقائية لحركة مرور الشبكة ومضاعفة الخوادم لمقاومة الأعطال.",
-        "تشفير الذاكرة العشوائية للخادم لمنع هجمات القنوات الجانبية المادية عند الإقلاع البارد.",
-        "ضمان ضغط البيانات لتقليص المساحات التخزينية وتسريع قراءة الأشرطة الممغنطة المادية."
-      ],
-      "options_en": [
-        "Verify the authentic origin of the data message and prove that contents were not altered in transit.",
-        "Provide automatic network traffic load balancing and hardware failover clustering capabilities.",
-        "Encrypt server memory caches to prevent cold-boot hardware side-channel attacks on endpoints.",
-        "Ensure data compression to minimize storage footprints while speeding up physical tape reads."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Digital signatures combine hashing with asymmetric encryption (signer's private key), providing message integrity and non-repudiation of origin.",
-      "explanation_ar": "التوقيع الرقمي Digital Signature يدمج التجزئة مع المفتاح الخاص للمرسل، فيثبت أصالة المصدر Authenticity ويضمن عدم التلاعب بالبيانات Integrity."
-    },
-    {
-      "id": "q9",
-      "concept_id": "integrity_version_control_tracking",
-      "bloom_level": "Understand",
-      "question": "Why is version control officially categorized as an integrity technique in the lecture notes?",
-      "question_ar": "لماذا صُنفت أنظمة التحكم بالإصدارات Version Control كتقنية سلامة Integrity في المحاضرة؟",
-      "options": [
-        "Restricts confidential database view permissions exclusively to executive vice presidents.",
-        "Tracks every change with timestamps and authors, enabling auditing and restoration of original states.",
-        "Protects physical fiber optic backbone cables from seismic earth movement disruptions.",
-        "Prevents external web traffic spikes from consuming excessive application bandwidth resources."
-      ],
-      "options_ar": [
-        "تقصر صلاحيات الاطلاع على قواعد البيانات السرية على نواب الرئيس التنفيذيين في الشركة.",
-        "تتبع كل تعديل مع توثيق وقت وهوية القائم به، وتتيح التدقيق واسترجاع الحالة الأصلية عند التلاعب.",
-        "تحمي كابلات الألياف الضوئية المادية تحت الأرض من أضرار الزلازل والاهتزازات الأرضية.",
-        "تمنع طفرات ترافيك الويب الخارجية من استهلاك سعات الاتصال للتطبيقات المؤسسية الحيوية."
-      ],
-      "options_en": [
-        "Restricts confidential database view permissions exclusively to executive vice presidents.",
-        "Tracks every change with timestamps and authors, enabling auditing and restoration of original states.",
-        "Protects physical fiber optic backbone cables from seismic earth movement disruptions.",
-        "Prevents external web traffic spikes from consuming excessive application bandwidth resources."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Version control records an audit trail of who modified what and when, allowing detection of unauthorized changes and rollback to clean states.",
-      "explanation_ar": "التحكم بالإصدارات Version Control يوفر سجلاً تدقيقياً يبيّن متى ومن غيّر المحتوى، ويتيح الرجوع للإصدار الدقيق السابق في حال حدوث تعديل خاطئ أو خبيث."
-    },
-    {
-      "id": "q10",
-      "concept_id": "availability_formal_definition",
-      "bloom_level": "Remember",
-      "question": "What is the canonical textbook definition of the Availability pillar in the CIA Triad?",
-      "question_ar": "ما التعريف النصي المعياري لركن التوافر Availability ضمن ثالوث CIA؟",
-      "options": [
-        "Executing vulnerability penetration scans against production application interfaces weekly.",
-        "Preventing unauthorized modification of financial records during accounting reconciliation.",
-        "Ensuring resources and data services are accessible to authorized entities whenever needed.",
-        "Scrambling confidential messages into ciphertext before broadcasting across public Wi-Fi."
-      ],
-      "options_ar": [
-        "تنفيذ اختبارات الاختراق وفحص الثغرات الأمنية على واجهات التطبيقات الفعلية أسبوعياً.",
-        "منع التعديل غير المصرّح به على السجلات المالية أثناء مطابقة الحسابات الختامية.",
-        "ضمان أن الموارد والخدمات والبيانات متاحة وقابلة للوصول للمخولين في أي وقت يحتاجونها.",
-        "تعمية الرسائل السرية إلى نصوص مشفرة قبل إرسالها عبر شبكات Wi-Fi العامة غير الآمنة."
-      ],
-      "options_en": [
-        "Executing vulnerability penetration scans against production application interfaces weekly.",
-        "Preventing unauthorized modification of financial records during accounting reconciliation.",
-        "Ensuring resources and data services are accessible to authorized entities whenever needed.",
-        "Scrambling confidential messages into ciphertext before broadcasting across public Wi-Fi."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Availability is verbatim: Ensuring resources are accessible when needed.",
-      "explanation_ar": "تعريف التوافر Availability نصاً في المنهج هو: ضمان أن الموارد والخدمات متاحة وقابلة للوصول عند الحاجة إليها (Ensuring resources are accessible when needed)."
-    },
-    {
-      "id": "q11",
-      "concept_id": "availability_redundancy_resilience",
-      "bloom_level": "Understand",
-      "question": "How does redundancy protect service availability against unplanned hardware failures?",
-      "question_ar": "كيف تحمي تقنية التكرار والازدواجية Redundancy توافر الخدمة ضد الأعطال المادية المفاجئة؟",
-      "options": [
-        "Restricts employee administrative rights to prevent accidental system configuration changes.",
-        "Maintains duplicate components or servers so a backup takes over immediately if the primary fails.",
-        "Calculates cryptographic hash digests to identify unauthorized source code tampering.",
-        "Implements strict biometric retina scanners at entrance doors to corporate data centers."
-      ],
-      "options_ar": [
-        "تقييد صلاحيات الموظفين الإدارية لمنع إجراء تغييرات خاطئة وغير مقصودة على إعدادات النظام.",
-        "توفير خوادم ومكونات مادية متطابقة بديلة تعمل فوراً لتسلم المهام إذا تعطل المكوّن الأساسي.",
-        "حساب البصمات التشفيرية للتحقق من خلو الشيفرة المصدرية من أي تعديلات برمجية خبيثة.",
-        "تطبيق ماسحات بيومترية لقزحية العين عند بوابات الدخول لمراكز البيانات التابعة للمؤسسة."
-      ],
-      "options_en": [
-        "Restricts employee administrative rights to prevent accidental system configuration changes.",
-        "Maintains duplicate components or servers so a backup takes over immediately if the primary fails.",
-        "Calculates cryptographic hash digests to identify unauthorized source code tampering.",
-        "Implements strict biometric retina scanners at entrance doors to corporate data centers."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Redundancy eliminates single points of failure by keeping duplicate servers, power units, or disks ready to assume workload instantly.",
-      "explanation_ar": "التكرار Redundancy يقضي على نقطة الفشل الفردية Single Point of Failure بتوفير عتاد وخوادم ونسخ احتياطية موازية جاهزة للعمل فور تعطل الأصل."
-    },
-    {
-      "id": "q12",
-      "concept_id": "availability_load_balancing_distribution",
-      "bloom_level": "Understand",
-      "question": "What is the primary function of load balancing in sustaining application availability?",
-      "question_ar": "ما الوظيفة التشغيلية الأساسية لموازنة الأحمال Load Balancing في استدامة توافر التطبيقات؟",
-      "options": [
-        "Enforcing mandatory password complexity rules across enterprise Active Directory domains.",
-        "Verifying author digital signatures on incoming public service petition documents.",
-        "Encrypting database transaction entries with 256-bit symmetric block ciphers.",
-        "Distributing incoming user traffic across multiple servers to prevent individual node exhaustion."
-      ],
-      "options_ar": [
-        "فرض سياسات تعقيد كلمات المرور الإلزامية على نطاقات الدليل النشط في خوادم المؤسسة.",
-        "التحقق من التواقيع الرقمية للمرسلين على وثائق المعاملات والعرائض الرسمية الواردة.",
-        "تشفير قيود المعاملات في قواعد البيانات بخوارزميات التشفير المتناظر ذات 256 بت.",
-        "توزيع حركة المرور الواردة بالتوازن على عدة خوادم لمنع إرهاق أي خادم فردي وتوقفه عن العمل."
-      ],
-      "options_en": [
-        "Enforcing mandatory password complexity rules across enterprise Active Directory domains.",
-        "Verifying author digital signatures on incoming public service petition documents.",
-        "Encrypting database transaction entries with 256-bit symmetric block ciphers.",
-        "Distributing incoming user traffic across multiple servers to prevent individual node exhaustion."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "Load balancing distributes incoming traffic across server pools so no single node is overwhelmed, preserving throughput and uptime.",
-      "explanation_ar": "موازنة الأحمال Load Balancing توزع طلبات المستخدمين وحركة المرور بانتظام عبر عدة سيرفرات لمنع اختناق أو انهيار خادم معين تحت الضغط."
-    },
-    {
-      "id": "q13",
-      "concept_id": "availability_ddos_mitigation_defense",
-      "bloom_level": "Understand",
-      "question": "How do DDoS mitigation systems prevent malicious botnet attacks from compromising availability?",
-      "question_ar": "كيف تحمي أنظمة تخفيف هجمات DDoS التوافر من هجمات شبكات البوتنت الخبيثة المغرقة؟",
-      "options": [
-        "Scrub and filter malicious flood traffic through specialized centers while routing legitimate requests.",
-        "Sign all outgoing server responses with asymmetric private cryptographic security certificates.",
-        "Convert dynamic interactive database applications into static unformatted text web documents.",
-        "Revoke active network accounts of all remote employees during observed high-traffic hours."
-      ],
-      "options_ar": [
-        "تصفية وتنقية الترافيك المغرق في مراكز تنظيف متخصصة مع تمرير الطلبات الشرعية الطبيعية للخوادم.",
-        "توقيع كافة الردود الصادرة من الخادم بشهادات الأمان التشفيرية اللامتناظرة المعتمدة رسمياً.",
-        "تحويل تطبيقات الويب التفاعلية إلى مستندات نصية بسيطة غير منسقة لتقليل حجم البيانات.",
-        "إلغاء تنشيط حسابات الموظفين عن بُعد فور رصد أي ارتفاع ملحوظ في حركة مرور الشبكة."
-      ],
-      "options_en": [
-        "Scrub and filter malicious flood traffic through specialized centers while routing legitimate requests.",
-        "Sign all outgoing server responses with asymmetric private cryptographic security certificates.",
-        "Convert dynamic interactive database applications into static unformatted text web documents.",
-        "Revoke active network accounts of all remote employees during observed high-traffic hours."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "DDoS mitigation diverts traffic to scrubbing centers, filtering volumetric junk traffic (SYN floods, UDP reflection) while letting real user requests reach the server.",
-      "explanation_ar": "تقنيات DDoS Mitigation توجه الترافيك الضخم إلى مراكز تنقية Scrubbing Centers لعزل حزم الإغراق الخبيثة والسماح للمستخدمين الشرعيين بالوصول للخدمة."
-    },
-    {
-      "id": "q14",
-      "concept_id": "security_utility_function_structure",
-      "bloom_level": "Remember",
-      "question": "In the Security Utility Function $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$, what do the symbols $\\alpha$, $\\beta$, and $\\gamma$ denote?",
-      "question_ar": "في دالة المنفعة الأمنية $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$، ماذا تمثل الرموز $\\alpha$ و $\\beta$ و $\\gamma$؟",
-      "options": [
-        "The measured execution durations in nanoseconds for cipher, digest, and packet routing routines.",
-        "The monetary capital cost required to purchase commercial software licenses for each pillar.",
-        "The calendar expiration months for encryption, hashing, and load balancer digital certificates.",
-        "Domain-specific importance weights assigned to Confidentiality, Integrity, and Availability."
-      ],
-      "options_ar": [
-        "زمن التنفيذ المقاس بالنانو ثانية لخوارزميات التشفير والبصمة الرقمية وتوجيه الحزم في الشبكة.",
-        "التكلفة المالية الرأسمالية المطلوبة لشراء التراخيص البرمجية التجارية المخصصة لكل ركن.",
-        "أشهر انتهاء الصلاحية الزمنية لشهادات الأمان الخاصة بالتشفير والتجزئة وموازنات الأحمال.",
-        "أوزان الأهمية النسبية المخصصة لكل من السرية والسلامة والتوافر وفق متطلبات كل قطاع تشغيلي."
-      ],
-      "options_en": [
-        "The measured execution durations in nanoseconds for cipher, digest, and packet routing routines.",
-        "The monetary capital cost required to purchase commercial software licenses for each pillar.",
-        "The calendar expiration months for encryption, hashing, and load balancer digital certificates.",
-        "Domain-specific importance weights assigned to Confidentiality, Integrity, and Availability."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "Alpha, beta, and gamma are relative importance weights reflecting the organization's domain priorities, applied to normalized scores C, I, and A (each in [0, 1]).",
-      "explanation_ar": "تمثل $\\alpha, \\beta, \\gamma$ أوزان الأهمية لنظام معيّن؛ فالأوزان ليست ثابتة بل تتغير حسب طبيعة عمل المؤسسة وأولوياتها الأمنية."
-    },
-    {
-      "id": "q15",
-      "concept_id": "utility_domain_weights_healthcare_alpha",
-      "bloom_level": "Analyze",
-      "question": "Why does a healthcare clinical hospital system assign highest priority weight to Confidentiality ($\\alpha$) over Availability ($\\gamma$)?",
-      "question_ar": "لماذا تمنح أنظمة الرعاية الصحية والمستشفيات الوزن الأكبر للسرية ($\\alpha$) مقارنة بالتوافر ($\\gamma$) في دالة المنفعة؟",
-      "options": [
-        "Violating patient diagnostic medical privacy causes permanent, severe legal and societal harm.",
-        "Medical regulatory laws mandate operating diagnostic MRI scanners completely disconnected from power.",
-        "Hospital systems lack battery backups and intentionally expect daily routine power shutdowns.",
-        "Clinical laboratories cannot deploy symmetric encryption without destroying patient blood samples."
-      ],
-      "options_ar": [
-        "انتهاك خصوصية السجلات الطبية للمرضى يُحدث أضراراً قانونية واجتماعية جسيمة لا يمكن تداركها.",
-        "قوانين الرعاية الصحية تلزم أجهزة الرنين المغناطيسي بالعمل وهي مفصولة كلياً عن شبكة الكهرباء.",
-        "أنظمة المستشفيات تفتقر للبطاريات الاحتياطية وتتوقع انقطاع التيار الكهربائي اليومي كأمر معتاد.",
-        "مختبرات الفحص السريري لا يمكنها تطبيق التشفير دون التسبب في إتلاف عينات الدم المخبرية."
-      ],
-      "options_en": [
-        "Violating patient diagnostic medical privacy causes permanent, severe legal and societal harm.",
-        "Medical regulatory laws mandate operating diagnostic MRI scanners completely disconnected from power.",
-        "Hospital systems lack battery backups and intentionally expect daily routine power shutdowns.",
-        "Clinical laboratories cannot deploy symmetric encryption without destroying patient blood samples."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The lecture highlights: In healthcare, confidentiality (alpha) has higher weight than availability because disclosing sensitive health history causes irreversible harm.",
-      "explanation_ar": "أكدت المحاضرة: «بالرعاية الصحية، السرية ($\\alpha$) وزنها أعلى من التوافر»؛ لأن تسريب السجلات الطبية يُرتّب خرقاً دائماً للخصوصية ومساءلة قانونية لا تعوض، بينما التوقف المؤقت يُدار إجرائياً."
-    },
-    {
-      "id": "q16",
-      "concept_id": "utility_domain_weights_banking_beta",
-      "bloom_level": "Analyze",
-      "question": "In financial core banking systems, why is Integrity ($\\beta$) assigned the dominant weight in the security utility equation?",
-      "question_ar": "في الأنظمة المصرفية المركزية، لماذا يُمنح ركن السلامة ($\\beta$) الوزن الأعلى في معادلة المنفعة الأمنية؟",
-      "options": [
-        "Financial institutions operate without access control lists or database authentication credentials.",
-        "Commercial banks prioritize aesthetic web design over account transaction ledger accuracy.",
-        "Banking regulations require automated ATM machines to power down during overnight operating hours.",
-        "Unauthorized ledger alteration corrupts account balances, causing immediate catastrophic financial losses."
-      ],
-      "options_ar": [
-        "المؤسسات المالية تعمل في الواقع بدون أي قوائم لضبط الوصول أو بيانات اعتماد للمستخدمين.",
-        "البنوك التجارية تقدم التصميم الجمالي للبوابات الإلكترونية على دقة قيود وسجلات الحسابات.",
-        "اللوائح المصرفية تشترط إطفاء شاشات أجهزة الصراف الآلي ATM بالكامل أثناء ساعات الليل المتأخرة.",
-        "أي تعديل غير مصرح به على القيود يفسد أرصدة الحسابات ويؤدي إلى خسائر مالية كارثية وفقدان الثقة."
-      ],
-      "options_en": [
-        "Financial institutions operate without access control lists or database authentication credentials.",
-        "Commercial banks prioritize aesthetic web design over account transaction ledger accuracy.",
-        "Banking regulations require automated ATM machines to power down during overnight operating hours.",
-        "Unauthorized ledger alteration corrupts account balances, causing immediate catastrophic financial losses."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "In banking, integrity (beta) is paramount because tampering with ledger balances or transaction amounts causes immediate, catastrophic financial ruin.",
-      "explanation_ar": "في القطاع المصرفي، السلامة Integrity ($\\beta$) هي الأهم؛ لأن أي تعديل ولو برقم واحد في رصيد الحساب المالي يُعد كارثة مصرفية ويفقد البنك مصداقيته القانونية."
-    }
-  ]
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch01_T03_CIA_Triad_and_Utility_Function",
+ "topic": "The CIA Triad, Technique Lists & Utility Weights",
+ "topic_ar": "ثالوث CIA وقوائم التقنيات وأوزان المنفعة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "cia_triad_is_backbone",
+   "bloom_level": "Remember",
+   "question": "Which construct does the lecture call the backbone of cybersecurity?",
+   "question_ar": "أي بناء تسمّيه المحاضرة العمود الفقري للأمن السيبراني؟",
+   "options": [
+    "The CIA triad.",
+    "The OSI model.",
+    "The TCP stack.",
+    "The NIST model."
+   ],
+   "options_ar": [
+    "ثالوث CIA.",
+    "نموذج OSI.",
+    "حزمة TCP.",
+    "نموذج NIST."
+   ],
+   "options_en": [
+    "The CIA triad.",
+    "The OSI model.",
+    "The TCP stack.",
+    "The NIST model."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The lecture states plainly that the CIA triad is the backbone of cybersecurity, and it highlights the whole block.",
+   "explanation_ar": "المحاضرة تنص صريحاً على أن ثالوث CIA هو العمود الفقري للأمن السيبراني، وقد ظلّلت الكتلة بأكملها."
+  },
+  {
+   "id": "q2",
+   "concept_id": "cia_confidentiality_definition",
+   "bloom_level": "Remember",
+   "question": "What does confidentiality protect data against?",
+   "question_ar": "ماذا تحمي السرية البيانات منه؟",
+   "options": [
+    "Loss of access when it is needed.",
+    "Loss of accuracy during transfer.",
+    "Unauthorised reading or disclosure.",
+    "Unauthorised change or deletion of the record."
+   ],
+   "options_ar": [
+    "فقدان الوصول إلى البيانات عند الحاجة.",
+    "فقدان دقة البيانات أثناء النقل.",
+    "القراءة أو الكشف غير المصرّح به.",
+    "التغيير أو الحذف غير المصرّح به."
+   ],
+   "options_en": [
+    "Loss of access when it is needed.",
+    "Loss of accuracy during transfer.",
+    "Unauthorised reading or disclosure.",
+    "Unauthorised change or deletion of the record."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Confidentiality is about preventing unauthorised access, which means stopping people from reading or disclosing data they should not see.",
+   "explanation_ar": "السرية تخص منع الوصول غير المصرّح به، أي منع الأشخاص من قراءة أو كشف بيانات لا يحق لهم رؤيتها."
+  },
+  {
+   "id": "q3",
+   "concept_id": "cia_integrity_definition",
+   "bloom_level": "Remember",
+   "question": "What does integrity guarantee about data?",
+   "question_ar": "ماذا تضمن السلامة بشأن البيانات؟",
+   "options": [
+    "That it is stored in more than one place.",
+    "That it is accurate, complete, and unaltered.",
+    "That it is hidden from unauthorised readers.",
+    "That it is reachable whenever it is actually needed."
+   ],
+   "options_ar": [
+    "أنها محفوظة في أكثر من مكان واحد.",
+    "أنها دقيقة وكاملة وغير معدّلة.",
+    "أنها مخفية عن القارئ غير المصرّح به.",
+    "أنها متاحة كلما احتاجها المستخدم."
+   ],
+   "options_en": [
+    "That it is stored in more than one place.",
+    "That it is accurate, complete, and unaltered.",
+    "That it is hidden from unauthorised readers.",
+    "That it is reachable whenever it is actually needed."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Integrity means the data stays accurate and unaltered, with nothing added, removed, or changed behind your back.",
+   "explanation_ar": "السلامة تعني أن البيانات تبقى دقيقة وغير معدّلة، دون إضافة أو حذف أو تغيير يجري من دون علمك."
+  },
+  {
+   "id": "q4",
+   "concept_id": "cia_availability_definition",
+   "bloom_level": "Remember",
+   "question": "What does availability guarantee?",
+   "question_ar": "ماذا يضمن التوافر؟",
+   "options": [
+    "That resources are always encrypted before they are stored.",
+    "That resources are audited after every single change.",
+    "That resources are backed up to a second location.",
+    "That resources are accessible whenever they are needed."
+   ],
+   "options_ar": [
+    "أن الموارد مشفّرة قبل أن تُخزَّن.",
+    "أن الموارد تُدقَّق بعد كل تغيير يجري عليها.",
+    "أن الموارد منسوخة إلى موقع ثانٍ.",
+    "أن الموارد متاحة كلما دعت الحاجة إليها."
+   ],
+   "options_en": [
+    "That resources are always encrypted before they are stored.",
+    "That resources are audited after every single change.",
+    "That resources are backed up to a second location.",
+    "That resources are accessible whenever they are needed."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Availability is about access when needed. Backups and encryption are means, not the guarantee itself.",
+   "explanation_ar": "التوافر يخص الوصول عند الحاجة. النسخ الاحتياطي والتشفير وسائل وليست الضمان نفسه."
+  },
+  {
+   "id": "q5",
+   "concept_id": "cia_confidentiality_techniques",
+   "bloom_level": "Remember",
+   "question": "Which techniques does the lecture list under confidentiality?",
+   "question_ar": "أي تقنيات تسردها المحاضرة تحت السرية؟",
+   "options": [
+    "Encryption, access controls, and VPN tunnels.",
+    "Hashing, digital signatures, and version control.",
+    "Redundancy, load balancing, and DDoS mitigation.",
+    "Firewalls, IDS/IPS, and network segmentation."
+   ],
+   "options_ar": [
+    "التشفير وضوابط الوصول والشبكات الخاصة الافتراضية.",
+    "التجزئة والتواقيع الرقمية والتحكم بالإصدارات.",
+    "التكرار وموازنة الحمل والتخفيف من هجمات الحجب.",
+    "الجدران النارية وكشف التطفل وتقسيم الشبكة."
+   ],
+   "options_en": [
+    "Encryption, access controls, and VPN tunnels.",
+    "Hashing, digital signatures, and version control.",
+    "Redundancy, load balancing, and DDoS mitigation.",
+    "Firewalls, IDS/IPS, and network segmentation."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Confidentiality is served by encryption, access controls, and VPNs. These three are the vocabulary you write in the parentheses of a scenario answer.",
+   "explanation_ar": "السرية تُخدم بالتشفير وضوابط الوصول والشبكات الخاصة الافتراضية. هذه الثلاثة هي المفردات التي تكتبها بين القوسين في جواب السيناريو."
+  },
+  {
+   "id": "q6",
+   "concept_id": "cia_integrity_techniques",
+   "bloom_level": "Remember",
+   "question": "Which techniques does the lecture list under integrity?",
+   "question_ar": "أي تقنيات تسردها المحاضرة تحت السلامة؟",
+   "options": [
+    "Patching, hardening, and routine vulnerability scanning.",
+    "Hashing, digital signatures, and version control.",
+    "Encryption, access controls, and VPN tunnels.",
+    "Redundancy, load balancing, and DDoS mitigation."
+   ],
+   "options_ar": [
+    "التحديث والتحصين وفحص الثغرات الأمنية.",
+    "التجزئة والتواقيع الرقمية والتحكم بالإصدارات.",
+    "التشفير وضوابط الوصول والشبكات الخاصة الافتراضية.",
+    "التكرار وموازنة الحمل والتخفيف من هجمات الحجب."
+   ],
+   "options_en": [
+    "Patching, hardening, and routine vulnerability scanning.",
+    "Hashing, digital signatures, and version control.",
+    "Encryption, access controls, and VPN tunnels.",
+    "Redundancy, load balancing, and DDoS mitigation."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Integrity uses hashing, digital signatures, and version control. Hashing is the one named with its algorithm, SHA-256.",
+   "explanation_ar": "السلامة تستخدم التجزئة والتواقيع الرقمية والتحكم بالإصدارات. والتجزئة هي المذكورة مع خوارزميتها SHA-256."
+  },
+  {
+   "id": "q7",
+   "concept_id": "cia_availability_techniques",
+   "bloom_level": "Remember",
+   "question": "Which techniques does the lecture list under availability?",
+   "question_ar": "أي تقنيات تسردها المحاضرة تحت التوافر؟",
+   "options": [
+    "Encryption, access controls, and VPN tunnels.",
+    "Hashing, digital signatures, and version control.",
+    "Patching, hardening, and routine vulnerability scanning.",
+    "Redundancy, load balancing, and DDoS mitigation."
+   ],
+   "options_ar": [
+    "التشفير وضوابط الوصول والشبكات الخاصة الافتراضية.",
+    "التجزئة والتواقيع الرقمية والتحكم بالإصدارات.",
+    "التحديث والتحصين وفحص الثغرات الأمنية.",
+    "التكرار وموازنة الحمل والتخفيف من هجمات الحجب."
+   ],
+   "options_en": [
+    "Encryption, access controls, and VPN tunnels.",
+    "Hashing, digital signatures, and version control.",
+    "Patching, hardening, and routine vulnerability scanning.",
+    "Redundancy, load balancing, and DDoS mitigation."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Availability is served by redundancy, load balancing, and DDoS mitigation, because each one keeps the service reachable.",
+   "explanation_ar": "التوافر يُخدم بالتكرار وموازنة الحمل والتخفيف من هجمات الحجب، لأن كل واحدة منها تُبقي الخدمة قابلة للوصول."
+  },
+  {
+   "id": "q8",
+   "concept_id": "cia_scenario_leak",
+   "bloom_level": "Apply",
+   "question": "A customer database is copied and published online. Which pillar is broken?",
+   "question_ar": "قاعدة بيانات العملاء نُسخت ونُشرت على الإنترنت. أي ركن انكسر؟",
+   "options": [
+    "Availability is the pillar involved here.",
+    "Authorisation is the pillar involved here.",
+    "Confidentiality is the pillar involved here.",
+    "Integrity is the main pillar involved here."
+   ],
+   "options_ar": [
+    "التوافر هو الركن المعني في هذه الحالة.",
+    "التخويل هو الركن المعني في هذه الحالة.",
+    "السرية هي الركن المعني في هذه الحالة.",
+    "السلامة هي الركن المعني في هذه الحالة."
+   ],
+   "options_en": [
+    "Availability is the pillar involved here.",
+    "Authorisation is the pillar involved here.",
+    "Confidentiality is the pillar involved here.",
+    "Integrity is the main pillar involved here."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The data was read by people who should not have seen it, so confidentiality is broken. Nothing was altered and nothing went offline.",
+   "explanation_ar": "البيانات قرأها أشخاص لا يحق لهم رؤيتها، فالسرية هي المنكسرة. لم يُعدَّل شيء ولم تتوقف خدمة."
+  },
+  {
+   "id": "q9",
+   "concept_id": "cia_scenario_outage",
+   "bloom_level": "Apply",
+   "question": "A traffic flood makes a website unreachable for six hours. Which pillar is broken?",
+   "question_ar": "هجوم حجب يجعل موقعاً غير قابل للوصول ست ساعات. أي ركن انكسر؟",
+   "options": [
+    "Authorisation is the pillar involved here.",
+    "Availability is the pillar involved here.",
+    "Confidentiality is the pillar involved here.",
+    "Integrity is the main pillar involved here."
+   ],
+   "options_ar": [
+    "التخويل هو الركن المعني في هذه الحالة.",
+    "التوافر هو الركن المعني في هذه الحالة.",
+    "السرية هي الركن المعني في هذه الحالة.",
+    "السلامة هي الركن المعني في هذه الحالة."
+   ],
+   "options_en": [
+    "Authorisation is the pillar involved here.",
+    "Availability is the pillar involved here.",
+    "Confidentiality is the pillar involved here.",
+    "Integrity is the main pillar involved here."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The resource stopped being reachable when it was needed, so availability is broken. The answer names DDoS mitigation as the control.",
+   "explanation_ar": "المورد توقف عن أن يكون متاحاً عند الحاجة، فالتوافر هو المنكسر. والجواب يذكر التخفيف من هجمات الحجب كضابط."
+  },
+  {
+   "id": "q10",
+   "concept_id": "cia_scenario_bank_balance",
+   "bloom_level": "Apply",
+   "question": "A balance drops by 100,000, the bank finds a program error, fixes it and restores the money. Which two pillars are involved, in order?",
+   "question_ar": "رصيد ينخفض 100,000، فيكتشف المصرف خطأ برمجياً ويصلحه ويعيد المال. أي ركنين يتدخلان، بالترتيب؟",
+   "options": [
+    "Integrity, then availability.",
+    "Availability, then integrity.",
+    "Confidentiality, then integrity.",
+    "Integrity, then confidentiality."
+   ],
+   "options_ar": [
+    "السلامة ثم التوافر.",
+    "التوافر ثم السلامة.",
+    "السرية ثم السلامة.",
+    "السلامة ثم السرية."
+   ],
+   "options_en": [
+    "Integrity, then availability.",
+    "Availability, then integrity.",
+    "Confidentiality, then integrity.",
+    "Integrity, then confidentiality."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "First the record was altered, which is integrity. Then the service had to be corrected and restored, which is availability.",
+   "explanation_ar": "أولاً تغيّر السجل، وهذه السلامة. ثم وجب تصحيح الخدمة واستعادتها، وهذا التوافر."
+  },
+  {
+   "id": "q11",
+   "concept_id": "utility_function_weights",
+   "bloom_level": "Remember",
+   "question": "In the security utility function, what do the three weights represent?",
+   "question_ar": "في دالة المنفعة الأمنية، ماذا تمثّل الأوزان الثلاثة؟",
+   "options": [
+    "How often each pillar fails in practice.",
+    "How many users each pillar serves directly.",
+    "How much each pillar matters to that system.",
+    "How much each control costs the company to operate."
+   ],
+   "options_ar": [
+    "عدد مرات فشل كل ركن عملياً.",
+    "عدد المستخدمين الذين يخدمهم كل ركن.",
+    "مقدار أهمية كل ركن في ذلك النظام.",
+    "تكلفة تشغيل كل ضابط أمني على حدة."
+   ],
+   "options_en": [
+    "How often each pillar fails in practice.",
+    "How many users each pillar serves directly.",
+    "How much each pillar matters to that system.",
+    "How much each control costs the company to operate."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The weights are importance weights for a particular system, not costs or failure rates. They are what makes the same triad score differently in different domains.",
+   "explanation_ar": "الأوزان هي أوزان أهمية لنظام معيّن، وليست تكاليف أو نسب فشل. وهي التي تجعل الثالوث نفسه يعطي درجة مختلفة في كل مجال."
+  },
+  {
+   "id": "q12",
+   "concept_id": "utility_weight_healthcare_alpha",
+   "bloom_level": "Analyze",
+   "question": "Why does a hospital system weight confidentiality above availability?",
+   "question_ar": "لماذا يرجّح نظام مستشفى السرية على التوافر؟",
+   "options": [
+    "Hospital systems are usually offline, so uptime does not matter.",
+    "Medical law forbids the use of any encryption on patient data.",
+    "Doctors rarely need to open any patient records during working hours.",
+    "A leaked patient record causes permanent harm that cannot be undone."
+   ],
+   "options_ar": [
+    "أنظمة المستشفى غالباً غير متصلة، فالاستمرارية لا تهم.",
+    "القانون الطبي يمنع استخدام التشفير على بيانات المرضى.",
+    "الأطباء نادراً ما يحتاجون فتح السجلات في الدوام.",
+    "تسريب سجل المريض يسبب ضرراً دائماً لا يمكن إصلاحه."
+   ],
+   "options_en": [
+    "Hospital systems are usually offline, so uptime does not matter.",
+    "Medical law forbids the use of any encryption on patient data.",
+    "Doctors rarely need to open any patient records during working hours.",
+    "A leaked patient record causes permanent harm that cannot be undone."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The lecture gives healthcare as the example: confidentiality carries more weight because a disclosed diagnosis can never be taken back, while an outage can be repaired.",
+   "explanation_ar": "المحاضرة تعطي الرعاية الصحية كمثال: السرية وزنها أعلى لأن التشخيص المكشوف لا يمكن سحبه، بينما الانقطاع يمكن إصلاحه."
+  },
+  {
+   "id": "q13",
+   "concept_id": "utility_weight_banking_beta",
+   "bloom_level": "Analyze",
+   "question": "Why does a core banking system weight integrity above the other two?",
+   "question_ar": "لماذا يرجّح نظام مصرفي أساسي السلامة على الركنين الآخرين؟",
+   "options": [
+    "An altered ledger corrupts balances and causes immediate loss.",
+    "Banks do not need availability because they close at night.",
+    "Confidentiality matters less because accounts are public.",
+    "Hashing is simply not available to the banking software vendors."
+   ],
+   "options_ar": [
+    "تعديل السجل يفسد الأرصدة ويسبب خسارة فورية.",
+    "المصارف لا تحتاج التوافر لأنها تغلق ليلاً.",
+    "السرية أقل أهمية لأن الحسابات معلنة للجميع.",
+    "دوال التجزئة غير متاحة لمورّدي برامج المصارف."
+   ],
+   "options_en": [
+    "An altered ledger corrupts balances and causes immediate loss.",
+    "Banks do not need availability because they close at night.",
+    "Confidentiality matters less because accounts are public.",
+    "Hashing is simply not available to the banking software vendors."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Money is a record, so a changed record is a changed balance. Integrity therefore dominates in banking the way confidentiality dominates in healthcare.",
+   "explanation_ar": "المال سجل، فتغيير السجل تغيير للرصيد. لذلك تسيطر السلامة في المصارف كما تسيطر السرية في الرعاية الصحية."
+  },
+  {
+   "id": "q14",
+   "concept_id": "utility_function_purpose",
+   "bloom_level": "Understand",
+   "question": "What does the utility function add beyond naming the three pillars?",
+   "question_ar": "ماذا تضيف دالة المنفعة على مجرد تسمية الأركان الثلاثة؟",
+   "options": [
+    "It removes the need to measure each pillar.",
+    "It lets each system weight the pillars differently.",
+    "It replaces the three separate pillars with a single score.",
+    "It proves the three pillars always weigh the same."
+   ],
+   "options_ar": [
+    "يلغي الحاجة إلى قياس كل ركن على حدة.",
+    "يسمح لكل نظام بترجيح الأركان بدرجات مختلفة.",
+    "يستبدل الأركان الثلاثة بدرجة واحدة مجمّعة.",
+    "يثبت أن الأركان الثلاثة متساوية الوزن دائماً."
+   ],
+   "options_en": [
+    "It removes the need to measure each pillar.",
+    "It lets each system weight the pillars differently.",
+    "It replaces the three separate pillars with a single score.",
+    "It proves the three pillars always weigh the same."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The triad says what to protect. The function says how much each part counts for a given system, which is why the weights change by domain.",
+   "explanation_ar": "الثالوث يقول ماذا نحمي. والدالة تقول كم يهمّ كل جزء في نظام معيّن، ولهذا تتغيّر الأوزان بحسب المجال."
+  }
+ ]
 }
