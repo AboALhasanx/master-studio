@@ -1,595 +1,421 @@
 {
-  "schema_version": 2,
-  "subject_id": "01_Cyber_Security",
-  "subject_title": "الأمن السيبراني",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch02_T08_Policy_And_Physical_Controls",
-  "topic": "Security policy and physical controls",
-  "topic_ar": "سياسة الأمن والضوابط المادية",
-  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
-  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
-  "subject": "01_Cyber_Security",
-  "questions": [
-    {
-      "id": "q1",
-      "concept_id": "policy_purpose",
-      "bloom_level": "Remember",
-      "question": "What does a security policy state, according to the lecture?",
-      "question_ar": "ماذا تبيّن سياسة الأمن وفق المحاضرة؟",
-      "options": [
-        "How security is implemented at each level of the organisation.",
-        "Which vendor supplies the firewall and the antivirus product.",
-        "How much each department spends on security every year.",
-        "Which employees were disciplined for security breaches."
-      ],
-      "options_ar": [
-        "كيف يُنفَّذ الأمن في كل مستوى من مستويات المؤسسة.",
-        "أي مورّد يورّد الجدار الناري ومنتج مكافحة الفيروسات.",
-        "كم ينفق كل قسم على الأمن في كل سنة.",
-        "أي الموظفين عوقبوا بسبب خروقات أمنية."
-      ],
-      "options_en": [
-        "How security is implemented at each level of the organisation.",
-        "Which vendor supplies the firewall and the antivirus product.",
-        "How much each department spends on security every year.",
-        "Which employees were disciplined for security breaches."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "A security policy is the documentation stating how security should be implemented at each level. Spend, vendors and disciplinary records are management information, not the policy's content.",
-      "explanation_ar": "سياسة الأمن هي الوثائق التي تبيّن كيف ينبغي تنفيذ الأمن على كل مستوى. أما الإنفاق والموردون وسجلات العقوبات فمعلومات إدارية لا مضمون السياسة."
-    },
-    {
-      "id": "q2",
-      "concept_id": "policy_two_questions",
-      "bloom_level": "Understand",
-      "question": "Which two things does a security policy define?",
-      "question_ar": "أي شيئين تحدّدهما سياسة الأمن؟",
-      "options": [
-        "The budget and the audit schedule for security work.",
-        "Who is authorised to access assets and what they may do with them.",
-        "The network topology and the encryption algorithms in use.",
-        "The vendor contracts and the service level agreements."
-      ],
-      "options_ar": [
-        "الميزانية وجدول التدقيق لعمل الأمن.",
-        "من المصرّح له بالوصول إلى الأصول وما المسموح له بها.",
-        "طوبولوجيا الشبكة وخوارزميات التشفير المستخدمة.",
-        "عقود الموردين واتفاقيات مستوى الخدمة."
-      ],
-      "options_en": [
-        "The budget and the audit schedule for security work.",
-        "Who is authorised to access assets and what they may do with them.",
-        "The network topology and the encryption algorithms in use.",
-        "The vendor contracts and the service level agreements."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The lecture says comprehensive security policies define who is authorised to access different assets and what they are allowed to do with those assets when they access them. That is the who and the what.",
-      "explanation_ar": "تقول المحاضرة إن السياسات الأمنية الشاملة تحدّد من المصرّح له بالوصول إلى الأصول المختلفة وما المسموح له بها عند وصوله إليها. وهذا هو «من» و«ماذا»."
-    },
-    {
-      "id": "q3",
-      "concept_id": "free_access_risk",
-      "bloom_level": "Analyze",
-      "question": "Why does the lecture warn against letting employees and visitors move freely through all departments?",
-      "question_ar": "لماذا تحذّر المحاضرة من ترك الموظفين والزوار يتحركون بحرية في كل الأقسام؟",
-      "options": [
-        "Because it slows down the daily work of the departments involved.",
-        "Because visitors may damage equipment by accident or theft.",
-        "Because it makes safeguards against access and theft much harder to run.",
-        "Because it removes the need for identity badges at the entrance."
-      ],
-      "options_ar": [
-        "لأنه يبطئ العمل اليومي في الأقسام المعنية.",
-        "لأن الزوار قد يتلفون المعدات بالخطأ أو بالسرقة.",
-        "لأنه يجعل الضمانات ضد الوصول والسرقة أصعب بكثير.",
-        "لأنه يزيل الحاجة إلى شارات الهوية عند المدخل."
-      ],
-      "options_en": [
-        "Because it slows down the daily work of the departments involved.",
-        "Because visitors may damage equipment by accident or theft.",
-        "Because it makes safeguards against access and theft much harder to run.",
-        "Because it removes the need for identity badges at the entrance."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The lecture's argument is that free movement creates a variety of security risks, and that it becomes much harder to implement safeguards preventing people from accessing or taking physical or cyber assets. The difficulty of the safeguards is the point.",
-      "explanation_ar": "حجّة المحاضرة أن الحركة الحرة تخلق مخاطر أمنية متنوعة، وأن تطبيق الضمانات التي تمنع الوصول إلى الأصول المادية أو الإلكترونية أو أخذها يصير أصعب بكثير. والصعوبة في الضمانات هي المقصودة."
-    },
-    {
-      "id": "q4",
-      "concept_id": "temptation_reason",
-      "bloom_level": "Understand",
-      "question": "How does the lecture relate access control to human temptation?",
-      "question_ar": "كيف تربط المحاضرة التحكم بالوصول بالإغراء البشري؟",
-      "options": [
-        "Because it punishes any employee who tries to take physical or cyber assets.",
-        "Because it records every action for later use in legal proceedings.",
-        "Because it replaces the need for a written security policy entirely.",
-        "Because free movement makes stopping people taking assets much harder."
-      ],
-      "options_ar": [
-        "لأنه يعاقب أي موظف يحاول أخذ أصول مادية أو إلكترونية.",
-        "لأنه يسجّل كل إجراء لاستخدامه لاحقاً في الإجراءات القانونية.",
-        "لأنه يزيل الحاجة إلى سياسة أمنية مكتوبة تماماً.",
-        "لأن الحركة الحرة تجعل منع الناس من أخذ الأصول أصعب بكثير."
-      ],
-      "options_en": [
-        "Because it punishes any employee who tries to take physical or cyber assets.",
-        "Because it records every action for later use in legal proceedings.",
-        "Because it replaces the need for a written security policy entirely.",
-        "Because free movement makes stopping people taking assets much harder."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The lecture wants access control to reduce the human nature of temptation: if everyone can move freely inside, it is much harder to prevent them from accessing or taking assets. Prevention of opportunity, not punishment, is the mechanism.",
-      "explanation_ar": "تريد المحاضرة من التحكم بالوصول تقليل طبيعة الإنسان المتمثلة في الإغراء: إذا تحرك الجميع بحرية بالداخل صار أصعب بكثير منعهم من الوصول أو الأخذ. فالميكانيزم منع الفرصة لا العقاب."
-    },
-    {
-      "id": "q5",
-      "concept_id": "accidents_prevented",
-      "bloom_level": "Understand",
-      "question": "Besides temptation, what other problem does the lecture say access control prevents?",
-      "question_ar": "إلى جانب الإغراء، أي مشكلة أخرى تقول المحاضرة إن التحكم بالوصول يمنعها؟",
-      "options": [
-        "Accidents.",
-        "Legal disputes.",
-        "Software defects.",
-        "Network outages."
-      ],
-      "options_ar": [
-        "الحوادث.",
-        "النزاعات القانونية.",
-        "عيوب البرمجيات.",
-        "انقطاعات الشبكة."
-      ],
-      "options_en": [
-        "Accidents.",
-        "Legal disputes.",
-        "Software defects.",
-        "Network outages."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The lecture states plainly that access control is also needed to prevent accidents. The other three belong to other parts of the chapter and are not given as reasons here.",
-      "explanation_ar": "تنص المحاضرة صريحاً على أن التحكم بالوصول مطلوب أيضاً لمنع الحوادث. والثلاثة الأخرى تعود إلى أجزاء أخرى من الجابتر ولا تُذكر هنا كأسباب."
-    },
-    {
-      "id": "q6",
-      "concept_id": "cohesive_enforced",
-      "bloom_level": "Analyze",
-      "question": "The lecture requires the access-control policy at each level to be cohesive and enforced. Why enforced?",
-      "question_ar": "تشترط المحاضرة أن تكون سياسة التحكم بالوصول في كل مستوى متماسكة ومفروضة. لماذا مفروضة؟",
-      "options": [
-        "Because a written policy alone satisfies the audit requirement.",
-        "Because a policy that is only written does not restrict anyone.",
-        "Because enforcement transfers the risk to another party.",
-        "Because enforcement replaces the need for any devices."
-      ],
-      "options_ar": [
-        "لأن السياسة المكتوبة وحدها تستوفي متطلبات التدقيق.",
-        "لأن السياسة المكتوبة فقط لا تقيّد أحداً.",
-        "لأن الفرض ينقل الخطر إلى طرف آخر.",
-        "لأن الفرض يزيل الحاجة إلى أي أجهزة."
-      ],
-      "options_en": [
-        "Because a written policy alone satisfies the audit requirement.",
-        "Because a policy that is only written does not restrict anyone.",
-        "Because enforcement transfers the risk to another party.",
-        "Because enforcement replaces the need for any devices."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The lecture pairs the cohesive policy with enforcing it through the correct types and numbers of access-control devices. Without enforcement the document states an intention and changes nobody's access.",
-      "explanation_ar": "تقرن المحاضرة السياسة المتماسكة بفرضها عبر الأنواع والأعداد الصحيحة من أجهزة التحكم بالوصول. وبلا فرض تبقى الوثيقة تعبيراً عن نية ولا تغيّر وصول أحد."
-    },
-    {
-      "id": "q7",
-      "concept_id": "enforcement_devices",
-      "bloom_level": "Remember",
-      "question": "Which set does the lecture give as the devices that enforce an access-control policy?",
-      "question_ar": "أي مجموعة تعطيها المحاضرة كأجهزة تفرض سياسة التحكم بالوصول؟",
-      "options": [
-        "Firewalls, antivirus programs, backups and encryption.",
-        "Policies, procedures, standards and guidelines.",
-        "Sensors, barriers, logs, identity badges and security guards.",
-        "Passwords, tokens, fingerprints and locations."
-      ],
-      "options_ar": [
-        "الجدران النارية وبرامج مكافحة الفيروسات والنسخ الاحتياطي والتشفير.",
-        "السياسات والإجراءات والمعايير والأدلة الإرشادية.",
-        "الحساسات والحواجز والسجلات وشارات الهوية وحراس الأمن.",
-        "كلمات المرور والرموز والبصمات والمواقع."
-      ],
-      "options_en": [
-        "Firewalls, antivirus programs, backups and encryption.",
-        "Policies, procedures, standards and guidelines.",
-        "Sensors, barriers, logs, identity badges and security guards.",
-        "Passwords, tokens, fingerprints and locations."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The lecture lists sensors, barriers, logs, identity badges and security guards as the access-control devices. Firewalls and antivirus are technical countermeasures, and the last set is the authentication factors.",
-      "explanation_ar": "تعدّد المحاضرة الحساسات والحواجز والسجلات وشارات الهوية وحراس الأمن كأجهزة تحكم بالوصول. والجدران النارية ومكافحة الفيروسات تدابير تقنية، والمجموعة الأخيرة عوامل مصادقة."
-    },
-    {
-      "id": "q8",
-      "concept_id": "door_vs_lock",
-      "bloom_level": "Analyze",
-      "question": "What is the difference between the door and the lock in the lecture's account?",
-      "question_ar": "ما الفرق بين الباب والقفل في وصف المحاضرة؟",
-      "options": [
-        "The door authenticates the person, and the lock is only a physical barrier.",
-        "Both the door and the lock perform the same authentication function.",
-        "The door is electronic, and the lock is purely mechanical.",
-        "The door is the physical barrier, and the lock provides authentication through its key."
-      ],
-      "options_ar": [
-        "الباب يصادق الشخص، والقفل مجرد حاجز مادي.",
-        "الباب والقفل يؤديان وظيفة المصادقة نفسها.",
-        "الباب إلكتروني، والقفل ميكانيكي بحت.",
-        "الباب هو الحاجز المادي، والقفل يوفّر المصادقة عبر مفتاحه."
-      ],
-      "options_en": [
-        "The door authenticates the person, and the lock is only a physical barrier.",
-        "Both the door and the lock perform the same authentication function.",
-        "The door is electronic, and the lock is purely mechanical.",
-        "The door is the physical barrier, and the lock provides authentication through its key."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The lecture states that the door is the physical barrier but by itself only keeps honest people out, while the lock provides the authentication function through its key. Two different jobs in one assembly.",
-      "explanation_ar": "تنص المحاضرة على أن الباب هو الحاجز المادي لكنه بحد ذاته يمنع الصادقين فقط، أما القفل فيوفّر وظيفة المصادقة عبر مفتاحه. وظيفتان مختلفتان في تجميعة واحدة."
-    },
-    {
-      "id": "q9",
-      "concept_id": "honest_people",
-      "bloom_level": "Understand",
-      "question": "What does the lecture say a door achieves on its own?",
-      "question_ar": "ماذا تقول المحاضرة إن الباب يحققه بحد ذاته؟",
-      "options": [
-        "It only keeps honest people out.",
-        "It authenticates every person who passes.",
-        "It records everyone who enters the building.",
-        "It resists a forced entry for a fixed time."
-      ],
-      "options_ar": [
-        "إنه يمنع الصادقين فقط.",
-        "إنه يصادق كل شخص يمرّ.",
-        "إنه يسجّل كل من يدخل المبنى.",
-        "إنه يقاوم الاقتحام لمدة محددة."
-      ],
-      "options_en": [
-        "It only keeps honest people out.",
-        "It authenticates every person who passes.",
-        "It records everyone who enters the building.",
-        "It resists a forced entry for a fixed time."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The lecture's phrase is that the door by itself only keeps honest people out, which is why the lock carries the authentication job. A door is a barrier, not a decision about who may pass.",
-      "explanation_ar": "عبارة المحاضرة أن الباب بحد ذاته يمنع الصادقين فقط، ولهذا يحمل القفل وظيفة المصادقة. فالباب حاجز لا قراراً بمن يمرّ."
-    },
-    {
-      "id": "q10",
-      "concept_id": "key_meaning",
-      "bloom_level": "Understand",
-      "question": "What does holding the key to a lock prove, according to the lecture?",
-      "question_ar": "ماذا يثبت حمل مفتاح القفل وفق المحاضرة؟",
-      "options": [
-        "That the person has been authorised by a manager.",
-        "That the person possesses or knows the access information.",
-        "That the person has passed a background check.",
-        "That the person is a member of the security staff."
-      ],
-      "options_ar": [
-        "أن الشخص صُرّح له من مدير.",
-        "أن الشخص يملك أو يعرف معلومات الوصول.",
-        "أن الشخص اجتاز فحص الخلفية.",
-        "أن الشخص من أفراد الأمن."
-      ],
-      "options_en": [
-        "That the person has been authorised by a manager.",
-        "That the person possesses or knows the access information.",
-        "That the person has passed a background check.",
-        "That the person is a member of the security staff."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Having the key means the person either possesses or knows the information required to gain access. That is why the lock can perform authentication at all: the key is the credential.",
-      "explanation_ar": "امتلاك المفتاح يعني أن الشخص إما يملك أو يعرف المعلومات المطلوبة للوصول. ولهذا يستطيع القفل أداء المصادقة أصلاً: فالمفتاح هو بيان الاعتماد."
-    },
-    {
-      "id": "q11",
-      "concept_id": "key_deadbolt",
-      "bloom_level": "Remember",
-      "question": "How is a standard key-locking deadbolt engaged or withdrawn?",
-      "question_ar": "كيف يُفعَّل أو يُسحب القفل المزلاجي القياسي؟",
-      "options": [
-        "By entering a personal code on a keypad.",
-        "Electronically, from a control room.",
-        "By a key.",
-        "By a guard from the reception desk."
-      ],
-      "options_ar": [
-        "بإدخال كود شخصي على لوحة مفاتيح.",
-        "إلكترونياً من غرفة تحكم.",
-        "بمفتاح.",
-        "بواسطة حارس من مكتب الاستقبال."
-      ],
-      "options_en": [
-        "By entering a personal code on a keypad.",
-        "Electronically, from a control room.",
-        "By a key.",
-        "By a guard from the reception desk."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The standard key-locking deadbolt has a mechanism similar to the solenoid deadbolt but is engaged or withdrawn with a key. The keypad belongs to the cipher lock and the control room to the remote systems.",
-      "explanation_ar": "القفل المزلاجي القياسي آليته مشابهة للمدفوع بالـsolenoid لكنه يُفعَّل أو يُسحب بمفتاح. ولوحة المفاتيح تخص القفل الشفري، وغرفة التحكم تخص الأنظمة عن بُعد."
-    },
-    {
-      "id": "q12",
-      "concept_id": "solenoid_scenario",
-      "bloom_level": "Apply",
-      "question": "A door needs a lock that can be released electronically from a control room and used as an auxiliary lock. Which type fits?",
-      "question_ar": "يحتاج باب إلى قفل يُفتح إلكترونياً من غرفة تحكم ويُستخدم كقفل مساعد. أي نوع يلائم؟",
-      "options": [
-        "A standard key-locking deadbolt, because it uses a key.",
-        "A cipher lock, because it needs a personal access code.",
-        "A control relay, because it steps the voltage down.",
-        "A solenoid-operated deadbolt, because it is electronically operated."
-      ],
-      "options_ar": [
-        "قفل مزلاجي قياسي، لأنه يستخدم مفتاحاً.",
-        "قفل شفري، لأنه يحتاج كود وصول شخصي.",
-        "مرحّل تحكم، لأنه يخفض الجهد.",
-        "قفل مزلاجي مدفوع بالـsolenoid، لأنه يُشغَّل إلكترونياً."
-      ],
-      "options_en": [
-        "A standard key-locking deadbolt, because it uses a key.",
-        "A cipher lock, because it needs a personal access code.",
-        "A control relay, because it steps the voltage down.",
-        "A solenoid-operated deadbolt, because it is electronically operated."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The solenoid-operated deadbolt is the electronically operated lock that the lecture says adapts to any security system and performs well as an auxiliary lock. A relay switches power, it is not itself a lock.",
-      "explanation_ar": "القفل المزلاجي المدفوع بالـsolenoid هو القفل الإلكتروني الذي تقول المحاضرة إنه يتكيّف مع أي نظام أمني ويؤدي جيداً كقفل مساعد. أما المرحّل فيبدّل الطاقة وليس قفلاً بذاته."
-    },
-    {
-      "id": "q13",
-      "concept_id": "cipher_lock",
-      "bloom_level": "Remember",
-      "question": "What does a cipher lock require before it releases the door?",
-      "question_ar": "ماذا يتطلب القفل الشفري قبل أن يفتح الباب؟",
-      "options": [
-        "A personal access code entered on the keypad.",
-        "A physical key turned in the cylinder.",
-        "A fingerprint matched against a stored template.",
-        "A signal from the remote monitoring station."
-      ],
-      "options_ar": [
-        "كود وصول شخصي يُدخل على لوحة المفاتيح.",
-        "مفتاح مادي يُدار في الأسطوانة.",
-        "بصمة إصبع تُطابق قالباً مخزوناً.",
-        "إشارة من محطة المراقبة عن بُعد."
-      ],
-      "options_en": [
-        "A personal access code entered on the keypad.",
-        "A physical key turned in the cylinder.",
-        "A fingerprint matched against a stored template.",
-        "A signal from the remote monitoring station."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Cipher locks require personal access codes known by the user, entered on the keypad, and they unlock magnetic door locks when the code is correct. No key and no biometric is involved.",
-      "explanation_ar": "الأقفال الشفرية تتطلب أكواد وصول شخصية يعرفها المستخدم تُدخل على لوحة المفاتيح، وتفتح الأقفال المغناطيسية عندما يكون الكود صحيحاً. ولا مفتاح ولا بصمة فيها."
-    },
-    {
-      "id": "q14",
-      "concept_id": "cipher_target",
-      "bloom_level": "Understand",
-      "question": "What do cipher locks unlock once the correct programmed code is entered?",
-      "question_ar": "ماذا تفتح الأقفال الشفرية عند إدخال الكود المبرمج الصحيح؟",
-      "options": [
-        "Swinging gates with adjustable hinges.",
-        "Magnetic door locks on perimeter entry areas.",
-        "Solenoid deadbolts on internal office doors.",
-        "Control relays feeding higher-voltage devices."
-      ],
-      "options_ar": [
-        "بوابات متأرجحة بمفصلات قابلة للتعديل.",
-        "أقفال أبواب مغناطيسية في مناطق دخول المحيط.",
-        "أقفال مزلاجية على أبواب المكاتب الداخلية.",
-        "مرحّلات تحكم تغذّي أجهزة بجهد أعلى."
-      ],
-      "options_en": [
-        "Swinging gates with adjustable hinges.",
-        "Magnetic door locks on perimeter entry areas.",
-        "Solenoid deadbolts on internal office doors.",
-        "Control relays feeding higher-voltage devices."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The lecture says cipher locks unlock magnetic door locks when the correct programmed code is entered on the keypad, adding security for perimeter entry areas.",
-      "explanation_ar": "تقول المحاضرة إن الأقفال الشفرية تفتح الأقفال المغناطيسية عند إدخال الكود المبرمج الصحيح على لوحة المفاتيح، فتضيف أماناً لمناطق دخول المحيط."
-    },
-    {
-      "id": "q15",
-      "concept_id": "gates_control",
-      "bloom_level": "Remember",
-      "question": "What do access-control gates control?",
-      "question_ar": "ماذا تتحكم به بوابات التحكم بالوصول؟",
-      "options": [
-        "The voltage supplied to the door hardware.",
-        "The identity of the person approaching the gate.",
-        "Ingress and egress through a wall or fence.",
-        "The audit log of every entry in the building."
-      ],
-      "options_ar": [
-        "الجهد المزوَّد لعُدد الباب.",
-        "هوية الشخص المقترب من البوابة.",
-        "الدخول والخروج عبر جدار أو سياج.",
-        "سجل تدقيق كل دخول إلى المبنى."
-      ],
-      "options_en": [
-        "The voltage supplied to the door hardware.",
-        "The identity of the person approaching the gate.",
-        "Ingress and egress through a wall or fence.",
-        "The audit log of every entry in the building."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "A gate is a physical barrier that can be swung, drawn or lowered to control ingress and egress through a wall or fence. Identity checking is the authentication job, not the gate's function.",
-      "explanation_ar": "البوابة حاجز مادي يمكن أن تُفتح أو تُسحب أو تُنزَل للسيطرة على الدخول والخروج عبر جدار أو سياج. أما التحقق من الهوية فهو وظيفة المصادقة لا وظيفة البوابة."
-    },
-    {
-      "id": "q16",
-      "concept_id": "sliding_vs_swinging",
-      "bloom_level": "Analyze",
-      "question": "When does the lecture recommend a sliding gate rather than a swinging one?",
-      "question_ar": "متى توصي المحاضرة بالبوابة المنزلقة بدل المتأرجحة؟",
-      "options": [
-        "When the gate must swing through one hundred and eighty degrees.",
-        "When the entrance is used only by pedestrians.",
-        "When no security guard is available at the entrance.",
-        "When high operational safety and security are required."
-      ],
-      "options_ar": [
-        "عندما يجب أن تدور البوابة 180 درجة.",
-        "عندما يكون المدخل للمشاة فقط.",
-        "عندما لا يتوفر حارس أمن عند المدخل.",
-        "عندما تكون هناك حاجة لمستويات عالية من السلامة والأمان."
-      ],
-      "options_en": [
-        "When the gate must swing through one hundred and eighty degrees.",
-        "When the entrance is used only by pedestrians.",
-        "When no security guard is available at the entrance.",
-        "When high operational safety and security are required."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The lecture assigns sliding gates to situations needing high operational safety and security, while swinging gates are the type with fully adjustable hinges that swing through 180 degrees. The swing range is a feature of the other type, not the reason for choosing sliding.",
-      "explanation_ar": "تنسب المحاضرة البوابات المنزلقة إلى الحالات التي تحتاج مستويات عالية من السلامة التشغيلية والأمان، أما المتأرجحة فهي النوع ذو المفصلات القابلة للتعديل التي تدور 180 درجة. فمدى الدوران صفة للنوع الآخر لا سبباً لاختيار المنزلق."
-    },
-    {
-      "id": "q17",
-      "concept_id": "control_relay",
-      "bloom_level": "Remember",
-      "question": "What does a control relay do?",
-      "question_ar": "ماذا يفعل مرحّل التحكم؟",
-      "options": [
-        "Uses low-voltage control signals to switch higher-voltage devices.",
-        "Converts a mechanical key turn into an electrical signal.",
-        "Stores the access codes for a cipher-lock keypad.",
-        "Records each entry and exit in a central audit log."
-      ],
-      "options_ar": [
-        "يستخدم إشارات تحكم بجهد منخفض لتشغيل أجهزة بجهد أعلى.",
-        "يحوّل إدارة مفتاح ميكانيكية إلى إشارة كهربائية.",
-        "يخزّن أكواد الوصول الخاصة بلوحة القفل الشفري.",
-        "يسجّل كل دخول وخروج في سجل تدقيق مركزي."
-      ],
-      "options_en": [
-        "Uses low-voltage control signals to switch higher-voltage devices.",
-        "Converts a mechanical key turn into an electrical signal.",
-        "Stores the access codes for a cipher-lock keypad.",
-        "Records each entry and exit in a central audit log."
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "Control relays are electromechanical devices that use safer low-voltage, low-current control signals to control higher-voltage, higher-current devices. The safety direction of the conversion is the whole point.",
-      "explanation_ar": "مرحّلات التحكم أجهزة كهروميكانيكية تستخدم إشارات تحكم أكثر أماناً بجهد وتيار منخفضين للتحكم بأجهزة ذات جهد وتيار أعلى. واتجاه التحويل نحو الأمان هو المقصود كله."
-    },
-    {
-      "id": "q18",
-      "concept_id": "receptionist_role",
-      "bloom_level": "Understand",
-      "question": "What role does the lecture give to a receptionist at the entrance?",
-      "question_ar": "أي دور تعطيه المحاضرة لموظف الاستقبال عند المدخل؟",
-      "options": [
-        "Issuing identity badges to every visitor.",
-        "Controlling access to the building.",
-        "Monitoring the alarm system overnight.",
-        "Maintaining the lock hardware."
-      ],
-      "options_ar": [
-        "إصدار شارات هوية لكل زائر.",
-        "السيطرة على الوصول إلى المبنى.",
-        "مراقبة نظام الإنذار ليلاً.",
-        "صيانة عُدد الأقفال."
-      ],
-      "options_en": [
-        "Issuing identity badges to every visitor.",
-        "Controlling access to the building.",
-        "Monitoring the alarm system overnight.",
-        "Maintaining the lock hardware."
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The lecture says many companies have a front door or entranceway that includes a receptionist to control access. The person is the control, not the badge printer or the alarm monitor.",
-      "explanation_ar": "تقول المحاضرة إن شركات كثيرة عندها باب أمامي أو مدخل يشمل موظف استقبال للسيطرة على الوصول. فالشخص هو الضابط لا طابع الشارات ولا مراقب الإنذار."
-    },
-    {
-      "id": "q19",
-      "concept_id": "physical_first_layer",
-      "bloom_level": "Analyze",
-      "question": "Why does the lecture treat physical controls as the first thing to arrange in that section?",
-      "question_ar": "لماذا تتعامل المحاضرة مع الضوابط المادية كأول ما يُرتَّب في ذلك القسم؟",
-      "options": [
-        "Because they are cheaper than software controls.",
-        "Because they replace the need for authentication.",
-        "Because they are the first line of defence at the perimeter.",
-        "Because they are the only controls the policy requires."
-      ],
-      "options_ar": [
-        "لأنها أرخص من الضوابط البرمجية.",
-        "لأنها تغني عن المصادقة.",
-        "لأنها خط الدفاع الأول عند المحيط.",
-        "لأنها الضوابط الوحيدة التي تطلبها السياسة."
-      ],
-      "options_en": [
-        "Because they are cheaper than software controls.",
-        "Because they replace the need for authentication.",
-        "Because they are the first line of defence at the perimeter.",
-        "Because they are the only controls the policy requires."
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Enforcing access control begins with physical barriers: locks on doors, separated departments, gates and a receptionist. That is the perimeter layer, and the lecture works outward from it before reaching other controls.",
-      "explanation_ar": "فرض التحكم بالوصول يبدأ بحواجز مادية: أقفال على الأبواب، وأقسام مفصولة، وبوابات، وموظف استقبال. فتلك طبقة المحيط، والمحاضرة تنطلق منها قبل الوصول إلى ضوابط أخرى."
-    },
-    {
-      "id": "q20",
-      "concept_id": "gate_scenario",
-      "bloom_level": "Apply",
-      "question": "An office needs a barrier that can be swung or drawn across a fence line and adjusted through a wide arc. Which control fits?",
-      "question_ar": "يحتاج مكتب إلى حاجز يمكن فتحه أو سحبه عبر خط سياج ويُعدَّل عبر قوس واسع. أي ضابط يلائم؟",
-      "options": [
-        "A solenoid deadbolt on the main door.",
-        "A cipher lock at the staff entrance.",
-        "A control relay inside the plant room.",
-        "A swinging access-control gate."
-      ],
-      "options_ar": [
-        "قفل مزلاجي مدفوع بالـsolenoid على الباب الرئيسي.",
-        "قفل شفري عند مدخل الموظفين.",
-        "مرحّل تحكم داخل غرفة المعدات.",
-        "بوابة تحكم بالوصول متأرجحة."
-      ],
-      "options_en": [
-        "A solenoid deadbolt on the main door.",
-        "A cipher lock at the staff entrance.",
-        "A control relay inside the plant room.",
-        "A swinging access-control gate."
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "A barrier that swings or is drawn across a fence line, with hinges adjustable through a wide arc, is the swinging gate. Deadbolts and cipher locks secure a door, and a relay is not a barrier at all.",
-      "explanation_ar": "الحاجز الذي يتأرجح أو يُسحب عبر خط سياج بمفصلات قابلة للتعديل عبر قوس واسع هو البوابة المتأرجحة. والأقفال المزلاجية والشفرية تؤمّن باباً، والمرحّل ليس حاجزاً أصلاً."
-    }
-  ]
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch02_T08_Policy_And_Physical_Controls",
+ "topic": "Security Policy, Physical Controls & Authentication",
+ "topic_ar": "سياسة الأمن والضوابط المادية والمصادقة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "policy_two_questions",
+   "bloom_level": "Remember",
+   "question": "What does a security policy define?",
+   "question_ar": "ماذا تحدّد سياسة الأمن؟",
+   "options": [
+    "Who is authorised, and what they may do.",
+    "How much each control costs the company.",
+    "Which vendor supplies the security tools.",
+    "When the last audit took place here."
+   ],
+   "options_ar": [
+    "مَن المصرّح له، وما المسموح له به.",
+    "كم تكلفة كل ضابط أمني على الشركة.",
+    "أي مورّد يزوّد أدوات الأمن فعلاً.",
+    "متى جرى آخر تدقيق أمني في الشركة."
+   ],
+   "options_en": [
+    "Who is authorised, and what they may do.",
+    "How much each control costs the company.",
+    "Which vendor supplies the security tools.",
+    "When the last audit took place here."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A security policy states how security is implemented at each level, defining who is authorized to reach which assets and what they may do there.",
+   "explanation_ar": "سياسة الأمن تبيّن كيف يُنفَّذ الأمان في كل مستوى، فتحدّد مَن يصرّح له بالوصول لأي أصول وما يجوز له فعله."
+  },
+  {
+   "id": "q2",
+   "concept_id": "free_access_temptation",
+   "bloom_level": "Understand",
+   "question": "Why does the lecture warn against free movement through all departments?",
+   "question_ar": "لماذا تحذّر المحاضرة من الحركة الحرة في كل الأقسام؟",
+   "options": [
+    "It raises the cost of the guards they hired.",
+    "It increases the temptation to take assets.",
+    "It slows down the network traffic badly.",
+    "It makes the audit trail harder to read."
+   ],
+   "options_ar": [
+    "يرفع كلفة الحراس المعيّنين فعلياً.",
+    "يزيد إغراء أخذ الأصول من الداخل.",
+    "يبطئ حركة الشبكة بشكل كبير جداً.",
+    "يجعل سجل التدقيق أصعب في القراءة."
+   ],
+   "options_en": [
+    "It raises the cost of the guards they hired.",
+    "It increases the temptation to take assets.",
+    "It slows down the network traffic badly.",
+    "It makes the audit trail harder to read."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "When everyone can move freely inside, it becomes much harder to apply safeguards. The lecture calls this the human nature of temptation.",
+   "explanation_ar": "لما يتحرك الجميع بحرية في الداخل، يصير تطبيق الضمانات أصعب بكثير. والمحاضرة تسمي هذا طبيعة الإنسان المتمثّلة في الإغراء."
+  },
+  {
+   "id": "q3",
+   "concept_id": "access_control_accidents",
+   "bloom_level": "Remember",
+   "question": "Besides temptation, what else does access control prevent?",
+   "question_ar": "إلى جانب الإغراء، ما الذي يمنعه التحكم بالوصول أيضاً؟",
+   "options": [
+    "Only attacks arriving from outside.",
+    "Only failures of the network hardware.",
+    "Accidents, as well as temptation.",
+    "Only deliberate theft by insiders."
+   ],
+   "options_ar": [
+    "الهجمات القادمة من الخارج فقط.",
+    "أعطال عتاد الشبكة الداخلية فقط.",
+    "الحوادث، بالإضافة إلى الإغراء.",
+    "السرقة المتعمّدة من الداخل فقط."
+   ],
+   "options_en": [
+    "Only attacks arriving from outside.",
+    "Only failures of the network hardware.",
+    "Accidents, as well as temptation.",
+    "Only deliberate theft by insiders."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The lecture names two reasons for access control: reducing temptation and preventing accidents.",
+   "explanation_ar": "المحاضرة تذكر سببين للتحكم بالوصول: تقليل الإغراء ومنع الحوادث."
+  },
+  {
+   "id": "q4",
+   "concept_id": "door_alone_limits",
+   "bloom_level": "Understand",
+   "question": "What does a door achieve on its own, without a lock?",
+   "question_ar": "ماذا يحقّق الباب وحده بدون قفل؟",
+   "options": [
+    "It authenticates every single person.",
+    "It records who entered and when.",
+    "It stops a determined attacker too.",
+    "It only keeps honest people out."
+   ],
+   "options_ar": [
+    "تتحقق من هوية كل شخص يدخل.",
+    "تسجّل من دخل ومتى دخل.",
+    "توقف المهاجم المصمّم أيضاً.",
+    "تمنع الناس الصادقين فقط."
+   ],
+   "options_en": [
+    "It authenticates every single person.",
+    "It records who entered and when.",
+    "It stops a determined attacker too.",
+    "It only keeps honest people out."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The door is the physical barrier, but by itself it only keeps honest people out. The authentication function comes from the lock.",
+   "explanation_ar": "الباب هو الحاجز المادي، لكنه بحد ذاته يمنع الناس الصادقين فقط. ووظيفة المصادقة تأتي من القفل."
+  },
+  {
+   "id": "q5",
+   "concept_id": "lock_is_authentication",
+   "bloom_level": "Understand",
+   "question": "What function does the lock provide?",
+   "question_ar": "أي وظيفة يوفرها القفل؟",
+   "options": [
+    "The lock performs the authentication function.",
+    "The lock only delays a determined thief here.",
+    "The lock records each entry in a written log.",
+    "The lock replaces the whole security policy itself."
+   ],
+   "options_ar": [
+    "القفل يؤدي وظيفة المصادقة.",
+    "القفل يؤخّر السارق المصمّم فقط.",
+    "القفل يسجّل كل دخول في سجل.",
+    "القفل يغني عن سياسة الأمن."
+   ],
+   "options_en": [
+    "The lock performs the authentication function.",
+    "The lock only delays a determined thief here.",
+    "The lock records each entry in a written log.",
+    "The lock replaces the whole security policy itself."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Holding the key means the person possesses or knows the information needed, so the lock is the authentication step of the door.",
+   "explanation_ar": "حمل المفتاح يعني أن الشخص يملك أو يعرف المعلومات المطلوبة، فالقفل هو خطوة المصادقة في الباب."
+  },
+  {
+   "id": "q6",
+   "concept_id": "key_locking_deadbolt",
+   "bloom_level": "Remember",
+   "question": "How is a standard key-locking deadbolt engaged or withdrawn?",
+   "question_ar": "كيف يُفعَّل القفل المزلاجي القياسي أو يُسحب؟",
+   "options": [
+    "It is opened by a fingerprint scan on site.",
+    "It is engaged and withdrawn with a key.",
+    "It is released by a code on a keypad.",
+    "It is released from a control room."
+   ],
+   "options_ar": [
+    "تُفتح بمسح بصمة الإصبع.",
+    "تُفعَّل وتُسحب بالمفتاح.",
+    "تُفتح بكود على اللوحة.",
+    "تُفتح من غرفة التحكم."
+   ],
+   "options_en": [
+    "It is opened by a fingerprint scan on site.",
+    "It is engaged and withdrawn with a key.",
+    "It is released by a code on a keypad.",
+    "It is released from a control room."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The key-locking deadbolt works by key. It adds security to manually operated doors and comes with a single or double cylinder.",
+   "explanation_ar": "القفل المزلاجي بالمفتاح يعمل بالمفتاح. ويضيف أماناً للأبواب التي تُشغَّل يدوياً، ويتوفر بأسطوانة مفردة أو مزدوجة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "solenoid_auxiliary",
+   "bloom_level": "Remember",
+   "question": "What is the solenoid-operated deadbolt used for?",
+   "question_ar": "فيمَ يُستخدم القفل المزلاجي المدفوع بالـ solenoid؟",
+   "options": [
+    "It works with a personal code on a keypad.",
+    "It works with a guard standing nearby.",
+    "It works electronically as an auxiliary.",
+    "It works with a key as the main lock."
+   ],
+   "options_ar": [
+    "يعمل بكود على لوحة المفاتيح.",
+    "يعمل بحارس يقف قريباً.",
+    "يعمل إلكترونياً كقفل مساعد.",
+    "يعمل بالمفتاح كقفل رئيسي."
+   ],
+   "options_en": [
+    "It works with a personal code on a keypad.",
+    "It works with a guard standing nearby.",
+    "It works electronically as an auxiliary.",
+    "It works with a key as the main lock."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The solenoid deadbolt is electronically operated and is used as an auxiliary lock on doors where access control is wanted.",
+   "explanation_ar": "القفل المزلاجي بالـ solenoid يُشغَّل إلكترونياً ويُستخدم كقفل مساعد على الأبواب التي يُراد فيها التحكم بالوصول."
+  },
+  {
+   "id": "q8",
+   "concept_id": "cipher_lock_code",
+   "bloom_level": "Remember",
+   "question": "What does a cipher lock require before it releases the door?",
+   "question_ar": "ماذا يشترط القفل الشفري قبل أن يفتح الباب؟",
+   "options": [
+    "A physical key cut for that door.",
+    "A badge read by a sensor fixed nearby.",
+    "A guard who recognises the person.",
+    "A personal code entered on a keypad."
+   ],
+   "options_ar": [
+    "مفتاح معدني مقطوع لذلك الباب بعينه.",
+    "شارة يقرأها حساس قريب من الباب.",
+    "حارس يتعرّف على الشخص بنفسه.",
+    "كود شخصي يُدخَل على لوحة المفاتيح."
+   ],
+   "options_en": [
+    "A physical key cut for that door.",
+    "A badge read by a sensor fixed nearby.",
+    "A guard who recognises the person.",
+    "A personal code entered on a keypad."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The cipher lock opens when the correct programmed code is typed on its keypad, and it is often used in access-control systems.",
+   "explanation_ar": "القفل الشفري يفتح عندما يُدخَل الكود المبرمج الصحيح على لوحة مفاتيحه، ويُستخدم غالباً في أنظمة التحكم بالوصول."
+  },
+  {
+   "id": "q9",
+   "concept_id": "gate_ingress_egress",
+   "bloom_level": "Remember",
+   "question": "What do access-control gates control?",
+   "question_ar": "ماذا تتحكم بوابات التحكم بالوصول؟",
+   "options": [
+    "They control the ingress and egress of it.",
+    "They authenticate people using a keypad.",
+    "They record every movement in a written log.",
+    "They replace the locks on the inner doors."
+   ],
+   "options_ar": [
+    "تتحكم بالدخول والخروج عبر السياج.",
+    "تتحقق من الأشخاص بلوحة مفاتيح.",
+    "تسجّل كل حركة في سجل مكتوب.",
+    "تغني عن الأقفال على الأبواب الداخلية."
+   ],
+   "options_en": [
+    "They control the ingress and egress of it.",
+    "They authenticate people using a keypad.",
+    "They record every movement in a written log.",
+    "They replace the locks on the inner doors."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A gate is a barrier swung, drawn or lowered to control ingress and egress through a wall or fence. Sliding gates are used where safety and security demands are high.",
+   "explanation_ar": "البوابة حاجز يُدار أو يُسحب أو يُنزَل للتحكم بالدخول والخروج عبر جدار أو سياج. والبوابات المنزلقة تُستخدم حيث تكون متطلبات السلامة والأمن عالية."
+  },
+  {
+   "id": "q10",
+   "concept_id": "authentication_definition",
+   "bloom_level": "Remember",
+   "question": "What is authentication?",
+   "question_ar": "ما هي المصادقة؟",
+   "options": [
+    "Recording which assets were touched today.",
+    "Encrypting the traffic between two remote sites.",
+    "Proving that someone is who they claim to be.",
+    "Deciding what an authenticated user may do."
+   ],
+   "options_ar": [
+    "تسجيل الأصول التي مُسّت اليوم فعلاً.",
+    "تشفير الحركة بين موقعين بعيدين.",
+    "إثبات أن الشخص هو من يدّعي أنه هو.",
+    "تحديد ما يجوز للمستخدم المصرّح فعله."
+   ],
+   "options_en": [
+    "Recording which assets were touched today.",
+    "Encrypting the traffic between two remote sites.",
+    "Proving that someone is who they claim to be.",
+    "Deciding what an authenticated user may do."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Authentication establishes identity, and authorization is built on top of it. Deciding what the user may do is authorization, not authentication.",
+   "explanation_ar": "المصادقة تثبت الهوية، والتصريح يُبنى فوقها. أما تحديد ما يجوز للمستخدم فعله فهو تصريح لا مصادقة."
+  },
+  {
+   "id": "q11",
+   "concept_id": "factor_knowledge",
+   "bloom_level": "Remember",
+   "question": "Which factor is something you know?",
+   "question_ar": "أي عامل هو شيء تعرفه؟",
+   "options": [
+    "Somewhere you are, such as a room.",
+    "Something you know, such as a password.",
+    "Something you have, such as a badge you carry.",
+    "Something you are, such as a face."
+   ],
+   "options_ar": [
+    "مكان تتواجد فيه، مثل غرفة.",
+    "شيء تعرفه، مثل كلمة المرور.",
+    "شيء تملكه، مثل شارة الدخول.",
+    "شيء تكونه، مثل ملامح الوجه."
+   ],
+   "options_en": [
+    "Somewhere you are, such as a room.",
+    "Something you know, such as a password.",
+    "Something you have, such as a badge you carry.",
+    "Something you are, such as a face."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Knowledge is something you know, or something only the designated person should know: a password or a PIN.",
+   "explanation_ar": "المعرفة شيء تعرفه، أو شيء لا ينبغي أن يعرفه إلا الشخص المعني: كلمة مرور أو رقم سري."
+  },
+  {
+   "id": "q12",
+   "concept_id": "factor_possession",
+   "bloom_level": "Remember",
+   "question": "Which factor is something you have?",
+   "question_ar": "أي عامل هو شيء تملكه؟",
+   "options": [
+    "Something you know, such as a PIN.",
+    "Something you are, such as a fingerprint.",
+    "Somewhere you are, such as a site.",
+    "Something you have, such as a token."
+   ],
+   "options_ar": [
+    "شيء تعرفه، مثل رقم سري.",
+    "شيء تكونه، مثل بصمة الإصبع.",
+    "مكان تتواجد فيه، مثل موقع.",
+    "شيء تملكه، مثل رمز الأمان."
+   ],
+   "options_en": [
+    "Something you know, such as a PIN.",
+    "Something you are, such as a fingerprint.",
+    "Somewhere you are, such as a site.",
+    "Something you have, such as a token."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Possession is something you have, or something only the designated person should have: an access card or a security token.",
+   "explanation_ar": "الحيازة شيء تملكه، أو شيء لا ينبغي أن يملكه إلا الشخص المعني: بطاقة وصول أو رمز أمان."
+  },
+  {
+   "id": "q13",
+   "concept_id": "factor_inheritance",
+   "bloom_level": "Remember",
+   "question": "Which factor covers a fingerprint?",
+   "question_ar": "أي عامل يغطي بصمة الإصبع؟",
+   "options": [
+    "Something you are, such as a fingerprint.",
+    "Something you know, such as a password.",
+    "Something you have, such as a card you carry.",
+    "Somewhere you are, such as an office."
+   ],
+   "options_ar": [
+    "شيء تكونه، مثل بصمة الإصبع.",
+    "شيء تعرفه، مثل كلمة المرور.",
+    "شيء تملكه، مثل بطاقة.",
+    "مكان تتواجد فيه، مثل مكتب."
+   ],
+   "options_en": [
+    "Something you are, such as a fingerprint.",
+    "Something you know, such as a password.",
+    "Something you have, such as a card you carry.",
+    "Somewhere you are, such as an office."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The lecture calls it Inheritance: something you are, or something only the designated person is. The standard term for it is inherence, or biometrics.",
+   "explanation_ar": "المحاضرة تسميه الوراثة: شيء تكونه، أو شيء لا يكونه إلا الشخص المعني. والمصطلح القياسي له هو inherence أي الخصائص الحيوية."
+  },
+  {
+   "id": "q14",
+   "concept_id": "factor_location",
+   "bloom_level": "Remember",
+   "question": "Which factor is somewhere you are?",
+   "question_ar": "أي عامل هو مكان تتواجد فيه؟",
+   "options": [
+    "Something you are, such as a fingerprint.",
+    "Somewhere you are, such as a specific site.",
+    "Something you know, such as a password.",
+    "Something you have, such as a small token."
+   ],
+   "options_ar": [
+    "شيء تكونه، مثل بصمة الإصبع.",
+    "مكان تتواجد فيه، مثل موقع محدد.",
+    "شيء تعرفه أنت، مثل كلمة المرور.",
+    "شيء تملكه، مثل رمز الأمان."
+   ],
+   "options_en": [
+    "Something you are, such as a fingerprint.",
+    "Somewhere you are, such as a specific site.",
+    "Something you know, such as a password.",
+    "Something you have, such as a small token."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Location is somewhere you are, or somewhere only the designated person is, such as a specific room or site.",
+   "explanation_ar": "الموقع مكان تتواجد فيه، أو مكان لا يتواجد فيه إلا الشخص المعني، مثل غرفة أو موقع محدد."
+  }
+ ]
 }
