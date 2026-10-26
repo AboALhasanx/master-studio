@@ -4,6 +4,10 @@
 > Written 2026-10-26 by Koko. It exists so a second agent (ChatGPT, Claude, anything) can work on the
 > same banks without undoing what has already been decided. Every rule below was paid for by a real
 > correction from the student — none of it is preference or style.
+>
+> **This file is the "what". The "how" — the exact command sequence from gate to publish, with
+> expected output and failure meanings — is `QUIZ_PUBLISH_RUNBOOK.md` in this same folder. Read both
+> before your first edit: this one first, the runbook second.**
 
 ---
 
