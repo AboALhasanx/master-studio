@@ -125,20 +125,20 @@ a bank pass — fix the wording.
 |---|---|---|
 | Ch01 | 71 in 6 banks | rewritten 2026-10-26 · L1–L5 clean · live |
 | Ch02 | 92 in 8 banks | rewritten 2026-10-26 · L1–L5 clean · live |
-| Ch03 | 150 in 9 banks (was 167 in 10) | **in progress** · T01 rebuilt (12 q) · T07 retired, its source is fully crossed out · see `03_Study_Notes/W03_Annotation_Map.md` before touching it |
+| Ch03 | 103 in 9 banks (was 167 in 10) | rebuilt 2026-10-26 · L1–L5 clean · live · T07 retired (source fully crossed) |
 | Ch04 | 180 in 9 banks | not clean — 41 % unique-longest, 4 stems |
 | Ch05 | 346 in 17 banks | not clean — 64 % unique-longest, 9 stems |
 | Ch06 | 258 in 13 banks | not clean — 67 % unique-longest |
 
-Content version at time of writing: **34** · shell **1.7.7**.
+Content version at time of writing: **36** · shell **1.7.8**.
 
-> **Chapter 3 is a scope problem before it is a wording problem.** The doctor's marked copy exists
+> **Chapter 3 was a scope problem before it was a wording problem.** The doctor's marked copy exists
 > only outside the vault (`~/Downloads/Telegram Desktop/W02_Risks.pdf`; the clean
 > `02_Raw_Materials/W03_Risks.pdf` has zero annotations). Ten of its fourteen pages carry red
 > strike-throughs, and whole sections are dead — the cost-of-controls section, the policy-versus-
 > technology section, the core-functions section, and the entire hospital quantification scenario and
-> PCI worked example. Read the map before writing a single question, or you will author questions on
-> material she explicitly removed.
+> PCI worked example. Read `03_Study_Notes/W03_Annotation_Map.md` before writing a single question, or
+> you will author questions on material she explicitly removed.
 
 ---
 
