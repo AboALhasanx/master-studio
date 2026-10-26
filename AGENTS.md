@@ -27,6 +27,8 @@ Agents operating in this vault must function not merely as generic text generato
 > 1. `00_STUDIO_HUB/ACTIVE_STATE.md` — current semester/week/subject, immediate todo, next focus (sole runtime truth; never cache it here).
 > 2. `00_STUDIO_HUB/HARNESS_REGISTRY.md` — which harnesses share this vault; sign yourself in before touching anything.
 >
+> **Working on the MCSQuiz question banks?** Read `00_STUDIO_HUB/AGENT_HANDOFF_QUIZ_BANKS.md` before touching any `Quiz_Ch*.json`. It carries the five authoring laws, the gates, the toolchain, and the boundaries — all of them paid for by a real correction, none of them optional.
+>
 > Toolchain lives in `90_Shared_Toolbox/tools/` (see `README.md` toolchain table). Subject deliverables live under `01_Semester_1/<Subject>/` per the folder convention in `README.md`. Do not trust any snapshot below this line — pointers only.
 
 ## 1.2. Autonomous Execution Contract (Zero-CLI Policy for the Student)
