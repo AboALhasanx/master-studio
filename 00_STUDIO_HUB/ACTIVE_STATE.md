@@ -1,12 +1,12 @@
 ---
 current_semester: "Semester 1 (Fall 2026)"
 active_week: 6
-active_subject: "01_Cyber_Security"
-active_subject_code: "CS601"
-immediate_todo: "Review the revised Cyber Security Chapters 1–6 formula guide; the W08 Soft Computing English seminar is ready for a 10-minute rehearsal."
-next_session_focus: "Run the Cyber Security Chapters 1–6 formula drill; rehearse the W08 Fuzzy-GA servo seminar if the student chooses."
-last_updated: "2026-10-23"
-status: "ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; ASE_CH08_PACKS_99PP_OPEN_PENDING_DOCTOR_VOCAB_NOTES_AND_T4_T7_FIXES_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING; NH_U3_WIDE_SLIDES_BUILT_37_PAGES_10_GATES_UNPUBLISHED_2026-10-23"
+active_subject: "04_Advanced_Software_Eng"
+active_subject_code: "CS603"
+immediate_todo: "Hold the 56-page predictive Chapter 9 Word seminar draft pending Dr. Ali Fahim's official vocabulary/lecture notes; reconcile the nine-cluster coverage against the official list when received. Chapter 8 remains held as a 154-page predictive draft pending official vocabulary/notes."
+next_session_focus: "Chapter 8 Software Testing is a prepared 154-page Word draft through item29 and is on hold until the official instructor vocabulary arrives; see CH08_SEMINAR_DRAFT_STATUS.md. Chapter 9 source audit and 56-page predictive Word draft status are recorded in 03_Study_Notes/Ch09_Software_Maintenance/CH09_SEMINAR_SOURCE_PLAN.md. Expanded the 39-page version with source-distinct content from Sommerville, Pressman, Mall, and Leach; retained course scan and Agarwal content, and added visually checked Leach and Sommerville source figures. The latest Word export is 56 pages including cover and contents; all page images were reviewed in contact sheets and figure/table pages were inspected more closely. QA intermediates are in Ch09_QA_expanded_v1. Six Chapter 9 study packs/42-page print PDF remain separate from the seminar. Official instructor vocabulary remains pending; reconcile the draft when it arrives."
+last_updated: "2026-10-26"
+status: "CYBER_CH01_QUIZ_REWRITTEN_71Q_6_BANKS_NO_LENGTH_OR_FORMULA_TELL_CONTENT_V31_SHELL_1_7_5_2026-10-26; ASE_CH09_WORD_SEMINAR_9CLUSTER_56PP_CROSS_SOURCE_EXPANDED_VISUAL_QA_2026-10-24; ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; ASE_CH08_WORD_SEMINAR_01-29_154PP_DRAFT_HELD_PENDING_OFFICIAL_VOCAB_2026-10-24; ASE_CH08_PACKS_99PP_OPEN_PENDING_DOCTOR_VOCAB_NOTES_AND_T4_T7_FIXES_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23; CYBER_CH04_QUIZ_COMPLETE_9_BANKS_180Q_LIVE_2026-10-23; CYBER_CH03_QUIZ_10_BANKS_167Q_T07_REPLACED_FRESH_NUMBERS_2026-10-22; CYBER_CH01-06_FORMULA_GUIDE_OVERLAP_AUDITED_2026-10-22; ASE_CH04-07_COMBINED_PRINT_PACKS_READY_342PP_STUDENT_VISUAL_REVIEW_PENDING; ASE_CH03_COMBINED_PRINT_PACK_63PP_VISUAL_REVIEW_PENDING; NH_U3_WIDE_SLIDES_BUILT_37_PAGES_10_GATES_UNPUBLISHED_2026-10-23"
 ---
 
 # Master Studio: Active Session State
@@ -18,8 +18,8 @@ status: "ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; 
 |                            FAST-BOOT CURRENT POINTER                          |
 |                                                                               |
 |  Semester: Semester 1 (Fall 2026)      Active Week: Week 06                   |
-|  Subject:  01_Cyber_Security  Target Path: 01_Semester_1/01_Cyber_Security        |
-|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 63 banks / 1182 questions, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch08 packs exist (99pp) but remain OPEN: instructor vocabulary/notes missing; T4 citation/diagram and T7 wording fixes remain. ASE Ch09 print remediation complete: six component packs and a 42-page merged print PDF. T2 numbering/source wording corrected, T4 source figure crops and diagram-only layout fixed, and T5/T7 Arabic academic-note boxes suppressed in print while preserved in Markdown comments. V9 remains predictive pending the instructor vocabulary/notes; confirmed syllabus coverage and student visual review remain open. Ch.4-7 print packs and Ch.3 visual review await the student. Date: 2026-10-23 |
+|  Subject:  04_Advanced_Software_Eng (CS603)  Target Path: 01_Semester_1/04_Advanced_Software_Eng        |
+|  Status: Cyber Ch04 quiz COMPLETE — 9 banks / 180 q live on the portal (index v29, Cyber 63 banks / 1182 questions, chapters 1-6). Ch04 done (9 banks/180q, live). Ch05 LIVE (17 banks/346q). Ch06 LIVE (13 banks/258q) — content v29. App 1.4.3 deployed. Ch03 done (10 banks/167q). Chapters 1-6 formula guide ready; Ch.7 excluded. ASE Ch08 Word seminar is a 154-page predictive draft through item29, visually reviewed, and held pending official instructor vocabulary; Chapter 8 question packs remain OPEN. ASE Ch09 print remediation is complete: six component packs and a 42-page merged study-print PDF. Chapter 9 Word seminar covers predictive items 1–9 in a 56-page editable Word draft, expanded with distinct material from the course sources and four supporting books; visual review found no page-flow or figure defects. Official vocabulary/notes remain pending. The six-pack print PDF remains separate. Ch.4-7 print packs and Ch.3 visual review await the student. Date: 2026-10-24 |
 +-------------------------------------------------------------------------------+
 ```
 
@@ -30,7 +30,7 @@ status: "ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; 
 | **Current Semester** | `Semester 1 (Fall 2026)` | First Course / Preparatory Coursework Phase |
 | **Active Week** | `2` | ASE Week 02 complete (10 units + merged Master Lecture) |
 | **Active Subject** | `04_Advanced_Software_Eng` | Asst. Prof. Dr. Ali Fahim Ni'ma (3 Credit Hours) — CS603; special collaborative question-pack sprint for Chapters 1-3 (2026-10-16) |
-| **Last Updated** | `2026-10-21` | Chapter 7 audit/export/agent visual review complete; student visual review remains pending. Chapter 3 print-pack visual review also remains pending. Earlier academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
+| **Last Updated** | `2026-10-24` | Chapter 7 audit/export/agent visual review complete; student visual review remains pending. Chapter 3 print-pack visual review also remains pending. Earlier academic state unchanged since 2026-09-27 (Sunday report: unanswered quiz (identity TBD) · English cancelled (Haidar absent) · AI cancelled (Dean absent) · Cyber single lecture = W02_Risks with partial highlights. Student asleep.) — the 2026-10-03 update is engineering-track: the 13 source textbooks published, the `human --verb edit` verb added, and the live verification gate made permanent. |
 
 ---
 
@@ -119,4 +119,16 @@ status: "ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; 
 
 ## 4. College Buddy Pointer
 - **Interactive Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks upcoming professor dates, oral defense rehearsals, and post-event debrief check-ins).
+
+
+
+
+
+
+
+
+
+
+
+
 
