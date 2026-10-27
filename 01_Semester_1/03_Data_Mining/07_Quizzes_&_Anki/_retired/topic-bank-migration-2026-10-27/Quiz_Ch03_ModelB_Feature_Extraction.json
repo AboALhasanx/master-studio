@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_ModelB_Feature_Extraction",
+  "topic": "Feature Extraction and Portability — Model B",
+  "topic_ar": "استخراج السمات واختيارها وقابلية النقل — النموذج ب",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "raw_data_difficulties",
+      "bloom_level": "Remember",
+      "question": "Which set describes properties that can make raw data difficult to use?",
+      "question_ar": "أي مجموعة تصف خصائص قد تجعل البيانات الخام صعبة الاستخدام؟",
+      "options": [
+        "Missing values; noisy data; outliers; duplicate; inconsistent records.",
+        "Very large; complex; difficult to process; high-dimensional.",
+        "Nominal; ordinal; binary; numerical; discrete; continuous.",
+        "Texture; shape; edges; color; intensity; image regions."
+      ],
+      "options_en": [
+        "Missing values; noisy data; outliers; duplicate; inconsistent records.",
+        "Very large; complex; difficult to process; high-dimensional.",
+        "Nominal; ordinal; binary; numerical; discrete; continuous.",
+        "Texture; shape; edges; color; intensity; image regions."
+      ],
+      "options_ar": [
+        "قيم مفقودة وضوضاء وشواذ وسجلات مكررة وغير متسقة.",
+        "كبيرة جداً؛ معقدة؛ صعبة المعالجة؛ عالية الأبعاد.",
+        "خصائص اسمية وترتيبية وثنائية ورقمية ومنفصلة ومستمرة.",
+        "ملمس وشكل وحواف ولون وشدة ومناطق الصورة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Raw data can be very large, complex, difficult to process, high-dimensional, or unsuitable for some algorithms.",
+      "explanation_ar": "قد تكون البيانات الخام كبيرة جداً أو معقدة أو صعبة المعالجة أو عالية الأبعاد أو غير مناسبة لبعض الخوارزميات."
+    },
+    {
+      "id": "q2",
+      "concept_id": "text_vectorization_methods",
+      "bloom_level": "Remember",
+      "question": "Which group lists the four common text-vectorization approaches?",
+      "question_ar": "أي مجموعة تسرد الأساليب الأربعة الشائعة لتمثيل النص متجهياً؟",
+      "options": [
+        "Equal-Width; Equal-Frequency; binning; regression methods",
+        "DFT; DWT; symbolic representation; time-series clustering",
+        "Graph embedding; similarity graph; centrality; connectivity",
+        "Bag of Words; TF-IDF; Word embeddings; Document embeddings"
+      ],
+      "options_en": [
+        "Equal-Width; Equal-Frequency; binning; regression methods",
+        "DFT; DWT; symbolic representation; time-series clustering",
+        "Graph embedding; similarity graph; centrality; connectivity",
+        "Bag of Words; TF-IDF; Word embeddings; Document embeddings"
+      ],
+      "options_ar": [
+        "Equal-Width؛ Equal-Frequency؛ binning؛ regression methods",
+        "DFT؛ DWT؛ symbolic representation؛ time-series clustering",
+        "Graph embedding؛ similarity graph؛ centrality؛ connectivity",
+        "Bag of Words؛ TF-IDF؛ Word embeddings؛ Document embeddings"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Common approaches include: Bag of Words; TF-IDF; Word embeddings; Document embeddings.",
+      "explanation_ar": "تشمل الأساليب الشائعة Bag of Words وTF-IDF وتضمينات الكلمات وتضمينات المستندات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "discretization_information_loss",
+      "bloom_level": "Understand",
+      "question": "When ages 21 and 39 both become Adult, what information is lost?",
+      "question_ar": "عندما يصبح العمران 21 و39 ضمن فئة Adult، ما المعلومة التي تضيع؟",
+      "options": [
+        "Their exact difference is no longer represented.",
+        "Category order becomes a measurable distance.",
+        "New categories form whenever values change.",
+        "The values become links in a similarity graph."
+      ],
+      "options_en": [
+        "Their exact difference is no longer represented.",
+        "Category order becomes a measurable distance.",
+        "New categories form whenever values change.",
+        "The values become links in a similarity graph."
+      ],
+      "options_ar": [
+        "لا يبقى الفرق الدقيق بين العمرين ممثلاً.",
+        "يصبح ترتيب الفئات مسافة قابلة للقياس بين القيم.",
+        "تتكون فئة جديدة عند كل تغير في القيم.",
+        "تتحول القيم إلى روابط في رسم للتشابه."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "When both ages map to the category Adult, their exact values and the difference between them are no longer represented.",
+      "explanation_ar": "عندما تتحول الأعمار إلى فئة Adult واحدة، لا تبقى الأعمار الدقيقة ولا الفرق بينها ممثلاً."
+    },
+    {
+      "id": "q4",
+      "concept_id": "timeseries_symbol_mapping",
+      "bloom_level": "Understand",
+      "question": "Which mapping represents Low, Medium, and High as symbols?",
+      "question_ar": "أي تحويل يمثل Low وMedium وHigh برموز؟",
+      "options": [
+        "Low = B\nMedium = C\nHigh = A",
+        "Low = C\nMedium = A\nHigh = B",
+        "Low = A\nMedium = B\nHigh = C",
+        "Low = 0\nMedium = 1\nHigh = 2"
+      ],
+      "options_en": [
+        "Low = B\nMedium = C\nHigh = A",
+        "Low = C\nMedium = A\nHigh = B",
+        "Low = A\nMedium = B\nHigh = C",
+        "Low = 0\nMedium = 1\nHigh = 2"
+      ],
+      "options_ar": [
+        "Low = B\nMedium = C\nHigh = A",
+        "Low = C\nMedium = A\nHigh = B",
+        "Low = A\nMedium = B\nHigh = C",
+        "Low = 0\nMedium = 1\nHigh = 2"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Symbolic representation maps time-series ranges to symbols: Low = A; Medium = B; High = C.",
+      "explanation_ar": "يمثل الترميز الرمزي مستويات السلسلة الزمنية كما يأتي: Low = A وMedium = B وHigh = C."
+    },
+    {
+      "id": "q5",
+      "concept_id": "sequence_order",
+      "bloom_level": "Understand",
+      "question": "How does the material define a sequence?",
+      "question_ar": "كيف تُعرّف المادة التسلسل؟",
+      "options": [
+        "An unordered collection of categories or labels.",
+        "A set of independent numerical attributes with no order.",
+        "A sequence is an ordered collection of elements.",
+        "A graph of edges connecting elements without sequence."
+      ],
+      "options_en": [
+        "An unordered collection of categories or labels.",
+        "A set of independent numerical attributes with no order.",
+        "A sequence is an ordered collection of elements.",
+        "A graph of edges connecting elements without sequence."
+      ],
+      "options_ar": [
+        "مجموعة غير مرتبة من فئات أو تسميات.",
+        "مجموعة خصائص رقمية مستقلة بلا ترتيب.",
+        "التسلسل مجموعة مرتبة من العناصر.",
+        "رسم من حواف تربط عناصر بلا تسلسل."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A sequence is an ordered collection of elements. The order of elements is important.",
+      "explanation_ar": "التسلسل مجموعة عناصر مرتبة، ويكون ترتيب عناصرها مهماً."
+    },
+    {
+      "id": "q6",
+      "concept_id": "data_type_portability_definition",
+      "bloom_level": "Understand",
+      "question": "What does data-type portability convert?",
+      "question_ar": "ماذا تحول قابلية نقل نوع البيانات؟",
+      "options": [
+        "Data from one representation or type into another representation",
+        "Trends and seasonal patterns appear in time-related observations.",
+        "New features from existing data represent key characteristics.",
+        "Data from multiple sources form a single analysis dataset."
+      ],
+      "options_en": [
+        "Data from one representation or type into another representation",
+        "Trends and seasonal patterns appear in time-related observations.",
+        "New features from existing data represent key characteristics.",
+        "Data from multiple sources form a single analysis dataset."
+      ],
+      "options_ar": [
+        "تحويل البيانات من تمثيل أو نوع إلى تمثيل آخر",
+        "تظهر اتجاهات موسمية في بيانات مرتبطة بالزمن.",
+        "إنشاء خصائص جديدة تمثل سمات مهمة في البيانات.",
+        "تجمع بيانات من مصادر متعددة ضمن مجموعة واحدة للتحليل."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Data Type Portability means converting data from one representation or type into another representation so that it can be processed by a data mining algorithm.",
+      "explanation_ar": "تعني قابلية نقل نوع البيانات تحويل البيانات من تمثيل أو نوع إلى تمثيل آخر كي تعالجها خوارزمية تنقيب البيانات."
+    },
+    {
+      "id": "q7",
+      "concept_id": "discretization_definition",
+      "bloom_level": "Understand",
+      "question": "Which method converts continuous values into categories or intervals?",
+      "question_ar": "أي طريقة تحول القيم المستمرة إلى فئات أو فترات؟",
+      "options": [
+        "One-hot encoding creates one binary column for each category",
+        "Discretization converts continuous numerical values",
+        "Text data is converted into numerical features",
+        "A similarity graph is created using a distance measure"
+      ],
+      "options_en": [
+        "One-hot encoding creates one binary column for each category",
+        "Discretization converts continuous numerical values",
+        "Text data is converted into numerical features",
+        "A similarity graph is created using a distance measure"
+      ],
+      "options_ar": [
+        "ينشئ One-hot عموداً ثنائياً مستقلاً لكل فئة.",
+        "يحوّل التقسيم القيم الرقمية المستمرة إلى فئات.",
+        "يحول النص إلى خصائص رقمية ملائمة للمعالجة.",
+        "ينشأ رسم التشابه باستخدام مقياس للمسافة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Discretization converts continuous numerical values into a small number of categories or intervals.",
+      "explanation_ar": "يحوّل التقسيم إلى فئات القيم الرقمية المستمرة إلى عدد قليل من الفئات أو الفترات."
+    }
+  ]
+}

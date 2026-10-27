@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_ModelB_Data_Types_and_Preparation",
+  "topic": "Data Types and Preparation — Model B",
+  "topic_ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج ب",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ordinal_attribute",
+      "bloom_level": "Understand",
+      "question": "What order do ordinal categories have?",
+      "question_ar": "ما نوع الترتيب الذي تمتلكه الفئات الترتيبية؟",
+      "options": [
+        "Numerical attributes hold quantitative measurements or counts",
+        "An ordinal attribute contains categories with a meaningful order",
+        "Nominal attributes contain categories without a natural order",
+        "A binary attribute permits only two possible values"
+      ],
+      "options_en": [
+        "Numerical attributes hold quantitative measurements or counts",
+        "An ordinal attribute contains categories with a meaningful order",
+        "Nominal attributes contain categories without a natural order",
+        "A binary attribute permits only two possible values"
+      ],
+      "options_ar": [
+        "تضم الخصائص الرقمية قيماً كمية مثل العمر والحرارة.",
+        "تضم الخاصية الترتيبية فئات لها ترتيب واضح وذي معنى.",
+        "تضم الخاصية الاسمية فئات بلا ترتيب طبيعي أو تصنيف ذي معنى.",
+        "للخاصية الثنائية قيمتان محتملتان فقط مثل نعم ولا."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "An ordinal attribute contains categories with a meaningful order, but the difference between categories is not necessarily measurable.",
+      "explanation_ar": "تحتوي الخاصية الترتيبية على فئات ذات ترتيب ذي معنى، لكن الفروق بينها ليست بالضرورة قابلة للقياس."
+    },
+    {
+      "id": "q2",
+      "concept_id": "discrete_continuous_values",
+      "bloom_level": "Understand",
+      "question": "Which statement characterizes discrete numerical attributes?",
+      "question_ar": "أي عبارة تصف الخصائص الرقمية المنفصلة؟",
+      "options": [
+        "Values have a natural order.",
+        "Values have two possible outcomes.",
+        "Values are quantitative measures.",
+        "Values are generally countable."
+      ],
+      "options_en": [
+        "Values have a natural order.",
+        "Values have two possible outcomes.",
+        "Values are quantitative measures.",
+        "Values are generally countable."
+      ],
+      "options_ar": [
+        "للقيم ترتيب طبيعي ذو معنى.",
+        "للقيم احتمالان محتملان فقط.",
+        "القيم مقادير كمية قابلة للقياس.",
+        "تكون القيم قابلة للعد عادة."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Discrete values are generally countable, whereas continuous values can take many values within a range.",
+      "explanation_ar": "تكون القيم المنفصلة قابلة للعد عادة، بينما يمكن للقيم المستمرة أن تأخذ قيماً كثيرة ضمن مدى."
+    },
+    {
+      "id": "q3",
+      "concept_id": "mean_missing_value",
+      "bloom_level": "Apply",
+      "question": "What value replaces the missing entry when the observed values are 60, 70, 80, and 90 and the mean is used?",
+      "question_ar": "ما القيمة التي تعوض المفقودة عند استخدام المتوسط للقيم 60 و70 و80 و90؟",
+      "options": [
+        "75",
+        "70",
+        "80",
+        "85"
+      ],
+      "options_en": [
+        "75",
+        "70",
+        "80",
+        "85"
+      ],
+      "options_ar": [
+        "75",
+        "70",
+        "80",
+        "85"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "For numerical data, the missing value can be replaced by the mean.",
+      "explanation_ar": "تُعوّض القيمة المفقودة في البيانات الرقمية باستخدام المتوسط."
+    },
+    {
+      "id": "q4",
+      "concept_id": "noise_handling_methods",
+      "bloom_level": "Remember",
+      "question": "Which methods are commonly used to handle noisy data?",
+      "question_ar": "ما الطرائق الشائعة لمعالجة البيانات المشوشة؟",
+      "options": [
+        "Classification; association analysis; prediction; reduction",
+        "Mean; Median; Mode; manual missing-value filling",
+        "Binning; Regression; Clustering; Outlier detection",
+        "Normalization; aggregation; encoding; feature construction"
+      ],
+      "options_en": [
+        "Classification; association analysis; prediction; reduction",
+        "Mean; Median; Mode; manual missing-value filling",
+        "Binning; Regression; Clustering; Outlier detection",
+        "Normalization; aggregation; encoding; feature construction"
+      ],
+      "options_ar": [
+        "تصنيف البيانات؛ تحليل الترابط؛ التنبؤ؛ اختزال أبعاد البيانات",
+        "المتوسط؛ الوسيط؛ المنوال؛ الإدخال اليدوي للقيم المفقودة",
+        "التجميع ضمن فئات؛ الانحدار؛ التجميع؛ اكتشاف القيم المتطرفة",
+        "التطبيع؛ تجميع البيانات؛ ترميزها؛ إنشاء خصائص جديدة منها"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Common approaches include: Binning; Regression; Clustering; Outlier detection.",
+      "explanation_ar": "تشمل الأساليب الشائعة التجميع ضمن فئات والانحدار والتجميع واكتشاف القيم المتطرفة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "outlier_not_error",
+      "bloom_level": "Understand",
+      "question": "Which statement about an outlier is correct?",
+      "question_ar": "أي عبارة صحيحة عن القيمة المتطرفة؟",
+      "options": [
+        "An outlier is always a missing value.",
+        "An outlier is always an input error.",
+        "An outlier is not necessarily an error.",
+        "An outlier is always a duplicate record."
+      ],
+      "options_en": [
+        "An outlier is always a missing value.",
+        "An outlier is always an input error.",
+        "An outlier is not necessarily an error.",
+        "An outlier is always a duplicate record."
+      ],
+      "options_ar": [
+        "القيمة المتطرفة دائماً قيمة مفقودة.",
+        "القيمة المتطرفة دائماً خطأ إدخال.",
+        "القيمة المتطرفة ليست بالضرورة خطأ.",
+        "القيمة المتطرفة دائماً سجل مكرر."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "An outlier is not necessarily an error. Therefore, outliers should be investigated before removing them.",
+      "explanation_ar": "القيمة المتطرفة ليست بالضرورة خطأ؛ لذلك ينبغي التحقق منها قبل حذفها."
+    },
+    {
+      "id": "q6",
+      "concept_id": "feature_selection",
+      "bloom_level": "Understand",
+      "question": "Which process selects useful existing attributes and removes irrelevant or redundant ones?",
+      "question_ar": "أي عملية تنتقي السمات المفيدة الموجودة وتزيل غير الملائم أو الزائد؟",
+      "options": [
+        "Feature Selection",
+        "Normalization",
+        "Feature Extraction",
+        "Data Integration"
+      ],
+      "options_en": [
+        "Feature Selection",
+        "Normalization",
+        "Feature Extraction",
+        "Data Integration"
+      ],
+      "options_ar": [
+        "انتقاء الخصائص",
+        "تحويل البيانات",
+        "استخراج الخصائص",
+        "تكامل البيانات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Feature Selection selects the most useful attributes and removes irrelevant or redundant ones.",
+      "explanation_ar": "يختار انتقاء الخصائص السمات الأكثر فائدة ويزيل السمات غير الملائمة أو الزائدة."
+    },
+    {
+      "id": "q7",
+      "concept_id": "data_cleaning_definition",
+      "bloom_level": "Understand",
+      "question": "Which process detects and corrects data problems?",
+      "question_ar": "أي عملية تكتشف مشكلات البيانات وتصحيحها؟",
+      "options": [
+        "Data Integration combines data from multiple sources into a single dataset.",
+        "Data Cleaning is the process of detecting and correcting problems in the data.",
+        "Data Transformation converts data into a suitable format for algorithms.",
+        "Data Reduction reduces data size while preserving important information."
+      ],
+      "options_en": [
+        "Data Integration combines data from multiple sources into a single dataset.",
+        "Data Cleaning is the process of detecting and correcting problems in the data.",
+        "Data Transformation converts data into a suitable format for algorithms.",
+        "Data Reduction reduces data size while preserving important information."
+      ],
+      "options_ar": [
+        "يجمع تكامل البيانات مصادر متعددة في مجموعة واحدة للتحليل.",
+        "تنظيف البيانات عملية اكتشاف مشكلاتها الموجودة وتصحيحها.",
+        "يحوّل تغيير البيانات صيغتها إلى شكل مناسب للخوارزميات.",
+        "يقلل اختزال البيانات حجمها مع حفظ المعلومات المهمة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Data Cleaning is the process of detecting and correcting problems in the data.",
+      "explanation_ar": "يكشف تنظيف البيانات المشكلات الموجودة فيها ويصححها؛ أما التكامل فيجمع المصادر، والتحويل فيغير الصيغة، والاختزال يقلل الحجم مع حفظ المعلومات."
+    }
+  ]
+}

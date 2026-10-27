@@ -1,0 +1,363 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_T06_Image_Spatial_Sequence_Graph",
+  "topic": "Image, Spatial, Sequence, and Graph Representations",
+  "topic_ar": "تمثيلات الصور والبيانات المكانية والتسلسلية والبيانية",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "grayscale_image_matrix",
+      "bloom_level": "Remember",
+      "question": "How is a grayscale image represented?",
+      "question_ar": "كيف تُمثل الصورة الرمادية؟",
+      "options": [
+        "As an unordered transaction of items",
+        "As graph edges without any nodes",
+        "As labels without pixel-intensity values",
+        "As a matrix of pixel intensities"
+      ],
+      "options_en": [
+        "As an unordered transaction of items",
+        "As graph edges without any nodes",
+        "As labels without pixel-intensity values",
+        "As a matrix of pixel intensities"
+      ],
+      "options_ar": [
+        "كمعاملة لعناصر غير مرتبة",
+        "كحواف بيانية من دون عقد",
+        "كتسميات بلا قيم بكسلات",
+        "كمصفوفة من قيم شدة البكسل"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A grayscale image is represented by pixel intensities arranged in a matrix; the alternatives describe unrelated structures.",
+      "explanation_ar": "تمثل الصورة الرمادية بشدات بكسلات مرتبة في مصفوفة؛ أما البدائل فهياكل غير مرتبطة.",
+      "id": "q1"
+    },
+    {
+      "concept_id": "grayscale_pixel_values",
+      "bloom_level": "Remember",
+      "question": "In the grayscale example, what do 0 and 255 represent?",
+      "question_ar": "في مثال الصورة الرمادية، ماذا تمثل 0 و255؟",
+      "options": [
+        "0 is missing; 255 is a graph edge.",
+        "0 is black and 255 is white.",
+        "0 is red and 255 is blue.",
+        "0 is white and 255 is black."
+      ],
+      "options_en": [
+        "0 is missing; 255 is a graph edge.",
+        "0 is black and 255 is white.",
+        "0 is red and 255 is blue.",
+        "0 is white and 255 is black."
+      ],
+      "options_ar": [
+        "تمثل 0 قيمة مفقودة وتمثل 255 حافة بيانية من الصورة.",
+        "تمثل 0 اللون الأسود وتمثل 255 اللون الأبيض.",
+        "تمثل 0 الأحمر وتمثل 255 الأزرق في المثال.",
+        "تمثل 0 الأبيض وتمثل 255 الأسود في الصورة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The source assigns black to 0 and white to 255; the other mappings are incorrect.",
+      "explanation_ar": "تسند المادة الأسود إلى 0 والأبيض إلى 255؛ أما المطابقات الأخرى فغير صحيحة.",
+      "id": "q2"
+    },
+    {
+      "concept_id": "rgb_channels",
+      "bloom_level": "Remember",
+      "question": "Which channels make up a color RGB image?",
+      "question_ar": "ما القنوات التي تتكون منها صورة RGB ملونة؟",
+      "options": [
+        "Height, Width, and RGB",
+        "Shape, Texture, and Edge",
+        "Red, Green, and Blue",
+        "Red, Gray, and Black"
+      ],
+      "options_en": [
+        "Height, Width, and RGB",
+        "Shape, Texture, and Edge",
+        "Red, Green, and Blue",
+        "Red, Gray, and Black"
+      ],
+      "options_ar": [
+        "الارتفاع والعرض والشدة",
+        "الملمس والشكل والحافة",
+        "الأحمر والأخضر والأزرق",
+        "الأحمر والرمادي والأسود"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "RGB uses Red, Green, and Blue channels; the other choices mix dimensions or extracted features.",
+      "explanation_ar": "تستخدم RGB قنوات الأحمر والأخضر والأزرق؛ أما البدائل فتخلط الأبعاد أو الخصائص المستخرجة.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "image_extracted_features",
+      "bloom_level": "Remember",
+      "question": "Which set contains image features named in the representation example?",
+      "question_ar": "أي مجموعة تضم خصائص صور وردت في مثال التمثيل؟",
+      "options": [
+        "Shape, texture, edges, color, and deep features",
+        "Distance, density, and spatial-location features",
+        "Mean, deviation, frequency, and wavelet features",
+        "Degree, centrality, connectivity, and graph paths"
+      ],
+      "options_en": [
+        "Shape, texture, edges, color, and deep features",
+        "Distance, density, and spatial-location features",
+        "Mean, deviation, frequency, and wavelet features",
+        "Degree, centrality, connectivity, and graph paths"
+      ],
+      "options_ar": [
+        "الشكل والملمس والحواف واللون والخصائص العميقة",
+        "المسافة والكثافة وخصائص الموقع المكاني",
+        "المتوسط والانحراف وخصائص التردد والمويجات",
+        "الدرجة والمركزية والاتصال والمسارات البيانية"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The listed set belongs to image features; the distractors describe time-series, spatial, or graph features.",
+      "explanation_ar": "تخص المجموعة المذكورة خصائص الصور؛ أما البدائل فتصف خصائص زمنية أو مكانية أو بيانية.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "spatial_coordinate_example",
+      "bloom_level": "Apply",
+      "question": "Which coordinates are given for Hospital H1?",
+      "question_ar": "ما الإحداثيات المعطاة للمستشفى H1؟",
+      "options": [
+        "Latitude 32.48, Longitude 45.85",
+        "Latitude 32.50, Longitude 45.82",
+        "Latitude 45.82, Longitude 32.50",
+        "Latitude 32.50, Longitude 32.48"
+      ],
+      "options_en": [
+        "Latitude 32.48, Longitude 45.85",
+        "Latitude 32.50, Longitude 45.82",
+        "Latitude 45.82, Longitude 32.50",
+        "Latitude 32.50, Longitude 32.48"
+      ],
+      "options_ar": [
+        "خط العرض 32.48 وخط الطول 45.85",
+        "خط العرض 32.50 وخط الطول 45.82",
+        "خط العرض 45.82 وخط الطول 32.50",
+        "خط العرض 32.50 وخط الطول 32.48"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The example assigns H1 latitude 32.50 and longitude 45.82; the other pair is used for H2 or reverses coordinates.",
+      "explanation_ar": "يعطي المثال H1 خط عرض 32.50 وخط طول 45.82؛ أما البدائل فتخص H2 أو تعكس الإحداثيات.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "spatial_numeric_features",
+      "bloom_level": "Remember",
+      "question": "Which features can represent spatial information numerically?",
+      "question_ar": "أي خصائص يمكن أن تمثل المعلومات المكانية رقمياً؟",
+      "options": [
+        "Pixel intensity, RGB channel, and graph path",
+        "Mean, wavelets, and symbolic time bins",
+        "Distance, density, and location features",
+        "Word frequency, TF-IDF, and document embeddings"
+      ],
+      "options_en": [
+        "Pixel intensity, RGB channel, and graph path",
+        "Mean, wavelets, and symbolic time bins",
+        "Distance, density, and location features",
+        "Word frequency, TF-IDF, and document embeddings"
+      ],
+      "options_ar": [
+        "شدة البكسل وقنوات RGB للصورة",
+        "المتوسط وخصائص المويجات الزمنية",
+        "خصائص المسافة والكثافة والموقع",
+        "خصائص TF-IDF وتضمينات الكلمات النصية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The quick-reference table gives distance, density, and location for spatial data; the alternatives belong to other forms.",
+      "explanation_ar": "يعطي جدول الخصائص المسافة والكثافة والموقع للبيانات المكانية؛ أما البدائل فتخص أشكالاً أخرى.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "sequence_definition",
+      "bloom_level": "Remember",
+      "question": "What is a sequence?",
+      "question_ar": "ما التسلسل؟",
+      "options": [
+        "An unordered transaction set of items.",
+        "A matrix of image pixel values.",
+        "A group of objects linked only by location.",
+        "An ordered collection of elements."
+      ],
+      "options_en": [
+        "An unordered transaction set of items.",
+        "A matrix of image pixel values.",
+        "A group of objects linked only by location.",
+        "An ordered collection of elements."
+      ],
+      "options_ar": [
+        "مجموعة عناصر معاملة بلا ترتيب.",
+        "مصفوفة قيم بكسلات الصورة.",
+        "كائنات تربطها المواقع فقط.",
+        "مجموعة مرتبة من العناصر."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A sequence is explicitly defined by its ordered elements; the alternatives describe transactions, images, or spatial data.",
+      "explanation_ar": "يعرف التسلسل صراحة بترتيب عناصره؛ أما البدائل فتصف معاملات أو صوراً أو بيانات مكانية.",
+      "id": "q7"
+    },
+    {
+      "concept_id": "sequence_customer_example",
+      "bloom_level": "Remember",
+      "question": "Which string of symbols is given as a DNA sequence example?",
+      "question_ar": "أي سلسلة رموز وردت مثالاً لتسلسل DNA؟",
+      "options": [
+        "C T A G C T A",
+        "G G A C T A C",
+        "A G C T T A G",
+        "A C G T A C G"
+      ],
+      "options_en": [
+        "C T A G C T A",
+        "G G A C T A C",
+        "A G C T T A G",
+        "A C G T A C G"
+      ],
+      "options_ar": [
+        "C T A G C T A",
+        "G G A C T A C",
+        "A G C T T A G",
+        "A C G T A C G"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The source gives A C G T A C G as a DNA sequence; changing the order gives a different sequence.",
+      "explanation_ar": "تورد المادة A C G T A C G تسلسلاً لـDNA؛ وتغيير الترتيب يعطي تسلسلاً مختلفاً.",
+      "id": "q8"
+    },
+    {
+      "concept_id": "sequence_numeric_map",
+      "bloom_level": "Remember",
+      "question": "Which method maps a sequence to numerical data?",
+      "question_ar": "أي طريقة تحول التسلسل إلى بيانات رقمية؟",
+      "options": [
+        "Sequence encoding",
+        "Min–Max transform",
+        "Image feature map",
+        "Equal-width bins"
+      ],
+      "options_en": [
+        "Sequence encoding",
+        "Min–Max transform",
+        "Image feature map",
+        "Equal-width bins"
+      ],
+      "options_ar": [
+        "ترميز التسلسل",
+        "تطبيع Min–Max",
+        "خصائص الصورة",
+        "تقطيع العرض"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The conversion table pairs sequence-to-numerical data with sequence encoding.",
+      "explanation_ar": "تطابق قائمة التحويل التسلسل إلى بيانات رقمية مع ترميز التسلسل.",
+      "id": "q9"
+    },
+    {
+      "concept_id": "graph_embedding_numeric",
+      "bloom_level": "Understand",
+      "question": "How can a graph node be represented after graph embedding?",
+      "question_ar": "كيف يمكن تمثيل عقدة بيانية بعد التضمين البياني؟",
+      "options": [
+        "As a numerical vector, for example Node A → [0.21, 0.75, 0.43]",
+        "As a raw-text vector without converted numerical feature values.",
+        "As a three-channel RGB image rather than a node representation.",
+        "As a single nominal category without any numerical attributes."
+      ],
+      "options_en": [
+        "As a numerical vector, for example Node A → [0.21, 0.75, 0.43]",
+        "As a raw-text vector without converted numerical feature values.",
+        "As a three-channel RGB image rather than a node representation.",
+        "As a single nominal category without any numerical attributes."
+      ],
+      "options_ar": [
+        "كمتجه رقمي، مثل العقدة A ← [0.21، 0.75، 0.43]",
+        "كمتجه نصي خام بلا قيم خصائص رقمية محولة.",
+        "كصورة RGB ثلاثية القنوات لا كتمثيل لعقدة.",
+        "كفئة اسمية منفردة بلا أي قيم للخصائص الرقمية."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The example maps nodes to numerical vectors so an algorithm can process the graph representation.",
+      "explanation_ar": "يحول المثال العقد إلى متجهات رقمية كي تعالج الخوارزمية تمثيل الرسم البياني.",
+      "id": "q10"
+    },
+    {
+      "concept_id": "similarity_graph_threshold",
+      "bloom_level": "Apply",
+      "question": "When are two patient nodes connected in the similarity-graph example?",
+      "question_ar": "متى توصل عقدتا مريضين في مثال رسم التشابه؟",
+      "options": [
+        "Only if both patient IDs match",
+        "If distance(P1, P2) < threshold",
+        "If either patient has missing data",
+        "If distance(P1, P2) exceeds threshold"
+      ],
+      "options_en": [
+        "Only if both patient IDs match",
+        "If distance(P1, P2) < threshold",
+        "If either patient has missing data",
+        "If distance(P1, P2) exceeds threshold"
+      ],
+      "options_ar": [
+        "فقط عند تطابق معرّفي السجل للمريضين",
+        "إذا كانت المسافة بين P1 وP2 أصغر من العتبة",
+        "إذا كانت لدى أحد المريضين قيمة مفقودة",
+        "إذا كانت المسافة بين P1 وP2 أكبر من العتبة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The example creates an edge when the similarity distance is below a threshold; the alternatives do not express that rule.",
+      "explanation_ar": "ينشئ المثال حافة عندما تقل مسافة التشابه عن عتبة؛ أما البدائل فلا تعبر عن هذه القاعدة.",
+      "id": "q11"
+    },
+    {
+      "concept_id": "similarity_graph_applications",
+      "bloom_level": "Remember",
+      "question": "Which applications are listed for similarity graphs?",
+      "question_ar": "أي تطبيقات ذُكرت لرسوم التشابه؟",
+      "options": [
+        "Trend detection, seasonality, periodicity, wavelets, and time-series forecasting",
+        "Normalization, aggregation, feature construction, PCA, and dimensionality reduction",
+        "Clustering, classification, nearest-neighbor analysis, and outlier detection",
+        "Text classification, sentiment, topics, word frequency, and document vectors"
+      ],
+      "options_en": [
+        "Trend detection, seasonality, periodicity, wavelets, and time-series forecasting",
+        "Normalization, aggregation, feature construction, PCA, and dimensionality reduction",
+        "Clustering, classification, nearest-neighbor analysis, and outlier detection",
+        "Text classification, sentiment, topics, word frequency, and document vectors"
+      ],
+      "options_ar": [
+        "كشف الاتجاهات والموسمية والدورية والمويجات والتنبؤ الزمني",
+        "التطبيع والتجميع وبناء الخصائص وPCA وتقليل الأبعاد",
+        "التجميع والتصنيف وتحليل أقرب الجيران وكشف القيم الشاذة",
+        "تصنيف النص والمشاعر والموضوعات وتكرار الكلمات ومتجهات الوثائق"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The four tasks are listed for similarity graphs; the distractors mix general transformations, text, or temporal analysis.",
+      "explanation_ar": "ترد المهام الأربع لرسوم التشابه؛ أما البدائل فتخلط تحويلات عامة أو تحليلاً نصياً أو زمنياً.",
+      "id": "q12"
+    }
+  ]
+}

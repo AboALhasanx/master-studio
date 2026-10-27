@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_T04_Categorical_and_Text_Representations",
+  "topic": "Categorical and Text Representations",
+  "topic_ar": "تمثيل البيانات الفئوية والنصية",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "onehot_columns",
+      "bloom_level": "Remember",
+      "question": "What does one-hot encoding create for each category?",
+      "question_ar": "ماذا ينشئ الترميز One-hot لكل فئة؟",
+      "options": [
+        "One interval for the entire value range.",
+        "One binary column for each category.",
+        "One graph edge for each data record.",
+        "One ordinal code for all categories."
+      ],
+      "options_en": [
+        "One interval for the entire value range.",
+        "One binary column for each category.",
+        "One graph edge for each data record.",
+        "One ordinal code for all categories."
+      ],
+      "options_ar": [
+        "فترة رقمية واحدة للقيم كلها.",
+        "عموداً ثنائياً لكل فئة.",
+        "حافة بيانية لكل السجلات.",
+        "رمزاً ترتيبياً للفئات."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "One-hot assigns each category its own binary column, rather than encoding categories as a shared ordered scale.",
+      "explanation_ar": "يخصص One-hot عموداً ثنائياً مستقلاً لكل فئة بدلاً من وضعها على مقياس ترتيبي مشترك.",
+      "id": "q1"
+    },
+    {
+      "concept_id": "onehot_bits",
+      "bloom_level": "Understand",
+      "question": "In the one-hot example, what do 1 and 0 indicate?",
+      "question_ar": "في مثال One-hot، إلى ماذا تشير 1 و0؟",
+      "options": [
+        "1 marks an ordinal rank; 0 marks a continuous value.",
+        "1 means the value is missing; 0 means it is noisy.",
+        "1 represents a graph edge; 0 represents a node.",
+        "1 means the category is present; 0 means it is absent."
+      ],
+      "options_en": [
+        "1 marks an ordinal rank; 0 marks a continuous value.",
+        "1 means the value is missing; 0 means it is noisy.",
+        "1 represents a graph edge; 0 represents a node.",
+        "1 means the category is present; 0 means it is absent."
+      ],
+      "options_ar": [
+        "تمثل 1 رتبة ترتيبية، وتمثل 0 قيمة رقمية.",
+        "تعني 1 أن القيمة مفقودة، وتعني 0 أنها غير متاحة.",
+        "تمثل 1 حافة بيانية، ويمثل 0 عقدة في الرسم.",
+        "تعني 1 أن الفئة موجودة، وتعني 0 أنها غير موجودة."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The bits encode category presence and absence; the distractors assign unrelated meanings.",
+      "explanation_ar": "ترمز البتات إلى وجود الفئة وغيابها؛ أما البدائل فتسند إليها معاني أخرى.",
+      "id": "q2"
+    },
+    {
+      "concept_id": "onehot_blood_type_example",
+      "bloom_level": "Apply",
+      "question": "With categories A, B, and O, what vector represents patient P2 with category B?",
+      "question_ar": "إذا كانت الفئات A وB وO، فما المتجه الذي يمثل المريض P2 ذي الفئة B؟",
+      "options": [
+        "[0, 1, 0]",
+        "[1, 0, 0]",
+        "[0, 0, 1]",
+        "[1, 1, 0]"
+      ],
+      "options_en": [
+        "[0, 1, 0]",
+        "[1, 0, 0]",
+        "[0, 0, 1]",
+        "[1, 1, 0]"
+      ],
+      "options_ar": [
+        "[0, 1, 0]",
+        "[1, 0, 0]",
+        "[0, 0, 1]",
+        "[1, 1, 0]"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The columns follow A, B, O, so category B sets the second bit to 1 and the others to 0.",
+      "explanation_ar": "ترتب الأعمدة A ثم B ثم O، لذلك تضبط الفئة B البت الثاني إلى 1 والبقية إلى 0.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "label_encoding_nominal_risk",
+      "bloom_level": "Analyze",
+      "question": "Why may A = 1, B = 2, O = 3 be inappropriate for blood type?",
+      "question_ar": "لماذا قد لا يناسب ترميز فصائل الدم A = 1 وB = 2 وO = 3؟",
+      "options": [
+        "It converts each category into a time-series observation for analysis.",
+        "It prevents numerical algorithms from accepting categorical input values.",
+        "It may incorrectly suggest a numerical order among nominal categories.",
+        "It guarantees identical frequencies across all nominal categories in the dataset."
+      ],
+      "options_en": [
+        "It converts each category into a time-series observation for analysis.",
+        "It prevents numerical algorithms from accepting categorical input values.",
+        "It may incorrectly suggest a numerical order among nominal categories.",
+        "It guarantees identical frequencies across all nominal categories in the dataset."
+      ],
+      "options_ar": [
+        "يحول كل فئة إلى مشاهدة زمنية مستقلة لأغراض التحليل.",
+        "يمنع الخوارزميات الرقمية من قبول أي مدخل فئوي.",
+        "قد يوحي خطأً بوجود ترتيب رقمي بين الفئات الاسمية.",
+        "يضمن تساوي التكرارات بين الفئات الاسمية كلها في البيانات."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Blood types are nominal and have no meaningful order; numeric labels can falsely imply one.",
+      "explanation_ar": "فصائل الدم اسمية ولا ترتيب ذا معنى بينها؛ وقد توحي التسميات الرقمية بترتيب زائف.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "document_vector_example",
+      "bloom_level": "Apply",
+      "question": "Using the vocabulary good, product, service, what vector represents “good product”?",
+      "question_ar": "باستخدام مفردات good وproduct وservice، ما المتجه الذي يمثل “good product”؟",
+      "options": [
+        "[0, 1, 1]",
+        "[0, 0, 1]",
+        "[1, 1, 0]",
+        "[1, 0, 1]"
+      ],
+      "options_en": [
+        "[0, 1, 1]",
+        "[0, 0, 1]",
+        "[1, 1, 0]",
+        "[1, 0, 1]"
+      ],
+      "options_ar": [
+        "[0, 1, 1]",
+        "[0, 0, 1]",
+        "[1, 1, 0]",
+        "[1, 0, 1]"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The document contains good and product but not service, producing [1, 1, 0] in that vocabulary order.",
+      "explanation_ar": "تحتوي الوثيقة good وproduct ولا تحتوي service، لذلك يكون متجهها [1, 1, 0] وفق ترتيب المفردات.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "text_vectorization_methods",
+      "bloom_level": "Remember",
+      "question": "Which group lists common text-vectorization approaches?",
+      "question_ar": "أي مجموعة تسرد طرائق شائعة لتمثيل النص متجهياً؟",
+      "options": [
+        "Bag of Words, TF-IDF, word embeddings, and document embeddings",
+        "Degree, centrality, connectivity, graph paths, and graph embeddings",
+        "Mean, standard deviation, DFT, DWT, trends, and seasonal features",
+        "Min–Max, z-score, PCA, and both equal-width and equal-frequency discretization"
+      ],
+      "options_en": [
+        "Bag of Words, TF-IDF, word embeddings, and document embeddings",
+        "Degree, centrality, connectivity, graph paths, and graph embeddings",
+        "Mean, standard deviation, DFT, DWT, trends, and seasonal features",
+        "Min–Max, z-score, PCA, and both equal-width and equal-frequency discretization"
+      ],
+      "options_ar": [
+        "حقيبة الكلمات وTF-IDF وتضمينات الكلمات وتضمينات الوثائق",
+        "الدرجة والمركزية والاتصال والمسارات والتضمينات البيانية",
+        "المتوسط والانحراف وDFT وDWT وخصائص الاتجاه والموسمية",
+        "Min–Max وZ-score وPCA والتقطيع متساوي العرض ومتساوي التكرار"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "These four approaches are listed for text vectorization; the alternatives are scaling, graph, or time-series techniques.",
+      "explanation_ar": "ترد هذه الطرائق الأربع لتمثيل النص؛ أما البدائل فطرائق تحجيم أو رسوم بيانية أو سلاسل زمنية.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "text_vector_output",
+      "bloom_level": "Understand",
+      "question": "What form may result from text vectorization?",
+      "question_ar": "ما الشكل الذي قد ينتج عن تمثيل النص متجهياً؟",
+      "options": [
+        "A single graph edge without any node representation",
+        "A numerical vector such as [0.12, 0.45, 0.08, 0.71, …]",
+        "A sequence of category labels with no numerical representation",
+        "A raw paragraph that numerical algorithms process unchanged"
+      ],
+      "options_en": [
+        "A single graph edge without any node representation",
+        "A numerical vector such as [0.12, 0.45, 0.08, 0.71, …]",
+        "A sequence of category labels with no numerical representation",
+        "A raw paragraph that numerical algorithms process unchanged"
+      ],
+      "options_ar": [
+        "حافة بيانية واحدة بلا تمثيل رقمي لعقدها",
+        "متجه رقمي مثل [0.12, 0.45, 0.08, 0.71, …]",
+        "تسلسل من التسميات الفئوية دون قيم رقمية",
+        "فقرة نصية خام تعالجها الخوارزمية مباشرة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The source shows a numerical vector as a possible output, which can then be used by mining or machine-learning methods.",
+      "explanation_ar": "تعرض المادة متجهاً رقمياً ناتجاً ممكناً، ويمكن بعده استخدام طرائق التنقيب أو التعلم الآلي.",
+      "id": "q7"
+    }
+  ]
+}

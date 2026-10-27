@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_T01_Data_Objects_and_Attribute_Types",
+  "topic": "Data Objects, Attributes, and Attribute Types",
+  "topic_ar": "كائنات البيانات والخصائص وأنواعها",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "data_object_definition",
+      "bloom_level": "Remember",
+      "question": "What does a data object represent?",
+      "question_ar": "ماذا يمثل كائن البيانات؟",
+      "options": [
+        "A property or characteristic of a data object.",
+        "A collection of records with shared attributes.",
+        "A set of items recorded in a transaction.",
+        "An entity about which information is collected."
+      ],
+      "options_en": [
+        "A property or characteristic of a data object.",
+        "A collection of records with shared attributes.",
+        "A set of items recorded in a transaction.",
+        "An entity about which information is collected."
+      ],
+      "options_ar": [
+        "صفة أو خاصية لكائن البيانات.",
+        "سجلات ضمن مجموعة بيانات.",
+        "عناصر ضمن معاملة واحدة.",
+        "كيان تُجمع عنه المعلومات."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A data object is the entity described by collected information; a property is an attribute, and a mining method analyzes data.",
+      "explanation_ar": "كائن البيانات هو الكيان الذي تصفه المعلومات المجموعة؛ أما الصفة فهي خاصية، وطريقة التنقيب تحلل البيانات.",
+      "id": "q1"
+    },
+    {
+      "concept_id": "attribute_definition",
+      "bloom_level": "Remember",
+      "question": "What is an attribute of a data object?",
+      "question_ar": "ما الخاصية في كائن البيانات؟",
+      "options": [
+        "A collection of records describing one object.",
+        "A set of items recorded in a transaction.",
+        "An entity about which information is collected.",
+        "A property or characteristic of a data object."
+      ],
+      "options_en": [
+        "A collection of records describing one object.",
+        "A set of items recorded in a transaction.",
+        "An entity about which information is collected.",
+        "A property or characteristic of a data object."
+      ],
+      "options_ar": [
+        "مجموعة سجلات تصف كائناً واحداً.",
+        "عناصر تسجل ضمن معاملة واحدة.",
+        "كيان تُجمع عنه المعلومات.",
+        "صفة أو خاصية لكائن البيانات."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "An attribute describes an object; the other choices describe an object, transaction collection, or graph edge.",
+      "explanation_ar": "الخاصية تصف كائن البيانات؛ أما الخيارات الأخرى فتصف كائناً أو مجموعة معاملات أو حافة في رسم بياني.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "attribute_examples",
+      "bloom_level": "Understand",
+      "question": "Which set contains all five patient attributes listed in the example?",
+      "question_ar": "أي مجموعة تضم خصائص المريض الخمس المذكورة في المثال؟",
+      "options": [
+        "Record, transaction, text, sequence, spatial data",
+        "Age, gender, BMI, and blood pressure",
+        "Age, gender, BMI, blood pressure, diabetes status",
+        "Patient, student, customer, transaction, document"
+      ],
+      "options_en": [
+        "Record, transaction, text, sequence, spatial data",
+        "Age, gender, BMI, and blood pressure",
+        "Age, gender, BMI, blood pressure, diabetes status",
+        "Patient, student, customer, transaction, document"
+      ],
+      "options_ar": [
+        "السجل، المعاملة، النص، التسلسل، والبيانات المكانية",
+        "الاسمية، الترتيبية، الثنائية، الرقمية، والمستمرة",
+        "العمر، الجنس، مؤشر كتلة الجسم، ضغط الدم، حالة السكري",
+        "المريض، الطالب، الزبون، المعاملة، والموقع الجغرافي"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The key lists properties used to describe a patient; the alternatives list objects, data structures, or mining tasks.",
+      "explanation_ar": "الإجابة تسرد خصائص تصف المريض؛ والبدائل تسرد كائنات أو هياكل بيانات أو مهام تنقيب.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "data_structure_vs_attribute_type",
+      "bloom_level": "Understand",
+      "question": "Which set names attribute types rather than data structures?",
+      "question_ar": "أي مجموعة تسمي أنواع خصائص لا هياكل بيانات؟",
+      "options": [
+        "Nominal, ordinal, binary, and numerical attributes",
+        "Age, gender, BMI, and blood pressure attributes",
+        "Mean, median, mode, and prediction methods",
+        "Record, transaction, text, and sequence data types"
+      ],
+      "options_en": [
+        "Nominal, ordinal, binary, and numerical attributes",
+        "Age, gender, BMI, and blood pressure attributes",
+        "Mean, median, mode, and prediction methods",
+        "Record, transaction, text, and sequence data types"
+      ],
+      "options_ar": [
+        "الخصائص الاسمية والترتيبية والثنائية والرقمية",
+        "خصائص المريض: العمر، الجنس، الوزن، وضغط الدم",
+        "طرائق التعويض: المتوسط، الوسيط، المنوال، والتنبؤ",
+        "أنواع البيانات: السجل، المعاملة، النص، والتسلسل"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Nominal, ordinal, binary, and numerical classify attribute values; the alternatives name structures or preparation steps.",
+      "explanation_ar": "تصنف الاسمية والترتيبية والثنائية والرقمية قيم الخصائص؛ أما البدائل فتسمي هياكل أو خطوات تحضير.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "attribute_type_guides_technique",
+      "bloom_level": "Understand",
+      "question": "What influences the choice of a data-mining technique?",
+      "question_ar": "ما الذي يؤثر في اختيار تقنية تنقيب البيانات؟",
+      "options": [
+        "The file format and storage method",
+        "The type and structure of data",
+        "The number of records and fields",
+        "The names of individual attributes"
+      ],
+      "options_en": [
+        "The file format and storage method",
+        "The type and structure of data",
+        "The number of records and fields",
+        "The names of individual attributes"
+      ],
+      "options_ar": [
+        "صيغة الملف والتخزين",
+        "نوع البيانات وبنيتها",
+        "عدد السجلات والحقول",
+        "أسماء الخصائص الفردية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The source links data type and structure to technique choice; it does not require binary data or prescribe table counts.",
+      "explanation_ar": "يربط المصدر نوع البيانات وبنيتها باختيار الطريقة؛ ولا يشترط بيانات ثنائية أو يحدد عدد الجداول.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "nominal_attribute_definition",
+      "bloom_level": "Remember",
+      "question": "Which attribute type contains categories with no natural order?",
+      "question_ar": "أي نوع من الخصائص يحتوي فئات بلا ترتيب طبيعي؟",
+      "options": [
+        "Ordinal attribute",
+        "Binary attribute",
+        "Nominal attribute",
+        "Numerical attribute"
+      ],
+      "options_en": [
+        "Ordinal attribute",
+        "Binary attribute",
+        "Nominal attribute",
+        "Numerical attribute"
+      ],
+      "options_ar": [
+        "خاصية ترتيبية",
+        "خاصية ثنائية",
+        "خاصية اسمية",
+        "خاصية رقمية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Nominal categories have no natural order; the alternatives define ordinal, binary, and numerical attributes.",
+      "explanation_ar": "لا تملك الفئات الاسمية ترتيباً طبيعياً؛ أما البدائل فتعرف الخصائص الترتيبية والثنائية والرقمية.",
+      "id": "q7"
+    },
+    {
+      "concept_id": "ordinal_order",
+      "bloom_level": "Understand",
+      "question": "Which attribute type has a meaningful category order without necessarily measurable gaps?",
+      "question_ar": "أي نوع من الخصائص له ترتيب ذو معنى من دون أن تكون الفواصل قابلة للقياس بالضرورة؟",
+      "options": [
+        "Numerical attribute",
+        "Ordinal attribute",
+        "Binary attribute",
+        "Nominal attribute"
+      ],
+      "options_en": [
+        "Numerical attribute",
+        "Ordinal attribute",
+        "Binary attribute",
+        "Nominal attribute"
+      ],
+      "options_ar": [
+        "خاصية من النوع الرقمي",
+        "خاصية من النوع الترتيبي",
+        "خاصية من النوع الثنائي",
+        "خاصية من النوع الاسمي"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Ordinal data preserves rank without guaranteeing equal or measurable gaps; the alternatives describe nominal, binary, or continuous numerical data.",
+      "explanation_ar": "تحفظ البيانات الترتيبية الرتبة من دون ضمان أن الفواصل متساوية أو قابلة للقياس؛ والبدائل تصف بيانات اسمية أو ثنائية أو رقمية مستمرة.",
+      "id": "q9"
+    },
+    {
+      "concept_id": "binary_attribute_definition",
+      "bloom_level": "Remember",
+      "question": "Which attribute type has only two possible values?",
+      "question_ar": "أي نوع من الخصائص له قيمتان محتملتان فقط؟",
+      "options": [
+        "Binary attribute",
+        "Nominal attribute",
+        "Ordinal attribute",
+        "Numerical attribute"
+      ],
+      "options_en": [
+        "Binary attribute",
+        "Nominal attribute",
+        "Ordinal attribute",
+        "Numerical attribute"
+      ],
+      "options_ar": [
+        "خاصية من النوع الثنائي",
+        "خاصية من النوع الاسمي",
+        "خاصية من النوع الترتيبي",
+        "خاصية من النوع الرقمي"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Binary means exactly two possible values; the alternatives describe different attribute types.",
+      "explanation_ar": "تعني الثنائية وجود قيمتين محتملتين فقط؛ أما البدائل فتصنف أنواعاً أخرى من الخصائص.",
+      "id": "q11"
+    },
+    {
+      "concept_id": "numerical_attribute_definition",
+      "bloom_level": "Remember",
+      "question": "Which attribute type contains quantitative numerical values?",
+      "question_ar": "أي نوع من الخصائص يحتوي قيماً رقمية كمية؟",
+      "options": [
+        "Numerical attribute",
+        "Ordinal attribute",
+        "Binary attributes",
+        "Nominal attribute"
+      ],
+      "options_en": [
+        "Numerical attribute",
+        "Ordinal attribute",
+        "Binary attributes",
+        "Nominal attribute"
+      ],
+      "options_ar": [
+        "خاصية من النوع الرقمي",
+        "خاصية من النوع الترتيبي",
+        "خاصية من النوع الثنائي",
+        "خاصية من النوع الاسمي"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Numerical attributes contain quantitative values; the distractors describe nominal, ordinal, and binary attributes.",
+      "explanation_ar": "تحتوي الخصائص الرقمية قيماً كمية؛ أما البدائل فتصِف خصائص اسمية وترتيبية وثنائية.",
+      "id": "q12"
+    },
+    {
+      "concept_id": "continuous_values_range",
+      "bloom_level": "Understand",
+      "question": "Which property applies to continuous numerical values?",
+      "question_ar": "أي خاصية تنطبق على القيم الرقمية المستمرة؟",
+      "options": [
+        "generally countable values",
+        "many values within a range",
+        "only two possible values",
+        "categories with no natural order"
+      ],
+      "options_en": [
+        "generally countable values",
+        "many values within a range",
+        "only two possible values",
+        "categories with no natural order"
+      ],
+      "options_ar": [
+        "قيماً قابلة للعد عادة",
+        "قيماً كثيرة ضمن مدى",
+        "قيمتين محتملتين فقط",
+        "فئات بلا ترتيب طبيعي"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Continuous numerical values can take many values within a range; countable values describe discrete values, while the other choices describe different attribute types.",
+      "explanation_ar": "يمكن للقيم الرقمية المستمرة أن تأخذ قيماً كثيرة ضمن مدى؛ أما القيم القابلة للعد فتميز القيم المنفصلة، والبدائل الأخرى تصف أنواعاً مختلفة من الخصائص.",
+      "id": "q13"
+    }
+  ]
+}

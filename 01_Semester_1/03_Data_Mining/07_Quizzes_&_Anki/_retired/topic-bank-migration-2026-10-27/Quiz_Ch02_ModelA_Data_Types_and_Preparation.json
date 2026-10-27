@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_ModelA_Data_Types_and_Preparation",
+  "topic": "Data Types and Preparation — Model A",
+  "topic_ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج أ",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "data_object_definition",
+      "bloom_level": "Understand",
+      "question": "What does a data object represent?",
+      "question_ar": "ماذا يمثل كائن البيانات؟",
+      "options": [
+        "A property or characteristic of a data object.",
+        "An entity about which information is collected.",
+        "A record contains attributes describing an object.",
+        "A set of items recorded together in one transaction."
+      ],
+      "options_en": [
+        "A property or characteristic of a data object.",
+        "An entity about which information is collected.",
+        "A record contains attributes describing an object.",
+        "A set of items recorded together in one transaction."
+      ],
+      "options_ar": [
+        "صفة أو سمة تميز كائن البيانات عن غيره.",
+        "كيان تُجمع عنه المعلومات في البيانات.",
+        "يضم السجل مجموعة خصائص تصف كائناً معيناً.",
+        "مجموعة عناصر تظهر معاً ضمن معاملة مسجلة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A data object represents an entity about which information is collected.",
+      "explanation_ar": "يمثل كائن البيانات كياناً تُجمع المعلومات عنه."
+    },
+    {
+      "id": "q2",
+      "concept_id": "nominal_attribute",
+      "bloom_level": "Understand",
+      "question": "Which description defines a nominal attribute?",
+      "question_ar": "أي وصف يعرّف الخاصية الاسمية؟",
+      "options": [
+        "Ordinal attribute",
+        "Binary attribute",
+        "Numerical attribute",
+        "Nominal attribute"
+      ],
+      "options_en": [
+        "Ordinal attribute",
+        "Binary attribute",
+        "Numerical attribute",
+        "Nominal attribute"
+      ],
+      "options_ar": [
+        "خاصية ترتيبية",
+        "خاصية ثنائية",
+        "خاصية رقمية",
+        "خاصية اسمية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A nominal attribute contains categories with no natural order.",
+      "explanation_ar": "تحتوي الخاصية الاسمية على فئات لا يوجد بينها ترتيب طبيعي."
+    },
+    {
+      "id": "q3",
+      "concept_id": "binary_attribute",
+      "bloom_level": "Remember",
+      "question": "Which attribute type has exactly two possible values?",
+      "question_ar": "أي نوع من الخصائص له قيمتان محتملتان فقط؟",
+      "options": [
+        "Binary attribute",
+        "Nominal attribute",
+        "Ordinal attribute",
+        "Numerical attribute"
+      ],
+      "options_en": [
+        "Binary attribute",
+        "Nominal attribute",
+        "Ordinal attribute",
+        "Numerical attribute"
+      ],
+      "options_ar": [
+        "خاصية ثنائية",
+        "خاصية اسمية",
+        "خاصية ترتيبية",
+        "خاصية رقمية"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A binary attribute has only two possible values.",
+      "explanation_ar": "للخاصية الثنائية قيمتان محتملتان فقط."
+    },
+    {
+      "id": "q4",
+      "concept_id": "eight_data_structures",
+      "bloom_level": "Remember",
+      "question": "Which item is listed among the data structures?",
+      "question_ar": "أي عنصر يرد ضمن أنواع هياكل البيانات؟",
+      "options": [
+        "Binary attribute type",
+        "Nominal attribute type",
+        "Graph and Network Data",
+        "Ordinal data categories"
+      ],
+      "options_en": [
+        "Binary attribute type",
+        "Nominal attribute type",
+        "Graph and Network Data",
+        "Ordinal data categories"
+      ],
+      "options_ar": [
+        "الخصائص الثنائية للقيم",
+        "الخصائص الاسمية للقيم",
+        "بيانات الرسم والشبكات",
+        "فئات البيانات الترتيبية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Graph and Network Data is one of the data-structure categories listed with record, transaction, text and document, sequence, time-series, spatial, and image and multimedia data.",
+      "explanation_ar": "تندرج بيانات الرسم البياني والشبكات ضمن الأنواع المذكورة مع بيانات السجلات والمعاملات والنصوص والتسلسلات والسلاسل الزمنية والبيانات المكانية والصور والوسائط المتعددة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "missing_value_methods",
+      "bloom_level": "Remember",
+      "question": "Which method removes the record containing a missing value?",
+      "question_ar": "أي طريقة تحذف السجل الذي يحتوي على قيمة مفقودة؟",
+      "options": [
+        "A domain expert may fill in the missing value manually.",
+        "For numerical data, replace it with the mean value.",
+        "The record containing missing data may be removed.",
+        "Predict the missing value from related attributes."
+      ],
+      "options_en": [
+        "A domain expert may fill in the missing value manually.",
+        "For numerical data, replace it with the mean value.",
+        "The record containing missing data may be removed.",
+        "Predict the missing value from related attributes."
+      ],
+      "options_ar": [
+        "قد يحدد خبير المجال القيمة المفقودة يدوياً.",
+        "تعوض القيمة المفقودة الرقمية بمتوسط القيم المتاحة.",
+        "يمكن حذف السجل الذي يحتوي على بيانات مفقودة.",
+        "يقدر نموذج تنبؤي القيمة المفقودة من الخصائص المرتبطة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The record containing missing data may be removed.",
+      "explanation_ar": "يمكن حذف السجل الذي يحتوي على بيانات مفقودة."
+    },
+    {
+      "id": "q6",
+      "concept_id": "integration_problems",
+      "bloom_level": "Remember",
+      "question": "Which data-integration problem concerns measurement units?",
+      "question_ar": "أي مشكلة في تكامل البيانات تتعلق بوحدات القياس؟",
+      "options": [
+        "Different units across sources",
+        "Duplicate records across sources",
+        "Different names across sources",
+        "Different formats across sources"
+      ],
+      "options_en": [
+        "Different units across sources",
+        "Duplicate records across sources",
+        "Different names across sources",
+        "Different formats across sources"
+      ],
+      "options_ar": [
+        "اختلاف وحدات القياس بين المصادر",
+        "اختلاف أسماء السمات في قواعد البيانات",
+        "اختلاف صيغ قيم البيانات بين المصادر",
+        "تكرار السجلات بين مصادر البيانات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "These values must be converted to a consistent unit.",
+      "explanation_ar": "ينشأ تعارض عند اختلاف الوحدات أو الصيغ أو المخططات بين المصادر، لذا يجب توحيد الوحدة قبل دمج القيم."
+    },
+    {
+      "id": "q7",
+      "concept_id": "binning_definition",
+      "bloom_level": "Understand",
+      "question": "Which method groups numerical values into bins?",
+      "question_ar": "أي طريقة تجمع القيم الرقمية ضمن bins؟",
+      "options": [
+        "Discretization converts continuous values into categories.",
+        "Binning divides numerical values into groups called bins.",
+        "Normalization transforms numerical values into a similar scale.",
+        "Integration combines data from multiple sources into one set."
+      ],
+      "options_en": [
+        "Discretization converts continuous values into categories.",
+        "Binning divides numerical values into groups called bins.",
+        "Normalization transforms numerical values into a similar scale.",
+        "Integration combines data from multiple sources into one set."
+      ],
+      "options_ar": [
+        "يحول التقسيم القيم المستمرة إلى فئات أو فترات.",
+        "يقسم Binning القيم الرقمية إلى مجموعات تسمى bins.",
+        "يحول التطبيع القيم الرقمية إلى مقياس متقارب.",
+        "يجمع تكامل البيانات مصادر متعددة في مجموعة واحدة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Binning divides numerical values into groups called bins.",
+      "explanation_ar": "يقسم Binning القيم الرقمية إلى مجموعات تسمى bins."
+    }
+  ]
+}

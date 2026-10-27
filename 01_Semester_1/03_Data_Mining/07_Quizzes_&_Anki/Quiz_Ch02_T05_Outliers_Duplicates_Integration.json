@@ -1,0 +1,363 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_T05_Outliers_Duplicates_Integration",
+  "topic": "Outliers, Duplicates, Inconsistency, and Integration",
+  "topic_ar": "القيم الشاذة والتكرار وعدم الاتساق وتكامل البيانات",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "outlier_definition",
+      "bloom_level": "Remember",
+      "question": "Which phrase describes an outlier relative to most observations?",
+      "question_ar": "أي عبارة تصف القيمة الشاذة مقارنة بمعظم المشاهدات؟",
+      "options": [
+        "a value occurring more frequently than other observed values.",
+        "categories that have no natural order or measurable gaps.",
+        "information for an attribute is unavailable in the record.",
+        "significantly different from most other observations."
+      ],
+      "options_en": [
+        "a value occurring more frequently than other observed values.",
+        "categories that have no natural order or measurable gaps.",
+        "information for an attribute is unavailable in the record.",
+        "significantly different from most other observations."
+      ],
+      "options_ar": [
+        "قيمة تظهر بتكرار أعلى من بقية القيم.",
+        "فئات بلا ترتيب طبيعي أو فواصل قابلة للقياس.",
+        "معلومات خاصية لا تكون متاحة في السجل.",
+        "تختلف كثيراً عن معظم المشاهدات الأخرى."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "An outlier is unusually different from most observations; missingness, frequency, and nominal ordering are separate properties.",
+      "explanation_ar": "تختلف القيمة الشاذة على نحو ملحوظ عن معظم المشاهدات؛ أما الفقدان والتكرار والترتيب الاسمي فخصائص أخرى.",
+      "id": "q1"
+    },
+    {
+      "concept_id": "outlier_numeric_example",
+      "bloom_level": "Apply",
+      "question": "Which age value is identified as a potential outlier in the example?",
+      "question_ar": "أي قيمة عمر حُددت بوصفها شاذة محتملة في المثال؟",
+      "options": [
+        "Age value 68",
+        "Age value 300",
+        "Age value: 70",
+        "Age value 65"
+      ],
+      "options_en": [
+        "Age value 68",
+        "Age value 300",
+        "Age value: 70",
+        "Age value 65"
+      ],
+      "options_ar": [
+        "العمر 68 رقم",
+        "قيمة العمر 300",
+        "قيمة العمر 70.",
+        "العمر 65 قيمة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The example marks 300 as potentially distant from the other observations; it still requires investigation.",
+      "explanation_ar": "يحدد المثال 300 قيمة بعيدة محتملة عن بقية المشاهدات؛ لكنها تظل بحاجة إلى فحص.",
+      "id": "q2"
+    },
+    {
+      "concept_id": "outlier_not_automatically_error",
+      "bloom_level": "Analyze",
+      "question": "Why should an unusual patient blood-pressure value not be deleted automatically?",
+      "question_ar": "لماذا لا ينبغي حذف قراءة ضغط دم غير مألوفة تلقائياً؟",
+      "options": [
+        "Outliers can only occur in image data.",
+        "A high value always indicates a unit mismatch.",
+        "An outlier is not necessarily an error.",
+        "Every outlier is a duplicate record."
+      ],
+      "options_en": [
+        "Outliers can only occur in image data.",
+        "A high value always indicates a unit mismatch.",
+        "An outlier is not necessarily an error.",
+        "Every outlier is a duplicate record."
+      ],
+      "options_ar": [
+        "تظهر القيم الشاذة في الصور فقط.",
+        "القيمة العالية تعني اختلاف وحدة.",
+        "القيمة الشاذة ليست بالضرورة خطأ.",
+        "كل قيمة شاذة هي سجل مكرر."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The source gives a genuinely high patient reading as a possible real observation, so outliers should be investigated before removal.",
+      "explanation_ar": "تورد المادة قراءة مرتفعة حقيقية للمريض مثالاً ممكناً، لذلك ينبغي فحص القيم الشاذة قبل حذفها.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "outlier_investigation",
+      "bloom_level": "Remember",
+      "question": "What should be done before removing an outlier?",
+      "question_ar": "ماذا ينبغي فعله قبل حذف قيمة شاذة؟",
+      "options": [
+        "Outliers should be investigated before removing them.",
+        "Convert all attributes into nominal categories.",
+        "Replace every value in the dataset with the mean.",
+        "Merge the record with the closest database table."
+      ],
+      "options_en": [
+        "Outliers should be investigated before removing them.",
+        "Convert all attributes into nominal categories.",
+        "Replace every value in the dataset with the mean.",
+        "Merge the record with the closest database table."
+      ],
+      "options_ar": [
+        "ينبغي فحص القيم الشاذة قبل حذفها.",
+        "تحويل جميع الخصائص إلى فئات اسمية.",
+        "تعويض كل قيم مجموعة البيانات بالمتوسط.",
+        "دمج السجل مع أقرب جدول قاعدة بيانات."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The material explicitly says outliers should be investigated before removal because they may be valid; the alternatives are unrelated.",
+      "explanation_ar": "تنص المادة على فحص القيم الشاذة قبل حذفها لأنها قد تكون صحيحة؛ والبدائل لا تعالج هذه المسألة.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "outlier_detection_methods",
+      "bloom_level": "Remember",
+      "question": "Which set lists methods for detecting outliers?",
+      "question_ar": "أي مجموعة تسرد طرائق كشف القيم الشاذة؟",
+      "options": [
+        "Mean, median, mode, and manual imputation of missing values in records",
+        "Statistical, distance-based, clustering, visualization, and Machine Learning methods",
+        "Normalization, aggregation, encoding, and feature construction for numerical data",
+        "Bag of Words, TF-IDF, and word embeddings for text and document representation"
+      ],
+      "options_en": [
+        "Mean, median, mode, and manual imputation of missing values in records",
+        "Statistical, distance-based, clustering, visualization, and Machine Learning methods",
+        "Normalization, aggregation, encoding, and feature construction for numerical data",
+        "Bag of Words, TF-IDF, and word embeddings for text and document representation"
+      ],
+      "options_ar": [
+        "تعويض القيم المفقودة بالمتوسط والوسيط والمنوال والإدخال اليدوي",
+        "طرائق إحصائية وقائمة على المسافة والتجميع والتصور والتعلم الآلي",
+        "التطبيع والتجميع والترميز وبناء خصائص البيانات الرقمية والفئوية",
+        "حقيبة الكلمات وTF-IDF وتضمينات الكلمات والوثائق لتمثيل النص"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "These five families are listed for outlier detection; the other sets describe missing-value, transformation, or text methods.",
+      "explanation_ar": "ترد هذه العائلات الخمس لكشف القيم الشاذة؛ أما المجموعات الأخرى فتصف تعويضاً أو تحويلاً أو طرائق نصية.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "duplicate_data_definition",
+      "bloom_level": "Remember",
+      "question": "When does duplicate data occur?",
+      "question_ar": "متى يحدث تكرار البيانات؟",
+      "options": [
+        "When observations are linked with a particular time.",
+        "When two categories have an order that is meaningful.",
+        "When the same data object appears more than once.",
+        "When one attribute has no available value in a data object."
+      ],
+      "options_en": [
+        "When observations are linked with a particular time.",
+        "When two categories have an order that is meaningful.",
+        "When the same data object appears more than once.",
+        "When one attribute has no available value in a data object."
+      ],
+      "options_ar": [
+        "عندما ترتبط المشاهدات بزمن محدد ضمن البيانات.",
+        "عندما يكون لفئتين ترتيب ذو معنى في البيانات.",
+        "عندما يظهر كائن البيانات نفسه أكثر من مرة.",
+        "عندما لا تتوفر قيمة خاصية في كائن البيانات نفسه."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Duplicate data repeats the same object; the alternatives describe missingness, ordinal values, or temporal data.",
+      "explanation_ar": "يعيد تكرار البيانات كائن البيانات نفسه؛ أما البدائل فتصف قيمة مفقودة أو فئات ترتيبية أو بيانات زمنية.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "duplicate_effects",
+      "bloom_level": "Understand",
+      "question": "Which effect of duplicate records is stated in the material?",
+      "question_ar": "أي أثر للسجلات المكررة ورد في المادة؟",
+      "options": [
+        "preserve missing information and reduce model complexity",
+        "guarantee consistent categories and improve algorithms",
+        "convert spatial data into a time-series representation",
+        "affect frequency calculations and model performance"
+      ],
+      "options_en": [
+        "preserve missing information and reduce model complexity",
+        "guarantee consistent categories and improve algorithms",
+        "convert spatial data into a time-series representation",
+        "affect frequency calculations and model performance"
+      ],
+      "options_ar": [
+        "تحفظ المعلومات المفقودة وتقلل تعقيد النموذج",
+        "تضمن اتساق الفئات وتحسن أداء الخوارزميات",
+        "تحول البيانات المكانية إلى تمثيل زمني",
+        "تؤثر في حساب التكرارات وأداء النموذج"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The listed harms are unnecessary size, biased analysis, frequency distortion, and performance effects; none of the alternatives is promised.",
+      "explanation_ar": "تشمل الأضرار المذكورة زيادة الحجم والتحيز وتشويه التكرارات والتأثير في الأداء؛ ولا تضمن المادة أياً من مزايا البدائل.",
+      "id": "q7"
+    },
+    {
+      "concept_id": "inconsistent_data_definition",
+      "bloom_level": "Understand",
+      "question": "Which phrase describes inconsistent values in the example?",
+      "question_ar": "أي عبارة تصف القيم غير المتسقة في المثال؟",
+      "options": [
+        "convert a time series into a symbolic sequence of values.",
+        "divide a numerical interval into bins of equal width.",
+        "store the same item set in several separate transactions.",
+        "represent the same categories but use different formats."
+      ],
+      "options_en": [
+        "convert a time series into a symbolic sequence of values.",
+        "divide a numerical interval into bins of equal width.",
+        "store the same item set in several separate transactions.",
+        "represent the same categories but use different formats."
+      ],
+      "options_ar": [
+        "تحول سلسلة زمنية إلى تسلسل رمزي بعناصر مرتبة.",
+        "تقسم فترة رقمية إلى حاويات ذات عرض متساوٍ.",
+        "تخزن مجموعة العناصر في معاملات متعددة بمعرّفات مختلفة.",
+        "تمثل الفئات نفسها لكنها تستخدم صيغاً مختلفة."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Inconsistency includes multiple formats for the same category; the other choices describe valid data forms or transformations.",
+      "explanation_ar": "يشمل عدم الاتساق صيغاً متعددة للفئة نفسها؛ أما البدائل فتصف أشكال بيانات أو تحويلات صحيحة.",
+      "id": "q8"
+    },
+    {
+      "concept_id": "standardize_inconsistent_gender",
+      "bloom_level": "Apply",
+      "question": "How are Male, M, and male represented after standardization?",
+      "question_ar": "كيف تُمثل القيم Male وM وmale بعد توحيدها؟",
+      "options": [
+        "Male category",
+        "Female label",
+        "Other category",
+        "Unknown label"
+      ],
+      "options_en": [
+        "Male category",
+        "Female label",
+        "Other category",
+        "Unknown label"
+      ],
+      "options_ar": [
+        "Male category",
+        "Female label",
+        "Other category",
+        "Unknown label"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The source standardizes the three formats to Male; retaining all forms would leave the inconsistency.",
+      "explanation_ar": "توحد المادة الصيغ الثلاث إلى Male؛ والإبقاء عليها جميعاً يبقي عدم الاتساق.",
+      "id": "q9"
+    },
+    {
+      "concept_id": "integration_definition",
+      "bloom_level": "Remember",
+      "question": "Which phrase describes data integration?",
+      "question_ar": "أي عبارة تصف تكامل البيانات؟",
+      "options": [
+        "Combines data from multiple sources",
+        "Converts continuous values into intervals",
+        "Extracts image features from one image",
+        "Removes records unlike the mean"
+      ],
+      "options_en": [
+        "Combines data from multiple sources",
+        "Converts continuous values into intervals",
+        "Extracts image features from one image",
+        "Removes records unlike the mean"
+      ],
+      "options_ar": [
+        "يدمج البيانات من مصادر متعددة",
+        "يحول القيم المستمرة إلى فترات",
+        "يستخرج خصائص من صورة واحدة",
+        "يحذف السجلات المختلفة عن المتوسط"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Integration combines sources; interval conversion, outlier deletion, and feature extraction are different operations.",
+      "explanation_ar": "يدمج التكامل المصادر؛ أما تحويل الفترات وحذف الشواذ واستخراج الخصائص فعمليات مختلفة.",
+      "id": "q10"
+    },
+    {
+      "concept_id": "integration_student_id",
+      "bloom_level": "Apply",
+      "question": "Which key is used to integrate the student and grade databases?",
+      "question_ar": "أي مفتاح يُستخدم لدمج قاعدتي بيانات الطلبة والدرجات؟",
+      "options": [
+        "Department ID",
+        "The student ID",
+        "Student gender",
+        "The GPA value"
+      ],
+      "options_en": [
+        "Department ID",
+        "The student ID",
+        "Student gender",
+        "The GPA value"
+      ],
+      "options_ar": [
+        "قيمة المعدل",
+        "معرّف الطالب",
+        "جنس الطالب",
+        "القسم الجامعي"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The example integrates the two sources using the student ID; the other fields are attributes, not the stated key.",
+      "explanation_ar": "يدمج المثال المصدرين باستخدام معرّف الطالب؛ أما الحقول الأخرى فهي خصائص وليست المفتاح المذكور.",
+      "id": "q11"
+    },
+    {
+      "concept_id": "integration_problems_and_units",
+      "bloom_level": "Apply",
+      "question": "Which action handles different weight units across data sources?",
+      "question_ar": "أي إجراء يعالج اختلاف وحدات الوزن بين مصادر البيانات؟",
+      "options": [
+        "Encode each source name as a node in a graph structure.",
+        "Treat unit labels as nominal categories and retain values.",
+        "These values must be converted to a consistent unit.",
+        "Delete one source’s records before data integration."
+      ],
+      "options_en": [
+        "Encode each source name as a node in a graph structure.",
+        "Treat unit labels as nominal categories and retain values.",
+        "These values must be converted to a consistent unit.",
+        "Delete one source’s records before data integration."
+      ],
+      "options_ar": [
+        "ترميز اسم المصدر بوصفه عقدة بيانية مستقلة.",
+        "اعتبار الوحدات فئات اسمية وترك القيم.",
+        "يجب تحويل هذه القيم إلى وحدة موحدة.",
+        "حذف سجلات مصدر قبل تكامل البيانات."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Different units are an integration problem, and the source says values must be converted to a consistent unit.",
+      "explanation_ar": "اختلاف الوحدات مشكلة تكامل، وتذكر المادة ضرورة تحويل القيم إلى وحدة موحدة.",
+      "id": "q12"
+    }
+  ]
+}

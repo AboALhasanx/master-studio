@@ -1,0 +1,363 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch02_T04_Missing_Values_and_Noise",
+  "topic": "Missing Values and Noisy Data",
+  "topic_ar": "القيم المفقودة والبيانات المشوشة",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "missing_value_definition",
+      "bloom_level": "Remember",
+      "question": "When does a missing value occur?",
+      "question_ar": "متى تحدث القيمة المفقودة؟",
+      "options": [
+        "An outlier is a value significantly different from most observations.",
+        "Duplicate data occurs when the same object appears more than once.",
+        "Noise refers to random errors or unwanted variation in the data.",
+        "A missing value occurs when information for an attribute is not available."
+      ],
+      "options_en": [
+        "An outlier is a value significantly different from most observations.",
+        "Duplicate data occurs when the same object appears more than once.",
+        "Noise refers to random errors or unwanted variation in the data.",
+        "A missing value occurs when information for an attribute is not available."
+      ],
+      "options_ar": [
+        "القيمة الشاذة تختلف كثيراً عن معظم المشاهدات الأخرى.",
+        "يحدث التكرار عندما يظهر كائن البيانات نفسه أكثر من مرة.",
+        "تشير الضوضاء إلى أخطاء عشوائية أو تباين غير مرغوب فيه بالبيانات.",
+        "تحدث القيمة المفقودة عندما لا تكون معلومات خاصية ما متاحة."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A missing value means the attribute information is unavailable; the alternatives describe an outlier, duplicate, or integration.",
+      "explanation_ar": "تعني القيمة المفقودة عدم توفر معلومات الخاصية؛ أما البدائل فتصف قيمة شاذة أو تكراراً أو تكاملاً.",
+      "id": "q1"
+    },
+    {
+      "concept_id": "missing_value_algorithm_issue",
+      "bloom_level": "Understand",
+      "question": "What problem can missing values cause for mining algorithms?",
+      "question_ar": "ما المشكلة التي قد تسببها القيم المفقودة لخوارزميات التنقيب؟",
+      "options": [
+        "All Data Mining algorithms must receive missing values as numeric values, and their performance always improves.",
+        "Many Data Mining algorithms cannot directly work with missing values, or their performance may be affected.",
+        "Data Mining algorithms can directly process missing values without any treatment, and their performance remains unchanged.",
+        "Many Data Mining algorithms can process missing values directly in every dataset without any effect on their performance."
+      ],
+      "options_en": [
+        "All Data Mining algorithms must receive missing values as numeric values, and their performance always improves.",
+        "Many Data Mining algorithms cannot directly work with missing values, or their performance may be affected.",
+        "Data Mining algorithms can directly process missing values without any treatment, and their performance remains unchanged.",
+        "Many Data Mining algorithms can process missing values directly in every dataset without any effect on their performance."
+      ],
+      "options_ar": [
+        "يجب أن تستقبل كل خوارزميات التنقيب القيم المفقودة كقيم رقمية، ويتحسن أداؤها دائماً.",
+        "لا تستطيع خوارزميات تنقيب كثيرة التعامل مباشرة مع القيم المفقودة، أو قد يتأثر أداؤها.",
+        "تعالج خوارزميات التنقيب القيم المفقودة مباشرة دون معالجة، ويبقى أداؤها دون تغيير.",
+        "تستطيع خوارزميات التنقيب معالجة القيم المفقودة مباشرة في كل مجموعة بيانات دون أي أثر في أدائها."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The source identifies algorithm compatibility and performance as the issue; the distractors overstate or misstate the effect.",
+      "explanation_ar": "تحدد المادة توافق الخوارزمية وأداءها بوصفهما موضع المشكلة؛ أما البدائل فتبالغ أو تذكر أثراً غير صحيح.",
+      "id": "q2"
+    },
+    {
+      "concept_id": "ignore_missing_record_condition",
+      "bloom_level": "Apply",
+      "question": "When may removing a record with a missing value be reasonable?",
+      "question_ar": "متى قد يكون حذف سجل ذي قيمة مفقودة معقولاً؟",
+      "options": [
+        "only a small number of attributes have noisy values",
+        "only one record contains duplicated attributes",
+        "only a very small number of records have missing values",
+        "only a very large number of records have missing values"
+      ],
+      "options_en": [
+        "only a small number of attributes have noisy values",
+        "only one record contains duplicated attributes",
+        "only a very small number of records have missing values",
+        "only a very large number of records have missing values"
+      ],
+      "options_ar": [
+        "عندما يكون عدد الخصائص ذات القيم المشوشة قليلاً في البيانات",
+        "عندما يحتوي سجل واحد على بيانات مكررة ضمن مجموعة السجلات",
+        "عندما يكون عدد السجلات ذات القيم المفقودة صغيراً جداً",
+        "عندما يكون عدد السجلات ذات القيم المفقودة كبيراً جداً"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The method is reasonable for a very small number of affected records; deleting many records may lose useful information.",
+      "explanation_ar": "تكون الطريقة معقولة عندما يكون عدد السجلات المتأثرة قليلاً جداً؛ فحذف كثير منها قد يهدر معلومات مفيدة.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "manual_missing_value",
+      "bloom_level": "Remember",
+      "question": "Who may determine a missing value manually?",
+      "question_ar": "من الذي قد يحدد القيمة المفقودة يدوياً؟",
+      "options": [
+        "A domain expert may determine the missing value.",
+        "A database administrator may choose the missing value.",
+        "A Data Mining algorithm may estimate the missing value.",
+        "A machine-learning model may infer the missing value."
+      ],
+      "options_en": [
+        "A domain expert may determine the missing value.",
+        "A database administrator may choose the missing value.",
+        "A Data Mining algorithm may estimate the missing value.",
+        "A machine-learning model may infer the missing value."
+      ],
+      "options_ar": [
+        "قد يحدد خبير المجال القيمة المفقودة.",
+        "قد يختار مسؤول قاعدة البيانات قيمة مفقودة.",
+        "قد تقدر خوارزمية التنقيب القيمة المفقودة.",
+        "قد يستدل نموذج آلي على القيمة المفقودة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The source assigns manual judgment to a domain expert, who can use contextual knowledge.",
+      "explanation_ar": "تسند المادة التقدير اليدوي إلى خبير في المجال يستطيع استخدام المعرفة السياقية.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "mean_imputation_value",
+      "bloom_level": "Apply",
+      "question": "Using the mean, what value replaces the missing entry in 60, 70, 80, and 90?",
+      "question_ar": "باستخدام المتوسط، ما القيمة التي تستبدل المدخل المفقود في 60 و70 و80 و90؟",
+      "options": [
+        "70",
+        "75",
+        "80",
+        "90"
+      ],
+      "options_en": [
+        "70",
+        "75",
+        "80",
+        "90"
+      ],
+      "options_ar": [
+        "70",
+        "75",
+        "80",
+        "90"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The mean is (60 + 70 + 80 + 90) / 4 = 75; it is a numerical missing-value estimate.",
+      "explanation_ar": "المتوسط هو (60 + 70 + 80 + 90) / 4 = 75؛ وهو تقدير لقيمة رقمية مفقودة.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "median_extreme_values",
+      "bloom_level": "Understand",
+      "question": "What does the value 200 represent in 60, 65, 70, 75, 200?",
+      "question_ar": "ماذا تمثل القيمة 200 ضمن 60 و65 و70 و75 و200؟",
+      "options": [
+        "a duplicate value",
+        "a missing value",
+        "an extreme value",
+        "the mean value"
+      ],
+      "options_en": [
+        "a duplicate value",
+        "a missing value",
+        "an extreme value",
+        "the mean value"
+      ],
+      "options_ar": [
+        "قيمة مكررة في السجل",
+        "القيمة المفقودة",
+        "قيمة شديدة التطرف",
+        "القيمة المتوسطة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The source points to the extreme value as the reason the median may be more appropriate; the other statements are false.",
+      "explanation_ar": "تشير المادة إلى القيمة المتطرفة سبباً لاحتمال ملاءمة الوسيط أكثر؛ أما العبارات الأخرى فغير صحيحة.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "mode_categorical_missing",
+      "bloom_level": "Remember",
+      "question": "Which statistic replaces a missing categorical value with the most frequently occurring value?",
+      "question_ar": "أي مقياس يعوض القيمة الفئوية المفقودة بوصفه القيمة الأكثر تكراراً؟",
+      "options": [
+        "the mean, the arithmetic average of observed values",
+        "the median, the middle value after ordering observations",
+        "the range, the difference between maximum and minimum values",
+        "the mode, which is the most frequently occurring value"
+      ],
+      "options_en": [
+        "the mean, the arithmetic average of observed values",
+        "the median, the middle value after ordering observations",
+        "the range, the difference between maximum and minimum values",
+        "the mode, which is the most frequently occurring value"
+      ],
+      "options_ar": [
+        "المتوسط الحسابي، وهو مجموع القيم الرقمية مقسوماً على عددها",
+        "الوسيط، وهو القيمة الواقعة في منتصف القيم بعد ترتيب المشاهدات",
+        "المدى، وهو الفرق بين أعلى قيمة وأقل قيمة ضمن البيانات",
+        "المنوال، وهو القيمة الأكثر تكراراً في البيانات الفئوية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The mode is the most frequent value and is listed for categorical data; the distractors are not the stated replacement method.",
+      "explanation_ar": "المنوال هو القيمة الأكثر تكراراً، وقد ورد للبيانات الفئوية؛ أما البدائل فليست طريقة التعويض المذكورة.",
+      "id": "q7"
+    },
+    {
+      "concept_id": "predict_missing_methods",
+      "bloom_level": "Remember",
+      "question": "Which set contains predictive methods listed for estimating a missing value?",
+      "question_ar": "أي مجموعة تضم طرائق تنبؤية ذُكرت لتقدير قيمة مفقودة؟",
+      "options": [
+        "Mean, median, and mode imputation",
+        "Classification, regression, and clustering",
+        "Binning, regression, and clustering",
+        "Regression, decision tree, and k-NN"
+      ],
+      "options_en": [
+        "Mean, median, and mode imputation",
+        "Classification, regression, and clustering",
+        "Binning, regression, and clustering",
+        "Regression, decision tree, and k-NN"
+      ],
+      "options_ar": [
+        "طرائق إحصائية: المتوسط، والوسيط، والمنوال",
+        "طرائق تصنيف: التصنيف، والانحدار، والتجميع",
+        "طرائق تنعيم: التقسيم، والانحدار، والتجميع",
+        "طرائق تنبؤية: الانحدار، وشجرة القرار، وk-NN"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Regression, decision trees, and k-NN are listed as predictors; the alternatives are other preparation or representation methods.",
+      "explanation_ar": "ورد الانحدار وأشجار القرار وk-NN طرائق تنبؤية؛ أما البدائل فطرائق تحضير أو تمثيل أخرى.",
+      "id": "q8"
+    },
+    {
+      "concept_id": "noise_definition",
+      "bloom_level": "Remember",
+      "question": "What does noise refer to in data?",
+      "question_ar": "إلى ماذا تشير الضوضاء في البيانات؟",
+      "options": [
+        "Noise refers to random errors or unwanted variation in the data.",
+        "An outlier is a value significantly different from most observations.",
+        "A missing value occurs when information for an attribute is not available.",
+        "A record contains an unusual value for one of its attributes."
+      ],
+      "options_en": [
+        "Noise refers to random errors or unwanted variation in the data.",
+        "An outlier is a value significantly different from most observations.",
+        "A missing value occurs when information for an attribute is not available.",
+        "A record contains an unusual value for one of its attributes."
+      ],
+      "options_ar": [
+        "تشير الضوضاء إلى أخطاء عشوائية أو تباين غير مرغوب فيه بالبيانات.",
+        "القيمة الشاذة تختلف كثيراً عن معظم المشاهدات الأخرى في البيانات.",
+        "تحدث القيمة المفقودة عندما لا تكون معلومات خاصية ما متاحة للمعالجة.",
+        "يحتوي السجل على قيمة غير مألوفة لإحدى خصائص البيانات."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Noise is random error or unwanted variation; the alternatives describe ordinal order, integration, or reduction.",
+      "explanation_ar": "الضوضاء خطأ عشوائي أو تغير غير مرغوب؛ أما البدائل فتصف ترتيباً أو تكاملاً أو اختزالاً.",
+      "id": "q9"
+    },
+    {
+      "concept_id": "noise_data_entry_example",
+      "bloom_level": "Analyze",
+      "question": "What kind of issue may explain the value 223 in the age sequence?",
+      "question_ar": "أي مشكلة قد تفسر القيمة 223 في تسلسل الأعمار؟",
+      "options": [
+        "a data-entry error",
+        "a missing value",
+        "a duplicate record",
+        "a unit mismatch error"
+      ],
+      "options_en": [
+        "a data-entry error",
+        "a missing value",
+        "a duplicate record",
+        "a unit mismatch error"
+      ],
+      "options_ar": [
+        "خطأ في إدخال البيانات",
+        "قيمة مفقودة في السجل",
+        "تكرار في سجل البيانات",
+        "اختلاف في وحدة القياس"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The example presents 223 as a possible data-entry error in otherwise nearby ages; it is not a mean or category label.",
+      "explanation_ar": "يعرض المثال 223 بوصفها خطأ إدخال محتملاً بين أعمار متقاربة؛ وليست متوسطاً أو تسمية فئة.",
+      "id": "q10"
+    },
+    {
+      "concept_id": "noise_methods",
+      "bloom_level": "Remember",
+      "question": "Which approaches are listed for handling noisy data?",
+      "question_ar": "أي طرائق ذُكرت لمعالجة البيانات المشوشة؟",
+      "options": [
+        "Normalization, aggregation, generalization, and encoding",
+        "Binning, regression, clustering, and outlier detection",
+        "Classification, association, prediction, and dimensionality reduction",
+        "Mean/median/mode imputation, manual filling, and regression"
+      ],
+      "options_en": [
+        "Normalization, aggregation, generalization, and encoding",
+        "Binning, regression, clustering, and outlier detection",
+        "Classification, association, prediction, and dimensionality reduction",
+        "Mean/median/mode imputation, manual filling, and regression"
+      ],
+      "options_ar": [
+        "التطبيع، والتجميع، والتعميم، والترميز، وبناء الخصائص",
+        "التقسيم إلى فئات، والانحدار، والتجميع، وكشف القيم الشاذة",
+        "التصنيف، والارتباط، والتنبؤ، واختزال الأبعاد في البيانات",
+        "التعويض بالمتوسط أو الوسيط أو المنوال، والإدخال اليدوي"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "These four approaches are explicitly listed for noisy data; the alternatives belong to other transformations or missing-value methods.",
+      "explanation_ar": "وردت هذه الطرائق الأربع صراحة لمعالجة الضوضاء؛ أما البدائل فتخص تحويلات أخرى أو معالجة القيم المفقودة.",
+      "id": "q11"
+    },
+    {
+      "concept_id": "binning_definition",
+      "bloom_level": "Understand",
+      "question": "What does binning do to numerical values?",
+      "question_ar": "ماذا يفعل التقطيع بالقيم الرقمية؟",
+      "options": [
+        "combines data from records into summarized values",
+        "transforms numerical values into a similar scale",
+        "divides numerical values into groups called bins",
+        "converts continuous numerical values into categories"
+      ],
+      "options_en": [
+        "combines data from records into summarized values",
+        "transforms numerical values into a similar scale",
+        "divides numerical values into groups called bins",
+        "converts continuous numerical values into categories"
+      ],
+      "options_ar": [
+        "يلخص القيم الرقمية المستخرجة من عدة سجلات",
+        "يحول البيانات الرقمية إلى مقياس متقارب",
+        "تقسم القيم الرقمية إلى مجموعات تسمى حاويات",
+        "يحول القيم الرقمية المستمرة إلى فئات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Binning groups numerical values and can smooth noisy data; it does not integrate sources, vectorize text, or automatically delete outliers.",
+      "explanation_ar": "يجمع التقطيع القيم الرقمية وقد ينعّم البيانات المشوشة؛ ولا يدمج المصادر أو يمثل النص متجهياً أو يحذف القيم الشاذة تلقائياً.",
+      "id": "q12"
+    }
+  ]
+}

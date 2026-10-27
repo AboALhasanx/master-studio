@@ -128,13 +128,13 @@ a bank pass — fix the wording.
 | Chapter | Questions | State |
 |---|---|---|
 | Ch01 | 71 in 6 banks | rewritten 2026-10-26 · L1–L5 clean · live |
-| Ch02 | 92 in 8 banks | rewritten 2026-10-26 · L1–L5 clean · live |
-| Ch03 | 103 in 9 banks (was 167 in 10) | rebuilt 2026-10-26 · L1–L5 clean · live · T07 retired (source fully crossed) |
+| Ch02 | 69 in 7 topic banks | rebuilt from Week 02 source 2026-10-27 · strict/shape/schema gates green · live; old Model A/B archived and hidden |
+| Ch03 | 55 in 7 topic banks | rebuilt from Week 03 source 2026-10-27 · strict/shape/schema gates green · live; old Model A/B archived and hidden |
 | Ch04 | 118 in 9 banks | cleaned 2026-10-27 · gates green · live · web verification passed |
 | Ch05 | 221 in 17 banks | cleaned 2026-10-27 · strict/shape gates green · live · web verification passed |
 | Ch06 | 104 in 10 banks | rebuilt 2026-10-27 · old 8 banks hidden · live · web verification passed |
 
-Current content version: **45** · shell **1.7.10**.
+Current content version: **52** · shell **1.7.12**.
 
 > **Chapter 3 was a scope problem before it was a wording problem.** The doctor's marked copy exists
 > only outside the vault (`~/Downloads/Telegram Desktop/W02_Risks.pdf`; the clean
