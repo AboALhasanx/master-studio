@@ -1,0 +1,508 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch06_T03_Decision_Tree_Induction_And_Pruning",
+  "topic": "Decision Tree Induction and Pruning",
+  "topic_ar": "استحداث شجرة القرار والتقليم",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "c6_tree_task",
+      "bloom_level": "Remember",
+      "question": "Which two task types can a decision tree support?",
+      "question_ar": "أي نوعين من المهام يمكن أن تدعمهما شجرة القرار؟",
+      "options": [
+        "an additional split condition",
+        "the first decision or condition",
+        "the first decision condition",
+        "classification and regression"
+      ],
+      "options_en": [
+        "an additional split condition",
+        "the first decision or condition",
+        "the first decision condition",
+        "classification and regression"
+      ],
+      "options_ar": [
+        "شرط تقسيم إضافي",
+        "قرار أو شرط أول",
+        "شرط القرار الأول",
+        "التصنيف والانحدار"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Classification and regression are both supervised learning techniques, but they predict different types of outputs.",
+      "explanation_ar": "التصنيف والانحدار",
+      "id": "q1"
+    },
+    {
+      "concept_id": "c6_tree_internal",
+      "bloom_level": "Remember",
+      "question": "What does an internal node represent in a decision tree?",
+      "question_ar": "ماذا تمثل العقدة الداخلية في شجرة القرار؟",
+      "options": [
+        "an outcome",
+        "two classes",
+        "a condition",
+        "two parts"
+      ],
+      "options_en": [
+        "an outcome",
+        "two classes",
+        "a condition",
+        "two parts"
+      ],
+      "options_ar": [
+        "نتيجة",
+        "فئتين",
+        "شرطاً",
+        "جزأين"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A Decision Tree is a supervised machine learning algorithm used for classification and regression. It represents decisions as a tree structure, where each internal node represents a condition, each branch represents an outcome, and each leaf node represents a predicted class or value.",
+      "explanation_ar": "شرطاً",
+      "id": "q2"
+    },
+    {
+      "concept_id": "c6_tree_branch",
+      "bloom_level": "Remember",
+      "question": "What does a branch represent in a decision tree?",
+      "question_ar": "ماذا يمثل الفرع في شجرة القرار؟",
+      "options": [
+        "two classes",
+        "an outcome",
+        "a condition",
+        "two parts"
+      ],
+      "options_en": [
+        "two classes",
+        "an outcome",
+        "a condition",
+        "two parts"
+      ],
+      "options_ar": [
+        "فئتين",
+        "نتيجة",
+        "شرطاً",
+        "جزأين"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A Decision Tree is a supervised machine learning algorithm used for classification and regression. It represents decisions as a tree structure, where each internal node represents a condition, each branch represents an outcome, and each leaf node represents a predicted class or value.",
+      "explanation_ar": "نتيجة",
+      "id": "q3"
+    },
+    {
+      "concept_id": "c6_tree_leaf",
+      "bloom_level": "Remember",
+      "question": "What does a leaf node represent?",
+      "question_ar": "ماذا تمثل العقدة الورقية؟",
+      "options": [
+        "a branch outcome after the leaf",
+        "a record removed during pruning",
+        "a predicted class or value",
+        "the input feature scale"
+      ],
+      "options_en": [
+        "a branch outcome after the leaf",
+        "a record removed during pruning",
+        "a predicted class or value",
+        "the input feature scale"
+      ],
+      "options_ar": [
+        "نتيجة فرع بعد الورقة",
+        "سجل أزيل أثناء التقليم",
+        "فئة أو قيمة متنبأ بها",
+        "مقياس خاصية الإدخال"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A Decision Tree is a supervised machine learning algorithm used for classification and regression. It represents decisions as a tree structure, where each internal node represents a condition, each branch represents an outcome, and each leaf node represents a predicted class or value.",
+      "explanation_ar": "فئة أو قيمة متنبأ بها",
+      "id": "q4"
+    },
+    {
+      "concept_id": "c6_tree_root",
+      "bloom_level": "Remember",
+      "question": "What is the root node?",
+      "question_ar": "ما العقدة الجذرية؟",
+      "options": [
+        "an additional split condition",
+        "the first decision condition",
+        "classification and regression",
+        "the first decision or condition"
+      ],
+      "options_en": [
+        "an additional split condition",
+        "the first decision condition",
+        "classification and regression",
+        "the first decision or condition"
+      ],
+      "options_ar": [
+        "شرط تقسيم إضافي",
+        "شرط القرار الأول",
+        "التصنيف والانحدار",
+        "قرار أو شرط أول"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "the first decision or condition",
+      "explanation_ar": "قرار أو شرط أول",
+      "id": "q5"
+    },
+    {
+      "concept_id": "c6_tree_induction_first",
+      "bloom_level": "Understand",
+      "question": "What is the first step when inducing a decision tree?",
+      "question_ar": "ما الخطوة الأولى عند استحداث شجرة قرار؟",
+      "options": [
+        "the feature with the largest numeric scale",
+        "the attribute with the most missing values",
+        "Start with the complete training dataset.",
+        "Calculate the test accuracy before splitting."
+      ],
+      "options_en": [
+        "the feature with the largest numeric scale",
+        "the attribute with the most missing values",
+        "Start with the complete training dataset.",
+        "Calculate the test accuracy before splitting."
+      ],
+      "options_ar": [
+        "الخاصية ذات المقياس العددي الأكبر",
+        "الخاصية ذات القيم المفقودة الأكثر",
+        "ابدأ بمجموعة بيانات التدريب كاملة.",
+        "احسب دقة الاختبار قبل التقسيم."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Start with the complete training dataset.",
+      "explanation_ar": "ابدأ بمجموعة بيانات التدريب كاملة.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "c6_tree_feature_select",
+      "bloom_level": "Understand",
+      "question": "What is selected at each decision-tree split?",
+      "question_ar": "ماذا يُختار عند كل تقسيم في شجرة القرار؟",
+      "options": [
+        "the test record with the most missing values",
+        "the feature that best separates the classes",
+        "the class with the smallest validation set",
+        "Stop growing when improvement is small."
+      ],
+      "options_en": [
+        "the test record with the most missing values",
+        "the feature that best separates the classes",
+        "the class with the smallest validation set",
+        "Stop growing when improvement is small."
+      ],
+      "options_ar": [
+        "سجل الاختبار ذي القيم المفقودة الأكثر",
+        "الخاصية التي تفصل الفئات على أفضل وجه",
+        "الفئة ذات مجموعة التحقق الأصغر",
+        "يوقف النمو عندما يكون التحسن قليلاً."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "2. Select the feature that best separates the classes.",
+      "explanation_ar": "الخاصية التي تفصل الفئات على أفضل وجه",
+      "id": "q7"
+    },
+    {
+      "concept_id": "c6_tree_id3",
+      "bloom_level": "Remember",
+      "question": "Which decision-tree algorithms use Information Gain?",
+      "question_ar": "أي خوارزميات شجرة القرار تستخدم كسب المعلومات؟",
+      "options": [
+        "OneR, PART",
+        "ID3, C4.5",
+        "Error Rate",
+        "Gain Ratio"
+      ],
+      "options_en": [
+        "OneR, PART",
+        "ID3, C4.5",
+        "Error Rate",
+        "Gain Ratio"
+      ],
+      "options_ar": [
+        "خوارزميتا OneR وPART",
+        "خوارزميتا ID3 وC4.5",
+        "اختبار معدل الخطأ",
+        "اختبار معدل الكسب"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "|Information Gain|ID3, C4.5|Based on reduction in entropy (purity of node).|",
+      "explanation_ar": "خوارزميتا ID3 وC4.5",
+      "id": "q8"
+    },
+    {
+      "concept_id": "c6_tree_gainratio",
+      "bloom_level": "Understand",
+      "question": "What bias does Gain Ratio adjust for?",
+      "question_ar": "أي انحياز يعالجه معدل الكسب؟",
+      "options": [
+        "bias toward many-valued attributes",
+        "bias toward the positive class only",
+        "minimum number of classes in the root",
+        "bias toward small validation folds"
+      ],
+      "options_en": [
+        "bias toward many-valued attributes",
+        "bias toward the positive class only",
+        "minimum number of classes in the root",
+        "bias toward small validation folds"
+      ],
+      "options_ar": [
+        "الانحياز نحو السمات متعددة القيم",
+        "الانحياز نحو الفئة الموجبة فقط",
+        "الحد الأدنى لعدد الفئات في الجذر",
+        "الانحياز نحو طيات التحقق الصغيرة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "|Gain Ratio|C4.5|Adjusts information gain to avoid bias toward many-valued attributes.|",
+      "explanation_ar": "الانحياز نحو السمات متعددة القيم",
+      "id": "q9"
+    },
+    {
+      "concept_id": "c6_tree_gini",
+      "bloom_level": "Understand",
+      "question": "What does the Gini Index measure?",
+      "question_ar": "ماذا يقيس مؤشر Gini؟",
+      "options": [
+        "entropy",
+        "impurity",
+        "coverage",
+        "accuracy"
+      ],
+      "options_en": [
+        "entropy",
+        "impurity",
+        "coverage",
+        "accuracy"
+      ],
+      "options_ar": [
+        "نسبة تغطية",
+        "عدم نقاء",
+        "حالة خطأ",
+        "معدل دقة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "|Gini Index|CART|Measures impurity; smaller Gini → purer node.|",
+      "explanation_ar": "عدم النقاء",
+      "id": "q10"
+    },
+    {
+      "concept_id": "c6_tree_chisquare",
+      "bloom_level": "Remember",
+      "question": "Which splitting criterion is used by CHAID?",
+      "question_ar": "أي معيار تقسيم يستخدمه CHAID؟",
+      "options": [
+        "Error Rate",
+        "Gain Ratio",
+        "Chi-Square",
+        "Gini Index"
+      ],
+      "options_en": [
+        "Error Rate",
+        "Gain Ratio",
+        "Chi-Square",
+        "Gini Index"
+      ],
+      "options_ar": [
+        "اختبار معدل الخطأ",
+        "اختبار معدل الكسب",
+        "اختبار مربع كاي",
+        "اختبار مؤشر جيني"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "|Chi-Square|CHAID|Statistical test for independence between attribute and class.|",
+      "explanation_ar": "مربع كاي",
+      "id": "q11"
+    },
+    {
+      "concept_id": "c6_tree_ig_choice",
+      "bloom_level": "Understand",
+      "question": "Which feature does the tree choose when using Information Gain?",
+      "question_ar": "أي خاصية تختارها الشجرة عند استخدام كسب المعلومات؟",
+      "options": [
+        "the attribute with the highest information gain",
+        "to convert a numerical output into a class label",
+        "the attribute with the widest numeric range",
+        "the attribute with the lowest information gain"
+      ],
+      "options_en": [
+        "the attribute with the highest information gain",
+        "to convert a numerical output into a class label",
+        "the attribute with the widest numeric range",
+        "the attribute with the lowest information gain"
+      ],
+      "options_ar": [
+        "الخاصية ذات كسب المعلومات الأعلى",
+        "لتحويل المخرج العددي إلى تسمية فئة",
+        "الخاصية ذات المجال العددي الأوسع",
+        "الخاصية ذات كسب المعلومات الأدنى"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The attribute with the highest information gain is chosen for the split.",
+      "explanation_ar": "الخاصية ذات كسب المعلومات الأعلى",
+      "id": "q12"
+    },
+    {
+      "concept_id": "c6_tree_stopping_pure",
+      "bloom_level": "Understand",
+      "question": "Which condition can stop a decision tree from growing?",
+      "question_ar": "أي شرط يمكن أن يوقف نمو شجرة القرار؟",
+      "options": [
+        "All records in a node belong to one class.",
+        "The test dataset contains unseen records.",
+        "Convert each root-to-leaf path into a rule.",
+        "remove weak branches using validation data"
+      ],
+      "options_en": [
+        "All records in a node belong to one class.",
+        "The test dataset contains unseen records.",
+        "Convert each root-to-leaf path into a rule.",
+        "remove weak branches using validation data"
+      ],
+      "options_ar": [
+        "تنتمي كل السجلات في العقدة إلى فئة واحدة.",
+        "تحتوي مجموعة الاختبار على سجلات غير مرئية.",
+        "يحوّل كل مسار من الجذر إلى الورقة إلى قاعدة.",
+        "إزالة الفروع الضعيفة باستخدام بيانات التحقق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "All records in a node belong to one class.",
+      "explanation_ar": "تنتمي كل السجلات في العقدة إلى فئة واحدة.",
+      "id": "q13"
+    },
+    {
+      "concept_id": "c6_tree_stopping_depth",
+      "bloom_level": "Remember",
+      "question": "Which preset limit can stop a decision tree from growing?",
+      "question_ar": "أي حد محدد مسبقاً يمكن أن يوقف نمو شجرة القرار؟",
+      "options": [
+        "maximum depth",
+        "tree branching",
+        "True Positive",
+        "Chi-Square"
+      ],
+      "options_en": [
+        "maximum depth",
+        "tree branching",
+        "True Positive",
+        "Chi-Square"
+      ],
+      "options_ar": [
+        "العمق الأقصى",
+        "تفريع الشجرة",
+        "إيجابي حقيقي",
+        "اختبار مربع كاي"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "5. Stop when a stopping condition is reached, such as maximum depth or insufficient samples.",
+      "explanation_ar": "العمق الأقصى",
+      "id": "q14"
+    },
+    {
+      "concept_id": "c6_tree_pruning_goal",
+      "bloom_level": "Understand",
+      "question": "What does pruning help avoid?",
+      "question_ar": "ما الذي يساعد التقليم على تجنبه؟",
+      "options": [
+        "True Positive",
+        "maximum depth",
+        "Naive Bayes",
+        "overfitting"
+      ],
+      "options_en": [
+        "True Positive",
+        "maximum depth",
+        "Naive Bayes",
+        "overfitting"
+      ],
+      "options_ar": [
+        "إيجابي حقيقي",
+        "العمق الأقصى",
+        "Naive Bayes",
+        "فرط التكيّف"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Pruning helps avoid overfitting by removing unnecessary branches.",
+      "explanation_ar": "فرط التكيّف",
+      "id": "q15"
+    },
+    {
+      "concept_id": "c6_tree_preprune",
+      "bloom_level": "Understand",
+      "question": "What does pre-pruning do?",
+      "question_ar": "ماذا يفعل التقليم المسبق؟",
+      "options": [
+        "Stop growing when improvement is small.",
+        "minimum number of classes in the root",
+        "Continue splitting until every record is isolated.",
+        "the feature that best separates the classes"
+      ],
+      "options_en": [
+        "Stop growing when improvement is small.",
+        "minimum number of classes in the root",
+        "Continue splitting until every record is isolated.",
+        "the feature that best separates the classes"
+      ],
+      "options_ar": [
+        "يوقف النمو عندما يكون التحسن قليلاً.",
+        "الحد الأدنى لعدد الفئات في الجذر",
+        "يواصل التقسيم حتى عزل كل سجل.",
+        "الخاصية التي تفصل الفئات على أفضل وجه"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "|Pre-pruning (Early Stopping)|Stop growing when improvement is small.|",
+      "explanation_ar": "يوقف النمو عندما يكون التحسن قليلاً.",
+      "id": "q16"
+    },
+    {
+      "concept_id": "c6_tree_postprune",
+      "bloom_level": "Understand",
+      "question": "What are weak branches removed with during post-pruning?",
+      "question_ar": "بماذا تُزال الفروع الضعيفة أثناء التقليم اللاحق؟",
+      "options": [
+        "Use test data during training to create branches.",
+        "Convert each root-to-leaf path into a rule.",
+        "All records in a node belong to one class.",
+        "remove weak branches using validation data"
+      ],
+      "options_en": [
+        "Use test data during training to create branches.",
+        "Convert each root-to-leaf path into a rule.",
+        "All records in a node belong to one class.",
+        "remove weak branches using validation data"
+      ],
+      "options_ar": [
+        "يستخدم بيانات الاختبار أثناء التدريب لإنشاء الفروع.",
+        "يحوّل كل مسار من الجذر إلى الورقة إلى قاعدة.",
+        "تنتمي كل السجلات في العقدة إلى فئة واحدة.",
+        "إزالة الفروع الضعيفة باستخدام بيانات التحقق"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "|Post-pruning|Grow the full tree first, then remove weak branches using validation data.|",
+      "explanation_ar": "إزالة الفروع الضعيفة باستخدام بيانات التحقق",
+      "id": "q17"
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch07_T03_Rule_Learning_Algorithms_And_Tradeoffs",
+  "topic": "Rule Learning Algorithms and Tradeoffs",
+  "topic_ar": "خوارزميات تعلم القواعد ومفاضلاتها",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "c7_direct_rules",
+      "bloom_level": "Understand",
+      "question": "What does direct rule generation identify?",
+      "question_ar": "ماذا يحدد التوليد المباشر للقواعد؟",
+      "options": [
+        "the rule coverage for the observation",
+        "is the same for each candidate class",
+        "two trees at every iteration",
+        "conditions that frequently correspond"
+      ],
+      "options_en": [
+        "the rule coverage for the observation",
+        "is the same for each candidate class",
+        "two trees at every iteration",
+        "conditions that frequently correspond"
+      ],
+      "options_ar": [
+        "تغطية القاعدة للحالة",
+        "متساوٍ لكل فئة مرشحة",
+        "شجرتين في كل تكرار",
+        "شروطاً تقترن كثيراً"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Some algorithms learn rules directly from training data by identifying conditions that frequently correspond to particular classes.",
+      "explanation_ar": "شروطاً تقترن كثيراً",
+      "id": "q1"
+    },
+    {
+      "concept_id": "c7_tree_to_rule",
+      "bloom_level": "Understand",
+      "question": "Each path from root to leaf becomes what?",
+      "question_ar": "إلى ماذا يتحول كل مسار من الجذر إلى الورقة؟",
+      "options": [
+        "a class",
+        "a split",
+        "a rule",
+        "a path"
+      ],
+      "options_en": [
+        "a class",
+        "a split",
+        "a rule",
+        "a path"
+      ],
+      "options_ar": [
+        "فئة نهائية",
+        "مسار شجري",
+        "قاعدة شرطية",
+        "تقسيم خاصية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "6. Find a rule that correctly classifies a group of training records.",
+      "explanation_ar": "قاعدة",
+      "id": "q2"
+    },
+    {
+      "concept_id": "c7_sequential_covering",
+      "bloom_level": "Understand",
+      "question": "How does sequential covering generate rules?",
+      "question_ar": "كيف يولد Sequential Covering القواعد؟",
+      "options": [
+        "one class label per feature",
+        "Follow a path from root to leaf",
+        "generates rules one at a time",
+        "all possible rules at once"
+      ],
+      "options_en": [
+        "one class label per feature",
+        "Follow a path from root to leaf",
+        "generates rules one at a time",
+        "all possible rules at once"
+      ],
+      "options_ar": [
+        "تسمية فئة واحدة لكل خاصية",
+        "اتباع مسار من الجذر إلى الورقة",
+        "يولد القواعد واحدة في كل مرة",
+        "كل القواعد الممكنة دفعة واحدة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Sequential covering generates rules one at a time:",
+      "explanation_ar": "يولد القواعد واحدة في كل مرة",
+      "id": "q3"
+    },
+    {
+      "concept_id": "c7_sequential_remove",
+      "bloom_level": "Understand",
+      "question": "What may sequential covering do with records already covered by a rule?",
+      "question_ar": "ماذا قد يفعل Sequential Covering بالسجلات التي غطتها قاعدة؟",
+      "options": [
+        "no record can be left unmatched",
+        "remove or set aside covered records",
+        "add them to the test set automatically",
+        "rules using Bayesian optimization"
+      ],
+      "options_en": [
+        "no record can be left unmatched",
+        "remove or set aside covered records",
+        "add them to the test set automatically",
+        "rules using Bayesian optimization"
+      ],
+      "options_ar": [
+        "لا يمكن أن يبقى أي سجل بلا مطابقة",
+        "يزيل السجلات المغطاة أو يضعها جانباً",
+        "يضيفها تلقائياً إلى مجموعة الاختبار",
+        "قواعد باستخدام التحسين البايزي"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "8. Remove or set aside covered records, depending on the algorithm.",
+      "explanation_ar": "يزيل السجلات المغطاة أو يضعها جانباً",
+      "id": "q4"
+    },
+    {
+      "concept_id": "c7_ripper",
+      "bloom_level": "Remember",
+      "question": "Which algorithm is identified as using sequential covering?",
+      "question_ar": "أي خوارزمية حُددت على أنها تستخدم Sequential Covering؟",
+      "options": [
+        "RIPPER is an example of a rule-learning algorithm",
+        "PART generates rules from partial decision trees",
+        "OneR builds a simple classifier using one attribute",
+        "does not have to originate from a decision tree"
+      ],
+      "options_en": [
+        "RIPPER is an example of a rule-learning algorithm",
+        "PART generates rules from partial decision trees",
+        "OneR builds a simple classifier using one attribute",
+        "does not have to originate from a decision tree"
+      ],
+      "options_ar": [
+        "RIPPER مثال على خوارزمية تعلم قواعد",
+        "يولد PART القواعد من أشجار قرار جزئية",
+        "يبني OneR مصنفاً بسيطاً باستخدام سمة واحدة",
+        "ليس من الضروري أن ينشأ من شجرة قرار"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "RIPPER is an example of a rule-learning algorithm that uses a sequential covering approach.",
+      "explanation_ar": "RIPPER مثال على خوارزمية تعلم قواعد",
+      "id": "q5"
+    },
+    {
+      "concept_id": "c7_oner",
+      "bloom_level": "Remember",
+      "question": "What does OneR build?",
+      "question_ar": "ماذا يبني OneR؟",
+      "options": [
+        "add them to the test set automatically",
+        "a simple classifier using one attribute",
+        "by reporting only the test-set size",
+        "a classifier using only posterior probabilities"
+      ],
+      "options_en": [
+        "add them to the test set automatically",
+        "a simple classifier using one attribute",
+        "by reporting only the test-set size",
+        "a classifier using only posterior probabilities"
+      ],
+      "options_ar": [
+        "يضيفها تلقائياً إلى مجموعة الاختبار",
+        "مصنفاً بسيطاً يستخدم سمة واحدة",
+        "بعرض حجم مجموعة الاختبار فقط",
+        "مصنفاً يستخدم الاحتمالات اللاحقة فقط"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "|OneR|Builds a simple classifier using one attribute.|",
+      "explanation_ar": "مصنفاً بسيطاً يستخدم سمة واحدة",
+      "id": "q6"
+    },
+    {
+      "concept_id": "c7_cn2",
+      "bloom_level": "Remember",
+      "question": "How does CN2 learn classification rules?",
+      "question_ar": "كيف يتعلم CN2 قواعد التصنيف؟",
+      "options": [
+        "using a sigmoid function",
+        "using a Gaussian distribution",
+        "a random matching rule",
+        "using heuristic search"
+      ],
+      "options_en": [
+        "using a sigmoid function",
+        "using a Gaussian distribution",
+        "a random matching rule",
+        "using heuristic search"
+      ],
+      "options_ar": [
+        "باستخدام دالة Sigmoid",
+        "باستخدام توزيع Gaussian",
+        "قاعدة منطبقة عشوائية",
+        "باستخدام البحث الإرشادي"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "|CN2|Learns classification rules using heuristic search.|",
+      "explanation_ar": "باستخدام البحث الإرشادي",
+      "id": "q7"
+    },
+    {
+      "concept_id": "c7_part",
+      "bloom_level": "Remember",
+      "question": "What does PART generate rules from?",
+      "question_ar": "من ماذا يولد PART القواعد؟",
+      "options": [
+        "partial decision trees",
+        "probability calibration",
+        "two trees at every iteration",
+        "class-imbalance weights"
+      ],
+      "options_en": [
+        "partial decision trees",
+        "probability calibration",
+        "two trees at every iteration",
+        "class-imbalance weights"
+      ],
+      "options_ar": [
+        "أشجار قرار جزئية",
+        "معايرة الاحتمالات",
+        "شجرتين في كل تكرار",
+        "أوزان اختلال الفئات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "|PART|Generates rules from partial decision trees.|",
+      "explanation_ar": "أشجار قرار جزئية",
+      "id": "q8"
+    },
+    {
+      "concept_id": "c7_rule_interpretability",
+      "bloom_level": "Understand",
+      "question": "Which advantage describes rules as usually easy to understand?",
+      "question_ar": "أي ميزة تصف القواعد بأنها سهلة الفهم عادة؟",
+      "options": [
+        "feature scaling",
+        "data imputation",
+        "Fail, or Class 0",
+        "interpretability"
+      ],
+      "options_en": [
+        "feature scaling",
+        "data imputation",
+        "Fail, or Class 0",
+        "interpretability"
+      ],
+      "options_ar": [
+        "تحجيم الخصائص",
+        "تعويض البيانات",
+        "رسوب أو الفئة 0",
+        "قابلية التفسير"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Interpretability: rules are usually easy to understand.",
+      "explanation_ar": "قابلية التفسير",
+      "id": "q9"
+    },
+    {
+      "concept_id": "c7_rule_transparency",
+      "bloom_level": "Understand",
+      "question": "How can a rule-based prediction be explained?",
+      "question_ar": "كيف يمكن تفسير تنبؤ قائم على القواعد؟",
+      "options": [
+        "by showing the matching rule",
+        "using a Gaussian distribution",
+        "using a sigmoid function",
+        "two trees at every iteration"
+      ],
+      "options_en": [
+        "by showing the matching rule",
+        "using a Gaussian distribution",
+        "using a sigmoid function",
+        "two trees at every iteration"
+      ],
+      "options_ar": [
+        "بعرض القاعدة المنطبقة",
+        "باستخدام توزيع Gaussian",
+        "باستخدام دالة Sigmoid",
+        "شجرتين في كل تكرار"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Transparency: a prediction can be explained by showing the matching rule.",
+      "explanation_ar": "بعرض القاعدة المنطبقة",
+      "id": "q10"
+    },
+    {
+      "concept_id": "c7_rule_limit_conflict",
+      "bloom_level": "Understand",
+      "question": "Which limitation can occur in a rule-based classifier?",
+      "question_ar": "أي محدودية قد تحدث في المصنف القائم على القواعد؟",
+      "options": [
+        "conflicting rules may predict different classes",
+        "rules always require numerical target values",
+        "PART generates rules from partial decision trees",
+        "rules cannot contain more than one condition"
+      ],
+      "options_en": [
+        "conflicting rules may predict different classes",
+        "rules always require numerical target values",
+        "PART generates rules from partial decision trees",
+        "rules cannot contain more than one condition"
+      ],
+      "options_ar": [
+        "قد تتنبأ القواعد المتعارضة بفئات مختلفة",
+        "تتطلب القواعد دائماً أهدافاً عددية",
+        "يولد PART القواعد من أشجار قرار جزئية",
+        "لا يمكن للقواعد أن تحتوي أكثر من شرط"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Conflicting rules may predict different classes.",
+      "explanation_ar": "قد تتنبأ القواعد المتعارضة بفئات مختلفة",
+      "id": "q11"
+    },
+    {
+      "concept_id": "c7_rule_tree_conversion",
+      "bloom_level": "Analyze",
+      "question": "Must a rule-based classifier originate from a decision tree?",
+      "question_ar": "هل يجب أن ينشأ المصنف القائم على القواعد من شجرة قرار؟",
+      "options": [
+        "RIPPER is an example of a rule-learning algorithm",
+        "does not have to originate from a decision tree",
+        "A decision tree cannot be converted into rules.",
+        "a classifier using only posterior probabilities"
+      ],
+      "options_en": [
+        "RIPPER is an example of a rule-learning algorithm",
+        "does not have to originate from a decision tree",
+        "A decision tree cannot be converted into rules.",
+        "a classifier using only posterior probabilities"
+      ],
+      "options_ar": [
+        "RIPPER مثال على خوارزمية تعلم قواعد",
+        "ليس من الضروري أن ينشأ من شجرة قرار",
+        "لا يمكن تحويل شجرة القرار إلى قواعد.",
+        "مصنفاً يستخدم الاحتمالات اللاحقة فقط"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A decision tree can be converted into rules, but a rule-based classifier does not have to originate from a decision tree.",
+      "explanation_ar": "ليس من الضروري أن ينشأ من شجرة قرار",
+      "id": "q12"
+    },
+    {
+      "concept_id": "c7_tree_prediction",
+      "bloom_level": "Analyze",
+      "question": "How does a standard decision tree make a prediction?",
+      "question_ar": "كيف تتنبأ شجرة القرار القياسية؟",
+      "options": [
+        "generates rules one at a time",
+        "no record can be left unmatched",
+        "Follow a path from root to leaf",
+        "rules using Bayesian optimization"
+      ],
+      "options_en": [
+        "generates rules one at a time",
+        "no record can be left unmatched",
+        "Follow a path from root to leaf",
+        "rules using Bayesian optimization"
+      ],
+      "options_ar": [
+        "يولد القواعد واحدة في كل مرة",
+        "لا يمكن أن يبقى أي سجل بلا مطابقة",
+        "اتباع مسار من الجذر إلى الورقة",
+        "قواعد باستخدام التحسين البايزي"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "|Prediction|Evaluate applicable rules|Follow a path from root to leaf|",
+      "explanation_ar": "اتباع مسار من الجذر إلى الورقة",
+      "id": "q13"
+    }
+  ]
+}

@@ -134,7 +134,7 @@ a bank pass — fix the wording.
 | Ch05 | 221 in 17 banks | cleaned 2026-10-27 · strict/shape gates green · live · web verification passed |
 | Ch06 | 104 in 10 banks | rebuilt 2026-10-27 · old 8 banks hidden · live · web verification passed |
 
-Current content version: **52** · shell **1.7.12**.
+Current content version: **54** · shell **1.7.18**.
 
 > **Chapter 3 was a scope problem before it was a wording problem.** The doctor's marked copy exists
 > only outside the vault (`~/Downloads/Telegram Desktop/W02_Risks.pdf`; the clean
@@ -143,6 +143,18 @@ Current content version: **52** · shell **1.7.12**.
 > technology section, the core-functions section, and the entire hospital quantification scenario and
 > PCI worked example. Read `03_Study_Notes/W03_Annotation_Map.md` before writing a single question, or
 > you will author questions on material she explicitly removed.
+
+### Data Mining — Ch6/Ch7 release (Codex, 2026-10-28)
+
+| Chapter | Questions | State |
+|---|---:|---|
+| Ch06 | 86 in 7 topic banks | built from Week 6 Classification and Chapter 6 source PDFs; strict/shape gates green; live and UI verified |
+| Ch07 | 86 in 7 topic banks | built from Week 7 Classification Techniques; strict/shape gates green; live and UI verified |
+
+- The English correct-answer text was checked against the supplied source material. The chapters have 172 questions across 14 banks, with no concept-ID overlap against Data Mining Ch1–Ch5.
+- `quiz_balancer.py --check --strict` passed all 14 banks. Chapter quality gates reported zero structural and shape failures; their explanation-length warnings remain advisory because concise formula/label answers follow the source wording. The small set of near-duplicate warnings are deliberate contrast questions.
+- Published to Supabase at content version **54**, pulled into the local portal mirror, then released shell **1.7.18**. CI passed 220 checks; the production deployment is READY.
+- Live payload audit checked all 172 questions for answer key, bilingual options, explanations, Bloom level and source-text references: 0 problems. Vault/live option comparison: 121 banks, 0 diffs. Both chapters passed post-deploy browser checks for seven cards, bilingual toggle, question/option shuffle and stable correct-answer text.
 
 ---
 

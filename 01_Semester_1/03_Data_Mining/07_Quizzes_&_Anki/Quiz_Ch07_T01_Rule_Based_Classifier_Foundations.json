@@ -1,0 +1,363 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch07_T01_Rule_Based_Classifier_Foundations",
+  "topic": "Rule-Based Classifier Foundations",
+  "topic_ar": "أساسيات المصنفات القائمة على القواعد",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "c7_rule_form",
+      "bloom_level": "Remember",
+      "question": "How does a rule-based classifier represent classification knowledge?",
+      "question_ar": "كيف يمثل المصنف القائم على القواعد معرفة التصنيف؟",
+      "options": [
+        "the maximum tree depth",
+        "the class prior probability",
+        "the first explicit rule",
+        "IF condition THEN class"
+      ],
+      "options_en": [
+        "the maximum tree depth",
+        "the class prior probability",
+        "the first explicit rule",
+        "IF condition THEN class"
+      ],
+      "options_ar": [
+        "العمق الأقصى للشجرة",
+        "الاحتمال السابق للفئة",
+        "القاعدة الصريحة الأولى",
+        "إذا تحقق الشرط فالفئة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A rule-based classifier represents classification knowledge in the form: IF condition THEN class.",
+      "explanation_ar": "إذا تحقق الشرط فالفئة",
+      "id": "q1"
+    },
+    {
+      "concept_id": "c7_antecedent",
+      "bloom_level": "Remember",
+      "question": "Which part of a rule contains the conditions that must be satisfied?",
+      "question_ar": "أي جزء من القاعدة يحتوي الشروط الواجب تحققها؟",
+      "options": [
+        "Discriminative",
+        "the antecedent",
+        "Generative tag",
+        "the consequent"
+      ],
+      "options_en": [
+        "Discriminative",
+        "the antecedent",
+        "Generative tag",
+        "the consequent"
+      ],
+      "options_ar": [
+        "تمييزياً",
+        "المقدّمة",
+        "توليدياً",
+        "النتيجة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Here, Age < 30 AND Income = High is the antecedent, and LoanStatus = Approved is the consequent.",
+      "explanation_ar": "المقدّمة",
+      "id": "q2"
+    },
+    {
+      "concept_id": "c7_consequent",
+      "bloom_level": "Remember",
+      "question": "Which part of a rule contains the predicted class?",
+      "question_ar": "أي جزء من القاعدة يحتوي الفئة المتنبأ بها؟",
+      "options": [
+        "Discriminative",
+        "classification",
+        "the consequent",
+        "the antecedent"
+      ],
+      "options_en": [
+        "Discriminative",
+        "classification",
+        "the consequent",
+        "the antecedent"
+      ],
+      "options_ar": [
+        "تمييزياً",
+        "التصنيف",
+        "النتيجة",
+        "المقدّمة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Here, Age < 30 AND Income = High is the antecedent, and LoanStatus = Approved is the consequent.",
+      "explanation_ar": "النتيجة",
+      "id": "q3"
+    },
+    {
+      "concept_id": "c7_and_logic",
+      "bloom_level": "Understand",
+      "question": "When does an AND-connected rule apply?",
+      "question_ar": "متى تنطبق قاعدة شروطها مربوطة بـ AND؟",
+      "options": [
+        "both conditions must be true",
+        "whenever the first rule matches",
+        "neither condition may be true",
+        "by averaging every feature value"
+      ],
+      "options_en": [
+        "both conditions must be true",
+        "whenever the first rule matches",
+        "neither condition may be true",
+        "by averaging every feature value"
+      ],
+      "options_ar": [
+        "يجب أن يكون الشرطان صحيحين",
+        "كلما انطبقت القاعدة الأولى",
+        "يجب ألا يكون أي شرط صحيحاً",
+        "بحساب متوسط كل قيم الخصائص"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The AND operator means both conditions must be true for the rule to apply. An OR operator means at least one of its connected conditions must be true.",
+      "explanation_ar": "يجب أن يكون الشرطان صحيحين",
+      "id": "q4"
+    },
+    {
+      "concept_id": "c7_or_logic",
+      "bloom_level": "Understand",
+      "question": "For an OR connector, how many connected conditions must be true?",
+      "question_ar": "في رابط OR، كم شرطاً متصلاً يجب أن يكون صحيحاً؟",
+      "options": [
+        "the default rule",
+        "at least one",
+        "0.40, or 40%",
+        "0.90, or 90%"
+      ],
+      "options_en": [
+        "the default rule",
+        "at least one",
+        "0.40, or 40%",
+        "0.90, or 90%"
+      ],
+      "options_ar": [
+        "القاعدة الافتراضية",
+        "شرط واحد على الأقل",
+        "0.40 أو 40 بالمئة",
+        "0.90 أو 90 بالمئة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The AND operator means both conditions must be true for the rule to apply. An OR operator means at least one of its connected conditions must be true.",
+      "explanation_ar": "شرط واحد على الأقل",
+      "id": "q5"
+    },
+    {
+      "concept_id": "c7_rule_prepare",
+      "bloom_level": "Remember",
+      "question": "What is the first step in rule-based classification?",
+      "question_ar": "ما الخطوة الأولى في التصنيف القائم على القواعد؟",
+      "options": [
+        "the proportion of actual negatives correctly identified",
+        "when every explicit rule predicts the same class",
+        "Prepare the dataset by collecting and cleaning the data.",
+        "Assign the predicted class before learning rules."
+      ],
+      "options_en": [
+        "the proportion of actual negatives correctly identified",
+        "when every explicit rule predicts the same class",
+        "Prepare the dataset by collecting and cleaning the data.",
+        "Assign the predicted class before learning rules."
+      ],
+      "options_ar": [
+        "نسبة السلبيات الفعلية المحددة بصورة صحيحة",
+        "عندما تتنبأ كل قاعدة صريحة بالفئة نفسها",
+        "حضّر مجموعة البيانات بجمع البيانات وتنظيفها.",
+        "أسند الفئة المتنبأ بها قبل تعلم القواعد."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "1. Prepare the dataset by collecting and cleaning the data.",
+      "explanation_ar": "حضّر مجموعة البيانات بجمع البيانات وتنظيفها.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "c7_rule_generation",
+      "bloom_level": "Understand",
+      "question": "What is generated from the training data in rule-based classification?",
+      "question_ar": "ماذا يُولّد من بيانات التدريب في التصنيف القائم على القواعد؟",
+      "options": [
+        "rule ordering",
+        "the intercept",
+        "a small count",
+        "IF-THEN rules"
+      ],
+      "options_en": [
+        "rule ordering",
+        "the intercept",
+        "a small count",
+        "IF-THEN rules"
+      ],
+      "options_ar": [
+        "ترتيب القواعد",
+        "المقطع الثابت",
+        "عدداً صغيراً",
+        "قواعد IF-THEN"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "|Representation|IF-THEN rules|Tree structure|",
+      "explanation_ar": "قواعد IF-THEN",
+      "id": "q7"
+    },
+    {
+      "concept_id": "c7_ordered_rules",
+      "bloom_level": "Understand",
+      "question": "In ordered rules, which rule determines the predicted class?",
+      "question_ar": "في القواعد المرتبة، أي قاعدة تحدد الفئة المتنبأ بها؟",
+      "options": [
+        "the first rule only",
+        "conditional-independence",
+        "the maximum tree depth",
+        "the first matching rule"
+      ],
+      "options_en": [
+        "the first rule only",
+        "conditional-independence",
+        "the maximum tree depth",
+        "the first matching rule"
+      ],
+      "options_ar": [
+        "القاعدة الأولى فقط",
+        "الاستقلال الشرطي",
+        "العمق الأقصى للشجرة",
+        "أول قاعدة منطبقة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Rules are evaluated in a specific sequence. The first matching rule determines the predicted class. Therefore, rule order can affect the result when multiple rules match.",
+      "explanation_ar": "أول قاعدة منطبقة",
+      "id": "q8"
+    },
+    {
+      "concept_id": "c7_unordered_rules",
+      "bloom_level": "Understand",
+      "question": "What may an unordered classifier use when multiple rules match?",
+      "question_ar": "ماذا قد يستخدم المصنف غير المرتب عند انطباق قواعد متعددة؟",
+      "options": [
+        "voting",
+        "0.03125",
+        "0.37500",
+        "0.1192"
+      ],
+      "options_en": [
+        "voting",
+        "0.03125",
+        "0.37500",
+        "0.1192"
+      ],
+      "options_ar": [
+        "التصويت",
+        "0.03125",
+        "0.37500",
+        "0.1192"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Rules do not necessarily have a fixed priority. If multiple rules match, the classifier may use voting, rule quality, or another conflict-resolution strategy.",
+      "explanation_ar": "التصويت",
+      "id": "q9"
+    },
+    {
+      "concept_id": "c7_default_rule",
+      "bloom_level": "Understand",
+      "question": "When does a default rule handle a record?",
+      "question_ar": "متى تتعامل القاعدة الافتراضية مع السجل؟",
+      "options": [
+        "when no explicit rule matches",
+        "neither condition may be true",
+        "whenever the first rule matches",
+        "both conditions must be true"
+      ],
+      "options_en": [
+        "when no explicit rule matches",
+        "neither condition may be true",
+        "whenever the first rule matches",
+        "both conditions must be true"
+      ],
+      "options_ar": [
+        "عندما لا تنطبق أي قاعدة صريحة",
+        "يجب ألا يكون أي شرط صحيحاً",
+        "كلما انطبقت القاعدة الأولى",
+        "يجب أن يكون الشرطان صحيحين"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A default rule handles a record when no explicit rule matches.",
+      "explanation_ar": "عندما لا تنطبق أي قاعدة صريحة",
+      "id": "q10"
+    },
+    {
+      "concept_id": "c7_default_example",
+      "bloom_level": "Apply",
+      "question": "A mark of 45 matches neither rule for marks at least 50 or below 40. What assigns its class?",
+      "question_ar": "درجة 45 لا تطابق قاعدة الدرجات 50 فأعلى ولا قاعدة أقل من 40. ما الذي يسند فئتها؟",
+      "options": [
+        "class imbalance",
+        "the default rule",
+        "count data only",
+        "the first rule only"
+      ],
+      "options_en": [
+        "class imbalance",
+        "the default rule",
+        "count data only",
+        "the first rule only"
+      ],
+      "options_ar": [
+        "اختلال توازن الفئات",
+        "القاعدة الافتراضية",
+        "بيانات العدّ فقط",
+        "القاعدة الأولى فقط"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A mark of 45 matches neither explicit rule, so the default rule assigns Fail.",
+      "explanation_ar": "القاعدة الافتراضية",
+      "id": "q11"
+    },
+    {
+      "concept_id": "c7_prediction_matches",
+      "bloom_level": "Understand",
+      "question": "How is a new record assigned a class in the rule-based workflow?",
+      "question_ar": "كيف تسند فئة إلى سجل جديد في سير عمل القواعد؟",
+      "options": [
+        "CN2 learns rules using heuristic search",
+        "by using test labels as the prediction",
+        "based on the matching rule or rules",
+        "remove or set aside covered records"
+      ],
+      "options_en": [
+        "CN2 learns rules using heuristic search",
+        "by using test labels as the prediction",
+        "based on the matching rule or rules",
+        "remove or set aside covered records"
+      ],
+      "options_ar": [
+        "يتعلم CN2 القواعد باستخدام البحث الإرشادي",
+        "باستخدام تسميات الاختبار بوصفها التنبؤ",
+        "استناداً إلى القاعدة أو القواعد المنطبقة",
+        "يزيل السجلات المغطاة أو يضعها جانباً"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "5. Assign the predicted class based on the matching rule or rules.",
+      "explanation_ar": "استناداً إلى القاعدة أو القواعد المنطبقة",
+      "id": "q12"
+    }
+  ]
+}
