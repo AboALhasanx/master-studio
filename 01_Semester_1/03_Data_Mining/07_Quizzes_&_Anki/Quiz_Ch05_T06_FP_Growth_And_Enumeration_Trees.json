@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_T06_FP_Growth_And_Enumeration_Trees",
+  "topic": "FP-Growth and Enumeration Trees",
+  "topic_ar": "FP-Growth وأشجار التعداد",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "fpgrowth_candidates",
+      "bloom_level": "Understand",
+      "question": "How does FP-Growth handle candidate itemsets?",
+      "question_ar": "كيف تتعامل FP-Growth مع مجموعات العناصر المرشحة؟",
+      "options": [
+        "by evaluating feature subsets with a model",
+        "without explicitly generating candidate itemsets",
+        "by explicitly generating every possible candidate",
+        "by preserving the full event order in transactions"
+      ],
+      "options_en": [
+        "by evaluating feature subsets with a model",
+        "without explicitly generating candidate itemsets",
+        "by explicitly generating every possible candidate",
+        "by preserving the full event order in transactions"
+      ],
+      "options_ar": [
+        "بتقييم مجموعات الخصائص الفرعية باستخدام نموذج",
+        "من دون توليد مجموعات العناصر المرشحة صراحةً",
+        "بتوليد كل مجموعة مرشحة ممكنة صراحةً",
+        "بالحفاظ على ترتيب الأحداث كاملاً في المعاملات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "FP-Growth finds frequent itemsets without explicitly generating candidate itemsets.",
+      "explanation_ar": "من دون توليد مجموعات العناصر المرشحة صراحةً",
+      "id": "q1"
+    },
+    {
+      "concept_id": "fpgrowth_structure",
+      "bloom_level": "Remember",
+      "question": "What compact structure does FP-Growth use to represent transaction data?",
+      "question_ar": "ما البنية المضغوطة التي تستخدمها FP-Growth لتمثيل بيانات المعاملات؟",
+      "options": [
+        "removing a transaction from the database",
+        "a compact data structure called an enumeration matrix",
+        "Each node represents a partial itemset",
+        "a compact data structure called an FP-tree"
+      ],
+      "options_en": [
+        "removing a transaction from the database",
+        "a compact data structure called an enumeration matrix",
+        "Each node represents a partial itemset",
+        "a compact data structure called an FP-tree"
+      ],
+      "options_ar": [
+        "إزالة معاملة من قاعدة البيانات",
+        "بنية بيانات مضغوطة تسمى مصفوفة تعداد",
+        "تمثل كل عقدة مجموعة عناصر جزئية",
+        "بنية بيانات مضغوطة تسمى شجرة FP"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Instead, it uses a compact data structure called an FP-tree (Frequent Pattern Tree) to represent the transaction database.",
+      "explanation_ar": "بنية بيانات مضغوطة تسمى شجرة FP",
+      "id": "q2"
+    },
+    {
+      "concept_id": "fpgrowth_order",
+      "bloom_level": "Remember",
+      "question": "How are remaining frequent items ordered before the FP-tree is built?",
+      "question_ar": "كيف ترتب العناصر المتكررة المتبقية قبل بناء شجرة FP؟",
+      "options": [
+        "in descending order of their frequency",
+        "in ascending order of their confidence",
+        "in the order of model feature importance",
+        "according to the sequence suffix length only"
+      ],
+      "options_en": [
+        "in descending order of their frequency",
+        "in ascending order of their confidence",
+        "in the order of model feature importance",
+        "according to the sequence suffix length only"
+      ],
+      "options_ar": [
+        "بترتيب تنازلي حسب تكرارها",
+        "بترتيب تصاعدي حسب ثقتها",
+        "وفق أهمية خصائص النموذج",
+        "بحسب طول لاحقة التسلسل فقط"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Sort the remaining items in descending order of their frequency.",
+      "explanation_ar": "بترتيب تنازلي حسب تكرارها",
+      "id": "q3"
+    },
+    {
+      "concept_id": "fpgrowth_header",
+      "bloom_level": "Remember",
+      "question": "What does the FP-Growth header table connect?",
+      "question_ar": "ماذا يربط جدول الترويسة في FP-Growth؟",
+      "options": [
+        "in descending order of their frequency",
+        "Each node represents a partial itemset",
+        "nodes representing the same item",
+        "branches that contain no items"
+      ],
+      "options_en": [
+        "in descending order of their frequency",
+        "Each node represents a partial itemset",
+        "nodes representing the same item",
+        "branches that contain no items"
+      ],
+      "options_ar": [
+        "بترتيب تنازلي حسب تكرارها",
+        "تمثل كل عقدة مجموعة عناصر جزئية",
+        "العقد التي تمثل العنصر نفسه",
+        "الفروع التي لا تحتوي عناصر"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Create a header table that connects nodes representing the same item.",
+      "explanation_ar": "العقد التي تمثل العنصر نفسه",
+      "id": "q4"
+    },
+    {
+      "concept_id": "fpgrowth_conditional",
+      "bloom_level": "Remember",
+      "question": "What may FP-Growth construct during mining?",
+      "question_ar": "ماذا قد تنشئ FP-Growth أثناء التنقيب؟",
+      "options": [
+        "ordered rules without a transaction database",
+        "by explicitly generating every possible candidate",
+        "conditional pattern bases and conditional FP-trees",
+        "conditional confidence scores and Pearson trees"
+      ],
+      "options_en": [
+        "ordered rules without a transaction database",
+        "by explicitly generating every possible candidate",
+        "conditional pattern bases and conditional FP-trees",
+        "conditional confidence scores and Pearson trees"
+      ],
+      "options_ar": [
+        "قواعد مرتبة دون قاعدة معاملات",
+        "بتوليد كل مجموعة مرشحة ممكنة صراحةً",
+        "قواعد أنماط شرطية وأشجار FP شرطية",
+        "درجات ثقة شرطية وأشجار بيرسون"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Construct conditional pattern bases and conditional FP-trees as needed.",
+      "explanation_ar": "قواعد أنماط شرطية وأشجار FP شرطية",
+      "id": "q5"
+    },
+    {
+      "concept_id": "enum_tree_node",
+      "bloom_level": "Understand",
+      "question": "What does each enumeration-tree node represent?",
+      "question_ar": "ماذا تمثل كل عقدة في شجرة التعداد؟",
+      "options": [
+        "Each node represents a partial itemset",
+        "removing a transaction from the database",
+        "feature subsets and LASSO coefficients",
+        "Each node represents a complete confidence measure"
+      ],
+      "options_en": [
+        "Each node represents a partial itemset",
+        "removing a transaction from the database",
+        "feature subsets and LASSO coefficients",
+        "Each node represents a complete confidence measure"
+      ],
+      "options_ar": [
+        "تمثل كل عقدة مجموعة عناصر جزئية",
+        "إزالة معاملة من قاعدة البيانات",
+        "مجموعات خصائص فرعية ومعاملات LASSO",
+        "تمثل كل عقدة مقياس ثقة كاملاً"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The basic idea is to represent the possible item combinations as a tree. Each node represents a partial itemset, and adding an item creates a larger itemset.",
+      "explanation_ar": "تمثل كل عقدة مجموعة عناصر جزئية",
+      "id": "q6"
+    },
+    {
+      "concept_id": "enum_branch",
+      "bloom_level": "Understand",
+      "question": "What does each branch represent in an enumeration tree?",
+      "question_ar": "ماذا يمثل كل فرع في شجرة التعداد؟",
+      "options": [
+        "feature subsets and LASSO coefficients",
+        "adding an item to the current itemset",
+        "removing a transaction from the database",
+        "none of its supersets can be frequent"
+      ],
+      "options_en": [
+        "feature subsets and LASSO coefficients",
+        "adding an item to the current itemset",
+        "removing a transaction from the database",
+        "none of its supersets can be frequent"
+      ],
+      "options_ar": [
+        "مجموعات خصائص فرعية ومعاملات LASSO",
+        "إضافة عنصر إلى مجموعة العناصر الحالية",
+        "إزالة معاملة من قاعدة البيانات",
+        "لا تكون أي مجموعة أعلى احتواءً متكررة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Each branch represents adding an item to the current itemset.",
+      "explanation_ar": "إضافة عنصر إلى مجموعة العناصر الحالية",
+      "id": "q7"
+    }
+  ]
+}

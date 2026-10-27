@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_T04_Frequent_Itemsets_And_Brute_Force",
+  "topic": "Frequent Itemsets and Brute Force",
+  "topic_ar": "مجموعات العناصر المتكررة والقوة الغاشمة",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "frequent_definition",
+      "bloom_level": "Understand",
+      "question": "What support condition must an itemset satisfy to be frequent?",
+      "question_ar": "ما شرط الدعم الذي يجب أن تحققه مجموعة العناصر لتكون متكررة؟",
+      "options": [
+        "the number of possible itemsets grows exponentially",
+        "The main advantage is avoiding candidate generation.",
+        "only sequence suffixes after one frequent pattern",
+        "greater than or equal to a predefined minimum support"
+      ],
+      "options_en": [
+        "the number of possible itemsets grows exponentially",
+        "The main advantage is avoiding candidate generation.",
+        "only sequence suffixes after one frequent pattern",
+        "greater than or equal to a predefined minimum support"
+      ],
+      "options_ar": [
+        "ينمو عدد مجموعات العناصر الممكنة بصورة أُسّية",
+        "الميزة الرئيسية هي تجنب توليد المرشحين.",
+        "لواحق التسلسلات بعد نمط متكرر واحد فقط",
+        "أكبر من أو يساوي الحد الأدنى المحدد للدعم"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "An itemset is considered frequent when its support is greater than or equal to a predefined minimum support (min_sup) threshold.",
+      "explanation_ar": "أكبر من أو يساوي الحد الأدنى المحدد للدعم",
+      "id": "q1"
+    },
+    {
+      "concept_id": "minsup_user",
+      "bloom_level": "Remember",
+      "question": "Who defines the minimum-support threshold?",
+      "question_ar": "من يحدد عتبة الحد الأدنى للدعم؟",
+      "options": [
+        "a user-defined threshold",
+        "customer sequence suffixes",
+        "customer model penalties",
+        "Causal association occurs"
+      ],
+      "options_en": [
+        "a user-defined threshold",
+        "customer sequence suffixes",
+        "customer model penalties",
+        "Causal association occurs"
+      ],
+      "options_ar": [
+        "عتبة يحددها المستخدم",
+        "لواحق تسلسلات الزبائن",
+        "عقوبات نماذج الزبائن",
+        "ارتباط سببي عند Lift > 1"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Minimum support (min_sup) is a user-defined threshold that determines how frequently an itemset must occur in a dataset to be considered a frequent itemset.",
+      "explanation_ar": "عتبة يحددها المستخدم",
+      "id": "q2"
+    },
+    {
+      "concept_id": "itemset_exponential",
+      "bloom_level": "Understand",
+      "question": "How does the number of possible itemsets grow as the number of items increases?",
+      "question_ar": "كيف ينمو عدد مجموعات العناصر الممكنة مع زيادة عدد العناصر؟",
+      "options": [
+        "the number of possible itemsets stays constant",
+        "the number of possible itemsets grows only for one transaction",
+        "the number of possible itemsets grows exponentially",
+        "greater than or equal to a predefined minimum support"
+      ],
+      "options_en": [
+        "the number of possible itemsets stays constant",
+        "the number of possible itemsets grows only for one transaction",
+        "the number of possible itemsets grows exponentially",
+        "greater than or equal to a predefined minimum support"
+      ],
+      "options_ar": [
+        "يبقى عدد مجموعات العناصر الممكنة ثابتاً",
+        "ينمو عدد مجموعات العناصر الممكنة لمعاملة واحدة فقط",
+        "ينمو عدد مجموعات العناصر الممكنة بصورة أُسّية",
+        "أكبر من أو يساوي الحد الأدنى المحدد للدعم"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The main challenge is that the number of possible itemsets grows exponentially as the number of items increases. Therefore, algorithms such as Apriori and FP-Growth use strategies to reduce the amount of unnecessary searching.",
+      "explanation_ar": "ينمو عدد مجموعات العناصر الممكنة بصورة أُسّية",
+      "id": "q3"
+    },
+    {
+      "concept_id": "brute_all",
+      "bloom_level": "Understand",
+      "question": "What does Brute Force examine?",
+      "question_ar": "ماذا تفحص خوارزمية القوة الغاشمة؟",
+      "options": [
+        "used to find frequent itemsets",
+        "Causal relationship is present",
+        "only itemsets stored in a compact FP-tree",
+        "all possible non-empty itemsets"
+      ],
+      "options_en": [
+        "used to find frequent itemsets",
+        "Causal relationship is present",
+        "only itemsets stored in a compact FP-tree",
+        "all possible non-empty itemsets"
+      ],
+      "options_ar": [
+        "تستخدم لإيجاد مجموعات العناصر المتكررة",
+        "وجود علاقة سببية بين العنصرين في البيانات",
+        "مجموعات العناصر المخزنة في شجرة FP مضغوطة فقط",
+        "كل مجموعات العناصر غير الفارغة الممكنة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The Brute Force Algorithm is the simplest approach for frequent itemset generation. It examines all possible non-empty itemsets and determines whether each one satisfies the minimum support threshold.",
+      "explanation_ar": "كل مجموعات العناصر غير الفارغة الممكنة",
+      "id": "q4"
+    },
+    {
+      "concept_id": "brute_support",
+      "bloom_level": "Understand",
+      "question": "How does Brute Force obtain each itemset's support?",
+      "question_ar": "كيف تحصل القوة الغاشمة على دعم كل مجموعة عناصر؟",
+      "options": [
+        "the total number of transactions",
+        "customer purchasing patterns",
+        "scanning the transaction database",
+        "greater than the number of sequences"
+      ],
+      "options_en": [
+        "the total number of transactions",
+        "customer purchasing patterns",
+        "scanning the transaction database",
+        "greater than the number of sequences"
+      ],
+      "options_ar": [
+        "العدد الكلي للمعاملات",
+        "أنماط شراء الزبائن",
+        "مسح قاعدة المعاملات",
+        "أكبر من عدد التسلسلات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Calculate the support of each itemset by scanning the transaction database.",
+      "explanation_ar": "مسح قاعدة المعاملات",
+      "id": "q5"
+    },
+    {
+      "concept_id": "brute_advantage",
+      "bloom_level": "Remember",
+      "question": "What is the main advantage of Brute Force?",
+      "question_ar": "ما الميزة الرئيسية للقوة الغاشمة؟",
+      "options": [
+        "a fixed value equal to one transaction",
+        "The main advantage is its simplicity.",
+        "testing only the deepest tree branch",
+        "using a feature's Pearson coefficient"
+      ],
+      "options_en": [
+        "a fixed value equal to one transaction",
+        "The main advantage is its simplicity.",
+        "testing only the deepest tree branch",
+        "using a feature's Pearson coefficient"
+      ],
+      "options_ar": [
+        "قيمة ثابتة تساوي معاملة واحدة",
+        "الميزة الرئيسية هي بساطتها.",
+        "اختبار أعمق فرع من الشجرة فقط",
+        "استخدام معامل بيرسون لخاصية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The main advantage is its simplicity. It is easy to understand and, for a small dataset, can find all frequent itemsets.",
+      "explanation_ar": "الميزة الرئيسية هي بساطتها.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "brute_small",
+      "bloom_level": "Understand",
+      "question": "For what datasets is Brute Force generally practical?",
+      "question_ar": "لأي مجموعات بيانات تكون القوة الغاشمة عملية عادة؟",
+      "options": [
+        "small datasets or a small number of items",
+        "only itemsets stored in a compact FP-tree",
+        "datasets with no minimum-support threshold",
+        "the number of possible itemsets grows exponentially"
+      ],
+      "options_en": [
+        "small datasets or a small number of items",
+        "only itemsets stored in a compact FP-tree",
+        "datasets with no minimum-support threshold",
+        "the number of possible itemsets grows exponentially"
+      ],
+      "options_ar": [
+        "مجموعات البيانات الصغيرة أو عدد قليل من العناصر",
+        "مجموعات العناصر المخزنة في شجرة FP مضغوطة فقط",
+        "مجموعات البيانات التي لا تستخدم عتبة دعم",
+        "ينمو عدد مجموعات العناصر الممكنة بصورة أُسّية"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Therefore, brute force is generally practical only for small datasets or a small number of items. Its limitations motivate more efficient approaches such as Apriori and FP-Growth.",
+      "explanation_ar": "مجموعات البيانات الصغيرة أو عدد قليل من العناصر",
+      "id": "q7"
+    },
+    {
+      "concept_id": "brute_four_itemsets_count",
+      "bloom_level": "Apply",
+      "question": "How many non-empty itemsets are possible for four items?",
+      "question_ar": "كم مجموعة عناصر غير فارغة ممكنة عند وجود أربعة عناصر؟",
+      "options": [
+        "12",
+        "15",
+        "16",
+        "18"
+      ],
+      "options_en": [
+        "12",
+        "15",
+        "16",
+        "18"
+      ],
+      "options_ar": [
+        "12",
+        "15",
+        "16",
+        "18"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The algorithm checks the support of all 15 itemsets and keeps only those satisfying the minimum-support threshold.",
+      "explanation_ar": "15",
+      "id": "q8"
+    }
+  ]
+}

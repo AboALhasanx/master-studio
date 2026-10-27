@@ -1,0 +1,566 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch04_T02_Filter_Methods",
+  "topic": "Filter Methods",
+  "topic_ar": "طرائق الترشيح",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "filter_no_model",
+      "bloom_level": "Understand",
+      "question": "What do Filter Methods avoid using to evaluate the final feature subset?",
+      "question_ar": "ما الذي لا تستخدمه طرائق الترشيح لتقييم مجموعة الخصائص النهائية؟",
+      "options": [
+        "only linear relationships",
+        "nonlinear relationships",
+        "a data mining algorithm",
+        "only categorical relationships"
+      ],
+      "options_en": [
+        "only linear relationships",
+        "nonlinear relationships",
+        "a data mining algorithm",
+        "only categorical relationships"
+      ],
+      "options_ar": [
+        "العلاقات الخطية فقط",
+        "العلاقات غير الخطية",
+        "خوارزمية تنقيب بيانات",
+        "العلاقات الفئوية فقط"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Filter methods select features based on their statistical characteristics, without using a data mining algorithm to evaluate the final feature subset.",
+      "explanation_ar": "خوارزمية تنقيب بيانات",
+      "id": "q1"
+    },
+    {
+      "concept_id": "filter_many_features",
+      "bloom_level": "Understand",
+      "question": "Which datasets are Filter Methods usually suitable for?",
+      "question_ar": "لأي مجموعات بيانات تلائم طرائق الترشيح عادة؟",
+      "options": [
+        "datasets with no observations",
+        "datasets with many features",
+        "different subsets of features",
+        "features with very low variance"
+      ],
+      "options_en": [
+        "datasets with no observations",
+        "datasets with many features",
+        "different subsets of features",
+        "features with very low variance"
+      ],
+      "options_ar": [
+        "مجموعات البيانات الخالية من المشاهدات",
+        "مجموعات البيانات ذات الخصائص الكثيرة",
+        "مجموعات فرعية مختلفة من الخصائص",
+        "الخصائص ذات التباين المنخفض جداً"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "They are usually fast and suitable for datasets with many features.",
+      "explanation_ar": "مجموعات البيانات ذات الخصائص الكثيرة",
+      "id": "q2"
+    },
+    {
+      "concept_id": "correlation_definition",
+      "bloom_level": "Understand",
+      "question": "What does correlation measure?",
+      "question_ar": "ماذا يقيس الارتباط؟",
+      "options": [
+        "the relationship between two variables",
+        "The feature and the target are associated.",
+        "only categorical relationships",
+        "Pearson correlation coefficient"
+      ],
+      "options_en": [
+        "the relationship between two variables",
+        "The feature and the target are associated.",
+        "only categorical relationships",
+        "Pearson correlation coefficient"
+      ],
+      "options_ar": [
+        "العلاقة بين متغيرين",
+        "الخاصية والهدف مترابطان.",
+        "العلاقات الفئوية فقط",
+        "معامل ارتباط بيرسون"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Correlation measures the relationship between two variables.",
+      "explanation_ar": "العلاقة بين متغيرين",
+      "id": "q3"
+    },
+    {
+      "concept_id": "correlation_linear_limit",
+      "bloom_level": "Understand",
+      "question": "Which relationship type is especially captured by correlation?",
+      "question_ar": "أي نوع من العلاقات يلتقطه الارتباط على نحو خاص؟",
+      "options": [
+        "only categorical relationships",
+        "especially linear relationships",
+        "the number of model-training iterations",
+        "Reduce the risk of overfitting."
+      ],
+      "options_en": [
+        "only categorical relationships",
+        "especially linear relationships",
+        "the number of model-training iterations",
+        "Reduce the risk of overfitting."
+      ],
+      "options_ar": [
+        "العلاقات الفئوية فقط",
+        "ولا سيما العلاقات الخطية",
+        "عدد تكرارات تدريب النموذج",
+        "تقليل خطر فرط التكيّف."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Important: Low correlation does not always mean that a feature is useless because correlation mainly captures certain types of relationships, especially linear relationships.",
+      "explanation_ar": "ولا سيما العلاقات الخطية",
+      "id": "q4"
+    },
+    {
+      "concept_id": "pearson_common",
+      "bloom_level": "Remember",
+      "question": "Which correlation measure is most commonly used?",
+      "question_ar": "أي مقياس للارتباط هو الأكثر استخداماً؟",
+      "options": [
+        "the relationship between two variables",
+        "Pearson correlation coefficient",
+        "especially linear relationships",
+        "only categorical relationships"
+      ],
+      "options_en": [
+        "the relationship between two variables",
+        "Pearson correlation coefficient",
+        "especially linear relationships",
+        "only categorical relationships"
+      ],
+      "options_ar": [
+        "العلاقة بين متغيرين",
+        "معامل ارتباط بيرسون",
+        "ولا سيما العلاقات الخطية",
+        "العلاقات الفئوية فقط"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The most commonly used measure is Pearson correlation coefficient, denoted by .",
+      "explanation_ar": "معامل ارتباط بيرسون",
+      "id": "q5"
+    },
+    {
+      "concept_id": "chi_square_types",
+      "bloom_level": "Understand",
+      "question": "Which feature and target types are related by the Chi-square test?",
+      "question_ar": "ما نوعا الخاصية والهدف اللذان يربط بينهما اختبار كاي-تربيع؟",
+      "options": [
+        "The feature and the target are independent.",
+        "The feature and the target are associated.",
+        "the relationship between two variables",
+        "categorical features and a categorical target"
+      ],
+      "options_en": [
+        "The feature and the target are independent.",
+        "The feature and the target are associated.",
+        "the relationship between two variables",
+        "categorical features and a categorical target"
+      ],
+      "options_ar": [
+        "الخاصية والهدف مستقلان.",
+        "الخاصية والهدف مترابطان.",
+        "العلاقة بين متغيرين",
+        "خصائص فئوية وهدف فئوي"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The Chi-square test measures the relationship between categorical features and a categorical target.",
+      "explanation_ar": "خصائص فئوية وهدف فئوي",
+      "id": "q6"
+    },
+    {
+      "concept_id": "chi_square_observed",
+      "bloom_level": "Understand",
+      "question": "What are observed frequencies?",
+      "question_ar": "ما التكرارات المشاهدة؟",
+      "options": [
+        "the information shared by a feature and target",
+        "what we actually see in the dataset",
+        "a feature subset and model performance",
+        "features with high information gain"
+      ],
+      "options_en": [
+        "the information shared by a feature and target",
+        "what we actually see in the dataset",
+        "a feature subset and model performance",
+        "features with high information gain"
+      ],
+      "options_ar": [
+        "المعلومات المشتركة بين الخاصية والهدف",
+        "ما نراه فعلياً في مجموعة البيانات",
+        "مجموعة خصائص فرعية وأداء النموذج",
+        "الخصائص ذات كسب المعلومات المرتفع"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Observed frequencies → what we actually see in the dataset.",
+      "explanation_ar": "ما نراه فعلياً في مجموعة البيانات",
+      "id": "q7"
+    },
+    {
+      "concept_id": "chi_square_expected",
+      "bloom_level": "Understand",
+      "question": "What do expected frequencies represent in the independence test?",
+      "question_ar": "ماذا تمثل التكرارات المتوقعة في اختبار الاستقلال؟",
+      "options": [
+        "The feature has no relationship of any kind with another variable.",
+        "Which combination of features produces the best model performance?",
+        "what we would expect if Smoking Status and Heart Disease were independent",
+        "the amount of information shared between a feature and the target"
+      ],
+      "options_en": [
+        "The feature has no relationship of any kind with another variable.",
+        "Which combination of features produces the best model performance?",
+        "what we would expect if Smoking Status and Heart Disease were independent",
+        "the amount of information shared between a feature and the target"
+      ],
+      "options_ar": [
+        "لا توجد للخاصية أي علاقة من أي نوع بمتغير آخر.",
+        "أي مجموعة من الخصائص تحقق أفضل أداء للنموذج؟",
+        "ما نتوقعه لو كان التدخين ومرض القلب مستقلين",
+        "كمية المعلومات المشتركة بين الخاصية والهدف"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Expected frequencies → what we would expect if Smoking Status and Heart Disease were independent.",
+      "explanation_ar": "ما نتوقعه لو كان التدخين ومرض القلب مستقلين",
+      "id": "q8"
+    },
+    {
+      "concept_id": "chi_square_null",
+      "bloom_level": "Remember",
+      "question": "What does the null hypothesis state in the Chi-square test?",
+      "question_ar": "ماذا تنص الفرضية الصفرية في اختبار كاي-تربيع؟",
+      "options": [
+        "The feature and the target are independent.",
+        "categorical features and a categorical target",
+        "The feature and the target are associated.",
+        "The feature completely determines the target."
+      ],
+      "options_en": [
+        "The feature and the target are independent.",
+        "categorical features and a categorical target",
+        "The feature and the target are associated.",
+        "The feature completely determines the target."
+      ],
+      "options_ar": [
+        "الخاصية والهدف مستقلان.",
+        "خصائص فئوية وهدف فئوي",
+        "الخاصية والهدف مترابطان.",
+        "الخاصية تحدد الهدف بالكامل."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The feature and the target are independent.",
+      "explanation_ar": "الخاصية والهدف مستقلان.",
+      "id": "q9"
+    },
+    {
+      "concept_id": "chi_square_alternative",
+      "bloom_level": "Remember",
+      "question": "What does the alternative hypothesis state?",
+      "question_ar": "ماذا تنص الفرضية البديلة؟",
+      "options": [
+        "The feature and the target are associated.",
+        "The feature completely determines the target.",
+        "the number of model-training iterations",
+        "The feature and the target are independent."
+      ],
+      "options_en": [
+        "The feature and the target are associated.",
+        "The feature completely determines the target.",
+        "the number of model-training iterations",
+        "The feature and the target are independent."
+      ],
+      "options_ar": [
+        "الخاصية والهدف مترابطان.",
+        "الخاصية تحدد الهدف بالكامل.",
+        "عدد تكرارات تدريب النموذج",
+        "الخاصية والهدف مستقلان."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The feature and the target are associated.",
+      "explanation_ar": "الخاصية والهدف مترابطان.",
+      "id": "q10"
+    },
+    {
+      "concept_id": "chi_square_pvalue",
+      "bloom_level": "Understand",
+      "question": "What is often more convenient to examine in Chi-square feature selection?",
+      "question_ar": "ما الذي يكون فحصه أكثر ملاءمة غالباً في اختيار الخصائص بكاي-تربيع؟",
+      "options": [
+        "relationships during model training",
+        "is selected only after model training",
+        "more convenient to look at the p-value",
+        "more convenient to look at the variance threshold"
+      ],
+      "options_en": [
+        "relationships during model training",
+        "is selected only after model training",
+        "more convenient to look at the p-value",
+        "more convenient to look at the variance threshold"
+      ],
+      "options_ar": [
+        "العلاقات أثناء تدريب النموذج",
+        "يُختار بعد تدريب النموذج فقط",
+        "النظر إلى قيمة p أكثر ملاءمة",
+        "النظر إلى عتبة التباين أكثر ملاءمة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "However, when using Chi-Square for feature selection, it is often more convenient to look at the p-value.",
+      "explanation_ar": "النظر إلى قيمة p أكثر ملاءمة",
+      "id": "q11"
+    },
+    {
+      "concept_id": "ig_definition",
+      "bloom_level": "Understand",
+      "question": "What does Information Gain measure?",
+      "question_ar": "ماذا يقيس كسب المعلومات؟",
+      "options": [
+        "how much a feature affects prediction performance in a forest",
+        "how much information a feature provides about the target",
+        "more convenient to look at the number of selected features",
+        "how frequently an itemset occurs in transactions"
+      ],
+      "options_en": [
+        "how much a feature affects prediction performance in a forest",
+        "how much information a feature provides about the target",
+        "more convenient to look at the number of selected features",
+        "how frequently an itemset occurs in transactions"
+      ],
+      "options_ar": [
+        "مقدار تأثير الخاصية في أداء التنبؤ داخل غابة",
+        "مقدار المعلومات التي توفرها خاصية عن الهدف",
+        "النظر إلى عدد الخصائص المختارة أكثر ملاءمة",
+        "مدى تكرار مجموعة عناصر في المعاملات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Information Gain measures how much information a feature provides about the target.",
+      "explanation_ar": "مقدار المعلومات التي توفرها خاصية عن الهدف",
+      "id": "q12"
+    },
+    {
+      "concept_id": "ig_high",
+      "bloom_level": "Understand",
+      "question": "What target effect indicates high Information Gain?",
+      "question_ar": "ما الأثر في الهدف الذي يدل على كسب معلومات مرتفع؟",
+      "options": [
+        "relationships during model training",
+        "has almost the same value for every observation",
+        "is selected only after model training",
+        "reduces uncertainty about the target"
+      ],
+      "options_en": [
+        "relationships during model training",
+        "has almost the same value for every observation",
+        "is selected only after model training",
+        "reduces uncertainty about the target"
+      ],
+      "options_ar": [
+        "العلاقات أثناء تدريب النموذج",
+        "يمتلك قيمة متقاربة في كل مشاهدة",
+        "يُختار بعد تدريب النموذج فقط",
+        "يقلل عدم اليقين بشأن الهدف"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A feature that significantly reduces uncertainty about the target has high information gain.",
+      "explanation_ar": "يقلل عدم اليقين بشأن الهدف",
+      "id": "q13"
+    },
+    {
+      "concept_id": "mi_nonlinear",
+      "bloom_level": "Understand",
+      "question": "What relationship can Mutual Information capture that simple correlation may miss?",
+      "question_ar": "ما نوع العلاقة التي قد يلتقطها الترابط المتبادل ولا يلتقطها الارتباط البسيط؟",
+      "options": [
+        "a data mining algorithm",
+        "only linear relationships",
+        "nonlinear relationships",
+        "Chi-square statistic"
+      ],
+      "options_en": [
+        "a data mining algorithm",
+        "only linear relationships",
+        "nonlinear relationships",
+        "Chi-square statistic"
+      ],
+      "options_ar": [
+        "خوارزمية تنقيب بيانات",
+        "العلاقات الخطية فقط",
+        "العلاقات غير الخطية",
+        "إحصائية كاي-تربيع"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "It can capture nonlinear relationships, which makes it different from simple correlation.",
+      "explanation_ar": "العلاقات غير الخطية",
+      "id": "q14"
+    },
+    {
+      "concept_id": "variance_threshold",
+      "bloom_level": "Understand",
+      "question": "Which features does Variance Threshold remove?",
+      "question_ar": "أي خصائص تزيلها عتبة التباين؟",
+      "options": [
+        "datasets with many features",
+        "features with high information gain",
+        "features with very low variance",
+        "features selected by a random forest"
+      ],
+      "options_en": [
+        "datasets with many features",
+        "features with high information gain",
+        "features with very low variance",
+        "features selected by a random forest"
+      ],
+      "options_ar": [
+        "مجموعات البيانات ذات الخصائص الكثيرة",
+        "الخصائص ذات كسب المعلومات المرتفع",
+        "الخصائص ذات التباين المنخفض جداً",
+        "الخصائص المختارة بواسطة غابة عشوائية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "features with very low variance",
+      "explanation_ar": "الخصائص ذات التباين المنخفض جداً",
+      "id": "q15"
+    },
+    {
+      "concept_id": "pearson_example_result",
+      "bloom_level": "Apply",
+      "question": "What Pearson correlation coefficient results from the age and blood-pressure example?",
+      "question_ar": "ما معامل ارتباط بيرسون الناتج من مثال العمر وضغط الدم؟",
+      "options": [
+        "0.9",
+        "1.1",
+        "0.5",
+        "1.0"
+      ],
+      "options_en": [
+        "0.9",
+        "1.1",
+        "0.5",
+        "1.0"
+      ],
+      "options_ar": [
+        "0.9",
+        "1.1",
+        "0.5",
+        "1.0"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "1.0",
+      "explanation_ar": "1.0",
+      "id": "q16"
+    },
+    {
+      "concept_id": "chi_square_example_result",
+      "bloom_level": "Apply",
+      "question": "What Chi-square statistic is obtained in the smoking and heart-disease example?",
+      "question_ar": "ما قيمة إحصائية كاي-تربيع الناتجة من مثال التدخين ومرض القلب؟",
+      "options": [
+        "29.63",
+        "19.63",
+        "29.53",
+        "49.63"
+      ],
+      "options_en": [
+        "29.63",
+        "19.63",
+        "29.53",
+        "49.63"
+      ],
+      "options_ar": [
+        "29.63",
+        "19.63",
+        "29.53",
+        "49.63"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "29.63",
+      "explanation_ar": "29.63",
+      "id": "q17"
+    },
+    {
+      "concept_id": "chi_square_df_example",
+      "bloom_level": "Apply",
+      "question": "What degrees of freedom are used for the 2×2 table?",
+      "question_ar": "كم درجة حرية تستخدم لجدول 2×2؟",
+      "options": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "options_en": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "options_ar": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "So, if Attendance had an Information Gain of 0.35 and Study Hours had 0.12, we would select Attendance as the more informative feature.",
+      "explanation_ar": "1",
+      "id": "q18"
+    },
+    {
+      "concept_id": "information_gain_example_value",
+      "bloom_level": "Apply",
+      "question": "What Information Gain value does each feature receive in the example?",
+      "question_ar": "ما قيمة كسب المعلومات التي تحصل عليها كل خاصية في المثال؟",
+      "options": [
+        "0.289",
+        "0.089",
+        "0.489",
+        "0.189"
+      ],
+      "options_en": [
+        "0.289",
+        "0.089",
+        "0.489",
+        "0.189"
+      ],
+      "options_ar": [
+        "0.289",
+        "0.089",
+        "0.489",
+        "0.189"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "0.189",
+      "explanation_ar": "0.189",
+      "id": "q19"
+    }
+  ]
+}

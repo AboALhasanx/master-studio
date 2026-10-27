@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_T02_Rule_Measures",
+  "topic": "Support, Confidence, and Lift",
+  "topic_ar": "الدعم والثقة والرفع",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "support_measure",
+      "bloom_level": "Understand",
+      "question": "What does Support measure for a rule?",
+      "question_ar": "ماذا يقيس الدعم للقاعدة؟",
+      "options": [
+        "how strongly the items are associated compared with independence",
+        "These measures establish the order in which events occur.",
+        "how many branches are pruned from an enumeration tree",
+        "how frequently the antecedent and consequent occur together"
+      ],
+      "options_en": [
+        "how strongly the items are associated compared with independence",
+        "These measures establish the order in which events occur.",
+        "how many branches are pruned from an enumeration tree",
+        "how frequently the antecedent and consequent occur together"
+      ],
+      "options_ar": [
+        "قوة ارتباط العناصر مقارنة بالاستقلال",
+        "تحدد هذه المقاييس ترتيب وقوع الأحداث.",
+        "عدد الفروع التي تُقص من شجرة التعداد",
+        "مدى تكرار ظهور المقدمة والنتيجة معاً"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Support measures how frequently the antecedent and consequent occur together in the entire transaction database.",
+      "explanation_ar": "مدى تكرار ظهور المقدمة والنتيجة معاً",
+      "id": "q1"
+    },
+    {
+      "concept_id": "confidence_measure",
+      "bloom_level": "Understand",
+      "question": "What does Confidence measure?",
+      "question_ar": "ماذا تقيس الثقة؟",
+      "options": [
+        "how often the consequent occurs among transactions containing the antecedent",
+        "certain symptoms frequently occur together in a particular group of patients",
+        "how frequently the pair occurs across the entire database",
+        "how often the consequent occurs in transactions that contain the antecedent"
+      ],
+      "options_en": [
+        "how often the consequent occurs among transactions containing the antecedent",
+        "certain symptoms frequently occur together in a particular group of patients",
+        "how frequently the pair occurs across the entire database",
+        "how often the consequent occurs in transactions that contain the antecedent"
+      ],
+      "options_ar": [
+        "مدى ظهور النتيجة بين المعاملات التي تحتوي المقدمة",
+        "تكرار ظهور أعراض معينة معاً لدى مجموعة محددة من المرضى",
+        "مدى تكرار ظهور الزوج في قاعدة البيانات كاملة",
+        "مدى ظهور النتيجة في المعاملات التي تحتوي المقدمة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Confidence measures how often the consequent occurs in transactions that contain the antecedent.",
+      "explanation_ar": "مدى ظهور النتيجة في المعاملات التي تحتوي المقدمة",
+      "id": "q2"
+    },
+    {
+      "concept_id": "lift_measure",
+      "bloom_level": "Understand",
+      "question": "What does Lift compare?",
+      "question_ar": "ماذا تقارن قيمة الرفع؟",
+      "options": [
+        "how often the consequent occurs in transactions that contain the antecedent",
+        "recommend additional products to customers based on their current selections",
+        "their actual co-occurrence with the co-occurrence expected if they were independent",
+        "how often the consequent occurs among transactions containing the antecedent"
+      ],
+      "options_en": [
+        "how often the consequent occurs in transactions that contain the antecedent",
+        "recommend additional products to customers based on their current selections",
+        "their actual co-occurrence with the co-occurrence expected if they were independent",
+        "how often the consequent occurs among transactions containing the antecedent"
+      ],
+      "options_ar": [
+        "مدى ظهور النتيجة في المعاملات التي تحتوي المقدمة",
+        "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
+        "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+        "مدى ظهور النتيجة بين المعاملات التي تحتوي المقدمة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Lift measures the strength of the association between the antecedent and consequent by comparing their actual co-occurrence with the co-occurrence expected if they were independent.",
+      "explanation_ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+      "id": "q3"
+    },
+    {
+      "concept_id": "lift_positive",
+      "bloom_level": "Remember",
+      "question": "When the Lift measure exceeds 1, how are the items associated?",
+      "question_ar": "عندما تتجاوز قيمة Lift العدد 1، كيف يكون ارتباط العنصرين؟",
+      "options": [
+        "Positive association",
+        "Negative association",
+        "Causal association occurs",
+        "No association exists"
+      ],
+      "options_en": [
+        "Positive association",
+        "Negative association",
+        "Causal association occurs",
+        "No association exists"
+      ],
+      "options_ar": [
+        "ارتباط إيجابي عند Lift > 1",
+        "ارتباط سلبي عند Lift < 1",
+        "ارتباط سببي عند Lift > 1",
+        "لا يوجد ارتباط عند Lift = 1"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Positive association",
+      "explanation_ar": "ارتباط إيجابي عند Lift > 1",
+      "id": "q4"
+    },
+    {
+      "concept_id": "lift_independent",
+      "bloom_level": "Remember",
+      "question": "What does Lift equal to 1 indicate?",
+      "question_ar": "ماذا يدل الرفع المساوي لـ1؟",
+      "options": [
+        "Negative association exists",
+        "No association / independence",
+        "Positive association exists",
+        "Causal relationship is present"
+      ],
+      "options_en": [
+        "Negative association exists",
+        "No association / independence",
+        "Positive association exists",
+        "Causal relationship is present"
+      ],
+      "options_ar": [
+        "وجود ارتباط سلبي بين العنصرين في البيانات",
+        "لا يوجد ارتباط أو استقلال بين العنصرين",
+        "وجود ارتباط إيجابي بين العنصرين في البيانات",
+        "وجود علاقة سببية بين العنصرين في البيانات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "No association / independence",
+      "explanation_ar": "عدم وجود ارتباط أو الاستقلال",
+      "id": "q5"
+    },
+    {
+      "concept_id": "lift_negative",
+      "bloom_level": "Remember",
+      "question": "What association does a Lift value below 1 signify?",
+      "question_ar": "ما نوع الارتباط الذي تدل عليه قيمة Lift الأقل من 1؟",
+      "options": [
+        "Positive association",
+        "customer model penalties",
+        "Negative association",
+        "a user-defined threshold"
+      ],
+      "options_en": [
+        "Positive association",
+        "customer model penalties",
+        "Negative association",
+        "a user-defined threshold"
+      ],
+      "options_ar": [
+        "ارتباط إيجابي عند Lift > 1",
+        "عقوبات نماذج الزبائن",
+        "ارتباط سلبي عند Lift < 1",
+        "عتبة يحددها المستخدم"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Negative association",
+      "explanation_ar": "ارتباط سلبي عند Lift < 1",
+      "id": "q6"
+    },
+    {
+      "concept_id": "support_example_value",
+      "bloom_level": "Apply",
+      "question": "What support value results when Bread and Milk occur together in 3 of 5 transactions?",
+      "question_ar": "ما قيمة الدعم عندما يظهر الخبز والحليب معاً في 3 من أصل 5 معاملات؟",
+      "options": [
+        "0.30",
+        "0.60",
+        "0.75",
+        "0.40"
+      ],
+      "options_en": [
+        "0.30",
+        "0.60",
+        "0.75",
+        "0.40"
+      ],
+      "options_ar": [
+        "0.30",
+        "0.60",
+        "0.75",
+        "0.40"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "0.60",
+      "explanation_ar": "0.60",
+      "id": "q7"
+    },
+    {
+      "concept_id": "confidence_example_value",
+      "bloom_level": "Apply",
+      "question": "What confidence value results when Bread appears in 4 transactions and Bread with Milk appears in 3?",
+      "question_ar": "ما قيمة الثقة عندما يظهر الخبز في 4 معاملات والخبز مع الحليب في 3؟",
+      "options": [
+        "0.75",
+        "0.60",
+        "0.40",
+        "0.50"
+      ],
+      "options_en": [
+        "0.75",
+        "0.60",
+        "0.40",
+        "0.50"
+      ],
+      "options_ar": [
+        "0.75",
+        "0.60",
+        "0.40",
+        "0.50"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "0.75",
+      "explanation_ar": "0.75",
+      "id": "q8"
+    },
+    {
+      "concept_id": "lift_example_value",
+      "bloom_level": "Apply",
+      "question": "What Lift value is obtained for the Bread-to-Milk rule in the example?",
+      "question_ar": "ما قيمة الرفع الناتجة لقاعدة الخبز إلى الحليب في المثال؟",
+      "options": [
+        "1.5",
+        "1.0",
+        "2.5",
+        "0.5"
+      ],
+      "options_en": [
+        "1.5",
+        "1.0",
+        "2.5",
+        "0.5"
+      ],
+      "options_ar": [
+        "1.5",
+        "1.0",
+        "2.5",
+        "0.5"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "1.5",
+      "explanation_ar": "1.5",
+      "id": "q9"
+    },
+    {
+      "concept_id": "association_not_causation",
+      "bloom_level": "Understand",
+      "question": "What do association measures establish about items?",
+      "question_ar": "ماذا تثبت مقاييس الارتباط بشأن العناصر؟",
+      "options": [
+        "These measures prove that one item causes another.",
+        "These measures describe association, not causation.",
+        "These measures establish the order in which events occur.",
+        "These measures guarantee a useful rule in every domain."
+      ],
+      "options_en": [
+        "These measures prove that one item causes another.",
+        "These measures describe association, not causation.",
+        "These measures establish the order in which events occur.",
+        "These measures guarantee a useful rule in every domain."
+      ],
+      "options_ar": [
+        "تثبت هذه المقاييس أن عنصراً يسبب الآخر.",
+        "تصف هذه المقاييس الارتباط، لا السببية.",
+        "تحدد هذه المقاييس ترتيب وقوع الأحداث.",
+        "تضمن هذه المقاييس قاعدة مفيدة في كل مجال."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "These measures describe association, not causation. For example,",
+      "explanation_ar": "تصف هذه المقاييس الارتباط، لا السببية.",
+      "id": "q10"
+    }
+  ]
+}

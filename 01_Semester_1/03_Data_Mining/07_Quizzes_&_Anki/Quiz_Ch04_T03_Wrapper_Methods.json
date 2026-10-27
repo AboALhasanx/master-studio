@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch04_T03_Wrapper_Methods",
+  "topic": "Wrapper Methods",
+  "topic_ar": "الطرائق الغلافية",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "wrapper_model_evaluation",
+      "bloom_level": "Understand",
+      "question": "What evaluates feature subsets in Wrapper Methods?",
+      "question_ar": "ما الذي يقيّم مجموعات الخصائص في الطرائق الغلافية؟",
+      "options": [
+        "the target's entropy before knowing any feature",
+        "a data mining or machine learning algorithm",
+        "a variance threshold without model training",
+        "only a feature's statistical characteristics"
+      ],
+      "options_en": [
+        "the target's entropy before knowing any feature",
+        "a data mining or machine learning algorithm",
+        "a variance threshold without model training",
+        "only a feature's statistical characteristics"
+      ],
+      "options_ar": [
+        "إنتروبيا الهدف قبل معرفة أي خاصية",
+        "خوارزمية تنقيب بيانات أو تعلم آلي",
+        "عتبة تباين دون تدريب نموذج",
+        "الخصائص الإحصائية للخاصية وحدها"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Wrapper methods use a data mining or machine learning algorithm to evaluate different subsets of features.",
+      "explanation_ar": "خوارزمية تنقيب بيانات أو تعلم آلي",
+      "id": "q1"
+    },
+    {
+      "concept_id": "wrapper_question",
+      "bloom_level": "Understand",
+      "question": "Which question guides a Wrapper Method?",
+      "question_ar": "أي سؤال يوجه الطريقة الغلافية؟",
+      "options": [
+        "Add every remaining feature before testing performance.",
+        "Which feature has the lowest variance in the dataset?",
+        "what we would expect if Smoking Status and Heart Disease were independent",
+        "Which combination of features produces the best model performance?"
+      ],
+      "options_en": [
+        "Add every remaining feature before testing performance.",
+        "Which feature has the lowest variance in the dataset?",
+        "what we would expect if Smoking Status and Heart Disease were independent",
+        "Which combination of features produces the best model performance?"
+      ],
+      "options_ar": [
+        "إضافة كل الخصائص المتبقية قبل اختبار الأداء.",
+        "أي خاصية تملك أقل تباين في مجموعة البيانات؟",
+        "ما نتوقعه لو كان التدخين ومرض القلب مستقلين",
+        "أي مجموعة من الخصائص تحقق أفضل أداء للنموذج؟"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Which combination of features produces the best model performance?",
+      "explanation_ar": "أي مجموعة من الخصائص تحقق أفضل أداء للنموذج؟",
+      "id": "q2"
+    },
+    {
+      "concept_id": "forward_start",
+      "bloom_level": "Remember",
+      "question": "How does Forward Selection begin?",
+      "question_ar": "بماذا يبدأ الاختيار الأمامي؟",
+      "options": [
+        "Starts with no features.",
+        "Starts with all features.",
+        "when constructing the tree",
+        "as part of model training"
+      ],
+      "options_en": [
+        "Starts with no features.",
+        "Starts with all features.",
+        "when constructing the tree",
+        "as part of model training"
+      ],
+      "options_ar": [
+        "يبدأ دون خصائص.",
+        "يبدأ بكل الخصائص.",
+        "عند إنشاء الشجرة",
+        "ضمن تدريب النموذج"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Starts with no features.",
+      "explanation_ar": "يبدأ دون خصائص.",
+      "id": "q3"
+    },
+    {
+      "concept_id": "forward_choice",
+      "bloom_level": "Understand",
+      "question": "Which feature is added first during Forward Selection?",
+      "question_ar": "أي خاصية تضاف أولاً في الاختيار الأمامي؟",
+      "options": [
+        "Add every remaining feature before testing performance.",
+        "Which feature has the lowest variance in the dataset?",
+        "Add the feature that improves performance the most.",
+        "Remove the feature that improves performance the most."
+      ],
+      "options_en": [
+        "Add every remaining feature before testing performance.",
+        "Which feature has the lowest variance in the dataset?",
+        "Add the feature that improves performance the most.",
+        "Remove the feature that improves performance the most."
+      ],
+      "options_ar": [
+        "إضافة كل الخصائص المتبقية قبل اختبار الأداء.",
+        "أي خاصية تملك أقل تباين في مجموعة البيانات؟",
+        "إضافة الخاصية التي تحسن الأداء أكثر من غيرها.",
+        "إزالة الخاصية التي تحسن الأداء أكثر من غيرها."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Add the feature that improves performance the most.",
+      "explanation_ar": "إضافة الخاصية التي تحسن الأداء أكثر من غيرها.",
+      "id": "q4"
+    },
+    {
+      "concept_id": "backward_start",
+      "bloom_level": "Remember",
+      "question": "How does Backward Elimination begin?",
+      "question_ar": "بماذا يبدأ الحذف الخلفي؟",
+      "options": [
+        "as part of model training",
+        "when constructing the tree",
+        "Starts with all features.",
+        "Starts with no features."
+      ],
+      "options_en": [
+        "as part of model training",
+        "when constructing the tree",
+        "Starts with all features.",
+        "Starts with no features."
+      ],
+      "options_ar": [
+        "ضمن تدريب النموذج",
+        "عند إنشاء الشجرة",
+        "يبدأ بكل الخصائص.",
+        "يبدأ دون خصائص."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Starts with all features.",
+      "explanation_ar": "يبدأ بكل الخصائص.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "backward_action",
+      "bloom_level": "Understand",
+      "question": "What does Backward Elimination remove during its iterations?",
+      "question_ar": "ماذا يزيل الحذف الخلفي أثناء تكراراته؟",
+      "options": [
+        "Remove the least useful feature.",
+        "Reduce the risk of overfitting.",
+        "especially linear relationships",
+        "a variance threshold without model training"
+      ],
+      "options_en": [
+        "Remove the least useful feature.",
+        "Reduce the risk of overfitting.",
+        "especially linear relationships",
+        "a variance threshold without model training"
+      ],
+      "options_ar": [
+        "إزالة أقل خاصية فائدة.",
+        "تقليل خطر فرط التكيّف.",
+        "ولا سيما العلاقات الخطية",
+        "عتبة تباين دون تدريب نموذج"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Remove the least useful feature.",
+      "explanation_ar": "إزالة أقل خاصية فائدة.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "rfe_action",
+      "bloom_level": "Understand",
+      "question": "What does Recursive Feature Elimination repeatedly do?",
+      "question_ar": "ماذا تفعل الإزالة التكرارية للخصائص على نحو متكرر؟",
+      "options": [
+        "adds features starting from an empty set only",
+        "trains a model and removes the least important features",
+        "calculates statistical scores without evaluating subsets",
+        "selects features only when computing Chi-square"
+      ],
+      "options_en": [
+        "adds features starting from an empty set only",
+        "trains a model and removes the least important features",
+        "calculates statistical scores without evaluating subsets",
+        "selects features only when computing Chi-square"
+      ],
+      "options_ar": [
+        "تضيف الخصائص بدءاً من مجموعة فارغة فقط",
+        "تدرب نموذجاً وتزيل الخصائص الأقل أهمية",
+        "تحسب درجات إحصائية دون تقييم مجموعات فرعية",
+        "تختار الخصائص فقط عند حساب كاي-تربيع"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "RFE repeatedly trains a model and removes the least important features.",
+      "explanation_ar": "تدرب نموذجاً وتزيل الخصائص الأقل أهمية",
+      "id": "q7"
+    }
+  ]
+}

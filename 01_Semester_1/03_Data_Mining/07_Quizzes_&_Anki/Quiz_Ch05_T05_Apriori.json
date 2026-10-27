@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_T05_Apriori",
+  "topic": "Apriori Algorithm",
+  "topic_ar": "خوارزمية Apriori",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "apriori_goal",
+      "bloom_level": "Understand",
+      "question": "What does the Apriori algorithm help find?",
+      "question_ar": "ماذا تساعد خوارزمية Apriori على إيجاده؟",
+      "options": [
+        "The algorithm works level by level",
+        "used to find frequent itemsets",
+        "all possible non-empty itemsets",
+        "none of its supersets can be frequent"
+      ],
+      "options_en": [
+        "The algorithm works level by level",
+        "used to find frequent itemsets",
+        "all possible non-empty itemsets",
+        "none of its supersets can be frequent"
+      ],
+      "options_ar": [
+        "تعمل الخوارزمية مستوى بعد مستوى",
+        "تستخدم لإيجاد مجموعات العناصر المتكررة",
+        "كل مجموعات العناصر غير الفارغة الممكنة",
+        "لا تكون أي مجموعة أعلى احتواءً متكررة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Apriori Algorithm is a frequent itemset mining algorithm used to find frequent itemsets in a transaction database and then generate association rules from them.",
+      "explanation_ar": "تستخدم لإيجاد مجموعات العناصر المتكررة",
+      "id": "q1"
+    },
+    {
+      "concept_id": "apriori_property_frequent",
+      "bloom_level": "Understand",
+      "question": "If an itemset is frequent, what does the Apriori property require of its non-empty subsets?",
+      "question_ar": "إذا كانت مجموعة عناصر متكررة، فماذا تشترط خاصية Apriori لمجموعاتها الفرعية غير الفارغة؟",
+      "options": [
+        "The algorithm works by one unpruned database pass",
+        "all of its supersets must be infrequent",
+        "Remove candidates that contain an infrequent subset.",
+        "all of its non-empty subsets must also be frequent"
+      ],
+      "options_en": [
+        "The algorithm works by one unpruned database pass",
+        "all of its supersets must be infrequent",
+        "Remove candidates that contain an infrequent subset.",
+        "all of its non-empty subsets must also be frequent"
+      ],
+      "options_ar": [
+        "تعمل الخوارزمية بمسح واحد غير مشذّب لقاعدة البيانات",
+        "أن تكون كل مجموعاتها الأعلى احتواءً غير متكررة",
+        "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+        "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "If an itemset is frequent, all of its non-empty subsets must also be frequent.",
+      "explanation_ar": "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً",
+      "id": "q2"
+    },
+    {
+      "concept_id": "apriori_property_infrequent",
+      "bloom_level": "Understand",
+      "question": "If an itemset is not frequent, what follows for its supersets?",
+      "question_ar": "إذا لم تكن مجموعة عناصر متكررة، فما حكم مجموعاتها الأعلى احتواءً؟",
+      "options": [
+        "none of its supersets can be frequent",
+        "all of its supersets must be frequent",
+        "The algorithm works from longest to shortest",
+        "adding an item to the current itemset"
+      ],
+      "options_en": [
+        "none of its supersets can be frequent",
+        "all of its supersets must be frequent",
+        "The algorithm works from longest to shortest",
+        "adding an item to the current itemset"
+      ],
+      "options_ar": [
+        "لا تكون أي مجموعة أعلى احتواءً متكررة",
+        "يجب أن تكون كل مجموعاتها الأعلى احتواءً متكررة",
+        "تعمل الخوارزمية من الأطول إلى الأقصر",
+        "إضافة عنصر إلى مجموعة العناصر الحالية"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "If an itemset is not frequent, none of its supersets can be frequent.",
+      "explanation_ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+      "id": "q3"
+    },
+    {
+      "concept_id": "apriori_level",
+      "bloom_level": "Remember",
+      "question": "How does the Apriori algorithm proceed?",
+      "question_ar": "كيف تتقدم خوارزمية Apriori؟",
+      "options": [
+        "none of its supersets can be frequent",
+        "when every possible order is causal",
+        "The algorithm works level by level",
+        "as soon as one singleton is found frequent"
+      ],
+      "options_en": [
+        "none of its supersets can be frequent",
+        "when every possible order is causal",
+        "The algorithm works level by level",
+        "as soon as one singleton is found frequent"
+      ],
+      "options_ar": [
+        "لا تكون أي مجموعة أعلى احتواءً متكررة",
+        "عندما يصبح كل ترتيب ممكن سببياً",
+        "تعمل الخوارزمية مستوى بعد مستوى",
+        "حال العثور على عنصر مفرد متكرر"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The algorithm works level by level",
+      "explanation_ar": "تعمل الخوارزمية مستوى بعد مستوى",
+      "id": "q4"
+    },
+    {
+      "concept_id": "apriori_candidates",
+      "bloom_level": "Understand",
+      "question": "How are candidate 2-itemsets generated?",
+      "question_ar": "كيف تولد مجموعات العناصر المرشحة ذات العنصرين؟",
+      "options": [
+        "Remove candidates that contain only frequent subsets.",
+        "Remove candidates that contain an infrequent subset.",
+        "Combine the frequent 1-itemsets to create possible pairs.",
+        "Combine infrequent 1-itemsets to create impossible pairs."
+      ],
+      "options_en": [
+        "Remove candidates that contain only frequent subsets.",
+        "Remove candidates that contain an infrequent subset.",
+        "Combine the frequent 1-itemsets to create possible pairs.",
+        "Combine infrequent 1-itemsets to create impossible pairs."
+      ],
+      "options_ar": [
+        "إزالة المجموعات المرشحة التي تحتوي مجموعات فرعية متكررة فقط.",
+        "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+        "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+        "دمج مجموعات العناصر غير المتكررة ذات العنصر الواحد لتكوين أزواج مستحيلة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Combine the frequent 1-itemsets to create possible pairs.",
+      "explanation_ar": "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "apriori_prune",
+      "bloom_level": "Understand",
+      "question": "Why does Apriori prune a candidate?",
+      "question_ar": "لماذا تشذب Apriori مجموعة مرشحة؟",
+      "options": [
+        "Remove candidates that contain an infrequent subset.",
+        "all of its non-empty subsets must also be frequent",
+        "Combine the frequent 1-itemsets to create possible pairs.",
+        "Remove candidates that contain only frequent subsets."
+      ],
+      "options_en": [
+        "Remove candidates that contain an infrequent subset.",
+        "all of its non-empty subsets must also be frequent",
+        "Combine the frequent 1-itemsets to create possible pairs.",
+        "Remove candidates that contain only frequent subsets."
+      ],
+      "options_ar": [
+        "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+        "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً",
+        "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+        "إزالة المجموعات المرشحة التي تحتوي مجموعات فرعية متكررة فقط."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Remove candidates that contain an infrequent subset.",
+      "explanation_ar": "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+      "id": "q6"
+    },
+    {
+      "concept_id": "apriori_stops",
+      "bloom_level": "Understand",
+      "question": "When does Apriori stop extending frequent itemsets?",
+      "question_ar": "متى تتوقف Apriori عن تمديد مجموعات العناصر المتكررة؟",
+      "options": [
+        "used to find ordered suffixes of sequential patterns",
+        "until no more frequent itemsets can be generated",
+        "when every possible itemset has been tested by brute force",
+        "The algorithm works by one unpruned database pass"
+      ],
+      "options_en": [
+        "used to find ordered suffixes of sequential patterns",
+        "until no more frequent itemsets can be generated",
+        "when every possible itemset has been tested by brute force",
+        "The algorithm works by one unpruned database pass"
+      ],
+      "options_ar": [
+        "تستخدم لإيجاد لواحق الأنماط التسلسلية المرتبة",
+        "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
+        "عند اختبار كل مجموعة ممكنة بالقوة الغاشمة",
+        "تعمل الخوارزمية بمسح واحد غير مشذّب لقاعدة البيانات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "and so on, until no more frequent itemsets can be generated.",
+      "explanation_ar": "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
+      "id": "q7"
+    }
+  ]
+}

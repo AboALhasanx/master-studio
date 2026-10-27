@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch05_T07_Sequential_Pattern_Growth",
+  "topic": "Sequential Pattern Growth",
+  "topic_ar": "نمو الأنماط التسلسلية",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "suffix_growth",
+      "bloom_level": "Understand",
+      "question": "How do recursive suffix-based methods extend a pattern?",
+      "question_ar": "كيف تمدد طرائق النمو التكراري المعتمدة على اللواحق النمط؟",
+      "options": [
+        "using features with the strongest linear correlation",
+        "using items that frequently occur in its suffix",
+        "Stop before checking the projected database",
+        "using only the first item in every transaction"
+      ],
+      "options_en": [
+        "using features with the strongest linear correlation",
+        "using items that frequently occur in its suffix",
+        "Stop before checking the projected database",
+        "using only the first item in every transaction"
+      ],
+      "options_ar": [
+        "باستخدام الخصائص ذات أقوى ارتباط خطي",
+        "باستخدام العناصر التي تتكرر في لاحقته",
+        "التوقف قبل فحص قاعدة البيانات المسقطة",
+        "باستخدام العنصر الأول فقط في كل معاملة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Recursive Suffix-Based Pattern Growth Methods are techniques used to discover frequent sequential patterns by extending an existing pattern step by step using items that frequently occur in its suffix.",
+      "explanation_ar": "باستخدام العناصر التي تتكرر في لاحقته",
+      "id": "q1"
+    },
+    {
+      "concept_id": "sequential_scope",
+      "bloom_level": "Understand",
+      "question": "What mining task is commonly associated with recursive suffix-based pattern growth?",
+      "question_ar": "بأي مهمة تنقيب يرتبط نمو الأنماط باللواحق التكرارية عادة؟",
+      "options": [
+        "commonly associated with categorical classification only",
+        "commonly associated with statistical feature selection",
+        "every possible transaction regardless of the pattern",
+        "commonly associated with sequential pattern mining"
+      ],
+      "options_en": [
+        "commonly associated with categorical classification only",
+        "commonly associated with statistical feature selection",
+        "every possible transaction regardless of the pattern",
+        "commonly associated with sequential pattern mining"
+      ],
+      "options_ar": [
+        "يرتبط عادة بالتصنيف الفئوي فقط",
+        "يرتبط عادة باختيار الخصائص الإحصائي",
+        "كل معاملة ممكنة بصرف النظر عن النمط",
+        "يرتبط عادة بتنقيب الأنماط التسلسلية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "This approach is commonly associated with sequential pattern mining, rather than traditional transaction-based association rule mining.",
+      "explanation_ar": "يرتبط عادة بتنقيب الأنماط التسلسلية",
+      "id": "q2"
+    },
+    {
+      "concept_id": "projected_db",
+      "bloom_level": "Understand",
+      "question": "What does a projected database contain for a particular pattern?",
+      "question_ar": "ماذا تحتوي قاعدة البيانات المسقطة لنمط معين؟",
+      "options": [
+        "the relevant suffixes of sequences where that pattern occurs",
+        "all candidate itemsets in descending frequency order",
+        "commonly associated with transaction-based association rules",
+        "using all possible itemsets regardless of support"
+      ],
+      "options_en": [
+        "the relevant suffixes of sequences where that pattern occurs",
+        "all candidate itemsets in descending frequency order",
+        "commonly associated with transaction-based association rules",
+        "using all possible itemsets regardless of support"
+      ],
+      "options_ar": [
+        "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
+        "كل مجموعات العناصر المرشحة بترتيب تكرار تنازلي",
+        "يرتبط عادة بقواعد الارتباط المعتمدة على المعاملات",
+        "باستخدام كل مجموعات العناصر الممكنة بصرف النظر عن الدعم"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "For a particular pattern, we create a smaller database containing the relevant suffixes of sequences where that pattern occurs.",
+      "explanation_ar": "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
+      "id": "q3"
+    },
+    {
+      "concept_id": "suffix_process_recursion",
+      "bloom_level": "Remember",
+      "question": "What does the method do after extending the current pattern?",
+      "question_ar": "ماذا تفعل الطريقة بعد تمديد النمط الحالي؟",
+      "options": [
+        "Focuses mainly on co-occurrence.",
+        "the minimum-support threshold",
+        "Recursively repeat the process",
+        "Remove every frequent single item"
+      ],
+      "options_en": [
+        "Focuses mainly on co-occurrence.",
+        "the minimum-support threshold",
+        "Recursively repeat the process",
+        "Remove every frequent single item"
+      ],
+      "options_ar": [
+        "يركز أساساً على تزامن الظهور",
+        "عتبة الحد الأدنى للدعم",
+        "تكرار العملية تكرارياً",
+        "إزالة كل عنصر مفرد متكرر"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Recursively repeat the process",
+      "explanation_ar": "تكرار العملية تكرارياً",
+      "id": "q4"
+    },
+    {
+      "concept_id": "suffix_stop",
+      "bloom_level": "Understand",
+      "question": "When does recursive pattern growth stop?",
+      "question_ar": "متى يتوقف النمو التكراري للأنماط؟",
+      "options": [
+        "when support becomes equal to confidence",
+        "Focuses mainly on model performance.",
+        "when no frequent extension remains",
+        "when the first itemset is generated"
+      ],
+      "options_en": [
+        "when support becomes equal to confidence",
+        "Focuses mainly on model performance.",
+        "when no frequent extension remains",
+        "when the first itemset is generated"
+      ],
+      "options_ar": [
+        "عندما يتساوى الدعم والثقة",
+        "يركز أساساً على أداء النموذج",
+        "عندما لا يبقى أي تمديد متكرر",
+        "عند توليد أول مجموعة عناصر"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "when no frequent extension remains",
+      "explanation_ar": "عندما لا يبقى أي تمديد متكرر",
+      "id": "q5"
+    },
+    {
+      "concept_id": "association_cooccur",
+      "bloom_level": "Understand",
+      "question": "What does association mining mainly focus on?",
+      "question_ar": "على ماذا يركز التنقيب الترابطي أساساً؟",
+      "options": [
+        "Focuses mainly on co-occurrence.",
+        "Focuses mainly on the order of events.",
+        "when no frequent extension remains",
+        "Focuses mainly on model performance."
+      ],
+      "options_en": [
+        "Focuses mainly on co-occurrence.",
+        "Focuses mainly on the order of events.",
+        "when no frequent extension remains",
+        "Focuses mainly on model performance."
+      ],
+      "options_ar": [
+        "يركز أساساً على تزامن الظهور",
+        "يركز أساساً على ترتيب الأحداث",
+        "عندما لا يبقى أي تمديد متكرر",
+        "يركز أساساً على أداء النموذج"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Focuses mainly on co-occurrence.",
+      "explanation_ar": "يركز أساساً على تزامن الظهور",
+      "id": "q6"
+    },
+    {
+      "concept_id": "sequential_order",
+      "bloom_level": "Understand",
+      "question": "What does sequential pattern mining focus on?",
+      "question_ar": "على ماذا يركز تنقيب الأنماط التسلسلية؟",
+      "options": [
+        "Focuses mainly on the order of events.",
+        "the order in which items or events occur",
+        "the number of candidates in Brute Force only",
+        "Focuses mainly on model performance."
+      ],
+      "options_en": [
+        "Focuses mainly on the order of events.",
+        "the order in which items or events occur",
+        "the number of candidates in Brute Force only",
+        "Focuses mainly on model performance."
+      ],
+      "options_ar": [
+        "يركز أساساً على ترتيب الأحداث",
+        "ترتيب وقوع العناصر أو الأحداث",
+        "عدد المرشحين في القوة الغاشمة فقط",
+        "يركز أساساً على أداء النموذج"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "the order in which items or events occur",
+      "explanation_ar": "ترتيب وقوع العناصر أو الأحداث",
+      "id": "q7"
+    }
+  ]
+}

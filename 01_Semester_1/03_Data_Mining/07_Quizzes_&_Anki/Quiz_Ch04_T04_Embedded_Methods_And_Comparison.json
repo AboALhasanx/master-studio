@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch04_T04_Embedded_Methods_And_Comparison",
+  "topic": "Embedded Methods and Comparison",
+  "topic_ar": "الطرائق المدمجة والمقارنة",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "concept_id": "lasso_l1",
+      "bloom_level": "Remember",
+      "question": "Which regularization does LASSO use?",
+      "question_ar": "أي تنظيم يستخدمه LASSO؟",
+      "options": [
+        "Pearson correlation",
+        "L1 regularization",
+        "four main categories",
+        "a Chi-square test"
+      ],
+      "options_en": [
+        "Pearson correlation",
+        "L1 regularization",
+        "four main categories",
+        "a Chi-square test"
+      ],
+      "options_ar": [
+        "ارتباط بيرسون",
+        "استخدام تنظيم L1",
+        "أربع فئات رئيسية",
+        "اختبار كاي-تربيع"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "L1 regularization",
+      "explanation_ar": "استخدام تنظيم L1",
+      "id": "q1"
+    },
+    {
+      "concept_id": "lasso_zero",
+      "bloom_level": "Understand",
+      "question": "What can the L1 penalty do to some coefficients?",
+      "question_ar": "ماذا يمكن لعقوبة L1 أن تفعل ببعض المعاملات؟",
+      "options": [
+        "how much features contribute to reducing impurity",
+        "only after removing every feature with variance",
+        "before model training using statistical measures",
+        "force some coefficients to become exactly zero"
+      ],
+      "options_en": [
+        "how much features contribute to reducing impurity",
+        "only after removing every feature with variance",
+        "before model training using statistical measures",
+        "force some coefficients to become exactly zero"
+      ],
+      "options_ar": [
+        "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+        "بعد إزالة كل خاصية ذات تباين فقط",
+        "قبل تدريب النموذج باستخدام مقاييس إحصائية",
+        "جعل بعض المعاملات تساوي صفراً تماماً"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The L1 penalty can force some coefficients to become exactly zero.",
+      "explanation_ar": "جعل بعض المعاملات تساوي صفراً تماماً",
+      "id": "q2"
+    },
+    {
+      "concept_id": "tree_selection",
+      "bloom_level": "Understand",
+      "question": "When do Decision Trees select features?",
+      "question_ar": "متى تختار أشجار القرار الخصائص؟",
+      "options": [
+        "when constructing the tree",
+        "before collecting any observations",
+        "Starts with all features.",
+        "as part of model training"
+      ],
+      "options_en": [
+        "when constructing the tree",
+        "before collecting any observations",
+        "Starts with all features.",
+        "as part of model training"
+      ],
+      "options_ar": [
+        "عند إنشاء الشجرة",
+        "قبل جمع أي مشاهدات",
+        "يبدأ بكل الخصائص.",
+        "ضمن تدريب النموذج"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Decision trees select features when constructing the tree.",
+      "explanation_ar": "عند إنشاء الشجرة",
+      "id": "q3"
+    },
+    {
+      "concept_id": "rf_importance",
+      "bloom_level": "Understand",
+      "question": "What can Random Forest feature importance measure?",
+      "question_ar": "ماذا يمكن أن يقيس تقدير أهمية الخصائص في الغابة العشوائية؟",
+      "options": [
+        "how many branches exist in a search tree",
+        "only after a dataset is converted into an FP-tree",
+        "how much features contribute to reducing impurity",
+        "how frequently items occur together in transactions"
+      ],
+      "options_en": [
+        "how many branches exist in a search tree",
+        "only after a dataset is converted into an FP-tree",
+        "how much features contribute to reducing impurity",
+        "how frequently items occur together in transactions"
+      ],
+      "options_ar": [
+        "عدد الفروع الموجودة في شجرة البحث",
+        "بعد تحويل مجموعة البيانات إلى شجرة FP فقط",
+        "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+        "مدى تكرار ظهور العناصر معاً في المعاملات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Random Forest can calculate feature importance based on how much features contribute to reducing impurity or, depending on the method, how much they affect prediction performance.",
+      "explanation_ar": "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+      "id": "q4"
+    },
+    {
+      "concept_id": "rf_low_remove",
+      "bloom_level": "Understand",
+      "question": "What may be done with features of very low importance?",
+      "question_ar": "ماذا يمكن فعله بالخصائص ذات الأهمية المنخفضة جداً؟",
+      "options": [
+        "only after recursively mining a projected database",
+        "only after a dataset is converted into an FP-tree",
+        "Features with very low importance may be removed.",
+        "Features with very low importance become the target variable."
+      ],
+      "options_en": [
+        "only after recursively mining a projected database",
+        "only after a dataset is converted into an FP-tree",
+        "Features with very low importance may be removed.",
+        "Features with very low importance become the target variable."
+      ],
+      "options_ar": [
+        "بعد التنقيب التكراري في قاعدة بيانات مسقطة فقط",
+        "بعد تحويل مجموعة البيانات إلى شجرة FP فقط",
+        "يمكن إزالة الخصائص ذات الأهمية المنخفضة جداً.",
+        "تصبح الخصائص ذات الأهمية المنخفضة جداً متغير الهدف."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Features with very low importance may be removed.",
+      "explanation_ar": "يمكن إزالة الخصائص ذات الأهمية المنخفضة جداً.",
+      "id": "q5"
+    },
+    {
+      "concept_id": "filter_before_training",
+      "bloom_level": "Remember",
+      "question": "When do Filter Methods select features relative to model training?",
+      "question_ar": "متى تختار طرائق الترشيح الخصائص مقارنة بتدريب النموذج؟",
+      "options": [
+        "before model training",
+        "a Chi-square test",
+        "nonlinear relationships",
+        "L1 regularization"
+      ],
+      "options_en": [
+        "before model training",
+        "a Chi-square test",
+        "nonlinear relationships",
+        "L1 regularization"
+      ],
+      "options_ar": [
+        "قبل تدريب النموذج",
+        "اختبار كاي-تربيع",
+        "العلاقات غير الخطية",
+        "استخدام تنظيم L1"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training.",
+      "explanation_ar": "قبل تدريب النموذج",
+      "id": "q6"
+    },
+    {
+      "concept_id": "embedded_during_training",
+      "bloom_level": "Remember",
+      "question": "When do Embedded Methods select features?",
+      "question_ar": "متى تختار الطرائق المدمجة الخصائص؟",
+      "options": [
+        "Reduce computational cost.",
+        "as part of model training",
+        "before model training",
+        "every nonlinear relationship"
+      ],
+      "options_en": [
+        "Reduce computational cost.",
+        "as part of model training",
+        "before model training",
+        "every nonlinear relationship"
+      ],
+      "options_ar": [
+        "تقليل الكلفة الحسابية.",
+        "جزءاً من تدريب النموذج",
+        "قبل تدريب النموذج",
+        "كل العلاقات غير الخطية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training.",
+      "explanation_ar": "جزءاً من تدريب النموذج",
+      "id": "q7"
+    }
+  ]
+}
