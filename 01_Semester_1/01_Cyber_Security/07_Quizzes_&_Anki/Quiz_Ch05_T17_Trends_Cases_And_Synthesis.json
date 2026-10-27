@@ -1,595 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "01_Cyber_Security",
- "subject_title": "الأمن السيبراني",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. هدى لفتة مجيد",
- "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
- "subject": "01_Cyber_Security",
- "quiz_id": "Quiz_Ch05_T17_Trends_Cases_And_Synthesis",
- "topic": "Emerging trends, case studies and synthesis",
- "topic_ar": "الاتجاهات الناشئة ودراسات الحالة والتركيب",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "tr_did_evolution",
-   "bloom_level": "Understand",
-   "question": "How is defense in depth evolving according to the chapter?",
-   "question_ar": "كيف يتطوّر الدفاع بالعمق حسب الفصل؟",
-   "options": [
-    "From static layers toward adaptive, resilient designs.",
-    "From many layers toward a single hardened gateway.",
-    "From software controls toward purely physical ones.",
-    "From network layers toward certificate authorities."
-   ],
-   "options_ar": [
-    "من طبقات جامدة إلى تصاميم تكيّفية ومرنة.",
-    "من طبقات كثيرة إلى بوابة واحدة محصّنة.",
-    "من ضوابط برمجية إلى فيزيائية صرفة.",
-    "من طبقات الشبكة إلى جهات إصدار الشهادات."
-   ],
-   "options_en": [
-    "From static layers toward adaptive, resilient designs.",
-    "From many layers toward a single hardened gateway.",
-    "From software controls toward purely physical ones.",
-    "From network layers toward certificate authorities."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The shift is from fixed rules written once to designs that adjust themselves as telemetry arrives.",
-   "explanation_ar": "التحوّل من قواعد ثابتة تُكتب مرة إلى تصاميم تعدّل نفسها كل ما توصل قياسات."
-  },
-  {
-   "id": "q2",
-   "concept_id": "tr_ml_telemetry",
-   "bloom_level": "Remember",
-   "question": "What do machine-learning models use to adjust security controls dynamically?",
-   "question_ar": "شنو تستخدمه نماذج التعلّم الآلي لتعديل الضوابط ديناميكياً؟",
-   "options": [
-    "Annual audit reports from the regulator.",
-    "The vendor's default configuration file.",
-    "Manual rule reviews by the analyst.",
-    "Real-time telemetry from the environment."
-   ],
-   "options_ar": [
-    "تقارير تدقيق سنوية من الجهة التنظيمية.",
-    "ملف إعداد افتراضي من المورّد.",
-    "مراجعات يدوية للقواعد من المحلّل.",
-    "قياسات لحظية من البيئة."
-   ],
-   "options_en": [
-    "Annual audit reports from the regulator.",
-    "The vendor's default configuration file.",
-    "Manual rule reviews by the analyst.",
-    "Real-time telemetry from the environment."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Continuous telemetry is what lets thresholds and policies track the network instead of lagging behind it.",
-   "explanation_ar": "القياسات المستمرة هي اللي تخلي العتبات والسياسات تلحق الشبكة بدل ما تتأخّر عنها."
-  },
-  {
-   "id": "q3",
-   "concept_id": "tr_bayes_updating",
-   "bloom_level": "Remember",
-   "question": "How is the posterior probability of an attack updated given evidence?",
-   "question_ar": "كيف يُحدَّث الاحتمال البعدي للهجوم بمعطى دليل؟",
-   "options": [
-    "Likelihood plus prior divided by the evidence.",
-    "Prior divided by the likelihood of a false alarm.",
-    "Likelihood times prior over the evidence probability.",
-    "Prior times total probability over the likelihood."
-   ],
-   "options_ar": [
-    "الاحتمال المشروط + القبلي، مقسومين على الدليل.",
-    "القبلي مقسوماً على احتمال الإنذار الكاذب.",
-    "الاحتمال المشروط × القبلي، على احتمال الدليل.",
-    "القبلي × الاحتمال الكلي، على الاحتمال المشروط."
-   ],
-   "options_en": [
-    "Likelihood plus prior divided by the evidence.",
-    "Prior divided by the likelihood of a false alarm.",
-    "Likelihood times prior over the evidence probability.",
-    "Prior times total probability over the likelihood."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Each new piece of evidence updates the belief rather than replacing it, which is what makes the defence adaptive.",
-   "explanation_ar": "كل دليل جديد يحدّث الاعتقاد بدل ما يستبدله، وهذا اللي يخلي الدفاع تكيّفياً."
-  },
-  {
-   "id": "q4",
-   "concept_id": "tr_bayes_false_alarm",
-   "bloom_level": "Analyze",
-   "question": "Why does a high false alarm likelihood keep the posterior low?",
-   "question_ar": "ليش احتمال إنذار كاذب عالٍ يترك الاحتمال البعدي واطياً؟",
-   "options": [
-    "Because the evidence is weighted twice in the formula.",
-    "Because the same evidence is easily produced without an attack.",
-    "Because the prior probability is discarded entirely.",
-    "Because the likelihood is multiplied by zero."
-   ],
-   "options_ar": [
-    "لأن الدليل يُوزن مرتين بالمعادلة.",
-    "لأن نفس الدليل يُنتَج بسهولة بدون هجوم.",
-    "لأن الاحتمال القبلي يُهمل بالكامل.",
-    "لأن الاحتمال المشروط يُضرب بصفر."
-   ],
-   "options_en": [
-    "Because the evidence is weighted twice in the formula.",
-    "Because the same evidence is easily produced without an attack.",
-    "Because the prior probability is discarded entirely.",
-    "Because the likelihood is multiplied by zero."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Evidence that appears constantly in normal operation carries little information, so it cannot move the belief much.",
-   "explanation_ar": "الدليل اللي يظهر باستمرار بالتشغيل الطبيعي يحمل معلومات قليلة، فما يقدر يحرّك الاعتقاد كثير."
-  },
-  {
-   "id": "q5",
-   "concept_id": "tr_adaptive_thresholds",
-   "bloom_level": "Understand",
-   "question": "What does continuous updating enable in practice?",
-   "question_ar": "شنو يمكّنه التحديث المستمر عملياً؟",
-   "options": [
-    "Thresholds that adapt to the current context.",
-    "Thresholds that are fixed at installation time.",
-    "A complete removal of all alerting thresholds.",
-    "Thresholds set only by the vendor's defaults."
-   ],
-   "options_ar": [
-    "عتبات تتكيّف مع السياق الحالي.",
-    "عتبات ثابتة وقت التنصيب.",
-    "إزالة كاملة لكل عتبات التنبيه.",
-    "عتبات يحدّدها افتراضي المورّد فقط."
-   ],
-   "options_en": [
-    "Thresholds that adapt to the current context.",
-    "Thresholds that are fixed at installation time.",
-    "A complete removal of all alerting thresholds.",
-    "Thresholds set only by the vendor's defaults."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "A threshold tuned for last month's traffic is wrong for today's, so the update loop keeps sensitivity matched to reality.",
-   "explanation_ar": "عتبة مضبوطة على ترافيك الشهر الماضي غلط على ترافيك اليوم، فحلقة التحديث تخلي الحساسية مطابقة للواقع."
-  },
-  {
-   "id": "q6",
-   "concept_id": "tr_resilience_function",
-   "bloom_level": "Remember",
-   "question": "How is the reliability function over time expressed?",
-   "question_ar": "كيف تُعبَّر دالة الموثوقية على الزمن؟",
-   "options": [
-    "Linear decay with the failure rate times time.",
-    "Exponential growth with the failure rate times time.",
-    "A constant equal to the failure rate itself.",
-    "Exponential decay with the failure rate times time."
-   ],
-   "options_ar": [
-    "تلاشٍ خطي بمعدّل الفشل مضروباً بالزمن.",
-    "نمو أُسّي بمعدّل الفشل مضروباً بالزمن.",
-    "ثابت يساوي معدّل الفشل نفسه.",
-    "تلاشٍ أُسّي بمعدّل الفشل مضروباً بالزمن."
-   ],
-   "options_en": [
-    "Linear decay with the failure rate times time.",
-    "Exponential growth with the failure rate times time.",
-    "A constant equal to the failure rate itself.",
-    "Exponential decay with the failure rate times time."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The form is the standard exponential survival curve, where the argument is the failure rate multiplied by elapsed time.",
-   "explanation_ar": "الصيغة هي منحنى البقاء الأُسّي القياسي، وحجّته معدّل الفشل مضروباً بالزمن المنقضي."
-  },
-  {
-   "id": "q7",
-   "concept_id": "tr_lambda_meaning",
-   "bloom_level": "Understand",
-   "question": "What does the failure rate in that function represent?",
-   "question_ar": "شنو يمثّل معدّل الفشل بتلك الدالة؟",
-   "options": [
-    "How much the defence cost to deploy.",
-    "How many users the system serves.",
-    "How often the layered defences fail.",
-    "How many layers exist in the design."
-   ],
-   "options_ar": [
-    "كم كلّف نشر الدفاع.",
-    "كم مستخدم يخدم النظام.",
-    "كم مرة تفشل الدفاعات الطبقية.",
-    "كم طبقة موجودة بالتصميم."
-   ],
-   "options_en": [
-    "How much the defence cost to deploy.",
-    "How many users the system serves.",
-    "How often the layered defences fail.",
-    "How many layers exist in the design."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "It is a rate, not a count, so it captures failure frequency per unit of time rather than the number of controls.",
-   "explanation_ar": "هو معدّل مو عدد، فيلتقط تكرار الفشل لكل وحدة زمن بدل عدد الضوابط."
-  },
-  {
-   "id": "q8",
-   "concept_id": "tr_lower_lambda",
-   "bloom_level": "Analyze",
-   "question": "What does a lower failure rate imply for resilience?",
-   "question_ar": "شنو يعني معدّل فشل أقل بالنسبة للمرونة؟",
-   "options": [
-    "Higher cost but identical resilience.",
-    "Higher resilience, because survival over time is greater.",
-    "Lower resilience, because fewer layers are active.",
-    "No change, since resilience is independent of failure."
-   ],
-   "options_ar": [
-    "كلفة أعلى بمرونة مطابقة.",
-    "مرونة أعلى، لأن احتمال البقاء مع الوقت أكبر.",
-    "مرونة أقل، لأن طبقات أقل شغّالة.",
-    "بلا تغيير، لأن المرونة مستقلة عن الفشل."
-   ],
-   "options_en": [
-    "Higher cost but identical resilience.",
-    "Higher resilience, because survival over time is greater.",
-    "Lower resilience, because fewer layers are active.",
-    "No change, since resilience is independent of failure."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Redundancy lowers the rate at which the system fails, which pushes the survival curve outward in time.",
-   "explanation_ar": "التكرار ينزّل معدّل فشل النظام، وهذا يدفع منحنى البقاء للخارج مع الزمن."
-  },
-  {
-   "id": "q9",
-   "concept_id": "case_target_cause",
-   "bloom_level": "Remember",
-   "question": "What allowed the Target 2013 breach to reach payment systems?",
-   "question_ar": "شنو خلّى اختراق Target سنة 2013 يوصل لأنظمة الدفع؟",
-   "options": [
-    "A flat internal network with free lateral movement.",
-    "A broken TLS implementation on the web server.",
-    "A forged certificate in the payment chain.",
-    "An expired certificate on the VPN gateway."
-   ],
-   "options_ar": [
-    "شبكة داخلية مسطّحة بحركة جانبية حرّة.",
-    "تطبيق TLS معطوب على سيرفر الويب.",
-    "شهادة مزيّفة بسلسلة الدفع.",
-    "شهادة منتهية على بوابة الـ VPN."
-   ],
-   "options_en": [
-    "A flat internal network with free lateral movement.",
-    "A broken TLS implementation on the web server.",
-    "A forged certificate in the payment chain.",
-    "An expired certificate on the VPN gateway."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Attackers entered through a third-party vendor and moved freely because no internal boundary stopped them.",
-   "explanation_ar": "المهاجمون دخلوا عبر مورّد خارجي وتحرّكوا بحرية لأن ماكو حدّ داخلي يوقفهم."
-  },
-  {
-   "id": "q10",
-   "concept_id": "case_target_lesson",
-   "bloom_level": "Understand",
-   "question": "What is the lesson of the Target case?",
-   "question_ar": "شنو درس حالة Target؟",
-   "options": [
-    "Third-party vendors should never be given any access.",
-    "Payment systems must be moved off the network.",
-    "Certificates alone protect payment card data.",
-    "Absent segmentation turns one foothold into full access."
-   ],
-   "options_ar": [
-    "المورّدون الخارجيون ما لازم يُعطون أي وصول.",
-    "أنظمة الدفع لازم تُنقل خارج الشبكة.",
-    "الشهادات وحدها تحمي بيانات البطاقات.",
-    "غياب التقسيم يحوّل موطئ قدم واحد إلى وصول كامل."
-   ],
-   "options_en": [
-    "Third-party vendors should never be given any access.",
-    "Payment systems must be moved off the network.",
-    "Certificates alone protect payment card data.",
-    "Absent segmentation turns one foothold into full access."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The failure was architectural rather than cryptographic: everything could reach everything, so containment never happened.",
-   "explanation_ar": "الفشل كان معمارياً مو تشفيرياً: كل شي يقدر يوصل لكل شي، فالاحتواء ما صار أبداً."
-  },
-  {
-   "id": "q11",
-   "concept_id": "case_stuxnet_cause",
-   "bloom_level": "Remember",
-   "question": "Which channels did Stuxnet exploit despite segmented industrial networks?",
-   "question_ar": "أي قنوات استغل Stuxnet رغم الشبكات الصناعية المقسّمة؟",
-   "options": [
-    "Weak WPA keys and rogue access points.",
-    "Expired VPN certificates and split tunnelling.",
-    "Trusted certificates and removable media.",
-    "Unpatched DNS resolvers and BGP hijacks."
-   ],
-   "options_ar": [
-    "مفاتيح WPA ضعيفة ونقاط وصول مزوّرة.",
-    "شهادات VPN منتهية وsplit tunnelling.",
-    "شهادات موثوقة ووسائط قابلة للإزالة.",
-    "محلّلات DNS غير المرقّعة واختطاف BGP."
-   ],
-   "options_en": [
-    "Weak WPA keys and rogue access points.",
-    "Expired VPN certificates and split tunnelling.",
-    "Trusted certificates and removable media.",
-    "Unpatched DNS resolvers and BGP hijacks."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "It did not break the segmentation; it walked through channels the operators already trusted.",
-   "explanation_ar": "ما كسر التقسيم؛ مشى عبر قنوات كان المشغّلون يثقون بها أصلًا."
-  },
-  {
-   "id": "q12",
-   "concept_id": "case_stuxnet_lesson",
-   "bloom_level": "Analyze",
-   "question": "What does Stuxnet prove about segmentation on its own?",
-   "question_ar": "شنو يثبت Stuxnet عن التقسيم لوحده؟",
-   "options": [
-    "Certificates should be removed from industrial systems.",
-    "Depth is also required, since trusted channels bypass zones.",
-    "Segmentation is sufficient if the zones are physical.",
-    "Air gaps make layered defence unnecessary."
-   ],
-   "options_ar": [
-    "الشهادات لازم تُزال من الأنظمة الصناعية.",
-    "العمق مطلوب هم، لأن القنوات الموثوقة تتجاوز المناطق.",
-    "التقسيم يكفي إذا كانت المناطق فيزيائية.",
-    "الفصل الهوائي يغني عن الدفاع الطبقي."
-   ],
-   "options_en": [
-    "Certificates should be removed from industrial systems.",
-    "Depth is also required, since trusted channels bypass zones.",
-    "Segmentation is sufficient if the zones are physical.",
-    "Air gaps make layered defence unnecessary."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "A boundary is only as strong as the channels that are allowed to cross it, so depth has to cover those channels too.",
-   "explanation_ar": "الحدّ بقوة القنوات المسموح لها تعبره، فالعمق لازم يغطّي تلك القنوات هم."
-  },
-  {
-   "id": "q13",
-   "concept_id": "case_financial_result",
-   "bloom_level": "Remember",
-   "question": "What risk reduction did banks report from micro segmentation?",
-   "question_ar": "أي تقليل للمخاطر أبلغت عنه البنوك من التقسيم الدقيق؟",
-   "options": [
-    "Between thirty-five and forty percent.",
-    "Between five and ten percent.",
-    "Between sixty and seventy percent.",
-    "Between ninety and ninety-five percent."
-   ],
-   "options_ar": [
-    "بين خمسة وثلاثين وأربعين بالمئة.",
-    "بين خمسة وعشرة بالمئة.",
-    "بين ستين وسبعين بالمئة.",
-    "بين تسعين وخمسة وتسعين بالمئة."
-   ],
-   "options_en": [
-    "Between thirty-five and forty percent.",
-    "Between five and ten percent.",
-    "Between sixty and seventy percent.",
-    "Between ninety and ninety-five percent."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The figure comes from internal metrics rather than theory, which is why the chapter presents it as evidence rather than a model.",
-   "explanation_ar": "الرقم جاي من مؤشرات داخلية مو من نظرية، ولهذا يعرضه الفصل كدليل مو كنموذج."
-  },
-  {
-   "id": "q14",
-   "concept_id": "case_both_needed",
-   "bloom_level": "Analyze",
-   "question": "What do the three cases jointly demonstrate?",
-   "question_ar": "شنو تبيّنه الحالات الثلاث معاً؟",
-   "options": [
-    "Segmentation alone is enough for modern networks.",
-    "Depth alone removes the need for any zones.",
-    "Neither strategy works against determined attackers.",
-    "Segmentation and depth are complementary, not substitutes."
-   ],
-   "options_ar": [
-    "التقسيم وحده يكفي للشبكات الحديثة.",
-    "العمق وحده يلغي الحاجة لأي مناطق.",
-    "ماكو استراتيجية تنفع ضد مهاجم مصمّم.",
-    "التقسيم والعمق مكمّلان، مو بدائل."
-   ],
-   "options_en": [
-    "Segmentation alone is enough for modern networks.",
-    "Depth alone removes the need for any zones.",
-    "Neither strategy works against determined attackers.",
-    "Segmentation and depth are complementary, not substitutes."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Target lacked zones, Stuxnet lacked depth, and the banks gained from finer zones, which together argue for both.",
-   "explanation_ar": "Target كان بلا مناطق، و Stuxnet كان بلا عمق، والبنوك استفادت من مناطق أدق، وهذا كله يرجّح الاثنين معاً."
-  },
-  {
-   "id": "q15",
-   "concept_id": "rosi_formula",
-   "bloom_level": "Remember",
-   "question": "How is the return on security investment expressed?",
-   "question_ar": "كيف يُعبَّر عن العائد على الاستثمار الأمني؟",
-   "options": [
-    "Loss reduction divided by the total budget.",
-    "Loss reduction multiplied by the annual cost.",
-    "Loss reduction minus cost, divided by cost.",
-    "Cost minus loss reduction, divided by cost."
-   ],
-   "options_ar": [
-    "تقليل الخسارة مقسوماً على الميزانية الكلية.",
-    "تقليل الخسارة مضروباً بالكلفة السنوية.",
-    "تقليل الخسارة ناقص الكلفة، مقسوماً على الكلفة.",
-    "الكلفة ناقص تقليل الخسارة، مقسوماً على الكلفة."
-   ],
-   "options_en": [
-    "Loss reduction divided by the total budget.",
-    "Loss reduction multiplied by the annual cost.",
-    "Loss reduction minus cost, divided by cost.",
-    "Cost minus loss reduction, divided by cost."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "It compares the benefit of the avoided loss against what the control cost to put in place.",
-   "explanation_ar": "يقارن منفعة الخسارة المتجنَّبة بما كلّفه الضابط."
-  },
-  {
-   "id": "q16",
-   "concept_id": "rosi_worked",
-   "bloom_level": "Analyze",
-   "question": "Segmentation cuts annual breach cost from ten million to six at a cost of two million. What is the return?",
-   "question_ar": "التقسيم ينزّل كلفة الاختراق السنوية من عشرة ملايين لستة بكلفة مليونين. شنو العائد؟",
-   "options": [
-    "Half, because the reduction is twice the cost.",
-    "One, or one hundred percent, since four minus two over two.",
-    "Two, or two hundred percent, since four over two.",
-    "Zero, because the cost equals the reduction."
-   ],
-   "options_ar": [
-    "نصف، لأن التقليل ضعف الكلفة.",
-    "واحد، أي مئة بالمئة، لأن أربعة ناقص اثنين على اثنين.",
-    "اثنان، أي مئتا بالمئة، لأن أربعة على اثنين.",
-    "صفر، لأن الكلفة تساوي التقليل."
-   ],
-   "options_en": [
-    "Half, because the reduction is twice the cost.",
-    "One, or one hundred percent, since four minus two over two.",
-    "Two, or two hundred percent, since four over two.",
-    "Zero, because the cost equals the reduction."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The reduction is four million, the cost is two, so the excess over cost divided by cost gives one.",
-   "explanation_ar": "التقليل أربعة ملايين والكلفة اثنان، فالزيادة على الكلفة مقسومة على الكلفة تعطي واحد."
-  },
-  {
-   "id": "q17",
-   "concept_id": "rosi_interpretation",
-   "bloom_level": "Understand",
-   "question": "What does a positive security investment return indicate?",
-   "question_ar": "شنو يدلّ عليه عائد استثمار أمني موجب؟",
-   "options": [
-    "The control saves more than it costs to run.",
-    "The control has eliminated all residual risk.",
-    "The control must be replaced immediately.",
-    "The budget was spent entirely on hardware."
-   ],
-   "options_ar": [
-    "الضابط يوفّر أكثر مما يكلّف تشغيله.",
-    "الضابط أزال كل الخطر المتبقّي.",
-    "الضابط لازم يُستبدل فوراً.",
-    "الميزانية صُرفت كلها على العتاد."
-   ],
-   "options_en": [
-    "The control saves more than it costs to run.",
-    "The control has eliminated all residual risk.",
-    "The control must be replaced immediately.",
-    "The budget was spent entirely on hardware."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "It is an economic judgement, not a security guarantee: the control pays for itself in avoided loss.",
-   "explanation_ar": "هو حكم اقتصادي مو ضمان أمني: الضابط يدفع ثمن نفسه بالخسارة المتجنَّبة."
-  },
-  {
-   "id": "q18",
-   "concept_id": "opt_allocation",
-   "bloom_level": "Remember",
-   "question": "What does the optimal layer allocation model maximise, and under what constraint?",
-   "question_ar": "شنو يعظّم نموذج التوزيع الأمثل للطبقات، وبأي قيد؟",
-   "options": [
-    "Budget spent, subject to a minimum risk reduction.",
-    "Number of layers, subject to a fixed total cost.",
-    "Availability, subject to a maximum residual risk.",
-    "Risk reduction, subject to total layer cost within budget."
-   ],
-   "options_ar": [
-    "إنفاق الميزانية، بشرط حدّ أدنى لتقليل المخاطر.",
-    "عدد الطبقات، بشرط كلفة كلية ثابتة.",
-    "التوافر، بشرط حدّ أقصى للخطر المتبقّي.",
-    "تقليل المخاطر، بشرط ألّا يتجاوز مجموع كلف الطبقات الميزانية."
-   ],
-   "options_en": [
-    "Budget spent, subject to a minimum risk reduction.",
-    "Number of layers, subject to a fixed total cost.",
-    "Availability, subject to a maximum residual risk.",
-    "Risk reduction, subject to total layer cost within budget."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "It is a constrained optimisation: the objective is avoided risk, and the constraint is that the layers must be affordable together.",
-   "explanation_ar": "هو تحسين مقيَّد: الهدف هو الخطر المتجنَّب، والقيد إن الطبقات لازم تكون ميسورة معاً."
-  },
-  {
-   "id": "q19",
-   "concept_id": "opt_priority",
-   "bloom_level": "Understand",
-   "question": "Which layers get priority under that model?",
-   "question_ar": "أي طبقات تحصل على الأولوية بذلك النموذج؟",
-   "options": [
-    "Whichever layer was installed first.",
-    "The layer with the largest marketing claim.",
-    "Cheap layers with a high reduction share.",
-    "Expensive layers with a low reduction share."
-   ],
-   "options_ar": [
-    "أي طبقة انصّبت أولاً.",
-    "الطبقة اللي عندها أكبر ادعاء تسويقي.",
-    "الطبقات الرخيصة ذات نسبة التقليل العالية.",
-    "الطبقات الغالية ذات نسبة التقليل الواطية."
-   ],
-   "options_en": [
-    "Whichever layer was installed first.",
-    "The layer with the largest marketing claim.",
-    "Cheap layers with a high reduction share.",
-    "Expensive layers with a low reduction share."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Value per unit of cost is what the constraint rewards, so a modest control that removes a lot beats an expensive one that removes little.",
-   "explanation_ar": "القيمة لكل وحدة كلفة هي اللي يكافئها القيد، فضابط متواضع يزيل كثيراً يتفوّق على غالٍ يزيل قليلاً."
-  },
-  {
-   "id": "q20",
-   "concept_id": "future_three",
-   "bloom_level": "Remember",
-   "question": "Which three future directions does the chapter name?",
-   "question_ar": "أي ثلاثة اتجاهات مستقبلية يذكرها الفصل؟",
-   "options": [
-    "Fewer vendors, shorter logs and less staffing.",
-    "AI-driven segmentation, quantum resistance, self-healing.",
-    "Cheaper hardware, larger disks and faster CPUs.",
-    "Longer keys, more rounds and bigger blocks."
-   ],
-   "options_ar": [
-    "مورّدون أقل وسجلات أقصر وكوادر أقل.",
-    "تقسيم مدفوع بالذكاء الاصطناعي ومقاومة كمّية وشبكات ذاتية الشفاء.",
-    "عتاد أرخص وأقراص أكبر ومعالجات أسرع.",
-    "مفاتيح أطول وجولات أكثر وبلوكات أكبر."
-   ],
-   "options_en": [
-    "Fewer vendors, shorter logs and less staffing.",
-    "AI-driven segmentation, quantum resistance, self-healing.",
-    "Cheaper hardware, larger disks and faster CPUs.",
-    "Longer keys, more rounds and bigger blocks."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Zones that adapt by themselves, cryptography that survives quantum attack, and defences that reconfigure after a compromise.",
-   "explanation_ar": "مناطق تتكيّف بنفسها، وتشفير يصمد أمام الهجوم الكمّي، ودفاعات تعيد تشكيل نفسها بعد الاختراق."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "quiz_id": "Quiz_Ch05_T17_Trends_Cases_And_Synthesis",
+  "topic": "Emerging trends, case studies and synthesis",
+  "topic_ar": "الاتجاهات الناشئة ودراسات الحالة والتركيب",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "tr_ml_telemetry",
+      "bloom_level": "Remember",
+      "question": "What do machine-learning models use to adjust security controls dynamically?",
+      "question_ar": "شنو تستخدمه نماذج التعلّم الآلي لتعديل الضوابط ديناميكياً؟",
+      "options": [
+        "Annual regulatory audit reports that guide security policy.",
+        "Manual rule reviews performed by a security analyst.",
+        "The vendor default configuration shipped with the product.",
+        "Real-time telemetry from sensors in the protected environment."
+      ],
+      "options_ar": [
+        "تقارير تدقيق سنوية للجهة التنظيمية عن أداء الأنظمة الأمنية.",
+        "مراجعات يدوية للقواعد ينفذها محلّل الأمن السيبراني.",
+        "ملف الإعداد الافتراضي الذي يوفّره المورّد للمنتج.",
+        "قياسات آنية من البيئة والأجهزة الخاضعة للحماية الأمنية."
+      ],
+      "options_en": [
+        "Annual regulatory audit reports that guide security policy.",
+        "Manual rule reviews performed by a security analyst.",
+        "The vendor default configuration shipped with the product.",
+        "Real-time telemetry from sensors in the protected environment."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Continuous telemetry is what lets thresholds and policies track the network instead of lagging behind it.",
+      "explanation_ar": "القياسات المستمرة هي اللي تخلي العتبات والسياسات تلحق الشبكة بدل ما تتأخّر عنها."
+    },
+    {
+      "id": "q2",
+      "concept_id": "tr_adaptive_thresholds",
+      "bloom_level": "Understand",
+      "question": "What does continuous updating enable in practice?",
+      "question_ar": "شنو يمكّنه التحديث المستمر عملياً؟",
+      "options": [
+        "Thresholds copied from vendor defaults and kept unchanged.",
+        "A complete removal of every alerting threshold in production.",
+        "Threshold values fixed permanently at the installation stage.",
+        "Thresholds adjusted to match the current operating context."
+      ],
+      "options_ar": [
+        "عتبات يحددها إعداد المورّد الافتراضي فقط دون مراجعة.",
+        "إزالة كاملة لجميع عتبات التنبيه في بيئة التشغيل.",
+        "قيم عتبات ثابتة منذ تنصيب النظام ولا تتغير لاحقاً.",
+        "عتبات تتكيف مع سياق العمل الحالي ومتغيراته الأمنية."
+      ],
+      "options_en": [
+        "Thresholds copied from vendor defaults and kept unchanged.",
+        "A complete removal of every alerting threshold in production.",
+        "Threshold values fixed permanently at the installation stage.",
+        "Thresholds adjusted to match the current operating context."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A threshold tuned for last month's traffic is wrong for today's, so the update loop keeps sensitivity matched to reality.",
+      "explanation_ar": "عتبة مضبوطة على ترافيك الشهر الماضي غلط على ترافيك اليوم، فحلقة التحديث تخلي الحساسية مطابقة للواقع."
+    },
+    {
+      "id": "q3",
+      "concept_id": "case_target_cause",
+      "bloom_level": "Remember",
+      "question": "What allowed the Target 2013 breach to reach payment systems?",
+      "question_ar": "شنو خلّى اختراق Target سنة 2013 يوصل لأنظمة الدفع؟",
+      "options": [
+        "An expired certificate installed on the organisation VPN gateway.",
+        "A defective TLS implementation on its public-facing web server.",
+        "A flat internal network enabled unrestricted lateral movement.",
+        "A forged certificate trusted by the payment processing chain."
+      ],
+      "options_ar": [
+        "شهادة منتهية الصلاحية على بوابة VPN الخاصة بالمؤسسة.",
+        "تطبيق TLS معيب في خادم الويب المتاح للجمهور.",
+        "شبكة داخلية مسطّحة سمحت بالحركة الجانبية دون قيود.",
+        "شهادة مزيفة وُثقت ضمن سلسلة نظام الدفع الإلكتروني."
+      ],
+      "options_en": [
+        "An expired certificate installed on the organisation VPN gateway.",
+        "A defective TLS implementation on its public-facing web server.",
+        "A flat internal network enabled unrestricted lateral movement.",
+        "A forged certificate trusted by the payment processing chain."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Attackers entered through a third-party vendor and moved freely because no internal boundary stopped them.",
+      "explanation_ar": "المهاجمون دخلوا عبر مورّد خارجي وتحرّكوا بحرية لأن ماكو حدّ داخلي يوقفهم."
+    },
+    {
+      "id": "q4",
+      "concept_id": "case_stuxnet_lesson",
+      "bloom_level": "Analyze",
+      "question": "What does Stuxnet prove about segmentation on its own?",
+      "question_ar": "شنو يثبت Stuxnet عن التقسيم لوحده؟",
+      "options": [
+        "Layered defence is also needed; trusted channels can cross zones.",
+        "Segmentation alone is sufficient when every zone is physically isolated.",
+        "Digital certificates should be removed from industrial control systems.",
+        "Air gaps make all additional layers of defence unnecessary."
+      ],
+      "options_ar": [
+        "يلزم الدفاع الطبقي لأن القنوات الموثوقة قد تعبر المناطق.",
+        "التقسيم وحده يكفي إذا كانت كل منطقة معزولة فيزيائياً.",
+        "ينبغي إزالة الشهادات الرقمية من أنظمة التحكم الصناعية.",
+        "الفصل الهوائي يجعل طبقات الدفاع الإضافية غير ضرورية."
+      ],
+      "options_en": [
+        "Layered defence is also needed; trusted channels can cross zones.",
+        "Segmentation alone is sufficient when every zone is physically isolated.",
+        "Digital certificates should be removed from industrial control systems.",
+        "Air gaps make all additional layers of defence unnecessary."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A boundary is only as strong as the channels that are allowed to cross it, so depth has to cover those channels too.",
+      "explanation_ar": "الحدّ بقوة القنوات المسموح لها تعبره، فالعمق لازم يغطّي تلك القنوات هم."
+    },
+    {
+      "id": "q5",
+      "concept_id": "case_both_needed",
+      "bloom_level": "Analyze",
+      "question": "What do the three cases jointly demonstrate?",
+      "question_ar": "شنو تبيّنه الحالات الثلاث معاً؟",
+      "options": [
+        "Segmentation and defence in depth are complementary strategies.",
+        "Segmentation and defence in depth complement each other as controls.",
+        "Defence in depth alone eliminates any need to define zones.",
+        "Segmentation by itself is sufficient for contemporary networks."
+      ],
+      "options_ar": [
+        "لا تفيد أي من الاستراتيجيتين ضد مهاجم حديث ومصمم.",
+        "التقسيم والدفاع بالعمق استراتيجيتان متكاملتان للحماية.",
+        "الدفاع بالعمق وحده يلغي الحاجة إلى تحديد مناطق الشبكة.",
+        "التقسيم وحده كافٍ لحماية الشبكات المعاصرة من الهجمات."
+      ],
+      "options_en": [
+        "Segmentation and defence in depth are complementary strategies.",
+        "Segmentation and defence in depth complement each other as controls.",
+        "Defence in depth alone eliminates any need to define zones.",
+        "Segmentation by itself is sufficient for contemporary networks."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Target lacked zones, Stuxnet lacked depth, and the banks gained from finer zones, which together argue for both.",
+      "explanation_ar": "Target كان بلا مناطق، و Stuxnet كان بلا عمق، والبنوك استفادت من مناطق أدق، وهذا كله يرجّح الاثنين معاً."
+    },
+    {
+      "id": "q6",
+      "concept_id": "rosi_worked",
+      "bloom_level": "Analyze",
+      "question": "Segmentation cuts annual breach cost from ten million to six at a cost of two million. What is the return?",
+      "question_ar": "التقسيم ينزّل كلفة الاختراق السنوية من عشرة ملايين لستة بكلفة مليونين. شنو العائد؟",
+      "options": [
+        "Zero percent, because the investment equals the total savings.",
+        "Two hundred percent: divide the four-million saving by two.",
+        "One hundred percent: [(10−6)−2] divided by the cost of 2.",
+        "Fifty percent, because the four-million saving is twice the cost."
+      ],
+      "options_ar": [
+        "العائد صفر بالمئة، لأن الاستثمار يساوي مقدار التوفير الكلي.",
+        "العائد مئتا بالمئة: نقسم التوفير البالغ أربعة ملايين على اثنين.",
+        "العائد مئة بالمئة: [(10−6)−2] مقسومة على كلفة الاستثمار 2.",
+        "العائد خمسون بالمئة، لأن التوفير البالغ أربعة ملايين ضعف الكلفة."
+      ],
+      "options_en": [
+        "Zero percent, because the investment equals the total savings.",
+        "Two hundred percent: divide the four-million saving by two.",
+        "One hundred percent: [(10−6)−2] divided by the cost of 2.",
+        "Fifty percent, because the four-million saving is twice the cost."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The reduction is four million, the cost is two, so the excess over cost divided by cost gives one.",
+      "explanation_ar": "التقليل أربعة ملايين والكلفة اثنان، فالزيادة على الكلفة مقسومة على الكلفة تعطي واحد."
+    },
+    {
+      "id": "q7",
+      "concept_id": "opt_allocation",
+      "bloom_level": "Remember",
+      "question": "What does the optimal layer allocation model maximise, and under what constraint?",
+      "question_ar": "شنو يعظّم نموذج التوزيع الأمثل للطبقات، وبأي قيد؟",
+      "options": [
+        "Maximise total budget spending while meeting a risk-reduction target.",
+        "Maximise risk reduction within the total layer-cost budget.",
+        "Maximise the number of deployed layers at one fixed total cost.",
+        "Maximise system availability under a maximum residual-risk limit."
+      ],
+      "options_ar": [
+        "تعظيم إنفاق الميزانية لتحقيق هدف تقليل المخاطر المحدد مسبقاً.",
+        "تعظيم تقليل المخاطر مع بقاء كلفة الطبقات ضمن الميزانية.",
+        "تعظيم عدد الطبقات المنشورة ضمن كلفة كلية محددة.",
+        "تعظيم توافر النظام ضمن الحد الأعلى للخطر المتبقي."
+      ],
+      "options_en": [
+        "Maximise total budget spending while meeting a risk-reduction target.",
+        "Maximise risk reduction within the total layer-cost budget.",
+        "Maximise the number of deployed layers at one fixed total cost.",
+        "Maximise system availability under a maximum residual-risk limit."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "It is a constrained optimisation: the objective is avoided risk, and the constraint is that the layers must be affordable together.",
+      "explanation_ar": "هو تحسين مقيَّد: الهدف هو الخطر المتجنَّب، والقيد إن الطبقات لازم تكون ميسورة معاً."
+    },
+    {
+      "id": "q8",
+      "concept_id": "opt_priority",
+      "bloom_level": "Understand",
+      "question": "Which layers get priority under that model?",
+      "question_ar": "أي طبقات تحصل على الأولوية بذلك النموذج؟",
+      "options": [
+        "Prioritise low-cost layers with a high risk-reduction share.",
+        "Costly layers that contribute only a small share of risk reduction.",
+        "The layer that happened to be installed earlier than the others.",
+        "The layer supported by the strongest marketing claim from vendors."
+      ],
+      "options_ar": [
+        "طبقات قليلة الكلفة تحقق خفضاً كبيراً نسبياً للمخاطر.",
+        "طبقات مرتفعة الكلفة لا تحقق إلا خفضاً محدوداً للمخاطر.",
+        "الطبقة التي جرى تنصيبها قبل الطبقات الأمنية الأخرى.",
+        "الطبقة المدعومة بأقوى ادعاء تسويقي من المورّدين."
+      ],
+      "options_en": [
+        "Prioritise low-cost layers with a high risk-reduction share.",
+        "Costly layers that contribute only a small share of risk reduction.",
+        "The layer that happened to be installed earlier than the others.",
+        "The layer supported by the strongest marketing claim from vendors."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Value per unit of cost is what the constraint rewards, so a modest control that removes a lot beats an expensive one that removes little.",
+      "explanation_ar": "القيمة لكل وحدة كلفة هي اللي يكافئها القيد، فضابط متواضع يزيل كثيراً يتفوّق على غالٍ يزيل قليلاً."
+    },
+    {
+      "id": "q9",
+      "concept_id": "future_three",
+      "bloom_level": "Remember",
+      "question": "Which three trends are shaping future network security?",
+      "question_ar": "ما الاتجاهات الثلاثة التي ترسم مستقبل أمن الشبكات؟",
+      "options": [
+        "AI-guided segmentation, quantum-resistant security, and self-healing.",
+        "Longer cryptographic keys, additional rounds, and larger blocks.",
+        "Cheaper hardware, higher-capacity disks, and faster processors.",
+        "Fewer suppliers, shorter audit logs, and reduced security staffing."
+      ],
+      "options_ar": [
+        "تقسيم ذكي، ومقاومة كمّية، وشبكات ذاتية الشفاء.",
+        "مفاتيح تشفير أطول، وجولات إضافية، وكتل بيانات أكبر.",
+        "عتاد أقل كلفة، وأقراص بسعة أعلى، ومعالجات أسرع.",
+        "مورّدون أقل، وسجلات تدقيق أقصر، وكوادر أمنية أقل."
+      ],
+      "options_en": [
+        "AI-guided segmentation, quantum-resistant security, and self-healing.",
+        "Longer cryptographic keys, additional rounds, and larger blocks.",
+        "Cheaper hardware, higher-capacity disks, and faster processors.",
+        "Fewer suppliers, shorter audit logs, and reduced security staffing."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Zones that adapt by themselves, cryptography that survives quantum attack, and defences that reconfigure after a compromise.",
+      "explanation_ar": "مناطق تتكيّف بنفسها، وتشفير يصمد أمام الهجوم الكمّي، ودفاعات تعيد تشكيل نفسها بعد الاختراق."
+    },
+    {
+      "id": "q10",
+      "concept_id": "tr_resilience_function",
+      "bloom_level": "Remember",
+      "question": "How is the reliability function over time expressed?",
+      "question_ar": "كيف تُعبَّر دالة الموثوقية على الزمن؟",
+      "options": [
+        "Linear decrease over time, based on failure rate multiplied by time.",
+        "Exponential decrease over time, with rate λ expressed as e^(−λt).",
+        "Exponential increase over time, with rate λ expressed as e^(λt).",
+        "A constant value over time, equal to the failure rate λ itself."
+      ],
+      "options_ar": [
+        "تناقص خطي مع الزمن، اعتماداً على معدل الفشل والزمن.",
+        "تناقص أُسّي مع الزمن، ومعدل λ وفق الصيغة e^(−λt).",
+        "نمو أُسّي مع الزمن، ومعدل λ وفق الصيغة e^(λt).",
+        "قيمة ثابتة مع الزمن، تساوي معدل الفشل λ للنظام."
+      ],
+      "options_en": [
+        "Linear decrease over time, based on failure rate multiplied by time.",
+        "Exponential decrease over time, with rate λ expressed as e^(−λt).",
+        "Exponential increase over time, with rate λ expressed as e^(λt).",
+        "A constant value over time, equal to the failure rate λ itself."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The form is the standard exponential survival curve, where the argument is the failure rate multiplied by elapsed time.",
+      "explanation_ar": "الصيغة هي منحنى البقاء الأُسّي القياسي، وحجّته معدّل الفشل مضروباً بالزمن المنقضي."
+    }
+  ]
 }

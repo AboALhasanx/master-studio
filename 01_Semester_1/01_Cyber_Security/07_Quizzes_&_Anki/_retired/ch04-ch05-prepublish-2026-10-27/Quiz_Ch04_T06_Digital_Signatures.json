@@ -1,0 +1,537 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch04_T06_Digital_Signatures",
+ "topic": "Digital signatures",
+ "topic_ar": "التواقيع الرقمية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "sig_purpose",
+   "bloom_level": "Understand",
+   "question": "Why is a hash alone not enough to establish who sent a message?",
+   "question_ar": "ليش الهاش وحده ما يكفي لتحديد مين أرسل الرسالة؟",
+   "options": [
+    "Because the hash is always shorter than the sender's own name.",
+    "Because the hash can only be computed by the intended receiver.",
+    "Because anyone can compute the same hash, so it proves nothing about identity.",
+    "Because the hash changes every single time it is recomputed."
+   ],
+   "options_ar": [
+    "لأن الهاش أقصر دائماً من اسم المرسل نفسه.",
+    "لأن الهاش ما يُحسب إلا من المستقبل المقصود.",
+    "لأن أي واحد يقدر يحسب نفس الهاش، فهو لا يثبت شيئاً عن الهوية.",
+    "لأن الهاش يتغير في كل مرة يُعاد حسابه."
+   ],
+   "options_en": [
+    "Because the hash is always shorter than the sender's own name.",
+    "Because the hash can only be computed by the intended receiver.",
+    "Because anyone can compute the same hash, so it proves nothing about identity.",
+    "Because the hash changes every single time it is recomputed."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Hashes provide integrity but cannot confirm who created the data, which is exactly the gap a digital signature fills.",
+   "explanation_ar": "الهاش يوفّر السلامة بس ما يقدر يؤكّد منو أنشأ البيانات، وهذه بالضبط الفجوة التي يسدّها التوقيع الرقمي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "sig_binds_identity",
+   "bloom_level": "Understand",
+   "question": "What does a digital signature bind to the data?",
+   "question_ar": "شنو يربط التوقيع الرقمي بالبيانات؟",
+   "options": [
+    "The identity of the signer, using asymmetric cryptography.",
+    "The length of the message, using a symmetric cipher.",
+    "The time of transmission, using a trusted timestamp.",
+    "The route the message took, using the routing headers."
+   ],
+   "options_ar": [
+    "هوية الموقّع، باستخدام التشفير غير المتماثل.",
+    "طول الرسالة، باستخدام شيفرة متماثلة.",
+    "وقت الإرسال، باستخدام طابع زمني موثوق.",
+    "المسار الذي سلكته الرسالة، باستخدام ترويسات التوجيه."
+   ],
+   "options_en": [
+    "The identity of the signer, using asymmetric cryptography.",
+    "The length of the message, using a symmetric cipher.",
+    "The time of transmission, using a trusted timestamp.",
+    "The route the message took, using the routing headers."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A signature binds identity to data by applying the signer's private key to the message digest.",
+   "explanation_ar": "التوقيع يربط الهوية بالبيانات بتطبيق المفتاح الخاص للموقّع على بصمة الرسالة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "sig_three_guarantees",
+   "bloom_level": "Remember",
+   "question": "Which three guarantees does the chapter attribute to digital signatures?",
+   "question_ar": "أي الضمانات الثلاثة ينسبها الفصل إلى التواقيع الرقمية؟",
+   "options": [
+    "Confidentiality, integrity and availability.",
+    "Authenticity, confidentiality and scalability.",
+    "Integrity, availability and non-repudiation.",
+    "Integrity, authenticity and non-repudiation."
+   ],
+   "options_ar": [
+    "السرّية والسلامة والتوافر.",
+    "الأصالة والسرّية وقابلية التوسّع.",
+    "السلامة والتوافر وعدم الإنكار.",
+    "السلامة والأصالة وعدم الإنكار."
+   ],
+   "options_en": [
+    "Confidentiality, integrity and availability.",
+    "Authenticity, confidentiality and scalability.",
+    "Integrity, availability and non-repudiation.",
+    "Integrity, authenticity and non-repudiation."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The chapter names integrity, authenticity and non-repudiation as the three guarantees a signature provides.",
+   "explanation_ar": "الفصل يسمّي السلامة والأصالة وعدم الإنكار الضمانات الثلاثة التي يوفّرها التوقيع."
+  },
+  {
+   "id": "q4",
+   "concept_id": "sig_nonrepudiation_meaning",
+   "bloom_level": "Understand",
+   "question": "What does non-repudiation mean in the context of a digital signature?",
+   "question_ar": "شنو يعني عدم الإنكار بسياق التوقيع الرقمي؟",
+   "options": [
+    "The signature expires after a fixed period of time.",
+    "The sender cannot later deny having created the signed message.",
+    "The receiver cannot later deny having read the message.",
+    "The message cannot be forwarded to any third party."
+   ],
+   "options_ar": [
+    "التوقيع ينتهي بعد مدة محددة.",
+    "المرسل ما يقدر ينكر لاحقاً أنه أنشأ الرسالة الموقّعة.",
+    "المستقبل ما يقدر ينكر لاحقاً أنه قرأ الرسالة.",
+    "الرسالة ما تقدر تُمرَّر إلى أي طرف ثالث."
+   ],
+   "options_en": [
+    "The signature expires after a fixed period of time.",
+    "The sender cannot later deny having created the signed message.",
+    "The receiver cannot later deny having read the message.",
+    "The message cannot be forwarded to any third party."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Because only the signer holds the private key, a valid signature cannot afterwards be disowned.",
+   "explanation_ar": "لأن الموقّع وحده يملك المفتاح الخاص، فالتوقيع الصحيح ما يقدر يُنكر بعد ذلك."
+  },
+  {
+   "id": "q5",
+   "concept_id": "sig_step1_hash",
+   "bloom_level": "Remember",
+   "question": "What is the first step in creating a digital signature?",
+   "question_ar": "شنو الخطوة الأولى بإنشاء توقيع رقمي؟",
+   "options": [
+    "The sender computes the hash of the message.",
+    "The sender encrypts the whole message with the private key.",
+    "The receiver requests the sender's public key.",
+    "The sender generates a fresh key pair for the message."
+   ],
+   "options_ar": [
+    "المرسل يحسب هاش الرسالة.",
+    "المرسل يشفّر الرسالة كاملة بالمفتاح الخاص.",
+    "المستقبل يطلب المفتاح العام للمرسل.",
+    "المرسل يولّد زوج مفاتيح جديداً للرسالة."
+   ],
+   "options_en": [
+    "The sender computes the hash of the message.",
+    "The sender encrypts the whole message with the private key.",
+    "The receiver requests the sender's public key.",
+    "The sender generates a fresh key pair for the message."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The process begins by reducing the message to its digest h(M).",
+   "explanation_ar": "العملية تبدأ باختزال الرسالة إلى بصمتها h(M)."
+  },
+  {
+   "id": "q6",
+   "concept_id": "sig_step2_sign",
+   "bloom_level": "Remember",
+   "question": "How is the signature itself produced?",
+   "question_ar": "كيف يُنتج التوقيع نفسه؟",
+   "options": [
+    "By encrypting the hash with the sender's public key.",
+    "By encrypting the whole message with the sender's private key.",
+    "By appending the hash to the message in the clear.",
+    "By encrypting the hash with the sender's private key."
+   ],
+   "options_ar": [
+    "بتشفير الهاش بالمفتاح العام للمرسل.",
+    "بتشفير الرسالة كاملة بالمفتاح الخاص للمرسل.",
+    "بإلحاق الهاش بالرسالة بشكل مكشوف.",
+    "بتشفير الهاش بالمفتاح الخاص للمرسل."
+   ],
+   "options_en": [
+    "By encrypting the hash with the sender's public key.",
+    "By encrypting the whole message with the sender's private key.",
+    "By appending the hash to the message in the clear.",
+    "By encrypting the hash with the sender's private key."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Sig = E_Priv(h(M)) — the digest is what gets signed, not the message itself.",
+   "explanation_ar": "Sig = E_Priv(h(M)) — البصمة هي ما يُوقَّع، لا الرسالة نفسها."
+  },
+  {
+   "id": "q7",
+   "concept_id": "sig_step3_verify",
+   "bloom_level": "Understand",
+   "question": "How does the receiver verify a digital signature?",
+   "question_ar": "كيف يتحقق المستقبل من توقيع رقمي؟",
+   "options": [
+    "By asking the sender to resend the same signature a second time.",
+    "By decrypting the signature with the sender's public key and comparing it to a fresh hash.",
+    "By decrypting the signature with the receiver's private key and comparing it to the message.",
+    "By encrypting the message with the sender's public key and comparing the outputs."
+   ],
+   "options_ar": [
+    "بطلب من المرسل أن يعيد إرسال التوقيع نفسه مرة ثانية.",
+    "بفكّ تشفير التوقيع بالمفتاح العام للمرسل ومقارنته بهاش محسوب جديداً.",
+    "بفكّ تشفير التوقيع بالمفتاح الخاص للمستقبل ومقارنته بالرسالة.",
+    "بتشفير الرسالة بالمفتاح العام للمرسل ومقارنة المخرجات."
+   ],
+   "options_en": [
+    "By asking the sender to resend the same signature a second time.",
+    "By decrypting the signature with the sender's public key and comparing it to a fresh hash.",
+    "By decrypting the signature with the receiver's private key and comparing it to the message.",
+    "By encrypting the message with the sender's public key and comparing the outputs."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Verification checks whether h(M) equals D_Pub(Sig); if the two match, the signature is valid.",
+   "explanation_ar": "التحقق يفحص هل h(M) يساوي D_Pub(Sig)؛ وإذا تطابقا فالتوقيع صحيح."
+  },
+  {
+   "id": "q8",
+   "concept_id": "sig_signs_hash",
+   "bloom_level": "Understand",
+   "question": "Why does the signer sign the hash rather than the whole message?",
+   "question_ar": "ليش الموقّع يوقّع الهاش بدل الرسالة كاملة؟",
+   "options": [
+    "Because the hash is the only part that survives transmission.",
+    "Because signing the message would reveal the private key.",
+    "Because signing the short digest is faster and produces a smaller signature.",
+    "Because the whole message cannot be encrypted by any algorithm."
+   ],
+   "options_ar": [
+    "لأن الهاش هو الجزء الوحيد الذي يصمد أثناء الإرسال.",
+    "لأن توقيع الرسالة يكشف المفتاح الخاص.",
+    "لأن توقيع البصمة القصيرة أسرع وينتج توقيعاً أصغر.",
+    "لأن الرسالة كاملة ما تقدر تُشفَّر بأي خوارزمية."
+   ],
+   "options_en": [
+    "Because the hash is the only part that survives transmission.",
+    "Because signing the message would reveal the private key.",
+    "Because signing the short digest is faster and produces a smaller signature.",
+    "Because the whole message cannot be encrypted by any algorithm."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The message is hashed first and the digest is signed, which is both quicker and more compact.",
+   "explanation_ar": "الرسالة تُهشَّش أولاً ثم تُوقَّع بصمتها، وهذا أسرع وأكثر اختصاراً."
+  },
+  {
+   "id": "q9",
+   "concept_id": "sig_key_reversal_trap",
+   "bloom_level": "Analyze",
+   "question": "A student says that to verify a signature you decrypt it with the sender's private key, just as you decrypt a message with a private key. What is wrong?",
+   "question_ar": "طالب يقول إنك تتحقق من التوقيع بفكّ تشفيره بالمفتاح الخاص للمرسل، تماماً كما تفكّ الرسالة بمفتاح خاص. شنو الخطأ؟",
+   "options": [
+    "Nothing is wrong at all; both encryption and verification use the private key.",
+    "Verification uses the receiver's private key, not the sender's own key.",
+    "Verification uses no key whatsoever; the hash alone is quite enough.",
+    "Verification uses the sender's public key; the private key is what creates the signature."
+   ],
+   "options_ar": [
+    "ما كو خطأ أبداً؛ التشفير والتحقق كلاهما يستخدم المفتاح الخاص.",
+    "التحقق يستخدم المفتاح الخاص للمستقبل، لا مفتاح المرسل.",
+    "التحقق لا يستخدم أي مفتاح؛ الهاش وحده كافٍ تماماً.",
+    "التحقق يستخدم المفتاح العام للمرسل؛ المفتاح الخاص هو ما يُنشئ التوقيع."
+   ],
+   "options_en": [
+    "Nothing is wrong at all; both encryption and verification use the private key.",
+    "Verification uses the receiver's private key, not the sender's own key.",
+    "Verification uses no key whatsoever; the hash alone is quite enough.",
+    "Verification uses the sender's public key; the private key is what creates the signature."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Encryption runs public-to-private for confidentiality, while signing runs private-to-public for authenticity. The direction is reversed.",
+   "explanation_ar": "التشفير يسير من العام إلى الخاص من أجل السرّية، أما التوقيع فيسير من الخاص إلى العام من أجل الأصالة. الاتجاه معكوس."
+  },
+  {
+   "id": "q10",
+   "concept_id": "sig_valid_condition",
+   "bloom_level": "Understand",
+   "question": "When is a digital signature considered valid?",
+   "question_ar": "متى يُعتبر التوقيع الرقمي صحيحاً؟",
+   "options": [
+    "When the hash recovered from the signature equals the recomputed hash.",
+    "When the signature is longer than the message it signs.",
+    "When the sender's public key is at least 2048 bits long.",
+    "When the message was transmitted over an encrypted channel."
+   ],
+   "options_ar": [
+    "عندما يساوي الهاش المستعاد من التوقيع الهاش المعاد حسابه.",
+    "عندما يكون التوقيع أطول من الرسالة التي يوقّعها.",
+    "عندما يكون المفتاح العام للمرسل 2048 بت على الأقل.",
+    "عندما تُرسل الرسالة عبر قناة مشفّرة."
+   ],
+   "options_en": [
+    "When the hash recovered from the signature equals the recomputed hash.",
+    "When the signature is longer than the message it signs.",
+    "When the sender's public key is at least 2048 bits long.",
+    "When the message was transmitted over an encrypted channel."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "If h(M) equals D_Pub(Sig) the signature is valid; any mismatch means the data or the signature was altered.",
+   "explanation_ar": "إذا ساوى h(M) قيمة D_Pub(Sig) فالتوقيع صحيح؛ وأي اختلاف يعني أن البيانات أو التوقيع تعرّض للتغيير."
+  },
+  {
+   "id": "q11",
+   "concept_id": "sig_algorithms",
+   "bloom_level": "Remember",
+   "question": "Which signature algorithms does the chapter name?",
+   "question_ar": "أي خوارزميات التوقيع يسمّيها الفصل؟",
+   "options": [
+    "RSA, DES and Diffie-Hellman.",
+    "MD5, SHA-1 and SHA-256.",
+    "RSA signatures, DSA and ECDSA.",
+    "AES, ChaCha20 and SHA-256."
+   ],
+   "options_ar": [
+    "RSA و DES و ديفي-هيلمان.",
+    "MD5 و SHA-1 و SHA-256.",
+    "تواقيع RSA و DSA و ECDSA.",
+    "AES و ChaCha20 و SHA-256."
+   ],
+   "options_en": [
+    "RSA, DES and Diffie-Hellman.",
+    "MD5, SHA-1 and SHA-256.",
+    "RSA signatures, DSA and ECDSA.",
+    "AES, ChaCha20 and SHA-256."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The three named are RSA Signatures, DSA and ECDSA.",
+   "explanation_ar": "الثلاثة المذكورة هي تواقيع RSA و DSA و ECDSA."
+  },
+  {
+   "id": "q12",
+   "concept_id": "sig_dsa_standard",
+   "bloom_level": "Remember",
+   "question": "What does the chapter say DSA is?",
+   "question_ar": "شنو يقول الفصل إن DSA هي؟",
+   "options": [
+    "A stream cipher used inside TLS 1.3.",
+    "A hash function standardised alongside SHA-2.",
+    "A key exchange protocol used in VPN gateways.",
+    "The U.S. federal standard for digital signatures."
+   ],
+   "options_ar": [
+    "شيفرة تيار تُستخدم داخل TLS 1.3.",
+    "دالة هاش قيّست مع عائلة SHA-2.",
+    "بروتوكول تبادل مفاتيح يُستخدم ببوابات VPN.",
+    "المعيار الفدرالي الأمريكي للتواقيع الرقمية."
+   ],
+   "options_en": [
+    "A stream cipher used inside TLS 1.3.",
+    "A hash function standardised alongside SHA-2.",
+    "A key exchange protocol used in VPN gateways.",
+    "The U.S. federal standard for digital signatures."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "DSA, the Digital Signature Algorithm, is described as a U.S. federal standard.",
+   "explanation_ar": "DSA، خوارزمية التوقيع الرقمي، موصوفة كمعيار فدرالي أمريكي."
+  },
+  {
+   "id": "q13",
+   "concept_id": "sig_ecdsa_advantage",
+   "bloom_level": "Understand",
+   "question": "What advantage does the chapter claim for ECDSA?",
+   "question_ar": "أي ميزة ينسبها الفصل إلى ECDSA؟",
+   "options": [
+    "The ability to sign messages of unlimited length.",
+    "Stronger security with smaller keys.",
+    "Faster signing on devices without hardware acceleration.",
+    "Immunity to every side-channel attack."
+   ],
+   "options_ar": [
+    "القدرة على توقيع رسائل غير محدودة الطول.",
+    "أمان أقوى بمفاتيح أصغر.",
+    "توقيع أسرع على الأجهزة بلا تسريع عتادي.",
+    "حصانة من كل هجمات القناة الجانبية."
+   ],
+   "options_en": [
+    "The ability to sign messages of unlimited length.",
+    "Stronger security with smaller keys.",
+    "Faster signing on devices without hardware acceleration.",
+    "Immunity to every side-channel attack."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "ECDSA gives stronger security with smaller keys, and is used in Bitcoin and modern web services.",
+   "explanation_ar": "ECDSA تعطي أماناً أقوى بمفاتيح أصغر، وتُستخدم بالبيتكوين والخدمات الويب الحديثة."
+  },
+  {
+   "id": "q14",
+   "concept_id": "sig_ecdsa_bitcoin",
+   "bloom_level": "Remember",
+   "question": "Which signature algorithm does Bitcoin use, according to the chapter?",
+   "question_ar": "أي خوارزمية توقيع يستخدمها البيتكوين حسب الفصل؟",
+   "options": [
+    "ECDSA.",
+    "RSA signatures.",
+    "DSA.",
+    "EdDSA."
+   ],
+   "options_ar": [
+    "ECDSA.",
+    "تواقيع RSA.",
+    "DSA.",
+    "EdDSA."
+   ],
+   "options_en": [
+    "ECDSA.",
+    "RSA signatures.",
+    "DSA.",
+    "EdDSA."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Bitcoin uses ECDSA signatures to prove coin ownership.",
+   "explanation_ar": "البيتكوين يستخدم تواقيع ECDSA لإثبات ملكية العملة."
+  },
+  {
+   "id": "q15",
+   "concept_id": "sig_usecases",
+   "bloom_level": "Remember",
+   "question": "Which use cases does the chapter list for digital signatures?",
+   "question_ar": "أي حالات الاستخدام يعدّدها الفصل للتواقيع الرقمية؟",
+   "options": [
+    "Password storage, file integrity verification and audit logging.",
+    "Key exchange, certificate issuance and network access control.",
+    "Software distribution, secure email, blockchain transactions and contracts.",
+    "Disk encryption, database encryption and cloud backup storage."
+   ],
+   "options_ar": [
+    "تخزين كلمات المرور، والتحقق من سلامة الملفات، وتسجيل التدقيق.",
+    "تبادل المفاتيح، وإصدار الشهادات، والتحكم بالوصول للشبكة.",
+    "توزيع البرامج، والبريد الآمن، ومعاملات سلسلة الكتل، والعقود.",
+    "تشفير الأقراص، وتشفير قواعد البيانات، وتخزين النسخ السحابية."
+   ],
+   "options_en": [
+    "Password storage, file integrity verification and audit logging.",
+    "Key exchange, certificate issuance and network access control.",
+    "Software distribution, secure email, blockchain transactions and contracts.",
+    "Disk encryption, database encryption and cloud backup storage."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The four listed are operating-system update signing, S/MIME and PGP email, Bitcoin transactions and legally binding e-signatures.",
+   "explanation_ar": "الحالات الأربع المذكورة هي توقيع تحديثات أنظمة التشغيل، وبريد S/MIME و PGP، ومعاملات البيتكوين، والتواقيع الإلكترونية الملزمة قانوناً."
+  },
+  {
+   "id": "q16",
+   "concept_id": "sig_attack_key_theft",
+   "bloom_level": "Understand",
+   "question": "What can an attacker do if they obtain a signer's private key?",
+   "question_ar": "شنو يقدر يسوي المهاجم إذا حصل على المفتاح الخاص لموقّع؟",
+   "options": [
+    "Only read messages that were sent to that signer.",
+    "Only replay signatures that were already issued.",
+    "Nothing, because the hash still has to match.",
+    "Forge signatures that appear to come from that signer."
+   ],
+   "options_ar": [
+    "يقرأ فقط الرسائل التي أُرسلت إلى ذلك الموقّع.",
+    "يعيد إرسال فقط التواقيع التي صُدرت سابقاً.",
+    "لا شيئاً، لأن الهاش لازم يبقى مطابقاً.",
+    "يزوّر تواقيع تبدو وكأنها صادرة عن ذلك الموقّع."
+   ],
+   "options_en": [
+    "Only read messages that were sent to that signer.",
+    "Only replay signatures that were already issued.",
+    "Nothing, because the hash still has to match.",
+    "Forge signatures that appear to come from that signer."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Private key theft lets an attacker forge any signature, which is why key protection is the central concern.",
+   "explanation_ar": "سرقة المفتاح الخاص تتيح للمهاجم تزوير أي توقيع، ولهذا حماية المفتاح هي محور الاهتمام."
+  },
+  {
+   "id": "q17",
+   "concept_id": "sig_attack_weak_hash",
+   "bloom_level": "Understand",
+   "question": "How does using MD5 or SHA-1 weaken a digital signature?",
+   "question_ar": "كيف يُضعف استخدام MD5 أو SHA-1 التوقيع الرقمي؟",
+   "options": [
+    "They prevent the receiver from computing any hash.",
+    "Their collisions allow a forged signature on another message.",
+    "They produce digests that are too short to sign.",
+    "They make the signature longer than the message."
+   ],
+   "options_ar": [
+    "تمنع المستقبل من حساب أي هاش.",
+    "تصادماتها تسمح بتوقيع مزوّر على رسالة أخرى.",
+    "تنتج بصمات أقصر من أن تُوقَّع.",
+    "تجعل التوقيع أطول من الرسالة."
+   ],
+   "options_en": [
+    "They prevent the receiver from computing any hash.",
+    "Their collisions allow a forged signature on another message.",
+    "They produce digests that are too short to sign.",
+    "They make the signature longer than the message."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "If the underlying hash is broken, a collision lets an attacker produce a second message that matches a signature made for the first.",
+   "explanation_ar": "إذا كان الهاش الأساسي مكسوراً، فالتصادم يسمح للمهاجم بإنتاج رسالة ثانية تطابق توقيعاً صدر للرسالة الأولى."
+  },
+  {
+   "id": "q18",
+   "concept_id": "sig_attack_sidechannel",
+   "bloom_level": "Understand",
+   "question": "How can implementation flaws compromise a digital signature?",
+   "question_ar": "كيف تقدر عيوب التنفيذ أن تخرّب التوقيع الرقمي؟",
+   "options": [
+    "They shorten the digest below its published length.",
+    "They allow the public key to be derived from the signature.",
+    "Side-channel attacks such as timing or power analysis can leak the key.",
+    "They make the signature deterministic across different messages."
+   ],
+   "options_ar": [
+    "تقصّر البصمة عن طولها المنشور.",
+    "تسمح باشتقاق المفتاح العام من التوقيع.",
+    "هجمات القناة الجانبية مثل تحليل التوقيت أو الطاقة تقدر تسرّب المفتاح.",
+    "تجعل التوقيع حتمياً عبر رسائل مختلفة."
+   ],
+   "options_en": [
+    "They shorten the digest below its published length.",
+    "They allow the public key to be derived from the signature.",
+    "Side-channel attacks such as timing or power analysis can leak the key.",
+    "They make the signature deterministic across different messages."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Timing and power side channels can leak the private key even when the algorithm itself is sound.",
+   "explanation_ar": "قنوات التوقيت والطاقة الجانبية تقدر تسرّب المفتاح الخاص حتى لو كانت الخوارزمية نفسها سليمة."
+  }
+ ]
+}

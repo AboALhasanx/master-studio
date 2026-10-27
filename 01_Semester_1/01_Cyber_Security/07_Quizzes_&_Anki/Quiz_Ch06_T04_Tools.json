@@ -8,90 +8,32 @@
  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
  "subject": "01_Cyber_Security",
  "quiz_id": "Quiz_Ch06_T04_Tools",
- "topic": "Tools in web application security",
- "topic_ar": "أدوات أمن تطبيقات الويب",
+ "topic": "Web Security Tools and WAF",
+ "topic_ar": "أدوات أمن الويب وWAF",
  "questions": [
   {
    "id": "q1",
-   "concept_id": "w6_tools_vs_practices",
-   "bloom_level": "Understand",
-   "question": "Why does the chapter insist tools and practices are both required?",
-   "question_ar": "ليش الفصل يشدّد إن الأدوات والممارسات الاثنين مطلوبين؟",
-   "options": [
-    "Because practices only matter for regulated firms.",
-    "Because tools cannot be audited by third parties.",
-    "Tools alone are cost; practice alone is intent.",
-    "Because tools are cheap and practices are expensive."
-   ],
-   "options_ar": [
-    "لأن الممارسات تهم المؤسسات المنظّمة فقط.",
-    "لأن الأدوات ما يمكن تدقيقها من طرف ثالث.",
-    "الأداة وحدها كلفة، والممارسة وحدها نيّة.",
-    "لأن الأدوات رخيصة والممارسات غالية."
-   ],
-   "options_en": [
-    "Because practices only matter for regulated firms.",
-    "Because tools cannot be audited by third parties.",
-    "Tools alone are cost; practice alone is intent.",
-    "Because tools are cheap and practices are expensive."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "A tool deployed without disciplined practice is just expense, and a practice without tooling never gets executed.",
-   "explanation_ar": "أداة منصّبة بلا ممارسة منظّمة تصير كلفة فقط، وممارسة بلا أدوات ما تتنفّذ أبداً."
-  },
-  {
-   "id": "q2",
-   "concept_id": "w6_beyond_enumeration",
-   "bloom_level": "Remember",
-   "question": "What must understanding of tools and practices move beyond, and toward what?",
-   "question_ar": "ما لازم يتجاوزه فهم الأدوات والممارسات، ونحو شنو؟",
-   "options": [
-    "Beyond training, toward staffing ratios.",
-    "Beyond enumeration, toward integration and evaluation.",
-    "Beyond procurement, toward licence consolidation.",
-    "Beyond auditing, toward certification renewal."
-   ],
-   "options_ar": [
-    "ما بعد التدريب، نحو نسب الكوادر.",
-    "ما بعد التعداد، نحو التكامل والتقييم.",
-    "ما بعد الشراء، نحو توحيد التراخيص.",
-    "ما بعد التدقيق، نحو تجديد الشهادات."
-   ],
-   "options_en": [
-    "Beyond training, toward staffing ratios.",
-    "Beyond enumeration, toward integration and evaluation.",
-    "Beyond procurement, toward licence consolidation.",
-    "Beyond auditing, toward certification renewal."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Strategic integration, continuous evolution and quantitative evaluation replace a list of product names.",
-   "explanation_ar": "التكامل الاستراتيجي والتطوّر المستمر والتقييم الكمّي تحلّ محل قائمة أسماء منتجات."
-  },
-  {
-   "id": "q3",
    "concept_id": "w6_waf_layer",
    "bloom_level": "Remember",
    "question": "At which layer does a web application firewall operate?",
    "question_ar": "بأي طبقة يعمل جدار حماية تطبيقات الويب؟",
    "options": [
-    "The application layer, filtering HTTP and HTTPS.",
-    "The network layer, filtering IP packets.",
-    "The transport layer, filtering TCP segments.",
-    "The link layer, filtering Ethernet frames."
+    "Application layer filters web traffic.",
+    "The network layer for IP packets.",
+    "The transport layer for TCP segments.",
+    "The link layer for Ethernet frames."
    ],
    "options_ar": [
-    "طبقة التطبيق، ويرشّح HTTP و HTTPS.",
-    "طبقة الشبكة، ويرشّح حزم IP.",
-    "طبقة النقل، ويرشّح مقاطع TCP.",
-    "طبقة الربط، ويرشّح إطارات Ethernet."
+    "طبقة التطبيق لحركة الويب.",
+    "طبقة الشبكة لنقل حزم IP.",
+    "طبقة النقل لمقاطع TCP.",
+    "الربط وإطارات Ethernet."
    ],
    "options_en": [
-    "The application layer, filtering HTTP and HTTPS.",
-    "The network layer, filtering IP packets.",
-    "The transport layer, filtering TCP segments.",
-    "The link layer, filtering Ethernet frames."
+    "Application layer filters web traffic.",
+    "The network layer for IP packets.",
+    "The transport layer for TCP segments.",
+    "The link layer for Ethernet frames."
    ],
    "answer": "A",
    "correct": 0,
@@ -99,57 +41,57 @@
    "explanation_ar": "يقرأ محادثة التطبيق نفسها، ولهذا يقدر يعرف حمولات الحقن والسكربتات."
   },
   {
-   "id": "q4",
+   "id": "q2",
    "concept_id": "w6_waf_methods",
    "bloom_level": "Remember",
    "question": "Which detection methods do modern WAFs deploy?",
    "question_ar": "أي طرق كشف تستخدمها الجدارات الحديثة؟",
    "options": [
-    "Honeypots, tarpits and DNS sinkholes.",
-    "Checksums, parity bits and error correction.",
-    "Kerberos tickets and directory lookups.",
-    "Signatures, heuristic anomaly and AI filtering."
+    "Kerberos tickets and directory searches.",
+    "Signatures, anomaly checks, and AI.",
+    "Honeypots, tarpits, and DNS sinks.",
+    "Checksums, parity, and error correction."
    ],
    "options_ar": [
-    "مصائد عسل وtarpits ومصارف DNS.",
-    "مجاميع تحقّق وبتات تكافؤ وتصحيح أخطاء.",
     "تذاكر Kerberos واستعلامات الدليل.",
-    "توقيعات وكشف شذوذ إرشادي وترشيح بالذكاء الاصطناعي."
+    "توقيعات وكشف شذوذ ومرشحات AI.",
+    "مصائد اتصال وإبطاء ومصارف DNS.",
+    "مجاميع تحقق وتكافؤ وتصحيح أخطاء."
    ],
    "options_en": [
-    "Honeypots, tarpits and DNS sinkholes.",
-    "Checksums, parity bits and error correction.",
-    "Kerberos tickets and directory lookups.",
-    "Signatures, heuristic anomaly and AI filtering."
+    "Kerberos tickets and directory searches.",
+    "Signatures, anomaly checks, and AI.",
+    "Honeypots, tarpits, and DNS sinks.",
+    "Checksums, parity, and error correction."
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The three named families are signature matching, heuristic anomaly detection, and AI-driven adaptive filtering.",
-   "explanation_ar": "العائلات الثلاث المذكورة هي مطابقة التوقيعات، وكشف الشذوذ الإرشادي، والترشيح التكيّفي المدفوع بالذكاء الاصطناعي."
+   "answer": "B",
+   "correct": 1,
+   "explanation": "WAFs use signature matching, heuristic anomaly detection, and adaptive AI filtering.",
+   "explanation_ar": "تشمل الطرق مطابقة التوقيعات وكشف الشذوذ الإرشادي والترشيح التكيّفي المدفوع بالذكاء الاصطناعي."
   },
   {
-   "id": "q5",
+   "id": "q3",
    "concept_id": "w6_ewaf_formula",
    "bloom_level": "Remember",
    "question": "How is WAF efficiency expressed?",
    "question_ar": "كيف تُعبَّر كفاءة الـWAF؟",
    "options": [
-    "False positive rate minus lambda times the true positive rate.",
-    "The product of the true and false positive rates.",
-    "True positive rate minus lambda times the false positive rate.",
-    "True positive rate plus lambda times the false positive rate."
+    "False positives minus lambda-weighted true positives.",
+    "The product of true and false positive rates.",
+    "True positives minus lambda-weighted false positives.",
+    "True positives plus lambda-weighted false positives."
    ],
    "options_ar": [
-    "معدّل الإيجابيات الكاذبة ناقص لامدا × الصحيحة.",
-    "حاصل ضرب معدّلي الإيجابيات الصحيحة والكاذبة.",
-    "معدّل الإيجابيات الصحيحة ناقص لامدا × معدّل الإيجابيات الكاذبة.",
-    "معدّل الإيجابيات الصحيحة زائد لامدا × الإيجابيات الكاذبة."
+    "الكاذبة ناقص لامدا مضروباً بالصحيحة.",
+    "حاصل ضرب معدلي الصحيحة والكاذبة معاً.",
+    "الصحيحة ناقص لامدا مضروباً بالكاذبة.",
+    "الصحيحة زائد لامدا مضروباً بالكاذبة."
    ],
    "options_en": [
-    "False positive rate minus lambda times the true positive rate.",
-    "The product of the true and false positive rates.",
-    "True positive rate minus lambda times the false positive rate.",
-    "True positive rate plus lambda times the false positive rate."
+    "False positives minus lambda-weighted true positives.",
+    "The product of true and false positive rates.",
+    "True positives minus lambda-weighted false positives.",
+    "True positives plus lambda-weighted false positives."
    ],
    "answer": "C",
    "correct": 2,
@@ -157,86 +99,28 @@
    "explanation_ar": "القدرة على الكشف تُحسب لها، والإنذارات الكاذبة تُخصم، فالدرجة تقايض الدقة بالاستعمالية."
   },
   {
-   "id": "q6",
-   "concept_id": "w6_lambda_meaning",
-   "bloom_level": "Understand",
-   "question": "What does the lambda weight represent?",
-   "question_ar": "شنو يمثّل وزن لامدا؟",
-   "options": [
-    "The share of traffic that is malicious.",
-    "The organisation's tolerance for false positives.",
-    "The number of rules loaded into the WAF.",
-    "The encryption strength of inspected traffic."
-   ],
-   "options_ar": [
-    "نسبة الترافيك الضارّ.",
-    "تحمّل المؤسسة للإنذارات الكاذبة.",
-    "عدد القواعد المحمّلة بالـWAF.",
-    "قوة تشفير الترافيك المفحوص."
-   ],
-   "options_en": [
-    "The share of traffic that is malicious.",
-    "The organisation's tolerance for false positives.",
-    "The number of rules loaded into the WAF.",
-    "The encryption strength of inspected traffic."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "It encodes how much the business is hurt by blocking legitimate requests, so it is a policy choice rather than a technical constant.",
-   "explanation_ar": "يعبّر عن شكثر يتضرّر العمل من حجب طلبات شرعية، فهو خيار سياسة مو ثابت تقني."
-  },
-  {
-   "id": "q7",
-   "concept_id": "w6_lambda_effect",
-   "bloom_level": "Analyze",
-   "question": "What happens when an organisation raises the lambda weight?",
-   "question_ar": "شنو يصير لمّا ترفع المؤسسة وزن لامدا؟",
-   "options": [
-    "The score penalises false alarms more, so the WAF gets stricter.",
-    "The score rewards detection more, so the WAF blocks less.",
-    "The score becomes independent of the traffic mix.",
-    "The score ignores missed attacks entirely."
-   ],
-   "options_ar": [
-    "الدرجة تعاقب الإنذارات الكاذبة أكثر، فيصير الجدار أكثر حذراً.",
-    "الدرجة تكافئ الكشف أكثر، فيحجب أقل.",
-    "الدرجة تصير مستقلة عن مزيج الترافيك.",
-    "الدرجة تتجاهل الهجمات الفائتة بالكامل."
-   ],
-   "options_en": [
-    "The score penalises false alarms more, so the WAF gets stricter.",
-    "The score rewards detection more, so the WAF blocks less.",
-    "The score becomes independent of the traffic mix.",
-    "The score ignores missed attacks entirely."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "A higher weight makes a false alarm costlier than a miss in score terms, which is the right setting for a business that cannot afford outages.",
-   "explanation_ar": "وزن أعلى يخلي الإنذار الكاذب أغلى من التفويت بالدرجة، وهذا الضبط الصحيح لعمل ما يتحمّل انقطاعاً."
-  },
-  {
-   "id": "q8",
+   "id": "q4",
    "concept_id": "w6_scanner_role",
    "bloom_level": "Understand",
    "question": "What do vulnerability scanners probe applications for?",
    "question_ar": "عن شنو تفحص ماسحات الثغرات التطبيقات؟",
    "options": [
-    "Only SQL injection and cross-site scripting flaws.",
-    "Runtime memory corruption while the code executes.",
-    "User behaviour anomalies tracked across whole sessions.",
-    "Misconfigurations, outdated components and unsafe patterns."
+    "SQL injection and XSS in legacy forms only.",
+    "Runtime memory faults during code execution.",
+    "User-behaviour anomalies across active sessions.",
+    "Configuration flaws, stale parts, unsafe code."
    ],
    "options_ar": [
-    "ثغرات حقن SQL و XSS فقط.",
-    "تلف الذاكرة أثناء التنفيذ.",
-    "شذوذ سلوك المستخدم عبر الجلسات.",
-    "أخطاء التهيئة والمكوّنات القديمة والأنماط غير الآمنة."
+    "حقن SQL وXSS فقط في النماذج القديمة.",
+    "أخطاء ذاكرة التطبيق أثناء تشغيله في الإنتاج.",
+    "شذوذ سلوك المستخدم خلال جلسات التطبيق.",
+    "أخطاء تهيئة ومكونات قديمة وأنماط خطرة."
    ],
    "options_en": [
-    "Only SQL injection and cross-site scripting flaws.",
-    "Runtime memory corruption while the code executes.",
-    "User behaviour anomalies tracked across whole sessions.",
-    "Misconfigurations, outdated components and unsafe patterns."
+    "SQL injection and XSS in legacy forms only.",
+    "Runtime memory faults during code execution.",
+    "User-behaviour anomalies across active sessions.",
+    "Configuration flaws, stale parts, unsafe code."
    ],
    "answer": "D",
    "correct": 3,
@@ -244,57 +128,57 @@
    "explanation_ar": "هي فاحصات آلية لأخطاء التهيئة والمكوّنات القديمة وأنماط البرمجة غير الآمنة، مو للعيوب المنطقية الجديدة."
   },
   {
-   "id": "q9",
+   "id": "q5",
    "concept_id": "w6_scanner_cve",
    "bloom_level": "Remember",
    "question": "Which database do vulnerability scanners integrate with?",
    "question_ar": "مع أي قاعدة بيانات تتكامل ماسحات الثغرات؟",
    "options": [
-    "The routing information base.",
-    "The identity provider directory.",
-    "Common Vulnerabilities and Exposures.",
-    "The certificate revocation list."
+    "CVE vulnerability catalogue.",
+    "Certificate revocation list.",
+    "Routing information base.",
+    "Identity provider directory."
    ],
    "options_ar": [
-    "قاعدة معلومات التوجيه.",
-    "دليل مزوّد الهوية.",
-    "قاعدة الثغرات والتعرّضات الشائعة.",
-    "قائمة إبطال الشهادات."
+    "قاعدة CVE للثغرات المعروفة.",
+    "قائمة إبطال الشهادات الرقمية.",
+    "قاعدة معلومات التوجيه الشبكي.",
+    "دليل مزود الهوية المؤسسي."
    ],
    "options_en": [
-    "The routing information base.",
-    "The identity provider directory.",
-    "Common Vulnerabilities and Exposures.",
-    "The certificate revocation list."
+    "CVE vulnerability catalogue.",
+    "Certificate revocation list.",
+    "Routing information base.",
+    "Identity provider directory."
    ],
-   "answer": "C",
-   "correct": 2,
+   "answer": "A",
+   "correct": 0,
    "explanation": "CVE gives every known weakness a common identifier, which is what lets a scanner's finding be matched to public knowledge.",
    "explanation_ar": "CVE يعطي كل ضعف معروف معرّفاً مشتركاً، وهذا اللي يخلي نتيجة الفاحص تُطابَق بالمعرفة العامة."
   },
   {
-   "id": "q10",
+   "id": "q6",
    "concept_id": "w6_rasp_definition",
    "bloom_level": "Understand",
    "question": "Where does RASP operate and what does it analyse?",
    "question_ar": "وين يشتغل الـRASP وشنو يحلّل؟",
    "options": [
-    "At the DNS layer, analysing query patterns.",
-    "Inside the runtime, analysing execution flow and memory.",
-    "At the network edge, analysing packet headers.",
-    "In the build pipeline, analysing source code."
+    "At DNS, analysing DNS query patterns.",
+    "Inside runtime: execution and memory.",
+    "At the network edge, reading packet headers.",
+    "In the build pipeline, reading source code."
    ],
    "options_ar": [
-    "عند طبقة DNS، ويحلّل أنماط الاستعلام.",
-    "داخل بيئة التشغيل، ويحلّل مسار التنفيذ والذاكرة.",
-    "عند حافة الشبكة، ويحلّل ترويسات الحزم.",
-    "داخل خط البناء، ويحلّل الكود المصدري."
+    "عند DNS، يقرأ أنماط الاستعلام.",
+    "داخل التشغيل، يحلل التنفيذ والذاكرة.",
+    "عند حافة الشبكة، يقرأ ترويسات الحزم.",
+    "داخل خط البناء، يقرأ الشفرة البرمجية."
    ],
    "options_en": [
-    "At the DNS layer, analysing query patterns.",
-    "Inside the runtime, analysing execution flow and memory.",
-    "At the network edge, analysing packet headers.",
-    "In the build pipeline, analysing source code."
+    "At DNS, analysing DNS query patterns.",
+    "Inside runtime: execution and memory.",
+    "At the network edge, reading packet headers.",
+    "In the build pipeline, reading source code."
    ],
    "answer": "B",
    "correct": 1,
@@ -302,294 +186,120 @@
    "explanation_ar": "يراقب السلوك الداخلي للتطبيق — مسار التنفيذ واستدعاءات API وحالات الذاكرة — مو الترافيك الواصل له."
   },
   {
-   "id": "q11",
+   "id": "q7",
    "concept_id": "w6_waf_vs_rasp",
    "bloom_level": "Analyze",
    "question": "What is the essential difference between a WAF and RASP?",
    "question_ar": "شنو الفرق الجوهري بين الـWAF والـRASP؟",
    "options": [
-    "The WAF sees external traffic; RASP sees internal execution.",
-    "The WAF is open source; RASP is always commercial.",
-    "The WAF runs in the cloud; RASP runs on hardware.",
-    "The WAF blocks requests; RASP only reports them."
+    "WAF runs in cloud; RASP runs on hardware.",
+    "WAF blocks requests; RASP only reports them.",
+    "WAF filters traffic; RASP monitors execution.",
+    "WAF is open source; RASP is always commercial."
    ],
    "options_ar": [
-    "الـWAF يشوف الترافيك الخارجي، والـRASP يشوف التنفيذ الداخلي.",
-    "الـWAF مفتوح المصدر، والـRASP تجاري دائماً.",
-    "الـWAF بالسحابة، والـRASP على عتاد.",
-    "الـWAF يحجب، والـRASP يبلّغ فقط."
+    "WAF يعمل بالسحابة؛ وRASP يعمل على العتاد.",
+    "WAF يحجب الطلبات؛ وRASP يكتفي بالتبليغ.",
+    "WAF يفحص الحركة؛ RASP يراقب التشغيل.",
+    "WAF يفحص الشفرة؛ وRASP يراقب سجلات الشبكة."
    ],
    "options_en": [
-    "The WAF sees external traffic; RASP sees internal execution.",
-    "The WAF is open source; RASP is always commercial.",
-    "The WAF runs in the cloud; RASP runs on hardware.",
-    "The WAF blocks requests; RASP only reports them."
+    "WAF runs in cloud; RASP runs on hardware.",
+    "WAF blocks requests; RASP only reports them.",
+    "WAF filters traffic; RASP monitors execution.",
+    "WAF is open source; RASP is always commercial."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "An attack that slips past the WAF can still be caught by RASP, which is exactly the layered-defence argument.",
    "explanation_ar": "الهجوم اللي يعدّي الـWAF يظل يقدر الـRASP يمسكه، وهذا بالضبط حجّة الدفاع الطبقي."
   },
   {
-   "id": "q12",
-   "concept_id": "w6_rc_formula",
-   "bloom_level": "Remember",
-   "question": "How is runtime coverage expressed?",
-   "question_ar": "كيف تُعبَّر تغطية وقت التشغيل؟",
-   "options": [
-    "Total execution paths over monitored ones.",
-    "Monitored paths multiplied by total paths.",
-    "Total paths minus monitored paths.",
-    "Monitored execution paths over the total."
-   ],
-   "options_ar": [
-    "إجمالي المسارات على المراقَبة.",
-    "المسارات المراقَبة مضروبة بالإجمالي.",
-    "الإجمالي ناقص المراقَبة.",
-    "مسارات التنفيذ المراقَبة على الإجمالي."
-   ],
-   "options_en": [
-    "Total execution paths over monitored ones.",
-    "Monitored paths multiplied by total paths.",
-    "Total paths minus monitored paths.",
-    "Monitored execution paths over the total."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "It is the fraction of the running code the protector actually observes, so it measures reach rather than accuracy.",
-   "explanation_ar": "هي نسبة الكود الشغّال اللي يراقبه الحامي فعلاً، فتقيس المدى مو الدقة."
-  },
-  {
-   "id": "q13",
-   "concept_id": "w6_rc_meaning",
-   "bloom_level": "Understand",
-   "question": "What does runtime coverage approaching one indicate?",
-   "question_ar": "شنو تدلّ عليه تغطية وقت تشغيل تقترب من الواحد؟",
-   "options": [
-    "Fewer execution paths being monitored.",
-    "The application runs faster under load.",
-    "More comprehensive runtime protection.",
-    "More false positives during execution."
-   ],
-   "options_ar": [
-    "مسارات تنفيذ أقل تُراقَب.",
-    "التطبيق يشتغل أسرع تحت الحمل.",
-    "حماية أشمل وقت التشغيل.",
-    "إنذارات كاذبة أكثر أثناء التنفيذ."
-   ],
-   "options_en": [
-    "Fewer execution paths being monitored.",
-    "The application runs faster under load.",
-    "More comprehensive runtime protection.",
-    "More false positives during execution."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Coverage near one means almost every path the code can take is observed, leaving few blind spots for an attacker.",
-   "explanation_ar": "التغطية قرب الواحد تعني إن تقريباً كل مسار ممكن للكود مُراقَب، فتبقى نقاط عمياء قليلة."
-  },
-  {
-   "id": "q14",
-   "concept_id": "w6_acf_formula",
-   "bloom_level": "Remember",
-   "question": "How is the adversarial creativity factor expressed?",
-   "question_ar": "كيف يُعبَّر عامل الإبداع الخصمي؟",
-   "options": [
-    "Total vulnerabilities minus discovered ones.",
-    "Discovered vulnerabilities over assumed ones.",
-    "Assumed vulnerabilities over discovered ones.",
-    "Discovered vulnerabilities times assumed ones."
-   ],
-   "options_ar": [
-    "إجمالي الثغرات ناقص المكتشفة.",
-    "الثغرات المكتشفة على المفترضة.",
-    "المفترضة على المكتشفة.",
-    "المكتشفة مضروبة بالمفترضة."
-   ],
-   "options_en": [
-    "Total vulnerabilities minus discovered ones.",
-    "Discovered vulnerabilities over assumed ones.",
-    "Assumed vulnerabilities over discovered ones.",
-    "Discovered vulnerabilities times assumed ones."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "It compares what human-led testing actually found against what automated analysis expected to find.",
-   "explanation_ar": "يقارن ما وجده الاختبار البشري فعلاً بما توقّع التحليل الآلي إيجاده."
-  },
-  {
-   "id": "q15",
+   "id": "q8",
    "concept_id": "w6_acf_interpretation",
    "bloom_level": "Analyze",
    "question": "What does a factor greater than one signify?",
    "question_ar": "شنو يعني عامل أكبر من الواحد؟",
    "options": [
-    "Human or hybrid testing found more than automation assumed.",
-    "Automation found more than human testing expected.",
-    "The scanner produced too many false positives.",
-    "The pentest was conducted without any tooling."
+    "Automation finds more than human testing expects.",
+    "The scanner produced excessive false positives.",
+    "The penetration test used no security tools.",
+    "Humans find more than automation predicts."
    ],
    "options_ar": [
-    "الاختبار البشري أو الهجين وجد أكثر مما افترضته الأتمتة.",
-    "الأتمتة وجدت أكثر مما توقّعه البشري.",
-    "الفاحص أنتج إنذارات كاذبة كثيرة.",
-    "اختبار الاختراق تمّ بلا أي أدوات."
+    "الأتمتة وجدت أكثر مما توقعه الاختبار البشري.",
+    "الفاحص أنتج إنذارات كاذبة أكثر من اللازم.",
+    "اختبار الاختراق لم يستخدم أدوات أمنية.",
+    "الاختبار البشري وجد أكثر مما قدّرته الأتمتة."
    ],
    "options_en": [
-    "Human or hybrid testing found more than automation assumed.",
-    "Automation found more than human testing expected.",
-    "The scanner produced too many false positives.",
-    "The pentest was conducted without any tooling."
+    "Automation finds more than human testing expects.",
+    "The scanner produced excessive false positives.",
+    "The penetration test used no security tools.",
+    "Humans find more than automation predicts."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Above one, adversarial creativity adds insight that scanning alone does not produce, which is the strategic argument for keeping humans in the loop.",
    "explanation_ar": "فوق الواحد، الإبداع الخصمي يضيف رؤية ما تنتجها الفاحصات وحدها، وهذي حجّة إبقاء الإنسان بالحلقة."
   },
   {
-   "id": "q16",
+   "id": "q9",
    "concept_id": "w6_siem_role",
    "bloom_level": "Remember",
    "question": "Where does the power of a SIEM lie?",
    "question_ar": "وين تكمن قوة الـSIEM؟",
    "options": [
-    "In blocking attacks before they reach the app.",
-    "In storing raw packets for legal discovery.",
-    "In patching vulnerable dependencies automatically.",
-    "In event correlation that turns alerts into incidents."
+    "Correlated events turn alerts into incidents.",
+    "Attack blocking happens before requests reach apps.",
+    "Raw packet storage supports legal investigations.",
+    "Automatic patching fixes vulnerable dependencies."
    ],
    "options_ar": [
-    "في حجب الهجمات قبل وصولها للتطبيق.",
-    "في تخزين الحزم الخام للاكتشاف القانوني.",
-    "في ترقيع التبعيات الضعيفة تلقائياً.",
-    "في ربط الأحداث اللي يحوّل التنبيهات إلى حوادث."
+    "ربط الأحداث يحول التنبيهات إلى حوادث.",
+    "حجب الهجمات قبل وصول الطلبات للتطبيق.",
+    "تخزين الحزم الخام يدعم التحقيقات القانونية.",
+    "الترقيع الآلي يصلح التبعيات الضعيفة."
    ],
    "options_en": [
-    "In blocking attacks before they reach the app.",
-    "In storing raw packets for legal discovery.",
-    "In patching vulnerable dependencies automatically.",
-    "In event correlation that turns alerts into incidents."
+    "Correlated events turn alerts into incidents.",
+    "Attack blocking happens before requests reach apps.",
+    "Raw packet storage supports legal investigations.",
+    "Automatic patching fixes vulnerable dependencies."
    ],
-   "answer": "D",
-   "correct": 3,
+   "answer": "A",
+   "correct": 0,
    "explanation": "Isolated alerts are noise; correlation across sources is what produces an incident an analyst can actually act on.",
    "explanation_ar": "التنبيهات المعزولة ضجيج؛ والربط بين المصادر هو اللي ينتج حادثة يقدر المحلّل يتصرّف بيها."
   },
   {
-   "id": "q17",
+   "id": "q10",
    "concept_id": "w6_cevent_formula",
    "bloom_level": "Remember",
    "question": "On which three factors does event correlation strength depend?",
    "question_ar": "على أي ثلاثة عوامل تعتمد قوة ربط الأحداث؟",
    "options": [
-    "User role, department and clearance level.",
-    "Encryption strength, key length and rotation.",
-    "Temporal proximity, source similarity and threshold.",
-    "Packet size, port number and protocol family."
+    "Cipher strength, key length, and rotation.",
+    "Timing, source similarity, plus threshold.",
+    "Packet size, port number, and protocol family.",
+    "User role, department, and clearance level."
    ],
    "options_ar": [
-    "دور المستخدم والقسم ومستوى التصريح.",
-    "قوة التشفير وطول المفتاح والتدوير.",
-    "التقارب الزمني وتشابه المصدر والعتبة.",
-    "حجم الحزمة ورقم المنفذ وعائلة البروتوكول."
+    "قوة التشفير وطول المفتاح وتواتر تدويره.",
+    "توقيت الحدث وتشابه المنشأ وعتبة الترابط.",
+    "حجم الحزمة ورقم المنفذ ونوع البروتوكول.",
+    "دور المستخدم والقسم ومستوى التصريح."
    ],
    "options_en": [
-    "User role, department and clearance level.",
-    "Encryption strength, key length and rotation.",
-    "Temporal proximity, source similarity and threshold.",
-    "Packet size, port number and protocol family."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Events that happen close together, come from the same source and clear the probability threshold are correlated into one incident.",
-   "explanation_ar": "الأحداث اللي تصير قريبة زمنياً، ومن نفس المصدر، وتتجاوز عتبة الاحتمال، تُربط بحادثة واحدة."
-  },
-  {
-   "id": "q18",
-   "concept_id": "w6_emerging_tools",
-   "bloom_level": "Remember",
-   "question": "Which three emerging tool classes does the chapter name?",
-   "question_ar": "أي ثلاث فئات أدوات ناشئة يذكرها الفصل؟",
-   "options": [
-    "Load balancers, CDNs and reverse caches.",
-    "API gateways, cloud scanners and AI detection.",
-    "Tarpits, honeynets and DNS blackholes.",
-    "Password vaults, HSMs and smart cards."
-   ],
-   "options_ar": [
-    "موازنات حمل و CDN وكاشات عكسية.",
-    "بوّابات API وماسحات سحابية وكشف بالذكاء الاصطناعي.",
-    "tarpits وشبكات مصائد ومصارف DNS.",
-    "خزائن كلمات مرور و HSM وبطاقات ذكية."
-   ],
-   "options_en": [
-    "Load balancers, CDNs and reverse caches.",
-    "API gateways, cloud scanners and AI detection.",
-    "Tarpits, honeynets and DNS blackholes.",
-    "Password vaults, HSMs and smart cards."
+    "Cipher strength, key length, and rotation.",
+    "Timing, source similarity, plus threshold.",
+    "Packet size, port number, and protocol family.",
+    "User role, department, and clearance level."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "API gateways with schema validation and OAuth, container and serverless scanners, and AI anomaly detection predicting attack sequences.",
-   "explanation_ar": "بوّابات API بتحقّق schema و OAuth، وماسحات حاويات وserverless، وكشف شذوذ بالذكاء الاصطناعي يتنبّأ بتسلسلات الهجوم."
-  },
-  {
-   "id": "q19",
-   "concept_id": "w6_scanner_prioritisation",
-   "bloom_level": "Remember",
-   "question": "What do scanner risk scores form the basis for?",
-   "question_ar": "على شنو تقوم درجات الخطر الصادرة من الماسحات؟",
-   "options": [
-    "Vulnerability prioritisation matrices.",
-    "Penetration test scoping documents.",
-    "Service level agreements with vendors.",
-    "Employee security awareness scores."
-   ],
-   "options_ar": [
-    "مصفوفات ترتيب أولوية الثغرات.",
-    "وثائق تحديد نطاق اختبار الاختراق.",
-    "اتفاقيات مستوى الخدمة مع المورّدين.",
-    "درجات توعية الموظفين الأمنية."
-   ],
-   "options_en": [
-    "Vulnerability prioritisation matrices.",
-    "Penetration test scoping documents.",
-    "Service level agreements with vendors.",
-    "Employee security awareness scores."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Formalised risk scores are what let an enterprise build a prioritisation matrix instead of working through findings in scan order.",
-   "explanation_ar": "درجات الخطر المصاغة هي اللي تخلي المؤسسة تبني مصفوفة ترتيب بدل ما تشتغل على النتائج بترتيب الفحص."
-  },
-  {
-   "id": "q20",
-   "concept_id": "w6_tools_integration",
-   "bloom_level": "Understand",
-   "question": "Why does the chapter insist tools must be integrated rather than listed?",
-   "question_ar": "ليش الفصل يشدّد إن الأدوات لازم تتكامل مو بس تُعدّ؟",
-   "options": [
-    "Because integrated suites are always cheaper to buy.",
-    "Because regulators forbid standalone security tools.",
-    "Because each tool must use the same vendor.",
-    "Because isolated tools leave gaps that adversaries exploit."
-   ],
-   "options_ar": [
-    "لأن الحزم المتكاملة أرخص بالشراء دائماً.",
-    "لأن الأنظمة تمنع الأدوات المستقلة.",
-    "لأن كل أداة لازم تكون من نفس المورّد.",
-    "لأن الأدوات المعزولة تترك فراغات يستغلها الخصوم."
-   ],
-   "options_en": [
-    "Because integrated suites are always cheaper to buy.",
-    "Because regulators forbid standalone security tools.",
-    "Because each tool must use the same vendor.",
-    "Because isolated tools leave gaps that adversaries exploit."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "A WAF that cannot inform the SIEM, or a scanner whose output never reaches prioritisation, leaves the same gap an attacker walks through.",
-   "explanation_ar": "جدار ما يبلّغ الـSIEM، أو فاحص نتائجه ما توصل للترتيب، يترك نفس الفراغ اللي يمشي بيه المهاجم."
+   "explanation": "Events that happen close together, come from the same source and clear the probability threshold are correlated into one incident.",
+   "explanation_ar": "تُربط الأحداث المتقاربة زمنياً، والمتشابهة مصدرياً، والمتجاوزة عتبة الاحتمال بحادثة واحدة."
   }
  ]
 }

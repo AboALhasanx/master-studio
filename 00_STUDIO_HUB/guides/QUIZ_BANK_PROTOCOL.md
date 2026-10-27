@@ -145,6 +145,23 @@ python "90_Shared_Toolbox/tools/quiz_balancer.py" "01_Semester_1/<Subject>/07_Qu
 python -c "import sys,json,io; sys.path.insert(0,r'90_Shared_Toolbox/tools'); from quiz_balancer import validate_schema_v2; sys.path.insert(0,r'C:\Users\gokoq\mcq-portal\tools'); import portal_schema as ps; p=r'<file>'; b=json.load(io.open(p,encoding='utf-8')); print(validate_schema_v2(b), ps.validate_v3(ps.to_v3(b)))"
 ```
 
+### Supplementary read-only quality gate
+
+Run this on the complete chapter directory before proposing publication. It checks
+chapter-wide duplicate concepts and stems, duplicate choices, answer/index drift,
+English option-array drift, bilingual field completeness, near-duplicate stems,
+repeated formulas, and option shape. It does not modify or rebalance a bank.
+
+```bash
+python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate
+```
+
+Structural errors and shape-gate failures block handoff. Near-duplicate stems,
+repeated formulas, and short explanations are advisory: inspect the paired items
+against the source and keep distinct concepts when the similarity is intentional.
+The gate cannot establish that a claim is true or that Arabic and English carry
+the same meaning; source review and answer-text review remain required.
+
 `--check` is the only read-only mode: `--strict` on its own runs the gate **and then balances and saves**, so it is not a way to "just look". Re-balancing an already-balanced bank reshuffles the option order (the content stays valid, but the file changes and the next `sync` bumps its version) — so audit with `--check`, and balance only when you mean it.
 
 **After the balancer permutes options, re-open the file and re-check every `answer`/`correct` pair** — the intended correct text must still be the key (the tool keeps them aligned, but a hand-written `answer` that disagrees with `correct` is the single most common defect).

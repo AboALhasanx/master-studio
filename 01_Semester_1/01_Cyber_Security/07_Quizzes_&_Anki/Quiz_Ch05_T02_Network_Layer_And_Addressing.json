@@ -1,653 +1,479 @@
 {
- "schema_version": 2,
- "subject_id": "01_Cyber_Security",
- "subject_title": "الأمن السيبراني",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. هدى لفتة مجيد",
- "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
- "subject": "01_Cyber_Security",
- "quiz_id": "Quiz_Ch05_T02_Network_Layer_And_Addressing",
- "topic": "Network layer, address configuration and control plane",
- "topic_ar": "طبقة الشبكة وتكوين العناوين والطبقة التحكّمية",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ip_source_spoofing_root",
-   "bloom_level": "Understand",
-   "question": "Why is IP source-address spoofing possible at all?",
-   "question_ar": "ليش انتحال عنوان المصدر في IP ممكن من الأساس؟",
-   "options": [
-    "Because routers rewrite the source field in transit.",
-    "Because the TCP handshake never checks the source.",
-    "Because DNS resolves names to the wrong address.",
-    "Because IP lets an endpoint set its own source address."
-   ],
-   "options_ar": [
-    "لأن الموجّهات تعيد كتابة حقل المصدر أثناء العبور.",
-    "لأن مصافحة TCP ما تتحقّق من المصدر أبداً.",
-    "لأن DNS يحلّل الأسماء إلى عنوان خاطئ.",
-    "لأن IP يسمح للطرف إنه يحدّد عنوان مصدره بنفسه."
-   ],
-   "options_en": [
-    "Because routers rewrite the source field in transit.",
-    "Because the TCP handshake never checks the source.",
-    "Because DNS resolves names to the wrong address.",
-    "Because IP lets an endpoint set its own source address."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "IP permits endpoints to set their own source addresses, so an attacker can forge the source to hide its origin, defeat naive filters and enable reflection.",
-   "explanation_ar": "IP يسمح للأطراف تحدد عنوان مصدرها بنفسها، فالمهاجم يقدر يزوّره ليخفي أصله ويكسر الفلاتر الساذجة ويفعّل الانعكاس."
-  },
-  {
-   "id": "q2",
-   "concept_id": "bcp38_requirement",
-   "bloom_level": "Remember",
-   "question": "What does BCP 38, specified in RFC 2827, mandate?",
-   "question_ar": "شنو تفرض BCP 38 المحددة في RFC 2827؟",
-   "options": [
-    "Ingress filtering at provider edges so only valid sources pass.",
-    "Egress filtering at the victim so replies are discarded.",
-    "Encryption of every IP header between the endpoints.",
-    "Authentication of every router along the forwarding path."
-   ],
-   "options_ar": [
-    "ترشيح الدخول عند حدود المزوّد حتى تمر المصادر الصحيحة فقط.",
-    "ترشيح الخروج عند الضحية حتى تُهمل الردود.",
-    "تشفير كل ترويسة IP بين الطرفين.",
-    "مصادقة كل موجّه على طول مسار التمرير."
-   ],
-   "options_en": [
-    "Ingress filtering at provider edges so only valid sources pass.",
-    "Egress filtering at the victim so replies are discarded.",
-    "Encryption of every IP header between the endpoints.",
-    "Authentication of every router along the forwarding path."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "It mandates ingress filtering at provider edges so that only topologically valid source addresses traverse upstream; despite its age, universal deployment remains incomplete.",
-   "explanation_ar": "يفرض ترشيح الدخول عند حدود المزوّد بحيث ما تعبر للأعلى إلا عناوين المصدر الصحيحة طوبولوجياً؛ ورغم قِدمه، النشر الشامل ما زال ناقصاً."
-  },
-  {
-   "id": "q3",
-   "concept_id": "spoofing_three_consequences",
-   "bloom_level": "Remember",
-   "question": "What three things does source spoofing let an attacker do?",
-   "question_ar": "شنو الثلاثة اللي يسمح بها انتحال المصدر للمهاجم؟",
-   "options": [
-    "Forge certificates, revoke keys and break the chain.",
-    "Hide the origin, defeat naive filters and enable reflection.",
-    "Decrypt the payload, bypass TLS and replay the session.",
-    "Escalate privileges, persist and exfiltrate the data."
-   ],
-   "options_ar": [
-    "يزوّر الشهادات ويبطل المفاتيح ويكسر السلسلة.",
-    "يخفي أصله ويكسر الفلاتر الساذجة ويفعّل الانعكاس.",
-    "يفكّ تشفير الحمولة ويتجاوز TLS ويعيد الجلسة.",
-    "يرفع الصلاحيات ويستمر ويسرّب البيانات."
-   ],
-   "options_en": [
-    "Forge certificates, revoke keys and break the chain.",
-    "Hide the origin, defeat naive filters and enable reflection.",
-    "Decrypt the payload, bypass TLS and replay the session.",
-    "Escalate privileges, persist and exfiltrate the data."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Spoofing hides the attacker's origin, defeats naive filters that trust the source field, and is the precondition for UDP reflection and amplification.",
-   "explanation_ar": "الانتحال يخفي أصل المهاجم ويكسر الفلاتر الساذجة اللي تثق بحقل المصدر، وهو الشرط المسبق لانعكاس وتضخيم UDP."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ipv6_nd_replaces_arp",
-   "bloom_level": "Remember",
-   "question": "What does IPv6 use in place of ARP?",
-   "question_ar": "شنو يستخدم IPv6 بدل ARP؟",
-   "options": [
-    "DHCPv6, with no link-layer address resolution at all.",
-    "ICMP redirects, with no neighbour state on the link.",
-    "Neighbor Discovery and router advertisements for autoconfiguration.",
-    "Reverse ARP, with static tables for address assignment."
-   ],
-   "options_ar": [
-    "DHCPv6 بلا أي تحليل لعنوان طبقة الربط.",
-    "إعادة توجيه ICMP بلا حالة جيران على الرابط.",
-    "Neighbor Discovery وإعلانات الموجّه للتكوين التلقائي.",
-    "Reverse ARP وجداول ثابتة لتخصيص العناوين."
-   ],
-   "options_en": [
-    "DHCPv6, with no link-layer address resolution at all.",
-    "ICMP redirects, with no neighbour state on the link.",
-    "Neighbor Discovery and router advertisements for autoconfiguration.",
-    "Reverse ARP, with static tables for address assignment."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "IPv6 replaces ARP with Neighbor Discovery and uses Router Advertisements for autoconfiguration, and both can be forged.",
-   "explanation_ar": "IPv6 يستبدل ARP بـ Neighbor Discovery ويستخدم إعلانات الموجّه للتكوين التلقائي، والاثنين يقدرون يتزوّرون."
-  },
-  {
-   "id": "q5",
-   "concept_id": "rogue_ra_impact",
-   "bloom_level": "Understand",
-   "question": "What can a forged Neighbor Discovery or router advertisement achieve?",
-   "question_ar": "شنو يقدر يحقّق إعلان جيران أو إعلان موجّه مزوّر؟",
-   "options": [
-    "An on-link man-in-the-middle or route black-holing.",
-    "A downgrade of the TLS version used by the host.",
-    "A revocation of the host's own X.509 certificate.",
-    "A corruption of the DNS zone's signed records."
-   ],
-   "options_ar": [
-    "هجوم رجل بالوسط على الرابط أو حجب التوجيه.",
-    "تخفيض إصدار TLS اللي يستخدمه المضيف.",
-    "إبطال شهادة X.509 الخاصة بالمضيف.",
-    "إفساد السجلات الموقّعة لمنطقة DNS."
-   ],
-   "options_en": [
-    "An on-link man-in-the-middle or route black-holing.",
-    "A downgrade of the TLS version used by the host.",
-    "A revocation of the host's own X.509 certificate.",
-    "A corruption of the DNS zone's signed records."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Both ND and RAs can be forged to perform on-link man-in-the-middle attacks or to black-hole routing for the victim.",
-   "explanation_ar": "الاثنان ND و RA يقدرون يتزوّرون لتنفيذ هجوم رجل بالوسط على الرابط أو لحجب التوجيه عن الضحية."
-  },
-  {
-   "id": "q6",
-   "concept_id": "send_mechanism",
-   "bloom_level": "Remember",
-   "question": "How does SEND secure Neighbor Discovery?",
-   "question_ar": "كيف يؤمّن SEND بروتوكول Neighbor Discovery؟",
-   "options": [
-    "Through a shared secret distributed by the local router.",
-    "Through a certificate authority operated by the ISP.",
-    "Through per-packet encryption of the whole ND payload.",
-    "Through cryptographically generated addresses and signatures."
-   ],
-   "options_ar": [
-    "عبر سر مشترك يوزّعه الموجّه المحلي.",
-    "عبر جهة إصدار شهادات يشغّلها مزوّد الخدمة.",
-    "عبر تشفير كل حزمة من حمولة ND بالكامل.",
-    "عبر عناوين مولّدة تشفيرياً وتوقيعات."
-   ],
-   "options_en": [
-    "Through a shared secret distributed by the local router.",
-    "Through a certificate authority operated by the ISP.",
-    "Through per-packet encryption of the whole ND payload.",
-    "Through cryptographically generated addresses and signatures."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "SEND (RFC 3971) secures Neighbor Discovery with Cryptographically Generated Addresses and signatures, but it is operationally heavy.",
-   "explanation_ar": "SEND (RFC 3971) يؤمّن Neighbor Discovery عبر عناوين مولّدة تشفيرياً وتوقيعات، بس ثقيل عملياً."
-  },
-  {
-   "id": "q7",
-   "concept_id": "send_drawback",
-   "bloom_level": "Understand",
-   "question": "Why has SEND seen limited operational adoption?",
-   "question_ar": "ليش ما انتشر SEND عملياً إلا بشكل محدود؟",
-   "options": [
-    "Because it encrypts the whole IPv6 header chain.",
-    "Because it is operationally heavy to deploy and maintain.",
-    "Because it breaks IPv6 autoconfiguration completely.",
-    "Because it requires IPv4 to be disabled first."
-   ],
-   "options_ar": [
-    "لأنه يشفّر سلسلة ترويسات IPv6 كاملة.",
-    "لأنه ثقيل عملياً من ناحية النشر والصيانة.",
-    "لأنه يكسر التكوين التلقائي لـ IPv6 بالكامل.",
-    "لأنه يشترط تعطيل IPv4 أولاً."
-   ],
-   "options_en": [
-    "Because it encrypts the whole IPv6 header chain.",
-    "Because it is operationally heavy to deploy and maintain.",
-    "Because it breaks IPv6 autoconfiguration completely.",
-    "Because it requires IPv4 to be disabled first."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "SEND works, but the operational cost of running generated addresses and signature validation at scale is why RA-Guard at layer two became the common alternative.",
-   "explanation_ar": "SEND يشتغل، بس كلفة تشغيل العناوين المولّدة والتحقّق من التوقيعات على نطاق واسع هي السبب إن RA-Guard بطبقة الربط صار البديل الشائع."
-  },
-  {
-   "id": "q8",
-   "concept_id": "raguard_layer",
-   "bloom_level": "Remember",
-   "question": "At which layer does RA-Guard filter router advertisements?",
-   "question_ar": "بأي طبقة يرشّح RA-Guard إعلانات الموجّه؟",
-   "options": [
-    "At layer four, in the host firewall.",
-    "At layer seven, in the application gateway.",
-    "At layer two, in the switch.",
-    "At layer three, in the border router."
-   ],
-   "options_ar": [
-    "بطبقة النقل، داخل جدار المضيف.",
-    "بطبقة التطبيق، داخل بوابة التطبيقات.",
-    "بطبقة الربط، داخل المبدّل.",
-    "بطبقة الشبكة، داخل الموجّه الحدودي."
-   ],
-   "options_en": [
-    "At layer four, in the host firewall.",
-    "At layer seven, in the application gateway.",
-    "At layer two, in the switch.",
-    "At layer three, in the border router."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "RA-Guard adds layer-two filtering for router advertisements, which is why it sits on the switch rather than on a router.",
-   "explanation_ar": "RA-Guard يضيف ترشيح طبقة الربط لإعلانات الموجّه، ولهذا يجلس على المبدّل مو على الموجّه."
-  },
-  {
-   "id": "q9",
-   "concept_id": "raguard_evasion",
-   "bloom_level": "Analyze",
-   "question": "Why must RA-Guard parse the full IPv6 header chain to resist evasion?",
-   "question_ar": "ليش لازم RA-Guard يحلّل سلسلة ترويسات IPv6 كاملة لمقاومة التهرّب؟",
-   "options": [
-    "Because a rogue RA can hide inside crafted extension headers.",
-    "Because the RA payload is encrypted by the sender.",
-    "Because the switch cannot read layer-three addresses.",
-    "Because the router rewrites the RA before forwarding."
-   ],
-   "options_ar": [
-    "لأنه يقدر يخبّي RA مزوّر داخل ترويسات امتداد مُصمّمة.",
-    "لأن المرسل يشفّر حمولة RA.",
-    "لأن المبدّل ما يقدر يقرأ عناوين طبقة الشبكة.",
-    "لأن الموجّه يعيد كتابة RA قبل التمرير."
-   ],
-   "options_en": [
-    "Because a rogue RA can hide inside crafted extension headers.",
-    "Because the RA payload is encrypted by the sender.",
-    "Because the switch cannot read layer-three addresses.",
-    "Because the router rewrites the RA before forwarding."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "A naive filter that only inspects the first header can be bypassed by hiding the advertisement deeper in an extension-header chain, so the whole chain must be validated.",
-   "explanation_ar": "الفلاتر الساذجة اللي تفحص أول ترويسة فقط تنخدع بإخفاء الإعلان أعمق بسلسلة ترويسات امتداد، فلهذا لازم تُتحقّق السلسلة كاملة."
-  },
-  {
-   "id": "q10",
-   "concept_id": "ext_header_middlebox",
-   "bloom_level": "Understand",
-   "question": "Why do IPv6 extension headers create a security problem for middleboxes?",
-   "question_ar": "ليش ترويسات الامتداد في IPv6 تسوي مشكلة أمنية للأجهزة الوسيطة؟",
-   "options": [
-    "Because they encrypt the transport-layer port numbers.",
-    "Because they double the size of every IPv6 packet.",
-    "Because they replace the need for ICMPv6 entirely.",
-    "Because they complicate processing and have allowed evasion."
-   ],
-   "options_ar": [
-    "لأنها تشفّر أرقام منافذ طبقة النقل.",
-    "لأنها تضاعف حجم كل حزمة IPv6.",
-    "لأنها تلغي الحاجة إلى ICMPv6 بالكامل.",
-    "لأنها تعقّد المعالجة وسمحت بالتهرّب سابقاً."
-   ],
-   "options_en": [
-    "Because they encrypt the transport-layer port numbers.",
-    "Because they double the size of every IPv6 packet.",
-    "Because they replace the need for ICMPv6 entirely.",
-    "Because they complicate processing and have allowed evasion."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Extension headers make middlebox processing harder, and ambiguities in how chains were handled historically let attackers smuggle traffic past filters.",
-   "explanation_ar": "ترويسات الامتداد تعقّد معالجة الأجهزة الوسيطة، والغموض بمعالجة السلاسل سابقاً سمح للمهاجمين يهرّبون ترافيك ورا الفلاتر."
-  },
-  {
-   "id": "q11",
-   "concept_id": "dfa_model",
-   "bloom_level": "Remember",
-   "question": "In the finite-state parsing model, when is a header chain accepted?",
-   "question_ar": "بنموذج التحليل بالحالات المحدودة، متى تُقبل سلسلة الترويسات؟",
-   "options": [
-    "When the first header matches a fixed allow list.",
-    "When the transition from the start state lands in a final state.",
-    "When the chain length is below the configured maximum.",
-    "When every header carries a valid digital signature."
-   ],
-   "options_ar": [
-    "لمّا تطابق الترويسة الأولى قائمة سماح ثابتة.",
-    "لمّا ينتهي الانتقال من حالة البداية إلى حالة نهائية.",
-    "لمّا يكون طول السلسلة أقل من الحد الأقصى.",
-    "لمّا تحمل كل ترويسة توقيعاً رقمياً صحيحاً."
-   ],
-   "options_en": [
-    "When the first header matches a fixed allow list.",
-    "When the transition from the start state lands in a final state.",
-    "When the chain length is below the configured maximum.",
-    "When every header carries a valid digital signature."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The legal header chains are treated as a deterministic finite automaton, and a chain is accepted only if its transition from the start state reaches an accepting state.",
-   "explanation_ar": "سلاسل الترويسات القانونية تُعامل كآلة حالات محدودة حتمية، والسلسلة تُقبل بس إذا وصل انتقالها من حالة البداية إلى حالة قبول."
-  },
-  {
-   "id": "q12",
-   "concept_id": "dfa_states_meaning",
-   "bloom_level": "Understand",
-   "question": "What do the states of that automaton represent?",
-   "question_ar": "شنو تمثّل حالات تلك الآلة؟",
-   "options": [
-    "The trust level assigned to the sending host.",
-    "The bandwidth consumed by the header chain so far.",
-    "Classes of next header expected at that point.",
-    "The number of hops the packet has already taken."
-   ],
-   "options_ar": [
-    "مستوى الثقة الممنوح للمضيف المرسل.",
-    "عرض النطاق اللي استهلكته السلسلة لحد الآن.",
-    "أصناف الترويسة التالية المتوقّعة عند تلك النقطة.",
-    "عدد القفزات اللي قطعتها الحزمة سابقاً."
-   ],
-   "options_en": [
-    "The trust level assigned to the sending host.",
-    "The bandwidth consumed by the header chain so far.",
-    "Classes of next header expected at that point.",
-    "The number of hops the packet has already taken."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Each state encodes which class of next header is legal at that position, so an illegal chain simply has no path to an accepting state.",
-   "explanation_ar": "كل حالة ترمز لأي صنف من الترويسة التالية قانوني بذلك الموضع، فالسلسلة غير القانونية ما عندها مسار لحالة قبول."
-  },
-  {
-   "id": "q13",
-   "concept_id": "dfa_performance",
-   "bloom_level": "Analyze",
-   "question": "On what do the performance bounds of the DFA filtering model depend?",
-   "question_ar": "على شنو تعتمد حدود أداء نموذج الترشيح بالـ DFA؟",
-   "options": [
-    "On the chain length and the per-transition cost.",
-    "On the number of hosts attached to the switch.",
-    "On the size of the routing table in the router.",
-    "On the key length used by the signing authority."
-   ],
-   "options_ar": [
-    "على طول السلسلة وكلفة كل انتقال.",
-    "على عدد الأجهزة المرتبطة بالمبدّل.",
-    "على حجم جدول التوجيه بالموجّه.",
-    "على طول المفتاح اللي تستخدمه جهة التوقيع."
-   ],
-   "options_en": [
-    "On the chain length and the per-transition cost.",
-    "On the number of hosts attached to the switch.",
-    "On the size of the routing table in the router.",
-    "On the key length used by the signing authority."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The cost scales with how long the chain is and how expensive each state transition is, which is why exotic header combinations are filtered in high-speed fabrics.",
-   "explanation_ar": "الكلفة تتناسب مع طول السلسلة وكلفة كل انتقال بين حالتين، ولهذا تُفلتر تراكيب الترويسات الغريبة بالشبكات عالية السرعة."
-  },
-  {
-   "id": "q14",
-   "concept_id": "dhcp_no_auth",
-   "bloom_level": "Understand",
-   "question": "Why is DHCP a security weak point by design?",
-   "question_ar": "ليش DHCP نقطة ضعف أمنية بحكم التصميم؟",
-   "options": [
-    "Because it encrypts leases with a weak symmetric key.",
-    "Because it requires a certificate for every client.",
-    "Because it routes all traffic through the DHCP host.",
-    "Because it historically had no authentication of the server."
-   ],
-   "options_ar": [
-    "لأنه يشفّر الإجارات بمفتاح متماثل ضعيف.",
-    "لأنه يشترط شهادة لكل عميل.",
-    "لأنه يوجّه كل الترافيك عبر مضيف DHCP.",
-    "لأنه تاريخياً بلا مصادقة لخادم DHCP."
-   ],
-   "options_en": [
-    "Because it encrypts leases with a weak symmetric key.",
-    "Because it requires a certificate for every client.",
-    "Because it routes all traffic through the DHCP host.",
-    "Because it historically had no authentication of the server."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "DHCP automates IP configuration but historically lacked authentication, which opens the door to rogue servers and traffic redirection.",
-   "explanation_ar": "DHCP يؤتمت تكوين الـ IP بس تاريخياً كان بلا مصادقة، وهذا يفتح الباب لخوادم مزوّرة وإعادة توجيه الحركة."
-  },
-  {
-   "id": "q15",
-   "concept_id": "dhcp_attacks_three",
-   "bloom_level": "Remember",
-   "question": "Which three attack types does the DHCP risk model enumerate?",
-   "question_ar": "أي ثلاثة أنواع هجوم يعدّدها نموذج مخاطر DHCP؟",
-   "options": [
-    "Downgrade, renegotiation and truncation.",
-    "Rogue server, starvation and man-in-the-middle.",
-    "Reflection, amplification and fragmentation.",
-    "Cache poisoning, zone transfer and hijack."
-   ],
-   "options_ar": [
-    "تخفيض وإعادة تفاوض وبتر.",
-    "خادم مزوّر واستنزاف ورجل بالوسط.",
-    "انعكاس وتضخيم وتجزئة.",
-    "تسميم كاش ونقل منطقة واختطاف."
-   ],
-   "options_en": [
-    "Downgrade, renegotiation and truncation.",
-    "Rogue server, starvation and man-in-the-middle.",
-    "Reflection, amplification and fragmentation.",
-    "Cache poisoning, zone transfer and hijack."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The model aggregates a rogue DHCP server, pool starvation, and man-in-the-middle redirection through malicious options.",
-   "explanation_ar": "النموذج يجمع خادم DHCP مزوّر، واستنزاف مجمّع العناوين، وإعادة توجيه رجل بالوسط عبر خيارات خبيثة."
-  },
-  {
-   "id": "q16",
-   "concept_id": "rfc3118_limited",
-   "bloom_level": "Understand",
-   "question": "Why did RFC 3118 message authentication see limited deployment?",
-   "question_ar": "ليش ما انتشرت مصادقة رسائل RFC 3118 إلا بشكل محدود؟",
-   "options": [
-    "Because it only works with IPv6 addressing.",
-    "Because it requires a hardware security module.",
-    "Because of key management and performance concerns.",
-    "Because it was withdrawn before publication."
-   ],
-   "options_ar": [
-    "لأنه يشتغل فقط مع عنونة IPv6.",
-    "لأنه يشترط وحدة أمن عتادية.",
-    "بسبب تعقيد إدارة المفاتيح ومخاوف الأداء.",
-    "لأنه سُحب قبل النشر."
-   ],
-   "options_en": [
-    "Because it only works with IPv6 addressing.",
-    "Because it requires a hardware security module.",
-    "Because of key management and performance concerns.",
-    "Because it was withdrawn before publication."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "RFC 3118 specifies DHCP message authentication, but key management and performance concerns kept it from being widely deployed.",
-   "explanation_ar": "RFC 3118 يحدّد مصادقة رسائل DHCP، بس إدارة المفاتيح ومخاوف الأداء منعت نشره على نطاق واسع."
-  },
-  {
-   "id": "q17",
-   "concept_id": "dhcp_l2_controls",
-   "bloom_level": "Remember",
-   "question": "What do enterprises rely on in practice instead of RFC 3118?",
-   "question_ar": "على شنو تعتمد المؤسسات عملياً بدل RFC 3118؟",
-   "options": [
-    "DHCP snooping at switches plus 802.1X or NAC.",
-    "Static addressing for every host on the network.",
-    "Encrypted DHCP leases signed by the gateway.",
-    "A single central DHCP server with no relay."
-   ],
-   "options_ar": [
-    "DHCP snooping عند السويتشات مع 802.1X أو NAC.",
-    "عنونة ثابتة لكل جهاز بالشبكة.",
-    "إجارات DHCP مشفّرة وموقّعة من البوابة.",
-    "خادم DHCP مركزي واحد بلا مُرحّل."
-   ],
-   "options_en": [
-    "DHCP snooping at switches plus 802.1X or NAC.",
-    "Static addressing for every host on the network.",
-    "Encrypted DHCP leases signed by the gateway.",
-    "A single central DHCP server with no relay."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Layer-two controls bind switch ports to legitimate servers and clients, which is cheaper to operate than key-managed message authentication.",
-   "explanation_ar": "ضوابط الطبقة الثانية تربط منافذ المبدّل بخوادم وعملاء شرعيين، وتشغيلها أرخص من مصادقة الرسائل بإدارة مفاتيح."
-  },
-  {
-   "id": "q18",
-   "concept_id": "dhcp_residual_model",
-   "bloom_level": "Remember",
-   "question": "How is the residual DHCP risk expressed?",
-   "question_ar": "كيف يُعبَّر عن خطر DHCP المتبقي؟",
-   "options": [
-    "The product of one minus efficacy times impact per type.",
-    "The maximum of probability times impact across types.",
-    "The average of efficacy times impact per attack type.",
-    "The sum of one minus efficacy, times probability, times impact."
-   ],
-   "options_ar": [
-    "حاصل ضرب واحد ناقص الفاعلية بالتأثير لكل نوع هجوم.",
-    "أقصى احتمال مضروب بالتأثير بين أنواع الهجوم.",
-    "متوسط الفاعلية مضروباً بالتأثير لكل نوع هجوم.",
-    "مجموع واحد ناقص الفاعلية، مضروباً بالاحتمال، مضروباً بالتأثير."
-   ],
-   "options_en": [
-    "The product of one minus efficacy times impact per type.",
-    "The maximum of probability times impact across types.",
-    "The average of efficacy times impact per attack type.",
-    "The sum of one minus efficacy, times probability, times impact."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Residual risk is the sum across attack types of the uncontrolled fraction of probability times impact, so a control with efficacy near one drives its own term to zero.",
-   "explanation_ar": "الخطر المتبقي هو مجموع، عبر أنواع الهجوم، الكسر غير المضبوط من الاحتمال مضروباً بالتأثير، فضابط فاعليته قريبة من واحد يصفّر حده."
-  },
-  {
-   "id": "q19",
-   "concept_id": "dhcp_efficacy_meaning",
-   "bloom_level": "Analyze",
-   "question": "In that model, what happens as the efficacy of a control approaches one?",
-   "question_ar": "بهذا النموذج، شنو يصير لمّا تقترب فاعلية الضابط من الواحد؟",
-   "options": [
-    "The sum is replaced by the maximum of all terms.",
-    "Its contribution to the residual risk falls toward zero.",
-    "Its contribution to the residual risk doubles each round.",
-    "The attack probability is replaced by the impact value."
-   ],
-   "options_ar": [
-    "المجموع يُستبدل بأقصى الحدود.",
-    "مساهمتها بالخطر المتبقي تقترب من الصفر.",
-    "مساهمتها بالخطر المتبقي تتضاعف كل جولة.",
-    "احتمال الهجوم يُستبدل بقيمة التأثير."
-   ],
-   "options_en": [
-    "The sum is replaced by the maximum of all terms.",
-    "Its contribution to the residual risk falls toward zero.",
-    "Its contribution to the residual risk doubles each round.",
-    "The attack probability is replaced by the impact value."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Efficacy is the fraction of the risk a control removes, so snooping that blocks rogue servers with efficacy near one removes almost that entire term.",
-   "explanation_ar": "الفاعلية هي الكسر اللي يزيله الضابط من الخطر، فالـ snooping اللي يحجب الخوادم المزوّرة بفاعلية قريبة من واحد يزيل ذلك الحد كله تقريباً."
-  },
-  {
-   "id": "q20",
-   "concept_id": "icmp_blanket_block_harm",
-   "bloom_level": "Understand",
-   "question": "Why is blocking all ICMP a bad security posture?",
-   "question_ar": "ليش حجب كل رسائل ICMP وضعية أمنية خاطئة؟",
-   "options": [
-    "It disables IPv4 addressing on the local link.",
-    "It forces every host onto a static default gateway.",
-    "It breaks path MTU discovery and can cause black holes.",
-    "It exposes the router's full routing table to hosts."
-   ],
-   "options_ar": [
-    "يعطّل عنونة IPv4 على الرابط المحلي.",
-    "يجبر كل جهاز على بوابة افتراضية ثابتة.",
-    "يكسر اكتشاف PMTU ويقدر يسبّب ثقوباً سوداء.",
-    "يكشف جدول التوجيه الكامل للموجّه للأجهزة."
-   ],
-   "options_en": [
-    "It disables IPv4 addressing on the local link.",
-    "It forces every host onto a static default gateway.",
-    "It breaks path MTU discovery and can cause black holes.",
-    "It exposes the router's full routing table to hosts."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Without the necessary ICMP messages routers cannot tell endpoints that a packet is too large, so the connection stalls in a black hole with no visible cause.",
-   "explanation_ar": "بلا رسائل ICMP الضرورية، الموجّهات ما تقدر تخبر الأطراف إن الرزمة كبيرة عليهم، فيعلّق الاتصال بثقب أسود بلا سبب واضح."
-  },
-  {
-   "id": "q21",
-   "concept_id": "icmp_essential_types",
-   "bloom_level": "Remember",
-   "question": "Which ICMP messages must be allowed for path MTU discovery to work?",
-   "question_ar": "أي رسائل ICMP لازم تُسمح حتى يشتغل اكتشاف PMTU؟",
-   "options": [
-    "Fragmentation needed for IPv4 and Packet Too Big for IPv6.",
-    "Echo request for IPv4 and echo reply for IPv6.",
-    "Redirect for IPv4 and timestamp request for IPv6.",
-    "Source quench for IPv4 and router advert for IPv6."
-   ],
-   "options_ar": [
-    "fragmentation needed لـ IPv4 و Packet Too Big لـ IPv6.",
-    "echo request لـ IPv4 و echo reply لـ IPv6.",
-    "redirect لـ IPv4 و timestamp request لـ IPv6.",
-    "source quench لـ IPv4 و router advert لـ IPv6."
-   ],
-   "options_en": [
-    "Fragmentation needed for IPv4 and Packet Too Big for IPv6.",
-    "Echo request for IPv4 and echo reply for IPv6.",
-    "Redirect for IPv4 and timestamp request for IPv6.",
-    "Source quench for IPv4 and router advert for IPv6."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Selective filtering should block abuse patterns while allowing the types that discovery depends on, which are fragmentation needed on IPv4 and Packet Too Big on IPv6.",
-   "explanation_ar": "الفلترة الانتقائية تحجب أنماط الاستغلال وتسمح بالأنواع اللي يعتمد عليها الاكتشاف، وهي fragmentation needed بـ IPv4 و Packet Too Big بـ IPv6."
-  },
-  {
-   "id": "q22",
-   "concept_id": "icmpv6_inherits_nd",
-   "bloom_level": "Analyze",
-   "question": "Why does ICMPv6 security inherit the Neighbor Discovery and RA problems?",
-   "question_ar": "ليش أمن ICMPv6 يرث مشاكل ND و RA؟",
-   "options": [
-    "Because ICMPv6 uses the same port numbers as DNS.",
-    "Because ICMPv6 messages are never rate limited.",
-    "Because ICMPv6 replaced TLS for the control plane.",
-    "Because IPv6 moved neighbour and router control into it."
-   ],
-   "options_ar": [
-    "لأن ICMPv6 يستخدم نفس منافذ DNS.",
-    "لأن رسائل ICMPv6 ما تُحدَّد بمعدّل أبداً.",
-    "لأن ICMPv6 استبدل TLS بطبقة التحكّم.",
-    "لأن IPv6 نقل تحكّم الجيران والموجّه إلى داخله."
-   ],
-   "options_en": [
-    "Because ICMPv6 uses the same port numbers as DNS.",
-    "Because ICMPv6 messages are never rate limited.",
-    "Because ICMPv6 replaced TLS for the control plane.",
-    "Because IPv6 moved neighbour and router control into it."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Most IPv6 control-plane functions moved into ICMPv6, so its security is exactly the security of Neighbor Discovery and router advertisements, and the same RA-Guard and SEND fixes apply.",
-   "explanation_ar": "أغلب وظائف الطبقة التحكّمية بـ IPv6 انتقلت داخل ICMPv6، فأمنه هو بالضبط أمن Neighbor Discovery وإعلانات الموجّه، ونفس علاجات RA-Guard و SEND تنطبق."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "01_Cyber_Security",
+  "subject_title": "الأمن السيبراني",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+  "subject": "01_Cyber_Security",
+  "quiz_id": "Quiz_Ch05_T02_Network_Layer_And_Addressing",
+  "topic": "Network layer, address configuration and control plane",
+  "topic_ar": "طبقة الشبكة وتكوين العناوين والطبقة التحكّمية",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ip_source_spoofing_root",
+      "bloom_level": "Understand",
+      "question": "Why can an attacker spoof an IP source address?",
+      "question_ar": "لماذا يستطيع المهاجم انتحال عنوان IP للمصدر؟",
+      "options": [
+        "Because routers rewrite the sender-address field in transit.",
+        "Because TCP does not confirm that a peer owns its claimed address.",
+        "Because DNS resolves names to the wrong address.",
+        "Because IP lets an endpoint set its own sender address."
+      ],
+      "options_ar": [
+        "لأن الموجّهات تعيد كتابة حقل عنوان المرسل أثناء العبور.",
+        "لأن TCP لا يتحقق من ملكية النظير للعنوان الذي يدّعيه.",
+        "لأن DNS يربط اسم المضيف بعنوان IP غير صحيح له.",
+        "لأن IP يسمح للطرف إنه يحدّد عنوان مصدره بنفسه."
+      ],
+      "options_en": [
+        "Because routers rewrite the sender-address field in transit.",
+        "Because TCP does not confirm that a peer owns its claimed address.",
+        "Because DNS resolves names to the wrong address.",
+        "Because IP lets an endpoint set its own sender address."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "IP lets an endpoint choose its sender address, so an attacker can forge that address to conceal its origin, bypass simple filters and enable reflection.",
+      "explanation_ar": "IP يسمح للأطراف تحدد عنوان مصدرها بنفسها، فالمهاجم يقدر يزوّره ليخفي أصله ويكسر الفلاتر الساذجة ويفعّل الانعكاس."
+    },
+    {
+      "id": "q2",
+      "concept_id": "bcp38_requirement",
+      "bloom_level": "Remember",
+      "question": "What does BCP 38, specified in RFC 2827, mandate?",
+      "question_ar": "شنو تفرض BCP 38 المحددة في RFC 2827؟",
+      "options": [
+        "Provider-edge filtering admits only valid source addresses.",
+        "Egress filtering at the victim so replies are discarded.",
+        "Encryption of every IP header between the endpoints.",
+        "Authentication of every router along the forwarding path."
+      ],
+      "options_ar": [
+        "ترشيح الدخول عند حدود المزوّد حتى تمر المصادر الصحيحة فقط.",
+        "ترشيح الحزم الصادرة عند الضحية لمنع الردود من الوصول إليها.",
+        "تشفير ترويسة IP في كل حزمة أثناء انتقالها بين الطرفين.",
+        "مصادقة كل موجّه مشارك على طول مسار تمرير الحزم."
+      ],
+      "options_en": [
+        "Provider-edge filtering admits only valid source addresses.",
+        "Egress filtering at the victim so replies are discarded.",
+        "Encryption of every IP header between the endpoints.",
+        "Authentication of every router along the forwarding path."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "It mandates ingress filtering at provider edges so that only topologically valid sender addresses traverse upstream; despite its age, universal deployment remains incomplete.",
+      "explanation_ar": "يفرض ترشيح الدخول عند حدود مزود الخدمة، فلا تمر إلى الشبكة إلا عناوين المرسلين المتوافقة مع طوبولوجيا المسار؛ وما زال تعميم هذا الإجراء غير مكتمل."
+    },
+    {
+      "id": "q3",
+      "concept_id": "spoofing_three_consequences",
+      "bloom_level": "Remember",
+      "question": "What three advantages can source-address spoofing give an attacker?",
+      "question_ar": "ما المزايا الثلاث التي يمنحها انتحال عنوان المرسل للمهاجم؟",
+      "options": [
+        "Forge certificates, revoke keys and break the chain.",
+        "Hide origin, evade basic filters and enable reflection.",
+        "Decrypt the payload, bypass TLS and replay the session.",
+        "Escalate privileges, persist and exfiltrate the data."
+      ],
+      "options_ar": [
+        "يزوّر الشهادات ويبطل المفاتيح ويكسر السلسلة.",
+        "إخفاء الأصل، تجاوز المرشحات، وتمكين الانعكاس.",
+        "يفكّ تشفير الحمولة ويتجاوز TLS ويعيد الجلسة.",
+        "يرفع الصلاحيات ويستمر ويسرّب البيانات."
+      ],
+      "options_en": [
+        "Forge certificates, revoke keys and break the chain.",
+        "Hide origin, evade basic filters and enable reflection.",
+        "Decrypt the payload, bypass TLS and replay the session.",
+        "Escalate privileges, persist and exfiltrate the data."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Spoofing hides the attacker's origin, defeats naive filters that trust the sender-address field, and is the precondition for UDP reflection and amplification.",
+      "explanation_ar": "الانتحال يخفي أصل المهاجم ويكسر الفلاتر الساذجة اللي تثق بحقل عنوان المرسل، وهو الشرط المسبق لانعكاس وتضخيم UDP."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ipv6_nd_replaces_arp",
+      "bloom_level": "Remember",
+      "question": "What does IPv6 use in place of ARP?",
+      "question_ar": "شنو يستخدم IPv6 بدل ARP؟",
+      "options": [
+        "DHCPv6, with no link-layer address resolution at all.",
+        "ICMP redirects, with no neighbour state on the link.",
+        "Neighbor Discovery and router advertisements for IPv6.",
+        "Reverse ARP, with static tables for address assignment."
+      ],
+      "options_ar": [
+        "DHCPv6 يوزّع العناوين دون تحليل عنوان طبقة الربط.",
+        "إعادة توجيه ICMP بلا حالة جيران على الرابط.",
+        "Neighbor Discovery مع إعلانات الموجّه IPv6.",
+        "Reverse ARP وجداول ثابتة لتخصيص العناوين."
+      ],
+      "options_en": [
+        "DHCPv6, with no link-layer address resolution at all.",
+        "ICMP redirects, with no neighbour state on the link.",
+        "Neighbor Discovery and router advertisements for IPv6.",
+        "Reverse ARP, with static tables for address assignment."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "IPv6 replaces ARP with Neighbor Discovery and uses Router Advertisements for autoconfiguration, and both can be forged.",
+      "explanation_ar": "IPv6 يستبدل ARP بـ Neighbor Discovery ويستخدم إعلانات الموجّه للتكوين التلقائي، والاثنين يقدرون يتزوّرون."
+    },
+    {
+      "id": "q5",
+      "concept_id": "rogue_ra_impact",
+      "bloom_level": "Understand",
+      "question": "What can a forged Neighbor Discovery or router advertisement achieve?",
+      "question_ar": "شنو يقدر يحقّق إعلان جيران أو إعلان موجّه مزوّر؟",
+      "options": [
+        "On-link interception or route black-holing.",
+        "A TLS downgrade to an older version.",
+        "Revocation of the host’s X.509 certificate.",
+        "Tampering with the zone’s signed DNS records."
+      ],
+      "options_ar": [
+        "اعتراض على الرابط أو إسقاط مسار التوجيه.",
+        "خفض نسخة TLS إلى إصدار أقدم أو أضعف.",
+        "إبطال شهادة X.509 التي يستخدمها المضيف.",
+        "التلاعب بسجلات DNS الموقّعة في المنطقة."
+      ],
+      "options_en": [
+        "On-link interception or route black-holing.",
+        "A TLS downgrade to an older version.",
+        "Revocation of the host’s X.509 certificate.",
+        "Tampering with the zone’s signed DNS records."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Both ND and RAs can be forged to perform on-link man-in-the-middle attacks or to black-hole routing for the victim.",
+      "explanation_ar": "الاثنان ND و RA يقدرون يتزوّرون لتنفيذ هجوم رجل بالوسط على الرابط أو لحجب التوجيه عن الضحية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "send_mechanism",
+      "bloom_level": "Remember",
+      "question": "How does SEND secure Neighbor Discovery?",
+      "question_ar": "كيف يؤمّن SEND بروتوكول Neighbor Discovery؟",
+      "options": [
+        "Through a shared secret distributed by the local router.",
+        "Through a certificate authority operated by the ISP.",
+        "Through per-packet encryption of the whole ND payload.",
+        "Cryptographically generated addresses and signatures."
+      ],
+      "options_ar": [
+        "عبر سر مشترك يوزّعه الموجّه المحلي.",
+        "عبر جهة إصدار شهادات يشغّلها مزوّد الخدمة.",
+        "عبر تشفير كل حزمة من حمولة ND بالكامل.",
+        "عبر عناوين مولّدة تشفيرياً وتوقيعات."
+      ],
+      "options_en": [
+        "Through a shared secret distributed by the local router.",
+        "Through a certificate authority operated by the ISP.",
+        "Through per-packet encryption of the whole ND payload.",
+        "Cryptographically generated addresses and signatures."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "SEND (RFC 3971) secures Neighbor Discovery with Cryptographically Generated Addresses and signatures, but it is operationally heavy.",
+      "explanation_ar": "SEND (RFC 3971) يؤمّن Neighbor Discovery عبر عناوين مولّدة تشفيرياً وتوقيعات، بس ثقيل عملياً."
+    },
+    {
+      "id": "q7",
+      "concept_id": "send_drawback",
+      "bloom_level": "Understand",
+      "question": "Why has SEND seen limited operational adoption?",
+      "question_ar": "ليش ما انتشر SEND عملياً إلا بشكل محدود؟",
+      "options": [
+        "Because it encrypts the whole IPv6 header chain.",
+        "Because deployment and maintenance are cumbersome.",
+        "Because it breaks IPv6 autoconfiguration completely.",
+        "Because it requires IPv4 to be disabled first."
+      ],
+      "options_ar": [
+        "لأنه يشفّر سلسلة ترويسات IPv6 كاملة.",
+        "لأنه ثقيل عملياً من ناحية النشر والصيانة.",
+        "لأنه يكسر التكوين التلقائي لـ IPv6 بالكامل.",
+        "لأنه لا يعمل قبل تعطيل IPv4 على الشبكة كلها."
+      ],
+      "options_en": [
+        "Because it encrypts the whole IPv6 header chain.",
+        "Because deployment and maintenance are cumbersome.",
+        "Because it breaks IPv6 autoconfiguration completely.",
+        "Because it requires IPv4 to be disabled first."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "SEND works, but the operational cost of running generated addresses and signature validation at scale is why RA-Guard at layer two became the common alternative.",
+      "explanation_ar": "SEND يشتغل، بس كلفة تشغيل العناوين المولّدة والتحقّق من التوقيعات على نطاق واسع هي السبب إن RA-Guard بطبقة الربط صار البديل الشائع."
+    },
+    {
+      "id": "q8",
+      "concept_id": "raguard_layer",
+      "bloom_level": "Remember",
+      "question": "At which layer does RA-Guard filter router advertisements?",
+      "question_ar": "بأي طبقة يرشّح RA-Guard إعلانات الموجّه؟",
+      "options": [
+        "At layer four, in the host firewall.",
+        "At layer seven, in the application gateway.",
+        "Layer two filtering at the access switch.",
+        "At layer three, in the border router."
+      ],
+      "options_ar": [
+        "بطبقة النقل، داخل جدار المضيف.",
+        "بطبقة التطبيق، داخل بوابة التطبيقات.",
+        "في طبقة الربط داخل مبدّل الوصول.",
+        "بطبقة الشبكة، داخل الموجّه الحدودي."
+      ],
+      "options_en": [
+        "At layer four, in the host firewall.",
+        "At layer seven, in the application gateway.",
+        "Layer two filtering at the access switch.",
+        "At layer three, in the border router."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "RA-Guard adds layer-two filtering for router advertisements, which is why it sits on the switch rather than on a router.",
+      "explanation_ar": "RA-Guard يضيف ترشيح طبقة الربط لإعلانات الموجّه، ولهذا يجلس على المبدّل مو على الموجّه."
+    },
+    {
+      "id": "q9",
+      "concept_id": "raguard_evasion",
+      "bloom_level": "Analyze",
+      "question": "Why must RA-Guard parse the full IPv6 header chain to resist evasion?",
+      "question_ar": "ليش لازم RA-Guard يحلّل سلسلة ترويسات IPv6 كاملة لمقاومة التهرّب؟",
+      "options": [
+        "A rogue RA may hide in crafted extension headers.",
+        "Because the RA payload is encrypted by the sender.",
+        "Because the switch cannot read layer-three addresses.",
+        "Because the router rewrites the RA before forwarding."
+      ],
+      "options_ar": [
+        "لأنه يقدر يخبّي RA مزوّر داخل ترويسات امتداد مُصمّمة.",
+        "لأن المرسل يشفّر محتوى إعلان الموجّه قبل إرساله.",
+        "لأن المبدّل ما يقدر يقرأ عناوين طبقة الشبكة.",
+        "لأن الموجّه يبدّل الإعلان قبل تمريره إلى جهاز الشبكة."
+      ],
+      "options_en": [
+        "A rogue RA may hide in crafted extension headers.",
+        "Because the RA payload is encrypted by the sender.",
+        "Because the switch cannot read layer-three addresses.",
+        "Because the router rewrites the RA before forwarding."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A naive filter that only inspects the first header can be bypassed by hiding the advertisement deeper in an extension-header chain, so the whole chain must be validated.",
+      "explanation_ar": "الفلاتر الساذجة اللي تفحص أول ترويسة فقط تنخدع بإخفاء الإعلان أعمق بسلسلة ترويسات امتداد، فلهذا لازم تُتحقّق السلسلة كاملة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ext_header_middlebox",
+      "bloom_level": "Understand",
+      "question": "Why do IPv6 extension headers create a security problem for middleboxes?",
+      "question_ar": "ليش ترويسات الامتداد في IPv6 تسوي مشكلة أمنية للأجهزة الوسيطة؟",
+      "options": [
+        "Because they encrypt the transport-layer port numbers.",
+        "Because they double the size of every IPv6 packet.",
+        "Because they replace the need for ICMPv6 entirely.",
+        "They complicate parsing and can enable filter evasion."
+      ],
+      "options_ar": [
+        "لأنها قد تزيد طول كل حزمة IPv6 أثناء النقل.",
+        "لأنها قد تزيد حجم حزمة IPv6 كثيراً أثناء النقل.",
+        "لأنها تلغي الحاجة إلى ICMPv6 بالكامل.",
+        "لأنها تعقّد المعالجة وسمحت بالتهرّب سابقاً."
+      ],
+      "options_en": [
+        "Because they encrypt the transport-layer port numbers.",
+        "Because they double the size of every IPv6 packet.",
+        "Because they replace the need for ICMPv6 entirely.",
+        "They complicate parsing and can enable filter evasion."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Extension headers make middlebox processing harder, and ambiguities in how chains were handled historically let attackers smuggle traffic past filters.",
+      "explanation_ar": "ترويسات الامتداد تعقّد معالجة الأجهزة الوسيطة، والغموض بمعالجة السلاسل سابقاً سمح للمهاجمين يهرّبون ترافيك ورا الفلاتر."
+    },
+    {
+      "id": "q11",
+      "concept_id": "dfa_model",
+      "bloom_level": "Remember",
+      "question": "In the finite-state parsing model, when is a header chain accepted?",
+      "question_ar": "بنموذج التحليل بالحالات المحدودة، متى تُقبل سلسلة الترويسات؟",
+      "options": [
+        "When the first header matches a fixed allow list.",
+        "A start-state transition ends in an accepting state.",
+        "When the chain length is below the configured maximum.",
+        "When every header carries a valid digital signature."
+      ],
+      "options_ar": [
+        "لمّا تطابق الترويسة الأولى قائمة سماح ثابتة.",
+        "يُقبل إذا بلغ الانتقال من البداية حالة نهائية.",
+        "لمّا يقل طول السلسلة عن حدّها الأقصى المسموح.",
+        "لمّا تحمل كل ترويسة توقيعاً رقمياً صحيحاً."
+      ],
+      "options_en": [
+        "When the first header matches a fixed allow list.",
+        "A start-state transition ends in an accepting state.",
+        "When the chain length is below the configured maximum.",
+        "When every header carries a valid digital signature."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The legal header chains are treated as a deterministic finite automaton, and a chain is accepted only if its transition from the start state reaches an accepting state.",
+      "explanation_ar": "سلاسل الترويسات القانونية تُعامل كآلة حالات محدودة حتمية، والسلسلة تُقبل بس إذا وصل انتقالها من حالة البداية إلى حالة قبول."
+    },
+    {
+      "id": "q12",
+      "concept_id": "dhcp_no_auth",
+      "bloom_level": "Understand",
+      "question": "Why is DHCP a security weak point by design?",
+      "question_ar": "ليش DHCP نقطة ضعف أمنية بحكم التصميم؟",
+      "options": [
+        "Because it encrypts leases with a weak symmetric key.",
+        "Because it requires a certificate for every client.",
+        "Because it routes all traffic through the DHCP host.",
+        "It historically had no server-side authentication."
+      ],
+      "options_ar": [
+        "لأنه يشفّر الإجارات بمفتاح متماثل ضعيف.",
+        "لأنه يطلب شهادة رقمية موثقة لكل عميل DHCP.",
+        "لأنه يوجّه كل الترافيك عبر مضيف DHCP.",
+        "لأنه تاريخياً بلا مصادقة لخادم DHCP."
+      ],
+      "options_en": [
+        "Because it encrypts leases with a weak symmetric key.",
+        "Because it requires a certificate for every client.",
+        "Because it routes all traffic through the DHCP host.",
+        "It historically had no server-side authentication."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "DHCP automates IP configuration but historically lacked authentication, which opens the door to rogue servers and traffic redirection.",
+      "explanation_ar": "DHCP يؤتمت تكوين الـ IP بس تاريخياً كان بلا مصادقة، وهذا يفتح الباب لخوادم مزوّرة وإعادة توجيه الحركة."
+    },
+    {
+      "id": "q13",
+      "concept_id": "rfc3118_limited",
+      "bloom_level": "Understand",
+      "question": "Why did RFC 3118 message authentication see limited deployment?",
+      "question_ar": "ليش ما انتشرت مصادقة رسائل RFC 3118 إلا بشكل محدود؟",
+      "options": [
+        "It only supports networks using IPv6 addressing.",
+        "It requires a specialised hardware security module.",
+        "Key-management complexity and performance overhead.",
+        "It was withdrawn before formal standardisation."
+      ],
+      "options_ar": [
+        "لأنه يدعم فقط الشبكات ذات عنونة IPv6.",
+        "لأنه يتطلب وحدة أمن عتادية متخصصة.",
+        "بسبب كلفة إدارة المفاتيح وعبء الأداء.",
+        "لأنه سُحب قبل اعتماده رسمياً في المعيار."
+      ],
+      "options_en": [
+        "It only supports networks using IPv6 addressing.",
+        "It requires a specialised hardware security module.",
+        "Key-management complexity and performance overhead.",
+        "It was withdrawn before formal standardisation."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "RFC 3118 specifies DHCP message authentication, but key management and performance concerns kept it from being widely deployed.",
+      "explanation_ar": "RFC 3118 يحدّد مصادقة رسائل DHCP، بس إدارة المفاتيح ومخاوف الأداء منعت نشره على نطاق واسع."
+    },
+    {
+      "id": "q14",
+      "concept_id": "dhcp_l2_controls",
+      "bloom_level": "Remember",
+      "question": "What do enterprises rely on in practice instead of RFC 3118?",
+      "question_ar": "على شنو تعتمد المؤسسات عملياً بدل RFC 3118؟",
+      "options": [
+        "DHCP snooping at switches plus 802.1X or NAC.",
+        "Static addressing for every host on the network.",
+        "Encrypted DHCP leases signed by the gateway.",
+        "A single central DHCP server with no relay."
+      ],
+      "options_ar": [
+        "DHCP snooping عند السويتشات مع 802.1X أو NAC.",
+        "عنونة ثابتة تُدار يدوياً لكل جهاز متصل بالشبكة.",
+        "إجارات DHCP مشفّرة وموقّعة من بوابة الشبكة.",
+        "خادم DHCP مركزي يدير الشبكة من دون استخدام مرحّلات."
+      ],
+      "options_en": [
+        "DHCP snooping at switches plus 802.1X or NAC.",
+        "Static addressing for every host on the network.",
+        "Encrypted DHCP leases signed by the gateway.",
+        "A single central DHCP server with no relay."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Layer-two controls bind switch ports to legitimate servers and clients, which is cheaper to operate than key-managed message authentication.",
+      "explanation_ar": "ضوابط الطبقة الثانية تربط منافذ المبدّل بخوادم وعملاء شرعيين، وتشغيلها أرخص من مصادقة الرسائل بإدارة مفاتيح."
+    },
+    {
+      "id": "q15",
+      "concept_id": "dhcp_residual_model",
+      "bloom_level": "Remember",
+      "question": "How is the residual DHCP risk expressed?",
+      "question_ar": "كيف يُعبَّر عن خطر DHCP المتبقي؟",
+      "options": [
+        "The product of one minus efficacy times impact per type.",
+        "The maximum of probability times impact across types.",
+        "The average of efficacy times impact per attack type.",
+        "Sum residual-risk contributions by probability and impact."
+      ],
+      "options_ar": [
+        "حاصل ضرب واحد ناقص الفاعلية بالتأثير لكل نوع هجوم.",
+        "أقصى احتمال مضروب بالتأثير بين أنواع الهجوم.",
+        "متوسط الفاعلية مضروباً بالتأثير لكل نوع هجوم.",
+        "مجموع المخاطر المتبقية مرجّحاً بالاحتمال والتأثير."
+      ],
+      "options_en": [
+        "The product of one minus efficacy times impact per type.",
+        "The maximum of probability times impact across types.",
+        "The average of efficacy times impact per attack type.",
+        "Sum residual-risk contributions by probability and impact."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Residual risk is the sum across attack types of the uncontrolled fraction of probability times impact, so a control with efficacy near one drives its own term to zero.",
+      "explanation_ar": "الخطر المتبقي هو مجموع، عبر أنواع الهجوم، الكسر غير المضبوط من الاحتمال مضروباً بالتأثير، فضابط فاعليته قريبة من واحد يصفّر حده."
+    },
+    {
+      "id": "q16",
+      "concept_id": "icmp_blanket_block_harm",
+      "bloom_level": "Understand",
+      "question": "Why is blocking all ICMP a bad security posture?",
+      "question_ar": "ليش حجب كل رسائل ICMP وضعية أمنية خاطئة؟",
+      "options": [
+        "It disables IPv4 addressing on the local link.",
+        "It forces every host onto a static default gateway.",
+        "It disrupts path MTU discovery, creating black holes.",
+        "It exposes the router's full routing table to hosts."
+      ],
+      "options_ar": [
+        "يعطّل عنونة IPv4 على الرابط المحلي.",
+        "يجبر كل جهاز على بوابة افتراضية ثابتة.",
+        "يكسر اكتشاف PMTU ويقدر يسبّب ثقوباً سوداء.",
+        "يكشف جدول التوجيه الكامل للموجّه للأجهزة."
+      ],
+      "options_en": [
+        "It disables IPv4 addressing on the local link.",
+        "It forces every host onto a static default gateway.",
+        "It disrupts path MTU discovery, creating black holes.",
+        "It exposes the router's full routing table to hosts."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Without the necessary ICMP messages routers cannot tell endpoints that a packet is too large, so the connection stalls in a black hole with no visible cause.",
+      "explanation_ar": "بلا رسائل ICMP الضرورية، الموجّهات ما تقدر تخبر الأطراف إن الرزمة كبيرة عليهم، فيعلّق الاتصال بثقب أسود بلا سبب واضح."
+    }
+  ]
 }

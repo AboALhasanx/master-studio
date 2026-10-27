@@ -1,0 +1,595 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch04_T02_Symmetric_Encryption",
+ "topic": "Symmetric encryption",
+ "topic_ar": "التشفير المتماثل",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "sym_definition",
+   "bloom_level": "Remember",
+   "question": "What defines symmetric encryption?",
+   "question_ar": "شنو يعرّف التشفير المتماثل؟",
+   "options": [
+    "A single shared secret key K is used for both encryption and decryption.",
+    "Two related keys are used, one of them public and one of them private.",
+    "No key is used at all; the algorithm itself is kept secret.",
+    "A different key is generated afresh for every message that is sent."
+   ],
+   "options_ar": [
+    "مفتاح سري واحد مشترك K يُستخدم للتشفير وفكّ التشفير معاً.",
+    "مفتاحان مرتبطان، أحدهما عام والآخر خاص.",
+    "لا يُستخدم أي مفتاح؛ الآلية نفسها هي التي تُخفى.",
+    "مفتاح مختلف يُولَّد لكل رسالة تُرسل."
+   ],
+   "options_en": [
+    "A single shared secret key K is used for both encryption and decryption.",
+    "Two related keys are used, one of them public and one of them private.",
+    "No key is used at all; the algorithm itself is kept secret.",
+    "A different key is generated afresh for every message that is sent."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Both parties must hold the same K in secret, which is what separates this paradigm from asymmetric encryption.",
+   "explanation_ar": "الطرفان لازم يمتلكان نفس K سراً، وهذا ما يفصل هذا النموذج عن التشفير غير المتماثل."
+  },
+  {
+   "id": "q2",
+   "concept_id": "sym_notation",
+   "bloom_level": "Understand",
+   "question": "In the notation C = E_K(P) and P = D_K(C), what do P and C denote?",
+   "question_ar": "بالترميز C = E_K(P) و P = D_K(C)، ماذا يدلّ عليه P و C؟",
+   "options": [
+    "P is the padding and C is the checksum.",
+    "P is the protocol and C is the cipher suite.",
+    "P is the plaintext message and C is the ciphertext.",
+    "P is the private key and C is the cipher key."
+   ],
+   "options_ar": [
+    "P هو الحشو و C هو المجموع الاختباري.",
+    "P هو البروتوكول و C هي مجموعة الشيفرات.",
+    "P هو الرسالة الأصلية و C هو النص المشفّر.",
+    "P هو المفتاح الخاص و C هو مفتاح الشيفرة."
+   ],
+   "options_en": [
+    "P is the padding and C is the checksum.",
+    "P is the protocol and C is the cipher suite.",
+    "P is the plaintext message and C is the ciphertext.",
+    "P is the private key and C is the cipher key."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "E_K is the encryption function under key K and D_K the decryption function under the same key.",
+   "explanation_ar": "E_K هي دالة التشفير تحت المفتاح K، و D_K دالة فكّ التشفير تحت نفس المفتاح."
+  },
+  {
+   "id": "q3",
+   "concept_id": "sym_roundtrip_condition",
+   "bloom_level": "Understand",
+   "question": "What condition must hold if a symmetric system is secure?",
+   "question_ar": "شنو الشرط اللي لازم يتحقق إذا كان النظام المتماثل آمناً؟",
+   "options": [
+    "The key can be recovered from the ciphertext alone.",
+    "Decrypting the ciphertext with the same key returns the plaintext.",
+    "Encrypting twice with the same key produces a different ciphertext.",
+    "The ciphertext is always shorter than the plaintext."
+   ],
+   "options_ar": [
+    "المفتاح يمكن استعادته من النص المشفّر وحده.",
+    "فكّ النص المشفّر بنفس المفتاح يرجّع النص الأصلي.",
+    "التشفير مرتين بنفس المفتاح ينتج نصاً مشفّراً مختلفاً.",
+    "النص المشفّر دائماً أقصر من النص الأصلي."
+   ],
+   "options_en": [
+    "The key can be recovered from the ciphertext alone.",
+    "Decrypting the ciphertext with the same key returns the plaintext.",
+    "Encrypting twice with the same key produces a different ciphertext.",
+    "The ciphertext is always shorter than the plaintext."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "D_K(E_K(P)) = P — decryption must invert encryption exactly.",
+   "explanation_ar": "D_K(E_K(P)) = P — لازم فكّ التشفير يعكس التشفير بالضبط."
+  },
+  {
+   "id": "q4",
+   "concept_id": "sym_key_characteristics",
+   "bloom_level": "Remember",
+   "question": "Which three key characteristics does the chapter list for symmetric encryption?",
+   "question_ar": "أي الخصائص الرئيسية الثلاثة يعدّدها الفصل للتشفير المتماثل؟",
+   "options": [
+    "Slow but scalable, heavy resource usage, and easy revocation.",
+    "Fast and efficient, heavy resource usage, and no key distribution challenge.",
+    "Slow and inefficient, minimal resource usage, and a key distribution challenge.",
+    "Fast and efficient, minimal resource usage, and a key distribution challenge."
+   ],
+   "options_ar": [
+    "بطيء بس قابل للتوسّع، استهلاك موارد ثقيل، وإبطال سهل.",
+    "سريع وفعّال، استهلاك موارد ثقيل، ولا تحدي توزيع مفتاح.",
+    "بطيء وغير فعّال، استهلاك موارد قليل، وتحدي توزيع المفتاح.",
+    "سريع وفعّال، استهلاك موارد قليل، وتحدي توزيع المفتاح."
+   ],
+   "options_en": [
+    "Slow but scalable, heavy resource usage, and easy revocation.",
+    "Fast and efficient, heavy resource usage, and no key distribution challenge.",
+    "Slow and inefficient, minimal resource usage, and a key distribution challenge.",
+    "Fast and efficient, minimal resource usage, and a key distribution challenge."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The first two are advantages of the paradigm and the third is its central weakness.",
+   "explanation_ar": "الأولى ميزتان للنموذج والثالث هو ضعفه المركزي."
+  },
+  {
+   "id": "q5",
+   "concept_id": "sym_des_facts",
+   "bloom_level": "Remember",
+   "question": "Which description matches the Data Encryption Standard?",
+   "question_ar": "أي وصف يطابق معيار تشفير البيانات DES؟",
+   "options": [
+    "A 2001 block cipher with a 256-bit key.",
+    "A 2014 stream cipher with a 256-bit key.",
+    "A 1977 block cipher with a 56-bit key.",
+    "A 1977 stream cipher with a 128-bit key."
+   ],
+   "options_ar": [
+    "شيفرة كتل من 2001 بمفتاح 256-bit.",
+    "شيفرة تيار من 2014 بمفتاح 256-bit.",
+    "شيفرة كتل من 1977 بمفتاح 56-bit.",
+    "شيفرة تيار من 1977 بمفتاح 128-bit."
+   ],
+   "options_en": [
+    "A 2001 block cipher with a 256-bit key.",
+    "A 2014 stream cipher with a 256-bit key.",
+    "A 1977 block cipher with a 56-bit key.",
+    "A 1977 stream cipher with a 128-bit key."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "DES was once dominant but is now broken by brute force.",
+   "explanation_ar": "كان DES مسيطراً زمان، وهو الآن مكسور بالقوة الغاشمة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "sym_des_broken",
+   "bloom_level": "Understand",
+   "question": "What lesson does the chapter draw from the breaking of DES?",
+   "question_ar": "شنو الدرس الذي يستخلصه الفصل من كسر DES؟",
+   "options": [
+    "Underestimating future computing power is dangerous.",
+    "Block ciphers are inherently weaker than stream ciphers.",
+    "A 56-bit key is sufficient if the message is short.",
+    "Brute force is impossible for any key below 64 bits."
+   ],
+   "options_ar": [
+    "الاستهانة بقوة الحوسبة المستقبلية خطرة.",
+    "شيفرات الكتل أضعف من شيفرات التيار بطبيعتها.",
+    "المفتاح 56-bit كافٍ إذا كانت الرسالة قصيرة.",
+    "القوة الغاشمة مستحيلة على أي مفتاح أقل من 64 بت."
+   ],
+   "options_en": [
+    "Underestimating future computing power is dangerous.",
+    "Block ciphers are inherently weaker than stream ciphers.",
+    "A 56-bit key is sufficient if the message is short.",
+    "Brute force is impossible for any key below 64 bits."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "DES fell to brute force, which demonstrated the danger of underestimating how fast computers would become.",
+   "explanation_ar": "سقط DES أمام القوة الغاشمة، وهذا أثبت خطر الاستهانة بمدى سرعة تطور الحواسيب."
+  },
+  {
+   "id": "q7",
+   "concept_id": "sym_aes_facts",
+   "bloom_level": "Remember",
+   "question": "Which description matches the Advanced Encryption Standard?",
+   "question_ar": "أي وصف يطابق معيار التشفير المتقدم AES؟",
+   "options": [
+    "A 2001 stream cipher with a single 128-bit key.",
+    "A 1977 block cipher with 128-, 192- or 256-bit keys.",
+    "A 2014 block cipher with 128-, 192- or 256-bit keys.",
+    "A 2001 block cipher with 128-, 192- or 256-bit keys."
+   ],
+   "options_ar": [
+    "شيفرة تيار من 2001 بمفتاح واحد 128-bit.",
+    "شيفرة كتل من 1977 بمفاتيح 128 أو 192 أو 256-bit.",
+    "شيفرة كتل من 2014 بمفاتيح 128 أو 192 أو 256-bit.",
+    "شيفرة كتل من 2001 بمفاتيح 128 أو 192 أو 256-bit."
+   ],
+   "options_en": [
+    "A 2001 stream cipher with a single 128-bit key.",
+    "A 1977 block cipher with 128-, 192- or 256-bit keys.",
+    "A 2014 block cipher with 128-, 192- or 256-bit keys.",
+    "A 2001 block cipher with 128-, 192- or 256-bit keys."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "AES is secure against all practical cryptanalysis and is the standard for VPNs, TLS and disk encryption.",
+   "explanation_ar": "AES آمنة ضد كل التحليل التشفيري العملي، وهي المعيار للـ VPNs و TLS وتشفير الأقراص."
+  },
+  {
+   "id": "q8",
+   "concept_id": "sym_aes_rounds_trap",
+   "bloom_level": "Analyze",
+   "question": "A student claims AES runs 16 rounds regardless of key size. What is the correct figure?",
+   "question_ar": "طالب يدّعي إن AES تشتغل 16 جولة أيّاً كان حجم المفتاح. شنو الرقم الصحيح؟",
+   "options": [
+    "14 rounds for a 128-bit key, 12 for 192-bit and 10 for 256-bit.",
+    "10 rounds for a 128-bit key, 12 for 192-bit and 14 for 256-bit.",
+    "16 rounds for a 128-bit key, 16 for 192-bit and 16 for 256-bit.",
+    "10 rounds for a 128-bit key, 10 for 192-bit and 10 for 256-bit."
+   ],
+   "options_ar": [
+    "14 جولة لمفتاح 128-bit، و12 لمفتاح 192-bit، و10 لمفتاح 256-bit.",
+    "10 جولات لمفتاح 128-bit، و12 لمفتاح 192-bit، و14 لمفتاح 256-bit.",
+    "16 جولة لمفتاح 128-bit، و16 لمفتاح 192-bit، و16 لمفتاح 256-bit.",
+    "10 جولات لمفتاح 128-bit، و10 لمفتاح 192-bit، و10 لمفتاح 256-bit."
+   ],
+   "options_en": [
+    "14 rounds for a 128-bit key, 12 for 192-bit and 10 for 256-bit.",
+    "10 rounds for a 128-bit key, 12 for 192-bit and 14 for 256-bit.",
+    "16 rounds for a 128-bit key, 16 for 192-bit and 16 for 256-bit.",
+    "10 rounds for a 128-bit key, 10 for 192-bit and 10 for 256-bit."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The round count grows with the key size: 10, 12 and 14. Writing 16 is a common error.",
+   "explanation_ar": "عدد الجولات يزيد مع حجم المفتاح: 10 و12 و14. وكتابة 16 خطأ شائع."
+  },
+  {
+   "id": "q9",
+   "concept_id": "sym_aes_deployment",
+   "bloom_level": "Remember",
+   "question": "Where does the chapter say AES is the standard?",
+   "question_ar": "أين يقول الفصل إن AES هي المعيار؟",
+   "options": [
+    "Only TLS and mobile messaging applications.",
+    "Only VPNs and wireless sensor networks.",
+    "VPNs, TLS and disk encryption.",
+    "Only disk encryption and archived backups."
+   ],
+   "options_ar": [
+    "TLS وتطبيقات المراسلة على الموبايل فقط.",
+    "الشبكات الخاصة الافتراضية وشبكات الاستشعار اللاسلكية فقط.",
+    "الشبكات الخاصة الافتراضية و TLS وتشفير الأقراص.",
+    "تشفير الأقراص والنسخ الاحتياطية المؤرشفة فقط."
+   ],
+   "options_en": [
+    "Only TLS and mobile messaging applications.",
+    "Only VPNs and wireless sensor networks.",
+    "VPNs, TLS and disk encryption.",
+    "Only disk encryption and archived backups."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "AES is named as the standard for VPNs, TLS and disk encryption.",
+   "explanation_ar": "AES مذكورة كمعيار للشبكات الخاصة الافتراضية و TLS وتشفير الأقراص."
+  },
+  {
+   "id": "q10",
+   "concept_id": "sym_chacha20_facts",
+   "bloom_level": "Remember",
+   "question": "Which description matches ChaCha20?",
+   "question_ar": "أي وصف يطابق ChaCha20؟",
+   "options": [
+    "A 2014 block cipher built for speed and resistance to timing attacks.",
+    "A 2001 stream cipher built for speed and resistance to timing attacks.",
+    "A 2014 stream cipher built for large key sizes and slow operation.",
+    "A 2014 stream cipher built for speed and resistance to timing attacks."
+   ],
+   "options_ar": [
+    "شيفرة كتل من 2014 مبنيّة للسرعة ومقاومة هجمات التوقيت.",
+    "شيفرة تيار من 2001 مبنيّة للسرعة ومقاومة هجمات التوقيت.",
+    "شيفرة تيار من 2014 مبنيّة لمفاتيح كبيرة وتشغيل بطيء.",
+    "شيفرة تيار من 2014 مبنيّة للسرعة ومقاومة هجمات التوقيت."
+   ],
+   "options_en": [
+    "A 2014 block cipher built for speed and resistance to timing attacks.",
+    "A 2001 stream cipher built for speed and resistance to timing attacks.",
+    "A 2014 stream cipher built for large key sizes and slow operation.",
+    "A 2014 stream cipher built for speed and resistance to timing attacks."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "ChaCha20 is widely deployed in TLS 1.3 and mobile applications.",
+   "explanation_ar": "ChaCha20 منتشرة على نطاق واسع في TLS 1.3 وتطبيقات الموبايل."
+  },
+  {
+   "id": "q11",
+   "concept_id": "sym_stream_vs_block",
+   "bloom_level": "Understand",
+   "question": "Which of the three symmetric algorithms named in the chapter is a stream cipher?",
+   "question_ar": "أي الخوارزميات المتماثلة الثلاثة المذكورة بالفصل هي شيفرة تيار؟",
+   "options": [
+    "ChaCha20.",
+    "DES.",
+    "AES.",
+    "Both DES and AES."
+   ],
+   "options_ar": [
+    "ChaCha20.",
+    "DES.",
+    "AES.",
+    "DES و AES كلتاهما."
+   ],
+   "options_en": [
+    "ChaCha20.",
+    "DES.",
+    "AES.",
+    "Both DES and AES."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "DES and AES are block ciphers; ChaCha20 is the stream cipher of the three.",
+   "explanation_ar": "DES و AES شيفراتا كتل، أما ChaCha20 فهي شيفرة التيار بين الثلاثة."
+  },
+  {
+   "id": "q12",
+   "concept_id": "sym_strength_performance",
+   "bloom_level": "Remember",
+   "question": "What throughput does the chapter attribute to AES?",
+   "question_ar": "أي إنتاجية ينسبها الفصل إلى AES؟",
+   "options": [
+    "Bits per second.",
+    "Gigabits per second.",
+    "Megabits per second.",
+    "Kilobits per second."
+   ],
+   "options_ar": [
+    "بت في الثانية.",
+    "غيغابت في الثانية.",
+    "ميغابت في الثانية.",
+    "كيلوبت في الثانية."
+   ],
+   "options_en": [
+    "Bits per second.",
+    "Gigabits per second.",
+    "Megabits per second.",
+    "Kilobits per second."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "AES can achieve gigabits/sec throughput, which is why it handles large volumes quickly.",
+   "explanation_ar": "AES توصل إنتاجية بالغيغابت/ثانية، ولهذا تتعامل مع الأحجام الكبيرة بسرعة."
+  },
+  {
+   "id": "q13",
+   "concept_id": "sym_strength_simplicity",
+   "bloom_level": "Understand",
+   "question": "Why does the chapter call symmetric cryptography simpler than asymmetric cryptography?",
+   "question_ar": "ليش يسمّي الفصل التشفير المتماثل أبسط من غير المتماثل؟",
+   "options": [
+    "It uses fewer mathematical operations than a hash function.",
+    "It needs no key at all, so nothing can be misconfigured.",
+    "It works without any agreement between the two parties.",
+    "It is easier to implement securely than asymmetric cryptography."
+   ],
+   "options_ar": [
+    "لأنه يستخدم عمليات رياضية أقل من دالة الهاش.",
+    "لأنه لا يحتاج أي مفتاح، فلا شيئاً يمكن ضبطه خطأ.",
+    "لأنه يشتغل دون أي اتفاق بين الطرفين.",
+    "لأنه أسهل تنفيذاً بشكل آمن من التشفير غير المتماثل."
+   ],
+   "options_en": [
+    "It uses fewer mathematical operations than a hash function.",
+    "It needs no key at all, so nothing can be misconfigured.",
+    "It works without any agreement between the two parties.",
+    "It is easier to implement securely than asymmetric cryptography."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Simplicity is listed as a strength alongside performance and compactness.",
+   "explanation_ar": "البساطة مذكورة كنقطة قوة إلى جانب الأداء والاختصار."
+  },
+  {
+   "id": "q14",
+   "concept_id": "sym_strength_compactness",
+   "bloom_level": "Understand",
+   "question": "What does the chapter mean by the compactness of symmetric encryption?",
+   "question_ar": "شنو يقصد الفصل باختصار التشفير المتماثل؟",
+   "options": [
+    "The key can be stored in a single byte of memory.",
+    "The algorithm needs no storage beyond the message itself.",
+    "Smaller key sizes still achieve high security, and AES-128 is robust.",
+    "The ciphertext is always shorter than the plaintext it replaces."
+   ],
+   "options_ar": [
+    "المفتاح يمكن تخزينه ببايت واحد من الذاكرة.",
+    "الخوارزمية لا تحتاج تخزيناً خارج الرسالة نفسها.",
+    "أحجام مفاتيح أصغر تحقق أماناً عالياً، و AES-128 قوية.",
+    "النص المشفّر دائماً أقصر من النص الأصلي الذي يستبدله."
+   ],
+   "options_en": [
+    "The key can be stored in a single byte of memory.",
+    "The algorithm needs no storage beyond the message itself.",
+    "Smaller key sizes still achieve high security, and AES-128 is robust.",
+    "The ciphertext is always shorter than the plaintext it replaces."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Compactness refers to key size versus security level, not to ciphertext length.",
+   "explanation_ar": "الاختصار يعني حجم المفتاح مقابل مستوى الأمان، لا طول النص المشفّر."
+  },
+  {
+   "id": "q15",
+   "concept_id": "sym_weak_key_distribution",
+   "bloom_level": "Understand",
+   "question": "What happens to confidentiality if a symmetric key is intercepted or leaked?",
+   "question_ar": "شنو يصيب السرّية إذا قُطع مفتاح متماثل أو تسرّب؟",
+   "options": [
+    "Confidentiality collapses.",
+    "Confidentiality is reduced by exactly one half.",
+    "Confidentiality holds until the key is formally revoked.",
+    "Confidentiality is unaffected because the algorithm is secret."
+   ],
+   "options_ar": [
+    "السرّية تنهار.",
+    "السرّية تنخفض إلى النصف بالضبط.",
+    "السرّية تبقى إلى أن يُبطَل المفتاح رسمياً.",
+    "السرّية ما تتأثر لأن الآلية سرّية."
+   ],
+   "options_en": [
+    "Confidentiality collapses.",
+    "Confidentiality is reduced by exactly one half.",
+    "Confidentiality holds until the key is formally revoked.",
+    "Confidentiality is unaffected because the algorithm is secret."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The key distribution problem is the paradigm's central weakness: whoever holds K reads everything.",
+   "explanation_ar": "مشكلة توزيع المفتاح هي الضعف المركزي للنموذج: من يملك K يقرأ كل شي."
+  },
+  {
+   "id": "q16",
+   "concept_id": "sym_weak_scalability",
+   "bloom_level": "Understand",
+   "question": "How many unique keys does a symmetric system need for n users?",
+   "question_ar": "كم مفتاحاً فريداً يحتاج النظام المتماثل من أجل n مستخدمين؟",
+   "options": [
+    "n keys, one per user.",
+    "n multiplied by n keys, one per ordered pair.",
+    "2 to the power n keys, one per possible combination.",
+    "n multiplied by n minus 1, divided by 2."
+   ],
+   "options_ar": [
+    "n مفتاحاً، واحد لكل مستخدم.",
+    "n مضروباً بـ n مفتاحاً، واحد لكل زوج مرتّب.",
+    "2 أس n مفتاحاً، واحد لكل تركيب ممكن.",
+    "n مضروباً بـ n ناقص 1، مقسوماً على 2."
+   ],
+   "options_en": [
+    "n keys, one per user.",
+    "n multiplied by n keys, one per ordered pair.",
+    "2 to the power n keys, one per possible combination.",
+    "n multiplied by n minus 1, divided by 2."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "With n users a symmetric system requires n(n-1)/2 unique keys, so the count grows quadratically.",
+   "explanation_ar": "مع n مستخدماً يحتاج النظام المتماثل n(n-1)/2 مفتاحاً فريداً، فالعدد ينمو تربيعياً."
+  },
+  {
+   "id": "q17",
+   "concept_id": "sym_keycount_trap",
+   "bloom_level": "Analyze",
+   "question": "A student argues that because symmetric encryption uses one key, each of n users simply needs one unique key. What is wrong with that reasoning?",
+   "question_ar": "طالب يجادل بأنه لأن التشفير المتماثل يستخدم مفتاحاً واحداً، فكل مستخدم من n يحتاج مفتاحاً فريداً واحداً فقط. شنو الخطأ بهذا الاستدلال؟",
+   "options": [
+    "The total is 2n because each user needs one key to send and one to receive.",
+    "Every pair of users must share its own key, so the total is n(n-1)/2 rather than n.",
+    "Nothing is wrong; n keys is exactly what the formula gives.",
+    "The total is n squared because each user needs a key for every other user including themselves."
+   ],
+   "options_ar": [
+    "المجموع 2n لأن كل مستخدم يحتاج مفتاحاً للإرسال وآخر للاستلام.",
+    "كل زوج مستخدمين لازم يتشارك مفتاحه الخاص، فالمجموع n(n-1)/2 لا n.",
+    "ما كو خطأ؛ n مفتاح هو بالضبط ما تعطيه المعادلة.",
+    "المجموع n تربيع لأن كل مستخدم يحتاج مفتاحاً لكل مستخدم آخر بما فيه هو نفسه."
+   ],
+   "options_en": [
+    "The total is 2n because each user needs one key to send and one to receive.",
+    "Every pair of users must share its own key, so the total is n(n-1)/2 rather than n.",
+    "Nothing is wrong; n keys is exactly what the formula gives.",
+    "The total is n squared because each user needs a key for every other user including themselves."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "One key per user only covers that user's own traffic; secure pairwise communication needs a distinct shared key for every unordered pair, which is n(n-1)/2.",
+   "explanation_ar": "المفتاح الواحد لكل مستخدم يغطي حركة ذلك المستخدم فقط؛ التواصل الآمن بين كل زوج يحتاج مفتاحاً مشتركاً متميزاً لكل زوج غير مرتّب، وهو n(n-1)/2."
+  },
+  {
+   "id": "q18",
+   "concept_id": "sym_weak_revocation",
+   "bloom_level": "Understand",
+   "question": "Why is revocation difficult in a symmetric system?",
+   "question_ar": "ليش الإبطال صعب بالنظام المتماثل؟",
+   "options": [
+    "Revocation is instant, but every old ciphertext becomes permanently unreadable.",
+    "The key simply cannot be changed once it has been used even a single time.",
+    "Replacing a compromised key means distributing a new one securely to every party.",
+    "The algorithm itself must be rewritten before a new key can ever be issued."
+   ],
+   "options_ar": [
+    "الإبطال فوري، بس كل نص مشفّر قديم يصير غير قابل للقراءة نهائياً.",
+    "المفتاح ما يقدر يتغيّر بعد ما يُستخدم ولو مرة واحدة.",
+    "استبدال مفتاح مخترق يعني توزيع مفتاح جديد بأمان على كل الأطراف.",
+    "لا بد من إعادة كتابة الخوارزمية نفسها قبل إصدار أي مفتاح جديد."
+   ],
+   "options_en": [
+    "Revocation is instant, but every old ciphertext becomes permanently unreadable.",
+    "The key simply cannot be changed once it has been used even a single time.",
+    "Replacing a compromised key means distributing a new one securely to every party.",
+    "The algorithm itself must be rewritten before a new key can ever be issued."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The same distribution problem that created the key returns when the key has to be replaced.",
+   "explanation_ar": "نفس مشكلة التوزيع التي أنشأت المفتاح ترجع متى ما يجب استبداله."
+  },
+  {
+   "id": "q19",
+   "concept_id": "sym_usecases",
+   "bloom_level": "Remember",
+   "question": "Which use cases does the chapter list for symmetric encryption?",
+   "question_ar": "أي حالات الاستخدام يعدّدها الفصل للتشفير المتماثل؟",
+   "options": [
+    "Encrypting stored data, securing network traffic, and bulk encryption of cloud backups.",
+    "Signing software updates, issuing certificates, and verifying identities.",
+    "Exchanging session keys, signing email, and anchoring a blockchain.",
+    "Hashing passwords, checking file integrity, and logging audit trails."
+   ],
+   "options_ar": [
+    "تشفير البيانات المخزّنة، وتأمين حركة الشبكة، والتشفير الكمّي للنسخ السحابية.",
+    "توقيع تحديثات البرامج، وإصدار الشهادات، والتحقق من الهويات.",
+    "تبادل مفاتيح الجلسة، وتوقيع البريد، وترسيخ سلسلة الكتل.",
+    "هش كلمات المرور، والتحقق من سلامة الملفات، وتسجيل مسارات التدقيق."
+   ],
+   "options_en": [
+    "Encrypting stored data, securing network traffic, and bulk encryption of cloud backups.",
+    "Signing software updates, issuing certificates, and verifying identities.",
+    "Exchanging session keys, signing email, and anchoring a blockchain.",
+    "Hashing passwords, checking file integrity, and logging audit trails."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Symmetric encryption covers stored data, network traffic including VPNs and WPA2/WPA3, and cloud backup bulk encryption.",
+   "explanation_ar": "التشفير المتماثل يغطي البيانات المخزّنة، وحركة الشبكة بما فيها VPNs و WPA2/WPA3، والتشفير الكمّي للنسخ السحابية."
+  },
+  {
+   "id": "q20",
+   "concept_id": "sym_iot_suitability",
+   "bloom_level": "Understand",
+   "question": "Why is symmetric encryption suitable for embedded devices and IoT?",
+   "question_ar": "ليش التشفير المتماثل مناسب للأجهزة المدمجة و IoT؟",
+   "options": [
+    "It needs no key of any kind.",
+    "It removes the need for a network connection.",
+    "It runs slower, which suits low-power hardware.",
+    "It uses minimal resources."
+   ],
+   "options_ar": [
+    "لأنه لا يحتاج أي مفتاح.",
+    "لأنه يلغي الحاجة لاتصال شبكي.",
+    "لأنه يشتغل أبطأ، وهذا يناسب العتاد منخفض الطاقة.",
+    "لأنه يستهلك موارد قليلة."
+   ],
+   "options_en": [
+    "It needs no key of any kind.",
+    "It removes the need for a network connection.",
+    "It runs slower, which suits low-power hardware.",
+    "It uses minimal resources."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Minimal resource usage is listed as a key characteristic, making the paradigm a good fit for constrained devices.",
+   "explanation_ar": "استهلاك الموارد القليل مذكور كخاصية رئيسية، وهذا يجعل النموذج ملائماً للأجهزة المقيّدة."
+  }
+ ]
+}

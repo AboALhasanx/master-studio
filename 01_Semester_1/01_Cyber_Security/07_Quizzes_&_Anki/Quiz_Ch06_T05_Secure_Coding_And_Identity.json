@@ -8,73 +8,44 @@
  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
  "subject": "01_Cyber_Security",
  "quiz_id": "Quiz_Ch06_T05_Secure_Coding_And_Identity",
- "topic": "Secure coding and authentication/authorization",
- "topic_ar": "البرمجة الآمنة والمصادقة والتخويل",
+ "topic": "Secure Coding and Identity",
+ "topic_ar": "البرمجة الآمنة والهوية",
  "questions": [
   {
    "id": "q1",
-   "concept_id": "w6_sc_first_line",
-   "bloom_level": "Understand",
-   "question": "Why is secure coding called the first line of defence?",
-   "question_ar": "ليش البرمجة الآمنة تُسمّى خط الدفاع الأول؟",
-   "options": [
-    "Because flaws are caught in code before reaching production.",
-    "Because it replaces the need for any network controls.",
-    "Because it runs after deployment in production.",
-    "Because auditors require it before release."
-   ],
-   "options_ar": [
-    "لأن العيوب تُمسك بالكود قبل وصولها للإنتاج.",
-    "لأنه يغني عن أي ضوابط شبكية.",
-    "لأنه يشتغل بعد النشر بالإنتاج.",
-    "لأن المدقّقين يشترطونه قبل الإصدار."
-   ],
-   "options_en": [
-    "Because flaws are caught in code before reaching production.",
-    "Because it replaces the need for any network controls.",
-    "Because it runs after deployment in production.",
-    "Because auditors require it before release."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "It is the cheapest and earliest place to remove a flaw, because the code is still being written rather than running in front of users.",
-   "explanation_ar": "هو أرخص وأبكر مكان لإزالة العيب، لأن الكود لا يزال يُكتب مو شغّالاً أمام المستخدمين."
-  },
-  {
-   "id": "q2",
    "concept_id": "w6_sc_four_principles",
    "bloom_level": "Remember",
    "question": "Which four principles does secure coding include?",
    "question_ar": "أي أربعة مبادئ تشملها البرمجة الآمنة؟",
    "options": [
-    "Backup, replication, monitoring and patching.",
-    "Hashing, salting, signing and verifying.",
-    "Input validation, output encoding and least privilege.",
-    "Firewalling, proxying, encryption and logging."
+    "Input checks, output encoding, safe secrets, and least privilege.",
+    "Firewalls, proxies, encryption, and application event logging.",
+    "Backups, data replication, continuous monitoring, and patching.",
+    "Password hashing, salting, signing, and certificate validation."
    ],
    "options_ar": [
-    "نسخ احتياطي وتكرار ومراقبة وترقيع.",
-    "هاش وتمليح وتوقيع وتحقّق.",
-    "تحقّق المدخلات وترميز المخرجات وأقل صلاحية.",
-    "جدارات وبروكسيات وتشفير وتسجيل."
+    "تحقّق المدخلات، وترميز المخرجات، وإدارة الأسرار، وأقلّ صلاحية.",
+    "جدران نارية ووسطاء وتشفير بيانات وتسجيل أحداث التطبيق.",
+    "نسخ احتياطي وتكرار بيانات ومراقبة مستمرة وترقيع برمجيات.",
+    "تجزئة كلمات المرور وتمليحها وتوقيعها والتحقق من الشهادات الرقمية."
    ],
    "options_en": [
-    "Backup, replication, monitoring and patching.",
-    "Hashing, salting, signing and verifying.",
-    "Input validation, output encoding and least privilege.",
-    "Firewalling, proxying, encryption and logging."
+    "Input checks, output encoding, safe secrets, and least privilege.",
+    "Firewalls, proxies, encryption, and application event logging.",
+    "Backups, data replication, continuous monitoring, and patching.",
+    "Password hashing, salting, signing, and certificate validation."
    ],
-   "answer": "C",
-   "correct": 2,
+   "answer": "A",
+   "correct": 0,
    "explanation": "Input validation, output encoding, avoidance of hardcoded secrets and the principle of least privilege.",
    "explanation_ar": "تحقّق المدخلات، وترميز المخرجات، وتجنّب الأسرار المضمّنة، ومبدأ أقل صلاحية."
   },
   {
-   "id": "q3",
+   "id": "q2",
    "concept_id": "w6_sc_input_validation",
    "bloom_level": "Understand",
    "question": "What does input validation do?",
-   "question_ar": "شنو يسوي تحقّق المدخلات؟",
+   "question_ar": "ما وظيفة التحقّق من المدخلات؟",
    "options": [
     "Limits each process to the rights it needs.",
     "Rejects unexpected inputs and sanitises parameters.",
@@ -82,10 +53,10 @@
     "Stores secrets in a vault instead of the code."
    ],
    "options_ar": [
-    "يحدّ كل عملية بالحقوق اللي تحتاجها.",
-    "يرفض المدخلات غير المتوقّعة وينظّف البارامترات.",
-    "يرمّز البيانات قبل عرضها بالمتصفح.",
-    "يخزّن الأسرار بخزنة بدل الكود."
+    "يحصر صلاحيات كل عملية في حاجتها.",
+    "يرفض المدخلات غير المتوقعة وينقّيها.",
+    "يرمّز البيانات قبل عرضها في المتصفح.",
+    "يخزّن الأسرار في خزنة بدلاً من الشفرة."
    ],
    "options_en": [
     "Limits each process to the rights it needs.",
@@ -96,304 +67,159 @@
    "answer": "B",
    "correct": 1,
    "explanation": "It rejects what the application did not expect and sanitises the parameters it does accept.",
-   "explanation_ar": "يرفض ما لم يتوقّعه التطبيق وينظّف البارامترات اللي يقبلها."
+   "explanation_ar": "يرفض المدخلات غير المتوقعة وينقّي المقبول منها."
   },
   {
-   "id": "q4",
+   "id": "q3",
    "concept_id": "w6_sc_output_encoding",
    "bloom_level": "Understand",
    "question": "What does output encoding do, and which flaw does it primarily address?",
-   "question_ar": "شنو يسوي ترميز المخرجات، وأي ثغرة يعالج أساساً؟",
+   "question_ar": "ما وظيفة ترميز المخرجات، وأي ثغرة يعالج أساساً؟",
    "options": [
-    "Sanitises parameters on arrival, addressing SQL injection.",
     "Encrypts responses in transit, addressing interception.",
     "Compresses responses, addressing bandwidth abuse.",
-    "Neutralises data before rendering, addressing XSS."
+    "Neutralises data before rendering, addressing XSS.",
+    "Sanitises parameters on arrival, addressing SQL injection."
    ],
    "options_ar": [
-    "ينظّف البارامترات عند الوصول، ويعالج حقن SQL.",
     "يشفّر الردود أثناء النقل، ويعالج الاعتراض.",
     "يضغط الردود، ويعالج إساءة عرض النطاق.",
-    "يحيّد البيانات قبل العرض، ويعالج XSS."
+    "يحيّد البيانات قبل العرض، ويعالج XSS.",
+    "ينظّف البارامترات عند الوصول، ويعالج حقن SQL."
    ],
    "options_en": [
-    "Sanitises parameters on arrival, addressing SQL injection.",
     "Encrypts responses in transit, addressing interception.",
     "Compresses responses, addressing bandwidth abuse.",
-    "Neutralises data before rendering, addressing XSS."
+    "Neutralises data before rendering, addressing XSS.",
+    "Sanitises parameters on arrival, addressing SQL injection."
    ],
-   "answer": "D",
-   "correct": 3,
+   "answer": "C",
+   "correct": 2,
    "explanation": "Encoding makes data inert in the browser's context, which is why it is the primary control against script injection.",
    "explanation_ar": "الترميز يخلي البيانات خاملة بسياق المتصفح، ولهذا هو الضابط الأساسي ضد حقن السكربتات."
   },
   {
-   "id": "q5",
+   "id": "q4",
    "concept_id": "w6_sc_hardcoded_secrets",
    "bloom_level": "Remember",
    "question": "How should secrets be handled instead of hardcoding them?",
-   "question_ar": "كيف لازم تُعالج الأسرار بدل تضمينها بالكود؟",
+   "question_ar": "كيف تُدار الأسرار بدلاً من تضمينها في الشفرة؟",
    "options": [
+    "Through comments beside the application settings.",
+    "Through a shared spreadsheet for the team.",
     "Through the build script's command line.",
-    "Through vaults or environment variables.",
-    "Through comments in the source repository.",
-    "Through a shared spreadsheet for the team."
+    "Through vaults or environment variables."
    ],
    "options_ar": [
-    "عبر سطر أوامر سكربت البناء.",
-    "عبر خزائن أو متغيّرات بيئة.",
-    "عبر تعليقات بمستودع الكود.",
-    "عبر جدول مشترك للفريق."
+    "في تعليقات موثقة بجوار إعدادات التطبيق.",
+    "في جدول مشترك بصلاحيات محددة للفريق.",
+    "ضمن وسيطات أمر تمرر عند كل عملية بناء.",
+    "في خزائن أو متغيرات بيئة خارج الشفرة."
    ],
    "options_en": [
+    "Through comments beside the application settings.",
+    "Through a shared spreadsheet for the team.",
     "Through the build script's command line.",
-    "Through vaults or environment variables.",
-    "Through comments in the source repository.",
-    "Through a shared spreadsheet for the team."
+    "Through vaults or environment variables."
    ],
-   "answer": "B",
-   "correct": 1,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Vaults and environment variables keep the secret outside the artefact, so a leaked repository does not leak the credential.",
    "explanation_ar": "الخزائن ومتغيّرات البيئة تُبقي السر خارج المخرَج، فتسريب المستودع ما يسرّب بيانات الاعتماد."
   },
   {
-   "id": "q6",
+   "id": "q5",
    "concept_id": "w6_sc_least_privilege",
    "bloom_level": "Understand",
    "question": "What does the principle of least privilege prevent?",
-   "question_ar": "شنو يمنعه مبدأ أقل صلاحية؟",
+   "question_ar": "ما الذي يمنعه مبدأ أقلّ صلاحية؟",
    "options": [
+    "Privilege escalation by limiting needed rights.",
     "Injection attacks by validating every parameter.",
     "Data exposure by encoding every response.",
-    "Secret leakage by rotating every credential.",
-    "Privilege escalation by limiting rights to the minimum."
+    "Secret leakage by rotating every credential."
    ],
    "options_ar": [
-    "هجمات الحقن بالتحقّق من كل بارامتر.",
-    "انكشاف البيانات بترميز كل رد.",
-    "تسريب الأسرار بتدوير كل بيانات اعتماد.",
-    "تصعيد الصلاحيات بتحديد الحقوق بالحد الأدنى."
+    "تصعيد الصلاحيات بحصر الحقوق اللازمة.",
+    "هجمات الحقن بالتحقق من جميع المدخلات.",
+    "انكشاف البيانات بترميز كل استجابة.",
+    "تسريب الأسرار بتدوير بيانات الاعتماد دورياً."
    ],
    "options_en": [
+    "Privilege escalation by limiting needed rights.",
     "Injection attacks by validating every parameter.",
     "Data exposure by encoding every response.",
-    "Secret leakage by rotating every credential.",
-    "Privilege escalation by limiting rights to the minimum."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "If a component only holds the rights it needs, a compromise of that component cannot be escalated into control of everything.",
-   "explanation_ar": "لو كان المكوّن يملك فقط الحقوق اللي يحتاجها، فاختراقه ما يتصعّد لسيطرة على كل شي."
-  },
-  {
-   "id": "q7",
-   "concept_id": "w6_sc_reduced_formula",
-   "bloom_level": "Remember",
-   "question": "How is risk reduced by secure coding practices modelled?",
-   "question_ar": "كيف يُنمذَج تقليل الخطر بممارسات البرمجة الآمنة؟",
-   "options": [
-    "Baseline risk times the product of remaining weaknesses.",
-    "Baseline risk plus the sum of remaining weaknesses.",
-    "Baseline risk divided by the product of practice effectiveness.",
-    "Baseline risk minus the largest single practice effect."
-   ],
-   "options_ar": [
-    "الخطر الأساسي مضروباً بحاصل ضرب الضعف المتبقي.",
-    "الخطر الأساسي زائد مجموع الضعف المتبقي.",
-    "الخطر الأساسي مقسوماً على حاصل ضرب الفاعليات.",
-    "الخطر الأساسي ناقص أكبر فاعلية منفردة."
-   ],
-   "options_en": [
-    "Baseline risk times the product of remaining weaknesses.",
-    "Baseline risk plus the sum of remaining weaknesses.",
-    "Baseline risk divided by the product of practice effectiveness.",
-    "Baseline risk minus the largest single practice effect."
+    "Secret leakage by rotating every credential."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Each practice leaves a remainder behind, and those remainders multiply, so the reduction compounds.",
-   "explanation_ar": "كل ممارسة تترك بقية، وتلك البقايا تتضارب، فالتخفيض يتراكم."
+   "explanation": "If a component only holds the rights it needs, a compromise of that component cannot be escalated into control of everything.",
+   "explanation_ar": "إذا امتلك المكوّن صلاحيات حاجته فقط، فلن يقود اختراقه إلى السيطرة على النظام كله."
   },
   {
-   "id": "q8",
-   "concept_id": "w6_sc_reduced_worked",
-   "bloom_level": "Analyze",
-   "question": "Baseline risk is 100 and two practices each have effectiveness 0.5. What remains?",
-   "question_ar": "الخطر الأساسي 100 وممارستان فاعلية كل واحدة 0.5. شنو يبقى؟",
-   "options": [
-    "Zero, because two practices remove it all.",
-    "One hundred, because the practices cancel out.",
-    "Twenty-five, because half of half of one hundred.",
-    "Fifty, because one practice halves the risk."
-   ],
-   "options_ar": [
-    "صفر، لأن ممارستين تزيلانه كله.",
-    "مئة، لأن الممارستين تتلاشيان.",
-    "خمسة وعشرون، لأن نصف نصف المئة.",
-    "خمسون، لأن ممارسة واحدة تنصّف الخطر."
-   ],
-   "options_en": [
-    "Zero, because two practices remove it all.",
-    "One hundred, because the practices cancel out.",
-    "Twenty-five, because half of half of one hundred.",
-    "Fifty, because one practice halves the risk."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Each practice leaves half, so two of them leave a quarter of the baseline, which is twenty-five.",
-   "explanation_ar": "كل ممارسة تترك النصف، فاثنتان تتركان ربع الأساس، أي خمسة وعشرين."
-  },
-  {
-   "id": "q9",
-   "concept_id": "w6_sc_third_practice",
-   "bloom_level": "Analyze",
-   "question": "Adding a third practice of the same effectiveness to that example gives what?",
-   "question_ar": "إضافة ممارسة ثالثة بنفس الفاعلية لذلك المثال تعطي شنو؟",
-   "options": [
-    "Seventy-five, because the practices are summed.",
-    "Twelve and a half, halving the previous remainder.",
-    "Twenty-five, because the third adds nothing new.",
-    "Zero, because three layers always eliminate risk."
-   ],
-   "options_ar": [
-    "خمسة وسبعون، لأن الممارسات تُجمع.",
-    "اثنا عشر ونصف، لأنها تنصّف البقية السابقة.",
-    "خمسة وعشرون، لأن الثالثة ما تضيف جديد.",
-    "صفر، لأن ثلاث طبقات تزيل الخطر دائماً."
-   ],
-   "options_en": [
-    "Seventy-five, because the practices are summed.",
-    "Twelve and a half, halving the previous remainder.",
-    "Twenty-five, because the third adds nothing new.",
-    "Zero, because three layers always eliminate risk."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Every added practice multiplies by its remainder again, so the figure keeps halving rather than stepping down.",
-   "explanation_ar": "كل ممارسة مضافة تضرب ببقيتها مرة ثانية، فالرقم يظل ينصّف بدل ما ينزل بخطوات."
-  },
-  {
-   "id": "q10",
-   "concept_id": "w6_sc_independence",
-   "bloom_level": "Understand",
-   "question": "What does the product form in that model represent conceptually?",
-   "question_ar": "شنو يمثّل شكل الضرب بذلك النموذج مفاهيمياً؟",
-   "options": [
-    "Sequential execution, where practices run one after another.",
-    "A ranking of practices by their individual effectiveness.",
-    "A guarantee that no flaw can survive all practices.",
-    "Layered defence, where each practice removes part of what is left."
-   ],
-   "options_ar": [
-    "تنفيذ تسلسلي، حيث الممارسات تشتغل واحدة بعد أخرى.",
-    "ترتيب الممارسات حسب فاعليتها المنفردة.",
-    "ضمان إن ماكو عيب ينجو من كل الممارسات.",
-    "دفاع طبقي، حيث كل ممارسة تزيل جزءاً مما تبقّى."
-   ],
-   "options_en": [
-    "Sequential execution, where practices run one after another.",
-    "A ranking of practices by their individual effectiveness.",
-    "A guarantee that no flaw can survive all practices.",
-    "Layered defence, where each practice removes part of what is left."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "It is the same compounding logic as layered security: what survives one practice is what the next practice acts on.",
-   "explanation_ar": "هو نفس منطق التراكم بالدفاع الطبقي: اللي ينجو من ممارسة هو اللي تشتغل عليه اللي بعدها."
-  },
-  {
-   "id": "q11",
+   "id": "q6",
    "concept_id": "w6_authn_vs_authz",
    "bloom_level": "Analyze",
    "question": "What is the difference between authentication and authorization?",
-   "question_ar": "شنو الفرق بين المصادقة والتخويل؟",
+   "question_ar": "ما الفرق بين المصادقة والتخويل؟",
    "options": [
-    "Authentication establishes who you are; authorization what you may do.",
+    "Authentication is optional; authorization is always mandatory.",
+    "Authentication proves identity; authorization sets permissions.",
     "Authentication decides permissions; authorization proves identity.",
-    "Authentication encrypts traffic; authorization decrypts it.",
-    "Authentication is optional; authorization is always mandatory."
+    "Authentication encrypts traffic; authorization decrypts it."
    ],
    "options_ar": [
-    "المصادقة تحدد من أنت، والتخويل شنو مسموح لك.",
-    "المصادقة تقرّر الصلاحيات، والتخويل يثبت الهوية.",
-    "المصادقة تشفّر الترافيك، والتخويل يفكّه.",
-    "المصادقة اختيارية، والتخويل إلزامي دائماً."
+    "المصادقة اختيارية والتخويل إلزامي في كل الأنظمة.",
+    "المصادقة تثبت الهوية، والتخويل يحدّد الصلاحيات.",
+    "المصادقة تحدّد الصلاحيات، والتخويل يثبت هوية المستخدم.",
+    "المصادقة تشفّر حركة البيانات، والتخويل يفك تشفيرها."
    ],
    "options_en": [
-    "Authentication establishes who you are; authorization what you may do.",
+    "Authentication is optional; authorization is always mandatory.",
+    "Authentication proves identity; authorization sets permissions.",
     "Authentication decides permissions; authorization proves identity.",
-    "Authentication encrypts traffic; authorization decrypts it.",
-    "Authentication is optional; authorization is always mandatory."
+    "Authentication encrypts traffic; authorization decrypts it."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "BOLA is the clearest example: the identity is established correctly, but the authorization decision about the object is missing.",
    "explanation_ar": "BOLA أوضح مثال: الهوية تُثبت بشكل صحيح، لكن قرار التخويل بشأن الكائن غائب."
   },
   {
-   "id": "q12",
-   "concept_id": "w6_authn_beyond_password",
-   "bloom_level": "Remember",
-   "question": "What do identity practices extend beyond simple password enforcement to?",
-   "question_ar": "إلى شنو تمتد ممارسات الهوية بعد فرض كلمة المرور؟",
-   "options": [
-    "Single sign-on and directory federation only.",
-    "Biometrics and hardware tokens only.",
-    "MFA, passwordless and fine-grained authorization.",
-    "Captchas, lockouts and password rotation."
-   ],
-   "options_ar": [
-    "دخول موحّد واتحاد أدلة فقط.",
-    "بصمات ورموز عتادية فقط.",
-    "MFA والمصادقة بلا كلمة مرور والتخويل دقيق الحبيبات.",
-    "كابتشا وأقفال وتدوير كلمات المرور."
-   ],
-   "options_en": [
-    "Single sign-on and directory federation only.",
-    "Biometrics and hardware tokens only.",
-    "MFA, passwordless and fine-grained authorization.",
-    "Captchas, lockouts and password rotation."
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Multi-factor authentication, passwordless authentication using public-key cryptography, and fine-grained models such as ABAC.",
-   "explanation_ar": "المصادقة متعددة العوامل، والمصادقة بلا كلمة مرور بالتشفير بالمفتاح العام، ونماذج دقيقة الحبيبات مثل ABAC."
-  },
-  {
-   "id": "q13",
+   "id": "q7",
    "concept_id": "w6_mfa_definition",
    "bloom_level": "Remember",
    "question": "What does multi-factor authentication require?",
-   "question_ar": "شنو تشترط المصادقة متعددة العوامل؟",
+   "question_ar": "ما الذي تشترطه المصادقة متعددة العوامل؟",
    "options": [
-    "A biometric check replacing the password.",
-    "Two or more independent factors to verify identity.",
-    "Two or more passwords entered in sequence.",
-    "A single factor rotated more frequently."
+    "One security factor refreshed at shorter intervals.",
+    "A biometric factor that fully replaces the password.",
+    "Two independent factors or more verify identity.",
+    "Two passwords typed in sequence as separate credentials."
    ],
    "options_ar": [
-    "فحص حيوي يستبدل كلمة المرور.",
-    "عاملين مستقلين أو أكثر للتحقّق من الهوية.",
-    "كلمتا مرور أو أكثر تُدخلان بالتتابع.",
-    "عامل واحد يُدوَّر بوتيرة أعلى."
+    "عامل واحد يُجدّد بصورة متكررة لزيادة الحماية.",
+    "فحص حيوي يحلّ محل كلمة المرور بالكامل.",
+    "عاملان مستقلان أو أكثر للتحقّق من الهوية.",
+    "كلمتا مرور أو أكثر يُدخلان بالتتابع للتحقّق."
    ],
    "options_en": [
-    "A biometric check replacing the password.",
-    "Two or more independent factors to verify identity.",
-    "Two or more passwords entered in sequence.",
-    "A single factor rotated more frequently."
+    "One security factor refreshed at shorter intervals.",
+    "A biometric factor that fully replaces the password.",
+    "Two independent factors or more verify identity.",
+    "Two passwords typed in sequence as separate credentials."
    ],
-   "answer": "B",
-   "correct": 1,
+   "answer": "C",
+   "correct": 2,
    "explanation": "The factors must be independent — something you know, something you have, something you are — so one theft does not satisfy all of them.",
    "explanation_ar": "العوامل لازم تكون مستقلة — شي تعرفه، وشي تملكه، وشي أنت عليه — فسرقة واحدة ما تحقّقها كلها."
   },
   {
-   "id": "q14",
+   "id": "q8",
    "concept_id": "w6_passwordless",
    "bloom_level": "Understand",
    "question": "What does passwordless authentication use, and what does it reduce?",
-   "question_ar": "شنو تستخدم المصادقة بلا كلمة مرور، وشنو تقلّل؟",
+   "question_ar": "ما الذي تستخدمه المصادقة بلا كلمة مرور، وما الخطر الذي تقلّله؟",
    "options": [
     "Symmetric keys shared with the server, reducing latency.",
     "Hashed passwords in a vault, reducing storage cost.",
@@ -418,25 +244,25 @@
    "explanation_ar": "ماكو سر قابل لإعادة الاستخدام حتى يُصطاد، لأن المفتاح الخاص ما يخرج من المُصادِق أبداً."
   },
   {
-   "id": "q15",
+   "id": "q9",
    "concept_id": "w6_abac",
    "bloom_level": "Remember",
    "question": "What is attribute-based access control?",
-   "question_ar": "شنو التحكّم بالوصول القائم على السمات؟",
+   "question_ar": "ما المقصود بالتحكّم بالوصول القائم على السمات؟",
    "options": [
-    "Authorization decisions from attributes of user and context.",
+    "Authorization uses user and context attributes.",
     "Authorization decisions taken from a fixed role assignment.",
     "Authentication performed with a hardware token.",
     "Encryption chosen from the data classification level."
    ],
    "options_ar": [
-    "قرارات تخويل من سمات المستخدم والسياق.",
-    "قرارات تخويل من إسناد دور ثابت.",
-    "مصادقة برمز عتادي.",
-    "تشفير حسب تصنيف البيانات."
+    "تخويل يستند إلى سمات المستخدم والسياق.",
+    "تخويل يعتمد على دور ثابت للمستخدم.",
+    "التحقّق من الهوية عبر رمز أمني عتادي.",
+    "تشفير البيانات وفق تصنيفها الأمني."
    ],
    "options_en": [
-    "Authorization decisions from attributes of user and context.",
+    "Authorization uses user and context attributes.",
     "Authorization decisions taken from a fixed role assignment.",
     "Authentication performed with a hardware token.",
     "Encryption chosen from the data classification level."
@@ -444,210 +270,65 @@
    "answer": "A",
    "correct": 0,
    "explanation": "The decision uses attributes such as department, time, location and role rather than a single static role.",
-   "explanation_ar": "القرار يستخدم سمات مثل القسم والوقت والموقع والدور، مو دوراً ثابتاً واحداً."
+   "explanation_ar": "يستند القرار إلى سمات كالقسم والوقت والموقع بدلاً من دور ثابت."
   },
   {
-   "id": "q16",
+   "id": "q10",
    "concept_id": "w6_abac_vs_rbac",
    "bloom_level": "Analyze",
    "question": "How does ABAC differ from role-based access control?",
    "question_ar": "كيف يختلف ABAC عن التحكّم القائم على الأدوار؟",
    "options": [
-    "ABAC applies only to databases; RBAC to applications.",
     "ABAC replaces authentication entirely; RBAC does not.",
     "ABAC evaluates context attributes; RBAC uses a fixed role.",
-    "ABAC uses a fixed role; RBAC evaluates context attributes."
+    "ABAC uses a fixed role; RBAC evaluates context attributes.",
+    "ABAC applies only to databases; RBAC to applications."
    ],
    "options_ar": [
-    "ABAC لقواعد البيانات فقط، و RBAC للتطبيقات.",
-    "ABAC يستبدل المصادقة بالكامل، و RBAC لا.",
-    "ABAC يقيّم سمات السياق، و RBAC يستخدم دوراً ثابتاً.",
-    "ABAC يستخدم دوراً ثابتاً، و RBAC يقيّم سمات السياق."
+    "ABAC يستبدل المصادقة بالكامل؛ بينما لا يفعل RBAC ذلك.",
+    "ABAC يقيّم سمات السياق؛ أما RBAC فيعتمد دوراً ثابتاً.",
+    "ABAC يعتمد دوراً ثابتاً؛ أما RBAC فيقيّم سمات السياق.",
+    "ABAC لقواعد البيانات فقط؛ أما RBAC فللتطبيقات."
    ],
    "options_en": [
-    "ABAC applies only to databases; RBAC to applications.",
     "ABAC replaces authentication entirely; RBAC does not.",
     "ABAC evaluates context attributes; RBAC uses a fixed role.",
-    "ABAC uses a fixed role; RBAC evaluates context attributes."
+    "ABAC uses a fixed role; RBAC evaluates context attributes.",
+    "ABAC applies only to databases; RBAC to applications."
    ],
-   "answer": "C",
-   "correct": 2,
+   "answer": "B",
+   "correct": 1,
    "explanation": "A static role cannot express 'same department, working hours, from the corporate network', which is exactly what fine-grained policy needs.",
    "explanation_ar": "الدور الثابت ما يقدر يعبّر عن نفس القسم وساعات العمل والشبكة المؤسسية معاً، وهذا بالضبط اللي تحتاجه السياسة دقيقة الحبيبات."
   },
   {
-   "id": "q17",
+   "id": "q11",
    "concept_id": "w6_p_unauth_formula",
    "bloom_level": "Remember",
    "question": "How is the probability of unauthorized access modelled?",
    "question_ar": "كيف يُنمذَج احتمال الوصول غير المصرّح به؟",
    "options": [
+    "The product of each factor's effectiveness alone.",
     "The average of the factors' effectiveness values.",
     "The product of one minus each factor's effectiveness.",
-    "The sum of one minus each factor's effectiveness.",
-    "The product of each factor's effectiveness alone."
+    "The sum of one minus each factor's effectiveness."
    ],
    "options_ar": [
-    "متوسط قيم فاعلية العوامل.",
-    "حاصل ضرب واحد ناقص فاعلية كل عامل.",
-    "مجموع واحد ناقص فاعلية كل عامل.",
-    "حاصل ضرب فاعلية كل عامل لوحدها."
+    "حاصل ضرب فاعليات العوامل من دون متمّم.",
+    "متوسط قيم فاعلية عوامل التحقّق كلها.",
+    "ناتج ضرب متمّم فاعلية جميع العوامل.",
+    "مجموع متمّم فاعلية عوامل التحقّق."
    ],
    "options_en": [
+    "The product of each factor's effectiveness alone.",
     "The average of the factors' effectiveness values.",
     "The product of one minus each factor's effectiveness.",
-    "The sum of one minus each factor's effectiveness.",
-    "The product of each factor's effectiveness alone."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "An attacker must defeat every factor, so the residual weaknesses multiply.",
-   "explanation_ar": "المهاجم لازم يهزم كل عامل، فالضعف المتبقي يتضارب."
-  },
-  {
-   "id": "q18",
-   "concept_id": "w6_mfa_exponential",
-   "bloom_level": "Analyze",
-   "question": "Why does MFA decrease compromise likelihood exponentially?",
-   "question_ar": "ليش المصادقة متعددة العوامل تنزّل احتمال الاختراق أُسّياً؟",
-   "options": [
-    "Because each factor takes longer to type than the last.",
-    "Because factors are stored in different databases.",
-    "Because the password is changed after every attempt.",
-    "Because each added factor multiplies the residual weakness."
-   ],
-   "options_ar": [
-    "لأن كل عامل يحتاج كتابة أطول من اللي قبله.",
-    "لأن العوامل مخزّنة بقواعد بيانات مختلفة.",
-    "لأن كلمة المرور تتغيّر بعد كل محاولة.",
-    "لأن كل عامل مضاف يضرب الضعف المتبقي."
-   ],
-   "options_en": [
-    "Because each factor takes longer to type than the last.",
-    "Because factors are stored in different databases.",
-    "Because the password is changed after every attempt.",
-    "Because each added factor multiplies the residual weakness."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "One factor at 0.9 leaves a tenth, two leave a hundredth, three leave a thousandth, which is the same compounding as layered defence.",
-   "explanation_ar": "عامل واحد بفاعلية 0.9 يترك العُشر، واثنان يتركان المئة، وثلاثة يتركن الألف، وهو نفس التراكم بالدفاع الطبقي."
-  },
-  {
-   "id": "q19",
-   "concept_id": "w6_mfa_worked",
-   "bloom_level": "Analyze",
-   "question": "Three authentication factors each have effectiveness 0.9. What is the residual?",
-   "question_ar": "ثلاثة عوامل مصادقة فاعلية كل واحد 0.9. شنو المتبقّي؟",
-   "options": [
-    "One in a thousand, since a tenth cubed.",
-    "Three tenths, since the remainders are added.",
-    "Nine tenths, since the factors are averaged.",
-    "Zero, since three factors cannot be beaten."
-   ],
-   "options_ar": [
-    "واحد بالألف، لأن عُشر تكعيب.",
-    "ثلاثة أعشار، لأن البقايا تُجمع.",
-    "تسعة أعشار، لأن العوامل تُؤخذ متوسطاً.",
-    "صفر، لأن ثلاث عوامل ما تنهزم."
-   ],
-   "options_en": [
-    "One in a thousand, since a tenth cubed.",
-    "Three tenths, since the remainders are added.",
-    "Nine tenths, since the factors are averaged.",
-    "Zero, since three factors cannot be beaten."
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Each factor leaves a tenth, and a tenth cubed is one thousandth, so the attacker faces a thousand-fold increase in work.",
-   "explanation_ar": "كل عامل يترك العُشر، وعُشر تكعيب يساوي واحد بالألف، فالمهاجم يواجه ألف ضعف بالجهد."
-  },
-  {
-   "id": "q20",
-   "concept_id": "w6_mfa_failure_mode",
-   "bloom_level": "Understand",
-   "question": "For an attacker to succeed past MFA, what must happen?",
-   "question_ar": "حتى ينجح المهاجم رغم المصادقة متعددة العوامل، شنو لازم يصير؟",
-   "options": [
-    "The password must be reused elsewhere.",
-    "The user must be offline at the time.",
-    "Every factor must fail at once.",
-    "Only the weakest factor must fail."
-   ],
-   "options_ar": [
-    "لازم كلمة المرور تكون معاد استخدامها.",
-    "لازم المستخدم يكون غير متصل وقتها.",
-    "لازم كل العوامل تفشل بنفس الوقت.",
-    "لازم أضعف عامل يفشل فقط."
-   ],
-   "options_en": [
-    "The password must be reused elsewhere.",
-    "The user must be offline at the time.",
-    "Every factor must fail at once.",
-    "Only the weakest factor must fail."
+    "The sum of one minus each factor's effectiveness."
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "Because the factors are independent, the attacker has to defeat all of them, which is why one stolen password is no longer sufficient.",
-   "explanation_ar": "بما إن العوامل مستقلة، فالمهاجم لازم يهزمها كلها، ولهذا كلمة مرور مسروقة واحدة ما عادت تكفي."
-  },
-  {
-   "id": "q21",
-   "concept_id": "w6_fine_grained_why",
-   "bloom_level": "Understand",
-   "question": "Why does fine-grained authorization matter for least privilege?",
-   "question_ar": "ليش التخويل دقيق الحبيبات مهم لمبدأ أقل صلاحية؟",
-   "options": [
-    "Because it removes the need for authentication.",
-    "Because coarse roles grant more rights than the task needs.",
-    "Because roles are impossible to audit at scale.",
-    "Because attributes are easier to encrypt than roles."
-   ],
-   "options_ar": [
-    "لأنها تلغي الحاجة للمصادقة.",
-    "لأن الأدوار الخشنة تمنح حقوقاً أكثر من حاجة المهمة.",
-    "لأن الأدوار يستحيل تدقيقها على نطاق واسع.",
-    "لأن السمات أسهل تشفيراً من الأدوار."
-   ],
-   "options_en": [
-    "Because it removes the need for authentication.",
-    "Because coarse roles grant more rights than the task needs.",
-    "Because roles are impossible to audit at scale.",
-    "Because attributes are easier to encrypt than roles."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "A broad role accumulates permissions until everyone has more access than their job requires, which is the opposite of least privilege.",
-   "explanation_ar": "الدور العريض تتراكم فيه الصلاحيات لحد ما يصير كل واحد عنده وصول أكثر من حاجة شغله، وهذا عكس مبدأ أقل صلاحية."
-  },
-  {
-   "id": "q22",
-   "concept_id": "w6_identity_foundation",
-   "bloom_level": "Understand",
-   "question": "Why are robust identity controls described as foundational?",
-   "question_ar": "ليش ضوابط الهوية القوية توصف بأنها أساسية؟",
-   "options": [
-    "Because they are the cheapest control to implement.",
-    "Because regulators audit them first.",
-    "Because they replace network segmentation.",
-    "Because authorization depends on identity."
-   ],
-   "options_ar": [
-    "لأنها أرخص ضابط للتنفيذ.",
-    "لأن الأنظمة تدقّقها أولاً.",
-    "لأنها تغني عن التقسيم الشبكي.",
-    "لأن التخويل يعتمد على الهوية."
-   ],
-   "options_en": [
-    "Because they are the cheapest control to implement.",
-    "Because regulators audit them first.",
-    "Because they replace network segmentation.",
-    "Because authorization depends on identity."
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Every authorization decision takes an identity as its input, so weak identity makes every later decision unreliable.",
-   "explanation_ar": "كل قرار تخويل ياخذ الهوية كمدخل، فالهوية الضعيفة تخلي كل قرار لاحق غير موثوق."
+   "explanation": "An attacker must defeat every factor, so the residual weaknesses multiply.",
+   "explanation_ar": "يجب على المهاجم تجاوز كل عامل؛ لذلك تتضارب احتمالات الضعف المتبقي."
   }
  ]
 }

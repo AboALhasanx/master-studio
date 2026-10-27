@@ -1,0 +1,392 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T06_Monitoring_Integration_And_Challenges",
+ "topic": "Monitoring, Integration, and Challenges",
+ "topic_ar": "المراقبة والتكامل والتحديات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_mon_prevention_not_enough",
+   "bloom_level": "Understand",
+   "question": "Why is prevention alone insufficient?",
+   "question_ar": "ليش يقول الفصل إن المنع وحده ما يكفي؟",
+   "options": [
+    "Because not every attack can be prevented before it starts.",
+    "Because prevention controls are always misconfigured.",
+    "Because attackers never target prevention controls.",
+    "Because prevention now costs more than available budgets."
+   ],
+   "options_ar": [
+    "لأنه لا يمكن منع جميع الهجمات قبل وقوعها.",
+    "لأن ضوابط المنع دائماً معطوبة الإعداد.",
+    "لأن المهاجمين ما يستهدفون ضوابط المنع.",
+    "لأن كلفة المنع تتجاوز الميزانية المتاحة."
+   ],
+   "options_en": [
+    "Because not every attack can be prevented before it starts.",
+    "Because prevention controls are always misconfigured.",
+    "Because attackers never target prevention controls.",
+    "Because prevention now costs more than available budgets."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Since some attacks will get through, the speed of noticing and reacting becomes the real differentiator.",
+   "explanation_ar": "بما إن بعض الهجمات راح تعدّي، فسرعة الملاحظة وردّ الفعل تصير هي الفرق الحقيقي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_mon_behavioral",
+   "bloom_level": "Remember",
+   "question": "What does behavioral analytics do?",
+   "question_ar": "شنو تسوي التحليلات السلوكية؟",
+   "options": [
+    "Patch dependencies automatically.",
+    "AI models analyse request anomalies.",
+    "Compress logs before archiving them.",
+    "Rotate credentials on a schedule."
+   ],
+   "options_ar": [
+    "ترقّع التبعيات البرمجية تلقائياً.",
+    "نماذج ذكاء اصطناعي تحلّل شذوذ الطلبات.",
+    "تضغط السجلات قبل تخزينها لفترة طويلة.",
+    "تدوّر بيانات الاعتماد وفق جدول زمني محدد."
+   ],
+   "options_en": [
+    "Patch dependencies automatically.",
+    "AI models analyse request anomalies.",
+    "Compress logs before archiving them.",
+    "Rotate credentials on a schedule."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It looks for requests that do not fit the established pattern rather than only matching known bad signatures.",
+   "explanation_ar": "يدوّر على الطلبات اللي ما تطابق النمط المعتاد بدل ما يطابق بصمات سيئة معروفة فقط."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_mon_forensic",
+   "bloom_level": "Remember",
+   "question": "What does forensic logging provide?",
+   "question_ar": "شنو يوفّره التسجيل الجنائي؟",
+   "options": [
+    "Automated isolation of infected hosts from systems.",
+    "Encrypted database backups for recovery.",
+    "Tamper-proof records for forensic review.",
+    "Real-time blocking of harmful web requests."
+   ],
+   "options_ar": [
+    "عزل آلي للمضيفين المصابين عن الشبكة.",
+    "نسخ مشفرة لقاعدة البيانات لاستعادة الخدمة.",
+    "سجلات محمية من التلاعب للتحقيق الجنائي.",
+    "حجب فوري للطلبات الضارة عند بوابة التطبيق."
+   ],
+   "options_en": [
+    "Automated isolation of infected hosts from systems.",
+    "Encrypted database backups for recovery.",
+    "Tamper-proof records for forensic review.",
+    "Real-time blocking of harmful web requests."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "After an incident the logs are the evidence, so an attacker who can edit them can erase the story of what happened.",
+   "explanation_ar": "بعد الحادثة السجلات هي الدليل، فمهاجم يقدر يعدّلها يقدر يمسح قصة اللي صار."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_mon_soar",
+   "bloom_level": "Remember",
+   "question": "What do playbooks and SOAR platforms automate?",
+   "question_ar": "شنو تؤتمته كتب اللعب ومنصّات SOAR؟",
+   "options": [
+    "Code review and merge approvals.",
+    "Certificate issuance and renewal.",
+    "Capacity planning and autoscaling.",
+    "Containment and recovery actions."
+   ],
+   "options_ar": [
+    "مراجعة الكود وموافقات الدمج.",
+    "إصدار الشهادات وتجديدها.",
+    "تخطيط السعة والتوسّع التلقائي.",
+    "إجراءات الاحتواء والاستعادة."
+   ],
+   "options_en": [
+    "Code review and merge approvals.",
+    "Certificate issuance and renewal.",
+    "Capacity planning and autoscaling.",
+    "Containment and recovery actions."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Automating the response shortens the time between noticing an incident and stopping its spread.",
+   "explanation_ar": "أتمتة الاستجابة تقصّر الزمن بين ملاحظة الحادثة وإيقاف انتشارها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_mon_mttd",
+   "bloom_level": "Remember",
+   "question": "What does mean time to detect measure?",
+   "question_ar": "شنو يقيس متوسط زمن الكشف؟",
+   "options": [
+    "Mean elapsed time from incident onset to detection.",
+    "The mean time taken to recover from it.",
+    "The mean number of alerts generated each day.",
+    "The mean financial cost of a single security incident."
+   ],
+   "options_ar": [
+    "متوسط الزمن من بدء الحادثة حتى كشفها.",
+    "متوسط الزمن اللازم للتعافي منها.",
+    "متوسط التنبيهات الأمنية التي تصدر يومياً.",
+    "متوسط الكلفة المالية للحادثة الأمنية."
+   ],
+   "options_en": [
+    "Mean elapsed time from incident onset to detection.",
+    "The mean time taken to recover from it.",
+    "The mean number of alerts generated each day.",
+    "The mean financial cost of a single security incident."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It is a detection metric, so shortening it means the organisation learns about a breach sooner.",
+   "explanation_ar": "هو مقياس كشف، فتقصيره يعني إن المؤسسة تعرف بالاختراق أبكر."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_mon_mttr",
+   "bloom_level": "Remember",
+   "question": "What does mean time to respond measure?",
+   "question_ar": "شنو يقيس متوسط زمن الاستجابة؟",
+   "options": [
+    "The mean time to deploy a new release.",
+    "Mean time from detection until response.",
+    "Mean elapsed time from incident onset to detection.",
+    "Mean time elapsed between two system failures."
+   ],
+   "options_ar": [
+    "متوسط زمن إعداد إصدار جديد ونشره.",
+    "متوسط الزمن اللازم للاستجابة للحادثة.",
+    "متوسط الزمن من بدء الحادثة حتى كشفها.",
+    "متوسط الزمن الفاصل بين حدوث عطلين."
+   ],
+   "options_en": [
+    "The mean time to deploy a new release.",
+    "Mean time from detection until response.",
+    "Mean elapsed time from incident onset to detection.",
+    "Mean time elapsed between two system failures."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It is a response metric, so shortening it means the organisation contains damage faster once it knows.",
+   "explanation_ar": "هو مقياس استجابة، فتقصيره يعني إن المؤسسة تحتوي الضرر أسرع بعد ما تعرف."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_int_tools_alone",
+   "bloom_level": "Understand",
+   "question": "What do tools without disciplined practices produce?",
+   "question_ar": "شنو تنتجه الأدوات بلا ممارسات منظّمة؟",
+   "options": [
+    "A measurable reduction in every risk.",
+    "Faster delivery with fewer defects.",
+    "False confidence in security coverage.",
+    "Guaranteed compliance with every standard."
+   ],
+   "options_ar": [
+    "انخفاض ملموس في كل فئة من المخاطر.",
+    "تسليم أسرع مع خفض عدد العيوب.",
+    "طمأنينة زائفة بأن المؤسسة محمية.",
+    "امتثال تام لكل معيار أمني مطبّق."
+   ],
+   "options_en": [
+    "A measurable reduction in every risk.",
+    "Faster delivery with fewer defects.",
+    "False confidence in security coverage.",
+    "Guaranteed compliance with every standard."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The dashboards are green and the console shows detections, which is precisely why nobody notices that the process behind them is absent.",
+   "explanation_ar": "اللوحات خضراء والكونسول يعرض كشوفات، ولهذا بالضبط ما أحد يلاحظ إن العملية وراها غائبة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_int_diversity",
+   "bloom_level": "Analyze",
+   "question": "Why is combining a tool with a practice stronger than repeating one type?",
+   "question_ar": "ليش جمع أداة مع ممارسة أقوى من تكرار نوع واحد؟",
+   "options": [
+    "Because tools cost less than practices overall.",
+    "Because practices are audited more often.",
+    "Because repetition always doubles effectiveness.",
+    "Different failure modes leave less residual risk."
+   ],
+   "options_ar": [
+    "لأن الأدوات أرخص من الممارسات عموماً.",
+    "لأن الممارسات تخضع لمراجعات تدقيق متكررة.",
+    "لأن التكرار يضاعف الفاعلية دائماً.",
+    "لأن أنماط فشل مختلفة تترك بقية أقل."
+   ],
+   "options_en": [
+    "Because tools cost less than practices overall.",
+    "Because practices are audited more often.",
+    "Because repetition always doubles effectiveness.",
+    "Different failure modes leave less residual risk."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A second copy of the same control fails the same way, whereas a different control type covers the mode the first one cannot.",
+   "explanation_ar": "نسخة ثانية من نفس الضابط تفشل بنفس الطريقة، أما نوع ضابط مختلف فيغطّي النمط اللي الأول ما يقدر يغطّيه."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_ch_tool_reliance",
+   "bloom_level": "Remember",
+   "question": "What risk does over-reliance on tools create?",
+   "question_ar": "أي خطر يخلقه الاعتماد المفرط على الأدوات؟",
+   "options": [
+    "Overtrust in automation misses sophisticated attacks.",
+    "Tool licences expire before the planned renewal date.",
+    "Automation slows down the whole deployment pipeline.",
+    "Tools duplicate the manual work done by analysts."
+   ],
+   "options_ar": [
+    "الثقة الزائدة بالأتمتة تفوّت هجمات متطوّرة.",
+    "تراخيص الأدوات تنتهي قبل تاريخ التجديد.",
+    "الأتمتة تبطّئ مراحل خط النشر والتسليم كاملة.",
+    "الأدوات تكرّر العمل اليدوي للمحلّلين."
+   ],
+   "options_en": [
+    "Overtrust in automation misses sophisticated attacks.",
+    "Tool licences expire before the planned renewal date.",
+    "Automation slows down the whole deployment pipeline.",
+    "Tools duplicate the manual work done by analysts."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Automation is good at what it was told to look for, so an attacker who understands the model can stay outside its description.",
+   "explanation_ar": "الأتمتة شاطرة باللي انْتِگلها تدوّر عليه، فمهاجم يفهم النموذج يقدر يبقى خارج وصفه."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_ch_integration_complexity",
+   "bloom_level": "Remember",
+   "question": "What does the complexity of integration typically cause?",
+   "question_ar": "شنو يسبّبه تعقيد التكامل عادة؟",
+   "options": [
+    "Lower cost of ownership for the estate.",
+    "Interoperability issues between the layers.",
+    "A reduction in the number of controls needed.",
+    "Faster detection across all the sources."
+   ],
+   "options_ar": [
+    "خفض كلفة تشغيل مختلف المكونات الأمنية.",
+    "ضعف التشغيل البيني بين طبقات الأنظمة.",
+    "خفض عدد الضوابط الأمنية المطلوبة.",
+    "كشف التهديدات بسرعة بين الأنظمة المتصلة."
+   ],
+   "options_en": [
+    "Lower cost of ownership for the estate.",
+    "Interoperability issues between the layers.",
+    "A reduction in the number of controls needed.",
+    "Faster detection across all the sources."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Every additional layer is another product with its own data model, so the seams between them become the operational problem.",
+   "explanation_ar": "كل طبقة إضافية منتج ثاني بنموذج بياناته الخاص، فالمفاصل بينها تصير هي المشكلة التشغيلية."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_ch_dynamic_landscape",
+   "bloom_level": "Remember",
+   "question": "Which emerging threats test vulnerability-management adaptability?",
+   "question_ar": "أي تهديدات ناشئة يذكرها الفصل كاختبار للتكيّف؟",
+   "options": [
+    "Expired certificates and misrouted DNS.",
+    "Disk failures and datacentre power loss.",
+    "Supply chain attacks and AI-driven malware.",
+    "Password reuse and weak recovery questions."
+   ],
+   "options_ar": [
+    "شهادات رقمية منتهية وسجلات DNS مهيأة بصورة خاطئة.",
+    "أعطال الأقراص وانقطاع الطاقة في مركز البيانات.",
+    "هجمات التوريد وبرمجيات خبيثة تعتمد الذكاء الاصطناعي.",
+    "إعادة استخدام كلمات المرور وأسئلة استعادة ضعيفة."
+   ],
+   "options_en": [
+    "Expired certificates and misrouted DNS.",
+    "Disk failures and datacentre power loss.",
+    "Supply chain attacks and AI-driven malware.",
+    "Password reuse and weak recovery questions."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Both attack the assumptions the practices were built on: that dependencies are trustworthy and that attack tooling is unsophisticated.",
+   "explanation_ar": "الاثنان يهاجمان افتراضات بُنيت عليها الممارسات: إن التبعيات موثوقة وإن أدوات الهجوم بدائية."
+  },
+  {
+   "id": "q12",
+   "concept_id": "w6_ch_human",
+   "bloom_level": "Remember",
+   "question": "Which human factors remain strategic vulnerabilities?",
+   "question_ar": "أي عوامل بشرية تبقى ثغرات استراتيجية؟",
+   "options": [
+    "Hiring freezes, budget cuts and office relocation.",
+    "Slow laptops, small monitors and noisy offices.",
+    "Long meetings, late reviews and heavy workloads.",
+    "Misconfiguration, poor patching and coding resistance."
+   ],
+   "options_ar": [
+    "تجميد التوظيف، وخفض الميزانية، ونقل مكاتب العمل.",
+    "حاسبات بطيئة وشاشات صغيرة ومكاتب ذات ضوضاء مرتفعة.",
+    "اجتماعات طويلة، ومراجعات متأخرة، وأعباء عمل متراكمة.",
+    "سوء الإعداد والترقيع الضعيف ومقاومة البرمجة الآمنة."
+   ],
+   "options_en": [
+    "Hiring freezes, budget cuts and office relocation.",
+    "Slow laptops, small monitors and noisy offices.",
+    "Long meetings, late reviews and heavy workloads.",
+    "Misconfiguration, poor patching and coding resistance."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Tools and models cannot compensate for a team that misconfigures them or refuses to adopt the practice.",
+   "explanation_ar": "الأدوات والنماذج ما تعوّض فريقاً يعطّب إعداداتها أو يرفض تبنّي الممارسة."
+  },
+  {
+   "id": "q13",
+   "concept_id": "w6_ch_models_role",
+   "bloom_level": "Understand",
+   "question": "How do mathematical models mitigate these challenges?",
+   "question_ar": "كيف تخفّف النماذج الرياضية هذه التحديات؟",
+   "options": [
+    "By ranking risks through objective criteria.",
+    "By eliminating the need for human judgement.",
+    "By automating every remediation action.",
+    "By proving that no attack can succeed."
+   ],
+   "options_ar": [
+    "بترتيب المخاطر بموضوعية.",
+    "بإلغاء الحاجة للحكم البشري.",
+    "بأتمتة كل إجراء معالجة.",
+    "بإثبات استحالة نجاح أي هجوم."
+   ],
+   "options_en": [
+    "By ranking risks through objective criteria.",
+    "By eliminating the need for human judgement.",
+    "By automating every remediation action.",
+    "By proving that no attack can succeed."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "They turn an emotional argument about which risk feels worse into a ranked list with numbers behind it.",
+   "explanation_ar": "تحوّل الجدل العاطفي حول أي خطر أسوأ إلى قائمة مرتّبة بأرقام وراها."
+  }
+ ]
+}

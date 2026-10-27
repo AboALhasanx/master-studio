@@ -60,12 +60,13 @@ so it can never be published by accident.
 - Every claim traceable to the subject's study notes. Nothing invented —
   no definitions, numbers, authors, pages or DOIs from memory.
 
-## 3. Run the gates (all three, in this order, paste the output)
+## 3. Run the gates in order and paste the output
 
 ```bash
 cd C:\Users\gokoq\Master-Studio
 python "90_Shared_Toolbox/tools/quiz_balancer.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki/<file>.json"
 python "90_Shared_Toolbox/tools/quiz_balancer.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki/<file>.json" --check --strict
+python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate
 python -c "import sys,json,io; sys.path.insert(0,r'90_Shared_Toolbox/tools'); from quiz_balancer import validate_schema_v2; sys.path.insert(0,r'C:\Users\gokoq\mcq-portal\tools'); import portal_schema as ps; p=r'<file>'; b=json.load(io.open(p,encoding='utf-8')); print(validate_schema_v2(b), ps.validate_v3(ps.to_v3(b)))"
 ```
 
@@ -73,7 +74,25 @@ python -c "import sys,json,io; sys.path.insert(0,r'90_Shared_Toolbox/tools'); fr
   Audit read-only with `--check --strict`; balance once, on purpose.
 - After any balance pass, re-open the file and re-check every `answer`/`correct`
   pair — `"ABCD"[correct] === answer` must hold with the intended text as key.
+- The quality gate is read-only. Structural errors and `--shape-gate` failures block
+  handoff; near-duplicate and repeated-formula warnings require source review but
+  do not automatically make distinct questions duplicates.
 - Exit 0 and two empty lists, or the bank does not ship. No exceptions.
+
+### Two traps that pass v2 and fail the real gates (learned 2026-10-22)
+
+1. **Parenthetical glosses inside options.** `quiz_balancer --strict` fails on
+   `(APTs)`, `(IDS/IPS)` — anything in brackets after a term. Write the spelled-out
+   form and put it in **both** `options` and `options_en`; the abbreviation can live
+   in the explanation.
+2. **A currency `$` inside math.** `portal_schema.validate_v3` pairs `$…$` segments
+   and a literal `$` breaks the pairing (`bad formula $…`), while v2 stays clean.
+   Keep money amounts as plain numbers in the stem and use `$…$` only for the
+   computation.
+3. **`options` and `options_en` are not interchangeable.** The app renders
+   `options_en`; the gate reads `options`. A bank whose only change is the dead
+   `options` array bumps **no** content version, so a "successful sync" can hide a
+   no-op. Diff both arrays before publishing.
 
 ## 4. Publish, then mirror
 
@@ -89,8 +108,15 @@ python "90_Shared_Toolbox/tools/portal_content.py" pull           # refresh mcq-
   (`cd C:\Users\gokoq\mcq-portal; npx -y vercel@latest --prod --yes`) only when
   it reports a precache change.
 - Retire, never delete: move the dead file to `07_Quizzes_&_Anki/_retired/`,
-  delete its portal row (`sync` drops rows whose file is gone), and say so.
+  then **hide** its portal row — `python 90_Shared_Toolbox/tools/portal_content.py hide <quiz_id>`
+  — then `pull` (it prunes the bundle and reports the count), then redeploy the
+  shell if the precache changed. Say what you retired.
   (The vault `.gitignore` ignores `_archive/` — use `_retired/`.)
+- **`sync` does NOT delete portal rows** (corrected 2026-10-22 by direct test: two
+  banks moved to `_retired/` kept their rows at their old versions after a full
+  `sync`). Its own header says a title that exists only in the portal is never
+  dropped. `hide` is the only working retirement path; the row stays but the app
+  stops serving it.
 - Never `git add -A` in the vault. Stage only your files.
 
 ## 5. Verify in the app (JSON passing is not done)

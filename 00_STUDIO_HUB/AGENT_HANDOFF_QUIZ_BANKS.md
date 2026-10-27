@@ -130,11 +130,11 @@ a bank pass — fix the wording.
 | Ch01 | 71 in 6 banks | rewritten 2026-10-26 · L1–L5 clean · live |
 | Ch02 | 92 in 8 banks | rewritten 2026-10-26 · L1–L5 clean · live |
 | Ch03 | 103 in 9 banks (was 167 in 10) | rebuilt 2026-10-26 · L1–L5 clean · live · T07 retired (source fully crossed) |
-| Ch04 | 180 in 9 banks | not clean — 41 % unique-longest, 4 stems |
-| Ch05 | 346 in 17 banks | not clean — 64 % unique-longest, 9 stems |
-| Ch06 | 258 in 13 banks | not clean — 67 % unique-longest |
+| Ch04 | 118 in 9 banks | cleaned 2026-10-27 · gates green · live · web verification passed |
+| Ch05 | 221 in 17 banks | cleaned 2026-10-27 · strict/shape gates green · live · web verification passed |
+| Ch06 | 104 in 10 banks | rebuilt 2026-10-27 · old 8 banks hidden · live · web verification passed |
 
-Content version at time of writing: **36** · shell **1.7.8**.
+Current content version: **45** · shell **1.7.10**.
 
 > **Chapter 3 was a scope problem before it was a wording problem.** The doctor's marked copy exists
 > only outside the vault (`~/Downloads/Telegram Desktop/W02_Risks.pdf`; the clean
@@ -181,3 +181,12 @@ input is not evidence.
 ---
 
 *Keep this file current: when a chapter is cleaned, update §4 and the content version.*
+
+
+### MCSQuiz — Ch4/Ch5 publish and Ch6 replacement cleanup (Codex, 2026-10-27)
+
+- Replaced the 9 Ch4 / 17 Ch5 active vault banks with the preflighted candidates: Ch4 118 questions, Ch5 221. Preserved all 26 prior active JSON files under `07_Quizzes_&_Anki/_retired/ch04-ch05-prepublish-2026-10-27/`; SHA256 matched every installed candidate to its source.
+- Candidate and active-path preflights passed: handout-reference scan, answer-shape/option-spread quality gate, strict balancer, v2/v3 schema, and local publish dry-run. Live Ch4 structural audit: 118 questions, 0 problems. Ch5 live manifest: 17 banks / 221 questions. Arabic options in all 26 Ch4/Ch5 live banks match the vault as multisets (0 diffs).
+- `sync --subject 01_Cyber_Security` intentionally does not retire missing banks. It also upserted the 10 cleaned Ch6 banks while leaving 8 superseded Ch6 rows visible. Hid those exact 8 old IDs, then pulled again: Cyber Security now has 59 live banks across Ch1–Ch6; Ch6 has 10 banks / 104 questions, 104 unique concepts, and 0 structural problems.
+- Updated the portal shell to **1.7.10** after the final mirror/précache change. CI passed (220 checks, 0 failures); production deployment is READY at `https://mcq-portal-jade.vercel.app`.
+- Live web verification passed for Ch4 (9 cards), Ch5 (17), and Ch6 (10): topic numbering, card counts, subject tags, English toggle, per-launch question/option shuffle, and stable correct-answer text. Ch4/Ch5 JSON and the Ch6 retired copies remain preserved. No `ACTIVE_STATE.md` edit.

@@ -1,0 +1,334 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch06_T07_SQLi_XSS_CSRF",
+ "topic": "SQL Injection, XSS and CSRF",
+ "topic_ar": "حقن SQL وXSS وCSRF",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "w6_sqli_mechanism",
+   "bloom_level": "Remember",
+   "question": "How does SQL injection work?",
+   "question_ar": "كيف يشتغل حقن SQL؟",
+   "options": [
+    "Untrusted input alters the structure of a database query.",
+    "A malicious JavaScript payload runs in the user browser.",
+    "A forged request uses the victim's active session.",
+    "A harmful package replaces a trusted dependency in the application."
+   ],
+   "options_ar": [
+    "مدخلات غير موثوقة تغيّر بنية استعلام قاعدة البيانات.",
+    "حمولة JavaScript خبيثة تُنفّذ داخل متصفح المستخدم الموثّق.",
+    "يرسل المتصفح طلباً مزوراً بجلسة مستخدم مصادَق عليه.",
+    "حزمة خبيثة تستبدل مكوّناً موثوقاً ضمن التطبيق."
+   ],
+   "options_en": [
+    "Untrusted input alters the structure of a database query.",
+    "A malicious JavaScript payload runs in the user browser.",
+    "A forged request uses the victim's active session.",
+    "A harmful package replaces a trusted dependency in the application."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It remains high impact wherever the application talks to a relational database without separating code from data.",
+   "explanation_ar": "يبقى عالي الأثر حيث ما يتكلّم التطبيق مع قاعدة بيانات علائقية بلا فصل الكود عن البيانات."
+  },
+  {
+   "id": "q2",
+   "concept_id": "w6_sqli_variants",
+   "bloom_level": "Understand",
+   "question": "Why have blind SQLi and NoSQL injection re-emerged?",
+   "question_ar": "ليش رجعت تنويعات blind SQLi وحقن NoSQL للظهور؟",
+   "options": [
+    "Because encryption makes database queries unreadable.",
+    "Because flexible data stores were widely adopted.",
+    "Because relational database systems were completely retired.",
+    "Because parameterised queries stopped working."
+   ],
+   "options_ar": [
+    "لأن التشفير يجعل جميع الاستعلامات غير مقروءة.",
+    "بسبب انتشار مخازن البيانات غير العلائقية المرنة.",
+    "لأن قواعد البيانات العلائقية أُلغيت بالكامل.",
+    "لأن الاستعلامات ذات المعاملات لم تعد تعمل."
+   ],
+   "options_en": [
+    "Because encryption makes database queries unreadable.",
+    "Because flexible data stores were widely adopted.",
+    "Because relational database systems were completely retired.",
+    "Because parameterised queries stopped working."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Blind SQLi infers results from application behaviour, and NoSQL injection applies the same idea to the flexible stores that replaced relational ones.",
+   "explanation_ar": "blind SQLi يستنتج النتائج من سلوك التطبيق، وحقن NoSQL يطبّق نفس الفكرة على المخازن المرنة اللي حلت محل العلائقية."
+  },
+  {
+   "id": "q3",
+   "concept_id": "w6_sqli_defence",
+   "bloom_level": "Understand",
+   "question": "Why are parameterised queries the primary defence against SQLi?",
+   "question_ar": "ليش الاستعلامات المُعامَلة هي الدفاع الأساسي ضد حقن SQL؟",
+   "options": [
+    "Because they encrypt the query before sending it.",
+    "Because they block the request at the firewall.",
+    "Because bound values cannot alter query structure.",
+    "Because they escape every dangerous character automatically."
+   ],
+   "options_ar": [
+    "لأنها تشفّر الاستعلام قبل إرساله إلى قاعدة البيانات.",
+    "لأن جدار الحماية يحجب الطلب قبل وصوله للتطبيق.",
+    "لأن ربط القيم منفصلة يمنع تغيير بنية الاستعلام.",
+    "لأنها تهرّب المحارف الخطرة تلقائياً قبل التنفيذ."
+   ],
+   "options_en": [
+    "Because they encrypt the query before sending it.",
+    "Because they block the request at the firewall.",
+    "Because bound values cannot alter query structure.",
+    "Because they escape every dangerous character automatically."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Escaping treats the symptom, while binding keeps the query structure fixed so injected text stays data rather than becoming code.",
+   "explanation_ar": "التهريب يعالج العَرَض، أما الربط فيثبّت بنية الاستعلام فالنص المحقون يبقى بيانات مو كود."
+  },
+  {
+   "id": "q4",
+   "concept_id": "w6_xss_mechanism",
+   "bloom_level": "Remember",
+   "question": "How does cross-site scripting work?",
+   "question_ar": "كيف تشتغل البرمجة عبر المواقع؟",
+   "options": [
+    "A query is altered to reveal another user's private database records.",
+    "A forged request is sent using the victim's session.",
+    "A dependency is replaced with a malicious version.",
+    "Malicious JavaScript executes in the victim's browser."
+   ],
+   "options_ar": [
+    "استعلام يُعدّل لكشف بيانات خاصة لمستخدم آخر.",
+    "طلب مزوّر يُرسل مستخدماً جلسة الضحية.",
+    "مكوّن موثوق يُستبدل بإصدار برمجي خبيث.",
+    "JavaScript خبيث ينفّذ في متصفح الضحية."
+   ],
+   "options_en": [
+    "A query is altered to reveal another user's private database records.",
+    "A forged request is sent using the victim's session.",
+    "A dependency is replaced with a malicious version.",
+    "Malicious JavaScript executes in the victim's browser."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The injected script runs with the trust of the page, so it can read what the user sees and act as the user would.",
+   "explanation_ar": "السكربت المحقون يشتغل بثقة الصفحة، فيقدر يقرأ ما يراه المستخدم ويتصرّف كما يتصرّف هو."
+  },
+  {
+   "id": "q5",
+   "concept_id": "w6_xss_spa",
+   "bloom_level": "Understand",
+   "question": "Why is XSS especially prevalent in single-page applications?",
+   "question_ar": "ليش XSS شائعة خصوصاً بتطبيقات الصفحة الواحدة؟",
+   "options": [
+    "Because JavaScript dominates the whole rendering path.",
+    "Because modern SPAs cannot serve pages over HTTPS.",
+    "Because SPAs store application state only in browser cookies.",
+    "Because SPAs operate without any server-side components."
+   ],
+   "options_ar": [
+    "لأن JavaScript يهيمن على معظم مسار العرض.",
+    "لأن HTTPS لا يعمل مع تطبيقات الصفحة الواحدة.",
+    "لأنها تخزّن كل البيانات بالكوكيز فقط.",
+    "لأنها تعمل من دون مكوّن على الخادم."
+   ],
+   "options_en": [
+    "Because JavaScript dominates the whole rendering path.",
+    "Because modern SPAs cannot serve pages over HTTPS.",
+    "Because SPAs store application state only in browser cookies.",
+    "Because SPAs operate without any server-side components."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "When the browser does the rendering, injected script runs in the same context that builds the page rather than in a separate server template.",
+   "explanation_ar": "لمّا يكون المتصفح هو اللي يعرض، السكربت المحقون يشتغل بنفس السياق اللي يبني الصفحة بدل قالب سيرفر منفصل."
+  },
+  {
+   "id": "q6",
+   "concept_id": "w6_xss_dom",
+   "bloom_level": "Understand",
+   "question": "What makes DOM-based XSS different from other variants?",
+   "question_ar": "شنو يميّز XSS القائم على DOM عن بقية التنويعات؟",
+   "options": [
+    "The payload only changes server-side error reporting.",
+    "A client-side execution flaw, not a server-side flaw.",
+    "The payload is stored in the database permanently.",
+    "The attack requires physical access to the device."
+   ],
+   "options_ar": [
+    "تؤثر الحمولة في سجل أخطاء الخادم فقط.",
+    "يقع الخلل في التنفيذ على جانب العميل لا الخادم.",
+    "تُخزّن الحمولة في قاعدة البيانات بصورة دائمة.",
+    "يشترط الهجوم وصولاً مادياً إلى جهاز المستخدم."
+   ],
+   "options_en": [
+    "The payload only changes server-side error reporting.",
+    "A client-side execution flaw, not a server-side flaw.",
+    "The payload is stored in the database permanently.",
+    "The attack requires physical access to the device."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Because the vulnerable step never reaches the server, server-side filters have nothing to inspect, which makes it harder to detect.",
+   "explanation_ar": "بما إن الخطوة المصابة ما توصل للسيرفر أبداً، فالفلاتر على جانب السيرفر ما عندها شي تفحصه، وهذا يصعّب كشفها."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_xss_defence",
+   "bloom_level": "Understand",
+   "question": "Why do output encoding and CSP together address XSS?",
+   "question_ar": "ليش ترميز المخرجات و CSP معاً يعالجان XSS؟",
+   "options": [
+    "Encoding blocks each request; CSP records attempted scripts.",
+    "Encoding patches client browsers; CSP patches the web server.",
+    "Encoding neutralises data; CSP limits allowed scripts.",
+    "Encoding encrypts page data; CSP rotates server-side keys."
+   ],
+   "options_ar": [
+    "الترميز يحجب الطلبات، وCSP يسجّل محاولات السكربت.",
+    "الترميز يرقّع المتصفحات، وCSP يحدّث خادم الويب.",
+    "الترميز يحيّد البيانات، وCSP يقيّد تنفيذ السكربتات.",
+    "الترميز يشفّر بيانات الصفحة، وCSP يدوّر مفاتيح الخادم."
+   ],
+   "options_en": [
+    "Encoding blocks each request; CSP records attempted scripts.",
+    "Encoding patches client browsers; CSP patches the web server.",
+    "Encoding neutralises data; CSP limits allowed scripts.",
+    "Encoding encrypts page data; CSP rotates server-side keys."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "One stops the payload from being interpreted as code, the other limits what code may run even if something slips through.",
+   "explanation_ar": "واحد يمنع تفسير الحمولة ككود، والثاني يحدّد أي كود يقدر يشتغل حتى لو تسرّب شي."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_csrf_mechanism",
+   "bloom_level": "Remember",
+   "question": "How does cross-site request forgery work?",
+   "question_ar": "كيف يشتغل تزوير الطلب عبر المواقع؟",
+   "options": [
+    "A script executes inside the victim's page context.",
+    "A query returns records belonging to another user.",
+    "A dependency is swapped for a malicious version.",
+    "A forged request uses the victim's active session."
+   ],
+   "options_ar": [
+    "شيفرة خبيثة تُنفّذ في سياق صفحة الضحية عند التصفح.",
+    "استعلام قاعدة بيانات معدّل يكشف سجلات مستخدم آخر.",
+    "مكوّن موثوق يستبدله مهاجم بحزمة ضارة أثناء التحديث.",
+    "يرسل المتصفح طلباً مزوراً بجلسة مستخدم مصادَق عليه."
+   ],
+   "options_en": [
+    "A script executes inside the victim's page context.",
+    "A query returns records belonging to another user.",
+    "A dependency is swapped for a malicious version.",
+    "A forged request uses the victim's active session."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The victim's session cookie travels automatically, so the server cannot tell the forged request from a legitimate one.",
+   "explanation_ar": "كوكي جلسة الضحية يسافر تلقائياً، فالسيرفر ما يقدر يفرّق الطلب المزوّر عن طلب شرعي."
+  },
+  {
+   "id": "q9",
+   "concept_id": "w6_csrf_defence",
+   "bloom_level": "Understand",
+   "question": "Why do SameSite cookies and anti-CSRF tokens work against CSRF?",
+   "question_ar": "ليش كوكيز SameSite ورموز مكافحة CSRF تنجح ضد CSRF؟",
+   "options": [
+    "They stop session cookies accompanying cross-site requests.",
+    "They encrypt request data before it reaches the server.",
+    "They reject requests from browsers without a trusted profile.",
+    "They require users to re-enter their password for each request."
+   ],
+   "options_ar": [
+    "تمنع إرفاق كوكي الجلسة بطلب صادر من موقع آخر.",
+    "تشفّر بيانات الطلب قبل إرسالها إلى الخادم.",
+    "ترفض طلبات المتصفحات غير المعروفة بصورة دائمة.",
+    "تطلب إعادة إدخال كلمة المرور قبل تنفيذ الطلب."
+   ],
+   "options_en": [
+    "They stop session cookies accompanying cross-site requests.",
+    "They encrypt request data before it reaches the server.",
+    "They reject requests from browsers without a trusted profile.",
+    "They require users to re-enter their password for each request."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "One prevents the credential from being attached automatically, the other proves the request came from the application's own page.",
+   "explanation_ar": "واحد يمنع إرفاق بيانات الاعتماد تلقائياً، والثاني يثبت إن الطلب جا من صفحة التطبيق نفسه."
+  },
+  {
+   "id": "q10",
+   "concept_id": "w6_csrf_vs_xss",
+   "bloom_level": "Analyze",
+   "question": "What separates CSRF from XSS?",
+   "question_ar": "شنو يفصل CSRF عن XSS؟",
+   "options": [
+    "Both are prevented by the same single control.",
+    "XSS executes code; CSRF abuses the session without code.",
+    "XSS abuses the session; CSRF executes code in the browser.",
+    "Both require the attacker to steal the session cookie."
+   ],
+   "options_ar": [
+    "كلاهما يُمنع باستخدام ضابط أمني واحد فقط.",
+    "XSS ينفّذ شيفرة؛ أما CSRF فيستغل جلسة المستخدم.",
+    "XSS يستغل الجلسة؛ أما CSRF فينفّذ شيفرة بالمتصفح.",
+    "كلاهما يتطلب سرقة ملف تعريف ارتباط الجلسة."
+   ],
+   "options_en": [
+    "Both are prevented by the same single control.",
+    "XSS executes code; CSRF abuses the session without code.",
+    "XSS abuses the session; CSRF executes code in the browser.",
+    "Both require the attacker to steal the session cookie."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "In XSS the attacker gets to run script; in CSRF the attacker never sees the response, only causes an action to happen.",
+   "explanation_ar": "بـ XSS المهاجم يقدر يشغّل سكربت؛ وبـ CSRF المهاجم ما يشوف الرد أبداً، بس يسبّب وقوع إجراء."
+  },
+  {
+   "id": "q11",
+   "concept_id": "w6_vm_four_challenges",
+   "bloom_level": "Remember",
+   "question": "Which four challenges define modern vulnerability management?",
+   "question_ar": "ما التحديات الأربعة التي تواجه إدارة الثغرات الحديثة؟",
+   "options": [
+    "Slow networks, costly storage, old hardware, and vendor lock-in.",
+    "False alerts, duplicate accounts, missing logs, and delayed releases.",
+    "Zero-day flaws, supply-chain risk, scarce resources, and changing systems.",
+    "Expired certificates, weak passwords, poor backups, and excess permissions."
+   ],
+   "options_ar": [
+    "شبكات بطيئة، وتخزين مكلف، وعتاد قديم، واحتكار الموردين.",
+    "تنبيهات زائفة، وحسابات مكررة، وسجلات مفقودة، وإصدارات متأخرة.",
+    "ثغرات اليوم الصفري، وتعقيد التوريد، وشح الموارد، وتبدّل البنى.",
+    "شهادات منتهية، وكلمات مرور ضعيفة، ونسخ رديئة، وصلاحيات زائدة."
+   ],
+   "options_en": [
+    "Slow networks, costly storage, old hardware, and vendor lock-in.",
+    "False alerts, duplicate accounts, missing logs, and delayed releases.",
+    "Zero-day flaws, supply-chain risk, scarce resources, and changing systems.",
+    "Expired certificates, weak passwords, poor backups, and excess permissions."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The four are zero-day exploits, complex supply chains, resource constraints and dynamic architectures.",
+   "explanation_ar": "التحديات الأربعة هي ثغرات اليوم الصفري، وسلاسل التوريد المعقدة، وشح الموارد، والبنى الديناميكية."
+  }
+ ]
+}

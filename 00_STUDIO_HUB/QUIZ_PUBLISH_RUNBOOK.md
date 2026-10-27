@@ -53,8 +53,8 @@ node "C:/Users/gokoq/AppData/Local/npm-cache/_npx/69f9afb961c37556/node_modules/
 Do not skip a step and do not reorder them. Each one catches a class of defect the next one cannot.
 
 ```text
- write builder  ->  report_len  ->  build  ->  balancer  ->  validate  ->  dry-run
-                                                                              |
+ write builder  ->  report_len  ->  build  ->  balancer  ->  quality gate  ->  validate  ->  dry-run
+                                                                                             |
    commit  <-  live-site verify  <-  deploy  <-  CI  <-  release  <-  live audit  <-  sync + pull
 ```
 
@@ -132,6 +132,7 @@ handout references           PASS  0 question(s)
 EN unique-longest            PASS  2/103
 EN unique-shortest           PASS  6/103
 option spread                PASS
+deep quality gate            PASS  Structural errors: 0; Shape-gate failures: 0
 quiz_balancer --strict       PASS
 validate_bank v2+v3          PASS
 publish_quizzes --dry-run    PASS  exit 0
@@ -140,6 +141,10 @@ publish_quizzes --dry-run    PASS  exit 0
 Exit 0 = safe to publish. Exit 1 = `NOT READY — failed: ...` and names them. **It never writes to the
 portal**, so it is safe to run at any time. Careful: if you pipe it (`| tail`), `$?` becomes the pipe's
 status — read the summary line instead of the exit code.
+
+The output above is a historical green example. On 2026-10-27, the newly added shape audit found one
+Arabic key-to-distractor-average violation in the currently active Ch3 banks. No active bank was
+changed during that audit; repair it the next time Ch3 is revised or proposed for release.
 
 A real example on an uncleaned chapter (Ch04, before work):
 
@@ -152,7 +157,19 @@ option spread                FAIL  EN q2 [62, 64, 41, 58]; AR q2 [53, 50, 35, 52
 The individual gates, if you need to run one alone:
 
 ```bash
-# 4a. the vault's own balancer, per bank
+# 4a. chapter-scoped structural, duplicate, formula, and bilingual shape audit (read-only)
+cd /c/Users/gokoq/Master-Studio
+CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/quiz_quality_gate.py \
+  01_Semester_1/01_Cyber_Security/07_Quizzes_\&_Anki --chapter 3 --shape-gate
+```
+
+Near-duplicate stem, repeated-formula, and short-explanation findings are advisory and need a
+source-based decision. Structural errors and shape-gate failures block handoff. The gate is read-only
+and cannot verify factual truth or semantic equivalence between Arabic and English; inspect those
+against the source.
+
+```bash
+# 4b. the vault's own balancer, per bank
 for f in 01_Semester_1/01_Cyber_Security/07_Quizzes_\&_Anki/Quiz_Ch03_*.json; do
   CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/quiz_balancer.py "$f" --check --strict \
     && echo "ok $(basename $f)" || echo "FAIL $(basename $f)"
@@ -160,7 +177,7 @@ done
 ```
 
 ```bash
-# 4b. v2 + v3 schema validation over every bank
+# 4c. v2 + v3 schema validation over every bank
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 -c "
 import json, glob, sys
 sys.path.insert(0, r'90_Shared_Toolbox/tools')
@@ -176,7 +193,7 @@ print('schema problems:', bad)
 ```
 
 ```bash
-# 4c. canonical multi-bank dry run (no network write)
+# 4d. canonical multi-bank dry run (no network write)
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/publish_quizzes.py --dry-run
 echo "EXIT=$?"     # must be 0
 ```

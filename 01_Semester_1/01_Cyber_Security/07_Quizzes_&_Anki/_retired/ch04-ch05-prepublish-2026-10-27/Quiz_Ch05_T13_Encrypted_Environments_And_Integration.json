@@ -1,0 +1,595 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "quiz_id": "Quiz_Ch05_T13_Encrypted_Environments_And_Integration",
+ "topic": "IDS/IPS in encrypted environments, integration and reliability",
+ "topic_ar": "IDS/IPS في البيئات المشفّرة والتكامل والموثوقية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "enc_three_solutions",
+   "bloom_level": "Remember",
+   "question": "Which three solutions does the chapter offer for inspecting encrypted traffic?",
+   "question_ar": "أي ثلاثة حلول يقدّمها الفصل لفحص الترافيك المشفّر؟",
+   "options": [
+    "Signature compression, log rotation and sampling.",
+    "TLS termination, metadata analysis and traffic analytics.",
+    "Key escrow, password recovery and forced downgrade.",
+    "Packet replay, header stripping and port mirroring."
+   ],
+   "options_ar": [
+    "ضغط التوقيعات وتدوير السجلات وأخذ العيّنات.",
+    "إنهاء TLS وتحليل الميتاداتا وتحليلات الترافيك.",
+    "إيداع المفاتيح واستعادة كلمات المرور والتخفيض القسري.",
+    "إعادة إرسال الحزم ونزع الترويسات ونسخ المنافذ."
+   ],
+   "options_en": [
+    "Signature compression, log rotation and sampling.",
+    "TLS termination, metadata analysis and traffic analytics.",
+    "Key escrow, password recovery and forced downgrade.",
+    "Packet replay, header stripping and port mirroring."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The three routes are to decrypt at a termination point, to analyse handshake metadata, or to model traffic statistics with machine learning.",
+   "explanation_ar": "الطرق الثلاث هي فكّ التشفير عند نقطة إنهاء، أو تحليل ميتاداتا المصافحة، أو نمذجة إحصاءات الترافيك بتعلّم الآلة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "enc_tls_termination_cost",
+   "bloom_level": "Understand",
+   "question": "What is the cost of using TLS termination to inspect encrypted traffic?",
+   "question_ar": "شنو ثمن استخدام إنهاء TLS لفحص الترافيك المشفّر؟",
+   "options": [
+    "The traffic can no longer be re-encrypted afterwards.",
+    "The clients must disable certificate validation.",
+    "The server must publish its private key publicly.",
+    "The termination point becomes a high-value target."
+   ],
+   "options_ar": [
+    "الترافيك ما يمكن إعادة تشفيره بعدها.",
+    "العملاء لازم يعطّلون التحقّق من الشهادات.",
+    "السيرفر لازم ينشر مفتاحه الخاص علناً.",
+    "نقطة الإنهاء تصير هدفاً عالي القيمة."
+   ],
+   "options_en": [
+    "The traffic can no longer be re-encrypted afterwards.",
+    "The clients must disable certificate validation.",
+    "The server must publish its private key publicly.",
+    "The termination point becomes a high-value target."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Decrypting in the middle means the middle holds the plaintext and the keys, which concentrates risk exactly where the inspection happens.",
+   "explanation_ar": "فكّ التشفير بالوسط يعني إن الوسط يحمل النص الصريح والمفاتيح، وهذا يجمّع الخطر بالضبط وين يصير الفحص."
+  },
+  {
+   "id": "q3",
+   "concept_id": "enc_metadata",
+   "bloom_level": "Understand",
+   "question": "What does metadata analysis inspect instead of the payload?",
+   "question_ar": "شنو يحلّل تحليل الميتاداتا بدل الحمولة؟",
+   "options": [
+    "Handshake fingerprints such as JA3.",
+    "The plaintext of the application messages.",
+    "The private keys stored on the server.",
+    "The certificate revocation lists."
+   ],
+   "options_ar": [
+    "بصمات المصافحة مثل JA3.",
+    "النص الصريح لرسائل التطبيق.",
+    "المفاتيح الخاصة المخزّنة على السيرفر.",
+    "قوائم إبطال الشهادات."
+   ],
+   "options_en": [
+    "Handshake fingerprints such as JA3.",
+    "The plaintext of the application messages.",
+    "The private keys stored on the server.",
+    "The certificate revocation lists."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The handshake itself is visible even when the payload is not, so its fingerprint can identify a client or a tool without decrypting anything.",
+   "explanation_ar": "المصافحة نفسها مرئية حتى لو الحمولة مو مرئية، فبصمتها تقدر تعرّف عميلاً أو أداة بلا فكّ أي تشفير."
+  },
+  {
+   "id": "q4",
+   "concept_id": "enc_eta",
+   "bloom_level": "Remember",
+   "question": "What does encrypted traffic analytics rely on?",
+   "question_ar": "على شنو يعتمد تحليل الترافيك المشفّر؟",
+   "options": [
+    "A complete copy of every decrypted payload.",
+    "Certificate pinning at the network edge.",
+    "Machine-learning models over traffic statistics.",
+    "Brute-forcing the session keys in real time."
+   ],
+   "options_ar": [
+    "نسخة كاملة من كل حمولة مفكوكة.",
+    "تثبيت الشهادات عند حافة الشبكة.",
+    "موديلات تعلّم آلي على إحصاءات الترافيك.",
+    "كسر مفاتيح الجلسة بالقوة الغاشمة بالزمن الحقيقي."
+   ],
+   "options_en": [
+    "A complete copy of every decrypted payload.",
+    "Certificate pinning at the network edge.",
+    "Machine-learning models over traffic statistics.",
+    "Brute-forcing the session keys in real time."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It learns what flows look like rather than what they contain, which is why it works without decryption.",
+   "explanation_ar": "يتعلّم شكل التدفقات مو محتواها، ولهذا يشتغل بلا فكّ تشفير."
+  },
+  {
+   "id": "q5",
+   "concept_id": "enc_gmm_formula",
+   "bloom_level": "Remember",
+   "question": "How is the probability density of a flow modelled in that section?",
+   "question_ar": "كيف تُنمذَج كثافة احتمال التدفق بذلك القسم؟",
+   "options": [
+    "A uniform distribution over the feature space.",
+    "A weighted sum of Gaussian components.",
+    "A single Gaussian fitted to the whole traffic.",
+    "The product of every feature's marginal."
+   ],
+   "options_ar": [
+    "توزيع منتظم على فضاء السمات.",
+    "مجموع مرجّح من مكوّنات Gaussian.",
+    "توزيع Gaussian واحد ملائم لكل الترافيك.",
+    "حاصل ضرب التوزيع الهامشي لكل سمة."
+   ],
+   "options_en": [
+    "A uniform distribution over the feature space.",
+    "A weighted sum of Gaussian components.",
+    "A single Gaussian fitted to the whole traffic.",
+    "The product of every feature's marginal."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A mixture allows one model to represent several normal modes of behaviour instead of assuming a single cluster.",
+   "explanation_ar": "الخليط يسمح لنموذج واحد يمثّل عدة أنماط طبيعية للسلوك بدل ما يفترض عنقوداً واحداً."
+  },
+  {
+   "id": "q6",
+   "concept_id": "enc_gmm_threshold",
+   "bloom_level": "Understand",
+   "question": "What does a flow probability below the threshold indicate?",
+   "question_ar": "شنو يعني احتمال تدفق أقل من العتبة؟",
+   "options": [
+    "That the flow is definitely a known attack.",
+    "That the model has not been trained yet.",
+    "That the threshold was configured backwards.",
+    "That the flow is anomalous relative to the model."
+   ],
+   "options_ar": [
+    "إن التدفق بالتأكيد هجوم معروف.",
+    "إن النموذج ما اندرّب بعد.",
+    "إن العتبة مضبوطة بالمقلوب.",
+    "إن التدفق شاذ بالنسبة للنموذج."
+   ],
+   "options_en": [
+    "That the flow is definitely a known attack.",
+    "That the model has not been trained yet.",
+    "That the threshold was configured backwards.",
+    "That the flow is anomalous relative to the model."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Low likelihood means the flow does not resemble the learned normal modes, which is suspicion and not proof.",
+   "explanation_ar": "الاحتمال المنخفض يعني إن التدفق ما يشبه الأنماط الطبيعية المتعلَّمة، وهذا شك مو دليل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "enc_features",
+   "bloom_level": "Remember",
+   "question": "Which features does the model use for encrypted traffic?",
+   "question_ar": "أي سمات يستخدمها النموذج للترافيك المشفّر؟",
+   "options": [
+    "Packet size, timing and direction.",
+    "Payload keywords and regular expressions.",
+    "Usernames and password hashes.",
+    "Certificate subject and issuer names."
+   ],
+   "options_ar": [
+    "حجم الحزمة والتوقيت والاتجاه.",
+    "كلمات مفتاحية بالحمولة وتعبيرات نمطية.",
+    "أسماء المستخدمين وهاشات كلمات المرور.",
+    "اسم موضوع الشهادة وجهة إصدارها."
+   ],
+   "options_en": [
+    "Packet size, timing and direction.",
+    "Payload keywords and regular expressions.",
+    "Usernames and password hashes.",
+    "Certificate subject and issuer names."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Those three survive encryption because they describe the shape of the conversation rather than its content.",
+   "explanation_ar": "هذي الثلاثة تنجو من التشفير لأنها تصف شكل المحادثة مو محتواها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "case_snort_suricata",
+   "bloom_level": "Remember",
+   "question": "What did Suricata add that Snort did not originally offer?",
+   "question_ar": "شنو أضافت Suricata وما كان Snort يقدّمه أصلاً؟",
+   "options": [
+    "The first anomaly-based detection engine.",
+    "Hardware acceleration on the network card.",
+    "Multithreaded performance for high-throughput networks.",
+    "A proprietary signature format with no sharing."
+   ],
+   "options_ar": [
+    "أول محرّك كشف قائم على الشذوذ.",
+    "تسريع عتادي على كرت الشبكة.",
+    "أداء متعدّد الخيوط للشبكات عالية الإنتاجية.",
+    "صيغة توقيعات مغلقة بلا مشاركة."
+   ],
+   "options_en": [
+    "The first anomaly-based detection engine.",
+    "Hardware acceleration on the network card.",
+    "Multithreaded performance for high-throughput networks.",
+    "A proprietary signature format with no sharing."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Snort became the open-source standard, and Suricata addressed the throughput ceiling with multithreading.",
+   "explanation_ar": "Snort صار المعيار مفتوح المصدر، و Suricata عالجت سقف الإنتاجية بالخيوط المتعدّدة."
+  },
+  {
+   "id": "q9",
+   "concept_id": "case_heartbleed",
+   "bloom_level": "Understand",
+   "question": "Why did Heartbleed illustrate a fundamental limit of IDS visibility?",
+   "question_ar": "ليش Heartbleed وضّحت حدّاً جوهرياً لرؤية الـ IDS؟",
+   "options": [
+    "The attack used only ICMP packets to exfiltrate.",
+    "The leak happened inside an encrypted channel.",
+    "The bug was too new for any signature database.",
+    "The server had no IDS deployed at that time."
+   ],
+   "options_ar": [
+    "الهجوم استخدم حزم ICMP فقط للتسريب.",
+    "التسريب صار داخل قناة مشفّرة.",
+    "الثغرة كانت أحدث من أي قاعدة توقيعات.",
+    "السيرفر ما كان عليه IDS وقتها."
+   ],
+   "options_en": [
+    "The attack used only ICMP packets to exfiltrate.",
+    "The leak happened inside an encrypted channel.",
+    "The bug was too new for any signature database.",
+    "The server had no IDS deployed at that time."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The vulnerability lived in the encrypted handshake path itself, so a sensor watching ciphertext had nothing to match against.",
+   "explanation_ar": "الثغرة كانت بمسار المصافحة المشفّر نفسه، فالمستشعر اللي يشوف نصاً مشفّراً ما عنده شي يطابقه."
+  },
+  {
+   "id": "q10",
+   "concept_id": "case_stuxnet",
+   "bloom_level": "Analyze",
+   "question": "How did Stuxnet avoid detection?",
+   "question_ar": "كيف تجنّب Stuxnet الكشف؟",
+   "options": [
+    "It encrypted every packet with a one-time pad.",
+    "It disabled the network interface of each host.",
+    "It ran only outside the monitored network.",
+    "Rootkits manipulated the process-control logs themselves."
+   ],
+   "options_ar": [
+    "شفّرت كل حزمة بمفتاح لمرة واحدة.",
+    "عطّلت واجهة الشبكة بكل مضيف.",
+    "اشتغلت فقط خارج الشبكة المراقبة.",
+    "روتكِتات تلاعبت بسجلات أنظمة التحكّم نفسها."
+   ],
+   "options_en": [
+    "It encrypted every packet with a one-time pad.",
+    "It disabled the network interface of each host.",
+    "It ran only outside the monitored network.",
+    "Rootkits manipulated the process-control logs themselves."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It attacked the evidence rather than the detector, which is why sophisticated adversaries are said to target IDS blind spots.",
+   "explanation_ar": "هاجم الدليل مو الكاشف، ولهذا يُقال إن الخصوم المتقدّمين يستهدفون النقاط العمياء للـ IDS."
+  },
+  {
+   "id": "q11",
+   "concept_id": "case_ids_common_theme",
+   "bloom_level": "Analyze",
+   "question": "What single theme links the three case studies?",
+   "question_ar": "شنو الثيمة الواحدة اللي تربط الحالات الثلاث؟",
+   "options": [
+    "Sophisticated adversaries aim at what the sensor cannot see.",
+    "Open-source tools always outperform commercial ones.",
+    "Encryption is the only cause of detection failure.",
+    "Signature databases are always out of date."
+   ],
+   "options_ar": [
+    "الخصوم المتقدّمون يستهدفون ما لا يراه المستشعر.",
+    "الأدوات مفتوحة المصدر دائماً تتفوّق على التجارية.",
+    "التشفير هو السبب الوحيد لفشل الكشف.",
+    "قواعد التوقيعات دائماً قديمة."
+   ],
+   "options_en": [
+    "Sophisticated adversaries aim at what the sensor cannot see.",
+    "Open-source tools always outperform commercial ones.",
+    "Encryption is the only cause of detection failure.",
+    "Signature databases are always out of date."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Snort and Suricata show detection became commodity, while Heartbleed and Stuxnet show the blind spots are where the real damage happens.",
+   "explanation_ar": "Snort و Suricata يبيّنان إن الكشف صار سلعة، و Heartbleed و Stuxnet يبيّنان إن النقاط العمياء هي وين يصير الضرر الحقيقي."
+  },
+  {
+   "id": "q12",
+   "concept_id": "siem_role",
+   "bloom_level": "Remember",
+   "question": "What does a SIEM system do with IDS/IPS alerts?",
+   "question_ar": "شنو يسوي نظام SIEM بتنبيهات IDS/IPS؟",
+   "options": [
+    "It re-encrypts the traffic for storage.",
+    "It replaces the signature database entirely.",
+    "It correlates events across multiple sources.",
+    "It automatically blocks the offending host."
+   ],
+   "options_ar": [
+    "يعيد تشفير الترافيك للتخزين.",
+    "يستبدل قاعدة التوقيعات بالكامل.",
+    "يربط الأحداث عبر مصادر متعددة.",
+    "يحجب المضيف المخالف تلقائياً."
+   ],
+   "options_en": [
+    "It re-encrypts the traffic for storage.",
+    "It replaces the signature database entirely.",
+    "It correlates events across multiple sources.",
+    "It automatically blocks the offending host."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Its value is correlation: a single alert is weak evidence, but several related events together justify an incident.",
+   "explanation_ar": "قيمته بالربط: تنبيه واحد دليل ضعيف، لكن عدة أحداث مترابطة تبرّر إعلان حادثة."
+  },
+  {
+   "id": "q13",
+   "concept_id": "soar_role",
+   "bloom_level": "Remember",
+   "question": "What does a SOAR platform contribute?",
+   "question_ar": "شنو تساهم به منصّة SOAR؟",
+   "options": [
+    "It signs the alerts cryptographically.",
+    "It automates the response actions.",
+    "It correlates the events into incidents.",
+    "It stores the raw packet captures."
+   ],
+   "options_ar": [
+    "يوقّع التنبيهات تشفيرياً.",
+    "يؤتمت إجراءات الاستجابة.",
+    "يربط الأحداث إلى حوادث.",
+    "يخزّن التقاطات الحزم الخام."
+   ],
+   "options_en": [
+    "It signs the alerts cryptographically.",
+    "It automates the response actions.",
+    "It correlates the events into incidents.",
+    "It stores the raw packet captures."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "SIEM decides that something is an incident, while SOAR carries out the playbook, such as opening a ticket or isolating a host.",
+   "explanation_ar": "SIEM يقرّر إن شيئاً حادثة، و SOAR ينفّذ الخطة، مثل فتح تذكرة أو عزل مضيف."
+  },
+  {
+   "id": "q14",
+   "concept_id": "siem_correlation_formula",
+   "bloom_level": "Remember",
+   "question": "How is the correlation score of evidence computed?",
+   "question_ar": "كيف تُحسب نتيجة ربط الأدلة؟",
+   "options": [
+    "A weighted product of the individual evidence items.",
+    "The maximum weight among all evidence items.",
+    "The count of evidence items divided by their weights.",
+    "A weighted sum of the individual evidence items."
+   ],
+   "options_ar": [
+    "حاصل ضرب مرجّح لبنود الأدلة المنفردة.",
+    "أقصى وزن بين كل بنود الأدلة.",
+    "عدد بنود الأدلة مقسوماً على أوزانها.",
+    "مجموع مرجّح لبنود الأدلة المنفردة."
+   ],
+   "options_en": [
+    "A weighted product of the individual evidence items.",
+    "The maximum weight among all evidence items.",
+    "The count of evidence items divided by their weights.",
+    "A weighted sum of the individual evidence items."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Each piece of evidence contributes in proportion to its weight, and the total is compared against a threshold.",
+   "explanation_ar": "كل بند دليل يساهم بنسبة وزنه، والمجموع يُقارن بعتبة."
+  },
+  {
+   "id": "q15",
+   "concept_id": "ng_cloud_native",
+   "bloom_level": "Remember",
+   "question": "What traffic does a cloud-native IDS mainly monitor?",
+   "question_ar": "أي ترافيك يراقبه نظام كشف سحابي المنشأ أساساً؟",
+   "options": [
+    "East-west traffic inside virtualised networks.",
+    "North-south traffic at the physical perimeter.",
+    "Only traffic that leaves the cloud provider.",
+    "Only traffic between two cloud providers."
+   ],
+   "options_ar": [
+    "ترافيك الشرق-الغرب داخل الشبكات الافتراضية.",
+    "ترافيك الشمال-الجنوب عند المحيط الفيزيائي.",
+    "فقط الترافيك اللي يخرج من مزوّد السحابة.",
+    "فقط الترافيك بين مزوّدَي سحابة."
+   ],
+   "options_en": [
+    "East-west traffic inside virtualised networks.",
+    "North-south traffic at the physical perimeter.",
+    "Only traffic that leaves the cloud provider.",
+    "Only traffic between two cloud providers."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "In cloud fabrics most of the interesting traffic never crosses the old perimeter, so sensors move inside the virtual network.",
+   "explanation_ar": "ببيئات السحابة أغلب الترافيك المهم ما يعبر المحيط القديم أبداً، فالمستشعرات تنتقل داخل الشبكة الافتراضية."
+  },
+  {
+   "id": "q16",
+   "concept_id": "ng_adversarial_ml",
+   "bloom_level": "Understand",
+   "question": "What distinguishes evasion from poisoning as adversarial ML attacks?",
+   "question_ar": "شنو يميّز التهرّب عن التسميم كهجمات على التعلّم الآلي؟",
+   "options": [
+    "Evasion targets the sensor; poisoning targets the network.",
+    "Evasion is passive; poisoning requires physical access.",
+    "Evasion manipulates the input; poisoning corrupts the training data.",
+    "Evasion corrupts the training data; poisoning manipulates input."
+   ],
+   "options_ar": [
+    "التهرّب يستهدف المستشعر، والتسميم يستهدف الشبكة.",
+    "التهرّب سلبي، والتسميم يشترط وصولاً فيزيائياً.",
+    "التهرّب يتلاعب بالمدخل، والتسميم يفسد بيانات التدريب.",
+    "التهرّب يفسد بيانات التدريب، والتسميم يتلاعب بالمدخل."
+   ],
+   "options_en": [
+    "Evasion targets the sensor; poisoning targets the network.",
+    "Evasion is passive; poisoning requires physical access.",
+    "Evasion manipulates the input; poisoning corrupts the training data.",
+    "Evasion corrupts the training data; poisoning manipulates input."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "One is an attack at inference time on a single input, the other is an attack at training time on the model's entire worldview.",
+   "explanation_ar": "واحد هجوم وقت الاستدلال على مدخل واحد، والثاني هجوم وقت التدريب على رؤية النموذج كلها."
+  },
+  {
+   "id": "q17",
+   "concept_id": "rel_availability_formula",
+   "bloom_level": "Remember",
+   "question": "How is the effective availability of IDS and IPS deployed in tandem expressed?",
+   "question_ar": "كيف تُعبَّر الإتاحية الفعّالة لـ IDS و IPS المنشورين معاً؟",
+   "options": [
+    "The average of the two individual availabilities.",
+    "The product of the two individual availabilities.",
+    "The sum of the two individual availabilities.",
+    "The minimum of the two individual availabilities."
+   ],
+   "options_ar": [
+    "متوسط الإتاحيتين المنفردتين.",
+    "حاصل ضرب الإتاحيتين المنفردتين.",
+    "مجموع الإتاحيتين المنفردتين.",
+    "أدنى الإتاحيتين المنفردتين."
+   ],
+   "options_en": [
+    "The average of the two individual availabilities.",
+    "The product of the two individual availabilities.",
+    "The sum of the two individual availabilities.",
+    "The minimum of the two individual availabilities."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "They are deployed in series, so both must be available and the availabilities multiply.",
+   "explanation_ar": "يُنشران على التوالي، فلازم الاثنان متاحين والإتاحيتان تتضاربان."
+  },
+  {
+   "id": "q18",
+   "concept_id": "rel_availability_effect",
+   "bloom_level": "Analyze",
+   "question": "Why is the combined availability lower than either component alone?",
+   "question_ar": "ليش الإتاحية المركّبة أقل من أي مكوّن منفرد؟",
+   "options": [
+    "Because the two components share the same power supply.",
+    "Because the product is always smaller than one half.",
+    "Because the IPS runs at a lower clock speed.",
+    "Because each component adds its own failure probability."
+   ],
+   "options_ar": [
+    "لأن المكوّنين يتشاركان نفس مصدر الطاقة.",
+    "لأن الحاصل دائماً أصغر من النصف.",
+    "لأن الـ IPS يشتغل بسرعة ساعة أقل.",
+    "لأن كل مكوّن يضيف احتمال فشله الخاص."
+   ],
+   "options_en": [
+    "Because the two components share the same power supply.",
+    "Because the product is always smaller than one half.",
+    "Because the IPS runs at a lower clock speed.",
+    "Because each component adds its own failure probability."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Two components at ninety-nine percent each give about ninety-eight percent together, because either one failing affects the chain.",
+   "explanation_ar": "مكوّنان بتسعة وتسعين بالمئة لكل واحد يعطيان حوالي ثمانية وتسعين معاً، لأن فشل أي واحد يؤثّر بالسلسلة."
+  },
+  {
+   "id": "q19",
+   "concept_id": "rel_el_formula",
+   "bloom_level": "Remember",
+   "question": "How is the expected loss under IDS/IPS protection expressed?",
+   "question_ar": "كيف تُعبَّر الخسارة المتوقّعة تحت حماية IDS/IPS؟",
+   "options": [
+    "Attack probability times one minus detection times prevention, times impact.",
+    "Attack probability times detection times prevention, times impact.",
+    "Attack probability plus one minus detection, times impact.",
+    "Detection times prevention divided by the attack probability."
+   ],
+   "options_ar": [
+    "احتمال الهجوم × (واحد ناقص الكشف × المنع) × التأثير.",
+    "احتمال الهجوم × الكشف × المنع × التأثير.",
+    "احتمال الهجوم + (واحد ناقص الكشف) × التأثير.",
+    "الكشف × المنع مقسوماً على احتمال الهجوم."
+   ],
+   "options_en": [
+    "Attack probability times one minus detection times prevention, times impact.",
+    "Attack probability times detection times prevention, times impact.",
+    "Attack probability plus one minus detection, times impact.",
+    "Detection times prevention divided by the attack probability."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Loss only materialises when an attack occurs and the combined detection-and-prevention chain fails to stop it.",
+   "explanation_ar": "الخسارة تتحقّق بس لمّا يصير هجوم وتفشل سلسلة الكشف والمنع معاً بإيقافه."
+  },
+  {
+   "id": "q20",
+   "concept_id": "rel_el_meaning",
+   "bloom_level": "Understand",
+   "question": "What does the product of detection and prevention represent?",
+   "question_ar": "شنو يمثّل حاصل ضرب الكشف بالمنع؟",
+   "options": [
+    "The availability of the sensor during an attack.",
+    "The cost of running both systems together.",
+    "The effective protection against a successful attack.",
+    "The total number of alerts generated per day."
+   ],
+   "options_ar": [
+    "إتاحية المستشعر أثناء الهجوم.",
+    "كلفة تشغيل النظامين معاً.",
+    "الحماية الفعّالة ضد هجوم ناجح.",
+    "إجمالي التنبيهات المتولّدة يومياً."
+   ],
+   "options_en": [
+    "The availability of the sensor during an attack.",
+    "The cost of running both systems together.",
+    "The effective protection against a successful attack.",
+    "The total number of alerts generated per day."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Detection alone does nothing if prevention fails, and prevention cannot act on what was never detected, so only the product removes risk.",
+   "explanation_ar": "الكشف وحده ما يسوي شي لو فشل المنع، والمنع ما يقدر يتصرّف بشي ما انكشف أبداً، فالحاصل وحده يزيل الخطر."
+  }
+ ]
+}

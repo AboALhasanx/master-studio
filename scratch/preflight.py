@@ -92,6 +92,15 @@ gate("EN unique-longest", longest <= 0.30 * total, "%d/%d" % (longest, total))
 gate("EN unique-shortest", shortest <= 0.30 * total, "%d/%d" % (shortest, total))
 gate("option spread", not spread_bad, "; ".join(spread_bad[:3]))
 
+# ---- 2b. supplementary structural + bilingual quality gate ----------------
+quality_cmd = PY + [
+    os.path.join(TOOLS, "quiz_quality_gate.py"), BANKS,
+    "--chapter", str(int(ch)), "--shape-gate", "--max-warnings", "0",
+]
+quality = subprocess.run(quality_cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+quality_lines = [line for line in quality.stdout.splitlines() if line.startswith(("Structural errors:", "Shape-gate failures:", "SHAPE:", "RESULT:"))]
+gate("deep quality gate", quality.returncode == 0, "; ".join(quality_lines[:5]))
+
 # ---- 3. the vault balancer ------------------------------------------------
 bal_fail = []
 for f in files:
