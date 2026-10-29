@@ -38,7 +38,7 @@ opencode.json
 **/*_Wide_Slides/
 # Superseded/duplicate archives (local-only; may contain copyrighted source PDFs)
 **/_ARCHIVE/**
-# Merged lecture booklets rebuilt from 02_Raw_Materials — same copyright rule.
+# Merged lecture booklets rebuilt from 02_Raw_Materials --- same copyright rule.
 # Only the 830-byte blank placeholders stay tracked; the real pages never ship.
 00_STUDIO_HUB/telegram/catalog/files/
 00_STUDIO_HUB/telegram/lectures/
@@ -102,7 +102,7 @@ _debug_inspect*/
 # cropped pages = ~25 MB): intermediate inspection output, never published.
 # The tracked convention for final output previews is 08_PDF_Exports/_renders/.
 08_PDF_Exports/_ali_fahem_preview/
-# ASE Week 02 — ephemeral render/verification folders + locked-viewer leftover exports
+# ASE Week 02 --- ephemeral render/verification folders + locked-viewer leftover exports
 _workbuddy_inspect*/
 *_new.pdf
 
@@ -134,18 +134,18 @@ output/
 90_Shared_Toolbox/telegram/__pycache__/
 
 # Interactive layer runtime state (ADR D15/D16): pending admin approvals are
-# live state, not source — a fresh clone starts with an empty ledger.
+# live state, not source --- a fresh clone starts with an empty ledger.
 00_STUDIO_HUB/telegram/pending_approval.json
 
 # MTProto user-account sessions (issue #22): a Telethon *.session stores the
 # auth_key, i.e. full control of the account with no password and no 2FA.
-# This repo is public — committing one would hand the account over.
+# This repo is public --- committing one would hand the account over.
 *.session
 *.session-journal
 # single-use login hand-off: the phone number plus a hash that is dead in
 # about two minutes, so it must never outlive the login attempt either
 00_STUDIO_HUB/telegram/login_state.json
-# live pacing ledger — real send stamps, not source; a fresh clone starts
+# live pacing ledger --- real send stamps, not source; a fresh clone starts
 # with an empty budget like any other runtime state
 00_STUDIO_HUB/telegram/pacing.json
 
@@ -175,23 +175,23 @@ quiz_mobile.html
 venv/
 *.log
 
-# Vendored third-party CLI (handsets) — install locally, never published
+# Vendored third-party CLI (handsets) --- install locally, never published
 90_Shared_Toolbox/bin/
 
 # Local conflict recovery archive (agent scaffolding, not course content)
 opencode-archive/
 
-# Test-run artifacts — never publish
+# Test-run artifacts --- never publish
 .coverage
 .coverage.*
 htmlcov/
 .pytest_cache/
 __pycache__/
 
-# Research sandbox — personal / non-course scratch, never publish
+# Research sandbox --- personal / non-course scratch, never publish
 /sandbox/
 
-# Large official PDFs/images — kept on disk only, never published (kept out of the public repo)
+# Large official PDFs/images --- kept on disk only, never published (kept out of the public repo)
 /00_STUDIO_HUB/official_curriculum/02_Admission_Rules_2025-2026.pdf
 /00_STUDIO_HUB/official_curriculum/03_Academic_Description_FirstCourse_2024-2025.pdf
 /00_STUDIO_HUB/official_curriculum/03b_Academic_Description_FirstCourse_2024-2025_EN.pdf
@@ -207,6 +207,6 @@ __pycache__/
 colab_input/
 *.sqlite3
 
-# Generated output � regenerable, never part of the source tree
+# Generated output - regenerable, never part of the source tree
 /renders_temp/
 /scratch/
