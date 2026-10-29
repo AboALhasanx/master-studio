@@ -510,8 +510,18 @@ def test_real_vault_nested_git_dirs_are_excluded_from_the_bulk_push():
     targets = [t for t in ps.CORE_TARGETS if (ps.VAULT_ROOT / t).is_dir()]
     polluted = ps.compute_polluted(targets)
     nested = [p for p in polluted if p.endswith("_github")]
-    assert nested, "the nested git repos are no longer detected"
+    if not nested:
+        pytest.skip("this checkout does not contain the AI raw-material repos")
     assert all(".git" not in p for p in polluted)
+
+
+def test_nested_git_dirs_are_excluded_from_the_bulk_push(vault):
+    """Synthetic twin of the check above, so CI cannot lose the regression."""
+    targets = scope()
+    polluted = ps.compute_polluted(targets)
+    assert any(p.endswith("/repo") or p == "repo" for p in polluted), polluted
+    assert all(".git" not in p for p in polluted)
+    assert not any(".git" in rel for rel in ps.local_manifest(targets))
 
 
 def test_real_vault_keeps_arabic_filenames_intact():

@@ -190,6 +190,10 @@ def read_file(path):
         return path.read_text(encoding="utf-8")
     except FileNotFoundError:
         return ""
+    except UnicodeDecodeError:
+        # Older vault files were written by Windows tools in the ANSI codepage;
+        # a stray 0x97 em dash must not take the whole dashboard down.
+        return path.read_text(encoding="cp1252", errors="replace")
 
 
 _SAFE_VAULT_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 _\-]{0,99}$")
