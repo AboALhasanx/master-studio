@@ -10,30 +10,30 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T21:08:38+03:00
+> Generated at: 2026-11-04T21:21:04+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **69** |
-| Portal shell `VERSION` | **1.11.1** |
+| Live content version | **70** |
+| Portal shell `VERSION` | **1.11.2** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 170 banks / 1675 questions · live 166 banks / 1641 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 170 banks / 1689 questions · live 170 banks / 1675 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
 | Subject | Chapters | Banks | Questions | Live banks | Live questions | Drift |
 |---|---:|---:|---:|---:|---:|---|
 | `01_Cyber_Security` | 6 | 59 | 709 | 59 | 709 | — |
-| `02_English_Language` | 3 | 18 | 184 | 18 | 184 | — |
+| `02_English_Language` | 3 | 18 | 198 | 18 | 184 | **DIFF** |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
-| `04_Advanced_Software_Eng` | 4 | 14 | 100 | 10 | 66 | **DIFF** |
+| `04_Advanced_Software_Eng` | 4 | 14 | 100 | 14 | 100 | — |
 | `05_Soft_Computing` | 5 | 20 | 150 | 20 | 150 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
@@ -53,9 +53,9 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `01_Cyber_Security` | 04 | 9 | 118 | 0 | 18/15 | 17/15 | 0 | 0 | clean |
 | `01_Cyber_Security` | 05 | 17 | 221 | 0 | 36/30 | 32/24 | 0 | 0 | clean |
 | `01_Cyber_Security` | 06 | 10 | 104 | 0 | 18/16 | 12/12 | 0 | 0 | clean |
-| `02_English_Language` | 01 | 6 | 53 | 0 | 4/0 | 6/0 | 0 | 0 | clean |
+| `02_English_Language` | 01 | 6 | 63 | 0 | 6/0 | 8/0 | 0 | 0 | clean |
 | `02_English_Language` | 02 | 6 | 63 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
-| `02_English_Language` | 03 | 6 | 68 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
+| `02_English_Language` | 03 | 6 | 72 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
 | `03_Data_Mining` | 01 | 5 | 35 | 0 | 5/3 | 4/1 | 0 | 0 | clean |
 | `03_Data_Mining` | 02 | 7 | 69 | 2 | 10/14 | 9/7 | 0 | 0 | needs work |
 | `03_Data_Mining` | 03 | 7 | 55 | 3 | 8/11 | 5/5 | 0 | 0 | needs work |
