@@ -1,0 +1,363 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch07_B02_Software_Quality_Models",
+ "topic": "Software Quality Models: McCall, Boehm and ISO 9126",
+ "topic_ar": "نماذج جودة البرمجيات: مكال وبوم وISO 9126",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch7_quality_is",
+   "bloom_level": "Remember",
+   "question": "Software quality is...",
+   "question_ar": "جودة البرمجيات هي...",
+   "options": [
+    "conformance to requirements",
+    "fitness for the purpose here",
+    "the level of satisfaction",
+    "all of the above answers"
+   ],
+   "options_ar": [
+    "مطابقة المتطلبات",
+    "ملاءمة الغرض الآن",
+    "مستوى الرضا هنا",
+    "كل ما سبق أعلاه"
+   ],
+   "options_en": [
+    "conformance to requirements",
+    "fitness for the purpose here",
+    "the level of satisfaction",
+    "all of the above answers"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Quality covers conformance, fitness for purpose and how satisfied the user is.",
+   "explanation_ar": "الجودة تشمل المطابقة والملاءمة للهدف ومستوى رضا المستخدم."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch7_defect_rate",
+   "bloom_level": "Understand",
+   "question": "Defect rate can be expressed as...",
+   "question_ar": "يمكن التعبير عن معدل العيوب كـ...",
+   "options": [
+    "all of the above answers",
+    "defects per million lines",
+    "defects per function point",
+    "defects per unit of size"
+   ],
+   "options_ar": [
+    "كل ما سبق أعلاه هنا",
+    "عيوب لكل مليون سطر",
+    "عيوب لكل نقطة وظيفة",
+    "عيوب لكل وحدة حجم"
+   ],
+   "options_en": [
+    "all of the above answers",
+    "defects per million lines",
+    "defects per function point",
+    "defects per unit of size"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "All three normalisations are used; the unit of size is what differs.",
+   "explanation_ar": "التطبيع الثلاثة كلها مستخدمة، والفرق في وحدة الحجم."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch7_mccall_factor_count",
+   "bloom_level": "Remember",
+   "question": "How many product quality factors does the McCall model propose?",
+   "question_ar": "كم عامل جودة منتج يقترح نموذج مكال؟",
+   "options": [
+    "eleven factors",
+    "six factors now",
+    "two factors here",
+    "three factors too"
+   ],
+   "options_ar": [
+    "أحد عشر عاملاً هنا هنا",
+    "ستة عوامل الآن الآن الآن",
+    "عاملان هنا أيضاً أيضاً",
+    "ثلاثة عوامل مجدداً مجدداً"
+   ],
+   "options_en": [
+    "eleven factors",
+    "six factors now",
+    "two factors here",
+    "three factors too"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "McCall defines eleven factors grouped into three categories.",
+   "explanation_ar": "يعرّف مكال أحد عشر عاملاً موزعة على ثلاث فئات."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch7_not_mccall_category",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a category in McCall's model?",
+   "question_ar": "أي واحد ليس فئة في نموذج مكال؟",
+   "options": [
+    "product operation now",
+    "product specification",
+    "product transition",
+    "product revision here"
+   ],
+   "options_ar": [
+    "تشغيل المنتج",
+    "مواصفة المنتج",
+    "انتقال المنتج",
+    "مراجعة المنتج"
+   ],
+   "options_en": [
+    "product operation now",
+    "product specification",
+    "product transition",
+    "product revision here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The three categories are operation, revision and transition.",
+   "explanation_ar": "الفئات الثلاث هي التشغيل والمراجعة والانتقال."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch7_mccall_second_level",
+   "bloom_level": "Remember",
+   "question": "What are the second level of attributes in McCall's model called?",
+   "question_ar": "ماذا تسمى المستوى الثاني من السمات في نموذج مكال؟",
+   "options": [
+    "quality criteria now",
+    "quality factors here",
+    "quality guidelines",
+    "quality specifications"
+   ],
+   "options_ar": [
+    "معايير الجودة",
+    "عوامل الجودة",
+    "إرشادات الجودة",
+    "مواصفات الجودة"
+   ],
+   "options_en": [
+    "quality criteria now",
+    "quality factors here",
+    "quality guidelines",
+    "quality specifications"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Factors sit at the top, criteria in the middle and metrics at the base.",
+   "explanation_ar": "العوامل في الأعلى، والمعايير في الوسط، والمقاييس في القاعدة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch7_not_boehm_level",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a level in Boehm's quality model?",
+   "question_ar": "أي واحد ليس مستوى في نموذج جودة بوم؟",
+   "options": [
+    "final constructs now",
+    "primary uses here too",
+    "intermediate constructs",
+    "primitive constructs"
+   ],
+   "options_ar": [
+    "البنى النهائية أيضاً",
+    "الاستخدامات الأولية",
+    "البنى الوسيطة هنا",
+    "البنى البدائية الآن"
+   ],
+   "options_en": [
+    "final constructs now",
+    "primary uses here too",
+    "intermediate constructs",
+    "primitive constructs"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Boehm's levels run from primitive constructs up to primary uses.",
+   "explanation_ar": "مستويات بوم تصعد من البنى البدائية إلى الاستخدامات الأولية."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch7_not_product_quality_model",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a software product quality model?",
+   "question_ar": "أي واحد ليس نموذج جودة منتج برمجي؟",
+   "options": [
+    "ISO 9000 here again",
+    "ISO 9126 now too too",
+    "the McCall model now",
+    "the Boehm model here"
+   ],
+   "options_ar": [
+    "ISO 9000 هنا هنا",
+    "ISO 9126 الآن الآن",
+    "نموذج مكال مجدداً",
+    "نموذج بوم أيضاً"
+   ],
+   "options_en": [
+    "ISO 9000 here again",
+    "ISO 9126 now too too",
+    "the McCall model now",
+    "the Boehm model here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "ISO 9000 is a quality management standard; ISO 9126 is the product quality model.",
+   "explanation_ar": "ISO 9000 معيار لإدارة الجودة، أما ISO 9126 فهو نموذج جودة المنتج."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch7_mccall_kind",
+   "bloom_level": "Remember",
+   "question": "McCall developed a...",
+   "question_ar": "طوّر مكال...",
+   "options": [
+    "process model now here",
+    "reliability model",
+    "none of the above",
+    "quality model here"
+   ],
+   "options_ar": [
+    "نموذج عملية الآن",
+    "نموذج موثوقية",
+    "لا شيء مما سبق",
+    "نموذج جودة هنا"
+   ],
+   "options_en": [
+    "process model now here",
+    "reliability model",
+    "none of the above",
+    "quality model here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "McCall's contribution is the layered quality model of the software product.",
+   "explanation_ar": "مساهمة مكال هي نموذج جودة متعدد الطبقات لمنتج البرمجيات."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch7_iso9126_defines",
+   "bloom_level": "Remember",
+   "question": "ISO 9126 contains definitions of...",
+   "question_ar": "يعرّف ISO 9126...",
+   "options": [
+    "quality characteristics",
+    "quality factors here",
+    "quality attributes now",
+    "all of the above answers"
+   ],
+   "options_ar": [
+    "خصائص الجودة الآن",
+    "عوامل الجودة أيضاً",
+    "سمات الجودة هنا",
+    "كل ما سبق أعلاه"
+   ],
+   "options_en": [
+    "quality characteristics",
+    "quality factors here",
+    "quality attributes now",
+    "all of the above answers"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The standard defines characteristics, the sub-characteristics and the metrics under each.",
+   "explanation_ar": "المعيار يعرّف الخصائص والخصائص الفرعية والمقاييس تحت كل منها."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch7_mccall_revision",
+   "bloom_level": "Remember",
+   "question": "In McCall's model, the product revision category covers...",
+   "question_ar": "في نموذج مكال، فئة مراجعة المنتج تغطي...",
+   "options": [
+    "usability, integrity and efficiency here",
+    "maintainability, flexibility and testability",
+    "portability, reusability and interoperability",
+    "correctness, reliability and efficiency"
+   ],
+   "options_ar": [
+    "قابلية الاستخدام والسلامة والكفاءة",
+    "قابلية الصيانة والمرونة وقابلية الاختبار",
+    "قابلية النقل وإعادة الاستخدام والتكامل",
+    "الصحة والموثوقية والكفاءة هنا الآن أيضاً"
+   ],
+   "options_en": [
+    "usability, integrity and efficiency here",
+    "maintainability, flexibility and testability",
+    "portability, reusability and interoperability",
+    "correctness, reliability and efficiency"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Revision covers changing the product after delivery.",
+   "explanation_ar": "المراجعة تغطي تغيير المنتج بعد تسليمه."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch7_mccall_transition",
+   "bloom_level": "Remember",
+   "question": "In McCall's model, which factor belongs to product transition?",
+   "question_ar": "في نموذج مكال، أي عامل ينتمي لانتقال المنتج؟",
+   "options": [
+    "portability",
+    "usability",
+    "correctness",
+    "flexibility"
+   ],
+   "options_ar": [
+    "قابلية النقل هنا أيضاً",
+    "قابلية الاستخدام مجدداً",
+    "الصحة هنا أيضاً الآن",
+    "المرونة الآن مجدداً"
+   ],
+   "options_en": [
+    "portability",
+    "usability",
+    "correctness",
+    "flexibility"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Portability, the ability to move the product to another environment, is a transition factor.",
+   "explanation_ar": "قابلية النقل، أي نقل المنتج لبيئة أخرى، عامل انتقال."
+  },
+  {
+   "id": "q12",
+   "concept_id": "ch7_iso9126_six",
+   "bloom_level": "Remember",
+   "question": "How many top-level characteristics does ISO 9126 define?",
+   "question_ar": "كم خاصية عليا يعرّفها ISO 9126؟",
+   "options": [
+    "six characteristics",
+    "seven characteristics",
+    "eight characteristics",
+    "five characteristics"
+   ],
+   "options_ar": [
+    "ست خصائص هنا هنا مجدداً",
+    "سبع خصائص أيضاً أيضاً أيضاً",
+    "ثماني خصائص مجدداً هنا",
+    "خمس خصائص الآن الآن الآن"
+   ],
+   "options_en": [
+    "six characteristics",
+    "seven characteristics",
+    "eight characteristics",
+    "five characteristics"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Functionality, reliability, usability, efficiency, maintainability and portability.",
+   "explanation_ar": "الوظائفية والموثوقية وقابلية الاستخدام والكفاءة وقابلية الصيانة والنقل."
+  }
+ ]
+}
