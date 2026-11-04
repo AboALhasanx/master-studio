@@ -184,6 +184,64 @@
    "correct": 1,
    "explanation": "The recurrence reduces the existing count by proportion α, then adds β newly introduced vulnerabilities.",
    "explanation_ar": "تقلّل العلاقة العدد الموجود بنسبة α، ثم تضيف β من الثغرات الجديدة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "w6_dso_shift_left",
+   "bloom_level": "Understand",
+   "question": "What does shifting security left mean in DevSecOps?",
+   "question_ar": "ماذا يعني نقل الأمن إلى اليسار في DevSecOps؟",
+   "options": [
+    "the team moves to another floor here",
+    "the data moves into the cloud now",
+    "checks move earlier in the pipeline",
+    "checks move later after release"
+   ],
+   "options_en": [
+    "the team moves to another floor here",
+    "the data moves into the cloud now",
+    "checks move earlier in the pipeline",
+    "checks move later after release"
+   ],
+   "options_ar": [
+    "الفريق ينتقل لطابق آخر",
+    "البيانات تنتقل للسحابة",
+    "الفحوص تنتقل للبداية",
+    "الفحوص تنتقل للنهاية"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Shifting left means the checks run earlier, before the code reaches release.",
+   "explanation_ar": "نقل الأمن لليسار يعني تشغيل الفحوص أبكر، قبل وصول الكود للإصدار."
+  },
+  {
+   "id": "q8",
+   "concept_id": "w6_dso_automation",
+   "bloom_level": "Understand",
+   "question": "Why does DevSecOps automate the security checks?",
+   "question_ar": "لماذا تؤتمت DevSecOps الفحوص الأمنية؟",
+   "options": [
+    "so they run on every change",
+    "so they run only once a year",
+    "so they replace the whole team",
+    "so they remove all the testing"
+   ],
+   "options_en": [
+    "so they run on every change",
+    "so they run only once a year",
+    "so they replace the whole team",
+    "so they remove all the testing"
+   ],
+   "options_ar": [
+    "لتعمل عند كل تغيير",
+    "لتعمل مرة كل سنة",
+    "لتستبدل الفريق كله",
+    "لتحذف كل الاختبارات"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Automation is what makes a check cheap enough to run on every single change.",
+   "explanation_ar": "الأتمتة هي ما يجعل الفحص رخيصاً بما يكفي لتشغيله عند كل تغيير."
   }
  ]
 }
