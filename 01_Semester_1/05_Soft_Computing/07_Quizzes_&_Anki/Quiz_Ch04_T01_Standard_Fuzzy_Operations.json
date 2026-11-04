@@ -18,25 +18,25 @@
    "question": "How is the union of two fuzzy sets computed?",
    "question_ar": "كيف يُحسب اتحاد مجموعتين ضبابيتين؟",
    "options": [
+    "the product of grades",
     "the maximum of grades",
     "the minimum of grades",
-    "one minus each grade",
-    "the product of grades"
+    "one minus each grade"
    ],
    "options_ar": [
+    "حاصل ضرب الدرجتين",
     "أقصى الدرجتين معاً",
     "أدنى الدرجتين معاً",
-    "واحد ناقص الدرجة",
-    "حاصل ضرب الدرجتين"
+    "واحد ناقص الدرجة"
    ],
    "options_en": [
+    "the product of grades",
     "the maximum of grades",
     "the minimum of grades",
-    "one minus each grade",
-    "the product of grades"
+    "one minus each grade"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Union takes the maximum of the two membership grades at each element.",
    "explanation_ar": "الاتحاد يأخذ أقصى درجتي الانتماء عند كل عنصر."
   },
@@ -134,25 +134,25 @@
    "question": "On a graph, what is the union of two fuzzy sets?",
    "question_ar": "على الرسم، ما هو اتحاد مجموعتين ضبابيتين؟",
    "options": [
-    "the upper envelope",
-    "the lower envelope",
     "the mirror about 0.5",
-    "the average of curves"
+    "the average of curves",
+    "the upper envelope",
+    "the lower envelope"
    ],
    "options_ar": [
-    "الغلاف العلوي للمنحنى",
-    "الغلاف السفلي للمنحنى",
     "الانعكاس حول 0.5 هنا",
-    "متوسط المنحنيين معاً"
+    "متوسط المنحنيين معاً",
+    "الغلاف العلوي للمنحنى",
+    "الغلاف السفلي للمنحنى"
    ],
    "options_en": [
-    "the upper envelope",
-    "the lower envelope",
     "the mirror about 0.5",
-    "the average of curves"
+    "the average of curves",
+    "the upper envelope",
+    "the lower envelope"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "The union is the upper envelope of the two membership curves.",
    "explanation_ar": "الاتحاد هو الغلاف العلوي لمنحنيي الانتماء."
   },
@@ -160,88 +160,88 @@
    "id": "q6",
    "concept_id": "c4_union_example",
    "bloom_level": "Apply",
-   "question": "With A={0.5,0.1,0.4} and B={0.2,0.3,0.5}, what is A union B at x2?",
-   "question_ar": "مع A={0.5,0.1,0.4} و B={0.2,0.3,0.5}، ما اتحاد A و B عند x2؟",
+   "question": "In fuzzy set theory, which logical operation does union correspond to?",
+   "question_ar": "في نظرية المجموعات الضبابية، أي عملية منطقية يقابلها الاتحاد؟",
    "options": [
-    "0.2",
-    "0.3",
-    "0.1",
-    "0.5"
+    "the AND operation",
+    "the NOT operation",
+    "the XOR operation",
+    "the OR operation"
    ],
    "options_ar": [
-    "0.2",
-    "0.3",
-    "0.1",
-    "0.5"
+    "عملية AND المنطقية",
+    "عملية NOT المنطقية",
+    "عملية XOR المنطقية",
+    "عملية OR المنطقية"
    ],
    "options_en": [
-    "0.2",
-    "0.3",
-    "0.1",
-    "0.5"
+    "the AND operation",
+    "the NOT operation",
+    "the XOR operation",
+    "the OR operation"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Union takes the maximum, so at x2 it is max(0.1, 0.3) = 0.3.",
-   "explanation_ar": "الاتحاد يأخذ الأقصى، فعند x2 يكون max(0.1, 0.3) = 0.3."
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Union takes the maximum, which is the fuzzy counterpart of logical OR.",
+   "explanation_ar": "الاتحاد يأخذ الأعلى، وهو النظير الضبابي لعملية OR المنطقية."
   },
   {
    "id": "q7",
    "concept_id": "c4_inter_example",
    "bloom_level": "Apply",
-   "question": "With the same sets, what is A intersection B at x2?",
-   "question_ar": "مع المجموعتين نفسها، ما تقاطع A و B عند x2؟",
+   "question": "How is the intersection of two fuzzy sets computed at each point?",
+   "question_ar": "كيف يُحسب تقاطع مجموعتين ضبابيتين عند كل نقطة؟",
    "options": [
-    "0.5",
-    "0.2",
-    "0.1",
-    "0.3"
+    "the smaller of the two grades",
+    "the larger of the two grades",
+    "one minus the smaller grade",
+    "the product of the two grades"
    ],
    "options_ar": [
-    "0.5",
-    "0.2",
-    "0.1",
-    "0.3"
+    "أصغر الدرجتين عند النقطة",
+    "أكبر الدرجتين عند النقطة",
+    "واحد ناقص أصغر درجة",
+    "حاصل ضرب الدرجتين معاً"
    ],
    "options_en": [
-    "0.5",
-    "0.2",
-    "0.1",
-    "0.3"
+    "the smaller of the two grades",
+    "the larger of the two grades",
+    "one minus the smaller grade",
+    "the product of the two grades"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Intersection takes the minimum, so at x2 it is min(0.1, 0.3) = 0.1.",
-   "explanation_ar": "التقاطع يأخذ الأدنى، فعند x2 يكون min(0.1, 0.3) = 0.1."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Intersection takes the minimum of the two membership grades at every element.",
+   "explanation_ar": "التقاطع يأخذ أدنى درجتي العضوية عند كل عنصر."
   },
   {
    "id": "q8",
    "concept_id": "c4_comp_example",
    "bloom_level": "Apply",
-   "question": "If the grade of A at x2 is 0.1, what is the complement there?",
-   "question_ar": "إذا كانت درجة A عند x2 هي 0.1، فما متممها هناك؟",
+   "question": "What does the complement of a fuzzy set represent?",
+   "question_ar": "ماذا يمثّل متمّم المجموعة الضبابية؟",
    "options": [
-    "0.1",
-    "0.5",
-    "0.4",
-    "0.9"
+    "the negation of the concept",
+    "the same concept once again",
+    "the union of the two sets",
+    "the intersection of the two sets"
    ],
    "options_ar": [
-    "0.1",
-    "0.5",
-    "0.4",
-    "0.9"
+    "نفي المفهوم الضبابي",
+    "المفهوم نفسه مرة أخرى",
+    "اتحاد المجموعتين معاً",
+    "تقاطع المجموعتين معاً"
    ],
    "options_en": [
-    "0.1",
-    "0.5",
-    "0.4",
-    "0.9"
+    "the negation of the concept",
+    "the same concept once again",
+    "the union of the two sets",
+    "the intersection of the two sets"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Complement is one minus the grade, so 1 - 0.1 = 0.9.",
-   "explanation_ar": "المتمم هو واحد ناقص الدرجة، فـ 1 - 0.1 = 0.9."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The complement negates the concept, so a high grade for A becomes a low grade for not A.",
+   "explanation_ar": "المتمّم ينفي المفهوم، فدرجة عالية لـ A تصبح درجة منخفضة لـ ليس A."
   }
  ]
 }

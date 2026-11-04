@@ -18,25 +18,25 @@
    "question": "When is a fuzzy controller the right tool?",
    "question_ar": "متى يكون المتحكم الضبابي الأداة المناسبة؟",
    "options": [
-    "nonlinear and time-varying",
-    "linear and fully known now",
     "static and exactly known",
-    "single and fixed model now"
+    "single and fixed model now",
+    "nonlinear and time-varying",
+    "linear and fully known now"
    ],
    "options_ar": [
-    "غير خطي ومتغير بالوقت",
-    "خطي ومعروف تماماً هنا",
     "ساكن ومحدد بدقة هنا",
-    "نموذج واحد ثابت هنا"
+    "نموذج واحد ثابت هنا",
+    "غير خطي ومتغير بالوقت",
+    "خطي ومعروف تماماً هنا"
    ],
    "options_en": [
-    "nonlinear and time-varying",
-    "linear and fully known now",
     "static and exactly known",
-    "single and fixed model now"
+    "single and fixed model now",
+    "nonlinear and time-varying",
+    "linear and fully known now"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "An FLC suits nonlinear, time-varying and noisy systems.",
    "explanation_ar": "المتحكم الضبابي يناسب الأنظمة غير الخطية والمتغيرة والمشوشة."
   },
@@ -189,30 +189,30 @@
    "id": "q7",
    "concept_id": "c5c_rulecount",
    "bloom_level": "Apply",
-   "question": "With 4 distance terms and 5 angle terms, how many rules?",
-   "question_ar": "مع 4 حدات مسافة و5 حدات زاوية، كم قاعدة؟",
+   "question": "How does the number of fuzzy rules grow with the input variables?",
+   "question_ar": "كيف ينمو عدد القواعد الضبابية مع متغيرات الإدخال؟",
    "options": [
-    "sixteen rules in total",
-    "twenty five rules total",
-    "twenty rules in total",
-    "nine rules in total"
+    "with the product of their term counts",
+    "with the sum of their term counts",
+    "with the largest term count only",
+    "with the number of outputs alone here"
    ],
    "options_ar": [
-    "ست عشرة قاعدة",
-    "خمس وعشرون قاعدة",
-    "عشرون قاعدة فقط",
-    "تسع قواعد فقط"
+    "بحاصل ضرب عدد حدودها",
+    "بمجموع عدد حدودها هنا",
+    "بأكبر عدد حدود فقط هنا",
+    "بعدد المخارج وحده هنا"
    ],
    "options_en": [
-    "sixteen rules in total",
-    "twenty five rules total",
-    "twenty rules in total",
-    "nine rules in total"
+    "with the product of their term counts",
+    "with the sum of their term counts",
+    "with the largest term count only",
+    "with the number of outputs alone here"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "The rule base is 4 times 5, which gives twenty rules.",
-   "explanation_ar": "قاعدة القواعد 4 في 5، فتعطي عشرين قاعدة."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Every combination of terms from every input becomes one rule, so the counts multiply.",
+   "explanation_ar": "كل توليفة من حدود كل مدخل تصبح قاعدة، فالأعداد تتضارب لا تتجمع."
   },
   {
    "id": "q8",

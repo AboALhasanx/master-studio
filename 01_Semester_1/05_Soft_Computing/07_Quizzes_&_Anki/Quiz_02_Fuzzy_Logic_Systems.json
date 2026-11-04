@@ -29,7 +29,7 @@
     "Fuzzification, then Rule Base and Inference, then Defuzzification."
    ],
    "answer": "D",
-   "explanation": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً.",
+   "explanation": "The crisp input is fuzzified into grades, matched against the rule base by the inference engine, and then defuzzified back into a crisp control value.",
    "correct": 3,
    "explanation_ar": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً."
   },
@@ -58,7 +58,7 @@
     "Numerical sensor calibration tables recorded during field testing."
    ],
    "answer": "B",
-   "explanation": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية.",
+   "explanation": "The rule base stores expert linguistic IF-THEN knowledge, not sensor calibration and not network weights.",
    "correct": 1,
    "explanation_ar": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية."
   },
@@ -72,7 +72,7 @@
     "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city.",
     "New Delhi is comfortable with a probability of exactly 0.7, like any random event.",
     "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability.",
-    "New Delhi belongs to the crisp comfort set in 0.7 of all observed cases in this example."
+    "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
    ],
    "options_ar": [
     "أن سبعين بالمئة من الزوار يجدون نيودلهي مدينة مريحة فعلاً.",
@@ -84,10 +84,10 @@
     "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city.",
     "New Delhi is comfortable with a probability of exactly 0.7, like any random event.",
     "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability.",
-    "New Delhi belongs to the crisp comfort set in 0.7 of all observed cases in this example."
+    "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
    ],
    "answer": "C",
-   "explanation": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث.",
+   "explanation": "A membership grade is the degree of compatibility with a vague concept, not the probability that an event occurs.",
    "correct": 2,
    "explanation_ar": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث."
   },
@@ -116,7 +116,7 @@
     "It is a summation index binding the element to its universe of discourse."
    ],
    "answer": "A",
-   "explanation": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ».",
+   "explanation": "The slash is only a marker separating the element from its grade, so it never means division.",
    "correct": 0,
    "explanation_ar": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ»."
   },
@@ -145,7 +145,7 @@
     "Case 1: continuous and finite; Case 2: discrete and infinite."
    ],
    "answer": "A",
-   "explanation": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع.",
+   "explanation": "A discrete and finite universe is written with a summation, while a continuous and infinite universe is written with an integral; only the symbol changes.",
    "correct": 0,
    "explanation_ar": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع."
   },
@@ -174,7 +174,7 @@
     "The complement of the intersection equals the intersection of the complements."
    ],
    "answer": "B",
-   "explanation": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي.",
+   "explanation": "The complement reverses the operation: the complement of an intersection is the union of the complements, and the reverse also holds.",
    "correct": 1,
    "explanation_ar": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي."
   }

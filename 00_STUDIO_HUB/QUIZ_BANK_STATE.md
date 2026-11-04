@@ -10,14 +10,14 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T19:43:34+03:00
+> Generated at: 2026-11-04T19:54:20+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **63** |
-| Portal shell `VERSION` | **1.10.7** |
+| Live content version | **64** |
+| Portal shell `VERSION` | **1.10.8** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
@@ -67,11 +67,11 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `04_Advanced_Software_Eng` | 01 | 2 | 10 | 3 | 8/4 | 0/1 | 0 | 13 | needs work |
 | `04_Advanced_Software_Eng` | 02 | 2 | 10 | 1 | 5/2 | 0/3 | 0 | 4 | needs work |
 | `04_Advanced_Software_Eng` | 05 | 2 | 10 | 0 | 8/4 | 0/1 | 0 | 2 | needs work |
-| `05_Soft_Computing` | 01 | 3 | 18 | 4 | 2/4 | 2/2 | 0 | 0 | needs work |
-| `05_Soft_Computing` | 02 | 3 | 20 | 1 | 2/1 | 0/2 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 01 | 3 | 18 | 2 | 2/4 | 2/2 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 02 | 3 | 20 | 0 | 2/1 | 0/2 | 0 | 0 | clean |
 | `05_Soft_Computing` | 03 | 4 | 32 | 0 | 1/3 | 1/0 | 0 | 0 | clean |
-| `05_Soft_Computing` | 04 | 4 | 32 | 0 | 5/2 | 2/3 | 0 | 0 | clean |
-| `05_Soft_Computing` | 05 | 6 | 48 | 0 | 3/7 | 1/4 | 0 | 0 | clean |
+| `05_Soft_Computing` | 04 | 4 | 32 | 0 | 5/2 | 3/5 | 0 | 0 | clean |
+| `05_Soft_Computing` | 05 | 6 | 48 | 0 | 3/7 | 1/5 | 0 | 0 | clean |
 | `06_Artificial_Intelligence` | 01 | 2 | 10 | 0 | 3/0 | 2/1 | 0 | 2 | needs work |
 | `06_Artificial_Intelligence` | 02 | 2 | 10 | 0 | 1/5 | 1/0 | 0 | 5 | needs work |
 
@@ -84,8 +84,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 - `04_Advanced_Software_Eng` Ch01 — 3 handout refs; 13 spread violations; answer-length tell
 - `04_Advanced_Software_Eng` Ch02 — 1 handout refs; 4 spread violations; answer-length tell
 - `04_Advanced_Software_Eng` Ch05 — 2 spread violations; answer-length tell
-- `05_Soft_Computing` Ch01 — 4 handout refs
-- `05_Soft_Computing` Ch02 — 1 handout refs
+- `05_Soft_Computing` Ch01 — 2 handout refs
 - `06_Artificial_Intelligence` Ch01 — 2 spread violations
 - `06_Artificial_Intelligence` Ch02 — 5 spread violations; answer-length tell
 
