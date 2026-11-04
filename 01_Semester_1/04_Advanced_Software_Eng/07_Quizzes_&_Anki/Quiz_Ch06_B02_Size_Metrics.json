@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B02_Size_Metrics",
+ "topic": "Size Metrics: LOC, Function Points and Object Points",
+ "topic_ar": "مقاييس الحجم: الأسطر ونقاط الوظائف ونقاط الكائنات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_not_size",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a size metric?",
+   "question_ar": "أي واحد ليس مقياس حجم؟",
+   "options": [
+    "lines of code here",
+    "function count now",
+    "program length too",
+    "cyclomatic complexity"
+   ],
+   "options_ar": [
+    "أسطر الكود هنا مجدداً هنا",
+    "عدد الوظائف الآن الآن",
+    "طول البرنامج أيضاً أيضاً",
+    "التعقيد الدوري هنا مجدداً"
+   ],
+   "options_en": [
+    "lines of code here",
+    "function count now",
+    "program length too",
+    "cyclomatic complexity"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Cyclomatic complexity measures the decision structure, not the amount of product.",
+   "explanation_ar": "التعقيد الدوري يقيس بنية القرارات لا كمية المنتج."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_not_size2",
+   "bloom_level": "Understand",
+   "question": "Which of these is not a size metric either?",
+   "question_ar": "أي من هذه ليس مقياس حجم كذلك؟",
+   "options": [
+    "program length again",
+    "LOC here now too now",
+    "function points here",
+    "cyclomatic complexity"
+   ],
+   "options_ar": [
+    "طول البرنامج أيضاً",
+    "أسطر الكود هنا مجدداً",
+    "نقاط الوظائف الآن الآن",
+    "التعقيد الدوري هنا"
+   ],
+   "options_en": [
+    "program length again",
+    "LOC here now too now",
+    "function points here",
+    "cyclomatic complexity"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Again complexity is structural; size counts how much there is, not how tangled.",
+   "explanation_ar": "التعقيد بنيوي مرة أخرى، والحجم يعدّ الكمية لا التشابك."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_loc_criticism",
+   "bloom_level": "Analyze",
+   "question": "What is the main technical criticism of counting LOC?",
+   "question_ar": "ما النقد التقني الأساسي لعدّ أسطر الكود؟",
+   "options": [
+    "it is rejected by the IEEE here again here",
+    "it applies only to hardware now here too",
+    "it penalises expressive high-level languages",
+    "it cannot be counted by tools too now again here"
+   ],
+   "options_ar": [
+    "ترفضه IEEE هنا الآن هنا أيضاً",
+    "يخص العتاد فقط أيضاً الآن",
+    "يعاقب اللغات العالية التعبيرية",
+    "لا تُعدّه الأدوات مجدداً مجدداً"
+   ],
+   "options_en": [
+    "it is rejected by the IEEE here again here",
+    "it applies only to hardware now here too",
+    "it penalises expressive high-level languages",
+    "it cannot be counted by tools too now again here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The same function takes more lines in a low-level language, so LOC punishes better languages.",
+   "explanation_ar": "الوظيفة نفسها تأخذ أسطراً أكثر بلغة دنيا، فـLOC يعاقب اللغات الأفضل."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_eq_external",
+   "bloom_level": "Understand",
+   "question": "In Albrecht's FPA, which one is an external inquiry?",
+   "question_ar": "في تحليل ألبرشت، أي واحد استعلام خارجي؟",
+   "options": [
+    "External Inquiries here too",
+    "General System Characteristics here",
+    "Value Adjustment Factor again",
+    "Internal Logical Files now here"
+   ],
+   "options_ar": [
+    "الاستعلامات الخارجية أيضاً",
+    "خصائص النظام العامة الآن",
+    "عامل تعديل القيمة هنا",
+    "الملفات المنطقية الداخلية"
+   ],
+   "options_en": [
+    "External Inquiries here too",
+    "General System Characteristics here",
+    "Value Adjustment Factor again",
+    "Internal Logical Files now here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "An external inquiry is a transactional function that retrieves data without changing it.",
+   "explanation_ar": "الاستعلام الخارجي وظيفة تعاملية تسترجع بيانات دون تغييرها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_vaf_range",
+   "bloom_level": "Remember",
+   "question": "What is the standard range of the Value Adjustment Factor?",
+   "question_ar": "ما المدى القياسي لعامل تعديل القيمة؟",
+   "options": [
+    "zero to one now too here too here too here too",
+    "sixty five hundredths to one and thirty five hundredths",
+    "eighty hundredths to one and twenty hundredths",
+    "one to two here again now again now again now"
+   ],
+   "options_ar": [
+    "من صفر إلى واحد هنا هنا",
+    "من 0.65 إلى 1.35 الآن",
+    "من 0.80 إلى 1.20 أيضاً",
+    "من واحد إلى اثنين مجدداً"
+   ],
+   "options_en": [
+    "zero to one now too here too here too here too",
+    "sixty five hundredths to one and thirty five hundredths",
+    "eighty hundredths to one and twenty hundredths",
+    "one to two here again now again now again now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The VAF runs from 0.65 to 1.35 around a neutral value of 1.00.",
+   "explanation_ar": "عامل التعديل يمتد من 0.65 إلى 1.35 حول قيمة محايدة 1.00."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_feature_points",
+   "bloom_level": "Understand",
+   "question": "What do feature points add to function points?",
+   "question_ar": "ماذا تضيف نقاط الخصائص إلى نقاط الوظائف؟",
+   "options": [
+    "a count for test cases now here",
+    "a count for algorithmic complexity",
+    "a count for team size here again",
+    "a count for hardware cost too now here"
+   ],
+   "options_ar": [
+    "عدّاً لحالات الاختبار",
+    "عدّاً للتعقيد الخوارزمي",
+    "عدّاً لحجم الفريق هنا",
+    "عدّاً لكلفة العتاد الآن"
+   ],
+   "options_en": [
+    "a count for test cases now here",
+    "a count for algorithmic complexity",
+    "a count for team size here again",
+    "a count for hardware cost too now here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Feature points weight algorithms separately, which suits engineering and real-time software.",
+   "explanation_ar": "نقاط الخصائص تزن الخوارزميات منفصلة، وهذا يناسب البرمجيات الهندسية والآنية."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_object_points",
+   "bloom_level": "Understand",
+   "question": "What do object points count instead of function points?",
+   "question_ar": "ماذا تعدّ نقاط الكائنات بدل نقاط الوظائف؟",
+   "options": [
+    "operators and operands now",
+    "faults and failures here too",
+    "screens, reports and modules",
+    "lines of code and comments"
+   ],
+   "options_ar": [
+    "المعاملات والمتغيرات أيضاً",
+    "العيوب والفشل هنا الآن هنا",
+    "الشاشات والتقارير والوحدات",
+    "أسطر الكود والتعليقات مجدداً"
+   ],
+   "options_en": [
+    "operators and operands now",
+    "faults and failures here too",
+    "screens, reports and modules",
+    "lines of code and comments"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Object points suit rapid development, where the count is screens, reports and reusable modules.",
+   "explanation_ar": "نقاط الكائنات تناسب التطوير السريع، حيث العدّ للشاشات والتقارير والوحدات."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_backfiring",
+   "bloom_level": "Understand",
+   "question": "What does backfiring mean in size measurement?",
+   "question_ar": "ماذا يعني الاستنتاج العكسي في قياس الحجم؟",
+   "options": [
+    "deriving lines from function points now again",
+    "deleting the size baseline now too here",
+    "counting comments as code here again too",
+    "deriving function points from lines of code"
+   ],
+   "options_ar": [
+    "استنتاج الأسطر من نقاط الوظائف",
+    "حذف خط أساس الحجم هنا أيضاً",
+    "عدّ التعليقات كوداً الآن مجدداً",
+    "استنتاج نقاط الوظائف من الأسطر"
+   ],
+   "options_en": [
+    "deriving lines from function points now again",
+    "deleting the size baseline now too here",
+    "counting comments as code here again too",
+    "deriving function points from lines of code"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Backfiring estimates FP from an existing LOC count when no FP analysis was done.",
+   "explanation_ar": "الاستنتاج العكسي يقدّر نقاط الوظائف من عدّ أسطر قائم حين لم يُجرَ تحليل نقاط."
+  }
+ ]
+}

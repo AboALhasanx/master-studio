@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B01_Measurement_Fundamentals",
+ "topic": "Fundamentals of Measurement and Metric Categories",
+ "topic_ar": "أساسيات القياس وفئات المقاييس",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_not_category",
+   "bloom_level": "Remember",
+   "question": "Which one is NOT a category of software metrics?",
+   "question_ar": "أي واحد ليس فئة من فئات مقاييس البرمجيات؟",
+   "options": [
+    "product metrics",
+    "process metrics",
+    "project metrics",
+    "people metrics"
+   ],
+   "options_ar": [
+    "مقاييس المنتج",
+    "مقاييس العملية",
+    "مقاييس المشروع",
+    "مقاييس الأشخاص"
+   ],
+   "options_en": [
+    "product metrics",
+    "process metrics",
+    "project metrics",
+    "people metrics"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The three categories are product, process and project metrics.",
+   "explanation_ar": "الفئات الثلاث هي مقاييس المنتج والعملية والمشروع."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_scale_ratio",
+   "bloom_level": "Understand",
+   "question": "Which Stevens scale has a true zero and equal intervals?",
+   "question_ar": "أي مقياس عند ستيفنز له صفر حقيقي وفواصل متساوية؟",
+   "options": [
+    "the ratio scale",
+    "the nominal scale",
+    "the ordinal scale",
+    "the interval scale"
+   ],
+   "options_ar": [
+    "مقياس النسبة",
+    "المقياس الاسمي",
+    "المقياس الرتبي",
+    "المقياس الفتري"
+   ],
+   "options_en": [
+    "the ratio scale",
+    "the nominal scale",
+    "the ordinal scale",
+    "the interval scale"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A ratio scale adds a meaningful zero, so ratios between values are valid.",
+   "explanation_ar": "مقياس النسبة يضيف صفراً ذا معنى، فتصح النسب بين القيم."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_direct_measure",
+   "bloom_level": "Understand",
+   "question": "Which one is a direct measure of an internal attribute?",
+   "question_ar": "أي واحد قياس مباشر لصفة داخلية؟",
+   "options": [
+    "source code length now",
+    "system maintainability",
+    "system reliability here",
+    "developer productivity here"
+   ],
+   "options_ar": [
+    "طول الشيفرة هنا مجدداً",
+    "قابلية صيانة النظام الآن",
+    "موثوقية النظام الآن هنا",
+    "إنتاجية المطوّر أيضاً"
+   ],
+   "options_en": [
+    "source code length now",
+    "system maintainability",
+    "system reliability here",
+    "developer productivity here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Length is counted straight from the artefact; the others are inferred indirectly.",
+   "explanation_ar": "الطول يُعدّ من الأثر مباشرة، أما البقية فتُستنتج استنتاجاً غير مباشر."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_gqm",
+   "bloom_level": "Remember",
+   "question": "What is the hierarchy of the Goal-Question-Metric paradigm?",
+   "question_ar": "ما هرمية نموذج الهدف والسؤال والمقياس؟",
+   "options": [
+    "metric, then goal, then question",
+    "question, then metric, then goal",
+    "goal, then metric, then question",
+    "goal, then question, then metric"
+   ],
+   "options_ar": [
+    "المقياس ثم الهدف ثم السؤال",
+    "السؤال ثم المقياس ثم الهدف",
+    "الهدف ثم المقياس ثم السؤال",
+    "الهدف ثم السؤال ثم المقياس"
+   ],
+   "options_en": [
+    "metric, then goal, then question",
+    "question, then metric, then goal",
+    "goal, then metric, then question",
+    "goal, then question, then metric"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A goal is broken into questions, and each question is answered by a metric.",
+   "explanation_ar": "الهدف يُفكَّك إلى أسئلة، وكل سؤال يجيبه مقياس."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_predictor_control",
+   "bloom_level": "Understand",
+   "question": "What separates predictor metrics from control metrics?",
+   "question_ar": "ما الذي يفصل المقاييس التنبؤية عن الضابطة؟",
+   "options": [
+    "predictors forecast attributes, controls track them",
+    "predictors track attributes, controls forecast them",
+    "predictors apply only to agile here too here too",
+    "controls apply only to hardware now again now"
+   ],
+   "options_ar": [
+    "التنبؤية تتنبأ بالصفات والضابطة تتابعها",
+    "التنبؤية تتابع الصفات والضابطة تتنبأ",
+    "التنبؤية للأجايل فقط الآن مجدداً الآن",
+    "الضابطة للعتاد فقط هنا أيضاً هنا أيضاً هنا"
+   ],
+   "options_en": [
+    "predictors forecast attributes, controls track them",
+    "predictors track attributes, controls forecast them",
+    "predictors apply only to agile here too here too",
+    "controls apply only to hardware now again now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Predictors look forward to the attribute a product will have; controls watch what it has now.",
+   "explanation_ar": "التنبؤية تنظر للصفة التي سيكون عليها المنتج، والضابطة تراقب ما هو عليه الآن."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_why_measure",
+   "bloom_level": "Understand",
+   "question": "Why does an organisation measure its software process?",
+   "question_ar": "لماذا تقيس المنظمة عمليتها البرمجية؟",
+   "options": [
+    "to shorten the code here too",
+    "to understand and then improve it",
+    "to replace all testing now again here",
+    "to remove the documentation here"
+   ],
+   "options_ar": [
+    "لتقصير الكود الآن",
+    "لفهمها ثم تحسينها",
+    "لاستبدال كل الاختبار",
+    "لحذف التوثيق هنا"
+   ],
+   "options_en": [
+    "to shorten the code here too",
+    "to understand and then improve it",
+    "to replace all testing now again here",
+    "to remove the documentation here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Measurement supplies the baseline; without it, improvement is guesswork.",
+   "explanation_ar": "القياس يوفّر خط الأساس، وبلا قياس يصبح التحسين تخميناً."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_measure_terms",
+   "bloom_level": "Remember",
+   "question": "How do measure, measurement and metric differ?",
+   "question_ar": "كيف تختلف الكلمة measure وmeasurement وmetric؟",
+   "options": [
+    "they are three names for the same thing here too now here too",
+    "a measure is a tool, a metric is a person now again too now",
+    "a measure is the attribute, measurement the act, metric the scale",
+    "a metric is the attribute, a measure is the act here again again here"
+   ],
+   "options_ar": [
+    "ثلاثة أسماء لشيء واحد هنا أيضاً الآن هنا أيضاً",
+    "measure أداة وmetric شخص الآن هنا أيضاً الآن",
+    "measure الصفة وmeasurement الفعل وmetric المقياس",
+    "metric الصفة وmeasure الفعل مجدداً مجدداً مجدداً"
+   ],
+   "options_en": [
+    "they are three names for the same thing here too now here too",
+    "a measure is a tool, a metric is a person now again too now",
+    "a measure is the attribute, measurement the act, metric the scale",
+    "a metric is the attribute, a measure is the act here again again here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The attribute is the measure, the act of assigning it is measurement, and the scale is the metric.",
+   "explanation_ar": "الصفة هي measure، وفعل إسنادها هو measurement، والمقياس هو metric."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_indirect",
+   "bloom_level": "Understand",
+   "question": "Which attribute can only be measured indirectly?",
+   "question_ar": "أي صفة لا تُقاس إلا بشكل غير مباشر؟",
+   "options": [
+    "the number of defects found",
+    "the maintainability of a system",
+    "the count of function calls",
+    "the number of lines in a file"
+   ],
+   "options_ar": [
+    "عدد العيوب المكتشفة",
+    "قابلية صيانة النظام",
+    "عدد نداءات الدوال",
+    "عدد الأسطر في ملف"
+   ],
+   "options_en": [
+    "the number of defects found",
+    "the maintainability of a system",
+    "the count of function calls",
+    "the number of lines in a file"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Maintainability has no direct counter; it is inferred from other measures.",
+   "explanation_ar": "قابلية الصيانة بلا عدّاد مباشر، فتُستنتج من مقاييس أخرى."
+  }
+ ]
+}
