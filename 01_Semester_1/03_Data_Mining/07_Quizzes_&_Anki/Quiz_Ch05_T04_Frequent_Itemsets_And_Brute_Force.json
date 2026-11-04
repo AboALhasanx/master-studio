@@ -46,25 +46,25 @@
    "question": "Who defines the minimum-support threshold?",
    "question_ar": "من يحدد عتبة الحد الأدنى للدعم؟",
    "options": [
+    "Causal association occurs",
     "a user-defined threshold",
     "customer sequence suffixes",
-    "customer model penalties",
-    "Causal association occurs"
+    "customer model penalties"
    ],
    "options_en": [
+    "Causal association occurs",
     "a user-defined threshold",
     "customer sequence suffixes",
-    "customer model penalties",
-    "Causal association occurs"
+    "customer model penalties"
    ],
    "options_ar": [
+    "ارتباط سببي عند Lift > 1",
     "عتبة يحددها المستخدم",
     "لواحق تسلسلات الزبائن",
-    "عقوبات نماذج الزبائن",
-    "ارتباط سببي عند Lift > 1"
+    "عقوبات نماذج الزبائن"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Minimum support is a user-defined threshold for how often an itemset must occur.",
    "explanation_ar": "عتبة يحددها المستخدم لتحديد مدى تكرار المجموعة كي تُعدّ متكررة.",
    "id": "q2"
@@ -217,30 +217,30 @@
   {
    "concept_id": "brute_four_itemsets_count",
    "bloom_level": "Apply",
-   "question": "How many non-empty itemsets are possible for four items?",
-   "question_ar": "كم مجموعة عناصر غير فارغة ممكنة عند وجود أربعة عناصر؟",
+   "question": "How does the number of possible itemsets grow as items increase?",
+   "question_ar": "كيف ينمو عدد المجموعات الممكنة بزيادة العناصر؟",
    "options": [
-    "12",
-    "15",
-    "16",
-    "18"
+    "it grows exponentially",
+    "it stays quite constant",
+    "it grows in a linear way",
+    "it shrinks very slowly"
    ],
    "options_en": [
-    "12",
-    "15",
-    "16",
-    "18"
+    "it grows exponentially",
+    "it stays quite constant",
+    "it grows in a linear way",
+    "it shrinks very slowly"
    ],
    "options_ar": [
-    "12",
-    "15",
-    "16",
-    "18"
+    "ينمو أسّياً",
+    "يبقى ثابتاً",
+    "ينمو خطياً",
+    "يتقلص ببطء"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The count is 2 to the power 4 minus 1, which equals 15 non-empty itemsets.",
-   "explanation_ar": "عدد المجموعات غير الفارغة = 2 أس 4 ناقص 1 = 15 مجموعة.",
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Every added item doubles the number of candidate itemsets, so growth is exponential.",
+   "explanation_ar": "كل عنصر جديد يضاعف عدد المجموعات المرشحة، فالنمو أُسّي.",
    "id": "q8"
   }
  ]

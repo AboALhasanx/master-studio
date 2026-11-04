@@ -104,25 +104,25 @@
    "question": "When the Lift measure exceeds 1, how are the items associated?",
    "question_ar": "عندما تتجاوز قيمة Lift العدد 1، كيف يكون ارتباط العنصرين؟",
    "options": [
+    "No association exists",
     "Positive association",
     "Negative association",
-    "Causal association occurs",
-    "No association exists"
+    "Causal association occurs"
    ],
    "options_en": [
+    "No association exists",
     "Positive association",
     "Negative association",
-    "Causal association occurs",
-    "No association exists"
+    "Causal association occurs"
    ],
    "options_ar": [
+    "لا يوجد ارتباط عند Lift = 1",
     "ارتباط إيجابي عند Lift > 1",
     "ارتباط سلبي عند Lift < 1",
-    "ارتباط سببي عند Lift > 1",
-    "لا يوجد ارتباط عند Lift = 1"
+    "ارتباط سببي عند Lift > 1"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "A Lift above 1 means the two items are positively associated.",
    "explanation_ar": "ارتباط إيجابي: الرفع أكبر من 1 يعني أن العنصرين يظهران معاً أكثر من المتوقع.",
    "id": "q4"
@@ -188,88 +188,88 @@
   {
    "concept_id": "support_example_value",
    "bloom_level": "Apply",
-   "question": "What support value results when Bread and Milk occur together in 3 of 5 transactions?",
-   "question_ar": "ما قيمة الدعم عندما يظهر الخبز والحليب معاً في 3 من أصل 5 معاملات؟",
+   "question": "What does a very low Support value suggest about a rule?",
+   "question_ar": "ماذا يشير إليه دعم منخفض جداً للقاعدة؟",
    "options": [
-    "0.30",
-    "0.60",
-    "0.75",
-    "0.40"
+    "it applies to few transactions",
+    "it is always completely wrong",
+    "it must have a very high lift",
+    "it needs no minimum threshold"
    ],
    "options_en": [
-    "0.30",
-    "0.60",
-    "0.75",
-    "0.40"
+    "it applies to few transactions",
+    "it is always completely wrong",
+    "it must have a very high lift",
+    "it needs no minimum threshold"
    ],
    "options_ar": [
-    "0.30",
-    "0.60",
-    "0.75",
-    "0.40"
+    "تنطبق على معاملات قليلة",
+    "أنها خاطئة دائماً هنا",
+    "أن رفعها عالٍ جداً هنا",
+    "أنها لا تحتاج عتبة هنا"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Support equals 3/5 = 0.60, so 60% of transactions contain both items.",
-   "explanation_ar": "الدعم = 3/5 = 0.60، أي أن 60% من المعاملات تحوي العنصرين معاً.",
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Low support means the itemset appears in only a small share of the transactions.",
+   "explanation_ar": "الدعم المنخفض يعني أن المجموعة تظهر في نسبة صغيرة من المعاملات.",
    "id": "q7"
   },
   {
    "concept_id": "confidence_example_value",
    "bloom_level": "Apply",
-   "question": "What confidence value results when Bread appears in 4 transactions and Bread with Milk appears in 3?",
-   "question_ar": "ما قيمة الثقة عندما يظهر الخبز في 4 معاملات والخبز مع الحليب في 3؟",
+   "question": "What does a Confidence of one hundred percent mean?",
+   "question_ar": "ماذا تعني ثقة بمئة بالمئة؟",
    "options": [
-    "0.75",
-    "0.60",
-    "0.40",
-    "0.50"
+    "Y always appears with X",
+    "X always appears alone",
+    "the rule has no support",
+    "the lift equals zero"
    ],
    "options_en": [
-    "0.75",
-    "0.60",
-    "0.40",
-    "0.50"
+    "Y always appears with X",
+    "X always appears alone",
+    "the rule has no support",
+    "the lift equals zero"
    ],
    "options_ar": [
-    "0.75",
-    "0.60",
-    "0.40",
-    "0.50"
+    "Y يظهر دائماً مع X",
+    "X يظهر وحده دائماً",
+    "القاعدة بلا دعم",
+    "الرفع يساوي صفراً"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Confidence equals 3/4 = 0.75, so 75% of Bread rows also contain Milk.",
-   "explanation_ar": "الثقة = 3/4 = 0.75، أي أن 75% من معاملات الخبز تحوي الحليب أيضاً.",
+   "explanation": "Full confidence means every transaction containing X also contains Y.",
+   "explanation_ar": "الثقة الكاملة تعني أن كل معاملة تحوي X تحوي Y أيضاً.",
    "id": "q8"
   },
   {
    "concept_id": "lift_example_value",
    "bloom_level": "Apply",
-   "question": "What Lift value is obtained for the Bread-to-Milk rule in the example?",
-   "question_ar": "ما قيمة الرفع الناتجة لقاعدة الخبز إلى الحليب في المثال؟",
+   "question": "What does a Lift of exactly one mean?",
+   "question_ar": "ماذا يعني رفع يساوي واحداً بالضبط؟",
    "options": [
-    "1.5",
-    "1.0",
-    "2.5",
-    "0.5"
+    "the items are independent",
+    "the items are identical here",
+    "the rule is always true here",
+    "the support is zero here"
    ],
    "options_en": [
-    "1.5",
-    "1.0",
-    "2.5",
-    "0.5"
+    "the items are independent",
+    "the items are identical here",
+    "the rule is always true here",
+    "the support is zero here"
    ],
    "options_ar": [
-    "1.5",
-    "1.0",
-    "2.5",
-    "0.5"
+    "العنصران مستقلان",
+    "العنصران متطابقان",
+    "القاعدة صحيحة دائماً",
+    "الدعم يساوي صفراً"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Lift equals 1.5, so Bread and Milk co-occur more than independence predicts.",
-   "explanation_ar": "الرفع = 1.5، فالخبز والحليب يجتمعان أكثر مما تتوقعه الاستقلالية.",
+   "explanation": "Lift of one means the two items occur together exactly as often as independence predicts.",
+   "explanation_ar": "الرفع يساوي واحداً يعني أن ظهورهما معاً يطابق ما تتوقعه الاستقلالية تماماً.",
    "id": "q9"
   },
   {

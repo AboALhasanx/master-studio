@@ -10,7 +10,7 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T19:00:31+03:00
+> Generated at: 2026-11-04T19:24:47+03:00
 
 ## Current versions
 
@@ -56,13 +56,13 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `02_English_Language` | 01 | 6 | 53 | 0 | 4/0 | 6/0 | 0 | 0 | clean |
 | `02_English_Language` | 02 | 6 | 63 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
 | `02_English_Language` | 03 | 6 | 68 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
-| `03_Data_Mining` | 01 | 5 | 35 | 7 | 0/0 | 2/2 | 0 | 0 | needs work |
-| `03_Data_Mining` | 02 | 7 | 69 | 23 | 9/10 | 10/7 | 16 | 0 | needs work |
-| `03_Data_Mining` | 03 | 7 | 55 | 17 | 7/11 | 5/5 | 0 | 0 | needs work |
-| `03_Data_Mining` | 04 | 4 | 40 | 0 | 3/1 | 4/6 | 0 | 0 | clean |
-| `03_Data_Mining` | 05 | 10 | 77 | 3 | 8/3 | 7/4 | 0 | 0 | needs work |
-| `03_Data_Mining` | 06 | 7 | 86 | 1 | 8/5 | 8/10 | 0 | 0 | needs work |
-| `03_Data_Mining` | 07 | 7 | 86 | 0 | 8/7 | 9/6 | 0 | 0 | clean |
+| `03_Data_Mining` | 01 | 5 | 35 | 0 | 5/3 | 4/1 | 0 | 0 | clean |
+| `03_Data_Mining` | 02 | 7 | 69 | 20 | 10/14 | 9/7 | 0 | 0 | needs work |
+| `03_Data_Mining` | 03 | 7 | 55 | 16 | 8/11 | 5/5 | 0 | 0 | needs work |
+| `03_Data_Mining` | 04 | 4 | 40 | 0 | 5/1 | 5/6 | 0 | 0 | clean |
+| `03_Data_Mining` | 05 | 10 | 77 | 3 | 9/4 | 7/5 | 0 | 0 | needs work |
+| `03_Data_Mining` | 06 | 7 | 86 | 1 | 9/6 | 8/10 | 0 | 0 | needs work |
+| `03_Data_Mining` | 07 | 7 | 86 | 0 | 11/9 | 11/6 | 0 | 0 | clean |
 | `03_Data_Mining` | 08 | 8 | 64 | 0 | 7/6 | 4/3 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 01 | 2 | 10 | 3 | 8/4 | 0/1 | 0 | 13 | needs work |
 | `04_Advanced_Software_Eng` | 02 | 2 | 10 | 1 | 5/2 | 0/3 | 0 | 4 | needs work |
@@ -79,9 +79,8 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 
 - `01_Cyber_Security` Ch01 — 7 spread violations
 - `01_Cyber_Security` Ch02 — 8 spread violations
-- `03_Data_Mining` Ch01 — 7 handout refs
-- `03_Data_Mining` Ch02 — 23 handout refs; 16 formula options
-- `03_Data_Mining` Ch03 — 17 handout refs
+- `03_Data_Mining` Ch02 — 20 handout refs
+- `03_Data_Mining` Ch03 — 16 handout refs
 - `03_Data_Mining` Ch05 — 3 handout refs
 - `03_Data_Mining` Ch06 — 1 handout refs
 - `04_Advanced_Software_Eng` Ch01 — 3 handout refs; 13 spread violations; answer-length tell
