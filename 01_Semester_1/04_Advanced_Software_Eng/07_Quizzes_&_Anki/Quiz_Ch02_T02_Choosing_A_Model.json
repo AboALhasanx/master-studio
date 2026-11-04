@@ -1,0 +1,218 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch02_T02_Choosing_A_Model",
+ "topic": "Choosing a Model by Project Situation",
+ "topic_ar": "اختيار النموذج حسب حالة المشروع",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch2_clear_requirements",
+   "bloom_level": "Apply",
+   "question": "If the requirements are easily understood and well defined, which model fits best?",
+   "question_ar": "إذا كانت المتطلبات مفهومة ومحددة جيداً، أي نموذج يناسب أكثر؟",
+   "options": [
+    "the Waterfall model here",
+    "the Prototyping model here",
+    "the Spiral model here now",
+    "none of the above at all"
+   ],
+   "options_ar": [
+    "نموذج الشلال هنا الآن",
+    "نموذج النمذجة الأولية",
+    "النموذج الحلزوني هنا",
+    "لا شيء مما سبق هنا"
+   ],
+   "options_en": [
+    "the Waterfall model here",
+    "the Prototyping model here",
+    "the Spiral model here now",
+    "none of the above at all"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Stable, well understood requirements suit the linear waterfall sequence.",
+   "explanation_ar": "المتطلبات المستقرة المفهومة تناسب تسلسل الشلال الخطي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch2_changing_requirements",
+   "bloom_level": "Apply",
+   "question": "If the requirements change frequently, which model should be selected?",
+   "question_ar": "إذا تغيّرت المتطلبات باستمرار، أي نموذج يُختار؟",
+   "options": [
+    "the Iterative enhancement model",
+    "the Prototyping model here",
+    "the Waterfall model here",
+    "the RAD model here now at all"
+   ],
+   "options_ar": [
+    "نموذج التحسين التكراري",
+    "نموذج النمذجة الأولية",
+    "نموذج الشلال هنا الآن",
+    "نموذج RAD السريع هنا"
+   ],
+   "options_en": [
+    "the Iterative enhancement model",
+    "the Prototyping model here",
+    "the Waterfall model here",
+    "the RAD model here now at all"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A prototype lets the user see the system early, so changing requirements are absorbed.",
+   "explanation_ar": "النموذج الأولي يتيح للمستخدم رؤية النظام مبكراً، فتُستوعب المتطلبات المتغيرة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch2_user_participation",
+   "bloom_level": "Apply",
+   "question": "If user participation is available, which model is to be chosen?",
+   "question_ar": "إذا توفرت مشاركة المستخدم، أي نموذج يُختار؟",
+   "options": [
+    "the Iterative enhancement model",
+    "the Spiral model here now at all",
+    "the RAD model here now at all",
+    "the Waterfall model here"
+   ],
+   "options_ar": [
+    "نموذج التحسين التكراري",
+    "النموذج الحلزوني هنا",
+    "نموذج RAD السريع هنا",
+    "نموذج الشلال هنا الآن"
+   ],
+   "options_en": [
+    "the Iterative enhancement model",
+    "the Spiral model here now at all",
+    "the RAD model here now at all",
+    "the Waterfall model here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "RAD is built around workshops with users, so it needs their availability.",
+   "explanation_ar": "نموذج RAD مبني على ورش عمل مع المستخدمين، فهو يحتاج توفرهم."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch2_limited_participation",
+   "bloom_level": "Apply",
+   "question": "If only limited user participation is available, which model is to be selected?",
+   "question_ar": "إذا كانت مشاركة المستخدم محدودة، أي نموذج يُختار؟",
+   "options": [
+    "the Waterfall model here now",
+    "the Spiral model here now at all",
+    "the Iterative enhancement model",
+    "any of the above here now at all"
+   ],
+   "options_ar": [
+    "نموذج الشلال هنا الآن",
+    "النموذج الحلزوني هنا",
+    "نموذج التحسين التكراري",
+    "أي مما سبق أعلاه هنا"
+   ],
+   "options_en": [
+    "the Waterfall model here now",
+    "the Spiral model here now at all",
+    "the Iterative enhancement model",
+    "any of the above here now at all"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "With little user access, any of the listed models can still be applied.",
+   "explanation_ar": "مع وصول محدود للمستخدم، يمكن تطبيق أي من النماذج أعلاه."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch2_enhancement",
+   "bloom_level": "Apply",
+   "question": "If the project is an enhancement of an existing system, which model is best suited?",
+   "question_ar": "إذا كان المشروع تحسيناً لنظام قائم، أي نموذج يناسب أكثر؟",
+   "options": [
+    "the Iterative enhancement model",
+    "the Waterfall model here now at all",
+    "the Prototyping model here now",
+    "the Spiral model here at all now"
+   ],
+   "options_ar": [
+    "نموذج التحسين التكراري",
+    "نموذج الشلال هنا الآن",
+    "نموذج النمذجة الأولية",
+    "النموذج الحلزوني هنا"
+   ],
+   "options_en": [
+    "the Iterative enhancement model",
+    "the Waterfall model here now at all",
+    "the Prototyping model here now",
+    "the Spiral model here at all now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "An existing base is extended in increments, which is exactly iterative enhancement.",
+   "explanation_ar": "الأساس القائم يُوسَّع على دفعات، وهذا هو التحسين التكراري."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch2_unfamiliar_team",
+   "bloom_level": "Apply",
+   "question": "If the team has never built this kind of system before, which model is safest?",
+   "question_ar": "إذا لم يبنِ الفريق نظاماً كهذا من قبل، أي نموذج هو الأكثر أماناً؟",
+   "options": [
+    "the Iterative model here",
+    "the Evolutionary model here",
+    "the Waterfall model here",
+    "the RAD model here now at all"
+   ],
+   "options_ar": [
+    "نموذج التحسين التكراري",
+    "نموذج التطوير التطوري",
+    "نموذج الشلال هنا الآن",
+    "نموذج RAD السريع هنا"
+   ],
+   "options_en": [
+    "the Iterative model here",
+    "the Evolutionary model here",
+    "the Waterfall model here",
+    "the RAD model here now at all"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Unfamiliar ground needs a model that learns as it builds, which is the evolutionary one.",
+   "explanation_ar": "الأرض غير المألوفة تحتاج نموذجاً يتعلم وهو يبني، وهو النموذج التطوري."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch2_new_technology",
+   "bloom_level": "Apply",
+   "question": "The most suitable model for new technology that is not well understood is...",
+   "question_ar": "النموذج الأنسب لتقنية جديدة غير مفهومة جيداً هو...",
+   "options": [
+    "the RAD model here now at all",
+    "the Iterative model here",
+    "the Evolutionary model here",
+    "the Waterfall model here"
+   ],
+   "options_ar": [
+    "نموذج RAD السريع هنا",
+    "نموذج التحسين التكراري",
+    "نموذج التطوير التطوري",
+    "نموذج الشلال هنا الآن"
+   ],
+   "options_en": [
+    "the RAD model here now at all",
+    "the Iterative model here",
+    "the Evolutionary model here",
+    "the Waterfall model here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "When the technology is unclear, the product must evolve as understanding grows.",
+   "explanation_ar": "عندما تكون التقنية غير واضحة يجب أن يتطور المنتج مع نمو الفهم."
+  }
+ ]
+}
