@@ -10,14 +10,14 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T19:24:47+03:00
+> Generated at: 2026-11-04T19:30:19+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **62** |
-| Portal shell `VERSION` | **1.10.6** |
+| Live content version | **63** |
+| Portal shell `VERSION` | **1.10.7** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
