@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "03_Data_Mining",
+ "subject_title": "تنقيب البيانات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+ "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+ "subject": "03_Data_Mining",
+ "quiz_id": "Quiz_Ch08_T03_Clustering_Concept_and_Role",
+ "topic": "Clustering Concept and Role",
+ "topic_ar": "مفهوم التجميع ودوره",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c8_cls_def",
+   "bloom_level": "Remember",
+   "question": "What is clustering?",
+   "question_ar": "ما هو التجميع؟",
+   "options": [
+    "group similar objects",
+    "assign a known category",
+    "estimate a numeric value",
+    "find frequent items"
+   ],
+   "options_ar": [
+    "جمّع العناصر المتشابهة",
+    "أسند فئة معروفة بدقة",
+    "قدّر قيمة رقمية معينة",
+    "اعثر على عناصر متكررة"
+   ],
+   "options_en": [
+    "group similar objects",
+    "assign a known category",
+    "estimate a numeric value",
+    "find frequent items"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Clustering groups similar objects into one cluster.",
+   "explanation_ar": "التجميع يجمّع عناصر متشابهة في عنقود واحد."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c8_cls_diffclass",
+   "bloom_level": "Understand",
+   "question": "Unlike classification, clustering does what?",
+   "question_ar": "على عكس التصنيف، ماذا يفعل التجميع؟",
+   "options": [
+    "only handles text data",
+    "needs no predefined labels",
+    "requires predefined labels",
+    "estimates a numeric value"
+   ],
+   "options_ar": [
+    "يعالج النص فقط دائماً",
+    "لا يتطلب تسميات مسبقة",
+    "يتطلب تسميات مسبقة",
+    "يقدّر قيمة رقمية واحدة"
+   ],
+   "options_en": [
+    "only handles text data",
+    "needs no predefined labels",
+    "requires predefined labels",
+    "estimates a numeric value"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Unlike classification, clustering needs no labels.",
+   "explanation_ar": "على عكس التصنيف، التجميع لا يتطلب تسميات."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c8_cls_sim",
+   "bloom_level": "Remember",
+   "question": "Objects in one cluster should be what?",
+   "question_ar": "عناصر نفس العنقود يجب أن تكون ماذا؟",
+   "options": [
+    "marked with a known label",
+    "separated by max distance",
+    "more similar to each other",
+    "identical in every value"
+   ],
+   "options_ar": [
+    "موسومة بتسمية واحدة فقط",
+    "مفصولة بأقصى مسافة ممكنة",
+    "أكثر تشابهاً فيما بينها",
+    "متطابقة في كل قيمة تقريباً"
+   ],
+   "options_en": [
+    "marked with a known label",
+    "separated by max distance",
+    "more similar to each other",
+    "identical in every value"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "They should be more similar to each other than others.",
+   "explanation_ar": "يجب أن تكون أكثر تشابهاً فيما بينها من غيرها."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c8_cls_interpret",
+   "bloom_level": "Understand",
+   "question": "Descriptions like high attendance are what?",
+   "question_ar": "أوصاف مثل الحضور العالي هي ماذا؟",
+   "options": [
+    "auto-assigned by algorithm",
+    "predefined from the start",
+    "computed by a regression",
+    "interpretation after review"
+   ],
+   "options_ar": [
+    "تُسنَد تلقائياً بخوارزمية",
+    "محددة مسبقاً من البداية",
+    "تُحسب بواسطة انحدار ما",
+    "تفسيرات بعد الفحص الدقيق"
+   ],
+   "options_en": [
+    "auto-assigned by algorithm",
+    "predefined from the start",
+    "computed by a regression",
+    "interpretation after review"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The algorithm finds groups, but naming them like high attendance is a human interpretation.",
+   "explanation_ar": "تكتشف الخوارزمية المجموعات، لكن تسميتها كالحضور العالي تفسير بشري."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c8_cls_algknow",
+   "bloom_level": "Understand",
+   "question": "What does the algorithm know of group meaning?",
+   "question_ar": "ماذا تعرف الخوارزمية من معنى المجموعة؟",
+   "options": [
+    "finds groups not meaning",
+    "knows meaning automatically",
+    "assigns known class labels",
+    "predicts a numeric value"
+   ],
+   "options_ar": [
+    "تكتشف المجموعات لا المعنى",
+    "تعرف المعنى بشكل تلقائي",
+    "تسند تسميات معروفة مسبقاً",
+    "تتنبأ برقم واحد فقط هنا"
+   ],
+   "options_en": [
+    "finds groups not meaning",
+    "knows meaning automatically",
+    "assigns known class labels",
+    "predicts a numeric value"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It finds groups but not their real meaning.",
+   "explanation_ar": "تكتشف المجموعات لكن لا معناها الحقيقي."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c8_cls_rel_dm",
+   "bloom_level": "Remember",
+   "question": "Data Mining is best described as what?",
+   "question_ar": "يُوصف تنقيب البيانات بأنه ماذا؟",
+   "options": [
+    "a file compression way",
+    "broad pattern discovery",
+    "one clustering algorithm",
+    "a method needing labels"
+   ],
+   "options_ar": [
+    "طريقة ضغط ملفات فقط",
+    "اكتشاف أنماط واسعة",
+    "خوارزمية تجميع واحدة",
+    "طريقة تتطلب تسميات"
+   ],
+   "options_en": [
+    "a file compression way",
+    "broad pattern discovery",
+    "one clustering algorithm",
+    "a method needing labels"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Data Mining is a broad pattern-discovery process.",
+   "explanation_ar": "تنقيب البيانات عملية واسعة لاكتشاف الأنماط."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c8_cls_rel_uns",
+   "bloom_level": "Remember",
+   "question": "Unsupervised Learning is best described as what?",
+   "question_ar": "يُوصف التعلم غير المشرف بأنه ماذا؟",
+   "options": [
+    "a method needing labels",
+    "a record lookup way",
+    "learning without labels",
+    "broader than data mining"
+   ],
+   "options_ar": [
+    "طريقة تتطلب تسميات",
+    "طريقة بحث عن سجل واحد",
+    "تعلم بلا تسميات هدف",
+    "أوسع من تنقيب البيانات"
+   ],
+   "options_en": [
+    "a method needing labels",
+    "a record lookup way",
+    "learning without labels",
+    "broader than data mining"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Unsupervised learning is machine learning that works without target labels.",
+   "explanation_ar": "التعلم غير المشرف هو تعلم آلي يعمل دون تسميات هدف."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c8_cls_rel_clust",
+   "bloom_level": "Remember",
+   "question": "Clustering is best described as what?",
+   "question_ar": "يُوصف التجميع بأنه ماذا؟",
+   "options": [
+    "a supervised task only here",
+    "broader than data mining",
+    "a file compression method",
+    "a common unsupervised task"
+   ],
+   "options_ar": [
+    "مهمة مشرف فقط دائماً",
+    "أوسع من تنقيب البيانات",
+    "طريقة ضغط ملفات فقط",
+    "مهمة غير مشرف شائعة"
+   ],
+   "options_en": [
+    "a supervised task only here",
+    "broader than data mining",
+    "a file compression method",
+    "a common unsupervised task"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Clustering is a common unsupervised task, grouping similar records without labels.",
+   "explanation_ar": "التجميع مهمة تعلم غير مشرف شائعة، يجمّع سجلات متشابهة بلا تسميات."
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "03_Data_Mining",
+ "subject_title": "تنقيب البيانات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+ "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+ "subject": "03_Data_Mining",
+ "quiz_id": "Quiz_Ch08_T07_Hierarchical_DBSCAN_GMM",
+ "topic": "Hierarchical, DBSCAN, and GMM",
+ "topic_ar": "التجميع التسلسلي وDBSCAN وGMM",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c8_alg_hier_def",
+   "bloom_level": "Remember",
+   "question": "Hierarchical clustering is represented by what?",
+   "question_ar": "يُمثَّل التجميع التسلسلي بماذا؟",
+   "options": [
+    "a dendrogram tree diagram",
+    "a single straight line only",
+    "a known class label here",
+    "a noise scatter plot only"
+   ],
+   "options_ar": [
+    "مخطط تفرعي شجري",
+    "خط مستقيم واحد",
+    "تسمية فئة معروفة",
+    "مخطط تشتت للضجيج"
+   ],
+   "options_en": [
+    "a dendrogram tree diagram",
+    "a single straight line only",
+    "a known class label here",
+    "a noise scatter plot only"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It is shown by a dendrogram, a tree that records the merge order.",
+   "explanation_ar": "يُعرض بمخطط تفرعي، وهو شجرة تسجّل ترتيب الدمج."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c8_alg_agg",
+   "bloom_level": "Remember",
+   "question": "Agglomerative clustering is what?",
+   "question_ar": "التجميع التراكمي هو ماذا؟",
+   "options": [
+    "a data compression method",
+    "bottom-up each own cluster",
+    "top-down all in one cluster",
+    "a method needing class labels"
+   ],
+   "options_ar": [
+    "طريقة ضغط بيانات فقط",
+    "تصاعدي كل عنقود مستقل",
+    "تنازلي الكل عنقود واحد",
+    "طريقة تتطلب تسميات معروفة"
+   ],
+   "options_en": [
+    "a data compression method",
+    "bottom-up each own cluster",
+    "top-down all in one cluster",
+    "a method needing class labels"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It is bottom-up: start with each object alone, then merge the closest pair.",
+   "explanation_ar": "هو تصاعدي: ابدأ بكل عنصر وحده، ثم ادمج الأقرب."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c8_alg_link_single",
+   "bloom_level": "Remember",
+   "question": "Single linkage uses what distance?",
+   "question_ar": "الرابط الفردي يستخدم أي مسافة؟",
+   "options": [
+    "average of cross distances",
+    "total within-cluster variance",
+    "minimum cross-cluster distance",
+    "maximum cross-cluster distance"
+   ],
+   "options_ar": [
+    "متوسط المسافة بينهما",
+    "تباين داخل العنقود",
+    "أدنى مسافة بين عنقودين",
+    "أقصى مسافة بين عنقودين"
+   ],
+   "options_en": [
+    "average of cross distances",
+    "total within-cluster variance",
+    "minimum cross-cluster distance",
+    "maximum cross-cluster distance"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It uses the minimum distance between any two points of the two clusters.",
+   "explanation_ar": "يستخدم أدنى مسافة بين أي نقطتين من العنقودين."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c8_alg_link_complete",
+   "bloom_level": "Remember",
+   "question": "Complete linkage uses what distance?",
+   "question_ar": "الرابط الكامل يستخدم أي مسافة؟",
+   "options": [
+    "minimum cross-cluster distance",
+    "average of cross distances",
+    "total within-cluster variance",
+    "maximum cross-cluster distance"
+   ],
+   "options_ar": [
+    "أدنى مسافة بين عنقودين",
+    "متوسط المسافة بينهما",
+    "تباين داخل العنقود",
+    "أقصى مسافة بين عنقودين"
+   ],
+   "options_en": [
+    "minimum cross-cluster distance",
+    "average of cross distances",
+    "total within-cluster variance",
+    "maximum cross-cluster distance"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It uses the maximum distance between any two points of the two clusters.",
+   "explanation_ar": "يستخدم أقصى مسافة بين أي نقطتين من العنقودين."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c8_alg_db_def",
+   "bloom_level": "Remember",
+   "question": "DBSCAN is best described as what?",
+   "question_ar": "يُوصف DBSCAN بأنه ماذا؟",
+   "options": [
+    "density-based marks noise",
+    "partitioning like K-Means",
+    "hierarchical with a tree",
+    "a Gaussian model method"
+   ],
+   "options_ar": [
+    "مبني على الكثافة يميز",
+    "تقسيمي مثل K-Means",
+    "تسلسلي بشجرة كاملة",
+    "طريقة نموذج غاوسي فقط"
+   ],
+   "options_en": [
+    "density-based marks noise",
+    "partitioning like K-Means",
+    "hierarchical with a tree",
+    "a Gaussian model method"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It is density-based and marks low-density points as noise rather than forcing them in.",
+   "explanation_ar": "هو مبني على الكثافة ويميّز النقاط منخفضة الكثافة كضجيج بدل إجبارها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c8_alg_db_core",
+   "bloom_level": "Remember",
+   "question": "A core point in DBSCAN has what?",
+   "question_ar": "النقطة الجوهرية بـ DBSCAN تمتلك ماذا؟",
+   "options": [
+    "the largest distance value",
+    "at least MinPts neighbors",
+    "no neighbors at all here",
+    "a known class label only"
+   ],
+   "options_ar": [
+    "أكبر قيمة مسافة فقط",
+    "على الأقل MinPts جيران",
+    "لا جيران لها في جوارها",
+    "تسمية فئة معروفة تماماً"
+   ],
+   "options_en": [
+    "the largest distance value",
+    "at least MinPts neighbors",
+    "no neighbors at all here",
+    "a known class label only"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A core point has at least MinPts neighbors within the distance Epsilon.",
+   "explanation_ar": "النقطة الجوهرية تمتلك على الأقل MinPts جاراً ضمن مسافة إبسيلون."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c8_alg_db_noise",
+   "bloom_level": "Remember",
+   "question": "A noise point in DBSCAN is what?",
+   "question_ar": "نقطة الضجيج بـ DBSCAN هي ماذا؟",
+   "options": [
+    "a known class label here",
+    "the one with most neighbors",
+    "not core and not reachable",
+    "always the final centroid"
+   ],
+   "options_ar": [
+    "تسمية فئة معروفة فقط",
+    "أكثر الجيران عدداً",
+    "ليست جوهرية ولا وصول",
+    "دائماً المركز نفسه"
+   ],
+   "options_en": [
+    "a known class label here",
+    "the one with most neighbors",
+    "not core and not reachable",
+    "always the final centroid"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It is neither core nor reachable from a core point, so it is labelled noise.",
+   "explanation_ar": "هي ليست جوهرية ولا قابلة للوصول من نقطة جوهرية، فتُوسَم ضجيجاً."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c8_alg_gmm_soft",
+   "bloom_level": "Understand",
+   "question": "Unlike K-Means, GMM provides what?",
+   "question_ar": "على عكس K-Means، GMM يقدم ماذا؟",
+   "options": [
+    "one single hard label",
+    "a known class label only",
+    "a simple data compressor",
+    "membership probability"
+   ],
+   "options_ar": [
+    "تسمية صلبة واحدة فقط",
+    "تسمية فئة معروفة تماماً",
+    "مضغوط بيانات بسيط جداً",
+    "احتمال الانتماء للعنقود"
+   ],
+   "options_en": [
+    "one single hard label",
+    "a known class label only",
+    "a simple data compressor",
+    "membership probability"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "GMM gives a membership probability, so a point can partly belong to several clusters.",
+   "explanation_ar": "يقدم GMM احتمال الانتماء، فقد ينتمي العنصر جزئياً لعدة عناقيد."
+  }
+ ]
+}

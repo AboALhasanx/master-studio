@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "03_Data_Mining",
+ "subject_title": "تنقيب البيانات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+ "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+ "subject": "03_Data_Mining",
+ "quiz_id": "Quiz_Ch08_T01_Data_Mining_Foundations_and_Tasks",
+ "topic": "Foundations and Tasks",
+ "topic_ar": "الأساسيات والمهام",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c8_fnd_def",
+   "bloom_level": "Remember",
+   "question": "What is data mining?",
+   "question_ar": "ما هو تنقيب البيانات؟",
+   "options": [
+    "finding data patterns",
+    "storing data files",
+    "looking up records",
+    "compressing large files"
+   ],
+   "options_ar": [
+    "إيجاد أنماط البيانات",
+    "تخزين ملفات البيانات",
+    "البحث عن السجلات",
+    "ضغط الملفات الكبيرة"
+   ],
+   "options_en": [
+    "finding data patterns",
+    "storing data files",
+    "looking up records",
+    "compressing large files"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It discovers patterns and knowledge from large datasets.",
+   "explanation_ar": "يكشف الأنماط والمعارف من مجموعات بيانات كبيرة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c8_fnd_purpose",
+   "bloom_level": "Remember",
+   "question": "What is the main purpose of data mining?",
+   "question_ar": "ما الغرض الرئيسي من تنقيب البيانات؟",
+   "options": [
+    "remove old stored data",
+    "find hidden knowledge",
+    "store datasets safely",
+    "look up one record"
+   ],
+   "options_ar": [
+    "حذف بيانات قديمة",
+    "إيجاد معرفة خفية",
+    "تخزين البيانات بأمان",
+    "البحث عن سجل واحد"
+   ],
+   "options_en": [
+    "remove old stored data",
+    "find hidden knowledge",
+    "store datasets safely",
+    "look up one record"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Its purpose is to discover information not obvious in the data.",
+   "explanation_ar": "غرضه اكتشاف معلومات غير واضحة في البيانات."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c8_fnd_task_class",
+   "bloom_level": "Remember",
+   "question": "What does the Classification task do?",
+   "question_ar": "ماذا تفعل مهمة التصنيف؟",
+   "options": [
+    "group similar items",
+    "find frequent items",
+    "assign known labels",
+    "predict numeric values"
+   ],
+   "options_ar": [
+    "جمّع عناصر متشابهة",
+    "اعثر على عناصر متكررة",
+    "أسند تسميات معروفة",
+    "تنبأ بقيم رقمية معينة"
+   ],
+   "options_en": [
+    "group similar items",
+    "find frequent items",
+    "assign known labels",
+    "predict numeric values"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Classification assigns an item to a predefined category.",
+   "explanation_ar": "التصنيف يسند عنصراً إلى فئة محددة مسبقاً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c8_fnd_task_clust",
+   "bloom_level": "Remember",
+   "question": "What does the Clustering task do?",
+   "question_ar": "ماذا تفعل مهمة التجميع؟",
+   "options": [
+    "assign known category",
+    "predict numeric values",
+    "find frequent objects",
+    "group similar objects"
+   ],
+   "options_ar": [
+    "أسند فئة معروفة بدقة",
+    "تنبأ بقيم رقمية معينة",
+    "اعثر على عناصر متكررة",
+    "جمّع العناصر المتشابهة"
+   ],
+   "options_en": [
+    "assign known category",
+    "predict numeric values",
+    "find frequent objects",
+    "group similar objects"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Clustering groups similar items without predefined labels.",
+   "explanation_ar": "التجميع يجمّع عناصر متشابهة دون تسميات محددة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c8_fnd_task_assoc",
+   "bloom_level": "Remember",
+   "question": "What does Association Rule Mining do?",
+   "question_ar": "ماذا تفعل استخراج قواعد الارتباط؟",
+   "options": [
+    "find co-occurring items",
+    "assign known category",
+    "group similar objects",
+    "predict numeric values"
+   ],
+   "options_ar": [
+    "يجد عناصر متكررة",
+    "أسند فئة معروفة",
+    "جمّع عناصر متشابهة",
+    "تنبأ بقيم رقمية"
+   ],
+   "options_en": [
+    "find co-occurring items",
+    "assign known category",
+    "group similar objects",
+    "predict numeric values"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It discovers items that frequently occur together, such as products bought in one basket.",
+   "explanation_ar": "تكتشف عناصر تحدث معاً بكثرة، مثل منتجات تُشترى في سلة واحدة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c8_fnd_task_anom",
+   "bloom_level": "Remember",
+   "question": "What does Anomaly Detection do?",
+   "question_ar": "ماذا تفعل كشف الشذوذ؟",
+   "options": [
+    "predict numeric values",
+    "find unusual records",
+    "assign known category",
+    "group similar objects"
+   ],
+   "options_ar": [
+    "تنبأ بقيم رقمية",
+    "يجد سجلات شاذة",
+    "أسند فئة معروفة",
+    "جمّع عناصر مشابهة"
+   ],
+   "options_en": [
+    "predict numeric values",
+    "find unusual records",
+    "assign known category",
+    "group similar objects"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It identifies unusual patterns or observations.",
+   "explanation_ar": "تحدّد أنماطاً أو ملاحظات غير معتادة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c8_fnd_task_sum",
+   "bloom_level": "Remember",
+   "question": "What does the Summarization task do?",
+   "question_ar": "ماذا تفعل مهمة التلخيص؟",
+   "options": [
+    "group similar clusters",
+    "predict numeric values",
+    "summarize data briefly",
+    "assign known categories"
+   ],
+   "options_ar": [
+    "جمّع عناصر متشابهة",
+    "تنبأ بقيم رقمية معينة",
+    "لخّص البيانات بإيجاز",
+    "أسند فئات معروفة جداً"
+   ],
+   "options_en": [
+    "group similar clusters",
+    "predict numeric values",
+    "summarize data briefly",
+    "assign known categories"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Summarization gives a compact description of a dataset.",
+   "explanation_ar": "التلخيص يقدم وصفاً موجزاً لمجموعة بيانات."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c8_fnd_remember",
+   "bloom_level": "Understand",
+   "question": "Which correctly contrasts classification and clustering?",
+   "question_ar": "أي عبارة تباين التصنيف والتجميع بشكل صحيح؟",
+   "options": [
+    "both need known labels",
+    "groups versus labeling",
+    "both predict a number",
+    "labels versus grouping"
+   ],
+   "options_ar": [
+    "كلاهما يحتاج تسميات أولاً",
+    "تجميع يسمّي؛ تصنيف يجمع",
+    "كلاهما يتنبأ برقم واحد",
+    "تصنيف يسمّي؛ تجميع يجمع"
+   ],
+   "options_en": [
+    "both need known labels",
+    "groups versus labeling",
+    "both predict a number",
+    "labels versus grouping"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Classification assigns categories; clustering groups similar records.",
+   "explanation_ar": "التصنيف يسند فئات؛ والتجميع يجمّع سجلات متشابهة."
+  }
+ ]
+}

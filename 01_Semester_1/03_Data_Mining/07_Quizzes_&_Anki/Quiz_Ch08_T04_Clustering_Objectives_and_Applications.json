@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "03_Data_Mining",
+ "subject_title": "تنقيب البيانات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+ "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+ "subject": "03_Data_Mining",
+ "quiz_id": "Quiz_Ch08_T04_Clustering_Objectives_and_Applications",
+ "topic": "Clustering Objectives and Applications",
+ "topic_ar": "أهداف التجميع وتطبيقاته",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c8_obj_obj1",
+   "bloom_level": "Remember",
+   "question": "Which is a main objective of clustering?",
+   "question_ar": "ما هدف رئيسي من التجميع؟",
+   "options": [
+    "discover natural groups",
+    "predict a numeric value",
+    "assign a known label",
+    "compress to one file"
+   ],
+   "options_ar": [
+    "اكتشاف مجموعات طبيعية",
+    "تنبؤ بقيمة رقمية واحدة",
+    "إسناد تسمية معروفة فقط",
+    "ضغط إلى ملف واحد فقط"
+   ],
+   "options_en": [
+    "discover natural groups",
+    "predict a numeric value",
+    "assign a known label",
+    "compress to one file"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A main objective is discovering natural groups that already exist in the data.",
+   "explanation_ar": "أحد الأهداف الرئيسية اكتشاف مجموعات طبيعية موجودة أصلاً في البيانات."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c8_obj_obj2",
+   "bloom_level": "Remember",
+   "question": "What does clustering help you understand about groups?",
+   "question_ar": "ماذا يساعد التجميع على فهمه عن المجموعات؟",
+   "options": [
+    "delete no-label records",
+    "understand group traits",
+    "predict a numeric value",
+    "assign a known label"
+   ],
+   "options_ar": [
+    "حذف سجلات بلا تسمية",
+    "فهم خصائص المجموعات",
+    "تنبؤ بقيمة رقمية",
+    "إسناد تسمية معروفة"
+   ],
+   "options_en": [
+    "delete no-label records",
+    "understand group traits",
+    "predict a numeric value",
+    "assign a known label"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Clustering aims to understand the characteristics shared inside each group.",
+   "explanation_ar": "يهدف التجميع لفهم الخصائص المشتركة داخل كل مجموعة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c8_obj_obj3",
+   "bloom_level": "Remember",
+   "question": "How can clustering summarize a whole dataset?",
+   "question_ar": "كيف يمكن للتجميع تلخيص مجموعة بيانات كاملة؟",
+   "options": [
+    "assign a known category",
+    "predict a numeric value",
+    "summarize data in groups",
+    "store the data much faster"
+   ],
+   "options_ar": [
+    "إسناد تسمية معروفة مسبقاً",
+    "تنبؤ بقيمة رقمية واحدة",
+    "تلخيص البيانات بمجموعات",
+    "تخزين البيانات بسرعة أكبر"
+   ],
+   "options_en": [
+    "assign a known category",
+    "predict a numeric value",
+    "summarize data in groups",
+    "store the data much faster"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It can summarize a large dataset using a smaller number of groups.",
+   "explanation_ar": "يمكنه تلخيص مجموعة بيانات كبيرة باستخدام عدد أقل من المجموعات."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c8_app_market",
+   "bloom_level": "Remember",
+   "question": "In Marketing, clustering does what?",
+   "question_ar": "في التسويق، التجميع يفعل ماذا؟",
+   "options": [
+    "predict the exact sales",
+    "assign a known label here",
+    "compress the whole database",
+    "group by buying behavior"
+   ],
+   "options_ar": [
+    "تنبأ بمبيعات دقيقة",
+    "أسند تسمية معروفة",
+    "اضغط قاعدة البيانات",
+    "جمّع حسب سلوك الشراء"
+   ],
+   "options_en": [
+    "predict the exact sales",
+    "assign a known label here",
+    "compress the whole database",
+    "group by buying behavior"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It groups customers by buying behavior to support targeted marketing.",
+   "explanation_ar": "يجمّع العملاء حسب سلوك الشراء لدعم تسويق موجّه."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c8_app_health",
+   "bloom_level": "Remember",
+   "question": "In Healthcare, clustering does what?",
+   "question_ar": "في الرعاية الصحية، التجميع يفعل ماذا؟",
+   "options": [
+    "group by clinical values",
+    "predict exact diagnosis",
+    "assign a known disease",
+    "compress patient records"
+   ],
+   "options_ar": [
+    "جمّع حسب قياسات سريرية",
+    "تنبأ بتشخيص دقيق جداً",
+    "أسند تسمية مرض معينة",
+    "اضغط سجلات المرضى كلها"
+   ],
+   "options_en": [
+    "group by clinical values",
+    "predict exact diagnosis",
+    "assign a known disease",
+    "compress patient records"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It groups patients by clinical measurements such as blood pressure.",
+   "explanation_ar": "يجمّع المرضى حسب قياسات سريرية مثل ضغط الدم."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c8_app_cyber",
+   "bloom_level": "Remember",
+   "question": "In Cybersecurity, clustering does what?",
+   "question_ar": "في الأمن السيبراني، التجميع يفعل ماذا؟",
+   "options": [
+    "compress all network logs",
+    "group network activities",
+    "predict the exact attacks",
+    "assign a known threat label"
+   ],
+   "options_ar": [
+    "اضغط سجلات الشبكة",
+    "جمّع أنشطة الشبكة",
+    "تنبأ بهجمات دقيقة",
+    "أسند تسمية تهديد"
+   ],
+   "options_en": [
+    "compress all network logs",
+    "group network activities",
+    "predict the exact attacks",
+    "assign a known threat label"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It groups network activities and odd groups.",
+   "explanation_ar": "يجمّع أنشطة الشبكة والمجموعات الغريبة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c8_app_doc",
+   "bloom_level": "Remember",
+   "question": "In Document Analysis, clustering does what?",
+   "question_ar": "في تحليل المستندات، التجميع يفعل ماذا؟",
+   "options": [
+    "assign a topic label",
+    "compress documents to file",
+    "group papers by content",
+    "predict exact length"
+   ],
+   "options_ar": [
+    "أسند تسمية موضوع معين",
+    "اضغط المستندات في ملف",
+    "جمّع الأوراق بالمحتوى",
+    "تنبأ بطول دقيق جداً"
+   ],
+   "options_en": [
+    "assign a topic label",
+    "compress documents to file",
+    "group papers by content",
+    "predict exact length"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It groups papers by their content, gathering documents on the same topic.",
+   "explanation_ar": "يجمّع الأوراق حسب محتواها، فيضم وثائق الموضوع نفسه."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c8_app_image",
+   "bloom_level": "Remember",
+   "question": "How does clustering help in image analysis?",
+   "question_ar": "كيف يساعد التجميع في تحليل الصور؟",
+   "options": [
+    "predict exact image size",
+    "assign an image label",
+    "compress image to file",
+    "group similar pixels"
+   ],
+   "options_ar": [
+    "تنبأ بحجم صورة دقيق",
+    "أسند تسمية صورة معينة",
+    "اضغط الصورة في ملف",
+    "جمّع بكسلات متشابهة"
+   ],
+   "options_en": [
+    "predict exact image size",
+    "assign an image label",
+    "compress image to file",
+    "group similar pixels"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It groups pixels with similar properties to segment regions of an image.",
+   "explanation_ar": "يجمّع البكسلات بخصائص متشابهة لتقسيم مناطق الصورة."
+  }
+ ]
+}
