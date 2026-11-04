@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T20:53:49+03:00
+> Generated at: 2026-11-04T21:08:38+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **68** |
-| Portal shell `VERSION` | **1.11.0** |
+| Live content version | **69** |
+| Portal shell `VERSION` | **1.11.1** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 166 banks / 1641 questions · live 164 banks / 1623 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 170 banks / 1675 questions · live 166 banks / 1641 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
@@ -33,7 +33,7 @@
 | `01_Cyber_Security` | 6 | 59 | 709 | 59 | 709 | — |
 | `02_English_Language` | 3 | 18 | 184 | 18 | 184 | — |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
-| `04_Advanced_Software_Eng` | 3 | 10 | 66 | 8 | 48 | **DIFF** |
+| `04_Advanced_Software_Eng` | 4 | 14 | 100 | 10 | 66 | **DIFF** |
 | `05_Soft_Computing` | 5 | 20 | 150 | 20 | 150 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
@@ -66,6 +66,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `03_Data_Mining` | 08 | 8 | 64 | 0 | 7/6 | 4/3 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 01 | 4 | 28 | 0 | 3/1 | 2/1 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 02 | 4 | 28 | 0 | 2/2 | 1/3 | 0 | 0 | clean |
+| `04_Advanced_Software_Eng` | 03 | 4 | 34 | 0 | 5/5 | 1/4 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 05 | 2 | 10 | 0 | 8/4 | 0/1 | 0 | 2 | needs work |
 | `05_Soft_Computing` | 01 | 3 | 18 | 2 | 2/4 | 2/2 | 0 | 0 | needs work |
 | `05_Soft_Computing` | 02 | 3 | 20 | 0 | 2/1 | 0/2 | 0 | 0 | clean |

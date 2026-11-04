@@ -1,0 +1,305 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch03_T03_Modelling_Context_DFD_ER_UseCase",
+ "topic": "Modelling: Context, DFD, ER and Use Cases",
+ "topic_ar": "النمذجة: السياق والتدفق والكيانات وحالات الاستخدام",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch3_context_diagram",
+   "bloom_level": "Understand",
+   "question": "A context diagram explains...",
+   "question_ar": "مخطط السياق يوضح...",
+   "options": [
+    "the overview of the system",
+    "the internal view of it",
+    "the entities of the system",
+    "none of the above here"
+   ],
+   "options_ar": [
+    "نظرة عامة على النظام",
+    "الرؤية الداخلية للنظام",
+    "كيانات النظام كلها",
+    "لا شيء مما سبق هنا"
+   ],
+   "options_en": [
+    "the overview of the system",
+    "the internal view of it",
+    "the entities of the system",
+    "none of the above here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The context diagram shows the system as one bubble with its external entities around it.",
+   "explanation_ar": "مخطط السياق يعرض النظام كفقاعة واحدة تحيط بها كياناته الخارجية."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch3_dfd_stands",
+   "bloom_level": "Remember",
+   "question": "DFD stands for...",
+   "question_ar": "DFD تعني...",
+   "options": [
+    "None of the above answers",
+    "Data flow diagram itself",
+    "Data Flow design method",
+    "Descriptive functional design"
+   ],
+   "options_ar": [
+    "لا شيء مما سبق هنا",
+    "مخطط تدفق البيانات",
+    "تصميم تدفق البيانات",
+    "التصميم الوظيفي الوصفي"
+   ],
+   "options_en": [
+    "None of the above answers",
+    "Data flow diagram itself",
+    "Data Flow design method",
+    "Descriptive functional design"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "DFD is the Data Flow Diagram, which traces data moving through processes and stores.",
+   "explanation_ar": "DFD هو مخطط تدفق البيانات، وهو يتتبع البيانات بين العمليات والمخازن."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch3_level0",
+   "bloom_level": "Understand",
+   "question": "A level-0 DFD is similar to...",
+   "question_ar": "مخطط التدفق من المستوى صفر يشبه...",
+   "options": [
+    "System diagram",
+    "None of the above",
+    "Context diagram",
+    "Use case diagram"
+   ],
+   "options_ar": [
+    "مخطط النظام كله هنا",
+    "لا شيء مما سبق هنا",
+    "مخطط السياق نفسه هنا",
+    "مخطط حالات الاستخدام"
+   ],
+   "options_en": [
+    "System diagram",
+    "None of the above",
+    "Context diagram",
+    "Use case diagram"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Level 0 shows the whole system against its environment, which is what a context diagram does.",
+   "explanation_ar": "المستوى صفر يعرض النظام كله مقابل بيئته، وهذا ما يفعله مخطط السياق."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch3_erd_stands",
+   "bloom_level": "Remember",
+   "question": "ERD stands for...",
+   "question_ar": "ERD تعني...",
+   "options": [
+    "Exit related diagram here",
+    "Entity relationship design",
+    "Exit related design here",
+    "Entity relationship diagram"
+   ],
+   "options_ar": [
+    "مخطط الخروج المترابط هنا",
+    "تصميم العلاقات بين الكيانات",
+    "تصميم الخروج المترابط",
+    "مخطط العلاقات بين الكيانات"
+   ],
+   "options_en": [
+    "Exit related diagram here",
+    "Entity relationship design",
+    "Exit related design here",
+    "Entity relationship diagram"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "ERD is the Entity Relationship Diagram, the data model of entities and their links.",
+   "explanation_ar": "ERD هو مخطط العلاقات بين الكيانات، أي نموذج بيانات الكيانات وروابطها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch3_er_concepts",
+   "bloom_level": "Remember",
+   "question": "The basic concepts of the ER model are...",
+   "question_ar": "المفاهيم الأساسية لنموذج الكيانات هي...",
+   "options": [
+    "Entity, relationship and attribute",
+    "Entity and relationship only here",
+    "Relationships and keys only here",
+    "Entity, effects and relationships"
+   ],
+   "options_ar": [
+    "الكيان والعلاقة والصفة",
+    "الكيان والعلاقة فقط هنا",
+    "العلاقات والمفاتيح فقط",
+    "الكيان والآثار والعلاقة"
+   ],
+   "options_en": [
+    "Entity, relationship and attribute",
+    "Entity and relationship only here",
+    "Relationships and keys only here",
+    "Entity, effects and relationships"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The ER model is built from entities, their relationships and their attributes.",
+   "explanation_ar": "نموذج الكيانات مبني من الكيانات وعلاقاتها وصفاتها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch3_dfd_depicts",
+   "bloom_level": "Understand",
+   "question": "The DFD depicts...",
+   "question_ar": "مخطط تدفق البيانات يعرض...",
+   "options": [
+    "none of the above here",
+    "the flow of data here",
+    "the flow of control here",
+    "both of the two above"
+   ],
+   "options_ar": [
+    "لا شيء مما سبق هنا",
+    "تدفق البيانات هنا",
+    "تدفق التحكم هنا",
+    "كلاهما معاً هنا"
+   ],
+   "options_en": [
+    "none of the above here",
+    "the flow of data here",
+    "the flow of control here",
+    "both of the two above"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A DFD tracks data, not control; control flow belongs to other diagrams.",
+   "explanation_ar": "المخطط يتتبع البيانات لا التحكم، فتدفق التحكم يخص مخططات أخرى."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch3_black_hole",
+   "bloom_level": "Analyze",
+   "question": "In DFD terms, what is a black hole defect?",
+   "question_ar": "في مخططات التدفق، ما عيب الثقب الأسود؟",
+   "options": [
+    "a data store that nobody ever accesses",
+    "a data flow joining two external entities",
+    "a process with input flows but no output",
+    "a process that produces outputs without any input"
+   ],
+   "options_ar": [
+    "مخزن بيانات لا يُقرأ أبداً",
+    "تدفق يربط كيانين خارجيين",
+    "عملية لها مدخلات بلا مخرجات",
+    "عملية تنتج مخرجات بلا مدخلات"
+   ],
+   "options_en": [
+    "a data store that nobody ever accesses",
+    "a data flow joining two external entities",
+    "a process with input flows but no output",
+    "a process that produces outputs without any input"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A black hole swallows data: flows go in and nothing comes out of the process.",
+   "explanation_ar": "الثقب الأسود يبتلع البيانات: تدخل التدفقات ولا يخرج منها شيء."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch3_illegal_flow",
+   "bloom_level": "Analyze",
+   "question": "Which data flow connection is illegal in a valid DFD?",
+   "question_ar": "أي اتصال تدفق غير قانوني في مخطط صحيح؟",
+   "options": [
+    "a process connected to a process",
+    "a process connected to a data store",
+    "an external entity to a process",
+    "a store linked straight to a store"
+   ],
+   "options_ar": [
+    "عملية إلى عملية هنا",
+    "عملية إلى مخزن بيانات",
+    "كيان خارجي إلى عملية",
+    "مخزن إلى مخزن مباشرة"
+   ],
+   "options_en": [
+    "a process connected to a process",
+    "a process connected to a data store",
+    "an external entity to a process",
+    "a store linked straight to a store"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Two data stores cannot feed each other directly; a process must sit between them.",
+   "explanation_ar": "لا يمكن لمخزنين أن يتغذيا من بعضهما مباشرة، فلا بد من عملية بينهما."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch3_data_dict_braces",
+   "bloom_level": "Understand",
+   "question": "In the data dictionary notation, what does the pair of braces indicate?",
+   "question_ar": "في ترميز قاموس البيانات، ماذا يدل زوج الأقواس المعقوفة؟",
+   "options": [
+    "repetition with permitted counts",
+    "an optional data element in it",
+    "a choice of one alternative here",
+    "a sequential composition here"
+   ],
+   "options_ar": [
+    "تكرار عنصر بحدود مسموحة",
+    "عنصر بيانات اختياري هنا",
+    "اختيار بديل واحد فقط",
+    "تسلسل عناصر متتابعة"
+   ],
+   "options_en": [
+    "repetition with permitted counts",
+    "an optional data element in it",
+    "a choice of one alternative here",
+    "a sequential composition here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Braces mean the element may repeat, and the adjacent bounds fix how many times.",
+   "explanation_ar": "الأقواس تعني أن العنصر قد يتكرر، والحدود المجاورة تحدد عدد المرات."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch3_include_extend",
+   "bloom_level": "Analyze",
+   "question": "In use case modelling, how does include differ from extend?",
+   "question_ar": "في نمذجة حالات الاستخدام، كيف يختلف include عن extend؟",
+   "options": [
+    "the two relationships are functionally identical to me now",
+    "include always runs shared behaviour; extend adds it optionally",
+    "include is optional while extend is mandatory in it now",
+    "include links actors only; extend links use cases only here now"
+   ],
+   "options_ar": [
+    "الاثنان متطابقان تماماً هنا",
+    "include دائم التنفيذ وextend شرطي",
+    "include اختياري وextend إلزامي",
+    "include للفاعلين وextend للحالات"
+   ],
+   "options_en": [
+    "the two relationships are functionally identical to me now",
+    "include always runs shared behaviour; extend adds it optionally",
+    "include is optional while extend is mandatory in it now",
+    "include links actors only; extend links use cases only here now"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Include always pulls in shared behaviour; extend adds behaviour only when a condition holds.",
+   "explanation_ar": "include يسحب السلوك المشترك دائماً، أما extend فيضيفه عند تحقق شرط."
+  }
+ ]
+}
