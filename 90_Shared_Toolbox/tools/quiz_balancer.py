@@ -72,6 +72,7 @@ def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str 
         return quiz_data
 
     letters = ["A", "B", "C", "D"]
+    en_only = str(quiz_data.get("lang") or "").lower() == "en"
 
     # 1. Resolve subject metadata
     subj_slug = subject_id or quiz_data.get("subject_id") or quiz_data.get("subject") or "00_STUDIO_HUB"
@@ -116,7 +117,10 @@ def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str 
 
         # Question prompts (bilingual)
         q_en = q.get("question") or q.get("text_en") or q.get("text") or q.get("question_ar") or ""
-        q_ar = q.get("question_ar") or q.get("text") or q.get("question") or ""
+        if en_only:
+            q_ar = q.get("question_ar") or ""
+        else:
+            q_ar = q.get("question_ar") or q.get("text") or q.get("question") or ""
         q["question"] = q_en
         q["question_ar"] = q_ar
 
@@ -149,14 +153,17 @@ def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str 
 
         # Options AR / EN
         raw_opts_ar = q.get("options_ar")
-        if isinstance(raw_opts_ar, dict):
+        if en_only:
+            opts_ar = raw_opts_ar if isinstance(raw_opts_ar, list) else []
+        elif isinstance(raw_opts_ar, dict):
             opts_ar = [str(raw_opts_ar.get(l, "")) for l in letters]
         elif isinstance(raw_opts_ar, list):
             opts_ar = [str(item) for item in raw_opts_ar]
         else:
             opts_ar = list(opts_list)
-        while len(opts_ar) < 4:
-            opts_ar.append("")
+        if not en_only:
+            while len(opts_ar) < 4:
+                opts_ar.append("")
         q["options_ar"] = opts_ar[:4]
 
         raw_opts_en = q.get("options_en")
@@ -189,6 +196,11 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
     if not isinstance(quiz_data, dict):
         return False, ["Quiz data must be a JSON dictionary."]
 
+    # A bank may declare itself single-language (e.g. an English course where
+    # translating the stem would defeat the exercise). Then the Arabic mirror
+    # fields are intentionally empty and must not be required.
+    en_only = str(quiz_data.get("lang") or "").lower() == "en"
+
     if quiz_data.get("schema_version") != 2:
         errors.append(f"Invalid or missing 'schema_version': expected 2, got {quiz_data.get('schema_version')!r}")
 
@@ -201,6 +213,8 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
         ("topic", str),
         ("instructor_ar", str),
     ]
+    if en_only:
+        top_keys = [k for k in top_keys if k[0] != "instructor_ar"]
     for key, expected_type in top_keys:
         val = quiz_data.get(key)
         if val is None or not isinstance(val, expected_type) or (isinstance(val, str) and not val.strip()):
@@ -223,7 +237,10 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
             errors.append(f"Question {i+1} must be a dictionary.")
             continue
 
-        for prop in ["id", "concept_id", "question", "question_ar", "explanation"]:
+        required_props = ["id", "concept_id", "question", "explanation"]
+        if not en_only:
+            required_props.insert(3, "question_ar")
+        for prop in required_props:
             val = q.get(prop)
             if not isinstance(val, str) or not val.strip():
                 errors.append(f"Q{i+1} ({qid}): Missing or empty required property '{prop}'.")
@@ -232,7 +249,8 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
         if not isinstance(bloom, str) or bloom not in allowed_bloom:
             errors.append(f"Q{i+1} ({qid}): Invalid bloom_level '{bloom}'. Expected one of {sorted(allowed_bloom)}.")
 
-        for opt_key in ["options", "options_ar", "options_en"]:
+        opt_keys = ["options", "options_en"] if en_only else ["options", "options_ar", "options_en"]
+        for opt_key in opt_keys:
             arr = q.get(opt_key)
             if not isinstance(arr, list) or len(arr) != 4:
                 errors.append(f"Q{i+1} ({qid}): '{opt_key}' must be an array of exactly 4 strings.")
@@ -431,6 +449,7 @@ def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_le
     total = len(questions)
     if total == 0:
         return False, ["Quiz contains zero questions."]
+    en_only = str(quiz_data.get("lang") or "").lower() == "en"
 
     # 1. Check length disparity
     stats = analyze_quiz(quiz_data)
@@ -481,7 +500,7 @@ def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_le
             errors.append(f"Q{i+1} ({qid}): Missing 'concept_id' tag.")
         if not q.get("bloom_level"):
             errors.append(f"Q{i+1} ({qid}): Missing 'bloom_level' tag.")
-        if not q.get("question_ar"):
+        if not en_only and not q.get("question_ar"):
             errors.append(f"Q{i+1} ({qid}): Missing 'question_ar' translation.")
 
     is_valid = len(errors) == 0

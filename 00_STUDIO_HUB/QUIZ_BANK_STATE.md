@@ -10,7 +10,7 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T16:19:10+03:00
+> Generated at: 2026-11-04T18:20:07+03:00
 
 ## Current versions
 
@@ -24,14 +24,14 @@
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 148 banks / 1441 questions · live 148 banks / 1441 questions · MATCH
+**Totals:** vault 156 banks / 1537 questions · live 148 banks / 1441 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
 | Subject | Chapters | Banks | Questions | Live banks | Live questions | Drift |
 |---|---:|---:|---:|---:|---:|---|
 | `01_Cyber_Security` | 6 | 59 | 709 | 59 | 709 | — |
-| `02_English_Language` | 2 | 4 | 20 | 4 | 20 | — |
+| `02_English_Language` | 2 | 12 | 116 | 4 | 20 | **DIFF** |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
 | `04_Advanced_Software_Eng` | 3 | 6 | 30 | 6 | 30 | — |
 | `05_Soft_Computing` | 5 | 20 | 150 | 20 | 150 | — |
@@ -53,8 +53,8 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `01_Cyber_Security` | 04 | 9 | 118 | 0 | 18/15 | 17/15 | 0 | 0 | clean |
 | `01_Cyber_Security` | 05 | 17 | 221 | 0 | 36/30 | 32/24 | 0 | 0 | clean |
 | `01_Cyber_Security` | 06 | 10 | 104 | 0 | 18/16 | 12/12 | 0 | 0 | clean |
-| `02_English_Language` | 01 | 2 | 10 | 1 | 5/5 | 2/2 | 0 | 12 | needs work |
-| `02_English_Language` | 02 | 2 | 10 | 2 | 4/3 | 2/3 | 0 | 5 | needs work |
+| `02_English_Language` | 01 | 6 | 53 | 0 | 4/0 | 6/0 | 0 | 0 | clean |
+| `02_English_Language` | 02 | 6 | 63 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
 | `03_Data_Mining` | 01 | 5 | 35 | 7 | 0/0 | 2/2 | 0 | 0 | needs work |
 | `03_Data_Mining` | 02 | 7 | 69 | 23 | 9/10 | 10/7 | 16 | 0 | needs work |
 | `03_Data_Mining` | 03 | 7 | 55 | 17 | 7/11 | 5/5 | 0 | 0 | needs work |
@@ -78,8 +78,6 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 
 - `01_Cyber_Security` Ch01 — 7 spread violations
 - `01_Cyber_Security` Ch02 — 8 spread violations
-- `02_English_Language` Ch01 — 1 handout refs; 12 spread violations; answer-length tell
-- `02_English_Language` Ch02 — 2 handout refs; 5 spread violations; answer-length tell
 - `03_Data_Mining` Ch01 — 7 handout refs
 - `03_Data_Mining` Ch02 — 23 handout refs; 16 formula options
 - `03_Data_Mining` Ch03 — 17 handout refs

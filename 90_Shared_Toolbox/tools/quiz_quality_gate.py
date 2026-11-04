@@ -129,6 +129,7 @@ def main() -> int:
             continue
         processed_banks += 1
         chapter_counts[chapter] += len(bank["questions"])
+        en_only = str(bank.get("lang") or "").lower() == "en"
         local_ids: set[str] = set()
 
         for q in bank["questions"]:
@@ -154,16 +155,17 @@ def main() -> int:
             stem_ar = q.get("question_ar")
             if not isinstance(stem, str) or not stem.strip():
                 errors.append(f"{label}: empty English stem")
-            if not isinstance(stem_ar, str) or not stem_ar.strip():
+            if not en_only and (not isinstance(stem_ar, str) or not stem_ar.strip()):
                 errors.append(f"{label}: empty Arabic stem")
-            if isinstance(stem, str) and isinstance(stem_ar, str):
+            if isinstance(stem, str) and (en_only or isinstance(stem_ar, str)):
                 key = (chapter, exact_key(stem))
                 if key in seen_stems:
                     old_path, old_qid = seen_stems[key]
                     errors.append(f"{label}: exact duplicate English stem (also {old_path.name}/{old_qid})")
                 else:
                     seen_stems[key] = (path, qid)
-                if stem.count("?") > 1 or stem_ar.count("؟") > 1:
+                ar_marks = stem_ar.count("؟") if isinstance(stem_ar, str) else 0
+                if stem.count("?") > 1 or ar_marks > 1:
                     warnings.append(f"{label}: multiple question marks; inspect for a compound stem")
 
             correct = q.get("correct")
@@ -176,7 +178,8 @@ def main() -> int:
             elif correct is not None and LETTERS[correct] != answer:
                 errors.append(f"{label}: answer/correct mismatch ({answer} vs {correct})")
 
-            for field in ("options", "options_en", "options_ar"):
+            opt_fields = ("options", "options_en") if en_only else ("options", "options_en", "options_ar")
+            for field in opt_fields:
                 opts = q.get(field)
                 if not isinstance(opts, list) or len(opts) != 4 or any(not isinstance(x, str) or not x.strip() for x in opts):
                     errors.append(f"{label}: {field} must contain four non-empty strings")
@@ -207,7 +210,8 @@ def main() -> int:
                             chapter_shape[chapter][field]["key_ratio"] += 1
                             warnings.append(f"{label}: {field} key/distractor-average ratio {answer_ratio:.2f} is outside {KEY_RATIO_MIN:.2f}..{KEY_RATIO_MAX:.2f}")
 
-            for field in ("question", "question_ar", "explanation", "explanation_ar"):
+            text_fields = ("question", "explanation") if en_only else ("question", "question_ar", "explanation", "explanation_ar")
+            for field in text_fields:
                 text = q.get(field)
                 if not isinstance(text, str) or not text.strip():
                     errors.append(f"{label}: missing {field}")
