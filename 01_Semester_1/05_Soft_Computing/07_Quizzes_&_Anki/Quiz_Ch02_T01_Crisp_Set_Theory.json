@@ -242,6 +242,64 @@
    "correct": 3,
    "explanation": "The complement holds every element of the universe that is not in A.",
    "explanation_ar": "المتمم يحوي كل عنصر في الفضاء ليس في A."
+  },
+  {
+   "id": "q9",
+   "concept_id": "boolean_vs_fuzzy_sets",
+   "bloom_level": "Analyze",
+   "question": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?",
+   "question_ar": "كيف تختلف دالة الانتماء في المجموعات الضبابية (Fuzzy Set) جذرياً عن الدالة المميزة للمجموعات التقليدية الحاسمة (Crisp Set)؟",
+   "options": [
+    "Fuzzy sets are restricted to statistical counting, whereas crisp sets apply to digital signal filtering.",
+    "Crisp sets are strictly binary {0, 1}, whereas fuzzy sets assign continuous membership degrees in the range [0, 1].",
+    "Crisp sets permit element overlap across contradictory classes, whereas fuzzy sets prevent any classification overlap.",
+    "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
+   ],
+   "options_ar": [
+    "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
+    "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
+    "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
+    "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط."
+   ],
+   "options_en": [
+    "Fuzzy sets are restricted to statistical counting, whereas crisp sets apply to digital signal filtering.",
+    "Crisp sets are strictly binary {0, 1}, whereas fuzzy sets assign continuous membership degrees in the range [0, 1].",
+    "Crisp sets permit element overlap across contradictory classes, whereas fuzzy sets prevent any classification overlap.",
+    "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
+   ],
+   "answer": "B",
+   "explanation": "A crisp set gives an element full membership or none, while a fuzzy set allows any continuous grade between zero and one, such as warm water at 0.7.",
+   "correct": 1,
+   "explanation_ar": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3)."
+  },
+  {
+   "id": "q10",
+   "concept_id": "crisp_vs_fuzzy_logic",
+   "bloom_level": "Understand",
+   "question": "Crisp logic is bi-valued while fuzzy logic is best described as:",
+   "question_ar": "في مقارنة الكتيّب، المنطق الحاسم ثنائي القيمة، أما المنطق الضبابي فأفضل وصف له أنه:",
+   "options": [
+    "Tri-valued, using only zero, one half, and the whole number one.",
+    "Infinite-valued, with graded membership across the interval [0, 1].",
+    "Also bi-valued, but with a wider tolerance band around each threshold.",
+    "Probability-valued, summing to exactly one across all universe elements."
+   ],
+   "options_ar": [
+    "ثلاثي القيمة، يستخدم فقط الصفر والنصف والواحد الصحيح.",
+    "لا نهائي القيمة، بعضوية متدرجة على المجال [0, 1].",
+    "ثنائي القيمة أيضاً لكن مع نطاق تسامح أوسع حول كل عتبة.",
+    "احتمالي القيمة، مجموعه يساوي الواحد على كل عناصر الكون."
+   ],
+   "options_en": [
+    "Tri-valued, using only zero, one half, and the whole number one.",
+    "Infinite-valued, with graded membership across the interval [0, 1].",
+    "Also bi-valued, but with a wider tolerance band around each threshold.",
+    "Probability-valued, summing to exactly one across all universe elements."
+   ],
+   "answer": "B",
+   "explanation": "Crisp logic is bi-valued, while fuzzy logic is infinite-valued because membership accepts any real number in the interval from zero to one.",
+   "correct": 1,
+   "explanation_ar": "الكتيّب يقابل بين المنطق الحاسم ثنائي القيمة (bi-valued) والمنطق الضبابي لا نهائي القيمة (infinite-valued)، لأن درجة العضوية تقبل أي عدد حقيقي في المجال [0, 1] وليس قيمتين فقط."
   }
  ]
 }

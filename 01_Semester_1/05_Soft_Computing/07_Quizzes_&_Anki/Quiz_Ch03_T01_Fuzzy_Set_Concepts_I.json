@@ -242,6 +242,93 @@
    "correct": 3,
    "explanation": "Cardinality is the sum of all membership grades over the universe.",
    "explanation_ar": "الأساسية هي مجموع كل درجات الانتماء على الفضاء."
+  },
+  {
+   "id": "q9",
+   "concept_id": "membership_not_probability",
+   "bloom_level": "Analyze",
+   "question": "A fuzzy set assigns New Delhi a comfort grade of 0.7. What does this value mean?",
+   "question_ar": "مجموعة ضبابية تعطي نيودلهي درجة راحة 0.7. ماذا تعني هذه القيمة؟",
+   "options": [
+    "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city.",
+    "New Delhi is comfortable with a probability of exactly 0.7, like any random event.",
+    "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability.",
+    "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
+   ],
+   "options_ar": [
+    "أن سبعين بالمئة من الزوار يجدون نيودلهي مدينة مريحة فعلاً.",
+    "أن نيودلهي مريحة باحتمال يساوي 0.7 تماماً كأي حدث عشوائي.",
+    "أن نيودلهي متوافقة مع المفهوم الضبابي بدرجة 0.7 وليست احتمالاً.",
+    "أن نيودلهي تنتمي للمجموعة الحاسمة في 0.7 من كل الحالات في هذا المثال."
+   ],
+   "options_en": [
+    "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city.",
+    "New Delhi is comfortable with a probability of exactly 0.7, like any random event.",
+    "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability.",
+    "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
+   ],
+   "answer": "C",
+   "explanation": "A membership grade is the degree of compatibility with a vague concept, not the probability that an event occurs.",
+   "correct": 2,
+   "explanation_ar": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث."
+  },
+  {
+   "id": "q10",
+   "concept_id": "membership_function_range",
+   "bloom_level": "Remember",
+   "question": "How is the membership function of a fuzzy set formally written?",
+   "question_ar": "كيف تُكتب دالة العضوية لمجموعة ضبابية كتابةً رسمية؟",
+   "options": [
+    "mu_A : X to [0, 1), so the upper endpoint is excluded from the range.",
+    "mu_A : X to (0, 1), so both endpoints zero and one are excluded.",
+    "mu_A : X to [0, 1], so both endpoints zero and one are included.",
+    "mu_A : X to {0, 1}, so only the two endpoints are permitted."
+   ],
+   "options_ar": [
+    "μ_Ã : X → [0, 1) بحيث يُستبعد الطرف الأعلى من المجال.",
+    "μ_Ã : X → (0, 1) بحيث يُستبعد الطرفان صفر وواحد.",
+    "μ_Ã : X → [0, 1] بحيث يُضمَّن الطرفان صفر وواحد معاً.",
+    "μ_Ã : X → {0, 1} بحيث يُسمح بالطرفين فقط دون غيرهما."
+   ],
+   "options_en": [
+    "mu_A : X to [0, 1), so the upper endpoint is excluded from the range.",
+    "mu_A : X to (0, 1), so both endpoints zero and one are excluded.",
+    "mu_A : X to [0, 1], so both endpoints zero and one are included.",
+    "mu_A : X to {0, 1}, so only the two endpoints are permitted."
+   ],
+   "answer": "C",
+   "explanation": "The membership function maps each element of the universe into the closed interval from zero to one, so both endpoints are allowed.",
+   "correct": 2,
+   "explanation_ar": "التعريف الرسمي: دالة العضوية ترفع كل عنصر من مجال الخطاب X إلى درجة في المجال [0, 1] والطرفان مضغمان (both inclusive) — أي أن الصفر والواحد قيمتان مشروعتان تماماً. μ = 1 انتماء كامل، μ = 0 لا انتماء، وما بينهما انتماء جزئي."
+  },
+  {
+   "id": "q11",
+   "concept_id": "membership_zero",
+   "bloom_level": "Understand",
+   "question": "What does a membership grade of zero mean?",
+   "question_ar": "ماذا تعني درجة عضوية تساوي صفراً؟",
+   "options": [
+    "the full membership here",
+    "the partial membership",
+    "no membership at all",
+    "a probability of one"
+   ],
+   "options_en": [
+    "the full membership here",
+    "the partial membership",
+    "no membership at all",
+    "a probability of one"
+   ],
+   "options_ar": [
+    "انتماء كامل هنا",
+    "انتماء جزئي هنا",
+    "لا انتماء إطلاقاً",
+    "احتمال يساوي واحداً"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Zero is the bottom of the range, so the element is not in the fuzzy set at all.",
+   "explanation_ar": "الصفر هو أدنى المدى، فالعنصر ليس في المجموعة الضبابية إطلاقاً."
   }
  ]
 }

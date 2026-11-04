@@ -1,18 +1,105 @@
 {
  "schema_version": 2,
  "subject_id": "05_Soft_Computing",
- "subject_title": "الحوسبة اللينة",
+ "subject_title": "الحوسبة المرنة",
  "semester": 1,
  "semester_label": "كورس أول",
- "quiz_id": "Quiz_Ch01_ModelB_Soft_Computing_Intro",
- "topic": "Introduction to Soft Computing — Model B",
- "topic_ar": "مقدمة في الحوسبة الناعمة: المفاهيم والأدوات — النموذج ب",
  "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
  "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
  "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch01_T02_Paradigms_ANN_And_EC",
+ "topic": "Soft Computing Paradigms: ANN and Evolutionary Computation",
+ "topic_ar": "أُطُر الحوسبة الناعمة: الشبكات العصبية والحساب التطوري",
  "questions": [
   {
    "id": "q1",
+   "concept_id": "biological_neuron_mapping",
+   "bloom_level": "Understand",
+   "question": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?",
+   "question_ar": "في المطابقة الهيكلية بين العصبون البيولوجي والشبكة العصبية الاصطناعية (ANN)، أي جزء حيوي يقابل المدخلات والأوزان المشبكية؟",
+   "options": [
+    "The Axon which conducts the final output signal to neighboring downstream neurons in this mapping.",
+    "The cell body soma which performs linear summation of incoming nervous impulses.",
+    "The Dendrites and Synapses which receive signals and modulate their relative connection strength.",
+    "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
+   ],
+   "options_ar": [
+    "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة في هذا الربط.",
+    "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
+    "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
+    "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة."
+   ],
+   "options_en": [
+    "The Axon which conducts the final output signal to neighboring downstream neurons in this mapping.",
+    "The cell body soma which performs linear summation of incoming nervous impulses.",
+    "The Dendrites and Synapses which receive signals and modulate their relative connection strength.",
+    "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
+   ],
+   "answer": "C",
+   "explanation": "Dendrites map to the inputs, synapses to the weights, the soma to summation and activation, and the axon to the output.",
+   "correct": 2,
+   "explanation_ar": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output)."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ann_learns_from",
+   "bloom_level": "Understand",
+   "question": "Where does an artificial neural network get its knowledge?",
+   "question_ar": "من أين تستمد الشبكة العصبية معرفتها؟",
+   "options": [
+    "from hand written rules here",
+    "from input and output examples",
+    "from the database schema here",
+    "from the hardware clock here"
+   ],
+   "options_en": [
+    "from hand written rules here",
+    "from input and output examples",
+    "from the database schema here",
+    "from the hardware clock here"
+   ],
+   "options_ar": [
+    "من قواعد مكتوبة يدوياً الآن",
+    "من أمثلة الإدخال والإخراج",
+    "من مخطط قاعدة البيانات",
+    "من ساعة العتاد هنا هنا"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "An ANN is trained on pairs of inputs and outputs, and it generalises from them.",
+   "explanation_ar": "الشبكة تُدرَّب على أزواج من المدخلات والمخرجات، وتعمّم منها."
+  },
+  {
+   "id": "q3",
+   "concept_id": "pillar_optimisation",
+   "bloom_level": "Remember",
+   "question": "Which soft-computing pillar handles optimisation?",
+   "question_ar": "أي ركن في الحوسبة الناعمة يتولى الاستمثال؟",
+   "options": [
+    "fuzzy logic here now",
+    "neural networks here now",
+    "evolutionary computation",
+    "probabilistic reasoning"
+   ],
+   "options_en": [
+    "fuzzy logic here now",
+    "neural networks here now",
+    "evolutionary computation",
+    "probabilistic reasoning"
+   ],
+   "options_ar": [
+    "المنطق الضبابي",
+    "الشبكات العصبية",
+    "الحساب التطوري",
+    "استدلال احتمالي"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Evolutionary computation searches for good solutions, which is the optimisation pillar.",
+   "explanation_ar": "الحساب التطوري يبحث عن حلول جيدة، وهو ركن الاستمثال."
+  },
+  {
+   "id": "q4",
    "concept_id": "brain_vs_computer_energy_efficiency",
    "bloom_level": "Analyze",
    "question": "The brain runs at about a hundred hertz against a trillion hertz for a classical computer, yet the brain spends far less energy on each operation. What explains that gap?",
@@ -41,36 +128,7 @@
    "explanation_ar": "المقارنة في الشريحة تبين أن الدماغ أبطأ في تردد الساعة، لكنه يستهلك $10^{-16}$ جول لكل عملية مقابل $10^{-6}$ للحاسوب. مصدر التفوق هو التنظيم المتوازي الموزع وليس سرعة الساعة."
   },
   {
-   "id": "q2",
-   "concept_id": "few_facts_uncertainty",
-   "bloom_level": "Understand",
-   "question": "What does uncertainty mean for a soft-computing algorithm?",
-   "question_ar": "ماذا تعني خاصية عدم اليقين في خوارزمية الحوسبة الناعمة؟",
-   "options": [
-    "It deletes all random elements from the internal search process.",
-    "It may return a different result each time for the same problem.",
-    "It guarantees one fixed answer for every level of input noise.",
-    "It refuses to start unless every input value is fully precise."
-   ],
-   "options_ar": [
-    "أن الخوارزمية تحذف كل عناصر العشوائية من عملية البحث الداخلية.",
-    "أن الخوارزمية قد تعطي نتيجة مختلفة في كل تشغيل للمسألة نفسها.",
-    "أن الخوارزمية تضمن ناتجاً ثابتاً واحداً لكل مستوى من ضوضاء الإدخال.",
-    "أن الخوارزمية ترفض البدء ما لم تكن كل قيمة إدخال دقيقة تماماً."
-   ],
-   "options_en": [
-    "It deletes all random elements from the internal search process.",
-    "It may return a different result each time for the same problem.",
-    "It guarantees one fixed answer for every level of input noise.",
-    "It refuses to start unless every input value is fully precise."
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Uncertainty means the soft-computing algorithm may give different results every time for the same problem. This is treated as a property of the paradigm rather than a defect.",
-   "explanation_ar": "عدم اليقين يعني أن خوارزمية الحوسبة الناعمة قد تعطي نتائج مختلفة في كل مرة للمسألة نفسها، وهذه خاصية في النمط لا خطأ."
-  },
-  {
-   "id": "q3",
+   "id": "q5",
    "concept_id": "ann_training_knowledge_storage",
    "bloom_level": "Apply",
    "question": "After an Artificial Neural Network is trained on input-output pairs, where is the learned knowledge actually stored?",
@@ -99,7 +157,7 @@
    "explanation_ar": "تنتهي مرحلة التدريب بمعرفة تمثلها مجموعة من الأوزان المشبكية والانحيازات المحسّنة، ثم تُطبَّق هذه الأوزان على بيانات غير مرئية في مرحلة التحقق لإنتاج التنبؤ."
   },
   {
-   "id": "q4",
+   "id": "q6",
    "concept_id": "evolutionary_algorithm_cycle",
    "bloom_level": "Remember",
    "question": "Which ordering matches the evolutionary algorithm cycle?",
@@ -128,7 +186,7 @@
    "explanation_ar": "تبدأ الحلقة بالتهيئة، ثم تقييم كل حل، ثم التوقف عند تحقق الشرط، وإلا يجري الانتخاب والتحوير قبل العودة إلى التقييم. والتحوير يولّد الجيل التالي الذي يُقيَّم من جديد."
   },
   {
-   "id": "q5",
+   "id": "q7",
    "concept_id": "global_optimization_advantage",
    "bloom_level": "Evaluate",
    "question": "A team's local search keeps returning the same poor design. Which soft-computing advantage does soft computing offer as the remedy?",
@@ -157,7 +215,7 @@
    "explanation_ar": "استراتيجيات الاستمثال الشامل تمنع الحلول من السقوط في الحلول المحلية، أما بقية الخيارات فتصف سمات لا تنطبق."
   },
   {
-   "id": "q6",
+   "id": "q8",
    "concept_id": "brain_parallel",
    "bloom_level": "Understand",
    "question": "What does the brain do that a classic computer does not?",
@@ -186,7 +244,7 @@
    "explanation_ar": "الدماغ يعالج إشارات كثيرة في آن واحد، والحاسوب التقليدي يسير بساعة واحدة."
   },
   {
-   "id": "q7",
+   "id": "q9",
    "concept_id": "ann_stores_weights",
    "bloom_level": "Understand",
    "question": "What does a trained artificial neural network store?",
@@ -215,7 +273,7 @@
    "explanation_ar": "التدريب يترك أوزان الروابط، ولا يحتفظ ببيانات التدريب نفسها."
   },
   {
-   "id": "q8",
+   "id": "q10",
    "concept_id": "evo_cycle_after",
    "bloom_level": "Understand",
    "question": "Which step follows mutation in the evolutionary cycle?",

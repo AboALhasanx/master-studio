@@ -242,6 +242,35 @@
    "correct": 3,
    "explanation": "The cut of a union equals the union of the cuts, and the same holds for intersection.",
    "explanation_ar": "مقطع الاتحاد يساوي اتحاد المقاطع، وكذلك للتقاطع."
+  },
+  {
+   "id": "q9",
+   "concept_id": "rule_base_linguistic",
+   "bloom_level": "Understand",
+   "question": "The Rule Base of a fuzzy controller stores which kind of knowledge?",
+   "question_ar": "قاعدة القواعد في متحكم ضبابي تخزّن أي نوع من المعرفة؟",
+   "options": [
+    "Statistical probability distributions of the controlled variables.",
+    "Linguistic IF-THEN rules supplied by domain experts in practice.",
+    "Trained synaptic weight matrices learned from labelled data.",
+    "Numerical sensor calibration tables recorded during field testing."
+   ],
+   "options_ar": [
+    "توزيعات احتمالية إحصائية للمتغيرات التي يجري التحكم بها.",
+    "قواعد لغوية شرطية من نوع IF-THEN مصدرها خبراء المجال عملياً.",
+    "مصفوفات أوزان مشبكية مُدرَّبة تعلّمت من بيانات موسومة.",
+    "جداول معايرة عددية للحساسات سُجّلت أثناء الاختبار الميداني."
+   ],
+   "options_en": [
+    "Statistical probability distributions of the controlled variables.",
+    "Linguistic IF-THEN rules supplied by domain experts in practice.",
+    "Trained synaptic weight matrices learned from labelled data.",
+    "Numerical sensor calibration tables recorded during field testing."
+   ],
+   "answer": "B",
+   "explanation": "The rule base stores expert linguistic IF-THEN knowledge, not sensor calibration and not network weights.",
+   "correct": 1,
+   "explanation_ar": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية."
   }
  ]
 }

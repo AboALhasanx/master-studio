@@ -242,6 +242,151 @@
    "correct": 3,
    "explanation": "Hard computing needs a precisely stated analytical model.",
    "explanation_ar": "الحوسبة الصلبة تحتاج نموذجاً تحليلياً دقيقاً."
+  },
+  {
+   "id": "q9",
+   "concept_id": "hard_vs_soft_computing",
+   "bloom_level": "Understand",
+   "question": "What is the fundamental architectural distinction between Hard Computing and Soft Computing regarding their tolerance for imprecision and real-world noise?",
+   "question_ar": "ما هو الفارق المعماري الجوهري بين الحوسبة الصلبة (Hard Computing) والحوسبة المرنة (Soft Computing) من حيث تحمل عدم الدقة والضجيج الواقعي؟",
+   "options": [
+    "Hard Computing relies on fuzzy logic, while Soft Computing utilizes crisp binary logic and deterministic algorithms.",
+    "Hard Computing emulates the biological human brain, while Soft Computing focuses exclusively on traditional serial arithmetic.",
+    "Hard Computing runs only on distributed clusters, while Soft Computing is restricted to mobile embedded processors.",
+    "Hard Computing requires absolute precision and certainty, while Soft Computing tolerates imprecision, uncertainty, and noise."
+   ],
+   "options_ar": [
+    "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
+    "الحوسبة الصلبة تحاكي وظائف الدماغ البشري، بينما الحوسبة المرنة تركز فقط على العمليات الحسابية التسلسلية التقليدية.",
+    "الحوسبة الصلبة تعمل على الأنظمة الموزعة فقط، بينما الحوسبة المرنة مخصصة حصرياً لمعالجات الأجهزة الذكية المحمولة.",
+    "الحوسبة الصلبة تتطلب دقة مطلقة ويقيناً كاملاً، بينما الحوسبة المرنة تتسامح مع التقريب وعدم اليقين والضجيج."
+   ],
+   "options_en": [
+    "Hard Computing relies on fuzzy logic, while Soft Computing utilizes crisp binary logic and deterministic algorithms.",
+    "Hard Computing emulates the biological human brain, while Soft Computing focuses exclusively on traditional serial arithmetic.",
+    "Hard Computing runs only on distributed clusters, while Soft Computing is restricted to mobile embedded processors.",
+    "Hard Computing requires absolute precision and certainty, while Soft Computing tolerates imprecision, uncertainty, and noise."
+   ],
+   "answer": "D",
+   "explanation": "Hard computing demands a precise analytical model and exact answers, while soft computing exploits tolerance for imprecision, uncertainty and partial truth to reach a tractable solution.",
+   "correct": 3,
+   "explanation_ar": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة."
+  },
+  {
+   "id": "q10",
+   "concept_id": "soft_computing_components",
+   "bloom_level": "Understand",
+   "question": "Which of the following pairings correctly maps the four primary methodology pillars of Soft Computing to their core functional role?",
+   "question_ar": "أي من الأزواج التالية يطابق بدقة بين الركائز المنهجية الأساسية للحوسبة المرنة ودورها الوظيفي الجوهري؟",
+   "options": [
+    "Fuzzy Logic for uncertainty, Neural Networks for learning, Evolutionary for optimization, and Probabilistic for reasoning.",
+    "Neural Networks for global optimization, Fuzzy Logic for learning from data, and Evolutionary for sorting.",
+    "Evolutionary Computation for uncertainty, and Probabilistic Reasoning for hardware physical architecture in the full model.",
+    "Fuzzy Logic for file storage, Neural Networks for network firewalls, and Probabilistic for digital signatures."
+   ],
+   "options_ar": [
+    "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
+    "الشبكات العصبية للاستمثال الشامل، والمنطق الضبابي للتعلم من البيانات، والحوسبة التطورية للترتيب النصي.",
+    "الحوسبة التطورية للتعامل مع عدم اليقين، والاستدلال الاحتمالي لبناء الهياكل المعمارية المادية للمعالجات في النموذج الكامل.",
+    "المنطق الضبابي لتخزين الملفات، والشبكات العصبية لحماية الشبكات، والاستدلال الاحتمالي لتوليد التوقيعات الرقمية."
+   ],
+   "options_en": [
+    "Fuzzy Logic for uncertainty, Neural Networks for learning, Evolutionary for optimization, and Probabilistic for reasoning.",
+    "Neural Networks for global optimization, Fuzzy Logic for learning from data, and Evolutionary for sorting.",
+    "Evolutionary Computation for uncertainty, and Probabilistic Reasoning for hardware physical architecture in the full model.",
+    "Fuzzy Logic for file storage, Neural Networks for network firewalls, and Probabilistic for digital signatures."
+   ],
+   "answer": "A",
+   "explanation": "Fuzzy logic handles imprecision, neural networks handle learning, evolutionary computation handles optimisation, and probabilistic reasoning handles uncertainty from evidence.",
+   "correct": 0,
+   "explanation_ar": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning)."
+  },
+  {
+   "id": "q11",
+   "concept_id": "soft_computing_applications",
+   "bloom_level": "Apply",
+   "question": "Why is a Fuzzy Logic controller preferred over a classic PID controller in consumer appliances like modern washing machines and ABS brakes?",
+   "question_ar": "لماذا يفضل استخدام متحكم المنطق الضبابي (Fuzzy Logic Controller) على متحكمات PID التقليدية في التطبيقات الاستهلاكية مثل الغسالات الذكية ومكابح ABS؟",
+   "options": [
+    "Fuzzy logic seamlessly handles complex non-linear dynamics without requiring an exact analytical mathematical model.",
+    "Classic PID controllers consume ten times more electrical energy than consumer household battery capacities overall.",
+    "ABS braking systems require microsecond response times that can only be written in legacy assembly languages.",
+    "Fuzzy logic eliminates the need for physical sensors and relies strictly on cloud internet connectivity."
+   ],
+   "options_ar": [
+    "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
+    "متحكمات PID تستهلك طاقة كهربائية تفوق قدرة البطاريات الاستهلاكية بعشرة أضعاف عموماً.",
+    "أنظمة ABS تتطلب سرعة استجابة لا يمكن برمجتها إلا بلغات التجميع منخفضة المستوى القديمة.",
+    "المنطق الضبابي يلغي الحاجة لأي حساسات فيزيائية ويعتمد حصراً على الاتصال بالإنترنت."
+   ],
+   "options_en": [
+    "Fuzzy logic seamlessly handles complex non-linear dynamics without requiring an exact analytical mathematical model.",
+    "Classic PID controllers consume ten times more electrical energy than consumer household battery capacities overall.",
+    "ABS braking systems require microsecond response times that can only be written in legacy assembly languages.",
+    "Fuzzy logic eliminates the need for physical sensors and relies strictly on cloud internet connectivity."
+   ],
+   "answer": "A",
+   "explanation": "A fuzzy controller works from linguistic IF-THEN rules, so it needs no exact non-linear model of the load or the fabric.",
+   "correct": 0,
+   "explanation_ar": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية."
+  },
+  {
+   "id": "q12",
+   "concept_id": "tolerance_source",
+   "bloom_level": "Understand",
+   "question": "What makes soft computing tolerant of imprecision?",
+   "question_ar": "ما الذي يجعل الحوسبة الناعمة متسامحة مع عدم الدقة؟",
+   "options": [
+    "exact analytical models here now",
+    "faster hardware here now too",
+    "larger databases here now too",
+    "partial truth and approximation"
+   ],
+   "options_en": [
+    "exact analytical models here now",
+    "faster hardware here now too",
+    "larger databases here now too",
+    "partial truth and approximation"
+   ],
+   "options_ar": [
+    "نماذج تحليلية دقيقة",
+    "عتاد أسرع هنا الآن",
+    "قواعد بيانات أكبر",
+    "حقيقة جزئية وتقريب"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Soft computing accepts partial truth and approximation instead of demanding exactness.",
+   "explanation_ar": "الحوسبة الناعمة تقبل الحقيقة الجزئية والتقريب بدل اشتراط الدقة التامة."
+  },
+  {
+   "id": "q13",
+   "concept_id": "few_facts_uncertainty",
+   "bloom_level": "Understand",
+   "question": "What does uncertainty mean for a soft-computing algorithm?",
+   "question_ar": "ماذا تعني خاصية عدم اليقين في خوارزمية الحوسبة الناعمة؟",
+   "options": [
+    "It deletes all random elements from the internal search process.",
+    "It may return a different result each time for the same problem.",
+    "It guarantees one fixed answer for every level of input noise.",
+    "It refuses to start unless every input value is fully precise."
+   ],
+   "options_ar": [
+    "أن الخوارزمية تحذف كل عناصر العشوائية من عملية البحث الداخلية.",
+    "أن الخوارزمية قد تعطي نتيجة مختلفة في كل تشغيل للمسألة نفسها.",
+    "أن الخوارزمية تضمن ناتجاً ثابتاً واحداً لكل مستوى من ضوضاء الإدخال.",
+    "أن الخوارزمية ترفض البدء ما لم تكن كل قيمة إدخال دقيقة تماماً."
+   ],
+   "options_en": [
+    "It deletes all random elements from the internal search process.",
+    "It may return a different result each time for the same problem.",
+    "It guarantees one fixed answer for every level of input noise.",
+    "It refuses to start unless every input value is fully precise."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Uncertainty means the soft-computing algorithm may give different results every time for the same problem. This is treated as a property of the paradigm rather than a defect.",
+   "explanation_ar": "عدم اليقين يعني أن خوارزمية الحوسبة الناعمة قد تعطي نتائج مختلفة في كل مرة للمسألة نفسها، وهذه خاصية في النمط لا خطأ."
   }
  ]
 }
