@@ -73,6 +73,19 @@ Lecture origin = Diane J. Cook, *CptS 440/540 AI*, WSU EECS Fall 2009; textbook 
 Banks: `aimacode.github.io/aima-exercises/` · Berkeley CS188 exams · WSU `angelxd84130/WSU-cpts-540-Artificial-Intelligence` · UW-Madison CS540. Report `06_Artificial_Intelligence/AI_EXTERNAL_QUESTION_BANKS.md`.
 
 ## 11 · Cyber Security MCSQuiz bank gate laws (Ch01–Ch04 proven)
+**STATE-NUMBER LAW (2026-11-04, paid for by a four-document contradiction):** bank/chapter
+counts, content version and shell version are recorded in **one generated file only** —
+`00_STUDIO_HUB/QUIZ_BANK_STATE.md`, produced by `90_Shared_Toolbox/tools/quiz_bank_state.py`.
+`ACTIVE_STATE.md`, `AGENT_HANDOFF_QUIZ_BANKS.md` and `QUIZ_PUBLISH_RUNBOOK.md` point at it
+and carry **no live numbers**. Regenerate after any bank change; `--check` is a gate that
+exits 1 on drift (verified both directions against deliberate corruption). Two causes:
+(1) four hand-maintained copies drifted — ACTIVE_STATE still said v29/63 banks/1182 q/App
+1.4.3 on 2026-11-04 while live was v54/121 banks/1225 q/shell 1.9.0; (2) a state table
+keyed only by `ChNN` with **no subject column** received Data Mining rows (69/7, 55/7)
+under Cyber Ch02/Ch03, whose real counts were 92/8 and 103/9. **Every state table carries
+a subject id.** Counting banks must glob `*.json`, not `Quiz_ChNN_*.json` — four subjects
+also use `Quiz_NN_*` / `Quiz_ChNN_ModelA_*`. `find_meta.py` is now import-safe (`scan()`
++ `__main__`) so the generator reuses its `META` pattern instead of a third copy.
 **Architecture:** vault = master, Supabase = live copy, app = reader. `portal_content.py sync` publishes; `pull` mirrors back into `mcq-portal/data` + SW precache list. Vault schema **v2** → generated **v3 payload** (app reads v3 only, built from `options_en`).
 **Live v3 shape (gate law #8):** `stem {ar,en}` · `answer` = **integer index** · `options` = list of `{ar,en}` · `explanation` {ar,en} · `bloom` (not `bloom_level`) · `concept_id`. Vault bank stays v2; only the bundle is v3.
 **Three mandatory gates:** `quiz_balancer.py <file> --check --strict` · `validate_schema_v2(bank)` · `portal_schema.validate_v3(ps.to_v3(bank))`.
@@ -106,3 +119,21 @@ Banks: `aimacode.github.io/aima-exercises/` · Berkeley CS188 exams · WSU `ange
 **Never solve before reading** the source pages. Coverage and mathematical correctness are TWO SEPARATE gates (N-032).
 **Pack titles (N-045):** small blue chapter eyebrow + large black pack title, no duplicate body H1/H2, no extra rule. Stems left-aligned with natural wrap; "centred" means the content block sits balanced on the page, NOT centred text (N-042 → N-043).
 **`note_linter.py` DEFECT:** pattern C (`\*"\*`) corrupts bold nested at the end of an italic quote. Never end an italic quoted phrase with `**bold**`.
+
+## 13 · ASE source identity — full record (moved from MEMORY.md §H, 2026-11-04)
+Full record: `04_Advanced_Software_Eng/ASE_BOOK_DIGITAL_HUNT_2026-10-25.md`; map §1 above.
+- Origin = **K.K. Aggarwal & Singh, *Software Engineering*, 3rd ed.** `CS_Agarwal_..._2010.pdf` is a **different book** — never cite it. `By_Chapter` + `00_SOURCE_Full_1094pp_Slides.pdf` = **publisher slides, not prose**. Answer key = printed pp.497–500 (Ch1 key p.498), absent from every scan.
+- **THE ONE FILE to hand him:** `02_Raw_Materials/Aggarwal_SE_3rdEd_COMPLETE/Aggarwal_SE_3rdEd_COMPLETE_Ch1-10_OCR.pdf` — 452 pp, 910,590 searchable chars, bookmarked. **Page map: Ch1 p21 · Ch2 p41 · Ch3 p60 · Ch4 p159 · Ch5 p223 · Ch6 p270 · Ch7 p328 · Ch8 p385 · Ch9 p433 · Ch10 p450. Offset Ch1–Ch6 = PDF = printed + 20.**
+- Built from Internet Archive (Ch1–6, 240 DPI) + `BhaskarAnand-05/DTU_5th_Sem_Books` (Ch7–10, 202–231 DPI), invisible OCR (`render_mode=3`). No born-digital edition exists — paperback only.
+- OCR toolchain: venv `~/.workbuddy-ai/binaries/python/envs/ocr` (`rapidocr-onnxruntime` + `pymupdf`); no Tesseract, ~2.3 s/page with 5 workers.
+- `AliFahim_Software_Engineering.pdf` (95–108 DPI, no text layer) = worst copy, fallback only. `mait4us.weebly.com` = same 1094-pp deck split per chapter, text-native.
+
+## 14 · Faculty roster — full record (moved from MEMORY.md §L, 2026-11-04)
+College = **College of Computer Science & IT, University of Wasit**. `00_STUDIO_HUB/FACULTY_PRACTICAL_INTEL.md` (admin map) + `FACULTY_FORENSIC_AUDIT.md` (verified-numbers audit). `03_Thesis_&_Research_Transition/01_Supervisor_Intelligence.md` is **agent-inferred, unverified** — never cite as fact.
+- **Name law:** faculty are indexed **only** under Latin transliteration — أحمد شاكر = **Ahmad Shaker Abdalrada**; علي فاهم = **Ali Fahem Neamah**; سيف = **Saif Ali Abd Alradha Alsaidi**; عبد الهادي = **Abdul Hadi M. Alaidi**. Arabic-only search gives false negatives. Check ORCID → OpenAlex author id.
+- **Verified numbers (OpenAlex, 2026-10-25):** Alaidi 31w/651c · Abdalrada 24w/322c · Alsaidi 23w/185c · Neamah 21w/69c · Huda Lafta 12w/**8c** · Haidar Akab 0.
+- **Patent 7858** — «الإطار الذكي لجمع سم النحل», granted **12/2/2023**, IPC A01K59/00, **7 inventors** (led by College of Agriculture). Saif's profile dates it 2020-01-01 = placeholder. Source: COSQC `دليل البراءات العراقية` 2023 p.20.
+- **Ali Fahem Neamah carries an IEEE Notice of Violation** (ICCA 2017, DOI 10.1109/COMAPP.2017.8079730) — content duplicated from Al-Azawei et al. 2016 without attribution. Permanent on IEEE Xplore.
+- **Sources that work:** COSQC patent gazettes (PDF, text-searchable, 2016–2026) · OpenAlex API (no key) · DOAJ API · `cit.uowasit.edu.iq/wp-json/…` · `staff.uowasit.edu.iq/ar/Researcher/Profile/<slug>` · **`auiqplatform.com/Researcher/Profile/<same-slug>`** (richer mirror: carries DOB + full admin history) · institutional thesis repositories (`dro.deakin.edu.au`, `eprints.utem.edu.my`, `irepository.uniten.edu.my`). Scimago + Google Scholar are Cloudflare/bot-blocked.
+- **Biographies** in `FACULTY_BIOGRAPHIES.md`. Saif DOB **1986-01-12** (only confirmed age). Theses: Abdalrada = Deakin PhD 2018 · Neamah (Ali Fahim) = UTeM PhD 2019 · Alaidi = UNITEN PhD 2024 · Saif = UoT Baghdad PhD 2021. **`alaidi.net` hosts Abdul Hadi's own Fall-2026 Soft Computing syllabus + lecture files** — primary source for that course.
+- **RTL PDF law:** mixed Arabic + Latin in one paragraph gets reversed by the exporter. Put each Latin name/title in its **own paragraph**; use ASCII commas inside Latin runs; never `«»` around Latin titles; no `←` arrows (use «ثم»).

@@ -1,9 +1,11 @@
-# Agent Handoff — Cyber Security quiz banks (MCSQuiz)
+# Agent Handoff — MCSQuiz question banks (all subjects)
 
-> **Read this before touching any `Quiz_Ch*.json` in `01_Semester_1/01_Cyber_Security/07_Quizzes_&_Anki/`.**
-> Written 2026-10-26 by Koko. It exists so a second agent (ChatGPT, Claude, anything) can work on the
-> same banks without undoing what has already been decided. Every rule below was paid for by a real
-> correction from the student — none of it is preference or style.
+> **Read this before touching any `Quiz_*.json` in `01_Semester_1/*/07_Quizzes_&_Anki/`.**
+> Written 2026-10-26 by Koko, generalised to all six subjects 2026-11-04. It exists so a second agent
+> (Codex, ChatGPT, Claude, anything) can work on the same banks without undoing what has already been
+> decided. Every rule below was paid for by a real correction from the student — none of it is
+> preference or style. The first worked example was Cyber Security, so example paths still name it;
+> the laws are not subject-scoped.
 >
 > **This file is the "what". The "how" — the exact command sequence from gate to publish, with
 > expected output and failure meanings — is `QUIZ_PUBLISH_RUNBOOK.md` in this same folder. Read both
@@ -15,7 +17,8 @@
 
 | Piece | Where | Role |
 |---|---|---|
-| Vault bank (master) | `01_Semester_1/01_Cyber_Security/07_Quizzes_&_Anki/Quiz_ChNN_TNN_*.json` | **The source of truth.** Schema v2. |
+| Vault bank (master) | `01_Semester_1/<subject>/07_Quizzes_&_Anki/*.json` (filenames are not uniform — `Quiz_ChNN_TNN_*.json`, `Quiz_NN_*.json`, `Quiz_ChNN_ModelA_*.json` all occur) | **The source of truth.** Schema v2. Never glob only `Quiz_ChNN_*` when counting. |
+| Generated state | `00_STUDIO_HUB/QUIZ_BANK_STATE.md` | **The only place counts/versions are recorded.** See §4. |
 | Publisher | `90_Shared_Toolbox/tools/publish_quizzes.py` + `portal_content.py` | vault → Supabase, converts v2 → v3 |
 | Live content | Supabase project `gywniovuupjmllbmjmai`, RPCs `content_manifest` / `content_bank` | what students actually read |
 | App | `C:\Users\gokoq\mcq-portal` (Vercel: `mcq-portal-jade.vercel.app`) | PWA reader, schema v3 only |
@@ -123,18 +126,42 @@ a bank pass — fix the wording.
 
 ---
 
-## 4. What is done, and what is not
+## 4. Where the current state lives
 
-| Chapter | Questions | State |
+**Do not read a number from this file, and do not write one here.** All bank counts,
+chapter counts, versions and measured gate results live in one generated file:
+
+> **`00_STUDIO_HUB/QUIZ_BANK_STATE.md`** — regenerate with
+> `python -X utf8 90_Shared_Toolbox/tools/quiz_bank_state.py`,
+> verify with the same command + `--check`.
+
+Regenerate after any bank change; `--check` is a gate, not a report — it exits 1 when
+the committed snapshot has drifted from the vault or the live manifest.
+
+**Why this exists.** Until 2026-11-04 the numbers were hand-copied into this file,
+`ACTIVE_STATE.md` and `QUIZ_PUBLISH_RUNBOOK.md`. A table keyed only by `ChNN` (no
+subject column) then received rows from two different subjects: Cyber Ch02/Ch03
+displayed Data Mining's `69 in 7` / `55 in 7`, while the live portal served
+`92 in 8` / `103 in 9`. Three other files still claimed content v29 and shell
+1.4.3. Every one of them had been true at some point. The counts were not wrong —
+**having four copies of them was wrong.**
+
+Law: **a table of bank state always carries a subject column.** A bare `ChNN` row is
+ambiguous the moment a second subject has banks, and ambiguity is how the mix-up
+survived review.
+
+### Historical milestones (not state — dates and decisions only)
+
+| Date | What was decided / done | Record |
 |---|---|---|
-| Ch01 | 71 in 6 banks | rewritten 2026-10-26 · L1–L5 clean · live |
-| Ch02 | 69 in 7 topic banks | rebuilt from Week 02 source 2026-10-27 · strict/shape/schema gates green · live; old Model A/B archived and hidden |
-| Ch03 | 55 in 7 topic banks | rebuilt from Week 03 source 2026-10-27 · strict/shape/schema gates green · live; old Model A/B archived and hidden |
-| Ch04 | 118 in 9 banks | cleaned 2026-10-27 · gates green · live · web verification passed |
-| Ch05 | 221 in 17 banks | cleaned 2026-10-27 · strict/shape gates green · live · web verification passed |
-| Ch06 | 104 in 10 banks | rebuilt 2026-10-27 · old 8 banks hidden · live · web verification passed |
+| 2026-10-26 | Cyber Ch01 and Ch02 rewritten to L1–L5; no handout references; `META_RE` gate added | `sessions/2026-10-26.md` |
+| 2026-10-26 | Cyber Ch03 rebuilt after the annotated copy was recovered; hospital scenario, PCI and crossed-out sections deleted | `W03_Annotation_Map.md` |
+| 2026-10-27 | Cyber Ch04, Ch05, Ch06 cleaned and published; superseded live rows hidden | `sessions/2026-10-27.md` |
+| 2026-10-27 | Data Mining Ch01, Ch02, Ch03 rebuilt as topic banks; Model A/B retired | `sessions/2026-10-27.md` |
+| 2026-10-28 | Data Mining Ch04, Ch05, Ch06, Ch07 published | `sessions/2026-10-28.md` |
 
-Current content version: **54** · shell **1.7.18**.
+For what is live **now** — counts, versions, per-chapter gate results, what remains —
+open `QUIZ_BANK_STATE.md`. The milestone table above deliberately carries no counts.
 
 > **Chapter 3 was a scope problem before it was a wording problem.** The doctor's marked copy exists
 > only outside the vault (`~/Downloads/Telegram Desktop/W02_Risks.pdf`; the clean
@@ -144,17 +171,18 @@ Current content version: **54** · shell **1.7.18**.
 > PCI worked example. Read `03_Study_Notes/W03_Annotation_Map.md` before writing a single question, or
 > you will author questions on material she explicitly removed.
 
-### Data Mining — Ch6/Ch7 release (Codex, 2026-10-28)
+### Scope note — this is no longer a Cyber-only document
 
-| Chapter | Questions | State |
-|---|---:|---|
-| Ch06 | 86 in 7 topic banks | built from Week 6 Classification and Chapter 6 source PDFs; strict/shape gates green; live and UI verified |
-| Ch07 | 86 in 7 topic banks | built from Week 7 Classification Techniques; strict/shape gates green; live and UI verified |
+The five laws in §2 apply to **every** MCSQuiz subject, not just Cyber Security. Codex
+applied them to Data Mining on 2026-10-27/28 and the resulting banks are live. The
+file's title and the `01_Cyber_Security` paths in §1 are historical: the paths show
+where the first worked example lived. Substitute the subject directory for any other
+subject. This matters because the old §4 table had no subject column — that omission
+is exactly what let Data Mining rows land in a Cyber table.
 
-- The English correct-answer text was checked against the supplied source material. The chapters have 172 questions across 14 banks, with no concept-ID overlap against Data Mining Ch1–Ch5.
-- `quiz_balancer.py --check --strict` passed all 14 banks. Chapter quality gates reported zero structural and shape failures; their explanation-length warnings remain advisory because concise formula/label answers follow the source wording. The small set of near-duplicate warnings are deliberate contrast questions.
-- Published to Supabase at content version **54**, pulled into the local portal mirror, then released shell **1.7.18**. CI passed 220 checks; the production deployment is READY.
-- Live payload audit checked all 172 questions for answer key, bilingual options, explanations, Bloom level and source-text references: 0 problems. Vault/live option comparison: 121 banks, 0 diffs. Both chapters passed post-deploy browser checks for seven cards, bilingual toggle, question/option shuffle and stable correct-answer text.
+The Data Mining Ch06/Ch07 release record (source checks, strict/shape gates, live
+payload audit, UI verification) is in `sessions/2026-10-28.md`. It is history, not
+state; add no numbers here.
 
 ---
 
@@ -192,13 +220,9 @@ input is not evidence.
 
 ---
 
-*Keep this file current: when a chapter is cleaned, update §4 and the content version.*
-
-
-### MCSQuiz — Ch4/Ch5 publish and Ch6 replacement cleanup (Codex, 2026-10-27)
-
-- Replaced the 9 Ch4 / 17 Ch5 active vault banks with the preflighted candidates: Ch4 118 questions, Ch5 221. Preserved all 26 prior active JSON files under `07_Quizzes_&_Anki/_retired/ch04-ch05-prepublish-2026-10-27/`; SHA256 matched every installed candidate to its source.
-- Candidate and active-path preflights passed: handout-reference scan, answer-shape/option-spread quality gate, strict balancer, v2/v3 schema, and local publish dry-run. Live Ch4 structural audit: 118 questions, 0 problems. Ch5 live manifest: 17 banks / 221 questions. Arabic options in all 26 Ch4/Ch5 live banks match the vault as multisets (0 diffs).
-- `sync --subject 01_Cyber_Security` intentionally does not retire missing banks. It also upserted the 10 cleaned Ch6 banks while leaving 8 superseded Ch6 rows visible. Hid those exact 8 old IDs, then pulled again: Cyber Security now has 59 live banks across Ch1–Ch6; Ch6 has 10 banks / 104 questions, 104 unique concepts, and 0 structural problems.
-- Updated the portal shell to **1.7.10** after the final mirror/précache change. CI passed (220 checks, 0 failures); production deployment is READY at `https://mcq-portal-jade.vercel.app`.
-- Live web verification passed for Ch4 (9 cards), Ch5 (17), and Ch6 (10): topic numbering, card counts, subject tags, English toggle, per-launch question/option shuffle, and stable correct-answer text. Ch4/Ch5 JSON and the Ch6 retired copies remain preserved. No `ACTIVE_STATE.md` edit.
+*This file carries laws, decisions and boundaries — **not state**. When a chapter changes,
+regenerate `00_STUDIO_HUB/QUIZ_BANK_STATE.md` and append a dated line to
+`sessions/YYYY-MM-DD.md`. Never paste a session-log block onto the end of this file
+again: a verbatim copy of the 2026-10-27 Ch4/Ch5 publish note was found here on
+2026-11-04, after the footer, and was removed. The original is intact in
+`sessions/2026-10-27.md`.*

@@ -5,7 +5,10 @@
 > This file is the exact sequence of commands, in order, with the expected output of each and what
 > each failure means. Every command below has been run in this form; nothing here is theoretical.
 >
-> Last updated **2026-10-26** by Koko, at content version **36**, shell **1.7.8**.
+> Written **2026-10-26** by Koko; state references corrected **2026-11-04**.
+> The command sequence is version-independent. **No live number belongs in this file**:
+> current content version, shell version, bank counts and per-chapter gate results
+> all live in the generated `00_STUDIO_HUB/QUIZ_BANK_STATE.md` (see §7).
 
 ---
 
@@ -23,6 +26,15 @@
 
 **Always prefix Python with `CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8`.**
 The `-X utf8` is not optional: the Arabic in these banks breaks the default Windows codec.
+
+> **`scratch/` is gitignored (since `23cfa7f`).** The helper scripts referenced below
+> (`preflight.py`, `find_meta.py`, `report_len.py`, `chNN_lib.py`) exist **on this machine
+> only** and will be absent after a fresh checkout. If you are a second agent on another
+> machine, do not assume they are there. The tracked, always-available tools are in
+> `90_Shared_Toolbox/tools/`: `quiz_balancer.py`, `quiz_quality_gate.py`,
+> `publish_quizzes.py`, `portal_content.py`, `quiz_meta_pattern.py` (canonical handout
+> regex + self-test) and `quiz_bank_state.py` (state + drift gate). **Never make a tracked
+> tool import from `scratch/`.**
 
 **Git pushes need the sandbox off**, plus:
 
@@ -208,7 +220,11 @@ content laws are separate.
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/portal_content.py sync
 ```
 
-Expected: `wrote 86 banks` and `content version -> N+1`.
+Expected: `wrote N banks` (N = the current total in `QUIZ_BANK_STATE.md`, which grows
+as subjects are added — it was 86 in October, 121 by November) and
+`content version -> N+1`. **Never assert a fixed bank total**; read it from the
+generated state file.
+
 `sync` also **retires** any live bank whose vault file has disappeared, and says so:
 
 ```text
@@ -239,7 +255,7 @@ cd scratch
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 verify_ch03_live.py
 ```
 
-Handout-reference audit across chapters 1–3 (edit the tuple inside to widen it):
+Handout-reference audit across the live chapters (edit the chapter tuple inside to widen it):
 
 ```bash
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 verify_no_meta_live.py
@@ -252,8 +268,12 @@ is rotated:
 CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 verify_vault_vs_live.py
 ```
 
-Expected: `problems: 0`, `meta references found: 0`, `86 banks, 0 diffs`.
-A non-zero diff here almost always means the `merge_question` translation bug has come back — see §6.
+Expected: `problems: 0`, `meta references found: 0`, `N banks, 0 diffs` where N is the
+current total in `QUIZ_BANK_STATE.md`. A non-zero diff almost always means the
+`merge_question` translation bug has come back — see §6.
+
+Then regenerate the state snapshot (§7) and confirm `--check` passes. The publish is
+not finished until the committed state matches what you just shipped.
 
 ### Step 8 — release the shell
 
@@ -320,6 +340,8 @@ A chapter is finished only when **all** of these are true. Anything less is a dr
 - [ ] `verify_vault_vs_live.py` returns 0 diffs
 - [ ] `web_chapter_verify.js` ALL-CHECKS-PASSED **against the live URL**
 - [ ] content version bumped, shell bumped, CI green, deployed
+- [ ] `quiz_bank_state.py` regenerated **and** `--check` exits 0
+- [ ] no live number copied into any hand-written document
 - [ ] vault and portal both committed **and pushed**
 - [ ] session log + memory + `AGENT_HANDOFF_QUIZ_BANKS.md` §4 updated
 
@@ -427,25 +449,38 @@ vault and portal as a multiset. If it reports a diff on a bank you did not touch
 
 ---
 
-## 7. State at handoff — 2026-10-26, content v36, shell 1.7.8
+## 7. Current state — one generated file
 
-| Chapter | Questions | State |
-|---|---|---|
-| Ch01 | 71 in 6 banks | clean, live, verified |
-| Ch02 | 92 in 8 banks | clean, live, verified |
-| Ch03 | 103 in 9 banks | clean, live, verified · map in `W03_Annotation_Map.md` |
-| Ch04 | 180 in 9 banks | **not started** · 41 % unique-longest · **49** questions reference the handout |
-| Ch05 | 346 in 17 banks | **not started** · 64 % unique-longest · **40** questions reference the handout |
-| Ch06 | 258 in 13 banks | **not started** · 67 % unique-longest · **31** questions reference the handout |
+The table that used to sit here was the source of a real contradiction. It was a
+**2026-10-26 snapshot** (Ch04/05/06 "not started", content v36, shell 1.7.8) that
+stayed in place after Codex cleaned those chapters on 2026-10-27 and after Data
+Mining Ch04–07 shipped on 2026-10-28. A reader could not tell a dated snapshot
+from a current claim, and other files disagreed with it.
 
-Those reference counts are from `find_meta.py` (any field: stem, option, explanation — both languages),
-so they are larger than a stem-only count. 120 questions across the three remaining chapters still
-talk about the handout.
+> **Current numbers, versions and per-chapter gate results:
+> `00_STUDIO_HUB/QUIZ_BANK_STATE.md`.**
+>
+> Regenerate: `python -X utf8 90_Shared_Toolbox/tools/quiz_bank_state.py`
+> Verify: the same command with `--check` (exit 1 = stale, do not publish).
 
-**Ch04, Ch05 and Ch06 have no annotation map.** Their sources are in `02_Raw_Materials/` and are
-clean PDFs. Do not start them by rewriting questions — start by getting the marked copies from the
-student. If he does not have them, say so explicitly and mark the chapter "unmarked source" rather
-than pretending the content is exam-scoped.
+Run `--check` at the start of a bank session and again after any bank edit. It reads
+**every** bank file in **all six** subjects (not just `Quiz_ChNN_*`), compares vault to
+the live manifest and the portal `VERSION`, and measures the shape gates per chapter.
+It never writes to the portal.
+
+Two rules this incident paid for:
+
+1. **A state table always carries a subject column.** A bare `ChNN` row is ambiguous
+   once two subjects have banks. The old handoff table displayed Data Mining's
+   `69/7` and `55/7` under Cyber Ch02/Ch03.
+2. **Hand-copied numbers are prohibited.** If a file is not the generated state file,
+   it points at it. Historical counts belong in `sessions/YYYY-MM-DD.md`, dated.
+
+**The annotation-map warning still stands.** Cyber Ch04, Ch05 and the chapters of the
+other subjects have no doctor-marked copy in the vault. Ch04/Ch05/Ch06 were cleaned
+as *unmarked sources* — that is a scope caveat, not a clean bill of health. Before
+rebuilding any of them, get the marked copy, or say explicitly that the source is
+unmarked rather than implying exam scope.
 
 ### Open items left deliberately
 

@@ -27,9 +27,25 @@ Agents operating in this vault must function not merely as generic text generato
 > 1. `00_STUDIO_HUB/ACTIVE_STATE.md` — current semester/week/subject, immediate todo, next focus (sole runtime truth; never cache it here).
 > 2. `00_STUDIO_HUB/HARNESS_REGISTRY.md` — which harnesses share this vault; sign yourself in before touching anything.
 >
-> **Working on the MCSQuiz question banks?** Read two files, in this order, before touching any `Quiz_Ch*.json`:
+> **Working on the MCSQuiz question banks?** Read three files, in this order, before touching any `Quiz_*.json`:
 > 1. `00_STUDIO_HUB/AGENT_HANDOFF_QUIZ_BANKS.md` — the five authoring laws, the gates, the boundaries. All of them paid for by a real correction, none of them optional.
 > 2. `00_STUDIO_HUB/QUIZ_PUBLISH_RUNBOOK.md` — the operational sequence: builder → length report → build → three gates → sync → pull → live audit → release → CI → deploy → live-site verify → commit, with expected output and what each failure means.
+> 3. `00_STUDIO_HUB/QUIZ_BANK_STATE.md` — **the generated single source of truth** for bank counts, chapter counts, content version and shell version, across all six subjects.
+>
+> **State-number law (2026-11-04):** never hand-write a bank count, chapter count, content
+> version or shell version into any document other than the generated state file. Other
+> files may only point to it. Regenerate with
+> `python -X utf8 90_Shared_Toolbox/tools/quiz_bank_state.py` and gate with `--check`
+> (exit 1 = stale, do not publish). A state table must carry a **subject column**; a
+> bare `ChNN` row is ambiguous once more than one subject has banks. This law exists
+> because four hand-maintained copies disagreed: a Cyber table displayed Data Mining's
+> numbers while the portal served something else entirely.
+>
+> **`scratch/` is gitignored** (since `23cfa7f`) — scripts there exist on this machine only.
+> Anything a second agent needs after a fresh checkout must live in
+> `90_Shared_Toolbox/tools/`. The canonical handout-reference pattern is
+> `tools/quiz_meta_pattern.py`; `quiz_bank_state.py` imports it and runs its self-test.
+> Never make a tracked tool depend on a scratch file.
 >
 > Toolchain lives in `90_Shared_Toolbox/tools/` (see `README.md` toolchain table). Subject deliverables live under `01_Semester_1/<Subject>/` per the folder convention in `README.md`. Do not trust any snapshot below this line — pointers only.
 
