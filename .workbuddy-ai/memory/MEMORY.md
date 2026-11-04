@@ -64,3 +64,11 @@ indexed **only** under Latin transliteration (Arabic-only search = false negativ
 law** — mixed Arabic + Latin in one paragraph gets reversed, so each Latin name/title gets its
 own paragraph. §14 has OpenAlex numbers, patent 7858, the IEEE Notice of Violation, working
 sources and `alaidi.net` (Abdul Hadi's own Soft Computing syllabus).
+
+## M · English exam scope (2026-11-04)
+English is **not** an MCQ-everything subject. Exam tests: grammar · vocabulary ·
+collocations · matching · multiple choice. Exam does **NOT** test: listening, long reading
+passages, writing, speaking, verbatim memorization. So: never turn listening/reading/writing/
+speaking material into question banks; retrieval/quiz work filters to the exam scope
+(`english_vector_memory.py search ... --exam`, 62 of 183 chunks). The course material still
+covers all four skills — the exam does not.

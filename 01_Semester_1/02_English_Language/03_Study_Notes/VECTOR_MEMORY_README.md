@@ -26,6 +26,12 @@ This is a sparse vector memory, not a neural dense-embedding index. It intention
 - Arabic queries expand the definite article, so `تمارين` also matches `التمارين`.
 - Nothing is invented: every hit prints its source file and chunk ordinal, and the answer text itself is returned verbatim.
 
+## Exam scope filter
+
+The English exam tests **grammar, vocabulary, collocations, matching and multiple choice**. It does **not** test listening, long reading passages, writing, speaking, or verbatim memorization. Pass `--exam` to restrict retrieval to that scope, for example: `search "articles a an the" --exam`.
+
+Scope membership: skill contains `grammar`, `vocabulary` or `collocation`, **or** task type is `matching` / `multiple_choice`. Of the 183 chunks, **62** fall inside this scope; the rest are listening (47), reading (44), writing (33) and speaking (29) material that is useful for the course but not for the exam. Use `--exam` for revision, omit it when checking a full exercise.
+
 ## Build and use
 
 Run from the Master-Studio root:

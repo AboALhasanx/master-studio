@@ -33,6 +33,10 @@ STOP = set("the and for with from that this these those what when where which ha
 ALIASES = {
     "listening": "استماع listen track audio", "grammar": "قواعد tense article passive", "vocabulary": "مفردات كلمات word meaning", "collocation": "تلازم لفظي تركيب كلمات collocations", "matching": "توصيل وصل match", "memorization": "حفظ احفظ حفظية", "class_discussion": "قاعة صف نقاش مشاركة pair speaking", "reading": "قراءة فهم نص comprehension", "writing": "كتابة موضوع انشاء essay", "pronunciation": "نطق stress rhythm صوت",
 }
+# The English exam does not test listening, long reading passages, writing or
+# speaking. It tests grammar, vocabulary, collocations, matching and choices.
+EXAM_SKILLS = {"grammar", "vocabulary", "collocation"}
+EXAM_TASKS = {"matching", "multiple_choice"}
 
 def clean_markup(text: str) -> str:
     text = re.sub(r"(?is)<(script|style).*?>.*?</\1>", " ", text)
@@ -179,7 +183,7 @@ def build():
     print(f"Built {n} chunks from {len(SOURCES)} curated answer sources; SQLite FTS5 + sparse TF-IDF vectors; model downloads: 0")
     print("SQLite integrity:",conn.execute("PRAGMA integrity_check").fetchone()[0]); conn.close()
 
-def search(query, top_k=8, source=None, unit=None, skill=None):
+def search(query, top_k=8, source=None, unit=None, skill=None, exam=False):
     conn=sqlite3.connect(DB); conn.row_factory=sqlite3.Row
     where=[]; params=[]
     if source: where.append("source=?"); params.append(source)
@@ -188,6 +192,13 @@ def search(query, top_k=8, source=None, unit=None, skill=None):
     rows=conn.execute(sql,params).fetchall()
     if skill:
         rows=[r for r in rows if skill in json.loads(r["metadata"])["skill"]]
+    if exam:
+        kept=[]
+        for r in rows:
+            m=json.loads(r["metadata"])
+            if set(m["skill"]) & EXAM_SKILLS or set(m["task_type"]) & EXAM_TASKS:
+                kept.append(r)
+        rows=kept
     alias_text=ALIASES.get(skill,"") if skill else ""
     qterms=terms(query+" "+alias_text)
     if not qterms:
@@ -256,7 +267,7 @@ def main():
             stream.reconfigure(encoding="utf-8", errors="replace")
     ap=argparse.ArgumentParser(description=__doc__); sub=ap.add_subparsers(dest="cmd",required=True)
     sub.add_parser("build")
-    st=sub.add_parser("search"); st.add_argument("query"); st.add_argument("--top-k",type=int,default=8); st.add_argument("--source",choices=["new_headway","q_skills"]); st.add_argument("--unit",choices=["U01","U02"]); st.add_argument("--skill",choices=sorted(ALIASES))
+    st=sub.add_parser("search"); st.add_argument("query"); st.add_argument("--top-k",type=int,default=8); st.add_argument("--source",choices=["new_headway","q_skills"]); st.add_argument("--unit",choices=["U01","U02"]); st.add_argument("--skill",choices=sorted(ALIASES)); st.add_argument("--exam",action="store_true",help="exam scope only: grammar/vocabulary/collocation plus matching and multiple-choice items")
     sub.add_parser("status")
     args=ap.parse_args()
     if args.cmd=="build": build()
@@ -265,5 +276,5 @@ def main():
         c=sqlite3.connect(DB); print("chunks:",c.execute("select count(*) from chunks").fetchone()[0]); print("sources:",c.execute("select source,unit,count(*) from chunks group by source,unit").fetchall()); print("integrity:",c.execute("pragma integrity_check").fetchone()[0]); c.close()
     else:
         if not DB.exists(): raise SystemExit("Build the index first")
-        search(args.query,args.top_k,args.source,args.unit,args.skill)
+        search(args.query,args.top_k,args.source,args.unit,args.skill,args.exam)
 if __name__=="__main__": main()
