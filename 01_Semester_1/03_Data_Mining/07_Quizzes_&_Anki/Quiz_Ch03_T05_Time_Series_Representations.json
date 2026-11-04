@@ -133,25 +133,25 @@
    "question": "How is a time series converted into symbols?",
    "question_ar": "كيف تُحوَّل السلسلة الزمنية إلى رموز؟",
    "options": [
-    "by mapping value ranges to symbols",
     "by deleting every second value now",
     "by sorting all values by size",
-    "by averaging all the values here"
+    "by averaging all the values here",
+    "by mapping value ranges to symbols"
    ],
    "options_en": [
-    "by mapping value ranges to symbols",
     "by deleting every second value now",
     "by sorting all values by size",
-    "by averaging all the values here"
+    "by averaging all the values here",
+    "by mapping value ranges to symbols"
    ],
    "options_ar": [
-    "بربط مديات القيم برموز",
     "بحذف كل قيمة ثانية",
     "بترتيب القيم حسب الحجم",
-    "بحساب متوسط كل القيم"
+    "بحساب متوسط كل القيم",
+    "بربط مديات القيم برموز"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Each numeric range is given a symbol, so the series becomes a sequence of letters.",
    "explanation_ar": "كل مدى عددي يأخذ رمزاً، فتصبح السلسلة تسلسلاً من الحروف.",
    "id": "q5"
@@ -213,6 +213,35 @@
    "correct": 1,
    "explanation": "The resulting numerical features can then be used by machine learning algorithms. The other choices are not the stated use of the extracted feature vector.",
    "explanation_ar": "الخصائص الرقمية الناتجة يمكن استخدامها لاحقاً من قبل خوارزميات التعلم الآلي. أما الخيارات الأخرى فليست الاستخدام المقصود لمتجه الخصائص المستخرجة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch3_sliding_window",
+   "bloom_level": "Understand",
+   "question": "What does a sliding window do on a time series?",
+   "question_ar": "ماذا تفعل النافذة المنزلقة على السلسلة الزمنية؟",
+   "options": [
+    "it extracts features per window",
+    "it deletes the whole series here",
+    "it sorts the values by size",
+    "it converts text to numbers"
+   ],
+   "options_en": [
+    "it extracts features per window",
+    "it deletes the whole series here",
+    "it sorts the values by size",
+    "it converts text to numbers"
+   ],
+   "options_ar": [
+    "يستخرج الخصائص لكل نافذة",
+    "يحذف السلسلة كاملة هنا",
+    "يرتب القيم حسب الحجم هنا",
+    "يحوّل النص إلى أرقام هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The window moves along the series and each slice yields its own features.",
+   "explanation_ar": "النافذة تتحرك على السلسلة وكل مقطع يعطي خصائصه."
   }
  ]
 }

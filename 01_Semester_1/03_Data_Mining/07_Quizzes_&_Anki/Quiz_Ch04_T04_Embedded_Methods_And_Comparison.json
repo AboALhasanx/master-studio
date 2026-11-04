@@ -75,25 +75,25 @@
    "question": "When do Decision Trees select features?",
    "question_ar": "متى تختار أشجار القرار الخصائص؟",
    "options": [
-    "when constructing the tree",
     "before collecting any observations",
     "Starts with all features.",
-    "as part of model training"
+    "as part of model training",
+    "when constructing the tree"
    ],
    "options_en": [
-    "when constructing the tree",
     "before collecting any observations",
     "Starts with all features.",
-    "as part of model training"
+    "as part of model training",
+    "when constructing the tree"
    ],
    "options_ar": [
-    "عند إنشاء الشجرة",
     "قبل جمع أي مشاهدات",
     "يبدأ بكل الخصائص.",
-    "ضمن تدريب النموذج"
+    "ضمن تدريب النموذج",
+    "عند إنشاء الشجرة"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Decision trees select features when constructing the tree.",
    "explanation_ar": "عند إنشاء الشجرة",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training.",
    "explanation_ar": "جزءاً من تدريب النموذج",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_embedded_when",
+   "bloom_level": "Understand",
+   "question": "What makes an embedded method different?",
+   "question_ar": "ما الذي يميّز الأسلوب المضمّن؟",
+   "options": [
+    "it selects during training",
+    "it selects before training",
+    "it never selects features",
+    "it selects after testing"
+   ],
+   "options_en": [
+    "it selects during training",
+    "it selects before training",
+    "it never selects features",
+    "it selects after testing"
+   ],
+   "options_ar": [
+    "تختار أثناء التدريب",
+    "تختار قبل التدريب",
+    "لا تختار أي سمة هنا",
+    "تختار بعد الاختبار"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Embedded methods choose features inside the training of the model itself.",
+   "explanation_ar": "الأساليب المضمّنة تختار السمات داخل تدريب النموذج نفسه."
   }
  ]
 }

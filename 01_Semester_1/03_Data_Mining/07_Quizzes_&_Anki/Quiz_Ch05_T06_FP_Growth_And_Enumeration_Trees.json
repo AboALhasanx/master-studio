@@ -75,25 +75,25 @@
    "question": "How are remaining frequent items ordered before the FP-tree is built?",
    "question_ar": "كيف ترتب العناصر المتكررة المتبقية قبل بناء شجرة FP؟",
    "options": [
-    "in descending order of their frequency",
     "in ascending order of their confidence",
     "in the order of model feature importance",
-    "according to the sequence suffix length only"
+    "according to the sequence suffix length only",
+    "in descending order of their frequency"
    ],
    "options_en": [
-    "in descending order of their frequency",
     "in ascending order of their confidence",
     "in the order of model feature importance",
-    "according to the sequence suffix length only"
+    "according to the sequence suffix length only",
+    "in descending order of their frequency"
    ],
    "options_ar": [
-    "بترتيب تنازلي حسب تكرارها",
     "بترتيب تصاعدي حسب ثقتها",
     "وفق أهمية خصائص النموذج",
-    "بحسب طول لاحقة التسلسل فقط"
+    "بحسب طول لاحقة التسلسل فقط",
+    "بترتيب تنازلي حسب تكرارها"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "The remaining frequent items are sorted in descending order of frequency.",
    "explanation_ar": "تُرتَّب العناصر المتبقية تنازلياً حسب تكرارها قبل بناء الشجرة.",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Each branch represents adding an item to the current itemset.",
    "explanation_ar": "إضافة عنصر إلى مجموعة العناصر الحالية",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_fp_avoids",
+   "bloom_level": "Understand",
+   "question": "What does FP-Growth avoid that Apriori repeats?",
+   "question_ar": "ماذا يتجنب FP-Growth مما يكرره Apriori؟",
+   "options": [
+    "repeated candidate generation",
+    "storing any kind of tree here",
+    "counting every single item",
+    "reading all the data at once"
+   ],
+   "options_en": [
+    "repeated candidate generation",
+    "storing any kind of tree here",
+    "counting every single item",
+    "reading all the data at once"
+   ],
+   "options_ar": [
+    "توليد المرشحات المتكرر",
+    "تخزين أي نوع من الشجرة",
+    "عدّ كل عنصر على حدة",
+    "قراءة البيانات كلها دفعة"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "FP-Growth compresses the data into a tree, so it never generates candidate sets.",
+   "explanation_ar": "FP-Growth يضغط البيانات في شجرة، فلا يولّد مجموعات مرشحة إطلاقاً."
   }
  ]
 }

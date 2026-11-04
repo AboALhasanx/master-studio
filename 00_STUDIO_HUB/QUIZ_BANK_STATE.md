@@ -10,29 +10,29 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T21:28:25+03:00
+> Generated at: 2026-11-04T21:38:00+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **71** |
-| Portal shell `VERSION` | **1.11.3** |
+| Live content version | **72** |
+| Portal shell `VERSION` | **1.11.4** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 170 banks / 1693 questions · live 170 banks / 1689 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 170 banks / 1712 questions · live 170 banks / 1693 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
 | Subject | Chapters | Banks | Questions | Live banks | Live questions | Drift |
 |---|---:|---:|---:|---:|---:|---|
-| `01_Cyber_Security` | 6 | 59 | 711 | 59 | 709 | **DIFF** |
-| `02_English_Language` | 3 | 18 | 200 | 18 | 198 | **DIFF** |
-| `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
+| `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
+| `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
+| `03_Data_Mining` | 8 | 55 | 531 | 55 | 512 | **DIFF** |
 | `04_Advanced_Software_Eng` | 4 | 14 | 100 | 14 | 100 | — |
 | `05_Soft_Computing` | 5 | 20 | 150 | 20 | 150 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
@@ -56,11 +56,11 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `02_English_Language` | 01 | 6 | 64 | 0 | 6/0 | 8/0 | 0 | 0 | clean |
 | `02_English_Language` | 02 | 6 | 64 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
 | `02_English_Language` | 03 | 6 | 72 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
-| `03_Data_Mining` | 01 | 5 | 35 | 0 | 5/3 | 4/1 | 0 | 0 | clean |
-| `03_Data_Mining` | 02 | 7 | 69 | 2 | 10/14 | 9/7 | 0 | 0 | needs work |
-| `03_Data_Mining` | 03 | 7 | 55 | 3 | 8/11 | 5/5 | 0 | 0 | needs work |
-| `03_Data_Mining` | 04 | 4 | 40 | 0 | 5/1 | 5/6 | 0 | 0 | clean |
-| `03_Data_Mining` | 05 | 10 | 77 | 3 | 10/4 | 7/5 | 0 | 0 | needs work |
+| `03_Data_Mining` | 01 | 5 | 40 | 1 | 5/4 | 4/2 | 0 | 0 | needs work |
+| `03_Data_Mining` | 02 | 7 | 70 | 2 | 10/14 | 9/7 | 0 | 0 | needs work |
+| `03_Data_Mining` | 03 | 7 | 60 | 5 | 9/11 | 6/5 | 0 | 0 | needs work |
+| `03_Data_Mining` | 04 | 4 | 43 | 1 | 6/2 | 5/6 | 0 | 0 | needs work |
+| `03_Data_Mining` | 05 | 10 | 82 | 4 | 10/4 | 7/5 | 0 | 0 | needs work |
 | `03_Data_Mining` | 06 | 7 | 86 | 1 | 9/6 | 8/10 | 0 | 0 | needs work |
 | `03_Data_Mining` | 07 | 7 | 86 | 0 | 11/9 | 11/6 | 0 | 0 | clean |
 | `03_Data_Mining` | 08 | 8 | 64 | 0 | 7/6 | 4/3 | 0 | 0 | clean |
@@ -78,9 +78,11 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 
 ## What remains
 
+- `03_Data_Mining` Ch01 — 1 handout refs
 - `03_Data_Mining` Ch02 — 2 handout refs
-- `03_Data_Mining` Ch03 — 3 handout refs
-- `03_Data_Mining` Ch05 — 3 handout refs
+- `03_Data_Mining` Ch03 — 5 handout refs
+- `03_Data_Mining` Ch04 — 1 handout refs
+- `03_Data_Mining` Ch05 — 4 handout refs
 - `03_Data_Mining` Ch06 — 1 handout refs
 - `04_Advanced_Software_Eng` Ch05 — 2 spread violations; answer-length tell
 - `05_Soft_Computing` Ch01 — 2 handout refs

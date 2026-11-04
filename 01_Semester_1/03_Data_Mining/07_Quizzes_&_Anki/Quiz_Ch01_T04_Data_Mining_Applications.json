@@ -18,25 +18,25 @@
    "question": "How does a retailer use point-of-sale records?",
    "question_ar": "كيف يستفيد بائع التجزئة من سجلات نقاط البيع؟",
    "options": [
-    "to plan products and promotions",
     "to repair the shop equipment",
     "to hire many new cashiers now",
-    "to design the whole building"
+    "to design the whole building",
+    "to plan products and promotions"
    ],
    "options_ar": [
-    "لتخطيط المنتجات والعروض",
     "لإصلاح معدات المتجر هنا",
     "لتوظيف أمناء صندوق جدد",
-    "لتصميم المبنى بالكامل"
+    "لتصميم المبنى بالكامل",
+    "لتخطيط المنتجات والعروض"
    ],
    "options_en": [
-    "to plan products and promotions",
     "to repair the shop equipment",
     "to hire many new cashiers now",
-    "to design the whole building"
+    "to design the whole building",
+    "to plan products and promotions"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "The records show what customers buy, so the retailer can plan products and promotions.",
    "explanation_ar": "السجلات تُظهر ما يشتريه العملاء، فيخطط التاجر للمنتجات والعروض."
   },
@@ -213,6 +213,35 @@
    "correct": 2,
    "explanation": "It is trained on sample records already marked as fraudulent or normal, then classifies new ones.",
    "explanation_ar": "يُدرَّب على سجلات موسومة مسبقاً كاحتيال أو طبيعية، ثم يصنّف الجديدة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch1_app_sector",
+   "bloom_level": "Understand",
+   "question": "Which sectors rely on data mining for fraud detection?",
+   "question_ar": "أي قطاعات تعتمد على التنقيب لكشف الاحتيال؟",
+   "options": [
+    "banking and insurance",
+    "agriculture and farming",
+    "construction and building",
+    "mining and quarrying"
+   ],
+   "options_en": [
+    "banking and insurance",
+    "agriculture and farming",
+    "construction and building",
+    "mining and quarrying"
+   ],
+   "options_ar": [
+    "المصارف والتأمين",
+    "الزراعة والفلاحة",
+    "البناء والتشييد",
+    "التعدين والمقالع"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Banks and insurers mine transactions precisely to catch fraud early.",
+   "explanation_ar": "المصارف وشركات التأمين تنقّب في المعاملات تحديداً لكشف الاحتيال مبكراً."
   }
  ]
 }

@@ -75,25 +75,25 @@
    "question": "Which set names the five main data-preparation steps?",
    "question_ar": "أي مجموعة تسمي خطوات إعداد البيانات الخمس الرئيسية؟",
    "options": [
-    "Cleaning, integration, transformation, reduction, and discretization",
     "Record, transaction, text, sequence, and spatial data",
     "Nominal, ordinal, binary, numerical, and continuous values",
-    "Trends, seasonal patterns, periodic patterns, anomalies, and measurements"
+    "Trends, seasonal patterns, periodic patterns, anomalies, and measurements",
+    "Cleaning, integration, transformation, reduction, and discretization"
    ],
    "options_en": [
-    "Cleaning, integration, transformation, reduction, and discretization",
     "Record, transaction, text, sequence, and spatial data",
     "Nominal, ordinal, binary, numerical, and continuous values",
-    "Trends, seasonal patterns, periodic patterns, anomalies, and measurements"
+    "Trends, seasonal patterns, periodic patterns, anomalies, and measurements",
+    "Cleaning, integration, transformation, reduction, and discretization"
    ],
    "options_ar": [
-    "التنظيف، والتكامل، والتحويل، والاختزال، والتقسيم إلى فئات",
     "بيانات السجلات، والمعاملات، والنصوص، والتسلسلات، والمكان",
     "القيم الاسمية، والترتيبية، والثنائية، والرقمية، والمستمرة",
-    "الاتجاهات، والأنماط الموسمية، والدورية، والشذوذات، والقياسات"
+    "الاتجاهات، والأنماط الموسمية، والدورية، والشذوذات، والقياسات",
+    "التنظيف، والتكامل، والتحويل، والاختزال، والتقسيم إلى فئات"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "These are the five preparation steps listed; the alternatives mix mining tasks or lifecycle activities.",
    "explanation_ar": "هذه هي خطوات التحضير الخمس؛ أما البدائل فتخلط بينها وبين مهام تنقيب أو أنشطة دورة عمل.",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "The medical workflow includes suitable encoding and conditional normalization; it does not mandate graph conversion or blind deletion.",
    "explanation_ar": "يتضمن سير العمل الطبي ترميزاً مناسباً وتطبيعاً عند الحاجة؛ ولا يفرض التحويل إلى رسوم أو الحذف الأعمى.",
    "id": "q8"
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch2_prep_after_clean",
+   "bloom_level": "Understand",
+   "question": "Which step normally follows data cleaning?",
+   "question_ar": "أي خطوة تلي تنظيف البيانات عادة؟",
+   "options": [
+    "data transformation",
+    "deleting all records",
+    "printing the reports",
+    "archiving the files"
+   ],
+   "options_en": [
+    "data transformation",
+    "deleting all records",
+    "printing the reports",
+    "archiving the files"
+   ],
+   "options_ar": [
+    "تحويل البيانات",
+    "حذف كل السجلات",
+    "طباعة التقارير",
+    "أرشفة الملفات"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Once the data is clean it is transformed into the form the algorithm needs.",
+   "explanation_ar": "بعد التنظيف تُحوَّل البيانات إلى الشكل الذي تحتاجه الخوارزمية."
   }
  ]
 }

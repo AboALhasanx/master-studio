@@ -18,25 +18,25 @@
    "question": "What does data mining extract from large data sets?",
    "question_ar": "ماذا يستخرج تنقيب البيانات من مجموعات البيانات الكبيرة؟",
    "options": [
-    "patterns, trends and useful data",
     "hardware faults and system errors",
     "staff records and their salaries",
-    "network cables and main servers"
+    "network cables and main servers",
+    "patterns, trends and useful data"
    ],
    "options_ar": [
-    "أنماط واتجاهات وبيانات مفيدة",
     "أعطال العتاد وأخطاء النظام",
     "سجلات الموظفين ورواتبهم هنا",
-    "كابلات الشبكة والخوادم الرئيسية"
+    "كابلات الشبكة والخوادم الرئيسية",
+    "أنماط واتجاهات وبيانات مفيدة"
    ],
    "options_en": [
-    "patterns, trends and useful data",
     "hardware faults and system errors",
     "staff records and their salaries",
-    "network cables and main servers"
+    "network cables and main servers",
+    "patterns, trends and useful data"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Data mining extracts information that reveals patterns, trends and useful data.",
    "explanation_ar": "تنقيب البيانات يستخرج معلومات تكشف الأنماط والاتجاهات والبيانات المفيدة."
   },
@@ -213,6 +213,35 @@
    "correct": 2,
    "explanation": "The search runs automatically across large stores of information, not one record at a time.",
    "explanation_ar": "البحث يجري تلقائياً في مخازن كبيرة من المعلومات، لا في سجل واحد."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch1_dm_where",
+   "bloom_level": "Understand",
+   "question": "Where does data mining look for its patterns?",
+   "question_ar": "أين يبحث تنقيب البيانات عن أنماطه؟",
+   "options": [
+    "inside large data stores",
+    "inside the source code here",
+    "inside the hardware here",
+    "inside the staff files here"
+   ],
+   "options_en": [
+    "inside large data stores",
+    "inside the source code here",
+    "inside the hardware here",
+    "inside the staff files here"
+   ],
+   "options_ar": [
+    "داخل مخازن بيانات كبيرة",
+    "داخل الشيفرة المصدرية",
+    "داخل العتاد نفسه هنا",
+    "داخل ملفات الموظفين هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The search runs over large stores of collected data, not over code or hardware.",
+   "explanation_ar": "البحث يجري في مخازن كبيرة من البيانات المجموعة، لا في الشيفرة أو العتاد."
   }
  ]
 }

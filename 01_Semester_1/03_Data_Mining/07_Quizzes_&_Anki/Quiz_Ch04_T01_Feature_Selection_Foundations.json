@@ -75,25 +75,25 @@
    "question": "Which modeling risk can feature selection reduce?",
    "question_ar": "أي خطر نمذجة قد يقلله اختيار الخصائص؟",
    "options": [
-    "Reduce the risk of overfitting.",
     "Reduce computational cost.",
     "during the model training process",
-    "Make the model easier to interpret."
+    "Make the model easier to interpret.",
+    "Reduce the risk of overfitting."
    ],
    "options_en": [
-    "Reduce the risk of overfitting.",
     "Reduce computational cost.",
     "during the model training process",
-    "Make the model easier to interpret."
+    "Make the model easier to interpret.",
+    "Reduce the risk of overfitting."
    ],
    "options_ar": [
-    "تقليل خطر فرط التكيّف.",
     "تقليل الكلفة الحسابية.",
     "أثناء عملية تدريب النموذج",
-    "جعل النموذج أسهل تفسيراً."
+    "جعل النموذج أسهل تفسيراً.",
+    "تقليل خطر فرط التكيّف."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Removing noisy and irrelevant attributes stops the model from fitting accidental patterns.",
    "explanation_ar": "تقليل خطر فرط التكيّف.",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Embedded methods perform feature selection during the model training process.",
    "explanation_ar": "أثناء عملية تدريب النموذج",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_fs_keeps",
+   "bloom_level": "Understand",
+   "question": "What does feature selection keep?",
+   "question_ar": "ماذا يحتفظ به اختيار السمات؟",
+   "options": [
+    "the most useful original features",
+    "a set of newly built features",
+    "every feature left unchanged",
+    "only the values that were missing"
+   ],
+   "options_en": [
+    "the most useful original features",
+    "a set of newly built features",
+    "every feature left unchanged",
+    "only the values that were missing"
+   ],
+   "options_ar": [
+    "أكثر السمات الأصلية فائدة",
+    "مجموعة سمات مبنية جديدة",
+    "كل سمة دون تغيير هنا هنا",
+    "القيم المفقودة فقط هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Selection drops attributes but never builds new ones, unlike extraction.",
+   "explanation_ar": "الاختيار يحذف صفات لكنه لا يبني جديدة، بخلاف الاستخراج."
   }
  ]
 }

@@ -75,25 +75,25 @@
    "question": "If an itemset is not frequent, what follows for its supersets?",
    "question_ar": "إذا لم تكن مجموعة عناصر متكررة، فما حكم مجموعاتها الأعلى احتواءً؟",
    "options": [
-    "none of its supersets can be frequent",
     "all of its supersets must be frequent",
     "The algorithm works from longest to shortest",
-    "adding an item to the current itemset"
+    "adding an item to the current itemset",
+    "none of its supersets can be frequent"
    ],
    "options_en": [
-    "none of its supersets can be frequent",
     "all of its supersets must be frequent",
     "The algorithm works from longest to shortest",
-    "adding an item to the current itemset"
+    "adding an item to the current itemset",
+    "none of its supersets can be frequent"
    ],
    "options_ar": [
-    "لا تكون أي مجموعة أعلى احتواءً متكررة",
     "يجب أن تكون كل مجموعاتها الأعلى احتواءً متكررة",
     "تعمل الخوارزمية من الأطول إلى الأقصر",
-    "إضافة عنصر إلى مجموعة العناصر الحالية"
+    "إضافة عنصر إلى مجموعة العناصر الحالية",
+    "لا تكون أي مجموعة أعلى احتواءً متكررة"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "If an itemset is not frequent, none of its supersets can be frequent.",
    "explanation_ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "and so on, until no more frequent itemsets can be generated.",
    "explanation_ar": "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_apriori_property",
+   "bloom_level": "Remember",
+   "question": "What does the Apriori property state?",
+   "question_ar": "ماذا تنص خاصية Apriori؟",
+   "options": [
+    "a frequent set has frequent subsets",
+    "a rare set has frequent subsets here",
+    "all sets are equally frequent here",
+    "frequency never changes at all here"
+   ],
+   "options_en": [
+    "a frequent set has frequent subsets",
+    "a rare set has frequent subsets here",
+    "all sets are equally frequent here",
+    "frequency never changes at all here"
+   ],
+   "options_ar": [
+    "كل مجموعة متكررة لها مجموعات فرعية متكررة",
+    "المجموعة النادرة لها مجموعات فرعية متكررة",
+    "كل المجموعات متساوية في التكرار هنا",
+    "التكرار لا يتغير أبداً في أي حال هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "If an itemset is frequent then every subset of it must be frequent too.",
+   "explanation_ar": "إذا كانت المجموعة متكررة فكل مجموعة فرعية منها متكررة أيضاً."
   }
  ]
 }

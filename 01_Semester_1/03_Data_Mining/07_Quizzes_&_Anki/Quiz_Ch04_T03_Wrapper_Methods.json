@@ -75,25 +75,25 @@
    "question": "How does Forward Selection begin?",
    "question_ar": "بماذا يبدأ الاختيار الأمامي؟",
    "options": [
-    "Starts with no features.",
     "Starts with all features.",
     "when constructing the tree",
-    "as part of model training"
+    "as part of model training",
+    "Starts with no features."
    ],
    "options_en": [
-    "Starts with no features.",
     "Starts with all features.",
     "when constructing the tree",
-    "as part of model training"
+    "as part of model training",
+    "Starts with no features."
    ],
    "options_ar": [
-    "يبدأ دون خصائص.",
     "يبدأ بكل الخصائص.",
     "عند إنشاء الشجرة",
-    "ضمن تدريب النموذج"
+    "ضمن تدريب النموذج",
+    "يبدأ دون خصائص."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Forward selection is greedy from below: it begins with the empty set and adds one feature at a time.",
    "explanation_ar": "يبدأ دون خصائص.",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "RFE repeatedly trains a model and removes the least important features.",
    "explanation_ar": "تدرب نموذجاً وتزيل الخصائص الأقل أهمية",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_wrap_score",
+   "bloom_level": "Understand",
+   "question": "What does a wrapper method use to score a subset?",
+   "question_ar": "بماذا يقيس أسلوب التغليف جودة مجموعة فرعية؟",
+   "options": [
+    "the accuracy of the model itself",
+    "the file size of the whole data",
+    "the number of the table columns",
+    "the order of the data rows"
+   ],
+   "options_en": [
+    "the accuracy of the model itself",
+    "the file size of the whole data",
+    "the number of the table columns",
+    "the order of the data rows"
+   ],
+   "options_ar": [
+    "دقة النموذج نفسه هنا",
+    "حجم ملف البيانات هنا",
+    "عدد أعمدة الجدول",
+    "ترتيب صفوف البيانات"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A wrapper trains the model on each subset and scores it by that model's accuracy.",
+   "explanation_ar": "التغليف يدرّب النموذج على كل مجموعة ويقيسها بدقة ذلك النموذج."
   }
  ]
 }

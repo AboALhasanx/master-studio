@@ -75,25 +75,25 @@
    "question": "With categories A, B, and O, what vector represents patient P2 with category B?",
    "question_ar": "إذا كانت الفئات A وB وO، فما المتجه الذي يمثل المريض P2 ذي الفئة B؟",
    "options": [
-    "[0, 1, 0]",
     "[1, 0, 0]",
     "[0, 0, 1]",
-    "[1, 1, 0]"
+    "[1, 1, 0]",
+    "[0, 1, 0]"
    ],
    "options_en": [
-    "[0, 1, 0]",
     "[1, 0, 0]",
     "[0, 0, 1]",
-    "[1, 1, 0]"
+    "[1, 1, 0]",
+    "[0, 1, 0]"
    ],
    "options_ar": [
-    "[0, 1, 0]",
     "[1, 0, 0]",
     "[0, 0, 1]",
-    "[1, 1, 0]"
+    "[1, 1, 0]",
+    "[0, 1, 0]"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "The columns follow A, B, O, so category B sets the second bit to 1 and the others to 0.",
    "explanation_ar": "ترتب الأعمدة A ثم B ثم O، لذلك تضبط الفئة B البت الثاني إلى 1 والبقية إلى 0.",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "A numerical vector is a possible output, which mining or machine-learning methods can then use.",
    "explanation_ar": "تعرض المادة متجهاً رقمياً ناتجاً ممكناً، ويمكن بعده استخدام طرائق التنقيب أو التعلم الآلي.",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch3_onehot",
+   "bloom_level": "Understand",
+   "question": "What does one-hot encoding produce for a categorical attribute?",
+   "question_ar": "ماذا ينتج الترميز الأحادي لصفة فئوية؟",
+   "options": [
+    "a binary column per category",
+    "one column for all the categories",
+    "a single numeric average value",
+    "a sorted list of the text here"
+   ],
+   "options_en": [
+    "a binary column per category",
+    "one column for all the categories",
+    "a single numeric average value",
+    "a sorted list of the text here"
+   ],
+   "options_ar": [
+    "عمود ثنائي لكل فئة",
+    "عمود واحد لكل الفئات",
+    "قيمة متوسطة واحدة",
+    "قائمة نصية مرتبة"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Each category becomes its own zero-or-one column, so no order is implied.",
+   "explanation_ar": "كل فئة تصبح عموداً خاصاً بقيم صفر أو واحد، فلا يُفهم ترتيب ضمني."
   }
  ]
 }

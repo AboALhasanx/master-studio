@@ -104,25 +104,25 @@
    "question": "How can feature extraction help algorithms process data?",
    "question_ar": "كيف يمكن لاستخراج الخصائص أن يساعد الخوارزميات على معالجة البيانات؟",
    "options": [
+    "Guarantee identical results across all models.",
     "Make data easier for algorithms to process.",
     "Make every algorithm accept all raw data.",
-    "Remove the need to select a mining task.",
-    "Guarantee identical results across all models."
+    "Remove the need to select a mining task."
    ],
    "options_en": [
+    "Guarantee identical results across all models.",
     "Make data easier for algorithms to process.",
     "Make every algorithm accept all raw data.",
-    "Remove the need to select a mining task.",
-    "Guarantee identical results across all models."
+    "Remove the need to select a mining task."
    ],
    "options_ar": [
+    "ضمان نتائج متطابقة لكل النماذج دائماً.",
     "جعل البيانات أسهل معالجةً للخوارزميات.",
     "جعل كل خوارزمية تقبل جميع أنواع البيانات الخام.",
-    "إلغاء اختيار مهمة التنقيب من عملية التحليل.",
-    "ضمان نتائج متطابقة لكل النماذج دائماً."
+    "إلغاء اختيار مهمة التنقيب من عملية التحليل."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Easier processing is a possible benefit; it does not remove algorithm constraints or guarantee identical performance.",
    "explanation_ar": "تذكر المادة تسهيل المعالجة فائدةً محتملة؛ ولا تلغي قيود الخوارزميات أو تضمن أداءً متطابقاً.",
    "id": "q4"
@@ -133,28 +133,115 @@
    "question": "What performance effect is described as possible rather than certain?",
    "question_ar": "ما أثر الأداء الذي وُصف بأنه ممكن لا مؤكد؟",
    "options": [
-    "Sometimes improve prediction or classification performance.",
-    "Always reduce prediction and classification performance.",
     "Guarantee the correct model and its performance before training.",
-    "Always improve every prediction and classification result."
+    "Always improve every prediction and classification result.",
+    "Sometimes improve prediction or classification performance.",
+    "Always reduce prediction and classification performance."
    ],
    "options_en": [
-    "Sometimes improve prediction or classification performance.",
-    "Always reduce prediction and classification performance.",
     "Guarantee the correct model and its performance before training.",
-    "Always improve every prediction and classification result."
+    "Always improve every prediction and classification result.",
+    "Sometimes improve prediction or classification performance.",
+    "Always reduce prediction and classification performance."
    ],
    "options_ar": [
-    "تحسين أداء التنبؤ أو التصنيف أحياناً.",
-    "خفض أداء التصنيف والتنبؤ دائماً.",
     "ضمان النموذج الصحيح قبل التدريب.",
-    "تحسين كل نتائج التصنيف والتنبؤ دائماً."
+    "تحسين كل نتائج التصنيف والتنبؤ دائماً.",
+    "تحسين أداء التنبؤ أو التصنيف أحياناً.",
+    "خفض أداء التصنيف والتنبؤ دائماً."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "The qualification 'sometimes' matters: extraction may improve performance, but no universal guarantee is stated.",
    "explanation_ar": "قيد «أحياناً» مهم: قد يحسن الاستخراج الأداء، لكن لا يوجد ضمان عام بذلك.",
    "id": "q5"
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch3_fe_output",
+   "bloom_level": "Understand",
+   "question": "What does feature extraction produce?",
+   "question_ar": "ماذا ينتج استخراج السمات؟",
+   "options": [
+    "a larger set of raw records",
+    "an exact copy of the data here",
+    "a list of missing values here",
+    "a smaller set of new features"
+   ],
+   "options_en": [
+    "a larger set of raw records",
+    "an exact copy of the data here",
+    "a list of missing values here",
+    "a smaller set of new features"
+   ],
+   "options_ar": [
+    "مجموعة أكبر من سجلات خام",
+    "نسخة مطابقة من البيانات",
+    "قائمة بالقيم المفقودة هنا",
+    "مجموعة أصغر من سمات جديدة"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Extraction builds new features that represent the data with fewer dimensions.",
+   "explanation_ar": "الاستخراج يبني سمات جديدة تمثّل البيانات بأبعاد أقل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch3_fe_purpose",
+   "bloom_level": "Understand",
+   "question": "Why is feature extraction applied before modelling?",
+   "question_ar": "لماذا يُطبَّق استخراج السمات قبل النمذجة؟",
+   "options": [
+    "to reduce the dimensionality",
+    "to increase the file size",
+    "to slow the model down here",
+    "to hide the data away here"
+   ],
+   "options_en": [
+    "to reduce the dimensionality",
+    "to increase the file size",
+    "to slow the model down here",
+    "to hide the data away here"
+   ],
+   "options_ar": [
+    "لتقليل الأبعاد هنا",
+    "لزيادة حجم الملف",
+    "لإبطاء النموذج هنا",
+    "لإخفاء البيانات هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Fewer dimensions mean cheaper training and less noise for the model.",
+   "explanation_ar": "أبعاد أقل تعني تدريباً أرخص وضجيجاً أقل للنموذج."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch3_fe_vs_select",
+   "bloom_level": "Analyze",
+   "question": "Which pair distinguishes extraction from selection?",
+   "question_ar": "أي زوج يميّز الاستخراج عن الاختيار؟",
+   "options": [
+    "new against existing features",
+    "old data versus the new data",
+    "large files versus small ones",
+    "fast models versus slow ones"
+   ],
+   "options_en": [
+    "new against existing features",
+    "old data versus the new data",
+    "large files versus small ones",
+    "fast models versus slow ones"
+   ],
+   "options_ar": [
+    "سمات جديدة مقابل القائمة",
+    "بيانات قديمة مقابل جديدة",
+    "ملفات كبيرة مقابل صغيرة",
+    "نماذج سريعة مقابل بطيئة"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Selection keeps existing attributes; extraction builds new ones from them.",
+   "explanation_ar": "الاختيار يحتفظ بالصفات القائمة، والاستخراج يبني منها صفات جديدة."
   }
  ]
 }

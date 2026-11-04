@@ -75,25 +75,25 @@
    "question": "How can association rules support cross-selling?",
    "question_ar": "كيف تدعم قواعد الارتباط البيع المتقاطع؟",
    "options": [
-    "recommend additional products to customers based on their current selections",
     "certain features always become exactly zero during model training",
     "The number of possible item combinations can become very large",
-    "their actual co-occurrence with the co-occurrence expected if they were independent"
+    "their actual co-occurrence with the co-occurrence expected if they were independent",
+    "recommend additional products to customers based on their current selections"
    ],
    "options_en": [
-    "recommend additional products to customers based on their current selections",
     "certain features always become exactly zero during model training",
     "The number of possible item combinations can become very large",
-    "their actual co-occurrence with the co-occurrence expected if they were independent"
+    "their actual co-occurrence with the co-occurrence expected if they were independent",
+    "recommend additional products to customers based on their current selections"
    ],
    "options_ar": [
-    "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
     "تحول خصائص معينة دائماً إلى الصفر تماماً أثناء تدريب النموذج",
     "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
-    "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين"
+    "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+    "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Association rules can help businesses recommend additional products to customers based on their current selections.",
    "explanation_ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Choosing suitable minimum support and minimum confidence values can be difficult. Very high values may remove useful rules, while very low values may generate too many rules.",
    "explanation_ar": "قد يكون اختيار قيم مناسبة للحد الأدنى للدعم والحد الأدنى للثقة صعباً.",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_rules_explode",
+   "bloom_level": "Understand",
+   "question": "Which challenge makes the rule set explode?",
+   "question_ar": "أي تحدٍّ يجعل عدد القواعد ينفجر؟",
+   "options": [
+    "too many candidate itemsets",
+    "too few of the transactions",
+    "too short the data records",
+    "too slow the storage disks"
+   ],
+   "options_en": [
+    "too many candidate itemsets",
+    "too few of the transactions",
+    "too short the data records",
+    "too slow the storage disks"
+   ],
+   "options_ar": [
+    "مجموعات مرشحة كثيرة جداً",
+    "معاملات قليلة جداً هنا",
+    "سجلات بيانات قصيرة هنا",
+    "أقراص تخزين بطيئة هنا هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Candidate itemsets grow exponentially, which is why pruning and thresholds matter.",
+   "explanation_ar": "المجموعات المرشحة تنمو أُسّياً، ولهذا يهمّ التقليم والعتبات."
   }
  ]
 }

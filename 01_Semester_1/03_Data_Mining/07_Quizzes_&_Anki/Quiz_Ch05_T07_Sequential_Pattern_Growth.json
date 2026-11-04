@@ -75,25 +75,25 @@
    "question": "What does a projected database contain for a particular pattern?",
    "question_ar": "ماذا تحتوي قاعدة البيانات المسقطة لنمط معين؟",
    "options": [
-    "the relevant suffixes of sequences where that pattern occurs",
     "all candidate itemsets in descending frequency order",
     "commonly associated with transaction-based association rules",
-    "using all possible itemsets regardless of support"
+    "using all possible itemsets regardless of support",
+    "the relevant suffixes of sequences where that pattern occurs"
    ],
    "options_en": [
-    "the relevant suffixes of sequences where that pattern occurs",
     "all candidate itemsets in descending frequency order",
     "commonly associated with transaction-based association rules",
-    "using all possible itemsets regardless of support"
+    "using all possible itemsets regardless of support",
+    "the relevant suffixes of sequences where that pattern occurs"
    ],
    "options_ar": [
-    "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
     "كل مجموعات العناصر المرشحة بترتيب تكرار تنازلي",
     "يرتبط عادة بقواعد الارتباط المعتمدة على المعاملات",
-    "باستخدام كل مجموعات العناصر الممكنة بصرف النظر عن الدعم"
+    "باستخدام كل مجموعات العناصر الممكنة بصرف النظر عن الدعم",
+    "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "For a particular pattern, we create a smaller database containing the relevant suffixes of sequences where that pattern occurs.",
    "explanation_ar": "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Sequential mining focuses on the order in which items or events occur.",
    "explanation_ar": "يركز على ترتيب وقوع العناصر أو الأحداث، لا مجرد ظهورها معاً.",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_seq_adds",
+   "bloom_level": "Understand",
+   "question": "What does sequential pattern mining add to association rules?",
+   "question_ar": "ماذا يضيف تنقيب الأنماط التسلسلية لقواعد الارتباط؟",
+   "options": [
+    "the order of the events",
+    "the price of the items",
+    "the format of the file",
+    "the number of the users"
+   ],
+   "options_en": [
+    "the order of the events",
+    "the price of the items",
+    "the format of the file",
+    "the number of the users"
+   ],
+   "options_ar": [
+    "ترتيب الأحداث",
+    "سعر العناصر",
+    "صيغة الملف هنا",
+    "عدد المستخدمين"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The sequence matters: the same items in another order make a different pattern.",
+   "explanation_ar": "التسلسل مهم: العناصر نفسها بترتيب آخر تصنع نمطاً مختلفاً."
   }
  ]
 }

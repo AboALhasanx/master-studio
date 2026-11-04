@@ -75,25 +75,25 @@
    "question": "What does an itemset contain?",
    "question_ar": "ماذا تحتوي مجموعة العناصر؟",
    "options": [
-    "collections of items, such as {Bread, Milk}",
     "numerical-attribute patterns in a dataset",
     "a minimum-support threshold selected by a user",
-    "individual elements, such as Bread, Milk, Coffee"
+    "individual elements, such as Bread, Milk, Coffee",
+    "collections of items, such as {Bread, Milk}"
    ],
    "options_en": [
-    "collections of items, such as {Bread, Milk}",
     "numerical-attribute patterns in a dataset",
     "a minimum-support threshold selected by a user",
-    "individual elements, such as Bread, Milk, Coffee"
+    "individual elements, such as Bread, Milk, Coffee",
+    "collections of items, such as {Bread, Milk}"
    ],
    "options_ar": [
-    "مجموعات من العناصر مثل {Bread, Milk}",
     "أنماط خصائص رقمية في مجموعة بيانات",
     "عتبة حد أدنى للدعم يحددها المستخدم",
-    "عناصر مفردة مثل الخبز والحليب والقهوة"
+    "عناصر مفردة مثل الخبز والحليب والقهوة",
+    "مجموعات من العناصر مثل {Bread, Milk}"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Itemsets – collections of items, such as {Bread, Milk}.",
    "explanation_ar": "مجموعات من العناصر مثل {Bread, Milk}",
    "id": "q3"
@@ -213,6 +213,35 @@
    "explanation": "Consequent is the second part, Y, inferred from the presence of the antecedent X.",
    "explanation_ar": "الجزء الثاني من القاعدة Y الذي يُستنتج من وجود الشرط X في المعاملات.",
    "id": "q7"
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_rule_meaning",
+   "bloom_level": "Understand",
+   "question": "What does an association rule express?",
+   "question_ar": "ماذا تعبّر عنه قاعدة الارتباط؟",
+   "options": [
+    "a link between item sets",
+    "a sort order for the items",
+    "a price for each item",
+    "a count of the files here"
+   ],
+   "options_en": [
+    "a link between item sets",
+    "a sort order for the items",
+    "a price for each item",
+    "a count of the files here"
+   ],
+   "options_ar": [
+    "رابط بين مجموعات العناصر",
+    "ترتيب فرز للعناصر هنا هنا",
+    "سعر لكل عنصر في القائمة",
+    "عدد الملفات في المجلد"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A rule says that when one item set occurs, another tends to occur with it.",
+   "explanation_ar": "القاعدة تقول إن ظهور مجموعة يعني ميل مجموعة أخرى للظهور معها."
   }
  ]
 }
