@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T14:51:38+03:00
+> Generated at: 2026-11-04T14:59:54+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **56** |
-| Portal shell `VERSION` | **1.10.1** |
+| Live content version | **57** |
+| Portal shell `VERSION` | **1.10.2** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 129 banks / 1289 questions · live 129 banks / 1289 questions · MATCH
+**Totals:** vault 132 banks / 1313 questions · live 132 banks / 1313 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -32,7 +32,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | `01_Cyber_Security` | 6 | 59 | 709 | 59 | 709 | — |
 | `02_English_Language` | 2 | 4 | 20 | 4 | 20 | — |
-| `03_Data_Mining` | 8 | 52 | 488 | 52 | 488 | — |
+| `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
 | `04_Advanced_Software_Eng` | 3 | 6 | 30 | 6 | 30 | — |
 | `05_Soft_Computing` | 2 | 4 | 22 | 4 | 22 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
@@ -59,7 +59,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `03_Data_Mining` | 02 | 7 | 69 | 23 | 9/10 | 10/7 | 16 | 0 | needs work |
 | `03_Data_Mining` | 03 | 7 | 55 | 17 | 7/11 | 5/5 | 0 | 0 | needs work |
 | `03_Data_Mining` | 04 | 4 | 40 | 0 | 3/1 | 4/6 | 0 | 0 | clean |
-| `03_Data_Mining` | 05 | 7 | 53 | 3 | 4/2 | 7/2 | 0 | 0 | needs work |
+| `03_Data_Mining` | 05 | 10 | 77 | 3 | 8/3 | 7/4 | 0 | 0 | needs work |
 | `03_Data_Mining` | 06 | 7 | 86 | 1 | 8/5 | 8/10 | 0 | 0 | needs work |
 | `03_Data_Mining` | 07 | 7 | 86 | 0 | 8/7 | 9/6 | 0 | 0 | clean |
 | `03_Data_Mining` | 08 | 8 | 64 | 0 | 7/6 | 4/3 | 0 | 0 | clean |
