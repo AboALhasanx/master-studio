@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch05_T04_Fuzzy_Logic_Controllers",
+ "topic": "Fuzzy Logic Controllers",
+ "topic_ar": "المتحكمات المنطقية الضبابية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c5c_when",
+   "bloom_level": "Understand",
+   "question": "When is a fuzzy controller the right tool?",
+   "question_ar": "متى يكون المتحكم الضبابي الأداة المناسبة؟",
+   "options": [
+    "nonlinear and time-varying",
+    "linear and fully known now",
+    "static and exactly known",
+    "single and fixed model now"
+   ],
+   "options_ar": [
+    "غير خطي ومتغير بالوقت",
+    "خطي ومعروف تماماً هنا",
+    "ساكن ومحدد بدقة هنا",
+    "نموذج واحد ثابت هنا"
+   ],
+   "options_en": [
+    "nonlinear and time-varying",
+    "linear and fully known now",
+    "static and exactly known",
+    "single and fixed model now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "An FLC suits nonlinear, time-varying and noisy systems.",
+   "explanation_ar": "المتحكم الضبابي يناسب الأنظمة غير الخطية والمتغيرة والمشوشة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c5c_components",
+   "bloom_level": "Remember",
+   "question": "Which components make up a fuzzy logic controller?",
+   "question_ar": "أي مكونات تشكّل متحكماً منطقياً ضبابياً؟",
+   "options": [
+    "sum product and average here",
+    "fuzzify, infer and defuzzify",
+    "union intersection complement",
+    "max-min and max-product only"
+   ],
+   "options_ar": [
+    "جمع وضرب ومتوسط هنا",
+    "تحويل واستدلال وإزالة",
+    "اتحاد وتقاطع ومتمم هنا",
+    "أقصى-أدنى وأقصى-ضرب"
+   ],
+   "options_en": [
+    "sum product and average here",
+    "fuzzify, infer and defuzzify",
+    "union intersection complement",
+    "max-min and max-product only"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "An FLC fuzzifies, infers over the rules, then defuzzifies.",
+   "explanation_ar": "المتحكم يحوّل ضبابياً، يستدل عبر القواعد، ثم يزيل التغبيش."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c5c_mamdani_cons",
+   "bloom_level": "Remember",
+   "question": "In Mamdani, the rule consequent is what?",
+   "question_ar": "في ممداني، ما هو لاحق القاعدة؟",
+   "options": [
+    "a crisp number value",
+    "a relation matrix",
+    "a fuzzy output set",
+    "a linear function"
+   ],
+   "options_ar": [
+    "قيمة رقمية حاسمة هنا",
+    "مصفوفة علاقة كاملة",
+    "مجموعة مخرج ضبابية",
+    "دالة خطية بسيطة هنا"
+   ],
+   "options_en": [
+    "a crisp number value",
+    "a relation matrix",
+    "a fuzzy output set",
+    "a linear function"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A Mamdani consequent is a fuzzy set, later defuzzified.",
+   "explanation_ar": "لاحق ممداني مجموعة ضبابية، تُزال تغبيشها لاحقاً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c5c_sugeno_cons",
+   "bloom_level": "Remember",
+   "question": "In Takagi-Sugeno, the rule consequent is what?",
+   "question_ar": "في تاكاغي-سوغينو، ما هو لاحق القاعدة؟",
+   "options": [
+    "a fuzzy output set",
+    "a crisp number value",
+    "a relation matrix",
+    "a linear function"
+   ],
+   "options_ar": [
+    "مجموعة مخرج ضبابية",
+    "قيمة رقمية حاسمة",
+    "مصفوفة علاقة كاملة",
+    "دالة خطية بسيطة هنا"
+   ],
+   "options_en": [
+    "a fuzzy output set",
+    "a crisp number value",
+    "a relation matrix",
+    "a linear function"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A Takagi-Sugeno consequent is a function of the inputs.",
+   "explanation_ar": "لاحق تاكاغي-سوغينو دالة في المدخلات."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c5c_mamdani_interp",
+   "bloom_level": "Understand",
+   "question": "Which is a Mamdani advantage?",
+   "question_ar": "أي ميزة لممداني؟",
+   "options": [
+    "high interpretability",
+    "higher numerical accuracy",
+    "faster computation here",
+    "no rule base at all"
+   ],
+   "options_ar": [
+    "قابلية تفسير عالية",
+    "دقة عددية أعلى هنا",
+    "حساب أسرع هنا جداً",
+    "دون قاعدة قواعد هنا"
+   ],
+   "options_en": [
+    "high interpretability",
+    "higher numerical accuracy",
+    "faster computation here",
+    "no rule base at all"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Mamdani rules stay linguistic, so they are easy to read and explain.",
+   "explanation_ar": "قواعد ممداني تبقى لغوية، فسهلة القراءة والشرح."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c5c_sugeno_adv",
+   "bloom_level": "Understand",
+   "question": "Which is a Takagi-Sugeno advantage?",
+   "question_ar": "أي ميزة لتاكاغي-سوغينو؟",
+   "options": [
+    "a linguistic consequent",
+    "higher numerical accuracy",
+    "high rule interpretability",
+    "very readable rules"
+   ],
+   "options_ar": [
+    "لاحق لغوي ضبابي",
+    "دقة عددية أعلى هنا",
+    "قابلية تفسير عالية",
+    "قواعد سهلة القراءة"
+   ],
+   "options_en": [
+    "a linguistic consequent",
+    "higher numerical accuracy",
+    "high rule interpretability",
+    "very readable rules"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Takagi-Sugeno is more accurate and faster but less interpretable.",
+   "explanation_ar": "تاكاغي-سوغينو أدق وأسرع لكن أقل قابلية للتفسير."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c5c_rulecount",
+   "bloom_level": "Apply",
+   "question": "With 4 distance terms and 5 angle terms, how many rules?",
+   "question_ar": "مع 4 حدات مسافة و5 حدات زاوية، كم قاعدة؟",
+   "options": [
+    "sixteen rules in total",
+    "twenty five rules total",
+    "twenty rules in total",
+    "nine rules in total"
+   ],
+   "options_ar": [
+    "ست عشرة قاعدة",
+    "خمس وعشرون قاعدة",
+    "عشرون قاعدة فقط",
+    "تسع قواعد فقط"
+   ],
+   "options_en": [
+    "sixteen rules in total",
+    "twenty five rules total",
+    "twenty rules in total",
+    "nine rules in total"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The rule base is 4 times 5, which gives twenty rules.",
+   "explanation_ar": "قاعدة القواعد 4 في 5، فتعطي عشرين قاعدة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c5c_alpha",
+   "bloom_level": "Understand",
+   "question": "How is a rule firing strength computed?",
+   "question_ar": "كيف تُحسب قوة إطلاق القاعدة؟",
+   "options": [
+    "maximum of the antecedent grades",
+    "sum of the antecedent grades",
+    "product of all output grades",
+    "minimum of the antecedent grades"
+   ],
+   "options_ar": [
+    "أقصى درجات المقدمة",
+    "مجموع درجات المقدمة",
+    "حاصل ضرب درجات المخرج",
+    "أدنى درجات المقدمة"
+   ],
+   "options_en": [
+    "maximum of the antecedent grades",
+    "sum of the antecedent grades",
+    "product of all output grades",
+    "minimum of the antecedent grades"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The firing strength is the minimum of the antecedent grades.",
+   "explanation_ar": "قوة الإطلاق هي أدنى درجات المقدمة، أي أضعف شرط في القاعدة."
+  }
+ ]
+}

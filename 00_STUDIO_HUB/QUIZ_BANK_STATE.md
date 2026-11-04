@@ -10,7 +10,7 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T15:10:34+03:00
+> Generated at: 2026-11-04T15:32:48+03:00
 
 ## Current versions
 
@@ -24,7 +24,7 @@
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 132 banks / 1313 questions · live 132 banks / 1313 questions · MATCH
+**Totals:** vault 142 banks / 1393 questions · live 132 banks / 1313 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
@@ -34,7 +34,7 @@
 | `02_English_Language` | 2 | 4 | 20 | 4 | 20 | — |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
 | `04_Advanced_Software_Eng` | 3 | 6 | 30 | 6 | 30 | — |
-| `05_Soft_Computing` | 2 | 4 | 22 | 4 | 22 | — |
+| `05_Soft_Computing` | 5 | 14 | 102 | 4 | 22 | **DIFF** |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
 ## By subject and chapter — measured quality gates
@@ -66,8 +66,11 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `04_Advanced_Software_Eng` | 01 | 2 | 10 | 3 | 8/4 | 0/1 | 0 | 13 | needs work |
 | `04_Advanced_Software_Eng` | 02 | 2 | 10 | 1 | 5/2 | 0/3 | 0 | 4 | needs work |
 | `04_Advanced_Software_Eng` | 05 | 2 | 10 | 0 | 8/4 | 0/1 | 0 | 2 | needs work |
-| `05_Soft_Computing` | 01 | 2 | 10 | 4 | 3/4 | 2/2 | 0 | 0 | needs work |
-| `05_Soft_Computing` | 02 | 2 | 12 | 4 | 2/2 | 2/2 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 01 | 2 | 10 | 4 | 0/3 | 1/2 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 02 | 2 | 12 | 1 | 1/1 | 0/1 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 03 | 3 | 24 | 0 | 1/3 | 1/0 | 0 | 0 | clean |
+| `05_Soft_Computing` | 04 | 3 | 24 | 0 | 3/0 | 2/2 | 0 | 0 | clean |
+| `05_Soft_Computing` | 05 | 4 | 32 | 0 | 2/4 | 1/3 | 0 | 0 | clean |
 | `06_Artificial_Intelligence` | 01 | 2 | 10 | 0 | 3/0 | 2/1 | 0 | 2 | needs work |
 | `06_Artificial_Intelligence` | 02 | 2 | 10 | 0 | 1/5 | 1/0 | 0 | 5 | needs work |
 
@@ -85,8 +88,8 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 - `04_Advanced_Software_Eng` Ch01 — 3 handout refs; 13 spread violations; answer-length tell
 - `04_Advanced_Software_Eng` Ch02 — 1 handout refs; 4 spread violations; answer-length tell
 - `04_Advanced_Software_Eng` Ch05 — 2 spread violations; answer-length tell
-- `05_Soft_Computing` Ch01 — 4 handout refs; answer-length tell
-- `05_Soft_Computing` Ch02 — 4 handout refs
+- `05_Soft_Computing` Ch01 — 4 handout refs
+- `05_Soft_Computing` Ch02 — 1 handout refs
 - `06_Artificial_Intelligence` Ch01 — 2 spread violations
 - `06_Artificial_Intelligence` Ch02 — 5 spread violations; answer-length tell
 

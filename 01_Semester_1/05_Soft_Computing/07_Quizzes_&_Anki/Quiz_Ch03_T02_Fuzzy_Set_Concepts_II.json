@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch03_T02_Fuzzy_Set_Concepts_II",
+ "topic": "Cuts, Convexity and Shape",
+ "topic_ar": "المقاطع والتحدب والشكل",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c3_alpha_cut",
+   "bloom_level": "Remember",
+   "question": "What is the alpha-cut of a fuzzy set?",
+   "question_ar": "ما هو مقطع ألفا للمجموعة الضبابية؟",
+   "options": [
+    "points with grade at least alpha",
+    "points with grade above alpha now",
+    "points with grade below alpha",
+    "points with grade equal alpha"
+   ],
+   "options_ar": [
+    "نقاط درجتها ألفا أو أكثر",
+    "نقاط درجتها أكبر من ألفا",
+    "نقاط درجتها أقل من ألفا",
+    "نقاط درجتها تساوي ألفا"
+   ],
+   "options_en": [
+    "points with grade at least alpha",
+    "points with grade above alpha now",
+    "points with grade below alpha",
+    "points with grade equal alpha"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The alpha-cut keeps points whose grade is greater than or equal to alpha.",
+   "explanation_ar": "مقطع ألفا يُبقي النقاط التي درجتها أكبر من أو تساوي ألفا."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c3_strong_cut",
+   "bloom_level": "Remember",
+   "question": "What is the strong alpha-cut?",
+   "question_ar": "ما هو مقطع ألفا القوي؟",
+   "options": [
+    "points with grade equal alpha",
+    "points with grade above alpha",
+    "points with grade at least alpha",
+    "points with grade below alpha"
+   ],
+   "options_ar": [
+    "نقاط درجتها تساوي ألفا",
+    "نقاط درجتها أكبر من ألفا",
+    "نقاط درجتها ألفا أو أكثر",
+    "نقاط درجتها أقل من ألفا"
+   ],
+   "options_en": [
+    "points with grade equal alpha",
+    "points with grade above alpha",
+    "points with grade at least alpha",
+    "points with grade below alpha"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The strong alpha-cut keeps only points strictly above alpha.",
+   "explanation_ar": "مقطع ألفا القوي يُبقي فقط النقاط الأعلى من ألفا تماماً."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c3_support_cut",
+   "bloom_level": "Understand",
+   "question": "The support equals which cut?",
+   "question_ar": "الدعم يساوي أي مقطع؟",
+   "options": [
+    "the cut at one half",
+    "the strong one cut",
+    "the strong zero cut",
+    "the plain zero cut"
+   ],
+   "options_ar": [
+    "قطع النصف هنا",
+    "قطع الواحد القوي",
+    "قطع الصفر القوي",
+    "قطع الصفر العادي"
+   ],
+   "options_en": [
+    "the cut at one half",
+    "the strong one cut",
+    "the strong zero cut",
+    "the plain zero cut"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The support is the strong zero-cut, keeping grades strictly above zero.",
+   "explanation_ar": "الدعم هو مقطع الصفر القوي، يُبقي الدرجات الأعلى من الصفر."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c3_core_cut",
+   "bloom_level": "Understand",
+   "question": "The core equals which cut?",
+   "question_ar": "النواة تساوي أي مقطع؟",
+   "options": [
+    "the strong zero cut now",
+    "the cut at one half",
+    "the strong half cut",
+    "the cut at value one"
+   ],
+   "options_ar": [
+    "قطع الصفر القوي",
+    "قطع النصف هنا",
+    "قطع النصف القوي",
+    "قطع القيمة واحد"
+   ],
+   "options_en": [
+    "the strong zero cut now",
+    "the cut at one half",
+    "the strong half cut",
+    "the cut at value one"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The core is the alpha-cut at alpha equal to one.",
+   "explanation_ar": "النواة هي مقطع ألفا عند ألفا تساوي واحداً."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c3_convex",
+   "bloom_level": "Understand",
+   "question": "When is a fuzzy set convex?",
+   "question_ar": "متى تكون المجموعة الضبابية محدبة؟",
+   "options": [
+    "its alpha cuts are convex",
+    "all its grades equal one",
+    "its support is a single point",
+    "its height is below one"
+   ],
+   "options_ar": [
+    "كل مقاطعه ألفا محدبة",
+    "كل درجاته واحد تماماً",
+    "دعمه نقطة واحدة هنا",
+    "ارتفاعه تحت الواحد"
+   ],
+   "options_en": [
+    "its alpha cuts are convex",
+    "all its grades equal one",
+    "its support is a single point",
+    "its height is below one"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A fuzzy set is convex when every alpha-cut is a convex crisp set.",
+   "explanation_ar": "تكون محدبة عندما يكون كل مقطع ألفا مجموعة حاسمة محدبة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c3_bandwidth",
+   "bloom_level": "Understand",
+   "question": "For a normal convex set, bandwidth is what?",
+   "question_ar": "لمجموعة طبيعية محدبة، ما هو عرض النطاق؟",
+   "options": [
+    "the sum of all the grades",
+    "distance between crossovers",
+    "distance between core points",
+    "the height of the set here"
+   ],
+   "options_ar": [
+    "مجموع الدرجات كلها",
+    "المسافة بين التقاطعين",
+    "المسافة بين النواتين",
+    "ارتفاع المجموعة هنا"
+   ],
+   "options_en": [
+    "the sum of all the grades",
+    "distance between crossovers",
+    "distance between core points",
+    "the height of the set here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Bandwidth is the distance between the two unique crossover points.",
+   "explanation_ar": "عرض النطاق هو المسافة بين نقطتي التقاطع الوحيدتين."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c3_fuzzy_number",
+   "bloom_level": "Remember",
+   "question": "A fuzzy number must satisfy what?",
+   "question_ar": "العدد الضبابي يجب أن يحقق ماذا؟",
+   "options": [
+    "convexity and symmetry",
+    "support and height here",
+    "normality and convexity",
+    "normality and symmetry"
+   ],
+   "options_ar": [
+    "التحدب والتناظر",
+    "الدعم والارتفاع",
+    "الطبيعية والتحدب",
+    "الطبيعية والتناظر"
+   ],
+   "options_en": [
+    "convexity and symmetry",
+    "support and height here",
+    "normality and convexity",
+    "normality and symmetry"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A fuzzy number is a fuzzy set that is both normal and convex.",
+   "explanation_ar": "العدد الضبابي مجموعة ضبابية طبيعية ومحدبة معاً."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c3_symmetry",
+   "bloom_level": "Understand",
+   "question": "A fuzzy set is symmetric about c when what holds?",
+   "question_ar": "تكون المجموعة متناظرة حول c عندما يتحقق ماذا؟",
+   "options": [
+    "grades equal c everywhere",
+    "the core is a single point",
+    "the height equals exactly one",
+    "equal grades around centre"
+   ],
+   "options_ar": [
+    "الدرجات تساوي c دائماً",
+    "النواة نقطة واحدة فقط",
+    "الارتفاع يساوي واحداً هنا",
+    "درجات متساوية حوله هنا"
+   ],
+   "options_en": [
+    "grades equal c everywhere",
+    "the core is a single point",
+    "the height equals exactly one",
+    "equal grades around centre"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Symmetry means the grade at c plus x equals the grade at c minus x.",
+   "explanation_ar": "التناظر يعني أن درجة c زائد x تساوي درجة c ناقص x."
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch04_T02_Advanced_Operations_And_Hedges",
+ "topic": "Advanced Operations and Hedges",
+ "topic_ar": "العمليات المتقدمة والتحويرات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c4_alg_product",
+   "bloom_level": "Remember",
+   "question": "What is the algebraic product of two grades?",
+   "question_ar": "ما هو الجداء الجبري لدرجتين؟",
+   "options": [
+    "their simple product",
+    "their maximum value",
+    "their minimum value",
+    "one minus each grade"
+   ],
+   "options_ar": [
+    "حاصل ضربهما المباشر",
+    "أقصى قيمة بينهما هنا",
+    "أدنى قيمة بينهما هنا",
+    "واحد ناقص كل منهما"
+   ],
+   "options_en": [
+    "their simple product",
+    "their maximum value",
+    "their minimum value",
+    "one minus each grade"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The algebraic product multiplies the two grades element by element.",
+   "explanation_ar": "الجداء الجبري يضرب الدرجتين عنصراً بعنصر."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c4_scalar",
+   "bloom_level": "Understand",
+   "question": "What does the scalar product do to a fuzzy set?",
+   "question_ar": "ماذا يفعل الجداء القياسي بمجموعة ضبابية؟",
+   "options": [
+    "reflects grades about 0.5",
+    "multiplies grades by alpha",
+    "adds a constant to grades",
+    "takes the maximum grade"
+   ],
+   "options_ar": [
+    "تعكس الدرجات حول 0.5",
+    "تضرب الدرجات في ألفا",
+    "تضيف ثابتاً للدرجات",
+    "تأخذ أقصى درجة هنا"
+   ],
+   "options_en": [
+    "reflects grades about 0.5",
+    "multiplies grades by alpha",
+    "adds a constant to grades",
+    "takes the maximum grade"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It scales every grade by a constant alpha between zero and one.",
+   "explanation_ar": "يقيس كل درجة بثابت ألفا بين الصفر والواحد."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c4_prob_sum",
+   "bloom_level": "Remember",
+   "question": "What is the probabilistic (algebraic) sum of two grades?",
+   "question_ar": "ما هو الجمع الاحتمالي لدرجتين؟",
+   "options": [
+    "the maximum of a and b",
+    "the minimum of a and b",
+    "a plus b minus a times b",
+    "a plus b plus a times b"
+   ],
+   "options_ar": [
+    "أقصى قيمة بينهما",
+    "أدنى قيمة بينهما",
+    "a زائد b ناقص ab",
+    "a زائد b زائد ab"
+   ],
+   "options_en": [
+    "the maximum of a and b",
+    "the minimum of a and b",
+    "a plus b minus a times b",
+    "a plus b plus a times b"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The sum is a + b - ab, so 0.5 + 0.2 - 0.10 = 0.60.",
+   "explanation_ar": "الجمع هو a + b - ab، فـ 0.5 + 0.2 - 0.10 = 0.60."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c4_difference",
+   "bloom_level": "Understand",
+   "question": "How is the difference A minus B defined?",
+   "question_ar": "كيف يُعرَّف الفرق A ناقص B؟",
+   "options": [
+    "max of a and not b",
+    "a minus b directly",
+    "a times not b",
+    "min of a and not b"
+   ],
+   "options_ar": [
+    "أقصى a ومتمم b",
+    "a ناقص b مباشرة",
+    "a في متمم b معاً",
+    "أدنى a ومتمم b"
+   ],
+   "options_en": [
+    "max of a and not b",
+    "a minus b directly",
+    "a times not b",
+    "min of a and not b"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Difference is the intersection of A with the complement of B.",
+   "explanation_ar": "الفرق هو تقاطع A مع متمم B، أي أدنى درجة بين A ومتمم B."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c4_bounded_sum",
+   "bloom_level": "Understand",
+   "question": "What does the bounded sum do to two grades?",
+   "question_ar": "ماذا يفعل الجمع المحدود بدرجتين؟",
+   "options": [
+    "adds grades capped at one",
+    "adds grades capped at zero",
+    "multiplies the two grades",
+    "takes the lower grade"
+   ],
+   "options_ar": [
+    "يجمع الدرجات بسقف واحد",
+    "يجمع الدرجات بسقف صفر",
+    "يضرب الدرجتين معاً دائماً",
+    "يأخذ الدرجة الأدنى هنا"
+   ],
+   "options_en": [
+    "adds grades capped at one",
+    "adds grades capped at zero",
+    "multiplies the two grades",
+    "takes the lower grade"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "It adds the grades but caps the result at one.",
+   "explanation_ar": "يجمع الدرجتين لكنه يقيّد الناتج عند الواحد."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c4_bounded_diff",
+   "bloom_level": "Understand",
+   "question": "What does the bounded difference keep?",
+   "question_ar": "ماذا يُبقي الفرق المحدود؟",
+   "options": [
+    "the lower of the two grades",
+    "keeps positives above one",
+    "min of one and a plus b",
+    "the product of the two grades"
+   ],
+   "options_ar": [
+    "يأخذ الدرجة الأدنى",
+    "يبقي الموجب فوق واحد",
+    "يقيّد الناتج عند واحد",
+    "يضرب الدرجتين معاً"
+   ],
+   "options_en": [
+    "the lower of the two grades",
+    "keeps positives above one",
+    "min of one and a plus b",
+    "the product of the two grades"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "It keeps only values where the grades sum above one.",
+   "explanation_ar": "يبقي فقط القيم التي يتجاوز فيها مجموع الدرجتين الواحد."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c4_concentration",
+   "bloom_level": "Understand",
+   "question": "A power with alpha above one models which hedge?",
+   "question_ar": "أس أكبر من واحد يمثل أي تحوير؟",
+   "options": [
+    "complement, which negates",
+    "intersection, which lowers",
+    "concentration, it sharpens",
+    "dilation, it widens"
+   ],
+   "options_ar": [
+    "النفي الذي يعكس الدرجة",
+    "التقاطع الذي يأخذ الأدنى",
+    "التركيز الذي يشدّ الدرجات",
+    "التوسيع الذي يوسّع الدرجات"
+   ],
+   "options_en": [
+    "complement, which negates",
+    "intersection, which lowers",
+    "concentration, it sharpens",
+    "dilation, it widens"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Alpha above one concentrates the set, modelling very.",
+   "explanation_ar": "ألفا أكبر من واحد تركّز المجموعة، وتعبّر عن very."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c4_product_bound",
+   "bloom_level": "Understand",
+   "question": "How does the algebraic product compare with intersection?",
+   "question_ar": "كيف يُقارن الجداء الجبري بالتقاطع؟",
+   "options": [
+    "product is at least intersection",
+    "product always equals union",
+    "product always equals complement",
+    "product is at most intersection"
+   ],
+   "options_ar": [
+    "الضرب أكبر أو يساوي التقاطع",
+    "الضرب يساوي الاتحاد دائماً",
+    "الضرب يساوي المتمم دائماً",
+    "الضرب أصغر أو يساوي التقاطع"
+   ],
+   "options_en": [
+    "product is at least intersection",
+    "product always equals union",
+    "product always equals complement",
+    "product is at most intersection"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The product never exceeds the minimum, so it is a stricter AND.",
+   "explanation_ar": "الضرب لا يتجاوز الأدنى أبداً، فهو AND أكثر صرامة."
+  }
+ ]
+}

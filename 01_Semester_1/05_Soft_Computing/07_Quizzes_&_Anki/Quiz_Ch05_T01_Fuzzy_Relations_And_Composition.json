@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch05_T01_Fuzzy_Relations_And_Composition",
+ "topic": "Fuzzy Relations and Composition",
+ "topic_ar": "العلاقات الضبابية والتركيب",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c5r_crisp_def",
+   "bloom_level": "Remember",
+   "question": "A crisp relation is a subset of what?",
+   "question_ar": "العلاقة الحاسمة مجموعة جزئية من ماذا؟",
+   "options": [
+    "the product A times B",
+    "the union of A and B",
+    "the power set of A",
+    "a single universe X"
+   ],
+   "options_ar": [
+    "الجداء A في B",
+    "اتحاد A و B",
+    "مجموعة أجزاء A",
+    "فضاء واحد X"
+   ],
+   "options_en": [
+    "the product A times B",
+    "the union of A and B",
+    "the power set of A",
+    "a single universe X"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A crisp relation is a subset of the Cartesian product A times B.",
+   "explanation_ar": "العلاقة الحاسمة مجموعة جزئية من الجداء الديكارتي A في B."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c5r_card",
+   "bloom_level": "Remember",
+   "question": "How many pairs does A times B contain?",
+   "question_ar": "كم زوجاً يحوي الجداء A في B؟",
+   "options": [
+    "the larger of the two sizes",
+    "size of A times size of B",
+    "size of A plus size of B",
+    "size of A minus size of B"
+   ],
+   "options_ar": [
+    "الأكبر من الحجمين",
+    "حجم A ضرب حجم B",
+    "حجم A زائد حجم B",
+    "حجم A ناقص حجم B"
+   ],
+   "options_en": [
+    "the larger of the two sizes",
+    "size of A times size of B",
+    "size of A plus size of B",
+    "size of A minus size of B"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The product holds the size of A multiplied by the size of B.",
+   "explanation_ar": "الجداء يحوي حجم A مضروباً في حجم B."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c5r_fuzzy_def",
+   "bloom_level": "Remember",
+   "question": "What grades can a fuzzy relation entry take?",
+   "question_ar": "أي درجات يأخذها عنصر العلاقة الضبابية؟",
+   "options": [
+    "only negative values here",
+    "only values above one here",
+    "any value from zero to one",
+    "only the values zero or one"
+   ],
+   "options_ar": [
+    "قيم سالبة فقط هنا",
+    "قيم أكبر من واحد هنا",
+    "أي قيمة بين صفر وواحد",
+    "فقط القيمة صفر أو واحد"
+   ],
+   "options_en": [
+    "only negative values here",
+    "only values above one here",
+    "any value from zero to one",
+    "only the values zero or one"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A fuzzy relation entry is any grade in the closed interval zero to one.",
+   "explanation_ar": "عنصر العلاقة الضبابية أي درجة في المجال من صفر إلى واحد."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c5r_build_sets",
+   "bloom_level": "Remember",
+   "question": "Building a relation from two fuzzy sets uses which operator?",
+   "question_ar": "بناء علاقة من مجموعتين ضبابيتين يستخدم أي عامل؟",
+   "options": [
+    "the maximum of the grades",
+    "one minus each of the grades",
+    "the sum of the two grades",
+    "the minimum of the grades"
+   ],
+   "options_ar": [
+    "أقصى الدرجتين",
+    "واحد ناقص الدرجة",
+    "مجموع الدرجتين",
+    "أدنى الدرجتين"
+   ],
+   "options_en": [
+    "the maximum of the grades",
+    "one minus each of the grades",
+    "the sum of the two grades",
+    "the minimum of the grades"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The relation from two sets takes the minimum of the two grades.",
+   "explanation_ar": "العلاقة من مجموعتين تأخذ أدنى الدرجتين."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c5r_cellwise",
+   "bloom_level": "Understand",
+   "question": "How do union and intersection work on fuzzy relations?",
+   "question_ar": "كيف يعمل الاتحاد والتقاطع على العلاقات الضبابية؟",
+   "options": [
+    "cell by cell with max and min",
+    "row by row with simple sums",
+    "column by column with products",
+    "only on the main diagonal"
+   ],
+   "options_ar": [
+    "خلية بخية بأقصى وأدنى",
+    "صفاً صفاً بمجاميع هنا",
+    "عموداً عموداً بضروب هنا",
+    "على القطر فقط تماماً"
+   ],
+   "options_en": [
+    "cell by cell with max and min",
+    "row by row with simple sums",
+    "column by column with products",
+    "only on the main diagonal"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Union and intersection act cell by cell with max and min.",
+   "explanation_ar": "الاتحاد والتقاطع يعملان خلية بخية بالأقصى والأدنى."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c5r_maxmin",
+   "bloom_level": "Understand",
+   "question": "How is the max-min composition computed?",
+   "question_ar": "كيف يُحسب التركيب الأقصى-الأدنى؟",
+   "options": [
+    "average of the two rows",
+    "max of the pairwise minima",
+    "min of the pairwise maxima",
+    "sum of all the products"
+   ],
+   "options_ar": [
+    "متوسط الصفين هنا",
+    "أقصى الأدنى لكل زوج",
+    "أدنى الأقصى لكل زوج",
+    "مجموع كل الضروب هنا"
+   ],
+   "options_en": [
+    "average of the two rows",
+    "max of the pairwise minima",
+    "min of the pairwise maxima",
+    "sum of all the products"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "For each cell, take the minimum of the pairs then the maximum of those minima.",
+   "explanation_ar": "لكل خلية، خذ أدنى الأزواج ثم أقصى تلك الأدنى."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c5r_maxprod",
+   "bloom_level": "Understand",
+   "question": "How does max-product compare with max-min?",
+   "question_ar": "كيف يُقارن الأقصى-ضرب بالأقصى-الأدنى؟",
+   "options": [
+    "they are always equal",
+    "product is always larger",
+    "product is at most max-min",
+    "product is at least max-min"
+   ],
+   "options_ar": [
+    "متساويان دائماً",
+    "الضرب أكبر دائماً",
+    "الضرب أصغر أو يساوي",
+    "الضرب أكبر أو يساوي"
+   ],
+   "options_en": [
+    "they are always equal",
+    "product is always larger",
+    "product is at most max-min",
+    "product is at least max-min"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Because product never exceeds min, max-product never exceeds max-min.",
+   "explanation_ar": "لأن الضرب لا يتجاوز الأدنى، فالأقصى-ضرب لا يتجاوز الأقصى-الأدنى."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c5r_chain",
+   "bloom_level": "Remember",
+   "question": "Composition R then S requires what shared universe?",
+   "question_ar": "تركيب R ثم S يتطلب أي فضاء مشترك؟",
+   "options": [
+    "the first universe X",
+    "the last universe Z",
+    "no shared universe",
+    "the middle universe Y"
+   ],
+   "options_ar": [
+    "الفضاء الأول X",
+    "الفضاء الأخير Z",
+    "دون فضاء مشترك",
+    "الفضاء الأوسط Y"
+   ],
+   "options_en": [
+    "the first universe X",
+    "the last universe Z",
+    "no shared universe",
+    "the middle universe Y"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The middle universe Y is shared, like the inner matrix dimension.",
+   "explanation_ar": "الفضاء الأوسط Y مشترك، كالبعد الداخلي في ضرب المصفوفات."
+  }
+ ]
+}
