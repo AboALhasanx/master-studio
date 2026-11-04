@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B04_Data_Structure_Metrics",
+ "topic": "Data Structure Metrics",
+ "topic_ar": "مقاييس بنى البيانات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_program_weakness",
+   "bloom_level": "Understand",
+   "question": "How is program weakness obtained?",
+   "question_ar": "كيف يُحصل على ضعف البرنامج؟",
+   "options": [
+    "by summing the weaknesses of modules",
+    "by averaging those weaknesses too",
+    "by dividing them by the span now again",
+    "by multiplying by the level here"
+   ],
+   "options_ar": [
+    "بجمع ضعف الوحدات",
+    "بمتوسط ضعف الوحدات",
+    "بالقسمة على المدى",
+    "بالضرب بالمستوى"
+   ],
+   "options_en": [
+    "by summing the weaknesses of modules",
+    "by averaging those weaknesses too",
+    "by dividing them by the span now again",
+    "by multiplying by the level here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Program weakness aggregates the weakness of its modules, not an average of them.",
+   "explanation_ar": "ضعف البرنامج يجمع ضعف وحداته لا متوسطها."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_live_variable",
+   "bloom_level": "Remember",
+   "question": "What is a live variable?",
+   "question_ar": "ما هو المتغير الحيّ؟",
+   "options": [
+    "a variable in a comment now here too",
+    "a variable whose value is needed later",
+    "a variable never used again too now",
+    "a constant in the code here again again"
+   ],
+   "options_ar": [
+    "متغير في تعليق الآن مجدداً",
+    "متغير قيمته مطلوبة لاحقاً",
+    "متغير لا يُستخدم بعدها",
+    "ثابت في الكود هنا أيضاً"
+   ],
+   "options_en": [
+    "a variable in a comment now here too",
+    "a variable whose value is needed later",
+    "a variable never used again too now",
+    "a constant in the code here again again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A variable is live from its definition until its last use.",
+   "explanation_ar": "المتغير حيّ من تعريفه حتى آخر استخدام له."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_avg_live",
+   "bloom_level": "Understand",
+   "question": "What do average live variables tell you?",
+   "question_ar": "ماذا تخبرك متوسطات المتغيرات الحية؟",
+   "options": [
+    "the number of comments now",
+    "the compiler version here again",
+    "the working set a module needs",
+    "the total lines of code too"
+   ],
+   "options_ar": [
+    "عدد التعليقات هنا مجدداً مجدداً أيضاً",
+    "إصدار المترجم الآن هنا الآن هنا",
+    "حجم مجموعة العمل التي تحتاجها الوحدة",
+    "إجمالي أسطر الكود أيضاً أيضاً الآن"
+   ],
+   "options_en": [
+    "the number of comments now",
+    "the compiler version here again",
+    "the working set a module needs",
+    "the total lines of code too"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It estimates how much state a module must hold at once while it runs.",
+   "explanation_ar": "تقدّر مقدار الحالة التي يجب أن تحتفظ بها الوحدة أثناء عملها."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_span",
+   "bloom_level": "Understand",
+   "question": "What is a variable span?",
+   "question_ar": "ما هو مدى المتغير؟",
+   "options": [
+    "the number of times it appears now again again here",
+    "the memory it occupies now again too now here",
+    "the type it declares here too here here too",
+    "the distance between its definition and its uses"
+   ],
+   "options_ar": [
+    "عدد مرات ظهوره هنا أيضاً الآن",
+    "الذاكرة التي يشغلها مجدداً",
+    "النوع الذي يعلنه الآن هنا أيضاً",
+    "المسافة بين تعريفه واستخداماته"
+   ],
+   "options_en": [
+    "the number of times it appears now again again here",
+    "the memory it occupies now again too now here",
+    "the type it declares here too here here too",
+    "the distance between its definition and its uses"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Span measures how far apart the statements that touch the variable are.",
+   "explanation_ar": "المدى يقيس تباعد العبارات التي تتعامل مع المتغير."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_crossref",
+   "bloom_level": "Understand",
+   "question": "What does a cross-reference list record?",
+   "question_ar": "ماذا تسجل قائمة الإسناد المرجعي؟",
+   "options": [
+    "where each variable is created and read",
+    "the compiler error log too now too now here",
+    "the test case results now again here",
+    "the team assignments here here again"
+   ],
+   "options_ar": [
+    "أين يُنشأ كل متغير ويُقرأ",
+    "سجل أخطاء المترجم هنا",
+    "نتائج حالات الاختبار الآن",
+    "توزيع المهام على الفريق"
+   ],
+   "options_en": [
+    "where each variable is created and read",
+    "the compiler error log too now too now here",
+    "the test case results now again here",
+    "the team assignments here here again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The list maps every variable to the statements that define or use it.",
+   "explanation_ar": "القائمة تربط كل متغير بالعبارات التي تعرّفه أو تستخدمه."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_data_kinds",
+   "bloom_level": "Remember",
+   "question": "Which data kinds do data-structure metrics count?",
+   "question_ar": "أي أنواع بيانات تعدّها مقاييس البنى؟",
+   "options": [
+    "local, remote and cached data",
+    "input, internal and output data",
+    "source, binary and test data here",
+    "numeric, text and image data"
+   ],
+   "options_ar": [
+    "بيانات محلية وبعيدة ومخزّنة",
+    "بيانات الإدخال والداخل والمخرج",
+    "بيانات الشيفرة والثنائي والاختبار",
+    "بيانات رقمية ونصية وصورية هنا"
+   ],
+   "options_en": [
+    "local, remote and cached data",
+    "input, internal and output data",
+    "source, binary and test data here",
+    "numeric, text and image data"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The metric separates what enters, what is kept internally, and what leaves.",
+   "explanation_ar": "المقياس يفصل ما يدخل وما يُحفظ داخلاً وما يخرج."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_vars_count",
+   "bloom_level": "Understand",
+   "question": "What does the VARS count give?",
+   "question_ar": "ماذا يعطي عدّ VARS؟",
+   "options": [
+    "the number of modules here again",
+    "the number of operators now here",
+    "the number of distinct variables",
+    "the number of statements too"
+   ],
+   "options_ar": [
+    "عدد الوحدات هنا مجدداً",
+    "عدد المعاملات أيضاً",
+    "عدد المتغيرات المتميزة",
+    "عدد العبارات الآن هنا"
+   ],
+   "options_en": [
+    "the number of modules here again",
+    "the number of operators now here",
+    "the number of distinct variables",
+    "the number of statements too"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "VARS counts distinct variables used in a module, which sizes its data footprint.",
+   "explanation_ar": "VARS يعدّ المتغيرات المتميزة في الوحدة، فيقيس بصمة بياناتها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_module_weakness",
+   "bloom_level": "Understand",
+   "question": "What does module weakness combine?",
+   "question_ar": "ماذا يجمع ضعف الوحدة؟",
+   "options": [
+    "volume and difficulty too now",
+    "fan-in and fan-out here here too",
+    "lines and comments now again",
+    "average live variables and span"
+   ],
+   "options_ar": [
+    "الحجم والصعوبة هنا مجدداً",
+    "الدخول والخروج الآن هنا الآن",
+    "الأسطر والتعليقات أيضاً أيضاً",
+    "متوسط المتغيرات الحية والمدى"
+   ],
+   "options_en": [
+    "volume and difficulty too now",
+    "fan-in and fan-out here here too",
+    "lines and comments now again",
+    "average live variables and span"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Weakness rises with both the amount of live state and how far it is spread.",
+   "explanation_ar": "الضعف يرتفع بمقدار الحالة الحية وبمدى انتشارها."
+  }
+ ]
+}

@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T23:52:31+03:00
+> Generated at: 2026-11-05T00:09:40+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **85** |
-| Portal shell `VERSION` | **1.11.17** |
+| Live content version | **86** |
+| Portal shell `VERSION` | **1.11.18** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 185 banks / 1898 questions · live 184 banks / 1888 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 188 banks / 1922 questions · live 185 banks / 1898 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
@@ -33,7 +33,7 @@
 | `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
 | `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
 | `03_Data_Mining` | 8 | 55 | 531 | 55 | 531 | — |
-| `04_Advanced_Software_Eng` | 6 | 32 | 278 | 31 | 268 | **DIFF** |
+| `04_Advanced_Software_Eng` | 6 | 35 | 302 | 32 | 278 | **DIFF** |
 | `05_Soft_Computing` | 5 | 17 | 158 | 17 | 158 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
@@ -69,7 +69,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `04_Advanced_Software_Eng` | 03 | 5 | 44 | 0 | 5/5 | 1/4 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 04 | 6 | 50 | 0 | 0/0 | 1/0 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 05 | 3 | 35 | 0 | 1/2 | 0/0 | 0 | 0 | clean |
-| `04_Advanced_Software_Eng` | 06 | 3 | 26 | 0 | 0/0 | 1/1 | 0 | 0 | clean |
+| `04_Advanced_Software_Eng` | 06 | 6 | 50 | 0 | 0/0 | 1/1 | 0 | 0 | clean |
 | `05_Soft_Computing` | 01 | 2 | 23 | 3 | 3/4 | 2/3 | 0 | 0 | needs work |
 | `05_Soft_Computing` | 02 | 1 | 10 | 0 | 1/1 | 0/2 | 0 | 0 | clean |
 | `05_Soft_Computing` | 03 | 4 | 39 | 0 | 2/3 | 1/0 | 0 | 0 | clean |

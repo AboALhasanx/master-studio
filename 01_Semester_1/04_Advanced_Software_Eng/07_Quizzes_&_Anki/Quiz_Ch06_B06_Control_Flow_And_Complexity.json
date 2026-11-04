@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B06_Control_Flow_And_Complexity",
+ "topic": "Control Flow and Complexity Metrics",
+ "topic_ar": "مقاييس تدفق التحكم والتعقيد",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_mccabe_formula",
+   "bloom_level": "Understand",
+   "question": "How is cyclomatic complexity computed from a flow graph?",
+   "question_ar": "كيف يُحسب التعقيد الدوري من مخطط التدفق؟",
+   "options": [
+    "edges minus nodes plus twice the components",
+    "edges minus nodes plus components here",
+    "nodes minus edges plus twice the components",
+    "edges plus nodes minus components now too"
+   ],
+   "options_ar": [
+    "الأضلاع ناقص العقد زائد ضعف المكوّنات",
+    "الأضلاع ناقص العقد زائد المكوّنات",
+    "العقد ناقص الأضلاع زائد ضعف المكوّنات",
+    "الأضلاع زائد العقد ناقص المكوّنات"
+   ],
+   "options_en": [
+    "edges minus nodes plus twice the components",
+    "edges minus nodes plus components here",
+    "nodes minus edges plus twice the components",
+    "edges plus nodes minus components now too"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "For a graph with E edges, N nodes and P components, complexity is E minus N plus 2P.",
+   "explanation_ar": "لمخطط بحدود E وعقد N ومكوّنات P، التعقيد هو E ناقص N زائد 2P."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_mccabe_author",
+   "bloom_level": "Remember",
+   "question": "Who introduced cyclomatic complexity?",
+   "question_ar": "من قدّم التعقيد الدوري؟",
+   "options": [
+    "B. Littlewood",
+    "T. J. McCabe",
+    "M. Halstead",
+    "B. Boehm here"
+   ],
+   "options_ar": [
+    "بي ليتلوود",
+    "تي جي مكيب",
+    "إم هالستيد",
+    "بي بوم هنا"
+   ],
+   "options_en": [
+    "B. Littlewood",
+    "T. J. McCabe",
+    "M. Halstead",
+    "B. Boehm here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "McCabe proposed the measure as a count of the independent paths through a program.",
+   "explanation_ar": "مكيب قدّم المقياس كعدّ للمسارات المستقلة داخل البرنامج."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_cc_counts",
+   "bloom_level": "Understand",
+   "question": "What does cyclomatic complexity actually count?",
+   "question_ar": "ماذا يعدّ التعقيد الدوري فعلاً؟",
+   "options": [
+    "modules in the system too now too",
+    "variables in scope here again again",
+    "independent paths through the code",
+    "lines of code written now here"
+   ],
+   "options_ar": [
+    "الوحدات في النظام هنا مجدداً",
+    "المتغيرات في النطاق أيضاً",
+    "المسارات المستقلة في الكود",
+    "أسطر الكود المكتوبة الآن"
+   ],
+   "options_en": [
+    "modules in the system too now too",
+    "variables in scope here again again",
+    "independent paths through the code",
+    "lines of code written now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It counts the basis set of independent paths, which sets the minimum test count.",
+   "explanation_ar": "يعدّ مجموعة المسارات المستقلة الأساسية، وهي التي تحدد الحد الأدنى للاختبارات."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_essential_complexity",
+   "bloom_level": "Understand",
+   "question": "What does essential complexity measure?",
+   "question_ar": "ماذا يقيس التعقيد الجوهري؟",
+   "options": [
+    "the raw line count here again too now here too now here",
+    "the number of comments too now again again again",
+    "the compiler warnings now here here too now here",
+    "complexity left after removing structured constructs"
+   ],
+   "options_ar": [
+    "عدد الأسطر الخام أيضاً الآن هنا أيضاً الآن",
+    "عدد التعليقات هنا مجدداً أيضاً الآن هنا",
+    "تحذيرات المترجم الآن هنا مجدداً مجدداً",
+    "التعقيد المتبقي بعد إزالة التراكيب المنظمة"
+   ],
+   "options_en": [
+    "the raw line count here again too now here too now here",
+    "the number of comments too now again again again",
+    "the compiler warnings now here here too now here",
+    "complexity left after removing structured constructs"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Essential complexity isolates the irreducible decision structure of the program.",
+   "explanation_ar": "التعقيد الجوهري يعزل بنية القرار غير القابلة للاختزال."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_knot_count",
+   "bloom_level": "Understand",
+   "question": "What does knot count measure?",
+   "question_ar": "ماذا يقيس عدد العقد؟",
+   "options": [
+    "crossings of control flow lines",
+    "the number of loops here again",
+    "the number of functions too",
+    "the depth of recursion now here"
+   ],
+   "options_ar": [
+    "تقاطعات خطوط تدفق التحكم",
+    "عدد الحلقات الآن مجدداً",
+    "عدد الدوال هنا أيضاً هنا",
+    "عمق الاستدعاء الذاتي"
+   ],
+   "options_en": [
+    "crossings of control flow lines",
+    "the number of loops here again",
+    "the number of functions too",
+    "the depth of recursion now here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A knot is a crossing of flow lines in the graph, which signals tangled control.",
+   "explanation_ar": "العقدة تقاطع لخطوط التدفق في المخطط، وهي تدل على تحكم متشابك."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_nesting_depth",
+   "bloom_level": "Understand",
+   "question": "What does nesting depth measure?",
+   "question_ar": "ماذا يقيس عمق التعشيش؟",
+   "options": [
+    "the number of modules now here",
+    "how deeply decisions are embedded",
+    "the number of statements too now here",
+    "the size of the data here again"
+   ],
+   "options_ar": [
+    "عدد الوحدات هنا",
+    "مدى تعمّق القرارات",
+    "عدد العبارات الآن",
+    "حجم البيانات أيضاً"
+   ],
+   "options_en": [
+    "the number of modules now here",
+    "how deeply decisions are embedded",
+    "the number of statements too now here",
+    "the size of the data here again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Deeply nested conditions are harder to follow and to test than flat ones.",
+   "explanation_ar": "الشروط المتعمقة أصعب في المتابعة والاختبار من المسطحة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_complexity_testability",
+   "bloom_level": "Analyze",
+   "question": "How does complexity relate to testability?",
+   "question_ar": "كيف يرتبط التعقيد بقابلية الاختبار؟",
+   "options": [
+    "complexity has no effect here now",
+    "complexity removes the need for tests",
+    "higher complexity needs more tests",
+    "higher complexity needs fewer tests"
+   ],
+   "options_ar": [
+    "التعقيد بلا أثر هنا الآن أيضاً",
+    "التعقيد يلغي الحاجة للاختبار",
+    "تعقيد أعلى يحتاج اختبارات أكثر",
+    "تعقيد أعلى يحتاج اختبارات أقل"
+   ],
+   "options_en": [
+    "complexity has no effect here now",
+    "complexity removes the need for tests",
+    "higher complexity needs more tests",
+    "higher complexity needs fewer tests"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Each independent path must be exercised, so the path count sets the testing burden.",
+   "explanation_ar": "كل مسار مستقل يجب اختباره، فعدد المسارات يحدد عبء الاختبار."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_edges_meaning",
+   "bloom_level": "Understand",
+   "question": "What does an edge represent in the flow graph?",
+   "question_ar": "ماذا يمثل الضلع في مخطط التدفق؟",
+   "options": [
+    "a variable declaration here too now",
+    "a comment line here too now again",
+    "a module boundary now again here",
+    "a transfer of control between nodes"
+   ],
+   "options_ar": [
+    "تعريف متغير أيضاً الآن",
+    "سطر تعليق هنا مجدداً",
+    "حدود وحدة الآن هنا أيضاً",
+    "انتقال التحكم بين العقد"
+   ],
+   "options_en": [
+    "a variable declaration here too now",
+    "a comment line here too now again",
+    "a module boundary now again here",
+    "a transfer of control between nodes"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Edges are control transfers; nodes are the statements or decision points.",
+   "explanation_ar": "الأضلاع انتقالات تحكم، والعقد هي العبارات أو نقاط القرار."
+  }
+ ]
+}
