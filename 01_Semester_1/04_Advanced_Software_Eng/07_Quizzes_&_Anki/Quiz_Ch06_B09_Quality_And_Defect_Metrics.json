@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B09_Quality_And_Defect_Metrics",
+ "topic": "Quality and Defect Metrics",
+ "topic_ar": "مقاييس الجودة والعيوب",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_dre",
+   "bloom_level": "Understand",
+   "question": "How is Defect Removal Efficiency defined?",
+   "question_ar": "كيف تُعرَّف كفاءة إزالة العيوب؟",
+   "options": [
+    "errors found divided by errors found plus defects later",
+    "defects later divided by the total too now too now",
+    "the total divided by errors found now again here too",
+    "errors found times defects later here here again again here"
+   ],
+   "options_ar": [
+    "الأخطاء المكتشفة مقسومة على مجموعها مع العيوب اللاحقة",
+    "العيوب اللاحقة مقسومة على المجموع هنا أيضاً الآن",
+    "المجموع مقسوماً على الأخطاء المكتشفة الآن هنا أيضاً",
+    "الأخطاء المكتشفة مضروبة بالعيوب اللاحقة مجدداً مجدداً"
+   ],
+   "options_en": [
+    "errors found divided by errors found plus defects later",
+    "defects later divided by the total too now too now",
+    "the total divided by errors found now again here too",
+    "errors found times defects later here here again again here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "DRE is errors found before delivery over that plus the defects found afterwards.",
+   "explanation_ar": "DRE هي الأخطاء المكتشفة قبل التسليم على مجموعها مع العيوب المكتشفة بعده."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_defect_density",
+   "bloom_level": "Understand",
+   "question": "How is defect density expressed?",
+   "question_ar": "كيف تُعبَّر كثافة العيوب؟",
+   "options": [
+    "defects per meeting here",
+    "defects per unit of size",
+    "defects per developer",
+    "defects per release date"
+   ],
+   "options_ar": [
+    "عيوب لكل اجتماع الآن",
+    "عيوب لكل وحدة حجم أيضاً",
+    "عيوب لكل مطوّر هنا مجدداً",
+    "عيوب لكل تاريخ إصدار"
+   ],
+   "options_en": [
+    "defects per meeting here",
+    "defects per unit of size",
+    "defects per developer",
+    "defects per release date"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Density normalises the count by size, so projects of different scale can be compared.",
+   "explanation_ar": "الكثافة تُطبّع العدد بالحجم، فتصير المشاريع المختلفة قابلة للمقارنة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_phase_containment",
+   "bloom_level": "Understand",
+   "question": "What does phase containment measure?",
+   "question_ar": "ماذا يقيس الاحتواء بالمرحلة؟",
+   "options": [
+    "the cost of each phase here again here",
+    "the staff in each phase now here again",
+    "defects caught in the phase that made them",
+    "the length of each phase too now too now here"
+   ],
+   "options_ar": [
+    "كلفة كل مرحلة الآن هنا أيضاً الآن هنا",
+    "أفراد كل مرحلة أيضاً الآن هنا أيضاً",
+    "العيوب الملتقطة في المرحلة التي أنشأتها",
+    "طول كل مرحلة هنا مجدداً مجدداً مجدداً هنا"
+   ],
+   "options_en": [
+    "the cost of each phase here again here",
+    "the staff in each phase now here again",
+    "defects caught in the phase that made them",
+    "the length of each phase too now too now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A high containment rate means defects do not leak into later phases.",
+   "explanation_ar": "معدل احتواء عالٍ يعني أن العيوب لا تتسرب لمراحل لاحقة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_mtbf",
+   "bloom_level": "Understand",
+   "question": "What is mean time between failures?",
+   "question_ar": "ما هو متوسط الزمن بين الفشلين؟",
+   "options": [
+    "the average repair time too now here too here",
+    "the total test time here again again",
+    "the release interval now here too now",
+    "the average running time between failures"
+   ],
+   "options_ar": [
+    "متوسط زمن الإصلاح هنا مجدداً",
+    "إجمالي زمن الاختبار الآن",
+    "الفاصل بين الإصدارات أيضاً",
+    "متوسط زمن التشغيل بين فشلين"
+   ],
+   "options_en": [
+    "the average repair time too now here too here",
+    "the total test time here again again",
+    "the release interval now here too now",
+    "the average running time between failures"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "MTBF is a product metric of reliability, measured across operating time.",
+   "explanation_ar": "MTBF مقياس منتج للموثوقية، يُقاس على زمن التشغيل."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_defects_per_kloc",
+   "bloom_level": "Remember",
+   "question": "How are defects often normalised?",
+   "question_ar": "كيف تُطبَّع العيوب عادة؟",
+   "options": [
+    "per thousand lines of code",
+    "per thousand users here",
+    "per thousand tests now too",
+    "per thousand documents again"
+   ],
+   "options_ar": [
+    "لكل ألف سطر كود",
+    "لكل ألف مستخدم",
+    "لكل ألف اختبار",
+    "لكل ألف وثيقة هنا"
+   ],
+   "options_en": [
+    "per thousand lines of code",
+    "per thousand users here",
+    "per thousand tests now too",
+    "per thousand documents again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Defects per KLOC is the common normalised rate for comparing modules.",
+   "explanation_ar": "العيوب لكل ألف سطر هي المعدل المطبّع الشائع لمقارنة الوحدات."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_customer_problems",
+   "bloom_level": "Understand",
+   "question": "Why track customer-reported problems?",
+   "question_ar": "لماذا نتتبع المشاكل التي يبلّغ عنها العملاء؟",
+   "options": [
+    "they set the price here now here",
+    "they reveal defects testing missed",
+    "they replace all testing too now here",
+    "they measure the code size again"
+   ],
+   "options_ar": [
+    "تحدد السعر هنا أيضاً الآن",
+    "تكشف عيوباً أفلتت من الاختبار",
+    "تستبدل كل اختبار مجدداً أيضاً",
+    "تقيس حجم الكود الآن هنا مجدداً"
+   ],
+   "options_en": [
+    "they set the price here now here",
+    "they reveal defects testing missed",
+    "they replace all testing too now here",
+    "they measure the code size again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Field reports expose what the internal gates failed to catch.",
+   "explanation_ar": "تقارير الميدان تكشف ما فشلت بوابات الفحص الداخلية في التقاطه."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_dre_use",
+   "bloom_level": "Analyze",
+   "question": "Why is DRE useful to a test manager?",
+   "question_ar": "لماذا تفيد DRE مدير الاختبار؟",
+   "options": [
+    "it shows the hardware cost too now here",
+    "it shows the code style now here too now here",
+    "it shows how much testing actually removes",
+    "it shows the team size here again again"
+   ],
+   "options_ar": [
+    "تبيّن كلفة العتاد الآن هنا",
+    "تبيّن أسلوب الكود أيضاً الآن",
+    "تبيّن كم يزيل الاختبار فعلاً",
+    "تبيّن حجم الفريق هنا مجدداً"
+   ],
+   "options_en": [
+    "it shows the hardware cost too now here",
+    "it shows the code style now here too now here",
+    "it shows how much testing actually removes",
+    "it shows the team size here again again"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A low DRE means the test stage is letting defects through to the field.",
+   "explanation_ar": "DRE المنخفض يعني أن مرحلة الاختبار تترك العيوب تصل للميدان."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_quality_cost",
+   "bloom_level": "Understand",
+   "question": "Why are late defects more expensive?",
+   "question_ar": "لماذا تكون العيوب المتأخرة أكلف؟",
+   "options": [
+    "they need fewer people too now again",
+    "they take less time here again here",
+    "they need no testing now here too now here",
+    "they need rework across more artefacts"
+   ],
+   "options_ar": [
+    "تحتاج أشخاصاً أقل الآن هنا",
+    "تأخذ وقتاً أقل هنا مجدداً أيضاً",
+    "لا تحتاج اختباراً أيضاً الآن",
+    "تحتاج إعادة عمل على آثار أكثر"
+   ],
+   "options_en": [
+    "they need fewer people too now again",
+    "they take less time here again here",
+    "they need no testing now here too now here",
+    "they need rework across more artefacts"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A defect found after release forces changes to code, docs and deployment at once.",
+   "explanation_ar": "العيب المكتشف بعد الإصدار يفرض تغيير الكود والتوثيق والنشر معاً."
+  }
+ ]
+}

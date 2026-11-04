@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B07_Object_Oriented_Metrics",
+ "topic": "Object-Oriented Metrics (CK Suite)",
+ "topic_ar": "مقاييس التوجه الكائني (مجموعة CK)",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_not_oo_metric",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT an object-oriented metric?",
+   "question_ar": "أي واحد ليس مقياساً كائني التوجه؟",
+   "options": [
+    "RFC",
+    "CBO",
+    "DAC",
+    "OBC"
+   ],
+   "options_ar": [
+    "RFC",
+    "CBO",
+    "DAC",
+    "OBC"
+   ],
+   "options_en": [
+    "RFC",
+    "CBO",
+    "DAC",
+    "OBC"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The CK and related suites use RFC, CBO and DAC; OBC is not one of them.",
+   "explanation_ar": "مجموعة CK وما جاورها تستخدم RFC وCBO وDAC، أما OBC فليس منها."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_lcc",
+   "bloom_level": "Understand",
+   "question": "Which metric also counts indirectly connected methods?",
+   "question_ar": "أي مقياس يعدّ الطرق المتصلة بشكل غير مباشر أيضاً؟",
+   "options": [
+    "none of the above",
+    "TCC here again now",
+    "LCC now too here",
+    "both of the above here"
+   ],
+   "options_ar": [
+    "لا شيء مما سبق هنا",
+    "TCC هنا مجدداً مجدداً",
+    "LCC الآن هنا الآن الآن",
+    "كلاهما أيضاً أيضاً"
+   ],
+   "options_en": [
+    "none of the above",
+    "TCC here again now",
+    "LCC now too here",
+    "both of the above here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "TCC counts direct connections only; LCC adds the indirect ones.",
+   "explanation_ar": "TCC يعدّ الاتصالات المباشرة فقط، وLCC يضيف غير المباشرة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_dit",
+   "bloom_level": "Remember",
+   "question": "How is the depth of inheritance tree measured?",
+   "question_ar": "كيف يُقاس عمق شجرة الوراثة؟",
+   "options": [
+    "the number of failure classes",
+    "the number of root classes",
+    "the number of ancestor classes",
+    "the number of successor classes"
+   ],
+   "options_ar": [
+    "عدد أصناف الفشل",
+    "عدد الأصناف الجذر",
+    "عدد الأصناف السلف",
+    "عدد الأصناف الخلف"
+   ],
+   "options_en": [
+    "the number of failure classes",
+    "the number of root classes",
+    "the number of ancestor classes",
+    "the number of successor classes"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "DIT counts how many levels sit above the class in its inheritance chain.",
+   "explanation_ar": "DIT يعدّ عدد المستويات فوق الصنف في سلسلة وراثته."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_lcom",
+   "bloom_level": "Understand",
+   "question": "What does LCOM count in the CK suite?",
+   "question_ar": "ماذا يعدّ LCOM في مجموعة CK؟",
+   "options": [
+    "the lines that contain comments here again",
+    "the depth of inheritance here too now here",
+    "the parameters per method now again too now here",
+    "method pairs that share no instance variables"
+   ],
+   "options_ar": [
+    "الأسطر التي تحوي تعليقات الآن هنا أيضاً",
+    "عمق الوراثة هنا الآن مجدداً مجدداً",
+    "معاملات كل طريقة أيضاً هنا أيضاً الآن",
+    "أزواج الطرق التي لا تشترك بمتغيرات نسخة"
+   ],
+   "options_en": [
+    "the lines that contain comments here again",
+    "the depth of inheritance here too now here",
+    "the parameters per method now again too now here",
+    "method pairs that share no instance variables"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "More unshared pairs mean the class is doing unrelated things.",
+   "explanation_ar": "كثرة الأزواج غير المشتركة تعني أن الصنف يفعل أشياء غير مترابطة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_wmc",
+   "bloom_level": "Remember",
+   "question": "What does WMC measure?",
+   "question_ar": "ماذا يقيس WMC؟",
+   "options": [
+    "the weighted number of methods per class",
+    "the number of child classes here here",
+    "the coupling between objects too now too",
+    "the response set of a class now again"
+   ],
+   "options_ar": [
+    "العدد الموزون للطرق في الصنف",
+    "عدد الأصناف الابنة هنا مجدداً",
+    "الاقتران بين الكائنات أيضاً",
+    "مجموعة استجابة الصنف الآن"
+   ],
+   "options_en": [
+    "the weighted number of methods per class",
+    "the number of child classes here here",
+    "the coupling between objects too now too",
+    "the response set of a class now again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "WMC adds the complexity of each method, so a heavy class scores high.",
+   "explanation_ar": "WMC يجمع تعقيد كل طريقة، فالصنف الثقيل يسجل عالياً."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_noc",
+   "bloom_level": "Remember",
+   "question": "What does NOC count?",
+   "question_ar": "ماذا يعدّ NOC؟",
+   "options": [
+    "the callers of a class now again",
+    "the immediate subclasses of a class",
+    "the methods of a class here here",
+    "the attributes of a class too now here"
+   ],
+   "options_ar": [
+    "منادي الصنف أيضاً الآن هنا",
+    "الأصناف الفرعية المباشرة للصنف",
+    "طرق الصنف هنا مجدداً مجدداً",
+    "صفات الصنف الآن هنا أيضاً الآن"
+   ],
+   "options_en": [
+    "the callers of a class now again",
+    "the immediate subclasses of a class",
+    "the methods of a class here here",
+    "the attributes of a class too now here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "NOC counts direct children, which shows how far a change could propagate.",
+   "explanation_ar": "NOC يعدّ الأبناء المباشرين، فيبيّن مدى انتشار التغيير المحتمل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_cbo",
+   "bloom_level": "Understand",
+   "question": "What does CBO measure?",
+   "question_ar": "ماذا يقيس CBO؟",
+   "options": [
+    "the count of basic operations",
+    "the class byte offset here too",
+    "coupling between object classes",
+    "cohesion of a single class now here"
+   ],
+   "options_ar": [
+    "عدد العمليات الأساسية",
+    "إزاحة البايت في الصنف",
+    "الاقتران بين الأصناف",
+    "تماسك صنف واحد هنا"
+   ],
+   "options_en": [
+    "the count of basic operations",
+    "the class byte offset here too",
+    "coupling between object classes",
+    "cohesion of a single class now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "CBO counts the other classes a given class depends on.",
+   "explanation_ar": "CBO يعدّ الأصناف الأخرى التي يعتمد عليها صنف معين."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_rfc",
+   "bloom_level": "Understand",
+   "question": "What does RFC measure?",
+   "question_ar": "ماذا يقيس RFC؟",
+   "options": [
+    "the reuse factor of code here",
+    "the runtime failure count",
+    "the reference file count",
+    "the response set of a class"
+   ],
+   "options_ar": [
+    "معامل إعادة استخدام الكود",
+    "عدد حالات الفشل وقت التشغيل",
+    "عدد ملفات المرجع هنا أيضاً",
+    "مجموعة استجابة الصنف الآن"
+   ],
+   "options_en": [
+    "the reuse factor of code here",
+    "the runtime failure count",
+    "the reference file count",
+    "the response set of a class"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "RFC counts the methods a class can invoke in response to a message.",
+   "explanation_ar": "RFC يعدّ الطرق التي يمكن للصنف استدعاؤها استجابةً لرسالة."
+  }
+ ]
+}

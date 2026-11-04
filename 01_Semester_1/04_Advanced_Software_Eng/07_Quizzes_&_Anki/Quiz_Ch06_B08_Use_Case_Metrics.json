@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B08_Use_Case_Metrics",
+ "topic": "Use-Case Oriented Metrics",
+ "topic_ar": "المقاييس الموجهة بحالات الاستخدام",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_uucp",
+   "bloom_level": "Understand",
+   "question": "How is the unadjusted use case point total built?",
+   "question_ar": "كيف يُبنى مجموع نقاط حالات الاستخدام غير المعدّل؟",
+   "options": [
+    "actor weight plus use case weight now",
+    "actor weight times use case weight",
+    "technical factor plus environmental factor",
+    "lines divided by person-months here"
+   ],
+   "options_ar": [
+    "وزن الفاعلين زائد وزن الحالات",
+    "وزن الفاعلين مضروباً بوزن الحالات",
+    "العامل التقني زائد العامل البيئي",
+    "الأسطر مقسومة على أشهر العمل"
+   ],
+   "options_en": [
+    "actor weight plus use case weight now",
+    "actor weight times use case weight",
+    "technical factor plus environmental factor",
+    "lines divided by person-months here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The unadjusted total simply adds the actor weight to the use case weight.",
+   "explanation_ar": "المجموع غير المعدّل يجمع وزن الفاعلين مع وزن الحالات."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_actor_weight",
+   "bloom_level": "Understand",
+   "question": "What sets an actor's weight?",
+   "question_ar": "ما الذي يحدد وزن الفاعل؟",
+   "options": [
+    "how many tests it runs now",
+    "how complex its interface is",
+    "how many methods it calls too",
+    "how old the actor is here"
+   ],
+   "options_ar": [
+    "عدد الاختبارات التي يشغلها",
+    "مدى تعقيد واجهته أيضاً هنا",
+    "عدد الطرق التي يناديها",
+    "عمر الفاعل هنا الآن مجدداً"
+   ],
+   "options_en": [
+    "how many tests it runs now",
+    "how complex its interface is",
+    "how many methods it calls too",
+    "how old the actor is here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A simple actor through an API weighs less than a complex graphical user.",
+   "explanation_ar": "الفاعل البسيط عبر واجهة برمجية وزنه أقل من مستخدم رسومي معقد."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_usecase_weight",
+   "bloom_level": "Understand",
+   "question": "What sets a use case's weight?",
+   "question_ar": "ما الذي يحدد وزن حالة الاستخدام؟",
+   "options": [
+    "the language used here too now again here",
+    "the hardware platform now here here",
+    "the number of transactions it contains",
+    "the number of developers again too"
+   ],
+   "options_ar": [
+    "اللغة المستخدمة أيضاً",
+    "منصة العتاد هنا مجدداً",
+    "عدد المعاملات التي تحويها",
+    "عدد المطورين الآن هنا الآن"
+   ],
+   "options_en": [
+    "the language used here too now again here",
+    "the hardware platform now here here",
+    "the number of transactions it contains",
+    "the number of developers again too"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Use cases are classed simple, average or complex by how many transactions they carry.",
+   "explanation_ar": "الحالات تصنَّف بسيطة أو متوسطة أو معقدة حسب عدد معاملاتها."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_tcf",
+   "bloom_level": "Understand",
+   "question": "What does the technical complexity factor cover?",
+   "question_ar": "ماذا يغطي عامل التعقيد التقني؟",
+   "options": [
+    "the salaries of the team here again again too here",
+    "the office layout here again too now here",
+    "the test schedule now too now here too now",
+    "distributedness, performance and similar needs"
+   ],
+   "options_ar": [
+    "رواتب الفريق هنا مجدداً مجدداً",
+    "تخطيط المكتب الآن هنا أيضاً الآن",
+    "جدول الاختبار أيضاً الآن هنا أيضاً",
+    "التوزيع والأداء والحاجات المشابهة"
+   ],
+   "options_en": [
+    "the salaries of the team here again again too here",
+    "the office layout here again too now here",
+    "the test schedule now too now here too now",
+    "distributedness, performance and similar needs"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The TCF rates the non-functional demands the system must satisfy.",
+   "explanation_ar": "العامل التقني يقيّم المتطلبات غير الوظيفية التي يجب أن يلبيها النظام."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_ecf",
+   "bloom_level": "Understand",
+   "question": "What does the environmental factor cover?",
+   "question_ar": "ماذا يغطي العامل البيئي؟",
+   "options": [
+    "team skill and process maturity",
+    "the compiler version too now",
+    "the database size here here too",
+    "the network speed now again"
+   ],
+   "options_ar": [
+    "مهارة الفريق ونضج العملية",
+    "إصدار المترجم الآن مجدداً",
+    "حجم قاعدة البيانات هنا",
+    "سرعة الشبكة هنا أيضاً الآن"
+   ],
+   "options_en": [
+    "team skill and process maturity",
+    "the compiler version too now",
+    "the database size here here too",
+    "the network speed now again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The ECF captures how capable and how mature the team and its process are.",
+   "explanation_ar": "العامل البيئي يلتقط قدرة الفريق ونضج عمليته."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_ucp_effort",
+   "bloom_level": "Understand",
+   "question": "How is effort estimated from use case points?",
+   "question_ar": "كيف يُقدَّر الجهد من نقاط حالات الاستخدام؟",
+   "options": [
+    "square the point total here too here here",
+    "multiply the adjusted points by a rate",
+    "divide the points by the team size",
+    "add the points to the LOC now again"
+   ],
+   "options_ar": [
+    "بتربيع مجموع النقاط هنا أيضاً الآن",
+    "بضرب النقاط المعدّلة بمعدل إنتاجية",
+    "بقسمة النقاط على حجم الفريق هنا",
+    "بجمع النقاط مع الأسطر الآن مجدداً"
+   ],
+   "options_en": [
+    "square the point total here too here here",
+    "multiply the adjusted points by a rate",
+    "divide the points by the team size",
+    "add the points to the LOC now again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Adjusted points are scaled by a productivity rate to reach person-hours.",
+   "explanation_ar": "النقاط المعدّلة تُضرب بمعدل إنتاجية للوصول إلى ساعات عمل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_ucp_vs_fp",
+   "bloom_level": "Analyze",
+   "question": "How do use case points differ from function points?",
+   "question_ar": "كيف تختلف نقاط حالات الاستخدام عن نقاط الوظائف؟",
+   "options": [
+    "they need the finished code again",
+    "they count only the files now here",
+    "they are counted from use case models",
+    "they ignore the actors here too now here"
+   ],
+   "options_ar": [
+    "تحتاج الشيفرة هنا مجدداً مجدداً",
+    "تعدّ الملفات فقط أيضاً الآن",
+    "تُعدّ من نماذج حالات الاستخدام",
+    "تتجاهل الفاعلين الآن هنا أيضاً"
+   ],
+   "options_en": [
+    "they need the finished code again",
+    "they count only the files now here",
+    "they are counted from use case models",
+    "they ignore the actors here too now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "UCP works from the use case model, while FP works from the data and transaction functions.",
+   "explanation_ar": "UCP يعمل من نموذج حالات الاستخدام، وFP من وظائف البيانات والمعاملات."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_ucp_when",
+   "bloom_level": "Apply",
+   "question": "When is UCP the better size measure?",
+   "question_ar": "متى تكون UCP مقياس الحجم الأفضل؟",
+   "options": [
+    "after the code is finished",
+    "only during maintenance here here",
+    "only for hardware projects",
+    "early, before any code exists"
+   ],
+   "options_ar": [
+    "بعد انتهاء الكود هنا",
+    "أثناء الصيانة فقط الآن",
+    "لمشاريع العتاد فقط أيضاً",
+    "مبكراً قبل وجود أي كود"
+   ],
+   "options_en": [
+    "after the code is finished",
+    "only during maintenance here here",
+    "only for hardware projects",
+    "early, before any code exists"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Use cases exist at requirements time, so UCP can size a project before design.",
+   "explanation_ar": "حالات الاستخدام موجودة وقت المتطلبات، فـUCP يقيس المشروع قبل التصميم."
+  }
+ ]
+}

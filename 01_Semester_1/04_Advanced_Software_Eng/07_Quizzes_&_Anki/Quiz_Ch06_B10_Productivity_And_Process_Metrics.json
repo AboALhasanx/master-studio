@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B10_Productivity_And_Process_Metrics",
+ "topic": "Productivity and Process Metrics",
+ "topic_ar": "مقاييس الإنتاجية والعملية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_prod_loc",
+   "bloom_level": "Understand",
+   "question": "How is productivity expressed with LOC?",
+   "question_ar": "كيف تُعبَّر الإنتاجية بأسطر الكود؟",
+   "options": [
+    "lines per person-month",
+    "persons per line here here",
+    "lines per module now",
+    "modules per month too"
+   ],
+   "options_ar": [
+    "أسطر لكل شهر عمل شخصي أيضاً",
+    "أشخاص لكل سطر هنا مجدداً",
+    "أسطر لكل وحدة الآن هنا مجدداً",
+    "وحدات لكل شهر أيضاً الآن"
+   ],
+   "options_en": [
+    "lines per person-month",
+    "persons per line here here",
+    "lines per module now",
+    "modules per month too"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Productivity is output per unit of effort, so LOC divided by person-months.",
+   "explanation_ar": "الإنتاجية مخرَج لكل وحدة جهد، أي الأسطر مقسومة على أشهر العمل."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_prod_fp",
+   "bloom_level": "Understand",
+   "question": "How is productivity expressed with function points?",
+   "question_ar": "كيف تُعبَّر الإنتاجية بنقاط الوظائف؟",
+   "options": [
+    "points per test here too here",
+    "function points per person-month",
+    "persons per function point now",
+    "points per module now again too here"
+   ],
+   "options_ar": [
+    "نقاط لكل اختبار الآن هنا",
+    "نقاط وظائف لكل شهر عمل شخصي",
+    "أشخاص لكل نقطة وظيفة مجدداً",
+    "نقاط لكل وحدة هنا أيضاً الآن"
+   ],
+   "options_en": [
+    "points per test here too here",
+    "function points per person-month",
+    "persons per function point now",
+    "points per module now again too here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "FP per person-month is the language-independent productivity rate.",
+   "explanation_ar": "نقاط الوظائف لكل شهر عمل هي معدل الإنتاجية المستقل عن اللغة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_effort_distribution",
+   "bloom_level": "Understand",
+   "question": "What does effort distribution across phases show?",
+   "question_ar": "ماذا يبيّن توزيع الجهد على المراحل؟",
+   "options": [
+    "which compiler was used here",
+    "the release date here too now here",
+    "where the effort actually goes",
+    "who wrote the code now again"
+   ],
+   "options_ar": [
+    "أي مترجم استُخدم مجدداً هنا",
+    "تاريخ الإصدار الآن هنا مجدداً هنا",
+    "أين يذهب الجهد فعلاً الآن الآن",
+    "من كتب الكود هنا أيضاً أيضاً"
+   ],
+   "options_en": [
+    "which compiler was used here",
+    "the release date here too now here",
+    "where the effort actually goes",
+    "who wrote the code now again"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The split across requirements, design, code, test and maintenance exposes imbalance.",
+   "explanation_ar": "التوزيع على المتطلبات والتصميم والترميز والاختبار والصيانة يكشف الخلل."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_rework",
+   "bloom_level": "Understand",
+   "question": "What is rework in process terms?",
+   "question_ar": "ما هي إعادة العمل بمصطلحات العملية؟",
+   "options": [
+    "effort spent on new features too",
+    "effort spent in meetings here here here",
+    "effort spent on training now again",
+    "effort spent correcting earlier work"
+   ],
+   "options_ar": [
+    "جهد على خصائص جديدة أيضاً الآن",
+    "جهد في الاجتماعات الآن هنا",
+    "جهد على التدريب هنا مجدداً",
+    "جهد يُصرف على تصحيح عمل سابق"
+   ],
+   "options_en": [
+    "effort spent on new features too",
+    "effort spent in meetings here here here",
+    "effort spent on training now again",
+    "effort spent correcting earlier work"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Rework is the cost of not getting it right the first time.",
+   "explanation_ar": "إعادة العمل هي كلفة عدم الإنجاز الصحيح من المرة الأولى."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_cost_of_quality",
+   "bloom_level": "Understand",
+   "question": "What does cost of quality combine?",
+   "question_ar": "ماذا يجمع كلفة الجودة؟",
+   "options": [
+    "prevention, appraisal and failure costs",
+    "salaries and rent here again too now",
+    "hardware and software too now here too here",
+    "training and travel now here again"
+   ],
+   "options_ar": [
+    "كلفة الوقاية والتقييم والفشل",
+    "الرواتب والإيجار الآن هنا",
+    "العتاد والبرمجيات أيضاً الآن",
+    "التدريب والسفر هنا مجدداً"
+   ],
+   "options_en": [
+    "prevention, appraisal and failure costs",
+    "salaries and rent here again too now",
+    "hardware and software too now here too here",
+    "training and travel now here again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Quality cost covers what you spend to prevent defects plus what they cost when they escape.",
+   "explanation_ar": "كلفة الجودة تغطي ما يُصرف لمنع العيوب زائد كلفتها عند إفلاتها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_process_maturity",
+   "bloom_level": "Understand",
+   "question": "What do process maturity metrics track?",
+   "question_ar": "ماذا تتابع مقاييس نضج العملية؟",
+   "options": [
+    "how many users log in now again again too",
+    "how disciplined and repeatable the process is",
+    "how fast the compiler runs here too now",
+    "how many lines exist here too now here again here"
+   ],
+   "options_ar": [
+    "عدد المستخدمين مجدداً مجدداً أيضاً",
+    "مدى انضباط العملية وقابليتها للتكرار",
+    "سرعة المترجم الآن هنا أيضاً الآن",
+    "عدد الأسطر هنا أيضاً الآن هنا مجدداً"
+   ],
+   "options_en": [
+    "how many users log in now again again too",
+    "how disciplined and repeatable the process is",
+    "how fast the compiler runs here too now",
+    "how many lines exist here too now here again here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Maturity measures how reliably an organisation repeats a defined process.",
+   "explanation_ar": "النضج يقيس موثوقية تكرار المنظمة لعملية معرّفة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_baseline",
+   "bloom_level": "Understand",
+   "question": "What is a baseline in a metrics programme?",
+   "question_ar": "ما هو خط الأساس في برنامج قياس؟",
+   "options": [
+    "the final release here again too now",
+    "the project charter now here again too",
+    "a recorded reference value for comparison",
+    "the first line of code too now here again"
+   ],
+   "options_ar": [
+    "الإصدار النهائي مجدداً أيضاً",
+    "ميثاق المشروع الآن هنا مجدداً",
+    "قيمة مرجعية مسجلة للمقارنة",
+    "أول سطر كود هنا أيضاً الآن"
+   ],
+   "options_en": [
+    "the final release here again too now",
+    "the project charter now here again too",
+    "a recorded reference value for comparison",
+    "the first line of code too now here again"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Without a baseline you cannot say whether a change improved anything.",
+   "explanation_ar": "بلا خط أساس لا يمكن القول إن تغييراً حسّن شيئاً."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_prod_needs_size",
+   "bloom_level": "Analyze",
+   "question": "Why does productivity need a size measure?",
+   "question_ar": "لماذا تحتاج الإنتاجية مقياس حجم؟",
+   "options": [
+    "effort is not measurable now here",
+    "the team size is unknown too",
+    "the schedule is fixed here again",
+    "output has to be counted somehow"
+   ],
+   "options_ar": [
+    "الجهد غير قابل للقياس هنا أيضاً",
+    "حجم الفريق مجهول أيضاً الآن",
+    "الجدول ثابت هنا الآن مجدداً",
+    "المخرَج يجب أن يُعدّ بطريقة ما"
+   ],
+   "options_en": [
+    "effort is not measurable now here",
+    "the team size is unknown too",
+    "the schedule is fixed here again",
+    "output has to be counted somehow"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Productivity is output over effort, so an unmeasured output makes the ratio meaningless.",
+   "explanation_ar": "الإنتاجية مخرَج على جهد، ومخرَج غير مقيس يجعل النسبة بلا معنى."
+  }
+ ]
+}
