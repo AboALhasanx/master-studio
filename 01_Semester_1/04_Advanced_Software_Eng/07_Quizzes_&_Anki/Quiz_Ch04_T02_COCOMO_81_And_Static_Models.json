@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch04_T02_COCOMO_81_And_Static_Models",
+ "topic": "COCOMO '81 and Static Cost Models",
+ "topic_ar": "COCOMO 81 والنماذج الساكنة للتكلفة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch4_cocomo_author",
+   "bloom_level": "Remember",
+   "question": "COCOMO was developed initially by...",
+   "question_ar": "طوّر COCOMO أول الأمر...",
+   "options": [
+    "B. W. Boehm here",
+    "Gregg Rothermel",
+    "B. Beizer here",
+    "Rajiv Gupta here"
+   ],
+   "options_ar": [
+    "بي دبليو بوم أيضاً أيضاً",
+    "غريغ روثرمل هنا مجدداً",
+    "بي بيزر هنا الآن الآن",
+    "راجيف غوبتا هنا هنا مجدداً"
+   ],
+   "options_en": [
+    "B. W. Boehm here",
+    "Gregg Rothermel",
+    "B. Beizer here",
+    "Rajiv Gupta here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Barry Boehm published COCOMO as a constructive cost model built from project data.",
+   "explanation_ar": "باري بوم نشر COCOMO كنموذج تكلفة بنائي مبني على بيانات مشاريع."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch4_cocomo_expand",
+   "bloom_level": "Remember",
+   "question": "COCOMO stands for...",
+   "question_ar": "COCOMO تعني...",
+   "options": [
+    "Comprehensive Cost estimation model",
+    "Constructive Cost Estimation model",
+    "Common Cost estimation model here",
+    "Complete cost estimation model"
+   ],
+   "options_ar": [
+    "نموذج تقدير الكلفة الشامل",
+    "نموذج تقدير الكلفة البنائي",
+    "نموذج تقدير الكلفة الشائع هنا",
+    "نموذج تقدير الكلفة الكامل"
+   ],
+   "options_en": [
+    "Comprehensive Cost estimation model",
+    "Constructive Cost Estimation model",
+    "Common Cost estimation model here",
+    "Complete cost estimation model"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "COCOMO is the Constructive Cost Model, because it builds the estimate from size and drivers.",
+   "explanation_ar": "COCOMO هو نموذج الكلفة البنائي، لأنه يبني التقدير من الحجم والعوامل."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch4_organic_effort",
+   "bloom_level": "Remember",
+   "question": "Which effort equation applies to an organic COCOMO project?",
+   "question_ar": "أي معادلة جهد تنطبق على مشروع COCOMO عضوي؟",
+   "options": [
+    "2.0 times KLOC to the power 1.05",
+    "2.4 times KLOC to the power 1.07",
+    "2.4 times KLOC to the power 1.05",
+    "3.4 times KLOC to the power 1.06"
+   ],
+   "options_ar": [
+    "2.0 مضروبة في KLOC أس 1.05",
+    "2.4 مضروبة في KLOC أس 1.07",
+    "2.4 مضروبة في KLOC أس 1.05",
+    "3.4 مضروبة في KLOC أس 1.06"
+   ],
+   "options_en": [
+    "2.0 times KLOC to the power 1.05",
+    "2.4 times KLOC to the power 1.07",
+    "2.4 times KLOC to the power 1.05",
+    "3.4 times KLOC to the power 1.06"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Organic mode uses 2.4 KLOC^1.05, the smallest coefficient of the three modes.",
+   "explanation_ar": "الوضع العضوي يستخدم 2.4 KLOC^1.05، وهو أصغر معامل بين الأوضاع الثلاثة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_mode_2_50",
+   "bloom_level": "Understand",
+   "question": "A project of 2 to 50 KLOC in COCOMO belongs to which mode?",
+   "question_ar": "مشروع بين 2 و50 KLOC في COCOMO يقع في أي وضع؟",
+   "options": [
+    "the semidetached mode",
+    "the embedded mode now",
+    "none of the above answers",
+    "the organic mode here"
+   ],
+   "options_ar": [
+    "الوضع نصف المنفصل مجدداً",
+    "الوضع المضمّن الآن هنا",
+    "لا شيء مما سبق أعلاه",
+    "الوضع العضوي هنا أيضاً"
+   ],
+   "options_en": [
+    "the semidetached mode",
+    "the embedded mode now",
+    "none of the above answers",
+    "the organic mode here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The organic band runs from about 2 to 50 KLOC with a small, familiar team.",
+   "explanation_ar": "نطاق الوضع العضوي يمتد من نحو 2 إلى 50 KLOC بفريق صغير مألوف."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_cost_drivers",
+   "bloom_level": "Remember",
+   "question": "How many cost drivers does Intermediate COCOMO '81 use?",
+   "question_ar": "كم عامل كلفة يستخدم COCOMO 81 المتوسط؟",
+   "options": [
+    "fifteen drivers across four categories",
+    "seventeen drivers across four categories",
+    "fourteen drivers across three categories",
+    "seven drivers across two categories"
+   ],
+   "options_ar": [
+    "خمسة عشر عاملاً في أربع فئات",
+    "سبعة عشر عاملاً في أربع فئات",
+    "أربعة عشر عاملاً في ثلاث فئات",
+    "سبعة عوامل في فئتين هنا الآن"
+   ],
+   "options_en": [
+    "fifteen drivers across four categories",
+    "seventeen drivers across four categories",
+    "fourteen drivers across three categories",
+    "seven drivers across two categories"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Intermediate COCOMO rates fifteen effort multipliers grouped into four categories.",
+   "explanation_ar": "COCOMO المتوسط يقيّم خمسة عشر مضاعف جهد موزعة على أربع فئات."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_static_compare",
+   "bloom_level": "Analyze",
+   "question": "Comparing single-variable static models at 100 KLOC, which is true?",
+   "question_ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
+   "options": [
+    "neither model applies at that size here",
+    "Walston-Felix predicts much higher effort",
+    "SEL predicts much higher effort here now here",
+    "both models predict identical effort"
+   ],
+   "options_ar": [
+    "لا ينطبق أي منهما على هذا الحجم أيضاً",
+    "Walston-Felix يتوقع جهداً أعلى بكثير",
+    "SEL يتوقع جهداً أعلى بكثير هنا الآن",
+    "النموذجان يتوقعان جهداً متطابقاً"
+   ],
+   "options_en": [
+    "neither model applies at that size here",
+    "Walston-Felix predicts much higher effort",
+    "SEL predicts much higher effort here now here",
+    "both models predict identical effort"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair.",
+   "explanation_ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch4_embedded_conditions",
+   "bloom_level": "Apply",
+   "question": "A project with high complexity and strict hardware constraints is...",
+   "question_ar": "مشروع بتعقيد عالٍ وقيود عتاد صارمة هو...",
+   "options": [
+    "semidetached here",
+    "prototyping too now",
+    "embedded now again",
+    "organic here here"
+   ],
+   "options_ar": [
+    "نصف منفصل هنا الآن",
+    "نمذجة أولية هنا مجدداً",
+    "مضمّن الآن مجدداً هنا",
+    "عضوي هنا أيضاً أيضاً"
+   ],
+   "options_en": [
+    "semidetached here",
+    "prototyping too now",
+    "embedded now again",
+    "organic here here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Tight hardware and interface constraints push a project into the embedded mode.",
+   "explanation_ar": "قيود العتاد والواجهات الصارمة تدفع المشروع إلى الوضع المضمّن."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_static_models",
+   "bloom_level": "Understand",
+   "question": "What defines a static single-variable cost model?",
+   "question_ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
+   "options": [
+    "effort depends on many drivers here",
+    "effort changes with each phase",
+    "effort is fixed before design",
+    "effort depends on one size input"
+   ],
+   "options_ar": [
+    "الجهد يعتمد على عوامل كثيرة",
+    "الجهد يتغير مع كل مرحلة الآن",
+    "الجهد ثابت قبل التصميم هنا أيضاً",
+    "الجهد يعتمد على مُدخل حجم واحد"
+   ],
+   "options_en": [
+    "effort depends on many drivers here",
+    "effort changes with each phase",
+    "effort is fixed before design",
+    "effort depends on one size input"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A single-variable static model reads effort from one size measure alone, with no time term.",
+   "explanation_ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني."
+  }
+ ]
+}

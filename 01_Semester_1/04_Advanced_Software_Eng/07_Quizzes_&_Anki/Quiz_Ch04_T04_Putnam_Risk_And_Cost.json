@@ -1,0 +1,334 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch04_T04_Putnam_Risk_And_Cost",
+ "topic": "Putnam Model, Risk and Cost",
+ "topic_ar": "نموذج بوتنام والمخاطر والكلفة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch4_putnam_basis",
+   "bloom_level": "Remember",
+   "question": "The Putnam resource allocation model is based on...",
+   "question_ar": "نموذج بوتنام لتخصيص الموارد قائم على...",
+   "options": [
+    "the Norden/Rayleigh curve",
+    "function points here now",
+    "Putnam theory of management",
+    "Boehm manpower observation"
+   ],
+   "options_ar": [
+    "منحنى نوردن/رايلي أيضاً الآن",
+    "نقاط الوظائف هنا الآن مجدداً",
+    "نظرية بوتنام الإدارية هنا",
+    "ملاحظة بوم عن القوى العاملة"
+   ],
+   "options_en": [
+    "the Norden/Rayleigh curve",
+    "function points here now",
+    "Putnam theory of management",
+    "Boehm manpower observation"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Putnam models the manpower profile with the Norden/Rayleigh curve.",
+   "explanation_ar": "بوتنام ينمذج منحنى القوى العاملة بمنحنى نوردن/رايلي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch4_putnam_difficulty",
+   "bloom_level": "Understand",
+   "question": "How does Putnam express the difficulty metric?",
+   "question_ar": "كيف يعبّر بوتنام عن مقياس الصعوبة؟",
+   "options": [
+    "K times the cube of time too",
+    "K divided by the cube of time",
+    "K divided by the square of time",
+    "K divided by time here now"
+   ],
+   "options_ar": [
+    "K مضروبة في مكعب الزمن",
+    "K مقسومة على مكعب الزمن",
+    "K مقسومة على مربع الزمن",
+    "K مقسومة على الزمن هنا"
+   ],
+   "options_en": [
+    "K times the cube of time too",
+    "K divided by the cube of time",
+    "K divided by the square of time",
+    "K divided by time here now"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Difficulty D equals K over the cube of development time, so time reduces difficulty fast.",
+   "explanation_ar": "الصعوبة D تساوي K على مكعب زمن التطوير، فالزمن يخفّض الصعوبة سريعاً."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch4_putnam_curve",
+   "bloom_level": "Understand",
+   "question": "What shape does the Rayleigh manpower curve take?",
+   "question_ar": "ما شكل منحنى رايلي للقوى العاملة؟",
+   "options": [
+    "it falls then rises at the end",
+    "it alternates in fixed cycles",
+    "it rises to a peak then decays",
+    "it stays flat through the project"
+   ],
+   "options_ar": [
+    "ينخفض ثم يصعد بالنهاية",
+    "يتذبذب بدورات ثابتة هنا",
+    "يصعد إلى ذروة ثم يتلاشى",
+    "يبقى مستوياً طوال المشروع"
+   ],
+   "options_en": [
+    "it falls then rises at the end",
+    "it alternates in fixed cycles",
+    "it rises to a peak then decays",
+    "it stays flat through the project"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Manpower grows to a single peak and then decays, which is the Rayleigh shape.",
+   "explanation_ar": "القوى العاملة تنمو إلى ذروة واحدة ثم تتلاشى، وهذا شكل رايلي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_putnam_peak",
+   "bloom_level": "Understand",
+   "question": "How is the peak manpower rate expressed in Putnam's model?",
+   "question_ar": "كيف يُعبَّر عن ذروة معدل القوى العاملة في نموذج بوتنام؟",
+   "options": [
+    "K over the square of the time now here",
+    "two K over the time here too here",
+    "K times the root of e now again",
+    "K over the time times the root of e"
+   ],
+   "options_ar": [
+    "K على مربع الزمن أيضاً",
+    "ضعف K على الزمن هنا مجدداً",
+    "K مضروبة بجذر e الآن هنا",
+    "K على الزمن مضروباً بجذر e"
+   ],
+   "options_en": [
+    "K over the square of the time now here",
+    "two K over the time here too here",
+    "K times the root of e now again",
+    "K over the time times the root of e"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The peak rate is K divided by the product of development time and the square root of e.",
+   "explanation_ar": "الذروة هي K مقسومة على حاصل ضرب زمن التطوير في جذر e."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_putnam_share",
+   "bloom_level": "Remember",
+   "question": "About what share of total effort falls in the development sub-cycle?",
+   "question_ar": "كم تقريباً من الجهد الكلي يقع في دورة التطوير الفرعية؟",
+   "options": [
+    "about forty per cent here",
+    "about fifteen per cent",
+    "about twenty five per cent",
+    "about sixty five per cent"
+   ],
+   "options_ar": [
+    "نحو أربعين بالمئة هنا",
+    "نحو خمسة عشر بالمئة",
+    "نحو خمسة وعشرين بالمئة",
+    "نحو خمسة وستين بالمئة"
+   ],
+   "options_en": [
+    "about forty per cent here",
+    "about fifteen per cent",
+    "about twenty five per cent",
+    "about sixty five per cent"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Roughly forty per cent of the effort sits in the development sub-cycle; the rest is elsewhere.",
+   "explanation_ar": "نحو أربعين بالمئة من الجهد في دورة التطوير الفرعية، والباقي في مواضع أخرى."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_risk_exposure",
+   "bloom_level": "Understand",
+   "question": "How is Risk Exposure computed?",
+   "question_ar": "كيف يُحسب التعرّض للخطر؟",
+   "options": [
+    "probability divided by loss",
+    "probability times loss now",
+    "probability plus loss here",
+    "loss divided by probability"
+   ],
+   "options_ar": [
+    "الاحتمال مقسوماً على الخسارة",
+    "الاحتمال مضروباً بالخسارة",
+    "الاحتمال زائد الخسارة هنا",
+    "الخسارة مقسومة على الاحتمال"
+   ],
+   "options_en": [
+    "probability divided by loss",
+    "probability times loss now",
+    "probability plus loss here",
+    "loss divided by probability"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Risk Exposure multiplies the probability of the event by the size of the loss.",
+   "explanation_ar": "التعرّض للخطر يضرب احتمال الحدث في حجم الخسارة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch4_risk_categories",
+   "bloom_level": "Remember",
+   "question": "Risk management activities are divided into...",
+   "question_ar": "أنشطة إدارة المخاطر تنقسم إلى...",
+   "options": [
+    "five categories",
+    "ten categories",
+    "two categories",
+    "three categories"
+   ],
+   "options_ar": [
+    "خمس فئات",
+    "عشر فئات",
+    "فئتان هنا",
+    "ثلاث فئات"
+   ],
+   "options_en": [
+    "five categories",
+    "ten categories",
+    "two categories",
+    "three categories"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Risk management splits into risk assessment and risk control, so two categories.",
+   "explanation_ar": "إدارة المخاطر تنقسم إلى تقييم المخاطر وضبط المخاطر، أي فئتان."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_not_risk_activity",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a risk management activity?",
+   "question_ar": "أي واحد ليس نشاطاً من أنشطة إدارة المخاطر؟",
+   "options": [
+    "risk assessment too now",
+    "risk control here again",
+    "none of the above answers",
+    "risk generation now here"
+   ],
+   "options_ar": [
+    "تقييم المخاطر أيضاً",
+    "ضبط المخاطر هنا مجدداً",
+    "لا شيء مما سبق أعلاه",
+    "توليد المخاطر الآن هنا"
+   ],
+   "options_en": [
+    "risk assessment too now",
+    "risk control here again",
+    "none of the above answers",
+    "risk generation now here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Assessment and control are the two activities; nobody generates risk on purpose.",
+   "explanation_ar": "التقييم والضبط هما النشاطان، ولا أحد يولّد المخاطر عمداً."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch4_cost_includes",
+   "bloom_level": "Understand",
+   "question": "Cost estimation for a project may include...",
+   "question_ar": "تقدير كلفة المشروع قد يشمل...",
+   "options": [
+    "all of the above answers",
+    "software cost here here here",
+    "hardware cost now again",
+    "personnel costs too now"
+   ],
+   "options_ar": [
+    "كل ما سبق أعلاه",
+    "كلفة البرمجيات",
+    "كلفة العتاد هنا",
+    "كلفة الأفراد الآن"
+   ],
+   "options_en": [
+    "all of the above answers",
+    "software cost here here here",
+    "hardware cost now again",
+    "personnel costs too now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A full project estimate covers software, hardware and personnel together.",
+   "explanation_ar": "التقدير الكامل للمشروع يغطي البرمجيات والعتاد والأفراد معاً."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch4_infra_not",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT infrastructure software?",
+   "question_ar": "أي واحد ليس برمجيات بنية تحتية؟",
+   "options": [
+    "compilers here now again",
+    "result management system",
+    "operating system too here",
+    "database management system"
+   ],
+   "options_ar": [
+    "المترجمات هنا أيضاً الآن هنا",
+    "نظام إدارة النتائج هنا أيضاً",
+    "نظام التشغيل الآن مجدداً مجدداً",
+    "نظام إدارة قواعد البيانات"
+   ],
+   "options_en": [
+    "compilers here now again",
+    "result management system",
+    "operating system too here",
+    "database management system"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Infrastructure means operating systems, DBMS and compilers, not an application result system.",
+   "explanation_ar": "البنية التحتية تعني أنظمة التشغيل وقواعد البيانات والمترجمات، لا نظام نتائج تطبيقي."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch4_putnam_equation",
+   "bloom_level": "Understand",
+   "question": "In Putnam's software equation, what does the size S depend on?",
+   "question_ar": "في معادلة بوتنام، على ماذا يعتمد الحجم S؟",
+   "options": [
+    "the function point count now here",
+    "the number of modules here again too",
+    "effort and development time together",
+    "the number of cost drivers too now"
+   ],
+   "options_ar": [
+    "عدد نقاط الوظائف مجدداً",
+    "عدد الوحدات هنا الآن",
+    "الجهد وزمن التطوير معاً",
+    "عدد عوامل الكلفة أيضاً"
+   ],
+   "options_en": [
+    "the function point count now here",
+    "the number of modules here again too",
+    "effort and development time together",
+    "the number of cost drivers too now"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "S is set by effort raised to one third and time raised to four thirds, scaled by technology.",
+   "explanation_ar": "S يتحدد بالجهد أس ثلث والزمن أس أربعة أثلاث، مضروباً بعامل التقنية."
+  }
+ ]
+}
