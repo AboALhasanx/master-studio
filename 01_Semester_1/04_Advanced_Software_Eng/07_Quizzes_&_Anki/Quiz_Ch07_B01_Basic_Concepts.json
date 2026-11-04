@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch07_B01_Basic_Concepts",
+ "topic": "Basic Concepts: Reliability, Faults and Time",
+ "topic_ar": "المفاهيم الأساسية: الموثوقية والعيوب والزمن",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch7_bath_tub",
+   "bloom_level": "Remember",
+   "question": "Which one is NOT a phase of the bath tub curve?",
+   "question_ar": "أي واحد ليس مرحلة من منحنى حوض الاستحمام؟",
+   "options": [
+    "burn-in here",
+    "useful life",
+    "wear-out now",
+    "test-out too"
+   ],
+   "options_ar": [
+    "الإحماء الآن",
+    "العمر النافع",
+    "التآكل هنا",
+    "طور الاختبار"
+   ],
+   "options_en": [
+    "burn-in here",
+    "useful life",
+    "wear-out now",
+    "test-out too"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The curve has burn-in, useful life and wear-out; test-out is not a phase.",
+   "explanation_ar": "المنحنى يحوي الإحماء والعمر النافع والتآكل، و«طور الاختبار» ليست مرحلة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch7_reliability_def",
+   "bloom_level": "Remember",
+   "question": "Software reliability is...",
+   "question_ar": "موثوقية البرمجيات هي...",
+   "options": [
+    "none of the above here now too again",
+    "the probability of failure-free operation",
+    "the probability of a program failing now here",
+    "the chance that a program succeeds here"
+   ],
+   "options_ar": [
+    "لا شيء مما سبق هنا أيضاً الآن",
+    "احتمال التشغيل الخالي من الأعطال",
+    "احتمال فشل البرنامج مجدداً أيضاً",
+    "فرصة نجاح البرنامج الآن هنا مجدداً"
+   ],
+   "options_en": [
+    "none of the above here now too again",
+    "the probability of failure-free operation",
+    "the probability of a program failing now here",
+    "the chance that a program succeeds here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Reliability is the probability that the system operates without failure for a stated period.",
+   "explanation_ar": "الموثوقية هي احتمال تشغيل النظام دون أعطال لمدة محددة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch7_fault_def",
+   "bloom_level": "Remember",
+   "question": "A fault is...",
+   "question_ar": "العطل هو...",
+   "options": [
+    "an error in the program",
+    "all of the above answers",
+    "a defect in the program",
+    "a mistake in the program"
+   ],
+   "options_ar": [
+    "عيب في البرنامج",
+    "كل ما سبق أعلاه",
+    "خلل في البرنامج",
+    "خطأ في البرنامج"
+   ],
+   "options_en": [
+    "an error in the program",
+    "all of the above answers",
+    "a defect in the program",
+    "a mistake in the program"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The terms defect, mistake and error all describe the same class of problem.",
+   "explanation_ar": "الخلل والخطأ والعيب تصف كلها المشكلة نفسها."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch7_fault_failures",
+   "bloom_level": "Understand",
+   "question": "One fault may lead to...",
+   "question_ar": "عطل واحد قد يؤدي إلى...",
+   "options": [
+    "two failures now here",
+    "many failures too now",
+    "all of the above answers",
+    "one failure here again"
+   ],
+   "options_ar": [
+    "فشلان هنا أيضاً",
+    "أعطال كثيرة مجدداً",
+    "كل ما سبق أعلاه",
+    "فشل واحد الآن هنا"
+   ],
+   "options_en": [
+    "two failures now here",
+    "many failures too now",
+    "all of the above answers",
+    "one failure here again"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A single latent fault can surface as many different failures in different situations.",
+   "explanation_ar": "العطل الواحد الكامن قد يظهر كأعطال مختلفة في ظروف مختلفة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch7_time_unit",
+   "bloom_level": "Understand",
+   "question": "Which time unit is NOT used in reliability studies?",
+   "question_ar": "أي وحدة زمنية لا تُستخدم في دراسات الموثوقية؟",
+   "options": [
+    "execution time",
+    "machine time",
+    "clock time here",
+    "calendar time"
+   ],
+   "options_ar": [
+    "زمن التنفيذ أيضاً أيضاً",
+    "زمن الآلة هنا مجدداً",
+    "زمن الساعة الآن الآن",
+    "الزمن التقويمي هنا مجدداً"
+   ],
+   "options_en": [
+    "execution time",
+    "machine time",
+    "clock time here",
+    "calendar time"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Reliability work uses execution time, clock time and calendar time.",
+   "explanation_ar": "الموثوقية تستخدم زمن التنفيذ وزمن الساعة والزمن التقويمي."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch7_no_wearout",
+   "bloom_level": "Analyze",
+   "question": "Software does not break or wear out like hardware.",
+   "question_ar": "البرمجيات لا تتآكل أو تنكسر كالعتاد.",
+   "options": [
+    "it cannot be said now",
+    "this statement is true",
+    "this statement is false",
+    "it is partly true here"
+   ],
+   "options_ar": [
+    "لا يمكن القول أيضاً الآن",
+    "العبارة صحيحة هنا مجدداً",
+    "العبارة خاطئة الآن هنا",
+    "العبارة صحيحة جزئياً أيضاً"
+   ],
+   "options_en": [
+    "it cannot be said now",
+    "this statement is true",
+    "this statement is false",
+    "it is partly true here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Software failures come from latent faults, not from physical wear-out.",
+   "explanation_ar": "أعطال البرمجيات تأتي من عيوب كامنة لا من تآكل فيزيائي."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch7_reliability_wrt",
+   "bloom_level": "Understand",
+   "question": "Software reliability is defined with respect to...",
+   "question_ar": "تُعرَّف موثوقية البرمجيات بالنسبة إلى...",
+   "options": [
+    "quality too now",
+    "none of the above",
+    "time here again",
+    "speed now here"
+   ],
+   "options_ar": [
+    "الجودة أيضاً الآن",
+    "لا شيء مما سبق",
+    "الزمن هنا مجدداً",
+    "السرعة الآن هنا"
+   ],
+   "options_en": [
+    "quality too now",
+    "none of the above",
+    "time here again",
+    "speed now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Reliability is always stated over a period of time and an operation.",
+   "explanation_ar": "الموثوقية تُذكر دائماً مع فترة زمنية وتشغيل."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch7_mttf",
+   "bloom_level": "Remember",
+   "question": "MTTF stands for...",
+   "question_ar": "MTTF تعني...",
+   "options": [
+    "maximum time to failure here",
+    "minimum time to failure",
+    "none of the above here",
+    "mean time to failure now"
+   ],
+   "options_ar": [
+    "أقصى زمن حتى الفشل الآن",
+    "أدنى زمن حتى الفشل أيضاً",
+    "لا شيء مما سبق هنا مجدداً",
+    "متوسط الزمن حتى الفشل هنا"
+   ],
+   "options_en": [
+    "maximum time to failure here",
+    "minimum time to failure",
+    "none of the above here",
+    "mean time to failure now"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Mean time to failure is the average interval before the system fails.",
+   "explanation_ar": "متوسط الزمن حتى الفشل هو الفاصل المتوسط قبل أعطال النظام."
+  }
+ ]
+}

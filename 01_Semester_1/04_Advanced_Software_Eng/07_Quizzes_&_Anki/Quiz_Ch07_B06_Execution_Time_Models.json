@@ -1,0 +1,334 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch07_B06_Execution_Time_Models",
+ "topic": "Execution Time Models, Jelinski-Moranda and Bug Seeding",
+ "topic_ar": "نماذج زمن التنفيذ وجيلينسكي-موراندا وبذر الأخطاء",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch7_basic_intensity",
+   "bloom_level": "Understand",
+   "question": "In the basic execution time model, the failure intensity...",
+   "question_ar": "في نموذج زمن التنفيذ الأساسي، شدة الأعطال...",
+   "options": [
+    "decays exponentially as execution time grows",
+    "rises with execution time too now here too",
+    "stays constant forever now again again again",
+    "falls to zero at once here here too now"
+   ],
+   "options_ar": [
+    "تتناقص أُسّياً مع نمو زمن التنفيذ",
+    "تزداد مع زمن التنفيذ الآن هنا",
+    "تبقى ثابتة للأبد هنا أيضاً الآن",
+    "تسقط إلى الصفر فوراً مجدداً أيضاً"
+   ],
+   "options_en": [
+    "decays exponentially as execution time grows",
+    "rises with execution time too now here too",
+    "stays constant forever now again again again",
+    "falls to zero at once here here too now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The intensity starts at a base value and decays as the program is exercised.",
+   "explanation_ar": "تبدأ الشدة بقيمة أساس وتتناقص مع تشغيل البرنامج."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch7_basic_extra_failures",
+   "bloom_level": "Understand",
+   "question": "In the basic execution time model, the extra failures needed...",
+   "question_ar": "في نموذج زمن التنفيذ الأساسي، الأعطال الإضافية المطلوبة...",
+   "options": [
+    "fall as the program runs here too here too here too now",
+    "grow with the initial failure count over the initial intensity",
+    "grow with the intensity over the failure count now here again here",
+    "do not depend on either term now again now again again too"
+   ],
+   "options_ar": [
+    "تنقص مع تشغيل البرنامج هنا أيضاً الآن هنا الآن هنا",
+    "تنمو بنسبة عدد الأعطال الأولي إلى الشدة الأولية",
+    "تنمو بنسبة الشدة إلى عدد الأعطال هنا أيضاً",
+    "لا تعتمد على أي من الحدين الآن مجدداً مجدداً"
+   ],
+   "options_en": [
+    "fall as the program runs here too here too here too now",
+    "grow with the initial failure count over the initial intensity",
+    "grow with the intensity over the failure count now here again here",
+    "do not depend on either term now again now again again too"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The scale of the extra failures is set by the initial failure count over the initial intensity.",
+   "explanation_ar": "يتحدد حجم الأعطال الإضافية بنسبة الأعطال الأولية إلى الشدة الأولية."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch7_basic_extra_time",
+   "bloom_level": "Understand",
+   "question": "In the basic execution time model, the extra execution time is...",
+   "question_ar": "في نموذج زمن التنفيذ الأساسي، زمن التنفيذ الإضافي هو...",
+   "options": [
+    "the failure count alone here too here now again",
+    "the square of the intensity now again too here now",
+    "the failure count over the intensity, times a logarithm",
+    "the intensity over the failure count, times a logarithm"
+   ],
+   "options_ar": [
+    "عدد الأعطال وحده أيضاً هنا الآن مجدداً أيضاً",
+    "مربع الشدة هنا الآن مجدداً أيضاً هنا الآن",
+    "عدد الأعطال مقسوماً على الشدة مضروباً بلوغاريتم",
+    "الشدة مقسومة على عدد الأعطال مضروبة بلوغاريتم هنا"
+   ],
+   "options_en": [
+    "the failure count alone here too here now again",
+    "the square of the intensity now again too here now",
+    "the failure count over the intensity, times a logarithm",
+    "the intensity over the failure count, times a logarithm"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A logarithmic term appears because the extra failures accumulate non-linearly.",
+   "explanation_ar": "تظهر حد لوغاريتمي لأن الأعطال الإضافية تتراكم بشكل غير خطي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch7_logpoisson_intensity",
+   "bloom_level": "Understand",
+   "question": "In the logarithmic Poisson execution time model, the intensity...",
+   "question_ar": "في نموذج بواسون اللوغاريتمي لزمن التنفيذ، الشدة...",
+   "options": [
+    "grows with the decay parameter now again",
+    "is a plain logarithm here too here here too here",
+    "stays at the base value now again too now",
+    "decays exponentially with the decay parameter"
+   ],
+   "options_ar": [
+    "تزداد بمعامل التناقص أيضاً",
+    "لوغاريتم عادي هنا الآن مجدداً",
+    "تبقى عند القيمة الأساس هنا",
+    "تتناقص أُسّياً بمعامل التناقص"
+   ],
+   "options_en": [
+    "grows with the decay parameter now again",
+    "is a plain logarithm here too here here too here",
+    "stays at the base value now again too now",
+    "decays exponentially with the decay parameter"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The logarithmic Poisson intensity is an exponential decay scaled by the base value.",
+   "explanation_ar": "شدة بواسون اللوغاريتمي تناقص أُسّياً مضروبة بالقيمة الأساس."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch7_theta",
+   "bloom_level": "Remember",
+   "question": "In the logarithmic Poisson model, the parameter theta is the...",
+   "question_ar": "في نموذج بواسون اللوغاريتمي، المعامل ثيتا هو...",
+   "options": [
+    "failure intensity function parameter",
+    "failure intensity decay parameter",
+    "failure intensity measurement here",
+    "failure intensity increment parameter"
+   ],
+   "options_ar": [
+    "معامل دالة شدة الأعطال",
+    "معامل تناقص شدة الأعطال",
+    "قياس شدة الأعطال هنا",
+    "معامل زيادة شدة الأعطال"
+   ],
+   "options_en": [
+    "failure intensity function parameter",
+    "failure intensity decay parameter",
+    "failure intensity measurement here",
+    "failure intensity increment parameter"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Theta governs how fast the intensity decays as the program is exercised.",
+   "explanation_ar": "ثيتا تحكم سرعة تناقص الشدة مع تشغيل البرنامج."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch7_logpoisson_growth",
+   "bloom_level": "Analyze",
+   "question": "In the logarithmic Poisson model, the total failures experienced...",
+   "question_ar": "في نموذج بواسون اللوغاريتمي، الأعطال الإجمالية...",
+   "options": [
+    "become negative here too here too now",
+    "reach a finite upper limit now again",
+    "grow logarithmically with no infinite limit",
+    "drop to zero at once now again here"
+   ],
+   "options_ar": [
+    "تصبح سالبة هنا الآن أيضاً أيضاً",
+    "تصل إلى حد أعلى نهائي هنا الآن",
+    "تنمو لوغاريتمياً بلا حد لا نهائي",
+    "تسقط إلى الصفر فوراً مجدداً"
+   ],
+   "options_en": [
+    "become negative here too here too now",
+    "reach a finite upper limit now again",
+    "grow logarithmically with no infinite limit",
+    "drop to zero at once now again here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The logarithmic curve keeps rising but never flattens completely.",
+   "explanation_ar": "المنحنى اللوغاريتمي يواصل الصعود ولا يستوي تماماً."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch7_jm_intensity",
+   "bloom_level": "Understand",
+   "question": "In the Jelinski-Moranda model, the failure intensity...",
+   "question_ar": "في نموذج جيلينسكي-موراندا، شدة الأعطال...",
+   "options": [
+    "stays constant here now too now here too",
+    "depends on the clock only here too now here",
+    "falls linearly as the remaining errors shrink",
+    "rises as errors are fixed again again again here"
+   ],
+   "options_ar": [
+    "تبقى ثابتة هنا الآن أيضاً الآن هنا هنا",
+    "تعتمد على الساعة فقط مجدداً مجدداً",
+    "تنخفض خطياً مع نقص الأخطاء المتبقية",
+    "تزداد مع إصلاح الأخطاء هنا أيضاً"
+   ],
+   "options_en": [
+    "stays constant here now too now here too",
+    "depends on the clock only here too now here",
+    "falls linearly as the remaining errors shrink",
+    "rises as errors are fixed again again again here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The model removes a fixed share of the remaining errors at each failure.",
+   "explanation_ar": "النموذج يزيل نسبة ثابتة من الأخطاء المتبقية عند كل عطل."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch7_bugseeding",
+   "bloom_level": "Understand",
+   "question": "In Harlan Mills' bug seeding model, the estimated error count is...",
+   "question_ar": "في نموذج بذر الأخطاء لهارلان ميلز، عدد الأخطاء المقدَّر هو...",
+   "options": [
+    "the seeded faults times the seeded ones found over all faults",
+    "the total faults divided by the seeded ones again now again too here",
+    "the product of the three counts here now too here too here now",
+    "the seeded faults times the faults found over the seeded ones found"
+   ],
+   "options_ar": [
+    "المزروعة مضروبة بالمزروعة المكتشفة مقسومة على الكل الآن هنا الآن",
+    "إجمالي الأخطاء مقسوماً على المزروعة مجدداً الآن مجدداً مجدداً مجدداً هنا",
+    "حاصل ضرب الأعداد الثلاثة هنا الآن أيضاً هنا أيضاً هنا أيضاً أيضاً",
+    "الأخطاء المزروعة مضروبة بالأخطاء المكتشفة مقسومة على المزروعة المكتشفة"
+   ],
+   "options_en": [
+    "the seeded faults times the seeded ones found over all faults",
+    "the total faults divided by the seeded ones again now again too here",
+    "the product of the three counts here now too here too here now",
+    "the seeded faults times the faults found over the seeded ones found"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The ratio of found seeded faults gives the capture rate used to estimate the rest.",
+   "explanation_ar": "نسبة الأخطاء المزروعة المكتشفة تعطي معدل الالتقاط المستخدم لتقدير الباقي."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch7_operational_profile",
+   "bloom_level": "Understand",
+   "question": "In software reliability engineering, an operational profile is...",
+   "question_ar": "في هندسة موثوقية البرمجيات، الملف التشغيلي هو...",
+   "options": [
+    "the compiler optimisation setting now",
+    "a quantitative set of operational run types",
+    "the hardware specification of the target",
+    "the developer's daily schedule here"
+   ],
+   "options_ar": [
+    "إعداد تحسين المترجم هنا أيضاً",
+    "مجموعة كمية من أنماط التشغيل",
+    "مواصفة عتاد النظام الهدف مجدداً",
+    "جدول المطوّر اليومي الآن هنا"
+   ],
+   "options_en": [
+    "the compiler optimisation setting now",
+    "a quantitative set of operational run types",
+    "the hardware specification of the target",
+    "the developer's daily schedule here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The profile states how much of the time the system runs in each mode.",
+   "explanation_ar": "الملف يبيّن كم من الوقت يعمل النظام في كل وضع."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch7_exec_vs_calendar",
+   "bloom_level": "Understand",
+   "question": "How do execution time and calendar time relate in software reliability?",
+   "question_ar": "كيف يرتبط زمن التنفيذ بالزمن التقويمي في موثوقية البرمجيات؟",
+   "options": [
+    "through the function point adjustment here",
+    "through the resource allocation parameters used",
+    "through the compiler clock here now again too",
+    "through the number of source lines too now again"
+   ],
+   "options_ar": [
+    "عبر معامل نقاط الوظائف مجدداً مجدداً",
+    "عبر معاملات تخصيص الموارد المستخدمة",
+    "عبر ساعة المترجم هنا أيضاً الآن",
+    "عبر عدد أسطر الكود الآن هنا أيضاً"
+   ],
+   "options_en": [
+    "through the function point adjustment here",
+    "through the resource allocation parameters used",
+    "through the compiler clock here now again too",
+    "through the number of source lines too now again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Calendar time depends on how many resources are running the program in parallel.",
+   "explanation_ar": "الزمن التقويمي يعتمد على كم من الموارد تشغّل البرنامج بالتوازي."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch7_calendar_component",
+   "bloom_level": "Remember",
+   "question": "In Musa's calendar time component model, testing is limited by...",
+   "question_ar": "في نموذج مكوّن الزمن التقويمي لموسى، الاختبار محدود بـ...",
+   "options": [
+    "the data-entry limited phase here again too",
+    "the overclocked phase here too now here again",
+    "the test-limiting phase now again too now here",
+    "the failure-identification personnel limited phase"
+   ],
+   "options_ar": [
+    "مرحلة حد إدخال البيانات مجدداً",
+    "مرحلة التسريع الزائد الآن هنا",
+    "مرحلة حد الاختبار هنا أيضاً الآن",
+    "مرحلة حد kraft التعرف على الأعطال"
+   ],
+   "options_en": [
+    "the data-entry limited phase here again too",
+    "the overclocked phase here too now here again",
+    "the test-limiting phase now again too now here",
+    "the failure-identification personnel limited phase"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Testing consumes people, and that shortage is what limits the phase.",
+   "explanation_ar": "الاختبار يستهلك الأفراد، ونقصهم هو ما يحدّ المرحلة."
+  }
+ ]
+}
