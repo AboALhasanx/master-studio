@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch04_B06_Cost_And_Risk_Support",
+ "topic": "Cost Estimation and Risk Management",
+ "topic_ar": "تقدير الكلفة وإدارة المخاطر",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch4_risk_exposure",
+   "bloom_level": "Understand",
+   "question": "How is Risk Exposure computed?",
+   "question_ar": "كيف يُحسب التعرّض للخطر؟",
+   "options": [
+    "probability divided by loss",
+    "probability times loss now",
+    "probability plus loss here",
+    "loss divided by probability"
+   ],
+   "options_ar": [
+    "الاحتمال مقسوماً على الخسارة",
+    "الاحتمال مضروباً بالخسارة",
+    "الاحتمال زائد الخسارة هنا",
+    "الخسارة مقسومة على الاحتمال"
+   ],
+   "options_en": [
+    "probability divided by loss",
+    "probability times loss now",
+    "probability plus loss here",
+    "loss divided by probability"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Risk Exposure multiplies the probability of the event by the size of the loss.",
+   "explanation_ar": "التعرّض للخطر يضرب احتمال الحدث في حجم الخسارة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch4_risk_categories",
+   "bloom_level": "Remember",
+   "question": "Risk management activities are divided into...",
+   "question_ar": "أنشطة إدارة المخاطر تنقسم إلى...",
+   "options": [
+    "five categories",
+    "ten categories",
+    "two categories",
+    "three categories"
+   ],
+   "options_ar": [
+    "خمس فئات",
+    "عشر فئات",
+    "فئتان هنا",
+    "ثلاث فئات"
+   ],
+   "options_en": [
+    "five categories",
+    "ten categories",
+    "two categories",
+    "three categories"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Risk management splits into risk assessment and risk control, so two categories.",
+   "explanation_ar": "إدارة المخاطر تنقسم إلى تقييم المخاطر وضبط المخاطر، أي فئتان."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch4_not_risk_activity",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a risk management activity?",
+   "question_ar": "أي واحد ليس نشاطاً من أنشطة إدارة المخاطر؟",
+   "options": [
+    "risk assessment too now",
+    "risk control here again",
+    "none of the above answers",
+    "risk generation now here"
+   ],
+   "options_ar": [
+    "تقييم المخاطر أيضاً",
+    "ضبط المخاطر هنا مجدداً",
+    "لا شيء مما سبق أعلاه",
+    "توليد المخاطر الآن هنا"
+   ],
+   "options_en": [
+    "risk assessment too now",
+    "risk control here again",
+    "none of the above answers",
+    "risk generation now here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Assessment and control are the two activities; nobody generates risk on purpose.",
+   "explanation_ar": "التقييم والضبط هما النشاطان، ولا أحد يولّد المخاطر عمداً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_cost_includes",
+   "bloom_level": "Understand",
+   "question": "Cost estimation for a project may include...",
+   "question_ar": "تقدير كلفة المشروع قد يشمل...",
+   "options": [
+    "hardware cost now again",
+    "personnel costs too now",
+    "all of the above answers",
+    "software cost here here here"
+   ],
+   "options_ar": [
+    "كلفة العتاد هنا",
+    "كلفة الأفراد الآن",
+    "كل ما سبق أعلاه",
+    "كلفة البرمجيات"
+   ],
+   "options_en": [
+    "hardware cost now again",
+    "personnel costs too now",
+    "all of the above answers",
+    "software cost here here here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A full project estimate covers software, hardware and personnel together.",
+   "explanation_ar": "التقدير الكامل للمشروع يغطي البرمجيات والعتاد والأفراد معاً."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_infra_not",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT infrastructure software?",
+   "question_ar": "أي واحد ليس برمجيات بنية تحتية؟",
+   "options": [
+    "compilers here now again",
+    "result management system",
+    "operating system too here",
+    "database management system"
+   ],
+   "options_ar": [
+    "المترجمات هنا أيضاً الآن هنا",
+    "نظام إدارة النتائج هنا أيضاً",
+    "نظام التشغيل الآن مجدداً مجدداً",
+    "نظام إدارة قواعد البيانات"
+   ],
+   "options_en": [
+    "compilers here now again",
+    "result management system",
+    "operating system too here",
+    "database management system"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Infrastructure means operating systems, DBMS and compilers, not an application result system.",
+   "explanation_ar": "البنية التحتية تعني أنظمة التشغيل وقواعد البيانات والمترجمات، لا نظام نتائج تطبيقي."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_risk_assessment",
+   "bloom_level": "Understand",
+   "question": "What does risk assessment cover?",
+   "question_ar": "ماذا يشمل تقييم المخاطر؟",
+   "options": [
+    "monitoring the schedule only now",
+    "paying the insurance now again too",
+    "writing the code here too here",
+    "identifying and prioritising risks"
+   ],
+   "options_en": [
+    "monitoring the schedule only now",
+    "paying the insurance now again too",
+    "writing the code here too here",
+    "identifying and prioritising risks"
+   ],
+   "options_ar": [
+    "متابعة الجدول فقط هنا",
+    "دفع التأمين هنا أيضاً",
+    "كتابة الكود الآن مجدداً",
+    "تحديد المخاطر وترتيبها"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Assessment establishes what the risks are and how serious each one is.",
+   "explanation_ar": "التقييم يحدد ما هي المخاطر ومدى خطورة كل واحدة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch4_risk_control",
+   "bloom_level": "Understand",
+   "question": "What does risk control cover?",
+   "question_ar": "ماذا يشمل ضبط المخاطر؟",
+   "options": [
+    "planning and monitoring the response",
+    "identifying the risks only again too",
+    "estimating the size here too now",
+    "designing the interface now here"
+   ],
+   "options_en": [
+    "planning and monitoring the response",
+    "identifying the risks only again too",
+    "estimating the size here too now",
+    "designing the interface now here"
+   ],
+   "options_ar": [
+    "تخطيط الاستجابة ومتابعتها",
+    "تحديد المخاطر فقط مجدداً",
+    "تقدير الحجم هنا أيضاً الآن",
+    "تصميم الواجهة الآن هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Control turns the assessment into a plan and tracks whether it works.",
+   "explanation_ar": "الضبط يحوّل التقييم إلى خطة ويتابع نجاحها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_risk_early",
+   "bloom_level": "Analyze",
+   "question": "Why is early risk identification valuable?",
+   "question_ar": "لماذا تحديد المخاطر مبكراً ذو قيمة؟",
+   "options": [
+    "mitigation is cheaper before commitment",
+    "it removes all uncertainty here again here",
+    "it shortens the code now too now here",
+    "it raises the price here again too"
+   ],
+   "options_en": [
+    "mitigation is cheaper before commitment",
+    "it removes all uncertainty here again here",
+    "it shortens the code now too now here",
+    "it raises the price here again too"
+   ],
+   "options_ar": [
+    "التخفيف أرخص قبل الالتزام",
+    "يزيل كل عدم اليقين هنا",
+    "يقصّر الكود الآن مجدداً",
+    "يرفع السعر هنا أيضاً الآن"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A risk found during planning can still be designed around; one found late cannot.",
+   "explanation_ar": "الخطر المكتشف في التخطيط يمكن التصميم حوله، والمتأخر لا يمكن."
+  }
+ ]
+}

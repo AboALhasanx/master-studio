@@ -7,9 +7,9 @@
  "instructor_ar": "أ.م.د. علي فاهم نعمة",
  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
  "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch04_T02_COCOMO_81_And_Static_Models",
- "topic": "COCOMO '81 and Static Cost Models",
- "topic_ar": "COCOMO 81 والنماذج الساكنة للتكلفة",
+ "quiz_id": "Quiz_Ch04_B03_COCOMO_81",
+ "topic": "COCOMO: Basic, Intermediate and Detailed",
+ "topic_ar": "COCOMO: الأساسي والمتوسط والمفصّل",
  "questions": [
   {
    "id": "q1",
@@ -18,25 +18,25 @@
    "question": "COCOMO was developed initially by...",
    "question_ar": "طوّر COCOMO أول الأمر...",
    "options": [
+    "Rajiv Gupta here",
     "B. W. Boehm here",
     "Gregg Rothermel",
-    "B. Beizer here",
-    "Rajiv Gupta here"
+    "B. Beizer here"
    ],
    "options_ar": [
+    "راجيف غوبتا هنا هنا مجدداً",
     "بي دبليو بوم أيضاً أيضاً",
     "غريغ روثرمل هنا مجدداً",
-    "بي بيزر هنا الآن الآن",
-    "راجيف غوبتا هنا هنا مجدداً"
+    "بي بيزر هنا الآن الآن"
    ],
    "options_en": [
+    "Rajiv Gupta here",
     "B. W. Boehm here",
     "Gregg Rothermel",
-    "B. Beizer here",
-    "Rajiv Gupta here"
+    "B. Beizer here"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Barry Boehm published COCOMO as a constructive cost model built from project data.",
    "explanation_ar": "باري بوم نشر COCOMO كنموذج تكلفة بنائي مبني على بيانات مشاريع."
   },
@@ -134,59 +134,30 @@
    "question": "How many cost drivers does Intermediate COCOMO '81 use?",
    "question_ar": "كم عامل كلفة يستخدم COCOMO 81 المتوسط؟",
    "options": [
-    "fifteen drivers across four categories",
     "seventeen drivers across four categories",
     "fourteen drivers across three categories",
-    "seven drivers across two categories"
+    "seven drivers across two categories",
+    "fifteen drivers across four categories"
    ],
    "options_ar": [
-    "خمسة عشر عاملاً في أربع فئات",
     "سبعة عشر عاملاً في أربع فئات",
     "أربعة عشر عاملاً في ثلاث فئات",
-    "سبعة عوامل في فئتين هنا الآن"
+    "سبعة عوامل في فئتين هنا الآن",
+    "خمسة عشر عاملاً في أربع فئات"
    ],
    "options_en": [
-    "fifteen drivers across four categories",
     "seventeen drivers across four categories",
     "fourteen drivers across three categories",
-    "seven drivers across two categories"
+    "seven drivers across two categories",
+    "fifteen drivers across four categories"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Intermediate COCOMO rates fifteen effort multipliers grouped into four categories.",
    "explanation_ar": "COCOMO المتوسط يقيّم خمسة عشر مضاعف جهد موزعة على أربع فئات."
   },
   {
    "id": "q6",
-   "concept_id": "ch4_static_compare",
-   "bloom_level": "Analyze",
-   "question": "Comparing single-variable static models at 100 KLOC, which is true?",
-   "question_ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
-   "options": [
-    "neither model applies at that size here",
-    "Walston-Felix predicts much higher effort",
-    "SEL predicts much higher effort here now here",
-    "both models predict identical effort"
-   ],
-   "options_ar": [
-    "لا ينطبق أي منهما على هذا الحجم أيضاً",
-    "Walston-Felix يتوقع جهداً أعلى بكثير",
-    "SEL يتوقع جهداً أعلى بكثير هنا الآن",
-    "النموذجان يتوقعان جهداً متطابقاً"
-   ],
-   "options_en": [
-    "neither model applies at that size here",
-    "Walston-Felix predicts much higher effort",
-    "SEL predicts much higher effort here now here",
-    "both models predict identical effort"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair.",
-   "explanation_ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما."
-  },
-  {
-   "id": "q7",
    "concept_id": "ch4_embedded_conditions",
    "bloom_level": "Apply",
    "question": "A project with high complexity and strict hardware constraints is...",
@@ -215,33 +186,62 @@
    "explanation_ar": "قيود العتاد والواجهات الصارمة تدفع المشروع إلى الوضع المضمّن."
   },
   {
-   "id": "q8",
-   "concept_id": "ch4_static_models",
+   "id": "q7",
+   "concept_id": "ch4_basic_vs_inter",
    "bloom_level": "Understand",
-   "question": "What defines a static single-variable cost model?",
-   "question_ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
+   "question": "What separates basic from intermediate COCOMO?",
+   "question_ar": "ما الذي يفصل COCOMO الأساسي عن المتوسط؟",
    "options": [
-    "effort depends on many drivers here",
-    "effort changes with each phase",
-    "effort is fixed before design",
-    "effort depends on one size input"
-   ],
-   "options_ar": [
-    "الجهد يعتمد على عوامل كثيرة",
-    "الجهد يتغير مع كل مرحلة الآن",
-    "الجهد ثابت قبل التصميم هنا أيضاً",
-    "الجهد يعتمد على مُدخل حجم واحد"
+    "the intermediate adds cost drivers",
+    "the basic adds cost drivers here",
+    "the basic models each phase now",
+    "the intermediate ignores size too here"
    ],
    "options_en": [
-    "effort depends on many drivers here",
-    "effort changes with each phase",
-    "effort is fixed before design",
-    "effort depends on one size input"
+    "the intermediate adds cost drivers",
+    "the basic adds cost drivers here",
+    "the basic models each phase now",
+    "the intermediate ignores size too here"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "A single-variable static model reads effort from one size measure alone, with no time term.",
-   "explanation_ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني."
+   "options_ar": [
+    "المتوسط يضيف عوامل الكلفة",
+    "الأساسي يضيف عوامل الكلفة",
+    "الأساسي ينمذج كل مرحلة",
+    "المتوسط يتجاهل الحجم هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Basic uses size alone; intermediate multiplies in fifteen effort multipliers.",
+   "explanation_ar": "الأساسي يستخدم الحجم وحده، والمتوسط يضرب بخمسة عشر مضاعف جهد."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_detailed_model",
+   "bloom_level": "Understand",
+   "question": "What does detailed COCOMO add?",
+   "question_ar": "ماذا يضيف COCOMO المفصّل؟",
+   "options": [
+    "per-phase effort and cost drivers",
+    "a second size measure here too",
+    "a risk register here too now here",
+    "an agile backlog now again again"
+   ],
+   "options_en": [
+    "per-phase effort and cost drivers",
+    "a second size measure here too",
+    "a risk register here too now here",
+    "an agile backlog now again again"
+   ],
+   "options_ar": [
+    "جهد وعوامل كلفة لكل مرحلة",
+    "مقياس حجم ثانٍ مجدداً",
+    "سجل مخاطر هنا أيضاً أيضاً",
+    "سجل أجايل الآن هنا الآن"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The detailed model applies the drivers phase by phase rather than once for the whole project.",
+   "explanation_ar": "النموذج المفصّل يطبّق العوامل مرحلة بمرحلة بدل مرة واحدة للمشروع."
   }
  ]
 }

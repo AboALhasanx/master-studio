@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch04_B05_Putnam_Resource_Model",
+ "topic": "The Putnam Resource Allocation Model",
+ "topic_ar": "نموذج بوتنام لتخصيص الموارد",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch4_putnam_basis",
+   "bloom_level": "Remember",
+   "question": "The Putnam resource allocation model is based on...",
+   "question_ar": "نموذج بوتنام لتخصيص الموارد قائم على...",
+   "options": [
+    "Boehm manpower observation",
+    "the Norden/Rayleigh curve",
+    "function points here now",
+    "Putnam theory of management"
+   ],
+   "options_ar": [
+    "ملاحظة بوم عن القوى العاملة",
+    "منحنى نوردن/رايلي أيضاً الآن",
+    "نقاط الوظائف هنا الآن مجدداً",
+    "نظرية بوتنام الإدارية هنا"
+   ],
+   "options_en": [
+    "Boehm manpower observation",
+    "the Norden/Rayleigh curve",
+    "function points here now",
+    "Putnam theory of management"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Putnam models the manpower profile with the Norden/Rayleigh curve.",
+   "explanation_ar": "بوتنام ينمذج منحنى القوى العاملة بمنحنى نوردن/رايلي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch4_putnam_difficulty",
+   "bloom_level": "Understand",
+   "question": "How does Putnam express the difficulty metric?",
+   "question_ar": "كيف يعبّر بوتنام عن مقياس الصعوبة؟",
+   "options": [
+    "K times the cube of time too",
+    "K divided by the cube of time",
+    "K divided by the square of time",
+    "K divided by time here now"
+   ],
+   "options_ar": [
+    "K مضروبة في مكعب الزمن",
+    "K مقسومة على مكعب الزمن",
+    "K مقسومة على مربع الزمن",
+    "K مقسومة على الزمن هنا"
+   ],
+   "options_en": [
+    "K times the cube of time too",
+    "K divided by the cube of time",
+    "K divided by the square of time",
+    "K divided by time here now"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Difficulty D equals K over the cube of development time, so time reduces difficulty fast.",
+   "explanation_ar": "الصعوبة D تساوي K على مكعب زمن التطوير، فالزمن يخفّض الصعوبة سريعاً."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch4_putnam_curve",
+   "bloom_level": "Understand",
+   "question": "What shape does the Rayleigh manpower curve take?",
+   "question_ar": "ما شكل منحنى رايلي للقوى العاملة؟",
+   "options": [
+    "it falls then rises at the end",
+    "it alternates in fixed cycles",
+    "it rises to a peak then decays",
+    "it stays flat through the project"
+   ],
+   "options_ar": [
+    "ينخفض ثم يصعد بالنهاية",
+    "يتذبذب بدورات ثابتة هنا",
+    "يصعد إلى ذروة ثم يتلاشى",
+    "يبقى مستوياً طوال المشروع"
+   ],
+   "options_en": [
+    "it falls then rises at the end",
+    "it alternates in fixed cycles",
+    "it rises to a peak then decays",
+    "it stays flat through the project"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Manpower grows to a single peak and then decays, which is the Rayleigh shape.",
+   "explanation_ar": "القوى العاملة تنمو إلى ذروة واحدة ثم تتلاشى، وهذا شكل رايلي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_putnam_peak",
+   "bloom_level": "Understand",
+   "question": "How is the peak manpower rate expressed in Putnam's model?",
+   "question_ar": "كيف يُعبَّر عن ذروة معدل القوى العاملة في نموذج بوتنام؟",
+   "options": [
+    "K over the square of the time now here",
+    "two K over the time here too here",
+    "K times the root of e now again",
+    "K over the time times the root of e"
+   ],
+   "options_ar": [
+    "K على مربع الزمن أيضاً",
+    "ضعف K على الزمن هنا مجدداً",
+    "K مضروبة بجذر e الآن هنا",
+    "K على الزمن مضروباً بجذر e"
+   ],
+   "options_en": [
+    "K over the square of the time now here",
+    "two K over the time here too here",
+    "K times the root of e now again",
+    "K over the time times the root of e"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The peak rate is K divided by the product of development time and the square root of e.",
+   "explanation_ar": "الذروة هي K مقسومة على حاصل ضرب زمن التطوير في جذر e."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_putnam_share",
+   "bloom_level": "Remember",
+   "question": "About what share of total effort falls in the development sub-cycle?",
+   "question_ar": "كم تقريباً من الجهد الكلي يقع في دورة التطوير الفرعية؟",
+   "options": [
+    "about fifteen per cent",
+    "about twenty five per cent",
+    "about sixty five per cent",
+    "about forty per cent here"
+   ],
+   "options_ar": [
+    "نحو خمسة عشر بالمئة",
+    "نحو خمسة وعشرين بالمئة",
+    "نحو خمسة وستين بالمئة",
+    "نحو أربعين بالمئة هنا"
+   ],
+   "options_en": [
+    "about fifteen per cent",
+    "about twenty five per cent",
+    "about sixty five per cent",
+    "about forty per cent here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Roughly forty per cent of the effort sits in the development sub-cycle; the rest is elsewhere.",
+   "explanation_ar": "نحو أربعين بالمئة من الجهد في دورة التطوير الفرعية، والباقي في مواضع أخرى."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_putnam_equation",
+   "bloom_level": "Understand",
+   "question": "In Putnam's software equation, what does the size S depend on?",
+   "question_ar": "في معادلة بوتنام، على ماذا يعتمد الحجم S؟",
+   "options": [
+    "the function point count now here",
+    "the number of modules here again too",
+    "effort and development time together",
+    "the number of cost drivers too now"
+   ],
+   "options_ar": [
+    "عدد نقاط الوظائف مجدداً",
+    "عدد الوحدات هنا الآن",
+    "الجهد وزمن التطوير معاً",
+    "عدد عوامل الكلفة أيضاً"
+   ],
+   "options_en": [
+    "the function point count now here",
+    "the number of modules here again too",
+    "effort and development time together",
+    "the number of cost drivers too now"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "S is set by effort raised to one third and time raised to four thirds, scaled by technology.",
+   "explanation_ar": "S يتحدد بالجهد أس ثلث والزمن أس أربعة أثلاث، مضروباً بعامل التقنية."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch4_putnam_tradeoff",
+   "bloom_level": "Analyze",
+   "question": "What does the time versus cost trade-off show?",
+   "question_ar": "ماذا يُظهر التقابل بين الزمن والكلفة؟",
+   "options": [
+    "compressing time raises effort sharply",
+    "compressing time lowers effort again",
+    "time has no effect on effort now here here",
+    "cost falls as time falls here too"
+   ],
+   "options_en": [
+    "compressing time raises effort sharply",
+    "compressing time lowers effort again",
+    "time has no effect on effort now here here",
+    "cost falls as time falls here too"
+   ],
+   "options_ar": [
+    "ضغط الزمن يرفع الجهد بشدة",
+    "ضغط الزمن يخفض الجهد هنا",
+    "الزمن بلا أثر على الجهد",
+    "الكلفة تنخفض بانخفاض الزمن"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Because effort scales with time to a negative power, shrinking the schedule inflates the manpower.",
+   "explanation_ar": "لأن الجهد يتناسب مع الزمن بأس سالب، تقليص الجدول يضخّم القوى العاملة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_putnam_productivity",
+   "bloom_level": "Understand",
+   "question": "How does productivity behave as difficulty rises?",
+   "question_ar": "كيف تتصرف الإنتاجية مع ارتفاع الصعوبة؟",
+   "options": [
+    "it falls as difficulty rises",
+    "it rises as difficulty rises",
+    "it stays constant here too",
+    "it becomes undefined now"
+   ],
+   "options_en": [
+    "it falls as difficulty rises",
+    "it rises as difficulty rises",
+    "it stays constant here too",
+    "it becomes undefined now"
+   ],
+   "options_ar": [
+    "تنخفض مع ارتفاع الصعوبة",
+    "ترتفع مع ارتفاع الصعوبة",
+    "تبقى ثابتة هنا الآن مجدداً",
+    "تصبح غير معرّفة أيضاً"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Higher difficulty means more effort per unit of output, so productivity drops.",
+   "explanation_ar": "صعوبة أعلى تعني جهداً أكبر لكل وحدة مخرج، فتنخفض الإنتاجية."
+  }
+ ]
+}

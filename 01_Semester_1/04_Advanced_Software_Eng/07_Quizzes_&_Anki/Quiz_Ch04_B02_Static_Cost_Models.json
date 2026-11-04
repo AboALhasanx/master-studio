@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch04_B02_Static_Cost_Models",
+ "topic": "Static Single-Variable and Multivariable Models",
+ "topic_ar": "النماذج الساكنة أحادية ومتعددة المتغيرات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch4_static_compare",
+   "bloom_level": "Analyze",
+   "question": "Comparing single-variable static models at 100 KLOC, which is true?",
+   "question_ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
+   "options": [
+    "neither model applies at that size here",
+    "Walston-Felix predicts much higher effort",
+    "SEL predicts much higher effort here now here",
+    "both models predict identical effort"
+   ],
+   "options_ar": [
+    "لا ينطبق أي منهما على هذا الحجم أيضاً",
+    "Walston-Felix يتوقع جهداً أعلى بكثير",
+    "SEL يتوقع جهداً أعلى بكثير هنا الآن",
+    "النموذجان يتوقعان جهداً متطابقاً"
+   ],
+   "options_en": [
+    "neither model applies at that size here",
+    "Walston-Felix predicts much higher effort",
+    "SEL predicts much higher effort here now here",
+    "both models predict identical effort"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair.",
+   "explanation_ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch4_static_models",
+   "bloom_level": "Understand",
+   "question": "What defines a static single-variable cost model?",
+   "question_ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
+   "options": [
+    "effort depends on many drivers here",
+    "effort changes with each phase",
+    "effort is fixed before design",
+    "effort depends on one size input"
+   ],
+   "options_ar": [
+    "الجهد يعتمد على عوامل كثيرة",
+    "الجهد يتغير مع كل مرحلة الآن",
+    "الجهد ثابت قبل التصميم هنا أيضاً",
+    "الجهد يعتمد على مُدخل حجم واحد"
+   ],
+   "options_en": [
+    "effort depends on many drivers here",
+    "effort changes with each phase",
+    "effort is fixed before design",
+    "effort depends on one size input"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A single-variable static model reads effort from one size measure alone, with no time term.",
+   "explanation_ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch4_static_multivar",
+   "bloom_level": "Understand",
+   "question": "What defines a static multivariable model?",
+   "question_ar": "ما الذي يحدد النموذج الساكن متعدد المتغيرات؟",
+   "options": [
+    "effort depends on the calendar too",
+    "effort is set by the customer now",
+    "effort comes from several size drivers",
+    "effort comes from one driver here again"
+   ],
+   "options_en": [
+    "effort depends on the calendar too",
+    "effort is set by the customer now",
+    "effort comes from several size drivers",
+    "effort comes from one driver here again"
+   ],
+   "options_ar": [
+    "الجهد يعتمد على التقويم",
+    "الجهد يحدده العميل الآن",
+    "الجهد من عدة عوامل حجم",
+    "الجهد من عامل واحد هنا"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A multivariable model reads effort from more than one size measure at once.",
+   "explanation_ar": "النموذج متعدد المتغيرات يقرأ الجهد من أكثر من مقياس حجم معاً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_static_meaning",
+   "bloom_level": "Understand",
+   "question": "What does static mean in these cost models?",
+   "question_ar": "ماذا تعني كلمة ساكن في نماذج الكلفة؟",
+   "options": [
+    "the team is fixed here again here",
+    "no time dimension is modelled",
+    "the estimate never changes",
+    "the code is frozen now too"
+   ],
+   "options_en": [
+    "the team is fixed here again here",
+    "no time dimension is modelled",
+    "the estimate never changes",
+    "the code is frozen now too"
+   ],
+   "options_ar": [
+    "الفريق ثابت الآن مجدداً",
+    "لا بُعد زمني في النموذج",
+    "التقدير لا يتغير أبداً",
+    "الكود مجمّد هنا أيضاً"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Static means the model ignores development time; effort is read straight from size.",
+   "explanation_ar": "ساكن يعني أن النموذج يتجاهل زمن التطوير، فيُقرأ الجهد من الحجم مباشرة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_static_example",
+   "bloom_level": "Remember",
+   "question": "Which pair are single-variable static models?",
+   "question_ar": "أي زوج يمثل نماذج ساكنة أحادية المتغير؟",
+   "options": [
+    "Putnam and Rayleigh",
+    "Function points and LOC",
+    "Walston-Felix and SEL",
+    "COCOMO and COCOMO II"
+   ],
+   "options_en": [
+    "Putnam and Rayleigh",
+    "Function points and LOC",
+    "Walston-Felix and SEL",
+    "COCOMO and COCOMO II"
+   ],
+   "options_ar": [
+    "بوتنام ورايلي هنا أيضاً",
+    "نقاط الوظائف وأسطر الكود هنا",
+    "Walston-Felix وSEL مجدداً",
+    "COCOMO وCOCOMO II الآن"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Walston-Felix and the SEL model both read effort from a single size input.",
+   "explanation_ar": "Walston-Felix ونموذج SEL يقرآن الجهد من مُدخل حجم واحد."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_static_limit",
+   "bloom_level": "Analyze",
+   "question": "What is the main limitation of a static model?",
+   "question_ar": "ما القيد الأساسي للنموذج الساكن؟",
+   "options": [
+    "it needs the finished code here here",
+    "it cannot use KLOC here too now",
+    "it needs a compiler now again",
+    "it ignores time and team factors"
+   ],
+   "options_en": [
+    "it needs the finished code here here",
+    "it cannot use KLOC here too now",
+    "it needs a compiler now again",
+    "it ignores time and team factors"
+   ],
+   "options_ar": [
+    "يحتاج الكود المكتمل مجدداً",
+    "لا يستخدم KLOC الآن هنا",
+    "يحتاج مترجماً هنا أيضاً",
+    "يتجاهل الزمن وعوامل الفريق"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Because it has no time term, it cannot show how schedule pressure changes effort.",
+   "explanation_ar": "لأنه بلا حد زمني لا يستطيع إظهار أثر ضغط الجدول على الجهد."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch4_static_when",
+   "bloom_level": "Apply",
+   "question": "When is a static model appropriate?",
+   "question_ar": "متى يناسب النموذج الساكن؟",
+   "options": [
+    "for a rough early estimate",
+    "for the final contract price",
+    "for the test plan here now",
+    "for the maintenance phase"
+   ],
+   "options_en": [
+    "for a rough early estimate",
+    "for the final contract price",
+    "for the test plan here now",
+    "for the maintenance phase"
+   ],
+   "options_ar": [
+    "لتقدير أولي خشن أيضاً أيضاً",
+    "لسعر العقد النهائي هنا مجدداً",
+    "لخطة الاختبار هنا مجدداً",
+    "لمرحلة الصيانة الآن الآن"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Its simplicity suits a first order-of-magnitude estimate before detailed data exists.",
+   "explanation_ar": "بساطته تناسب تقديراً أولياً قبل توفر بيانات مفصّلة."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch4_static_input",
+   "bloom_level": "Remember",
+   "question": "What input do static models take?",
+   "question_ar": "ما المُدخل الذي تأخذه النماذج الساكنة؟",
+   "options": [
+    "size in KLOC here too",
+    "the number of testers",
+    "the hardware budget",
+    "the release date now"
+   ],
+   "options_en": [
+    "size in KLOC here too",
+    "the number of testers",
+    "the hardware budget",
+    "the release date now"
+   ],
+   "options_ar": [
+    "الحجم بوحدة KLOC",
+    "عدد المختبِرين",
+    "ميزانية العتاد",
+    "تاريخ الإصدار هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Size in thousands of lines is the only driver these models read.",
+   "explanation_ar": "الحجم بآلاف الأسطر هو العامل الوحيد الذي تقرأه هذه النماذج."
+  }
+ ]
+}
