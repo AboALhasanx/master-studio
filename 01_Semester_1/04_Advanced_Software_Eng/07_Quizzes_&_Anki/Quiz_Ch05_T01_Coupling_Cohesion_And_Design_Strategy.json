@@ -1,0 +1,363 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch05_T01_Coupling_Cohesion_And_Design_Strategy",
+ "topic": "Coupling, Cohesion and Design Strategy",
+ "topic_ar": "الاقتران والتماسك واستراتيجية التصميم",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch5_best_coupling",
+   "bloom_level": "Remember",
+   "question": "The most desirable form of coupling is...",
+   "question_ar": "أفضل أشكال الاقتران هو...",
+   "options": [
+    "Data Coupling here now",
+    "Control Coupling here",
+    "Common Coupling here",
+    "Content Coupling here"
+   ],
+   "options_ar": [
+    "اقتران البيانات هنا",
+    "اقتران التحكم هنا",
+    "اقتران المشترك هنا",
+    "اقتران المحتوى هنا"
+   ],
+   "options_en": [
+    "Data Coupling here now",
+    "Control Coupling here",
+    "Common Coupling here",
+    "Content Coupling here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Data coupling passes only simple values, so the modules stay most independent.",
+   "explanation_ar": "اقتران البيانات يمرر قيماً بسيطة فقط، فتبقى الوحدات أكثر استقلالاً."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch5_worst_coupling",
+   "bloom_level": "Remember",
+   "question": "The worst type of coupling is...",
+   "question_ar": "أسوأ أنواع الاقتران هو...",
+   "options": [
+    "Data coupling here",
+    "Content coupling here",
+    "Common coupling here",
+    "External coupling here"
+   ],
+   "options_ar": [
+    "اقتران البيانات",
+    "اقتران المحتوى",
+    "اقتران المشترك",
+    "اقتران الخارجي"
+   ],
+   "options_en": [
+    "Data coupling here",
+    "Content coupling here",
+    "Common coupling here",
+    "External coupling here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Content coupling lets one module reach into another's code or local data.",
+   "explanation_ar": "اقتران المحتوى يتيح لوحدة أن تصل إلى شيفرة وحدة أخرى أو بياناتها المحلية."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch5_best_cohesion",
+   "bloom_level": "Remember",
+   "question": "The most desirable form of cohesion is...",
+   "question_ar": "أفضل أشكال التماسك هو...",
+   "options": [
+    "Procedural cohesion here",
+    "Temporal cohesion here",
+    "Functional cohesion here",
+    "Logical cohesion here"
+   ],
+   "options_ar": [
+    "تماسك إجرائي",
+    "تماسك زمني",
+    "تماسك وظيفي",
+    "تماسك منطقي"
+   ],
+   "options_en": [
+    "Procedural cohesion here",
+    "Temporal cohesion here",
+    "Functional cohesion here",
+    "Logical cohesion here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Functional cohesion keeps every element of one module serving a single task.",
+   "explanation_ar": "التماسك الوظيفي يجعل كل عناصر الوحدة تخدم مهمة واحدة."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch5_worst_cohesion",
+   "bloom_level": "Remember",
+   "question": "The worst type of cohesion is...",
+   "question_ar": "أسوأ أنواع التماسك هو...",
+   "options": [
+    "Temporal cohesion here too",
+    "Logical cohesion here too",
+    "Sequential cohesion here",
+    "Coincidental cohesion here"
+   ],
+   "options_ar": [
+    "تماسك زمني",
+    "تماسك منطقي",
+    "تماسك تسلسلي",
+    "تماسك عشوائي"
+   ],
+   "options_en": [
+    "Temporal cohesion here too",
+    "Logical cohesion here too",
+    "Sequential cohesion here",
+    "Coincidental cohesion here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Coincidental cohesion groups elements with no relation at all beyond being in one file.",
+   "explanation_ar": "التماسك العشوائي يجمع عناصر لا رابط بينها سوى وجودها في ملف واحد."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch5_not_strategy",
+   "bloom_level": "Remember",
+   "question": "Which one is NOT a strategy for design?",
+   "question_ar": "أي واحد ليس استراتيجية للتصميم؟",
+   "options": [
+    "Embedded design",
+    "Bottom up design",
+    "Top down design",
+    "Hybrid design"
+   ],
+   "options_ar": [
+    "تصميم مضمّن هنا",
+    "تصميم من الأسفل",
+    "تصميم من الأعلى",
+    "تصميم هجين هنا"
+   ],
+   "options_en": [
+    "Embedded design",
+    "Bottom up design",
+    "Top down design",
+    "Hybrid design"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The design strategies are top-down, bottom-up and hybrid; embedded is not one of them.",
+   "explanation_ar": "استراتيجيات التصميم هي من الأعلى ومن الأسفل والهجين، و«المضمّن» ليس منها."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch5_temporal",
+   "bloom_level": "Understand",
+   "question": "Temporal cohesion means...",
+   "question_ar": "التماسك الزمني يعني...",
+   "options": [
+    "Coincidental cohesion here now",
+    "Cohesion with respect to time here",
+    "Cohesion between temporary variables",
+    "Cohesion between local variables here"
+   ],
+   "options_ar": [
+    "تماسك بين متغيرات مؤقتة",
+    "تماسك بين متغيرات محلية",
+    "تماسك بالنسبة للزمن",
+    "تماسك عشوائي هنا الآن"
+   ],
+   "options_en": [
+    "Coincidental cohesion here now",
+    "Cohesion with respect to time here",
+    "Cohesion between temporary variables",
+    "Cohesion between local variables here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Temporal cohesion groups tasks that must run at the same time, such as initialisation.",
+   "explanation_ar": "التماسك الزمني يجمع مهام يجب أن تُنفَّذ في الوقت نفسه، مثل التهيئة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch5_functional",
+   "bloom_level": "Understand",
+   "question": "Functional cohesion means...",
+   "question_ar": "التماسك الوظيفي يعني...",
+   "options": [
+    "operations spread over many different tasks",
+    "none of the above answers at all here",
+    "operations of one single task in one procedure",
+    "operations of one task in many procedures here"
+   ],
+   "options_ar": [
+    "عمليات موزعة على مهام كثيرة هنا",
+    "لا شيء مما سبق أعلاه هنا الآن",
+    "عمليات مهمة واحدة في إجراء واحد",
+    "عمليات مهمة واحدة في إجراءات عدة"
+   ],
+   "options_en": [
+    "operations spread over many different tasks",
+    "none of the above answers at all here",
+    "operations of one single task in one procedure",
+    "operations of one task in many procedures here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Functional cohesion puts every operation of one task inside one procedure.",
+   "explanation_ar": "التماسك الوظيفي يضع كل عمليات مهمة واحدة داخل إجراء واحد."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_common_coupling",
+   "bloom_level": "Understand",
+   "question": "When two modules share the same global data area they are...",
+   "question_ar": "عندما تشترك وحدتان في منطقة بيانات عامة واحدة فهما...",
+   "options": [
+    "External coupled here",
+    "Data coupled here",
+    "Content coupled here",
+    "Common coupled here"
+   ],
+   "options_ar": [
+    "مقترنة خارجياً",
+    "مقترنة بالبيانات",
+    "مقترنة بالمحتوى",
+    "مقترنة بالمشترك"
+   ],
+   "options_en": [
+    "External coupled here",
+    "Data coupled here",
+    "Content coupled here",
+    "Common coupled here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A shared global area is common coupling, which is weaker than content but stronger than data.",
+   "explanation_ar": "المنطقة العامة المشتركة هي الاقتران المشترك، وهو أضعف من المحتوى وأقوى من البيانات."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch5_procedural",
+   "bloom_level": "Understand",
+   "question": "A module whose instructions are related through flow of control has...",
+   "question_ar": "الوحدة التي ترتبط تعليماتها بتدفق التحكم لديها...",
+   "options": [
+    "Procedural cohesion",
+    "Temporal cohesion",
+    "Logical cohesion",
+    "Functional cohesion"
+   ],
+   "options_ar": [
+    "تماسك إجرائي هنا",
+    "تماسك زمني هنا",
+    "تماسك منطقي هنا",
+    "تماسك وظيفي هنا"
+   ],
+   "options_en": [
+    "Procedural cohesion",
+    "Temporal cohesion",
+    "Logical cohesion",
+    "Functional cohesion"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Procedural cohesion orders the elements by the sequence in which they execute.",
+   "explanation_ar": "التماسك الإجرائي يرتب العناصر حسب تسلسل تنفيذها."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch5_cohesion_def",
+   "bloom_level": "Remember",
+   "question": "The relationship of data elements inside one module is called...",
+   "question_ar": "علاقة عناصر البيانات داخل وحدة واحدة تسمى...",
+   "options": [
+    "None of the above here",
+    "Cohesion inside a module",
+    "Coupling between modules",
+    "Modularity of a whole system"
+   ],
+   "options_ar": [
+    "لا شيء مما سبق هنا",
+    "التماسك داخل الوحدة",
+    "الاقتران بين الوحدات",
+    "التنميط العام للوحدات"
+   ],
+   "options_en": [
+    "None of the above here",
+    "Cohesion inside a module",
+    "Coupling between modules",
+    "Modularity of a whole system"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Cohesion is the internal binding of one module; coupling is the link between modules.",
+   "explanation_ar": "التماسك هو الترابط الداخلي للوحدة، والاقتران هو الرابط بين الوحدات."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch5_closed_system",
+   "bloom_level": "Remember",
+   "question": "A system that does not interact with its external environment is...",
+   "question_ar": "النظام الذي لا يتفاعل مع بيئته الخارجية هو...",
+   "options": [
+    "Open system here",
+    "Hierarchal system",
+    "Closed system here",
+    "Logical system here"
+   ],
+   "options_ar": [
+    "نظام مفتوح",
+    "نظام هرمي",
+    "نظام مغلق",
+    "نظام منطقي"
+   ],
+   "options_en": [
+    "Open system here",
+    "Hierarchal system",
+    "Closed system here",
+    "Logical system here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A closed system has no input or output across its boundary.",
+   "explanation_ar": "النظام المغلق لا مدخل ولا مخرج عبر حدوده."
+  },
+  {
+   "id": "q12",
+   "concept_id": "ch5_coupling_def",
+   "bloom_level": "Remember",
+   "question": "The extent to which different modules depend on each other is called...",
+   "question_ar": "مدى اعتماد الوحدات المختلفة على بعضها يسمى...",
+   "options": [
+    "Cohesion",
+    "Modularity",
+    "Stability",
+    "Coupling"
+   ],
+   "options_ar": [
+    "التماسك",
+    "التنميط",
+    "الاستقرار",
+    "الاقتران"
+   ],
+   "options_en": [
+    "Cohesion",
+    "Modularity",
+    "Stability",
+    "Coupling"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Coupling measures dependence between modules, and lower is better.",
+   "explanation_ar": "الاقتران يقيس الاعتماد بين الوحدات، والأقل أفضل."
+  }
+ ]
+}
