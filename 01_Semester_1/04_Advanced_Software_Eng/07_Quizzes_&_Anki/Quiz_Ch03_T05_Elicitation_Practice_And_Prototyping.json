@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch03_T05_Elicitation_Practice_And_Prototyping",
+ "topic": "Elicitation Practice, Prototyping and SRS Organisation",
+ "topic_ar": "ممارسة الاستخلاص والنمذجة الأولية وتنظيم المواصفة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch3_brainstorm_timing",
+   "bloom_level": "Understand",
+   "question": "During a brainstorming session, when is evaluation allowed?",
+   "question_ar": "أثناء جلسة العصف الذهني، متى يُسمح بالتقييم؟",
+   "options": [
+    "only in a later phase",
+    "right after each idea",
+    "during the session itself",
+    "never at all here now"
+   ],
+   "options_ar": [
+    "في مرحلة لاحقة فقط",
+    "مباشرة بعد كل فكرة",
+    "أثناء الجلسة نفسها",
+    "لا يُسمح إطلاقاً"
+   ],
+   "options_en": [
+    "only in a later phase",
+    "right after each idea",
+    "during the session itself",
+    "never at all here now"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Brainstorming bans criticism while ideas are generated; evaluation happens afterwards.",
+   "explanation_ar": "العصف الذهني يمنع النقد أثناء توليد الأفكار، والتقييم يأتي بعده."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch3_fast_prep",
+   "bloom_level": "Remember",
+   "question": "What must participants bring to a FAST session?",
+   "question_ar": "ماذا يجب أن يحضر المشاركون إلى جلسة FAST؟",
+   "options": [
+    "the finished SRS here too now here",
+    "written lists of objects and services",
+    "a signed final contract again again",
+    "a working prototype now here too now here"
+   ],
+   "options_ar": [
+    "المواصفة المكتملة أيضاً الآن",
+    "قوائم مكتوبة بالكائنات والخدمات",
+    "عقد نهائي موقّع هنا مجدداً مجدداً",
+    "نموذج أولي عامل الآن هنا أيضاً"
+   ],
+   "options_en": [
+    "the finished SRS here too now here",
+    "written lists of objects and services",
+    "a signed final contract again again",
+    "a working prototype now here too now here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "FAST requires preparation: each participant arrives with written objects, services and constraints.",
+   "explanation_ar": "FAST تتطلب تحضيراً: كل مشارك يأتي بقوائم مكتوبة بالكائنات والخدمات والقيود."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch3_fast_output",
+   "bloom_level": "Understand",
+   "question": "What does a FAST workshop deliver?",
+   "question_ar": "ماذا تُخرِج ورشة FAST؟",
+   "options": [
+    "the compiled source code too now too",
+    "the finished test plan here again",
+    "prioritised requirements and a scope",
+    "a raw unranked idea list now here"
+   ],
+   "options_ar": [
+    "الشيفرة المترجمة النهائية",
+    "خطة الاختبار المكتملة",
+    "متطلبات مرتبة ونطاق أولي",
+    "قائمة أفكار خام هنا الآن"
+   ],
+   "options_en": [
+    "the compiled source code too now too",
+    "the finished test plan here again",
+    "prioritised requirements and a scope",
+    "a raw unranked idea list now here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "FAST evaluates and ranks inside the workshop, so it ends with priorities and a preliminary scope.",
+   "explanation_ar": "FAST تقيّم وترتّب داخل الورشة، فتخرج بأولويات ونطاق أولي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch3_prototype_purpose",
+   "bloom_level": "Understand",
+   "question": "Why is a prototype built during requirements analysis?",
+   "question_ar": "لماذا يُبنى نموذج أولي في مرحلة تحليل المتطلبات؟",
+   "options": [
+    "to replace the design phase too",
+    "to measure code quality now again",
+    "to train the operators here",
+    "to clarify unclear requirements"
+   ],
+   "options_ar": [
+    "لاستبدال مرحلة التصميم",
+    "لقياس جودة الكود الآن",
+    "لتدريب المشغلين هنا أيضاً",
+    "لتوضيح المتطلبات الغامضة"
+   ],
+   "options_en": [
+    "to replace the design phase too",
+    "to measure code quality now again",
+    "to train the operators here",
+    "to clarify unclear requirements"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "A prototype gives the user something concrete to react to, which exposes vague requirements.",
+   "explanation_ar": "النموذج الأولي يعطي المستخدم شيئاً ملموساً يتفاعل معه، فيكشف المتطلبات الغامضة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch3_throwaway",
+   "bloom_level": "Understand",
+   "question": "What happens to a throw-away prototype?",
+   "question_ar": "ماذا يحدث للنموذج الأولي المُهمَل؟",
+   "options": [
+    "it is discarded after clarifying needs",
+    "it becomes the final product now again",
+    "it is shipped to the customer too",
+    "it is kept as documentation here here"
+   ],
+   "options_ar": [
+    "يُهمل بعد توضيح الحاجات",
+    "يصبح المنتج النهائي مجدداً",
+    "يُشحن إلى العميل الآن",
+    "يُحفظ كتوثيق هنا أيضاً"
+   ],
+   "options_en": [
+    "it is discarded after clarifying needs",
+    "it becomes the final product now again",
+    "it is shipped to the customer too",
+    "it is kept as documentation here here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A throw-away prototype exists only to settle the requirements, then it is dropped.",
+   "explanation_ar": "النموذج المُهمَل يوجد فقط لتثبيت المتطلبات ثم يُترك."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch3_practice_difficulty",
+   "bloom_level": "Remember",
+   "question": "Which difficulty belongs to the present state of requirements practice?",
+   "question_ar": "أي صعوبة تنتمي إلى الحالة الراهنة لممارسة المتطلبات؟",
+   "options": [
+    "networks are too fast now",
+    "schedules may be too tight",
+    "compilers are too slow",
+    "screens are too small here"
+   ],
+   "options_ar": [
+    "الشبكات سريعة جداً الآن",
+    "قد تكون الجداول ضيقة جداً",
+    "المترجمات بطيئة جداً أيضاً",
+    "الشاشات صغيرة جداً هنا"
+   ],
+   "options_en": [
+    "networks are too fast now",
+    "schedules may be too tight",
+    "compilers are too slow",
+    "screens are too small here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Tight schedules leave the analysis incomplete, which is one of the listed difficulties.",
+   "explanation_ar": "الجداول الضيقة تترك التحليل ناقصاً، وهذه إحدى الصعوبات المعروفة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch3_practice_improve",
+   "bloom_level": "Understand",
+   "question": "Which step improves the practice of requirements engineering?",
+   "question_ar": "أي خطوة تحسّن ممارسة هندسة المتطلبات؟",
+   "options": [
+    "writing code before requirements here",
+    "removing all documentation here too",
+    "prioritising requests against resources",
+    "skipping the review entirely now again here"
+   ],
+   "options_ar": [
+    "كتابة الكود قبل المتطلبات",
+    "حذف كل التوثيق هنا الآن",
+    "ترتيب الطلبات حسب الموارد",
+    "تخطي المراجعة كلياً أيضاً"
+   ],
+   "options_en": [
+    "writing code before requirements here",
+    "removing all documentation here too",
+    "prioritising requests against resources",
+    "skipping the review entirely now again here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Requests must be ranked against the available time and resources, and change must be allowed.",
+   "explanation_ar": "الطلبات تُرتَّب حسب الوقت والموارد المتاحة، ويجب السماح بالتغيير."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch3_review_validates",
+   "bloom_level": "Understand",
+   "question": "What does a requirements review validate?",
+   "question_ar": "ماذا تتحقق منه مراجعة المتطلبات؟",
+   "options": [
+    "the compiler against its grammar",
+    "the hardware against its spec",
+    "the budget against the plan",
+    "the SRS against what users need"
+   ],
+   "options_ar": [
+    "المترجم مقابل قواعده هنا مجدداً",
+    "العتاد مقابل مواصفته الآن هنا",
+    "الميزانية مقابل الخطة أيضاً الآن هنا",
+    "المواصفة مقابل ما يحتاجه المستخدم"
+   ],
+   "options_en": [
+    "the compiler against its grammar",
+    "the hardware against its spec",
+    "the budget against the plan",
+    "the SRS against what users need"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The review checks the SRS against the real needs of the stakeholders, before design begins.",
+   "explanation_ar": "المراجعة تقابل المواصفة مع الحاجات الحقيقية لأصحاب المصلحة، قبل بدء التصميم."
+  }
+ ]
+}
