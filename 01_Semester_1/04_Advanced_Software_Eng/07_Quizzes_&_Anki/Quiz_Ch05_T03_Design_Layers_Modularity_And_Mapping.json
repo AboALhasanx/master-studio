@@ -1,0 +1,392 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch05_T03_Design_Layers_Modularity_And_Mapping",
+ "topic": "Design Layers, Modularity Criteria and Mapping",
+ "topic_ar": "طبقات التصميم ومعايير النمطية والتحويل",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch5_concept_vs_technical",
+   "bloom_level": "Understand",
+   "question": "What separates conceptual design from technical design?",
+   "question_ar": "ما الذي يفصل التصميم المفهومي عن التقني؟",
+   "options": [
+    "who each is written for and what it details",
+    "which programming language each compiles to",
+    "how many pages each design document has",
+    "when each one is formally signed off here"
+   ],
+   "options_ar": [
+    "لمن تُكتب كل وثيقة وماذا تفصّل",
+    "إلى أي لغة برمجة تُترجم هنا",
+    "كم صفحة تحتوي كل وثيقة هنا الآن",
+    "متى تُوقَّع كل وثيقة رسمياً"
+   ],
+   "options_en": [
+    "who each is written for and what it details",
+    "which programming language each compiles to",
+    "how many pages each design document has",
+    "when each one is formally signed off here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Conceptual design is written for the customer and says what; technical design is for developers and says how.",
+   "explanation_ar": "التصميم المفهومي للعميل ويقول ماذا، والتقني للمطورين ويقول كيف."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch5_meyer_protection",
+   "bloom_level": "Remember",
+   "question": "Which Meyer criterion stops a change from spreading to other modules?",
+   "question_ar": "أي معيار لماير يمنع انتشار التغيير إلى وحدات أخرى؟",
+   "options": [
+    "modular continuity here",
+    "modular protection here now",
+    "modular decomposability now",
+    "modular composability here"
+   ],
+   "options_ar": [
+    "استمرارية الوحدات هنا",
+    "حماية الوحدات هنا الآن",
+    "قابلية التفكيك للوحدات",
+    "قابلية التركيب للوحدات"
+   ],
+   "options_en": [
+    "modular continuity here",
+    "modular protection here now",
+    "modular decomposability now",
+    "modular composability here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Protection keeps the effect of an abnormal condition inside the one unit where it arose.",
+   "explanation_ar": "الحماية تحصر أثر الحالة الشاذة داخل الوحدة التي نشأت فيها."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch5_stamp_coupling",
+   "bloom_level": "Apply",
+   "question": "Two modules exchange a whole student record instead of one field. This is...",
+   "question_ar": "وحدتان تتبادلان سجل طالب كاملاً بدل حقل واحد. هذا...",
+   "options": [
+    "control coupling here",
+    "external coupling here",
+    "stamp coupling here",
+    "data coupling here"
+   ],
+   "options_ar": [
+    "اقتران التحكم",
+    "اقتران الخارجي",
+    "اقتران الطابع",
+    "اقتران البيانات"
+   ],
+   "options_en": [
+    "control coupling here",
+    "external coupling here",
+    "stamp coupling here",
+    "data coupling here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Passing a whole composite structure rather than the needed field is stamp coupling.",
+   "explanation_ar": "تمرير بنية مركّبة كاملة بدل الحقل المطلوب هو اقتران الطابع."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch5_communicational",
+   "bloom_level": "Apply",
+   "question": "Elements work on the same input and produce the same output. This is...",
+   "question_ar": "عناصر تعمل على المدخل نفسه وتنتج المخرج نفسه. هذا...",
+   "options": [
+    "sequential cohesion now",
+    "logical cohesion here here",
+    "temporal cohesion now",
+    "communicational cohesion"
+   ],
+   "options_ar": [
+    "تماسك تسلسلي مجدداً",
+    "تماسك منطقي الآن",
+    "تماسك زمني هنا هنا",
+    "تماسك تبادلي أيضاً"
+   ],
+   "options_en": [
+    "sequential cohesion now",
+    "logical cohesion here here",
+    "temporal cohesion now",
+    "communicational cohesion"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Communicational cohesion shares both the input and the output of the same data set.",
+   "explanation_ar": "التماسك التبادلي يشترك في مدخل ومخرج مجموعة البيانات نفسها."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch5_bottom_up",
+   "bloom_level": "Understand",
+   "question": "Which strategy starts by testing existing low-level reusable parts?",
+   "question_ar": "أي استراتيجية تبدأ باختبار أجزاء قائمة قابلة للإعادة في المستوى الأدنى؟",
+   "options": [
+    "bottom-up design here now",
+    "top-down design here here",
+    "stepwise refinement here",
+    "transform centered design"
+   ],
+   "options_ar": [
+    "تصميم من الأسفل هنا",
+    "تصميم من الأعلى هنا",
+    "تحسين تدريجي هنا الآن",
+    "تصميم محوره التحويل"
+   ],
+   "options_en": [
+    "bottom-up design here now",
+    "top-down design here here",
+    "stepwise refinement here",
+    "transform centered design"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Bottom-up assembles and tests the low-level components first, then builds upward.",
+   "explanation_ar": "من الأسفل يجمع ويختبر المكوّنات الدنيا أولاً ثم يبني صعوداً."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch5_structure_vs_flow",
+   "bloom_level": "Analyze",
+   "question": "How does a structure chart differ from a flowchart?",
+   "question_ar": "كيف يختلف مخطط الهيكل عن مخطط سير العمل؟",
+   "options": [
+    "it shows code only, never modules now too",
+    "it shows static hierarchy, not execution order",
+    "it shows execution order, not hierarchy here here",
+    "it shows data only, never control here again"
+   ],
+   "options_ar": [
+    "يعرض الشيفرة فقط لا الوحدات هنا",
+    "يعرض التسلسل الهرمي لا ترتيب التنفيذ",
+    "يعرض ترتيب التنفيذ لا الهرمية هنا",
+    "يعرض البيانات فقط لا التحكم هنا الآن"
+   ],
+   "options_en": [
+    "it shows code only, never modules now too",
+    "it shows static hierarchy, not execution order",
+    "it shows execution order, not hierarchy here here",
+    "it shows data only, never control here again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A structure chart is a static picture of module calls and data passing, not a runtime trace.",
+   "explanation_ar": "مخطط الهيكل صورة ساكنة لنداءات الوحدات وتمرير البيانات، لا أثر تنفيذ."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch5_structural_layer",
+   "bloom_level": "Understand",
+   "question": "In the procedure layers, what does the structural layer define?",
+   "question_ar": "في طبقات الإجراءات، ماذا تعرّف الطبقة البنيوية؟",
+   "options": [
+    "byte code and the register assignments",
+    "wireframes and the customer surveys here",
+    "module boundaries and their call interfaces",
+    "step by step algorithms in the pseudocode here"
+   ],
+   "options_ar": [
+    "الشيفرة الثنائية وتعيين السجلات",
+    "مخططات الواجهة واستبيانات العملاء",
+    "حدود الوحدات وواجهات ندائها هنا",
+    "خطوات الخوارزميات بالشيفرة الزائفة"
+   ],
+   "options_en": [
+    "byte code and the register assignments",
+    "wireframes and the customer surveys here",
+    "module boundaries and their call interfaces",
+    "step by step algorithms in the pseudocode here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The structural layer fixes module boundaries, their calls and the interface contracts between them.",
+   "explanation_ar": "الطبقة البنيوية تثبّت حدود الوحدات ونداءاتها وعقود الواجهة بينها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch5_ieee1016",
+   "bloom_level": "Remember",
+   "question": "What does IEEE 1016 describe?",
+   "question_ar": "ماذا يصف معيار IEEE 1016؟",
+   "options": [
+    "the rules for the compiler syntax checking now here",
+    "the format of the employment contracts now",
+    "the layout of the marketing brochures now here",
+    "the recommended practice for design descriptions"
+   ],
+   "options_ar": [
+    "قواعد فحص صياغة المترجم هنا هنا",
+    "صيغة عقود العمل هنا الآن فعلاً",
+    "تنسيق الكتيبات التسويقية هنا الآن هنا",
+    "الممارسة الموصى بها لأوصاف التصميم"
+   ],
+   "options_en": [
+    "the rules for the compiler syntax checking now here",
+    "the format of the employment contracts now",
+    "the layout of the marketing brochures now here",
+    "the recommended practice for design descriptions"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "IEEE 1016 is the recommended practice for software design descriptions.",
+   "explanation_ar": "IEEE 1016 هو الممارسة الموصى بها لأوصاف التصميم البرمجي."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch5_adt_vs_class",
+   "bloom_level": "Analyze",
+   "question": "What separates an abstract data type from a class?",
+   "question_ar": "ما الذي يفصل النوع المجرّد عن الصنف؟",
+   "options": [
+    "the ADT hides its representation behind operations",
+    "the class always uses static binding only here",
+    "the ADT is a machine level executable code here",
+    "classes cannot express the data abstractions now here"
+   ],
+   "options_ar": [
+    "النوع المجرّد يخفي تمثيله خلف عملياته",
+    "الصنف يستخدم الربط الساكن فقط هنا الآن",
+    "النوع المجرّد شيفرة تنفيذية هنا هنا",
+    "الأصناف لا تعبّر عن التجريدات هنا"
+   ],
+   "options_en": [
+    "the ADT hides its representation behind operations",
+    "the class always uses static binding only here",
+    "the ADT is a machine level executable code here",
+    "classes cannot express the data abstractions now here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "An ADT exposes operations and hides the representation; a class binds data and methods together.",
+   "explanation_ar": "النوع المجرّد يعرض العمليات ويخفي التمثيل، والصنف يربط البيانات والدوال."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch5_fan_in_out",
+   "bloom_level": "Remember",
+   "question": "What do fan-in and fan-out measure?",
+   "question_ar": "ماذا يقيس الدخول والخروج في الهيكل؟",
+   "options": [
+    "clock speed and network bandwidth now",
+    "callers of a module and modules it calls",
+    "lines of code and compiler errors here here",
+    "input parameters and return type size"
+   ],
+   "options_ar": [
+    "سرعة المعالج وعرض الشبكة هنا",
+    "مَن يستدعي الوحدة ومَن تستدعيه",
+    "أسطر الكود وأخطاء المترجم الآن",
+    "معاملات الإدخال وحجم الإرجاع"
+   ],
+   "options_en": [
+    "clock speed and network bandwidth now",
+    "callers of a module and modules it calls",
+    "lines of code and compiler errors here here",
+    "input parameters and return type size"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Fan-in counts the modules that call this one; fan-out counts the modules it calls.",
+   "explanation_ar": "الدخول يعدّ الوحدات التي تستدعي هذه الوحدة، والخروج يعدّ التي تستدعيها هي."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch5_information_hiding",
+   "bloom_level": "Understand",
+   "question": "Which principle groups modules around decisions likely to change?",
+   "question_ar": "أي مبدأ يجمع الوحدات حول قرارات يُرجَّح تغيّرها؟",
+   "options": [
+    "temporal coupling",
+    "data pipelining here",
+    "information hiding",
+    "stepwise refinement"
+   ],
+   "options_ar": [
+    "الاقتران الزمني",
+    "تدفق البيانات",
+    "إخفاء المعلومات",
+    "التحسين التدريجي"
+   ],
+   "options_en": [
+    "temporal coupling",
+    "data pipelining here",
+    "information hiding",
+    "stepwise refinement"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Information hiding isolates each likely change inside one module, so it stays local.",
+   "explanation_ar": "إخفاء المعلومات يعزل كل تغيير محتمل داخل وحدة واحدة فيبقى محلياً."
+  },
+  {
+   "id": "q12",
+   "concept_id": "ch5_transform_vs_transaction",
+   "bloom_level": "Analyze",
+   "question": "What separates transform analysis from transaction analysis?",
+   "question_ar": "ما الذي يفصل التحليل التحويلي عن تحليل المعاملات؟",
+   "options": [
+    "a central transform between the input and output",
+    "classes converted into the objects here",
+    "no difference at all between the two here",
+    "a transaction centre dispatching many paths"
+   ],
+   "options_ar": [
+    "تحويل مركزي بين الإدخال والإخراج",
+    "تحويل الأصناف إلى كائنات هنا",
+    "لا فرق بينهما إطلاقاً هنا هنا",
+    "مركز معاملات يوزّع مسارات عدة"
+   ],
+   "options_en": [
+    "a central transform between the input and output",
+    "classes converted into the objects here",
+    "no difference at all between the two here",
+    "a transaction centre dispatching many paths"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Transform analysis finds one central transform between afferent and efferent flows; transaction analysis finds a dispatcher.",
+   "explanation_ar": "التحليل التحويلي يجد تحويلاً مركزياً بين التدفقات، وتحليل المعاملات يجد موزّعاً."
+  },
+  {
+   "id": "q13",
+   "concept_id": "ch5_full_decoupling",
+   "bloom_level": "Evaluate",
+   "question": "Can a non-trivial system ever be completely decoupled?",
+   "question_ar": "هل يمكن لنظام غير بسيط أن يكون منفصلاً تماماً؟",
+   "options": [
+    "no, modules must exchange data and control",
+    "yes, it is the mandatory object standard",
+    "yes, by removing all the functions here",
+    "no, compilers force global variables here here"
+   ],
+   "options_ar": [
+    "لا، لا بد من تبادل البيانات والتحكم",
+    "نعم، وهو معيار إلزامي للكائنات هنا",
+    "نعم، بحذف كل الدوال هنا الآن",
+    "لا، المترجمات تفرض متغيرات عامة هنا"
+   ],
+   "options_en": [
+    "no, modules must exchange data and control",
+    "yes, it is the mandatory object standard",
+    "yes, by removing all the functions here",
+    "no, compilers force global variables here here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Modules must pass data and transfer control to do anything, so some coupling always remains.",
+   "explanation_ar": "الوحدات لا بد أن تمرر بيانات وتحوّل تحكماً لتفعل شيئاً، فيبقى قدر من الاقتران دائماً."
+  }
+ ]
+}
