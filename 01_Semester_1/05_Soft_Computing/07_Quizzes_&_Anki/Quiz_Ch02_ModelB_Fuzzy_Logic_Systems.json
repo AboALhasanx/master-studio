@@ -177,6 +177,64 @@
    "explanation": "The Cartesian product supplies the ambient space of possible pairs, while the membership function selects which pairs actually belong to the fuzzy set.",
    "correct": 1,
    "explanation_ar": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. والمجموعة الضبابية على X تقابل دالة من X إلى [0, 1]، فرسمها مجموعة دالية، وليست أي مجموعة جزئية عشوائية من الجداء."
+  },
+  {
+   "id": "q7",
+   "concept_id": "membership_zero",
+   "bloom_level": "Understand",
+   "question": "What does a membership grade of zero mean?",
+   "question_ar": "ماذا تعني درجة عضوية تساوي صفراً؟",
+   "options": [
+    "the full membership here",
+    "the partial membership",
+    "no membership at all",
+    "a probability of one"
+   ],
+   "options_en": [
+    "the full membership here",
+    "the partial membership",
+    "no membership at all",
+    "a probability of one"
+   ],
+   "options_ar": [
+    "انتماء كامل هنا",
+    "انتماء جزئي هنا",
+    "لا انتماء إطلاقاً",
+    "احتمال يساوي واحداً"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Zero is the bottom of the range, so the element is not in the fuzzy set at all.",
+   "explanation_ar": "الصفر هو أدنى المدى، فالعنصر ليس في المجموعة الضبابية إطلاقاً."
+  },
+  {
+   "id": "q8",
+   "concept_id": "fuzzy_union_max",
+   "bloom_level": "Remember",
+   "question": "Which operator does the union of two fuzzy sets use?",
+   "question_ar": "أي عامل يستخدمه اتحاد مجموعتين ضبابيتين؟",
+   "options": [
+    "the minimum",
+    "the product",
+    "the average",
+    "the maximum"
+   ],
+   "options_en": [
+    "the minimum",
+    "the product",
+    "the average",
+    "the maximum"
+   ],
+   "options_ar": [
+    "الأدنى هنا",
+    "الضرب هنا",
+    "المتوسط هنا",
+    "الأعلى هنا"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Union keeps the larger of the two grades at every element, which is the maximum.",
+   "explanation_ar": "الاتحاد يحتفظ بأكبر الدرجتين عند كل عنصر، وهو الأعلى."
   }
  ],
  "schema_version": 2,

@@ -155,6 +155,93 @@
    "correct": 0,
    "explanation": "Global optimization strategies can prevent solutions from falling into local minima. The other three options describe hard-computing traits that do not address a trapped local search.",
    "explanation_ar": "استراتيجيات الاستمثال الشامل تمنع الحلول من السقوط في الحلول المحلية، أما بقية الخيارات فتصف سمات لا تنطبق."
+  },
+  {
+   "id": "q6",
+   "concept_id": "brain_parallel",
+   "bloom_level": "Understand",
+   "question": "What does the brain do that a classic computer does not?",
+   "question_ar": "ماذا يفعل الدماغ ولا يفعله الحاسوب التقليدي؟",
+   "options": [
+    "it uses a single clock",
+    "it works in parallel here",
+    "it needs a written program",
+    "it stores data in bytes"
+   ],
+   "options_en": [
+    "it uses a single clock",
+    "it works in parallel here",
+    "it needs a written program",
+    "it stores data in bytes"
+   ],
+   "options_ar": [
+    "يستخدم ساعة واحدة هنا",
+    "يعمل بتوازٍ هائل هنا",
+    "يحتاج برنامجاً مكتوباً",
+    "يخزّن البيانات بالبايت"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The brain processes many signals at once, while a classic machine steps through one clock.",
+   "explanation_ar": "الدماغ يعالج إشارات كثيرة في آن واحد، والحاسوب التقليدي يسير بساعة واحدة."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ann_stores_weights",
+   "bloom_level": "Understand",
+   "question": "What does a trained artificial neural network store?",
+   "question_ar": "ماذا تخزّن الشبكة العصبية بعد التدريب؟",
+   "options": [
+    "the training data set here",
+    "the original source code",
+    "the learned weights here",
+    "the raw sensor readings"
+   ],
+   "options_en": [
+    "the training data set here",
+    "the original source code",
+    "the learned weights here",
+    "the raw sensor readings"
+   ],
+   "options_ar": [
+    "مجموعة بيانات التدريب",
+    "الشيفرة المصدرية هنا",
+    "الأوزان المتعلَّمة هنا",
+    "قراءات الحساسات هنا"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Training leaves behind the connection weights; the training data itself is not kept.",
+   "explanation_ar": "التدريب يترك أوزان الروابط، ولا يحتفظ ببيانات التدريب نفسها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "evo_cycle_after",
+   "bloom_level": "Understand",
+   "question": "Which step follows mutation in the evolutionary cycle?",
+   "question_ar": "أي خطوة تلي الطفرة في الدورة التطورية؟",
+   "options": [
+    "initialisation of the population",
+    "evaluation of fitness here",
+    "selection of the parents now",
+    "nothing, the cycle repeats"
+   ],
+   "options_en": [
+    "initialisation of the population",
+    "evaluation of fitness here",
+    "selection of the parents now",
+    "nothing, the cycle repeats"
+   ],
+   "options_ar": [
+    "تهيئة الجمهرة هنا هنا",
+    "تقييم اللياقة هنا",
+    "اختيار الآباء هنا",
+    "لا شيء، تتكرر الدورة"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Mutation closes the loop: the new offspring are evaluated again in the next generation.",
+   "explanation_ar": "الطفرة تُغلق الحلقة: الذرية الجديدة تُقيَّم من جديد في الجيل التالي."
   }
  ]
 }

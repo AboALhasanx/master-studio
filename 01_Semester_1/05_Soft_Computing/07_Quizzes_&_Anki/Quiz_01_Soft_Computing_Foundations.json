@@ -147,6 +147,93 @@
    "explanation": "A fuzzy controller works from linguistic IF-THEN rules, so it needs no exact non-linear model of the load or the fabric.",
    "correct": 0,
    "explanation_ar": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ann_learns_from",
+   "bloom_level": "Understand",
+   "question": "Where does an artificial neural network get its knowledge?",
+   "question_ar": "من أين تستمد الشبكة العصبية معرفتها؟",
+   "options": [
+    "from hand written rules here",
+    "from input and output examples",
+    "from the database schema here",
+    "from the hardware clock here"
+   ],
+   "options_en": [
+    "from hand written rules here",
+    "from input and output examples",
+    "from the database schema here",
+    "from the hardware clock here"
+   ],
+   "options_ar": [
+    "من قواعد مكتوبة يدوياً الآن",
+    "من أمثلة الإدخال والإخراج",
+    "من مخطط قاعدة البيانات",
+    "من ساعة العتاد هنا هنا"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "An ANN is trained on pairs of inputs and outputs, and it generalises from them.",
+   "explanation_ar": "الشبكة تُدرَّب على أزواج من المدخلات والمخرجات، وتعمّم منها."
+  },
+  {
+   "id": "q7",
+   "concept_id": "pillar_optimisation",
+   "bloom_level": "Remember",
+   "question": "Which soft-computing pillar handles optimisation?",
+   "question_ar": "أي ركن في الحوسبة الناعمة يتولى الاستمثال؟",
+   "options": [
+    "fuzzy logic here now",
+    "neural networks here now",
+    "evolutionary computation",
+    "probabilistic reasoning"
+   ],
+   "options_en": [
+    "fuzzy logic here now",
+    "neural networks here now",
+    "evolutionary computation",
+    "probabilistic reasoning"
+   ],
+   "options_ar": [
+    "المنطق الضبابي",
+    "الشبكات العصبية",
+    "الحساب التطوري",
+    "استدلال احتمالي"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Evolutionary computation searches for good solutions, which is the optimisation pillar.",
+   "explanation_ar": "الحساب التطوري يبحث عن حلول جيدة، وهو ركن الاستمثال."
+  },
+  {
+   "id": "q8",
+   "concept_id": "tolerance_source",
+   "bloom_level": "Understand",
+   "question": "What makes soft computing tolerant of imprecision?",
+   "question_ar": "ما الذي يجعل الحوسبة الناعمة متسامحة مع عدم الدقة؟",
+   "options": [
+    "exact analytical models here now",
+    "faster hardware here now too",
+    "larger databases here now too",
+    "partial truth and approximation"
+   ],
+   "options_en": [
+    "exact analytical models here now",
+    "faster hardware here now too",
+    "larger databases here now too",
+    "partial truth and approximation"
+   ],
+   "options_ar": [
+    "نماذج تحليلية دقيقة",
+    "عتاد أسرع هنا الآن",
+    "قواعد بيانات أكبر",
+    "حقيقة جزئية وتقريب"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Soft computing accepts partial truth and approximation instead of demanding exactness.",
+   "explanation_ar": "الحوسبة الناعمة تقبل الحقيقة الجزئية والتقريب بدل اشتراط الدقة التامة."
   }
  ],
  "schema_version": 2,

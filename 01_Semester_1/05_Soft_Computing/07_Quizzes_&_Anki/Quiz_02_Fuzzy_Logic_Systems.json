@@ -177,6 +177,64 @@
    "explanation": "The complement reverses the operation: the complement of an intersection is the union of the complements, and the reverse also holds.",
    "correct": 1,
    "explanation_ar": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي."
+  },
+  {
+   "id": "q7",
+   "concept_id": "inference_engine_role",
+   "bloom_level": "Understand",
+   "question": "What does the inference engine do in a fuzzy system?",
+   "question_ar": "ماذا يفعل محرك الاستدلال في النظام الضبابي؟",
+   "options": [
+    "it stores all the rules here",
+    "it measures the sensors",
+    "it applies rules to grades",
+    "it prints the report now"
+   ],
+   "options_en": [
+    "it stores all the rules here",
+    "it measures the sensors",
+    "it applies rules to grades",
+    "it prints the report now"
+   ],
+   "options_ar": [
+    "تخزين القواعد في الذاكرة",
+    "قياس الحساسات في النظام",
+    "تطبيق القواعد على الدرجات",
+    "طباعة التقرير للمستخدم"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The engine matches the fuzzified grades against the rules and derives the output grades.",
+   "explanation_ar": "المحرك يطابق الدرجات المُضبَّبة مع القواعد ويستخرج درجات المخرَج."
+  },
+  {
+   "id": "q8",
+   "concept_id": "defuzz_purpose",
+   "bloom_level": "Understand",
+   "question": "Why is defuzzification needed at the output?",
+   "question_ar": "لماذا نحتاج إزالة الضبابية عند المخرَج؟",
+   "options": [
+    "to store the rule base",
+    "to widen the whole range",
+    "to speed up the sensor",
+    "to return a crisp value"
+   ],
+   "options_en": [
+    "to store the rule base",
+    "to widen the whole range",
+    "to speed up the sensor",
+    "to return a crisp value"
+   ],
+   "options_ar": [
+    "لتخزين قاعدة القواعد",
+    "لتوسيع المدى كله",
+    "لتسريع الحساس هنا",
+    "لإرجاع قيمة حاسمة"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The plant needs one concrete number, so the fuzzy result is turned back into a crisp value.",
+   "explanation_ar": "المنظومة تحتاج رقماً واحداً ملموساً، فتُعاد النتيجة الضبابية قيمة حاسمة."
   }
  ],
  "schema_version": 2,
