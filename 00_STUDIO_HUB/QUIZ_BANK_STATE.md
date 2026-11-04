@@ -10,7 +10,7 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T18:33:09+03:00
+> Generated at: 2026-11-04T18:54:46+03:00
 
 ## Current versions
 
@@ -24,14 +24,14 @@
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 156 banks / 1537 questions · live 156 banks / 1537 questions · MATCH
+**Totals:** vault 162 banks / 1605 questions · live 156 banks / 1537 questions · **MISMATCH — investigate before publishing**
 
 ## By subject (vault = live)
 
 | Subject | Chapters | Banks | Questions | Live banks | Live questions | Drift |
 |---|---:|---:|---:|---:|---:|---|
 | `01_Cyber_Security` | 6 | 59 | 709 | 59 | 709 | — |
-| `02_English_Language` | 2 | 12 | 116 | 12 | 116 | — |
+| `02_English_Language` | 3 | 18 | 184 | 12 | 116 | **DIFF** |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
 | `04_Advanced_Software_Eng` | 3 | 6 | 30 | 6 | 30 | — |
 | `05_Soft_Computing` | 5 | 20 | 150 | 20 | 150 | — |
@@ -55,6 +55,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `01_Cyber_Security` | 06 | 10 | 104 | 0 | 18/16 | 12/12 | 0 | 0 | clean |
 | `02_English_Language` | 01 | 6 | 53 | 0 | 4/0 | 6/0 | 0 | 0 | clean |
 | `02_English_Language` | 02 | 6 | 63 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
+| `02_English_Language` | 03 | 6 | 68 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
 | `03_Data_Mining` | 01 | 5 | 35 | 7 | 0/0 | 2/2 | 0 | 0 | needs work |
 | `03_Data_Mining` | 02 | 7 | 69 | 23 | 9/10 | 10/7 | 16 | 0 | needs work |
 | `03_Data_Mining` | 03 | 7 | 55 | 17 | 7/11 | 5/5 | 0 | 0 | needs work |
