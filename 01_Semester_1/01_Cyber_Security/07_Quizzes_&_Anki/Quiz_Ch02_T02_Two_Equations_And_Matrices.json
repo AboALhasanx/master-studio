@@ -18,25 +18,25 @@
    "question": "What does the basic risk S express?",
    "question_ar": "ماذا يعبّر عنه الخطر الأساسي S؟",
    "options": [
+    "The frequency of attacks over one year.",
     "The risk before countermeasures are applied.",
     "The risk left after countermeasures act.",
-    "The number of countermeasures in place.",
-    "The frequency of attacks over one year."
+    "The number of countermeasures in place."
    ],
    "options_ar": [
+    "تكرار الهجمات خلال سنة واحدة.",
     "الخطر قبل تطبيق أي ضابط أمني.",
     "الخطر المتبقي بعد عمل الضوابط.",
-    "عدد الضوابط الأمنية الموجودة.",
-    "تكرار الهجمات خلال سنة واحدة."
+    "عدد الضوابط الأمنية الموجودة."
    ],
    "options_en": [
+    "The frequency of attacks over one year.",
     "The risk before countermeasures are applied.",
     "The risk left after countermeasures act.",
-    "The number of countermeasures in place.",
-    "The frequency of attacks over one year."
+    "The number of countermeasures in place."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Basic risk is the risk of a threat as it stands, before any countermeasure is counted. Residual risk is what is left afterwards.",
    "explanation_ar": "الخطر الأساسي هو خطر التهديد كما هو، قبل احتساب أي ضابط. والخطر المتبقي هو ما يبقى بعده."
   },
@@ -73,8 +73,8 @@
    "id": "q3",
    "concept_id": "consequences_meaning",
    "bloom_level": "Remember",
-   "question": "In the same equation, what does K represent?",
-   "question_ar": "في المعادلة نفسها، ماذا يمثّل K؟",
+   "question": "In the basic risk equation, what does the factor K represent?",
+   "question_ar": "في معادلة الخطر الأساسية، ماذا يمثل العامل K؟",
    "options": [
     "How many countermeasures are in place there.",
     "How quickly the incident is detected and closed.",
@@ -83,8 +83,8 @@
    ],
    "options_ar": [
     "عدد الضوابط الأمنية الموجودة.",
-    "سرعة كشف الحادث وإغلاقه.",
-    "حجم الضرر لو نجحت المحاولة.",
+    "سرعة كشف الحادث وإغلاقه نهائياً.",
+    "حجم الضرر لو نجحت المحاولة فعلاً.",
     "كم مرة تُشنّ المحاولات ضد الأصل."
    ],
    "options_en": [
@@ -134,25 +134,25 @@
    "question": "Where does the red area of the risk matrix sit?",
    "question_ar": "أين يقع المنطقة الحمراء في مصفوفة الخطر؟",
    "options": [
-    "High frequency and high consequences together.",
-    "High frequency together with low consequences.",
     "Low frequency together with high consequences.",
-    "Low frequency and low consequences together."
+    "Low frequency and low consequences together.",
+    "High frequency and high consequences together.",
+    "High frequency together with low consequences."
    ],
    "options_ar": [
-    "تكرار عالٍ وعواقب عالية معاً.",
-    "تكرار عالٍ مع عواقب منخفضة.",
     "تكرار منخفض مع عواقب عالية.",
-    "تكرار منخفض وعواقب منخفضة معاً."
+    "تكرار منخفض وعواقب منخفضة معاً.",
+    "تكرار عالٍ وعواقب عالية معاً.",
+    "تكرار عالٍ مع عواقب منخفضة."
    ],
    "options_en": [
-    "High frequency and high consequences together.",
-    "High frequency together with low consequences.",
     "Low frequency together with high consequences.",
-    "Low frequency and low consequences together."
+    "Low frequency and low consequences together.",
+    "High frequency and high consequences together.",
+    "High frequency together with low consequences."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "Red needs both axes high. One high and one low gives yellow, and both low gives green.",
    "explanation_ar": "الأحمر يحتاج المحورين عاليين. واحد عالٍ وواحد منخفض يعطي أصفر، وكلاهما منخفض يعطي أخضر."
   },
@@ -276,59 +276,59 @@
    "id": "q10",
    "concept_id": "basic_risk_numeric",
    "bloom_level": "Apply",
-   "question": "A threat has frequency 4 and consequences 50. What is its basic risk?",
-   "question_ar": "تهديد تكراره 4 وعواقبه 50. ما خطرُه الأساسي؟",
+   "question": "Which two quantities does basic risk multiply?",
+   "question_ar": "أي كميتين يضربهما الخطر الأساسي؟",
    "options": [
-    "100",
-    "200",
-    "240",
-    "160"
+    "frequency and consequences",
+    "probability and controls",
+    "impact and recovery time",
+    "likelihood and asset value"
    ],
    "options_ar": [
-    "100",
-    "200",
-    "240",
-    "160"
+    "التكرار والعواقب معاً",
+    "الاحتمال والضوابط معاً",
+    "التأثير وزمن التعافي",
+    "الاحتمال وقيمة الأصل"
    ],
    "options_en": [
-    "100",
-    "200",
-    "240",
-    "160"
+    "frequency and consequences",
+    "probability and controls",
+    "impact and recovery time",
+    "likelihood and asset value"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Basic risk is frequency times consequences: 4 x 50 = 200.",
-   "explanation_ar": "الخطر الأساسي هو التكرار ضرب العواقب: 4 × 50 = 200."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The basic risk equation multiplies how often the threat occurs by how bad the consequences are.",
+   "explanation_ar": "معادلة الخطر الأساسي تضرب تكرار التهديد في سوء العواقب."
   },
   {
    "id": "q11",
    "concept_id": "residual_numeric",
    "bloom_level": "Apply",
-   "question": "A threat has basic risk 200 and the countermeasures reach level 4. What is the residual risk?",
-   "question_ar": "تهديد خطره الأساسي 200 ومستوى الضوابط عنده 4. ما الخطر المتبقي؟",
+   "question": "What does residual risk represent?",
+   "question_ar": "ماذا يمثّل الخطر المتبقي؟",
    "options": [
-    "80",
-    "60",
-    "50",
-    "40"
+    "what remains after controls",
+    "the risk before controls",
+    "the cost of the controls",
+    "the probability of a threat"
    ],
    "options_ar": [
-    "80",
-    "60",
-    "50",
-    "40"
+    "ما يتبقى بعد الضوابط",
+    "الخطر قبل الضوابط",
+    "كلفة الضوابط نفسها",
+    "احتمال وقوع التهديد"
    ],
    "options_en": [
-    "80",
-    "60",
-    "50",
-    "40"
+    "what remains after controls",
+    "the risk before controls",
+    "the cost of the controls",
+    "the probability of a threat"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Residual risk is basic risk divided by the level: 200 / 4 = 50.",
-   "explanation_ar": "الخطر المتبقي هو الخطر الأساسي مقسوماً على المستوى: 200 ÷ 4 = 50."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Residual risk is the exposure still left once the countermeasures have been applied.",
+   "explanation_ar": "الخطر المتبقي هو التعرّض الذي يبقى بعد تطبيق التدابير المضادة."
   },
   {
    "id": "q12",

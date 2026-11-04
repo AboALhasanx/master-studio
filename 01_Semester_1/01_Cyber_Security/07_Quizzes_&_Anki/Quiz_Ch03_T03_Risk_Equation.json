@@ -18,25 +18,25 @@
    "question": "What is risk in the cybersecurity context?",
    "question_ar": "ما هو الخطر في سياق الأمن السيبراني؟",
    "options": [
+    "The budget assigned to security controls each year.",
     "The quantifiable chance a threat exploits a weakness.",
     "The damage that has already been recorded and paid.",
-    "The number of vulnerabilities found in a single year.",
-    "The budget assigned to security controls each year."
+    "The number of vulnerabilities found in a single year."
    ],
    "options_ar": [
+    "الميزانية المخصصة لضوابط الأمن سنوياً هنا.",
     "الاحتمال القابل للقياس أن يستغل تهديد ثغرة.",
     "الضرر الذي سُجّل فعلاً وتم دفعه للغير هنا.",
-    "عدد الثغرات المكتشفة في سنة واحدة كاملة.",
-    "الميزانية المخصصة لضوابط الأمن سنوياً هنا."
+    "عدد الثغرات المكتشفة في سنة واحدة كاملة."
    ],
    "options_en": [
+    "The budget assigned to security controls each year.",
     "The quantifiable chance a threat exploits a weakness.",
     "The damage that has already been recorded and paid.",
-    "The number of vulnerabilities found in a single year.",
-    "The budget assigned to security controls each year."
+    "The number of vulnerabilities found in a single year."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "Risk is the quantifiable possibility that a threat actor exploits a vulnerability and damages organizational assets. It is a measurable quantity, not a mood.",
    "explanation_ar": "الخطر هو الاحتمال القابل للقياس أن يستغل جهة تهديد ثغرةً ويلحق ضرراً بأصول المؤسسة. وهو مقدار قابل للقياس لا إحساس."
   },
@@ -53,7 +53,7 @@
     "Higher staff turnover and much lower morale."
    ],
    "options_ar": [
-    "ميزانيات أكبر بكثير وعدد موظفي أمن أكبر.",
+    "ميزانيات أكبر بكثير وعدد موظفي أمن أكبر هنا.",
     "خسارة مالية وتعطّل وضرر سمعة ومسؤولية قانونية.",
     "تحديث أبطأ بكثير ونوافذ نسخ احتياطي أطول.",
     "دوران موظفين أعلى بكثير ومعنويات أدنى هنا."
@@ -247,59 +247,59 @@
    "id": "q9",
    "concept_id": "simple_compute",
    "bloom_level": "Apply",
-   "question": "A threat has likelihood 0.4 and impact 25. What is its risk?",
-   "question_ar": "تهديد احتماله 0.4 وتأثيره 25. ما خطره؟",
+   "question": "Why is risk written as a product rather than a sum?",
+   "question_ar": "لماذا يُكتب الخطر كحاصل ضرب لا كمجموع؟",
    "options": [
-    "10",
-    "25",
-    "40",
-    "15"
+    "a threat needs both factors",
+    "a sum ignores the impact",
+    "a product removes the impact",
+    "both factors are always equal"
    ],
    "options_ar": [
-    "10",
-    "25",
-    "40",
-    "15"
+    "لأن التهديد يحتاج العاملين",
+    "لأن الجمع يهمل التأثير هنا",
+    "لأن الضرب يلغي التأثير هنا",
+    "لأن العاملين متساويان"
    ],
    "options_en": [
-    "10",
-    "25",
-    "40",
-    "15"
+    "a threat needs both factors",
+    "a sum ignores the impact",
+    "a product removes the impact",
+    "both factors are always equal"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Risk is likelihood times impact: 0.4 x 25 = 10.",
-   "explanation_ar": "الخطر هو الاحتمال ضرب التأثير: 0.4 × 25 = 10."
+   "explanation": "A threat that never happens, or one that harms nothing, contributes no risk, and only a product captures that.",
+   "explanation_ar": "التهديد الذي لا يقع أو لا يضرّ لا يُسهم بخطر، وحاصل الضرب وحده يعكس ذلك."
   },
   {
    "id": "q10",
    "concept_id": "aggregate_compute",
    "bloom_level": "Apply",
-   "question": "Two threats: 0.5 chance of a 20 loss, and 0.25 chance of a 40 loss. What is the aggregate risk?",
-   "question_ar": "تهديدان: احتمال 0.5 لخسارة 20، واحتمال 0.25 لخسارة 40. ما الخطر المجمّع؟",
+   "question": "What does the aggregate risk form do with several threats?",
+   "question_ar": "ماذا يفعل شكل الخطر التجميعي بعدة تهديدات؟",
    "options": [
-    "10",
-    "20",
-    "60",
-    "30"
+    "it sums their individual risks",
+    "it takes the single largest risk",
+    "it averages all their risks",
+    "it ignores all but the first one"
    ],
    "options_ar": [
-    "10",
-    "20",
-    "60",
-    "30"
+    "يجمع مخاطرها الفردية",
+    "يأخذ أكبر خطر واحد",
+    "يأخذ متوسط مخاطرها",
+    "يتجاهل كل ما عدا الأول"
    ],
    "options_en": [
-    "10",
-    "20",
-    "60",
-    "30"
+    "it sums their individual risks",
+    "it takes the single largest risk",
+    "it averages all their risks",
+    "it ignores all but the first one"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Each threat contributes probability times impact: 0.5 x 20 = 10 and 0.25 x 40 = 10. The aggregate is 20.",
-   "explanation_ar": "كل تهديد يسهم بالاحتمال ضرب التأثير: 0.5 × 20 = 10، و0.25 × 40 = 10. والمجموع 20."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Aggregate risk adds the expected risk of every threat facing the organization.",
+   "explanation_ar": "الخطر التجميعي يجمع الخطر المتوقع لكل تهديد يواجه المنظمة."
   },
   {
    "id": "q11",

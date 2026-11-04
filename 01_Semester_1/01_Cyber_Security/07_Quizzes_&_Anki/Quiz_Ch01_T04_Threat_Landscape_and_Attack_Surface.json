@@ -18,25 +18,25 @@
    "question": "Which set lists the five categories of the modern threat landscape?",
    "question_ar": "أي مجموعة تسرد فئات مشهد التهديدات الحديث الخمس؟",
    "options": [
+    "Malware, phishing, insiders, DDoS floods, and theft.",
     "Malware, phishing, insiders, APTs, and IoT attacks.",
     "Malware, phishing, insiders, botnets, and spam mail.",
-    "Viruses, phishing, insiders, APTs, and data leaks.",
-    "Malware, phishing, insiders, DDoS floods, and theft."
+    "Viruses, phishing, insiders, APTs, and data leaks."
    ],
    "options_ar": [
+    "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية وهجمات الحجب والسرقة هنا فعلاً تماماً.",
     "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وهجمات إنترنت الأشياء.",
-    "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والبوتنت والبريد المزعج.",
-    "الفيروسات والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وتسريب البيانات.",
-    "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية وهجمات الحجب والسرقة."
+    "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والبوتنت والبريد المزعج هنا فعلاً تماماً.",
+    "الفيروسات والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وتسريب البيانات هنا تماماً."
    ],
    "options_en": [
+    "Malware, phishing, insiders, DDoS floods, and theft.",
     "Malware, phishing, insiders, APTs, and IoT attacks.",
     "Malware, phishing, insiders, botnets, and spam mail.",
-    "Viruses, phishing, insiders, APTs, and data leaks.",
-    "Malware, phishing, insiders, DDoS floods, and theft."
+    "Viruses, phishing, insiders, APTs, and data leaks."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "The five are malware, phishing and social engineering, insider threats, APTs, and IoT attacks. A botnet is the tool behind the IoT category, not a category of its own.",
    "explanation_ar": "الخمسة هي: البرمجيات الخبيثة، التصيّد والهندسة الاجتماعية، التهديدات الداخلية، التهديدات المتقدمة، هجمات إنترنت الأشياء. والبوتنت أداة داخل فئة إنترنت الأشياء لا فئة مستقلة."
   },
@@ -305,30 +305,30 @@
    "id": "q11",
    "concept_id": "attack_surface_compute",
    "bloom_level": "Apply",
-   "question": "A component has 2 entry points, a flaw severity of 3, and an asset value of 500. What is its attack surface score?",
-   "question_ar": "مكوّن له نقطتا دخول، وخطورة ثغرة 3، وقيمة أصل 500. ما درجة سطح الهجوم له؟",
+   "question": "Which factors enlarge a component's attack surface?",
+   "question_ar": "أي عامل يوسّع سطح هجوم المكوّن؟",
    "options": [
-    "3,500",
-    "3,000",
-    "1,000",
-    "2,500"
+    "more entry points and more flaws",
+    "fewer users and fewer ports",
+    "stronger encryption and audits",
+    "shorter passwords and no logs"
    ],
    "options_ar": [
-    "3,500",
-    "3,000",
-    "1,000",
-    "2,500"
+    "مداخل أكثر وثغرات أكثر",
+    "مستخدمون أقل ومنافذ أقل",
+    "تشفير أقوى وتدقيق أكثر",
+    "كلمات مرور أقصر وبلا سجلات"
    ],
    "options_en": [
-    "3,500",
-    "3,000",
-    "1,000",
-    "2,500"
+    "more entry points and more flaws",
+    "fewer users and fewer ports",
+    "stronger encryption and audits",
+    "shorter passwords and no logs"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Multiply the three factors: 2 x 3 x 500 = 3,000. The model is a product, not a sum.",
-   "explanation_ar": "اضرب العوامل الثلاثة: 2 × 3 × 500 = 3,000. النموذج حاصل ضرب لا مجموع."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Every extra entry point and every extra weakness gives an attacker one more way in.",
+   "explanation_ar": "كل مدخل إضافي وكل ثغرة إضافية تمنح المهاجم طريقاً آخر للدخول."
   },
   {
    "id": "q12",

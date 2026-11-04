@@ -18,25 +18,25 @@
    "question": "Which set lists the four levels of cybersecurity scope?",
    "question_ar": "أي مجموعة تسرد المستويات الأربعة لنطاق الأمن السيبراني؟",
    "options": [
+    "Individuals, institutions, governments, and the industry.",
     "Individuals, enterprises, governments, and global trade.",
     "Individuals, enterprises, ministries, and local trade.",
-    "Users, companies, regulators, and international trade.",
-    "Individuals, institutions, governments, and the industry."
+    "Users, companies, regulators, and international trade."
    ],
    "options_ar": [
+    "الأفراد والهيئات والحكومات والقطاع الصناعي.",
     "الأفراد والمؤسسات والحكومات والتجارة العالمية.",
     "الأفراد والمؤسسات والوزارات والتجارة المحلية.",
-    "المستخدمون والشركات والجهات الرقابية والتجارة الدولية.",
-    "الأفراد والهيئات والحكومات والقطاع الصناعي."
+    "المستخدمون والشركات والجهات الرقابية والتجارة الدولية."
    ],
    "options_en": [
+    "Individuals, institutions, governments, and the industry.",
     "Individuals, enterprises, governments, and global trade.",
     "Individuals, enterprises, ministries, and local trade.",
-    "Users, companies, regulators, and international trade.",
-    "Individuals, institutions, governments, and the industry."
+    "Users, companies, regulators, and international trade."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "B",
+   "correct": 1,
    "explanation": "The four levels are individuals, enterprises, governments, and global trade. The scope widens at each step.",
    "explanation_ar": "المستويات الأربعة هي: الأفراد، المؤسسات، الحكومات، التجارة العالمية. النطاق يتوسّع في كل خطوة."
   },
@@ -82,10 +82,10 @@
     "Business growth, product design, and the retention of staff."
    ],
    "options_ar": [
-    "الدفاع الوطني وضبط الحدود والحكومة الإلكترونية للدولة.",
-    "التجارة عبر الحدود وتدفق العملة والشحن.",
-    "استمرارية العمل وثقة العملاء والامتثال القانوني.",
-    "نمو العمل وتصميم المنتج والاحتفاظ بالموظفين."
+    "الدفاع الوطني وضبط الحدود والحكومة الإلكترونية للدولة",
+    "التجارة عبر الحدود وتدفق العملة والشحن الدولي",
+    "استمرارية العمل وثقة العملاء والامتثال القانوني",
+    "نمو العمل وتصميم المنتج والاحتفاظ بالموظفين"
    ],
    "options_en": [
     "National defence, border control, and e-government.",
@@ -105,25 +105,25 @@
    "question": "Which assets are protected at the governments level?",
    "question_ar": "أي أصول تُحمى في مستوى الحكومات؟",
    "options": [
-    "National security, defence, and e-government services.",
     "Retail catalogues, delivery systems, and online shops.",
     "Personal photos, messaging apps, and home routers.",
-    "Trade contracts, payment systems, and shipping lanes."
+    "Trade contracts, payment systems, and shipping lanes.",
+    "National security, defence, and e-government services."
    ],
    "options_ar": [
-    "الأمن الوطني والدفاع وخدمات الحكومة الإلكترونية.",
     "كتالوجات التجزئة وأنظمة التوصيل والمتاجر الكبرى.",
     "الصور الشخصية وتطبيقات المراسلة والموجّهات.",
-    "عقود التجارة وأنظمة الدفع وخطوط الشحن."
+    "عقود التجارة وأنظمة الدفع وخطوط الشحن.",
+    "الأمن الوطني والدفاع وخدمات الحكومة الإلكترونية."
    ],
    "options_en": [
-    "National security, defence, and e-government services.",
     "Retail catalogues, delivery systems, and online shops.",
     "Personal photos, messaging apps, and home routers.",
-    "Trade contracts, payment systems, and shipping lanes."
+    "Trade contracts, payment systems, and shipping lanes.",
+    "National security, defence, and e-government services."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "At the governments level the focus is national security, defence, and the infrastructure of e-governance.",
    "explanation_ar": "في مستوى الحكومات التركيز على الأمن الوطني والدفاع وبنية الحكومة الإلكترونية."
   },
@@ -227,10 +227,10 @@
     "The internet-of-things domain."
    ],
    "options_ar": [
-    "مجال أمن السحابة العامة.",
-    "مجال أمن الشبكات الداخلية.",
-    "مجال أمن التطبيقات.",
-    "مجال إنترنت الأشياء."
+    "مجال أمن السحابة هنا",
+    "مجال أمن الشبكات هنا",
+    "مجال أمن التطبيقات",
+    "مجال إنترنت الأشياء"
    ],
    "options_en": [
     "The cloud security domain.",
@@ -305,59 +305,59 @@
    "id": "q11",
    "concept_id": "risk_exposure_time_marker",
    "bloom_level": "Understand",
-   "question": "A question mentions time explicitly. Which model should you apply?",
-   "question_ar": "سؤال يذكر الزمن صراحةً. أي نموذج تستخدم؟",
+   "question": "What does the exposure model do with duration?",
+   "question_ar": "ماذا يفعل نموذج التعرّض بالمدة؟",
    "options": [
-    "The compliance model, because time is audited.",
-    "The exposure model, because time marks it.",
-    "The optimisation model, because time is fixed.",
-    "The utility model, because weights change."
+    "it accounts for exposure duration",
+    "it ignores the duration completely",
+    "it measures a single instant only",
+    "it treats time as a constant factor"
    ],
    "options_ar": [
-    "نموذج الامتثال، لأن الزمن يُدقَّق.",
-    "نموذج التعرّض، لأن الزمن علامته.",
-    "نموذج التحسين، لأن الزمن فيه ثابت.",
-    "نموذج المنفعة، لأن الأوزان تتغيّر."
+    "يحسب مدة استمرار التعرّض",
+    "يتجاهل المدة تماماً هنا",
+    "يقيس لحظة واحدة فقط هنا",
+    "يعامل الزمن كثابت هنا"
    ],
    "options_en": [
-    "The compliance model, because time is audited.",
-    "The exposure model, because time marks it.",
-    "The optimisation model, because time is fixed.",
-    "The utility model, because weights change."
+    "it accounts for exposure duration",
+    "it ignores the duration completely",
+    "it measures a single instant only",
+    "it treats time as a constant factor"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The time variable exists to tell you which law applies. Time in the question means the exposure model, not the optimisation model.",
-   "explanation_ar": "متغيّر الزمن موجود ليدلّك أي قانون تستخدم. وجود الزمن في السؤال يعني نموذج التعرّض لا نموذج التحسين."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Exposure counts how long an asset stays open to a threat, not just whether a threat exists.",
+   "explanation_ar": "التعرّض يحسب مدة بقاء الأصل مفتوحاً أمام التهديد، لا مجرد وجود التهديد."
   },
   {
    "id": "q12",
    "concept_id": "risk_exposure_compute",
    "bloom_level": "Apply",
-   "question": "Threat A has probability 0.2 and impact 500. Threat B has probability 0.3 and impact 500. What is the total expected risk?",
-   "question_ar": "التهديد A احتماله 0.2 وتأثيره 500. والتهديد B احتماله 0.3 وتأثيره 500. ما إجمالي الخطر المتوقع؟",
+   "question": "What does expected exposure add up across several threats?",
+   "question_ar": "ماذا يجمع التعرّض المتوقع عبر عدة تهديدات؟",
    "options": [
-    "150",
-    "500",
-    "650",
-    "250"
+    "the risk of every single threat",
+    "the impact of the worst one here",
+    "the probability of just one only",
+    "the cost of the controls here"
    ],
    "options_ar": [
-    "150",
-    "500",
-    "650",
-    "250"
+    "خطر كل تهديد على حدة",
+    "تأثير أسوأ تهديد فقط",
+    "احتمال تهديد واحد فقط",
+    "كلفة الضوابط الأمنية"
    ],
    "options_en": [
-    "150",
-    "500",
-    "650",
-    "250"
+    "the risk of every single threat",
+    "the impact of the worst one here",
+    "the probability of just one only",
+    "the cost of the controls here"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Each term is probability times impact: 0.2 x 500 = 100 and 0.3 x 500 = 150. The sum is 250.",
-   "explanation_ar": "كل حد هو الاحتمال ضرب التأثير: 0.2 × 500 = 100، و0.3 × 500 = 150. والمجموع 250."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The total exposure sums the expected risk contributed by each individual threat.",
+   "explanation_ar": "التعرّض الكلي يجمع الخطر المتوقع الذي يسهم به كل تهديد على حدة."
   }
  ]
 }

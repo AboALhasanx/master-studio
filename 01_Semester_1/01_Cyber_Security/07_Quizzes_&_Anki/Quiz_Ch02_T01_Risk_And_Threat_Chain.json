@@ -18,25 +18,25 @@
    "question": "In its technical sense, what is risk?",
    "question_ar": "بمعناها التقني، ما هو الخطر؟",
    "options": [
-    "The probability that an error causes damage.",
     "The damage that has already happened to you.",
     "The weakness that an attacker can exploit.",
-    "The cost of the controls already applied."
+    "The cost of the controls already applied.",
+    "The probability that an error causes damage."
    ],
    "options_ar": [
-    "احتمال أن يسبب خطأ ما ضرراً.",
     "الضرر الذي وقع فعلاً بالفعل.",
     "نقطة الضعف التي يستغلها المهاجم.",
-    "تكلفة الضوابط المطبّقة حالياً."
+    "تكلفة الضوابط المطبّقة حالياً.",
+    "احتمال أن يسبب خطأ ما ضرراً."
    ],
    "options_en": [
-    "The probability that an error causes damage.",
     "The damage that has already happened to you.",
     "The weakness that an attacker can exploit.",
-    "The cost of the controls already applied."
+    "The cost of the controls already applied.",
+    "The probability that an error causes damage."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "Risk is a probability, not the damage itself: the quantitative probability that an error situation occurs and gives rise to damage.",
    "explanation_ar": "الخطر احتمال وليس الضرر نفسه: الاحتمال الكمي لوقوع حالة خطأ ينتج عنها ضرر."
   },
@@ -102,30 +102,30 @@
    "id": "q4",
    "concept_id": "vulnerability_meaning",
    "bloom_level": "Remember",
-   "question": "What is a vulnerability?",
-   "question_ar": "ما هي الثغرة؟",
+   "question": "In the risk chain, what does a vulnerability need in order to matter?",
+   "question_ar": "في سلسلة الخطر، ما الذي تحتاجه الثغرة لتصبح مهمة؟",
    "options": [
-    "A threat that has already caused real damage.",
-    "A control that blocks a threat from arriving.",
-    "A policy that forbids a risky behaviour at work.",
-    "A weakness that can be exploited for damage."
+    "a threat that can exploit it",
+    "a control that blocks it fully",
+    "a policy that forbids it here",
+    "a backup that restores it here"
    ],
    "options_ar": [
-    "تهديد وقع وأحدث ضرراً فعلياً بالنظام.",
-    "ضابط أمني يمنع التهديد من الوصول.",
-    "سياسة تمنع سلوكاً خطراً في العمل.",
-    "نقطة ضعف قابلة للاستغلال لإحداث ضرر."
+    "تهديداً قادراً على استغلالها",
+    "ضابطاً يمنعها من الحدوث هنا",
+    "سياسة تمنعها في العمل هنا",
+    "نسخة احتياطية تعيدها هنا"
    ],
    "options_en": [
-    "A threat that has already caused real damage.",
-    "A control that blocks a threat from arriving.",
-    "A policy that forbids a risky behaviour at work.",
-    "A weakness that can be exploited for damage."
+    "a threat that can exploit it",
+    "a control that blocks it fully",
+    "a policy that forbids it here",
+    "a backup that restores it here"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "A vulnerability is a weakness that can be exploited to damage the system. It is not the attacker and not the resulting loss.",
-   "explanation_ar": "الثغرة نقطة ضعف يمكن استغلالها لإلحاق الضرر بالنظام. ليست المهاجم ولا الخسارة الناتجة."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A weakness becomes dangerous only when a threat exists that is able to exploit it.",
+   "explanation_ar": "نقطة الضعف تصبح خطرة فقط عند وجود تهديد قادر على استغلالها."
   },
   {
    "id": "q5",
@@ -256,7 +256,7 @@
     "The servers inside the room."
    ],
    "options_ar": [
-    "العيب في إحكام السطح.",
+    "العيب في إحكام سطح المبنى.",
     "العاصفة القوية المتوقعة.",
     "مبنى مركز البيانات نفسه.",
     "الخوادم الموجودة داخل الغرفة."

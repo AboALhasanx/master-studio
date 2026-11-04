@@ -18,25 +18,25 @@
    "question": "Through which dimensions is the need for risk management explained?",
    "question_ar": "بأي أبعاد تُفسَّر الحاجة إلى إدارة المخاطر؟",
    "options": [
-    "Financial, operational, and reputational.",
-    "Technical, legal, and managerial ones.",
     "Strategic, tactical, and operational.",
-    "Internal, external, and regulatory ones."
+    "Internal, external, and regulatory ones.",
+    "Financial, operational, and reputational.",
+    "Technical, legal, and managerial ones."
    ],
    "options_ar": [
-    "مالية وتشغيلية وسمعة معاً.",
-    "تقنية وقانونية وإدارية فقط.",
     "استراتيجية وتكتيكية وتشغيلية.",
-    "داخلية وخارجية وتنظيمية هنا."
+    "داخلية وخارجية وتنظيمية هنا.",
+    "مالية وتشغيلية وسمعة معاً.",
+    "تقنية وقانونية وإدارية فقط."
    ],
    "options_en": [
-    "Financial, operational, and reputational.",
-    "Technical, legal, and managerial ones.",
     "Strategic, tactical, and operational.",
-    "Internal, external, and regulatory ones."
+    "Internal, external, and regulatory ones.",
+    "Financial, operational, and reputational.",
+    "Technical, legal, and managerial ones."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "Three dimensions carry the argument: financial, operational and reputational. They are the reason risk management is a management duty, not an IT task.",
    "explanation_ar": "ثلاثة أبعاد تحمل الحجة: المالي والتشغيلي والسمعة. وهي سبب كون إدارة المخاطر واجباً إدارياً لا مهمة تقنية."
   },
@@ -305,30 +305,30 @@
    "id": "q11",
    "concept_id": "efl_numeric",
    "bloom_level": "Apply",
-   "question": "Two threats: a 0.2 chance of a 10 loss, and a 0.1 chance of a 5 loss. What is the expected loss?",
-   "question_ar": "تهديدان: احتمال 0.2 لخسارة 10، واحتمال 0.1 لخسارة 5. ما الخسارة المتوقعة؟",
+   "question": "What does expected loss combine for each threat?",
+   "question_ar": "ماذا تجمع الخسارة المتوقعة لكل تهديد؟",
    "options": [
-    "1.5",
-    "0.5",
-    "2.5",
-    "3.0"
+    "its probability and its loss",
+    "its controls and its owner",
+    "its duration and its owner",
+    "its category and its count"
    ],
    "options_ar": [
-    "1.5",
-    "0.5",
-    "2.5",
-    "3.0"
+    "احتماله وخسارته معاً",
+    "ضوابطه ومالكه معاً",
+    "مدته ومالكه معاً هنا",
+    "فئته وعدده معاً هنا"
    ],
    "options_en": [
-    "1.5",
-    "0.5",
-    "2.5",
-    "3.0"
+    "its probability and its loss",
+    "its controls and its owner",
+    "its duration and its owner",
+    "its category and its count"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Each term is probability times impact: 0.2 x 10 = 2 and 0.1 x 5 = 0.5. The sum is 2.5.",
-   "explanation_ar": "كل حد هو الاحتمال ضرب التأثير: 0.2 × 10 = 2، و0.1 × 5 = 0.5. والمجموع 2.5."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Expected loss multiplies the chance of the event by the size of the loss it would cause.",
+   "explanation_ar": "الخسارة المتوقعة تضرب احتمال الحدث في حجم الخسارة الناتجة عنه."
   },
   {
    "id": "q12",

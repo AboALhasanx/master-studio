@@ -18,25 +18,25 @@
    "question": "How is risk defined?",
    "question_ar": "كيف يُعرَّف الخطر؟",
    "options": [
-    "A function of likelihood and impact.",
-    "A function of control cost and time.",
     "A function of user count and devices.",
-    "A function of policy strength and audit."
+    "A function of policy strength and audit.",
+    "A function of likelihood and impact.",
+    "A function of control cost and time."
    ],
    "options_ar": [
-    "دالة للاحتمالية وحجم التأثير.",
-    "دالة لتكلفة الضابط والوقت.",
     "دالة لعدد المستخدمين والأجهزة.",
-    "دالة لقوة السياسة والتدقيق."
+    "دالة لقوة السياسة والتدقيق.",
+    "دالة للاحتمالية وحجم التأثير.",
+    "دالة لتكلفة الضابط والوقت."
    ],
    "options_en": [
-    "A function of likelihood and impact.",
-    "A function of control cost and time.",
     "A function of user count and devices.",
-    "A function of policy strength and audit."
+    "A function of policy strength and audit.",
+    "A function of likelihood and impact.",
+    "A function of control cost and time."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "Risk is a function of two things only: how likely the event is, and how much damage it would do.",
    "explanation_ar": "الخطر دالة لشيئين فقط: احتمال وقوع الحدث، ومقدار الضرر الذي يسببه."
   },
@@ -172,7 +172,7 @@
     "NIST CSF و ENISA و COBIT.",
     "OCTAVE و FAIR و NIST RMF.",
     "GDPR و HIPAA و ISO 27001.",
-    "OWASP و CVE و CVSS."
+    "OWASP و CVE و CVSS فقط."
    ],
    "options_en": [
     "NIST CSF, ENISA, and COBIT.",
@@ -305,30 +305,30 @@
    "id": "q11",
    "concept_id": "distribution_compute",
    "bloom_level": "Apply",
-   "question": "If F(50) equals 0.85, what is the probability that loss exceeds 50?",
-   "question_ar": "إذا كانت F(50) تساوي 0.85، فما احتمال أن تتجاوز الخسارة 50؟",
+   "question": "What does the complement of a loss distribution give?",
+   "question_ar": "ماذا يعطي متمّم توزيع الخسائر؟",
    "options": [
-    "0.35",
-    "1.85",
-    "0.15",
-    "0.85"
+    "the chance of exceeding a value",
+    "the chance of staying below it",
+    "the average loss at that value",
+    "the total number of loss events"
    ],
    "options_ar": [
-    "0.35",
-    "1.85",
-    "0.15",
-    "0.85"
+    "احتمال تجاوز قيمة معينة",
+    "احتمال البقاء تحت تلك القيمة",
+    "متوسط الخسارة عند القيمة",
+    "العدد الكلي لحوادث الخسارة"
    ],
    "options_en": [
-    "0.35",
-    "1.85",
-    "0.15",
-    "0.85"
+    "the chance of exceeding a value",
+    "the chance of staying below it",
+    "the average loss at that value",
+    "the total number of loss events"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "The two parts sum to one, so the answer is 1 minus 0.85, which is 0.15.",
-   "explanation_ar": "الجزءان مجموعهما واحد، فالجواب 1 ناقص 0.85 ويساوي 0.15."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "One minus the distribution gives the probability that the loss is larger than that value.",
+   "explanation_ar": "واحد ناقص التوزيع يعطي احتمال أن تكون الخسارة أكبر من تلك القيمة."
   },
   {
    "id": "q12",

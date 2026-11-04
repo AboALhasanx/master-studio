@@ -10,7 +10,7 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T19:30:19+03:00
+> Generated at: 2026-11-04T19:43:34+03:00
 
 ## Current versions
 
@@ -47,9 +47,9 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 
 | Subject | Ch | Banks | Q | refs | long EN/AR | short EN/AR | fx | spr | local audit |
 |---|---:|---:|---:|---:|---|---|---:|---:|---|
-| `01_Cyber_Security` | 01 | 6 | 71 | 0 | 6/10 | 6/7 | 0 | 7 | needs work |
-| `01_Cyber_Security` | 02 | 8 | 92 | 0 | 6/6 | 6/5 | 0 | 8 | needs work |
-| `01_Cyber_Security` | 03 | 9 | 103 | 0 | 2/14 | 6/10 | 0 | 0 | clean |
+| `01_Cyber_Security` | 01 | 6 | 71 | 0 | 7/10 | 7/6 | 0 | 0 | clean |
+| `01_Cyber_Security` | 02 | 8 | 92 | 0 | 6/9 | 6/5 | 0 | 0 | clean |
+| `01_Cyber_Security` | 03 | 9 | 103 | 0 | 3/14 | 6/10 | 0 | 0 | clean |
 | `01_Cyber_Security` | 04 | 9 | 118 | 0 | 18/15 | 17/15 | 0 | 0 | clean |
 | `01_Cyber_Security` | 05 | 17 | 221 | 0 | 36/30 | 32/24 | 0 | 0 | clean |
 | `01_Cyber_Security` | 06 | 10 | 104 | 0 | 18/16 | 12/12 | 0 | 0 | clean |
@@ -77,8 +77,6 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 
 ## What remains
 
-- `01_Cyber_Security` Ch01 — 7 spread violations
-- `01_Cyber_Security` Ch02 — 8 spread violations
 - `03_Data_Mining` Ch02 — 20 handout refs
 - `03_Data_Mining` Ch03 — 16 handout refs
 - `03_Data_Mining` Ch05 — 3 handout refs

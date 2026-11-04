@@ -18,25 +18,25 @@
    "question": "What does disaster recovery planning cover?",
    "question_ar": "شنو يغطّي تخطيط التعافي من الكوارث؟",
    "options": [
-    "Replication, recovery-time and recovery-point objectives.",
     "Scanning frequency, patch cadence and release gates.",
     "Hiring plans, training budgets and audit schedules.",
-    "Encryption strength, key length and rotation policy."
+    "Encryption strength, key length and rotation policy.",
+    "Replication, recovery-time and recovery-point objectives."
    ],
    "options_ar": [
-    "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي.",
     "وتيرة الفحص، وجدولة الترقيع، وضوابط الإصدار.",
     "خطط التوظيف وميزانيات التدريب وجداول التدقيق.",
-    "قوة التشفير وطول المفتاح وسياسة تدوير المفاتيح."
+    "قوة التشفير وطول المفتاح وسياسة تدوير المفاتيح.",
+    "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي."
    ],
    "options_en": [
-    "Replication, recovery-time and recovery-point objectives.",
     "Scanning frequency, patch cadence and release gates.",
     "Hiring plans, training budgets and audit schedules.",
-    "Encryption strength, key length and rotation policy."
+    "Encryption strength, key length and rotation policy.",
+    "Replication, recovery-time and recovery-point objectives."
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "D",
+   "correct": 3,
    "explanation": "It ensures recovery from catastrophic events through replication across sites plus the two objectives that bound acceptable loss.",
    "explanation_ar": "يضمن التعافي من الأحداث الكارثية عبر التكرار بين المواقع مع الهدفين اللي يحدّان الخسارة المقبولة."
   },
@@ -160,8 +160,8 @@
    "id": "q6",
    "concept_id": "w6_continuity_perspectives",
    "bloom_level": "Remember",
-   "question": "Which set lists the four marked modern perspectives on reliability and continuity?",
-   "question_ar": "أي مجموعة تسرد المنظورات الحديثة الأربعة للاعتمادية والاستمرارية؟",
+   "question": "Which set names the four modern perspectives on reliability and continuity?",
+   "question_ar": "أي مجموعة تسمّي المنظورات الحديثة الأربعة للموثوقية والاستمرارية؟",
    "options": [
     "Code review, load testing, certificate renewal, and database compression.",
     "Cloud-native resilience, predictive AI, Zero Trust, and tamper-proof records.",
@@ -169,10 +169,10 @@
     "Static scanning, quarterly patching, trusted networks, and local-only backups."
    ],
    "options_ar": [
-    "مراجعة الكود، واختبار الحمل، وتجديد الشهادات، وضغط قواعد البيانات.",
-    "مرونة سحابية، وتنبؤ بالذكاء الاصطناعي، وZero Trust، وسجلات بلوكتشين.",
-    "جدران المحيط، والتدقيق السنوي، وتدوير كلمات المرور، وخطط التعافي اليدوية.",
-    "الفحص الساكن، والترقيع الفصلي، والثقة بالشبكات، والنسخ المحلي فقط."
+    "مراجعة الكود، واختبار الحمل، وتجديد الشهادات، وضغط قواعد البيانات هنا تماماً.",
+    "مرونة سحابية، وتنبؤ بالذكاء الاصطناعي، وZero Trust، وسجلات غير قابلة للتلاعب.",
+    "جدران محيطية، وتدقيق سنوي، وتدوير كلمات المرور، وخطط استعادة يدوية هنا تماماً.",
+    "فحص ساكن، وترقيع فصلي، وشبكات موثوقة، ونسخ احتياطي محلي فقط هنا تماماً."
    ],
    "options_en": [
     "Code review, load testing, certificate renewal, and database compression.",
@@ -182,8 +182,8 @@
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "The four are cloud-native architectures, AI-driven prediction, Zero Trust and blockchain-based records.",
-   "explanation_ar": "المنظورات الأربعة هي بنى السحابة الأصلية، والتنبؤ المعتمد على AI، وZero Trust، والسجلات القائمة على blockchain."
+   "explanation": "The modern set moves to cloud resilience, prediction, Zero Trust and tamper-proof records.",
+   "explanation_ar": "المجموعة الحديثة تنتقل إلى المرونة السحابية والتنبؤ وZero Trust والسجلات المحصّنة."
   },
   {
    "id": "q7",
@@ -218,30 +218,30 @@
    "id": "q8",
    "concept_id": "w6_marked_case_studies",
    "bloom_level": "Remember",
-   "question": "Which set contains the three marked vulnerability case studies?",
-   "question_ar": "أي مجموعة تضم دراسات الحالات الثلاث المحددة عن الثغرات؟",
+   "question": "Which incident is the classic example of a supply-chain compromise?",
+   "question_ar": "أي حادثة هي المثال الكلاسيكي لاختراق سلسلة التوريد؟",
    "options": [
-    "WannaCry, the Target breach, and Stuxnet.",
-    "SolarWinds, NotPetya, and the Colonial Pipeline incident.",
-    "The Morris worm, Mirai, and the Dyn service outage.",
-    "Heartbleed, the Equifax breach, and Log4Shell."
+    "the SolarWinds compromise",
+    "the WannaCry global outbreak",
+    "the Mirai botnet attack",
+    "the Heartbleed design flaw"
    ],
    "options_ar": [
-    "WannaCry، واختراق Target، وStuxnet.",
-    "SolarWinds، وNotPetya، وColonial Pipeline.",
-    "دودة Morris، وMirai، وانقطاع خدمة Dyn.",
-    "Heartbleed، واختراق Equifax، وLog4Shell."
+    "اختراق SolarWinds",
+    "هجوم WannaCry هنا",
+    "بوتنت Mirai الواسع",
+    "ثغرة Heartbleed"
    ],
    "options_en": [
-    "WannaCry, the Target breach, and Stuxnet.",
-    "SolarWinds, NotPetya, and the Colonial Pipeline incident.",
-    "The Morris worm, Mirai, and the Dyn service outage.",
-    "Heartbleed, the Equifax breach, and Log4Shell."
+    "the SolarWinds compromise",
+    "the WannaCry global outbreak",
+    "the Mirai botnet attack",
+    "the Heartbleed design flaw"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The three examples are Heartbleed, Equifax and Log4Shell, illustrating library, delayed-patching and supply-chain risks.",
-   "explanation_ar": "الأمثلة الثلاثة هي Heartbleed وEquifax وLog4Shell، وتمثل مخاطر المكتبات وتأخر الترقيع وسلسلة التوريد."
+   "answer": "A",
+   "correct": 0,
+   "explanation": "SolarWinds is the textbook supply-chain case: a trusted vendor update carried the attacker in.",
+   "explanation_ar": "SolarWinds هي الحالة الكلاسيكية: تحديث من مورّد موثوق أدخل المهاجم إلى الأنظمة."
   },
   {
    "id": "q9",

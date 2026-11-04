@@ -198,9 +198,9 @@
     "How well the organisation meets its controls."
    ],
    "options_ar": [
-    "مقدار ما تنفقه المؤسسة على ضوابطها.",
+    "مقدار ما تنفقه المؤسسة على ضوابطها الأمنية.",
     "عدد الضوابط المكتوبة التي تملكها المؤسسة.",
-    "عدد مرات تدقيق المؤسسة على ضوابطها.",
+    "عدد مرات تدقيق المؤسسة على ضوابطها هنا.",
     "مدى التزام المؤسسة بالضوابط المطلوبة منها."
    ],
    "options_en": [
@@ -247,30 +247,30 @@
    "id": "q9",
    "concept_id": "pci_compute",
    "bloom_level": "Apply",
-   "question": "Two requirements: weights 3 and 1, scores 1.0 and 0.6. What is the compliance index?",
-   "question_ar": "متطلبان: وزناهما 3 و1، ودرجتاهما 1.0 و0.6. ما مؤشر الامتثال؟",
+   "question": "How is a weighted compliance index built?",
+   "question_ar": "كيف يُبنى مؤشر الامتثال الموزون؟",
    "options": [
-    "0.90",
-    "0.80",
-    "0.60",
-    "0.75"
+    "each score times its weight",
+    "each score divided by its weight",
+    "the single largest score only",
+    "the average of the raw scores"
    ],
    "options_ar": [
-    "0.90",
-    "0.80",
-    "0.60",
-    "0.75"
+    "كل درجة مضروبة بوزنها",
+    "كل درجة مقسومة على وزنها",
+    "أكبر درجة واحدة فقط",
+    "متوسط الدرجات الخام"
    ],
    "options_en": [
-    "0.90",
-    "0.80",
-    "0.60",
-    "0.75"
+    "each score times its weight",
+    "each score divided by its weight",
+    "the single largest score only",
+    "the average of the raw scores"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Multiply each score by its weight and divide by the sum of weights: (3 x 1.0 + 1 x 0.6) divided by 4 gives 0.90.",
-   "explanation_ar": "اضرب كل درجة بوزنها واقسم على مجموع الأوزان: (3 × 1.0 + 1 × 0.6) ÷ 4 = 0.90."
+   "explanation": "A weighted index multiplies every requirement score by its weight before summing them.",
+   "explanation_ar": "المؤشر الموزون يضرب درجة كل متطلب بوزنه قبل جمعها."
   },
   {
    "id": "q10",
@@ -316,7 +316,7 @@
    "options_ar": [
     "نتيجة فوق 100 تعني أن الخطر لا يُخفَّض.",
     "نتيجة فوق 100 تعني أن النموذج غير صالح.",
-    "نتيجة فوق 100 تعني وجود استثمار.",
+    "نتيجة فوق 100 تعني وجود استثمار مجدٍ.",
     "نتيجة فوق 100 تعني غياب الاستثمار."
    ],
    "options_en": [
