@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch02_B02_Incremental_And_Iterative",
+ "topic": "Incremental and Iterative Enhancement",
+ "topic_ar": "التطوير التزايدي والتحسين التكراري",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch2_iterative_model",
+   "bloom_level": "Understand",
+   "question": "Which model is explicitly iterative?",
+   "question_ar": "أي نموذج تكرارى صراحةً؟",
+   "options": [
+    "the waterfall model",
+    "the build and fix one",
+    "the RAD model here",
+    "the spiral model here"
+   ],
+   "options_en": [
+    "the waterfall model",
+    "the build and fix one",
+    "the RAD model here",
+    "the spiral model here"
+   ],
+   "options_ar": [
+    "نموذج الشلال هنا أيضاً",
+    "نموذج البناء والإصلاح",
+    "نموذج RAD هنا الآن هنا",
+    "النموذج الحلزوني مجدداً"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The spiral repeats its loop until the risk is acceptable, which makes it iterative.",
+   "explanation_ar": "الحلزوني يعيد دورته حتى يصبح الخطر مقبولاً، وهذا ما يجعله تكرارياً."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch2_inc_delivers",
+   "bloom_level": "Understand",
+   "question": "What does incremental development deliver?",
+   "question_ar": "ماذا يسلّم التطوير التزايدي؟",
+   "options": [
+    "the test plan only here now again",
+    "working increments of the product",
+    "one single final delivery too",
+    "a frozen specification first here"
+   ],
+   "options_en": [
+    "the test plan only here now again",
+    "working increments of the product",
+    "one single final delivery too",
+    "a frozen specification first here"
+   ],
+   "options_ar": [
+    "خطة الاختبار فقط هنا",
+    "دفعات عاملة من المنتج",
+    "تسليماً نهائياً واحداً",
+    "مواصفة مجمّدة أولاً"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Each increment adds usable functionality that the customer can actually run.",
+   "explanation_ar": "كل دفعة تضيف وظيفة صالحة يمكن للعميل تشغيلها فعلاً."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch2_iter_repeats",
+   "bloom_level": "Understand",
+   "question": "What does iterative development repeat?",
+   "question_ar": "ماذا يعيد التطوير التكراري؟",
+   "options": [
+    "the requirement gathering only too",
+    "the final acceptance test here again",
+    "refinement cycles over the same work",
+    "the whole project from zero now"
+   ],
+   "options_en": [
+    "the requirement gathering only too",
+    "the final acceptance test here again",
+    "refinement cycles over the same work",
+    "the whole project from zero now"
+   ],
+   "options_ar": [
+    "جمع المتطلبات فقط هنا أيضاً",
+    "اختبار القبول النهائي مجدداً",
+    "دورات تنقيح على العمل نفسه",
+    "المشروع كله من الصفر الآن"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Iteration revisits the same artefact and improves it, rather than adding new scope.",
+   "explanation_ar": "التكرار يعود للأثر نفسه ويحسّنه، بدل إضافة نطاق جديد."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch2_inc_vs_iter",
+   "bloom_level": "Analyze",
+   "question": "Which one adds new functionality?",
+   "question_ar": "أي واحد يضيف وظيفة جديدة؟",
+   "options": [
+    "neither adds scope here",
+    "incremental development",
+    "iterative development",
+    "both add the same scope"
+   ],
+   "options_en": [
+    "neither adds scope here",
+    "incremental development",
+    "iterative development",
+    "both add the same scope"
+   ],
+   "options_ar": [
+    "لا أحد يضيف نطاقاً أيضاً",
+    "التطوير التزايدي هنا مجدداً",
+    "التطوير التكراري الآن هنا",
+    "كلاهما يضيف النطاق نفسه الآن"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Increments grow the scope; iterations refine what already exists.",
+   "explanation_ar": "الدفعات توسّع النطاق، والتكرارات تنقّح الموجود."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch2_iter_refines",
+   "bloom_level": "Analyze",
+   "question": "Which one reworks the same functionality?",
+   "question_ar": "أي واحد يعيد العمل على الوظيفة نفسها؟",
+   "options": [
+    "both work the same way now",
+    "neither reworks anything",
+    "iterative development here",
+    "incremental development"
+   ],
+   "options_en": [
+    "both work the same way now",
+    "neither reworks anything",
+    "iterative development here",
+    "incremental development"
+   ],
+   "options_ar": [
+    "كلاهما بالطريقة نفسها",
+    "لا أحد يعيد العمل",
+    "التطوير التكراري هنا",
+    "التطوير التزايدي الآن"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Iteration is refinement of the same slice, driven by feedback.",
+   "explanation_ar": "التكرار تنقيح للشريحة نفسها مدفوعاً بالتغذية الراجعة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch2_inc_risk",
+   "bloom_level": "Understand",
+   "question": "What is the main risk of incremental delivery?",
+   "question_ar": "ما الخطر الأساسي للتسليم التزايدي؟",
+   "options": [
+    "too much documentation here again too",
+    "a frozen design too early now here again",
+    "no customer contact at all too now",
+    "integration problems between increments"
+   ],
+   "options_en": [
+    "too much documentation here again too",
+    "a frozen design too early now here again",
+    "no customer contact at all too now",
+    "integration problems between increments"
+   ],
+   "options_ar": [
+    "توثيق أكثر من اللازم",
+    "تصميم مجمّد مبكراً هنا",
+    "انعدام التواصل مع العميل",
+    "مشاكل تكامل بين الدفعات"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Separately built increments can clash at their interfaces if integration is deferred.",
+   "explanation_ar": "الدفعات المبنية منفصلة قد تتصادم عند واجهاتها إذا أُجّل التكامل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch2_inc_each_ends",
+   "bloom_level": "Remember",
+   "question": "Each increment should end with...",
+   "question_ar": "كل دفعة يجب أن تنتهي بـ...",
+   "options": [
+    "a usable release",
+    "a design document",
+    "a cost report here",
+    "a risk register"
+   ],
+   "options_en": [
+    "a usable release",
+    "a design document",
+    "a cost report here",
+    "a risk register"
+   ],
+   "options_ar": [
+    "إصدار صالح للاستخدام",
+    "وثيقة تصميم أيضاً",
+    "تقرير كلفة الآن هنا",
+    "سجل مخاطر هنا مجدداً"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "An increment that cannot be used delivers no feedback, so it must end runnable.",
+   "explanation_ar": "الدفعة غير القابلة للاستخدام لا تعطي تغذية راجعة، فتنتهي قابلة للتشغيل."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch2_inc_change_cost",
+   "bloom_level": "Analyze",
+   "question": "Why is change cheaper under incremental delivery?",
+   "question_ar": "لماذا التغيير أرخص في التسليم التزايدي؟",
+   "options": [
+    "feedback arrives early now",
+    "no testing is needed here",
+    "the team is always larger",
+    "the requirements are frozen"
+   ],
+   "options_en": [
+    "feedback arrives early now",
+    "no testing is needed here",
+    "the team is always larger",
+    "the requirements are frozen"
+   ],
+   "options_ar": [
+    "التغذية الراجعة تصل مبكراً",
+    "لا حاجة للاختبار هنا مجدداً",
+    "الفريق أكبر دائماً أيضاً",
+    "المتطلبات مجمّدة الآن هنا"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Early increments expose mistakes while they are still cheap to correct.",
+   "explanation_ar": "الدفعات المبكرة تكشف الأخطاء وهي ما تزال رخيصة التصحيح."
+  }
+ ]
+}

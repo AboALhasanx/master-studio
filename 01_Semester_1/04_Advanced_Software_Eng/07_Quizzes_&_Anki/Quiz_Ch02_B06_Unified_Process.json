@@ -7,41 +7,12 @@
  "instructor_ar": "أ.م.د. علي فاهم نعمة",
  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
  "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_T04_Unified_Process",
- "topic": "Unified Process and Model Phases",
- "topic_ar": "العملية الموحّدة ومراحل النموذج",
+ "quiz_id": "Quiz_Ch02_B06_Unified_Process",
+ "topic": "The Unified Process",
+ "topic_ar": "العملية الموحّدة",
  "questions": [
   {
    "id": "q1",
-   "concept_id": "ch2_build_fix_phases",
-   "bloom_level": "Remember",
-   "question": "The Build and Fix model has...",
-   "question_ar": "نموذج البناء والإصلاح يتكوّن من...",
-   "options": [
-    "two phases",
-    "three phases",
-    "one phase",
-    "four phases"
-   ],
-   "options_ar": [
-    "مرحلتان فقط هنا",
-    "ثلاث مراحل كاملة",
-    "مرحلة واحدة فقط",
-    "أربع مراحل كاملة"
-   ],
-   "options_en": [
-    "two phases",
-    "three phases",
-    "one phase",
-    "four phases"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Build and fix has only two phases: build the code, then fix what breaks.",
-   "explanation_ar": "البناء والإصلاح له مرحلتان فقط: بناء الكود ثم إصلاح ما ينكسر."
-  },
-  {
-   "id": "q2",
    "concept_id": "ch2_up_maintainer",
    "bloom_level": "Remember",
    "question": "The Unified Process is maintained by...",
@@ -70,7 +41,7 @@
    "explanation_ar": "شركة راشيونال للبرمجيات هي التي حافظت على العملية الموحّدة ولغة UML المرافقة."
   },
   {
-   "id": "q3",
+   "id": "q2",
    "concept_id": "ch2_up_nature",
    "bloom_level": "Understand",
    "question": "The Unified Process is...",
@@ -99,7 +70,7 @@
    "explanation_ar": "هي تكرارية وتزايدية وتطورية في الوقت نفسه، فالثلاثة تنطبق."
   },
   {
-   "id": "q4",
+   "id": "q3",
    "concept_id": "ch2_up_not_member",
    "bloom_level": "Understand",
    "question": "Who is NOT part of the team that developed the Unified Process?",
@@ -128,7 +99,7 @@
    "explanation_ar": "الثلاثة هم جاكوبسون وبوتش ورامبو، أما بوم فيعود للنموذج الحلزوني."
   },
   {
-   "id": "q5",
+   "id": "q4",
    "concept_id": "ch2_up_phases",
    "bloom_level": "Remember",
    "question": "How many phases are in the Unified Process?",
@@ -157,7 +128,7 @@
    "explanation_ar": "المراحل الأربع هي البداية والتفصيل والبناء والانتقال."
   },
   {
-   "id": "q6",
+   "id": "q5",
    "concept_id": "ch2_up_elaboration",
    "bloom_level": "Understand",
    "question": "Which Unified Process phase produces the executable architecture?",
@@ -186,7 +157,7 @@
    "explanation_ar": "مرحلة التفصيل هي التي تُنفَّذ فيها المتطلبات الخطرة كهيكل عامل."
   },
   {
-   "id": "q7",
+   "id": "q6",
    "concept_id": "ch2_construction_outcome",
    "bloom_level": "Understand",
    "question": "The outcome of the construction phase can be treated as...",
@@ -215,7 +186,7 @@
    "explanation_ar": "البناء ينتهي بنسخة مكتملة بما يكفي لتعامل كإصدار بيتا."
   },
   {
-   "id": "q8",
+   "id": "q7",
    "concept_id": "ch2_up_transition",
    "bloom_level": "Understand",
    "question": "Which Unified Process phase delivers the system to its users?",
@@ -242,6 +213,35 @@
    "correct": 3,
    "explanation": "Transition is where the finished build is handed over and deployed to users.",
    "explanation_ar": "الانتقال هو حيث تُسلَّم النسخة المكتملة وتُنشر للمستخدمين."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch2_up_inception",
+   "bloom_level": "Remember",
+   "question": "Which phase starts the Unified Process?",
+   "question_ar": "أي مرحلة تبدأ العملية الموحّدة؟",
+   "options": [
+    "inception here",
+    "elaboration too",
+    "construction",
+    "transition now"
+   ],
+   "options_en": [
+    "inception here",
+    "elaboration too",
+    "construction",
+    "transition now"
+   ],
+   "options_ar": [
+    "البداية الآن الآن الآن الآن",
+    "التفصيل أيضاً أيضاً أيضاً",
+    "البناء هنا هنا مجدداً هنا",
+    "الانتقال مجدداً هنا مجدداً"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Inception establishes the business case and the project scope.",
+   "explanation_ar": "البداية تثبّت الحالة التجارية ونطاق المشروع."
   }
  ]
 }

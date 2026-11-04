@@ -7,9 +7,9 @@
  "instructor_ar": "أ.م.د. علي فاهم نعمة",
  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
  "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_T02_Choosing_A_Model",
- "topic": "Choosing a Model by Project Situation",
- "topic_ar": "اختيار النموذج حسب حالة المشروع",
+ "quiz_id": "Quiz_Ch02_B07_Selecting_A_Model",
+ "topic": "Selecting a Life-Cycle Model",
+ "topic_ar": "اختيار نموذج دورة الحياة",
  "questions": [
   {
    "id": "q1",
@@ -18,25 +18,25 @@
    "question": "If the requirements are easily understood and well defined, which model fits best?",
    "question_ar": "إذا كانت المتطلبات مفهومة ومحددة جيداً، أي نموذج يناسب أكثر؟",
    "options": [
-    "the Waterfall model here",
-    "the Prototyping model here",
     "the Spiral model here now",
-    "none of the above at all"
+    "none of the above at all",
+    "the Waterfall model here",
+    "the Prototyping model here"
    ],
    "options_ar": [
-    "نموذج الشلال هنا الآن",
-    "نموذج النمذجة الأولية",
     "النموذج الحلزوني هنا",
-    "لا شيء مما سبق هنا"
+    "لا شيء مما سبق هنا",
+    "نموذج الشلال هنا الآن",
+    "نموذج النمذجة الأولية"
    ],
    "options_en": [
-    "the Waterfall model here",
-    "the Prototyping model here",
     "the Spiral model here now",
-    "none of the above at all"
+    "none of the above at all",
+    "the Waterfall model here",
+    "the Prototyping model here"
    ],
-   "answer": "A",
-   "correct": 0,
+   "answer": "C",
+   "correct": 2,
    "explanation": "Stable, well understood requirements suit the linear waterfall sequence.",
    "explanation_ar": "المتطلبات المستقرة المفهومة تناسب تسلسل الشلال الخطي."
   },
@@ -187,35 +187,6 @@
   },
   {
    "id": "q7",
-   "concept_id": "ch2_new_technology",
-   "bloom_level": "Apply",
-   "question": "The most suitable model for new technology that is not well understood is...",
-   "question_ar": "النموذج الأنسب لتقنية جديدة غير مفهومة جيداً هو...",
-   "options": [
-    "the RAD model here now at all",
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here"
-   ],
-   "options_ar": [
-    "نموذج RAD السريع هنا",
-    "نموذج التحسين التكراري",
-    "نموذج التطوير التطوري",
-    "نموذج الشلال هنا الآن"
-   ],
-   "options_en": [
-    "the RAD model here now at all",
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "When the technology is unclear, the product must evolve as understanding grows.",
-   "explanation_ar": "عندما تكون التقنية غير واضحة يجب أن يتطور المنتج مع نمو الفهم."
-  },
-  {
-   "id": "q8",
    "concept_id": "ch2_small_clear",
    "bloom_level": "Apply",
    "question": "Which model suits a small project with stable requirements?",
@@ -242,6 +213,35 @@
    "correct": 3,
    "explanation": "Stable requirements and a small scope fit the straight waterfall sequence.",
    "explanation_ar": "المتطلبات المستقرة والنطاق الصغير يناسبهما تسلسل الشلال المباشر."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch2_selection_driver",
+   "bloom_level": "Analyze",
+   "question": "Which pair dominates the choice of a life-cycle model?",
+   "question_ar": "أي زوجين يحكمان اختيار نموذج دورة الحياة؟",
+   "options": [
+    "requirement stability and risk",
+    "team size and office space",
+    "compiler choice and hardware",
+    "document length and font here"
+   ],
+   "options_en": [
+    "requirement stability and risk",
+    "team size and office space",
+    "compiler choice and hardware",
+    "document length and font here"
+   ],
+   "options_ar": [
+    "استقرار المتطلبات والمخاطر",
+    "حجم الفريق ومساحة المكتب",
+    "اختيار المترجم والعتاد",
+    "طول الوثيقة والخط هنا الآن"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Stable requirements and low risk point to waterfall; instability and high risk point elsewhere.",
+   "explanation_ar": "المتطلبات المستقرة والمخاطر المنخفضة تشير للشلال، وعدم الاستقرار والمخاطر العالية لغيرها."
   }
  ]
 }

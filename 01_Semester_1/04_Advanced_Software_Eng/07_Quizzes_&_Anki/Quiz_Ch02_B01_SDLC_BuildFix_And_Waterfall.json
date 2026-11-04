@@ -1,0 +1,276 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch02_B01_SDLC_BuildFix_And_Waterfall",
+ "topic": "SDLC, Build & Fix and Waterfall",
+ "topic_ar": "دورة الحياة والبناء والإصلاح والشلال",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch2_student_model",
+   "bloom_level": "Understand",
+   "question": "Which model is the most popular one for a student's small project?",
+   "question_ar": "أي نموذج هو الأكثر شيوعاً لمشروع طالب صغير؟",
+   "options": [
+    "the Prototyping model",
+    "the Quick and fix model",
+    "the Waterfall model here",
+    "the Spiral model here"
+   ],
+   "options_ar": [
+    "نموذج النمذجة الأولية",
+    "نموذج سريع وإصلاح هنا",
+    "نموذج الشلال هنا الآن",
+    "النموذج الحلزوني هنا"
+   ],
+   "options_en": [
+    "the Prototyping model",
+    "the Quick and fix model",
+    "the Waterfall model here",
+    "the Spiral model here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Small exercises are written first and fixed later, which is the quick and fix model.",
+   "explanation_ar": "التمارين الصغيرة تُكتب أولاً ثم تُصلح، وهذا هو نموذج سريع وإصلاح."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch2_not_lifecycle",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a software life cycle model?",
+   "question_ar": "أي واحد ليس نموذج دورة حياة برمجيات؟",
+   "options": [
+    "the Prototyping life cycle model",
+    "the Capability maturity model",
+    "the Waterfall life cycle model",
+    "the Spiral life cycle model"
+   ],
+   "options_ar": [
+    "نموذج النمذجة لدورة الحياة",
+    "نموذج النضج والقدرات هنا",
+    "نموذج الشلال لدورة الحياة",
+    "النموذج الحلزوني لدورة الحياة"
+   ],
+   "options_en": [
+    "the Prototyping life cycle model",
+    "the Capability maturity model",
+    "the Waterfall life cycle model",
+    "the Spiral life cycle model"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "CMM appraises how mature an organization's process is; it does not define development phases.",
+   "explanation_ar": "نموذج النضج يقيس نضج عملية المنظمة، ولا يحدد مراحل التطوير."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch2_sdlc",
+   "bloom_level": "Remember",
+   "question": "SDLC stands for...",
+   "question_ar": "SDLC تعني...",
+   "options": [
+    "Software design life cycle here",
+    "System development life cycle here",
+    "System design life cycle here",
+    "Software development life cycle"
+   ],
+   "options_ar": [
+    "دورة حياة تصميم البرمجيات",
+    "دورة حياة تطوير الأنظمة",
+    "دورة حياة تصميم الأنظمة",
+    "دورة حياة تطوير البرمجيات"
+   ],
+   "options_en": [
+    "Software design life cycle here",
+    "System development life cycle here",
+    "System design life cycle here",
+    "Software development life cycle"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "SDLC expands to Software Development Life Cycle, the phases a product passes through.",
+   "explanation_ar": "SDLC تعني دورة حياة تطوير البرمجيات، وهي المراحل التي يمر بها المنتج."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch2_not_a_phase",
+   "bloom_level": "Understand",
+   "question": "Which phase is NOT available in the software life cycle?",
+   "question_ar": "أي مرحلة ليست موجودة في دورة حياة البرمجيات؟",
+   "options": [
+    "the testing phase",
+    "the maintenance phase",
+    "the abstraction phase",
+    "the coding phase here"
+   ],
+   "options_ar": [
+    "مرحلة الاختبار",
+    "مرحلة الصيانة",
+    "مرحلة التجريد",
+    "مرحلة الترميز"
+   ],
+   "options_en": [
+    "the testing phase",
+    "the maintenance phase",
+    "the abstraction phase",
+    "the coding phase here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Coding, testing and maintenance are phases; abstraction is a design technique, not a phase.",
+   "explanation_ar": "الترميز والاختبار والصيانة مراحل، أما التجريد فأسلوب تصميم لا مرحلة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch2_waterfall_unsuitable",
+   "bloom_level": "Understand",
+   "question": "The Waterfall model is not suitable for...",
+   "question_ar": "نموذج الشلال غير مناسب لـ...",
+   "options": [
+    "accommodating change",
+    "the small projects",
+    "the complex projects",
+    "none of the above here"
+   ],
+   "options_ar": [
+    "استيعاب التغيير",
+    "المشاريع الصغيرة",
+    "المشاريع المعقدة",
+    "لا شيء مما سبق"
+   ],
+   "options_en": [
+    "accommodating change",
+    "the small projects",
+    "the complex projects",
+    "none of the above here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Waterfall freezes each phase, so later change is expensive rather than accommodated.",
+   "explanation_ar": "الشلال يجمّد كل مرحلة، فيصبح التغيير المتأخر مكلفاً لا مستوعباً."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch2_errors_phase",
+   "bloom_level": "Understand",
+   "question": "Statistically, the largest share of errors belongs to which phase?",
+   "question_ar": "إحصائياً، أي مرحلة تحمل النصيب الأكبر من الأخطاء؟",
+   "options": [
+    "the specifications phase",
+    "the coding phase now",
+    "the design phase here now",
+    "the installation phase here"
+   ],
+   "options_ar": [
+    "مرحلة المواصفات",
+    "مرحلة الترميز هنا",
+    "مرحلة التصميم هنا",
+    "مرحلة التنصيب هنا"
+   ],
+   "options_en": [
+    "the specifications phase",
+    "the coding phase now",
+    "the design phase here now",
+    "the installation phase here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Most defects are born in the specification phase, even when they surface later.",
+   "explanation_ar": "أكثر العيوب تولد في مرحلة المواصفات، حتى لو ظهرت لاحقاً."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch2_linear",
+   "bloom_level": "Understand",
+   "question": "Development is supposed to proceed linearly through the phases in...",
+   "question_ar": "يُفترض أن يسير التطوير خطياً عبر المراحل في...",
+   "options": [
+    "the Prototyping model",
+    "none of the above here",
+    "the Waterfall model now",
+    "the Spiral model here"
+   ],
+   "options_ar": [
+    "نموذج النمذجة الأولية",
+    "لا شيء مما سبق هنا",
+    "نموذج الشلال هنا الآن",
+    "النموذج الحلزوني هنا"
+   ],
+   "options_en": [
+    "the Prototyping model",
+    "none of the above here",
+    "the Waterfall model now",
+    "the Spiral model here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Only the waterfall moves once through specification, design, coding and testing.",
+   "explanation_ar": "الشلال وحده يمر مرة واحدة بالمواصفات والتصميم والترميز والاختبار."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch2_waterfall_docs",
+   "bloom_level": "Understand",
+   "question": "Which model demands the heaviest documentation?",
+   "question_ar": "أي نموذج يطلب أكبر قدر من التوثيق؟",
+   "options": [
+    "the RAD model here now",
+    "the Prototyping model",
+    "the Evolutionary model",
+    "the Waterfall model now"
+   ],
+   "options_en": [
+    "the RAD model here now",
+    "the Prototyping model",
+    "the Evolutionary model",
+    "the Waterfall model now"
+   ],
+   "options_ar": [
+    "نموذج RAD السريع هنا",
+    "نموذج النمذجة الأولية",
+    "النموذج التطوري هنا",
+    "نموذج الشلال هنا الآن"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Every waterfall phase ends in a signed document, so the paperwork is heaviest.",
+   "explanation_ar": "كل مرحلة في الشلال تنتهي بوثيقة موقّعة، فالأوراق هي الأثقل."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch2_build_fix_phases",
+   "bloom_level": "Remember",
+   "question": "The Build and Fix model has...",
+   "question_ar": "نموذج البناء والإصلاح يتكوّن من...",
+   "options": [
+    "two phases",
+    "three phases",
+    "one phase",
+    "four phases"
+   ],
+   "options_ar": [
+    "مرحلتان فقط هنا",
+    "ثلاث مراحل كاملة",
+    "مرحلة واحدة فقط",
+    "أربع مراحل كاملة"
+   ],
+   "options_en": [
+    "two phases",
+    "three phases",
+    "one phase",
+    "four phases"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Build and fix has only two phases: build the code, then fix what breaks.",
+   "explanation_ar": "البناء والإصلاح له مرحلتان فقط: بناء الكود ثم إصلاح ما ينكسر."
+  }
+ ]
+}
