@@ -1,0 +1,305 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch06_B03_Halstead_Software_Science",
+ "topic": "Halstead's Software Science",
+ "topic_ar": "علم البرمجيات لهالستيد",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch6_halstead_author",
+   "bloom_level": "Remember",
+   "question": "Software science measures were developed by...",
+   "question_ar": "طوّر مقاييس علم البرمجيات...",
+   "options": [
+    "M. Halstead here",
+    "B. Littlewood",
+    "T. J. McCabe now",
+    "G. Rothermal too"
+   ],
+   "options_ar": [
+    "إم هالستيد",
+    "بي ليتلوود",
+    "تي جي مكيب",
+    "جي روثرمل"
+   ],
+   "options_en": [
+    "M. Halstead here",
+    "B. Littlewood",
+    "T. J. McCabe now",
+    "G. Rothermal too"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Maurice Halstead built the software science family of measures from operator and operand counts.",
+   "explanation_ar": "موريس هالستيد بنى عائلة مقاييس علم البرمجيات من عدّ المعاملات والمتغيرات."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch6_vocabulary_def",
+   "bloom_level": "Understand",
+   "question": "How is the vocabulary of a program defined?",
+   "question_ar": "كيف يُعرَّف معجم البرنامج؟",
+   "options": [
+    "the ratio between them here too here",
+    "the sum of unique operators and operands",
+    "the product of unique operators and operands",
+    "the difference between them now again"
+   ],
+   "options_ar": [
+    "النسبة بينهما الآن مجدداً الآن",
+    "مجموع المعاملات والمتغيرات الفريدة",
+    "حاصل ضرب المعاملات والمتغيرات الفريدة",
+    "الفرق بينهما هنا أيضاً هنا أيضاً"
+   ],
+   "options_en": [
+    "the ratio between them here too here",
+    "the sum of unique operators and operands",
+    "the product of unique operators and operands",
+    "the difference between them now again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Vocabulary adds the count of distinct operators to the count of distinct operands.",
+   "explanation_ar": "المعجم يجمع عدد المعاملات المتميزة مع عدد المتغيرات المتميزة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch6_volume_bits",
+   "bloom_level": "Understand",
+   "question": "What does Halstead mean when he says volume is measured in bits?",
+   "question_ar": "ماذا يعني هالستيد بأن الحجم يُقاس بالبت؟",
+   "options": [
+    "the bits needed to execute it here",
+    "none of the above here now too now",
+    "the storage the program needs again",
+    "its size under uniform binary encoding"
+   ],
+   "options_ar": [
+    "البتات اللازمة لتنفيذه أيضاً",
+    "لا شيء مما سبق هنا الآن هنا",
+    "الذاكرة التي يحتاجها البرنامج",
+    "حجمه بترميز ثنائي موحّد مجدداً"
+   ],
+   "options_en": [
+    "the bits needed to execute it here",
+    "none of the above here now too now",
+    "the storage the program needs again",
+    "its size under uniform binary encoding"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Volume is the information content of the program if every token were encoded uniformly.",
+   "explanation_ar": "الحجم هو محتوى المعلومات في البرنامج لو رُمّز كل رمز ترميزاً موحداً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch6_effort_unit",
+   "bloom_level": "Remember",
+   "question": "In Halstead theory, effort is measured in...",
+   "question_ar": "في نظرية هالستيد، يُقاس الجهد بـ...",
+   "options": [
+    "hours here now again too now",
+    "elementary mental discriminations",
+    "none of the above now again",
+    "person-months too here here"
+   ],
+   "options_ar": [
+    "ساعات هنا الآن مجدداً",
+    "تمييزات ذهنية أولية",
+    "لا شيء مما سبق هنا",
+    "أشهر عمل شخصية أيضاً"
+   ],
+   "options_en": [
+    "hours here now again too now",
+    "elementary mental discriminations",
+    "none of the above now again",
+    "person-months too here here"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Effort counts the elementary mental discriminations a programmer must make.",
+   "explanation_ar": "الجهد يعدّ التمييزات الذهنية الأولية التي يقوم بها المبرمج."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch6_language_level",
+   "bloom_level": "Understand",
+   "question": "How is the language level defined?",
+   "question_ar": "كيف يُعرَّف مستوى اللغة؟",
+   "options": [
+    "the square of level times volume",
+    "level times volume here now again",
+    "level times potential volume",
+    "level cubed times volume too"
+   ],
+   "options_ar": [
+    "مربع المستوى مضروباً بالحجم",
+    "المستوى مضروباً بالحجم هنا",
+    "المستوى مضروباً بالحجم الكامن",
+    "مكعب المستوى مضروباً بالحجم"
+   ],
+   "options_en": [
+    "the square of level times volume",
+    "level times volume here now again",
+    "level times potential volume",
+    "level cubed times volume too"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The language level rises with the square of the level, scaled by the volume.",
+   "explanation_ar": "مستوى اللغة يرتفع بمربع المستوى مضروباً بالحجم."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch6_not_a_measure",
+   "bloom_level": "Understand",
+   "question": "Which one is NOT a measure of software science theory?",
+   "question_ar": "أي واحد ليس مقياساً في نظرية علم البرمجيات؟",
+   "options": [
+    "logic now",
+    "vocabulary",
+    "volume too",
+    "level here"
+   ],
+   "options_ar": [
+    "المنطق أيضاً أيضاً مجدداً هنا",
+    "المعجم الآن الآن الآن الآن",
+    "الحجم هنا هنا مجدداً هنا",
+    "المستوى مجدداً هنا أيضاً"
+   ],
+   "options_en": [
+    "logic now",
+    "vocabulary",
+    "volume too",
+    "level here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The family covers vocabulary, length, volume, level, difficulty and effort; logic is not one.",
+   "explanation_ar": "العائلة تشمل المعجم والطول والحجم والمستوى والصعوبة والجهد، و«المنطق» ليس منها."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch6_mental_discriminations",
+   "bloom_level": "Remember",
+   "question": "How many elementary mental discriminations can a human mind make per second?",
+   "question_ar": "كم تمييزاً ذهنياً أولياً يقدر العقل البشري على إجرائه في الثانية؟",
+   "options": [
+    "one to ten here",
+    "forty to eighty",
+    "five to twenty",
+    "twenty to forty"
+   ],
+   "options_ar": [
+    "واحد إلى عشرة هنا مجدداً",
+    "أربعين إلى ثمانين هنا",
+    "خمسة إلى عشرين الآن الآن",
+    "عشرين إلى أربعين أيضاً"
+   ],
+   "options_en": [
+    "one to ten here",
+    "forty to eighty",
+    "five to twenty",
+    "twenty to forty"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Halstead took the human discrimination rate as five to twenty per second.",
+   "explanation_ar": "اعتبر هالستيد معدل التمييز البشري من خمسة إلى عشرين في الثانية."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch6_potential_volume",
+   "bloom_level": "Remember",
+   "question": "What name did Halstead give to the minimal implementation of an algorithm?",
+   "question_ar": "أي اسم أطلقه هالستيد على التنفيذ الأدنى للخوارزمية؟",
+   "options": [
+    "potential volume again here",
+    "effective volume here",
+    "none of the above now",
+    "volume here now too too"
+   ],
+   "options_ar": [
+    "الحجم الكامن",
+    "الحجم الفعّال",
+    "لا شيء مما سبق",
+    "الحجم هنا الآن"
+   ],
+   "options_en": [
+    "potential volume again here",
+    "effective volume here",
+    "none of the above now",
+    "volume here now too too"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The potential volume is the smallest form the algorithm could take in an ideal language.",
+   "explanation_ar": "الحجم الكامن هو أصغر صورة للخوارزمية في لغة مثالية."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch6_program_volume",
+   "bloom_level": "Understand",
+   "question": "How is program volume computed?",
+   "question_ar": "كيف يُحسب حجم البرنامج؟",
+   "options": [
+    "length times log base two of vocabulary",
+    "half the length times that log again",
+    "twice the length times that log now too",
+    "that log plus one here now too here"
+   ],
+   "options_ar": [
+    "الطول مضروباً بلوغاريتم المعجم أساس اثنين",
+    "نصف الطول مضروباً بذلك اللوغاريتم أيضاً",
+    "ضعف الطول مضروباً بذلك اللوغاريتم مجدداً هنا",
+    "ذلك اللوغاريتم زائد واحد هنا الآن هنا"
+   ],
+   "options_en": [
+    "length times log base two of vocabulary",
+    "half the length times that log again",
+    "twice the length times that log now too",
+    "that log plus one here now too here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Volume is the program length multiplied by the base-two logarithm of the vocabulary.",
+   "explanation_ar": "الحجم هو طول البرنامج مضروباً بلوغاريتم المعجم أساس اثنين."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch6_difficulty_relation",
+   "bloom_level": "Understand",
+   "question": "What is the relationship between difficulty and level?",
+   "question_ar": "ما العلاقة بين الصعوبة والمستوى؟",
+   "options": [
+    "difficulty is the log of level too",
+    "difficulty is the reciprocal of level",
+    "difficulty equals level here now again",
+    "difficulty is the square of level"
+   ],
+   "options_ar": [
+    "الصعوبة لوغاريتم المستوى",
+    "الصعوبة مقلوب المستوى",
+    "الصعوبة تساوي المستوى",
+    "الصعوبة مربع المستوى"
+   ],
+   "options_en": [
+    "difficulty is the log of level too",
+    "difficulty is the reciprocal of level",
+    "difficulty equals level here now again",
+    "difficulty is the square of level"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Difficulty rises exactly as the program level falls, so the two are reciprocals.",
+   "explanation_ar": "الصعوبة ترتفع بمقدار انخفاض مستوى البرنامج، فهما متعاكسان."
+  }
+ ]
+}
