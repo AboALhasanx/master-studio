@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-04T15:32:48+03:00
+> Generated at: 2026-11-04T15:40:02+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **58** |
-| Portal shell `VERSION` | **1.10.2** |
+| Live content version | **59** |
+| Portal shell `VERSION` | **1.10.3** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 142 banks / 1393 questions · live 132 banks / 1313 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 142 banks / 1393 questions · live 142 banks / 1393 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -34,7 +34,7 @@
 | `02_English_Language` | 2 | 4 | 20 | 4 | 20 | — |
 | `03_Data_Mining` | 8 | 55 | 512 | 55 | 512 | — |
 | `04_Advanced_Software_Eng` | 3 | 6 | 30 | 6 | 30 | — |
-| `05_Soft_Computing` | 5 | 14 | 102 | 4 | 22 | **DIFF** |
+| `05_Soft_Computing` | 5 | 14 | 102 | 14 | 102 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
 ## By subject and chapter — measured quality gates
