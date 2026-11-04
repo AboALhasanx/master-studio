@@ -175,6 +175,22 @@ CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/quiz_qual
   01_Semester_1/01_Cyber_Security/07_Quizzes_\&_Anki --chapter 3 --shape-gate
 ```
 
+```bash
+# 4a-bis. authoring audit — the defect classes that actually reached production
+#   H1 numeric option (arithmetic in disguise)     H2 formula symbol in an option
+#   H3 handout reference ("the lecture")           H4 English explanation written in Arabic
+#   H5 duplicate stem                              H6 answer/correct mismatch
+#   H7 options != options_en                       H8 empty explanation
+#   H9 options_ar incomplete                       H10 question_ar empty
+#   S1 stem pointing outside itself ("in the example", "those categories")
+#   S2 short explanation   S3 letter bias   S4 near-duplicate stem
+CODEBUDDY_SAFE_DELETE_ENABLED=0 python -X utf8 90_Shared_Toolbox/tools/quiz_authoring_audit.py \
+  01_Semester_1/01_Cyber_Security 01_Semester_1/02_English_Language \
+  01_Semester_1/03_Data_Mining 01_Semester_1/05_Soft_Computing
+# exit 0 = clean, 1 = at least one H defect. `--strict` also fails on S findings.
+# Any H defect blocks handoff. It is also wired into preflight.py as "authoring audit".
+```
+
 Near-duplicate stem, repeated-formula, and short-explanation findings are advisory and need a
 source-based decision. Structural errors and shape-gate failures block handoff. The gate is read-only
 and cannot verify factual truth or semantic equivalence between Arabic and English; inspect those

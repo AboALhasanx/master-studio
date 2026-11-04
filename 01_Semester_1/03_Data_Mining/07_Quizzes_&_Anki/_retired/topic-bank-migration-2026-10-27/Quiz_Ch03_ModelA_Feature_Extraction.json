@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_Ch03_ModelA_Feature_Extraction",
+  "topic": "Feature Extraction and Portability — Model A",
+  "topic_ar": "استخراج السمات واختيارها وقابلية النقل — النموذج أ",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "subject": "03_Data_Mining",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "feature_extraction_definition",
+      "bloom_level": "Understand",
+      "question": "Which term names the process of creating new features from existing data?",
+      "question_ar": "ما المصطلح الذي يصف إنشاء خصائص جديدة من البيانات الموجودة؟",
+      "options": [
+        "Data Discretization",
+        "Feature Extraction",
+        "Feature Selection",
+        "Data Integration"
+      ],
+      "options_en": [
+        "Data Discretization",
+        "Feature Extraction",
+        "Feature Selection",
+        "Data Integration"
+      ],
+      "options_ar": [
+        "تقسيم البيانات إلى فئات",
+        "استخراج الخصائص المهمة",
+        "انتقاء الخصائص المفيدة",
+        "تكامل مصادر البيانات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Feature extraction is the process of creating new features from existing data to represent its important characteristics in a form suitable for data mining or machine learning algorithms.",
+      "explanation_ar": "استخراج الخصائص هو عملية إنشاء خصائص جديدة من البيانات الموجودة لتمثيل سماتها المهمة بصيغة تلائم خوارزميات تنقيب البيانات أو التعلم الآلي."
+    },
+    {
+      "id": "q2",
+      "concept_id": "features_by_type",
+      "bloom_level": "Understand",
+      "question": "Which list gives the features shown for graph data?",
+      "question_ar": "أي قائمة تعرض الخصائص المذكورة للبيانات البيانية؟",
+      "options": [
+        "Word frequency, TF-IDF, embeddings",
+        "Mean, variance, frequency components",
+        "Shape, texture, edges, color",
+        "Degree, centrality, connectivity"
+      ],
+      "options_en": [
+        "Word frequency, TF-IDF, embeddings",
+        "Mean, variance, frequency components",
+        "Shape, texture, edges, color",
+        "Degree, centrality, connectivity"
+      ],
+      "options_ar": [
+        "تكرار الكلمات؛ TF-IDF؛ والتضمينات",
+        "المتوسط؛ التباين؛ ومكونات التردد",
+        "الشكل؛ الملمس؛ الحواف؛ والألوان",
+        "الدرجة؛ المركزية؛ وخصائص الترابط"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Graph: Degree, centrality, connectivity.",
+      "explanation_ar": "البيانات البيانية: الدرجة، والمركزية، وخصائص الترابط."
+    },
+    {
+      "id": "q3",
+      "concept_id": "common_type_conversions",
+      "bloom_level": "Remember",
+      "question": "Which method converts text into numerical features?",
+      "question_ar": "أي طريقة تحول النص إلى خصائص رقمية؟",
+      "options": [
+        "Text → Numerical: Vectorization",
+        "Numerical → Text: Vectorization",
+        "Categorical → Numerical: Vectorization",
+        "Text → Numerical: Discretization"
+      ],
+      "options_en": [
+        "Text → Numerical: Vectorization",
+        "Numerical → Text: Vectorization",
+        "Categorical → Numerical: Vectorization",
+        "Text → Numerical: Discretization"
+      ],
+      "options_ar": [
+        "النص إلى الرقمي: Vectorization",
+        "الرقمي إلى النص: Vectorization",
+        "الفئوي إلى الرقمي: Vectorization",
+        "النص إلى الرقمي: Discretization"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Numerical → Categorical: Discretization; Categorical → Numerical: Encoding; Text → Numerical: Vectorization; Time Series → Sequence: Symbolic representation.",
+      "explanation_ar": "تشمل التحويلات: رقمي إلى فئوي بالتقسيم؛ وفئوي إلى رقمي بالترميز؛ ونص إلى رقمي بالتمثيل المتجهي؛ وسلسلة زمنية إلى تسلسل بالتمثيل الرمزي."
+    },
+    {
+      "id": "q4",
+      "concept_id": "equal_width_frequency",
+      "bloom_level": "Understand",
+      "question": "Which method divides a range into intervals of similar numerical size?",
+      "question_ar": "أي طريقة تقسم المدى إلى فترات متقاربة في الحجم العددي؟",
+      "options": [
+        "Text feature vectorization",
+        "Equal-Frequency discretization",
+        "Equal-Width discretization",
+        "One-hot category encoding"
+      ],
+      "options_en": [
+        "Text feature vectorization",
+        "Equal-Frequency discretization",
+        "Equal-Width discretization",
+        "One-hot category encoding"
+      ],
+      "options_ar": [
+        "تحويل النص إلى متجه",
+        "تقسيم متساوي التكرار",
+        "تقسيم متساوي العرض",
+        "ترميز ثنائي للفئات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The numerical range is divided into intervals of approximately equal numerical size. Each interval contains approximately the same number of observations.",
+      "explanation_ar": "يقسم Equal-Width المدى إلى فترات متقاربة في الحجم العددي، بينما يحتوي كل نطاق في Equal-Frequency على عدد متقارب من المشاهدات."
+    },
+    {
+      "id": "q5",
+      "concept_id": "onehot_nominal",
+      "bloom_level": "Understand",
+      "question": "What does one-hot encoding create for each category?",
+      "question_ar": "ماذا ينشئ One-hot Encoding لكل فئة؟",
+      "options": [
+        "Normalization transforms numerical values into a similar scale.",
+        "Integer codes may incorrectly suggest a numerical order between categories.",
+        "One-hot encoding creates one binary column for each category.",
+        "Discretization converts continuous values into a few categories."
+      ],
+      "options_en": [
+        "Normalization transforms numerical values into a similar scale.",
+        "Integer codes may incorrectly suggest a numerical order between categories.",
+        "One-hot encoding creates one binary column for each category.",
+        "Discretization converts continuous values into a few categories."
+      ],
+      "options_ar": [
+        "يحول التطبيع القيم الرقمية إلى مقياس متقارب.",
+        "قد توحي الرموز الصحيحة بترتيب عددي بين الفئات.",
+        "ينشئ One-hot عموداً ثنائياً مستقلاً لكل فئة.",
+        "يحول التقسيم القيم المستمرة إلى فئات قليلة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "One-hot encoding creates one binary column for each category. For nominal categories such as blood type, there is no meaningful order.",
+      "explanation_ar": "ينشئ One-hot عموداً ثنائياً لكل فئة. ولا يوجد ترتيب ذو معنى بين الفئات الاسمية مثل فصائل الدم."
+    },
+    {
+      "id": "q6",
+      "concept_id": "timeseries_numeric_features",
+      "bloom_level": "Remember",
+      "question": "Which pair is listed among numerical features extracted from a time series?",
+      "question_ar": "أي زوج يرد ضمن الخصائص الرقمية المستخرجة من سلسلة زمنية؟",
+      "options": [
+        "Mean, standard deviation",
+        "Distance, density, location",
+        "TF-IDF, word embeddings",
+        "Shape, texture, edges"
+      ],
+      "options_en": [
+        "Mean, standard deviation",
+        "Distance, density, location",
+        "TF-IDF, word embeddings",
+        "Shape, texture, edges"
+      ],
+      "options_ar": [
+        "المتوسط، الانحراف المعياري",
+        "المسافة، الكثافة، الموقع",
+        "TF-IDF، تضمينات الكلمات النصية",
+        "الشكل، الملمس، الحواف في الصور"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Mean, standard deviation, frequency features, wavelet features.",
+      "explanation_ar": "تشمل الخصائص المستخرجة المتوسط والانحراف المعياري وخصائص التردد وخصائص المويجات."
+    },
+    {
+      "id": "q7",
+      "concept_id": "image_representation",
+      "bloom_level": "Understand",
+      "question": "Which three channels form a color RGB image?",
+      "question_ar": "ما القنوات الثلاث التي تكوّن صورة RGB ملونة؟",
+      "options": [
+        "Red, Green, and Yellow.",
+        "Red, Green, and Blue.",
+        "Red, Blue, and Black.",
+        "Green, Yellow, and White."
+      ],
+      "options_en": [
+        "Red, Green, and Yellow.",
+        "Red, Green, and Blue.",
+        "Red, Blue, and Black.",
+        "Green, Yellow, and White."
+      ],
+      "options_ar": [
+        "الأحمر والأخضر والأصفر.",
+        "الأحمر والأخضر والأزرق.",
+        "الأحمر والأزرق والأسود.",
+        "الأخضر والأصفر والأبيض."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A color RGB image normally contains three channels: Red, Green, and Blue.",
+      "explanation_ar": "تتكون صورة RGB الملونة عادة من ثلاث قنوات: الأحمر والأخضر والأزرق."
+    }
+  ]
+}

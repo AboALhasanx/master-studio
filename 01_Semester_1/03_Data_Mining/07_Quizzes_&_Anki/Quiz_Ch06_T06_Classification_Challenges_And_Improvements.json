@@ -181,7 +181,7 @@
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "Dataset is too small",
+   "explanation": "A small dataset lets the model memorise individual records instead of learning general patterns.",
    "explanation_ar": "مجموعة البيانات صغيرة جداً",
    "id": "q6"
   },
@@ -268,7 +268,7 @@
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "the risk of overfitting",
+   "explanation": "Irrelevant features give the model extra chances to fit noise, which raises the overfitting risk.",
    "explanation_ar": "خطر فرط التكيّف",
    "id": "q9"
   },
@@ -297,7 +297,7 @@
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "statistical imputation",
+   "explanation": "Statistical imputation estimates the missing value from the observed distribution.",
    "explanation_ar": "التعويض الإحصائي",
    "id": "q10"
   },
@@ -326,7 +326,7 @@
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "incorrect labels",
+   "explanation": "Incorrect labels attach wrong information to a record, which is exactly what noise means.",
    "explanation_ar": "تسميات غير صحيحة",
    "id": "q11"
   },
@@ -355,7 +355,7 @@
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "encoding categorical data",
+   "explanation": "Encoding categorical data turns labels into numbers the algorithm can process.",
    "explanation_ar": "ترميز البيانات الفئوية",
    "id": "q12"
   },

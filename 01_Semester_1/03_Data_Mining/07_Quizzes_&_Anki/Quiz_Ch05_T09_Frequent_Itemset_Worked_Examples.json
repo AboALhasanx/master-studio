@@ -160,30 +160,30 @@
    "id": "q6",
    "concept_id": "c5w_apriori_stop",
    "bloom_level": "Apply",
-   "question": "Why does Apriori stop at the 3-itemset in the example?",
-   "question_ar": "لماذا تتوقف Apriori عند المجموعة الثلاثية في المثال؟",
+   "question": "Why does Apriori stop extending a branch of the search?",
+   "question_ar": "لماذا تتوقف Apriori عن تمديد فرع من البحث؟",
    "options": [
-    "it has no candidate subsets",
-    "its support falls below 40%",
-    "its support reaches 60%",
-    "it contains too many items"
+    "it has no candidate subsets left",
+    "its support falls below the minimum",
+    "its support reaches the maximum",
+    "it contains far too many items now"
    ],
    "options_ar": [
-    "لا مجموعات فرعية له",
-    "دعمه يقل عن 40% فقط",
-    "دعمه يبلغ 60% هنا",
-    "يحوي عناصر كثيرة"
+    "ليس لها مجموعات مرشحة هنا",
+    "دعمها يقل عن الحد الأدنى",
+    "دعمها يبلغ الحد الأعلى",
+    "تحوي عناصر كثيرة جداً هنا"
    ],
    "options_en": [
-    "it has no candidate subsets",
-    "its support falls below 40%",
-    "its support reaches 60%",
-    "it contains too many items"
+    "it has no candidate subsets left",
+    "its support falls below the minimum",
+    "its support reaches the maximum",
+    "it contains far too many items now"
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "The 3-itemset appears once in five, so 20% is below the 40% threshold.",
-   "explanation_ar": "المجموعة الثلاثية تظهر مرة من خمس، فـ20% أقل من حد 40%."
+   "explanation": "The Apriori property prunes any branch whose support drops under the minimum threshold.",
+   "explanation_ar": "خاصية Apriori تقلّم أي فرع ينخفض دعمه تحت العتبة الدنيا."
   },
   {
    "id": "q7",
