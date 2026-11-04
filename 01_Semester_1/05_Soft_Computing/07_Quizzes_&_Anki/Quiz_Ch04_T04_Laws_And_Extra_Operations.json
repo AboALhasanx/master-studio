@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch04_T04_Laws_And_Extra_Operations",
+ "topic": "Laws and Extra Operations",
+ "topic_ar": "القوانين والعمليات الإضافية",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c4_disjunctive",
+   "bloom_level": "Remember",
+   "question": "What is the disjunctive sum of two fuzzy sets?",
+   "question_ar": "ما هو الجمع المنفصل لمجموعتين ضبابيتين؟",
+   "options": [
+    "union of two set differences",
+    "the intersection of A and B",
+    "the union of A and B here",
+    "the complement of A union B"
+   ],
+   "options_ar": [
+    "اتحاد الفرقين معاً",
+    "تقاطع A و B معاً هنا",
+    "اتحاد A و B معاً هنا",
+    "متمم اتحاد A و B هنا"
+   ],
+   "options_en": [
+    "union of two set differences",
+    "the intersection of A and B",
+    "the union of A and B here",
+    "the complement of A union B"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The disjunctive sum joins the two one-sided differences, like a fuzzy XOR.",
+   "explanation_ar": "الجمع المنفصل يجمع الفرقين الأحاديين، كـXOR ضبابي."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c4_equality",
+   "bloom_level": "Remember",
+   "question": "When are two fuzzy sets equal?",
+   "question_ar": "متى تتساوى مجموعتان ضبابيتان؟",
+   "options": [
+    "supports are disjoint here",
+    "grades equal at every point",
+    "grades differ at one point",
+    "cores are both empty here"
+   ],
+   "options_ar": [
+    "الدعمان منفصلان هنا",
+    "الدرجات متساوية دائماً",
+    "الدرجات تختلف في نقطة",
+    "النواتان فارغتان هنا"
+   ],
+   "options_en": [
+    "supports are disjoint here",
+    "grades equal at every point",
+    "grades differ at one point",
+    "cores are both empty here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Two fuzzy sets are equal when their grades match at every point.",
+   "explanation_ar": "تتساوى المجموعتان عندما تتطابق درجاتهما عند كل نقطة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c4_dilation",
+   "bloom_level": "Understand",
+   "question": "A power below one models which hedge?",
+   "question_ar": "أس أقل من واحد يمثل أي تحوير؟",
+   "options": [
+    "complement, not here",
+    "intersection, and here",
+    "dilation, more or less",
+    "concentration, very much"
+   ],
+   "options_ar": [
+    "النفي الذي يعكسها",
+    "التقاطع الذي يأخذها",
+    "التوسيع الذي يوسّعها",
+    "التركيز الذي يشدّها"
+   ],
+   "options_en": [
+    "complement, not here",
+    "intersection, and here",
+    "dilation, more or less",
+    "concentration, very much"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A power below one dilates the set, modelling more or less.",
+   "explanation_ar": "أس أقل من واحد يوسّع المجموعة، ويعبّر عن more or less."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c4_commutativity",
+   "bloom_level": "Remember",
+   "question": "Which law holds for fuzzy union and intersection?",
+   "question_ar": "أي قانون يصح للاتحاد والتقاطع الضبابيين؟",
+   "options": [
+    "excluded middle holds",
+    "law of contradiction",
+    "none of these laws hold",
+    "commutativity holds now"
+   ],
+   "options_ar": [
+    "الوسط المرفوع يصح",
+    "التناقض يصح دائماً",
+    "لا شيء من هذه يصح",
+    "التبديل يصح دائماً"
+   ],
+   "options_en": [
+    "excluded middle holds",
+    "law of contradiction",
+    "none of these laws hold",
+    "commutativity holds now"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Commutativity holds: A union B equals B union A, and the same for intersection.",
+   "explanation_ar": "التبديل يصح: اتحاد A و B يساوي اتحاد B و A، وكذلك التقاطع."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c4_associativity",
+   "bloom_level": "Remember",
+   "question": "Which grouping law holds for fuzzy sets?",
+   "question_ar": "أي قانون تجميع يصح للمجموعات الضبابية؟",
+   "options": [
+    "associativity holds now",
+    "excluded middle holds",
+    "law of contradiction",
+    "none of these laws hold"
+   ],
+   "options_ar": [
+    "الترابط يصح دائماً",
+    "الوسط المرفوع يصح",
+    "التناقض يصح دائماً",
+    "لا شيء من هذه يصح"
+   ],
+   "options_en": [
+    "associativity holds now",
+    "excluded middle holds",
+    "law of contradiction",
+    "none of these laws hold"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Associativity holds, so grouping does not change the result.",
+   "explanation_ar": "الترابط يصح، فالتجميع لا يغيّر الناتج."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c4_distributivity",
+   "bloom_level": "Remember",
+   "question": "Which distribution law holds for fuzzy sets?",
+   "question_ar": "أي قانون توزيع يصح للمجموعات الضبابية؟",
+   "options": [
+    "none of these laws hold",
+    "distributivity holds",
+    "excluded middle holds",
+    "law of contradiction"
+   ],
+   "options_ar": [
+    "لا شيء من هذه يصح",
+    "التوزيع يصح دائماً",
+    "الوسط المرفوع يصح",
+    "التناقض يصح دائماً"
+   ],
+   "options_en": [
+    "none of these laws hold",
+    "distributivity holds",
+    "excluded middle holds",
+    "law of contradiction"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Distributivity holds for union over intersection and the reverse.",
+   "explanation_ar": "التوزيع يصح للاتحاد على التقاطع والعكس."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c4_idempotence",
+   "bloom_level": "Understand",
+   "question": "Which law says A union A equals A?",
+   "question_ar": "أي قانون يقول إن اتحاد A مع A يساوي A؟",
+   "options": [
+    "the contradiction law",
+    "the excluded middle law",
+    "the idempotence law",
+    "the involution law"
+   ],
+   "options_ar": [
+    "قانون التناقض هنا",
+    "قانون الوسط المرفوع",
+    "قانون التكرار هنا",
+    "قانون الانعكاس هنا"
+   ],
+   "options_en": [
+    "the contradiction law",
+    "the excluded middle law",
+    "the idempotence law",
+    "the involution law"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Idempotence states that A union A and A intersect A both equal A.",
+   "explanation_ar": "قانون التكرار: اتحاد A مع A وتقاطعها معها كلاهما A."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c4_tnorm_types",
+   "bloom_level": "Remember",
+   "question": "Which is a standard T-norm?",
+   "question_ar": "أي عامل يمثل T-norm قياسياً؟",
+   "options": [
+    "the maximum operator",
+    "the complement operator",
+    "the simple sum operator",
+    "the minimum operator"
+   ],
+   "options_ar": [
+    "عامل الأقصى",
+    "عامل المتمم",
+    "عامل الجمع",
+    "عامل الأدنى"
+   ],
+   "options_en": [
+    "the maximum operator",
+    "the complement operator",
+    "the simple sum operator",
+    "the minimum operator"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The standard T-norm is the minimum, while its dual S-norm is the maximum.",
+   "explanation_ar": "الـT-norm القياسي هو الأدنى، ونظيره S-norm هو الأقصى."
+  }
+ ]
+}

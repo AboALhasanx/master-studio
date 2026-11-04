@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "subject": "05_Soft_Computing",
+ "quiz_id": "Quiz_Ch05_T05_Rule_Structure_And_Implication_Rules",
+ "topic": "Rule Structure and Implication Rules",
+ "topic_ar": "بنية القاعدة وقواعد الاستلزام",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "c5m_build_formula",
+   "bloom_level": "Understand",
+   "question": "Besides two fuzzy sets, a fuzzy relation can be built from what?",
+   "question_ar": "إضافة لمجموعتين ضبابيتين، من ماذا تُبنى العلاقة الضبابية؟",
+   "options": [
+    "a rule over the two sets",
+    "a single fuzzy set only",
+    "one crisp relation only",
+    "a defuzzified output here"
+   ],
+   "options_ar": [
+    "قاعدة على المجموعتين",
+    "مجموعة ضبابية واحدة",
+    "علاقة حاسمة واحدة هنا",
+    "مخرج مزال التغبيش هنا"
+   ],
+   "options_en": [
+    "a rule over the two sets",
+    "a single fuzzy set only",
+    "one crisp relation only",
+    "a defuzzified output here"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "A fuzzy relation can also be built from a rule stated over the two universes.",
+   "explanation_ar": "تُبنى العلاقة أيضاً من قاعدة محددة على الفضاءين."
+  },
+  {
+   "id": "q2",
+   "concept_id": "c5m_rule_matrix",
+   "bloom_level": "Remember",
+   "question": "A fuzzy rule is stored as what?",
+   "question_ar": "كيف تُخزَّن القاعدة الضبابية؟",
+   "options": [
+    "a defuzzified value",
+    "a relation matrix here",
+    "a single scalar value",
+    "a crisp number here now"
+   ],
+   "options_ar": [
+    "قيمة مزالة التغبيش",
+    "مصفوفة علاقة هنا",
+    "قيمة قياسية واحدة",
+    "رقم حاسم هنا جداً"
+   ],
+   "options_en": [
+    "a defuzzified value",
+    "a relation matrix here",
+    "a single scalar value",
+    "a crisp number here now"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A fuzzy IF-THEN rule is stored as a relation matrix over the two universes.",
+   "explanation_ar": "قاعدة إذا-فإن تُخزَّن كمصفوفة علاقة على الفضاءين."
+  },
+  {
+   "id": "q3",
+   "concept_id": "c5m_zadeh_rule",
+   "bloom_level": "Understand",
+   "question": "Zadeh's max-min rule combines what?",
+   "question_ar": "قاعدة زاده القصوى-الدنيا تجمع ماذا؟",
+   "options": [
+    "only the complement rows",
+    "neither of the two here",
+    "rule plus complement rows",
+    "only the rule rows right here"
+   ],
+   "options_ar": [
+    "صفوف المتمم فقط هنا",
+    "لا القاعدة ولا المتمم",
+    "القاعدة مع متممها هنا",
+    "صفوف القاعدة فقط هنا"
+   ],
+   "options_en": [
+    "only the complement rows",
+    "neither of the two here",
+    "rule plus complement rows",
+    "only the rule rows right here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "It joins the rule's rows with the complement rows, so a false premise gives one.",
+   "explanation_ar": "تضم صفوف القاعدة مع صفوف المتمم، فالمقدمة الخاطئة تعطي واحداً."
+  },
+  {
+   "id": "q4",
+   "concept_id": "c5m_if_then_else",
+   "bloom_level": "Understand",
+   "question": "The IF-THEN-ELSE relation adds what?",
+   "question_ar": "علاقة إذا-فإن-وإلا تضيف ماذا؟",
+   "options": [
+    "only the then branch here",
+    "only the else branch here",
+    "no branch at all here",
+    "an else branch for it"
+   ],
+   "options_ar": [
+    "فرع الصواب فقط هنا",
+    "فرع البديل فقط هنا",
+    "لا فرع على الإطلاق",
+    "فرع بديل للمتمم هنا"
+   ],
+   "options_en": [
+    "only the then branch here",
+    "only the else branch here",
+    "no branch at all here",
+    "an else branch for it"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "It adds an else branch, used where the antecedent fails.",
+   "explanation_ar": "تضيف فرع البديل، يُستخدم حيث تفشل المقدمة."
+  },
+  {
+   "id": "q5",
+   "concept_id": "c5m_chain_rule",
+   "bloom_level": "Understand",
+   "question": "What does the chain rule of inference state?",
+   "question_ar": "ماذا تنص قاعدة التسلسل في الاستدلال؟",
+   "options": [
+    "two implications join as one",
+    "one implication alone here",
+    "two negations cancel out fully",
+    "a single premise is enough"
+   ],
+   "options_ar": [
+    "استلزامان يندمجان",
+    "استلزام واحد فقط هنا",
+    "نفيان يلغيان بعضهما",
+    "مقدمة واحدة تكفي"
+   ],
+   "options_en": [
+    "two implications join as one",
+    "one implication alone here",
+    "two negations cancel out fully",
+    "a single premise is enough"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Two implications that chain together join into a single implication.",
+   "explanation_ar": "الاستلزامان المتسلسلان يندمجان في استلزام واحد."
+  },
+  {
+   "id": "q6",
+   "concept_id": "c5m_gmt",
+   "bloom_level": "Understand",
+   "question": "Generalized modus tollens infers what?",
+   "question_ar": "التعميم العكسي يستنتج ماذا؟",
+   "options": [
+    "the data from the rule here",
+    "the likely cause from effect",
+    "the effect from the cause here",
+    "the rule from the data here"
+   ],
+   "options_ar": [
+    "البيانات من القاعدة هنا",
+    "السبب المحتمل من الأثر",
+    "الأثر من السبب هنا",
+    "القاعدة من البيانات هنا"
+   ],
+   "options_en": [
+    "the data from the rule here",
+    "the likely cause from effect",
+    "the effect from the cause here",
+    "the rule from the data here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Generalized modus tollens goes backward, from an observed effect to its likely cause.",
+   "explanation_ar": "التعميم العكسي يمضي للخلف، من أثر ملاحظ إلى سببه المحتمل."
+  },
+  {
+   "id": "q7",
+   "concept_id": "c5m_lambda_cut",
+   "bloom_level": "Remember",
+   "question": "A lambda-cut keeps which elements?",
+   "question_ar": "مقطع لامبدا يُبقي أي عناصر؟",
+   "options": [
+    "those below lambda only",
+    "those equal to lambda here",
+    "those at or above lambda",
+    "those above lambda only"
+   ],
+   "options_ar": [
+    "تلك الأدنى من لامبدا",
+    "تلك المساوية لامبدا",
+    "تلك عند لامبدا أو أعلى",
+    "تلك الأعلى من لامبدا"
+   ],
+   "options_en": [
+    "those below lambda only",
+    "those equal to lambda here",
+    "those at or above lambda",
+    "those above lambda only"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A lambda-cut keeps every element whose grade reaches or exceeds lambda.",
+   "explanation_ar": "مقطع لامبدا يُبقي كل عنصر درجته تبلغ لامبدا أو تتجاوزها."
+  },
+  {
+   "id": "q8",
+   "concept_id": "c5m_lambda_props",
+   "bloom_level": "Understand",
+   "question": "Which lambda-cut property holds?",
+   "question_ar": "أي خاصية لمقطع لامبدا تصح؟",
+   "options": [
+    "cuts ignore the union",
+    "cuts reverse the union",
+    "cuts equal the union here",
+    "cuts distribute on union"
+   ],
+   "options_ar": [
+    "المقاطع تتجاهل الاتحاد هنا",
+    "المقاطع تعكس الاتحاد هنا",
+    "المقاطع تساوي الاتحاد هنا",
+    "المقاطع تتوزع على الاتحاد"
+   ],
+   "options_en": [
+    "cuts ignore the union",
+    "cuts reverse the union",
+    "cuts equal the union here",
+    "cuts distribute on union"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The cut of a union equals the union of the cuts, and the same holds for intersection.",
+   "explanation_ar": "مقطع الاتحاد يساوي اتحاد المقاطع، وكذلك للتقاطع."
+  }
+ ]
+}
