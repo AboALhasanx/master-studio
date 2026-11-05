@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T15_Functional_Procedure_Layers",
+  "topic": "Functional Procedure Layers",
+  "topic_ar": "مستويات وصف الإجراء الوظيفي",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_procedure_layers_overview",
+      "bloom_level": "Understand",
+      "question": "How many detail levels are used for a functional procedure description?",
+      "question_ar": "كم مستوى تفصيل يستخدم لوصف الإجراء الوظيفي؟",
+      "options": [
+        "Four levels from purpose to procedure body",
+        "Three levels from class to deployment node",
+        "Five levels from user story to release",
+        "Two levels from interface to database"
+      ],
+      "options_en": [
+        "Four levels from purpose to procedure body",
+        "Three levels from class to deployment node",
+        "Five levels from user story to release",
+        "Two levels from interface to database"
+      ],
+      "options_ar": [
+        "أربعة مستويات من الغرض إلى جسم الإجراء",
+        "ثلاثة مستويات من الصنف إلى عقدة النشر",
+        "خمسة مستويات من قصة المستخدم إلى الإصدار",
+        "مستويان من الواجهة إلى قاعدة البيانات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The procedure description uses levels zero through three, with increasing detail.",
+      "explanation_ar": "يستخدم وصف الإجراء المستويات من الصفر إلى ثلاثة بتفصيل متزايد."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_procedure_level0",
+      "bloom_level": "Understand",
+      "question": "Which information belongs at the highest-level procedure description?",
+      "question_ar": "أي معلومات تنتمي إلى المستوى الأعلى لوصف الإجراء؟",
+      "options": [
+        "Its physical servers and deployment sites",
+        "Its name, purpose, position, and callers",
+        "Its local data structures and timing limits",
+        "Its detailed body and decision branches"
+      ],
+      "options_en": [
+        "Its physical servers and deployment sites",
+        "Its name, purpose, position, and callers",
+        "Its local data structures and timing limits",
+        "Its detailed body and decision branches"
+      ],
+      "options_ar": [
+        "خوادمه المادية ومواقع نشره",
+        "اسمه وغرضه وموضعه ومستدعوه",
+        "بناه المحلية وقيود توقيته",
+        "جسمه التفصيلي وفروع قراراته"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Level zero identifies the procedure and its context in the system.",
+      "explanation_ar": "يحدد المستوى صفر الإجراء وسياقه ضمن النظام."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_procedure_level1",
+      "bloom_level": "Apply",
+      "question": "A procedure specification lists parameters, called routines, and side effects; it is...",
+      "question_ar": "يسرد وصف إجراء معاملاته وإجراءاته المستدعاة وآثاره الجانبية؛ فهو...",
+      "options": [
+        "System deployment sites and physical placement",
+        "Local data, timing, exception, and limit details",
+        "The interface, calls, and side-effects level",
+        "The procedure body and its implementation notation"
+      ],
+      "options_en": [
+        "System deployment sites and physical placement",
+        "Local data, timing, exception, and limit details",
+        "The interface, calls, and side-effects level",
+        "The procedure body and its implementation notation"
+      ],
+      "options_ar": [
+        "مستوى النشر ومواقع النظام المادية المختلفة",
+        "مستوى البنى المحلية وقيود وقت التنفيذ",
+        "مستوى الواجهة والاستدعاءات والآثار الجانبية",
+        "مستوى جسم الإجراء وتفاصيل ترميزه للتنفيذ"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Level one records parameters, calls, globals, side effects, and assertions.",
+      "explanation_ar": "يسجل المستوى الأول المعاملات والاستدعاءات والمتغيرات العامة والآثار والتأكيدات."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_procedure_level2",
+      "bloom_level": "Apply",
+      "question": "Where are local structures, timing limits, and exception conditions described?",
+      "question_ar": "أين توصف البنى المحلية وقيود التوقيت وحالات الاستثناء؟",
+      "options": [
+        "At the level of the procedure's purpose and role",
+        "At the level of call parameters and external effects",
+        "At the level of physical deployment nodes and sites",
+        "At the level of local data, timing, and exception limits"
+      ],
+      "options_en": [
+        "At the level of the procedure's purpose and role",
+        "At the level of call parameters and external effects",
+        "At the level of physical deployment nodes and sites",
+        "At the level of local data, timing, and exception limits"
+      ],
+      "options_ar": [
+        "في مستوى هدف الإجراء ووظيفته",
+        "في مستوى معاملات الإجراء وواجهته",
+        "في مستوى عقد النشر وتوزيع الأجهزة",
+        "في مستوى البيانات والقيود المحلية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Level two covers local data, timing, exceptions, and limitations.",
+      "explanation_ar": "يغطي المستوى الثاني البيانات المحلية والتوقيت والاستثناءات والقيود."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_procedure_level3",
+      "bloom_level": "Understand",
+      "question": "What belongs in the most detailed procedure level?",
+      "question_ar": "ما الذي ينتمي إلى مستوى الإجراء الأكثر تفصيلاً؟",
+      "options": [
+        "A procedure's detailed body in a selected notation",
+        "The procedure name and its place in the system",
+        "Its callers, parameters, and interface assertions",
+        "The module hierarchy and its external protocols"
+      ],
+      "options_en": [
+        "A procedure's detailed body in a selected notation",
+        "The procedure name and its place in the system",
+        "Its callers, parameters, and interface assertions",
+        "The module hierarchy and its external protocols"
+      ],
+      "options_ar": [
+        "وصف جسم الإجراء بتفصيل باستخدام ترميز مناسب",
+        "اسم الإجراء وموضعه ضمن بنية النظام",
+        "الجهات المستدعية والمعاملات وتأكيدات الواجهة",
+        "تسلسل الوحدات والبروتوكولات الخارجية للنظام"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Level three specifies the function body using an appropriate procedural notation.",
+      "explanation_ar": "يحدد المستوى الثالث جسم الوظيفة باستخدام ترميز إجرائي مناسب."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_procedure_not_arch_layers",
+      "bloom_level": "Analyze",
+      "question": "What do the functional procedure levels describe?",
+      "question_ar": "ماذا تصف مستويات الإجراء الوظيفي؟",
+      "options": [
+        "Different stages of a software product release",
+        "Increasing detail levels for one procedure description",
+        "Four coupling categories between separate modules",
+        "Separate architectural tiers throughout the full system"
+      ],
+      "options_en": [
+        "Different stages of a software product release",
+        "Increasing detail levels for one procedure description",
+        "Four coupling categories between separate modules",
+        "Separate architectural tiers throughout the full system"
+      ],
+      "options_ar": [
+        "مراحل مختلفة لإصدار المنتج البرمجي",
+        "مستويات تفاصيل متزايدة لوصف إجراء واحد",
+        "أربعة أنواع اقتران بين وحدات منفصلة",
+        "طبقات معمارية منفصلة في النظام بأكمله"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "These levels specify one procedure; they are not system-wide architectural layers.",
+      "explanation_ar": "تحدد هذه المستويات إجراءً واحداً وليست طبقات معمارية للنظام كله."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_procedure_level1_vs2",
+      "bloom_level": "Analyze",
+      "question": "Which distinction between the middle procedure levels is correct?",
+      "question_ar": "أي تمييز بين المستويين الأوسطين للإجراء صحيح؟",
+      "options": [
+        "Level one covers data stores; level two covers module calls",
+        "Level one covers code bodies; level two covers system goals",
+        "Level one covers interfaces; level two covers local constraints",
+        "Level one covers deployment; level two covers user workflows"
+      ],
+      "options_en": [
+        "Level one covers data stores; level two covers module calls",
+        "Level one covers code bodies; level two covers system goals",
+        "Level one covers interfaces; level two covers local constraints",
+        "Level one covers deployment; level two covers user workflows"
+      ],
+      "options_ar": [
+        "يغطي الأول المخازن والثاني استدعاء الوحدات",
+        "يغطي الأول أجسام الشيفرة والثاني أهداف النظام",
+        "يغطي الأول الواجهات والثاني القيود المحلية",
+        "يغطي الأول النشر والثاني إجراءات المستخدم"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Level one describes calls and effects, while level two adds local details and constraints.",
+      "explanation_ar": "يصف المستوى الأول الاستدعاءات والآثار، ويضيف الثاني التفاصيل والقيود المحلية."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_procedure_notation_choice",
+      "bloom_level": "Understand",
+      "question": "Which form can express a detailed procedure body?",
+      "question_ar": "أي شكل يمكن أن يعبّر عن جسم إجراء تفصيلي؟",
+      "options": [
+        "A system scope statement without procedural behavior",
+        "A deployment map showing physical nodes and sites",
+        "A list of user actors without procedural descriptions",
+        "Pseudocode or a flowchart for the procedure body"
+      ],
+      "options_en": [
+        "A system scope statement without procedural behavior",
+        "A deployment map showing physical nodes and sites",
+        "A list of user actors without procedural descriptions",
+        "Pseudocode or a flowchart for the procedure body"
+      ],
+      "options_ar": [
+        "بيان نطاق النظام من دون وصف سلوكه الإجرائي",
+        "خريطة نشر توضح العقد والمواقع المادية",
+        "قائمة الجهات المستخدمة من دون وصف الإجراءات",
+        "شيفرة وصفية أو مخطط تدفق لتفاصيل جسم الإجراء"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The detailed procedure body may use pseudocode, decision tables, flowcharts, or similar forms.",
+      "explanation_ar": "يمكن تمثيل جسم الإجراء التفصيلي بالشيفرة الوصفية أو جداول القرار أو مخططات التدفق وأشباهها."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch5_structural_layer",
+      "bloom_level": "Understand",
+      "question": "Which concern belongs to the structural layer of functional design?",
+      "question_ar": "أي جانب تنتمي إليه الطبقة الهيكلية في التصميم الوظيفي؟",
+      "options": [
+        "Module boundaries, calls, and interface contracts",
+        "Stepwise algorithms inside each individual procedure",
+        "Processor assignments to physical deployment nodes",
+        "Customer goals and planned user-facing release dates"
+      ],
+      "options_en": [
+        "Module boundaries, calls, and interface contracts",
+        "Stepwise algorithms inside each individual procedure",
+        "Processor assignments to physical deployment nodes",
+        "Customer goals and planned user-facing release dates"
+      ],
+      "options_ar": [
+        "حدود الوحدات وعلاقات الاستدعاء وعقود الواجهة",
+        "تسلسل الخوارزمية في جسم كل إجراء برمجي",
+        "توزيع المعالجات على عقد النشر المادية للنظام",
+        "أهداف العميل ومواعيد إصدار الواجهة للمستخدم"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The structural layer describes module decomposition, call relationships, and interface boundaries; algorithms belong to the procedural layer.",
+      "explanation_ar": "تصف الطبقة الهيكلية تفكيك الوحدات وعلاقات استدعائها وحدود واجهاتها، أما الخوارزميات فتخص الطبقة الإجرائية."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch5_procedural_layer",
+      "bloom_level": "Understand",
+      "question": "What distinguishes the procedural layer from the structural layer?",
+      "question_ar": "ما الذي يميز الطبقة الإجرائية عن الطبقة الهيكلية؟",
+      "options": [
+        "It records customer goals and planned release dates",
+        "It describes a module's internal algorithm and behavior",
+        "It defines module boundaries and call relationships",
+        "It assigns processors to software deployment nodes"
+      ],
+      "options_en": [
+        "It records customer goals and planned release dates",
+        "It describes a module's internal algorithm and behavior",
+        "It defines module boundaries and call relationships",
+        "It assigns processors to software deployment nodes"
+      ],
+      "options_ar": [
+        "تسجل أهداف العميل ومواعيد الإصدار المخطط",
+        "تصف الخوارزمية الداخلية وطريقة تنفيذ كل وحدة",
+        "تحدد حدود الوحدات وعلاقات الاستدعاء بينها",
+        "توزع المعالجات على عقد النشر البرمجية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The procedural layer specifies what the individual module does internally, while the structural layer defines its place and connections.",
+      "explanation_ar": "تحدد الطبقة الإجرائية ما تفعله الوحدة داخلياً، بينما تحدد الطبقة الهيكلية موضعها واتصالاتها."
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T07_Module_Cohesion",
+  "topic": "Module Cohesion",
+  "topic_ar": "التماسك داخل الوحدة",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_cohesion_definition",
+      "bloom_level": "Understand",
+      "question": "What does cohesion describe?",
+      "question_ar": "ماذا يصف التماسك؟",
+      "options": [
+        "How strongly a module's elements serve one purpose",
+        "How strongly separate modules depend on each other",
+        "How much memory an application uses during operation",
+        "How many users can access a service at the same time"
+      ],
+      "options_en": [
+        "How strongly a module's elements serve one purpose",
+        "How strongly separate modules depend on each other",
+        "How much memory an application uses during operation",
+        "How many users can access a service at the same time"
+      ],
+      "options_ar": [
+        "مدى ترابط عناصر المكون لخدمة غرض وظيفي واحد",
+        "مدى اعتماد المكونات المنفصلة بعضها على بعض",
+        "مقدار الذاكرة التي يستخدمها التطبيق أثناء التشغيل",
+        "عدد المستخدمين القادرين على دخول الخدمة معاً"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Cohesion concerns how well the elements within one component belong together.",
+      "explanation_ar": "يتعلق التماسك بمدى ترابط العناصر داخل المكون الواحد."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_best_cohesion",
+      "bloom_level": "Understand",
+      "question": "Which cohesion type makes every element serve one defined task?",
+      "question_ar": "أي نوع من التماسك يجعل كل عنصر يخدم مهمة محددة؟",
+      "options": [
+        "Logical cohesion lets a selector choose related tasks",
+        "Functional cohesion makes every part serve one task",
+        "Procedural cohesion links tasks by control order",
+        "Temporal cohesion groups tasks by execution time"
+      ],
+      "options_en": [
+        "Logical cohesion lets a selector choose related tasks",
+        "Functional cohesion makes every part serve one task",
+        "Procedural cohesion links tasks by control order",
+        "Temporal cohesion groups tasks by execution time"
+      ],
+      "options_ar": [
+        "التماسك المنطقي يتيح اختيار مهمة من فئة متقاربة",
+        "التماسك الوظيفي يجعل كل جزء يخدم مهمة واحدة",
+        "التماسك الإجرائي يربط المهام بترتيب التحكم",
+        "التماسك الزمني يجمع المهام بحسب وقت تنفيذها"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Functional cohesion means the elements cooperate for one well-defined task.",
+      "explanation_ar": "يعني التماسك الوظيفي أن تتعاون العناصر لأداء مهمة واحدة محددة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_worst_cohesion",
+      "bloom_level": "Understand",
+      "question": "Which cohesion form is the weakest?",
+      "question_ar": "أي شكل من التماسك هو الأضعف؟",
+      "options": [
+        "Communicational cohesion groups operations using the same data",
+        "Logical cohesion groups related tasks selected by a control flag",
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Sequential cohesion passes one operation's output to the next"
+      ],
+      "options_en": [
+        "Communicational cohesion groups operations using the same data",
+        "Logical cohesion groups related tasks selected by a control flag",
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Sequential cohesion passes one operation's output to the next"
+      ],
+      "options_ar": [
+        "التماسك الاتصالي يجمع عمليات تستخدم البيانات نفسها",
+        "التماسك المنطقي يجمع مهاماً يختارها علم تحكم",
+        "التماسك العشوائي يجمع عناصر بلا هدف مشترك",
+        "التماسك التسلسلي يمرر ناتج عملية إلى التالية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Coincidental cohesion groups elements with no meaningful relationship.",
+      "explanation_ar": "يجمع التماسك العشوائي عناصر بلا علاقة ذات معنى."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_temporal_cohesion",
+      "bloom_level": "Apply",
+      "question": "Initialization tasks grouped because they run at startup show...",
+      "question_ar": "تجميع مهام التهيئة لأنها تعمل عند بدء التشغيل يوضح...",
+      "options": [
+        "Sequential cohesion passes output to the next task",
+        "Functional cohesion serves one defined task",
+        "Communicational cohesion groups tasks on shared data",
+        "Temporal cohesion groups tasks by execution time"
+      ],
+      "options_en": [
+        "Sequential cohesion passes output to the next task",
+        "Functional cohesion serves one defined task",
+        "Communicational cohesion groups tasks on shared data",
+        "Temporal cohesion groups tasks by execution time"
+      ],
+      "options_ar": [
+        "التماسك التسلسلي يربط ناتج مهمة بما يليها",
+        "التماسك الوظيفي يخدم هدفاً واحداً محدداً",
+        "التماسك الاتصالي يجمع مهاماً تستخدم بيانات مشتركة",
+        "التماسك الزمني يجمع المهام بحسب زمن تنفيذها"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Temporal cohesion groups activities that execute during the same period.",
+      "explanation_ar": "يجمع التماسك الزمني الأنشطة التي تنفذ في الفترة الزمنية نفسها."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_functional_cohesion",
+      "bloom_level": "Understand",
+      "question": "What characterizes functional cohesion?",
+      "question_ar": "ما الذي يميز التماسك الوظيفي؟",
+      "options": [
+        "Functional cohesion serves one defined purpose",
+        "Elements share a convenient place in one source file",
+        "Elements run together only during system startup",
+        "A selector chooses one task from an unrelated group"
+      ],
+      "options_en": [
+        "Functional cohesion serves one defined purpose",
+        "Elements share a convenient place in one source file",
+        "Elements run together only during system startup",
+        "A selector chooses one task from an unrelated group"
+      ],
+      "options_ar": [
+        "التماسك الوظيفي يخدم غرضاً واحداً محدداً",
+        "تشترك العناصر في موضع مناسب داخل ملف واحد",
+        "تعمل العناصر معاً عند بدء النظام فقط",
+        "يختار محدد عملية من مجموعة غير مترابطة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A functionally cohesive component has one focused and well-defined purpose.",
+      "explanation_ar": "للمكون المتماسك وظيفياً غرض واحد واضح ومحدد."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_procedural_cohesion",
+      "bloom_level": "Apply",
+      "question": "Elements linked by a required execution order but using different data show...",
+      "question_ar": "ترتبط العناصر بترتيب تنفيذ مطلوب لكنها تستخدم بيانات مختلفة؛ هذا هو...",
+      "options": [
+        "Temporal cohesion groups tasks by execution time",
+        "Procedural cohesion links tasks by control order",
+        "Sequential cohesion passes one task's output to the next",
+        "Logical cohesion lets a selector choose related tasks"
+      ],
+      "options_en": [
+        "Temporal cohesion groups tasks by execution time",
+        "Procedural cohesion links tasks by control order",
+        "Sequential cohesion passes one task's output to the next",
+        "Logical cohesion lets a selector choose related tasks"
+      ],
+      "options_ar": [
+        "التماسك الزمني يجمع المهام بحسب وقت تنفيذها",
+        "التماسك الإجرائي يربط المهام بترتيب التحكم",
+        "التماسك التسلسلي يمرر ناتج مهمة إلى التالية",
+        "التماسك المنطقي يتيح اختيار مهمة من فئة متقاربة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Procedural cohesion links operations through their control-flow sequence.",
+      "explanation_ar": "يربط التماسك الإجرائي العمليات عبر تسلسل تدفق التحكم."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_communicational_cohesion",
+      "bloom_level": "Apply",
+      "question": "Different operations grouped because they use the same input data show...",
+      "question_ar": "جُمعت عمليات مختلفة لأنها تستخدم بيانات الإدخال نفسها؛ هذا هو...",
+      "options": [
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Sequential cohesion links one operation's output to the next input",
+        "Communicational cohesion groups tasks that use shared data",
+        "Procedural cohesion links operations by their execution order"
+      ],
+      "options_en": [
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Sequential cohesion links one operation's output to the next input",
+        "Communicational cohesion groups tasks that use shared data",
+        "Procedural cohesion links operations by their execution order"
+      ],
+      "options_ar": [
+        "التماسك العشوائي يضم عناصر لا يجمعها هدف مشترك",
+        "التماسك التسلسلي يربط خرج عملية بمدخل التالية",
+        "التماسك الاتصالي يجمع مهاماً تستخدم بيانات مشتركة",
+        "التماسك الإجرائي يربط عمليات بترتيب تنفيذها"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Communicational cohesion groups distinct operations that work on the same data.",
+      "explanation_ar": "يجمع التماسك الاتصالي عمليات مختلفة تعمل على البيانات نفسها."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_logical_cohesion",
+      "bloom_level": "Apply",
+      "question": "A selector chooses one operation from a family of related tasks; this is...",
+      "question_ar": "يختار محدد عملية واحدة من عائلة مهام متقاربة؛ هذا هو...",
+      "options": [
+        "Functional cohesion makes every part serve one task",
+        "Sequential cohesion passes one task's output to the next",
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Logical cohesion lets a selector choose among related tasks"
+      ],
+      "options_en": [
+        "Functional cohesion makes every part serve one task",
+        "Sequential cohesion passes one task's output to the next",
+        "Coincidental cohesion groups elements without a shared purpose",
+        "Logical cohesion lets a selector choose among related tasks"
+      ],
+      "options_ar": [
+        "التماسك الوظيفي يجعل كل جزء يخدم مهمة واحدة",
+        "التماسك التسلسلي يمرر ناتج مهمة إلى التالية",
+        "التماسك العشوائي يجمع عناصر بلا هدف مشترك",
+        "التماسك المنطقي يتيح اختيار مهمة من فئة متقاربة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Logical cohesion groups similar categories of activity and uses a control choice among them.",
+      "explanation_ar": "يجمع التماسك المنطقي فئات أنشطة متشابهة ويستخدم اختياراً للتحكم بينها."
+    }
+  ]
+}

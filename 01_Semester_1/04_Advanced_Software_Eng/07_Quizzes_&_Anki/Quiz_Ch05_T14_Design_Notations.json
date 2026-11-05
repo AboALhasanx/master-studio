@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T14_Design_Notations",
+  "topic": "Software Design Notations",
+  "topic_ar": "ترميزات التصميم البرمجي",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_dfd_view",
+      "bloom_level": "Understand",
+      "question": "Which design view does a DFD primarily show?",
+      "question_ar": "أي منظور تصميم يوضحه DFD أساساً؟",
+      "options": [
+        "Data movement, stores, and transformations",
+        "Module calls and their control hierarchy",
+        "Object states and behavior over time",
+        "Physical nodes and allocation of hardware"
+      ],
+      "options_en": [
+        "Data movement, stores, and transformations",
+        "Module calls and their control hierarchy",
+        "Object states and behavior over time",
+        "Physical nodes and allocation of hardware"
+      ],
+      "options_ar": [
+        "حركة البيانات والمخازن والتحولات بينها",
+        "استدعاءات الوحدات وتسلسل التحكم بينها",
+        "حالات الكائنات والسلوك المرتبط بمرور الزمن",
+        "توزيع الأجهزة والعقد المادية على مواقع النشر"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A DFD focuses on how data moves and changes through a system.",
+      "explanation_ar": "يركز DFD على حركة البيانات وتحولها عبر النظام."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_structure_chart_view",
+      "bloom_level": "Understand",
+      "question": "Which design view does a structure chart primarily show?",
+      "question_ar": "أي منظور تصميم يوضحه مخطط البنية أساساً؟",
+      "options": [
+        "Physical machines and their deployment locations",
+        "Procedural control and module invocation hierarchy",
+        "User goals and actors at the system boundary",
+        "Data stores and exchanges with external sources"
+      ],
+      "options_en": [
+        "Physical machines and their deployment locations",
+        "Procedural control and module invocation hierarchy",
+        "User goals and actors at the system boundary",
+        "Data stores and exchanges with external sources"
+      ],
+      "options_ar": [
+        "الأجهزة المادية ومواقع تشغيل النظام",
+        "التحكم الإجرائي وترتيب استدعاء الوحدات",
+        "أهداف المستخدم والجهات خارج حدود النظام",
+        "مخازن البيانات وتبادلها مع الجهات الخارجية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A structure chart represents procedural hierarchy and component invocation.",
+      "explanation_ar": "يمثل مخطط البنية التسلسل الإجرائي واستدعاء المكونات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_flowchart_view",
+      "bloom_level": "Understand",
+      "question": "What does a flowchart most directly communicate?",
+      "question_ar": "ماذا يوصل مخطط التدفق مباشرة؟",
+      "options": [
+        "The data stores in an external environment",
+        "The classes deployed on physical devices",
+        "The sequence and branching of procedural steps",
+        "The hierarchy of calling software components"
+      ],
+      "options_en": [
+        "The data stores in an external environment",
+        "The classes deployed on physical devices",
+        "The sequence and branching of procedural steps",
+        "The hierarchy of calling software components"
+      ],
+      "options_ar": [
+        "مخازن البيانات في البيئة الخارجية",
+        "الأصناف المنشورة على الأجهزة المادية",
+        "تسلسل الخطوات الإجرائية وتفرعها",
+        "تسلسل استدعاء مكونات البرمجيات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A flowchart shows algorithmic steps and their control flow.",
+      "explanation_ar": "يوضح مخطط التدفق خطوات الخوارزمية وتدفق التحكم فيها."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_flowchart_vs_structure",
+      "bloom_level": "Analyze",
+      "question": "What is the key distinction between a flowchart and a structure chart?",
+      "question_ar": "ما الفرق الجوهري بين مخطط التدفق ومخطط البنية؟",
+      "options": [
+        "Data movement versus physical deployment nodes",
+        "User roles versus class inheritance structure",
+        "Stored records versus external system messages",
+        "Steps and branches versus calls among components"
+      ],
+      "options_en": [
+        "Data movement versus physical deployment nodes",
+        "User roles versus class inheritance structure",
+        "Stored records versus external system messages",
+        "Steps and branches versus calls among components"
+      ],
+      "options_ar": [
+        "حركة البيانات مقابل عقد النشر المادية",
+        "أدوار المستخدم مقابل وراثة الأصناف",
+        "السجلات المخزنة مقابل رسائل النظام الخارجي",
+        "الخطوات والفروع مقابل استدعاء المكونات"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Flowcharts model procedural flow; structure charts model calling relationships.",
+      "explanation_ar": "يمثل مخطط التدفق سير الإجراءات، ويمثل مخطط البنية علاقات الاستدعاء."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_multiple_notations",
+      "bloom_level": "Understand",
+      "question": "Why do designers use more than one notation?",
+      "question_ar": "لماذا يستخدم المصممون أكثر من ترميز واحد؟",
+      "options": [
+        "Different views expose different design concerns",
+        "A design diagram can never be revised after review",
+        "Every stakeholder must read identical design detail",
+        "Notation choice replaces important architecture decisions"
+      ],
+      "options_en": [
+        "Different views expose different design concerns",
+        "A design diagram can never be revised after review",
+        "Every stakeholder must read identical design detail",
+        "Notation choice replaces important architecture decisions"
+      ],
+      "options_ar": [
+        "تكشف المناظير المختلفة جوانب متعددة من التصميم",
+        "لا يمكن تعديل مخطط التصميم بعد مراجعته",
+        "ينبغي أن يراجع أصحاب المصلحة مستوى التفاصيل نفسه",
+        "يستبدل اختيار الترميز قرارات المعمارية المهمة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Specialized notations avoid clutter by presenting distinct architectural dimensions.",
+      "explanation_ar": "تتجنب الترميزات المتخصصة التشويش بعرض أبعاد معمارية مختلفة."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_static_dynamic_notations",
+      "bloom_level": "Understand",
+      "question": "Which pair contrasts static structure with dynamic behavior?",
+      "question_ar": "أي زوج يقارن البنية الساكنة بالسلوك الديناميكي؟",
+      "options": [
+        "Flowchart for control with a class diagram for object types",
+        "Class diagram for structure; sequence diagram for behavior",
+        "Structure chart showing calls with a dictionary of terms",
+        "Data-flow diagram for movement with a deployment view"
+      ],
+      "options_en": [
+        "Flowchart for control with a class diagram for object types",
+        "Class diagram for structure; sequence diagram for behavior",
+        "Structure chart showing calls with a dictionary of terms",
+        "Data-flow diagram for movement with a deployment view"
+      ],
+      "options_ar": [
+        "مخطط تدفق للتحكم مع مخطط أصناف لأنواع الكائنات",
+        "مخطط الأصناف للبنية ومخطط التسلسل للسلوك",
+        "مخطط بنية للاستدعاءات مع قاموس للمصطلحات",
+        "مخطط تدفق للحركة مع منظور خاص بالنشر"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Class diagrams show structure; sequence diagrams show interactions over time.",
+      "explanation_ar": "يعرض مخطط الأصناف البنية، ويعرض مخطط التسلسل التفاعلات عبر الزمن."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_notation_stakeholders",
+      "bloom_level": "Apply",
+      "question": "A business user needs to validate system goals; which notation is suitable?",
+      "question_ar": "يريد مستخدم تجاري التحقق من أهداف النظام؛ أي ترميز يناسبه؟",
+      "options": [
+        "A deployment view mapping processors to system nodes",
+        "A procedure body listing variables and operations",
+        "A use-case view showing actor goals and system services",
+        "A detailed flowchart tracing algorithm decisions"
+      ],
+      "options_en": [
+        "A deployment view mapping processors to system nodes",
+        "A procedure body listing variables and operations",
+        "A use-case view showing actor goals and system services",
+        "A detailed flowchart tracing algorithm decisions"
+      ],
+      "options_ar": [
+        "منظور نشر يربط المعالجات بعقد النظام الموزعة",
+        "جسم إجراء يحدد متغيراته وعملياته المحلية",
+        "منظور حالات الاستخدام لأهداف الجهات وخدماتها",
+        "مخطط تدفق يوضح خطوات الخوارزمية وفروع القرار"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Use-case diagrams express system services and actor goals at a high level.",
+      "explanation_ar": "تعرض مخططات حالات الاستخدام خدمات النظام وأهداف الجهات بمستوى عالٍ."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_transform_transaction",
+      "bloom_level": "Analyze",
+      "question": "Which DFD pattern calls for transaction analysis?",
+      "question_ar": "أي نمط في DFD يناسبه تحليل المعاملات؟",
+      "options": [
+        "A continuous data flow passes through a central transform",
+        "A specialized class inherits attributes from a general class",
+        "A sequence diagram orders messages exchanged by objects",
+        "A transaction tag selects a path among available alternatives"
+      ],
+      "options_en": [
+        "A continuous data flow passes through a central transform",
+        "A specialized class inherits attributes from a general class",
+        "A sequence diagram orders messages exchanged by objects",
+        "A transaction tag selects a path among available alternatives"
+      ],
+      "options_ar": [
+        "يمر تدفق البيانات عبر عملية تحويل مركزية",
+        "يرث صنف متخصص سمات من صنف عام في التصميم",
+        "يرتب مخطط التسلسل رسائل الكائنات حسب الزمن",
+        "تحدد علامة المعاملة مساراً من بدائل متاحة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Transaction analysis suits a dispatcher that routes by the transaction type.",
+      "explanation_ar": "يلائم تحليل المعاملات موزعاً يوجه التنفيذ بحسب نوع المعاملة."
+    }
+  ]
+}

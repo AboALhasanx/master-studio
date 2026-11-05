@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T04_Why_Design_Matters",
+  "topic": "Why Software Design Matters",
+  "topic_ar": "أهمية التصميم البرمجي",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_design_importance_bridge",
+      "bloom_level": "Understand",
+      "question": "Why is design an important engineering activity?",
+      "question_ar": "لماذا يعد التصميم نشاطاً هندسياً مهماً؟",
+      "options": [
+        "It turns requirements into a construction plan",
+        "It replaces the need to define user needs",
+        "It guarantees implementation without any defects",
+        "It makes verification unnecessary after coding"
+      ],
+      "options_en": [
+        "It turns requirements into a construction plan",
+        "It replaces the need to define user needs",
+        "It guarantees implementation without any defects",
+        "It makes verification unnecessary after coding"
+      ],
+      "options_ar": [
+        "يحول المتطلبات إلى خطة لبناء النظام",
+        "يلغي الحاجة إلى تحديد حاجات المستخدم",
+        "يضمن تنفيذ النظام من دون عيوب",
+        "يجعل التحقق غير ضروري بعد البرمجة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Design gives implementation a reasoned structure derived from the requirements.",
+      "explanation_ar": "يمنح التصميم التنفيذ بنية مدروسة مشتقة من المتطلبات."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_design_quality",
+      "bloom_level": "Understand",
+      "question": "What can a software design strongly influence?",
+      "question_ar": "ما الذي يستطيع التصميم البرمجي التأثير فيه بقوة؟",
+      "options": [
+        "The size of the system's intended user population",
+        "The quality and maintainability of the final result",
+        "The electricity available at the deployment location",
+        "The laws governing the customer's business sector"
+      ],
+      "options_en": [
+        "The size of the system's intended user population",
+        "The quality and maintainability of the final result",
+        "The electricity available at the deployment location",
+        "The laws governing the customer's business sector"
+      ],
+      "options_ar": [
+        "حجم الفئة المستهدفة من مستخدمي النظام",
+        "جودة النظام وإمكان صيانته على المدى البعيد",
+        "الكهرباء المتوفرة في موقع النشر البرمجي",
+        "القوانين المنظمة لقطاع عمل الجهة المستفيدة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Architectural choices influence important quality properties, including maintainability.",
+      "explanation_ar": "تؤثر الخيارات المعمارية في خصائص جودة مهمة، ومنها قابلية الصيانة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_design_early_decisions",
+      "bloom_level": "Analyze",
+      "question": "Why should major structural decisions be made before coding spreads?",
+      "question_ar": "لماذا ينبغي حسم القرارات البنيوية قبل انتشار البرمجة؟",
+      "options": [
+        "Requirements stop changing once classes exist",
+        "Testing cannot identify defects in implemented code",
+        "Shared choices can shape many system components",
+        "Every design choice becomes irrelevant after coding"
+      ],
+      "options_en": [
+        "Requirements stop changing once classes exist",
+        "Testing cannot identify defects in implemented code",
+        "Shared choices can shape many system components",
+        "Every design choice becomes irrelevant after coding"
+      ],
+      "options_ar": [
+        "تتوقف المتطلبات عن التغير بعد إنشاء الأصناف",
+        "لا يستطيع الاختبار كشف عيوب الشيفرة المنفذة",
+        "قد تؤثر القرارات المشتركة في مكونات النظام",
+        "يصبح كل قرار تصميمي غير مهم بعد البرمجة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A structural decision may affect interfaces and dependencies throughout the system.",
+      "explanation_ar": "قد يؤثر القرار البنيوي في الواجهات والاعتماديات عبر النظام."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_design_quality_three",
+      "bloom_level": "Understand",
+      "question": "Which three qualities are attributed to Vitruvius in the design discussion?",
+      "question_ar": "ما الصفات الثلاث المنسوبة إلى Vitruvius في نقاش التصميم؟",
+      "options": [
+        "Speed, portability, and security",
+        "Accuracy, usability, and modularity",
+        "Cost, schedule, and productivity",
+        "Durability, utility, and charm"
+      ],
+      "options_en": [
+        "Speed, portability, and security",
+        "Accuracy, usability, and modularity",
+        "Cost, schedule, and productivity",
+        "Durability, utility, and charm"
+      ],
+      "options_ar": [
+        "السرعة وقابلية النقل والأمن",
+        "الدقة وقابلية الاستخدام والنمطية",
+        "الكلفة والجدول والإنتاجية",
+        "المتانة والمنفعة والجاذبية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The cited design discussion presents durability, utility, and charm as three qualities.",
+      "explanation_ar": "يعرض نقاش التصميم المتانة والمنفعة والجاذبية بوصفها ثلاث صفات."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_design_vs_coding",
+      "bloom_level": "Understand",
+      "question": "Which statement best separates design from coding?",
+      "question_ar": "أي عبارة تميّز التصميم عن البرمجة بأفضل صورة؟",
+      "options": [
+        "Design plans the solution; coding implements it",
+        "Design tests the product; coding approves its scope",
+        "Design gathers needs; coding selects the users",
+        "Design deploys services; coding manages budgets"
+      ],
+      "options_en": [
+        "Design plans the solution; coding implements it",
+        "Design tests the product; coding approves its scope",
+        "Design gathers needs; coding selects the users",
+        "Design deploys services; coding manages budgets"
+      ],
+      "options_ar": [
+        "يخطط التصميم للحل وتنفذ البرمجة هذا الحل",
+        "يختبر التصميم المنتج وتعتمد البرمجة نطاقه",
+        "يجمع التصميم الحاجات وتختار البرمجة المستخدمين",
+        "ينشر التصميم الخدمات وتدير البرمجة الميزانيات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Design describes the solution structure, while coding implements that structure.",
+      "explanation_ar": "يصف التصميم بنية الحل، بينما تنفذ البرمجة تلك البنية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_design_construction_errors",
+      "bloom_level": "Analyze",
+      "question": "How can a design blueprint help a construction team?",
+      "question_ar": "كيف يساعد مخطط التصميم فريق البناء؟",
+      "options": [
+        "It proves each requirement is already validated",
+        "It clarifies component roles before implementation",
+        "It prevents maintenance work after product release",
+        "It removes the need to communicate interfaces"
+      ],
+      "options_en": [
+        "It proves each requirement is already validated",
+        "It clarifies component roles before implementation",
+        "It prevents maintenance work after product release",
+        "It removes the need to communicate interfaces"
+      ],
+      "options_ar": [
+        "يثبت اعتماد كل متطلب قبل التنفيذ",
+        "يوضح أدوار المكونات قبل بدء التنفيذ",
+        "يمنع أعمال الصيانة بعد إصدار المنتج",
+        "يلغي الحاجة إلى توضيح الواجهات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A clear design helps builders coordinate component responsibilities and interfaces.",
+      "explanation_ar": "يساعد التصميم الواضح المنفذين على تنسيق مسؤوليات المكونات وواجهاتها."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_design_maintainability",
+      "bloom_level": "Apply",
+      "question": "A small policy change forces edits across many unrelated components; what design value was weak?",
+      "question_ar": "تغيير بسيط في سياسة يفرض تعديلات على مكونات غير مترابطة؛ ما القيمة الضعيفة؟",
+      "options": [
+        "External openness through system boundaries",
+        "Deployment clarity through physical computing nodes",
+        "Maintainability through localized design decisions",
+        "Conceptual scope through user-visible workflows"
+      ],
+      "options_en": [
+        "External openness through system boundaries",
+        "Deployment clarity through physical computing nodes",
+        "Maintainability through localized design decisions",
+        "Conceptual scope through user-visible workflows"
+      ],
+      "options_ar": [
+        "انفتاح النظام عبر حدوده مع البيئات الخارجية",
+        "وضوح النشر عبر عقد الحوسبة المادية",
+        "قابلية الصيانة عبر حصر أثر قرارات التصميم",
+        "النطاق المفهومي عبر إجراءات المستخدم الظاهرة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A maintainable design localizes changes rather than spreading them across unrelated parts.",
+      "explanation_ar": "يحصر التصميم القابل للصيانة التغييرات بدلاً من نشرها في أجزاء غير مترابطة."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_design_not_guarantee",
+      "bloom_level": "Evaluate",
+      "question": "What is the safest claim about a well-prepared design?",
+      "question_ar": "ما الادعاء الأدق بشأن التصميم المعد جيداً؟",
+      "options": [
+        "It removes uncertainty from future maintenance work",
+        "It proves every implementation choice will be optimal",
+        "It prevents requirements from changing after approval",
+        "It guides construction but cannot ensure defect-free code"
+      ],
+      "options_en": [
+        "It removes uncertainty from future maintenance work",
+        "It proves every implementation choice will be optimal",
+        "It prevents requirements from changing after approval",
+        "It guides construction but cannot ensure defect-free code"
+      ],
+      "options_ar": [
+        "يزيل أوجه الغموض عن أعمال الصيانة المستقبلية",
+        "يثبت أن كل خيار تنفيذي في النظام هو الأمثل",
+        "يمنع تغير المتطلبات بعد الحصول على الاعتماد",
+        "يوجه البناء لكنه لا يضمن خلو الشيفرة من العيوب"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Design improves the basis for implementation; coding and verification still matter.",
+      "explanation_ar": "يحسن التصميم أساس التنفيذ، لكن البرمجة والتحقق يظلان ضروريين."
+    }
+  ]
+}

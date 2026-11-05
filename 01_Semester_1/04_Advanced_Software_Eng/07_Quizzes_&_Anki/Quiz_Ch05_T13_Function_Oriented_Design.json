@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T13_Function_Oriented_Design",
+  "topic": "Function-Oriented Design",
+  "topic_ar": "التصميم الموجه بالوظائف",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_fod_definition",
+      "bloom_level": "Understand",
+      "question": "What is the main organizing focus of function-oriented design?",
+      "question_ar": "ما محور التنظيم الرئيس في التصميم الموجه بالوظائف؟",
+      "options": [
+        "Functions and their procedural hierarchy",
+        "Objects and their identity relationships",
+        "Hardware nodes and deployment locations",
+        "User stories and planned release dates"
+      ],
+      "options_en": [
+        "Functions and their procedural hierarchy",
+        "Objects and their identity relationships",
+        "Hardware nodes and deployment locations",
+        "User stories and planned release dates"
+      ],
+      "options_ar": [
+        "الوظائف وتسلسل الإجراءات الذي يضمها النظام",
+        "الكائنات وهوياتها وعلاقاتها البنيوية",
+        "العقد المادية ومواقع توزيع مكونات النظام",
+        "قصص المستخدم وأهدافها ضمن خطة الإصدار"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Function-oriented design organizes the system around functions and subfunctions.",
+      "explanation_ar": "ينظم التصميم الموجه بالوظائف النظام حول الوظائف والوظائف الفرعية."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_fod_view",
+      "bloom_level": "Understand",
+      "question": "How does function-oriented design view computation?",
+      "question_ar": "كيف ينظر التصميم الموجه بالوظائف إلى المعالجة؟",
+      "options": [
+        "As hardware nodes exchanging deployment files",
+        "As functions transforming inputs into outputs",
+        "As objects exchanging identity tokens only",
+        "As database tables without processing behavior"
+      ],
+      "options_en": [
+        "As hardware nodes exchanging deployment files",
+        "As functions transforming inputs into outputs",
+        "As objects exchanging identity tokens only",
+        "As database tables without processing behavior"
+      ],
+      "options_ar": [
+        "عقد أجهزة تتبادل ملفات النشر",
+        "وظائف تحول المدخلات إلى مخرجات",
+        "كائنات تتبادل رموز الهوية فقط",
+        "جداول بيانات بلا سلوك معالجة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The functional view models computation as transformations of data.",
+      "explanation_ar": "يمثل المنظور الوظيفي المعالجة بوصفها تحويلات للبيانات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_fod_data_separation",
+      "bloom_level": "Understand",
+      "question": "What is generally separated in function-oriented decomposition?",
+      "question_ar": "ما الذي يفصل عادة في التفكيك الموجه بالوظائف؟",
+      "options": [
+        "Requirements and boundaries across external systems",
+        "Component nodes and their host machines",
+        "Data structures and procedures that transform them",
+        "Class identity and its runtime object instances"
+      ],
+      "options_en": [
+        "Requirements and boundaries across external systems",
+        "Component nodes and their host machines",
+        "Data structures and procedures that transform them",
+        "Class identity and its runtime object instances"
+      ],
+      "options_ar": [
+        "متطلبات النظام وحدوده مع الأنظمة الخارجية",
+        "عقد المكونات وأجهزة الحاسوب التي تستضيفها",
+        "بنى البيانات والإجراءات التي تحولها معاً",
+        "هوية الصنف ونسخه المنشأة أثناء التشغيل"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Function-oriented design commonly treats data and the procedures operating on it separately.",
+      "explanation_ar": "يتعامل التصميم الموجه بالوظائف عادة مع البيانات وإجراءات معالجتها على نحو منفصل."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_fod_dfd",
+      "bloom_level": "Understand",
+      "question": "Which notation primarily models data movement and transformation?",
+      "question_ar": "أي ترميز يمثل حركة البيانات وتحولها أساساً؟",
+      "options": [
+        "Structure Chart",
+        "Use-Case Diagram",
+        "Deployment Diagram",
+        "Data Flow Diagram"
+      ],
+      "options_en": [
+        "Structure Chart",
+        "Use-Case Diagram",
+        "Deployment Diagram",
+        "Data Flow Diagram"
+      ],
+      "options_ar": [
+        "مخطط يوضح استدعاء الوحدات وترتيبها",
+        "مخطط يوضح أهداف الجهات وحالات استخدامها",
+        "مخطط يوضح عقد التنفيذ ومواقعها",
+        "مخطط يوضح حركة البيانات وتحولها"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A DFD represents data flows, stores, sources, and transformations.",
+      "explanation_ar": "يمثل DFD تدفقات البيانات ومخازنها ومصادرها وتحولاتها."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_fod_hierarchy",
+      "bloom_level": "Understand",
+      "question": "What does a function-oriented hierarchy decompose?",
+      "question_ar": "ماذا يفكك التسلسل الهرمي الموجه بالوظائف؟",
+      "options": [
+        "System functions divided into subordinate procedures",
+        "Hardware devices mapped to business objectives",
+        "Object states assigned to physical deployment nodes",
+        "Database records assigned to external user roles"
+      ],
+      "options_en": [
+        "System functions divided into subordinate procedures",
+        "Hardware devices mapped to business objectives",
+        "Object states assigned to physical deployment nodes",
+        "Database records assigned to external user roles"
+      ],
+      "options_ar": [
+        "تقسيم وظائف النظام إلى إجراءات أصغر تابعة",
+        "ربط أجهزة الحاسوب بأهداف العمل التجارية",
+        "تخصيص حالات الكائن لعقد النشر المادية",
+        "إسناد سجلات البيانات إلى أدوار المستخدمين"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Functional decomposition breaks system behavior into a hierarchy of procedures.",
+      "explanation_ar": "يقسم التفكيك الوظيفي سلوك النظام إلى تسلسل هرمي من الإجراءات."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_procedural_abstraction",
+      "bloom_level": "Understand",
+      "question": "Which abstraction names an operation while hiding its implementation?",
+      "question_ar": "أي تجريد يسمي عملية ويخفي طريقة تنفيذها؟",
+      "options": [
+        "Data abstraction around hidden stored representation",
+        "Procedural abstraction through a named operation",
+        "Control abstraction across structured execution paths",
+        "Deployment abstraction over physical computing nodes"
+      ],
+      "options_en": [
+        "Data abstraction around hidden stored representation",
+        "Procedural abstraction through a named operation",
+        "Control abstraction across structured execution paths",
+        "Deployment abstraction over physical computing nodes"
+      ],
+      "options_ar": [
+        "تجريد البيانات حول تمثيل مخزن غير ظاهر",
+        "التجريد الإجرائي عبر عملية محددة الاسم",
+        "تجريد التحكم عبر مسارات تنفيذ منظمة",
+        "تجريد النشر عبر عقد الحوسبة المادية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Procedural abstraction lets callers use a named operation without knowing its internal steps.",
+      "explanation_ar": "يتيح التجريد الإجرائي للمستدعين استخدام عملية مسماة دون معرفة خطواتها الداخلية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_fod_transform",
+      "bloom_level": "Understand",
+      "question": "What can connect a DFD analysis to a functional structure chart?",
+      "question_ar": "ما الذي قد يربط تحليل DFD بمخطط بنية وظيفي؟",
+      "options": [
+        "Physical deployment or node allocation",
+        "Cohesion ranking or global coupling",
+        "Transform or transaction analysis",
+        "Class inheritance or object cloning"
+      ],
+      "options_en": [
+        "Physical deployment or node allocation",
+        "Cohesion ranking or global coupling",
+        "Transform or transaction analysis",
+        "Class inheritance or object cloning"
+      ],
+      "options_ar": [
+        "النشر المادي أو توزيع العقد",
+        "ترتيب التماسك أو الاقتران العام",
+        "تحليل التحويل أو تحليل المعاملات",
+        "وراثة الأصناف أو استنساخ الكائنات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Transform and transaction analysis map data-flow structure into procedural structure.",
+      "explanation_ar": "يربط تحليل التحويل والمعاملات بنية تدفق البيانات بالبنية الإجرائية."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_fan_in_out",
+      "bloom_level": "Understand",
+      "question": "What do fan-in and fan-out measure for a module?",
+      "question_ar": "ماذا يقيس Fan-in وFan-out في الوحدة؟",
+      "options": [
+        "Fan-in counts outgoing calls; fan-out counts callers",
+        "Both count stored fields and interface parameter values",
+        "Both measure source size and runtime speed per module",
+        "Fan-in counts callers; fan-out counts modules called"
+      ],
+      "options_en": [
+        "Fan-in counts outgoing calls; fan-out counts callers",
+        "Both count stored fields and interface parameter values",
+        "Both measure source size and runtime speed per module",
+        "Fan-in counts callers; fan-out counts modules called"
+      ],
+      "options_ar": [
+        "Fan-in عدد الاستدعاءات الصادرة وFan-out عدد مستدعيها",
+        "كلاهما يقيس حقول البيانات ومعاملات الواجهة للوحدة",
+        "كلاهما يقيس حجم الشيفرة وزمن تنفيذ كل وحدة برمجية",
+        "Fan-in عدد مستدعيات الوحدة وFan-out عدد ما تستدعيه"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Fan-in counts modules that call a component; fan-out counts the components it calls.",
+      "explanation_ar": "يرصد Fan-in الوحدات التي تستدعي المكون، ويرصد Fan-out المكونات التي يستدعيها."
+    }
+  ]
+}

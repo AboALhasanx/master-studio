@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T02_Conceptual_And_Technical_Design",
+  "topic": "Conceptual and Technical Design",
+  "topic_ar": "التصميم المفهومي والتصميم الفني",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_conceptual_what",
+      "bloom_level": "Understand",
+      "question": "What does conceptual design emphasize?",
+      "question_ar": "على ماذا يركز التصميم المفهومي؟",
+      "options": [
+        "The capabilities that users can observe and request",
+        "The internal hierarchy of calling software components",
+        "The algorithms that programmers select for execution",
+        "The memory layout used by components at runtime"
+      ],
+      "options_en": [
+        "The capabilities that users can observe and request",
+        "The internal hierarchy of calling software components",
+        "The algorithms that programmers select for execution",
+        "The memory layout used by components at runtime"
+      ],
+      "options_ar": [
+        "القدرات التي يستطيع المستخدمون رؤيتها وطلبها",
+        "التسلسل الداخلي لاستدعاء مكونات البرمجيات",
+        "الخوارزميات التي يختار المبرمجون تنفيذها",
+        "تنظيم الذاكرة الذي تستخدمه المكونات أثناء التشغيل"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Conceptual design explains what the system offers from an external user perspective.",
+      "explanation_ar": "يشرح التصميم المفهومي ما يقدمه النظام من منظور المستخدم الخارجي."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_technical_how",
+      "bloom_level": "Understand",
+      "question": "What does technical design emphasize?",
+      "question_ar": "على ماذا يركز التصميم الفني؟",
+      "options": [
+        "Which interface colors users happen to prefer",
+        "How the architecture realizes required system behavior",
+        "What business outcomes the customer expects to receive",
+        "Why an organization approved the proposed project"
+      ],
+      "options_en": [
+        "Which interface colors users happen to prefer",
+        "How the architecture realizes required system behavior",
+        "What business outcomes the customer expects to receive",
+        "Why an organization approved the proposed project"
+      ],
+      "options_ar": [
+        "ألوان الواجهة التي يفضلها المستخدمون عادة",
+        "كيفية تحقيق المعمارية للسلوك المطلوب من النظام",
+        "النتائج التجارية التي يتوقع العميل أن يحققها",
+        "أسباب اعتماد المؤسسة للمشروع البرمجي المقترح"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Technical design describes how the system will implement its required capabilities.",
+      "explanation_ar": "يصف التصميم الفني كيفية تنفيذ النظام لقدراته المطلوبة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_conceptual_audience",
+      "bloom_level": "Understand",
+      "question": "Who is the primary audience for a conceptual design?",
+      "question_ar": "من الجمهور الأساسي للتصميم المفهومي؟",
+      "options": [
+        "Technicians who maintain computing hardware",
+        "Compiler developers who build translation tools",
+        "Customers and users who describe external needs",
+        "Database administrators who manage stored records"
+      ],
+      "options_en": [
+        "Technicians who maintain computing hardware",
+        "Compiler developers who build translation tools",
+        "Customers and users who describe external needs",
+        "Database administrators who manage stored records"
+      ],
+      "options_ar": [
+        "فنيو الصيانة الذين يصلحون أجهزة الحاسوب",
+        "مطورو المترجمات الذين يبنون أدوات ترجمة الشيفرة",
+        "العملاء والمستخدمون الذين يصفون الحاجات الخارجية",
+        "مسؤولو قواعد البيانات الذين يديرون السجلات المخزنة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Conceptual design communicates system behavior in terms accessible to customers and users.",
+      "explanation_ar": "يوصل التصميم المفهومي سلوك النظام بلغة يفهمها العملاء والمستخدمون."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_technical_audience",
+      "bloom_level": "Understand",
+      "question": "Who primarily uses the technical design description?",
+      "question_ar": "من يستخدم وصف التصميم الفني أساساً؟",
+      "options": [
+        "Customers who approve visible user workflows",
+        "Marketers who position a product in its market",
+        "Operators who schedule workplace meetings",
+        "Builders who implement the system components"
+      ],
+      "options_en": [
+        "Customers who approve visible user workflows",
+        "Marketers who position a product in its market",
+        "Operators who schedule workplace meetings",
+        "Builders who implement the system components"
+      ],
+      "options_ar": [
+        "العملاء الذين يعتمدون إجراءات واجهة المستخدم",
+        "المسوّقون الذين يحددون موقع المنتج في السوق",
+        "المشغلون الذين ينظمون اجتماعات العمل",
+        "المنفذون الذين يبنون مكونات النظام البرمجي"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Technical design gives implementers the details needed to construct the system.",
+      "explanation_ar": "يمنح التصميم الفني المنفذين التفاصيل اللازمة لبناء النظام."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_conceptual_artifacts",
+      "bloom_level": "Understand",
+      "question": "Which artifact best fits conceptual design?",
+      "question_ar": "أي مخرج يلائم التصميم المفهومي أكثر؟",
+      "options": [
+        "A user workflow showing visible steps and outcomes",
+        "A method signature defining parameters and returns",
+        "A database schema describing stored data fields",
+        "A module hierarchy showing procedural control calls"
+      ],
+      "options_en": [
+        "A user workflow showing visible steps and outcomes",
+        "A method signature defining parameters and returns",
+        "A database schema describing stored data fields",
+        "A module hierarchy showing procedural control calls"
+      ],
+      "options_ar": [
+        "سير مستخدم يوضح خطوات التفاعل والنتائج",
+        "توقيع طريقة يحدد المعاملات والقيم المعادة",
+        "مخطط قاعدة يحدد حقول البيانات المخزنة",
+        "تسلسل وحدات يوضح استدعاءات الإجراءات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Workflows describe user-visible behavior; signatures and schemas are technical details.",
+      "explanation_ar": "يصف سير العمل السلوك الظاهر للمستخدم، أما التواقيع والمخططات فهي تفاصيل فنية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_technical_artifacts",
+      "bloom_level": "Apply",
+      "question": "A team must define module interfaces and data structures; which view fits?",
+      "question_ar": "يريد فريق تحديد واجهات الوحدات وبنى البيانات؛ أي تصميم يلائمه؟",
+      "options": [
+        "Operational training explaining the released interface",
+        "Technical design specifying internal construction decisions",
+        "Conceptual design describing user-visible capabilities",
+        "Marketing design positioning the product for customers"
+      ],
+      "options_en": [
+        "Operational training explaining the released interface",
+        "Technical design specifying internal construction decisions",
+        "Conceptual design describing user-visible capabilities",
+        "Marketing design positioning the product for customers"
+      ],
+      "options_ar": [
+        "تدريب تشغيلي يشرح واجهة المنتج بعد إصداره",
+        "تصميم فني يحدد قرارات البناء الداخلية للنظام",
+        "تصميم مفهومي يصف القدرات الظاهرة للمستخدمين",
+        "تصميم تسويقي يحدد موقع المنتج لدى العملاء"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Interfaces and data structures specify internal implementation decisions.",
+      "explanation_ar": "تحدد الواجهات وبنى البيانات قرارات التنفيذ الداخلية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_conceptual_language",
+      "bloom_level": "Understand",
+      "question": "Which language best suits a conceptual design?",
+      "question_ar": "أي لغة تناسب التصميم المفهومي أكثر؟",
+      "options": [
+        "Storage terms describing database tables and indexes",
+        "Hardware terms describing device and processor registers",
+        "Business terms describing the user's intended goals",
+        "Implementation terms describing internal method calls"
+      ],
+      "options_en": [
+        "Storage terms describing database tables and indexes",
+        "Hardware terms describing device and processor registers",
+        "Business terms describing the user's intended goals",
+        "Implementation terms describing internal method calls"
+      ],
+      "options_ar": [
+        "مصطلحات التخزين التي تصف الجداول والفهارس",
+        "مصطلحات الأجهزة التي تصف سجلات المعالج والذاكرة",
+        "مصطلحات الأعمال التي تصف أهداف المستخدم المقصودة",
+        "مصطلحات التنفيذ التي تصف استدعاء الطرق الداخلية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Conceptual design should express capabilities in the customer's domain language.",
+      "explanation_ar": "ينبغي أن يعبّر التصميم المفهومي عن القدرات بلغة مجال العميل."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_conceptual_technical_translation",
+      "bloom_level": "Analyze",
+      "question": "What is the designer's role between conceptual and technical views?",
+      "question_ar": "ما دور المصمم بين المنظورين المفهومي والفني؟",
+      "options": [
+        "Replace user needs with a preferred technology choice",
+        "Turn architecture decisions into marketing statements",
+        "Hide system behavior from the implementation team",
+        "Translate user needs into an implementable design"
+      ],
+      "options_en": [
+        "Replace user needs with a preferred technology choice",
+        "Turn architecture decisions into marketing statements",
+        "Hide system behavior from the implementation team",
+        "Translate user needs into an implementable design"
+      ],
+      "options_ar": [
+        "استبدال حاجات المستخدم بتقنية يفضلها فريق التطوير",
+        "تحويل قرارات المعمارية إلى عبارات تسويقية واضحة",
+        "حجب سلوك النظام عن فريق التنفيذ البرمجي",
+        "ترجمة حاجات المستخدم إلى تصميم قابل للتنفيذ"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The designer connects the external view of required behavior with an internal technical plan.",
+      "explanation_ar": "يربط المصمم منظور السلوك المطلوب خارجياً بالخطة الفنية الداخلية."
+    }
+  ]
+}

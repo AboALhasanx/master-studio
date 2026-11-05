@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T19_Purpose_Of_SDD",
+  "topic": "Purpose of a Software Design Description",
+  "topic_ar": "الغرض من وصف التصميم البرمجي",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_sdd_purpose",
+      "bloom_level": "Understand",
+      "question": "What is the primary purpose of an SDD?",
+      "question_ar": "ما الغرض الرئيس من SDD؟",
+      "options": [
+        "Guide implementation with an authoritative design description",
+        "Replace stated requirements with executable application code",
+        "Record only defects discovered after software release",
+        "Select the commercial pricing model used by the customer"
+      ],
+      "options_en": [
+        "Guide implementation with an authoritative design description",
+        "Replace stated requirements with executable application code",
+        "Record only defects discovered after software release",
+        "Select the commercial pricing model used by the customer"
+      ],
+      "options_ar": [
+        "توجيه التنفيذ بوصف فني معتمد لقرارات تصميم البرمجيات",
+        "استبدال المتطلبات المحددة بشيفرة التطبيق القابلة للتشغيل",
+        "تسجيل العيوب التي تظهر بعد إصدار البرمجيات فقط",
+        "اختيار نموذج التسعير التجاري الذي يعتمده العميل"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "An SDD gives implementation teams an authoritative technical design reference.",
+      "explanation_ar": "توفر SDD لفرق التنفيذ مرجعاً فنياً معتمداً للتصميم."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_sdd_implementation",
+      "bloom_level": "Apply",
+      "question": "Implementers disagree about an interface; what should the SDD provide?",
+      "question_ar": "اختلف المنفذون حول واجهة؛ ماذا ينبغي أن توفر SDD؟",
+      "options": [
+        "A marketing plan prepared after the product release",
+        "The recorded interface decision builders should follow",
+        "An unrelated budget for deploying the software system",
+        "A replacement user requirement that was not reviewed"
+      ],
+      "options_en": [
+        "A marketing plan prepared after the product release",
+        "The recorded interface decision builders should follow",
+        "An unrelated budget for deploying the software system",
+        "A replacement user requirement that was not reviewed"
+      ],
+      "options_ar": [
+        "خطة تسويق أعدت بعد إصدار المنتج للمستخدمين",
+        "قرار الواجهة المسجل الذي يتبعه فريق التنفيذ",
+        "ميزانية نشر لا ترتبط بقرار التصميم البرمجي",
+        "متطلب مستخدم بديل لم يخضع لمراجعة رسمية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The SDD records design decisions that guide consistent implementation.",
+      "explanation_ar": "تسجل SDD قرارات التصميم التي توجه التنفيذ المتسق."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_sdd_verification",
+      "bloom_level": "Understand",
+      "question": "How can an SDD support verification against the SRS?",
+      "question_ar": "كيف تدعم SDD التحقق بالمقارنة مع SRS؟",
+      "options": [
+        "It converts test outcomes into new user stories for the project",
+        "It removes the need to retain written system requirements",
+        "It provides a baseline to compare the design with requirements",
+        "It measures only runtime speed after implementation is complete"
+      ],
+      "options_en": [
+        "It converts test outcomes into new user stories for the project",
+        "It removes the need to retain written system requirements",
+        "It provides a baseline to compare the design with requirements",
+        "It measures only runtime speed after implementation is complete"
+      ],
+      "options_ar": [
+        "يحول نتائج الاختبار إلى قصص مستخدم جديدة للمشروع",
+        "يلغي الحاجة إلى الاحتفاظ بمتطلبات النظام المكتوبة",
+        "يوفر أساساً لمقارنة التصميم بمتطلبات النظام",
+        "يقيس سرعة التشغيل بعد اكتمال التنفيذ فقط"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The SDD can be checked against the SRS to see whether the design addresses required behavior.",
+      "explanation_ar": "يمكن مقارنة SDD مع SRS للتحقق من معالجة التصميم للسلوك المطلوب."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_sdd_maintenance",
+      "bloom_level": "Understand",
+      "question": "Why is an SDD useful after initial implementation?",
+      "question_ar": "لماذا تبقى SDD مفيدة بعد التنفيذ الأولي؟",
+      "options": [
+        "It prevents every possible requirement change in the future",
+        "It replaces all software tests performed after initial delivery",
+        "It contains the only valid copy of the program source code",
+        "It preserves technical design information for later maintenance"
+      ],
+      "options_en": [
+        "It prevents every possible requirement change in the future",
+        "It replaces all software tests performed after initial delivery",
+        "It contains the only valid copy of the program source code",
+        "It preserves technical design information for later maintenance"
+      ],
+      "options_ar": [
+        "يمنع كل تغيير محتمل في المتطلبات مستقبلاً",
+        "يستبدل اختبارات البرمجيات بعد التسليم الأولي كلها",
+        "يحتوي النسخة الوحيدة المعتمدة من ملفات البرنامج",
+        "يحفظ معلومات التصميم الفني لأعمال الصيانة اللاحقة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Lifecycle design information helps maintainers understand existing decisions.",
+      "explanation_ar": "تساعد معلومات التصميم عبر دورة الحياة القائمين بالصيانة على فهم القرارات القائمة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_sdd_review",
+      "bloom_level": "Apply",
+      "question": "Which artifact can reviewers inspect to examine architectural choices?",
+      "question_ar": "أي وثيقة يستطيع المراجعون فحصها لدراسة الخيارات المعمارية؟",
+      "options": [
+        "The Software Design Description",
+        "The marketing campaign calendar",
+        "The payroll approval register",
+        "The user attendance report"
+      ],
+      "options_en": [
+        "The Software Design Description",
+        "The marketing campaign calendar",
+        "The payroll approval register",
+        "The user attendance report"
+      ],
+      "options_ar": [
+        "وصف التصميم البرمجي",
+        "تقويم الحملة التسويقية",
+        "سجل اعتماد الرواتب",
+        "تقرير حضور المستخدمين"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The SDD records the design that is examined in a technical review.",
+      "explanation_ar": "تسجل SDD التصميم الذي يجري فحصه في المراجعة الفنية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_sdd_guessing",
+      "bloom_level": "Analyze",
+      "question": "How does a clear SDD reduce implementation guesswork?",
+      "question_ar": "كيف يقلل وصف واضح للتصميم التخمين أثناء التنفيذ؟",
+      "options": [
+        "It hides the responsibilities assigned to each software component",
+        "It states the architectural and interface decisions for builders",
+        "It lists user complaints without recording any design resolution",
+        "It lets each implementation team invent an incompatible interface"
+      ],
+      "options_en": [
+        "It hides the responsibilities assigned to each software component",
+        "It states the architectural and interface decisions for builders",
+        "It lists user complaints without recording any design resolution",
+        "It lets each implementation team invent an incompatible interface"
+      ],
+      "options_ar": [
+        "يخفي المسؤوليات المسندة إلى كل مكون برمجي",
+        "يوضح القرارات المعمارية وقرارات الواجهة للمنفذين",
+        "يسرد شكاوى المستخدم من دون توثيق حلول تصميمية",
+        "يتيح لكل فريق تنفيذ ابتكار واجهة غير متوافقة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Documented decisions give builders a shared basis for their implementation choices.",
+      "explanation_ar": "توفر القرارات الموثقة أساساً مشتركاً لخيارات التنفيذ لدى الفرق."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_sdd_not_code",
+      "bloom_level": "Evaluate",
+      "question": "Which claim about an SDD is accurate?",
+      "question_ar": "أي ادعاء عن SDD صحيح؟",
+      "options": [
+        "It removes the need to review the software design",
+        "It is the final running product delivered to customers",
+        "It guides implementation but is not executable software",
+        "It guarantees that the implemented system has no defects"
+      ],
+      "options_en": [
+        "It removes the need to review the software design",
+        "It is the final running product delivered to customers",
+        "It guides implementation but is not executable software",
+        "It guarantees that the implemented system has no defects"
+      ],
+      "options_ar": [
+        "يلغي الحاجة إلى مراجعة التصميم البرمجي",
+        "يمثل المنتج النهائي العامل الذي يسلم للعملاء",
+        "يوجه التنفيذ لكنه ليس برنامجاً قابلاً للتشغيل",
+        "يضمن خلو النظام المنفذ من العيوب البرمجية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "An SDD describes the design; implementation and verification remain separate activities.",
+      "explanation_ar": "تصف SDD التصميم، بينما يبقى التنفيذ والتحقق نشاطين منفصلين."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_sdd_audience_purpose",
+      "bloom_level": "Understand",
+      "question": "What lifecycle role does an SDD play?",
+      "question_ar": "ما دور SDD عبر دورة حياة البرمجيات؟",
+      "options": [
+        "Setting the initial commercial price paid by software users",
+        "Approving annual leave requests for software developers",
+        "Selecting the organization's hiring policy for new staff",
+        "Communicating technical design decisions to later project teams"
+      ],
+      "options_en": [
+        "Setting the initial commercial price paid by software users",
+        "Approving annual leave requests for software developers",
+        "Selecting the organization's hiring policy for new staff",
+        "Communicating technical design decisions to later project teams"
+      ],
+      "options_ar": [
+        "تحديد السعر التجاري الأولي الذي يدفعه مستخدمو النظام",
+        "اعتماد طلبات الإجازة السنوية لمطوري البرمجيات",
+        "اختيار سياسة التوظيف للمؤسسة والموارد الجديدة",
+        "إيصال قرارات التصميم الفني إلى فرق المشروع اللاحقة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The document carries technical design knowledge across implementation and maintenance.",
+      "explanation_ar": "تنقل الوثيقة المعرفة الفنية بالتصميم عبر التنفيذ والصيانة."
+    }
+  ]
+}

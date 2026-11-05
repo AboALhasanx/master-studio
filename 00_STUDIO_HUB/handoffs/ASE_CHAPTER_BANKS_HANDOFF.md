@@ -201,25 +201,12 @@ gates; `scratch/ch02_mcq.json`, `ch03_mcq.json`, `ch04_mcq.json`, `ch05_mcq.json
 
 ---
 
-## 4. State as of 2026-11-05 (live numbers: `00_STUDIO_HUB/QUIZ_BANK_STATE.md`)
+## 4. Current state and publication record
 
-ASE has **47 banks / 407 questions**; every bank is between 8 and 16.
-
-| Chapter | banks | q | vocabulary banks? |
-|---|---|---|---|
-| Ch01 Introduction | 7 | 56 | no — still the old topic split |
-| Ch02 SDLC Models | 8 | 67 | yes — one per instructor block |
-| Ch03 Requirements | 5 | 44 | partly — T01–T04 plus a T05 that closed 4 scope gaps |
-| Ch04 Project Planning | 6 | 50 | yes |
-| Ch05 Design | 3 | 35 | no — split by official question range, not by vocabulary |
-| Ch06 Metrics | 11 | 90 | yes |
-| Ch07 Reliability | 7 | 65 | yes |
-
-**Verified in sync (2026-11-05).** Live content **v90**, shell **1.11.24**; the live manifest
-measures **200 banks / 2,027 questions**, identical to the vault. The earlier 4-bank "DIFF" was a
-stale `QUIZ_BANK_STATE.md`, not a real drift — regenerating it now returns `PASS`. Always read the
-numbers from `QUIZ_BANK_STATE.md`, never from this line. **No further publish without the
-student's review** (his 2026-11-05 decision).
+Live bank counts, chapter coverage, question totals, content version, shell version, and measured
+quality gates are recorded only in the generated `00_STUDIO_HUB/QUIZ_BANK_STATE.md`. Do not copy
+those values into this handoff. Use `quiz_bank_state.py --check` to verify that generated state
+matches the vault and live portal.
 
 ### Chapter 4 draft — 2026-11-05
 
@@ -235,6 +222,17 @@ student's review** (his 2026-11-05 decision).
 - The live vault comparison found no question or Arabic-option differences; the live keyed-answer, stem, and explanation audit found no mismatches; and the live handout-reference scan found none.
 - Production browser review confirmed the Chapter 4 catalogue entries, quiz launch, Arabic/English toggle, and question/option reshuffling across launches. The generated bank-state snapshot was regenerated and its drift check passed.
 - Coverage and source limits are documented in `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch04_Bank_Coverage_Audit.md`. The scoped release commit and push are complete; the shared session log records the remote revisions.
+
+### Chapter 5 replacement published — 2026-11-05
+
+- Prepared a vocabulary-aligned bilingual question set using the Chapter 5 scope ledger, the source map, course MCQs, descriptive/compare packs, and the Aggarwal–Singh course text and companion slides. Questions stay concise and conceptual; no long numeric-result exercises were introduced.
+- The coverage pass includes the supplementary material gaps identified in the source map: fan-in/fan-out, the structural/procedural layer distinction, information hiding, logical cohesion/control coupling, design review, OO class quality, and inheritance without polymorphic overriding.
+- The student explicitly approved replacing the old Chapter 5 set. The approved review sheet is `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch05_Draft_Review.md`; evidence and source limits are in `Ch05_Bank_Coverage_Audit.md`.
+- The active schema-v2 banks match the instructor vocabulary coverage map. All Chapter 5 structural, shape, anti-padding, strict schema, key-balance, authoring-audit, portal-schema, and publish dry-run gates passed. The generated bank-state drift check passed.
+- The previous active banks were moved to `_retired/` and hidden from the portal. The replacement content was synced globally, then pulled into the bundled portal mirror and offline precache.
+- A direct live audit compared stems, bilingual options, keyed answers, explanations, concepts, and Bloom levels with the vault. It found no mismatches, meta references, or visible retired Chapter 5 rows.
+- Production browser checks confirmed the chapter catalogue, quiz launch, translation toggle, question/option reshuffling, and stable correct-answer text. The offline check confirmed the new shell cache and Chapter 5 quiz launch with the network unavailable.
+- Portal CI completed with no failures; the production deployment is available at https://mcq-portal-jade.vercel.app. The published vault and portal mirror hold the scoped source changes.
 
 ---
 
@@ -278,17 +276,17 @@ student's review** (his 2026-11-05 decision).
 
 ### 5.3 Remaining work that is NOT deferred
 
-1. **Restructure Ch01, Ch03 and Ch05 into one bank per instructor vocabulary item**, the way
-   Ch02/Ch04/Ch06/Ch07 already are. Ch01's ledger is in
-   `03_Study_Notes/Ch01_Introduction/V1_Vocabulary_Coverage.md` (13 lecture-1 terms); Ch03's and
-   Ch05's are in the index.
-2. **Soft Computing** is done (17 banks / 158) but was **merged rather than restructured** — the
-   four legacy banks were deleted and their 30 unique questions moved into the topic banks, after
-   checking for semantic duplicates by hand. The machine check only catches lexical overlap
+1. **Restructure Ch01 into one bank per instructor vocabulary item**, the way the completed
+   chapter sets are organized. Ch01's ledger is in
+   `03_Study_Notes/Ch01_Introduction/V1_Vocabulary_Coverage.md`; use the chapter plan and index
+   to verify its scope before building.
+2. **Soft Computing** is done but was **merged rather than restructured** — legacy banks were
+   retired and their unique questions moved into the topic banks, after checking for semantic
+   duplicates by hand. The machine check only catches lexical overlap
    (Jaccard ≥ 0.60); `fuzzy_union_max` vs `c4_union_max` and `de_morgan_law` vs `c4_de_morgan`
    were duplicates that only a human reading would catch. **Do that read.**
-3. **AI (4 banks × 5)** is deliberately below the floor at the student's instruction. Leave it
-   unless he says otherwise.
+3. **AI** is deliberately below the agreed floor at the student's instruction. Leave it unless
+   he says otherwise.
 
 ---
 

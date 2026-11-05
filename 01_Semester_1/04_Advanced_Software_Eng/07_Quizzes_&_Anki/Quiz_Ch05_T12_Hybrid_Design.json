@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T12_Hybrid_Design",
+  "topic": "Hybrid Design",
+  "topic_ar": "التصميم الهجين",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_hybrid_definition",
+      "bloom_level": "Understand",
+      "question": "What is the defining idea of hybrid design?",
+      "question_ar": "ما الفكرة التي تعرّف التصميم الهجين؟",
+      "options": [
+        "Hybrid design combines top-down and bottom-up reasoning",
+        "Bottom-up design uses low-level parts but ignores system goals",
+        "Top-down design divides behavior but rejects reusable parts",
+        "Screen-based design divides a system only by visible pages"
+      ],
+      "options_en": [
+        "Hybrid design combines top-down and bottom-up reasoning",
+        "Bottom-up design uses low-level parts but ignores system goals",
+        "Top-down design divides behavior but rejects reusable parts",
+        "Screen-based design divides a system only by visible pages"
+      ],
+      "options_ar": [
+        "يجمع التصميم الهجين بين الاتجاهين التنازلي والتصاعدي",
+        "يبدأ التصاعدي بمكونات دنيا بلا توجيه شامل للنظام",
+        "يفكك التنازلي النظام لكنه يهمل المكونات الموجودة",
+        "يقسم التصميم المعتمد على الشاشات النظام إلى واجهات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Hybrid design combines the two broad directions when both are useful.",
+      "explanation_ar": "يجمع التصميم الهجين الاتجاهين العامين عندما يكون كل منهما مفيداً."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_hybrid_topdown_role",
+      "bloom_level": "Understand",
+      "question": "What can the top-down part of a hybrid approach establish?",
+      "question_ar": "ماذا يستطيع الجانب التنازلي في النهج الهجين أن يحدد؟",
+      "options": [
+        "Final market price of each software component",
+        "Overall system structure and its major responsibilities",
+        "Detailed behavior of connected external hardware",
+        "Internal implementation of every reused software library"
+      ],
+      "options_en": [
+        "Final market price of each software component",
+        "Overall system structure and its major responsibilities",
+        "Detailed behavior of connected external hardware",
+        "Internal implementation of every reused software library"
+      ],
+      "options_ar": [
+        "السعر السوقي النهائي لكل مكون برمجي",
+        "بنية النظام العامة ومسؤولياته الرئيسة",
+        "سلوك الأجهزة الخارجية المرتبطة بالنظام",
+        "الشيفرة الداخلية لكل مكتبة مستخدمة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Top-down decomposition can establish the goal-driven architecture.",
+      "explanation_ar": "يستطيع التفكيك التنازلي تحديد المعمارية الموجهة بالأهداف."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_hybrid_bottomup_role",
+      "bloom_level": "Understand",
+      "question": "What can the bottom-up part contribute to a hybrid design?",
+      "question_ar": "ماذا يستطيع الجانب التصاعدي إضافته إلى التصميم الهجين؟",
+      "options": [
+        "A guarantee of zero component interaction",
+        "An excuse to omit interface decisions",
+        "Suitable existing lower-level components",
+        "A replacement for all system requirements"
+      ],
+      "options_en": [
+        "A guarantee of zero component interaction",
+        "An excuse to omit interface decisions",
+        "Suitable existing lower-level components",
+        "A replacement for all system requirements"
+      ],
+      "options_ar": [
+        "ضماناً بانعدام تفاعل المكونات",
+        "مبرراً لإغفال قرارات الواجهات",
+        "مكونات دنيا موجودة وملائمة",
+        "بديلاً عن متطلبات النظام كلها"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Bottom-up work contributes reusable building blocks where they fit the architecture.",
+      "explanation_ar": "يسهم العمل التصاعدي بلبنات قابلة لإعادة الاستخدام حيث تلائم المعمارية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_hybrid_when",
+      "bloom_level": "Apply",
+      "question": "A team has firm goals and useful existing libraries; what approach can fit?",
+      "question_ar": "لدى فريق أهداف ثابتة ومكتبات نافعة موجودة؛ أي نهج قد يلائم؟",
+      "options": [
+        "When bottom-up design must ignore the system goals",
+        "When top-down design must discard existing libraries",
+        "When no available component can support the design",
+        "When system goals and reusable components both matter"
+      ],
+      "options_en": [
+        "When bottom-up design must ignore the system goals",
+        "When top-down design must discard existing libraries",
+        "When no available component can support the design",
+        "When system goals and reusable components both matter"
+      ],
+      "options_ar": [
+        "حين يتجاهل النهج التصاعدي أهداف النظام العليا",
+        "حين يهمل النهج التنازلي مكتبات موجودة وملائمة",
+        "عند غياب مكونات جاهزة تلائم متطلبات النظام",
+        "عند الجمع بين أهداف النظام ومكونات جاهزة ملائمة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The hybrid approach can preserve system direction and reuse suitable lower-level parts.",
+      "explanation_ar": "يستطيع النهج الهجين الحفاظ على اتجاه النظام وإعادة استخدام الأجزاء الدنيا المناسبة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_hybrid_balance",
+      "bloom_level": "Analyze",
+      "question": "What should guide the balance between the two directions?",
+      "question_ar": "ما الذي ينبغي أن يوجه الموازنة بين الاتجاهين؟",
+      "options": [
+        "System needs, architecture, and reusable components",
+        "The number of developers sharing one programming language",
+        "Preference for a newly released design notation",
+        "Length of the final printed system description"
+      ],
+      "options_en": [
+        "System needs, architecture, and reusable components",
+        "The number of developers sharing one programming language",
+        "Preference for a newly released design notation",
+        "Length of the final printed system description"
+      ],
+      "options_ar": [
+        "حاجات النظام ومعماريته والمكونات المتاحة",
+        "عدد المطورين في الفريق وتقاسمهم لغة برمجية واحدة",
+        "الرغبة في اعتماد أحدث أسلوب لرسم مخطط التصميم",
+        "عدد صفحات الوثيقة النهائية المعدة للطباعة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The combination should reflect the system's needs and the fit of available components.",
+      "explanation_ar": "ينبغي أن يعكس الجمع حاجات النظام ومدى ملاءمة المكونات المتاحة."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_hybrid_no_guarantee",
+      "bloom_level": "Evaluate",
+      "question": "Which claim about hybrid design is justified?",
+      "question_ar": "أي ادعاء عن التصميم الهجين له ما يسنده؟",
+      "options": [
+        "It always outperforms both strategies in every system",
+        "It combines two strategies but cannot ensure success",
+        "It separates the system from its user requirements",
+        "It removes every integration and testing risk"
+      ],
+      "options_en": [
+        "It always outperforms both strategies in every system",
+        "It combines two strategies but cannot ensure success",
+        "It separates the system from its user requirements",
+        "It removes every integration and testing risk"
+      ],
+      "options_ar": [
+        "يتفوق دائماً على الاستراتيجيتين في كل نظام",
+        "يجمع نهجين لكنه لا يضمن نجاح التصميم",
+        "يفصل النظام عن حاجات المستخدم ومتطلباته",
+        "يزيل مخاطر التكامل والاختبار كلها"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Combining approaches is a design choice, not a guarantee of quality or schedule.",
+      "explanation_ar": "الجمع بين النهجين خيار تصميمي وليس ضماناً للجودة أو الجدول."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_hybrid_not_third_process",
+      "bloom_level": "Understand",
+      "question": "How is hybrid design related to the other two strategies?",
+      "question_ar": "ما علاقة التصميم الهجين بالاستراتيجيتين الأخريين؟",
+      "options": [
+        "It forbids reuse of previously built components",
+        "It replaces design approaches with a testing process",
+        "It draws on both design directions within one effort",
+        "It begins only after the system has been deployed"
+      ],
+      "options_en": [
+        "It forbids reuse of previously built components",
+        "It replaces design approaches with a testing process",
+        "It draws on both design directions within one effort",
+        "It begins only after the system has been deployed"
+      ],
+      "options_ar": [
+        "يمنع إعادة استخدام المكونات المبنية سابقاً",
+        "يستبدل أساليب التصميم بعملية اختبار فقط",
+        "يستفيد من الاتجاهين خلال جهد تصميم واحد",
+        "يبدأ تطبيقه بعد اكتمال نشر النظام"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Hybrid describes a combination of top-down and bottom-up design reasoning.",
+      "explanation_ar": "يصف الهجين الجمع بين التفكير التصميمي التنازلي والتصاعدي."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_hybrid_architecture",
+      "bloom_level": "Apply",
+      "question": "A top-level service tree includes selected reusable utilities; this is...",
+      "question_ar": "تضم شجرة خدمات عليا أدوات مختارة قابلة لإعادة الاستخدام؛ هذا هو...",
+      "options": [
+        "A conceptual view of the system's user-visible behavior",
+        "A classification of dependencies among software modules",
+        "A cohesion pattern grouping tasks by execution time",
+        "A design arrangement combining both decomposition directions"
+      ],
+      "options_en": [
+        "A conceptual view of the system's user-visible behavior",
+        "A classification of dependencies among software modules",
+        "A cohesion pattern grouping tasks by execution time",
+        "A design arrangement combining both decomposition directions"
+      ],
+      "options_ar": [
+        "منظور مفهومي يصف سلوك النظام الظاهر للمستخدمين",
+        "تصنيف يوضح الاعتماد بين الوحدات البرمجية",
+        "نمط تماسك يجمع المهام بحسب وقت تنفيذها",
+        "ترتيب تصميم يجمع اتجاهي التفكيك والبناء"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The example combines high-level decomposition with lower-level reusable parts.",
+      "explanation_ar": "يجمع المثال بين التفكيك من المستوى الأعلى والأجزاء الدنيا القابلة لإعادة الاستخدام."
+    }
+  ]
+}

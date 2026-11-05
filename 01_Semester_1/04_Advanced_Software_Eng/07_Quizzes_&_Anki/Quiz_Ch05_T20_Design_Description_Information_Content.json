@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T20_Design_Description_Information_Content",
+  "topic": "SDD Information Content",
+  "topic_ar": "محتوى المعلومات في SDD",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_sdd_attributes_set",
+      "bloom_level": "Understand",
+      "question": "Which set matches the design-entity information attributes?",
+      "question_ar": "أي مجموعة تطابق سمات معلومات كيان التصميم؟",
+      "options": [
+        "Identification, type, purpose, function, subordinates, dependencies, interfaces, resources, processing, data",
+        "Actors, use cases, activities, messages, classes, states, components, deployment nodes, packages, tests",
+        "Project cost, effort, duration, schedule, staffing, risks, quality, budget, market, release planning",
+        "Data inputs, outputs, storage, control, timing, ownership, security, workload, pricing, operating policy"
+      ],
+      "options_en": [
+        "Identification, type, purpose, function, subordinates, dependencies, interfaces, resources, processing, data",
+        "Actors, use cases, activities, messages, classes, states, components, deployment nodes, packages, tests",
+        "Project cost, effort, duration, schedule, staffing, risks, quality, budget, market, release planning",
+        "Data inputs, outputs, storage, control, timing, ownership, security, workload, pricing, operating policy"
+      ],
+      "options_ar": [
+        "التعريف والنوع والغرض والوظيفة والتابعون والاعتماديات والواجهات والموارد والمعالجة والبيانات",
+        "الجهات وحالات الاستخدام والأنشطة والتفاعلات والأصناف والحالات والمكونات والعقد والحزم والاختبارات",
+        "كلفة المشروع والجهد والمدة والجدول والموارد والمخاطر والجودة والميزانية والسوق وموعد الإصدار",
+        "مدخلات البيانات ومخرجات النظام والخزن والتحكم ووقت التنفيذ والملكية وأمن الوصول وعبء العمل والكلفة والسياسة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Each design entity is described through a defined set of attributes.",
+      "explanation_ar": "تسرد المادة عشر سمات لوصف كل كيان تصميم."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_sdd_entity_identifier",
+      "bloom_level": "Understand",
+      "question": "Which attribute identifies a design entity?",
+      "question_ar": "أي سمة تحدد كيان التصميم؟",
+      "options": [
+        "Resources: facilities and inputs required by the entity",
+        "Identification: the entity's name and unique identity",
+        "Dependencies: other design elements it relies on",
+        "Processing: operations performed by the design entity"
+      ],
+      "options_en": [
+        "Resources: facilities and inputs required by the entity",
+        "Identification: the entity's name and unique identity",
+        "Dependencies: other design elements it relies on",
+        "Processing: operations performed by the design entity"
+      ],
+      "options_ar": [
+        "الموارد: الوسائل والمدخلات اللازمة للكيان",
+        "التعريف: الاسم الذي يحدد هوية كيان التصميم",
+        "الاعتماديات: عناصر التصميم الأخرى التي يعتمد عليها",
+        "المعالجة: العمليات التي ينفذها كيان التصميم"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Identification distinguishes the entity being described.",
+      "explanation_ar": "تميز سمة التعريف كيان التصميم الذي يجري وصفه."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_sdd_entity_interface",
+      "bloom_level": "Apply",
+      "question": "Where should an entity's communication contract be described?",
+      "question_ar": "أين يوصف عقد التواصل الخاص بكيان؟",
+      "options": [
+        "Resources: the facilities and inputs needed for its operation",
+        "Subordinates: the lower-level entities contained beneath it",
+        "Interface: the entity's communication with other design elements",
+        "Processing: the internal operations performed by the entity"
+      ],
+      "options_en": [
+        "Resources: the facilities and inputs needed for its operation",
+        "Subordinates: the lower-level entities contained beneath it",
+        "Interface: the entity's communication with other design elements",
+        "Processing: the internal operations performed by the entity"
+      ],
+      "options_ar": [
+        "الموارد: الوسائل والمدخلات اللازمة لتشغيل الكيان",
+        "التوابع: كيانات المستوى الأدنى الواقعة تحته",
+        "الواجهة: تواصل الكيان مع عناصر التصميم الأخرى",
+        "المعالجة: العمليات الداخلية التي ينفذها الكيان"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The interface attribute records how the entity communicates with other parts.",
+      "explanation_ar": "تسجل سمة الواجهة كيفية تواصل الكيان مع الأجزاء الأخرى."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_sdd_entity_subordinates",
+      "bloom_level": "Apply",
+      "question": "Which attribute records the lower-level elements owned by an entity?",
+      "question_ar": "أي سمة تسجل العناصر الأدنى التابعة لكيان؟",
+      "options": [
+        "Dependencies: external design elements the entity relies on",
+        "Purpose: the role this element fulfills in the design",
+        "Data: information it stores, receives, or produces",
+        "Subordinates: lower-level elements contained in the entity"
+      ],
+      "options_en": [
+        "Dependencies: external design elements the entity relies on",
+        "Purpose: the role this element fulfills in the design",
+        "Data: information it stores, receives, or produces",
+        "Subordinates: lower-level elements contained in the entity"
+      ],
+      "options_ar": [
+        "الاعتماديات: عناصر تصميم خارجية يعتمد عليها الكيان",
+        "الغرض: الدور الذي يؤديه هذا العنصر في التصميم",
+        "البيانات: معلومات يخزنها أو يستقبلها أو ينتجها",
+        "التوابع: عناصر تصميم أدنى يضمها هذا الكيان"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Subordinates describe lower-level design entities beneath the entity.",
+      "explanation_ar": "تصف سمة العناصر التابعة كيانات التصميم ذات المستوى الأدنى."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_sdd_entity_dependencies",
+      "bloom_level": "Apply",
+      "question": "Which attribute records a design entity's reliance on other elements?",
+      "question_ar": "أي سمة تسجل اعتماد كيان التصميم على عناصر أخرى؟",
+      "options": [
+        "Dependencies: other design elements on which the entity relies",
+        "Subordinates: lower-level entities that belong beneath the element",
+        "Identification: the name and identity of the design element",
+        "Processing: actions the entity performs when it receives input"
+      ],
+      "options_en": [
+        "Dependencies: other design elements on which the entity relies",
+        "Subordinates: lower-level entities that belong beneath the element",
+        "Identification: the name and identity of the design element",
+        "Processing: actions the entity performs when it receives input"
+      ],
+      "options_ar": [
+        "الاعتماديات: عناصر تصميم أخرى يعتمد عليها الكيان",
+        "التوابع: كيانات أدنى تنتمي إلى العنصر البنيوي",
+        "التعريف: اسم عنصر التصميم وهويته المميزة",
+        "المعالجة: أفعال ينفذها الكيان عند استقبال المدخلات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Dependencies identify other elements on which the entity relies.",
+      "explanation_ar": "تحدد سمة الاعتماديات العناصر الأخرى التي يعتمد عليها الكيان."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_sdd_entity_resources",
+      "bloom_level": "Understand",
+      "question": "Which attribute captures resources needed by a design entity?",
+      "question_ar": "أي سمة تسجل الموارد التي يحتاج إليها كيان التصميم؟",
+      "options": [
+        "Function: behavior the design element should provide",
+        "Resources: facilities and inputs a design entity requires",
+        "Identification: the distinct name assigned to the entity",
+        "Purpose: the role performed by the element in the system"
+      ],
+      "options_en": [
+        "Function: behavior the design element should provide",
+        "Resources: facilities and inputs a design entity requires",
+        "Identification: the distinct name assigned to the entity",
+        "Purpose: the role performed by the element in the system"
+      ],
+      "options_ar": [
+        "الوظيفة: السلوك الذي ينبغي أن يقدمه عنصر التصميم",
+        "الموارد: وسائل ومدخلات يحتاجها كيان التصميم",
+        "التعريف: الاسم المميز المسند إلى كيان التصميم",
+        "الغرض: الدور الذي يؤديه العنصر داخل النظام"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The resources attribute records resources associated with the entity.",
+      "explanation_ar": "تسجل سمة الموارد الموارد المرتبطة بالكيان."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_sdd_entity_processing",
+      "bloom_level": "Understand",
+      "question": "Which attribute describes an entity's processing details?",
+      "question_ar": "أي سمة تصف تفاصيل معالجة الكيان؟",
+      "options": [
+        "Identification: the name distinguishing this design element",
+        "Dependencies: external elements the entity relies on",
+        "Processing: operations the design entity performs",
+        "Subordinates: lower-level elements inside the entity"
+      ],
+      "options_en": [
+        "Identification: the name distinguishing this design element",
+        "Dependencies: external elements the entity relies on",
+        "Processing: operations the design entity performs",
+        "Subordinates: lower-level elements inside the entity"
+      ],
+      "options_ar": [
+        "التعريف: اسم يميز عنصر التصميم هذا عن غيره",
+        "الاعتماديات: عناصر خارجية يتطلبها كيان التصميم",
+        "المعالجة: عمليات وتحويلات ينفذها كيان التصميم",
+        "التوابع: عناصر تصميم ذات مستوى أدنى يضمها الكيان"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Processing captures the processing information associated with the design entity.",
+      "explanation_ar": "تسجل سمة المعالجة معلومات المعالجة المرتبطة بكيان التصميم."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_sdd_content_vs_view",
+      "bloom_level": "Analyze",
+      "question": "How do entity attributes relate to design views?",
+      "question_ar": "كيف ترتبط سمات الكيان بمناظير التصميم؟",
+      "options": [
+        "Attributes replace every design entity in the description",
+        "Views are executable forms of each documented attribute",
+        "Attributes describe only the system's deployment hardware",
+        "Views organize an entity's attributes around design concerns"
+      ],
+      "options_en": [
+        "Attributes replace every design entity in the description",
+        "Views are executable forms of each documented attribute",
+        "Attributes describe only the system's deployment hardware",
+        "Views organize an entity's attributes around design concerns"
+      ],
+      "options_ar": [
+        "تستبدل السمات كيانات التصميم الواردة في الوصف كلها",
+        "المناظير صيغ تنفيذية لكل سمة موثقة في التصميم",
+        "تصف السمات أجهزة نشر النظام البرمجي فقط",
+        "تنظم المناظير سمات الكيان حول جوانب تصميم محددة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Attributes describe entities; views arrange relevant information for focused concerns.",
+      "explanation_ar": "تصف السمات الكيانات، وتنظم المناظير المعلومات المناسبة لجوانب محددة."
+    }
+  ]
+}

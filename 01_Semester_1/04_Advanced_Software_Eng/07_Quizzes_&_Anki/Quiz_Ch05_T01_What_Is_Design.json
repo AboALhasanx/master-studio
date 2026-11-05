@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch05_T01_What_Is_Design",
+  "topic": "What Is Software Design?",
+  "topic_ar": "ما تصميم البرمجيات؟",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch5_design_bridge",
+      "bloom_level": "Understand",
+      "question": "What does software design turn into a technical blueprint?",
+      "question_ar": "إلى ماذا يحوّل تصميم البرمجيات المتطلبات؟",
+      "options": [
+        "The approved requirements become a technical blueprint",
+        "Executable code carries out the required system behavior",
+        "Verification evidence records the system's test outcomes",
+        "A released interface lets users access the completed product"
+      ],
+      "options_en": [
+        "The approved requirements become a technical blueprint",
+        "Executable code carries out the required system behavior",
+        "Verification evidence records the system's test outcomes",
+        "A released interface lets users access the completed product"
+      ],
+      "options_ar": [
+        "تحويل المتطلبات المعتمدة إلى مخطط تقني قابل للبناء",
+        "شيفرة تنفيذية تحقق السلوك المطلوب للمستخدم النهائي",
+        "تقرير تحقق يوثق نتائج اختبار وظائف النظام",
+        "واجهة منشورة تتيح استخدام المنتج بعد اكتماله"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Design translates the requirements into a blueprint that guides construction.",
+      "explanation_ar": "يحوّل التصميم المتطلبات إلى مخطط يوجّه بناء البرمجيات."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch5_design_question",
+      "bloom_level": "Understand",
+      "question": "Which question is primarily answered during software design?",
+      "question_ar": "أي سؤال يجيب عنه التصميم البرمجي أساساً؟",
+      "options": [
+        "When the completed product is planned for release",
+        "How required behavior will be structured and built",
+        "What user problem the product is expected to address",
+        "Who approves the budget and assigns project resources"
+      ],
+      "options_en": [
+        "When the completed product is planned for release",
+        "How required behavior will be structured and built",
+        "What user problem the product is expected to address",
+        "Who approves the budget and assigns project resources"
+      ],
+      "options_ar": [
+        "متى يخطط لإصدار المنتج المكتمل للمستخدمين",
+        "كيفية بناء السلوك المطلوب وتنظيم مكونات النظام",
+        "ما المشكلة التي ينبغي أن يعالجها المنتج للمستخدم",
+        "من يعتمد ميزانية المشروع ويوزع موارده المتاحة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Requirements describe what is needed; design describes how the solution is structured.",
+      "explanation_ar": "تصف المتطلبات ما هو مطلوب، بينما يصف التصميم كيفية بناء الحل."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch5_design_outputs",
+      "bloom_level": "Understand",
+      "question": "Which set best represents technical design outputs?",
+      "question_ar": "أي مجموعة تمثل مخرجات التصميم الفني؟",
+      "options": [
+        "Source files, executables, test reports, and releases",
+        "Budget estimates, staff plans, risks, and delivery dates",
+        "Architecture, interfaces, data structures, and procedures",
+        "Workflows, screens, business operations, and data formats"
+      ],
+      "options_en": [
+        "Source files, executables, test reports, and releases",
+        "Budget estimates, staff plans, risks, and delivery dates",
+        "Architecture, interfaces, data structures, and procedures",
+        "Workflows, screens, business operations, and data formats"
+      ],
+      "options_ar": [
+        "ملفات الشيفرة والبرامج وتقارير الاختبار وحزم الإصدارات",
+        "تقديرات الميزانية وخطط الموارد والمخاطر ومواعيد التسليم",
+        "المعمارية والواجهات وبنى البيانات والإجراءات البرمجية",
+        "سير العمل والشاشات والعمليات التجارية وصيغ البيانات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A technical design describes structure, interfaces, data, and procedural details.",
+      "explanation_ar": "يصف التصميم الفني البنية والواجهات والبيانات والتفاصيل الإجرائية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch5_design_sdlc",
+      "bloom_level": "Understand",
+      "question": "Where does software design sit in the development flow?",
+      "question_ar": "أين يقع التصميم ضمن تسلسل تطوير البرمجيات؟",
+      "options": [
+        "After system deployment and before needs analysis",
+        "Before feasibility work and after product maintenance",
+        "During coding after the unit tests are completed",
+        "After requirements analysis and before implementation"
+      ],
+      "options_en": [
+        "After system deployment and before needs analysis",
+        "Before feasibility work and after product maintenance",
+        "During coding after the unit tests are completed",
+        "After requirements analysis and before implementation"
+      ],
+      "options_ar": [
+        "بعد نشر النظام وقبل تحليل حاجات المستخدم",
+        "قبل دراسة الجدوى وبعد صيانة المنتج",
+        "أثناء البرمجة بعد اكتمال اختبارات الوحدات",
+        "بعد تحليل المتطلبات وقبل تنفيذ البرمجيات"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Design follows requirements analysis and provides the plan used by implementation.",
+      "explanation_ar": "يأتي التصميم بعد تحليل المتطلبات ويوفر الخطة التي يتبعها التنفيذ."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch5_design_not_code",
+      "bloom_level": "Understand",
+      "question": "What distinguishes a design description from working code?",
+      "question_ar": "ما الذي يميّز وصف التصميم عن الشيفرة العاملة؟",
+      "options": [
+        "It sets the technical build plan before coding begins",
+        "It executes the required functions for end users",
+        "It records defects found after product deployment",
+        "It removes the need to analyze system requirements"
+      ],
+      "options_en": [
+        "It sets the technical build plan before coding begins",
+        "It executes the required functions for end users",
+        "It records defects found after product deployment",
+        "It removes the need to analyze system requirements"
+      ],
+      "options_ar": [
+        "يحدد خطة البناء قبل بدء كتابة الشيفرة",
+        "ينفذ الوظائف المطلوبة للمستخدمين النهائيين",
+        "يسجل عيوب المنتج بعد نشره للمستخدمين",
+        "يلغي الحاجة إلى تحليل متطلبات النظام البرمجي"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Design records a technical plan; implementation turns that plan into executable software.",
+      "explanation_ar": "يسجل التصميم خطة فنية، ويحوّلها التنفيذ إلى برمجيات قابلة للتشغيل."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch5_closed_system",
+      "bloom_level": "Understand",
+      "question": "A system with no interaction across its external boundary is a...",
+      "question_ar": "النظام الذي لا يتفاعل عبر حدوده الخارجية يسمى...",
+      "options": [
+        "A distributed system operating at connected sites",
+        "A closed system without exchange across its boundary",
+        "An open system exchanging data with its environment",
+        "An interactive system responding to outside requests"
+      ],
+      "options_en": [
+        "A distributed system operating at connected sites",
+        "A closed system without exchange across its boundary",
+        "An open system exchanging data with its environment",
+        "An interactive system responding to outside requests"
+      ],
+      "options_ar": [
+        "نظام موزع يعمل عبر مواقع وأجهزة حاسوبية مترابطة",
+        "نظام مغلق بلا تبادل للمعلومات عبر حدوده الخارجية",
+        "نظام مفتوح يتبادل البيانات مع بيئته الخارجية",
+        "نظام تفاعلي يستجيب لطلبات خارجية متنوعة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A closed system has no input from or output to its environment.",
+      "explanation_ar": "لا يستقبل النظام المغلق مدخلات من بيئته ولا يرسل إليها مخرجات."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch5_design_structure",
+      "bloom_level": "Understand",
+      "question": "Which architectural concern belongs in a software design?",
+      "question_ar": "أي جانب معماري يدخل ضمن تصميم البرمجيات؟",
+      "options": [
+        "How a product name is chosen for marketing",
+        "How project invoices are reviewed and approved",
+        "How components are arranged and communicate",
+        "How user training is scheduled after delivery"
+      ],
+      "options_en": [
+        "How a product name is chosen for marketing",
+        "How project invoices are reviewed and approved",
+        "How components are arranged and communicate",
+        "How user training is scheduled after delivery"
+      ],
+      "options_ar": [
+        "كيفية اختيار اسم المنتج لأغراض التسويق",
+        "كيفية مراجعة فواتير المشروع والحصول على اعتمادها",
+        "كيفية ترتيب مكونات النظام وطرق التواصل بينها",
+        "كيفية جدولة تدريب المستخدمين بعد تسليم المنتج"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Software design specifies the system's technical organization and component relationships.",
+      "explanation_ar": "يحدد تصميم البرمجيات التنظيم الفني للنظام والعلاقات بين مكوناته."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch5_design_construction",
+      "bloom_level": "Apply",
+      "question": "What does a construction team use the design blueprint to determine?",
+      "question_ar": "ما الذي يستنتجه فريق البناء من مخطط التصميم؟",
+      "options": [
+        "A user problem still awaiting its initial discovery",
+        "A product price set by market demand and buyers",
+        "Production defects hidden from design reviewers",
+        "Structures and interfaces planned for implementation"
+      ],
+      "options_en": [
+        "A user problem still awaiting its initial discovery",
+        "A product price set by market demand and buyers",
+        "Production defects hidden from design reviewers",
+        "Structures and interfaces planned for implementation"
+      ],
+      "options_ar": [
+        "مشكلة المستخدم قبل تحديد حلها التقني",
+        "سعر المنتج وفق طلب السوق وتكاليفه",
+        "عيوب المنتج التي لم تكشفها مراجعة التصميم",
+        "بنى وواجهات النظام التي تحدد طريقة تنفيذه"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The blueprint turns requirements into actionable construction decisions.",
+      "explanation_ar": "يحوّل المخطط المتطلبات إلى قرارات قابلة للتنفيذ أثناء البناء."
+    }
+  ]
+}

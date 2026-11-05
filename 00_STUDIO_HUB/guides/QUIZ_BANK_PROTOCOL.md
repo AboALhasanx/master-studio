@@ -209,19 +209,12 @@ python "90_Shared_Toolbox/tools/portal_content.py" sync --notify
 3. Offline: the new chapter must open with the network off (portal → cached manifest → bundled fallback).
 4. Report the evidence: the exact commands and their output, plus what you saw in the app.
 
-## 11. Current map (snapshot — refresh it when you add a subject or a chapter)
+## 11. Current state
 
-| subject | chapters (shape) | banks | questions |
-|---|---|---|---|
-| الأمن السيبراني | 1 = 6 topics (T01–T06), 2 = أ/ب, 3 = أ/ب, 4 = أ/ب | 12 | 176 |
-| اللغة الإنجليزية | 1 = أ/ب, 2 = أ/ب | 4 | 20 |
-| تنقيب البيانات | 1 = أ + ModelB, 2 = أ/ب, 3 = أ/ب | 6 | 46 |
-| هندسة البرمجيات | 1 = أ + ModelB, 2 = أ/ب, 5 = أ/ب | 6 | 30 |
-| الحوسبة اللينة | 1 = أ + ModelB, 2 = 6q + ModelB | 4 | 22 |
-| الذكاء الاصطناعي | 1 = أ/ب, 2 = أ/ب | 4 | 20 |
-| **total** | 16 chapters | **36 banks / 314 questions** | content v12 |
-
-`python 90_Shared_Toolbox/tools/portal_content.py status` is authoritative; if this table disagrees with it, fix the table.
+`00_STUDIO_HUB/QUIZ_BANK_STATE.md` is the generated single source of truth for live bank and
+chapter counts, question totals, content and shell versions, and measured quality gates. Do not
+copy a snapshot into this protocol, a handoff, a session, or `ACTIVE_STATE.md`. Regenerate it with
+`python -X utf8 90_Shared_Toolbox/tools/quiz_bank_state.py` and verify it with `--check`.
 
 ## 12. Pitfalls that have actually happened
 
