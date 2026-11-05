@@ -234,7 +234,7 @@ student's review** (his 2026-11-05 decision).
 - Published the corrected Chapter 4 content globally and refreshed the local portal mirror. The service-worker precache list was already current, so a shell release and deployment were unnecessary.
 - The live vault comparison found no question or Arabic-option differences; the live keyed-answer, stem, and explanation audit found no mismatches; and the live handout-reference scan found none.
 - Production browser review confirmed the Chapter 4 catalogue entries, quiz launch, Arabic/English toggle, and question/option reshuffling across launches. The generated bank-state snapshot was regenerated and its drift check passed.
-- Coverage and source limits are documented in `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch04_Bank_Coverage_Audit.md`. Commit and push the scoped Chapter 4 release artifacts after recording the release commit.
+- Coverage and source limits are documented in `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch04_Bank_Coverage_Audit.md`. The scoped release commit and push are complete; the shared session log records the remote revisions.
 
 ---
 
