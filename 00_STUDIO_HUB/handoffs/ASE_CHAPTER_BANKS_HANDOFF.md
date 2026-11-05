@@ -256,8 +256,10 @@ student's review** (his 2026-11-05 decision).
 - **Resume trigger:** confirmed Ch09 vocabulary arrives → same one-bank-per-block build.
 
 > **Git note:** both `03_Study_Notes/Ch08_Software_Testing/` and `Ch09_Software_Maintenance/` are
-> currently **untracked**. They are finished work at risk of loss — commit them, they are not a
-> new build.
+> currently **untracked** (~8.5 MB and ~64 MB). The bulk of Ch09 is QA render/audit intermediates
+> (`source_visual_audit/` 29 MB, `Ch09_QA_expanded_v1/` 22 MB, `Ch09_QA_final_v1/` 9.5 MB). Commit
+> the **source** — the `T*_*.md`, `T*_*.pdf`, `V9_*`, `00_INDEX.md`, `BUILD_PLAN`, build scripts and
+> `diagrams/` — and skip the render folders. That is preserving finished work, not a new build.
 
 ### 5.3 Remaining work that is NOT deferred
 
