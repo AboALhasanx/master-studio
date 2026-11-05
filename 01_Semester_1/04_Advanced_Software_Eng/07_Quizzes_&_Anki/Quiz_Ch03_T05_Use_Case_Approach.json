@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch03_T05_Use_Case_Approach",
+  "topic": "Use-Case Approach to Elicitation",
+  "topic_ar": "أسلوب حالات الاستخدام في استخلاص المتطلبات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "usecase_actor_external",
+      "bloom_level": "Understand",
+      "question": "In a use-case model, what does an actor represent?",
+      "question_ar": "ماذا يمثل الممثل في نموذج حالات الاستخدام؟",
+      "options": [
+        "An external role that interacts with the modeled system",
+        "An internal data table stored within the system",
+        "A reviewer assigned to inspect the requirements document",
+        "A process that transforms data in a flow diagram"
+      ],
+      "options_en": [
+        "An external role that interacts with the modeled system",
+        "An internal data table stored within the system",
+        "A reviewer assigned to inspect the requirements document",
+        "A process that transforms data in a flow diagram"
+      ],
+      "options_ar": [
+        "دور خارجي يشارك في التفاعل مع النظام",
+        "جدول بيانات داخلي يخزنه النظام ويستعمله",
+        "مراجع يفحص وثيقة المتطلبات قبل اعتمادها",
+        "عملية تحول البيانات داخل مخطط التدفق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "An actor is external to the modeled system and participates in an interaction; internal data or processes are not actors.",
+      "explanation_ar": "يكون الممثل خارج النظام المنمذج ويشارك في التفاعل؛ أما البيانات أو العمليات الداخلية فليست ممثلين."
+    },
+    {
+      "id": "q2",
+      "concept_id": "usecase_goal",
+      "bloom_level": "Analyze",
+      "question": "Which use-case name states a user goal rather than an interface action?",
+      "question_ar": "أي اسم لحالة استخدام يصف هدف مستخدم لا إجراء واجهة؟",
+      "options": [
+        "Run the Java class that validates input",
+        "Issue a new library card to a reader",
+        "Click the blue submit button to send a form",
+        "Open the third table in the database"
+      ],
+      "options_en": [
+        "Run the Java class that validates input",
+        "Issue a new library card to a reader",
+        "Click the blue submit button to send a form",
+        "Open the third table in the database"
+      ],
+      "options_ar": [
+        "تشغيل فئة Java للتحقق من مدخلات القارئ",
+        "إصدار بطاقة مكتبة جديدة لقارئ مسجل",
+        "النقر على زر الإرسال الأزرق لإرسال الطلب",
+        "فتح الجدول الثالث في قاعدة البيانات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A use case should express an observable user goal. Button clicks, table details, and implementation classes are design details.",
+      "explanation_ar": "ينبغي لحالة الاستخدام التعبير عن هدف مستخدم يمكن ملاحظته. أما النقرات والجداول وفئات التنفيذ فهي تفاصيل تصميم."
+    },
+    {
+      "id": "q3",
+      "concept_id": "usecase_boundary",
+      "bloom_level": "Apply",
+      "question": "A payment service outside the application exchanges requests with it. Where is it placed in a use-case diagram?",
+      "question_ar": "تتبادل خدمة دفع خارج التطبيق الطلبات معه. أين توضع في مخطط حالات الاستخدام؟",
+      "options": [
+        "Inside the boundary as an SRS behavior section",
+        "On the boundary as a persistent data store",
+        "Outside the boundary as an external actor",
+        "Inside as a goal-oriented system use case"
+      ],
+      "options_en": [
+        "Inside the boundary as an SRS behavior section",
+        "On the boundary as a persistent data store",
+        "Outside the boundary as an external actor",
+        "Inside as a goal-oriented system use case"
+      ],
+      "options_ar": [
+        "داخل الحدود بوصفها قسماً من SRS",
+        "على الحدود بوصفها مخزن بيانات",
+        "خارج حدود النظام بوصفها ممثلاً",
+        "داخل الحدود بوصفها حالة استخدام"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "External systems are actors outside the boundary; use cases inside the boundary represent system goals or services.",
+      "explanation_ar": "تُرسم الأنظمة الخارجية ممثلين خارج الحدود، بينما تمثل حالات الاستخدام داخلها أهداف النظام أو خدماته."
+    },
+    {
+      "id": "q4",
+      "concept_id": "usecase_include_required",
+      "bloom_level": "Apply",
+      "question": "Every withdrawal must authenticate the customer. Which relationship expresses this required shared behavior?",
+      "question_ar": "يجب أن يتحقق النظام من هوية العميل في كل عملية سحب. أي علاقة تعبر عن هذا السلوك المشترك الإلزامي؟",
+      "options": [
+        "Authenticate Customer extends Withdraw Cash",
+        "Withdraw Cash is a data store for Authenticate Customer",
+        "Authenticate Customer is an external actor",
+        "Withdraw Cash includes Authenticate Customer"
+      ],
+      "options_en": [
+        "Authenticate Customer extends Withdraw Cash",
+        "Withdraw Cash is a data store for Authenticate Customer",
+        "Authenticate Customer is an external actor",
+        "Withdraw Cash includes Authenticate Customer"
+      ],
+      "options_ar": [
+        "تمدد حالة التحقق من العميل حالة سحب النقد",
+        "تكون حالة سحب النقد مخزن بيانات للتحقق من العميل",
+        "تكون حالة التحقق من العميل ممثلاً خارجياً",
+        "تتضمن حالة سحب النقد حالة التحقق من العميل"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "An include relationship adds behavior that always runs as part of the base use case, with the arrow from the base to the included case.",
+      "explanation_ar": "تضيف علاقة include سلوكاً ينفذ دائماً ضمن الحالة الأساسية، ويتجه السهم من الحالة الأساسية إلى الحالة المتضمنة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "usecase_extend_optional",
+      "bloom_level": "Analyze",
+      "question": "An overdraft warning appears only under a specified balance condition. Which relationship fits?",
+      "question_ar": "يظهر تحذير تجاوز الرصيد عند تحقق شرط محدد فقط. أي علاقة تلائمه؟",
+      "options": [
+        "The warning optionally extends the withdrawal use case",
+        "The withdrawal use case always includes the warning",
+        "The warning defines an external system boundary",
+        "The warning is modeled as a persistent DFD store"
+      ],
+      "options_en": [
+        "The warning optionally extends the withdrawal use case",
+        "The withdrawal use case always includes the warning",
+        "The warning defines an external system boundary",
+        "The warning is modeled as a persistent DFD store"
+      ],
+      "options_ar": [
+        "يمدد التحذير حالة السحب عند تحقق الشرط",
+        "تتضمن حالة السحب التحذير في كل عملية سحب",
+        "يحدد التحذير الحد الفاصل مع النظام الخارجي",
+        "يمثل التحذير مخزناً دائماً للبيانات في DFD"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Extend inserts optional behavior at a condition or extension point; include represents unconditional shared behavior.",
+      "explanation_ar": "تضيف extend سلوكاً اختيارياً عند شرط أو نقطة امتداد؛ أما include فتمثل سلوكاً مشتركاً إلزامياً."
+    },
+    {
+      "id": "q6",
+      "concept_id": "usecase_main_success_first",
+      "bloom_level": "Understand",
+      "question": "When documenting a use-case scenario, what should be written before alternate and exception flows?",
+      "question_ar": "عند توثيق سيناريو حالة استخدام، ما الذي يكتب قبل المسارات البديلة والاستثنائية؟",
+      "options": [
+        "The network packet format",
+        "The basic successful flow",
+        "The database implementation",
+        "The final review checklist"
+      ],
+      "options_en": [
+        "The network packet format",
+        "The basic successful flow",
+        "The database implementation",
+        "The final review checklist"
+      ],
+      "options_ar": [
+        "تنسيق حزم البيانات المرسلة عبر الشبكة",
+        "مسار النجاح الأساسي لحالة الاستخدام",
+        "آلية تنفيذ قاعدة البيانات وسجلاتها",
+        "قائمة تدقيق وثيقة المتطلبات ومراجعتها"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The main success scenario establishes the normal goal path; alternatives and exceptions are then documented around it.",
+      "explanation_ar": "يحدد سيناريو النجاح الأساسي المسار الطبيعي للهدف، ثم توثق المسارات البديلة والاستثنائية حوله."
+    },
+    {
+      "id": "q7",
+      "concept_id": "usecase_alternative_flow",
+      "bloom_level": "Apply",
+      "question": "A reservation request may fail when no seats remain. Where should this behavior be captured?",
+      "question_ar": "قد يفشل طلب الحجز عند نفاد المقاعد. أين يوثق هذا السلوك؟",
+      "options": [
+        "An implementation language named in the SRS",
+        "An ER degree that counts participating entities",
+        "An alternative or exception path in the scenario",
+        "An actor placed inside the system boundary"
+      ],
+      "options_en": [
+        "An implementation language named in the SRS",
+        "An ER degree that counts participating entities",
+        "An alternative or exception path in the scenario",
+        "An actor placed inside the system boundary"
+      ],
+      "options_ar": [
+        "بوصفه لغة برمجة لتنفيذ النظام",
+        "بوصفه درجة علاقة بين كيانات ER",
+        "ضمن مسار بديل أو استثنائي للحالة",
+        "بوصفه ممثلاً خارج حدود النظام"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A failed outcome is an alternate or exception path in the use-case scenario, not an actor or implementation choice.",
+      "explanation_ar": "تمثل النتيجة الفاشلة مساراً بديلاً أو استثنائياً في سيناريو الاستخدام، وليست ممثلاً أو خيار تنفيذ."
+    },
+    {
+      "id": "q8",
+      "concept_id": "usecase_behavioral_model",
+      "bloom_level": "Analyze",
+      "question": "What does a use-case model emphasize compared with a DFD?",
+      "question_ar": "ما الذي يبرزه نموذج حالات الاستخدام مقارنة بمخطط DFD؟",
+      "options": [
+        "The internal composition of named data items",
+        "The physical encoding used for exchanged data",
+        "The review sequence for an SRS document",
+        "Actor goals expressed through system behavior"
+      ],
+      "options_en": [
+        "The internal composition of named data items",
+        "The physical encoding used for exchanged data",
+        "The review sequence for an SRS document",
+        "Actor goals expressed through system behavior"
+      ],
+      "options_ar": [
+        "التركيب الداخلي لعناصر البيانات المسماة",
+        "الترميز المادي المستخدم لتبادل البيانات",
+        "تسلسل مراحل مراجعة وثيقة مواصفة SRS",
+        "أهداف الممثلين الخارجيين وسلوك النظام"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Use cases organize behavior around actor goals; DFDs model data movement and transformations.",
+      "explanation_ar": "تنظم حالات الاستخدام السلوك حول أهداف الممثلين؛ أما DFD فتنمذج حركة البيانات وتحويلاتها."
+    }
+  ]
+}

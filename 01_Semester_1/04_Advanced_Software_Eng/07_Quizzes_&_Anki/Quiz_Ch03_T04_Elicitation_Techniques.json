@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch03_T04_Elicitation_Techniques",
+  "topic": "Requirements Elicitation Techniques",
+  "topic_ar": "تقنيات استخلاص المتطلبات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "elicitation_interview_depth",
+      "bloom_level": "Understand",
+      "question": "What is a main strength of interviewing an individual stakeholder?",
+      "question_ar": "ما إحدى نقاط القوة الرئيسة لمقابلة صاحب مصلحة بصورة فردية؟",
+      "options": [
+        "It allows focused follow-up on work details",
+        "It guarantees agreement among all stakeholders",
+        "It produces a validated DFD without analysis",
+        "It removes the need to document interview answers"
+      ],
+      "options_en": [
+        "It allows focused follow-up on work details",
+        "It guarantees agreement among all stakeholders",
+        "It produces a validated DFD without analysis",
+        "It removes the need to document interview answers"
+      ],
+      "options_ar": [
+        "تتيح متابعة تفاصيل العمل والاستيضاح عنها",
+        "تضمن اتفاق أصحاب المصلحة على الاحتياجات",
+        "تنتج مخطط DFD بعد التحقق من تدفقاته",
+        "تلغي توثيق إجابات المقابلة المكتوبة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "An interviewer can probe a stakeholder's context and clarify answers; an interview alone cannot guarantee agreement or replace analysis and documentation.",
+      "explanation_ar": "يستطيع المحاور التعمق في سياق صاحب المصلحة وتوضيح إجاباته؛ لكن المقابلة وحدها لا تضمن الاتفاق ولا تستبدل التحليل والتوثيق."
+    },
+    {
+      "id": "q2",
+      "concept_id": "elicitation_open_question",
+      "bloom_level": "Apply",
+      "question": "An analyst wants a user to describe unanticipated workarounds. Which interview question is best?",
+      "question_ar": "يريد المحلل من المستخدم وصف الحلول الالتفافية غير المتوقعة. أي سؤال مقابلة أنسب؟",
+      "options": [
+        "Ask about the database key and its data format",
+        "Ask an open-ended question about workarounds",
+        "Ask a yes-or-no question about one screen",
+        "Request approval of the completed SRS document"
+      ],
+      "options_en": [
+        "Ask about the database key and its data format",
+        "Ask an open-ended question about workarounds",
+        "Ask a yes-or-no question about one screen",
+        "Request approval of the completed SRS document"
+      ],
+      "options_ar": [
+        "سؤال عن صيغة مفتاح قاعدة البيانات",
+        "سؤال مفتوح عن كيفية إنجاز العمل",
+        "سؤال بنعم أو لا عن شاشة واحدة",
+        "طلب اعتماد مواصفة SRS النهائية"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Open-ended questions let stakeholders explain goals and informal workarounds; a narrow yes-or-no question is better for confirming a known fact.",
+      "explanation_ar": "تتيح الأسئلة المفتوحة لأصحاب المصلحة شرح الأهداف والحلول غير الرسمية؛ أما سؤال نعم أو لا فيناسب تأكيد حقيقة محددة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "elicitation_interview_tacit",
+      "bloom_level": "Analyze",
+      "question": "Several users omit routine steps because they perform them automatically. What interview limitation is illustrated?",
+      "question_ar": "أغفل عدة مستخدمين خطوات روتينية لأنهم ينفذونها تلقائياً. أي محدودية للمقابلات تظهر هنا؟",
+      "options": [
+        "Interviews define system interfaces",
+        "Interviews guarantee a complete requirements list",
+        "Stakeholders may omit tacit knowledge",
+        "Interviews cannot ask follow-up questions"
+      ],
+      "options_en": [
+        "Interviews define system interfaces",
+        "Interviews guarantee a complete requirements list",
+        "Stakeholders may omit tacit knowledge",
+        "Interviews cannot ask follow-up questions"
+      ],
+      "options_ar": [
+        "تحدد المقابلات واجهات النظام البرمجية",
+        "تضمن المقابلات قائمة متطلبات مكتملة",
+        "قد يغفل أصحاب المصلحة المعرفة الضمنية",
+        "لا تستطيع المقابلات طرح أسئلة متابعة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "People may forget to mention tacit routines they no longer notice. Follow-up can help, but interviews do not guarantee completeness.",
+      "explanation_ar": "قد ينسى الأشخاص ذكر العادات الضمنية التي لم يعودوا ينتبهون إليها. تساعد أسئلة المتابعة، لكن المقابلات لا تضمن الاكتمال."
+    },
+    {
+      "id": "q4",
+      "concept_id": "elicitation_brainstorm_defer",
+      "bloom_level": "Understand",
+      "question": "How should evaluation be handled during the initial idea-generation part of brainstorming?",
+      "question_ar": "كيف ينبغي التعامل مع تقييم الأفكار في الجزء الأول من العصف الذهني؟",
+      "options": [
+        "Reject each idea before writing it down",
+        "Replace group discussion with individual coding",
+        "Approve only ideas with a completed interface",
+        "Delay evaluation until idea generation ends"
+      ],
+      "options_en": [
+        "Reject each idea before writing it down",
+        "Replace group discussion with individual coding",
+        "Approve only ideas with a completed interface",
+        "Delay evaluation until idea generation ends"
+      ],
+      "options_ar": [
+        "رفض كل فكرة قبل تدوينها ومناقشتها",
+        "استبدال نقاش المجموعة بالترميز الفردي",
+        "اعتماد الأفكار التي تملك واجهة مكتملة فقط",
+        "تأجيل التقييم إلى ما بعد جمع الأفكار"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Brainstorming first creates a pool of ideas and evaluates them afterward; early rejection suppresses idea generation.",
+      "explanation_ar": "ينشئ العصف الذهني مجموعة أفكار أولاً ثم يقيّمها لاحقاً؛ فالرفض المبكر يعيق توليد الأفكار."
+    },
+    {
+      "id": "q5",
+      "concept_id": "elicitation_fast_group",
+      "bloom_level": "Understand",
+      "question": "What distinguishes a FAST session from ordinary individual interviews?",
+      "question_ar": "ما الذي يميز جلسة FAST عن المقابلات الفردية المعتادة؟",
+      "options": [
+        "A facilitated group session for shared requirements",
+        "An individual interview probing one user's work",
+        "A quality review of a completed software product",
+        "A planning meeting assigning developer tasks"
+      ],
+      "options_en": [
+        "A facilitated group session for shared requirements",
+        "An individual interview probing one user's work",
+        "A quality review of a completed software product",
+        "A planning meeting assigning developer tasks"
+      ],
+      "options_ar": [
+        "ورشة ميسرة تجمع المستخدمين والمطورين لصياغة المتطلبات",
+        "مقابلة فردية متعمقة تستكشف خبرة مستخدم واحد واحتياجاته",
+        "مراجعة جودة تفحص المنتج البرمجي بعد اكتمال تنفيذه",
+        "اجتماع تخطيط يوزع المهام ومسؤوليات المطورين"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "FAST uses a facilitated collaborative session to build shared understanding and preliminary requirements; an interview is ordinarily one-to-one.",
+      "explanation_ar": "تستخدم FAST جلسة تعاونية ميسرة لبناء فهم مشترك ومتطلبات أولية؛ أما المقابلة فتكون عادة فردية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "elicitation_fast_output",
+      "bloom_level": "Apply",
+      "question": "A cross-functional workshop must combine candidate needs, resolve overlaps, and draft agreed requirements. Which technique fits?",
+      "question_ar": "تحتاج ورشة متعددة التخصصات إلى دمج الاحتياجات وحل التداخلات وصياغة متطلبات متفق عليها. أي تقنية تلائمها؟",
+      "options": [
+        "A test review comparing behavior with acceptance cases",
+        "A facilitated session to draft and agree requirements",
+        "A context diagram showing system inputs and outputs",
+        "An ER model defining entities and their relations"
+      ],
+      "options_en": [
+        "A test review comparing behavior with acceptance cases",
+        "A facilitated session to draft and agree requirements",
+        "A context diagram showing system inputs and outputs",
+        "An ER model defining entities and their relations"
+      ],
+      "options_ar": [
+        "مراجعة اختبار تقارن سلوك البرنامج بحالاته",
+        "جلسة متطلبات ميسرة تضم المستخدمين والمطورين",
+        "مخطط سياق يوضح حدود تدفق بيانات النظام",
+        "نموذج ER يحدد الكيانات وعلاقاتها وخصائصها"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A facilitated FAST session supports group discussion and agreement on preliminary requirements; the other choices model data or review tests.",
+      "explanation_ar": "تدعم جلسة FAST الميسرة النقاش الجماعي والاتفاق على متطلبات أولية؛ أما الخيارات الأخرى فتنمذج البيانات أو تراجع الاختبارات."
+    },
+    {
+      "id": "q7",
+      "concept_id": "elicitation_qfd_translation",
+      "bloom_level": "Understand",
+      "question": "What does QFD translate customer needs into?",
+      "question_ar": "إلى ماذا تحول QFD احتياجات العملاء؟",
+      "options": [
+        "A list of external system actors",
+        "A balanced data-flow hierarchy",
+        "Prioritized technical requirements",
+        "A sequence of source-code modules"
+      ],
+      "options_en": [
+        "A list of external system actors",
+        "A balanced data-flow hierarchy",
+        "Prioritized technical requirements",
+        "A sequence of source-code modules"
+      ],
+      "options_ar": [
+        "قائمة ممثلي الأنظمة الخارجية",
+        "هرماً متوازناً لتدفق البيانات",
+        "متطلبات تقنية مرتبة حسب الأولوية",
+        "سلسلة من مهام التنفيذ البرمجية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "QFD maps customer requirements to technical requirements and uses importance to support prioritization.",
+      "explanation_ar": "تربط QFD متطلبات العملاء بالمتطلبات التقنية وتستخدم الأهمية لدعم ترتيب الأولويات."
+    },
+    {
+      "id": "q8",
+      "concept_id": "elicitation_qfd_types",
+      "bloom_level": "Analyze",
+      "question": "A requested feature is unstated, but customers assume it will be present. Which QFD class fits?",
+      "question_ar": "ميزة مطلوبة لم تُذكر صراحة لكن العملاء يفترضون وجودها. أي فئة في QFD تلائمها؟",
+      "options": [
+        "A normal feature explicitly requested by customers",
+        "An exciting benefit beyond ordinary expectations",
+        "A system-interface rule for exchanging data",
+        "An expected feature customers assume will be present"
+      ],
+      "options_en": [
+        "A normal feature explicitly requested by customers",
+        "An exciting benefit beyond ordinary expectations",
+        "A system-interface rule for exchanging data",
+        "An expected feature customers assume will be present"
+      ],
+      "options_ar": [
+        "ميزة عادية يصرح العميل برغبته فيها",
+        "منفعة مميزة تتجاوز توقعات العملاء المعتادة",
+        "قاعدة واجهة تحدد تبادل البيانات بين الأنظمة",
+        "ميزة متوقعة يفترض العملاء وجودها في المنتج"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Expected requirements may be assumed rather than stated, and their absence can dissatisfy customers. Normal requirements are stated, while exciting ones exceed expectations.",
+      "explanation_ar": "قد تُفترض المتطلبات المتوقعة من دون التصريح بها، ويسبب غيابها عدم رضا العملاء. أما العادية فتُذكر صراحة، والمثيرة فتتجاوز التوقعات."
+    }
+  ]
+}
