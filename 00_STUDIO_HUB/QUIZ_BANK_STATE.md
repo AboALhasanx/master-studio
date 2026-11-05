@@ -10,13 +10,13 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-05T17:07:32+03:00
+> Generated at: 2026-11-05T18:46:22+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **102** |
+| Live content version | **104** |
 | Portal shell `VERSION` | **1.11.27** |
 | Live manifest source | Supabase content_manifest (live) |
 
@@ -24,7 +24,7 @@
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 203 banks / 2066 questions · live 203 banks / 2066 questions · MATCH
+**Totals:** vault 203 banks / 2089 questions · live 203 banks / 2089 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -33,7 +33,7 @@
 | `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
 | `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
 | `03_Data_Mining` | 8 | 55 | 531 | 55 | 531 | — |
-| `04_Advanced_Software_Eng` | 7 | 50 | 446 | 50 | 446 | — |
+| `04_Advanced_Software_Eng` | 7 | 50 | 469 | 50 | 469 | — |
 | `05_Soft_Computing` | 5 | 17 | 158 | 17 | 158 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
@@ -67,7 +67,7 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `04_Advanced_Software_Eng` | 01 | 7 | 56 | 2 | 8/6 | 4/6 | 0 | 0 | needs work |
 | `04_Advanced_Software_Eng` | 02 | 8 | 82 | 0 | 16/15 | 7/6 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 03 | 8 | 68 | 1 | 19/17 | 4/8 | 0 | 0 | needs work |
-| `04_Advanced_Software_Eng` | 04 | 6 | 50 | 0 | 0/0 | 1/0 | 0 | 0 | clean |
+| `04_Advanced_Software_Eng` | 04 | 6 | 73 | 0 | 6/10 | 7/7 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 05 | 3 | 35 | 0 | 1/2 | 0/0 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 06 | 11 | 90 | 0 | 0/0 | 1/1 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 07 | 7 | 65 | 0 | 0/0 | 0/0 | 0 | 0 | clean |

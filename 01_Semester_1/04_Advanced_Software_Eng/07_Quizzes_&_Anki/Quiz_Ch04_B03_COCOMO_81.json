@@ -15,233 +15,349 @@
    "id": "q1",
    "concept_id": "ch4_cocomo_author",
    "bloom_level": "Remember",
-   "question": "COCOMO was developed initially by...",
-   "question_ar": "طوّر COCOMO أول الأمر...",
+   "question": "Who developed COCOMO '81?",
+   "question_ar": "من طوّر COCOMO '81؟",
    "options": [
-    "Rajiv Gupta here",
-    "B. W. Boehm here",
-    "Gregg Rothermel",
-    "B. Beizer here"
-   ],
-   "options_ar": [
-    "راجيف غوبتا هنا هنا مجدداً",
-    "بي دبليو بوم أيضاً أيضاً",
-    "غريغ روثرمل هنا مجدداً",
-    "بي بيزر هنا الآن الآن"
+    "Thomas J. McCabe",
+    "Gordon B. Davis",
+    "Barry W. Boehm",
+    "Allan Albrecht"
    ],
    "options_en": [
-    "Rajiv Gupta here",
-    "B. W. Boehm here",
-    "Gregg Rothermel",
-    "B. Beizer here"
+    "Thomas J. McCabe",
+    "Gordon B. Davis",
+    "Barry W. Boehm",
+    "Allan Albrecht"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Barry Boehm published COCOMO as a constructive cost model built from project data.",
-   "explanation_ar": "باري بوم نشر COCOMO كنموذج تكلفة بنائي مبني على بيانات مشاريع."
+   "options_ar": [
+    "Thomas J. McCabe",
+    "Gordon B. Davis",
+    "Barry W. Boehm",
+    "Allan Albrecht"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Barry W. Boehm developed the original Constructive Cost Model.",
+   "explanation_ar": "طوّر Barry W. Boehm نموذج تقدير الكلفة الأصلي."
   },
   {
    "id": "q2",
    "concept_id": "ch4_cocomo_expand",
    "bloom_level": "Remember",
-   "question": "COCOMO stands for...",
-   "question_ar": "COCOMO تعني...",
+   "question": "Which phrase expands the COCOMO acronym?",
+   "question_ar": "أي عبارة توسّع اختصار COCOMO؟",
    "options": [
-    "Comprehensive Cost estimation model",
-    "Constructive Cost Estimation model",
-    "Common Cost estimation model here",
-    "Complete cost estimation model"
-   ],
-   "options_ar": [
-    "نموذج تقدير الكلفة الشامل",
-    "نموذج تقدير الكلفة البنائي",
-    "نموذج تقدير الكلفة الشائع هنا",
-    "نموذج تقدير الكلفة الكامل"
+    "Common Cost Estimation Model",
+    "Complete Cost Estimation Model",
+    "Comprehensive Cost Estimation Model",
+    "Constructive Cost Estimation Model"
    ],
    "options_en": [
-    "Comprehensive Cost estimation model",
-    "Constructive Cost Estimation model",
-    "Common Cost estimation model here",
-    "Complete cost estimation model"
+    "Common Cost Estimation Model",
+    "Complete Cost Estimation Model",
+    "Comprehensive Cost Estimation Model",
+    "Constructive Cost Estimation Model"
    ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "COCOMO is the Constructive Cost Model, because it builds the estimate from size and drivers.",
-   "explanation_ar": "COCOMO هو نموذج الكلفة البنائي، لأنه يبني التقدير من الحجم والعوامل."
+   "options_ar": [
+    "نموذج تقدير الكلفة المشترك",
+    "نموذج تقدير الكلفة الكامل",
+    "نموذج تقدير الكلفة الشامل",
+    "نموذج تقدير الكلفة البنائي"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "COCOMO means Constructive Cost Estimation Model and is also called the Constructive Cost Model.",
+   "explanation_ar": "يعني COCOMO نموذج تقدير الكلفة البنائي، ويُسمّى أيضاً Constructive Cost Model."
   },
   {
    "id": "q3",
    "concept_id": "ch4_organic_effort",
-   "bloom_level": "Remember",
-   "question": "Which effort equation applies to an organic COCOMO project?",
-   "question_ar": "أي معادلة جهد تنطبق على مشروع COCOMO عضوي؟",
+   "bloom_level": "Understand",
+   "question": "Which equation gives Basic COCOMO effort in Organic mode?",
+   "question_ar": "أي معادلة تعطي جهد Basic COCOMO في النمط العضوي؟",
    "options": [
-    "2.0 times KLOC to the power 1.05",
-    "2.4 times KLOC to the power 1.07",
-    "2.4 times KLOC to the power 1.05",
-    "3.4 times KLOC to the power 1.06"
-   ],
-   "options_ar": [
-    "2.0 مضروبة في KLOC أس 1.05",
-    "2.4 مضروبة في KLOC أس 1.07",
-    "2.4 مضروبة في KLOC أس 1.05",
-    "3.4 مضروبة في KLOC أس 1.06"
+    "E = 2.4 · KLOC^1.05",
+    "E = 3.0 · KLOC^1.12",
+    "E = 3.6 · KLOC^1.20",
+    "E = 2.4 · KLOC^1.20"
    ],
    "options_en": [
-    "2.0 times KLOC to the power 1.05",
-    "2.4 times KLOC to the power 1.07",
-    "2.4 times KLOC to the power 1.05",
-    "3.4 times KLOC to the power 1.06"
+    "E = 2.4 · KLOC^1.05",
+    "E = 3.0 · KLOC^1.12",
+    "E = 3.6 · KLOC^1.20",
+    "E = 2.4 · KLOC^1.20"
    ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Organic mode uses 2.4 KLOC^1.05, the smallest coefficient of the three modes.",
-   "explanation_ar": "الوضع العضوي يستخدم 2.4 KLOC^1.05، وهو أصغر معامل بين الأوضاع الثلاثة."
+   "options_ar": [
+    "E = 2.4 · KLOC^1.05",
+    "E = 3.0 · KLOC^1.12",
+    "E = 3.6 · KLOC^1.20",
+    "E = 2.4 · KLOC^1.20"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Basic COCOMO uses mode-specific coefficients; the Organic effort equation has coefficient 2.4 and exponent 1.05.",
+   "explanation_ar": "يستخدم Basic COCOMO معاملات خاصة بكل نمط؛ ومعادلة الجهد العضوي معاملها 2.4 وأُسها 1.05."
   },
   {
    "id": "q4",
    "concept_id": "ch4_mode_2_50",
-   "bloom_level": "Understand",
-   "question": "A project of 2 to 50 KLOC in COCOMO belongs to which mode?",
-   "question_ar": "مشروع بين 2 و50 KLOC في COCOMO يقع في أي وضع؟",
+   "bloom_level": "Apply",
+   "question": "A familiar, relatively flexible project is about 2–50 KLOC. Which mode is the typical match?",
+   "question_ar": "مشروع مألوف ومرن نسبياً حجمه نحو 2–50 KLOC؛ أي نمط يطابقه عادةً؟",
    "options": [
-    "the semidetached mode",
-    "the embedded mode now",
-    "none of the above answers",
-    "the organic mode here"
-   ],
-   "options_ar": [
-    "الوضع نصف المنفصل مجدداً",
-    "الوضع المضمّن الآن هنا",
-    "لا شيء مما سبق أعلاه",
-    "الوضع العضوي هنا أيضاً"
+    "Post-Architecture model after architecture",
+    "Organic mode for small familiar projects",
+    "Semidetached mode for medium mixed projects",
+    "Embedded mode for tightly constrained work"
    ],
    "options_en": [
-    "the semidetached mode",
-    "the embedded mode now",
-    "none of the above answers",
-    "the organic mode here"
+    "Post-Architecture model after architecture",
+    "Organic mode for small familiar projects",
+    "Semidetached mode for medium mixed projects",
+    "Embedded mode for tightly constrained work"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The organic band runs from about 2 to 50 KLOC with a small, familiar team.",
-   "explanation_ar": "نطاق الوضع العضوي يمتد من نحو 2 إلى 50 KLOC بفريق صغير مألوف."
+   "options_ar": [
+    "نموذج ما بعد المعمارية بعد استقرارها",
+    "النمط العضوي للمشاريع الصغيرة المألوفة",
+    "النمط شبه المنفصل للمشاريع المتوسطة",
+    "النمط المدمج للمشاريع المقيدة بشدة"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The Organic mode fits the typical 2–50 KLOC range and a familiar environment.",
+   "explanation_ar": "يناسب النمط العضوي المدى المعتاد 2–50 KLOC والبيئة المألوفة."
   },
   {
    "id": "q5",
    "concept_id": "ch4_cost_drivers",
    "bloom_level": "Remember",
-   "question": "How many cost drivers does Intermediate COCOMO '81 use?",
-   "question_ar": "كم عامل كلفة يستخدم COCOMO 81 المتوسط؟",
+   "question": "How many effort multipliers does Intermediate COCOMO '81 use?",
+   "question_ar": "كم مضاعف جهد يستخدم COCOMO '81 المتوسط؟",
    "options": [
-    "seventeen drivers across four categories",
-    "fourteen drivers across three categories",
-    "seven drivers across two categories",
-    "fifteen drivers across four categories"
-   ],
-   "options_ar": [
-    "سبعة عشر عاملاً في أربع فئات",
-    "أربعة عشر عاملاً في ثلاث فئات",
-    "سبعة عوامل في فئتين هنا الآن",
-    "خمسة عشر عاملاً في أربع فئات"
+    "Seventeen multipliers in four groups",
+    "Seven multipliers in three groups",
+    "Fifteen multipliers in four groups",
+    "Fourteen multipliers in five groups"
    ],
    "options_en": [
-    "seventeen drivers across four categories",
-    "fourteen drivers across three categories",
-    "seven drivers across two categories",
-    "fifteen drivers across four categories"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Intermediate COCOMO rates fifteen effort multipliers grouped into four categories.",
-   "explanation_ar": "COCOMO المتوسط يقيّم خمسة عشر مضاعف جهد موزعة على أربع فئات."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch4_embedded_conditions",
-   "bloom_level": "Apply",
-   "question": "A project with high complexity and strict hardware constraints is...",
-   "question_ar": "مشروع بتعقيد عالٍ وقيود عتاد صارمة هو...",
-   "options": [
-    "semidetached here",
-    "prototyping too now",
-    "embedded now again",
-    "organic here here"
+    "Seventeen multipliers in four groups",
+    "Seven multipliers in three groups",
+    "Fifteen multipliers in four groups",
+    "Fourteen multipliers in five groups"
    ],
    "options_ar": [
-    "نصف منفصل هنا الآن",
-    "نمذجة أولية هنا مجدداً",
-    "مضمّن الآن مجدداً هنا",
-    "عضوي هنا أيضاً أيضاً"
-   ],
-   "options_en": [
-    "semidetached here",
-    "prototyping too now",
-    "embedded now again",
-    "organic here here"
+    "سبعة عشر مضاعفاً ضمن أربع فئات",
+    "سبعة مضاعفات ضمن ثلاث فئات",
+    "خمسة عشر مضاعفاً ضمن أربع فئات",
+    "أربعة عشر مضاعفاً ضمن خمس فئات"
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "Tight hardware and interface constraints push a project into the embedded mode.",
-   "explanation_ar": "قيود العتاد والواجهات الصارمة تدفع المشروع إلى الوضع المضمّن."
+   "explanation": "Intermediate COCOMO applies fifteen effort multipliers organized into four cost-driver categories.",
+   "explanation_ar": "يطبق COCOMO المتوسط خمسة عشر مضاعف جهد منظمة ضمن أربع فئات لعوامل الكلفة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_intermediate_eaf",
+   "bloom_level": "Understand",
+   "question": "How does Intermediate COCOMO adjust nominal effort?",
+   "question_ar": "كيف يعدّل COCOMO المتوسط الجهد الاسمي؟",
+   "options": [
+    "Nominal effort plus the sum of all EMs",
+    "Project size times total schedule duration",
+    "Project size divided by the productivity index",
+    "Nominal effort times the product of all EMs"
+   ],
+   "options_en": [
+    "Nominal effort plus the sum of all EMs",
+    "Project size times total schedule duration",
+    "Project size divided by the productivity index",
+    "Nominal effort times the product of all EMs"
+   ],
+   "options_ar": [
+    "الجهد الاسمي مضافاً إليه مجموع كل EMs",
+    "حجم المشروع مضروباً في مدة الجدول",
+    "حجم المشروع مقسوماً على مؤشر الإنتاجية",
+    "الجهد الاسمي مضروباً في حاصل ضرب كل EMs"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The effort adjustment factor is the product of the rated multipliers and scales nominal effort.",
+   "explanation_ar": "معامل تعديل الجهد هو حاصل ضرب المضاعفات المقيمة ويضرب في الجهد الاسمي."
   },
   {
    "id": "q7",
-   "concept_id": "ch4_basic_vs_inter",
-   "bloom_level": "Understand",
-   "question": "What separates basic from intermediate COCOMO?",
-   "question_ar": "ما الذي يفصل COCOMO الأساسي عن المتوسط؟",
+   "concept_id": "ch4_em_below_one",
+   "bloom_level": "Apply",
+   "question": "If an effort multiplier is below 1.0, what happens to effort when other inputs stay fixed?",
+   "question_ar": "إذا كان مضاعف الجهد أقل من 1.0، ماذا يحدث للجهد مع ثبات بقية المدخلات؟",
    "options": [
-    "the intermediate adds cost drivers",
-    "the basic adds cost drivers here",
-    "the basic models each phase now",
-    "the intermediate ignores size too here"
+    "Adjusted effort falls below nominal effort",
+    "Adjusted effort rises above nominal effort",
+    "Schedule changes but effort stays fixed",
+    "The multiplier cancels the project size"
    ],
    "options_en": [
-    "the intermediate adds cost drivers",
-    "the basic adds cost drivers here",
-    "the basic models each phase now",
-    "the intermediate ignores size too here"
+    "Adjusted effort falls below nominal effort",
+    "Adjusted effort rises above nominal effort",
+    "Schedule changes but effort stays fixed",
+    "The multiplier cancels the project size"
    ],
    "options_ar": [
-    "المتوسط يضيف عوامل الكلفة",
-    "الأساسي يضيف عوامل الكلفة",
-    "الأساسي ينمذج كل مرحلة",
-    "المتوسط يتجاهل الحجم هنا"
+    "يخفض EAF الجهد الاسمي",
+    "يرفع EAF الجهد الاسمي",
+    "يبقي EAF الجهد الاسمي",
+    "يلغي EAF أثر حجم المشروع"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Basic uses size alone; intermediate multiplies in fifteen effort multipliers.",
-   "explanation_ar": "الأساسي يستخدم الحجم وحده، والمتوسط يضرب بخمسة عشر مضاعف جهد."
+   "explanation": "A multiplier below one reduces the product of effort multipliers and therefore lowers adjusted effort.",
+   "explanation_ar": "يقلل المضاعف الأقل من واحد حاصل ضرب مضاعفات الجهد، فيخفض الجهد المعدّل."
   },
   {
    "id": "q8",
-   "concept_id": "ch4_detailed_model",
-   "bloom_level": "Understand",
-   "question": "What does detailed COCOMO add?",
-   "question_ar": "ماذا يضيف COCOMO المفصّل؟",
+   "concept_id": "ch4_embedded_conditions",
+   "bloom_level": "Apply",
+   "question": "Which project condition most strongly points to Embedded mode?",
+   "question_ar": "أي ظرف للمشروع يشير بقوة إلى النمط المدمج؟",
    "options": [
-    "per-phase effort and cost drivers",
-    "a second size measure here too",
-    "a risk register here too now here",
-    "an agile backlog now again again"
+    "An early project with coarse effort estimates",
+    "Severe hardware and operating constraints",
+    "A small, experienced team in a familiar domain",
+    "A medium team with mixed skills and experience"
    ],
    "options_en": [
-    "per-phase effort and cost drivers",
-    "a second size measure here too",
-    "a risk register here too now here",
-    "an agile backlog now again again"
+    "An early project with coarse effort estimates",
+    "Severe hardware and operating constraints",
+    "A small, experienced team in a familiar domain",
+    "A medium team with mixed skills and experience"
    ],
    "options_ar": [
-    "جهد وعوامل كلفة لكل مرحلة",
-    "مقياس حجم ثانٍ مجدداً",
-    "سجل مخاطر هنا أيضاً أيضاً",
-    "سجل أجايل الآن هنا الآن"
+    "مشروع مبكر بتقديرات جهد أولية",
+    "قيود تشغيلية صارمة على العتاد",
+    "فريق صغير متمرس في مجال مألوف",
+    "فريق متوسط بمهارات وخبرات متباينة"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Embedded mode fits software developed under tight hardware, operational, or regulatory constraints.",
+   "explanation_ar": "يناسب النمط المدمج برمجيات تُطوّر تحت قيود صارمة للأجهزة أو التشغيل أو اللوائح."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch4_basic_vs_inter",
+   "bloom_level": "Understand",
+   "question": "What does Intermediate COCOMO add to the Basic model?",
+   "question_ar": "ماذا يضيف COCOMO المتوسط إلى النموذج الأساسي؟",
+   "options": [
+    "Risk registers for project development phases",
+    "Detailed estimates for interface design work",
+    "Effort multipliers for project cost drivers",
+    "A separate function-point size measure"
+   ],
+   "options_en": [
+    "Risk registers for project development phases",
+    "Detailed estimates for interface design work",
+    "Effort multipliers for project cost drivers",
+    "A separate function-point size measure"
+   ],
+   "options_ar": [
+    "سجلات مخاطر لمراحل تطوير المشروع",
+    "تقديرات مفصلة لأعمال تصميم الواجهات",
+    "مضاعفات جهد لعوامل كلفة المشروع",
+    "مقياس حجم مستقل لنقاط الوظائف"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Basic COCOMO is size-and-mode based; Intermediate adds cost-driver multipliers to nominal effort.",
+   "explanation_ar": "يعتمد COCOMO الأساسي على الحجم والنمط؛ ويضيف المتوسط مضاعفات عوامل الكلفة إلى الجهد الاسمي."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch4_detailed_model",
+   "bloom_level": "Understand",
+   "question": "What is the defining addition in Detailed COCOMO?",
+   "question_ar": "ما الإضافة التي تميّز COCOMO المفصّل؟",
+   "options": [
+    "All project drivers become one size value",
+    "Risk exposure replaces the effort estimate",
+    "The project schedule is removed from estimates",
+    "Cost-driver effects are distributed by phase"
+   ],
+   "options_en": [
+    "All project drivers become one size value",
+    "Risk exposure replaces the effort estimate",
+    "The project schedule is removed from estimates",
+    "Cost-driver effects are distributed by phase"
+   ],
+   "options_ar": [
+    "تصبح كل عوامل المشروع قيمة حجم واحدة",
+    "يحل التعرض للمخاطر محل تقدير الجهد",
+    "يُحذف جدول المشروع من التقديرات",
+    "توزّع آثار عوامل الكلفة على المراحل"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Detailed COCOMO applies cost-driver effects across development phases rather than only once project-wide.",
+   "explanation_ar": "يطبّق COCOMO المفصّل آثار عوامل الكلفة عبر مراحل التطوير بدلاً من تطبيقها مرة واحدة للمشروع."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch4_cocomo_size_unit",
+   "bloom_level": "Understand",
+   "question": "What size unit enters the Basic COCOMO effort equation?",
+   "question_ar": "ما وحدة الحجم التي تدخل معادلة جهد Basic COCOMO؟",
+   "options": [
+    "Thousands of delivered source lines",
+    "Count of user-visible software functions",
+    "Number of calendar months in the schedule",
+    "Total project expenditure in currency"
+   ],
+   "options_en": [
+    "Thousands of delivered source lines",
+    "Count of user-visible software functions",
+    "Number of calendar months in the schedule",
+    "Total project expenditure in currency"
+   ],
+   "options_ar": [
+    "حجم الشيفرة المسلّمة بوحدة KLOC",
+    "عدد الوظائف الظاهرة لمستخدم النظام",
+    "عدد الأشهر التقويمية للمشروع",
+    "إجمالي كلفة المشروع المالية"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "The detailed model applies the drivers phase by phase rather than once for the whole project.",
-   "explanation_ar": "النموذج المفصّل يطبّق العوامل مرحلة بمرحلة بدل مرة واحدة للمشروع."
+   "explanation": "The COCOMO '81 effort equations use KLOC, so a LOC estimate must be expressed in thousands.",
+   "explanation_ar": "تستخدم معادلات جهد COCOMO '81 وحدة KLOC، لذا يعبّر عن LOC بالآلاف."
+  },
+  {
+   "id": "q12",
+   "concept_id": "ch4_experience_driver_ambiguity",
+   "bloom_level": "Analyze",
+   "question": "A prompt says programmer experience is low but names no experience driver. What is the sound interpretation?",
+   "question_ar": "ذكر السؤال انخفاض خبرة المبرمج من دون تحديد عامل الخبرة؛ ما التفسير السليم؟",
+   "options": [
+    "Treat programmer experience as project size",
+    "Do not rate every experience driver as low",
+    "Set every experience driver to low",
+    "Replace all cost drivers with nominal"
+   ],
+   "options_en": [
+    "Treat programmer experience as project size",
+    "Do not rate every experience driver as low",
+    "Set every experience driver to low",
+    "Replace all cost drivers with nominal"
+   ],
+   "options_ar": [
+    "اعتبر الخبرة جزءاً من حجم النظام",
+    "لا تخفض عوامل الخبرة كلها دون تحديد",
+    "اخفض عوامل الخبرة كلها دون استثناء",
+    "اجعل مضاعفات الكلفة كلها اسمية"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "A generic experience phrase does not identify AEXP, LEXP, or VEXP, so multiplying all three low ratings is unjustified.",
+   "explanation_ar": "لا تحدد عبارة الخبرة العامة عوامل AEXP أو LEXP أو VEXP؛ لذلك لا يصح خفضها كلها تلقائياً."
   }
  ]
 }

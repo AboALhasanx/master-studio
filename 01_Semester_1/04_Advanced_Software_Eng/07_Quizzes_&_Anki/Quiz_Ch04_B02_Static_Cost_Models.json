@@ -13,235 +13,351 @@
  "questions": [
   {
    "id": "q1",
-   "concept_id": "ch4_static_compare",
-   "bloom_level": "Analyze",
-   "question": "Comparing single-variable static models at 100 KLOC, which is true?",
-   "question_ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
+   "concept_id": "ch4_static_models",
+   "bloom_level": "Understand",
+   "question": "What defines a static single-variable effort model?",
+   "question_ar": "ما الذي يعرّف نموذج الجهد الساكن أحادي المتغير؟",
    "options": [
-    "neither model applies at that size here",
-    "Walston-Felix predicts much higher effort",
-    "SEL predicts much higher effort here now here",
-    "both models predict identical effort"
-   ],
-   "options_ar": [
-    "لا ينطبق أي منهما على هذا الحجم أيضاً",
-    "Walston-Felix يتوقع جهداً أعلى بكثير",
-    "SEL يتوقع جهداً أعلى بكثير هنا الآن",
-    "النموذجان يتوقعان جهداً متطابقاً"
+    "Effort is estimated from schedule only",
+    "Effort is estimated from one predictor",
+    "Effort is estimated from several predictors",
+    "Effort is estimated from team size only"
    ],
    "options_en": [
-    "neither model applies at that size here",
-    "Walston-Felix predicts much higher effort",
-    "SEL predicts much higher effort here now here",
-    "both models predict identical effort"
+    "Effort is estimated from schedule only",
+    "Effort is estimated from one predictor",
+    "Effort is estimated from several predictors",
+    "Effort is estimated from team size only"
+   ],
+   "options_ar": [
+    "يُقدّر الجهد من الجدول فقط",
+    "يُقدّر الجهد من متغير تنبؤ واحد",
+    "يُقدّر الجهد من عدة متغيرات تنبؤ",
+    "يُقدّر الجهد من حجم الفريق فقط"
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair.",
-   "explanation_ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما."
+   "explanation": "A single-variable model uses one predictor, commonly software size measured in KLOC.",
+   "explanation_ar": "يستخدم النموذج أحادي المتغير عاملاً واحداً، وغالباً حجم البرمجيات بوحدة KLOC."
   },
   {
    "id": "q2",
-   "concept_id": "ch4_static_models",
+   "concept_id": "ch4_static_meaning",
    "bloom_level": "Understand",
-   "question": "What defines a static single-variable cost model?",
-   "question_ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
+   "question": "In a static cost model, what does static mean?",
+   "question_ar": "ماذا تعني كلمة static في نموذج الكلفة الساكن؟",
    "options": [
-    "effort depends on many drivers here",
-    "effort changes with each phase",
-    "effort is fixed before design",
-    "effort depends on one size input"
-   ],
-   "options_ar": [
-    "الجهد يعتمد على عوامل كثيرة",
-    "الجهد يتغير مع كل مرحلة الآن",
-    "الجهد ثابت قبل التصميم هنا أيضاً",
-    "الجهد يعتمد على مُدخل حجم واحد"
+    "The model requires finished source code",
+    "The model assumes a fixed project team",
+    "The model has no explicit time dimension",
+    "The model fixes every estimate permanently"
    ],
    "options_en": [
-    "effort depends on many drivers here",
-    "effort changes with each phase",
-    "effort is fixed before design",
-    "effort depends on one size input"
+    "The model requires finished source code",
+    "The model assumes a fixed project team",
+    "The model has no explicit time dimension",
+    "The model fixes every estimate permanently"
    ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "A single-variable static model reads effort from one size measure alone, with no time term.",
-   "explanation_ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني."
+   "options_ar": [
+    "يشترط النموذج اكتمال الشفرة البرمجية",
+    "يفترض النموذج ثبات أعضاء الفريق",
+    "لا يضم النموذج متغيراً زمنياً صريحاً",
+    "يثبت النموذج التقدير بعد حسابه نهائياً"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Static describes the model's lack of an explicit time dimension; it does not freeze estimates or teams.",
+   "explanation_ar": "تعني static غياب بُعد زمني صريح من النموذج، ولا تعني تثبيت التقدير أو الفريق."
   },
   {
    "id": "q3",
-   "concept_id": "ch4_static_multivar",
+   "concept_id": "ch4_static_power_form",
    "bloom_level": "Understand",
-   "question": "What defines a static multivariable model?",
-   "question_ar": "ما الذي يحدد النموذج الساكن متعدد المتغيرات؟",
+   "question": "Which is the general power form for a single-variable effort estimate?",
+   "question_ar": "أي صيغة أسية عامة لتقدير الجهد بمتغير واحد؟",
    "options": [
-    "effort depends on the calendar too",
-    "effort is set by the customer now",
-    "effort comes from several size drivers",
-    "effort comes from one driver here again"
+    "E = a + L^b",
+    "E = a · L + b",
+    "E = a · t^b",
+    "E = a · L^b"
    ],
    "options_en": [
-    "effort depends on the calendar too",
-    "effort is set by the customer now",
-    "effort comes from several size drivers",
-    "effort comes from one driver here again"
+    "E = a + L^b",
+    "E = a · L + b",
+    "E = a · t^b",
+    "E = a · L^b"
    ],
    "options_ar": [
-    "الجهد يعتمد على التقويم",
-    "الجهد يحدده العميل الآن",
-    "الجهد من عدة عوامل حجم",
-    "الجهد من عامل واحد هنا"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "A multivariable model reads effort from more than one size measure at once.",
-   "explanation_ar": "النموذج متعدد المتغيرات يقرأ الجهد من أكثر من مقياس حجم معاً."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch4_static_meaning",
-   "bloom_level": "Understand",
-   "question": "What does static mean in these cost models?",
-   "question_ar": "ماذا تعني كلمة ساكن في نماذج الكلفة؟",
-   "options": [
-    "the team is fixed here again here",
-    "no time dimension is modelled",
-    "the estimate never changes",
-    "the code is frozen now too"
-   ],
-   "options_en": [
-    "the team is fixed here again here",
-    "no time dimension is modelled",
-    "the estimate never changes",
-    "the code is frozen now too"
-   ],
-   "options_ar": [
-    "الفريق ثابت الآن مجدداً",
-    "لا بُعد زمني في النموذج",
-    "التقدير لا يتغير أبداً",
-    "الكود مجمّد هنا أيضاً"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Static means the model ignores development time; effort is read straight from size.",
-   "explanation_ar": "ساكن يعني أن النموذج يتجاهل زمن التطوير، فيُقرأ الجهد من الحجم مباشرة."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch4_static_example",
-   "bloom_level": "Remember",
-   "question": "Which pair are single-variable static models?",
-   "question_ar": "أي زوج يمثل نماذج ساكنة أحادية المتغير؟",
-   "options": [
-    "Putnam and Rayleigh",
-    "Function points and LOC",
-    "Walston-Felix and SEL",
-    "COCOMO and COCOMO II"
-   ],
-   "options_en": [
-    "Putnam and Rayleigh",
-    "Function points and LOC",
-    "Walston-Felix and SEL",
-    "COCOMO and COCOMO II"
-   ],
-   "options_ar": [
-    "بوتنام ورايلي هنا أيضاً",
-    "نقاط الوظائف وأسطر الكود هنا",
-    "Walston-Felix وSEL مجدداً",
-    "COCOMO وCOCOMO II الآن"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Walston-Felix and the SEL model both read effort from a single size input.",
-   "explanation_ar": "Walston-Felix ونموذج SEL يقرآن الجهد من مُدخل حجم واحد."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch4_static_limit",
-   "bloom_level": "Analyze",
-   "question": "What is the main limitation of a static model?",
-   "question_ar": "ما القيد الأساسي للنموذج الساكن؟",
-   "options": [
-    "it needs the finished code here here",
-    "it cannot use KLOC here too now",
-    "it needs a compiler now again",
-    "it ignores time and team factors"
-   ],
-   "options_en": [
-    "it needs the finished code here here",
-    "it cannot use KLOC here too now",
-    "it needs a compiler now again",
-    "it ignores time and team factors"
-   ],
-   "options_ar": [
-    "يحتاج الكود المكتمل مجدداً",
-    "لا يستخدم KLOC الآن هنا",
-    "يحتاج مترجماً هنا أيضاً",
-    "يتجاهل الزمن وعوامل الفريق"
+    "E = a + L^b",
+    "E = a · L + b",
+    "E = a · t^b",
+    "E = a · L^b"
    ],
    "answer": "D",
    "correct": 3,
-   "explanation": "Because it has no time term, it cannot show how schedule pressure changes effort.",
-   "explanation_ar": "لأنه بلا حد زمني لا يستطيع إظهار أثر ضغط الجدول على الجهد."
+   "explanation": "The model estimates effort as a coefficient times size raised to an empirical exponent.",
+   "explanation_ar": "يقدّر النموذج الجهد بمعامل مضروب في الحجم مرفوعاً إلى أس تجريبي."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch4_static_example",
+   "bloom_level": "Remember",
+   "question": "Which pair are static single-variable effort models?",
+   "question_ar": "أي زوج من نماذج الجهد الساكنة أحادية المتغير؟",
+   "options": [
+    "Walston-Felix and SEL size models",
+    "Basili-Freburger and COCOMO II models",
+    "Putnam and Function Point models",
+    "Intermediate COCOMO and Rayleigh models"
+   ],
+   "options_en": [
+    "Walston-Felix and SEL size models",
+    "Basili-Freburger and COCOMO II models",
+    "Putnam and Function Point models",
+    "Intermediate COCOMO and Rayleigh models"
+   ],
+   "options_ar": [
+    "نموذجا الحجم Walston-Felix وSEL",
+    "نموذجا Basili-Freburger وCOCOMO II",
+    "نموذجا Putnam ونقاط الوظائف",
+    "نموذجا COCOMO المتوسط وRayleigh"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Walston-Felix and SEL are single-variable power models that use size as their predictor.",
+   "explanation_ar": "يستخدم Walston-Felix وSEL الحجم للتنبؤ بالجهد ضمن نموذجين أسيين أحاديي المتغير."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch4_static_input",
+   "bloom_level": "Apply",
+   "question": "In size-based power equations, what does L represent?",
+   "question_ar": "في معادلات القوة المعتمدة على الحجم، ماذا يمثّل L؟",
+   "options": [
+    "Productivity in LOC per person-month",
+    "Software size in thousands of LOC",
+    "Development effort in person-months",
+    "Schedule duration in calendar months"
+   ],
+   "options_en": [
+    "Productivity in LOC per person-month",
+    "Software size in thousands of LOC",
+    "Development effort in person-months",
+    "Schedule duration in calendar months"
+   ],
+   "options_ar": [
+    "الإنتاجية بوحدة LOC لكل شخص-شهر",
+    "حجم البرمجيات بآلاف أسطر الكود",
+    "جهد التطوير بوحدة شخص-شهر",
+    "مدة الجدول بالأشهر التقويمية"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "L is the software-size predictor expressed in thousands of lines of code, not effort or duration.",
+   "explanation_ar": "يمثل L حجم البرمجيات بآلاف الأسطر، وليس الجهد أو مدة التطوير."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch4_static_multivar",
+   "bloom_level": "Understand",
+   "question": "What makes a static model multivariable?",
+   "question_ar": "ما الذي يجعل النموذج الساكن متعدد المتغيرات؟",
+   "options": [
+    "It uses multiple programming languages",
+    "It uses several effort units together",
+    "It uses size and other project factors",
+    "It uses several schedule milestones only"
+   ],
+   "options_en": [
+    "It uses multiple programming languages",
+    "It uses several effort units together",
+    "It uses size and other project factors",
+    "It uses several schedule milestones only"
+   ],
+   "options_ar": [
+    "يعتمد على زمن الجدول وحده",
+    "يستخدم وحدات قياس متعددة",
+    "يضيف الحجم عوامل مشروع أخرى",
+    "يعتمد على الحجم وحده للتقدير"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A multivariable estimate includes project or environment factors alongside size; its equation depends on the model.",
+   "explanation_ar": "يشمل التقدير متعدد المتغيرات عوامل المشروع أو البيئة إلى جانب الحجم، وتختلف معادلته حسب النموذج."
   },
   {
    "id": "q7",
-   "concept_id": "ch4_static_when",
-   "bloom_level": "Apply",
-   "question": "When is a static model appropriate?",
-   "question_ar": "متى يناسب النموذج الساكن؟",
+   "concept_id": "ch4_static_multivar_linear",
+   "bloom_level": "Understand",
+   "question": "Which expression is a linear multivariable cost model?",
+   "question_ar": "أي تعبير يمثل نموذج كلفة خطياً متعدد المتغيرات؟",
    "options": [
-    "for a rough early estimate",
-    "for the final contract price",
-    "for the test plan here now",
-    "for the maintenance phase"
+    "E = a₀ + product(aiXi)",
+    "E = a₀ + sum(L^b)",
+    "E = a₀ + sum(t^b)",
+    "E = a₀ + sum(aiXi)"
    ],
    "options_en": [
-    "for a rough early estimate",
-    "for the final contract price",
-    "for the test plan here now",
-    "for the maintenance phase"
+    "E = a₀ + product(aiXi)",
+    "E = a₀ + sum(L^b)",
+    "E = a₀ + sum(t^b)",
+    "E = a₀ + sum(aiXi)"
    ],
    "options_ar": [
-    "لتقدير أولي خشن أيضاً أيضاً",
-    "لسعر العقد النهائي هنا مجدداً",
-    "لخطة الاختبار هنا مجدداً",
-    "لمرحلة الصيانة الآن الآن"
+    "E = a₀ + حاصل ضرب(aiXi)",
+    "E = a₀ + مجموع(L^b)",
+    "E = a₀ + مجموع(t^b)",
+    "E = a₀ + مجموع(aiXi)"
    ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Its simplicity suits a first order-of-magnitude estimate before detailed data exists.",
-   "explanation_ar": "بساطته تناسب تقديراً أولياً قبل توفر بيانات مفصّلة."
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The linear form combines a baseline with weighted values for multiple project predictors.",
+   "explanation_ar": "تجمع الصيغة الخطية قيمة أساس مع قيم مرجّحة لعدة متغيرات في المشروع."
   },
   {
    "id": "q8",
-   "concept_id": "ch4_static_input",
-   "bloom_level": "Remember",
-   "question": "What input do static models take?",
-   "question_ar": "ما المُدخل الذي تأخذه النماذج الساكنة؟",
+   "concept_id": "ch4_wf_productivity_index",
+   "bloom_level": "Understand",
+   "question": "How is the Walston-Felix productivity index formed?",
+   "question_ar": "كيف يُبنى مؤشر الإنتاجية في Walston-Felix؟",
    "options": [
-    "size in KLOC here too",
-    "the number of testers",
-    "the hardware budget",
-    "the release date now"
+    "A weighted sum of the rated factor values",
+    "A product of all factor weights and values",
+    "A ratio of project size to schedule duration",
+    "A product of effort and schedule duration"
    ],
    "options_en": [
-    "size in KLOC here too",
-    "the number of testers",
-    "the hardware budget",
-    "the release date now"
+    "A weighted sum of the rated factor values",
+    "A product of all factor weights and values",
+    "A ratio of project size to schedule duration",
+    "A product of effort and schedule duration"
    ],
    "options_ar": [
-    "الحجم بوحدة KLOC",
-    "عدد المختبِرين",
-    "ميزانية العتاد",
-    "تاريخ الإصدار هنا"
+    "مجموع موزون لقيم العوامل المقيمة",
+    "حاصل ضرب أوزان العوامل وقيمها",
+    "نسبة حجم المشروع إلى مدة الجدول",
+    "حاصل ضرب الجهد في مدة الجدول"
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Size in thousands of lines is the only driver these models read.",
-   "explanation_ar": "الحجم بآلاف الأسطر هو العامل الوحيد الذي تقرأه هذه النماذج."
+   "explanation": "It adds the weighted factor ratings; it is not a product of the weights and ratings.",
+   "explanation_ar": "يجمع المؤشر تقييمات العوامل الموزونة؛ ولا يضرب أوزانها في تقييماتها."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch4_wf_index_scale",
+   "bloom_level": "Remember",
+   "question": "Which rating values does the Walston-Felix index assign to each factor?",
+   "question_ar": "ما قيم التقييم التي يسندها مؤشر Walston-Felix لكل عامل؟",
+   "options": [
+    "Zero, minus one, or plus two",
+    "Minus one, zero, or plus one",
+    "Zero, plus one, or plus two",
+    "Minus two, zero, or plus one"
+   ],
+   "options_en": [
+    "Zero, minus one, or plus two",
+    "Minus one, zero, or plus one",
+    "Zero, plus one, or plus two",
+    "Minus two, zero, or plus one"
+   ],
+   "options_ar": [
+    "صفر أو ناقص واحد أو موجب اثنين",
+    "ناقص واحد أو صفر أو موجب واحد",
+    "صفر أو موجب واحد أو موجب اثنين",
+    "ناقص اثنين أو صفر وموجب واحد"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Each factor rating is −1, 0, or +1, indicating its stated effect on productivity.",
+   "explanation_ar": "تكون قيمة تقييم كل عامل −1 أو 0 أو +1 للدلالة على أثره المحدد في الإنتاجية."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch4_static_limit",
+   "bloom_level": "Analyze",
+   "question": "What assumption limits a single-variable model when project conditions change?",
+   "question_ar": "ما الافتراض الذي يحد النموذج أحادي المتغير عند تغير ظروف المشروع؟",
+   "options": [
+    "All projects use one programming language",
+    "Requirements never change estimated size",
+    "Other factors match the model's calibration",
+    "Every team uses the same development tools"
+   ],
+   "options_en": [
+    "All projects use one programming language",
+    "Requirements never change estimated size",
+    "Other factors match the model's calibration",
+    "Every team uses the same development tools"
+   ],
+   "options_ar": [
+    "تستخدم كل المشاريع لغة برمجة واحدة",
+    "لا تغيّر المتطلبات الحجم المقدّر أبداً",
+    "تتوافق بقية العوامل مع معايرة النموذج",
+    "تستخدم كل الفرق أدوات التطوير نفسها"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A one-predictor equation holds unmodelled factors effectively constant, so a different context can weaken its fit.",
+   "explanation_ar": "يفترض النموذج ضمنياً ثبات العوامل غير الممثلة؛ لذلك قد يضعف ملاءمته عند اختلاف السياق."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch4_static_compare",
+   "bloom_level": "Analyze",
+   "question": "Why can Walston-Felix and SEL give different estimates for the same KLOC?",
+   "question_ar": "لماذا قد يعطي Walston-Felix وSEL تقديرين مختلفين للحجم نفسه؟",
+   "options": [
+    "One model measures code and one measures functions",
+    "One model includes time and one excludes size",
+    "Their equations use different effort units",
+    "Their calibrated coefficients and exponents differ"
+   ],
+   "options_en": [
+    "One model measures code and one measures functions",
+    "One model includes time and one excludes size",
+    "Their equations use different effort units",
+    "Their calibrated coefficients and exponents differ"
+   ],
+   "options_ar": [
+    "يقيس أحدهما الكود والآخر الوظائف",
+    "يتضمن أحدهما الزمن والآخر يستبعد الحجم",
+    "تستخدم معادلتاهما وحدتي جهد مختلفتين",
+    "تختلف معاملات المعايرة والأسس بينهما"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The models use different empirically calibrated coefficients and exponents; that alone does not show which is better for a new project.",
+   "explanation_ar": "يستخدم النموذجان معاملات وأسّس معايرة تجريبية مختلفة، وهذا وحده لا يحدد الأفضل لمشروع جديد."
+  },
+  {
+   "id": "q12",
+   "concept_id": "ch4_static_schedule_form",
+   "bloom_level": "Understand",
+   "question": "Which single-variable power form estimates schedule duration from size?",
+   "question_ar": "أي صيغة قوة أحادية المتغير تقدّر مدة الجدول من الحجم؟",
+   "options": [
+    "D = c · L^d",
+    "E = c · L^d",
+    "D = a · E^b",
+    "L = c · D^d"
+   ],
+   "options_en": [
+    "D = c · L^d",
+    "E = c · L^d",
+    "D = a · E^b",
+    "L = c · D^d"
+   ],
+   "options_ar": [
+    "D = c · L^d",
+    "E = c · L^d",
+    "D = a · E^b",
+    "L = c · D^d"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The static duration form predicts D from size L using a coefficient and an empirical exponent.",
+   "explanation_ar": "تقدّر صيغة المدة الساكنة D من الحجم L باستخدام معامل وأُس تجريبي."
   }
  ]
 }

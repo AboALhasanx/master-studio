@@ -221,6 +221,21 @@ stale `QUIZ_BANK_STATE.md`, not a real drift — regenerating it now returns `PA
 numbers from `QUIZ_BANK_STATE.md`, never from this line. **No further publish without the
 student's review** (his 2026-11-05 decision).
 
+### Chapter 4 draft — 2026-11-05
+
+- The local Chapter 4 MCSQuiz banks have been rebuilt as concise formula, model-meaning, assumption, distinction, and key-note MCQs, following the student's instruction not to turn them into long numerical-result exercises.
+- The Chapter 4 shape/anti-padding gate, strict per-bank schema and balance checks, strict authoring audit scoped to these banks, canonical publish dry run, and generated bank-state drift check passed.
+- Scope mapping and source limitations are recorded in `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch04_Bank_Coverage_Audit.md`. The source set in the vault has no doctor-annotated Chapter 4 copy.
+- This is still a local draft. Do not run content sync, pull, deploy, or commit the Chapter 4 release until the student reviews and authorizes publication.
+
+### Publication follow-up after student approval — 2026-11-05
+
+- The student approved publication after reviewing the Chapter 4 coverage summary. A live handout scan then caught technical Arabic uses of “source” inside software terminology; those few phrases were clarified in the builder, the banks were rebuilt, and the scoped strict gates passed again.
+- Published the corrected Chapter 4 content globally and refreshed the local portal mirror. The service-worker precache list was already current, so a shell release and deployment were unnecessary.
+- The live vault comparison found no question or Arabic-option differences; the live keyed-answer, stem, and explanation audit found no mismatches; and the live handout-reference scan found none.
+- Production browser review confirmed the Chapter 4 catalogue entries, quiz launch, Arabic/English toggle, and question/option reshuffling across launches. The generated bank-state snapshot was regenerated and its drift check passed.
+- Coverage and source limits are documented in `01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch04_Bank_Coverage_Audit.md`. Commit and push the scoped Chapter 4 release artifacts after recording the release commit.
+
 ---
 
 ## 5. Deferred to the future — student decision 2026-11-05
