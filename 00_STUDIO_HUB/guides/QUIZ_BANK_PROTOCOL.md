@@ -156,6 +156,14 @@ repeated formulas, and option shape. It does not modify or rebalance a bank.
 python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate
 ```
 
+For banks being rebuilt after a length-balancing pass, also run `--padding-gate`:
+
+```bash
+python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate --padding-gate
+```
+
+This separate check fails when known trailing filler suffixes (`here`, `now`, `again`, `too`, and their Arabic equivalents) occur in more than 10% of a bank's displayed bilingual options. It is deliberately separate from `--shape-gate`: a suffix word can be legitimate in an isolated, contextual option, and existing legacy banks may use such wording naturally. Treat a failure as a rewrite prompt; never pass by simply deleting words if that leaves the option-length gate red.
+
 Structural errors and shape-gate failures block handoff. Near-duplicate stems,
 repeated formulas, and short explanations are advisory: inspect the paired items
 against the source and keep distinct concepts when the similarity is intentional.

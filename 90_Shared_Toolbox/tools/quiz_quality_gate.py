@@ -5,7 +5,8 @@
 The portal schema and psychometric balancer remain authoritative for those
 checks. This gate adds cross-bank checks that they do not provide: duplicate
 IDs/concepts/stems, answer-index drift, option-array drift, bilingual option
-shape, repeated formulas, and near-duplicate question warnings.
+shape, repeated formulas, suspicious option-padding patterns, and near-duplicate
+question warnings.
 
 Examples:
     python quiz_quality_gate.py path/to/Quiz_Ch04_T01.json path/to/Quiz_Ch04_T02.json
@@ -13,8 +14,10 @@ Examples:
 
 Default mode fails only on deterministic structural defects. Editorial and
 near-duplicate findings are reported as warnings. --shape-gate additionally
-enforces the published option-spread and answer-position thresholds. This tool
-never edits banks, reorders options, or publishes content.
+enforces the published option-spread and answer-position thresholds. The
+separate --padding-gate detects bank-wide use of common filler suffixes; it is
+kept separate because some legacy banks use these words naturally in contextual
+options. This tool never edits banks, reorders options, or publishes content.
 """
 
 from __future__ import annotations
@@ -34,6 +37,9 @@ LETTERS = "ABCD"
 SPREAD_CAPS = {"options": 1.40, "options_ar": 1.30}
 KEY_RATIO_MIN = 0.88
 KEY_RATIO_MAX = 1.12
+PADDING_SHARE_MAX = 0.10
+PADDING_SUFFIX_EN = re.compile(r"\b(?:here|now|again|too)\W*$", re.I)
+PADDING_SUFFIX_AR = re.compile(r"(?:هنا|الآن|مجدداً|مجددا|أيضاً|ايضاً)\W*$", re.I)
 MATH_RE = re.compile(r"\$\$.*?\$\$|\$(?!\$).*?\$", re.S)
 WORD_RE = re.compile(r"[a-z0-9]+|[\u0600-\u06ff]+", re.I)
 STOP_WORDS = {
@@ -75,11 +81,29 @@ def similarity(a: str, b: str) -> float:
     return max(seq, jac)
 
 
+def padding_share_exceeds_gate(option_texts: list[tuple[str, str]]) -> tuple[bool, int, int]:
+    """Detect bank-wide suffix padding without failing on an isolated valid word.
+
+    `option_texts` contains each distinct displayed option once: options_en and
+    options_ar, not the duplicate schema alias `options`. A modest amount of
+    ordinary language may end in one of these words, so this is a bank-level
+    threshold rather than a per-option ban.
+    """
+    if not option_texts:
+        return False, 0, 0
+    hits = 0
+    for lang, text in option_texts:
+        pattern = PADDING_SUFFIX_AR if lang == "ar" else PADDING_SUFFIX_EN
+        hits += int(bool(pattern.search(text.strip())))
+    return hits / len(option_texts) > PADDING_SHARE_MAX, hits, len(option_texts)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("banks", nargs="+", type=Path, help="Bank JSON paths; shell globs are accepted")
     ap.add_argument("--chapter", help="Limit directory input to this chapter number")
     ap.add_argument("--shape-gate", action="store_true", help="Fail on option spread and answer-length shape thresholds")
+    ap.add_argument("--padding-gate", action="store_true", help="Fail when common filler suffixes exceed 10% of displayed options in a bank")
     ap.add_argument("--near-duplicate-threshold", type=float, default=0.88)
     ap.add_argument("--max-warnings", type=int, default=60, help="Maximum warning lines to print")
     args = ap.parse_args()
@@ -107,6 +131,7 @@ def main() -> int:
     chapter_shape: dict[str, dict[str, Counter]] = defaultdict(
         lambda: {lang: Counter() for lang in SPREAD_CAPS}
     )
+    bank_padding: dict[Path, list[tuple[str, str]]] = defaultdict(list)
     chapter_counts: Counter = Counter()
     processed_banks = 0
 
@@ -187,6 +212,9 @@ def main() -> int:
                 normalized = [exact_key(x) for x in opts]
                 if len(set(normalized)) != 4:
                     errors.append(f"{label}: duplicate choices in {field}")
+                if field in ("options_en", "options_ar"):
+                    lang = "ar" if field == "options_ar" else "en"
+                    bank_padding[path].extend((lang, str(x)) for x in opts if isinstance(x, str))
             if isinstance(q.get("options"), list) and isinstance(q.get("options_en"), list):
                 if q["options"] != q["options_en"]:
                     errors.append(f"{label}: options and options_en differ")
@@ -251,6 +279,14 @@ def main() -> int:
         return 2
 
     shape_errors: list[str] = []
+    padding_errors: list[str] = []
+    for path, option_texts in bank_padding.items():
+        failed, hits, total = padding_share_exceeds_gate(option_texts)
+        if failed:
+            padding_errors.append(
+                f"{path.name}: likely filler suffixes in {hits}/{total} displayed options "
+                f"({hits / total:.1%}) exceed {PADDING_SHARE_MAX:.0%}; rewrite the options with meaningful wording"
+            )
     for chapter, fields in chapter_shape.items():
         for field, counts in fields.items():
             total = counts["total"]
@@ -289,13 +325,17 @@ def main() -> int:
         print(f"Shape-gate failures: {len(shape_errors)}")
         for err in shape_errors:
             print("SHAPE:", err)
+    if args.padding_gate:
+        print(f"Padding-gate failures: {len(padding_errors)}")
+        for err in padding_errors:
+            print("PADDING:", err)
     if warnings:
         print("Warnings:")
         for warning in warnings[: args.max_warnings]:
             print("WARN:", warning)
         if len(warnings) > args.max_warnings:
             print(f"WARN: ... {len(warnings) - args.max_warnings} additional warning(s) suppressed")
-    if errors or (args.shape_gate and shape_errors):
+    if errors or (args.shape_gate and shape_errors) or (args.padding_gate and padding_errors):
         print("RESULT: FAIL")
         return 1
     print("RESULT: PASS (warnings are advisory; review them before release)")

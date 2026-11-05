@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch01_T05_Software_Myths",
+  "topic": "Software Myths",
+  "topic_ar": "خرافات البرمجيات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch1_myth_meaning",
+      "bloom_level": "Understand",
+      "question": "What makes a software-development belief a myth?",
+      "question_ar": "ما الذي يجعل الاعتقاد في تطوير البرمجيات خرافة؟",
+      "options": [
+        "A plausible belief that misguides practice",
+        "It has been measured and confirmed across projects",
+        "It is a written rule that every team must follow",
+        "It is a technical fact that never changes"
+      ],
+      "options_ar": [
+        "اعتقاد معقول يضلل قرارات فرق البرمجيات",
+        "اعتقاد اختُبر وأُكّد في مشاريع متعددة",
+        "قاعدة مكتوبة يجب أن يتبعها كل فريق",
+        "حقيقة تقنية ثابتة رغم تغير الأدوات"
+      ],
+      "options_en": [
+        "A plausible belief that misguides practice",
+        "It has been measured and confirmed across projects",
+        "It is a written rule that every team must follow",
+        "It is a technical fact that never changes"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A myth is a plausible belief that distorts how software should be developed; it is not an evidence-based rule.",
+      "explanation_ar": "الخرافة اعتقاد يبدو معقولاً لكنه يشوّه طريقة تطوير البرمجيات، وليست قاعدة مثبتة بالدليل."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch1_myth_count_groups",
+      "bloom_level": "Remember",
+      "question": "How are the nine software myths grouped?",
+      "question_ar": "كيف جُمعت الخرافات التسع في الفصل؟",
+      "options": [
+        "By hardware, software and network layers",
+        "Management, customer and developer views",
+        "By analysis, design and implementation stages",
+        "By product, process and project measures"
+      ],
+      "options_ar": [
+        "بحسب طبقات العتاد والبرمجيات والشبكة",
+        "مناظير الإدارة والعميل والمطورين",
+        "بحسب مراحل التحليل والتصميم والتنفيذ",
+        "بحسب مقاييس المنتج والعملية والمشروع"
+      ],
+      "options_en": [
+        "By hardware, software and network layers",
+        "Management, customer and developer views",
+        "By analysis, design and implementation stages",
+        "By product, process and project measures"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The nine myths are grouped under management, customer and developer perspectives.",
+      "explanation_ar": "يجمع الفصل تسع خرافات ضمن مناظير الإدارة والعميل والمطوّر."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch1_myth_testing_absence",
+      "bloom_level": "Understand",
+      "question": "Why is the claim that testing proves the absence of software errors a myth?",
+      "question_ar": "لماذا يُعدّ الادعاء بأن الاختبار يثبت غياب أخطاء البرمجيات خرافة؟",
+      "options": [
+        "Testing proves every possible input was correct",
+        "Testing guarantees that later changes are harmless",
+        "Testing finds errors but cannot prove none remain",
+        "A test suite guarantees every defect is removed before release"
+      ],
+      "options_ar": [
+        "يثبت الاختبار صحة كل المدخلات الممكنة",
+        "يضمن الاختبار أن التغييرات اللاحقة بلا ضرر",
+        "يكشف الاختبار الخطأ ولا ينفي بقاء غيره",
+        "يثبت الاختبار صحة السلوك في كل الحالات"
+      ],
+      "options_en": [
+        "Testing proves every possible input was correct",
+        "Testing guarantees that later changes are harmless",
+        "Testing finds errors but cannot prove none remain",
+        "A test suite guarantees every defect is removed before release"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Testing can show the presence of errors, but it cannot prove their complete absence.",
+      "explanation_ar": "يمكن للاختبار إظهار وجود الأخطاء، لكنه لا يثبت غيابها جميعاً."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch1_myth_reverify",
+      "bloom_level": "Apply",
+      "question": "A developer changes one function in a shared system. Which myth could make the team skip needed checks?",
+      "question_ar": "غيّر مطوّر دالة في نظام مشترك. أي خرافة قد تجعل الفريق يتجاوز الفحوص اللازمة؟",
+      "options": [
+        "Believing that each release needs a documented test plan",
+        "Believing that requirements may change during development",
+        "Believing that system behaviour depends on its components",
+        "The myth treats changes as safe without system rechecks"
+      ],
+      "options_ar": [
+        "الاعتقاد أن كل إصدار يحتاج خطة اختبار موثقة",
+        "الاعتقاد أن المتطلبات قد تتغير أثناء التطوير",
+        "الاعتقاد أن سلوك النظام يعتمد على مكوّناته",
+        "الخرافة ترى التغيير آمناً من دون فحص النظام"
+      ],
+      "options_en": [
+        "Believing that each release needs a documented test plan",
+        "Believing that requirements may change during development",
+        "Believing that system behaviour depends on its components",
+        "The myth treats changes as safe without system rechecks"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The myth treats change as harmless, although a change requires the system to be re-verified.",
+      "explanation_ar": "تتعامل الخرافة مع التغيير كأنه بلا أثر، مع أن التغيير يتطلب إعادة التحقق من النظام."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch1_myth_more_features",
+      "bloom_level": "Understand",
+      "question": "What mistaken assumption lies behind the claim that software with more features is always better?",
+      "question_ar": "ما الافتراض الخاطئ وراء القول إن البرمجيات ذات الميزات الأكثر أفضل دائماً؟",
+      "options": [
+        "Feature count alone defines software quality",
+        "A focused product can serve its purpose well",
+        "User needs should guide feature selection",
+        "A feature may increase complexity without value"
+      ],
+      "options_ar": [
+        "عدد الميزات وحده يحدد جودة البرمجيات",
+        "قد ينجح منتج مركز في أداء غرضه جيداً",
+        "ينبغي أن تقود حاجات المستخدم اختيار الميزات",
+        "قد تزيد الميزة التعقيد من دون قيمة"
+      ],
+      "options_en": [
+        "Feature count alone defines software quality",
+        "A focused product can serve its purpose well",
+        "User needs should guide feature selection",
+        "A feature may increase complexity without value"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "More features do not automatically improve software; a focused product may do its intended job better.",
+      "explanation_ar": "زيادة الميزات لا تحسن البرمجيات تلقائياً؛ فقد يؤدي المنتج المركز غرضه بصورة أفضل."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch1_myth_add_people",
+      "bloom_level": "Analyze",
+      "question": "A late project is given many new engineers, but coordination and onboarding take time. Which myth is challenged?",
+      "question_ar": "أُضيف مطوّرون كثيرون إلى مشروع متأخر، لكن التنسيق والتهيئة استغرقا وقتاً. أي خرافة يجري تحديها؟",
+      "options": [
+        "Team communication changes with size",
+        "New hires always recover project delay",
+        "Planning effort affects delivery schedules",
+        "Teams need time to learn a system"
+      ],
+      "options_ar": [
+        "أن التواصل يتغير مع حجم الفريق",
+        "المزيد من المطورين ينهي التأخير",
+        "التخطيط يحدد مواعيد التسليم",
+        "أن الفرق تحتاج وقتاً لفهم النظام"
+      ],
+      "options_en": [
+        "Team communication changes with size",
+        "New hires always recover project delay",
+        "Planning effort affects delivery schedules",
+        "Teams need time to learn a system"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Adding engineers to an already late project may delay it further.",
+      "explanation_ar": "يحذر الفصل من أن إضافة مطورين إلى مشروع متأخر قد تزيد تأخيره."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch1_myth_reuse_safety",
+      "bloom_level": "Analyze",
+      "question": "Why can reuse create a false sense of software safety?",
+      "question_ar": "لماذا قد تؤدي إعادة الاستخدام إلى شعور زائف بسلامة البرمجيات؟",
+      "options": [
+        "A reused component removes every integration issue",
+        "A reused component guarantees correct requirements",
+        "Reuse still requires risk and suitability checks",
+        "A reused component always contains no defects"
+      ],
+      "options_ar": [
+        "يزيل المكوّن المعاد استخدامه كل مشكلات التكامل",
+        "يضمن المكوّن المعاد استخدامه صحة المتطلبات",
+        "إعادة الاستخدام لا تغني عن فحص المخاطر والملاءمة",
+        "يكون المكوّن المعاد استخدامه خالياً من العيوب دائماً"
+      ],
+      "options_en": [
+        "A reused component removes every integration issue",
+        "A reused component guarantees correct requirements",
+        "Reuse still requires risk and suitability checks",
+        "A reused component always contains no defects"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Reuse does not itself prove safety; assuming it does can create a false sense of security.",
+      "explanation_ar": "إعادة الاستخدام لا تثبت السلامة بذاتها؛ والافتراض بعكس ذلك قد يولد شعوراً زائفاً بالأمان."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch1_myth_working_program",
+      "bloom_level": "Analyze",
+      "question": "A team delivers an executable program but ignores maintainability and product quality. Which myth does this reflect?",
+      "question_ar": "سلّم فريق برنامجاً قابلاً للتنفيذ لكنه أهمل قابلية الصيانة وجودة المنتج. أي خرافة يعكس ذلك؟",
+      "options": [
+        "That software must meet its stated requirements",
+        "That maintenance matters after delivery",
+        "That product quality depends on development work",
+        "A working program alone is the objective"
+      ],
+      "options_ar": [
+        "أن البرمجيات يجب أن تلبي متطلباتها المعلنة",
+        "أن الصيانة تظل مهمة بعد تسليم المنتج",
+        "أن جودة المنتج تعتمد على أعمال تطويره",
+        "البرنامج العامل وحده هو الهدف النهائي"
+      ],
+      "options_en": [
+        "That software must meet its stated requirements",
+        "That maintenance matters after delivery",
+        "That product quality depends on development work",
+        "A working program alone is the objective"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The objective goes beyond a merely working program to quality and maintainability.",
+      "explanation_ar": "يوضح الفصل أن الهدف تجاوز مجرد تشغيل البرنامج إلى الجودة وقابلية الصيانة."
+    }
+  ]
+}

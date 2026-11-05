@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch01_T03_Software_Process",
+  "topic": "Software Process, Product and Measurement",
+  "topic_ar": "عملية البرمجيات والمنتج والقياس",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch1_process_way_software_produced",
+      "bloom_level": "Remember",
+      "question": "What does the software process describe?",
+      "question_ar": "ماذا تصف عملية البرمجيات؟",
+      "options": [
+        "The hardware used by a programmer",
+        "The functions delivered to a customer",
+        "The people assigned to a project",
+        "The method used to produce software"
+      ],
+      "options_ar": [
+        "أجهزة الحاسوب المستخدمة لتشغيل البرنامج",
+        "الوظائف البرمجية التي تُسلّم للعميل",
+        "الأشخاص المعيّنون لتنفيذ المشروع",
+        "الطريقة المتبعة لإنتاج البرمجيات"
+      ],
+      "options_en": [
+        "The hardware used by a programmer",
+        "The functions delivered to a customer",
+        "The people assigned to a project",
+        "The method used to produce software"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A process is the way software is produced and provides a framework for planning development. Delivered functions describe the product; hardware and staff are separate project factors.",
+      "explanation_ar": "العملية هي الطريقة التي تُنتج بها البرمجيات، وتوفر إطارًا لتخطيط التطوير. الوظائف المسلّمة تصف المنتج، أما العتاد والكادر فعاملان منفصلان."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch1_process_framework_for_development_plan",
+      "bloom_level": "Understand",
+      "question": "How does a software process help a development project?",
+      "question_ar": "كيف تساعد عملية البرمجيات مشروع التطوير؟",
+      "options": [
+        "It frames a comprehensive plan for software development",
+        "It replaces the need to evaluate the delivered product",
+        "It guarantees that requirements will never change",
+        "It determines the exact number of developers needed"
+      ],
+      "options_ar": [
+        "توفر إطارًا لوضع خطة تطوير شاملة",
+        "تلغي الحاجة إلى تقييم المنتج المسلّم",
+        "تضمن ألّا تتغير المتطلبات مطلقًا",
+        "تحدد العدد الدقيق للمطورين المطلوبين"
+      ],
+      "options_en": [
+        "It frames a comprehensive plan for software development",
+        "It replaces the need to evaluate the delivered product",
+        "It guarantees that requirements will never change",
+        "It determines the exact number of developers needed"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A process gives the framework from which a comprehensive development plan can be established. It cannot freeze requirements, replace product evaluation or calculate staffing by itself.",
+      "explanation_ar": "توفر العملية إطارًا تُبنى عليه خطة تطوير شاملة. لكنها لا تجمّد المتطلبات ولا تستبدل تقييم المنتج ولا تحسب الكادر وحدها."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch1_process_metric_productivity",
+      "bloom_level": "Understand",
+      "question": "Which item is classified as a process metric?",
+      "question_ar": "أي عنصر يُصنّف مقياسًا للعملية؟",
+      "options": [
+        "Reliability of the delivered software",
+        "Size of the completed program",
+        "Productivity of the development work",
+        "Functionality of the delivered system"
+      ],
+      "options_ar": [
+        "موثوقية النظام المسلّم",
+        "حجم البرنامج المكتمل",
+        "إنتاجية فريق التطوير",
+        "وظائف النظام المسلّم"
+      ],
+      "options_en": [
+        "Reliability of the delivered software",
+        "Size of the completed program",
+        "Productivity of the development work",
+        "Functionality of the delivered system"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Productivity measures the development process. Reliability, size and functionality describe attributes of the product itself.",
+      "explanation_ar": "تقيس الإنتاجية عملية التطوير. أما الموثوقية والحجم والوظائف فتصف خصائص المنتج نفسه."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch1_product_metric_functionality",
+      "bloom_level": "Apply",
+      "question": "A team measures the functions available in its completed system. Which metric family does this describe?",
+      "question_ar": "يقيس فريق الوظائف المتاحة في نظامه المكتمل؛ أي عائلة مقاييس يصف ذلك؟",
+      "options": [
+        "Staffing metrics",
+        "Schedule metrics",
+        "Process metrics",
+        "Product metrics"
+      ],
+      "options_ar": [
+        "مقاييس موارد الكادر",
+        "مقاييس مراحل الجدول",
+        "مقاييس خصائص العملية",
+        "مقاييس خصائص المنتج"
+      ],
+      "options_en": [
+        "Staffing metrics",
+        "Schedule metrics",
+        "Process metrics",
+        "Product metrics"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Functionality is an attribute of the delivered product. Productivity, efficiency and failure rate are examples of process metrics; staffing and schedule are not the classification asked here.",
+      "explanation_ar": "الوظائف خاصية للمنتج المسلّم. الإنتاجية والكفاءة ومعدل الفشل أمثلة لمقاييس العملية؛ أما الكادر والجدول فليسا التصنيف المقصود."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch1_measurement_metric_distinction",
+      "bloom_level": "Understand",
+      "question": "Which statement distinguishes measurement from a metric?",
+      "question_ar": "أي عبارة تميّز القياس من المقياس؟",
+      "options": [
+        "Measurement is a process model; a metric is a software component",
+        "Measurement is a product attribute; a metric is a project milestone",
+        "Measurement is evaluating a measure; a metric quantifies an attribute",
+        "Measurement is the final value; a metric is the act of planning"
+      ],
+      "options_ar": [
+        "القياس نموذج عملية؛ والمقياس مكوّن برمجي",
+        "القياس خاصية منتج؛ والمقياس مرحلة مشروع",
+        "القياس هو تقييم مقدار؛ والمقياس يكمّم خاصية",
+        "القياس قيمة نهائية؛ والمقياس فعل التخطيط"
+      ],
+      "options_en": [
+        "Measurement is a process model; a metric is a software component",
+        "Measurement is a product attribute; a metric is a project milestone",
+        "Measurement is evaluating a measure; a metric quantifies an attribute",
+        "Measurement is the final value; a metric is the act of planning"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Measurement is the act of evaluating a measure; a metric quantifies the degree of an attribute.",
+      "explanation_ar": "القياس هو فعل تقييم مقدار؛ والمقياس مقدار كمي لدرجة امتلاك خاصية. تخلط البدائل ذلك بمفاهيم المنتج أو المشروع."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch1_effort_person_month_unit",
+      "bloom_level": "Remember",
+      "question": "What is the most appropriate unit for software-development effort?",
+      "question_ar": "ما الوحدة الأنسب لجهد تطوير البرمجيات؟",
+      "options": [
+        "Currency spent on salaries",
+        "Person-months of effort",
+        "Months of elapsed time",
+        "Number of assigned staff"
+      ],
+      "options_ar": [
+        "كلفة رواتب الفريق",
+        "جهد بوحدة شهر-شخص",
+        "زمن بوحدة الأشهر",
+        "كادر بعدد الأشخاص"
+      ],
+      "options_en": [
+        "Currency spent on salaries",
+        "Person-months of effort",
+        "Months of elapsed time",
+        "Number of assigned staff"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Effort combines people and time, so person-months capture both. Months or people alone omit one dimension, while currency measures cost.",
+      "explanation_ar": "يجمع الجهد بين الأشخاص والزمن، لذلك تعبّر عنه أشهر-شخص. الأشهر أو الأشخاص وحدهم يهملون أحد البعدين، والعملة تقيس الكلفة."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch1_productivity_relates_output_effort",
+      "bloom_level": "Apply",
+      "question": "Two teams deliver the same software size, but one uses fewer person-months. Which process measure is higher for that team?",
+      "question_ar": "سلّم فريقان الحجم نفسه من البرمجيات، لكن أحدهما استخدم أشهر-شخص أقل؛ أي مقياس للعملية أعلى لديه؟",
+      "options": [
+        "Output per unit of development effort",
+        "Complexity per system component",
+        "Reliability per period of operation",
+        "System functions in each delivered release"
+      ],
+      "options_ar": [
+        "الناتج لكل وحدة من جهد التطوير",
+        "التعقيد لكل مكوّن في النظام",
+        "الموثوقية لكل مدة من التشغيل",
+        "وظائف النظام في كل إصدار مسلّم"
+      ],
+      "options_en": [
+        "Output per unit of development effort",
+        "Complexity per system component",
+        "Reliability per period of operation",
+        "System functions in each delivered release"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "With equal output and less effort, the team's output per unit of effort is greater, which is higher productivity. Reliability, complexity and functionality describe product attributes.",
+      "explanation_ar": "مع تساوي الناتج وانخفاض الجهد، يكون ناتج الفريق لكل وحدة جهد أكبر، أي إنتاجية أعلى. الموثوقية والتعقيد والوظائف خصائص للمنتج."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch1_process_quality_balance",
+      "bloom_level": "Analyze",
+      "question": "Which conclusion best reflects the role of process in product quality?",
+      "question_ar": "أي استنتاج يعبّر بدقة عن دور العملية في جودة المنتج؟",
+      "options": [
+        "A detailed process guarantees software without any faults",
+        "Weak process harms quality; excessive process is risky",
+        "A strong process makes product quality unimportant",
+        "Process matters only when the schedule is missed"
+      ],
+      "options_ar": [
+        "العملية المفصلة تضمن برمجيات بلا عيوب إطلاقًا",
+        "العملية الضعيفة تضر بالجودة والإفراط فيها خطر",
+        "العملية القوية تجعل جودة المنتج غير مهمة",
+        "لا تهم العملية إلا عند فوات الموعد النهائي"
+      ],
+      "options_en": [
+        "A detailed process guarantees software without any faults",
+        "Weak process harms quality; excessive process is risky",
+        "A strong process makes product quality unimportant",
+        "Process matters only when the schedule is missed"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "An efficient process supports quality, while obsessive reliance on process can be dangerous. A process cannot guarantee zero faults or make product quality irrelevant.",
+      "explanation_ar": "تدعم العملية الكفوءة الجودة، لكن الاعتماد المفرط عليها قد يكون خطيرًا. ولا تضمن العملية انعدام العيوب ولا تلغي أهمية جودة المنتج."
+    }
+  ]
+}

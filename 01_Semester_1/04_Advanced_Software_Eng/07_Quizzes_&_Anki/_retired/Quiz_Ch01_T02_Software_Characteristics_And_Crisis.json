@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch01_T02_Software_Characteristics_And_Crisis",
+ "topic": "Software Characteristics and the Crisis",
+ "topic_ar": "خصائص البرمجيات وأزمة البرمجيات",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch1_not_characteristic",
+   "bloom_level": "Remember",
+   "question": "Which one is NOT a characteristic of software?",
+   "question_ar": "أي واحد ليس من خصائص البرمجيات؟",
+   "options": [
+    "it is always correct here",
+    "it never wears out at all",
+    "it stays quite flexible",
+    "it is not manufactured"
+   ],
+   "options_ar": [
+    "أنه صحيح دائماً هنا",
+    "أنه لا يبلى أبداً هنا",
+    "أنه مرن دائماً هنا",
+    "أنه غير مصنّع هنا"
+   ],
+   "options_en": [
+    "it is always correct here",
+    "it never wears out at all",
+    "it stays quite flexible",
+    "it is not manufactured"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Software does not wear out and is flexible, but nothing guarantees it is always correct.",
+   "explanation_ar": "البرمجيات لا تبلى وهي مرنة، لكن لا شيء يضمن أنها صحيحة دائماً."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch1_se_goal",
+   "bloom_level": "Understand",
+   "question": "The software engineering approach is used to achieve...",
+   "question_ar": "يُستخدم منهج هندسة البرمجيات لتحقيق...",
+   "options": [
+    "reusable software only",
+    "a quality software product",
+    "better hardware performance",
+    "software that is error free"
+   ],
+   "options_ar": [
+    "برمجيات قابلة للإعادة",
+    "منتج برمجي عالي الجودة",
+    "أداء عتاد أفضل هنا",
+    "برمجيات بلا أخطاء هنا"
+   ],
+   "options_en": [
+    "reusable software only",
+    "a quality software product",
+    "better hardware performance",
+    "software that is error free"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The discipline targets a quality product; error-free and reusable are not what it promises.",
+   "explanation_ar": "التخصص يستهدف منتجاً عالي الجودة، ولا يَعِد ببرمجيات بلا أخطاء ولا بإعادة الاستخدام وحدها."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch1_se_applicable",
+   "bloom_level": "Understand",
+   "question": "The concepts of software engineering apply to...",
+   "question_ar": "مفاهيم هندسة البرمجيات تنطبق على...",
+   "options": [
+    "the Pascal language only",
+    "the C language only here",
+    "any programming language",
+    "the Fortran language only"
+   ],
+   "options_ar": [
+    "لغة Pascal وحدها",
+    "لغة C وحدها هنا",
+    "أي لغة برمجة كانت",
+    "لغة Fortran وحدها"
+   ],
+   "options_en": [
+    "the Pascal language only",
+    "the C language only here",
+    "any programming language",
+    "the Fortran language only"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The concepts are language independent, so no single language owns them.",
+   "explanation_ar": "المفاهيم مستقلة عن اللغة، فلا لغة واحدة تحتكرها."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch1_case_tool",
+   "bloom_level": "Remember",
+   "question": "CASE stands for...",
+   "question_ar": "CASE تعني...",
+   "options": [
+    "Component Aided Software Engineering",
+    "Constructive Aided Software Engineering",
+    "Computer Analysis Software Engineering",
+    "Computer Aided Software Engineering"
+   ],
+   "options_ar": [
+    "هندسة برمجيات بمساعدة المكوّنات",
+    "هندسة برمجيات إنشائية بمساعدة الحاسوب",
+    "هندسة برمجيات التحليل الحاسوبي",
+    "هندسة برمجيات بمساعدة الحاسوب"
+   ],
+   "options_en": [
+    "Component Aided Software Engineering",
+    "Constructive Aided Software Engineering",
+    "Computer Analysis Software Engineering",
+    "Computer Aided Software Engineering"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "CASE expands to Computer Aided Software Engineering, the tooling that supports the process.",
+   "explanation_ar": "CASE تعني هندسة برمجيات بمساعدة الحاسوب، وهي الأدوات التي تدعم العملية."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch1_bespoke",
+   "bloom_level": "Understand",
+   "question": "A payroll system built for one specific ministry is...",
+   "question_ar": "نظام رواتب بُني لوزارة محددة هو...",
+   "options": [
+    "a bespoke customized product here",
+    "a generic off-the-shelf product",
+    "an infrastructure software product",
+    "an open source community product"
+   ],
+   "options_ar": [
+    "منتج مخصّص لعميل محدد",
+    "منتج عام جاهز للبيع هنا",
+    "منتج بنية تحتية هنا",
+    "منتج مفتوح للجميع هنا"
+   ],
+   "options_en": [
+    "a bespoke customized product here",
+    "a generic off-the-shelf product",
+    "an infrastructure software product",
+    "an open source community product"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Customized products are developed for a particular customer, which is what a single ministry is.",
+   "explanation_ar": "المنتجات المخصّصة تُطوَّر لعميل بعينه، وهذه حالة وزارة واحدة."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch1_spi_reasons",
+   "bloom_level": "Understand",
+   "question": "Software process improvement fails for all of these reasons EXCEPT...",
+   "question_ar": "يفشل تحسين عملية البرمجيات لكل هذه الأسباب ما عدا...",
+   "options": [
+    "absence of a CASE tool",
+    "not having enough time",
+    "a lack of knowledge",
+    "wrong motivations here"
+   ],
+   "options_ar": [
+    "غياب أداة CASE",
+    "عدم كفاية الوقت",
+    "نقص في المعرفة",
+    "الدوافع الخاطئة"
+   ],
+   "options_en": [
+    "absence of a CASE tool",
+    "not having enough time",
+    "a lack of knowledge",
+    "wrong motivations here"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The listed causes are time, knowledge, motivation and commitment; missing tooling is not one of them.",
+   "explanation_ar": "الأسباب هي الوقت والمعرفة والدافع والالتزام، وغياب الأدوات ليس منها."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch1_developer_myth",
+   "bloom_level": "Understand",
+   "question": "Which statement is one of the developer-perspective software myths?",
+   "question_ar": "أي عبارة من خرافات البرمجيات بمنظور المطوّر؟",
+   "options": [
+    "maintenance dominates the life-cycle cost",
+    "requirements change during development",
+    "the tested code is the only deliverable",
+    "a prototype reduces requirements risk"
+   ],
+   "options_ar": [
+    "أن الصيانة تهيمن على كلفة الدورة",
+    "أن المتطلبات تتغير أثناء التطوير",
+    "أن الكود المختبَر هو التسليم الوحيد",
+    "أن النموذج الأولي يقلل مخاطر المتطلبات"
+   ],
+   "options_en": [
+    "maintenance dominates the life-cycle cost",
+    "requirements change during development",
+    "the tested code is the only deliverable",
+    "a prototype reduces requirements risk"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Tested code is only one deliverable; the other three statements are accepted facts, not myths.",
+   "explanation_ar": "الكود المختبَر تسليم واحد فقط، والعبارات الثلاث الأخرى حقائق مقبولة لا خرافات."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch1_crisis_meaning",
+   "bloom_level": "Understand",
+   "question": "What is the software crisis about?",
+   "question_ar": "علامَ تدل أزمة البرمجيات؟",
+   "options": [
+    "faster hardware releases",
+    "cheaper programming tools",
+    "more programming languages",
+    "cost and schedule overruns"
+   ],
+   "options_en": [
+    "faster hardware releases",
+    "cheaper programming tools",
+    "more programming languages",
+    "cost and schedule overruns"
+   ],
+   "options_ar": [
+    "إصدارات عتاد أسرع",
+    "أدوات برمجة أرخص الآن",
+    "لغات برمجة أكثر هنا",
+    "تجاوز الكلفة والجدول"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The crisis names projects that overrun their cost and schedule and ship poor quality.",
+   "explanation_ar": "الأزمة تعني مشاريع تتجاوز كلفتها وجدولها وتسلّم جودة ضعيفة."
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+ "schema_version": 2,
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "هندسة البرمجيات",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "subject": "04_Advanced_Software_Eng",
+ "quiz_id": "Quiz_Ch01_T06_Software_Myths_And_Ethics",
+ "topic": "Software Myths and Professional Ethics",
+ "topic_ar": "خرافات البرمجيات وأخلاقيات المهنة",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "ch1_mgmt_myth",
+   "bloom_level": "Understand",
+   "question": "Which statement is a management-perspective software myth?",
+   "question_ar": "أي عبارة من خرافات البرمجيات بمنظور الإدارة؟",
+   "options": [
+    "we already have a handbook of standards",
+    "tested code is the only deliverable",
+    "requirements never change here now too",
+    "the customer signs without reading again"
+   ],
+   "options_ar": [
+    "لدينا دليل معايير جاهز هنا مجدداً",
+    "الكود المختبَر هو التسليم الوحيد هنا",
+    "المتطلبات لا تتغير أبداً أيضاً",
+    "العميل يوقّع دون قراءة الآن هنا"
+   ],
+   "options_en": [
+    "we already have a handbook of standards",
+    "tested code is the only deliverable",
+    "requirements never change here now too",
+    "the customer signs without reading again"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "Managers often believe a standards handbook is enough, which is one of the listed myths.",
+   "explanation_ar": "المديرون كثيراً ما يظنون دليل المعايير كافياً، وهذه إحدى الخرافات المعروفة."
+  },
+  {
+   "id": "q2",
+   "concept_id": "ch1_customer_myth",
+   "bloom_level": "Understand",
+   "question": "Which statement is a customer-perspective software myth?",
+   "question_ar": "أي عبارة من خرافات البرمجيات بمنظور العميل؟",
+   "options": [
+    "every module needs a test plan here again here too here",
+    "a general statement of objectives is enough to begin",
+    "the code must be reviewed weekly now here too now",
+    "the team must hold daily meetings too now again"
+   ],
+   "options_ar": [
+    "كل وحدة تحتاج خطة اختبار هنا",
+    "عبارة عامة عن الأهداف تكفي للبدء",
+    "يجب مراجعة الكود أسبوعياً الآن",
+    "الفريق يجب أن يجتمع يومياً أيضاً"
+   ],
+   "options_en": [
+    "every module needs a test plan here again here too here",
+    "a general statement of objectives is enough to begin",
+    "the code must be reviewed weekly now here too now",
+    "the team must hold daily meetings too now again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Customers often think a general objective statement is a sufficient starting point.",
+   "explanation_ar": "العملاء كثيراً ما يظنون أن عبارة أهداف عامة نقطة بداية كافية."
+  },
+  {
+   "id": "q3",
+   "concept_id": "ch1_myth_danger",
+   "bloom_level": "Analyze",
+   "question": "Why are software myths dangerous?",
+   "question_ar": "لماذا خرافات البرمجيات خطرة؟",
+   "options": [
+    "they increase the hardware cost here too",
+    "they reduce the code size here too now here",
+    "they mislead both managers and practitioners",
+    "they slow the compiler down now again again here"
+   ],
+   "options_ar": [
+    "ترفع كلفة العتاد الآن هنا مجدداً",
+    "تُقلّل حجم الكود أيضاً الآن",
+    "تُضلّل الإدارة والممارسين معاً",
+    "تُبطئ المترجم هنا مجدداً أيضاً"
+   ],
+   "options_en": [
+    "they increase the hardware cost here too",
+    "they reduce the code size here too now here",
+    "they mislead both managers and practitioners",
+    "they slow the compiler down now again again here"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "A myth looks like a reasonable statement, so nobody challenges it until the damage is done.",
+   "explanation_ar": "الخرافة تبدو عبارة معقولة فلا يعترض أحد عليها حتى يقع الضرر."
+  },
+  {
+   "id": "q4",
+   "concept_id": "ch1_myth_count",
+   "bloom_level": "Remember",
+   "question": "How many software myths are listed?",
+   "question_ar": "كم خرافة برمجية مذكورة؟",
+   "options": [
+    "five myths now here",
+    "seven myths too too",
+    "twelve myths again",
+    "nine myths here now"
+   ],
+   "options_ar": [
+    "خمس خرافات الآن هنا",
+    "سبع خرافات أيضاً الآن",
+    "اثنتا عشرة خرافة أيضاً",
+    "تسع خرافات هنا مجدداً"
+   ],
+   "options_en": [
+    "five myths now here",
+    "seven myths too too",
+    "twelve myths again",
+    "nine myths here now"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "Nine myths are grouped by management, customer and developer perspectives.",
+   "explanation_ar": "الفصل يذكر تسع خرافات موزعة على منظوري الإدارة والعميل والمطوّر."
+  },
+  {
+   "id": "q5",
+   "concept_id": "ch1_ethics_first",
+   "bloom_level": "Understand",
+   "question": "What does the first principle of the software engineering code require?",
+   "question_ar": "ماذا يشترط المبدأ الأول لمدونة هندسة البرمجيات؟",
+   "options": [
+    "acting in the public interest",
+    "loyalty to the employer above all",
+    "maximising the project profit",
+    "finishing before the deadline"
+   ],
+   "options_ar": [
+    "التصرف وفق المصلحة العامة",
+    "الولاء لصاحب العمل أولاً",
+    "تعظيم ربح المشروع هنا أيضاً",
+    "الإنجاز قبل الموعد الآن"
+   ],
+   "options_en": [
+    "acting in the public interest",
+    "loyalty to the employer above all",
+    "maximising the project profit",
+    "finishing before the deadline"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The public interest outranks loyalty to the employer when safety or welfare is at risk.",
+   "explanation_ar": "المصلحة العامة تسبق الولاء لصاحب العمل عندما تكون السلامة أو الرفاهية في خطر."
+  },
+  {
+   "id": "q6",
+   "concept_id": "ch1_ethics_code",
+   "bloom_level": "Remember",
+   "question": "What is the ACM/IEEE code of ethics?",
+   "question_ar": "ما مدونة أخلاقيات ACM/IEEE؟",
+   "options": [
+    "a cost estimation model again again too now here",
+    "a joint professional code of eight principles",
+    "a compiler standard here here too now here",
+    "a testing checklist now too now here again"
+   ],
+   "options_ar": [
+    "نموذج تقدير كلفة أيضاً الآن",
+    "مدونة مهنية مشتركة بثمانية مبادئ",
+    "معيار مترجم هنا الآن هنا أيضاً",
+    "قائمة تحقق للاختبار مجدداً مجدداً"
+   ],
+   "options_en": [
+    "a cost estimation model again again too now here",
+    "a joint professional code of eight principles",
+    "a compiler standard here here too now here",
+    "a testing checklist now too now here again"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The two societies publish one joint code built on eight principles.",
+   "explanation_ar": "الجمعيتان تنشران مدونة مشتركة واحدة قائمة على ثمانية مبادئ."
+  },
+  {
+   "id": "q7",
+   "concept_id": "ch1_ethics_pressure",
+   "bloom_level": "Analyze",
+   "question": "Management presses you to ship software with a known safety risk. What does the code require?",
+   "question_ar": "الإدارة تضغط لشحن برمجيات بخطر سلامة معروف. ماذا تشترط المدونة؟",
+   "options": [
+    "ship and document later here here",
+    "delegate the signature to a colleague",
+    "refuse and report the risk too now",
+    "sign off and stay silent now again"
+   ],
+   "options_ar": [
+    "الشحن والتوثيق لاحقاً",
+    "تفويض التوقيع لزميل أيضاً",
+    "الرفض والإبلاغ عن الخطر",
+    "التوقيع والسكوت هنا الآن"
+   ],
+   "options_en": [
+    "ship and document later here here",
+    "delegate the signature to a colleague",
+    "refuse and report the risk too now",
+    "sign off and stay silent now again"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The engineer must refuse to approve unsafe work and escalate the risk.",
+   "explanation_ar": "المهندس يجب أن يرفض اعتماد عمل غير آمن ويصعّد الخطر."
+  },
+  {
+   "id": "q8",
+   "concept_id": "ch1_ethics_competence",
+   "bloom_level": "Understand",
+   "question": "What does professional competence require of an engineer?",
+   "question_ar": "ماذا تتطلب الكفاءة المهنية من المهندس؟",
+   "options": [
+    "accepting any task offered now here here",
+    "avoiding all documentation too now",
+    "signing every release here again",
+    "working only inside one's competence"
+   ],
+   "options_ar": [
+    "قبول أي مهمة تُعرض عليه",
+    "تجنّب كل توثيق هنا الآن",
+    "التوقيع على كل إصدار أيضاً",
+    "العمل داخل حدود كفاءته فقط"
+   ],
+   "options_en": [
+    "accepting any task offered now here here",
+    "avoiding all documentation too now",
+    "signing every release here again",
+    "working only inside one's competence"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The code asks engineers to work within their competence and keep it current.",
+   "explanation_ar": "المدونة تطلب من المهندس العمل داخل كفاءته والحفاظ على تحديثها."
+  }
+ ]
+}

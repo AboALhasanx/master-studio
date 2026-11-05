@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch01_T01_What_Software_Is",
+  "topic": "What Software Is: Programs, Documentation and Procedures",
+  "topic_ar": "مفهوم البرمجيات ومكوّناتها",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch1_software_is_more_than_programs",
+      "bloom_level": "Understand",
+      "question": "Why is a software system broader than its program?",
+      "question_ar": "لماذا يكون نظام البرمجيات أوسع من برنامجه؟",
+      "options": [
+        "It includes the program, development team and project budget",
+        "It includes the program, hardware and network equipment",
+        "It includes the program, customer data and maintenance contract",
+        "It includes the program, documentation and operating procedures"
+      ],
+      "options_ar": [
+        "يشمل البرنامج وفريق التطوير وميزانية المشروع",
+        "يشمل البرنامج والعتاد ومعدات الشبكة",
+        "يشمل البرنامج وبيانات العميل وعقد الصيانة",
+        "يشمل البرنامج والتوثيق وإجراءات التشغيل"
+      ],
+      "options_en": [
+        "It includes the program, development team and project budget",
+        "It includes the program, hardware and network equipment",
+        "It includes the program, customer data and maintenance contract",
+        "It includes the program, documentation and operating procedures"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Software includes its programs, documentation and procedures for setting up and operating the system. Hardware, project staff and contracts are not listed as software components.",
+      "explanation_ar": "تضم البرمجيات برامجها وتوثيقها وإجراءات إعداد النظام وتشغيله؛ أما العتاد وفريق المشروع والعقود فليست مكونات برمجية."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch1_program_is_subset_of_software",
+      "bloom_level": "Understand",
+      "question": "What is the relationship between a program and software?",
+      "question_ar": "ما العلاقة بين البرنامج والبرمجيات؟",
+      "options": [
+        "A program is one part within the broader software set",
+        "A program and software name the same complete set",
+        "Software is one part within the broader program set",
+        "A program is an operating procedure replacing system documentation"
+      ],
+      "options_ar": [
+        "البرنامج جزء ضمن مجموعة البرمجيات الأوسع",
+        "البرنامج والبرمجيات اسمان للمجموعة الكاملة نفسها",
+        "البرمجيات جزء ضمن مجموعة البرامج الأوسع",
+        "البرنامج إجراء تشغيل يغني عن توثيق النظام"
+      ],
+      "options_en": [
+        "A program is one part within the broader software set",
+        "A program and software name the same complete set",
+        "Software is one part within the broader program set",
+        "A program is an operating procedure replacing system documentation"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The program is a subset of software because software also includes documentation and operating procedures. The reverse relation and the claim of identity omit those components.",
+      "explanation_ar": "البرنامج جزء من البرمجيات لأن البرمجيات تشمل أيضًا التوثيق وإجراءات التشغيل. عكس العلاقة أو مساواة المصطلحين يهمل هذه المكوّنات."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch1_software_three_components",
+      "bloom_level": "Remember",
+      "question": "Which set gives the three components used to define software?",
+      "question_ar": "أي مجموعة تذكر المكوّنات الثلاثة لتعريف البرمجيات؟",
+      "options": [
+        "Programs, hardware and operating procedures",
+        "Programs, documentation and development staff",
+        "Programs, documentation and operating procedures",
+        "Programs, customer data and test equipment"
+      ],
+      "options_ar": [
+        "البرامج والعتاد وإجراءات التشغيل",
+        "البرامج والتوثيق وكادر التطوير",
+        "البرامج والتوثيق وإجراءات التشغيل",
+        "البرامج وبيانات العميل ومعدات الاختبار"
+      ],
+      "options_en": [
+        "Programs, hardware and operating procedures",
+        "Programs, documentation and development staff",
+        "Programs, documentation and operating procedures",
+        "Programs, customer data and test equipment"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The definition has three parts: programs, documentation and operating procedures. Hardware, staff and test equipment may support a system but are not in this definition.",
+      "explanation_ar": "يتكوّن التعريف من البرامج والتوثيق وإجراءات التشغيل. قد يدعم العتاد والكادر ومعدات الاختبار النظام، لكنها ليست أجزاء هذا التعريف."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch1_installation_guide_operating_manual",
+      "bloom_level": "Apply",
+      "question": "A user needs instructions for setting up a purchased system. Which document family should contain them?",
+      "question_ar": "يحتاج المستخدم تعليمات إعداد نظام اشتراه؛ أي عائلة أدلة ينبغي أن تتضمنها؟",
+      "options": [
+        "Testing-documentation manuals",
+        "Implementation manuals",
+        "Design-documentation manuals",
+        "Operating-procedure manuals"
+      ],
+      "options_ar": [
+        "أدلة توثيق الاختبار",
+        "أدلة توثيق التنفيذ",
+        "أدلة توثيق التصميم",
+        "أدلة إجراءات التشغيل"
+      ],
+      "options_en": [
+        "Testing-documentation manuals",
+        "Implementation manuals",
+        "Design-documentation manuals",
+        "Operating-procedure manuals"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Setup and installation guidance belongs with operating-procedure manuals. Design, testing and implementation records belong to the documentation family.",
+      "explanation_ar": "تنتمي تعليمات الإعداد والتنصيب إلى أدلة إجراءات التشغيل. أمّا سجلات التصميم والاختبار والتنفيذ فتنتمي إلى عائلة التوثيق."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch1_test_results_documentation_manual",
+      "bloom_level": "Apply",
+      "question": "Where should a maintainer look for recorded test results?",
+      "question_ar": "أين يبحث مسؤول الصيانة عن نتائج الاختبار المسجّلة؟",
+      "options": [
+        "Instructions in user operation manuals",
+        "Orientation in system overview tutorials",
+        "Records in technical documentation manuals",
+        "Guidance in installation procedure manuals"
+      ],
+      "options_ar": [
+        "إرشادات في أدلة التنصيب",
+        "سجلات ضمن التوثيق الفني",
+        "تعريف في أدلة نظرة النظام",
+        "تعليمات دليل المستخدم"
+      ],
+      "options_en": [
+        "Instructions in user operation manuals",
+        "Orientation in system overview tutorials",
+        "Records in technical documentation manuals",
+        "Guidance in installation procedure manuals"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Test data and test results are documentation artifacts. Installation, overview and user-operation manuals guide system use rather than record test evidence.",
+      "explanation_ar": "تُعد بيانات الاختبار ونتائجه من آثار التوثيق. أدلة التنصيب ونظرة النظام وتشغيل المستخدم ترشد إلى استعمال النظام ولا تسجّل أدلة الاختبار."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch1_data_flow_diagram_documentation",
+      "bloom_level": "Apply",
+      "question": "A team records how data move between system processes. Which manual family fits the resulting diagram?",
+      "question_ar": "يسجّل فريق حركة البيانات بين عمليات النظام؛ أي عائلة أدلة تناسب المخطط الناتج؟",
+      "options": [
+        "System-administration guide",
+        "Technical documentation",
+        "Operating-procedure guide",
+        "User-training manual"
+      ],
+      "options_ar": [
+        "دليل إدارة النظام",
+        "دليل التوثيق الفني",
+        "دليل إجراءات التشغيل",
+        "دليل تدريب المستخدم"
+      ],
+      "options_en": [
+        "System-administration guide",
+        "Technical documentation",
+        "Operating-procedure guide",
+        "User-training manual"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Data-flow diagrams document analysis or design. Operating, training and administration manuals instead explain how people set up or use the system.",
+      "explanation_ar": "يوثّق مخطط تدفق البيانات التحليل أو التصميم. أمّا أدلة التشغيل والتدريب والإدارة فتشرح إعداد النظام أو استعماله."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch1_source_code_listing_is_documentation",
+      "bloom_level": "Understand",
+      "question": "How is a source-code listing classified within a software package?",
+      "question_ar": "كيف يصنّف الفصل قائمة الشيفرة المصدرية ضمن حزمة البرمجيات؟",
+      "options": [
+        "A source-code listing used as documentation",
+        "An operating guide used to run the program",
+        "Hardware equipment used to run the program",
+        "A project milestone recorded in the plan"
+      ],
+      "options_ar": [
+        "قائمة الشيفرة المصدرية ضمن التوثيق",
+        "دليل إجراءات التشغيل مع تعليمات النظام",
+        "معدات العتاد لتشغيل برنامج النظام",
+        "مرحلة تسليم موثقة ضمن خطة المشروع"
+      ],
+      "options_en": [
+        "A source-code listing used as documentation",
+        "An operating guide used to run the program",
+        "Hardware equipment used to run the program",
+        "A project milestone recorded in the plan"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Source-code listings are included among documentation examples. They do not replace the executable program, operating procedures or project milestones.",
+      "explanation_ar": "تُعد قوائم الشيفرة من أمثلة التوثيق، لكنها لا تحل محل البرنامج التنفيذي أو إجراءات التشغيل أو مراحل المشروع."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch1_operating_procedure_purpose",
+      "bloom_level": "Analyze",
+      "question": "A release contains code and design diagrams but no guidance for setup or operation. Which software component is missing?",
+      "question_ar": "يحتوي الإصدار على الشيفرة ومخططات التصميم بلا إرشادات للإعداد أو التشغيل؛ أي مكوّن برمجي مفقود؟",
+      "options": [
+        "The program source",
+        "Operating procedures",
+        "The design documentation",
+        "The project deliverables"
+      ],
+      "options_ar": [
+        "مصدر البرنامج",
+        "إجراءات التشغيل",
+        "توثيق التصميم",
+        "تسليمات المشروع"
+      ],
+      "options_en": [
+        "The program source",
+        "Operating procedures",
+        "The design documentation",
+        "The project deliverables"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The scenario already has the program and design documentation; the missing part is guidance to set up and operate the system. Deliverables is a broader project term.",
+      "explanation_ar": "يتضمن السيناريو البرنامج وتوثيق التصميم، لذا المفقود هو إرشادات إعداد النظام وتشغيله. أما التسليمات فهي مصطلح أوسع يخص المشروع."
+    }
+  ]
+}

@@ -67,6 +67,8 @@ cd C:\Users\gokoq\Master-Studio
 python "90_Shared_Toolbox/tools/quiz_balancer.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki/<file>.json"
 python "90_Shared_Toolbox/tools/quiz_balancer.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki/<file>.json" --check --strict
 python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate
+# For newly authored or rebuilt banks, include the anti-padding gate as well:
+python "90_Shared_Toolbox/tools/quiz_quality_gate.py" "01_Semester_1/<Subject>/07_Quizzes_&_Anki" --chapter <chapter-number> --shape-gate --padding-gate
 python -c "import sys,json,io; sys.path.insert(0,r'90_Shared_Toolbox/tools'); from quiz_balancer import validate_schema_v2; sys.path.insert(0,r'C:\Users\gokoq\mcq-portal\tools'); import portal_schema as ps; p=r'<file>'; b=json.load(io.open(p,encoding='utf-8')); print(validate_schema_v2(b), ps.validate_v3(ps.to_v3(b)))"
 ```
 
@@ -75,8 +77,9 @@ python -c "import sys,json,io; sys.path.insert(0,r'90_Shared_Toolbox/tools'); fr
 - After any balance pass, re-open the file and re-check every `answer`/`correct`
   pair — `"ABCD"[correct] === answer` must hold with the intended text as key.
 - The quality gate is read-only. Structural errors and `--shape-gate` failures block
-  handoff; near-duplicate and repeated-formula warnings require source review but
-  do not automatically make distinct questions duplicates.
+  handoff. For newly authored or rebuilt banks, `--padding-gate` failures also block
+  handoff; near-duplicate and repeated-formula warnings require source review but do
+  not automatically make distinct questions duplicates.
 - Exit 0 and two empty lists, or the bank does not ship. No exceptions.
 
 ### Two traps that pass v2 and fail the real gates (learned 2026-10-22)
