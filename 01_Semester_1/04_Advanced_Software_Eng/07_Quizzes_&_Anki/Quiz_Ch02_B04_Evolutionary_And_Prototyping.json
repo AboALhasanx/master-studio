@@ -1,247 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B04_Evolutionary_And_Prototyping",
- "topic": "Evolutionary and Prototyping Models",
- "topic_ar": "النموذج التطوري والنمذجة الأولية",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_new_technology",
-   "bloom_level": "Apply",
-   "question": "The most suitable model for new technology that is not well understood is...",
-   "question_ar": "النموذج الأنسب لتقنية جديدة غير مفهومة جيداً هو...",
-   "options": [
-    "the RAD model here now at all",
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here"
-   ],
-   "options_ar": [
-    "نموذج RAD السريع هنا",
-    "نموذج التحسين التكراري",
-    "نموذج التطوير التطوري",
-    "نموذج الشلال هنا الآن"
-   ],
-   "options_en": [
-    "the RAD model here now at all",
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "When the technology is unclear, the product must evolve as understanding grows.",
-   "explanation_ar": "عندما تكون التقنية غير واضحة يجب أن يتطور المنتج مع نمو الفهم."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_evo_build",
-   "bloom_level": "Understand",
-   "question": "How does evolutionary development proceed?",
-   "question_ar": "كيف يسير التطوير التطوري؟",
-   "options": [
-    "outsource each phase here",
-    "build a skeleton then grow it",
-    "freeze the design then code",
-    "write all tests first now too"
-   ],
-   "options_en": [
-    "outsource each phase here",
-    "build a skeleton then grow it",
-    "freeze the design then code",
-    "write all tests first now too"
-   ],
-   "options_ar": [
-    "يسلّم كل مرحلة لجهة خارجية",
-    "يبني هيكلاً ثم ينميه هنا",
-    "يجمد التصميم ثم يبرمج",
-    "يكتب كل الاختبارات أولاً"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "A working skeleton is extended step by step as understanding grows.",
-   "explanation_ar": "هيكل عامل يُوسَّع خطوة بخطوة مع نمو الفهم."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_proto_purpose",
-   "bloom_level": "Understand",
-   "question": "Why is a prototype built early?",
-   "question_ar": "لماذا يُبنى النموذج الأولي مبكراً؟",
-   "options": [
-    "to measure the final cost too",
-    "to train the operators now",
-    "to replace the design here",
-    "to clarify vague requirements"
-   ],
-   "options_en": [
-    "to measure the final cost too",
-    "to train the operators now",
-    "to replace the design here",
-    "to clarify vague requirements"
-   ],
-   "options_ar": [
-    "لقياس الكلفة النهائية",
-    "لتدريب المشغلين هنا أيضاً",
-    "لاستبدال التصميم الآن",
-    "لتوضيح المتطلبات الغامضة"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The prototype gives users something concrete to react to, which surfaces the real needs.",
-   "explanation_ar": "النموذج يعطي المستخدمين شيئاً ملموساً يتفاعلون معه، فتظهر الحاجات الحقيقية."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_proto_discard",
-   "bloom_level": "Understand",
-   "question": "Which prototype is thrown away afterwards?",
-   "question_ar": "أي نموذج أولي يُهمل بعد ذلك؟",
-   "options": [
-    "neither is kept now again",
-    "the throw-away prototype",
-    "the evolutionary prototype",
-    "both are kept here too"
-   ],
-   "options_en": [
-    "neither is kept now again",
-    "the throw-away prototype",
-    "the evolutionary prototype",
-    "both are kept here too"
-   ],
-   "options_ar": [
-    "لا أحد يُحفظ الآن",
-    "النموذج المُهمَل",
-    "النموذج التطوري",
-    "كلاهما يُحفظ هنا"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "A throw-away prototype only exists to settle requirements, so it is discarded.",
-   "explanation_ar": "النموذج المُهمَل يوجد فقط لتثبيت المتطلبات، فيُترك."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_evo_risk",
-   "bloom_level": "Analyze",
-   "question": "What is the main risk of evolutionary prototyping?",
-   "question_ar": "ما الخطر الأساسي للنمذجة التطورية؟",
-   "options": [
-    "the user never sees it now too now",
-    "the cost is fixed too early here too",
-    "poor structure accumulates over time",
-    "too much documentation here again"
-   ],
-   "options_en": [
-    "the user never sees it now too now",
-    "the cost is fixed too early here too",
-    "poor structure accumulates over time",
-    "too much documentation here again"
-   ],
-   "options_ar": [
-    "المستخدم لا يراه أبداً",
-    "الكلفة تُثبَّت مبكراً الآن",
-    "تراكم بنية رديئة مع الوقت",
-    "توثيق أكثر من اللازم هنا"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Because the product grows from a prototype, structure is rarely designed up front.",
-   "explanation_ar": "لأن المنتج ينمو من نموذج أولي، نادراً ما تُصمَّم البنية مسبقاً."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_evo_when",
-   "bloom_level": "Apply",
-   "question": "When should evolutionary development be chosen?",
-   "question_ar": "متى يُختار التطوير التطوري؟",
-   "options": [
-    "when the scope is frozen too",
-    "when the team is untrained",
-    "when cost is fixed here now",
-    "when requirements are unclear"
-   ],
-   "options_en": [
-    "when the scope is frozen too",
-    "when the team is untrained",
-    "when cost is fixed here now",
-    "when requirements are unclear"
-   ],
-   "options_ar": [
-    "عندما يكون النطاق مجمّداً الآن",
-    "عندما يكون الفريق غير مدرب",
-    "عندما تكون الكلفة ثابتة هنا",
-    "عندما تكون المتطلبات غير واضحة"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Unclear requirements and new technology need a model that learns as it builds.",
-   "explanation_ar": "المتطلبات غير الواضحة والتقنية الجديدة تحتاج نموذجاً يتعلم وهو يبني."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_proto_comm",
-   "bloom_level": "Understand",
-   "question": "What does prototyping mainly improve?",
-   "question_ar": "ما الذي تحسّنه النمذجة أساساً؟",
-   "options": [
-    "communication with the user",
-    "compiler performance too",
-    "hardware utilisation again",
-    "team salaries here now here"
-   ],
-   "options_en": [
-    "communication with the user",
-    "compiler performance too",
-    "hardware utilisation again",
-    "team salaries here now here"
-   ],
-   "options_ar": [
-    "التواصل مع المستخدم",
-    "أداء المترجم هنا",
-    "استغلال العتاد أيضاً",
-    "رواتب الفريق الآن"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "A visible prototype replaces abstract discussion with something both sides can judge.",
-   "explanation_ar": "النموذج المرئي يستبدل النقاش المجرد بشيء يحكم عليه الطرفان."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_proto_drawback",
-   "bloom_level": "Analyze",
-   "question": "What is the classic drawback of prototyping?",
-   "question_ar": "ما العيب الكلاسيكي للنمذجة؟",
-   "options": [
-    "no clear completion criterion",
-    "the cost is always lower here",
-    "the design is too detailed",
-    "the user is never involved"
-   ],
-   "options_en": [
-    "no clear completion criterion",
-    "the cost is always lower here",
-    "the design is too detailed",
-    "the user is never involved"
-   ],
-   "options_ar": [
-    "لا معيار إنجاز واضح أيضاً",
-    "الكلفة أقل دائماً هنا مجدداً",
-    "التصميم مفصّل جداً الآن",
-    "المستخدم غير مشارك أبداً"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "A prototype can keep being polished forever, because it has no defined stopping rule.",
-   "explanation_ar": "النموذج قد يُصقل بلا نهاية لأنه بلا قاعدة توقف محددة."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B04_Evolutionary_And_Prototyping",
+  "topic": "Evolutionary and Prototyping Models",
+  "topic_ar": "النموذج التطوري والنمذجة الأولية",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_new_technology",
+      "bloom_level": "Apply",
+      "question": "The most suitable model for new technology that is not well understood is...",
+      "question_ar": "النموذج الأنسب لتقنية جديدة غير مفهومة جيداً هو...",
+      "options": [
+        "Use a model that evolves as understanding grows.",
+        "Use a fixed sequence after requirements stabilize.",
+        "Use rapid teams to build modular components.",
+        "Build a prototype and discard it after review."
+      ],
+      "options_en": [
+        "Use a model that evolves as understanding grows.",
+        "Use a fixed sequence after requirements stabilize.",
+        "Use rapid teams to build modular components.",
+        "Build a prototype and discard it after review."
+      ],
+      "options_ar": [
+        "استخدم نموذجاً يتطور مع نمو الفهم تدريجياً.",
+        "استخدم تسلسلاً ثابتاً بعد استقرار المتطلبات.",
+        "استخدم فرقاً سريعة لبناء مكونات معيارية.",
+        "أنشئ نموذجاً أولياً ثم أهمله بعد المراجعة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "When the technology is unclear, the product must evolve as understanding grows.",
+      "explanation_ar": "عندما تكون التقنية غير واضحة يجب أن يتطور المنتج مع نمو الفهم."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_evo_build",
+      "bloom_level": "Understand",
+      "question": "How does evolutionary development proceed?",
+      "question_ar": "كيف يسير التطوير التطوري؟",
+      "options": [
+        "Write every test before defining requirements.",
+        "Start with a working skeleton and extend it.",
+        "Outsource each development phase separately.",
+        "Freeze the full design before any coding."
+      ],
+      "options_en": [
+        "Write every test before defining requirements.",
+        "Start with a working skeleton and extend it.",
+        "Outsource each development phase separately.",
+        "Freeze the full design before any coding."
+      ],
+      "options_ar": [
+        "اكتب جميع الاختبارات قبل تحديد المتطلبات.",
+        "ابدأ بهيكل عامل ثم وسّع قدراته تدريجياً.",
+        "أسند كل مرحلة تطوير إلى جهة خارجية.",
+        "ثبّت التصميم الكامل قبل كتابة الشيفرة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A working skeleton is extended step by step as understanding grows.",
+      "explanation_ar": "هيكل عامل يُوسَّع خطوة بخطوة مع نمو الفهم."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_proto_purpose",
+      "bloom_level": "Understand",
+      "question": "Why is a prototype built early?",
+      "question_ar": "لماذا يُبنى النموذج الأولي مبكراً؟",
+      "options": [
+        "to train system operators",
+        "to replace detailed design",
+        "to clarify vague requirements",
+        "to measure total project cost"
+      ],
+      "options_en": [
+        "to train system operators",
+        "to replace detailed design",
+        "to clarify vague requirements",
+        "to measure total project cost"
+      ],
+      "options_ar": [
+        "لتدريب المشغلين على النظام",
+        "لاستبدال تصميم النظام التفصيلي",
+        "لتوضيح المتطلبات غير الواضحة",
+        "لقياس كلفة المشروع النهائية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The prototype gives users something concrete to react to, which surfaces the real needs.",
+      "explanation_ar": "النموذج يعطي المستخدمين شيئاً ملموساً يتفاعلون معه، فتظهر الحاجات الحقيقية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_proto_discard",
+      "bloom_level": "Understand",
+      "question": "Which prototype is thrown away afterwards?",
+      "question_ar": "أي نموذج أولي يُهمل بعد ذلك؟",
+      "options": [
+        "An evolutionary prototype extended into the product.",
+        "A pilot release deployed to selected users.",
+        "A production increment delivered to customers.",
+        "A requirements prototype built only for evaluation."
+      ],
+      "options_en": [
+        "An evolutionary prototype extended into the product.",
+        "A pilot release deployed to selected users.",
+        "A production increment delivered to customers.",
+        "A requirements prototype built only for evaluation."
+      ],
+      "options_ar": [
+        "نموذج تطوري أولي امتد ليصبح المنتج.",
+        "إصدار تجريبي نُشر لمستخدمين مختارين.",
+        "دفعة إنتاجية سُلّمت إلى العملاء.",
+        "نموذج متطلبات أولي بُني للتقييم فقط"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A throw-away prototype only exists to settle requirements, so it is discarded.",
+      "explanation_ar": "النموذج المُهمَل يوجد فقط لتثبيت المتطلبات، فيُترك."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_evo_risk",
+      "bloom_level": "Analyze",
+      "question": "What is the main risk of evolutionary prototyping?",
+      "question_ar": "ما الخطر الأساسي للنمذجة التطورية؟",
+      "options": [
+        "Structure can degrade as the product grows.",
+        "Users may never see any working version.",
+        "Costs must be fixed before design starts.",
+        "Documentation replaces implementation work."
+      ],
+      "options_en": [
+        "Structure can degrade as the product grows.",
+        "Users may never see any working version.",
+        "Costs must be fixed before design starts.",
+        "Documentation replaces implementation work."
+      ],
+      "options_ar": [
+        "قد تتراكم بنية ضعيفة مع نمو المنتج.",
+        "قد لا يرى المستخدمون نسخة عاملة قط.",
+        "يجب تثبيت الكلفة قبل بدء التصميم.",
+        "تحل الوثائق محل أعمال التنفيذ."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Because the product grows from a prototype, structure is rarely designed up front.",
+      "explanation_ar": "لأن المنتج ينمو من نموذج أولي، نادراً ما تُصمَّم البنية مسبقاً."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_evo_when",
+      "bloom_level": "Apply",
+      "question": "Which situation is a stated use of Evolutionary Development?",
+      "question_ar": "أي حالة تُعد استخداماً مذكوراً للتطوير التطوري؟",
+      "options": [
+        "One final release is required with no user reviews.",
+        "Requirements are unclear and the technology is new.",
+        "Requirements are fixed before design starts.",
+        "Reusable modules are ready for parallel teams."
+      ],
+      "options_en": [
+        "One final release is required with no user reviews.",
+        "Requirements are unclear and the technology is new.",
+        "Requirements are fixed before design starts.",
+        "Reusable modules are ready for parallel teams."
+      ],
+      "options_ar": [
+        "يلزم إصدار أخير بلا مراجعات للمستخدم.",
+        "المتطلبات غير واضحة والتقنية جديدة.",
+        "تُحدد المتطلبات قبل بدء التصميم.",
+        "وحدات معاد استخدامها جاهزة لفرق متوازية."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Evolutionary development can be used when the complete functionality must eventually be delivered together even though requirements are unstable or unclear at the start.",
+      "explanation_ar": "يمكن استخدام التطوير التطوري عندما يجب تسليم الوظائف كاملة معاً رغم أن المتطلبات غير مستقرة أو غير واضحة في البداية."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_proto_comm",
+      "bloom_level": "Understand",
+      "question": "What can an early prototype help a customer judge directly?",
+      "question_ar": "ما الذي يتيح النموذج الأولي المبكر للعميل تقييمه مباشرة؟",
+      "options": [
+        "The complete internal design of all modules.",
+        "The project team's long-term staffing structure.",
+        "Input formats, reports, and interactive dialogue.",
+        "The final operational cost of every release."
+      ],
+      "options_en": [
+        "The complete internal design of all modules.",
+        "The project team's long-term staffing structure.",
+        "Input formats, reports, and interactive dialogue.",
+        "The final operational cost of every release."
+      ],
+      "options_ar": [
+        "هيكل التوظيف طويل الأمد لفريق المشروع.",
+        "الكلفة التشغيلية النهائية لكل إصدار.",
+        "تنسيقات المدخلات والتقارير والحوار.",
+        "التصميم الداخلي الكامل لكل الوحدات."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A prototype makes input formats, reports, and interaction visible so customers can clarify their needs. It does not determine every internal or financial detail.",
+      "explanation_ar": "يجعل النموذج الأولي تنسيقات المدخلات والتقارير والتفاعل مرئية كي يوضح العملاء حاجاتهم. لكنه لا يحدد كل التفاصيل الداخلية أو المالية."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_proto_drawback",
+      "bloom_level": "Analyze",
+      "question": "What is the classic drawback of prototyping?",
+      "question_ar": "ما العيب الكلاسيكي للنمذجة؟",
+      "options": [
+        "the overall cost is always lower",
+        "the design has too much detail",
+        "the user gives no design feedback",
+        "no defined completion criterion"
+      ],
+      "options_en": [
+        "the overall cost is always lower",
+        "the design has too much detail",
+        "the user gives no design feedback",
+        "no defined completion criterion"
+      ],
+      "options_ar": [
+        "الكلفة أقل دائماً",
+        "التصميم مفصّل جداً",
+        "المستخدم لا يشارك",
+        "لا معيار إنجاز واضح"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A prototype can keep being polished forever, because it has no defined stopping rule.",
+      "explanation_ar": "النموذج قد يُصقل بلا نهاية لأنه بلا قاعدة توقف محددة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_evolutionary_no_usable_each_cycle",
+      "bloom_level": "Understand",
+      "question": "Must an Evolutionary-Development cycle always end with a usable product?",
+      "question_ar": "هل يجب أن تنتهي كل دورة من التطوير التطوري بمنتج صالح للاستخدام؟",
+      "options": [
+        "No; not every cycle yields a usable product.",
+        "Yes; each cycle must be a final production release.",
+        "Yes; each cycle must discard its result.",
+        "No; the model has no repeated cycles."
+      ],
+      "options_en": [
+        "No; not every cycle yields a usable product.",
+        "Yes; each cycle must be a final production release.",
+        "Yes; each cycle must discard its result.",
+        "No; the model has no repeated cycles."
+      ],
+      "options_ar": [
+        "لا؛ ليس كل تكرار ينتج نسخة قابلة للاستخدام.",
+        "نعم؛ يجب أن تكون كل دورة إصداراً نهائياً.",
+        "نعم؛ يجب أن تتخلى كل دورة عن ناتجها كلياً.",
+        "لا؛ فالنموذج لا يتضمن دورات متكررة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Evolutionary development does not require a usable product at the end of every cycle. It still uses repeated cycles to evolve the system.",
+      "explanation_ar": "لا يشترط التطوير التطوري منتجاً صالحاً للاستخدام عند نهاية كل دورة. لكنه يظل يستخدم دورات متكررة لتطوير النظام."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_evolution_category_priority",
+      "bloom_level": "Understand",
+      "question": "How does Evolutionary Development schedule requirements compared with Iterative Enhancement?",
+      "question_ar": "كيف يوزع التطوير التطوري المتطلبات مقارنة بالتحسين التكراري؟",
+      "options": [
+        "By total cost rather than user needs.",
+        "By category rather than by priority.",
+        "By priority rather than by category.",
+        "By language rather than by function."
+      ],
+      "options_en": [
+        "By total cost rather than user needs.",
+        "By category rather than by priority.",
+        "By priority rather than by category.",
+        "By language rather than by function."
+      ],
+      "options_ar": [
+        "حسب الكلفة بدل حاجة المستخدم.",
+        "حسب الفئة بدلاً من الأولوية.",
+        "حسب الأولوية بدلاً من الفئة.",
+        "حسب اللغة بدلاً من الوظيفة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Evolutionary Model implements requirements by category rather than by priority. Iterative Enhancement instead develops a core product and adds capabilities across increments.",
+      "explanation_ar": "ينفذ النموذج التطوري المتطلبات حسب الفئة لا الأولوية. أما التحسين التكراري فيبدأ بمنتج أساسي ويضيف القدرات عبر الدفعات."
+    }
+  ]
 }

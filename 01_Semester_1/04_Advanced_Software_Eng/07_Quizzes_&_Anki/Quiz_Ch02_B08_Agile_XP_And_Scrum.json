@@ -1,305 +1,363 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B08_Agile_XP_And_Scrum",
- "topic": "Agile, XP and Scrum",
- "topic_ar": "أجايل والبرمجة القصوى وسكرم",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_agile_basis",
-   "bloom_level": "Remember",
-   "question": "Agile methods are founded on...",
-   "question_ar": "مناهج أجايل قائمة على...",
-   "options": [
-    "a set of manifesto principles",
-    "a fixed cost model here here here",
-    "a single frozen design too",
-    "one mandatory tool now again"
-   ],
-   "options_ar": [
-    "مجموعة مبادئ بيان أجايل",
-    "نموذج كلفة ثابت هنا مجدداً",
-    "تصميم واحد مجمّد الآن",
-    "أداة واحدة إلزامية أيضاً"
-   ],
-   "options_en": [
-    "a set of manifesto principles",
-    "a fixed cost model here here here",
-    "a single frozen design too",
-    "one mandatory tool now again"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Agile is a family of lightweight methods sharing the Agile Manifesto values.",
-   "explanation_ar": "أجايل عائلة مناهج خفيفة تشترك في قيم بيان أجايل."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_agile_value_software",
-   "bloom_level": "Understand",
-   "question": "Which Agile value ranks working software above documentation?",
-   "question_ar": "أي قيمة أجايل ترفع البرمجيات العاملة فوق التوثيق؟",
-   "options": [
-    "plans over response here now again here",
-    "working software over documentation",
-    "documentation over working code",
-    "contracts over collaboration too"
-   ],
-   "options_ar": [
-    "الخطط فوق الاستجابة الآن هنا",
-    "البرمجيات العاملة فوق التوثيق",
-    "التوثيق فوق الكود العامل مجدداً",
-    "العقود فوق التعاون هنا أيضاً"
-   ],
-   "options_en": [
-    "plans over response here now again here",
-    "working software over documentation",
-    "documentation over working code",
-    "contracts over collaboration too"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The manifesto prefers working software to comprehensive documentation.",
-   "explanation_ar": "البيان يفضّل البرمجيات العاملة على التوثيق الشامل."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_agile_value_change",
-   "bloom_level": "Understand",
-   "question": "Which Agile value ranks response to change above a rigid plan?",
-   "question_ar": "أي قيمة أجايل ترفع الاستجابة للتغيير فوق خطة جامدة؟",
-   "options": [
-    "freezing the scope early here",
-    "avoiding customer contact now",
-    "responding to change over a plan",
-    "following the plan at all costs here"
-   ],
-   "options_ar": [
-    "تجميد النطاق مبكراً الآن",
-    "تجنّب التواصل مع العميل مجدداً",
-    "الاستجابة للتغيير فوق الخطة",
-    "إتباع الخطة بأي ثمن هنا أيضاً"
-   ],
-   "options_en": [
-    "freezing the scope early here",
-    "avoiding customer contact now",
-    "responding to change over a plan",
-    "following the plan at all costs here"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Change is expected, so the plan bends instead of the requirement being refused.",
-   "explanation_ar": "التغيير متوقع، فتنثني الخطة بدل رفض المتطلب."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_agile_change_handling",
-   "bloom_level": "Analyze",
-   "question": "How does an Agile team absorb a change mid-project?",
-   "question_ar": "كيف يستوعب فريق أجايل تغييراً في منتصف المشروع؟",
-   "options": [
-    "it restarts the whole project here",
-    "it defers change to the next project",
-    "it freezes all requirements first now here",
-    "it works in short iterative increments"
-   ],
-   "options_ar": [
-    "يعيد المشروع من أوله هنا هنا",
-    "يؤجل التغيير لمشروع لاحق",
-    "يجمد كل المتطلبات أولاً",
-    "يعمل بدفعات تكرارية قصيرة"
-   ],
-   "options_en": [
-    "it restarts the whole project here",
-    "it defers change to the next project",
-    "it freezes all requirements first now here",
-    "it works in short iterative increments"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Short increments plus continuous customer involvement let later work absorb the change.",
-   "explanation_ar": "الدفعات القصيرة مع مشاركة العميل المستمرة تتيح للعمل اللاحق استيعاب التغيير."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_xp_scope",
-   "bloom_level": "Understand",
-   "question": "Extreme Programming suits which kind of team?",
-   "question_ar": "البرمجة القصوى تناسب أي نوع من الفرق؟",
-   "options": [
-    "a small team with changing requirements",
-    "a huge team with frozen scope here again",
-    "an outsourced fixed-price team now",
-    "a team with no customer access too"
-   ],
-   "options_ar": [
-    "فريق صغير بمتطلبات متغيرة",
-    "فريق ضخم بنطاق مجمّد هنا",
-    "فريق خارجي بسعر ثابت الآن",
-    "فريق بلا وصول للعميل"
-   ],
-   "options_en": [
-    "a small team with changing requirements",
-    "a huge team with frozen scope here again",
-    "an outsourced fixed-price team now",
-    "a team with no customer access too"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "XP is tailored to small-to-medium teams facing rapidly changing requirements.",
-   "explanation_ar": "XP مخصصة لفرق صغيرة إلى متوسطة تواجه متطلبات سريعة التغير."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_xp_practice",
-   "bloom_level": "Remember",
-   "question": "Which practice belongs to Extreme Programming?",
-   "question_ar": "أي ممارسة تنتمي إلى البرمجة القصوى؟",
-   "options": [
-    "offshore handover now",
-    "pair programming here",
-    "monthly status reports",
-    "a single final release"
-   ],
-   "options_ar": [
-    "تسليم خارجي هنا",
-    "البرمجة الزوجية",
-    "تقارير حالة شهرية",
-    "إصدار نهائي واحد"
-   ],
-   "options_en": [
-    "offshore handover now",
-    "pair programming here",
-    "monthly status reports",
-    "a single final release"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "XP enforces technical practices such as pair programming and refactoring.",
-   "explanation_ar": "XP تفرض ممارسات تقنية مثل البرمجة الزوجية وإعادة الهيكلة."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_xp_tdd",
-   "bloom_level": "Understand",
-   "question": "What does test-driven development require?",
-   "question_ar": "ماذا تتطلب التنمية الموجهة بالاختبار؟",
-   "options": [
-    "no tests until the end here",
-    "tests written by the customer",
-    "tests written before the code",
-    "tests written after release"
-   ],
-   "options_ar": [
-    "لا اختبارات حتى النهاية",
-    "اختبارات يكتبها العميل",
-    "اختبارات تُكتب قبل الكود",
-    "اختبارات بعد الإصدار هنا"
-   ],
-   "options_en": [
-    "no tests until the end here",
-    "tests written by the customer",
-    "tests written before the code",
-    "tests written after release"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "In TDD the failing test comes first, and the code is written to satisfy it.",
-   "explanation_ar": "في TDD يأتي الاختبار الفاشل أولاً، ويُكتب الكود لاجتيازه."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_scrum_sprint",
-   "bloom_level": "Remember",
-   "question": "Scrum organises development into...",
-   "question_ar": "Scrum ينظّم التطوير في...",
-   "options": [
-    "one long continuous phase",
-    "yearly release trains now",
-    "unordered daily tasks",
-    "fixed-length sprints here"
-   ],
-   "options_ar": [
-    "مرحلة واحدة طويلة هنا",
-    "قطارات إصدار سنوية الآن",
-    "مهام يومية غير مرتبة",
-    "دورات قصيرة ثابتة الطول"
-   ],
-   "options_en": [
-    "one long continuous phase",
-    "yearly release trains now",
-    "unordered daily tasks",
-    "fixed-length sprints here"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Scrum uses sprints of typically two to four weeks, each ending in reviewable work.",
-   "explanation_ar": "Scrum يستخدم دورات من أسبوعين إلى أربعة، كل واحدة تنتهي بعمل قابل للمراجعة."
-  },
-  {
-   "id": "q9",
-   "concept_id": "ch2_scrum_backlog",
-   "bloom_level": "Understand",
-   "question": "What is the product backlog used for in Scrum?",
-   "question_ar": "فيمَ يُستخدم سجل المنتج في Scrum؟",
-   "options": [
-    "selecting features for a sprint",
-    "recording the final cost here here",
-    "listing the team salaries too",
-    "storing the test results now"
-   ],
-   "options_ar": [
-    "اختيار الخصائص للدورة",
-    "تسجيل الكلفة النهائية",
-    "حصر رواتب الفريق هنا",
-    "تخزين نتائج الاختبار"
-   ],
-   "options_en": [
-    "selecting features for a sprint",
-    "recording the final cost here here",
-    "listing the team salaries too",
-    "storing the test results now"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The customer and team pick the sprint features from the ordered product backlog.",
-   "explanation_ar": "العميل والفريق يختاران خصائص الدورة من سجل المنتج المرتّب."
-  },
-  {
-   "id": "q10",
-   "concept_id": "ch2_scrum_master",
-   "bloom_level": "Understand",
-   "question": "What is the Scrum Master responsible for?",
-   "question_ar": "عمّن يكون مسؤولاً Scrum Master؟",
-   "options": [
-    "approving every line of code now here",
-    "supporting the process and outside contact",
-    "writing all the production code again too here",
-    "owning the product budget here too now"
-   ],
-   "options_ar": [
-    "اعتماد كل سطر كود هنا مجدداً",
-    "دعم العملية والتواصل الخارجي",
-    "كتابة كل كود الإنتاج الآن",
-    "ملكية ميزانية المنتج أيضاً"
-   ],
-   "options_en": [
-    "approving every line of code now here",
-    "supporting the process and outside contact",
-    "writing all the production code again too here",
-    "owning the product budget here too now"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "The Scrum Master shields the team and handles external communication.",
-   "explanation_ar": "Scrum Master يحمي الفريق ويتولى التواصل الخارجي."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B08_Agile_XP_And_Scrum",
+  "topic": "Agile, XP and Scrum",
+  "topic_ar": "أجايل والبرمجة القصوى وسكرم",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_agile_basis",
+      "bloom_level": "Remember",
+      "question": "Agile methods are founded on...",
+      "question_ar": "مناهج أجايل قائمة على...",
+      "options": [
+        "Agile methods share Manifesto values.",
+        "Agile methods require fixed costs.",
+        "Agile methods require a frozen design.",
+        "Agile methods mandate one tool."
+      ],
+      "options_en": [
+        "Agile methods share Manifesto values.",
+        "Agile methods require fixed costs.",
+        "Agile methods require a frozen design.",
+        "Agile methods mandate one tool."
+      ],
+      "options_ar": [
+        "تشترك أساليب أجايل بقيم البيان.",
+        "تفرض أساليب أجايل كلفة ثابتة.",
+        "تفرض أساليب أجايل تصميماً مجمداً.",
+        "تلزم أساليب أجايل بأداة موحدة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Agile is a family of lightweight methods sharing the Agile Manifesto values.",
+      "explanation_ar": "أجايل عائلة مناهج خفيفة تشترك في قيم بيان أجايل."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_agile_value_software",
+      "bloom_level": "Understand",
+      "question": "Which Agile value ranks working software above documentation?",
+      "question_ar": "أي قيمة أجايل ترفع البرمجيات العاملة فوق التوثيق؟",
+      "options": [
+        "Following a plan over responding to user change.",
+        "Working software over comprehensive documentation.",
+        "Comprehensive documentation over working software.",
+        "Contract terms over continuous team collaboration."
+      ],
+      "options_en": [
+        "Following a plan over responding to user change.",
+        "Working software over comprehensive documentation.",
+        "Comprehensive documentation over working software.",
+        "Contract terms over continuous team collaboration."
+      ],
+      "options_ar": [
+        "اتباع الخطة فوق الاستجابة لتغير حاجات المستخدم.",
+        "البرمجيات العاملة فوق التوثيق الشامل.",
+        "التوثيق الشامل فوق البرمجيات العاملة.",
+        "بنود العقد فوق التعاون المستمر بين الفرق."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The manifesto prefers working software to comprehensive documentation.",
+      "explanation_ar": "البيان يفضّل البرمجيات العاملة على التوثيق الشامل."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_agile_value_change",
+      "bloom_level": "Understand",
+      "question": "Which Agile value ranks response to change above a rigid plan?",
+      "question_ar": "أي قيمة أجايل ترفع الاستجابة للتغيير فوق خطة جامدة؟",
+      "options": [
+        "Avoiding customer contact during development.",
+        "Following the original plan despite new needs.",
+        "Responding to change over following a fixed plan.",
+        "Freezing the product scope before design begins."
+      ],
+      "options_en": [
+        "Avoiding customer contact during development.",
+        "Following the original plan despite new needs.",
+        "Responding to change over following a fixed plan.",
+        "Freezing the product scope before design begins."
+      ],
+      "options_ar": [
+        "تجنب التواصل مع العميل أثناء التطوير.",
+        "اتباع الخطة الأصلية رغم الحاجات الجديدة.",
+        "الاستجابة للتغيير فوق اتباع خطة ثابتة.",
+        "تثبيت نطاق المنتج قبل بدء التصميم."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Change is expected, so the plan bends instead of the requirement being refused.",
+      "explanation_ar": "التغيير متوقع، فتنثني الخطة بدل رفض المتطلب."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_agile_change_handling",
+      "bloom_level": "Analyze",
+      "question": "How does an Agile team absorb a change mid-project?",
+      "question_ar": "كيف يستوعب فريق أجايل تغييراً في منتصف المشروع؟",
+      "options": [
+        "It restarts development from the first phase.",
+        "It defers the requested change to another project.",
+        "It freezes requirements after initial planning.",
+        "It reprioritizes future work with customer input."
+      ],
+      "options_en": [
+        "It restarts development from the first phase.",
+        "It defers the requested change to another project.",
+        "It freezes requirements after initial planning.",
+        "It reprioritizes future work with customer input."
+      ],
+      "options_ar": [
+        "يعيد التطوير كله من مرحلته الأولى.",
+        "يؤجل التغيير المطلوب إلى مشروع آخر.",
+        "يثبت المتطلبات بعد التخطيط الأولي.",
+        "يرتب العمل القادم بالتعاون مع العميل."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Short increments plus continuous customer involvement let later work absorb the change.",
+      "explanation_ar": "الدفعات القصيرة مع مشاركة العميل المستمرة تتيح للعمل اللاحق استيعاب التغيير."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_xp_scope",
+      "bloom_level": "Understand",
+      "question": "Extreme Programming suits which kind of team?",
+      "question_ar": "البرمجة القصوى تناسب أي نوع من الفرق؟",
+      "options": [
+        "Small teams with frequently changing requirements.",
+        "Large teams with a fully frozen product scope.",
+        "Outsourced teams with fixed-price contracts.",
+        "Teams without access to changing user needs."
+      ],
+      "options_en": [
+        "Small teams with frequently changing requirements.",
+        "Large teams with a fully frozen product scope.",
+        "Outsourced teams with fixed-price contracts.",
+        "Teams without access to changing user needs."
+      ],
+      "options_ar": [
+        "فرق صغيرة تواجه متطلبات سريعة التغير.",
+        "فرق كبيرة تعمل ضمن نطاق ثابت تماماً.",
+        "فرق خارجية تعمل بعقود ذات سعر ثابت.",
+        "فرق لا تصل إلى حاجات المستخدم المتغيرة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "XP is tailored to small-to-medium teams facing rapidly changing requirements.",
+      "explanation_ar": "XP مخصصة لفرق صغيرة إلى متوسطة تواجه متطلبات سريعة التغير."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_xp_practice",
+      "bloom_level": "Remember",
+      "question": "Which practice belongs to Extreme Programming?",
+      "question_ar": "أي ممارسة تنتمي إلى البرمجة القصوى؟",
+      "options": [
+        "One final release after all system testing.",
+        "Pair programming with another developer.",
+        "Handover of work to a remote offshore team.",
+        "Monthly project status reports to managers."
+      ],
+      "options_en": [
+        "One final release after all system testing.",
+        "Pair programming with another developer.",
+        "Handover of work to a remote offshore team.",
+        "Monthly project status reports to managers."
+      ],
+      "options_ar": [
+        "إصدار نهائي بعد إكمال اختبارات النظام.",
+        "البرمجة الزوجية بين أفراد فريق التطوير.",
+        "تسليم العمل إلى فريق تطوير خارجي.",
+        "تقارير شهرية عن حالة المشروع للمديرين."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "XP enforces technical practices such as pair programming and refactoring.",
+      "explanation_ar": "XP تفرض ممارسات تقنية مثل البرمجة الزوجية وإعادة الهيكلة."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_xp_tdd",
+      "bloom_level": "Understand",
+      "question": "What does test-driven development require?",
+      "question_ar": "ماذا تتطلب التنمية الموجهة بالاختبار؟",
+      "options": [
+        "no tests until the end",
+        "tests written by the customer",
+        "tests written before the code",
+        "tests written after release"
+      ],
+      "options_en": [
+        "no tests until the end",
+        "tests written by the customer",
+        "tests written before the code",
+        "tests written after release"
+      ],
+      "options_ar": [
+        "لا اختبارات حتى النهاية",
+        "اختبارات يكتبها العميل",
+        "اختبارات تُكتب قبل الكود",
+        "اختبارات بعد الإصدار"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "In TDD the failing test comes first, and the code is written to satisfy it.",
+      "explanation_ar": "في TDD يأتي الاختبار الفاشل أولاً، ويُكتب الكود لاجتيازه."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_scrum_sprint",
+      "bloom_level": "Remember",
+      "question": "Scrum organises development into...",
+      "question_ar": "Scrum ينظّم التطوير في...",
+      "options": [
+        "one continuous development phase",
+        "annual trains of scheduled releases",
+        "unordered independent daily work items",
+        "short sprints with a fixed duration"
+      ],
+      "options_en": [
+        "one continuous development phase",
+        "annual trains of scheduled releases",
+        "unordered independent daily work items",
+        "short sprints with a fixed duration"
+      ],
+      "options_ar": [
+        "مرحلة تطوير واحدة متصلة",
+        "إصدارات مجدولة مرة كل عام",
+        "مهام يومية غير مرتبة",
+        "دورات قصيرة ذات مدة ثابتة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Scrum uses sprints of typically two to four weeks, each ending in reviewable work.",
+      "explanation_ar": "Scrum يستخدم دورات من أسبوعين إلى أربعة، كل واحدة تنتهي بعمل قابل للمراجعة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_scrum_backlog",
+      "bloom_level": "Understand",
+      "question": "How is the Scrum product backlog used?",
+      "question_ar": "كيف يُستخدم سجل المنتج في Scrum؟",
+      "options": [
+        "It provides prioritized items for sprint planning.",
+        "It records completed test results for each release.",
+        "It stores staff schedules and salary information.",
+        "It replaces review of the working product."
+      ],
+      "options_en": [
+        "It provides prioritized items for sprint planning.",
+        "It records completed test results for each release.",
+        "It stores staff schedules and salary information.",
+        "It replaces review of the working product."
+      ],
+      "options_ar": [
+        "يوفر عناصر مرتبة بالأولوية لتخطيط الدورة.",
+        "يسجل نتائج الاختبارات المكتملة لكل إصدار.",
+        "يحفظ جداول الموظفين ومعلومات الرواتب.",
+        "يستبدل مراجعة المنتج العامل بعد الدورة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The product backlog contains prioritized requirements from which sprint work is selected. It is not a test-results archive or a substitute for product review.",
+      "explanation_ar": "يحتوي سجل المنتج متطلبات مرتبة بالأولوية تُختار منها أعمال الدورة. وليس أرشيفاً لنتائج الاختبارات أو بديلاً عن مراجعة المنتج."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_scrum_master",
+      "bloom_level": "Understand",
+      "question": "What is the Scrum Master's central responsibility?",
+      "question_ar": "ما المسؤولية الأساسية لـScrum Master؟",
+      "options": [
+        "Approving the final budget for the product.",
+        "Facilitates Scrum and helps remove team impediments.",
+        "Owning the product backlog and ranking every item.",
+        "Writing all application code before each sprint."
+      ],
+      "options_en": [
+        "Approving the final budget for the product.",
+        "Facilitates Scrum and helps remove team impediments.",
+        "Owning the product backlog and ranking every item.",
+        "Writing all application code before each sprint."
+      ],
+      "options_ar": [
+        "اعتماد ميزانية المنتج وتقدير تكاليفه.",
+        "تيسير Scrum وإزالة العوائق عن الفريق.",
+        "امتلاك سجل المنتج وترتيب جميع عناصره.",
+        "كتابة شيفرة التطبيق كاملة قبل كل دورة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Scrum Master supports the process and helps the team coordinate its work. Backlog ownership, coding, and budget approval are different responsibilities.",
+      "explanation_ar": "يدعم Scrum Master العملية ويساعد الفريق على تنسيق عمله. أما امتلاك سجل المنتج والبرمجة واعتماد الميزانية فمسؤوليات مختلفة."
+    },
+    {
+      "id": "q11",
+      "concept_id": "ch2_xp_refactoring",
+      "bloom_level": "Understand",
+      "question": "Which XP practice improves code structure without changing its external behavior?",
+      "question_ar": "أي ممارسة في XP تحسن بنية الشيفرة من دون تغيير سلوكها الخارجي؟",
+      "options": [
+        "Delivering frequent small releases",
+        "Keeping an on-site customer available",
+        "Refactoring the code structure",
+        "Pair programming with a partner"
+      ],
+      "options_en": [
+        "Delivering frequent small releases",
+        "Keeping an on-site customer available",
+        "Refactoring the code structure",
+        "Pair programming with a partner"
+      ],
+      "options_ar": [
+        "تسليم إصدارات صغيرة متكررة",
+        "إتاحة عميل في موقع التطوير",
+        "إعادة هيكلة بنية الشيفرة",
+        "البرمجة الزوجية مع شريك"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Refactoring restructures code while preserving its behavior. The other choices describe collaboration, release size, or customer access.",
+      "explanation_ar": "تعيد إعادة الهيكلة تنظيم الشيفرة مع الحفاظ على سلوكها. أما الخيارات الأخرى فتصف التعاون أو حجم الإصدار أو حضور العميل."
+    },
+    {
+      "id": "q12",
+      "concept_id": "ch2_scrum_daily_meeting",
+      "bloom_level": "Understand",
+      "question": "What is the purpose of Scrum's short daily meeting?",
+      "question_ar": "ما غرض الاجتماع اليومي القصير في Scrum؟",
+      "options": [
+        "Approve the complete product budget each day.",
+        "Replace the review of all completed sprint work.",
+        "Freeze all requirements before the next sprint.",
+        "Coordinate today's work and surface blockers."
+      ],
+      "options_en": [
+        "Approve the complete product budget each day.",
+        "Replace the review of all completed sprint work.",
+        "Freeze all requirements before the next sprint.",
+        "Coordinate today's work and surface blockers."
+      ],
+      "options_ar": [
+        "اعتماد ميزانية المنتج كاملة كل يوم.",
+        "استبدال مراجعة أعمال الدورة المكتملة.",
+        "تثبيت كل المتطلبات قبل الدورة التالية.",
+        "تنسيق عمل اليوم وطرح العوائق الحالية."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The daily meeting helps the team coordinate near-term work and identify impediments; it does not replace sprint review or control the full budget.",
+      "explanation_ar": "يساعد الاجتماع اليومي الفريق على تنسيق العمل القريب وتحديد العوائق؛ ولا يستبدل مراجعة الدورة أو يضبط الميزانية كاملة."
+    }
+  ]
 }

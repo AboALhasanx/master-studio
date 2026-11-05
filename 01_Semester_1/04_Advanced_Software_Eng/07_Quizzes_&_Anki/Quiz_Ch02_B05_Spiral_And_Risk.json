@@ -1,247 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B05_Spiral_And_Risk",
- "topic": "The Spiral Model and Risk-Driven Development",
- "topic_ar": "النموذج الحلزوني والدفع بالمخاطر",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_spiral_author",
-   "bloom_level": "Remember",
-   "question": "The Spiral Model was developed by...",
-   "question_ar": "من طوّر النموذج الحلزوني؟",
-   "options": [
-    "Victor Basili here",
-    "Barry Boehm himself",
-    "Bev Littlewood here",
-    "Roger Pressman here"
-   ],
-   "options_ar": [
-    "البروفيسور فيكتور باسيلي",
-    "البروفيسور باري بوم هنا",
-    "البروفيسور بيف ليتلوود",
-    "البروفيسور روجر بريسمان"
-   ],
-   "options_en": [
-    "Victor Basili here",
-    "Barry Boehm himself",
-    "Bev Littlewood here",
-    "Roger Pressman here"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Barry Boehm published the spiral model in 1986 to bring risk analysis into the process.",
-   "explanation_ar": "نشر باري بوم النموذج الحلزوني عام 1986 ليدخل تحليل المخاطر في العملية."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_risk_factor",
-   "bloom_level": "Understand",
-   "question": "The project risk factor is considered in...",
-   "question_ar": "يُؤخذ عامل خطر المشروع بالحساب في...",
-   "options": [
-    "the Waterfall model here",
-    "the Prototyping model here",
-    "the Iterative enhancement model",
-    "the Spiral model here now"
-   ],
-   "options_ar": [
-    "نموذج النمذجة الأولية",
-    "النموذج الحلزوني هنا",
-    "نموذج التحسين التكراري",
-    "نموذج الشلال هنا الآن"
-   ],
-   "options_en": [
-    "the Waterfall model here",
-    "the Prototyping model here",
-    "the Iterative enhancement model",
-    "the Spiral model here now"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Each spiral loop starts with risk analysis, which is the model's defining step.",
-   "explanation_ar": "كل دورة في النموذج الحلزوني تبدأ بتحليل المخاطر، وهو خطوته المميزة."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_spiral_feature",
-   "bloom_level": "Understand",
-   "question": "Which one is the most important feature of the Spiral model?",
-   "question_ar": "أي واحد هو أهم خصيصة في النموذج الحلزوني؟",
-   "options": [
-    "quality management here",
-    "performance management",
-    "efficiency management",
-    "risk management here now"
-   ],
-   "options_ar": [
-    "إدارة الجودة هنا",
-    "إدارة الأداء هنا",
-    "إدارة الكفاءة هنا",
-    "إدارة المخاطر هنا"
-   ],
-   "options_en": [
-    "quality management here",
-    "performance management",
-    "efficiency management",
-    "risk management here now"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The spiral exists to analyse and reduce risk in every loop.",
-   "explanation_ar": "النموذج الحلزوني موجود لتحليل المخاطر وتقليلها في كل دورة."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_spiral_quadrants",
-   "bloom_level": "Remember",
-   "question": "Which four activities repeat in each spiral loop?",
-   "question_ar": "أي أربعة أنشطة تتكرر في كل دورة حلزونية؟",
-   "options": [
-    "hire, train, build, retire now too now",
-    "cost, schedule, staff, quality again",
-    "objectives, risk, development, planning",
-    "design, code, test, deploy here here"
-   ],
-   "options_en": [
-    "hire, train, build, retire now too now",
-    "cost, schedule, staff, quality again",
-    "objectives, risk, development, planning",
-    "design, code, test, deploy here here"
-   ],
-   "options_ar": [
-    "التعيين والتدريب والبناء والإحالة",
-    "الكلفة والجدول والأفراد والجودة",
-    "الأهداف والمخاطر والتطوير والتخطيط",
-    "التصميم والترميز والاختبار والنشر"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Each loop sets objectives, analyses risk, develops the next level, then plans ahead.",
-   "explanation_ar": "كل دورة تحدد الأهداف وتحلّل المخاطر وتطوّر المستوى التالي ثم تخطط."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_spiral_start",
-   "bloom_level": "Understand",
-   "question": "What does each spiral loop begin with?",
-   "question_ar": "بماذا تبدأ كل دورة حلزونية؟",
-   "options": [
-    "closing the project",
-    "setting the objectives",
-    "writing the code here",
-    "testing the release now"
-   ],
-   "options_en": [
-    "closing the project",
-    "setting the objectives",
-    "writing the code here",
-    "testing the release now"
-   ],
-   "options_ar": [
-    "إغلاق المشروع",
-    "تحديد الأهداف",
-    "كتابة الكود هنا",
-    "اختبار الإصدار"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Objectives for the next increment are fixed before any risk work starts.",
-   "explanation_ar": "أهداف الدفعة التالية تُحدَّد قبل أي عمل على المخاطر."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_spiral_end",
-   "bloom_level": "Understand",
-   "question": "After the increment is reviewed, what closes each loop?",
-   "question_ar": "بعد مراجعة الدفعة، ماذا يغلق كل دورة؟",
-   "options": [
-    "a signed contract here too now here",
-    "the team disbanding now here too",
-    "review and planning of the next loop",
-    "a final product release again again"
-   ],
-   "options_en": [
-    "a signed contract here too now here",
-    "the team disbanding now here too",
-    "review and planning of the next loop",
-    "a final product release again again"
-   ],
-   "options_ar": [
-    "عقد موقّع هنا أيضاً الآن مجدداً",
-    "تفكيك الفريق الآن مجدداً هنا",
-    "مراجعة وتخطيط الدورة التالية",
-    "إصدار نهائي للمنتج هنا أيضاً"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "The customer reviews the result and the next loop is planned from it.",
-   "explanation_ar": "العميل يراجع النتيجة وتُخطَّط الدورة التالية منها."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_spiral_best",
-   "bloom_level": "Understand",
-   "question": "For which projects is the spiral model best suited?",
-   "question_ar": "لأي مشاريع يناسب النموذج الحلزوني أكثر؟",
-   "options": [
-    "large high risk projects",
-    "tiny student exercises",
-    "projects with frozen scope",
-    "projects with no customer"
-   ],
-   "options_en": [
-    "large high risk projects",
-    "tiny student exercises",
-    "projects with frozen scope",
-    "projects with no customer"
-   ],
-   "options_ar": [
-    "مشاريع كبيرة عالية المخاطر",
-    "تمارين طلابية صغيرة أيضاً",
-    "مشاريع بنطاق مجمّد الآن",
-    "مشاريع بلا عميل هنا مجدداً"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The risk loop pays off when the project is big enough for risk to matter.",
-   "explanation_ar": "دورة المخاطر تستحق عندما يكون المشروع كبيراً بحيث تهمّ المخاطر."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_spiral_without_risk",
-   "bloom_level": "Analyze",
-   "question": "What happens if risk analysis is skipped?",
-   "question_ar": "ماذا يحدث إذا أُهمل تحليل المخاطر؟",
-   "options": [
-    "the spiral degenerates into waterfall",
-    "the project gets cheaper too now again",
-    "the loops disappear here again too",
-    "the model becomes agile now here"
-   ],
-   "options_en": [
-    "the spiral degenerates into waterfall",
-    "the project gets cheaper too now again",
-    "the loops disappear here again too",
-    "the model becomes agile now here"
-   ],
-   "options_ar": [
-    "يتحول الحلزوني إلى شلال",
-    "يصبح المشروع أرخص الآن",
-    "تختفي الدورات هنا أيضاً",
-    "يصبح النموذج رشيقاً"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Without the risk step the loop loses its purpose and behaves like a repeated waterfall.",
-   "explanation_ar": "بلا خطوة المخاطر تفقد الدورة هدفها وتتصرف كشلال متكرر."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B05_Spiral_And_Risk",
+  "topic": "The Spiral Model and Risk-Driven Development",
+  "topic_ar": "النموذج الحلزوني والدفع بالمخاطر",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_spiral_author",
+      "bloom_level": "Remember",
+      "question": "The Spiral Model was developed by...",
+      "question_ar": "من طوّر النموذج الحلزوني؟",
+      "options": [
+        "Barry Boehm proposed Spiral in 1986",
+        "Victor Basili proposed Spiral in 1986",
+        "Bev Littlewood proposed Spiral in 1986",
+        "Roger Pressman proposed Spiral in 1986"
+      ],
+      "options_en": [
+        "Barry Boehm proposed Spiral in 1986",
+        "Victor Basili proposed Spiral in 1986",
+        "Bev Littlewood proposed Spiral in 1986",
+        "Roger Pressman proposed Spiral in 1986"
+      ],
+      "options_ar": [
+        "قدم باري بوم نموذج Spiral عام 1986",
+        "قدم فيكتور باسيلي Spiral عام 1986",
+        "قدم بيف ليتلوود Spiral عام 1986",
+        "قدم روجر بريسمان Spiral عام 1986"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Barry Boehm published the spiral model in 1986 to bring risk analysis into the process.",
+      "explanation_ar": "نشر باري بوم النموذج الحلزوني عام 1986 ليدخل تحليل المخاطر في العملية."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_risk_factor",
+      "bloom_level": "Understand",
+      "question": "Which model organizes each development loop around explicit risk analysis?",
+      "question_ar": "أي نموذج ينظم كل دورة تطوير حول تحليل واضح للمخاطر؟",
+      "options": [
+        "Spiral considers project risk in every loop.",
+        "Waterfall considers project risk at each phase.",
+        "Prototyping considers project risk during evaluation.",
+        "Iterative Enhancement considers risk across releases."
+      ],
+      "options_en": [
+        "Spiral considers project risk in every loop.",
+        "Waterfall considers project risk at each phase.",
+        "Prototyping considers project risk during evaluation.",
+        "Iterative Enhancement considers risk across releases."
+      ],
+      "options_ar": [
+        "يراعي Spiral مخاطر المشروع في كل دورة.",
+        "يراعي الشلال مخاطر المشروع في كل مرحلة.",
+        "تراعي النمذجة الأولية المخاطر أثناء التقييم.",
+        "يراعي التحسين التكراري المخاطر عبر الإصدارات."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Spiral Model makes risk identification and resolution a central activity in each loop. The other models are organized around staged development, requirements feedback, or successive enhancement.",
+      "explanation_ar": "يجعل Spiral تحديد المخاطر ومعالجتها نشاطاً محورياً في كل دورة. أما النماذج الأخرى فتتمحور حول المراحل أو تغذية المتطلبات الراجعة أو التحسين المتتابع."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_spiral_feature",
+      "bloom_level": "Analyze",
+      "question": "How can a prototype help during Spiral risk analysis?",
+      "question_ar": "كيف يمكن للنموذج الأولي أن يساعد في تحليل مخاطر Spiral؟",
+      "options": [
+        "Performance management guides decisions in each loop.",
+        "Efficiency management guides decisions in each loop.",
+        "Risk management guides decisions in each loop.",
+        "Quality management guides decisions in each loop."
+      ],
+      "options_en": [
+        "Performance management guides decisions in each loop.",
+        "Efficiency management guides decisions in each loop.",
+        "Risk management guides decisions in each loop.",
+        "Quality management guides decisions in each loop."
+      ],
+      "options_ar": [
+        "إدارة الأداء توجه قرارات كل دورة.",
+        "إدارة الكفاءة توجه قرارات كل دورة.",
+        "إدارة المخاطر توجه قرارات كل دورة.",
+        "إدارة الجودة توجه قرارات كل دورة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "A prototype can be used to investigate an alternative and resolve uncertainty before committing to full development. It does not eliminate risk analysis or guarantee stable requirements.",
+      "explanation_ar": "يمكن استخدام نموذج أولي لفحص بديل وتقليل عدم اليقين قبل الالتزام بالتطوير الكامل. لكنه لا يلغي تحليل المخاطر ولا يضمن ثبات المتطلبات."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_spiral_quadrants",
+      "bloom_level": "Remember",
+      "question": "Which four activities form the Spiral Model's recurring sectors?",
+      "question_ar": "ما الأنشطة الأربعة التي تكوّن قطاعات النموذج الحلزوني المتكررة؟",
+      "options": [
+        "Requirements, design, coding, and maintenance.",
+        "Business, data, process, and application modeling.",
+        "Inception, elaboration, construction, and transition.",
+        "Planning, risk analysis, development, and assessment."
+      ],
+      "options_en": [
+        "Requirements, design, coding, and maintenance.",
+        "Business, data, process, and application modeling.",
+        "Inception, elaboration, construction, and transition.",
+        "Planning, risk analysis, development, and assessment."
+      ],
+      "options_ar": [
+        "المتطلبات والتصميم والترميز والصيانة.",
+        "نمذجة الأعمال والبيانات والعمليات والتطبيق.",
+        "البداية والتفصيل والبناء والانتقال.",
+        "التخطيط وتحليل المخاطر والتطوير والتقييم."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Each cycle includes planning, risk analysis, development, and customer assessment. The other lists belong to different process structures.",
+      "explanation_ar": "تتضمن كل دورة التخطيط وتحليل المخاطر والتطوير وتقييم العميل. أما القوائم الأخرى فتنتمي إلى هياكل عمليات مختلفة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_spiral_start",
+      "bloom_level": "Understand",
+      "question": "What does each spiral loop begin with?",
+      "question_ar": "بماذا تبدأ كل دورة حلزونية؟",
+      "options": [
+        "setting the next-loop objectives",
+        "closing the project after delivery",
+        "writing code before risk review",
+        "testing a release after planning"
+      ],
+      "options_en": [
+        "setting the next-loop objectives",
+        "closing the project after delivery",
+        "writing code before risk review",
+        "testing a release after planning"
+      ],
+      "options_ar": [
+        "تحديد أهداف الدورة القادمة",
+        "إغلاق المشروع بعد التسليم",
+        "كتابة الشيفرة قبل مراجعة المخاطر",
+        "اختبار الإصدار بعد التخطيط"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Objectives for the next increment are fixed before any risk work starts.",
+      "explanation_ar": "أهداف الدفعة التالية تُحدَّد قبل أي عمل على المخاطر."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_spiral_end",
+      "bloom_level": "Understand",
+      "question": "After the increment is reviewed, what closes each loop?",
+      "question_ar": "بعد مراجعة الدفعة، ماذا يغلق كل دورة؟",
+      "options": [
+        "Deploy the completed product to users.",
+        "Review the result and plan the next loop.",
+        "Disband the team after the final release.",
+        "Sign a contract to start the next phase."
+      ],
+      "options_en": [
+        "Deploy the completed product to users.",
+        "Review the result and plan the next loop.",
+        "Disband the team after the final release.",
+        "Sign a contract to start the next phase."
+      ],
+      "options_ar": [
+        "توقيع عقد لبدء المرحلة التالية.",
+        "نشر المنتج المكتمل على المستخدمين.",
+        "مراجعة النتيجة وخطة الدورة التالية.",
+        "تفكيك الفريق بعد الإصدار النهائي."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The customer reviews the result and the next loop is planned from it.",
+      "explanation_ar": "العميل يراجع النتيجة وتُخطَّط الدورة التالية منها."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_spiral_best",
+      "bloom_level": "Understand",
+      "question": "For which projects is the spiral model best suited?",
+      "question_ar": "لأي مشاريع يناسب النموذج الحلزوني أكثر؟",
+      "options": [
+        "projects with a stable fixed scope",
+        "projects with no customer involvement",
+        "large projects with substantial risks",
+        "small projects with little risk"
+      ],
+      "options_en": [
+        "projects with a stable fixed scope",
+        "projects with no customer involvement",
+        "large projects with substantial risks",
+        "small projects with little risk"
+      ],
+      "options_ar": [
+        "مشاريع بنطاق مستقر ومحدد",
+        "مشاريع بلا مشاركة من العميل",
+        "مشاريع كبيرة ذات مخاطر مرتفعة",
+        "مشاريع صغيرة ذات مخاطر محدودة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The risk loop pays off when the project is big enough for risk to matter.",
+      "explanation_ar": "دورة المخاطر تستحق عندما يكون المشروع كبيراً بحيث تهمّ المخاطر."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_spiral_dimensions",
+      "bloom_level": "Understand",
+      "question": "What do the Spiral Model's radial and angular dimensions represent?",
+      "question_ar": "ماذا يمثل البعدان الشعاعي والزاوي في النموذج الحلزوني؟",
+      "options": [
+        "Team size and number of user requirements.",
+        "Risk probability and number of software modules.",
+        "Elapsed time and the project acceptance score.",
+        "Cumulative cost and progress through each cycle."
+      ],
+      "options_en": [
+        "Team size and number of user requirements.",
+        "Risk probability and number of software modules.",
+        "Elapsed time and the project acceptance score.",
+        "Cumulative cost and progress through each cycle."
+      ],
+      "options_ar": [
+        "حجم الفريق وعدد متطلبات المستخدم.",
+        "احتمال الخطر وعدد وحدات البرمجيات.",
+        "الزمن المنقضي ودرجة قبول المشروع.",
+        "الكلفة التراكمية والتقدم في كل دورة."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The radial dimension represents cumulative cost, while the angular dimension represents progress in completing each cycle.",
+      "explanation_ar": "يمثل البعد الشعاعي الكلفة التراكمية، بينما يمثل البعد الزاوي التقدم في إكمال كل دورة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_spiral_metamodel",
+      "bloom_level": "Understand",
+      "question": "Why can the Spiral Model be viewed as a metamodel?",
+      "question_ar": "لماذا يمكن اعتبار النموذج الحلزوني نموذجاً فوقياً؟",
+      "options": [
+        "It can accommodate different process models based on risk.",
+        "It prescribes one fixed sequence for every project.",
+        "It removes planning and assessment from development.",
+        "It applies only to throw-away user-interface prototypes."
+      ],
+      "options_en": [
+        "It can accommodate different process models based on risk.",
+        "It prescribes one fixed sequence for every project.",
+        "It removes planning and assessment from development.",
+        "It applies only to throw-away user-interface prototypes."
+      ],
+      "options_ar": [
+        "يستوعب نماذج متعددة وفق المخاطر.",
+        "يفرض تسلسلاً ثابتاً واحداً لكل مشروع.",
+        "يلغي التخطيط والتقييم من التطوير.",
+        "يقتصر على نماذج واجهة أولية تُهمل."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The Spiral Model provides a risk-guided framework that can accommodate another development model, such as Waterfall or Evolutionary Development.",
+      "explanation_ar": "يوفر النموذج الحلزوني إطاراً موجهاً بالمخاطر يمكنه استيعاب نموذج تطوير آخر مثل الشلال أو التطوير التطوري."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_spiral_risk_expertise",
+      "bloom_level": "Analyze",
+      "question": "What capability does effective Spiral use depend on?",
+      "question_ar": "على أي قدرة يعتمد الاستخدام الفعال للنموذج الحلزوني؟",
+      "options": [
+        "Eliminating alternatives before planning.",
+        "Competent assessment of project risks.",
+        "Complete avoidance of customer evaluation.",
+        "A single frozen requirements document."
+      ],
+      "options_en": [
+        "Eliminating alternatives before planning.",
+        "Competent assessment of project risks.",
+        "Complete avoidance of customer evaluation.",
+        "A single frozen requirements document."
+      ],
+      "options_ar": [
+        "إلغاء البدائل قبل التخطيط.",
+        "تقييم سليم لمخاطر المشروع",
+        "تجنب تقييم العميل بالكامل.",
+        "وثيقة متطلبات واحدة مجمدة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The model relies on risk-assessment expertise; weak assessment can undermine decisions about alternatives and risk resolution.",
+      "explanation_ar": "يعتمد النموذج على خبرة تقييم المخاطر؛ وقد يضعف التقييم غير الكفء قرارات البدائل ومعالجة المخاطر."
+    }
+  ]
 }

@@ -1,247 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B06_Unified_Process",
- "topic": "The Unified Process",
- "topic_ar": "العملية الموحّدة",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_up_maintainer",
-   "bloom_level": "Remember",
-   "question": "The Unified Process is maintained by...",
-   "question_ar": "من يحتفظ بالعملية الموحّدة؟",
-   "options": [
-    "none of the above here",
-    "the Rational corporation",
-    "the Infosys company here",
-    "the SUN Microsystems"
-   ],
-   "options_ar": [
-    "لا شيء مما سبق هنا",
-    "شركة راشيونال هنا",
-    "شركة إنفوسيس هنا",
-    "شركة صن ميكروسيستمز"
-   ],
-   "options_en": [
-    "none of the above here",
-    "the Rational corporation",
-    "the Infosys company here",
-    "the SUN Microsystems"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Rational Software Corporation maintained the Unified Process and the UML that goes with it.",
-   "explanation_ar": "شركة راشيونال للبرمجيات هي التي حافظت على العملية الموحّدة ولغة UML المرافقة."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_up_nature",
-   "bloom_level": "Understand",
-   "question": "The Unified Process is...",
-   "question_ar": "العملية الموحّدة هي...",
-   "options": [
-    "incremental in nature",
-    "evolutionary in nature",
-    "all of the above here",
-    "iterative in nature"
-   ],
-   "options_ar": [
-    "تزايدية في طبيعتها",
-    "تطورية في طبيعتها",
-    "كل ما سبق هنا أيضًا",
-    "تكرارية في طبيعتها"
-   ],
-   "options_en": [
-    "incremental in nature",
-    "evolutionary in nature",
-    "all of the above here",
-    "iterative in nature"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "It is iterative, incremental and evolutionary at the same time, so all three apply.",
-   "explanation_ar": "هي تكرارية وتزايدية وتطورية في الوقت نفسه، فالثلاثة تنطبق."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_up_not_member",
-   "bloom_level": "Understand",
-   "question": "Who is NOT part of the team that developed the Unified Process?",
-   "question_ar": "من ليس من فريق تطوير العملية الموحّدة؟",
-   "options": [
-    "I. Jacobson is here",
-    "G. Booch is here",
-    "J. Rumbaugh is here",
-    "B. Boehm is here"
-   ],
-   "options_ar": [
-    "آيفار جاكوبسون هو",
-    "غرادي بوتش أيضًا",
-    "جيمس رامبو أيضًا",
-    "باري بوم نفسه هو"
-   ],
-   "options_en": [
-    "I. Jacobson is here",
-    "G. Booch is here",
-    "J. Rumbaugh is here",
-    "B. Boehm is here"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "The three amigos are Jacobson, Booch and Rumbaugh; Boehm belongs to the spiral model.",
-   "explanation_ar": "الثلاثة هم جاكوبسون وبوتش ورامبو، أما بوم فيعود للنموذج الحلزوني."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_up_phases",
-   "bloom_level": "Remember",
-   "question": "How many phases are in the Unified Process?",
-   "question_ar": "كم مرحلة في العملية الموحّدة؟",
-   "options": [
-    "four phases in total",
-    "five phases in total",
-    "two phases in total",
-    "none of the above here"
-   ],
-   "options_ar": [
-    "أربع مراحل في المجموع",
-    "خمس مراحل في المجموع هنا",
-    "مرحلتان فقط في المجموع",
-    "لا شيء مما سبق هنا أبداً"
-   ],
-   "options_en": [
-    "four phases in total",
-    "five phases in total",
-    "two phases in total",
-    "none of the above here"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "The four phases are inception, elaboration, construction and transition.",
-   "explanation_ar": "المراحل الأربع هي البداية والتفصيل والبناء والانتقال."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_up_elaboration",
-   "bloom_level": "Understand",
-   "question": "Which Unified Process phase produces the executable architecture?",
-   "question_ar": "أي مرحلة في العملية الموحّدة تنتج المعمارية القابلة للتنفيذ؟",
-   "options": [
-    "the transition phase",
-    "the elaboration phase",
-    "the inception phase",
-    "the construction phase"
-   ],
-   "options_ar": [
-    "مرحلة الانتقال",
-    "مرحلة التفصيل",
-    "مرحلة البداية",
-    "مرحلة البناء"
-   ],
-   "options_en": [
-    "the transition phase",
-    "the elaboration phase",
-    "the inception phase",
-    "the construction phase"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Elaboration is where the risky requirements are implemented as a running skeleton.",
-   "explanation_ar": "مرحلة التفصيل هي التي تُنفَّذ فيها المتطلبات الخطرة كهيكل عامل."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_construction_outcome",
-   "bloom_level": "Understand",
-   "question": "The outcome of the construction phase can be treated as...",
-   "question_ar": "مخرَج مرحلة البناء يمكن اعتباره...",
-   "options": [
-    "an alpha release here",
-    "all of the above here",
-    "a beta release here",
-    "a full product release"
-   ],
-   "options_ar": [
-    "إصدار ألفا هنا",
-    "كل ما سبق هنا",
-    "إصدار بيتا هنا",
-    "إصدار المنتج هنا"
-   ],
-   "options_en": [
-    "an alpha release here",
-    "all of the above here",
-    "a beta release here",
-    "a full product release"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Construction ends with a build complete enough to be treated as a beta release.",
-   "explanation_ar": "البناء ينتهي بنسخة مكتملة بما يكفي لتعامل كإصدار بيتا."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_up_transition",
-   "bloom_level": "Understand",
-   "question": "Which Unified Process phase delivers the system to its users?",
-   "question_ar": "أي مرحلة في العملية الموحّدة تسلّم النظام للمستخدمين؟",
-   "options": [
-    "the inception phase",
-    "the elaboration phase",
-    "the construction phase",
-    "the transition phase"
-   ],
-   "options_en": [
-    "the inception phase",
-    "the elaboration phase",
-    "the construction phase",
-    "the transition phase"
-   ],
-   "options_ar": [
-    "مرحلة البداية",
-    "مرحلة التفصيل",
-    "مرحلة البناء هنا",
-    "مرحلة الانتقال"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Transition is where the finished build is handed over and deployed to users.",
-   "explanation_ar": "الانتقال هو حيث تُسلَّم النسخة المكتملة وتُنشر للمستخدمين."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_up_inception",
-   "bloom_level": "Remember",
-   "question": "Which phase starts the Unified Process?",
-   "question_ar": "أي مرحلة تبدأ العملية الموحّدة؟",
-   "options": [
-    "inception here",
-    "elaboration too",
-    "construction",
-    "transition now"
-   ],
-   "options_en": [
-    "inception here",
-    "elaboration too",
-    "construction",
-    "transition now"
-   ],
-   "options_ar": [
-    "البداية الآن الآن الآن الآن",
-    "التفصيل أيضاً أيضاً أيضاً",
-    "البناء هنا هنا مجدداً هنا",
-    "الانتقال مجدداً هنا مجدداً"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Inception establishes the business case and the project scope.",
-   "explanation_ar": "البداية تثبّت الحالة التجارية ونطاق المشروع."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B06_Unified_Process",
+  "topic": "The Unified Process",
+  "topic_ar": "العملية الموحّدة",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_up_maintainer",
+      "bloom_level": "Remember",
+      "question": "The Unified Process is maintained by...",
+      "question_ar": "من يحتفظ بالعملية الموحّدة؟",
+      "options": [
+        "Rational Corporation developed the Unified Process.",
+        "Infosys Corporation developed the Unified Process.",
+        "Sun Microsystems developed the Unified Process.",
+        "Microsoft Corporation developed the Unified Process."
+      ],
+      "options_en": [
+        "Rational Corporation developed the Unified Process.",
+        "Infosys Corporation developed the Unified Process.",
+        "Sun Microsystems developed the Unified Process.",
+        "Microsoft Corporation developed the Unified Process."
+      ],
+      "options_ar": [
+        "طورت Rational العملية الموحّدة.",
+        "طورت Infosys العملية الموحّدة.",
+        "طورت Sun Microsystems العملية الموحّدة.",
+        "طورت Microsoft العملية الموحّدة."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Rational Software Corporation maintained the Unified Process and the UML that goes with it.",
+      "explanation_ar": "شركة راشيونال للبرمجيات هي التي حافظت على العملية الموحّدة ولغة UML المرافقة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_up_nature",
+      "bloom_level": "Understand",
+      "question": "How does the Unified Process organize product growth?",
+      "question_ar": "كيف تنظم العملية الموحّدة نمو المنتج؟",
+      "options": [
+        "Through prototypes that are always discarded.",
+        "Through iterations that add capability over time.",
+        "Through one uninterrupted linear sequence.",
+        "Through risk reviews without implementation work."
+      ],
+      "options_en": [
+        "Through prototypes that are always discarded.",
+        "Through iterations that add capability over time.",
+        "Through one uninterrupted linear sequence.",
+        "Through risk reviews without implementation work."
+      ],
+      "options_ar": [
+        "نماذج أولية يجري إهمالها دائماً.",
+        "تكرارات تضيف قدرات بمرور الوقت.",
+        "تسلسل خطي واحد دون تكرار.",
+        "مراجعات مخاطر بلا تنفيذ فعلي."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Unified Process is iterative and incremental: work repeats in iterations while the product gains capability. It is not a single linear pass or risk review alone.",
+      "explanation_ar": "العملية الموحّدة تكرارية وتزايدية: يتكرر العمل بينما يكتسب المنتج قدرات. وليست مروراً خطياً واحداً أو مراجعة مخاطر فقط."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_up_not_member",
+      "bloom_level": "Understand",
+      "question": "Who is NOT part of the team that developed the Unified Process?",
+      "question_ar": "من ليس من فريق تطوير العملية الموحّدة؟",
+      "options": [
+        "Grady Booch himself",
+        "James Rumbaugh himself",
+        "Barry Boehm himself",
+        "Ivar Jacobson himself"
+      ],
+      "options_en": [
+        "Grady Booch himself",
+        "James Rumbaugh himself",
+        "Barry Boehm himself",
+        "Ivar Jacobson himself"
+      ],
+      "options_ar": [
+        "Grady Booch نفسه",
+        "James Rumbaugh نفسه",
+        "Barry Boehm نفسه",
+        "Ivar Jacobson نفسه"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The three amigos are Jacobson, Booch and Rumbaugh; Boehm belongs to the spiral model.",
+      "explanation_ar": "الثلاثة هم جاكوبسون وبوتش ورامبو، أما بوم فيعود للنموذج الحلزوني."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_up_phases",
+      "bloom_level": "Remember",
+      "question": "How many phases are in the Unified Process?",
+      "question_ar": "كم مرحلة في العملية الموحّدة؟",
+      "options": [
+        "five phases in total",
+        "two phases in total",
+        "none of the above",
+        "four phases in total"
+      ],
+      "options_en": [
+        "five phases in total",
+        "two phases in total",
+        "none of the above",
+        "four phases in total"
+      ],
+      "options_ar": [
+        "خمس مراحل في المجموع",
+        "مرحلتان فقط في المجموع",
+        "لا شيء مما سبق هنا أبداً",
+        "أربع مراحل في المجموع"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The four phases are inception, elaboration, construction and transition.",
+      "explanation_ar": "المراحل الأربع هي البداية والتفصيل والبناء والانتقال."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_up_elaboration",
+      "bloom_level": "Understand",
+      "question": "Which Unified Process phase produces the executable architecture?",
+      "question_ar": "أي مرحلة في العملية الموحّدة تنتج المعمارية القابلة للتنفيذ؟",
+      "options": [
+        "the elaboration phase",
+        "the transition phase",
+        "the inception phase",
+        "the construction phase"
+      ],
+      "options_en": [
+        "the elaboration phase",
+        "the transition phase",
+        "the inception phase",
+        "the construction phase"
+      ],
+      "options_ar": [
+        "مرحلة التفصيل",
+        "مرحلة الانتقال",
+        "مرحلة البداية",
+        "مرحلة البناء"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Elaboration is where the risky requirements are implemented as a running skeleton.",
+      "explanation_ar": "مرحلة التفصيل هي التي تُنفَّذ فيها المتطلبات الخطرة كهيكل عامل."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_construction_outcome",
+      "bloom_level": "Understand",
+      "question": "The outcome of the construction phase can be treated as...",
+      "question_ar": "مخرَج مرحلة البناء يمكن اعتباره...",
+      "options": [
+        "a prototype software release for early review",
+        "a beta software release for user evaluation",
+        "an alpha software release for internal testing",
+        "a full software release for general deployment"
+      ],
+      "options_en": [
+        "a prototype software release for early review",
+        "a beta software release for user evaluation",
+        "an alpha software release for internal testing",
+        "a full software release for general deployment"
+      ],
+      "options_ar": [
+        "إصدار أولي لمراجعته في وقت مبكر",
+        "إصدار بيتا لتقييمه من المستخدمين",
+        "إصدار ألفا لاختباره داخلياً",
+        "إصدار كامل لنشره على المستخدمين"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Construction ends with a build complete enough to be treated as a beta release.",
+      "explanation_ar": "البناء ينتهي بنسخة مكتملة بما يكفي لتعامل كإصدار بيتا."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_up_transition",
+      "bloom_level": "Understand",
+      "question": "Which Unified Process phase prepares the system for delivery to users?",
+      "question_ar": "أي مرحلة في العملية الموحّدة تهيّئ النظام لتسليمه للمستخدمين؟",
+      "options": [
+        "Elaboration Phase",
+        "Construction Phase",
+        "Transition Phase",
+        "Inception Phase"
+      ],
+      "options_en": [
+        "Elaboration Phase",
+        "Construction Phase",
+        "Transition Phase",
+        "Inception Phase"
+      ],
+      "options_ar": [
+        "مرحلة التفصيل",
+        "مرحلة البناء",
+        "مرحلة الانتقال",
+        "مرحلة البداية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Transition prepares the product for user delivery through activities such as beta testing, training, tuning, and evaluating satisfaction.",
+      "explanation_ar": "تهيئ مرحلة الانتقال المنتج لتسليمه للمستخدمين عبر أنشطة مثل اختبار بيتا والتدريب والضبط وتقييم الرضا."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_up_inception",
+      "bloom_level": "Remember",
+      "question": "Which phase starts the Unified Process?",
+      "question_ar": "أي مرحلة تبدأ العملية الموحّدة؟",
+      "options": [
+        "Elaboration Phase",
+        "Construction Phase",
+        "Transition Phase",
+        "Inception Phase"
+      ],
+      "options_en": [
+        "Elaboration Phase",
+        "Construction Phase",
+        "Transition Phase",
+        "Inception Phase"
+      ],
+      "options_ar": [
+        "مرحلة التفصيل",
+        "مرحلة البناء",
+        "مرحلة الانتقال",
+        "مرحلة البداية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Inception establishes the business case and the project scope.",
+      "explanation_ar": "البداية تثبّت الحالة التجارية ونطاق المشروع."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_up_phase_workflow",
+      "bloom_level": "Analyze",
+      "question": "How do Unified-Process phases differ from workflows?",
+      "question_ar": "كيف تختلف مراحل العملية الموحّدة عن سير العمل؟",
+      "options": [
+        "Phases mark project periods; workflows describe activities.",
+        "Phases are team roles; workflows are release dates.",
+        "Phases are product versions; workflows are risk scores.",
+        "Phases are user reviews; workflows are project budgets."
+      ],
+      "options_en": [
+        "Phases mark project periods; workflows describe activities.",
+        "Phases are team roles; workflows are release dates.",
+        "Phases are product versions; workflows are risk scores.",
+        "Phases are user reviews; workflows are project budgets."
+      ],
+      "options_ar": [
+        "تحدد المراحل فترات المشروع، ويصف سير العمل الأنشطة.",
+        "المراحل أدوار للفريق، وسير العمل مواعيد للإصدارات.",
+        "المراحل نسخ للمنتج، وسير العمل درجات للمخاطر.",
+        "المراحل مراجعات للمستخدم، وسير العمل ميزانيات للمشروع."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Unified-Process phases divide the project timeline, while workflows describe kinds of work that can occur across those phases.",
+      "explanation_ar": "تقسم مراحل العملية الموحّدة الخط الزمني للمشروع، بينما يصف سير العمل أنواع الأنشطة التي قد تمتد عبر تلك المراحل."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_up_iterations",
+      "bloom_level": "Understand",
+      "question": "What happens inside a Unified-Process phase?",
+      "question_ar": "ماذا يحدث داخل مرحلة من مراحل العملية الموحّدة؟",
+      "options": [
+        "The phase prevents any architecture changes.",
+        "The phase may contain one or more iterations.",
+        "The phase must contain one final release only.",
+        "The phase replaces all development workflows."
+      ],
+      "options_en": [
+        "The phase prevents any architecture changes.",
+        "The phase may contain one or more iterations.",
+        "The phase must contain one final release only.",
+        "The phase replaces all development workflows."
+      ],
+      "options_ar": [
+        "تمنع المرحلة تعديل المعمارية إطلاقاً.",
+        "قد تتضمن المرحلة تكراراً واحداً أو أكثر.",
+        "يجب أن تضم المرحلة إصداراً نهائياً واحداً.",
+        "تستبدل المرحلة مسارات العمل بالكامل."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Unified Process can organize work into iterations within its phases. A phase is not itself a single release or a replacement for workflows.",
+      "explanation_ar": "يمكن للعملية الموحّدة تنظيم العمل في تكرارات داخل مراحلها. فالمرحلة ليست إصداراً واحداً ولا بديلاً عن مسارات العمل."
+    }
+  ]
 }

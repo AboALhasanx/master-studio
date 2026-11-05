@@ -1,247 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B03_RAD_And_Its_Conditions",
- "topic": "RAD and Its Applicability Conditions",
- "topic_ar": "RAD وشروط تطبيقه",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_rad_stands",
-   "bloom_level": "Remember",
-   "question": "RAD stands for...",
-   "question_ar": "RAD تعني...",
-   "options": [
-    "Repeated application development",
-    "Rapid application development",
-    "Relative application development",
-    "Ready application development"
-   ],
-   "options_ar": [
-    "تطوير التطبيقات المتكرر",
-    "تطوير التطبيقات السريع",
-    "تطوير التطبيقات النسبي",
-    "تطوير التطبيقات الجاهز"
-   ],
-   "options_en": [
-    "Repeated application development",
-    "Rapid application development",
-    "Relative application development",
-    "Ready application development"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "RAD is Rapid Application Development, a short-cycle model built on quick iterations.",
-   "explanation_ar": "RAD هي تطوير التطبيقات السريع، نموذج قصير الدورة قائم على تكرارات سريعة."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_rad_author",
-   "bloom_level": "Remember",
-   "question": "The RAD model was proposed by...",
-   "question_ar": "من اقترح نموذج RAD؟",
-   "options": [
-    "the Motorola company",
-    "the Microsoft company",
-    "IBM Corporation here",
-    "the Lucent company"
-   ],
-   "options_ar": [
-    "شركة موتورولا هنا",
-    "شركة مايكروسوفت هنا",
-    "شركة IBM هنا الآن",
-    "شركة لوسنت هنا الآن"
-   ],
-   "options_en": [
-    "the Motorola company",
-    "the Microsoft company",
-    "IBM Corporation here",
-    "the Lucent company"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "RAD was proposed at IBM, which is why the vendor name is the answer.",
-   "explanation_ar": "اقتُرح نموذج RAD في شركة IBM، ولذلك اسم الشركة هو الجواب."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_earliest_feedback",
-   "bloom_level": "Apply",
-   "question": "Which model gives the user a working system earliest?",
-   "question_ar": "أي نموذج يعطي المستخدم نظاماً عاملاً في أقرب وقت؟",
-   "options": [
-    "the Iterative model here now",
-    "the RAD model here now at all",
-    "the Waterfall model here now",
-    "the Spiral model here now at all"
-   ],
-   "options_ar": [
-    "نموذج التحسين التكراري",
-    "نموذج RAD السريع هنا",
-    "نموذج الشلال هنا الآن",
-    "النموذج الحلزوني هنا"
-   ],
-   "options_en": [
-    "the Iterative model here now",
-    "the RAD model here now at all",
-    "the Waterfall model here now",
-    "the Spiral model here now at all"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "RAD builds a usable slice in a short cycle, so feedback arrives before the whole system exists.",
-   "explanation_ar": "نموذج RAD يبني شريحة صالحة في دورة قصيرة، فيصل التغذية الراجعة قبل اكتمال النظام."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_rad_basis",
-   "bloom_level": "Understand",
-   "question": "What does RAD rely on to move fast?",
-   "question_ar": "علامَ يعتمد RAD ليسرع؟",
-   "options": [
-    "heavy documentation first again too",
-    "a frozen waterfall plan too now again",
-    "a very large team here now here",
-    "rapid prototyping with user workshops"
-   ],
-   "options_en": [
-    "heavy documentation first again too",
-    "a frozen waterfall plan too now again",
-    "a very large team here now here",
-    "rapid prototyping with user workshops"
-   ],
-   "options_ar": [
-    "توثيق كثيف أولاً أيضاً الآن هنا",
-    "خطة شلال مجمّدة الآن هنا أيضاً",
-    "فريق كبير جداً هنا مجدداً مجدداً",
-    "نمذجة أولية سريعة مع ورش مستخدمين"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "RAD compresses the cycle by building quick prototypes inside user workshops.",
-   "explanation_ar": "RAD يضغط الدورة ببناء نماذج أولية سريعة داخل ورش المستخدمين."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_rad_team",
-   "bloom_level": "Understand",
-   "question": "What team does RAD require?",
-   "question_ar": "أي فريق يتطلبه RAD؟",
-   "options": [
-    "an outsourced team only too",
-    "a team without users now",
-    "a small highly skilled team",
-    "a large junior team here"
-   ],
-   "options_en": [
-    "an outsourced team only too",
-    "a team without users now",
-    "a small highly skilled team",
-    "a large junior team here"
-   ],
-   "options_ar": [
-    "فريق خارجي فقط هنا مجدداً",
-    "فريق بلا مستخدمين أيضاً",
-    "فريق صغير عالي المهارة",
-    "فريق كبير مبتدئ الآن"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "RAD assumes a compact team that can decide and build quickly.",
-   "explanation_ar": "RAD يفترض فريقاً مدمجاً يقدر على القرار والبناء بسرعة."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_rad_timebox",
-   "bloom_level": "Remember",
-   "question": "What delivery window does RAD target?",
-   "question_ar": "ما نافذة التسليم التي يستهدفها RAD؟",
-   "options": [
-    "six to twelve months",
-    "one to two years here",
-    "three to five years",
-    "sixty to ninety days"
-   ],
-   "options_en": [
-    "six to twelve months",
-    "one to two years here",
-    "three to five years",
-    "sixty to ninety days"
-   ],
-   "options_ar": [
-    "ستة إلى اثنا عشر شهراً",
-    "سنة إلى سنتين هنا الآن",
-    "ثلاث إلى خمس سنوات",
-    "ستون إلى تسعون يوماً"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "RAD is aimed at short cycles of roughly 60 to 90 days per deliverable.",
-   "explanation_ar": "RAD يستهدف دورات قصيرة بنحو 60 إلى 90 يوماً لكل تسليم."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_rad_arch",
-   "bloom_level": "Understand",
-   "question": "What architecture does RAD need?",
-   "question_ar": "أي معمارية يحتاجها RAD؟",
-   "options": [
-    "a modular component based one",
-    "a monolithic single block",
-    "a hardware dependent one now",
-    "no architecture at all here"
-   ],
-   "options_en": [
-    "a modular component based one",
-    "a monolithic single block",
-    "a hardware dependent one now",
-    "no architecture at all here"
-   ],
-   "options_ar": [
-    "معمارية معيارية قائمة على مكوّنات",
-    "كتلة واحدة متجانسة هنا أيضاً الآن",
-    "معمارية مرتبطة بالعتاد مجدداً",
-    "بلا معمارية إطلاقاً الآن هنا أيضاً"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Reusable components let the team assemble the next cycle instead of rebuilding it.",
-   "explanation_ar": "المكوّنات القابلة للإعادة تتيح تجميع الدورة التالية بدل بنائها من جديد."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_rad_unsuitable",
-   "bloom_level": "Analyze",
-   "question": "When is RAD a poor choice?",
-   "question_ar": "متى يكون RAD خياراً سيئاً؟",
-   "options": [
-    "a large unprecedented system",
-    "a modular business system",
-    "a short deadline project now",
-    "a skilled small team here"
-   ],
-   "options_en": [
-    "a large unprecedented system",
-    "a modular business system",
-    "a short deadline project now",
-    "a skilled small team here"
-   ],
-   "options_ar": [
-    "نظام ضخم غير مسبوق",
-    "نظام أعمال معياري",
-    "مشروع بمهلة قصيرة",
-    "فريق صغير ماهر هنا"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Without reusable parts and clear scope, the short RAD cycle cannot absorb the unknown.",
-   "explanation_ar": "بلا أجزاء قابلة للإعادة ونطاق واضح، لا تستوعب دورة RAD القصيرة المجهول."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B03_RAD_And_Its_Conditions",
+  "topic": "RAD and Its Applicability Conditions",
+  "topic_ar": "RAD وشروط تطبيقه",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_rad_stands",
+      "bloom_level": "Remember",
+      "question": "RAD stands for...",
+      "question_ar": "RAD تعني...",
+      "options": [
+        "Rapid application development",
+        "Repeated application development",
+        "Relative application development",
+        "Ready application development"
+      ],
+      "options_en": [
+        "Rapid application development",
+        "Repeated application development",
+        "Relative application development",
+        "Ready application development"
+      ],
+      "options_ar": [
+        "تطوير التطبيقات السريع",
+        "تطوير التطبيقات المتكرر",
+        "تطوير التطبيقات النسبي",
+        "تطوير التطبيقات الجاهز"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "RAD is Rapid Application Development, a short-cycle model built on quick iterations.",
+      "explanation_ar": "RAD هي تطوير التطبيقات السريع، نموذج قصير الدورة قائم على تكرارات سريعة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_rad_author",
+      "bloom_level": "Remember",
+      "question": "Which organization is credited with developing RAD in 1980?",
+      "question_ar": "أي مؤسسة نُسب إليها تطوير RAD عام 1980؟",
+      "options": [
+        "HP developed RAD in 1980",
+        "IBM developed RAD in 1980",
+        "DEC developed RAD in 1980",
+        "Xerox developed RAD in 1980"
+      ],
+      "options_en": [
+        "HP developed RAD in 1980",
+        "IBM developed RAD in 1980",
+        "DEC developed RAD in 1980",
+        "Xerox developed RAD in 1980"
+      ],
+      "options_ar": [
+        "طورت HP منهج RAD عام 1980",
+        "طورت IBM منهج RAD عام 1980",
+        "طورت DEC منهج RAD عام 1980",
+        "طورت Xerox منهج RAD عام 1980"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "IBM is credited with developing RAD in 1980. The other companies are not identified as its developer in that account.",
+      "explanation_ar": "تُنسب نشأة RAD عام 1980 إلى IBM. ولا تُذكر الشركات الأخرى بوصفها الجهة المطوّرة في هذا السياق."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_rad_basis",
+      "bloom_level": "Understand",
+      "question": "Which combination supports RAD's short delivery cycle?",
+      "question_ar": "أي مزيج يدعم دورة RAD القصيرة؟",
+      "options": [
+        "Unproven technology and delayed user review.",
+        "A fixed plan and one final integration.",
+        "Modular components, reuse, and parallel teams.",
+        "One coupled component and sequential coding."
+      ],
+      "options_en": [
+        "Unproven technology and delayed user review.",
+        "A fixed plan and one final integration.",
+        "Modular components, reuse, and parallel teams.",
+        "One coupled component and sequential coding."
+      ],
+      "options_ar": [
+        "تقنية غير مستقرة ومراجعة متأخرة للمستخدم.",
+        "خطة ثابتة وتكامل نهائي لكل المكونات.",
+        "مكونات معيارية وإعادة استخدام وفرق متوازية.",
+        "مكوّن مترابط وبرمجة متتابعة لفريق واحد."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "RAD divides a system into independent components developed by teams in parallel and becomes faster when reusable components are available.",
+      "explanation_ar": "يقسم RAD النظام إلى مكونات مستقلة تطورها فرق بالتوازي، وتزداد سرعته عند توافر مكونات قابلة لإعادة الاستخدام."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_rad_team",
+      "bloom_level": "Understand",
+      "question": "What team does RAD require?",
+      "question_ar": "أي فريق يتطلبه RAD؟",
+      "options": [
+        "a small team with no user access",
+        "a large team of junior developers",
+        "an outsourced team working alone",
+        "a small skilled development team"
+      ],
+      "options_en": [
+        "a small team with no user access",
+        "a large team of junior developers",
+        "an outsourced team working alone",
+        "a small skilled development team"
+      ],
+      "options_ar": [
+        "فريق صغير بلا تواصل مع المستخدم",
+        "فريق كبير من مطورين مبتدئين",
+        "فريق خارجي يعمل بمعزل عن العميل",
+        "فريق تطوير صغير عالي المهارة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "RAD assumes a compact team that can decide and build quickly.",
+      "explanation_ar": "RAD يفترض فريقاً مدمجاً يقدر على القرار والبناء بسرعة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_rad_timebox",
+      "bloom_level": "Remember",
+      "question": "What delivery window does RAD target?",
+      "question_ar": "ما نافذة التسليم التي يستهدفها RAD؟",
+      "options": [
+        "sixty to ninety days",
+        "six to twelve months",
+        "one to two full years",
+        "three to five years"
+      ],
+      "options_en": [
+        "sixty to ninety days",
+        "six to twelve months",
+        "one to two full years",
+        "three to five years"
+      ],
+      "options_ar": [
+        "ستون إلى تسعين يوماً",
+        "ستة إلى اثني عشر شهراً",
+        "عام إلى عامين كاملين",
+        "ثلاثة إلى خمسة أعوام"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "RAD is aimed at short cycles of roughly 60 to 90 days per deliverable.",
+      "explanation_ar": "RAD يستهدف دورات قصيرة بنحو 60 إلى 90 يوماً لكل تسليم."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_rad_arch",
+      "bloom_level": "Understand",
+      "question": "What architecture does RAD need?",
+      "question_ar": "أي معمارية يحتاجها RAD؟",
+      "options": [
+        "No architecture describing system components",
+        "A modular architecture with separate modules",
+        "A monolithic architecture in one block",
+        "An architecture tied to specialized hardware"
+      ],
+      "options_en": [
+        "No architecture describing system components",
+        "A modular architecture with separate modules",
+        "A monolithic architecture in one block",
+        "An architecture tied to specialized hardware"
+      ],
+      "options_ar": [
+        "معمارية غائبة لا تصف مكونات النظام",
+        "معمارية معيارية تعتمد على مكونات منفصلة",
+        "معمارية متجانسة تجمع النظام في كتلة واحدة",
+        "معمارية تعتمد كلياً على عتاد متخصص"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Reusable components let the team assemble the next cycle instead of rebuilding it.",
+      "explanation_ar": "المكوّنات القابلة للإعادة تتيح تجميع الدورة التالية بدل بنائها من جديد."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_rad_unsuitable",
+      "bloom_level": "Analyze",
+      "question": "Which condition is a stated limitation of RAD?",
+      "question_ar": "أي حالة تُعد قيداً مذكوراً على RAD؟",
+      "options": [
+        "Committed users and rapid development teams.",
+        "A system that separates into independent parts.",
+        "High technical risk from unproven technology.",
+        "Available reusable components and clear modules."
+      ],
+      "options_en": [
+        "Committed users and rapid development teams.",
+        "A system that separates into independent parts.",
+        "High technical risk from unproven technology.",
+        "Available reusable components and clear modules."
+      ],
+      "options_ar": [
+        "مستخدمون ملتزمون وفرق تطوير سريعة.",
+        "نظام يمكن تقسيمه إلى أجزاء مستقلة.",
+        "مخاطر تقنية عالية من تقنية غير مجرّبة.",
+        "مكونات معاد استخدامها ووحدات واضحة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "RAD may be unsuitable when technical risks are high, such as when a system depends heavily on new technology. Modularity, reuse, and commitment support RAD instead.",
+      "explanation_ar": "قد لا يناسب RAD المشاريع ذات المخاطر التقنية المرتفعة، مثل الاعتماد الكبير على تقنية جديدة. أما التقسيم وإعادة الاستخدام والالتزام فتدعمه."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_rad_modularity",
+      "bloom_level": "Analyze",
+      "question": "Which requirement structure best supports RAD?",
+      "question_ar": "أي بنية للمتطلبات تدعم RAD أكثر؟",
+      "options": [
+        "One tightly coupled module built by one team.",
+        "Unrelated features that cannot be separated.",
+        "A single design integrated only at the end.",
+        "Independent modules developed by parallel teams."
+      ],
+      "options_en": [
+        "One tightly coupled module built by one team.",
+        "Unrelated features that cannot be separated.",
+        "A single design integrated only at the end.",
+        "Independent modules developed by parallel teams."
+      ],
+      "options_ar": [
+        "وحدة مترابطة يبنيها فريق واحد.",
+        "خصائص منفصلة لا يمكن تقسيمها.",
+        "تصميم واحد يدمج في نهاية العمل.",
+        "وحدات مستقلة تطورها فرق بالتوازي."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "RAD depends on dividing a system into independent components that different teams can develop in parallel. Tight coupling makes that decomposition difficult.",
+      "explanation_ar": "يعتمد RAD على تقسيم النظام إلى مكونات مستقلة تستطيع فرق مختلفة تطويرها بالتوازي. ويصعّب الترابط الشديد هذا التقسيم."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_rad_user_commitment",
+      "bloom_level": "Analyze",
+      "question": "What user condition is essential for RAD's rapid activities?",
+      "question_ar": "ما شرط المستخدمين الضروري لأنشطة RAD السريعة؟",
+      "options": [
+        "Customers commit to frequent collaboration and reviews.",
+        "Customers review the product only after deployment.",
+        "Customers avoid prototypes until requirements are fixed.",
+        "Customers delegate all development decisions to the team."
+      ],
+      "options_en": [
+        "Customers commit to frequent collaboration and reviews.",
+        "Customers review the product only after deployment.",
+        "Customers avoid prototypes until requirements are fixed.",
+        "Customers delegate all development decisions to the team."
+      ],
+      "options_ar": [
+        "يلتزم العملاء بتعاون ومراجعات متكررة.",
+        "يراجع العملاء المنتج بعد نشره النهائي.",
+        "يتجنب العملاء النماذج حتى تثبيت المتطلبات.",
+        "يفوض العملاء قرارات التطوير إلى الفريق."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "RAD can fail when developers and customers are not committed to rapid activities. Frequent collaboration supports the abbreviated development cycle.",
+      "explanation_ar": "قد يفشل RAD إذا لم يلتزم المطورون والعملاء بالأنشطة السريعة. ويدعم التعاون المتكرر دورة التطوير المختصرة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_rad_application_generation",
+      "bloom_level": "Remember",
+      "question": "Which stage follows Process Modeling in the five-stage RAD sequence?",
+      "question_ar": "أي مرحلة تلي نمذجة العمليات في تسلسل RAD ذي المراحل الخمس؟",
+      "options": [
+        "The Testing and Turnover stage",
+        "The Application Generation stage",
+        "The Requirements Planning stage",
+        "The Detailed Data Modeling stage"
+      ],
+      "options_en": [
+        "The Testing and Turnover stage",
+        "The Application Generation stage",
+        "The Requirements Planning stage",
+        "The Detailed Data Modeling stage"
+      ],
+      "options_ar": [
+        "مرحلة الاختبار والتسليم",
+        "مرحلة توليد التطبيقات",
+        "مرحلة تخطيط المتطلبات",
+        "مرحلة نمذجة البيانات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Application Generation follows Process Modeling; Testing and Turnover is the final stage.",
+      "explanation_ar": "تلي مرحلة توليد التطبيقات نمذجة العمليات، أما الاختبار والتسليم فهي المرحلة الأخيرة."
+    }
+  ]
 }

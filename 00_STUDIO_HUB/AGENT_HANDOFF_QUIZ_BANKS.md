@@ -159,6 +159,7 @@ survived review.
 | 2026-10-27 | Cyber Ch04, Ch05, Ch06 cleaned and published; superseded live rows hidden | `sessions/2026-10-27.md` |
 | 2026-10-27 | Data Mining Ch01, Ch02, Ch03 rebuilt as topic banks; Model A/B retired | `sessions/2026-10-27.md` |
 | 2026-10-28 | Data Mining Ch04, Ch05, Ch06, Ch07 published | `sessions/2026-10-28.md` |
+| 2026-11-05 | ASE Chapter 2 banks rebuilt, source-audited, and published; generated state and production UI verified | sessions/2026-11-05.md and 01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch02_Bank_Coverage_Audit.md |
 
 For what is live **now** — counts, versions, per-chapter gate results, what remains —
 open `QUIZ_BANK_STATE.md`. The milestone table above deliberately carries no counts.

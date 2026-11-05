@@ -41,9 +41,9 @@ const check = (name, ok, detail) => {
   await p.goto(BASE + '/?debug=1&v=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 60000 });
   await p.waitForFunction(() => window.__portal && window.__portal.S && window.__portal.S.index, null, { timeout: 45000 });
 
-  const info = await p.evaluate((CHAPTER) => {
+  const info = await p.evaluate(({ CHAPTER, SUBJECT }) => {
     const S = window.__portal.S;
-    const sub = S.index.subjects.find((s) => s.subject_id === '01_Cyber_Security');
+    const sub = S.index.subjects.find((s) => s.subject_id === SUBJECT);
     const chs = sub ? sub.chapters : [];
     return {
       version: S.contentVersion,
@@ -53,7 +53,7 @@ const check = (name, ok, detail) => {
       risk: chs.some((c) => c.quiz_id === 'Quiz_02_Risk_Assessment'),
       subjectTitle: sub ? sub.subject_title : '',
     };
-  }, CHAPTER);
+  }, { CHAPTER, SUBJECT: SUBJ });
   console.log('content version:', info.version, '| source:', info.source, '| chapters:', info.chapters.join(','));
   check('chapter ' + CHAPTER + ' has ' + EXPECT + ' banks', info.ch5.length === EXPECT, info.ch5.length);
   check('retired Risk_Assessment not listed', info.risk === false);
@@ -63,6 +63,9 @@ const check = (name, ok, detail) => {
   check('no card title repeats the subject name', dupSubject.length === 0, dupSubject.map((c) => c.topic).join(' | '));
 
   await p.waitForSelector('.sketch-row', { timeout: 30000 });
+  await p.waitForFunction((expected) =>
+    document.querySelectorAll('.sketch-subject-tag').length === expected,
+    EXPECT, { timeout: 30000 });
   const dom = await p.evaluate(() => ({
     rows: document.querySelectorAll('.sketch-row').length,
     badges: [...document.querySelectorAll('.sketch-topic-num')].map((e) => e.textContent.trim()),
@@ -71,7 +74,8 @@ const check = (name, ok, detail) => {
   }));
   check('DOM shows ' + EXPECT + ' cards', dom.rows === EXPECT, dom.rows);
   check('DOM badges match', dom.badges.join('|') === info.ch5.map((c) => c.label).join('|'), dom.badges.slice(0, 3).join(' '));
-  check('every card carries the subject chip', dom.subjectTags.length === EXPECT && dom.subjectTags.every((t) => t === info.subjectTitle), dom.subjectTags[0]);
+  check('every card carries the subject chip', dom.subjectTags.length === EXPECT && dom.subjectTags.every((t) => t === info.subjectTitle),
+    JSON.stringify({ subjectTitle: info.subjectTitle, count: dom.subjectTags.length, uniqueTags: [...new Set(dom.subjectTags)] }));
   console.log('first three cards:', JSON.stringify(dom.titles.slice(0, 3), null, 0));
 
   // ---- two launches, shuffle + language toggle -----------------------------

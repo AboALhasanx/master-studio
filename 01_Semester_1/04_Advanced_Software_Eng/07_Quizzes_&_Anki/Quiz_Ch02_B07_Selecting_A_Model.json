@@ -1,247 +1,305 @@
 {
- "schema_version": 2,
- "subject_id": "04_Advanced_Software_Eng",
- "subject_title": "هندسة البرمجيات",
- "semester": 1,
- "semester_label": "كورس أول",
- "instructor_ar": "أ.م.د. علي فاهم نعمة",
- "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
- "subject": "04_Advanced_Software_Eng",
- "quiz_id": "Quiz_Ch02_B07_Selecting_A_Model",
- "topic": "Selecting a Life-Cycle Model",
- "topic_ar": "اختيار نموذج دورة الحياة",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "ch2_clear_requirements",
-   "bloom_level": "Apply",
-   "question": "If the requirements are easily understood and well defined, which model fits best?",
-   "question_ar": "إذا كانت المتطلبات مفهومة ومحددة جيداً، أي نموذج يناسب أكثر؟",
-   "options": [
-    "the Spiral model here now",
-    "none of the above at all",
-    "the Waterfall model here",
-    "the Prototyping model here"
-   ],
-   "options_ar": [
-    "النموذج الحلزوني هنا",
-    "لا شيء مما سبق هنا",
-    "نموذج الشلال هنا الآن",
-    "نموذج النمذجة الأولية"
-   ],
-   "options_en": [
-    "the Spiral model here now",
-    "none of the above at all",
-    "the Waterfall model here",
-    "the Prototyping model here"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "Stable, well understood requirements suit the linear waterfall sequence.",
-   "explanation_ar": "المتطلبات المستقرة المفهومة تناسب تسلسل الشلال الخطي."
-  },
-  {
-   "id": "q2",
-   "concept_id": "ch2_changing_requirements",
-   "bloom_level": "Apply",
-   "question": "If the requirements change frequently, which model should be selected?",
-   "question_ar": "إذا تغيّرت المتطلبات باستمرار، أي نموذج يُختار؟",
-   "options": [
-    "the Iterative enhancement model",
-    "the Prototyping model here",
-    "the Waterfall model here",
-    "the RAD model here now at all"
-   ],
-   "options_ar": [
-    "نموذج التحسين التكراري",
-    "نموذج النمذجة الأولية",
-    "نموذج الشلال هنا الآن",
-    "نموذج RAD السريع هنا"
-   ],
-   "options_en": [
-    "the Iterative enhancement model",
-    "the Prototyping model here",
-    "the Waterfall model here",
-    "the RAD model here now at all"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "A prototype lets the user see the system early, so changing requirements are absorbed.",
-   "explanation_ar": "النموذج الأولي يتيح للمستخدم رؤية النظام مبكراً، فتُستوعب المتطلبات المتغيرة."
-  },
-  {
-   "id": "q3",
-   "concept_id": "ch2_user_participation",
-   "bloom_level": "Apply",
-   "question": "If user participation is available, which model is to be chosen?",
-   "question_ar": "إذا توفرت مشاركة المستخدم، أي نموذج يُختار؟",
-   "options": [
-    "the Iterative enhancement model",
-    "the Spiral model here now at all",
-    "the RAD model here now at all",
-    "the Waterfall model here"
-   ],
-   "options_ar": [
-    "نموذج التحسين التكراري",
-    "النموذج الحلزوني هنا",
-    "نموذج RAD السريع هنا",
-    "نموذج الشلال هنا الآن"
-   ],
-   "options_en": [
-    "the Iterative enhancement model",
-    "the Spiral model here now at all",
-    "the RAD model here now at all",
-    "the Waterfall model here"
-   ],
-   "answer": "C",
-   "correct": 2,
-   "explanation": "RAD is built around workshops with users, so it needs their availability.",
-   "explanation_ar": "نموذج RAD مبني على ورش عمل مع المستخدمين، فهو يحتاج توفرهم."
-  },
-  {
-   "id": "q4",
-   "concept_id": "ch2_limited_participation",
-   "bloom_level": "Apply",
-   "question": "If only limited user participation is available, which model is to be selected?",
-   "question_ar": "إذا كانت مشاركة المستخدم محدودة، أي نموذج يُختار؟",
-   "options": [
-    "the Waterfall model here now",
-    "the Spiral model here now at all",
-    "the Iterative enhancement model",
-    "any of the above here now at all"
-   ],
-   "options_ar": [
-    "نموذج الشلال هنا الآن",
-    "النموذج الحلزوني هنا",
-    "نموذج التحسين التكراري",
-    "أي مما سبق أعلاه هنا"
-   ],
-   "options_en": [
-    "the Waterfall model here now",
-    "the Spiral model here now at all",
-    "the Iterative enhancement model",
-    "any of the above here now at all"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "With little user access, any of the listed models can still be applied.",
-   "explanation_ar": "مع وصول محدود للمستخدم، يمكن تطبيق أي من النماذج أعلاه."
-  },
-  {
-   "id": "q5",
-   "concept_id": "ch2_enhancement",
-   "bloom_level": "Apply",
-   "question": "If the project is an enhancement of an existing system, which model is best suited?",
-   "question_ar": "إذا كان المشروع تحسيناً لنظام قائم، أي نموذج يناسب أكثر؟",
-   "options": [
-    "the Iterative enhancement model",
-    "the Waterfall model here now at all",
-    "the Prototyping model here now",
-    "the Spiral model here at all now"
-   ],
-   "options_ar": [
-    "نموذج التحسين التكراري",
-    "نموذج الشلال هنا الآن",
-    "نموذج النمذجة الأولية",
-    "النموذج الحلزوني هنا"
-   ],
-   "options_en": [
-    "the Iterative enhancement model",
-    "the Waterfall model here now at all",
-    "the Prototyping model here now",
-    "the Spiral model here at all now"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "An existing base is extended in increments, which is exactly iterative enhancement.",
-   "explanation_ar": "الأساس القائم يُوسَّع على دفعات، وهذا هو التحسين التكراري."
-  },
-  {
-   "id": "q6",
-   "concept_id": "ch2_unfamiliar_team",
-   "bloom_level": "Apply",
-   "question": "If the team has never built this kind of system before, which model is safest?",
-   "question_ar": "إذا لم يبنِ الفريق نظاماً كهذا من قبل، أي نموذج هو الأكثر أماناً؟",
-   "options": [
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here",
-    "the RAD model here now at all"
-   ],
-   "options_ar": [
-    "نموذج التحسين التكراري",
-    "نموذج التطوير التطوري",
-    "نموذج الشلال هنا الآن",
-    "نموذج RAD السريع هنا"
-   ],
-   "options_en": [
-    "the Iterative model here",
-    "the Evolutionary model here",
-    "the Waterfall model here",
-    "the RAD model here now at all"
-   ],
-   "answer": "B",
-   "correct": 1,
-   "explanation": "Unfamiliar ground needs a model that learns as it builds, which is the evolutionary one.",
-   "explanation_ar": "الأرض غير المألوفة تحتاج نموذجاً يتعلم وهو يبني، وهو النموذج التطوري."
-  },
-  {
-   "id": "q7",
-   "concept_id": "ch2_small_clear",
-   "bloom_level": "Apply",
-   "question": "Which model suits a small project with stable requirements?",
-   "question_ar": "أي نموذج يناسب مشروعاً صغيراً بمتطلبات مستقرة؟",
-   "options": [
-    "the Spiral model here now",
-    "the Prototyping model",
-    "the Evolutionary model",
-    "the Waterfall model here"
-   ],
-   "options_en": [
-    "the Spiral model here now",
-    "the Prototyping model",
-    "the Evolutionary model",
-    "the Waterfall model here"
-   ],
-   "options_ar": [
-    "النموذج الحلزوني هنا",
-    "نموذج النمذجة الأولية",
-    "النموذج التطوري الآن",
-    "نموذج الشلال هنا أيضاً"
-   ],
-   "answer": "D",
-   "correct": 3,
-   "explanation": "Stable requirements and a small scope fit the straight waterfall sequence.",
-   "explanation_ar": "المتطلبات المستقرة والنطاق الصغير يناسبهما تسلسل الشلال المباشر."
-  },
-  {
-   "id": "q8",
-   "concept_id": "ch2_selection_driver",
-   "bloom_level": "Analyze",
-   "question": "Which pair dominates the choice of a life-cycle model?",
-   "question_ar": "أي زوجين يحكمان اختيار نموذج دورة الحياة؟",
-   "options": [
-    "requirement stability and risk",
-    "team size and office space",
-    "compiler choice and hardware",
-    "document length and font here"
-   ],
-   "options_en": [
-    "requirement stability and risk",
-    "team size and office space",
-    "compiler choice and hardware",
-    "document length and font here"
-   ],
-   "options_ar": [
-    "استقرار المتطلبات والمخاطر",
-    "حجم الفريق ومساحة المكتب",
-    "اختيار المترجم والعتاد",
-    "طول الوثيقة والخط هنا الآن"
-   ],
-   "answer": "A",
-   "correct": 0,
-   "explanation": "Stable requirements and low risk point to waterfall; instability and high risk point elsewhere.",
-   "explanation_ar": "المتطلبات المستقرة والمخاطر المنخفضة تشير للشلال، وعدم الاستقرار والمخاطر العالية لغيرها."
-  }
- ]
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch02_B07_Selecting_A_Model",
+  "topic": "Selecting a Life-Cycle Model",
+  "topic_ar": "اختيار نموذج دورة الحياة",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch2_clear_requirements",
+      "bloom_level": "Apply",
+      "question": "A project has stable, well-defined requirements. Which model fits this condition?",
+      "question_ar": "مشروع متطلباته مستقرة ومحددة جيداً. أي نموذج يلائمه؟",
+      "options": [
+        "Use the classical Waterfall process.",
+        "Use the risk-guided Spiral process.",
+        "Use a prototype-led feedback process.",
+        "Use the rapid modular RAD process."
+      ],
+      "options_en": [
+        "Use the classical Waterfall process.",
+        "Use the risk-guided Spiral process.",
+        "Use a prototype-led feedback process.",
+        "Use the rapid modular RAD process."
+      ],
+      "options_ar": [
+        "استخدم تسلسلاً كلاسيكياً متتابعاً.",
+        "استخدم دورة تطوير موجهة بالمخاطر.",
+        "استخدم عملية تبدأ بنموذج وتغذية راجعة.",
+        "استخدم تطويراً سريعاً قائماً على الوحدات."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Stable and well-understood requirements fit Waterfall's sequential process. The other models are more directly associated with risk-driven cycles, prototype feedback, or rapid modular development.",
+      "explanation_ar": "تلائم المتطلبات المستقرة والمفهومة تسلسل Waterfall. أما النماذج الأخرى فترتبط أكثر بدورات المخاطر أو تغذية النموذج الأولي أو التطوير المعياري السريع."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch2_changing_requirements",
+      "bloom_level": "Apply",
+      "question": "Users need to try a visible mock-up before clarifying unstable interface requirements. Which model directly supports that work?",
+      "question_ar": "يحتاج المستخدمون إلى تجربة نموذج مرئي قبل توضيح متطلبات واجهة غير مستقرة. أي نموذج يدعم ذلك مباشرة؟",
+      "options": [
+        "Use RAD to build modular parts with parallel teams.",
+        "Use Prototyping to test a visible interface mock-up.",
+        "Use Waterfall to follow stable sequential phases.",
+        "Use Build & Fix to modify code after faults."
+      ],
+      "options_en": [
+        "Use RAD to build modular parts with parallel teams.",
+        "Use Prototyping to test a visible interface mock-up.",
+        "Use Waterfall to follow stable sequential phases.",
+        "Use Build & Fix to modify code after faults."
+      ],
+      "options_ar": [
+        "استخدم RAD لبناء أجزاء معيارية بفرق متوازية.",
+        "استخدم النمذجة الأولية لاختبار نموذج متطلبات مرئي.",
+        "استخدم Waterfall لمراحل متتابعة ذات متطلبات مستقرة.",
+        "استخدم البناء والإصلاح لتعديل الشيفرة بعد العيوب."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Prototyping gives users a working mock-up to evaluate and helps clarify vague requirements. The other choices do not make this its defining purpose.",
+      "explanation_ar": "تقدم النمذجة الأولية نموذجاً عاملاً يقيّمه المستخدمون وتساعد على توضيح المتطلبات الغامضة. ولا تجعل الخيارات الأخرى ذلك غرضها المحدد."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch2_user_participation",
+      "bloom_level": "Analyze",
+      "question": "Which pair is marked as involving users throughout all phases?",
+      "question_ar": "أي زوج يُشار إليه بإشراك المستخدمين في جميع المراحل؟",
+      "options": [
+        "They rely on user input only after each release.",
+        "Users participate only during final evaluation.",
+        "Both involve users across all development phases.",
+        "Neither relies on users across all project phases."
+      ],
+      "options_en": [
+        "They rely on user input only after each release.",
+        "Users participate only during final evaluation.",
+        "Both involve users across all development phases.",
+        "Neither relies on users across all project phases."
+      ],
+      "options_ar": [
+        "يقتصر إشراك المستخدم على مراجعة الإصدارات.",
+        "تبدأ مشاركة المستخدم عند التقييم النهائي.",
+        "كلاهما يشرك المستخدمين في مراحل التطوير.",
+        "لا يشرك أي منهما المستخدم طوال المراحل."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The user-participation matrix marks Prototyping and RAD as involving users in all phases. The other pairs do not match that row.",
+      "explanation_ar": "تُظهر مصفوفة مشاركة المستخدمين أن النمذجة الأولية وRAD يشركان المستخدمين في جميع المراحل. ولا تطابق الأزواج الأخرى هذا الصف."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch2_limited_participation",
+      "bloom_level": "Analyze",
+      "question": "Which set is marked as compatible with limited user participation?",
+      "question_ar": "أي مجموعة تُعد متوافقة مع مشاركة محدودة للمستخدم؟",
+      "options": [
+        "Prototyping, RAD, Waterfall, Build & Fix models.",
+        "RAD, Prototyping, Spiral, Build & Fix models.",
+        "Waterfall, RAD, Prototype, Evolutionary models.",
+        "Waterfall, Iterative, Evolutionary, Spiral models."
+      ],
+      "options_en": [
+        "Prototyping, RAD, Waterfall, Build & Fix models.",
+        "RAD, Prototyping, Spiral, Build & Fix models.",
+        "Waterfall, RAD, Prototype, Evolutionary models.",
+        "Waterfall, Iterative, Evolutionary, Spiral models."
+      ],
+      "options_ar": [
+        "النمذجة الأولية وRAD وWaterfall والبناء والإصلاح.",
+        "RAD والنمذجة الأولية وSpiral والبناء والإصلاح.",
+        "Waterfall وRAD والنمذجة الأولية والتطور.",
+        "Waterfall والتحسين التكراري والتطور وSpiral."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The selection matrix marks Waterfall, Iterative Enhancement, Evolutionary Development, and Spiral as compatible with limited participation. RAD and Prototyping instead require active user involvement.",
+      "explanation_ar": "تُظهر مصفوفة الاختيار توافق الشلال والتحسين التكراري والتطوير التطوري وSpiral مع المشاركة المحدودة. أما RAD والنمذجة الأولية فيتطلبان مشاركة نشطة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch2_enhancement",
+      "bloom_level": "Apply",
+      "question": "A working core product is extended with added modules after each customer review. Which model matches this pattern?",
+      "question_ar": "يُوسّع منتج أساسي عامل بإضافة وحدات بعد كل مراجعة للعميل. أي نموذج يطابق هذا النمط؟",
+      "options": [
+        "Use Iterative Enhancement to add successive increments.",
+        "Use Prototyping to refine requirements with users.",
+        "Use Waterfall to deliver after sequential phases.",
+        "Use Spiral to guide each cycle through risk analysis."
+      ],
+      "options_en": [
+        "Use Iterative Enhancement to add successive increments.",
+        "Use Prototyping to refine requirements with users.",
+        "Use Waterfall to deliver after sequential phases.",
+        "Use Spiral to guide each cycle through risk analysis."
+      ],
+      "options_ar": [
+        "استخدم التحسين التكراري لإضافة دفعات متتابعة.",
+        "استخدم النمذجة الأولية لتوضيح المتطلبات مع المستخدمين.",
+        "استخدم Waterfall للتسليم بعد مراحل متتابعة.",
+        "استخدم Spiral لتوجيه كل دورة بتحليل المخاطر."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Iterative Enhancement begins with a core product and uses customer evaluation to plan later increments. A throw-away prototype is used to clarify needs rather than extend the delivered product.",
+      "explanation_ar": "يبدأ التحسين التكراري بمنتج أساسي ويستخدم تقييم العميل لتخطيط الدفعات اللاحقة. أما النموذج الأولي المُهمَل فيوضح الحاجات ولا يوسّع المنتج المسلّم."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch2_unfamiliar_team",
+      "bloom_level": "Apply",
+      "question": "The team has little experience with similar projects and with its tools. Which model is the only one supported by both matrix conditions?",
+      "question_ar": "يمتلك الفريق خبرة قليلة في المشاريع المشابهة وفي أدواته. أي نموذج تدعمه حالتا المصفوفة معاً؟",
+      "options": [
+        "Evolutionary Development grows as needs become clear.",
+        "Spiral fits both limited project and tool experience.",
+        "Prototyping fits limited experience with similar projects.",
+        "Waterfall fits stable and well-defined requirements."
+      ],
+      "options_en": [
+        "Evolutionary Development grows as needs become clear.",
+        "Spiral fits both limited project and tool experience.",
+        "Prototyping fits limited experience with similar projects.",
+        "Waterfall fits stable and well-defined requirements."
+      ],
+      "options_ar": [
+        "يتطور النظام تدريجياً مع وضوح الحاجات.",
+        "يناسب Spiral محدودية خبرة المشروع والأدوات معاً.",
+        "تلائم النمذجة الأولية قلة خبرة المشاريع المشابهة.",
+        "يناسب Waterfall المتطلبات المستقرة والمحددة."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The development-team matrix marks Spiral for both limited similar-project experience and limited tool experience. Prototyping matches the first condition but not the second.",
+      "explanation_ar": "تُظهر مصفوفة فريق التطوير توافق Spiral مع قلة خبرة المشاريع المشابهة وقلة خبرة الأدوات معاً. وتناسب النمذجة الأولية الشرط الأول لا الثاني."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch2_selection_driver",
+      "bloom_level": "Understand",
+      "question": "Which dimensions are considered when selecting a life-cycle model?",
+      "question_ar": "ما الأبعاد التي تؤخذ بالحسبان عند اختيار نموذج دورة الحياة؟",
+      "options": [
+        "Team salaries, hardware age, and document length.",
+        "Testing tools, meeting frequency, and code style.",
+        "Requirements, team, users, and project type with risk.",
+        "Budget, programming language, office location, and size."
+      ],
+      "options_en": [
+        "Team salaries, hardware age, and document length.",
+        "Testing tools, meeting frequency, and code style.",
+        "Requirements, team, users, and project type with risk.",
+        "Budget, programming language, office location, and size."
+      ],
+      "options_ar": [
+        "المتطلبات والفريق والمستخدمون والمشروع ومخاطره.",
+        "الميزانية ولغة البرمجة وموقع المكتب وحجمه.",
+        "رواتب أفراد الفريق وعمر العتاد وطول الوثائق.",
+        "أدوات الاختبار وتواتر الاجتماعات وأسلوب الشيفرة."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Model selection considers the requirements, development team, users, and project type with its associated risk. The other lists are not the four selection dimensions.",
+      "explanation_ar": "يراعي اختيار النموذج المتطلبات وفريق التطوير والمستخدمين ونوع المشروع والمخاطر المرتبطة به. ولا تمثل القوائم الأخرى أبعاد الاختيار الأربعة."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch2_select_reliability",
+      "bloom_level": "Analyze",
+      "question": "Which model set is marked for projects with high reliability requirements?",
+      "question_ar": "أي مجموعة نماذج تُحدد للمشاريع ذات متطلبات الاعتمادية العالية؟",
+      "options": [
+        "High reliability favors Waterfall, Prototyping, and RAD for stable scope.",
+        "High reliability favors Waterfall, Build & Fix, and RAD for short projects.",
+        "High reliability favors Prototyping, Build & Fix, and Waterfall models.",
+        "High reliability favors Iterative Enhancement, Evolutionary, and Spiral."
+      ],
+      "options_en": [
+        "High reliability favors Waterfall, Prototyping, and RAD for stable scope.",
+        "High reliability favors Waterfall, Build & Fix, and RAD for short projects.",
+        "High reliability favors Prototyping, Build & Fix, and Waterfall models.",
+        "High reliability favors Iterative Enhancement, Evolutionary, and Spiral."
+      ],
+      "options_ar": [
+        "تتطلب الاعتمادية العالية Waterfall والنمذجة الأولية وRAD للنطاق المستقر.",
+        "تتطلب الاعتمادية العالية Waterfall والبناء والإصلاح وRAD للمشاريع القصيرة.",
+        "تتطلب الاعتمادية العالية النمذجة الأولية والبناء والإصلاح وWaterfall.",
+        "تتطلب الاعتمادية العالية التحسين التكراري والتطوير التطوري وSpiral."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The project-type and risk matrix marks Iterative Enhancement, Evolutionary Development, and Spiral for high-reliability requirements.",
+      "explanation_ar": "تحدد مصفوفة نوع المشروع ومخاطره التحسين التكراري والتطوير التطوري وSpiral لمتطلبات الاعتمادية العالية."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch2_select_resource_scarcity",
+      "bloom_level": "Analyze",
+      "question": "Which pair is marked when project resources are scarce?",
+      "question_ar": "أي زوج يُحدد عندما تكون موارد المشروع شحيحة؟",
+      "options": [
+        "Prototype and Spiral suit scarce resources.",
+        "Waterfall and RAD need stable project conditions.",
+        "Iterative and Evolutionary need larger teams.",
+        "Waterfall and Iterative suit stable funding."
+      ],
+      "options_en": [
+        "Prototype and Spiral suit scarce resources.",
+        "Waterfall and RAD need stable project conditions.",
+        "Iterative and Evolutionary need larger teams.",
+        "Waterfall and Iterative suit stable funding."
+      ],
+      "options_ar": [
+        "تلائم النمذجة الأولية وSpiral شح الموارد.",
+        "يحتاج Waterfall وRAD إلى ظروف مشروع مستقرة.",
+        "يحتاج التحسين التكراري والتطور فرقاً أكبر.",
+        "يلائم Waterfall والتحسين التكراري التمويل المستقر."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The project-risk matrix marks Prototyping and Spiral when time, money, or people are scarce. The remaining choices are not the marked pair.",
+      "explanation_ar": "تحدد مصفوفة نوع المشروع والمخاطر النمذجة الأولية وSpiral عند شح الوقت أو المال أو الأفراد. ولا تمثل الخيارات الأخرى الزوج المحدد."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch2_select_funding_stable",
+      "bloom_level": "Analyze",
+      "question": "Which models are marked for a project with stable funding?",
+      "question_ar": "ما النماذج المحددة لمشروع تمويله مستقر؟",
+      "options": [
+        "Stable funding fits RAD, Spiral, Evolutionary.",
+        "Stable funding fits Waterfall, Prototype, and RAD.",
+        "Stable funding fits Spiral, Iterative, Evolutionary.",
+        "Stable funding fits Waterfall, Spiral, Iterative."
+      ],
+      "options_en": [
+        "Stable funding fits RAD, Spiral, Evolutionary.",
+        "Stable funding fits Waterfall, Prototype, and RAD.",
+        "Stable funding fits Spiral, Iterative, Evolutionary.",
+        "Stable funding fits Waterfall, Spiral, Iterative."
+      ],
+      "options_ar": [
+        "تمويل مستقر: Waterfall وSpiral والتحسين.",
+        "تمويل مستقر: RAD وSpiral والتطور معاً.",
+        "تمويل مستقر: Waterfall والنمذجة الأولية وRAD.",
+        "تمويل مستقر: Spiral والتحسين والتطور."
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The project-type matrix marks Waterfall, Prototyping, and RAD for stable funding. The other model sets do not match that row.",
+      "explanation_ar": "تحدد مصفوفة نوع المشروع الشلال والنمذجة الأولية وRAD للتمويل المستقر. ولا تطابق مجموعات النماذج الأخرى هذا الصف."
+    }
+  ]
 }

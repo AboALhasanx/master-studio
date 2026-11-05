@@ -5,8 +5,8 @@ active_subject: "04_Advanced_Software_Eng"
 active_subject_code: "CS603"
 immediate_todo: "Hold the 56-page predictive Chapter 9 Word seminar draft pending Dr. Ali Fahim's official vocabulary/lecture notes; reconcile the nine-cluster coverage against the official list when received. Chapter 8 remains held as a 154-page predictive draft pending official vocabulary/notes. | Soft Computing: Chapter 4 (27 pp) and Chapter 5 Parts 1-2 + Symbols (21/18/4 pp) REBUILT to the student's Iraqi prep-book reference style — 59 numbered inline exercises with worked answers, zero lecturer-meta voice, linter pristine, arithmetic audited. Chapter 5 Parts 3-4 (defuzzification I-II, fuzzy logic controller I-II) are now WRITTEN and print-polished: 16 pp + 15 pp, PRISTINE, 7 professor exercises solved, 8 new 760 px diagrams. Chapter 5 is complete as four parts + the symbol register; only the master map (source p59) and the unified Ch4+Ch5 formula index remain."
 next_session_focus: "Chapter 8 Software Testing is a prepared 154-page Word draft through item29 and is on hold until the official instructor vocabulary arrives; see CH08_SEMINAR_DRAFT_STATUS.md. Chapter 9 source audit and 56-page predictive Word draft status are recorded in 03_Study_Notes/Ch09_Software_Maintenance/CH09_SEMINAR_SOURCE_PLAN.md. Expanded the 39-page version with source-distinct content from Sommerville, Pressman, Mall, and Leach; retained course scan and Agarwal content, and added visually checked Leach and Sommerville source figures. The latest Word export is 56 pages including cover and contents; all page images were reviewed in contact sheets and figure/table pages were inspected more closely. QA intermediates are in Ch09_QA_expanded_v1. Six Chapter 9 study packs/42-page print PDF remain separate from the seminar. Official instructor vocabulary remains pending; reconcile the draft when it arrives. | SOFT COMPUTING: Ch04 and Ch05 Parts 1-4 + Symbols are delivered (P1 21 pp, P2 18 pp, P3 16 pp, P4 15 pp, Symbols 4 pp). Next: the Chapter 5 master map from source p59 and one consolidated Ch04+Ch05 formula index, then the whole set goes to the student for printing. Engine state: pdf_exporter carries the arrow-in-attribute fix (stray '/>'), keep_small_tables_together(), and placeholder-aware direction tagging."
-last_updated: "2026-11-02"
-status: "QUIZ_BANK_STATE_SINGLE_GENERATED_SOURCE_DRIFT_GATE_ADDED_DOC_CONTRADICTION_RESOLVED_2026-11-04; SC_CH05_COMPLETE_P1_4_PLUS_SYMBOLS_81PP_PRISTINE_2026-11-02; PDF_EXPORTER_ARROW_IN_ATTR_FIX_AND_SMALL_TABLE_KEEP_2026-11-02; ENGLISH_QSKILLS_IRAQI_MLAZMA_U1_U3_29_FILES_3_PDFS_114PP_2026-10-29; SC_CH04_CH05_REBUILT_REFERENCE_STYLE_59_INLINE_EXERCISES_ZERO_META_VOICE_70PP_TOTAL_2026-10-28; PDF_EXPORTER_LIST_MARKER_CLIP_FIXED_LAW10_SOP_2026-10-28; CYBER_CH03_QUIZ_REBUILT_103Q_9_BANKS_CROSSED_MATERIAL_DELETED_CONTENT_V36_SHELL_1_7_8_2026-10-26; CYBER_CH01_02_QUIZ_NO_HANDOUT_REFERENCES_CONTENT_V34_2026-10-26; CYBER_CH02_QUIZ_REWRITTEN_92Q_8_BANKS_CONTENT_V32_2026-10-26; CYBER_CH01_QUIZ_REWRITTEN_71Q_6_BANKS_CONTENT_V31_SHELL_1_7_5_2026-10-26; ASE_CH09_WORD_SEMINAR_9CLUSTER_56PP_CROSS_SOURCE_EXPANDED_VISUAL_QA_2026-10-24; ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; ASE_CH08_WORD_SEMINAR_01-29_154PP_DRAFT_HELD_PENDING_OFFICIAL_VOCAB_2026-10-24; ASE_CH08_PACKS_99PP_OPEN_PENDING_DOCTOR_VOCAB_NOTES_AND_T4_T7_FIXES_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23"
+last_updated: "2026-11-05"
+status: "ASE_CH02_BANKS_PUBLISHED_SOURCE_AUDITED_2026-11-05; QUIZ_BANK_STATE_SINGLE_GENERATED_SOURCE_DRIFT_GATE_ADDED_DOC_CONTRADICTION_RESOLVED_2026-11-04; SC_CH05_COMPLETE_P1_4_PLUS_SYMBOLS_81PP_PRISTINE_2026-11-02; PDF_EXPORTER_ARROW_IN_ATTR_FIX_AND_SMALL_TABLE_KEEP_2026-11-02; ENGLISH_QSKILLS_IRAQI_MLAZMA_U1_U3_29_FILES_3_PDFS_114PP_2026-10-29; SC_CH04_CH05_REBUILT_REFERENCE_STYLE_59_INLINE_EXERCISES_ZERO_META_VOICE_70PP_TOTAL_2026-10-28; PDF_EXPORTER_LIST_MARKER_CLIP_FIXED_LAW10_SOP_2026-10-28; CYBER_CH03_QUIZ_REBUILT_103Q_9_BANKS_CROSSED_MATERIAL_DELETED_CONTENT_V36_SHELL_1_7_8_2026-10-26; CYBER_CH01_02_QUIZ_NO_HANDOUT_REFERENCES_CONTENT_V34_2026-10-26; CYBER_CH02_QUIZ_REWRITTEN_92Q_8_BANKS_CONTENT_V32_2026-10-26; CYBER_CH01_QUIZ_REWRITTEN_71Q_6_BANKS_CONTENT_V31_SHELL_1_7_5_2026-10-26; ASE_CH09_WORD_SEMINAR_9CLUSTER_56PP_CROSS_SOURCE_EXPANDED_VISUAL_QA_2026-10-24; ASE_CH09_PRINT_REMEDIATION_DONE_6_PACKS_42PP_V9_PREDICTIVE_2026-10-23; ASE_CH08_WORD_SEMINAR_01-29_154PP_DRAFT_HELD_PENDING_OFFICIAL_VOCAB_2026-10-24; ASE_CH08_PACKS_99PP_OPEN_PENDING_DOCTOR_VOCAB_NOTES_AND_T4_T7_FIXES_2026-10-23; CYBER_CH05_QUIZ_LIVE_17_BANKS_346Q_CONTENT_V28_2026-10-23; MCQUIZ_APP_1_4_3_TOP_BAR_SAVED_IN_SOUND_TO_MENU_TABLET_VERIFIED_2026-10-23"
 ---
 
 <!-- The `status` field above is an APPEND-ONLY chronological ledger of milestones,
@@ -127,16 +127,3 @@ status: "QUIZ_BANK_STATE_SINGLE_GENERATED_SOURCE_DRIFT_GATE_ADDED_DOC_CONTRADICT
 
 ## 4. College Buddy Pointer
 - **Interactive Ledger:** `00_STUDIO_HUB/COLLEGE_BUDDY.md` (Tracks upcoming professor dates, oral defense rehearsals, and post-event debrief check-ins).
-
-
-
-
-
-
-
-
-
-
-
-
-
