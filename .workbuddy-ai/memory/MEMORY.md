@@ -72,3 +72,26 @@ passages, writing, speaking, verbatim memorization. So: never turn listening/rea
 speaking material into question banks; retrieval/quiz work filters to the exam scope
 (`english_vector_memory.py search ... --exam`, 62 of 183 chunks). The course material still
 covers all four skills — the exam does not.
+
+## N · Quiz bank shape (2026-11-05) — the numbers are not sacred
+**One bank per instructor vocabulary item; 8–16 questions; never below 8.** The count must be
+whatever the material honestly supports — no fixed target, no "12 is the standard". The old
+"one bank per topic" split is superseded wherever the instructor's own scope ledger exists.
+- **Scope source of truth = the vector index**, `00_STUDIO_HUB/indexes/<subject>/…sqlite3`,
+  `chunks` table (`chapter`, `source_title`, `content`). The *vocabulary* chunks are the
+  instructor's scope ledger; diff those terms against the banks' text and every uncovered term
+  is a bank to write. The index is a **scope-gap checker, not a question source**.
+  ASE: `ase_knowledge_vectors.sqlite3`, 4140 chunks; Ch03 299, Ch06/07/08 ledgers readable.
+- **Official MCQs are the spine** (T1 pack per chapter); the T2/T3 prose packs fill the gaps.
+- **Numeric and formula options are rewritten as words** — digits and LaTeX are banned in options.
+- **The builder assumes the CORRECT option is FIRST** and rotates it into place. Writing options
+  in textbook order ships **wrong answers while every gate passes** (gates check length, never
+  truth). Always: explicit `CORRECT` map + `put_correct_first()` before `L.build(...)`, then
+  spot-check the built JSON against the printed key.
+- **Never run the option rebalancer bank-wide** — it broke 31 of 49 DM banks in one run.
+  Restrict it to the new questions; and pad the *correct* option when it is the shortest,
+  otherwise the band never closes.
+- **META (no self-reference to the handout) false-positives**: `the module`, `the source`,
+  `the chapter`, `the handout`, Arabic `المصدر`, `المذكورة`. Reword, do not disable.
+- Subject floor status 2026-11-05: Cyber 711 · English 200 · DM 531 · **ASE 407 (47 banks)** ·
+  SC 158 — all banks ≥ 8. AI 4×5 left below the floor on purpose.
