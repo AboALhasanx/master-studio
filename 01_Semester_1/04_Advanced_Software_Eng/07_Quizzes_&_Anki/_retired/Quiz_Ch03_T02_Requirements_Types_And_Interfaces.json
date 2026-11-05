@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch03_T02_Requirements_Types_And_Interfaces",
+  "topic": "Requirements Types and Interface Specifications",
+  "topic_ar": "أنواع المتطلبات ومواصفات الواجهات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "types_functional_service",
+      "bloom_level": "Understand",
+      "question": "A requirement says the system shall calculate a student's total mark. What type is it?",
+      "question_ar": "ينص متطلب على أن يحسب النظام الدرجة الكلية للطالب. ما نوعه؟",
+      "options": [
+        "A functional requirement describing a service",
+        "A non-functional constraint on performance",
+        "A user-system detail classification",
+        "A data-representation interface"
+      ],
+      "options_en": [
+        "A functional requirement describing a service",
+        "A non-functional constraint on performance",
+        "A user-system detail classification",
+        "A data-representation interface"
+      ],
+      "options_ar": [
+        "متطلب وظيفي يصف خدمة",
+        "قيد غير وظيفي على الأداء",
+        "تصنيف لتفصيل متطلبات المستخدم والنظام",
+        "واجهة لتمثيل البيانات"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Calculating a total is behavior the system must provide, so it is functional. Performance limits and interface formats describe different concerns.",
+      "explanation_ar": "حساب المجموع سلوك يجب أن يقدمه النظام، لذلك هو متطلب وظيفي. أما حدود الأداء وصيغ الواجهات فتعالج جوانب أخرى."
+    },
+    {
+      "id": "q2",
+      "concept_id": "types_nonfunctional_constraint",
+      "bloom_level": "Apply",
+      "question": "Which statement is a non-functional requirement?",
+      "question_ar": "أي عبارة تمثل متطلباً غير وظيفي؟",
+      "options": [
+        "The system shall issue a receipt",
+        "The search shall return results within two seconds",
+        "The clerk shall register a new student",
+        "The student shall view a course list"
+      ],
+      "options_en": [
+        "The system shall issue a receipt",
+        "The search shall return results within two seconds",
+        "The clerk shall register a new student",
+        "The student shall view a course list"
+      ],
+      "options_ar": [
+        "يصدر النظام إيصالاً",
+        "يعيد البحث النتائج خلال ثانيتين",
+        "يسجل الموظف طالباً جديداً",
+        "يعرض الطالب قائمة المقررات"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A response-time limit constrains a service; the other statements specify functions the system performs.",
+      "explanation_ar": "يقيد حد زمن الاستجابة خدمةً يقدمها النظام؛ أما العبارات الأخرى فتحدد وظائف يؤديها."
+    },
+    {
+      "id": "q3",
+      "concept_id": "types_user_vs_system_axis",
+      "bloom_level": "Analyze",
+      "question": "What distinguishes user requirements from system requirements?",
+      "question_ar": "ما الذي يميز متطلبات المستخدم عن متطلبات النظام؟",
+      "options": [
+        "Whether they name an API or data format",
+        "Whether they are known or unexpected",
+        "Their level of detail and intended audience",
+        "Whether they describe functions or constraints"
+      ],
+      "options_en": [
+        "Whether they name an API or data format",
+        "Whether they are known or unexpected",
+        "Their level of detail and intended audience",
+        "Whether they describe functions or constraints"
+      ],
+      "options_ar": [
+        "كونها تسمي API أو صيغة بيانات",
+        "كونها معروفة أو غير متوقعة",
+        "مستوى التفصيل والجمهور المقصود",
+        "كونها تصف وظائف أو قيوداً"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "User requirements are high-level for customers and users; system requirements provide more detailed technical specification. This is a separate axis from functional versus non-functional.",
+      "explanation_ar": "تكون متطلبات المستخدم عالية المستوى للعملاء والمستخدمين، بينما تقدم متطلبات النظام مواصفة تقنية أكثر تفصيلاً. وهذا محور مستقل عن الوظيفية وغير الوظيفية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "types_axes_not_flat",
+      "bloom_level": "Analyze",
+      "question": "Why should functional and user requirements not be treated as competing categories?",
+      "question_ar": "لماذا لا ينبغي التعامل مع المتطلبات الوظيفية ومتطلبات المستخدم كفئتين متقابلتين؟",
+      "options": [
+        "One category applies only to hardware",
+        "They name the same interface types",
+        "One category replaces the SRS",
+        "They classify requirements along different dimensions"
+      ],
+      "options_en": [
+        "One category applies only to hardware",
+        "They name the same interface types",
+        "One category replaces the SRS",
+        "They classify requirements along different dimensions"
+      ],
+      "options_ar": [
+        "لأن إحدى الفئتين تخص الأجهزة فقط",
+        "لأنهما تسميان أنواع الواجهات نفسها",
+        "لأن إحدى الفئتين تستبدل مواصفة SRS",
+        "لأنهما تصنفان المتطلبات وفق بُعدين مختلفين"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Functional versus non-functional classifies requirement nature; user versus system classifies abstraction and audience. A requirement can belong to one category on each axis.",
+      "explanation_ar": "يصنف الوظيفي وغير الوظيفي طبيعة المتطلب، بينما يصنف المستخدم والنظام مستوى التجريد والجمهور. ويمكن للمتطلب أن ينتمي إلى فئة على كل محور."
+    },
+    {
+      "id": "q5",
+      "concept_id": "interface_three_types",
+      "bloom_level": "Remember",
+      "question": "Which set names the three interface-specification types in the course material?",
+      "question_ar": "أي مجموعة تسمي أنواع مواصفات الواجهات الثلاثة في مادة المقرر؟",
+      "options": [
+        "Procedural interfaces, data structures, and data representation",
+        "User requirements, system requirements, and feasibility",
+        "Entities, processes, and data stores",
+        "Correctness, completeness, and traceability"
+      ],
+      "options_en": [
+        "Procedural interfaces, data structures, and data representation",
+        "User requirements, system requirements, and feasibility",
+        "Entities, processes, and data stores",
+        "Correctness, completeness, and traceability"
+      ],
+      "options_ar": [
+        "الواجهات الإجرائية وهياكل البيانات وتمثيل البيانات",
+        "متطلبات المستخدم ومتطلبات النظام والجدوى",
+        "الكيانات والعمليات ومخازن البيانات",
+        "الصحة والاكتمال وقابلية التتبع"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The three types are procedural interfaces, shared data structures, and representation of data. The other sets describe requirement levels, DFD/ER concepts, or SRS qualities.",
+      "explanation_ar": "الأنواع الثلاثة هي الواجهات الإجرائية وهياكل البيانات المشتركة وتمثيل البيانات. أما المجموعات الأخرى فتصف مستويات المتطلبات أو مفاهيم النمذجة أو خصائص SRS."
+    },
+    {
+      "id": "q6",
+      "concept_id": "interface_procedure_api",
+      "bloom_level": "Apply",
+      "question": "A system must specify a function's parameters and return value for another program. Which interface type is involved?",
+      "question_ar": "يجب تحديد معاملات دالة وقيمتها المعادة لبرنامج آخر. ما نوع الواجهة المعني؟",
+      "options": [
+        "A user-level requirement statement",
+        "A procedural interface such as an API",
+        "A data representation format",
+        "A shared in-memory data structure"
+      ],
+      "options_en": [
+        "A user-level requirement statement",
+        "A procedural interface such as an API",
+        "A data representation format",
+        "A shared in-memory data structure"
+      ],
+      "options_ar": [
+        "عبارة متطلب على مستوى المستخدم",
+        "واجهة إجرائية مثل API",
+        "صيغة لتمثيل البيانات",
+        "هيكل بيانات مشترك في الذاكرة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Function signatures, parameters, return values, and exceptions belong to procedural interfaces. Data formats and structures specify different exchange details.",
+      "explanation_ar": "تنتمي تواقيع الدوال ومعاملاتها وقيمها المعادة والاستثناءات إلى الواجهات الإجرائية. أما صيغ البيانات وهياكلها فتحدد تفاصيل مختلفة للتبادل."
+    },
+    {
+      "id": "q7",
+      "concept_id": "interface_representation",
+      "bloom_level": "Apply",
+      "question": "Two systems exchange dates using an agreed network encoding. Which interface type specifies that encoding?",
+      "question_ar": "يتبادل نظامان التواريخ بترميز شبكي متفق عليه. أي نوع واجهة يحدد هذا الترميز؟",
+      "options": [
+        "A data dictionary repetition rule",
+        "A user requirement level",
+        "Representation of data",
+        "A procedural interface"
+      ],
+      "options_en": [
+        "A data dictionary repetition rule",
+        "A user requirement level",
+        "Representation of data",
+        "A procedural interface"
+      ],
+      "options_ar": [
+        "قاعدة تكرار في قاموس البيانات",
+        "مستوى متطلبات المستخدم",
+        "تمثيل البيانات",
+        "واجهة إجرائية"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Representation of data specifies physical encodings and communication formats; it is distinct from a function signature or shared structure.",
+      "explanation_ar": "يحدد تمثيل البيانات الترميزات المادية وصيغ الاتصال، وهو مختلف عن توقيع الدالة أو الهيكل المشترك."
+    },
+    {
+      "id": "q8",
+      "concept_id": "interface_structure",
+      "bloom_level": "Understand",
+      "question": "Modules share a record layout in memory. Which interface specification describes that layout?",
+      "question_ar": "تتشارك الوحدات بنية سجل في الذاكرة. أي مواصفة واجهة تصف هذه البنية؟",
+      "options": [
+        "A procedural signature",
+        "A network representation format",
+        "A feasibility checklist",
+        "A data-structure specification"
+      ],
+      "options_en": [
+        "A procedural signature",
+        "A network representation format",
+        "A feasibility checklist",
+        "A data-structure specification"
+      ],
+      "options_ar": [
+        "توقيع إجرائي",
+        "صيغة تمثيل شبكي",
+        "قائمة فحص للجدوى",
+        "مواصفة هيكل بيانات"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A shared in-memory record layout is a data structure. A signature specifies a callable operation, while an encoding specifies how data is represented in communication.",
+      "explanation_ar": "تعد بنية السجل المشتركة في الذاكرة هيكل بيانات. أما التوقيع فيحدد عملية قابلة للاستدعاء، ويحدد الترميز كيفية تمثيل البيانات أثناء الاتصال."
+    }
+  ]
+}

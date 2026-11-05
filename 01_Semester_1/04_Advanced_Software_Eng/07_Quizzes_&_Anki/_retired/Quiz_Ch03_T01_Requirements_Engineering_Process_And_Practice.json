@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch03_T01_Requirements_Engineering_Process_And_Practice",
+  "topic": "Requirements Engineering Process and Practice",
+  "topic_ar": "عملية هندسة المتطلبات وممارستها",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "re_process_four_activities",
+      "bloom_level": "Remember",
+      "question": "Which set gives the four core requirements-engineering activities?",
+      "question_ar": "أي مجموعة تمثل الأنشطة الأساسية الأربع لهندسة المتطلبات؟",
+      "options": [
+        "Elicitation, analysis, documentation, and review",
+        "Planning, design, coding, and deployment",
+        "Feasibility, architecture, testing, and maintenance",
+        "Interview, prototype, implementation, and release"
+      ],
+      "options_en": [
+        "Elicitation, analysis, documentation, and review",
+        "Planning, design, coding, and deployment",
+        "Feasibility, architecture, testing, and maintenance",
+        "Interview, prototype, implementation, and release"
+      ],
+      "options_ar": [
+        "استخلاص المتطلبات وتحليلها وتوثيقها ومراجعتها",
+        "التخطيط والتصميم والترميز والنشر",
+        "الجدوى والمعمارية والاختبار والصيانة",
+        "المقابلة والنموذج الأولي والتنفيذ والإصدار"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The course process moves from elicitation through analysis and SRS documentation to review. The other sets mix lifecycle or elicitation activities with the core sequence.",
+      "explanation_ar": "تبدأ العملية باستخلاص المتطلبات ثم تحليلها وتوثيقها في SRS ومراجعتها. أما المجموعات الأخرى فتخلطها بمراحل دورة الحياة أو بأساليب الاستخلاص."
+    },
+    {
+      "id": "q2",
+      "concept_id": "re_problem_statement_to_srs",
+      "bloom_level": "Understand",
+      "question": "What are the stated input and output of the four-activity requirements process?",
+      "question_ar": "ما المدخل والمخرج المحددان لعملية المتطلبات ذات الأنشطة الأربع؟",
+      "options": [
+        "A prototype enters; a database schema results",
+        "A problem statement enters; an SRS results",
+        "An SRS enters; source code results",
+        "A test plan enters; a release schedule results"
+      ],
+      "options_en": [
+        "A prototype enters; a database schema results",
+        "A problem statement enters; an SRS results",
+        "An SRS enters; source code results",
+        "A test plan enters; a release schedule results"
+      ],
+      "options_ar": [
+        "يدخل النموذج الأولي وينتج مخطط قاعدة البيانات",
+        "يدخل بيان المشكلة وتنتج مواصفة SRS",
+        "تدخل مواصفة SRS وينتج الشيفرة المصدرية",
+        "تدخل خطة الاختبار وينتج جدول الإصدار"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The requirements process takes the problem statement as input and produces the SRS. Code, test plans, and database schemas belong to later or different work.",
+      "explanation_ar": "تأخذ عملية المتطلبات بيان المشكلة مدخلاً وتنتج مواصفة SRS. أما الشيفرة وخطة الاختبار ومخطط قاعدة البيانات فتخص أعمالاً لاحقة أو مختلفة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "re_review_continuous",
+      "bloom_level": "Understand",
+      "question": "How should the four requirements activities be treated when needs change?",
+      "question_ar": "كيف ينبغي التعامل مع أنشطة المتطلبات الأربع عندما تتغير الاحتياجات؟",
+      "options": [
+        "Replace review with software testing",
+        "Restart the entire software lifecycle",
+        "Revisit related activities and update the SRS",
+        "Keep each activity fixed after its first pass"
+      ],
+      "options_en": [
+        "Replace review with software testing",
+        "Restart the entire software lifecycle",
+        "Revisit related activities and update the SRS",
+        "Keep each activity fixed after its first pass"
+      ],
+      "options_ar": [
+        "استبدال المراجعة باختبار البرمجيات",
+        "إعادة دورة حياة البرمجيات كاملة",
+        "إعادة الأنشطة المرتبطة وتحديث مواصفة SRS",
+        "تثبيت كل نشاط بعد تنفيذه أول مرة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The activities are coupled and may be revisited as requirements change; they are not a rigid one-way sequence. Testing the code does not replace reviewing requirements.",
+      "explanation_ar": "الأنشطة مترابطة ويمكن الرجوع إليها عند تغير المتطلبات؛ فهي ليست تسلسلاً جامداً باتجاه واحد. ولا يحل اختبار الشيفرة محل مراجعة المتطلبات."
+    },
+    {
+      "id": "q4",
+      "concept_id": "re_feasibility_pre_gateway",
+      "bloom_level": "Analyze",
+      "question": "Where does the feasibility study sit relative to the four core activities?",
+      "question_ar": "أين تقع دراسة الجدوى بالنسبة إلى الأنشطة الأساسية الأربع؟",
+      "options": [
+        "Between documentation and review as a fifth core activity",
+        "After deployment as a maintenance review",
+        "Inside analysis as a DFD balancing rule",
+        "Before them as an early viability assessment"
+      ],
+      "options_en": [
+        "Between documentation and review as a fifth core activity",
+        "After deployment as a maintenance review",
+        "Inside analysis as a DFD balancing rule",
+        "Before them as an early viability assessment"
+      ],
+      "options_ar": [
+        "بين التوثيق والمراجعة بوصفها نشاطاً أساسياً خامساً",
+        "بعد النشر بوصفها مراجعة للصيانة",
+        "داخل التحليل بوصفها قاعدة لموازنة DFD",
+        "قبلها بوصفها تقييماً مبكراً للجدوى"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Feasibility is an early project gateway before the four core requirements activities, not a fifth activity inside their sequence.",
+      "explanation_ar": "الجدوى بوابة مبكرة للمشروع تسبق أنشطة المتطلبات الأربع، وليست نشاطاً خامساً داخل تسلسلها."
+    },
+    {
+      "id": "q5",
+      "concept_id": "re_practice_challenges",
+      "bloom_level": "Remember",
+      "question": "Which bundle matches the recurring difficulties in requirements practice?",
+      "question_ar": "أي مجموعة تطابق الصعوبات المتكررة في ممارسة هندسة المتطلبات؟",
+      "options": [
+        "Elicitation difficulty, changing needs, communication barriers, and schedule pressure",
+        "Stable needs, complete agreement, spare time, and no market pressure",
+        "Database scaling, compiler errors, code reuse, and release rollback",
+        "Network outages, hardware failure, encryption, and backup loss"
+      ],
+      "options_en": [
+        "Elicitation difficulty, changing needs, communication barriers, and schedule pressure",
+        "Stable needs, complete agreement, spare time, and no market pressure",
+        "Database scaling, compiler errors, code reuse, and release rollback",
+        "Network outages, hardware failure, encryption, and backup loss"
+      ],
+      "options_ar": [
+        "صعوبة الاستخلاص وتغير الاحتياجات وحواجز التواصل وضغط الجدول",
+        "ثبات الاحتياجات والاتفاق الكامل والوقت الفائض وغياب ضغط السوق",
+        "توسع قاعدة البيانات وأخطاء المترجم وإعادة استخدام الشيفرة والتراجع عن الإصدار",
+        "انقطاع الشبكة وعطل الأجهزة والتشفير وفقدان النسخ الاحتياطية"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The course groups difficult discovery, change, communication, time, market, and resource pressures as requirements-practice challenges. The other bundles describe unrelated technical or idealized conditions.",
+      "explanation_ar": "تجمع مادة المقرر صعوبة الاكتشاف والتغيير والتواصل وضغط الوقت والسوق والموارد ضمن تحديات ممارسة المتطلبات. أما المجموعات الأخرى فتصف مشكلات تقنية مختلفة أو ظروفاً مثالية."
+    },
+    {
+      "id": "q6",
+      "concept_id": "re_communication_scenario",
+      "bloom_level": "Apply",
+      "question": "Users describe the same work in conflicting terms. Which requirements activity addresses the mismatch first?",
+      "question_ar": "وصف المستخدمون العمل نفسه بمصطلحات متعارضة. أي نشاط يعالج الاختلاف أولاً؟",
+      "options": [
+        "Translate each statement into source code",
+        "Analyze the statements and resolve conflicts",
+        "Document both statements as final requirements",
+        "Review the database after deployment"
+      ],
+      "options_en": [
+        "Translate each statement into source code",
+        "Analyze the statements and resolve conflicts",
+        "Document both statements as final requirements",
+        "Review the database after deployment"
+      ],
+      "options_ar": [
+        "تحويل كل إفادة إلى شيفرة مصدرية",
+        "تحليل الإفادات وحل التعارضات",
+        "توثيق الإفادتين كمتطلبين نهائيين",
+        "مراجعة قاعدة البيانات بعد النشر"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Requirements analysis examines elicited statements, exposes contradictions, and supports their resolution before the SRS is baselined.",
+      "explanation_ar": "يفحص تحليل المتطلبات الإفادات المستخلصة ويكشف التعارضات ويدعم حلها قبل اعتماد مواصفة SRS."
+    },
+    {
+      "id": "q7",
+      "concept_id": "re_case_tool_overreliance",
+      "bloom_level": "Understand",
+      "question": "Which concern is identified in the present state of requirements practice?",
+      "question_ar": "أي مصدر قلق مذكور ضمن واقع ممارسة هندسة المتطلبات؟",
+      "options": [
+        "Requirements work is limited to coding",
+        "Stakeholders always know every need",
+        "Teams may rely too heavily on CASE tools",
+        "Teams must avoid every modeling tool"
+      ],
+      "options_en": [
+        "Requirements work is limited to coding",
+        "Stakeholders always know every need",
+        "Teams may rely too heavily on CASE tools",
+        "Teams must avoid every modeling tool"
+      ],
+      "options_ar": [
+        "يقتصر عمل المتطلبات على الترميز",
+        "يعرف أصحاب المصلحة كل احتياجاتهم دائماً",
+        "قد تعتمد الفرق على أدوات CASE أكثر من اللازم",
+        "يجب على الفرق تجنب جميع أدوات النمذجة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Overreliance on CASE tools is listed as a practical concern; this does not mean that all tools should be avoided.",
+      "explanation_ar": "ورد الإفراط في الاعتماد على أدوات CASE بوصفه مصدر قلق عملياً، ولا يعني ذلك وجوب تجنب جميع الأدوات."
+    },
+    {
+      "id": "q8",
+      "concept_id": "re_market_resource_pressure",
+      "bloom_level": "Analyze",
+      "question": "A team has a short deadline and limited staff while the market is changing. What does this illustrate?",
+      "question_ar": "يواجه فريق موعداً ضيقاً وموظفين محدودين مع تغير السوق. ماذا يوضح ذلك؟",
+      "options": [
+        "Proof that user requirements are complete",
+        "A rule that feasibility follows coding",
+        "A reason to omit requirements review",
+        "Pressures that make requirements work difficult"
+      ],
+      "options_en": [
+        "Proof that user requirements are complete",
+        "A rule that feasibility follows coding",
+        "A reason to omit requirements review",
+        "Pressures that make requirements work difficult"
+      ],
+      "options_ar": [
+        "دليلاً على اكتمال متطلبات المستخدم",
+        "قاعدة تجعل الجدوى بعد الترميز",
+        "سبباً لإهمال مراجعة المتطلبات",
+        "ضغوطاً تجعل عمل المتطلبات صعباً"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Tight schedules, limited resources, and market-driven change are practical pressures; they do not prove completeness or justify skipping review.",
+      "explanation_ar": "يشكل ضيق الوقت ومحدودية الموارد وتغير السوق ضغوطاً عملية؛ ولا تثبت اكتمال المتطلبات أو تبرر ترك المراجعة."
+    }
+  ]
+}
