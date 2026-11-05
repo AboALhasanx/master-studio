@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-05T00:32:57+03:00
+> Generated at: 2026-11-05T11:15:47+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **89** |
-| Portal shell `VERSION` | **1.11.21** |
+| Live content version | **90** |
+| Portal shell `VERSION` | **1.11.24** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 200 banks / 2027 questions · live 196 banks / 1990 questions · **MISMATCH — investigate before publishing**
+**Totals:** vault 200 banks / 2027 questions · live 200 banks / 2027 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -33,7 +33,7 @@
 | `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
 | `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
 | `03_Data_Mining` | 8 | 55 | 531 | 55 | 531 | — |
-| `04_Advanced_Software_Eng` | 7 | 47 | 407 | 43 | 370 | **DIFF** |
+| `04_Advanced_Software_Eng` | 7 | 47 | 407 | 47 | 407 | — |
 | `05_Soft_Computing` | 5 | 17 | 158 | 17 | 158 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
