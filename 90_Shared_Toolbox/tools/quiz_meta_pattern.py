@@ -20,15 +20,17 @@ META = re.compile(
     # direct: naming the source
     r"\bthe lecture|\blecture notes|\bthe notes\b|\bthe booklet\b|\bthe handout\b|"
     r"\bthe file\b|\baccording to\b|\bthe doctor\b|\bthe syllabus\b|\bthe slides?\b|"
-    r"\bthe material\b|\bthe source\b|\bthe text\b|\bthe book\b|\bthe course\b|"
-    r"\bthe module\b|\bthe curriculum\b|\bthe reading\b|"
+    r"\bthe material\b|\bthe source\b(?![\s-]+(?:code|file|program|codebase|directory)\b)|\bthe text\b|\bthe book\b|\bthe course\b|"
+    r"\bthe module\b(?!['’]s)|\bthe curriculum\b|\bthe reading\b|"
     # indirect: pointing at the document or at the person
     r"\bthis chapter|\bthe chapter|\bthis section|\bthis week|\bas we saw|"
     r"\bas covered|\bas discussed|\bas presented|\bher own\b|\bher rule\b|"
     r"\bshe said\b|\bshe states\b|\bher vocabulary\b|\bin her\b|"
     # Arabic
-    r"المحاضرة|المحاضرات|الملزمة|الملزمه|الدكتورة|الشرائح|المصدر|الجابتر|المذكور|"
-    r"قاعدتها|قالت إن|قالت ال|هذا الفصل|هذا القسم|هذا الأسبوع",
+    r"(?<![\u0600-\u06FF])(?:المحاضرة|المحاضرات|الملزمة|الملزمه|الدكتورة|الشرائح|شرائح|"
+    r"المصدر(?=\s+(?:يعرّف|يعرف|يقول|يذكر|يوضح|يعرض|يشير|يحدد))|وفق المصدر|حسب المصدر|"
+    r"كما ورد في المصدر|كما يذكر المصدر|الجابتر|المذكور|قاعدتها|قالت إن|قالت ال|هذا الفصل|هذا القسم|هذا الأسبوع)"
+    r"(?![\u0600-\u06FF])",
     re.I)
 
 
@@ -45,6 +47,12 @@ def self_test():
         "Threat A has probability 0.2 and impact 500.",
         "A result above 100 means there is investment.",
         "القسم A يستقبل الطلبات",
+        "وحدة تقيس حجم الشيفرة المصدرية",
+        "أسطر المصدر المقاسة ضمن حجم المنتج",
+        "The source code's size is a software attribute.",
+        "The source file, its comments, and its release date",
+        "Late discovery automatically reduces the source-code size.",
+        "Comments determine the module's measured complexity.",
         "موظف ينسخ قائمة العملاء قبل استقالته.",
         "If F(50) equals 0.85, what is the probability that loss exceeds 50?",
     ]
@@ -54,6 +62,7 @@ def self_test():
         "This chapter names four domains.",
         "Her rule is that above 100 means investment.",
         "المحاضرة تقول إن العدد يزيد.",
+        "المصدر يعرّف المقياس بأنه خاصية للمنتج.",
         "قالت إن التصنيف أربعة مجموعات.",
     ]
     false_pos = [t for t in good if META.search(t)]
@@ -65,4 +74,4 @@ def self_test():
 
 if __name__ == "__main__":
     self_test()
-    print("META self-test: PASS (%d good, %d bad)" % (7, 6))
+    print("META self-test: PASS")

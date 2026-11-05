@@ -1,0 +1,334 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T08_Object_Oriented_Metrics",
+  "topic": "Object-Oriented Metrics",
+  "topic_ar": "مقاييس البرمجيات كائنية التوجه",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_oo_measurement_unit",
+      "bloom_level": "Understand",
+      "question": "What is the primary measurement unit for class-oriented OO metrics?",
+      "question_ar": "ما وحدة القياس الأساسية للمقاييس الكائنية الموجهة للصنف؟",
+      "options": [
+        "The class, its hierarchy, and its collaborations",
+        "The source file, its comments, and its release date",
+        "The project, its schedule, and its staffing pattern",
+        "The test case, its result, and its execution time"
+      ],
+      "options_ar": [
+        "الصنف وتسلسله الهرمي وتعاوناته",
+        "ملف المصدر وتعليقاته وتاريخ إصداره",
+        "المشروع وجدوله ونمط التوظيف فيه",
+        "حالة الاختبار ونتيجتها وزمن تنفيذها"
+      ],
+      "options_en": [
+        "The class, its hierarchy, and its collaborations",
+        "The source file, its comments, and its release date",
+        "The project, its schedule, and its staffing pattern",
+        "The test case, its result, and its execution time"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Object-oriented metrics focus on classes, class hierarchies, and collaborations because these are central design structures in OO systems.",
+      "explanation_ar": "تركز مقاييس البرمجيات كائنية التوجه على الأصناف وتسلسلها الهرمي وتعاوناتها لأنها بنى تصميم مركزية في هذه الأنظمة."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_wmc",
+      "bloom_level": "Understand",
+      "question": "What does Weighted Methods per Class capture?",
+      "question_ar": "ماذا يقيس Weighted Methods per Class؟",
+      "options": [
+        "Classes coupled to a class through references",
+        "Sum of method complexities within a class",
+        "Methods able to respond to a class message",
+        "Subclasses directly inheriting from a class"
+      ],
+      "options_ar": [
+        "الأصناف المقترنة بصنف عبر الإحالات إليه",
+        "مجموع تعقيدات الطرق الموزونة داخل الصنف",
+        "الطرق القادرة على الاستجابة لرسالة الصنف",
+        "الأصناف الفرعية التي ترث مباشرةً من صنف"
+      ],
+      "options_en": [
+        "Classes coupled to a class through references",
+        "Sum of method complexities within a class",
+        "Methods able to respond to a class message",
+        "Subclasses directly inheriting from a class"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "WMC counts methods or sums their chosen complexity values; coupling, response, and child counts are different OO metrics.",
+      "explanation_ar": "يعدّ WMC طرق الصنف أو يجمع قيم تعقيدها المختارة؛ أما الاقتران والاستجابة وعدد الفروع فمقاييس مختلفة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_dit",
+      "bloom_level": "Understand",
+      "question": "What does Depth of Inheritance Tree describe?",
+      "question_ar": "ماذا يصف Depth of Inheritance Tree؟",
+      "options": [
+        "The count of immediate subclasses of a class",
+        "The count of methods defined within a class",
+        "The class depth in its inheritance hierarchy",
+        "The count of other classes coupled to a class"
+      ],
+      "options_ar": [
+        "عدد الأصناف الفرعية المباشرة التابعة لصنف",
+        "عدد الطرق المعرفة داخل الصنف البرمجي",
+        "عمق الصنف ضمن التسلسل الهرمي للوراثة",
+        "عدد الأصناف الأخرى المقترنة بذلك الصنف"
+      ],
+      "options_en": [
+        "The count of immediate subclasses of a class",
+        "The count of methods defined within a class",
+        "The class depth in its inheritance hierarchy",
+        "The count of other classes coupled to a class"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "DIT describes inheritance depth; immediate children are NOC, while method count and coupling are separate measures.",
+      "explanation_ar": "يصف DIT عمق الوراثة؛ أما الأبناء المباشرون فهم NOC، ويختلف عنهما عدد الطرق والاقتران."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_noc",
+      "bloom_level": "Understand",
+      "question": "Which classes are counted by Number of Children?",
+      "question_ar": "أي أصناف يعدّها Number of Children؟",
+      "options": [
+        "Every ancestor appearing above the measured class",
+        "Every class referenced by methods in the class",
+        "Every method inherited by the class's subclasses",
+        "The immediate subclasses directly below a class"
+      ],
+      "options_ar": [
+        "جميع الأصناف الأصلية فوق الصنف الذي يجري قياسه",
+        "كل صنف تشير إليه الطرق المعرفة داخل الصنف",
+        "كل طريقة ترثها الأصناف الفرعية التابعة للصنف",
+        "الأصناف الفرعية المباشرة أسفل الصنف المقاس"
+      ],
+      "options_en": [
+        "Every ancestor appearing above the measured class",
+        "Every class referenced by methods in the class",
+        "Every method inherited by the class's subclasses",
+        "The immediate subclasses directly below a class"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "NOC counts immediate subclasses; ancestors and referenced classes are not children.",
+      "explanation_ar": "يعدّ المقرر صراحةً الأصناف الفرعية المباشرة فقط في NOC؛ فالأصناف الأصلية والمرجعية ليست أبناء."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_cbo",
+      "bloom_level": "Understand",
+      "question": "What does Coupling Between Objects count for a class?",
+      "question_ar": "ماذا يعدّ Coupling Between Objects لصنف؟",
+      "options": [
+        "Other classes coupled to the measured class",
+        "Public methods sharing instance data within the class",
+        "Methods inherited from the parent classes",
+        "Control-flow regions inside the measured class"
+      ],
+      "options_ar": [
+        "الأصناف المرتبطة بالصنف عبر الاقتران المتبادل",
+        "الطرق العامة التي تتشارك بيانات المثيل داخل الصنف",
+        "الطرق الموروثة والمتاحة من الأصناف الأصلية",
+        "مناطق تدفق التحكم ضمن الصنف الذي يجري قياسه"
+      ],
+      "options_en": [
+        "Other classes coupled to the measured class",
+        "Public methods sharing instance data within the class",
+        "Methods inherited from the parent classes",
+        "Control-flow regions inside the measured class"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "CBO counts other classes coupled to the measured class; shared attributes, inherited methods, and control-flow regions describe other properties.",
+      "explanation_ar": "يعدّ CBO الأصناف الأخرى المرتبطة بالصنف المقاس؛ أما الخصائص المشتركة والطرق الموروثة ومناطق التدفق فتصف خصائص أخرى."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_rfc",
+      "bloom_level": "Understand",
+      "question": "What does Response For a Class measure?",
+      "question_ar": "كيف يصف المقرر Response For a Class؟",
+      "options": [
+        "Classes that inherit directly from the measured class",
+        "Methods the class can respond with to a message",
+        "Attributes declared by methods of the class",
+        "Method pairs that share no attributes in common"
+      ],
+      "options_ar": [
+        "الأصناف التي ترث مباشرةً من الصنف المقاس",
+        "الطرق التي قد ينفذها الصنف عند تلقي رسالة",
+        "الخصائص المعلنة ضمن طرق الصنف البرمجي",
+        "أزواج الطرق التي لا تتشارك أي خصائص"
+      ],
+      "options_en": [
+        "Classes that inherit directly from the measured class",
+        "Methods the class can respond with to a message",
+        "Attributes declared by methods of the class",
+        "Method pairs that share no attributes in common"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "RFC counts internal and external methods that may respond to a message; NOC, attribute count, and LCOM are different measures.",
+      "explanation_ar": "تعرف شريحة المقرر RFC بعدد الطرق الداخلية والخارجية؛ أما NOC وعدّ الخصائص وLCOM فتشير إلى مقاييس أخرى."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_dac",
+      "bloom_level": "Remember",
+      "question": "What does Data Abstraction Coupling count?",
+      "question_ar": "ماذا يعدّ Data Abstraction Coupling؟",
+      "options": [
+        "Methods inherited and available to the class",
+        "Immediate child classes below the measured class",
+        "Abstract data types declared within a class",
+        "Data values shared between the class's methods"
+      ],
+      "options_ar": [
+        "الطرق الموروثة والمتاحة للاستخدام داخل الصنف",
+        "الأصناف الأبناء المباشرة أسفل الصنف المقاس",
+        "أنواع البيانات المجردة المعرّفة داخل الصنف",
+        "قيم البيانات المشتركة بين طرق ذلك الصنف"
+      ],
+      "options_en": [
+        "Methods inherited and available to the class",
+        "Immediate child classes below the measured class",
+        "Abstract data types declared within a class",
+        "Data values shared between the class's methods"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "DAC counts abstract data types in a class; inherited methods, child classes, and shared-variable cohesion are separate properties.",
+      "explanation_ar": "يعدّ DAC أنواع البيانات المجردة في الصنف؛ أما الطرق الموروثة والأصناف الأبناء وتماسك المتغيرات المشتركة فخصائص أخرى."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_lcom",
+      "bloom_level": "Understand",
+      "question": "What design property does Lack of Cohesion in Methods assess?",
+      "question_ar": "ما خاصية التصميم التي يقيّمها Lack of Cohesion in Methods؟",
+      "options": [
+        "Other classes that invoke methods of this class",
+        "The class's depth within its inheritance hierarchy",
+        "Messages sent by a method to other software objects",
+        "How little the class's methods share instance data"
+      ],
+      "options_ar": [
+        "الأصناف الأخرى التي تستدعي طرق هذا الصنف",
+        "عمق الصنف ضمن التسلسل الهرمي للوراثة",
+        "رسائل طرق الصنف الموجهة إلى الكائنات الأخرى",
+        "مدى قلة مشاركة طرق الصنف لبيانات المثيل"
+      ],
+      "options_en": [
+        "Other classes that invoke methods of this class",
+        "The class's depth within its inheritance hierarchy",
+        "Messages sent by a method to other software objects",
+        "How little the class's methods share instance data"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "LCOM examines disjoint versus shared instance-variable use among methods; coupling, inheritance depth, and message counts are different concerns.",
+      "explanation_ar": "يفحص LCOM استخدام الطرق لمتغيرات المثيل المشتركة أو المنفصلة؛ أما الاقتران وعمق الوراثة وعدد الرسائل فموضوعات أخرى."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch6_tcc_lcc",
+      "bloom_level": "Analyze",
+      "question": "How does Loose Class Cohesion differ from Tight Class Cohesion?",
+      "question_ar": "بماذا يختلف Loose Class Cohesion عن Tight Class Cohesion؟",
+      "options": [
+        "LCC also counts method pairs connected indirectly",
+        "TCC counts all pairs whether they share data or not",
+        "LCC counts immediate subclasses instead of method pairs",
+        "TCC counts inherited methods across class hierarchies"
+      ],
+      "options_ar": [
+        "يحسب LCC أيضاً أزواج الطرق المترابطة بصورة غير مباشرة",
+        "يحسب TCC كل الأزواج سواء تشاركت البيانات أم لا",
+        "يحسب LCC الأصناف الفرعية المباشرة بدلاً من أزواج الطرق",
+        "يحسب TCC الطرق الموروثة عبر التسلسلات الهرمية للأصناف"
+      ],
+      "options_en": [
+        "LCC also counts method pairs connected indirectly",
+        "TCC counts all pairs whether they share data or not",
+        "LCC counts immediate subclasses instead of method pairs",
+        "TCC counts inherited methods across class hierarchies"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "TCC counts public method pairs sharing attributes; LCC extends this notion to include indirect connections between methods.",
+      "explanation_ar": "يعدّ TCC أزواج الطرق العامة التي تتشارك الخصائص؛ ويوسع LCC الفكرة ليشمل الاتصالات غير المباشرة بين الطرق."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch6_mood_inheritance_factors",
+      "bloom_level": "Understand",
+      "question": "Which distinction separates AIF from MIF in the MOOD metrics?",
+      "question_ar": "أي تمييز يفصل AIF عن MIF في مقاييس MOOD؟",
+      "options": [
+        "AIF concerns outgoing calls; MIF concerns incoming calls",
+        "AIF concerns inherited attributes; MIF concerns methods",
+        "AIF concerns public method pairs; MIF shared variables",
+        "AIF concerns class depth; MIF immediate child count"
+      ],
+      "options_ar": [
+        "يرتبط AIF بالاستدعاءات الصادرة وMIF بالواردة",
+        "يرتبط AIF بالخصائص الموروثة وMIF بالطرق الموروثة",
+        "يرتبط AIF بأزواج الطرق العامة وMIF بالمتغيرات المشتركة",
+        "يرتبط AIF بعمق الصنف وMIF بعدد الأبناء المباشرين"
+      ],
+      "options_en": [
+        "AIF concerns outgoing calls; MIF concerns incoming calls",
+        "AIF concerns inherited attributes; MIF concerns methods",
+        "AIF concerns public method pairs; MIF shared variables",
+        "AIF concerns class depth; MIF immediate child count"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "MOOD's Attribute Inheritance Factor concerns inherited attributes, whereas its Method Inheritance Factor concerns inherited methods.",
+      "explanation_ar": "يتعلق Attribute Inheritance Factor في MOOD بالخصائص الموروثة، بينما يتعلق Method Inheritance Factor بالطرق الموروثة."
+    },
+    {
+      "id": "q11",
+      "concept_id": "ch6_lorenz_kidd_categories",
+      "bloom_level": "Remember",
+      "question": "Which categories organize Lorenz and Kidd's class-oriented metrics?",
+      "question_ar": "أي فئات تنظم مقاييس الأصناف لدى Lorenz وKidd؟",
+      "options": [
+        "Product, process, project, and predictor metric roles",
+        "Inputs, outputs, inquiries, and logical data files",
+        "Size, inheritance, class internals, and class externals",
+        "Nominal, ordinal, interval, and ratio measurement scales"
+      ],
+      "options_ar": [
+        "أدوار مقاييس المنتج والعملية والمشروع والتنبؤ",
+        "المدخلات والمخرجات والاستعلامات وملفات البيانات المنطقية",
+        "الحجم والوراثة والخصائص الداخلية والخارجية للصنف",
+        "مقاييس القياس الاسمي والترتيبي والفتري والنسبي"
+      ],
+      "options_en": [
+        "Product, process, project, and predictor metric roles",
+        "Inputs, outputs, inquiries, and logical data files",
+        "Size, inheritance, class internals, and class externals",
+        "Nominal, ordinal, interval, and ratio measurement scales"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Lorenz and Kidd group OO class measures into size, inheritance, internals, and externals; the alternatives are other metric frameworks.",
+      "explanation_ar": "يصنف Lorenz وKidd مقاييس الأصناف الكائنية إلى الحجم والوراثة والخصائص الداخلية والخارجية؛ أما البدائل فأطر أخرى."
+    }
+  ]
+}

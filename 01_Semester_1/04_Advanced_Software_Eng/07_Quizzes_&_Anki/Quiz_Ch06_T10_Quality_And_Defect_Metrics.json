@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T10_Quality_And_Defect_Metrics",
+  "topic": "Quality and Defect Metrics",
+  "topic_ar": "مقاييس الجودة والعيوب",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_dre_project_formula",
+      "bloom_level": "Understand",
+      "question": "What is the project-level meaning of defect removal efficiency?",
+      "question_ar": "ما معنى كفاءة إزالة العيوب على مستوى المشروع؟",
+      "options": [
+        "Pre-delivery E divided by all counted errors (E + D)",
+        "Post-delivery defects divided by delivered source size",
+        "Pre-delivery errors divided by total project effort",
+        "All failures divided by the number of product releases"
+      ],
+      "options_ar": [
+        "DRE للمشروع تساوي E مقسوماً على E مضافاً إليه D",
+        "عيوب بعد التسليم مقسومة على حجم المصدر المسلّم",
+        "أخطاء قبل التسليم مقسومة على جهد المشروع الكلي",
+        "جميع الإخفاقات مقسومة على عدد إصدارات المنتج"
+      ],
+      "options_en": [
+        "Pre-delivery E divided by all counted errors (E + D)",
+        "Post-delivery defects divided by delivered source size",
+        "Pre-delivery errors divided by total project effort",
+        "All failures divided by the number of product releases"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Project DRE is E divided by E plus D, where E is found before delivery and D is found after delivery; it reflects defect-filtering effectiveness.",
+      "explanation_ar": "تساوي DRE للمشروع E مقسوماً على E مضافاً إليه D؛ إذ تمثل E ما اكتشف قبل التسليم وD ما اكتشف بعده، ويعكس المقياس فاعلية تنقية العيوب."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_dre_error_terms",
+      "bloom_level": "Remember",
+      "question": "In project-level DRE, what do E and D represent?",
+      "question_ar": "ماذا يمثل E وD في DRE على مستوى المشروع؟",
+      "options": [
+        "E is total effort; D is total development duration",
+        "E is pre-delivery errors; D is post-delivery defects",
+        "E is executable lines; D is distinct data operands",
+        "E is project staff; D is delivered documentation pages"
+      ],
+      "options_ar": [
+        "تمثل E مجموع الجهد وD مدة التطوير الكلية",
+        "تمثل E أخطاء ما قبل التسليم وD عيوب ما بعده",
+        "تمثل E الأسطر التنفيذية وD معاملات البيانات الفريدة",
+        "تمثل E موظفي المشروع وD صفحات التوثيق المسلّمة"
+      ],
+      "options_en": [
+        "E is total effort; D is total development duration",
+        "E is pre-delivery errors; D is post-delivery defects",
+        "E is executable lines; D is distinct data operands",
+        "E is project staff; D is delivered documentation pages"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Pressman's project definition separates errors found before delivery from defects found after delivery; these are the denominator's two parts.",
+      "explanation_ar": "يفصل تعريف Pressman للمشروع بين الأخطاء المكتشفة قبل التسليم والعيوب المكتشفة بعده؛ وهما جزآ المقام."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_dre_activity_scope",
+      "bloom_level": "Understand",
+      "question": "Which two error counts enter activity-level DRE?",
+      "question_ar": "ما مجموعتا الأخطاء اللتان تدخلان في DRE على مستوى النشاط؟",
+      "options": [
+        "Release defects relative to the count of project activities",
+        "Design errors relative to the product's source-statement count",
+        "Errors found in activity i plus escaped errors found in i+1",
+        "Activity effort relative to the project's total development cost"
+      ],
+      "options_ar": [
+        "عيوب الإصدار نسبةً إلى عدد أنشطة المشروع",
+        "أخطاء التصميم نسبةً إلى عدد تعليمات مصدر المنتج",
+        "أخطاء النشاط i وما تسرب منها إلى النشاط التالي",
+        "جهد النشاط نسبةً إلى كلفة التطوير الكلية للمشروع"
+      ],
+      "options_en": [
+        "Release defects relative to the count of project activities",
+        "Design errors relative to the product's source-statement count",
+        "Errors found in activity i plus escaped errors found in i+1",
+        "Activity effort relative to the project's total development cost"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Activity-level DRE divides errors found in activity i by those errors plus escaped defects from that activity found in the next activity.",
+      "explanation_ar": "تقسم DRE للنشاط أخطاء النشاط i على مجموعها والعيوب المتسربة منه والمكتشفة في النشاط التالي."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_dre_interpretation",
+      "bloom_level": "Analyze",
+      "question": "What does a DRE value approaching one indicate?",
+      "question_ar": "إلى ماذا تشير قيمة DRE التي تقترب من الواحد؟",
+      "options": [
+        "No further measurement is needed after the current phase",
+        "The software has no faults under every operating condition",
+        "The product has the smallest source-code size",
+        "Most measured errors are found before the next boundary"
+      ],
+      "options_ar": [
+        "عدم الحاجة إلى قياس إضافي بعد المرحلة الحالية",
+        "خلو البرمجيات من العيوب في جميع ظروف التشغيل",
+        "امتلاك المنتج أصغر حجم للشيفرة المصدرية",
+        "اكتشاف معظم الأخطاء قبل الحد المحدد للقياس"
+      ],
+      "options_en": [
+        "No further measurement is needed after the current phase",
+        "The software has no faults under every operating condition",
+        "The product has the smallest source-code size",
+        "Most measured errors are found before the next boundary"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A value near one indicates effective early filtering for the defined scope; it does not prove that software has no faults under all conditions.",
+      "explanation_ar": "تشير القيمة القريبة من الواحد إلى فاعلية التنقية المبكرة ضمن النطاق المحدد؛ ولا تثبت خلو البرمجيات من العيوب في جميع الظروف."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_phase_containment",
+      "bloom_level": "Understand",
+      "question": "What is the principle of phase containment of errors?",
+      "question_ar": "ما مبدأ احتواء الأخطاء في المرحلة؟",
+      "options": [
+        "Find errors in their phase of introduction",
+        "Delay all correction until final system testing",
+        "Measure only errors visible to end users",
+        "Move every detected error to the following phase"
+      ],
+      "options_ar": [
+        "اكتشاف الأخطاء في المرحلة التي جرى إدخالها فيها",
+        "تأجيل التصحيح كله إلى اختبار النظام النهائي",
+        "قياس الأخطاء الظاهرة للمستخدم النهائي فقط",
+        "نقل كل خطأ مكتشف إلى مرحلة التطوير التالية"
+      ],
+      "options_en": [
+        "Find errors in their phase of introduction",
+        "Delay all correction until final system testing",
+        "Measure only errors visible to end users",
+        "Move every detected error to the following phase"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Phase containment aims to detect errors as close as possible to where they were committed, reducing later rework across phases.",
+      "explanation_ar": "يهدف احتواء المرحلة إلى كشف الأخطاء قرب الموضع الذي أُدخلت فيه، مما يقلل إعادة العمل عبر المراحل اللاحقة."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_defect_density",
+      "bloom_level": "Understand",
+      "question": "Why express defects per KLOC or per function point?",
+      "question_ar": "لماذا يعبر عن العيوب لكل KLOC أو لكل نقطة وظيفة؟",
+      "options": [
+        "Convert defect counts into execution time",
+        "Relate defect counts to measured product size",
+        "Replace identification of the measured release",
+        "Equalize product sizes before comparison"
+      ],
+      "options_ar": [
+        "تحويل عدد العيوب إلى زمن تنفيذ منقضٍ",
+        "مقارنة عدد العيوب بحجم المنتج المقاس",
+        "استبدال تحديد إصدار المنتج الذي جرى قياسه",
+        "مساواة أحجام المنتجات المختلفة قبل المقارنة"
+      ],
+      "options_en": [
+        "Convert defect counts into execution time",
+        "Relate defect counts to measured product size",
+        "Replace identification of the measured release",
+        "Equalize product sizes before comparison"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A size denominator makes defect counts interpretable relative to product size; raw counts alone do not normalize differently sized products.",
+      "explanation_ar": "يجعل مقام الحجم عدد العيوب قابلاً للتفسير نسبةً إلى حجم المنتج؛ فالعدد الخام وحده لا يطبع أحجام المنتجات المختلفة."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_defect_per_kloc",
+      "bloom_level": "Understand",
+      "question": "Which denominator is used by a defects-per-KLOC metric?",
+      "question_ar": "أي مقام يستخدمه مقياس العيوب لكل KLOC؟",
+      "options": [
+        "The number of methods in its largest class",
+        "The actor count in the product's use-case model",
+        "Thousands of source lines in the measured product",
+        "Operating hours between consecutive failures"
+      ],
+      "options_ar": [
+        "عدد الطرق المعرفة في أكبر صنف بالمنتج",
+        "عدد الممثلين في نموذج حالات استخدام المنتج",
+        "آلاف أسطر المصدر الموجودة في المنتج المقاس",
+        "زمن التشغيل بين الإخفاقات المتعاقبة"
+      ],
+      "options_en": [
+        "The number of methods in its largest class",
+        "The actor count in the product's use-case model",
+        "Thousands of source lines in the measured product",
+        "Operating hours between consecutive failures"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Defects per KLOC normalizes a defect count by thousands of source lines; function points provide a different size denominator.",
+      "explanation_ar": "يقسم مقياس العيوب لكل KLOC عدد العيوب على آلاف الأسطر البرمجية؛ أما نقاط الوظائف فمقام حجم مختلف."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_defect_per_fp",
+      "bloom_level": "Understand",
+      "question": "What does a defects-per-function-point measure normalize?",
+      "question_ar": "ما الذي يطبّعه مقياس العيوب لكل نقطة وظيفة؟",
+      "options": [
+        "Defects measured by elapsed time between failures",
+        "Project staffing measured by output-report count",
+        "Class complexity by depth in its inheritance hierarchy",
+        "Defects relative to delivered functional size"
+      ],
+      "options_ar": [
+        "عدد العيوب بحسب الزمن المنقضي بين الإخفاقات",
+        "توظيف المشروع بحسب عدد تقارير المخرجات",
+        "تعقيد الصنف بحسب عمق تسلسل الوراثة الخاص به",
+        "عدد العيوب نسبةً إلى الحجم الوظيفي المسلّم"
+      ],
+      "options_en": [
+        "Defects measured by elapsed time between failures",
+        "Project staffing measured by output-report count",
+        "Class complexity by depth in its inheritance hierarchy",
+        "Defects relative to delivered functional size"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The function-point denominator relates defects to functional size; KLOC is a code-size denominator rather than a functional one.",
+      "explanation_ar": "يربط مقام نقاط الوظائف العيوب بالحجم الوظيفي؛ أما KLOC فيمثل مقاماً لحجم الشيفرة لا للحجم الوظيفي."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch6_mtbf_product_measure",
+      "bloom_level": "Understand",
+      "question": "What does Mean Time Between Failures describe as a product measure?",
+      "question_ar": "ماذا يصف Mean Time Between Failures بوصفه مقياساً للمنتج؟",
+      "options": [
+        "Average operating time between successive failures",
+        "Faults introduced during one development phase",
+        "Calendar time required to complete a product release",
+        "Average executable statements within one module"
+      ],
+      "options_ar": [
+        "متوسط زمن التشغيل بين الإخفاقات المتعاقبة",
+        "العيوب المدخلة أثناء مرحلة تطوير واحدة",
+        "الزمن التقويمي اللازم لإكمال إصدار المنتج",
+        "متوسط التعليمات التنفيذية داخل وحدة برمجية واحدة"
+      ],
+      "options_en": [
+        "Average operating time between successive failures",
+        "Faults introduced during one development phase",
+        "Calendar time required to complete a product release",
+        "Average executable statements within one module"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "MTBF concerns elapsed operating time between failures and is used as a reliability-oriented product measure; it is not a defect count or project schedule.",
+      "explanation_ar": "يتعلق MTBF بزمن التشغيل بين الإخفاقات ويستخدم مقياساً للمنتج مرتبطاً بالاعتمادية؛ وليس عدّاً للعيوب أو جدولاً للمشروع."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch6_dre_unit_scope",
+      "bloom_level": "Analyze",
+      "question": "Within a defined observation scope, what does a DRE of one imply?",
+      "question_ar": "ضمن نطاق رصد محدد، ماذا تعني قيمة DRE تساوي واحداً؟",
+      "options": [
+        "No defect can exist under any operating condition",
+        "No counted error escaped the defined boundary",
+        "The project needed no effort after its first phase",
+        "The product has the smallest possible source size"
+      ],
+      "options_ar": [
+        "استحالة وجود أي عيب تحت جميع ظروف التشغيل",
+        "لم يتسرب أي خطأ معدود عبر الحد المحدد في القياس",
+        "عدم حاجة المشروع إلى جهد بعد مرحلته الأولى",
+        "امتلاك المنتج أصغر حجم ممكن للشيفرة المصدرية"
+      ],
+      "options_en": [
+        "No defect can exist under any operating condition",
+        "No counted error escaped the defined boundary",
+        "The project needed no effort after its first phase",
+        "The product has the smallest possible source size"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "For the defined pre/post boundary and observation window, DRE equal to one means no counted defect escaped that boundary; it does not prove universal absence of faults.",
+      "explanation_ar": "ضمن حدّ الرصد والفترة المحددين، تعني DRE التي تساوي واحداً أن أياً من العيوب المعدودة لم يتسرب عبر الحد؛ ولا تثبت غياب العيوب مطلقاً."
+    }
+  ]
+}

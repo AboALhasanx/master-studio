@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T01_Measurement_Fundamentals",
+  "topic": "Measurement Fundamentals",
+  "topic_ar": "أساسيات قياس البرمجيات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_measurement_purpose",
+      "bloom_level": "Understand",
+      "question": "Which set best reflects questions software measurement can help address?",
+      "question_ar": "أي مجموعة تمثل أسئلة يمكن أن يساعد قياس البرمجيات في الإجابة عنها؟",
+      "options": [
+        "Estimate size, cost, likely defects, and release readiness",
+        "Describe morale, office layout, and employee meeting preferences",
+        "Choose product names, sales slogans, and customer advertising channels",
+        "Plan hardware prices, hiring rules, and company reporting lines"
+      ],
+      "options_ar": [
+        "تقدير حجم النظام والكلفة والعيوب المتوقعة وجاهزية الإصدار",
+        "وصف معنويات الفريق وتصميم المكتب ومواعيد لقاء الموظفين",
+        "اختيار أسماء المنتجات وشعارات البيع وقنوات الإعلان للعملاء",
+        "تخطيط أسعار العتاد وقواعد التوظيف والتقارير الإدارية"
+      ],
+      "options_en": [
+        "Estimate size, cost, likely defects, and release readiness",
+        "Describe morale, office layout, and employee meeting preferences",
+        "Choose product names, sales slogans, and customer advertising channels",
+        "Plan hardware prices, hiring rules, and company reporting lines"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Software measurement can inform estimates of size and cost, expected defects, testing, and release decisions; the alternatives concern matters outside product, process, or project attributes.",
+      "explanation_ar": "يساعد القياس في تقدير الحجم والكلفة والعيوب والاختبار وقرار الإصدار؛ أما الخيارات الأخرى فلا تمثل أسئلة البرمجيات الواردة في هذا المحور."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_measurement_vs_metric",
+      "bloom_level": "Understand",
+      "question": "What is measurement in software engineering?",
+      "question_ar": "ما المقصود بالقياس وفق تعريفات المقرر؟",
+      "options": [
+        "A chosen property of the product",
+        "The act of determining a measure",
+        "An estimate of development effort",
+        "An interpretation of measured results"
+      ],
+      "options_ar": [
+        "خاصية محددة في المنتج",
+        "هي عملية تحديد المقياس",
+        "تقدير كمي لجهد التطوير",
+        "تفسير نتائج القياس"
+      ],
+      "options_en": [
+        "A chosen property of the product",
+        "The act of determining a measure",
+        "An estimate of development effort",
+        "An interpretation of measured results"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Measurement is the act of determining a measure; an attribute is observed, while a metric quantifies the degree of an attribute.",
+      "explanation_ar": "القياس هو عملية تحديد مقياس؛ أما الخاصية فتُلاحظ، ويعبّر المقياس الكمي عن درجتها."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_indirect_measure",
+      "bloom_level": "Understand",
+      "question": "Which statement best describes an indirect software measure?",
+      "question_ar": "أي عبارة تصف مقياساً غير مباشر للبرمجيات؟",
+      "options": [
+        "It counts an attribute directly using an agreed rule",
+        "It records the software entity being measured",
+        "It derives an attribute from related measures",
+        "It sets the planned release date for a product"
+      ],
+      "options_ar": [
+        "يرصد الخاصية مباشرةً وفق قاعدة متفق عليها",
+        "يسجل الكيان البرمجي الذي يجري قياسه",
+        "يقدّر الخاصية من مقاييس مرتبطة بها",
+        "يحدد موعد الإصدار المخطط للمنتج البرمجي"
+      ],
+      "options_en": [
+        "It counts an attribute directly using an agreed rule",
+        "It records the software entity being measured",
+        "It derives an attribute from related measures",
+        "It sets the planned release date for a product"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "An indirect measure derives an attribute from related measures, whereas a direct measure counts or observes it directly.",
+      "explanation_ar": "يستنتج المقياس غير المباشر الخاصية من مقاييس مرتبطة، بينما يرصدها المقياس المباشر أو يعدّها مباشرة."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_measurement_entity",
+      "bloom_level": "Understand",
+      "question": "In software measurement, what is an entity?",
+      "question_ar": "ما المقصود بالكيان في قياس البرمجيات؟",
+      "options": [
+        "A numeric scale for recording software observations",
+        "A formula for combining several measured values",
+        "A management target for tracking project progress",
+        "The product, component, or process being examined"
+      ],
+      "options_ar": [
+        "سلم عددي لتسجيل ملاحظات النظام البرمجي",
+        "صيغة حسابية تجمع مقاييس مختلفة",
+        "هدف إداري لمتابعة أداء المشروع",
+        "العنصر أو العملية محل فحص الخصائص"
+      ],
+      "options_en": [
+        "A numeric scale for recording software observations",
+        "A formula for combining several measured values",
+        "A management target for tracking project progress",
+        "The product, component, or process being examined"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The entity is what is examined, such as a product, component, or process; its attribute is the property being measured.",
+      "explanation_ar": "الكيان هو ما يجري فحصه، مثل المنتج أو المكوّن أو العملية؛ أما الخاصية فهي الجانب الذي يُقاس."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_ratio_scale",
+      "bloom_level": "Understand",
+      "question": "Which property distinguishes a ratio scale from an interval scale?",
+      "question_ar": "أي خاصية تميز المقياس النسبي عن المقياس الفتري؟",
+      "options": [
+        "Equal intervals with a meaningful true zero",
+        "Named categories without an ordering relationship",
+        "Ranked values without equal intervals between them",
+        "Equal intervals without a meaningful zero point"
+      ],
+      "options_ar": [
+        "فواصل متساوية مع صفر حقيقي ذي معنى",
+        "فئات مسماة من دون أي ترتيب بينها",
+        "قيم مرتبة بفواصل غير متساوية بينها",
+        "فواصل متساوية من دون صفر حقيقي ذي معنى"
+      ],
+      "options_en": [
+        "Equal intervals with a meaningful true zero",
+        "Named categories without an ordering relationship",
+        "Ranked values without equal intervals between them",
+        "Equal intervals without a meaningful zero point"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A ratio scale has equal intervals and a meaningful zero; an interval scale lacks a meaningful true zero.",
+      "explanation_ar": "للمقياس النسبي فواصل متساوية وصفر حقيقي ذو معنى، بخلاف المقياس الفتري الذي يفتقد صفراً حقيقياً ذا معنى."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_meaningful_measurement",
+      "bloom_level": "Analyze",
+      "question": "When is a conclusion based on a measurement considered meaningful?",
+      "question_ar": "متى يكون الاستنتاج المبني على القياس ذا معنى؟",
+      "options": [
+        "Every scale uses the same numeric labels",
+        "It holds under allowed transformations of the scale",
+        "Measured values are whole numbers without fractions",
+        "The sample contains more observations than another"
+      ],
+      "options_ar": [
+        "تستعمل المقاييس جميعها التسميات العددية نفسها",
+        "صحة الاستنتاج مع التحويلات المسموحة للمقياس",
+        "تكون القيم المقاسة أعداداً صحيحة دون كسور",
+        "تضم العينة عدداً أكبر من المشاهدات مقارنة بغيرها"
+      ],
+      "options_en": [
+        "Every scale uses the same numeric labels",
+        "It holds under allowed transformations of the scale",
+        "Measured values are whole numbers without fractions",
+        "The sample contains more observations than another"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Measurement theory requires conclusions to respect the scale's admissible transformations; identical labels or integer values do not establish validity.",
+      "explanation_ar": "تتطلب نظرية القياس أن تحترم الاستنتاجات التحويلات المقبولة للمقياس؛ فتطابق التسميات أو كون القيم صحيحة لا يثبت صلاحية الاستنتاج."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_gqm_sequence",
+      "bloom_level": "Understand",
+      "question": "What is the intended order in the Goal–Question–Metric approach?",
+      "question_ar": "ما الترتيب المقصود في منهج Goal–Question–Metric؟",
+      "options": [
+        "Choose metrics, then write questions and goals",
+        "List data, then select tools and improvement targets",
+        "Set a goal, derive questions, then choose metrics",
+        "Collect values, then report averages and state a goal"
+      ],
+      "options_ar": [
+        "اختيار المقاييس ثم صياغة الأسئلة والأهداف",
+        "حصر البيانات ثم اختيار الأدوات وأهداف التحسين",
+        "تحديد الهدف ثم الأسئلة ثم اختيار المقاييس",
+        "جمع القيم ثم عرض المتوسطات وصياغة هدف"
+      ],
+      "options_en": [
+        "Choose metrics, then write questions and goals",
+        "List data, then select tools and improvement targets",
+        "Set a goal, derive questions, then choose metrics",
+        "Collect values, then report averages and state a goal"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "GQM starts with a measurement goal, derives questions that characterize it, and chooses metrics that answer those questions.",
+      "explanation_ar": "يبدأ GQM بهدف للقياس، ثم يشتق أسئلة توضحه، وبعدها يختار مقاييس تجيب عن تلك الأسئلة."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_metric_definition",
+      "bloom_level": "Understand",
+      "question": "Which statement best defines a software metric?",
+      "question_ar": "أي عبارة تقدم أفضل تعريف لمقياس البرمجيات في مادة المقرر؟",
+      "options": [
+        "The unit for measuring source-code size",
+        "The act of assigning a manager to a software task",
+        "Requirements awaiting customer review and approval",
+        "A quantitative measure of an attribute's degree"
+      ],
+      "options_ar": [
+        "وحدة عددية لقياس حجم الشيفرة المصدرية",
+        "تعيين مدير لمهمة تطوير برمجية محددة",
+        "متطلبات بانتظار مراجعة العميل واعتمادها",
+        "مقياس كمي لدرجة امتلاك خاصية برمجية"
+      ],
+      "options_en": [
+        "The unit for measuring source-code size",
+        "The act of assigning a manager to a software task",
+        "Requirements awaiting customer review and approval",
+        "A quantitative measure of an attribute's degree"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A metric quantifies the degree to which a system, component, or process possesses an attribute; the other choices describe unrelated activities or artifacts.",
+      "explanation_ar": "يعبّر المقياس كمياً عن درجة امتلاك نظام أو مكوّن أو عملية لخاصية؛ أما الخيارات الأخرى فتصف أنشطة أو مخرجات مختلفة."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch6_measurement_applications",
+      "bloom_level": "Understand",
+      "question": "Which group contains established applications of software metrics?",
+      "question_ar": "أي مجموعة تضم مجالات راسخة لاستخدام مقاييس البرمجيات؟",
+      "options": [
+        "Estimate size and cost, predict quality, and check design",
+        "Choose product names, plan offices, and negotiate salaries",
+        "Buy hardware, promote staff, and forecast sales",
+        "Schedule meetings, assign seats, and style documents"
+      ],
+      "options_ar": [
+        "تقدير الحجم والكلفة والتنبؤ بالجودة والفحص الكمي للتصميم",
+        "اختيار أسماء المنتجات وتخطيط المكاتب والتفاوض على الرواتب",
+        "شراء العتاد وترقية الموظفين والتنبؤ بالمبيعات",
+        "جدولة الاجتماعات وتوزيع المقاعد وتنسيق المستندات"
+      ],
+      "options_en": [
+        "Estimate size and cost, predict quality, and check design",
+        "Choose product names, plan offices, and negotiate salaries",
+        "Buy hardware, promote staff, and forecast sales",
+        "Schedule meetings, assign seats, and style documents"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Measurement supports estimation, quality prediction, and quantitative design checks; the alternatives are not common software-measurement goals.",
+      "explanation_ar": "يحدد المقرر التقدير والتنبؤ بالجودة والفحوص الكمية للتصميم مجالات راسخة؛ أما المجموعات الأخرى فلا تمثل استخدامات مقاييس البرمجيات الواردة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch6_implementation_resistance",
+      "bloom_level": "Analyze",
+      "question": "What concern can arise when introducing software measurement?",
+      "question_ar": "ما عقبة تطبيقية توضحها أمثلة المقرر؟",
+      "options": [
+        "No software properties can be observed or described",
+        "Teams may resist quantitative oversight of software work",
+        "Project effort and delivery dates cannot be recorded",
+        "Every measured property must share one common unit"
+      ],
+      "options_ar": [
+        "تعذر رصد خصائص المنتج البرمجي وقياسها",
+        "قد ترفض الفرق قياس أعمال البرمجيات كمياً",
+        "يتعذر تسجيل جهد المشروع ومواعيد التسليم",
+        "يجب توحيد الوحدة المستخدمة لكل خاصية مقاسة"
+      ],
+      "options_en": [
+        "No software properties can be observed or described",
+        "Teams may resist quantitative oversight of software work",
+        "Project effort and delivery dates cannot be recorded",
+        "Every measured property must share one common unit"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Software teams may experience tension with managerial expectations about control, delays, and reliability constraints; that does not make measurement impossible.",
+      "explanation_ar": "قد ينشأ توتر بين فرق البرمجيات وتوقعات الإدارة بشأن الضبط والتأخر وقيود الاعتمادية؛ وهذا لا يجعل القياس مستحيلاً."
+    }
+  ]
+}

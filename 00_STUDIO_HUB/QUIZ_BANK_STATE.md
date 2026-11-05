@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-05T21:31:39+03:00
+> Generated at: 2026-11-06T00:51:27+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **106** |
-| Portal shell `VERSION` | **1.11.28** |
+| Live content version | **109** |
+| Portal shell `VERSION` | **1.11.29** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 224 banks / 2252 questions · live 224 banks / 2252 questions · MATCH
+**Totals:** vault 225 banks / 2272 questions · live 225 banks / 2272 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -33,7 +33,7 @@
 | `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
 | `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
 | `03_Data_Mining` | 8 | 55 | 531 | 55 | 531 | — |
-| `04_Advanced_Software_Eng` | 7 | 71 | 632 | 71 | 632 | — |
+| `04_Advanced_Software_Eng` | 7 | 72 | 652 | 72 | 652 | — |
 | `05_Soft_Computing` | 5 | 17 | 158 | 17 | 158 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
@@ -57,21 +57,21 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `02_English_Language` | 02 | 6 | 64 | 0 | 9/0 | 2/0 | 0 | 0 | clean |
 | `02_English_Language` | 03 | 6 | 72 | 0 | 7/0 | 4/0 | 0 | 0 | clean |
 | `03_Data_Mining` | 01 | 5 | 40 | 1 | 5/4 | 4/2 | 0 | 0 | needs work |
-| `03_Data_Mining` | 02 | 7 | 70 | 2 | 10/14 | 9/7 | 0 | 0 | needs work |
+| `03_Data_Mining` | 02 | 7 | 70 | 1 | 10/14 | 9/7 | 0 | 0 | needs work |
 | `03_Data_Mining` | 03 | 7 | 60 | 5 | 9/11 | 6/5 | 0 | 0 | needs work |
 | `03_Data_Mining` | 04 | 4 | 43 | 1 | 6/2 | 5/6 | 0 | 0 | needs work |
 | `03_Data_Mining` | 05 | 10 | 82 | 4 | 10/4 | 7/5 | 0 | 0 | needs work |
 | `03_Data_Mining` | 06 | 7 | 86 | 1 | 9/6 | 8/10 | 0 | 0 | needs work |
 | `03_Data_Mining` | 07 | 7 | 86 | 0 | 11/9 | 11/6 | 0 | 0 | clean |
 | `03_Data_Mining` | 08 | 8 | 64 | 0 | 7/6 | 4/3 | 0 | 0 | clean |
-| `04_Advanced_Software_Eng` | 01 | 7 | 56 | 2 | 8/6 | 4/6 | 0 | 0 | needs work |
+| `04_Advanced_Software_Eng` | 01 | 7 | 56 | 0 | 8/6 | 4/6 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 02 | 8 | 82 | 0 | 16/15 | 7/6 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 03 | 8 | 68 | 1 | 19/17 | 4/8 | 0 | 0 | needs work |
 | `04_Advanced_Software_Eng` | 04 | 6 | 73 | 0 | 6/10 | 7/7 | 0 | 0 | clean |
-| `04_Advanced_Software_Eng` | 05 | 24 | 198 | 8 | 53/43 | 23/19 | 0 | 0 | needs work |
-| `04_Advanced_Software_Eng` | 06 | 11 | 90 | 0 | 0/0 | 1/1 | 0 | 0 | clean |
+| `04_Advanced_Software_Eng` | 05 | 24 | 198 | 3 | 53/43 | 23/19 | 0 | 0 | needs work |
+| `04_Advanced_Software_Eng` | 06 | 12 | 110 | 0 | 11/10 | 27/15 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 07 | 7 | 65 | 0 | 0/0 | 0/0 | 0 | 0 | clean |
-| `05_Soft_Computing` | 01 | 2 | 23 | 3 | 3/4 | 2/3 | 0 | 0 | needs work |
+| `05_Soft_Computing` | 01 | 2 | 23 | 1 | 3/4 | 2/3 | 0 | 0 | needs work |
 | `05_Soft_Computing` | 02 | 1 | 10 | 0 | 1/1 | 0/2 | 0 | 0 | clean |
 | `05_Soft_Computing` | 03 | 4 | 39 | 0 | 2/3 | 1/0 | 0 | 0 | clean |
 | `05_Soft_Computing` | 04 | 4 | 33 | 0 | 5/2 | 3/5 | 0 | 0 | clean |
@@ -82,15 +82,14 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 ## What remains
 
 - `03_Data_Mining` Ch01 — 1 handout refs
-- `03_Data_Mining` Ch02 — 2 handout refs
+- `03_Data_Mining` Ch02 — 1 handout refs
 - `03_Data_Mining` Ch03 — 5 handout refs
 - `03_Data_Mining` Ch04 — 1 handout refs
 - `03_Data_Mining` Ch05 — 4 handout refs
 - `03_Data_Mining` Ch06 — 1 handout refs
-- `04_Advanced_Software_Eng` Ch01 — 2 handout refs
 - `04_Advanced_Software_Eng` Ch03 — 1 handout refs
-- `04_Advanced_Software_Eng` Ch05 — 8 handout refs
-- `05_Soft_Computing` Ch01 — 3 handout refs
+- `04_Advanced_Software_Eng` Ch05 — 3 handout refs
+- `05_Soft_Computing` Ch01 — 1 handout refs
 - `06_Artificial_Intelligence` Ch01 — 2 spread violations
 - `06_Artificial_Intelligence` Ch02 — 5 spread violations; answer-length tell
 

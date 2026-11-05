@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T05_Data_Structure_Metrics",
+  "topic": "Data Structure Metrics",
+  "topic_ar": "مقاييس بنية البيانات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_data_categories",
+      "bloom_level": "Remember",
+      "question": "Which categories describe data associated with a module?",
+      "question_ar": "كيف يصنف المقرر البيانات المرتبطة بالوحدة البرمجية؟",
+      "options": [
+        "Input data, internal data, and output data",
+        "Control data, project data, and schedule data",
+        "Operator data, operand data, and token data",
+        "Product data, process data, and actor data"
+      ],
+      "options_ar": [
+        "بيانات إدخال وبيانات داخلية وبيانات إخراج",
+        "بيانات تحكم وبيانات مشروع وبيانات جدول زمني",
+        "بيانات عوامل وبيانات معاملات وبيانات رموز",
+        "بيانات منتج وبيانات عملية وبيانات ممثلين"
+      ],
+      "options_en": [
+        "Input data, internal data, and output data",
+        "Control data, project data, and schedule data",
+        "Operator data, operand data, and token data",
+        "Product data, process data, and actor data"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The data-structure material distinguishes input, internal, and output data for a module; the alternatives belong to other classifications.",
+      "explanation_ar": "يميز محور بنية البيانات بين بيانات الإدخال والبيانات الداخلية وبيانات الإخراج للوحدة؛ أما البدائل فتنتمي إلى تصنيفات أخرى."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_cross_reference_list",
+      "bloom_level": "Understand",
+      "question": "What does a cross-reference list record for a variable?",
+      "question_ar": "ماذا تسجل قائمة الإحالات المتقاطعة للمتغير؟",
+      "options": [
+        "Modules inheriting the class of that variable",
+        "Source statements that refer to the variable",
+        "Failures attributed to the variable's value",
+        "Actors that enter a value for the variable"
+      ],
+      "options_ar": [
+        "الوحدات التي ترث صنف ذلك المتغير البرمجي",
+        "تعليمات المصدر التي تشير إلى ذلك المتغير",
+        "الإخفاقات المنسوبة إلى قيمة ذلك المتغير",
+        "الممثلون الذين يدخلون قيمة لذلك المتغير"
+      ],
+      "options_en": [
+        "Modules inheriting the class of that variable",
+        "Source statements that refer to the variable",
+        "Failures attributed to the variable's value",
+        "Actors that enter a value for the variable"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "A cross-reference list connects a variable with its reference line numbers, supporting later live-variable and span analysis.",
+      "explanation_ar": "تربط قائمة الإحالات المتقاطعة المتغير بأرقام أسطر الإشارة إليه، مما يدعم تحليل المتغيرات الحية والامتداد لاحقاً."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_live_variable",
+      "bloom_level": "Understand",
+      "question": "When is a variable considered live across a program point?",
+      "question_ar": "متى يعدّ المتغير حياً عبر نقطة في البرنامج؟",
+      "options": [
+        "It is declared in a class with many subclasses",
+        "It appears only in a comment or a blank line",
+        "Its value may be read before the next assignment",
+        "It is passed to an external user as output"
+      ],
+      "options_ar": [
+        "يُصرح به داخل صنف له أصناف فرعية عديدة",
+        "يظهر في تعليق أو سطر فارغ دون استخدام تنفيذي",
+        "قد تُقرأ قيمته المسندة قبل إسناد قيمة جديدة",
+        "تُمرر قيمته إلى مستخدم خارجي بوصفها مخرجاً"
+      ],
+      "options_en": [
+        "It is declared in a class with many subclasses",
+        "It appears only in a comment or a blank line",
+        "Its value may be read before the next assignment",
+        "It is passed to an external user as output"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Liveness concerns whether a value can still be used before it is overwritten; declaration, inheritance, and output status alone do not establish liveness.",
+      "explanation_ar": "تتعلق الحياة بإمكان استعمال القيمة قبل استبدالها؛ فالتصريح والوراثة وكون المتغير مخرجاً لا تثبت حياته وحدها."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_average_live_variables",
+      "bloom_level": "Understand",
+      "question": "How is the average number of live variables formed?",
+      "question_ar": "كيف يحسب متوسط عدد المتغيرات الحية؟",
+      "options": [
+        "Unique operands divided by the number of modules",
+        "Module weaknesses divided by variable count",
+        "Variable definitions divided by source-line count",
+        "Mean live-variable count per executable statement"
+      ],
+      "options_ar": [
+        "المعاملات الفريدة مقسومة على عدد الوحدات البرمجية",
+        "نقاط ضعف الوحدات مقسومة على عدد المتغيرات",
+        "تعريفات المتغيرات مقسومة على عدد أسطر المصدر",
+        "متوسط عدد المتغيرات الحية عبر التعليمات التنفيذية"
+      ],
+      "options_en": [
+        "Unique operands divided by the number of modules",
+        "Module weaknesses divided by variable count",
+        "Variable definitions divided by source-line count",
+        "Mean live-variable count per executable statement"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Average live variables is the total live-variable count across executable statements divided by the number of executable statements.",
+      "explanation_ar": "متوسط المتغيرات الحية هو مجموع أعدادها عبر التعليمات التنفيذية مقسوماً على عدد التعليمات التنفيذية."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_variable_span",
+      "bloom_level": "Understand",
+      "question": "What does variable span measure?",
+      "question_ar": "ماذا يصف امتداد المتغير في مقاييس البيانات لدى المقرر؟",
+      "options": [
+        "Statements between successive uses of a variable",
+        "Classes between a root and one of its children",
+        "Components called directly by the measured module",
+        "Comments surrounding the variable's declaration"
+      ],
+      "options_ar": [
+        "التعليمات بين إحالات متعاقبة إلى المتغير نفسه",
+        "الأصناف الواقعة بين الجذر وأحد أصنافه الفرعية",
+        "المكونات التي تستدعيها الوحدة المقاسة مباشرةً",
+        "التعليقات المحيطة بتصريح ذلك المتغير البرمجي"
+      ],
+      "options_en": [
+        "Statements between successive uses of a variable",
+        "Classes between a root and one of its children",
+        "Components called directly by the measured module",
+        "Comments surrounding the variable's declaration"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Span is based on the statement distance between successive references under the stated source convention; it is not inheritance depth or call fan-out.",
+      "explanation_ar": "يعتمد الامتداد على المسافة بين الإحالات المتعاقبة؛ ولا يمثل عمق الوراثة أو تفرع الاستدعاءات."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_module_weakness",
+      "bloom_level": "Understand",
+      "question": "Which relationship defines module weakness?",
+      "question_ar": "أي علاقة تعرّف ضعف الوحدة في نموذج المقرر؟",
+      "options": [
+        "Average live-variable count times average span",
+        "Mean live-variable count × mean variable life",
+        "Total module weaknesses added across the program",
+        "Unique operands divided by unique operators"
+      ],
+      "options_ar": [
+        "متوسط عدد المتغيرات الحية مضروباً بمتوسط امتدادها",
+        "متوسط عدد المتغيرات الحية مضروباً بمتوسط عمرها",
+        "مجموع نقاط ضعف الوحدات المضافة على مستوى البرنامج",
+        "عدد المعاملات الفريدة مقسوماً على العوامل الفريدة"
+      ],
+      "options_en": [
+        "Average live-variable count times average span",
+        "Mean live-variable count × mean variable life",
+        "Total module weaknesses added across the program",
+        "Unique operands divided by unique operators"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Module weakness uses average live variables times average variable life; span is a separate data metric.",
+      "explanation_ar": "يستخدم ضعف الوحدة متوسط المتغيرات الحية مضروباً بمتوسط عمر المتغير؛ أما الامتداد فمقياس بيانات منفصل."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_program_weakness",
+      "bloom_level": "Analyze",
+      "question": "How is program weakness derived from its module weaknesses?",
+      "question_ar": "كيف يُشتق ضعف البرنامج من نقاط ضعف وحداته؟",
+      "options": [
+        "Sum module weaknesses without averaging across modules",
+        "Largest module weakness multiplied by program length",
+        "The arithmetic mean across module-weakness values",
+        "Module count divided by mean live-variable count"
+      ],
+      "options_ar": [
+        "جمع نقاط ضعف الوحدات دون حساب متوسطها",
+        "أكبر نقطة ضعف لوحدة مضروبة بطول البرنامج",
+        "المتوسط الحسابي لقيم ضعف الوحدات البرمجية",
+        "عدد الوحدات مقسوماً على متوسط المتغيرات الحية"
+      ],
+      "options_en": [
+        "Sum module weaknesses without averaging across modules",
+        "Largest module weakness multiplied by program length",
+        "The arithmetic mean across module-weakness values",
+        "Module count divided by mean live-variable count"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Program weakness is the mean of module weaknesses; the sum alone is not normalized by the number of modules.",
+      "explanation_ar": "ضعف البرنامج هو متوسط نقاط ضعف الوحدات؛ أما الجمع وحده فلا يطبّع القيمة بحسب عدد الوحدات."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_program_metric_aggregation",
+      "bloom_level": "Understand",
+      "question": "Why does the program-level weakness calculation divide by module count?",
+      "question_ar": "لماذا تقسم عملية حساب ضعف البرنامج على عدد الوحدات؟",
+      "options": [
+        "It removes every module containing live variables",
+        "It converts each module's value into a span count",
+        "It makes program weakness equal to the largest module",
+        "It gives the program-wide mean of module values"
+      ],
+      "options_ar": [
+        "يحذف جميع الوحدات التي تتضمن متغيرات حية",
+        "يحوّل قيمة كل وحدة برمجية إلى عدد امتدادات",
+        "يجعل ضعف البرنامج مساوياً لقيمة أكبر وحدة",
+        "يحسب متوسط قيم الوحدات على مستوى البرنامج"
+      ],
+      "options_en": [
+        "It removes every module containing live variables",
+        "It converts each module's value into a span count",
+        "It makes program weakness equal to the largest module",
+        "It gives the program-wide mean of module values"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Dividing the summed module weaknesses by the number of modules yields the stated program mean rather than a total or maximum.",
+      "explanation_ar": "تعطي قسمة مجموع نقاط ضعف الوحدات على عددها متوسط البرنامج المحدد، لا المجموع ولا القيمة القصوى."
+    }
+  ]
+}

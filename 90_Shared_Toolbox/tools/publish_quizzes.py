@@ -155,7 +155,9 @@ def merge_question(vault_q: dict, portal_q: dict) -> dict:
     # freshly authored content with the portal's stale translation.
     if not str(out.get("question_ar") or "").strip() and has_ar(p["question_ar"]):
         out["question_ar"] = p["question_ar"]
-    if not out.get("text") and p["text"]:
+    # A stale portal alias must not override a newly authored canonical stem.
+    # Only inherit portal text when the vault has neither v2 stem field.
+    if not out.get("text") and not out.get("question") and p["text"]:
         out["text"] = p["text"]
     # the arabic options
     oa = out.get("options_ar") or []

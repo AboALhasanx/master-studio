@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T06_Information_Flow_Metrics",
+  "topic": "Information Flow Metrics",
+  "topic_ar": "مقاييس تدفق المعلومات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_fan_in",
+      "bloom_level": "Understand",
+      "question": "Which callers contribute to a component's fan-in value?",
+      "question_ar": "أي جهات مستدعية تدخل في قيمة fan-in للمكوّن؟",
+      "options": [
+        "Components that call this component or pass control to it",
+        "Components that this component calls or controls directly",
+        "Variables that remain live within the measured component",
+        "Methods that share attributes within the same component"
+      ],
+      "options_ar": [
+        "المكونات التي تستدعي هذا المكوّن أو تمرر إليه التحكم",
+        "المكونات التي يستدعيها هذا المكوّن أو يتحكم بها مباشرةً",
+        "المتغيرات التي تظل حية داخل المكوّن الذي يجري قياسه",
+        "الطرق التي تتشارك الخصائص ضمن المكوّن البرمجي نفسه"
+      ],
+      "options_en": [
+        "Components that call this component or pass control to it",
+        "Components that this component calls or controls directly",
+        "Variables that remain live within the measured component",
+        "Methods that share attributes within the same component"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Basic fan-in counts incoming component calls or control transfers; outgoing calls are fan-out.",
+      "explanation_ar": "يعدّ fan-in الأساسي استدعاءات المكونات أو تحويلات التحكم الواردة؛ أما الاستدعاءات الصادرة فهي fan-out."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_fan_out",
+      "bloom_level": "Understand",
+      "question": "What does the basic fan-out of a component count?",
+      "question_ar": "ماذا يعدّ fan-out الأساسي لمكوّن؟",
+      "options": [
+        "Components that can call the measured component",
+        "Components this component directly calls or controls",
+        "Variables referenced in each executable statement",
+        "Methods inherited from the component's parent classes"
+      ],
+      "options_ar": [
+        "المكونات القادرة على استدعاء المكوّن الذي يجري قياسه",
+        "المكونات التي يستدعيها هذا المكوّن أو يتحكم بها",
+        "المتغيرات المشار إليها في كل تعليمة تنفيذية",
+        "الطرق الموروثة من الأصناف الأصلية لذلك المكوّن"
+      ],
+      "options_en": [
+        "Components that can call the measured component",
+        "Components this component directly calls or controls",
+        "Variables referenced in each executable statement",
+        "Methods inherited from the component's parent classes"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Basic fan-out counts direct outgoing calls; incoming callers are counted by fan-in.",
+      "explanation_ar": "يعدّ fan-out الأساسي الاستدعاءات الصادرة المباشرة؛ أما الجهات المستدعية الواردة فيعدّها fan-in."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_fan_boundary_convention",
+      "bloom_level": "Understand",
+      "question": "What value does simple fan counting assign at a zero-count boundary?",
+      "question_ar": "في إجراء fan المبسط بالمقرر، ما القيمة المسندة عند حدّ ذي عدّ صفري؟",
+      "options": [
+        "Every component receives zero for both fan counts",
+        "Roots receive fan-in one; leaves receive fan-out one",
+        "Roots receive fan-out one; leaves receive fan-in one",
+        "Every component receives one for both fan counts"
+      ],
+      "options_ar": [
+        "تأخذ كل المكونات صفراً في عددي fan-in وfan-out",
+        "تأخذ الجذور fan-in واحداً، وتأخذ الأوراق fan-out واحداً",
+        "تأخذ الجذور fan-out واحداً، وتأخذ الأوراق fan-in واحداً",
+        "تأخذ كل المكونات واحداً في عددي fan-in وfan-out"
+      ],
+      "options_en": [
+        "Every component receives zero for both fan counts",
+        "Roots receive fan-in one; leaves receive fan-out one",
+        "Roots receive fan-out one; leaves receive fan-in one",
+        "Every component receives one for both fan counts"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "This simple-fan convention assigns a minimum of one to top-level fan-in and leaf fan-out; it is not a universal definition.",
+      "explanation_ar": "يسند إجراء الشريحة قيمة دنيا مقدارها واحد إلى fan-in للجذور وfan-out للأوراق؛ وهذا اصطلاح للإجراء لا تعريف شامل."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_fan_in_reuse_caveat",
+      "bloom_level": "Analyze",
+      "question": "What limitation can simple fan-in have?",
+      "question_ar": "ما القيد الذي يذكره المقرر بشأن fan-in المبسط؟",
+      "options": [
+        "It ignores every component call made by a module",
+        "It measures elapsed time rather than connections",
+        "It treats all data structures as external files",
+        "It can penalize a component that is reused"
+      ],
+      "options_ar": [
+        "يتجاهل كل استدعاء مكوّن تجريه الوحدة",
+        "يقيس الزمن المنقضي بدلاً من الاتصالات",
+        "يعامل جميع بنى البيانات بوصفها ملفات خارجية",
+        "قد يفرض عقوبة على مكوّن يعاد استخدامه"
+      ],
+      "options_en": [
+        "It ignores every component call made by a module",
+        "It measures elapsed time rather than connections",
+        "It treats all data structures as external files",
+        "It can penalize a component that is reused"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "A simple fan-in model may penalize reused components, so a high value needs contextual interpretation.",
+      "explanation_ar": "تحذر الشريحة صراحةً من أن نموذج fan-in المبسط قد يفرض عقوبة على المكونات المعاد استخدامها؛ لذا يلزم تفسير القيمة في سياقها."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_henry_kafura_formula",
+      "bloom_level": "Understand",
+      "question": "What structure does the verified Henry–Kafura measure use?",
+      "question_ar": "ما البنية التي يستعملها مقياس Henry–Kafura الموثق؟",
+      "options": [
+        "Module length times (fan-in + fan-out) squared",
+        "Module size divided by live-variable count and span",
+        "Program length times unique operators and operands",
+        "Class depth plus the count of its immediate subclasses"
+      ],
+      "options_ar": [
+        "طول الوحدة مضروباً بمربع مجموع fan-in وfan-out",
+        "حجم الوحدة مقسوماً على عدد المتغيرات الحية وامتدادها",
+        "طول البرنامج مضروباً بالعوامل والمعاملات الفريدة",
+        "عمق الصنف مضافاً إليه عدد أصنافه الفرعية المباشرة"
+      ],
+      "options_en": [
+        "Module length times (fan-in + fan-out) squared",
+        "Module size divided by live-variable count and span",
+        "Program length times unique operators and operands",
+        "Class depth plus the count of its immediate subclasses"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Henry–Kafura combines module length with the square of total information flow; it is distinct from the basic fan counts alone.",
+      "explanation_ar": "يجمع Henry–Kafura طول الوحدة مع مربع مجموع تدفق المعلومات؛ وهو يختلف عن عدّ fan الأساسي وحده."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_henry_kafura_flow_scope",
+      "bloom_level": "Understand",
+      "question": "Which relationships are included in Henry–Kafura fan-in and fan-out?",
+      "question_ar": "أي علاقات تدخل في fan-in وfan-out لدى Henry–Kafura؟",
+      "options": [
+        "Inheritance links and method overrides only",
+        "Control links and accessed data structures",
+        "Live-variable spans and executable-statement counts",
+        "Project staffing patterns and schedule changes"
+      ],
+      "options_ar": [
+        "روابط الوراثة وتجاوز الطرق فقط دون غيرها",
+        "روابط التحكم وبنى البيانات المستخدمة عبر الوحدات",
+        "امتدادات المتغيرات الحية وأعداد التعليمات التنفيذية",
+        "أنماط التوظيف في المشروع والتغييرات على جدوله"
+      ],
+      "options_en": [
+        "Inheritance links and method overrides only",
+        "Control links and accessed data structures",
+        "Live-variable spans and executable-statement counts",
+        "Project staffing patterns and schedule changes"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Henry–Kafura extends fan-in and fan-out beyond calls to include data structures a module retrieves or updates.",
+      "explanation_ar": "يوسع Henry–Kafura مقياسي fan-in وfan-out ليتجاوزا الاستدعاءات ويشملا بنى البيانات التي تسترجعها الوحدة أو تحدثها."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_extended_fan_out_terms",
+      "bloom_level": "Understand",
+      "question": "Which set contributes to extended fan-out?",
+      "question_ar": "في إجراء fan-out الموسع بالمقرر، أي مجموعة تدخل في حسابه؟",
+      "options": [
+        "Incoming callers, inherited methods, and live variables",
+        "Executable lines, unique operands, and class attributes",
+        "Called modules, passed parameters, and written data",
+        "Project effort, schedule duration, and defect density"
+      ],
+      "options_ar": [
+        "الجهات المستدعية والطرق الموروثة والمتغيرات الحية",
+        "الأسطر التنفيذية والمعاملات الفريدة وخصائص الأصناف",
+        "استدعاء المكونات، تمرير المعاملات، وكتابة البيانات",
+        "جهد المشروع ومدة الجدول الزمني وكثافة العيوب"
+      ],
+      "options_en": [
+        "Incoming callers, inherited methods, and live variables",
+        "Executable lines, unique operands, and class attributes",
+        "Called modules, passed parameters, and written data",
+        "Project effort, schedule duration, and defect density"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Extended fan-out counts called components, parameters passed across hierarchy levels, and data elements written by the component.",
+      "explanation_ar": "يجمع fan-out الموسع في الشريحة المكونات المستدعاة والمعاملات الممررة بين مستويات التسلسل وعناصر البيانات التي يكتبها المكوّن."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_henry_kafura_length_effect",
+      "bloom_level": "Apply",
+      "question": "Two modules have equal fan-in and fan-out totals. Which has the higher Henry–Kafura value?",
+      "question_ar": "لدى وحدتين مجموع متساوٍ لـfan-in وfan-out؛ أيهما أعلى في Henry–Kafura؟",
+      "options": [
+        "Fewer source lines always produce a higher value",
+        "Comments determine the module's measured complexity",
+        "Shorter names lower the complexity of a module",
+        "With flow fixed, the longer module scores higher"
+      ],
+      "options_ar": [
+        "يؤدي عدد أسطر أقل دائماً إلى قيمة تعقيد أعلى",
+        "تحدد التعليقات قيمة التعقيد المقاسة للوحدة",
+        "تخفض الأسماء الأقصر قيمة تعقيد الوحدة المقاسة",
+        "مع ثبات التدفق، يزيد طول الوحدة قيمة التعقيد"
+      ],
+      "options_en": [
+        "Fewer source lines always produce a higher value",
+        "Comments determine the module's measured complexity",
+        "Shorter names lower the complexity of a module",
+        "With flow fixed, the longer module scores higher"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "With equal flow totals, the length factor gives the longer component a greater Henry–Kafura value.",
+      "explanation_ar": "عند تساوي مجموع تدفقات المعلومات، يجعل عامل طول الوحدة قيمة Henry–Kafura للوحدة الأطول أكبر."
+    }
+  ]
+}

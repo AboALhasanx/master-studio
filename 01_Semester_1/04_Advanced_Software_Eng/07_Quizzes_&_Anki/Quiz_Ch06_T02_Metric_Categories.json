@@ -1,0 +1,247 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T02_Metric_Categories",
+  "topic": "Software Metric Categories",
+  "topic_ar": "تصنيفات مقاييس البرمجيات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_product_metric",
+      "bloom_level": "Understand",
+      "question": "Which observation is a product metric?",
+      "question_ar": "أي ملاحظة تمثل مقياساً للمنتج؟",
+      "options": [
+        "Product size, complexity, and reliability characteristics",
+        "Development effort, time, and defect-removal effectiveness",
+        "Staffing, project cost, schedule, and developer productivity",
+        "Process maturity and testing-defect effectiveness"
+      ],
+      "options_ar": [
+        "خصائص حجم المنتج وتعقيده واعتماديته",
+        "جهد التطوير ووقته وفاعلية إزالة العيوب",
+        "نمط التوظيف وكلفة المشروع وجدوله",
+        "نضج العملية وفاعلية كشف عيوب الاختبار"
+      ],
+      "options_en": [
+        "Product size, complexity, and reliability characteristics",
+        "Development effort, time, and defect-removal effectiveness",
+        "Staffing, project cost, schedule, and developer productivity",
+        "Process maturity and testing-defect effectiveness"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Product metrics describe product characteristics such as size, complexity, performance, and reliability; the alternatives describe process or project properties.",
+      "explanation_ar": "تصف مقاييس المنتج خصائصه مثل الحجم والتعقيد والأداء والاعتمادية؛ أما البدائل فتصف العملية أو المشروع."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_process_metric",
+      "bloom_level": "Understand",
+      "question": "Which set consists of process metrics?",
+      "question_ar": "أي مجموعة تتكون من مقاييس العملية وفق تصنيف المقرر؟",
+      "options": [
+        "Product size, reliability, portability, and performance",
+        "Effort, time, defect removal, and process maturity",
+        "Developer count, staffing, cost, and schedule",
+        "Class depth, method count, and object coupling"
+      ],
+      "options_ar": [
+        "حجم المنتج واعتماديته وقابليته للنقل وأداؤه",
+        "الجهد والوقت وإزالة العيوب ونضج العملية",
+        "عدد المطورين ونمط التوظيف والكلفة والجدول",
+        "عمق الأصناف وعدد الطرق واقتران الكائنات"
+      ],
+      "options_en": [
+        "Product size, reliability, portability, and performance",
+        "Effort, time, defect removal, and process maturity",
+        "Developer count, staffing, cost, and schedule",
+        "Class depth, method count, and object coupling"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Process measures include effort, time, defect-removal effectiveness, testing defects, and maturity; the alternatives describe product or project data.",
+      "explanation_ar": "يورد المقرر الجهد والوقت وفاعلية إزالة العيوب وعيوب الاختبار والنضج ضمن مقاييس العملية؛ أما البدائل فتصف بيانات المنتج أو المشروع."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_project_metric",
+      "bloom_level": "Understand",
+      "question": "Which observation is classified as a project metric?",
+      "question_ar": "أي ملاحظة تصنف مقياساً للمشروع؟",
+      "options": [
+        "The source code's size and structural complexity",
+        "The effectiveness of removing defects during development",
+        "Project staffing patterns, cost, and schedules",
+        "The delivered product's reliability and portability"
+      ],
+      "options_ar": [
+        "حجم الشيفرة وتعقيد بنية المنتج",
+        "فاعلية عملية إزالة عيوب البرمجيات",
+        "نمط التوظيف وجدول العمل للمشروع",
+        "اعتمادية المنتج وقابليته للنقل"
+      ],
+      "options_en": [
+        "The source code's size and structural complexity",
+        "The effectiveness of removing defects during development",
+        "Project staffing patterns, cost, and schedules",
+        "The delivered product's reliability and portability"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Project metrics describe project execution, including staffing, cost, schedule, and productivity; the other choices describe product or process characteristics.",
+      "explanation_ar": "تصف مقاييس المشروع تنفيذه، بما في ذلك التوظيف والكلفة والجدول والإنتاجية؛ أما البدائل فتصف المنتج أو العملية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_internal_external_attribute",
+      "bloom_level": "Understand",
+      "question": "Which distinction separates an internal attribute from an external one?",
+      "question_ar": "أي تمييز يفصل الخاصية الداخلية عن الخارجية؟",
+      "options": [
+        "Internal describes cost; external describes project staffing",
+        "Internal describes process activity; external describes product reliability",
+        "Internal describes prediction; external describes project control",
+        "Internal describes product structure; external describes behavior in use"
+      ],
+      "options_ar": [
+        "تصف الداخلية كلفة المشروع، والخارجية نمط التوظيف",
+        "تصف الداخلية نشاط العملية، والخارجية اعتمادية المنتج",
+        "تصف الداخلية التنبؤ، والخارجية ضبط تقدم المشروع",
+        "الداخلية بنية المنتج، والخارجية سلوكه عند الاستخدام"
+      ],
+      "options_en": [
+        "Internal describes cost; external describes project staffing",
+        "Internal describes process activity; external describes product reliability",
+        "Internal describes prediction; external describes project control",
+        "Internal describes product structure; external describes behavior in use"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Internal attributes are assessed from the software product itself, while external attributes concern its behavior or effects in its operating context.",
+      "explanation_ar": "تُقيّم الخصائص الداخلية من المنتج البرمجي نفسه، بينما تتعلق الخصائص الخارجية بسلوكه أو أثره في بيئة تشغيله."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_predictor_metric",
+      "bloom_level": "Understand",
+      "question": "What is the role of a predictor metric?",
+      "question_ar": "ما دور المقياس التنبؤي؟",
+      "options": [
+        "Uses a related measure to estimate an attribute",
+        "Records actual progress against the project plan",
+        "Classifies an artifact into a software category",
+        "States the exact value of every future outcome"
+      ],
+      "options_ar": [
+        "يستعمل مقياساً مرتبطاً لتقدير الخاصية",
+        "يسجل التقدم المحقق مقارنة بخطة المشروع",
+        "يصنف مخرجاً ضمن فئات برمجية محددة",
+        "يحدد القيمة الدقيقة لكل نتيجة مستقبلية"
+      ],
+      "options_en": [
+        "Uses a related measure to estimate an attribute",
+        "Records actual progress against the project plan",
+        "Classifies an artifact into a software category",
+        "States the exact value of every future outcome"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A predictor is selected for its relationship with an attribute to be estimated; recording progress against a plan is a control use, not prediction.",
+      "explanation_ar": "يُختار المقياس التنبؤي لارتباطه بخاصية يراد تقديرها؛ أما تسجيل التقدم مقابل الخطة فهو استخدام ضبطي لا تنبؤي."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_control_metric",
+      "bloom_level": "Understand",
+      "question": "A manager tracks actual effort against the approved plan. What is the metric's role?",
+      "question_ar": "يتابع مدير الجهد الفعلي مقارنة بالخطة المعتمدة؛ ما دور المقياس هنا؟",
+      "options": [
+        "Predicts product reliability before release",
+        "Tracks project progress against an approved plan",
+        "Describes product behavior during operation",
+        "Counts functions visible to the delivered product's users"
+      ],
+      "options_ar": [
+        "يتنبأ باعتمادية المنتج قبل الإصدار",
+        "يتابع تقدم المشروع مقارنة بالخطة",
+        "يصف سلوك المنتج عند استعماله",
+        "يعدّ الوظائف الظاهرة لمستخدمي المنتج"
+      ],
+      "options_en": [
+        "Predicts product reliability before release",
+        "Tracks project progress against an approved plan",
+        "Describes product behavior during operation",
+        "Counts functions visible to the delivered product's users"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Control metrics help monitor the process or project against its plan; predicting reliability or measuring functionality are different roles.",
+      "explanation_ar": "تساعد المقاييس الضبطية على متابعة العملية أو المشروع مقابل خطته؛ أما التنبؤ بالاعتمادية أو قياس الوظائف فلهما دور مختلف."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_metric_category_vs_role",
+      "bloom_level": "Analyze",
+      "question": "What do the labels product, process, and project classify?",
+      "question_ar": "ماذا تصنف التسميات product وprocess وproject؟",
+      "options": [
+        "The metric's predictive or control role",
+        "The permitted transformation of its numeric scale",
+        "The object or activity a metric describes",
+        "The programming language used to collect measures"
+      ],
+      "options_ar": [
+        "هل يتنبأ المقياس أم يتابع تقدم العمل؟",
+        "تحويل المقياس المسموح به لقيمه",
+        "الشيء أو النشاط الذي يصفه المقياس",
+        "لغة جمع القياس في نظام البرمجيات"
+      ],
+      "options_en": [
+        "The metric's predictive or control role",
+        "The permitted transformation of its numeric scale",
+        "The object or activity a metric describes",
+        "The programming language used to collect measures"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Product, process, and project identify what is being described; predictor and control identify how the metric is used.",
+      "explanation_ar": "تحدد product وprocess وproject ما الذي يصفه المقياس؛ أما predictor وcontrol فيحددان طريقة استخدامه."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_category_role_axes",
+      "bloom_level": "Analyze",
+      "question": "How should a metric's category and its management role be recorded?",
+      "question_ar": "كيف ينبغي تسجيل تصنيف المقياس ودوره الإداري؟",
+      "options": [
+        "Interchangeable names for a single metric category",
+        "Labels that determine which numeric operations are meaningful",
+        "Names for lifecycle phases that cannot overlap",
+        "Separate labels describing different aspects of a metric"
+      ],
+      "options_ar": [
+        "التصنيف والدور اسمان متبادلان لنوع مقياس واحد",
+        "التصنيف والدور تسميتان للعمليات العددية ذات المعنى",
+        "التصنيف والدور تسميتان لمراحل دورة حياة لا تتداخل",
+        "التصنيف والدور يصفان جانبين مختلفين للمقياس"
+      ],
+      "options_en": [
+        "Interchangeable names for a single metric category",
+        "Labels that determine which numeric operations are meaningful",
+        "Names for lifecycle phases that cannot overlap",
+        "Separate labels describing different aspects of a metric"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Category and role answer different questions: what is measured and whether the measure is used to predict or control.",
+      "explanation_ar": "يجيب التصنيف والدور عن سؤالين مختلفين: ما الذي يُقاس، وهل يُستخدم المقياس للتنبؤ أم للضبط."
+    }
+  ]
+}

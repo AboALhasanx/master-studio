@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T04_Halstead_Software_Science",
+  "topic": "Halstead Software Science",
+  "topic_ar": "مقاييس Halstead لعلم البرمجيات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_halstead_vocabulary",
+      "bloom_level": "Understand",
+      "question": "What contributes to Halstead program vocabulary?",
+      "question_ar": "ما الذي يدخل في مفردات البرنامج وفق Halstead؟",
+      "options": [
+        "Unique operator and operand types in software",
+        "Every operator and operand occurrence in software",
+        "Executable statements and control-flow branches",
+        "Software modules and their external interfaces"
+      ],
+      "options_ar": [
+        "أنواع العوامل والمعاملات الفريدة في النظام",
+        "كل مرات ظهور العوامل والمعاملات في النظام",
+        "تعليمات البرنامج وتفرعات تدفق التحكم فيه",
+        "الوحدات البرمجية وواجهاتها المعتمدة خارجياً"
+      ],
+      "options_en": [
+        "Unique operator and operand types in software",
+        "Every operator and operand occurrence in software",
+        "Executable statements and control-flow branches",
+        "Software modules and their external interfaces"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Halstead vocabulary combines the counts of unique operators and unique operands; total occurrences contribute to program length instead.",
+      "explanation_ar": "تجمع مفردات Halstead عدد العوامل والمعاملات الفريدة؛ أما مجموع مرات الظهور فيدخل في طول البرنامج."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_halstead_program_length",
+      "bloom_level": "Understand",
+      "question": "What does Halstead's program length count?",
+      "question_ar": "ماذا يعدّ طول البرنامج في مقاييس Halstead؟",
+      "options": [
+        "Unique operator and operand types in the program",
+        "All operator and operand occurrences in the program",
+        "Executable statements after removing every operator",
+        "Modules and data structures called by the program"
+      ],
+      "options_ar": [
+        "أنواع العوامل والمعاملات الفريدة في البرنامج",
+        "جميع مرات ظهور العوامل والمعاملات في البرنامج",
+        "التعليمات التنفيذية بعد حذف العوامل منها",
+        "الوحدات وبنى البيانات التي يستدعيها البرنامج مباشرةً"
+      ],
+      "options_en": [
+        "Unique operator and operand types in the program",
+        "All operator and operand occurrences in the program",
+        "Executable statements after removing every operator",
+        "Modules and data structures called by the program"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Program length uses total token occurrences; vocabulary counts unique tokens, so the two measures answer different questions.",
+      "explanation_ar": "يعتمد طول البرنامج على مجموع مرات ظهور الرموز؛ أما المفردات فتعدّ الرموز الفريدة، ولذلك يجيب المقياسان عن سؤالين مختلفين."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_halstead_volume",
+      "bloom_level": "Understand",
+      "question": "How is the meaning of Halstead volume described?",
+      "question_ar": "كيف يوصف معنى حجم Halstead؟",
+      "options": [
+        "The number of independent control-flow paths",
+        "The elapsed time required to execute the program",
+        "Encoded program size from its length and vocabulary",
+        "The count of distinct modules in the software"
+      ],
+      "options_ar": [
+        "عدد المسارات المستقلة لتدفق التحكم",
+        "الزمن المنقضي اللازم لتنفيذ البرنامج",
+        "حجم البرنامج المرمّز بطوله ومفرداته",
+        "عدد الوحدات البرمجية المتميزة في النظام"
+      ],
+      "options_en": [
+        "The number of independent control-flow paths",
+        "The elapsed time required to execute the program",
+        "Encoded program size from its length and vocabulary",
+        "The count of distinct modules in the software"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Volume estimates the program's size in bits under a uniform encoding of its vocabulary; it is not execution time or control-flow complexity.",
+      "explanation_ar": "يقدّر الحجم عدد البتات اللازمة لترميز البرنامج عند ترميز مفرداته بانتظام؛ ولا يمثل زمن التنفيذ أو تعقيد تدفق التحكم."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_halstead_potential_volume",
+      "bloom_level": "Understand",
+      "question": "What does Halstead's potential volume represent?",
+      "question_ar": "ماذا يمثل الحجم المحتمل لدى Halstead؟",
+      "options": [
+        "The total source size after removing comments",
+        "The volume of every module in the finished system",
+        "The encoded size of distinct project requirements",
+        "Minimum volume for implementing the algorithm"
+      ],
+      "options_ar": [
+        "الحجم الكلي للمصدر بعد حذف التعليقات",
+        "حجم كل وحدة في النظام البرمجي المكتمل",
+        "الحجم المرمّز لمتطلبات المشروع المتميزة",
+        "الحجم الذي يحققه أدنى تنفيذ للخوارزمية"
+      ],
+      "options_en": [
+        "The total source size after removing comments",
+        "The volume of every module in the finished system",
+        "The encoded size of distinct project requirements",
+        "Minimum volume for implementing the algorithm"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Potential volume is tied to the minimal implementation of the algorithm, whereas program volume describes the measured implementation.",
+      "explanation_ar": "يرتبط الحجم المحتمل بأدنى تنفيذ للخوارزمية، بينما يصف حجم البرنامج التنفيذ المقاس."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_halstead_program_level",
+      "bloom_level": "Understand",
+      "question": "What does a higher Halstead program level indicate?",
+      "question_ar": "إلى ماذا يشير ارتفاع مستوى البرنامج لدى Halstead؟",
+      "options": [
+        "Small measured volume relative to potential volume",
+        "The program has more control-flow regions",
+        "Each program execution takes more elapsed time",
+        "The software contains a greater number of modules"
+      ],
+      "options_ar": [
+        "صغر الحجم المقاس نسبةً إلى الحجم المحتمل",
+        "يحتوي البرنامج على مناطق تدفق تحكم أكثر",
+        "يستغرق كل تنفيذ للبرنامج زمناً منقضياً أطول",
+        "يحتوي النظام البرمجي على وحدات متميزة أكثر"
+      ],
+      "options_en": [
+        "Small measured volume relative to potential volume",
+        "The program has more control-flow regions",
+        "Each program execution takes more elapsed time",
+        "The software contains a greater number of modules"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Program level compares potential volume with measured volume; a value nearer one corresponds to a compact, high-level implementation in this model.",
+      "explanation_ar": "يقارن مستوى البرنامج الحجم المحتمل بالحجم المقاس؛ والقيمة الأقرب إلى الواحد تقابل تنفيذاً موجزاً عالي المستوى ضمن هذا النموذج."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_halstead_level_difficulty",
+      "bloom_level": "Analyze",
+      "question": "How are Halstead difficulty and program level related?",
+      "question_ar": "ما العلاقة بين الصعوبة ومستوى البرنامج في نموذج المقرر؟",
+      "options": [
+        "Difficulty equals the program's control-flow path count",
+        "Difficulty varies inversely with the program level",
+        "Difficulty equals program level times program volume",
+        "Difficulty equals elapsed execution time in seconds"
+      ],
+      "options_ar": [
+        "تساوي الصعوبة عدد مسارات تدفق التحكم بالبرنامج",
+        "تتناسب الصعوبة عكسياً مع مستوى البرنامج",
+        "تساوي الصعوبة مستوى البرنامج مضروباً بحجمه",
+        "تساوي الصعوبة زمن التنفيذ المنقضي بالثواني"
+      ],
+      "options_en": [
+        "Difficulty equals the program's control-flow path count",
+        "Difficulty varies inversely with the program level",
+        "Difficulty equals program level times program volume",
+        "Difficulty equals elapsed execution time in seconds"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Difficulty varies inversely with program level; the alternatives substitute control-flow, size, or time measures.",
+      "explanation_ar": "يربط المقرر الصعوبة بمستوى البرنامج بعلاقة عكسية؛ أما البدائل فتستبدل بها مقاييس تدفق التحكم أو الحجم أو الزمن."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_halstead_effort_unit",
+      "bloom_level": "Understand",
+      "question": "Which unit represents Halstead effort?",
+      "question_ar": "بأي وحدة يفسر المقرر جهد Halstead في أمثلته؟",
+      "options": [
+        "Development effort measured in person-months",
+        "Actual hours spent running the finished program",
+        "Effort measured in elementary mental discriminations",
+        "Independent control paths exercised during testing"
+      ],
+      "options_ar": [
+        "جهد تطوير البرمجيات لكل وحدة شخص-شهر",
+        "الساعات الفعلية لتشغيل البرنامج بعد اكتماله",
+        "الجهد المقاس بالتمييزات الذهنية الأولية",
+        "مسارات تحكم مستقلة أثناء اختبار البرمجيات"
+      ],
+      "options_en": [
+        "Development effort measured in person-months",
+        "Actual hours spent running the finished program",
+        "Effort measured in elementary mental discriminations",
+        "Independent control paths exercised during testing"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Halstead effort is expressed as elementary mental discriminations; it is not a project staffing unit or a runtime measure.",
+      "explanation_ar": "يُعبّر عن جهد Halstead بالتمييزات الذهنية الأولية؛ فهو ليس وحدة توظيف للمشروع ولا مقياساً لزمن التشغيل."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_halstead_time",
+      "bloom_level": "Understand",
+      "question": "How is Halstead programming time estimated?",
+      "question_ar": "كيف يقدّر المقرر زمن البرمجة لدى Halstead؟",
+      "options": [
+        "Module length multiplied by its number of branches",
+        "Vocabulary divided by the unique-operator count",
+        "Effort multiplied by the count of external data files",
+        "Effort divided by Stroud's assumed rate per second"
+      ],
+      "options_ar": [
+        "طول الوحدة مضروباً بعدد التفرعات الموجودة",
+        "مفردات البرنامج مقسومة على عدد العوامل الفريدة",
+        "الجهد مضروباً بعدد ملفات البيانات الخارجية",
+        "الجهد مقسوماً على معدل Stroud المفترض في الثانية"
+      ],
+      "options_en": [
+        "Module length multiplied by its number of branches",
+        "Vocabulary divided by the unique-operator count",
+        "Effort multiplied by the count of external data files",
+        "Effort divided by Stroud's assumed rate per second"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Estimated programming time divides mental-discrimination effort by the assumed Stroud rate of eighteen per second.",
+      "explanation_ar": "يحسب مثال المقرر الزمن بقسمة جهد التمييزات الذهنية على معدل Stroud المفترض، وهو ثمانية عشر في الثانية."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch6_halstead_estimated_length",
+      "bloom_level": "Understand",
+      "question": "What token information is used to estimate program length?",
+      "question_ar": "ما معلومات الرموز المستخدمة لتقدير طول البرنامج؟",
+      "options": [
+        "Counts of unique operators and unique operands",
+        "Counts of modules and their called components",
+        "Source-line totals and the number of comments",
+        "Failure totals and their recorded operating hours"
+      ],
+      "options_ar": [
+        "أعداد العوامل الفريدة والمعاملات الفريدة",
+        "أعداد الوحدات والمكونات التي تستدعيها",
+        "مجموع أسطر المصدر وعدد التعليقات",
+        "مجموع الإخفاقات وزمن التشغيل المسجل لها"
+      ],
+      "options_en": [
+        "Counts of unique operators and unique operands",
+        "Counts of modules and their called components",
+        "Source-line totals and the number of comments",
+        "Failure totals and their recorded operating hours"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The estimated-length relation uses the unique operator and operand counts; observed total token occurrences instead determine actual length.",
+      "explanation_ar": "تستعمل علاقة الطول المقدّر أعداد العوامل والمعاملات الفريدة؛ أما الطول الفعلي فيعتمد على مجموع مرات ظهور الرموز."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch6_halstead_c_function_calls",
+      "bloom_level": "Understand",
+      "question": "Under C's counting convention, how is a function call treated?",
+      "question_ar": "وفق قواعد عدّ C في المقرر، كيف تُعامل استدعاءات الدوال؟",
+      "options": [
+        "A function call is counted as a distinct operand",
+        "A function call is counted as an operator token",
+        "A function call is excluded from token counting",
+        "A function call is counted as a control-flow region"
+      ],
+      "options_ar": [
+        "يُحسب استدعاء الدالة معاملاً متميزاً في التحليل",
+        "يُحسب استدعاء الدالة رمز عامل في التحليل",
+        "يُستبعد استدعاء الدالة من عدّ رموز البرنامج",
+        "يُحسب استدعاء الدالة منطقةً لتدفق التحكم"
+      ],
+      "options_en": [
+        "A function call is counted as a distinct operand",
+        "A function call is counted as an operator token",
+        "A function call is excluded from token counting",
+        "A function call is counted as a control-flow region"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "C classifies function calls as operators; identifiers and supplied arguments follow operand-counting rules.",
+      "explanation_ar": "تصنف قواعد C استدعاءات الدوال عوامل؛ أما المعرّفات والمعاملات الممررة فتُحسب وفق قواعد المعاملات."
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "subject": "04_Advanced_Software_Eng",
+  "quiz_id": "Quiz_Ch06_T03_Software_Size_Metrics",
+  "topic": "Software Size Metrics",
+  "topic_ar": "مقاييس حجم البرمجيات",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ch6_loc_counting_rule",
+      "bloom_level": "Understand",
+      "question": "Under Conte's LOC definition, which lines are counted?",
+      "question_ar": "وفق تعريف Conte لـLOC، أي الأسطر تُحسب؟",
+      "options": [
+        "Nonblank, noncomment lines, including declarations",
+        "Executable lines alone, excluding declarations and headers",
+        "Every physical line, including comments and blank lines",
+        "Only lines containing one complete executable statement"
+      ],
+      "options_ar": [
+        "الأسطر غير الفارغة وغير التعليقية مع التصريحات",
+        "الأسطر التنفيذية وحدها دون تصريحات أو ترويسات",
+        "كل أسطر المصدر بما فيها التعليقات والفراغات",
+        "الأسطر التي تحتوي تعليمة تنفيذية كاملة واحدة فقط"
+      ],
+      "options_en": [
+        "Nonblank, noncomment lines, including declarations",
+        "Executable lines alone, excluding declarations and headers",
+        "Every physical line, including comments and blank lines",
+        "Only lines containing one complete executable statement"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Conte's predominant research definition excludes blank and comment lines but includes headers, declarations, and executable or nonexecutable program text.",
+      "explanation_ar": "يستبعد تعريف Conte السائد في البحوث الأسطر الفارغة والتعليقات، لكنه يشمل الترويسات والتصريحات والنص البرمجي التنفيذي وغير التنفيذي."
+    },
+    {
+      "id": "q2",
+      "concept_id": "ch6_loc_counting_convention",
+      "bloom_level": "Analyze",
+      "question": "Why must an LOC count state its counting convention?",
+      "question_ar": "لماذا يجب أن يحدد عدّ LOC قاعدة العد المستعملة؟",
+      "options": [
+        "LOC is calculated from the program's runtime failure rate",
+        "Counting comments, blanks, or declarations can change LOC",
+        "All programming languages use identical line structures",
+        "Function-point totals fix every line-counting convention"
+      ],
+      "options_ar": [
+        "يحسب LOC من معدل إخفاق البرنامج وقت التشغيل",
+        "قد تغير التعليقات والفراغات والتصريحات عدد LOC",
+        "تستعمل لغات البرمجة كلها بنية أسطر متماثلة",
+        "يثبت مجموع نقاط الوظائف جميع قواعد عد LOC"
+      ],
+      "options_en": [
+        "LOC is calculated from the program's runtime failure rate",
+        "Counting comments, blanks, or declarations can change LOC",
+        "All programming languages use identical line structures",
+        "Function-point totals fix every line-counting convention"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "LOC totals change when blanks, comments, or executable-only lines are treated differently, so the counting rule must be explicit.",
+      "explanation_ar": "يعرض مثال المقرر أعداداً مختلفة بحسب استبعاد الفراغات والتعليقات أو عد التعليمات التنفيذية فقط؛ لذلك يجب توضيح القاعدة."
+    },
+    {
+      "id": "q3",
+      "concept_id": "ch6_fp_functional_units",
+      "bloom_level": "Remember",
+      "question": "Which list contains the five Albrecht function-point components?",
+      "question_ar": "أي قائمة تضم المكونات الخمسة لنقاط الوظائف وفق Albrecht؟",
+      "options": [
+        "Classes, methods, inheritance links, coupling, cohesion, interfaces, and objects",
+        "Statements, branches, loops, function calls, declarations, operators, and data flow",
+        "External inputs, outputs, inquiries, internal files, and external interface files",
+        "Actors, transactions, screens, reports, algorithms, environment, and adjustments"
+      ],
+      "options_ar": [
+        "أصناف وطرق وروابط وراثة واقتران وتماسك وواجهات وعلاقات كائنات",
+        "تعليمات وتفرعات وحلقات واستدعاءات دوال وتصريحات وعوامل وتدفق بيانات",
+        "مدخلات ومخرجات واستعلامات وملفات منطقية داخلية وملفات واجهة خارجية",
+        "ممثلون ومعاملات وشاشات وتقارير وخوارزميات وبيئة وعوامل ضبط"
+      ],
+      "options_en": [
+        "Classes, methods, inheritance links, coupling, cohesion, interfaces, and objects",
+        "Statements, branches, loops, function calls, declarations, operators, and data flow",
+        "External inputs, outputs, inquiries, internal files, and external interface files",
+        "Actors, transactions, screens, reports, algorithms, environment, and adjustments"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Albrecht's function-point analysis counts external inputs, external outputs, inquiries, internal logical files, and external interface files.",
+      "explanation_ar": "يعدّ تحليل Albrecht نقاط الإدخال والإخراج والاستعلامات والملفات المنطقية الداخلية وملفات الواجهات الخارجية."
+    },
+    {
+      "id": "q4",
+      "concept_id": "ch6_fp_external_inquiry",
+      "bloom_level": "Understand",
+      "question": "What distinguishes an external inquiry in function-point analysis?",
+      "question_ar": "ما الذي يميز الاستعلام الخارجي في تحليل نقاط الوظائف؟",
+      "options": [
+        "It maintains logical data within the measured system",
+        "It sends newly generated information outside the system",
+        "It processes control data entering from another system",
+        "It combines input and output to retrieve information"
+      ],
+      "options_ar": [
+        "يحافظ على بيانات منطقية داخل النظام المقاس",
+        "يرسل معلومات مولدة حديثاً إلى خارج النظام",
+        "يعالج بيانات تحكم تدخل من نظام آخر",
+        "يجمع الإدخال والإخراج لاسترجاع المعلومات"
+      ],
+      "options_en": [
+        "It maintains logical data within the measured system",
+        "It sends newly generated information outside the system",
+        "It processes control data entering from another system",
+        "It combines input and output to retrieve information"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "An external inquiry is an input-output combination whose result is data retrieval; file maintenance and outbound reporting are different function types.",
+      "explanation_ar": "الاستعلام الخارجي يجمع الإدخال والإخراج لاسترجاع البيانات؛ أما صيانة الملفات والتقارير الصادرة فأنواع وظيفية مختلفة."
+    },
+    {
+      "id": "q5",
+      "concept_id": "ch6_fp_ilf_eif",
+      "bloom_level": "Understand",
+      "question": "How does an EIF differ from an ILF for the system being measured?",
+      "question_ar": "بماذا يختلف EIF عن ILF بالنسبة إلى النظام المقاس؟",
+      "options": [
+        "An EIF is referenced here but maintained elsewhere",
+        "An ILF is referenced here but maintained elsewhere",
+        "An EIF is an outbound transaction that sends information",
+        "An ILF is an input-output request that retrieves data"
+      ],
+      "options_ar": [
+        "يستعمل النظام EIF ويُصان في نظام خارجي",
+        "يستعمل النظام ILF وتديره منظومة أخرى",
+        "يمثل EIF معاملة ترسل مخرجات إلى المستخدمين",
+        "يمثل ILF طلب استعلام يسترجع البيانات"
+      ],
+      "options_en": [
+        "An EIF is referenced here but maintained elsewhere",
+        "An ILF is referenced here but maintained elsewhere",
+        "An EIF is an outbound transaction that sends information",
+        "An ILF is an input-output request that retrieves data"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "An EIF is logically related data referenced by the measured system but maintained by another system; an ILF is maintained within the measured system.",
+      "explanation_ar": "يمثل EIF بيانات مترابطة منطقياً يشير إليها النظام المقاس وتديرها منظومة أخرى؛ أما ILF فيُصان داخل النظام المقاس."
+    },
+    {
+      "id": "q6",
+      "concept_id": "ch6_fp_adjustment_factor",
+      "bloom_level": "Understand",
+      "question": "What does the function-point adjustment factor modify?",
+      "question_ar": "ماذا يعدّل عامل ضبط نقاط الوظائف؟",
+      "options": [
+        "Uses the selected language to count source lines",
+        "Adjusts unadjusted FP using system-influence ratings",
+        "Counts actors using graphical user interfaces",
+        "Counts defects observed after a product release"
+      ],
+      "options_ar": [
+        "يستعمل اللغة المختارة لعد أسطر المصدر",
+        "تعديل FP الخام بتقديرات تأثير النظام",
+        "يعد الممثلين الذين يستخدمون واجهة رسومية",
+        "يحسب العيوب المرصودة بعد إصدار المنتج"
+      ],
+      "options_en": [
+        "Uses the selected language to count source lines",
+        "Adjusts unadjusted FP using system-influence ratings",
+        "Counts actors using graphical user interfaces",
+        "Counts defects observed after a product release"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The adjustment factor modifies the unadjusted function-point count using fourteen system-influence ratings; it does not adjust LOC or actor counts.",
+      "explanation_ar": "يطبق المقرر عامل ضبط التعقيد على العدد غير المعدل لنقاط الوظائف اعتماداً على أربعة عشر تقديراً لمؤثرات النظام؛ ولا يعدّل LOC أو عدد الممثلين."
+    },
+    {
+      "id": "q7",
+      "concept_id": "ch6_fp_language_independence",
+      "bloom_level": "Understand",
+      "question": "Why can function points be estimated before implementation language is chosen?",
+      "question_ar": "لماذا يمكن تقدير نقاط الوظائف قبل اختيار لغة التنفيذ؟",
+      "options": [
+        "Counts executable statements after compilation",
+        "Counts operators and operands in source code",
+        "Counts user-facing functions from requirements",
+        "Measures elapsed time during production runs"
+      ],
+      "options_ar": [
+        "تعد التعليمات التنفيذية بعد الترجمة",
+        "تعد العوامل والمعاملات في الشيفرة المصدرية",
+        "تعد الوظائف الظاهرة من متطلبات النظام",
+        "تقيس الزمن المنقضي أثناء التشغيل الإنتاجي"
+      ],
+      "options_en": [
+        "Counts executable statements after compilation",
+        "Counts operators and operands in source code",
+        "Counts user-facing functions from requirements",
+        "Measures elapsed time during production runs"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Function points use the system's functional view and can be estimated from requirements or design, independently of implementation language.",
+      "explanation_ar": "تعتمد نقاط الوظائف على المنظور الوظيفي للنظام ويمكن تقديرها من المتطلبات أو التصميم بمعزل عن لغة التنفيذ."
+    },
+    {
+      "id": "q8",
+      "concept_id": "ch6_feature_point_algorithm",
+      "bloom_level": "Understand",
+      "question": "What additional characteristic do feature points count?",
+      "question_ar": "ما الخاصية الإضافية التي تعدّها Feature Points؟",
+      "options": [
+        "Counts developers assigned to each project phase",
+        "Measures inheritance depth across software classes",
+        "Measures elapsed time between successive failures",
+        "Adds algorithmic complexity to the size measure"
+      ],
+      "options_ar": [
+        "عدد المطورين المخصصين لكل مرحلة",
+        "عمق الوراثة في الأصناف البرمجية",
+        "الزمن المنقضي بين الإخفاقات المتعاقبة",
+        "تضيف التعقيد الخوارزمي لقياس الحجم"
+      ],
+      "options_en": [
+        "Counts developers assigned to each project phase",
+        "Measures inheritance depth across software classes",
+        "Measures elapsed time between successive failures",
+        "Adds algorithmic complexity to the size measure"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Feature points extend the information-domain count with algorithms, making the measure useful for applications with high algorithmic complexity.",
+      "explanation_ar": "تضيف Feature Points الخوارزميات إلى عدّ مجال المعلومات، مما يلائم التطبيقات ذات التعقيد الخوارزمي المرتفع."
+    },
+    {
+      "id": "q9",
+      "concept_id": "ch6_object_points",
+      "bloom_level": "Remember",
+      "question": "Which artifacts are counted by the Object Point approach?",
+      "question_ar": "أي مخرجات يعدّها أسلوب Object Points؟",
+      "options": [
+        "Screens, reports, and third-generation components",
+        "Operators, operands, and total token occurrences",
+        "Actors, transactions, and environment-adjustment factors",
+        "Methods, attributes, and inheritance relationships"
+      ],
+      "options_ar": [
+        "شاشات وتقارير ومكونات الجيل الثالث",
+        "العوامل والمعاملات ومجموع مرات ظهورها",
+        "الممثلون والمعاملات وعوامل ضبط البيئة",
+        "الطرق والخصائص وعلاقات الوراثة"
+      ],
+      "options_en": [
+        "Screens, reports, and third-generation components",
+        "Operators, operands, and total token occurrences",
+        "Actors, transactions, and environment-adjustment factors",
+        "Methods, attributes, and inheritance relationships"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Object Points estimate size from screens, reports, and third-generation-language components; the other choices belong to different metric families.",
+      "explanation_ar": "تقدّر Object Points الحجم من الشاشات والتقارير ومكونات لغات الجيل الثالث؛ أما البدائل فتنتمي إلى عائلات مقاييس مختلفة."
+    },
+    {
+      "id": "q10",
+      "concept_id": "ch6_backfiring",
+      "bloom_level": "Understand",
+      "question": "What does backfiring do when relating LOC and function points?",
+      "question_ar": "ماذا تفعل backfiring عند الربط بين LOC ونقاط الوظائف؟",
+      "options": [
+        "Estimates LOC from class coupling and inheritance depth",
+        "Derives function points from LOC using language ratios",
+        "Estimates defects from effort and phase duration",
+        "Estimates time from token counts and mental rate"
+      ],
+      "options_ar": [
+        "تقدّر LOC من اقتران الأصناف وعمق الوراثة",
+        "تقدّر FP من LOC بنسب خاصة باللغة",
+        "تقدّر العيوب من الجهد ومدة المرحلة",
+        "تقدّر الزمن من معدلات الرموز والجهد"
+      ],
+      "options_en": [
+        "Estimates LOC from class coupling and inheritance depth",
+        "Derives function points from LOC using language ratios",
+        "Estimates defects from effort and phase duration",
+        "Estimates time from token counts and mental rate"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Backfiring uses language-specific LOC-to-function-point relationships to estimate functionality from delivered code; it is approximate and should be used judiciously.",
+      "explanation_ar": "تستعمل backfiring علاقات خاصة باللغة بين LOC ونقاط الوظائف لتقدير الوظائف من الشيفرة المنجزة؛ وهي تقريبية وينبغي استعمالها بحذر."
+    }
+  ]
+}
