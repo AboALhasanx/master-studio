@@ -8,240 +8,298 @@
  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
  "subject": "04_Advanced_Software_Eng",
  "quiz_id": "Quiz_Ch07_B01_Basic_Concepts",
- "topic": "Basic Concepts: Reliability, Faults and Time",
- "topic_ar": "المفاهيم الأساسية: الموثوقية والعيوب والزمن",
+ "topic": "Reliability Foundations and Operating Environment",
+ "topic_ar": "أسس الموثوقية وبيئة التشغيل",
  "questions": [
   {
    "id": "q1",
-   "concept_id": "ch7_bath_tub",
-   "bloom_level": "Remember",
-   "question": "Which one is NOT a phase of the bath tub curve?",
-   "question_ar": "أي واحد ليس مرحلة من منحنى حوض الاستحمام؟",
+   "concept_id": "ch7_reliability_definition",
+   "bloom_level": "Understand",
+   "question": "What defines software reliability?",
+   "question_ar": "ما الذي يحدد موثوقية البرمجيات؟",
    "options": [
-    "burn-in here",
-    "useful life",
-    "wear-out now",
-    "test-out too"
+    "Failure-free operation for a stated time and environment.",
+    "Correct output for every input in every possible setting.",
+    "A defect-free codebase after its final inspection.",
+    "A fixed count of successful runs regardless of duration."
    ],
    "options_ar": [
-    "الإحماء الآن",
-    "العمر النافع",
-    "التآكل هنا",
-    "طور الاختبار"
+    "عمل خالٍ من الإخفاق خلال زمن وبيئة محددين.",
+    "نتائج صحيحة لكل المدخلات وفي جميع البيئات.",
+    "برنامج خالٍ من العيوب بعد الفحص النهائي.",
+    "عدد محدد من التشغيلات الناجحة مهما طال الزمن."
    ],
    "options_en": [
-    "burn-in here",
-    "useful life",
-    "wear-out now",
-    "test-out too"
+    "Failure-free operation for a stated time and environment.",
+    "Correct output for every input in every possible setting.",
+    "A defect-free codebase after its final inspection.",
+    "A fixed count of successful runs regardless of duration."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "The curve has burn-in, useful life and wear-out; test-out is not a phase.",
-   "explanation_ar": "المنحنى يحوي الإحماء والعمر النافع والتآكل، و«طور الاختبار» ليست مرحلة."
+   "explanation": "Reliability is the probability of failure-free operation under stated conditions for a specified period.",
+   "explanation_ar": "الموثوقية احتمال استمرار العمل بلا إخفاق ضمن ظروف محددة ولمدة معلومة."
   },
   {
    "id": "q2",
-   "concept_id": "ch7_reliability_def",
-   "bloom_level": "Remember",
-   "question": "Software reliability is...",
-   "question_ar": "موثوقية البرمجيات هي...",
+   "concept_id": "ch7_failure_fault_distinction",
+   "bloom_level": "Understand",
+   "question": "How does a fault differ from a failure?",
+   "question_ar": "كيف يختلف العيب عن الإخفاق؟",
    "options": [
-    "none of the above here now too again",
-    "the probability of failure-free operation",
-    "the probability of a program failing now here",
-    "the chance that a program succeeds here"
+    "A fault is a wrong output; a failure is its hidden cause.",
+    "A fault is latent; a failure is observed incorrect operation.",
+    "A failure is latent; a fault is observed incorrect operation.",
+    "A fault is a missing test; a failure is a passed test."
    ],
    "options_ar": [
-    "لا شيء مما سبق هنا أيضاً الآن",
-    "احتمال التشغيل الخالي من الأعطال",
-    "احتمال فشل البرنامج مجدداً أيضاً",
-    "فرصة نجاح البرنامج الآن هنا مجدداً"
+    "العيب مخرج خاطئ، والإخفاق سببه الداخلي.",
+    "العيب كامن، والإخفاق انحراف ظاهر عن المتطلبات.",
+    "الإخفاق كامن، والعيب انحراف ظاهر عن المتطلبات.",
+    "العيب حالة اختبار مفقودة، والإخفاق اختبار ناجح."
    ],
    "options_en": [
-    "none of the above here now too again",
-    "the probability of failure-free operation",
-    "the probability of a program failing now here",
-    "the chance that a program succeeds here"
+    "A fault is a wrong output; a failure is its hidden cause.",
+    "A fault is latent; a failure is observed incorrect operation.",
+    "A failure is latent; a fault is observed incorrect operation.",
+    "A fault is a missing test; a failure is a passed test."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "Reliability is the probability that the system operates without failure for a stated period.",
-   "explanation_ar": "الموثوقية هي احتمال تشغيل النظام دون أعطال لمدة محددة."
+   "explanation": "A fault is a latent defect; a failure is the program's externally visible departure from requirements.",
+   "explanation_ar": "العيب نقص كامن في البرنامج، أما الإخفاق فهو انحراف ظاهر عن المتطلبات عند التشغيل."
   },
   {
    "id": "q3",
-   "concept_id": "ch7_fault_def",
-   "bloom_level": "Remember",
-   "question": "A fault is...",
-   "question_ar": "العطل هو...",
+   "concept_id": "ch7_one_fault_many_failures",
+   "bloom_level": "Understand",
+   "question": "What can happen when one fault remains in a program?",
+   "question_ar": "ماذا قد يحدث عند بقاء عيب واحد في البرنامج؟",
    "options": [
-    "an error in the program",
-    "all of the above answers",
-    "a defect in the program",
-    "a mistake in the program"
+    "Several failures only if several separate faults exist.",
+    "No failure unless the fault is manually activated.",
+    "Repeated failures whenever its triggering condition recurs.",
+    "One failure total, even when its triggering condition recurs."
    ],
    "options_ar": [
-    "عيب في البرنامج",
-    "كل ما سبق أعلاه",
-    "خلل في البرنامج",
-    "خطأ في البرنامج"
+    "إخفاقات متعددة لا تحدث إلا بوجود عيوب متعددة.",
+    "لا يظهر الإخفاق إلا عند تفعيل العيب يدوياً.",
+    "إخفاقات متكررة كلما تكرر شرط تفعيل العيب.",
+    "إخفاق واحد فقط حتى مع تكرر شرط التفعيل."
    ],
    "options_en": [
-    "an error in the program",
-    "all of the above answers",
-    "a defect in the program",
-    "a mistake in the program"
+    "Several failures only if several separate faults exist.",
+    "No failure unless the fault is manually activated.",
+    "Repeated failures whenever its triggering condition recurs.",
+    "One failure total, even when its triggering condition recurs."
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "The terms defect, mistake and error all describe the same class of problem.",
-   "explanation_ar": "الخلل والخطأ والعيب تصف كلها المشكلة نفسها."
+   "explanation": "One fault can produce multiple failures when execution repeatedly reaches the condition that activates it.",
+   "explanation_ar": "قد يسبب العيب الواحد إخفاقات متعددة عند تكرر شرط التشغيل الذي يفعّله."
   },
   {
    "id": "q4",
-   "concept_id": "ch7_fault_failures",
+   "concept_id": "ch7_hardware_bathtub",
    "bloom_level": "Understand",
-   "question": "One fault may lead to...",
-   "question_ar": "عطل واحد قد يؤدي إلى...",
+   "question": "Which pattern describes the hardware bathtub curve?",
+   "question_ar": "أي نمط يصف منحنى حوض الاستحمام للأجهزة؟",
    "options": [
-    "two failures now here",
-    "many failures too now",
-    "all of the above answers",
-    "one failure here again"
+    "It rises during burn-in, steadies, then falls with wear.",
+    "It stays steady during burn-in, then falls as parts age.",
+    "It falls continuously because software faults are removed.",
+    "It falls during burn-in, steadies, then rises with wear."
    ],
    "options_ar": [
-    "فشلان هنا أيضاً",
-    "أعطال كثيرة مجدداً",
-    "كل ما سبق أعلاه",
-    "فشل واحد الآن هنا"
+    "ترتفع في الإحماء، تستقر، ثم تنخفض مع الاهتراء.",
+    "تستقر في الإحماء، ثم تنخفض مع تقادم الأجزاء.",
+    "تنخفض باستمرار بسبب إزالة عيوب البرمجيات.",
+    "تنخفض في الإحماء، تستقر، ثم ترتفع مع الاهتراء."
    ],
    "options_en": [
-    "two failures now here",
-    "many failures too now",
-    "all of the above answers",
-    "one failure here again"
+    "It rises during burn-in, steadies, then falls with wear.",
+    "It stays steady during burn-in, then falls as parts age.",
+    "It falls continuously because software faults are removed.",
+    "It falls during burn-in, steadies, then rises with wear."
    ],
    "answer": "D",
    "correct": 3,
-   "explanation": "A single latent fault can surface as many different failures in different situations.",
-   "explanation_ar": "العطل الواحد الكامن قد يظهر كأعطال مختلفة في ظروف مختلفة."
+   "explanation": "Hardware failures are initially high during burn-in, lower during useful life, and higher again with wear-out.",
+   "explanation_ar": "تكون إخفاقات الأجهزة مرتفعة أولاً، ثم تستقر في العمر النافع، ثم ترتفع مع الاهتراء."
   },
   {
    "id": "q5",
-   "concept_id": "ch7_time_unit",
-   "bloom_level": "Understand",
-   "question": "Which time unit is NOT used in reliability studies?",
-   "question_ar": "أي وحدة زمنية لا تُستخدم في دراسات الموثوقية؟",
+   "concept_id": "ch7_hardware_software_failure_causes",
+   "bloom_level": "Analyze",
+   "question": "Which contrast between software and hardware failures is sound?",
+   "question_ar": "أي مقارنة بين إخفاقات البرمجيات والأجهزة دقيقة؟",
    "options": [
-    "execution time",
-    "machine time",
-    "clock time here",
-    "calendar time"
+    "Software faults are design defects; hardware often suffers physical wear.",
+    "Software mainly suffers physical wear; hardware mainly has design faults.",
+    "Both fail mainly through material aging after devices are manufactured.",
+    "Neither failure pattern depends on its operating conditions."
    ],
    "options_ar": [
-    "زمن التنفيذ أيضاً أيضاً",
-    "زمن الآلة هنا مجدداً",
-    "زمن الساعة الآن الآن",
-    "الزمن التقويمي هنا مجدداً"
+    "عيوب البرمجيات تصميمية، بينما تتعرض الأجهزة غالباً للاهتراء.",
+    "تهترئ البرمجيات غالباً، بينما تكون عيوب الأجهزة تصميمية.",
+    "يفشل كلاهما غالباً بسبب تقادم المواد بعد التصنيع والتشغيل.",
+    "لا يعتمد أي منهما على ظروف الاستخدام أو بيئة التشغيل."
    ],
    "options_en": [
-    "execution time",
-    "machine time",
-    "clock time here",
-    "calendar time"
+    "Software faults are design defects; hardware often suffers physical wear.",
+    "Software mainly suffers physical wear; hardware mainly has design faults.",
+    "Both fail mainly through material aging after devices are manufactured.",
+    "Neither failure pattern depends on its operating conditions."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Reliability work uses execution time, clock time and calendar time.",
-   "explanation_ar": "الموثوقية تستخدم زمن التنفيذ وزمن الساعة والزمن التقويمي."
+   "explanation": "Software failures are associated with design faults and their activation; hardware also degrades physically.",
+   "explanation_ar": "ترتبط إخفاقات البرمجيات بعيوب التصميم وتفعيلها، بينما تتدهور الأجهزة مادياً أيضاً."
   },
   {
    "id": "q6",
-   "concept_id": "ch7_no_wearout",
-   "bloom_level": "Analyze",
-   "question": "Software does not break or wear out like hardware.",
-   "question_ar": "البرمجيات لا تتآكل أو تنكسر كالعتاد.",
+   "concept_id": "ch7_operational_profile_definition",
+   "bloom_level": "Understand",
+   "question": "What does an operational profile describe?",
+   "question_ar": "ماذا يصف Operational Profile؟",
    "options": [
-    "it cannot be said now",
-    "this statement is true",
-    "this statement is false",
-    "it is partly true here"
+    "The hardware parts installed in each deployment environment.",
+    "The expected proportions of the program's different run types.",
+    "The sequence of source files used during software construction.",
+    "The order in which faults are repaired during a test session."
    ],
    "options_ar": [
-    "لا يمكن القول أيضاً الآن",
-    "العبارة صحيحة هنا مجدداً",
-    "العبارة خاطئة الآن هنا",
-    "العبارة صحيحة جزئياً أيضاً"
+    "الأجزاء المادية المثبتة ضمن بيئة نشر محددة.",
+    "النسب المتوقعة لأنواع التشغيل المختلفة للبرنامج.",
+    "ترتيب ملفات البرنامج المستخدمة أثناء بناء النسخة.",
+    "تسلسل إصلاح العيوب خلال جلسة اختبار واحدة."
    ],
    "options_en": [
-    "it cannot be said now",
-    "this statement is true",
-    "this statement is false",
-    "it is partly true here"
+    "The hardware parts installed in each deployment environment.",
+    "The expected proportions of the program's different run types.",
+    "The sequence of source files used during software construction.",
+    "The order in which faults are repaired during a test session."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "Software failures come from latent faults, not from physical wear-out.",
-   "explanation_ar": "أعطال البرمجيات تأتي من عيوب كامنة لا من تآكل فيزيائي."
+   "explanation": "An operational profile assigns probabilities to run types reflecting expected use.",
+   "explanation_ar": "يحدد Operational Profile احتمالات أنواع التشغيل وفقاً للاستخدام المتوقع."
   },
   {
    "id": "q7",
-   "concept_id": "ch7_reliability_wrt",
-   "bloom_level": "Understand",
-   "question": "Software reliability is defined with respect to...",
-   "question_ar": "تُعرَّف موثوقية البرمجيات بالنسبة إلى...",
+   "concept_id": "ch7_profile_changes_reliability",
+   "bloom_level": "Apply",
+   "question": "Why can one program have different reliability under two use profiles?",
+   "question_ar": "لماذا قد تختلف موثوقية البرنامج نفسه باختلاف ملفي الاستخدام؟",
    "options": [
-    "quality too now",
-    "none of the above",
-    "time here again",
-    "speed now here"
+    "Reliability ignores which operations users perform in that profile.",
+    "A new use profile removes faults without changing the software.",
+    "Profiles weight operations by their different failure chances.",
+    "Each profile rewrites the program's code automatically."
    ],
    "options_ar": [
-    "الجودة أيضاً الآن",
-    "لا شيء مما سبق",
-    "الزمن هنا مجدداً",
-    "السرعة الآن هنا"
+    "يتجاهل مقياس الموثوقية العمليات التي ينفذها المستخدمون.",
+    "يزيل ملف الاستخدام العيوب من دون تعديل البرنامج.",
+    "يمنح كل ملف أوزاناً مختلفة لعمليات تختلف فرص إخفاقها.",
+    "يغير كل ملف شفرة البرنامج تلقائياً عند التشغيل."
    ],
    "options_en": [
-    "quality too now",
-    "none of the above",
-    "time here again",
-    "speed now here"
+    "Reliability ignores which operations users perform in that profile.",
+    "A new use profile removes faults without changing the software.",
+    "Profiles weight operations by their different failure chances.",
+    "Each profile rewrites the program's code automatically."
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "Reliability is always stated over a period of time and an operation.",
-   "explanation_ar": "الموثوقية تُذكر دائماً مع فترة زمنية وتشغيل."
+   "explanation": "Changing the probabilities of operations with different conditional failure chances changes the profile-level reliability.",
+   "explanation_ar": "يتغير تقدير الموثوقية إذا اختلفت أوزان العمليات واختلفت فرص إخفاقها الشرطية."
   },
   {
    "id": "q8",
-   "concept_id": "ch7_mttf",
-   "bloom_level": "Remember",
-   "question": "MTTF stands for...",
-   "question_ar": "MTTF تعني...",
+   "concept_id": "ch7_input_space",
+   "bloom_level": "Understand",
+   "question": "What is the input space of a program?",
+   "question_ar": "ما المقصود بفضاء مدخلات البرنامج؟",
    "options": [
-    "maximum time to failure here",
-    "minimum time to failure",
-    "none of the above here",
-    "mean time to failure now"
+    "The set of output values produced by completed runs.",
+    "The list of faults detected during a reliability study.",
+    "The processor time reserved for the program's execution.",
+    "The set of possible states of its external input variables."
    ],
    "options_ar": [
-    "أقصى زمن حتى الفشل الآن",
-    "أدنى زمن حتى الفشل أيضاً",
-    "لا شيء مما سبق هنا مجدداً",
-    "متوسط الزمن حتى الفشل هنا"
+    "مجموعة قيم الخرج الناتجة عن التشغيلات المكتملة.",
+    "قائمة العيوب المكتشفة خلال دراسة الموثوقية.",
+    "مدة المعالج المخصصة لتنفيذ البرنامج فعلياً.",
+    "مجموعة الحالات الممكنة لمتغيرات الإدخال الخارجية."
    ],
    "options_en": [
-    "maximum time to failure here",
-    "minimum time to failure",
-    "none of the above here",
-    "mean time to failure now"
+    "The set of output values produced by completed runs.",
+    "The list of faults detected during a reliability study.",
+    "The processor time reserved for the program's execution.",
+    "The set of possible states of its external input variables."
    ],
    "answer": "D",
    "correct": 3,
-   "explanation": "Mean time to failure is the average interval before the system fails.",
-   "explanation_ar": "متوسط الزمن حتى الفشل هو الفاصل المتوسط قبل أعطال النظام."
+   "explanation": "An input state is a combination of values for external variables; the input space contains the possible states.",
+   "explanation_ar": "حالة الإدخال مجموعة قيم للمتغيرات الخارجية، وفضاء الإدخال يضم الحالات الممكنة."
+  },
+  {
+   "id": "q9",
+   "concept_id": "ch7_functional_environment",
+   "bloom_level": "Analyze",
+   "question": "How does the functional environment affect observed failures?",
+   "question_ar": "كيف تؤثر البيئة الوظيفية في الإخفاقات المرصودة؟",
+   "options": [
+    "Different run types can activate different faults in the same program.",
+    "The environment determines how many faults were written in the code.",
+    "Different environments make every fault fail on every execution.",
+    "Run types affect hardware wear but never software failures."
+   ],
+   "options_ar": [
+    "تفعّل أنواع التشغيل عيوباً مختلفة في البرنامج نفسه.",
+    "تحدد البيئة عدد العيوب المكتوبة مسبقاً في الشفرة.",
+    "تجعل البيئة كل عيب يفشل مع كل تشغيل للبرنامج.",
+    "تؤثر أنواع التشغيل في عتاد النظام لا في البرنامج."
+   ],
+   "options_en": [
+    "Different run types can activate different faults in the same program.",
+    "The environment determines how many faults were written in the code.",
+    "Different environments make every fault fail on every execution.",
+    "Run types affect hardware wear but never software failures."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The operations and inputs exercised determine which latent faults are encountered.",
+   "explanation_ar": "تحدد العمليات والمدخلات المنفذة العيوب الكامنة التي يجري الوصول إليها."
+  },
+  {
+   "id": "q10",
+   "concept_id": "ch7_execution_clock_time",
+   "bloom_level": "Understand",
+   "question": "What distinguishes execution time from clock time?",
+   "question_ar": "ما الفرق بين زمن التنفيذ وزمن الساعة؟",
+   "options": [
+    "Execution time is user effort; clock time is processor utilization.",
+    "Execution time is processor work; clock time includes waits within a run.",
+    "Execution time includes shutdowns; clock time excludes all waiting.",
+    "Execution time measures calendar days; clock time counts failures."
+   ],
+   "options_ar": [
+    "زمن التنفيذ جهد المستخدم، وزمن الساعة انشغال المعالج.",
+    "وقت التنفيذ هو وقت المعالج، والساعة تشمل انتظار التشغيل.",
+    "يشمل زمن التنفيذ الإطفاء، ولا يحسب زمن الساعة أي انتظار.",
+    "يقيس زمن التنفيذ الأيام، بينما يحصي زمن الساعة الإخفاقات."
+   ],
+   "options_en": [
+    "Execution time is user effort; clock time is processor utilization.",
+    "Execution time is processor work; clock time includes waits within a run.",
+    "Execution time includes shutdowns; clock time excludes all waiting.",
+    "Execution time measures calendar days; clock time counts failures."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Execution time is time spent by the processor executing the program; clock time also includes waits during a run.",
+   "explanation_ar": "زمن التنفيذ هو وقت عمل المعالج على البرنامج، أما زمن الساعة فيشمل فترات الانتظار أثناء التشغيل."
   }
  ]
 }

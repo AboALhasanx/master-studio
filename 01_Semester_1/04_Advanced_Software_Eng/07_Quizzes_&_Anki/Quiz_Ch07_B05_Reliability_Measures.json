@@ -8,298 +8,327 @@
  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
  "subject": "04_Advanced_Software_Eng",
  "quiz_id": "Quiz_Ch07_B05_Reliability_Measures",
- "topic": "Reliability Measures and the Nature of the Models",
- "topic_ar": "مقاييس الموثوقية وطبيعة النماذج",
+ "topic": "Reliability Measures and Failure Behavior",
+ "topic_ar": "مقاييس الموثوقية وسلوك الإخفاق",
  "questions": [
   {
    "id": "q1",
-   "concept_id": "ch7_failure_representation",
-   "bloom_level": "Understand",
-   "question": "Failure occurrences can be represented by...",
-   "question_ar": "يمكن تمثيل حوادث الأعطال بـ...",
+   "concept_id": "ch7_reliability_vs_intensity",
+   "bloom_level": "Analyze",
+   "question": "How does reliability differ from failure intensity?",
+   "question_ar": "كيف تختلف الموثوقية عن شدة الإخفاق؟",
    "options": [
-    "the time to failure here now again",
-    "the interval between failures",
-    "the failures inside a time interval",
-    "all of the above answers too here"
+    "Reliability is a failure-free probability; intensity is a failure rate.",
+    "Reliability is a failure rate; intensity is a failure-free probability.",
+    "Reliability counts latent faults; intensity counts source lines.",
+    "Reliability is a process level; intensity is a quality attribute."
    ],
    "options_ar": [
-    "زمن الفشل هنا الآن مجدداً",
-    "الفاصل بين الفشلتين هنا",
-    "عدد الأعطال داخل فترة الآن",
-    "كل ما سبق أعلاه أيضاً"
+    "الموثوقية احتمال خلو الزمن، والشدة معدل الإخفاق.",
+    "الموثوقية معدل الإخفاق، والشدة احتمال خلو الزمن.",
+    "تحصي الموثوقية العيوب، وتقيس الشدة حجم الشفرة.",
+    "الموثوقية صفة جودة، والشدة معدل وقوع الإخفاق."
    ],
    "options_en": [
-    "the time to failure here now again",
-    "the interval between failures",
-    "the failures inside a time interval",
-    "all of the above answers too here"
+    "Reliability is a failure-free probability; intensity is a failure rate.",
+    "Reliability is a failure rate; intensity is a failure-free probability.",
+    "Reliability counts latent faults; intensity counts source lines.",
+    "Reliability is a process level; intensity is a quality attribute."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "All three views of the same data are used, depending on the model.",
-   "explanation_ar": "الثلاثة رؤى للبيانات نفسها تُستخدم حسب النموذج."
+   "explanation": "Reliability is a probability over a specified interval; failure intensity is an instantaneous rate per unit time.",
+   "explanation_ar": "الموثوقية احتمال خلال مدة محددة، أما شدة الإخفاق فمعدل لحظي لكل وحدة زمن."
   },
   {
    "id": "q2",
-   "concept_id": "ch7_max_reliability",
-   "bloom_level": "Remember",
-   "question": "What is the maximum possible value of reliability?",
-   "question_ar": "ما أقصى قيمة ممكنة للموثوقية؟",
+   "concept_id": "ch7_mean_value_function",
+   "bloom_level": "Understand",
+   "question": "What does the mean value function represent in a reliability model?",
+   "question_ar": "ماذا تمثل دالة القيمة المتوسطة في نموذج الموثوقية؟",
    "options": [
-    "zero too now again",
-    "one hundred too too",
-    "ten here here here here",
-    "one now again now"
+    "The fixed number of faults remaining after final release.",
+    "The expected cumulative failures by a given point in time.",
+    "The instantaneous chance of a failure at one input state.",
+    "The average processor utilization during a calendar month."
    ],
    "options_ar": [
-    "صفر الآن الآن الآن الآن",
-    "مئة هنا هنا مجدداً هنا",
-    "عشرة أيضاً أيضاً مجدداً",
-    "واحد مجدداً هنا أيضاً"
+    "العدد الثابت للعيوب الباقية بعد الإصدار النهائي.",
+    "العدد التراكمي المتوقع للإخفاقات حتى زمن معين.",
+    "الاحتمال اللحظي للإخفاق عند حالة إدخال واحدة.",
+    "متوسط انشغال المعالج خلال شهر تقويمي."
    ],
    "options_en": [
-    "zero too now again",
-    "one hundred too too",
-    "ten here here here here",
-    "one now again now"
+    "The fixed number of faults remaining after final release.",
+    "The expected cumulative failures by a given point in time.",
+    "The instantaneous chance of a failure at one input state.",
+    "The average processor utilization during a calendar month."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "Reliability is a probability, so one is the ceiling and zero is the floor.",
-   "explanation_ar": "الموثوقية احتمال، فالواحد هو السقف والصفر هو الأرضية."
+   "explanation": "The mean value function gives the expected cumulative number of failures up to a time point.",
+   "explanation_ar": "تعطي دالة القيمة المتوسطة العدد التراكمي المتوقع للإخفاقات حتى نقطة زمنية معينة."
   },
   {
    "id": "q3",
-   "concept_id": "ch7_min_reliability",
-   "bloom_level": "Remember",
-   "question": "What is the minimum possible value of reliability?",
-   "question_ar": "ما أدنى قيمة ممكنة للموثوقية؟",
+   "concept_id": "ch7_mttf_meaning",
+   "bloom_level": "Understand",
+   "question": "Before the first observed failure, what duration does MTTF summarize?",
+   "question_ar": "قبل أول إخفاق مرصود، أي مدة يلخصها MTTF؟",
    "options": [
-    "one now again now",
-    "zero too now again",
-    "one hundred too too",
-    "ten here here here here"
+    "The number of failures observed in a time interval.",
+    "The cumulative count of failures at a chosen time.",
+    "The average operating time until a failure occurs.",
+    "The average time separating successive failures."
    ],
    "options_ar": [
-    "واحد مجدداً هنا أيضاً",
-    "صفر الآن الآن الآن الآن",
-    "مئة هنا هنا مجدداً هنا",
-    "عشرة أيضاً أيضاً مجدداً"
+    "عدد الإخفاقات المرصودة ضمن فترة زمنية.",
+    "العدد التراكمي للإخفاقات عند زمن مختار.",
+    "متوسط زمن التشغيل المتوقع حتى حدوث إخفاق.",
+    "متوسط الزمن الفاصل بين إخفاقين متتاليين."
    ],
    "options_en": [
-    "one now again now",
-    "zero too now again",
-    "one hundred too too",
-    "ten here here here here"
+    "The number of failures observed in a time interval.",
+    "The cumulative count of failures at a chosen time.",
+    "The average operating time until a failure occurs.",
+    "The average time separating successive failures."
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "A system that always fails has reliability of zero.",
-   "explanation_ar": "النظام الذي يفشل دائماً موثوقيته صفر."
+   "explanation": "Mean Time to Failure is the average operating time before a failure occurs.",
+   "explanation_ar": "متوسط الزمن حتى الإخفاق هو متوسط زمن التشغيل السابق لوقوع إخفاق."
   },
   {
    "id": "q4",
-   "concept_id": "ch7_intensity_relation",
+   "concept_id": "ch7_mtbf_meaning",
    "bloom_level": "Understand",
-   "question": "As reliability increases, failure intensity...",
-   "question_ar": "مع زيادة الموثوقية، شدة الأعطال...",
+   "question": "When failures recur during operation, what interval does MTBF summarize?",
+   "question_ar": "عند تكرر الإخفاقات أثناء التشغيل، أي فاصل يلخصه MTBF؟",
    "options": [
-    "increases now too",
-    "has no effect again",
-    "none of the above",
-    "decreases here here"
+    "The average operating time until the first failure.",
+    "The failure rate during a single execution interval.",
+    "The expected total failures over the product lifetime.",
+    "The average time separating successive failures."
    ],
    "options_ar": [
-    "ترتفع الآن مجدداً",
-    "لا تأثير لها هنا",
-    "لا شيء مما سبق",
-    "تنخفض هنا أيضاً"
+    "متوسط زمن التشغيل حتى الإخفاق الأول.",
+    "معدل الإخفاق خلال فترة تنفيذ واحدة.",
+    "إجمالي الإخفاقات المتوقع طوال عمر المنتج.",
+    "متوسط الزمن الفاصل بين إخفاقات متعاقبة."
    ],
    "options_en": [
-    "increases now too",
-    "has no effect again",
-    "none of the above",
-    "decreases here here"
+    "The average operating time until the first failure.",
+    "The failure rate during a single execution interval.",
+    "The expected total failures over the product lifetime.",
+    "The average time separating successive failures."
    ],
    "answer": "D",
    "correct": 3,
-   "explanation": "More failures are removed as the product matures, so the intensity falls.",
-   "explanation_ar": "تُزال أعطال أكثر مع نضج المنتج، فتنخفض الشدة."
+   "explanation": "Mean Time Between Failures measures the average interval between successive failures.",
+   "explanation_ar": "يقيس متوسط الزمن بين الإخفاقات متوسط الفاصل بين إخفاقات متتالية."
   },
   {
    "id": "q5",
-   "concept_id": "ch7_intensity_example",
-   "bloom_level": "Apply",
-   "question": "With an intensity of 0.005 failures per hour over ten hours, the probability of no failure is about...",
-   "question_ar": "بشدة 0.005 عطل بالساعة على عشر ساعات، احتمال عدم العطل يقارب...",
+   "concept_id": "ch7_failure_time_representations",
+   "bloom_level": "Understand",
+   "question": "Which set represents the four common time-based views of failures?",
+   "question_ar": "أي مجموعة تمثل الصور الزمنية الأربع الشائعة للإخفاقات؟",
    "options": [
-    "ten per cent here now",
-    "ninety two per cent",
-    "ninety five per cent",
-    "ninety eight per cent"
+    "Event time, inter-event time, cumulative and interval counts.",
+    "Input state, output state, run type, operational profile.",
+    "Execution time, clock time, calendar time, machine time.",
+    "Fault count, program size, test cases, processor usage."
    ],
    "options_ar": [
-    "عشرة بالمئة هنا الآن",
-    "اثنان وتسعون بالمئة",
-    "خمسة وتسعون بالمئة",
-    "ثمانية وتسعون بالمئة"
+    "زمن الحدث والفاصل بين الأحداث والعدد التراكمي وعدد الفترة.",
+    "حالة الإدخال وحالة الخرج ونوع التشغيل وملف التشغيل.",
+    "زمن التنفيذ وزمن الساعة والزمن التقويمي وزمن الآلة.",
+    "عدد العيوب وحجم الشفرة وحالات الاختبار واستخدام المعالج."
    ],
    "options_en": [
-    "ten per cent here now",
-    "ninety two per cent",
-    "ninety five per cent",
-    "ninety eight per cent"
+    "Event time, inter-event time, cumulative and interval counts.",
+    "Input state, output state, run type, operational profile.",
+    "Execution time, clock time, calendar time, machine time.",
+    "Fault count, program size, test cases, processor usage."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "Over ten hours the expected count is 0.05, so survival is close to one.",
-   "explanation_ar": "على عشر ساعات العدد المتوقع 0.05، فالنجاة قريبة من الواحد."
+   "explanation": "Failures may be represented by their times, intervals, cumulative count, or count within an interval.",
+   "explanation_ar": "يمكن تمثيل الإخفاقات بأزمنتها أو فواصلها أو عددها التراكمي أو عددها ضمن فترة."
   },
   {
    "id": "q6",
-   "concept_id": "ch7_not_model",
+   "concept_id": "ch7_failure_intensity_units",
    "bloom_level": "Understand",
-   "question": "Which one is NOT a software reliability model?",
-   "question_ar": "أي واحد ليس نموذج موثوقية برمجية؟",
+   "question": "What does a failure-intensity value express?",
+   "question_ar": "ماذا تعبّر عنه قيمة شدة الإخفاق؟",
    "options": [
-    "none of the above now again",
-    "the Jelinski-Moranda model",
-    "the basic execution time model",
-    "the spiral model here too"
+    "A percentage of source code inspected by reviewers.",
+    "A rate of failures per unit of the specified time.",
+    "A probability that ignores the observation period.",
+    "A total fault count independent of program execution."
    ],
    "options_ar": [
-    "لا شيء مما سبق هنا أيضاً",
-    "نموذج جيلينسكي-موراندا",
-    "نموذج زمن التنفيذ الأساسي",
-    "النموذج الحلزوني الآن"
+    "نسبة الشفرة التي فُحصت بالمراجعة.",
+    "معدل إخفاقات لكل وحدة زمن محددة.",
+    "احتمال لا يرتبط بمدة رصد محددة.",
+    "عدد العيوب بصرف النظر عن تنفيذ البرنامج."
    ],
    "options_en": [
-    "none of the above now again",
-    "the Jelinski-Moranda model",
-    "the basic execution time model",
-    "the spiral model here too"
+    "A percentage of source code inspected by reviewers.",
+    "A rate of failures per unit of the specified time.",
+    "A probability that ignores the observation period.",
+    "A total fault count independent of program execution."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "The spiral model is a life-cycle model, not a reliability model.",
-   "explanation_ar": "النموذج الحلزوني نموذج دورة حياة، لا نموذج موثوقية."
+   "explanation": "Failure intensity is expressed as a rate, such as failures per hour of execution time.",
+   "explanation_ar": "تُعبّر شدة الإخفاق عن معدل، مثل عدد الإخفاقات لكل ساعة تنفيذ."
   },
   {
    "id": "q7",
-   "concept_id": "ch7_emphasis",
+   "concept_id": "ch7_reliability_range",
    "bloom_level": "Understand",
-   "question": "In reliability models, the emphasis is on...",
-   "question_ar": "في نماذج الموثوقية، التركيز على...",
+   "question": "Which range is valid for a reliability probability?",
+   "question_ar": "أي مدى يصح لاحتمال الموثوقية؟",
    "options": [
-    "failures again",
-    "bugs here here",
-    "errors now now",
-    "faults too too"
+    "Any positive value with no upper bound.",
+    "Only values greater than one during testing.",
+    "From zero to one, including both endpoints.",
+    "From zero to one hundred, excluding zero."
    ],
    "options_ar": [
-    "الأعطال أيضاً الآن",
-    "الأخطاء البرمجية",
-    "الأخطاء الآن هنا",
-    "العيوب هنا مجدداً"
+    "أي قيمة موجبة ولو تجاوزت الواحد كثيراً.",
+    "قيمة أكبر من الواحد خلال الاختبار فقط.",
+    "قيمة من الصفر حتى الواحد مع شمول الحدين.",
+    "قيمة بين الصفر والمئة من دون شمول الصفر."
    ],
    "options_en": [
-    "failures again",
-    "bugs here here",
-    "errors now now",
-    "faults too too"
+    "Any positive value with no upper bound.",
+    "Only values greater than one during testing.",
+    "From zero to one, including both endpoints.",
+    "From zero to one hundred, excluding zero."
    ],
    "answer": "C",
    "correct": 2,
-   "explanation": "The models count observed failures, not the errors that caused them.",
-   "explanation_ar": "النماذج تعدّ الأعطال الملاحظة، لا الأخطاء التي سبّتها."
+   "explanation": "Reliability is a probability, so it lies between zero and one inclusive.",
+   "explanation_ar": "الموثوقية احتمال، لذا تقع بين الصفر والواحد مع شمول الحدين."
   },
   {
    "id": "q8",
-   "concept_id": "ch7_musa",
-   "bloom_level": "Remember",
-   "question": "The basic execution time model was developed by...",
-   "question_ar": "طوّر نموذج زمن التنفيذ الأساسي...",
+   "concept_id": "ch7_reliability_intensity_trend",
+   "bloom_level": "Analyze",
+   "question": "During fault removal, which trend commonly links reliability and intensity?",
+   "question_ar": "أثناء إزالة العيوب، ما العلاقة الشائعة بين الموثوقية والشدة؟",
    "options": [
-    "J. D. Musa here",
-    "Barry Boehm too",
-    "Jim McCall now",
-    "Bev Littlewood"
+    "Reliability falls as failure intensity falls.",
+    "Both measures stay fixed after the first test.",
+    "Both measures rise whenever a fault is removed.",
+    "Reliability rises as failure intensity falls."
    ],
    "options_ar": [
-    "جي دي موسى أيضاً",
-    "باري بوم هنا هنا",
-    "جيم مكال الآن الآن",
-    "بيف ليتلوود مجدداً"
+    "تنخفض الموثوقية حين تنخفض شدة الإخفاق.",
+    "يبقى المقياسان ثابتين بعد الاختبار الأول.",
+    "ترتفع الموثوقية والشدة عند إزالة عيب.",
+    "ترتفع الموثوقية حين تنخفض شدة الإخفاق."
    ],
    "options_en": [
-    "J. D. Musa here",
-    "Barry Boehm too",
-    "Jim McCall now",
-    "Bev Littlewood"
+    "Reliability falls as failure intensity falls.",
+    "Both measures stay fixed after the first test.",
+    "Both measures rise whenever a fault is removed.",
+    "Reliability rises as failure intensity falls."
    ],
    "answer": "D",
    "correct": 3,
-   "explanation": "Musa proposed the basic and logarithmic Poisson execution time models.",
-   "explanation_ar": "موسى اقترح نموذجي زمن التنفيذ الأساسي واللوغاريتمي."
+   "explanation": "As testing removes faults, reliability commonly increases while the failure intensity decreases.",
+   "explanation_ar": "تزداد الموثوقية عادة مع إزالة العيوب، بينما تنخفض شدة الإخفاق."
   },
   {
    "id": "q9",
-   "concept_id": "ch7_nhpp",
-   "bloom_level": "Remember",
-   "question": "NHPP stands for...",
-   "question_ar": "NHPP تعني...",
+   "concept_id": "ch7_intensity_release_objective",
+   "bloom_level": "Apply",
+   "question": "A release decision focuses on the instantaneous risk of failure; which measure fits best?",
+   "question_ar": "يركز قرار الإصدار على خطر الإخفاق اللحظي؛ أي مقياس يلائمه؟",
    "options": [
-    "non homogeneous Poisson process",
-    "non heterogeneous Poisson process",
-    "non homogeneous Poisson product",
-    "non heterogeneous Poisson product"
+    "Failure intensity, a rate describing risk at a given time.",
+    "Reliability, an average defect count during operation.",
+    "Mean time to failure, which counts input states exercised.",
+    "Input space, which measures failure chance per time."
    ],
    "options_ar": [
-    "عملية بواسون غير المتجانسة",
-    "عملية بواسون غير المتباينة",
-    "جداء بواسون غير المتجانس",
-    "جداء بواسون غير المتباين"
+    "شدة الإخفاق لأنها معدل خطر عند زمن محدد.",
+    "الموثوقية لأنها متوسط لعدد العيوب في المنتج.",
+    "متوسط الزمن حتى الإخفاق لأنه يحصي حالات الإدخال.",
+    "فضاء الإدخال لأنه يقيس معدل الخطر لكل زمن."
    ],
    "options_en": [
-    "non homogeneous Poisson process",
-    "non heterogeneous Poisson process",
-    "non homogeneous Poisson product",
-    "non heterogeneous Poisson product"
+    "Failure intensity, a rate describing risk at a given time.",
+    "Reliability, an average defect count during operation.",
+    "Mean time to failure, which counts input states exercised.",
+    "Input space, which measures failure chance per time."
    ],
    "answer": "A",
    "correct": 0,
-   "explanation": "The models treat failure occurrence as a non-homogeneous Poisson process.",
-   "explanation_ar": "النماذج تعامل حدوث الأعطال كعملية بواسون غير متجانسة."
+   "explanation": "Failure intensity is suited to a release objective stated as a risk rate at a point in testing.",
+   "explanation_ar": "تلائم شدة الإخفاق هدف الإصدار المعبر عنه بمعدل الخطر عند نقطة من الاختبار."
   },
   {
    "id": "q10",
-   "concept_id": "ch7_model_purpose",
+   "concept_id": "ch7_reliability_component_combination",
    "bloom_level": "Understand",
-   "question": "What is the purpose of a reliability model?",
-   "question_ar": "ما غرض نموذج الموثوقية؟",
+   "question": "Which measure is suited to combining component reliability values?",
+   "question_ar": "أي مقياس يلائم جمع قيم موثوقية المكونات؟",
    "options": [
-    "to replace the testing now here again too here",
-    "to predict failures from execution history",
-    "to write the program code too now here",
-    "to price the licence here again too now"
+    "Calendar time is elapsed duration for testing staff.",
+    "Reliability is a probability under stated conditions.",
+    "Failure intensity is a time-based failure rate.",
+    "Mean value is the expected cumulative failure count."
    ],
    "options_ar": [
-    "لاستبدال الاختبار الآن هنا مجدداً",
-    " للتنبؤ بالأعطال من تاريخ التنفيذ",
-    "لكتابة كود البرنامج مجدداً أيضاً",
-    "لتسعير الترخيص هنا أيضاً الآن"
+    "الزمن التقويمي مدة العمل والموارد.",
+    "الموثوقية احتمال في ظروف تشغيل محددة.",
+    "شدة الإخفاق معدل مرتبط بوحدة الزمن.",
+    "القيمة المتوسطة عدد الإخفاقات المتوقع."
    ],
    "options_en": [
-    "to replace the testing now here again too here",
-    "to predict failures from execution history",
-    "to write the program code too now here",
-    "to price the licence here again too now"
+    "Calendar time is elapsed duration for testing staff.",
+    "Reliability is a probability under stated conditions.",
+    "Failure intensity is a time-based failure rate.",
+    "Mean value is the expected cumulative failure count."
    ],
    "answer": "B",
    "correct": 1,
-   "explanation": "The model extrapolates the failure curve so the next release can be judged.",
-   "explanation_ar": "النموذج يستنتج منحنى الأعطال ليُقيَّم الإصدار التالي."
+   "explanation": "Reliability is a probability measure that can be combined for system components using reliability theory.",
+   "explanation_ar": "الموثوقية مقياس احتمالي يمكن دمجه لمكونات النظام وفق نظرية الموثوقية."
+  },
+  {
+   "id": "q11",
+   "concept_id": "ch7_reliability_study_use",
+   "bloom_level": "Apply",
+   "question": "How can reliability studies help project management during testing?",
+   "question_ar": "كيف تساعد دراسات الموثوقية إدارة المشروع أثناء الاختبار؟",
+   "options": [
+    "They replace project plans with counts of user requests.",
+    "They guarantee that deployed software contains no faults.",
+    "They guide release timing, schedule, and cost during testing.",
+    "They estimate program size without observing test failures."
+   ],
+   "options_ar": [
+    "تستبدل خطة المشروع بإحصاء طلبات المستخدمين.",
+    "تضمن خلو البرنامج المنشور من العيوب البرمجية.",
+    "تتابع تقدم الاختبار وتدعم قرارات الإصدار والكلفة.",
+    "تقدر حجم البرنامج من دون رصد إخفاقات الاختبار."
+   ],
+   "options_en": [
+    "They replace project plans with counts of user requests.",
+    "They guarantee that deployed software contains no faults.",
+    "They guide release timing, schedule, and cost during testing.",
+    "They estimate program size without observing test failures."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Reliability measures help monitor test progress and relate release decisions to schedule and cost.",
+   "explanation_ar": "تساعد مقاييس الموثوقية على متابعة الاختبار وربط قرارات الإصدار بالجدول والكلفة."
   }
  ]
 }

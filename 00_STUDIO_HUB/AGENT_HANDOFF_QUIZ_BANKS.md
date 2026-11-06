@@ -161,6 +161,7 @@ survived review.
 | 2026-10-28 | Data Mining Ch04, Ch05, Ch06, Ch07 published | `sessions/2026-10-28.md` |
 | 2026-11-05 | ASE Chapter 2 banks rebuilt, source-audited, and published; generated state and production UI verified | sessions/2026-11-05.md and 01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch02_Bank_Coverage_Audit.md |
 | 2026-11-05 | ASE Chapter 3 banks rebuilt from the reviewed source map, passed strict gates, published globally, and verified on the production site | sessions/2026-11-05.md and 01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch03_Bank_Coverage_Audit.md |
+| 2026-11-06 | ASE Chapter 7 banks rebuilt from the mapped course sources and passed strict gates; live question mapping and offline mirror were verified, portal CI passed, and the shell release and production UI were verified | sessions/2026-11-06.md and 01_Semester_1/04_Advanced_Software_Eng/07_Quizzes_&_Anki/Ch07_Bank_Coverage_Audit.md |
 
 For what is live **now** — counts, versions, per-chapter gate results, what remains —
 open `QUIZ_BANK_STATE.md`. The milestone table above deliberately carries no counts.
