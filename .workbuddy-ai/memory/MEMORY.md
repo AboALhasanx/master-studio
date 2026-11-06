@@ -56,14 +56,7 @@ Ch1–Ch10 page map and OCR toolchain.
 ## K · AI course CS605 (Dr. Saif Al-Saidi)
 Swarm Intelligence 2026-10-20; next = student-led Supervised ML presentation (KNN, SVM, Naive Bayes). Banks/origin `DETAILS.md` §10. AI W01/W02/W03 study packs delivered 2026-10-28; recall-sheet proofs held for student approval.
 
-## L · Faculty roster — full `DETAILS.md` §14
-College = **College of Computer Science & IT, University of Wasit**. Read
-`FACULTY_PRACTICAL_INTEL.md` + `FACULTY_FORENSIC_AUDIT.md`; `01_Supervisor_Intelligence.md`
-is **agent-inferred, unverified** — never cite as fact. Two laws to keep visible: faculty are
-indexed **only** under Latin transliteration (Arabic-only search = false negatives); **RTL PDF
-law** — mixed Arabic + Latin in one paragraph gets reversed, so each Latin name/title gets its
-own paragraph. §14 has OpenAlex numbers, patent 7858, the IEEE Notice of Violation, working
-sources and `alaidi.net` (Abdul Hadi's own Soft Computing syllabus).
+## L · Faculty roster — removed (private archive)
 
 ## M · English exam scope (2026-11-04)
 English is **not** an MCQ-everything subject. Exam tests: grammar · vocabulary ·
