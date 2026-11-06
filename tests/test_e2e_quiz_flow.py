@@ -21,6 +21,8 @@ import app as dashboard_app
 from app import app
 from quiz_engine import SEEN_UUIDS
 
+ASE_CRISIS_QUIZ = "Quiz_Ch01_T04_Software_Crisis"
+
 
 @pytest.fixture
 def client():
@@ -56,16 +58,16 @@ def isolated_hub(monkeypatch):
 
 def test_e2e_fetch_real_quiz(client):
     """
-    Test 1: Fetch the real quiz '04_Advanced_Software_Eng/Quiz_01_Software_Crisis'
+    Test 1: Fetch the active Software Crisis quiz
     via the Flask test client and verify status 200, valid structure, and questions.
     """
-    res = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_01_Software_Crisis")
+    res = client.get(f"/api/quiz/04_Advanced_Software_Eng/{ASE_CRISIS_QUIZ}")
     assert res.status_code == 200
     
     quiz_data = res.get_json()
     assert quiz_data is not None
     assert quiz_data.get("subject") == "04_Advanced_Software_Eng"
-    assert "Software Crisis" in quiz_data.get("topic", "") or "Foundations" in quiz_data.get("topic", "")
+    assert "Software Crisis" in quiz_data.get("topic", "")
     assert "questions" in quiz_data
     assert len(quiz_data["questions"]) >= 5
 
@@ -75,10 +77,11 @@ def test_e2e_fetch_real_quiz(client):
     assert "options" in first_q
     assert "answer" in first_q
     assert "explanation" in first_q
-    assert "Patriot" in first_q["question"] or "clock" in first_q["question"]
+    assert first_q["question"].strip()
+    assert len(first_q["options"]) == 4
 
     # Also test with explicit .json suffix
-    res_json = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_01_Software_Crisis.json")
+    res_json = client.get(f"/api/quiz/04_Advanced_Software_Eng/{ASE_CRISIS_QUIZ}.json")
     assert res_json.status_code == 200
     assert res_json.get_json()["subject"] == "04_Advanced_Software_Eng"
 
@@ -288,60 +291,40 @@ def test_e2e_full_lifecycle_journey(client, isolated_hub):
     5. Verify state consistency in all vault markdown files
     """
     # Step 1: Fetch real quiz
-    fetch_res = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_01_Software_Crisis")
+    fetch_res = client.get(f"/api/quiz/04_Advanced_Software_Eng/{ASE_CRISIS_QUIZ}")
     assert fetch_res.status_code == 200
     quiz_data = fetch_res.get_json()
     questions = quiz_data["questions"]
-    assert len(questions) == 5
+    assert len(questions) >= 5
 
     # Step 2: Build simulated telemetry
     sub_uuid = f"e2e-lifecycle-{uuid.uuid4()}"
-    simulated_questions = [
-        {
-            "id": "q0",
-            "is_correct": True,
-            "is_lucky_guess": True,
-            "dwell_time_seconds": 7.5
-        },
-        {
-            "id": "q1",
-            "is_correct": False,
-            "is_lucky_guess": False,
-            "dwell_time_seconds": 30.0,
-            "reflection": {
-                "reason": "Calculation Slip",
-                "note": "Re-read question too fast"
-            }
-        },
-        {
-            "id": "q2",
-            "is_correct": True,
-            "is_lucky_guess": False,
-            "dwell_time_seconds": 12.0
-        },
-        {
-            "id": "q3",
-            "is_correct": True,
-            "is_lucky_guess": False,
-            "dwell_time_seconds": 10.0
-        },
-        {
-            "id": "q4",
-            "is_correct": True,
-            "is_lucky_guess": False,
-            "dwell_time_seconds": 15.0
+    simulated_questions = []
+    for index, _ in enumerate(questions):
+        entry = {
+            "id": f"q{index}",
+            "is_correct": index != 1,
+            "is_lucky_guess": index == 0,
+            "dwell_time_seconds": 30.0 if index == 1 else 12.0,
         }
-    ]
+        if index == 1:
+            entry["reflection"] = {
+                "reason": "Calculation Slip",
+                "note": "Re-read question too fast",
+            }
+        simulated_questions.append(entry)
+    total = len(simulated_questions)
+    percentage = round(100 * (total - 1) / total, 2)
 
     payload = {
         "submission_uuid": sub_uuid,
         "subject_id": quiz_data["subject"],
         "topic": quiz_data["topic"],
         "summary": {
-            "total": 5,
-            "correct": 4,
+            "total": total,
+            "correct": total - 1,
             "wrong": 1,
-            "percentage": 80.0,
+            "percentage": percentage,
             "avg_dwell_time_seconds": 14.9
         },
         "questions": simulated_questions
@@ -362,7 +345,7 @@ def test_e2e_full_lifecycle_journey(client, isolated_hub):
     session_text = (isolated_hub / "sessions" / f"{today_str}.md").read_text(encoding="utf-8")
     assert sub_uuid in session_text
     assert f"**[Quiz WebUI]** Saved `{quiz_data['subject']}`" in session_text
-    assert "80%, 4/5" in session_text
+    assert f"{percentage:.0f}%, {total - 1}/{total}" in session_text
     assert 'Wrong: q1 [Calculation Slip] "Re-read question too fast"' in session_text
     assert "Lucky: q0" in session_text
 
@@ -386,9 +369,9 @@ def test_e2e_bundle_offline_sync_lifecycle(client, isolated_hub):
     assert bundle["total_quizzes"] >= 6
 
     # 2. Pick a quiz from the bundle (e.g. 05_Soft_Computing)
-    target_quiz = next(q for q in bundle["quizzes"] if q["subject_id"] == "05_Soft_Computing" and q["quiz_id"] == "Quiz_01_Soft_Computing_Foundations")
+    target_quiz = next(q for q in bundle["quizzes"] if q["subject_id"] == "05_Soft_Computing")
     assert target_quiz["schema_version"] == 2
-    assert len(target_quiz["questions"]) == 5
+    assert len(target_quiz["questions"]) >= 5
 
     # 3. Simulate offline attempt: student takes quiz completely offline
     sub_uuid = f"offline_e2e_{uuid.uuid4().hex[:8]}"
@@ -416,8 +399,8 @@ def test_e2e_bundle_offline_sync_lifecycle(client, isolated_hub):
         "finished_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "session_duration_seconds": 65,
         "summary": {
-            "total": 5,
-            "correct": 5,
+            "total": len(simulated_questions),
+            "correct": len(simulated_questions),
             "wrong": 0,
             "percentage": 100.0,
             "avg_dwell_time_seconds": 12.5
@@ -436,5 +419,5 @@ def test_e2e_bundle_offline_sync_lifecycle(client, isolated_hub):
     assert session_file.exists()
     content = session_file.read_text(encoding="utf-8")
     assert sub_uuid in content
-    assert "100%, 5/5" in content
+    assert f"100%, {len(simulated_questions)}/{len(simulated_questions)}" in content
     assert f"Saved `{target_quiz['subject_id']}`" in content

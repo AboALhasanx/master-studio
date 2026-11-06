@@ -219,8 +219,8 @@ def test_api_quiz_history(client):
 
 
 def test_api_quiz_get_fuzzy_prefix(client):
-    # Passing Quiz_01 should resolve Quiz_01_Software_Crisis
-    res = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_01")
+    # A chapter/topic prefix should resolve to the active Software Crisis bank.
+    res = client.get("/api/quiz/04_Advanced_Software_Eng/Quiz_Ch01_T04")
     assert res.status_code == 200
     data = res.get_json()
     assert "questions" in data

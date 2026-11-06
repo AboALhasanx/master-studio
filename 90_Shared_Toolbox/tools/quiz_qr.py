@@ -81,8 +81,8 @@ def check_adb_usb_device() -> bool:
 
 def resolve_quiz_slug(subject_id: str, quiz_slug: str) -> str:
     """
-    Resolves a short or case-insensitive quiz slug (e.g. 'Quiz_01')
-    to the canonical filename stem (e.g. 'Quiz_01_Software_Crisis').
+    Resolves a short or case-insensitive quiz slug (e.g. 'Quiz_Ch01_T04')
+    to the canonical filename stem (e.g. 'Quiz_Ch01_T04_Software_Crisis').
     """
     from pathlib import Path
     base_dir = Path(__file__).resolve().parent.parent.parent

@@ -103,9 +103,8 @@ def test_check_adb_usb_device_none():
 
 def test_resolve_quiz_slug_prefix():
     from quiz_qr import resolve_quiz_slug
-    # Resolves Quiz_01 to Quiz_01_Software_Crisis for 04_Advanced_Software_Eng
-    resolved = resolve_quiz_slug("04_Advanced_Software_Eng", "Quiz_01")
-    assert resolved == "Quiz_01_Software_Crisis"
+    resolved = resolve_quiz_slug("04_Advanced_Software_Eng", "Quiz_Ch01_T04")
+    assert resolved == "Quiz_Ch01_T04_Software_Crisis"
 
 
 def test_standalone_launcher_uses_argument_array_not_shell():

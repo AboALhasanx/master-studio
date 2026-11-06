@@ -897,7 +897,7 @@ def _resolve_quiz_payload(subject_id, quiz_id):
             except ValueError:
                 pass
 
-            # 2. Case-insensitive or prefix slug match (e.g. Quiz_01 -> Quiz_01_Software_Crisis)
+            # 2. Case-insensitive or prefix slug match (e.g. Quiz_Ch01_T04 -> Quiz_Ch01_T04_Software_Crisis)
             for qf in candidate_dir.glob("Quiz_*.json"):
                 stem_lower = qf.stem.lower()
                 clean_lower = clean_id.lower()

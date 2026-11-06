@@ -35,7 +35,7 @@ Master-Studio/
 │   └── 06_Artificial_Intelligence/
 │
 ├── 02_Semester_2/              # Spring 2027 (placeholder)
-├── 03_Thesis_&_Research_Transition/  # Committee guidelines & supervisor intelligence
+├── 03_Thesis_&_Research_Transition/  # Committee guidelines
 │
 ├── 90_Shared_Toolbox/tools/    # Python utilities (office export, PDF reader, quiz runner)
 ├── 99_Archives/                # Personal documents (gitignored)
@@ -111,14 +111,11 @@ pytest -q                         # run the test suite (must pass before any PR)
 
 ## Current Status
 
-- **Active semester:** Semester 1 (Fall 2026) — Week 02 (active subject: `02_English_Language`)
-- **Live work:** `03_Data_Mining` Week 04 Feature Selection + `01_Cyber_Security` W03 notes (due Wed) — see `00_STUDIO_HUB/ACTIVE_STATE.md` for the fast-boot pointer
-- **Most complete subject:** `04_Advanced_Software_Eng` (Dr. Ali Fahim Ni'ma) — Week 01 pack + Week 02 ten units + 146-page merged Master Lecture, diagrams and quizzes
-- **Done:** `02_English_Language` Units 1–2, each merged from both sources (Q Skills + New Headway Upper-Intermediate)
-- **On hold:** `06_Artificial_Intelligence` — the professor has not delivered any material yet
-- **Planning:** see `00_STUDIO_HUB/STUDY_PLAN.md` for the rolling schedule, and `00_STUDIO_HUB/ACTIVE_STATE.md` for the fast-boot pointer
-
-Other subjects are staged with syllabi and doctor profiles; study content is produced as lectures are delivered.
+The current semester, week, active subject, and next task are maintained in
+[`00_STUDIO_HUB/ACTIVE_STATE.md`](00_STUDIO_HUB/ACTIVE_STATE.md). Quiz-bank counts
+and content versions are generated in
+[`00_STUDIO_HUB/QUIZ_BANK_STATE.md`](00_STUDIO_HUB/QUIZ_BANK_STATE.md).
+Use those files for live status rather than a dated snapshot in this README.
 
 ---
 
