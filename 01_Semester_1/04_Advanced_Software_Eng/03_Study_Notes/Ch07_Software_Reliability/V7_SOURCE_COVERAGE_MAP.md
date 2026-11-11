@@ -2,6 +2,8 @@
 
 **Prepared:** 2026-10-21. This is a navigation record. OCR and PDF text extraction locate candidate material; final claims, formulas, diagrams, and printed-page citations still require inspection of their original page images.
 
+**Status reconciliation (2026-11-11):** this file preserves the source-preparation map, not the current deliverables checklist. The six question packs, their PDFs, and the merged print file now exist; see [00_INDEX.md](00_INDEX.md). Current answer pointers are in [V7_Coverage.md](V7_Coverage.md). Codex's 2026-10-21/22 journals record the later corrections, exports and print checks; this reconciliation does not repeat their source/visual audit. The provisional page ranges below must not override a checked locator in a final answer.
+
 ## Course-primary sources
 
 | Source | Identified range | Role and limits |
@@ -60,11 +62,11 @@ All below are distinct books from the course-primary K.K. Aggarwal & Singh scan.
 
 ## Other related files and authority boundary
 
-- `05_Seminars_&_Slides/Reliability_Seminar/Ch7_Software_Reliability.pdf` is an existing OpenCode-produced seminar artifact; the current PDF is **62 pages** (the older session-log claim of 56 pages is stale). Its Markdown source has 25,738 words, 17 tables, and 24 generated grayscale figures. Its structural `qa_check.py` passes, but `eq_check.py` currently detects **zero** numbered equation lines: its regex requires a leading `*`, while the current Markdown equations are plain lines, and its empty-list numbering check passes vacuously. The script's hard-coded numerical assertions do not parse or compare the document's formula text. Therefore, the reported equation-check success is not evidence that the written equations were verified. Keep this artifact as a navigation/checklist aid; its claims and generated figures are not answer sources until checked against the primary book/slides. It also contains extra material beyond the instructor list (for example, reliability metrics, SQA, ISO 25010, and model-selection/limitations material).
+- `05_Seminars_&_Slides/Reliability_Seminar/` contains OpenCode's separate seminar work and multiple revisions, not the six question-type packs. The source-preparation audit on 2026-10-21 recorded an equation-checker defect in the then-inspected snapshot: zero numbered equations matched, an empty-list numbering check passed vacuously, and hard-coded numeric assertions did not compare against document formulas. This is a historical audit observation, not a fresh result for later revisions; old seminar page-count snapshots are not live status. Keep the seminar as a navigation/checklist aid, not answer authority without a primary-source comparison. Its broader material does not expand the instructor's vocabulary scope.
 - The same folder's `_reliab_sources.txt`, `_quality_sources.txt`, `SOURCE_ch7_slides.txt`, OCR text, and build scripts are generated research aids from that seminar work. They can point to pages but are not primary evidence.
 - Targeted searches of the three external question-bank PDFs found generic overlap on software reliability, McCall/ISO 9126, and CMM/CMMI. They provide question-form examples only; they do not add scope, an authoritative answer key, or evidence of this instructor's preferred marks.
 - The mirrored Chapter 7 slide PDF is text-identical by page after whitespace normalization; retain one indexed copy to avoid duplicate retrieval.
 
 ## Current coverage conclusion
 
-All **19/19** instructor terms have a mapped official-slide location and a provisional scanned-book chapter range. This establishes navigation coverage only. It does not yet establish that every answer, formula, figure, or model detail has been verified, nor does it mean every possible exam question is covered.
+All **19/19** instructor terms have a mapped official-slide location and a provisional scanned-book chapter range. The later authored-pack pointers are in `V7_Coverage.md`. This map establishes source navigation, not the absence of authored packs, a fresh certification of every answer/formula/figure, or coverage of every possible exam question. Use the current index for artifact status and the canonical journals for prior review evidence.

@@ -1,6 +1,14 @@
 # ASE Chapter 7 — Software Reliability Build Plan
 
-**Phase (2026-10-21):** chapter source audit, scope mapping, and local vector-memory setup. Final question packs and print PDFs have not started.
+**Current phase (reconciled 2026-11-11):** six question packs are authored and exported; the combined print PDF exists. Pending the student's final visual review, not authoring from scratch. The source-preparation instructions below remain the chapter's scope and verification contract; their future tense is not a claim that the packs are absent.
+
+## Current artifacts and review boundary
+
+- See [00_INDEX.md](00_INDEX.md) for the current six-pack roster, item counts, page counts, and print links. [V7_Coverage.md](V7_Coverage.md) is the internal vocabulary-to-answer ledger; it has no separate print PDF by design.
+- OpenCode checked the local artifact inventory on 2026-11-11: all six Markdown/PDF pairs exist, each PDF is newer than its Markdown, current strict lint passes on all six packs and V7_Coverage, and the combined PDF matches the component PDFs page by page in extracted text with the expected bookmarks. No question-pack content or PDF was rewritten in this reconciliation.
+- Prior work is credited to Antigravity (authoring, 2026-10-21) and Codex (corrections/export review, 2026-10-21; merged print/parity audit, 2026-10-22). The canonical daily journals record the checks and limits. This is not a new blind or full source/visual audit, and does not close the student's pending visual approval.
+- CMM Common Features has direct MCQ coverage in T1 Q7.54, but no separate descriptive/application explanation in the current ledger. Do not upgrade mapped coverage to a claim of equal answer depth for every vocabulary leaf.
+- The source-preparation index had not reflected the later local packs. Keep this plan, the index, the figure atlas and the answer-navigation ledger aligned after future changes. Portal quiz-bank publication remains a separate workflow.
 
 ## Goal and scope
 
@@ -26,11 +34,11 @@ Build a compact, source-grounded question set that teaches the instructor's supp
 2. **Official companion slides:** the 126-slide Chapter 7 deck identifies K.K. Aggarwal & Yogesh Singh, 3rd ed., New Age International, 2007. Use it for lecture-specific emphasis and diagrams. The question prompts are also present in the primary book: MCQs on printed pp. 359–362 and exercises on pp. 363–364. Keep slide-only wording attributed to slides.
 3. **Student-provided instructor vocabulary:** the exact list in `V7_Doctor_Vocabulary.md` sets the scope. It is a direct report from the student; no original announcement file is attached in this turn.
 4. **Supporting textbooks:** use them as a comparison pool only when a term is absent, ambiguous, or materially clearer elsewhere. The catalog contains five supporting books; their identities and useful ranges are in `V7_SOURCE_COVERAGE_MAP.md`. Never conflate K.K. Aggarwal & Singh with B.B. Agarwal, Tayal & Gupta (2010).
-5. **Existing seminar artifact and external question banks:** navigation or question-form references only; not answer authority, not scope authority, and not evidence of the instructor's exam marks. The existing OpenCode-produced `Reliability_Seminar/Ch7_Software_Reliability.pdf` is currently 62 pages (25,738 words in its Markdown source, 17 tables, 24 generated grayscale figures). Its structural `qa_check.py` currently passes, but its equation checker recognizes **zero** numbered equations because it only matches lines beginning with `*`; the empty-list sequence check passes vacuously, and the hard-coded numerical assertions do not compare against the source formula text. Treat its reported equation pass as unverified until that checker is repaired and the formulas are checked against the primary page images. The old session log's 56-page statement is stale. Do not copy its generated figures or answers into the new question packs without a fresh source comparison.
+5. **Existing seminar artifact and external question banks:** navigation or question-form references only; not answer authority, not scope authority, and not evidence of the instructor's exam marks. OpenCode's separate `Reliability_Seminar/` artifacts have multiple revisions; do not treat an old page-count snapshot as their current state. The 2026-10-21 source-preparation audit recorded an equation-checker defect (zero equations matched, an empty-list sequence test passing vacuously, and hard-coded numerical assertions not comparing against document formulas). That observation applies to the then-inspected snapshot, not a fresh test of later seminar revisions. Do not inherit a seminar verification claim or copy its figures/answers without a source comparison.
 
 When prose and slides disagree, use the primary textbook for the explanation and preserve a slide-specific question as a slide source. Do not smooth over a real discrepancy without recording it. **Known conflict:** slide 115 item 7.34 asks about CMM process management, duplicating slide 116 item 7.35. The primary book p.361 gives 7.34 as process control and 7.35 as process management; use the book wording and document the slide discrepancy.
 
-## Planned study-pack set
+## Study-pack design (now authored)
 
 - **T1 — MCQ:** transcribe and check the 50 publisher-slide questions. The inspected deck ends at the exercises and contains no publisher answer key; solve each item independently against the source material. Add new MCQs only for a demonstrated coverage or practice gap, without reworded duplicates.
 - **T2 — Short answer:** direct definitions, lists, explanations, model descriptions, CMM common features, and ISO 9000 requirements. Answers stay concise, in English, with only short Arabic notes where useful.
@@ -64,7 +72,7 @@ For each equation, inspect the original source page image, transcribe notation, 
 - Use no ASCII diagrams. For a necessary redraw, retain the original, record a semantic checklist, and validate both meaning and visual legibility.
 - Keep the syllabus's ISO 9126 and ISO 9001/CMM comparison in its source-era form. Do not silently replace those topics with newer standards or import modern clause counts into the answer.
 
-## Authoring sequence
+## Authoring and future revision sequence
 
 1. Finish the Chapter 7 OCR/vector refresh and verify the source index with targeted searches.
 2. Inspect scanned-book pages 160 and 188 plus the intervening section starts to confirm the printed-page map and boundaries. Inspect each page image used for formulas, tables, and figures.

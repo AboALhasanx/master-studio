@@ -2,9 +2,11 @@
 
 All locations below refer to pages in the official 126-slide companion deck. The source figure itself—not extracted OCR text—is the semantic reference. Compare it with the matching scan figure and use the clearest complete original image for print. Figures are not answer paragraphs; keep explanations in the separate answer text.
 
-**Initial visual pass:** a contact sheet of all 24 figure slides was inspected. The figure sequence and locations match the text layer. This confirms navigation and broad figure type only; small labels and equations still need full-size inspection before extraction or answer use. Slides 35, 40, 46, 60, 77, and 96 are especially dense at print size.
+**Initial source-preparation pass (2026-10-21):** a contact sheet of all 24 figure slides was inspected. That initial pass confirmed navigation and broad figure type only. The source-location table below preserves that extraction reference; it is not a current to-do list claiming that no figures were extracted.
 
-| Figure | Source slide | Source caption/topic | Planned treatment |
+**Current local status (2026-11-11):** T4_Diagrams.md contains 10 visual questions using 13 PNG assets in `diagrams/`, and T4_Diagrams.pdf exists. Its current embedded figures are 7.1, 7.2, 7.4, 7.5, 7.10, 7.11, 7.12, 7.13, 7.18, 7.21, 7.22, 7.23 and 7.24. Not every source figure was selected for print. Codex's 2026-10-21 journal records prior figure/content corrections and bounded visual review; no new complete source-image or print-legibility audit is claimed by this inventory refresh. Student final visual approval remains pending. See [00_INDEX.md](00_INDEX.md) for print links.
+
+| Figure | Source slide | Source caption/topic | Source handling reference |
 |---|---:|---|---|
 | 7.1 | 3 | Hardware bath-tub reliability curve | Extract the original curve; preserve burn-in, useful-life, wear-out labels and axes. |
 | 7.2 | 4 | Software reliability curve | Extract original; retain its failure-rate/time meaning and distinguish it from hardware wear-out. |
@@ -37,4 +39,4 @@ All locations below refer to pages in the official 126-slide companion deck. The
 - A new clean vector is allowed only if the source image cannot print legibly or the question requires a marked-up variant. Keep the unmodified source image beside any reconstruction.
 - Any reconstructed graph needs an equation/data/axis checklist and a pixel-size visual review. Do not treat a successful render or OCR as semantic verification.
 - Several equations and captions are malformed by the slide PDF text layer. The slide image and scanned-book page image control their transcription.
-- Figure extraction and final printable embedding have not yet been performed.
+- Extraction and printable embedding have been performed for the 13 selected assets listed above. Q7.V02 uses Fig. 7.4 as input-state probabilities, Q7.V03 uses Fig. 7.5 as a probability portion rather than a tree, and Q7.V07 uses Figs. 7.13/7.18 with λ-versus-μ axes. Do not reintroduce the superseded figure interpretations from an early coverage snapshot.

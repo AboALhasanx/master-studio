@@ -2,6 +2,8 @@
 
 **Purpose:** Internal navigation and pack-allocation aid. The exercise prompts were checked against official slides 120–126, including rendered views of the equation/table-heavy slides. The primary book contains the same exercise set on printed pp. 363–364. This inventory classifies response form; it does not assign exam marks.
 
+**Status update (2026-11-11):** the six question packs and PDFs now exist; see [00_INDEX.md](00_INDEX.md). The source-response classifications and allocation notes below originated in preparation, not a missing-content report. Current T2 has 18 questions, T3 has 10 comparisons, T4 has 10 visual questions, T5 has 6 scenarios, and T7 has 10 worked problems; cross-references overlap, so these are not counts of unique source exercises. A fresh exercise-by-exercise source-completeness audit is outside this status reconciliation.
+
 | Exercise | Main topic | Primary response form | Notes for later authoring |
 |---|---|---|---|
 | 7.1 | Software reliability | Definition / explain | Address the “does it exist?” wording directly. |
@@ -37,21 +39,21 @@
 | 7.31 | CMM vs ISO 9001 | Compare + defend a position | The preference question should be answered with reasons, not treated as a universal fact. |
 | 7.32 | Reliability engineering and standards | Explain significance / benefits | Two-part answer; keep examples within the listed syllabus. |
 | 7.33 | Defined-level CMM KPAs | Enumerate + apply | Describe activities for one selected KPA. |
-| 7.34 | ISO 9001 vs SEI CMM | Compare | Companion slide 115 has a different stem under this same ID; use the book’s p.361 stem and retain the discrepancy note. |
+| 7.34 | ISO 9001 vs SEI CMM | Compare | Current T3 Comparison 7.8 lists this written exercise. Do not confuse its ID with MCQ 7.34, whose separate slide/book wording conflict is recorded in the build plan. |
 | 7.35 | ISO certification vs CMM evaluation | Evaluate + critique | Discuss relative merits and software-industry limitations of certification. |
 
 ## Source exercise mix
 
 Using one primary response form per item, the 35 exercises divide as follows: direct definition/explanation/list (13; 37.1%), comparison/evaluation (9; 25.7%), quantitative calculation (7; 20.0%), diagram or table construction (3; 8.6%), applied monitoring/KPA description (2; 5.7%), and model-relation interpretation (1; 2.9%). Some prompts are intentionally mixed; these categories are for planning only. There is no evidence that these proportions correspond to exam marks.
 
-## Placement plan
+## Original allocation reference and current locations
 
-- **T1:** all 50 publisher MCQs, independently answered; no publisher key was found.
+- **T1:** the current file contains all 50 numbered course-slide MCQ IDs plus 10 authored practice MCQs; no publisher key was found in the inspected Chapter 7 sources.
 - **T2:** direct concept/model explanations and lists.
 - **T3:** conceptual comparisons and evaluation.
 - **T4:** source figures, with separate prompts only where drawing or curve interpretation is required.
 - **T5:** applied monitoring, standards/KPA scenarios, and interpretation prompts that do not duplicate the source exercise.
 - **T7:** numerical problems from 7.15, 7.16, 7.18–7.21, and 7.24; include derivation steps where 7.15 or 7.19 asks for Δμ/Δτ. Equations in 7.23 and 7.25 belong in formula interpretation, not automatically as invented numerical problems.
-- **V7:** term-to-answer/source navigation only; do not print the internal coverage map.
+- **V7:** current term-to-answer/source navigation is in `V7_Coverage.md`; do not print the internal coverage map. The separate `V7_Doctor_Vocabulary.md` preserves the instructor list, and `V7_SOURCE_COVERAGE_MAP.md` preserves source navigation.
 
 The exercise list on slide 120 is visually ordered 7.1, 7.2, 7.3, 7.6, 7.4, 7.5. The inventory restores numeric ID order while preserving every original item ID.
