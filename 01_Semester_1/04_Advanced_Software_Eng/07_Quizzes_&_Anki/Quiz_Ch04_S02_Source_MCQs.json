@@ -1,0 +1,509 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch04_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q14",
+      "bloom_level": "Remember",
+      "question": "COCOMO-II estimation model is based on",
+      "options_en": [
+        "complex approach",
+        "algorithmic approach",
+        "bottom up approach",
+        "top down approach"
+      ],
+      "options": [
+        "complex approach",
+        "algorithmic approach",
+        "bottom up approach",
+        "top down approach"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.14",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4364,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.14; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "COCOMO II is an algorithmic cost estimation model that uses mathematical formulas derived from empirical regression analysis of historical project metrics to predict effort and schedule.",
+      "question_ar": "نموذج تقدير COCOMO-II يعتمد على:",
+      "options_ar": [
+        "منهج معقد",
+        "منهج خوارزمي",
+        "منهج من الأسفل إلى الأعلى",
+        "منهج من الأعلى إلى الأسفل"
+      ],
+      "explanation_ar": "COCOMO-II نموذج خوارزمي لتقدير الجهد."
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q15",
+      "bloom_level": "Remember",
+      "question": "Cost estimation for a project may include",
+      "options_en": [
+        "software cost",
+        "hardware cost",
+        "personnel costs",
+        "all of the above"
+      ],
+      "options": [
+        "software cost",
+        "hardware cost",
+        "personnel costs",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.15",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4368,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.15; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The answer includes software cost, hardware cost, and personnel costs; these are all relevant components of a project cost estimate.",
+      "question_ar": "تقدير تكلفة المشروع قد يشمل:",
+      "options_ar": [
+        "تكلفة البرمجيات",
+        "تكلفة العتاد",
+        "تكاليف الأفراد",
+        "كل ما سبق"
+      ],
+      "explanation_ar": "التكلفة الكلية تجمع تكاليف البرمجيات والعتاد والأفراد."
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q16",
+      "bloom_level": "Remember",
+      "question": "In COCOMO model, if project size is typically 2 - 50 KLOC, then which mode is to be selected?",
+      "options_en": [
+        "organic",
+        "semidetached",
+        "embedded",
+        "none of the above"
+      ],
+      "options": [
+        "organic",
+        "semidetached",
+        "embedded",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "4.16",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4376,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.16; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "In COCOMO, the Organic mode represents relatively small software projects (typically 2 to 50 KLOC) developed by experienced teams working in familiar, stable in-house environments with relaxed requirements.",
+      "question_ar": "في نموذج COCOMO، إذا كان حجم المشروع عادة بين 2 و50 KLOC، فأي نمط يختار؟",
+      "options_ar": [
+        "organic",
+        "semidetached",
+        "embedded",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "النمط organic يناسب المشاريع الصغيرة والمتوسطة بهذا المدى."
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q17",
+      "bloom_level": "Remember",
+      "question": "COCOMO-II was developed at",
+      "options_en": [
+        "university of Maryland",
+        "university of Southern California",
+        "IBM",
+        "AT & T Bell labs"
+      ],
+      "options": [
+        "university of Maryland",
+        "university of Southern California",
+        "IBM",
+        "AT & T Bell labs"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.17",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4380,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.17; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "COCOMO II was developed by Barry Boehm and his research team at the Center for Software Engineering (CSE) at the University of Southern California (USC) during the 1990s.",
+      "question_ar": "COCOMO-II طور في:",
+      "options_ar": [
+        "university of Maryland",
+        "university of Southern California",
+        "IBM",
+        "AT & T Bell labs"
+      ],
+      "explanation_ar": "COCOMO-II طور في جامعة Southern California."
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q18",
+      "bloom_level": "Remember",
+      "question": "Which one is not a Category of COCOMO-II?",
+      "options_en": [
+        "end user programming",
+        "infrastructure sector",
+        "requirement sector",
+        "system Integration"
+      ],
+      "options": [
+        "end user programming",
+        "infrastructure sector",
+        "requirement sector",
+        "system Integration"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.18",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4384,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.18; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "COCOMO II identifies four target project categories / application sectors: End-User Programming, Application Generators & Composition Aids, System Integration, and Infrastructure Sector. \"Requirement Sector\" does not exist in COCOMO II taxonomy.",
+      "question_ar": "أي مما يلي ليس فئة من فئات COCOMO-II؟",
+      "options_ar": [
+        "end user programming",
+        "infrastructure sector",
+        "requirement sector",
+        "system Integration"
+      ],
+      "explanation_ar": "requirement sector ليست من فئات COCOMO-II المعتمدة."
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q19",
+      "bloom_level": "Remember",
+      "question": "Which one is not an infrastructure software?",
+      "options_en": [
+        "operating system",
+        "database management system",
+        "compilers",
+        "result management system"
+      ],
+      "options": [
+        "operating system",
+        "database management system",
+        "compilers",
+        "result management system"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.19",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4388,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.19; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Infrastructure software provides core foundational services and platforms upon which application software runs; examples include Operating Systems, DBMS, Compilers, Network protocols, and Device Drivers. \"Result management system\" is an end-user application, not infrastructure software.",
+      "question_ar": "أي مما يلي ليس من برمجيات البنية التحتية؟",
+      "options_ar": [
+        "نظام التشغيل",
+        "نظام إدارة قواعد البيانات",
+        "المترجمات",
+        "نظام إدارة النتائج"
+      ],
+      "explanation_ar": "نظام إدارة النتائج تطبيق وليس برمجية بنية تحتية."
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q20",
+      "bloom_level": "Remember",
+      "question": "How many stages are in COCOMO-II?",
+      "options_en": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.20",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4392,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.20; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "COCOMO II provides three increasingly detailed estimation stages tailored to the life cycle: Stage 1 (Application Composition Model), Stage 2 (Early Design Model), and Stage 3 (Post-Architecture Model).",
+      "question_ar": "كم عدد مراحل COCOMO-II؟",
+      "options_ar": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "explanation_ar": "COCOMO-II له ثلاث مراحل تقدير."
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q21",
+      "bloom_level": "Remember",
+      "question": "Which one is not a stage of COCOMO-II?",
+      "options_en": [
+        "application composition estimation model",
+        "early design estimation model",
+        "post architecture estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "options": [
+        "application composition estimation model",
+        "early design estimation model",
+        "post architecture estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.21",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4396,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.21; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The three official stages of COCOMO II are Application Composition, Early Design, and Post-Architecture. \"Comprehensive cost estimation model\" is an invented distractor.",
+      "question_ar": "أي مما يلي ليس مرحلة من مراحل COCOMO-II؟",
+      "options_ar": [
+        "application composition estimation model",
+        "early design estimation model",
+        "post architecture estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "explanation_ar": "نموذج التكلفة الشامل ليس مرحلة من مراحل COCOMO-II."
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q22",
+      "bloom_level": "Remember",
+      "question": "In Putnam resource allocation model, Rayleigh curve is modeled by the equation",
+      "options_en": [
+        "m(t) = 2at e^-at^2",
+        "m(t) = 2Kt e^-at^2",
+        "m(t) = 2Kat e^-at^2",
+        "m(t) = 2Kbt e^-at^2"
+      ],
+      "options": [
+        "m(t) = 2at e^-at^2",
+        "m(t) = 2Kt e^-at^2",
+        "m(t) = 2Kat e^-at^2",
+        "m(t) = 2Kbt e^-at^2"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.22",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4402,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.22; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "In the Putnam resource allocation model, manpower utilization rate $m(t)$ over time follows Norden's Rayleigh curve equation: $m(t) = 2 K a t \\cdot e^{-at^2}$, where $K$ is total life-cycle effort, $a = \\frac{1}{2 t_d^2}$, and $t$ is elapsed project time.",
+      "question_ar": "في نموذج Putnam لتخصيص الموارد، يمثل منحنى Rayleigh بالمعادلة:",
+      "options_ar": [
+        "m(t) = 2at e^-at^2",
+        "m(t) = 2Kt e^-at^2",
+        "m(t) = 2Kat e^-at^2",
+        "m(t) = 2Kbt e^-at^2"
+      ],
+      "explanation_ar": "منحنى Rayleigh في نموذج Putnam يأخذ الصيغة 2Kat e^-at^2."
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q23",
+      "bloom_level": "Remember",
+      "question": "In Putnam resource allocation model, technology factor 'C' is defined as",
+      "options_en": [
+        "C = SK^-1/3t_d^-4/3",
+        "C = SK^1/3t_d^4/3",
+        "C = SK^1/3t_d^-4/3",
+        "C = SK^-1/3t_d^4/3"
+      ],
+      "options": [
+        "C = SK^-1/3t_d^-4/3",
+        "C = SK^1/3t_d^4/3",
+        "C = SK^1/3t_d^-4/3",
+        "C = SK^-1/3t_d^4/3"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "4.23",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4406,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.23; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Putnam's Software Equation relates product size $S$ to total effort $K$ and development time $t_d$ by $S = C \\cdot K^{1/3} \\cdot t_d^{4/3}$. Solving algebraically for the technology factor $C$ yields $C = S \\cdot K^{-1/3} \\cdot t_d^{-4/3}$.",
+      "question_ar": "في نموذج Putnam، عامل التقنية C يعرف بأنه:",
+      "options_ar": [
+        "C = SK^-1/3t_d^-4/3",
+        "C = SK^1/3t_d^4/3",
+        "C = SK^1/3t_d^-4/3",
+        "C = SK^-1/3t_d^4/3"
+      ],
+      "explanation_ar": "عامل التقنية يعبر عن العلاقة بين الحجم وزمن التطوير."
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q24",
+      "bloom_level": "Remember",
+      "question": "Risk management activities are divided in",
+      "options_en": [
+        "3 categories",
+        "2 categories",
+        "5 categories",
+        "10 categories"
+      ],
+      "options": [
+        "3 categories",
+        "2 categories",
+        "5 categories",
+        "10 categories"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.24",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4410,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.24; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Risk management activities are divided into two fundamental primary categories: Risk Assessment (identification, analysis, prioritization) and Risk Control (planning, resolution, monitoring).",
+      "question_ar": "أنشطة إدارة المخاطر تنقسم إلى:",
+      "options_ar": [
+        "3 فئات",
+        "فئتين",
+        "5 فئات",
+        "10 فئات"
+      ],
+      "explanation_ar": "إدارة المخاطر تنقسم إلى تقييم المخاطر وضبط المخاطر."
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q25",
+      "bloom_level": "Remember",
+      "question": "Which one is not a risk management activity?",
+      "options_en": [
+        "risk assessment",
+        "risk control",
+        "risk generation",
+        "none of the above"
+      ],
+      "options": [
+        "risk assessment",
+        "risk control",
+        "risk generation",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.25",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4414,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.25; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The established activities of software risk management are Risk Assessment (evaluating exposure) and Risk Control (mitigating and monitoring risk). \"Risk generation\" is not one of the two listed management activities.",
+      "question_ar": "أي مما يلي ليس نشاطاً من أنشطة إدارة المخاطر؟",
+      "options_ar": [
+        "تقييم المخاطر",
+        "ضبط المخاطر",
+        "توليد المخاطر",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "توليد المخاطر ليس نشاطاً معتمداً في إدارة المخاطر."
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

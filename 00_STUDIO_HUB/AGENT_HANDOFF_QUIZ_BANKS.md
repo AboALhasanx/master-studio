@@ -31,6 +31,11 @@
 
 ## 2. The five laws. A bank that breaks any of them is not finished.
 
+> **Source-track exception approved 2026-11-13:** Read
+> `guides/SOURCE_QUIZ_PROTOCOL.md` for explicitly marked source-faithful banks.
+> Original wording/order is validated against a separate source manifest rather
+> than rewritten for shape. These five laws remain binding for practice banks.
+
 ### L1 — A question must stand on its own
 No reference to the handout, the lecture, the material, the chapter, the book, the course, or the
 doctor. This is not about the word "ملزمة" — it is the whole class:

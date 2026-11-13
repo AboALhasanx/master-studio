@@ -380,3 +380,211 @@ def test_validate_schema_v2_rejects_malformed_quiz():
     assert any("schema_version" in err for err in errors)
     assert any("must be an array of exactly 4 strings" in err for err in errors)
     assert any("subject_title" in err for err in errors)
+
+
+# --------------------------------------------------------------------------
+# 5. Source Bank Kind & Ungraded Disputed Tests
+# --------------------------------------------------------------------------
+def test_balance_quiz_preserves_source_bank_without_shuffling():
+    source_quiz = {
+        "schema_version": 2,
+        "bank_kind": "source",
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "Advanced Software Engineering",
+        "semester": 1,
+        "semester_label": "Semester 1",
+        "quiz_id": "Quiz_Ch01_S01_Source_MCQs",
+        "topic": "Source MCQs - Batch 1",
+        "instructor_ar": "د. علي",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "ase_source_ch01_q01",
+                "bloom_level": "Understand",
+                "bank_kind": "source",
+                "source": {
+                    "id": "Q1",
+                    "reference": "Exam 2023",
+                    "key_status": "confirmed",
+                    "note": {"ar": "معتمد", "en": "Confirmed"}
+                },
+                "question": "Which of the following?",
+                "question_ar": "أي مما يلي؟",
+                "options": ["Option A (Original)", "Option B", "Option C", "All of the above"],
+                "options_ar": ["خيار أ", "خيار ب", "خيار ج", "كل ما سبق"],
+                "options_en": ["Option A (Original)", "Option B", "Option C", "All of the above"],
+                "answer": "D",
+                "correct": 3,
+                "explanation": "All apply."
+            }
+        ]
+    }
+    # Shuffling practice quizzes permutes options and alters answers; source quizzes must stay unchanged
+    balanced = balance_quiz(source_quiz, seed=999)
+    assert balanced["questions"][0]["options"][3] == "All of the above"
+    assert balanced["questions"][0]["answer"] == "D"
+    assert balanced["questions"][0]["correct"] == 3
+
+
+def test_validate_schema_v2_source_disputed_ungraded():
+    source_quiz = {
+        "schema_version": 2,
+        "bank_kind": "source",
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "Advanced Software Engineering",
+        "semester": 1,
+        "semester_label": "Semester 1",
+        "quiz_id": "Quiz_Ch01_S01_Source_MCQs",
+        "topic": "Source MCQs",
+        "instructor_ar": "د. علي",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "ase_source_ch01_q01",
+                "bloom_level": "Understand",
+                "bank_kind": "source",
+                "source": {
+                    "id": "Q1",
+                    "reference": "Slide 22",
+                    "key_status": "disputed",
+                    "note": {"ar": "غموض في السؤال", "en": "Ambiguity in stem"}
+                },
+                "question": "Ambiguous stem?",
+                "question_ar": "سؤال غامض؟",
+                "options": ["A", "B", "C", "D"],
+                "options_ar": ["أ", "ب", "ج", "د"],
+                "options_en": ["A", "B", "C", "D"],
+                "answer": None,
+                "correct": None,
+                "explanation": "Disputed explanation."
+            }
+        ]
+    }
+    is_valid, errors = validate_schema_v2(source_quiz)
+    assert is_valid is True, f"Expected valid, got errors: {errors}"
+
+
+def test_validate_schema_v2_source_disputed_rejects_guessed_key():
+    source_quiz = {
+        "schema_version": 2,
+        "bank_kind": "source",
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "Advanced Software Engineering",
+        "semester": 1,
+        "semester_label": "Semester 1",
+        "quiz_id": "Quiz_Ch01_S01_Source_MCQs",
+        "topic": "Source MCQs",
+        "instructor_ar": "د. علي",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "ase_source_ch01_q01",
+                "bloom_level": "Understand",
+                "bank_kind": "source",
+                "source": {
+                    "id": "Q1",
+                    "reference": "Slide 22",
+                    "key_status": "disputed",
+                    "note": {"ar": "غموض", "en": "Ambiguity"}
+                },
+                "question": "Ambiguous stem?",
+                "question_ar": "سؤال غامض؟",
+                "options": ["A", "B", "C", "D"],
+                "options_ar": ["أ", "ب", "ج", "د"],
+                "options_en": ["A", "B", "C", "D"],
+                "answer": "A",
+                "correct": 0,
+                "explanation": "Guessed key is forbidden."
+            }
+        ]
+    }
+    is_valid, errors = validate_schema_v2(source_quiz)
+    assert is_valid is False
+    assert any("Disputed source item must have answer: null and correct: null" in err for err in errors)
+
+
+def test_validate_schema_v2_practice_rejects_null_key():
+    practice_quiz = {
+        "schema_version": 2,
+        "bank_kind": "practice",
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "Advanced Software Engineering",
+        "semester": 1,
+        "semester_label": "Semester 1",
+        "quiz_id": "Quiz_Ch01_ModelA_Concepts",
+        "topic": "Concepts",
+        "instructor_ar": "د. علي",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "ase_ch01_concepts",
+                "bloom_level": "Understand",
+                "bank_kind": "practice",
+                "question": "Question?",
+                "question_ar": "سؤال؟",
+                "options": ["A", "B", "C", "D"],
+                "options_ar": ["أ", "ب", "ج", "د"],
+                "options_en": ["A", "B", "C", "D"],
+                "answer": None,
+                "correct": None,
+                "explanation": "Practice cannot have null key."
+            }
+        ]
+    }
+    is_valid, errors = validate_schema_v2(practice_quiz)
+    assert is_valid is False
+    assert any("'answer' must be one of" in err for err in errors)
+
+
+def test_validate_strict_gate_allows_source_length_disparity():
+    # In source mode, real exam questions have unequal lengths that are preserved
+    source_quiz = {
+        "schema_version": 2,
+        "bank_kind": "source",
+        "subject_id": "04_Advanced_Software_Eng",
+        "subject_title": "Advanced Software Engineering",
+        "semester": 1,
+        "semester_label": "Semester 1",
+        "quiz_id": "Quiz_Ch01_S01_Source_MCQs",
+        "topic": "Source MCQs",
+        "instructor_ar": "د. علي",
+        "questions": [
+            {
+                "id": "q1",
+                "concept_id": "ase_source_ch01_q01",
+                "bloom_level": "Understand",
+                "bank_kind": "source",
+                "source": {
+                    "id": "Q1",
+                    "reference": "Exam 2023",
+                    "key_status": "confirmed",
+                    "note": {"ar": "معتمد", "en": "Confirmed"}
+                },
+                "question": "What is the source definition?",
+                "question_ar": "ما هو تعريف المصدر؟",
+                "options": [
+                    "A short distractor",
+                    "This is the verbatim original correct option which happens to be very long and detailed in the original examination paper",
+                    "Short",
+                    "Short"
+                ],
+                "options_ar": [
+                    "خيار قصير",
+                    "هذا هو الخيار الصحيح الأصلي الطويل جدا كما ورد في ورقة الامتحان الأصلية تماما",
+                    "قصير",
+                    "قصير"
+                ],
+                "options_en": [
+                    "A short distractor",
+                    "This is the verbatim original correct option which happens to be very long and detailed in the original examination paper",
+                    "Short",
+                    "Short"
+                ],
+                "answer": "B",
+                "correct": 1,
+                "explanation": "Valid source question."
+            }
+        ]
+    }
+    is_valid, errors = validate_strict_gate(source_quiz)
+    assert is_valid is True, f"Source gate should not fail on length disparity: {errors}"

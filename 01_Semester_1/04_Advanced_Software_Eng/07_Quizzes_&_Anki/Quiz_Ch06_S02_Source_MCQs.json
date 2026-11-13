@@ -1,0 +1,430 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch06_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q11",
+      "bloom_level": "Remember",
+      "question": "Which one is not a measure of software science theory?",
+      "options_en": [
+        "vocabulary",
+        "volume",
+        "level",
+        "logic"
+      ],
+      "options": [
+        "vocabulary",
+        "volume",
+        "level",
+        "logic"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "6.11",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1913,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.11; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Halstead's Software Science suite includes Vocabulary ($\\eta$), Length ($N$), Volume ($V$), Potential Volume ($V^*$), Program Level ($L$), Difficulty ($D$), Effort ($E$), Time ($T$), and Language Level ($\\lambda$). There is no measure named \"Logic\" in Halstead's theory.",
+      "question_ar": "أي مما يلي ليس مقياساً في نظرية Software Science؟",
+      "options_ar": [
+        "vocabulary",
+        "volume",
+        "level",
+        "logic"
+      ],
+      "explanation_ar": "logic ليس من مقاييس Software Science المعتمدة."
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q12",
+      "bloom_level": "Remember",
+      "question": "A human mind is capable of making how many number of elementary mental descriminations per second (*i.e.*, stroud number)?",
+      "options_en": [
+        "5–20",
+        "20–40",
+        "1–10",
+        "40–80"
+      ],
+      "options": [
+        "5–20",
+        "20–40",
+        "1–10",
+        "40–80"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "6.12",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1916,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.12; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Halstead adopted psychologist John M. Stroud's perceptual research, which established that the human mind is capable of making between 5 and 20 elementary mental discriminations per second. In formulating practical Software Science equations, Halstead adopted the reference value $S = 18$ discriminations per second to convert mental effort $E$ into estimated programming time in seconds:",
+      "question_ar": "كم عدد التمييزات الذهنية الأولية التي يستطيع العقل البشري إجراءها في الثانية (stroud number)؟",
+      "options_ar": [
+        "5–20",
+        "20–40",
+        "1–10",
+        "40–80"
+      ],
+      "explanation_ar": "عدد Stroud يتراوح بين 5 و20 تمييزاً في الثانية."
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q13",
+      "bloom_level": "Remember",
+      "question": "Minimal implementation of any algorithm was given the following name by Halstead:",
+      "options_en": [
+        "volume",
+        "potential volume",
+        "effective volume",
+        "none of the above"
+      ],
+      "options": [
+        "volume",
+        "potential volume",
+        "effective volume",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "6.13",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1919,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.13; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Potential Volume $V^*$ is the volume of the most compact, idealized version of the algorithm, typically conceived as a single call to a pre-existing function where only the unique input and output parameters are supplied. It is expressed as:",
+      "question_ar": "أعطى Halstead الاسم التالي لأقل تنفيذ ممكن لأي خوارزمية:",
+      "options_ar": [
+        "volume",
+        "potential volume",
+        "effective volume",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "الحجم الكامن potential volume يصف أقل تنفيذ ممكن للخوارزمية."
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q14",
+      "bloom_level": "Remember",
+      "question": "Program volume of a software product is:",
+      "options_en": [
+        "$V = N \\log_2 \\eta$",
+        "$V = (N/2) \\log_2 \\eta$",
+        "$V = 2N \\log_2 \\eta$",
+        "$V = N \\log_2 \\eta + 1$"
+      ],
+      "options": [
+        "$V = N \\log_2 \\eta$",
+        "$V = (N/2) \\log_2 \\eta$",
+        "$V = 2N \\log_2 \\eta$",
+        "$V = N \\log_2 \\eta + 1$"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "6.14",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1922,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.14; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "normalizations": [
+          "formula_ocr_cleaned_from_T1"
+        ]
+      },
+      "explanation": "Program volume is computed as total program length $N$ multiplied by the binary logarithm of the vocabulary $\\eta$:",
+      "question_ar": "حجم برنامج منتج برمجي هو:",
+      "options_ar": [
+        "$V = N \\log_2 \\eta$",
+        "$V = (N/2) \\log_2 \\eta$",
+        "$V = 2N \\log_2 \\eta$",
+        "$V = N \\log_2 \\eta + 1$"
+      ],
+      "explanation_ar": "حجم Halstead V يساوي N مضروباً في لوغاريتم اثنين للمفردات η."
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q15",
+      "bloom_level": "Remember",
+      "question": "Which one is the international standard for size measure?",
+      "options_en": [
+        "LOC",
+        "function count",
+        "program length",
+        "none of the above"
+      ],
+      "options": [
+        "LOC",
+        "function count",
+        "program length",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "source": {
+        "id": "6.15",
+        "key_status": "disputed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1925,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.15; publisher key p. 499",
+        "note": {
+          "ar": "مفتاح الناشر المطبوع هو D، لكنه يتعارض مع تعريف مقياس الحجم المعتمد؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "The printed publisher key is D, but it contradicts the taught definition of a size measure; the item is ungraded pending review."
+        }
+      },
+      "explanation": "No unique key can be verified from the supplied course item. The stem says “international standard for size measure,” while the options are LOC, Function count, Program length, and None of the above. The source does not define what “international standard” means here or provide an answer key. Choice (b) may be the intended classroom answer if “Function count” is being used loosely for function-oriented sizing, but that interpretation is not established by the item itself.",
+      "question_ar": "أي مما يلي هو المعيار الدولي لمقياس الحجم؟",
+      "options_ar": [
+        "LOC",
+        "function count",
+        "program length",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "مفتاح الناشر المطبوع هو D، لكنه يتعارض مع تعريف مقياس الحجم المعتمد؛ بقي السؤال بلا درجة."
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q16",
+      "bloom_level": "Remember",
+      "question": "Which one in not on object oriented metric ?",
+      "options_en": [
+        "RFC",
+        "CBO",
+        "DAC",
+        "OBC"
+      ],
+      "options": [
+        "RFC",
+        "CBO",
+        "DAC",
+        "OBC"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "6.16",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1928,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.16; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Response For a Class (RFC) and Coupling Between Objects (CBO) belong to the seminal Chidamber & Kemerer (CK) suite, and Data Access Component (DAC) belongs to the Li & Henry object-oriented metrics suite.",
+      "question_ar": "أي مما يلي ليس مقياساً كائني التوجه؟",
+      "options_ar": [
+        "RFC",
+        "CBO",
+        "DAC",
+        "OBC"
+      ],
+      "explanation_ar": "OBC ليس مقياساً معروفاً في أدبيات المقاييس الكائنية."
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q17",
+      "bloom_level": "Remember",
+      "question": "Which metric also considers indirect connected methods ?",
+      "options_en": [
+        "TCC",
+        "LCC",
+        "both of the above",
+        "none of the above"
+      ],
+      "options": [
+        "TCC",
+        "LCC",
+        "both of the above",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "source": {
+        "id": "6.17",
+        "key_status": "disputed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1931,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.17; publisher key p. 499",
+        "note": {
+          "ar": "مفتاح الناشر هو D، لكن LCC هو المقياس الذي يشمل الاتصالات غير المباشرة؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "The publisher key is D, but LCC is the metric that includes indirect connections; the item is ungraded pending review."
+        }
+      },
+      "explanation": "Bieman & Kang (1995) defined two cohesion metrics based on attribute sharing among methods:",
+      "question_ar": "أي مقياس يأخذ أيضاً الطرق المتصلة غير المباشرة؟",
+      "options_ar": [
+        "TCC",
+        "LCC",
+        "كل ما سبق",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "LCC يوسع التماسك ليشمل الطرق المتصلة غير المباشرة، ومفتاح الناشر يتعارض مع ذلك."
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q18",
+      "bloom_level": "Remember",
+      "question": "Depth of inheritance tree (DIT) can be measured by:",
+      "options_en": [
+        "number of ancestor classes",
+        "number of successor classes",
+        "number of failure classes",
+        "number of root classes"
+      ],
+      "options": [
+        "number of ancestor classes",
+        "number of successor classes",
+        "number of failure classes",
+        "number of root classes"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "6.18",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1943,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.18; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "In companion slide 100 and textbook scan p. 305, Depth of Inheritance Tree (DIT) is defined as the number of ancestor classes (the maximum path length from the class node to the root class of the inheritance tree). Successor classes correspond to descendants/subclasses (measured by NOC - Number of Children).",
+      "question_ar": "عمق شجرة الوراثة DIT يمكن قياسه بـ:",
+      "options_ar": [
+        "عدد الأصناف السلف",
+        "عدد الأصناف اللاحقة",
+        "عدد أصناف الفشل",
+        "عدد الأصناف الجذر"
+      ],
+      "explanation_ar": "DIT يقيس أقصى مسار من الصنف إلى جذره عبر الأصناف السلف."
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q19",
+      "bloom_level": "Remember",
+      "question": "A dynamic page is:",
+      "options_en": [
+        "where contants are not dependent on the actions of the user",
+        "where contents are dependent on the actions of the user",
+        "where contents cannot be displayed",
+        "none of the above"
+      ],
+      "options": [
+        "where contants are not dependent on the actions of the user",
+        "where contents are dependent on the actions of the user",
+        "where contents cannot be displayed",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "source": {
+        "id": "6.19",
+        "key_status": "disputed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1946,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.19; publisher key p. 499",
+        "note": {
+          "ar": "مفتاح الناشر هو C، لكن الصفحة الديناميكية تعرف باعتماد محتواها على أفعال المستخدم؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "The publisher key is C, but a dynamic page is defined by content depending on user actions; the item is ungraded pending review."
+        }
+      },
+      "explanation": "Dynamic web pages are constructed on demand on the web server by executing server-side scripts and querying backend databases, where contents are dependent on the actions, requests, or session state of the user.",
+      "question_ar": "الصفحة الديناميكية هي:",
+      "options_ar": [
+        "حيث لا تعتمد المحتويات على أفعال المستخدم",
+        "حيث تعتمد المحتويات على أفعال المستخدم",
+        "حيث لا يمكن عرض المحتويات",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "الصفحة الديناميكية تبني محتواها حسب أفعال المستخدم."
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q20",
+      "bloom_level": "Remember",
+      "question": "Which one is not a size measure ?",
+      "options_en": [
+        "LOC",
+        "FP",
+        "cyclomatic complexity",
+        "program length"
+      ],
+      "options": [
+        "LOC",
+        "FP",
+        "cyclomatic complexity",
+        "program length"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "6.20",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "line": 1951,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.20; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Cyclomatic Complexity is a control-flow structural complexity metric measuring linearly independent basis paths, not an attribute of software size. In contrast, LOC, FP, and Halstead's Program Length are recognized physical or functional size metrics.",
+      "question_ar": "أي مما يلي ليس مقياس حجم؟",
+      "options_ar": [
+        "LOC",
+        "FP",
+        "cyclomatic complexity",
+        "program length"
+      ],
+      "explanation_ar": "cyclomatic complexity مقياس تعقيد وليس حجم."
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

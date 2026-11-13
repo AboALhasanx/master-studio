@@ -1,0 +1,584 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch03_S01_Source_MCQs",
+  "topic": "Source MCQs — Batch 1",
+  "topic_ar": "أسئلة المصدر — الدفعة 1",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ase_source_ch03_q01",
+      "bloom_level": "Understand",
+      "question": "Which one is not a step of requirement engineering ?",
+      "question_ar": "أي مما يلي ليس خطوة من خطوات هندسة المتطلبات؟",
+      "options": [
+        "requirements elicitation",
+        "requirements analysis",
+        "requirements design ,",
+        "requirements documentation"
+      ],
+      "options_en": [
+        "requirements elicitation",
+        "requirements analysis",
+        "requirements design ,",
+        "requirements documentation"
+      ],
+      "options_ar": [
+        "استخلاص المتطلبات",
+        "تحليل المتطلبات",
+        "تصميم المتطلبات",
+        "توثيق المتطلبات"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Requirements engineering consists of four steps: elicitation, analysis, documentation (SRS), and review.  Requirements design is not a recognized step; software design is a subsequent phase.",
+      "explanation_ar": "خطوات هندسة المتطلبات أربع: الاستخلاص والتحليل والتوثيق والمراجعة. لا توجد خطوة تسمى تصميم المتطلبات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.1",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.1; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3217,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c)."
+        }
+      }
+    },
+    {
+      "id": "q2",
+      "concept_id": "ase_source_ch03_q02",
+      "bloom_level": "Remember",
+      "question": "Requirements elicitation means",
+      "question_ar": "استخلاص المتطلبات يعني:",
+      "options": [
+        "gathering of requirements",
+        "capturing of requirements",
+        "understanding of requirements",
+        "all of the above"
+      ],
+      "options_en": [
+        "gathering of requirements",
+        "capturing of requirements",
+        "understanding of requirements",
+        "all of the above"
+      ],
+      "options_ar": [
+        "جمع المتطلبات",
+        "التقاط المتطلبات",
+        "فهم واستيعاب المتطلبات",
+        "كل ما سبق"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Requirements elicitation encompasses gathering, discovering, capturing, and understanding the user and stakeholder needs.",
+      "explanation_ar": "استخلاص المتطلبات يشمل البحث والجمع والالتقاط والفهم العميق لاحتياجات أصحاب المصلحة.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.2",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.2; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3223,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q3",
+      "concept_id": "ase_source_ch03_q03",
+      "bloom_level": "Remember",
+      "question": "SRS stands for",
+      "question_ar": "المصطلح SRS هو اختصار لـ:",
+      "options": [
+        "software requirements specification",
+        "system requirements specification",
+        "systematic requirements specifications",
+        "none of the above"
+      ],
+      "options_en": [
+        "software requirements specification",
+        "system requirements specification",
+        "systematic requirements specifications",
+        "none of the above"
+      ],
+      "options_ar": [
+        "Software requirements specification",
+        "System requirements specification",
+        "Systematic requirements specifications",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "SRS stands for Software Requirements Specification.",
+      "explanation_ar": "يرمز SRS إلى Software Requirements Specification (مواصفات متطلبات البرمجيات).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.3",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.3; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3229,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q4",
+      "concept_id": "ase_source_ch03_q04",
+      "bloom_level": "Understand",
+      "question": "SRS document is for",
+      "question_ar": "وثيقة مواصفات المتطلبات مخصصة لـ:",
+      "options": [
+        "“what” of a system ?",
+        "how to design the system ?",
+        "costing and scheduling of a system",
+        "system’s requirement"
+      ],
+      "options_en": [
+        "“what” of a system ?",
+        "how to design the system ?",
+        "costing and scheduling of a system",
+        "system’s requirement"
+      ],
+      "options_ar": [
+        "تحديد ماذا سيقدمه النظام؟",
+        "كيفية تصميم النظام؟",
+        "تقدير تكاليف وجدولة النظام",
+        "متطلبات النظام العامة"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "An SRS defines WHAT the system must do (external behavior and constraints), strictly avoiding HOW the system will be designed internally.",
+      "explanation_ar": "وثيقة SRS تحدد ماذا يفعل النظام وسلوكه الخارجي، وتتجنب الخوض في كيفية التصميم الداخلي.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.4",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.4; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3235,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks",
+          "restore_question_mark_from_source"
+        ]
+      }
+    },
+    {
+      "id": "q5",
+      "concept_id": "ase_source_ch03_q05",
+      "bloom_level": "Understand",
+      "question": "Requirements review process is carried out to",
+      "question_ar": "تُجرى عملية مراجعة المتطلبات من أجل:",
+      "options": [
+        "spend time in requirements gathering",
+        "improve the quality of SRS",
+        "document the requirements",
+        "none of the above"
+      ],
+      "options_en": [
+        "spend time in requirements gathering",
+        "improve the quality of SRS",
+        "document the requirements",
+        "none of the above"
+      ],
+      "options_ar": [
+        "قضاء وقت إضافي في جمع المتطلبات",
+        "تحسين جودة وثيقة SRS",
+        "توثيق المتطلبات فقط",
+        "لا شيء مما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The requirements review process validates the SRS against criteria such as completeness, consistency, and verifiability to improve its quality.",
+      "explanation_ar": "تُجرى مراجعة المتطلبات للتحقق من خلوها من الغموض والتناقض ورفع جودة وثيقة الـSRS.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.5",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.5; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3241,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q6",
+      "concept_id": "ase_source_ch03_q06",
+      "bloom_level": "Understand",
+      "question": "Which one of the statements is not correct during requirements engineering ?",
+      "question_ar": "أي من العبارات التالية غير صحيحة أثناء هندسة المتطلبات؟",
+      "options": [
+        "requirements are difficult to uncover",
+        "requirements are subject to change",
+        "requirements should be consistent",
+        "requirements are always precisely known"
+      ],
+      "options_en": [
+        "requirements are difficult to uncover",
+        "requirements are subject to change",
+        "requirements should be consistent",
+        "requirements are always precisely known"
+      ],
+      "options_ar": [
+        "المتطلبات صعبة الاستكشاف",
+        "المتطلبات عرضة للتغيير",
+        "يجب أن تكون المتطلبات متسقة",
+        "المتطلبات دائماً معروفة ومحددة بدقة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Requirements are almost never completely or precisely known at the beginning; they evolve and require extensive elicitation.",
+      "explanation_ar": "العبارة غير الصحيحة هي أن المتطلبات معروفة دائماً بدقة، فالواقع الهندسي يثبت أنها تكون غامضة وتتطلب جهداً كبيراً لاكتشافها.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.6",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.6; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3247,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d)."
+        }
+      }
+    },
+    {
+      "id": "q7",
+      "concept_id": "ase_source_ch03_q07",
+      "bloom_level": "Remember",
+      "question": "Which one is not a type of requirements ?",
+      "question_ar": "أي مما يلي ليس صنفاً من أصناف المتطلبات؟",
+      "options": [
+        "known requirements",
+        "unknown requirements",
+        "undreamt requirements",
+        "complex requirements"
+      ],
+      "options_en": [
+        "known requirements",
+        "unknown requirements",
+        "undreamt requirements",
+        "complex requirements"
+      ],
+      "options_ar": [
+        "متطلبات معروفة",
+        "متطلبات غير معروفة",
+        "متطلبات غير متوقعة/غير محلوم بها",
+        "متطلبات معقدة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Aggarwal §3.2 classifies requirements into three fundamental categories: known, unknown, and undreamt requirements.",
+      "explanation_ar": "يصنف الكتاب المتطلبات في §3.2 إلى ثلاثة أصناف رئيسية: معروفة، وغير معروفة، وغير متوقعة.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.7",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.7; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3253,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (d). Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q8",
+      "concept_id": "ase_source_ch03_q08",
+      "bloom_level": "Understand",
+      "question": "Which one is not a requirements elicitation technique",
+      "question_ar": "أي مما يلي ليس أسلوباً من أساليب استخلاص المتطلبات؟",
+      "options": [
+        "interviews",
+        "the use case approach",
+        "FAST",
+        "data flow diagram"
+      ],
+      "options_en": [
+        "interviews",
+        "the use case approach",
+        "FAST",
+        "data flow diagram"
+      ],
+      "options_ar": [
+        "المقابلات",
+        "نهج حالات الاستخدام",
+        "أسلوب FAST",
+        "مخطط تدفق البيانات"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Data Flow Diagrams (DFDs) are an analysis and modeling representation tool, not an elicitation technique.",
+      "explanation_ar": "مخطط تدفق البيانات أداة نمذجة وتحليل وليس وسيلة استخلاص وجمع للمتطلبات كالمقابلات أو FAST.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.8",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.8; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3259,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q9",
+      "concept_id": "ase_source_ch03_q09",
+      "bloom_level": "Remember",
+      "question": "FAST stands for",
+      "question_ar": "المصطلح FAST هو اختصار لـ:",
+      "options": [
+        "functional Application Specification Technique",
+        "fast Application Specification Technique",
+        "facilitated Application Specification Technique",
+        "none of the above"
+      ],
+      "options_en": [
+        "functional Application Specification Technique",
+        "fast Application Specification Technique",
+        "facilitated Application Specification Technique",
+        "none of the above"
+      ],
+      "options_ar": [
+        "Functional Application Specification Technique",
+        "Fast Application Specification Technique",
+        "Facilitated Application Specification Technique",
+        "لا شيء مما سبق"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "FAST stands for Facilitated Application Specification Technique, a collaborative team-oriented elicitation method.",
+      "explanation_ar": "يرمز FAST إلى Facilitated Application Specification Technique (تقنية تيسير مواصفات التطبيقات).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.9",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.9; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3265,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q10",
+      "concept_id": "ase_source_ch03_q10",
+      "bloom_level": "Remember",
+      "question": "QFD in requirement engineering stands for",
+      "question_ar": "المصطلح QFD في هندسة المتطلبات هو اختصار لـ:",
+      "options": [
+        "quality function design",
+        "quality factor design",
+        "quality function development",
+        "quality function deployment"
+      ],
+      "options_en": [
+        "quality function design",
+        "quality factor design",
+        "quality function development",
+        "quality function deployment"
+      ],
+      "options_ar": [
+        "Quality function design",
+        "Quality factor design",
+        "Quality function development",
+        "Quality function deployment"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "QFD stands for Quality Function Deployment, translating customer expectations into software technical requirements.",
+      "explanation_ar": "يرمز QFD إلى Quality Function Deployment (نشر وظيفة الجودة).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.10",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.10; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3271,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (d). Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q11",
+      "concept_id": "ase_source_ch03_q11",
+      "bloom_level": "Understand",
+      "question": "Which is not a type of requirements under quality function deployment",
+      "question_ar": "أي مما يلي ليس نوعاً من أنواع المتطلبات في إطار QFD؟",
+      "options": [
+        "normal requirements",
+        "abnormal requirements",
+        "expected requirements",
+        "exciting requirements"
+      ],
+      "options_en": [
+        "normal requirements",
+        "abnormal requirements",
+        "expected requirements",
+        "exciting requirements"
+      ],
+      "options_ar": [
+        "متطلبات عادية",
+        "متطلبات غير طبيعية",
+        "متطلبات متوقعة",
+        "متطلبات مثيرة/مشوقة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "QFD identifies three distinct requirement types: normal, expected, and exciting requirements. Abnormal requirements does not exist in QFD.",
+      "explanation_ar": "يحدد نموذج QFD ثلاثة متطلبات: العادية والمتوقعة والمثيرة (المشوقة)؛ ولا توجد فيه متطلبات غير طبيعية.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.11",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.11; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3283,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (b). Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q12",
+      "concept_id": "ase_source_ch03_q12",
+      "bloom_level": "Remember",
+      "question": "Use case approach was developed by",
+      "question_ar": "تم تطوير نهج حالات الاستخدام بواسطة:",
+      "options": [
+        "I. Jacobson and others",
+        "J.D. Musa and others",
+        "B. Littlewood",
+        "none of the above"
+      ],
+      "options_en": [
+        "I. Jacobson and others",
+        "J.D. Musa and others",
+        "B. Littlewood",
+        "none of the above"
+      ],
+      "options_ar": [
+        "I. Jacobson وآخرين",
+        "J.D. Musa وآخرين",
+        "B. Littlewood",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The Use Case concept and notation was created by Ivar Jacobson and colleagues at Objectory AB in 1992.",
+      "explanation_ar": "طور نهج حالات الاستخدام إيفار جاكوبسون وزملاؤه.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.12",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.12; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3289,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q13",
+      "concept_id": "ase_source_ch03_q13",
+      "bloom_level": "Understand",
+      "question": "Context diagram explains",
+      "question_ar": "مخطط السياق يوضح ويشرح:",
+      "options": [
+        "the overview of the system",
+        "the internal view of the system",
+        "the entities of the system",
+        "none of the above"
+      ],
+      "options_en": [
+        "the overview of the system",
+        "the internal view of the system",
+        "the entities of the system",
+        "none of the above"
+      ],
+      "options_ar": [
+        "النظرة العامة والشاملة للنظام",
+        "الرؤية الداخلية للنظام",
+        "كيانات النظام بالتفصيل",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A context diagram (Level-0 DFD) views the entire system as a single process and illustrates its boundary and external interfaces.",
+      "explanation_ar": "يوضح مخطط السياق النظرة الشاملة والعامة للنظام وحدوده وعلاقاته الخارجية ككتلة واحدة.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.13",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.13; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3295,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a). ورد في الكتاب بدون ترقيم 3.13. وتمت استعادته. أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (a). In printed book, question was printed without 3.13. prefix. Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

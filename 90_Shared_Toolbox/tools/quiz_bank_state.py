@@ -31,6 +31,7 @@ import os
 import re
 import sys
 import urllib.request
+from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 VAULT = os.path.abspath(os.path.join(HERE, "..", ".."))
@@ -78,10 +79,22 @@ def read_vault():
         slot = rows.setdefault(key, {"banks": 0, "q": 0, "refs": 0,
                                     "long_en": 0, "short_en": 0,
                                     "long_ar": 0, "short_ar": 0,
-                                    "formula": 0, "spread": 0})
+                                    "formula": 0, "spread": 0,
+                                    "source_banks": 0, "source_q": 0,
+                                    "source_ungraded": 0, "source_errors": 0})
         slot["banks"] += 1
+        is_source = d.get("bank_kind") == "source"
+        if is_source:
+            from quiz_source_gate import validate_source_bank
+            slot["source_banks"] += 1
+            valid, _, _ = validate_source_bank(d, path=Path(path), check_publish=True)
+            slot["source_errors"] += not valid
         for q in d["questions"]:
             slot["q"] += 1
+            if is_source:
+                slot["source_q"] += 1
+                slot["source_ungraded"] += q.get("answer") is None
+                continue
             blob = [q.get("question"), q.get("question_ar"),
                     q.get("explanation"), q.get("explanation_ar")]
             blob += (q.get("options") or []) + (q.get("options_ar") or [])
@@ -203,6 +216,9 @@ def render(vault, live, content_v, live_label, stamp=True):
     A("")
     A("## By subject and chapter — measured quality gates")
     A("")
+    A("The following shape metrics and counts apply to **practice banks only**.")
+    A("Source banks are separately checked against their reviewed manifests below.")
+    A("")
     A("`refs` = questions naming the handout (must be 0). `long/short` = correct option is the")
     A("unique longest / shortest, EN then AR (cap %.0f%% each). `fx` = options containing a" % (RANK_CAP * 100))
     A("formula or backslash (must be 0). `spr` = option-length spread violations")
@@ -212,19 +228,34 @@ def render(vault, live, content_v, live_label, stamp=True):
     A("| Subject | Ch | Banks | Q | refs | long EN/AR | short EN/AR | fx | spr | local audit |")
     A("|---|---:|---:|---:|---:|---|---|---:|---:|---|")
     for (s, ch), v in sorted(vault.items()):
-        n = max(v["q"], 1)
+        practice_q = v["q"] - v.get("source_q", 0)
+        practice_banks = v["banks"] - v.get("source_banks", 0)
+        n = max(practice_q, 1)
         bad = (v["refs"] > 0 or v["formula"] > 0 or v["spread"] > 0
                or max(v["long_en"], v["long_ar"], v["short_en"], v["short_ar"]) / n > RANK_CAP)
         A("| `%s` | %02d | %d | %d | %d | %d/%d | %d/%d | %d | %d | %s |" % (
-            s, ch, v["banks"], v["q"], v["refs"],
+            s, ch, practice_banks, practice_q, v["refs"],
             v["long_en"], v["long_ar"], v["short_en"], v["short_ar"],
-            v["formula"], v["spread"], "needs work" if bad else "clean"))
+            v["formula"], v["spread"], "not applicable" if not practice_q else "needs work" if bad else "clean"))
+    A("")
+    A("## Source track — local reviewed content")
+    A("")
+    A("A source item with an unresolved key remains ungraded. Shape exceptions do not waive fidelity checks.")
+    A("Local/live differences can be approved content awaiting publication; they are not permission to sync.")
+    A("")
+    A("| Subject | Ch | Source banks | Source questions | Ungraded | Manifest fidelity |")
+    A("|---|---:|---:|---:|---:|---|")
+    for (s, ch), v in sorted(vault.items()):
+        if v.get("source_banks"):
+            A("| `%s` | %02d | %d | %d | %d | %s |" % (
+                s, ch, v["source_banks"], v["source_q"], v["source_ungraded"],
+                "needs work" if v["source_errors"] else "clean"))
     A("")
     A("## What remains")
     A("")
     todo = []
     for (s, ch), v in sorted(vault.items()):
-        n = max(v["q"], 1)
+        n = max(v["q"] - v.get("source_q", 0), 1)
         issues = []
         if v["refs"]:
             issues.append("%d handout refs" % v["refs"])
@@ -234,6 +265,8 @@ def render(vault, live, content_v, live_label, stamp=True):
             issues.append("%d spread violations" % v["spread"])
         if max(v["long_en"], v["long_ar"]) / n > RANK_CAP:
             issues.append("answer-length tell")
+        if v.get("source_errors"):
+            issues.append("source manifest validation failed")
         if issues:
             todo.append("- `%s` Ch%02d — %s" % (s, ch, "; ".join(issues)))
     A("\n".join(todo) if todo else "Nothing: every chapter passes the measured gates.")

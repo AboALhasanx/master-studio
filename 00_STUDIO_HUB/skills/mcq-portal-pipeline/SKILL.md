@@ -10,6 +10,11 @@ description: Author, validate, publish, mirror and verify MCSQuiz question banks
 > `00_STUDIO_HUB/guides/QUIZ_BANK_PROTOCOL.md` — this skill is the executable
 > shortcut: the exact commands, in order, with the gates that block a bad publish.
 
+> **Source track (student-approved 2026-11-13):** Explicit `bank_kind: "source"`
+> banks follow `00_STUDIO_HUB/guides/SOURCE_QUIZ_PROTOCOL.md`. Preserve source
+> ordering and use the source-fidelity gate, never an option-balancing write pass.
+> All ordinary practice-bank rules below are unchanged.
+
 ## 0. Boot (every run)
 
 1. Read `00_STUDIO_HUB/ACTIVE_STATE.md`, `HARNESS_REGISTRY.md`, today's

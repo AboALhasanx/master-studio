@@ -1,0 +1,576 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch08_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "question": "During validation:",
+      "options": [
+        "process is checked",
+        "product is checked",
+        "developer’s performance is evaluated",
+        "the customer checks the product"
+      ],
+      "options_en": [
+        "process is checked",
+        "product is checked",
+        "developer’s performance is evaluated",
+        "the customer checks the product"
+      ],
+      "question_ar": "أثناء التحقق validation:",
+      "options_ar": [
+        "process is checked",
+        "product is checked",
+        "developer’s performance is evaluated",
+        "the customer checks the product"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "During validation the customer checks the product. Alpha, beta and acceptance testing are the ways of involving the customer during testing, and the product is judged against the customer's expectations.",
+      "explanation_ar": "والفخ الامتحاني:** في Validation الزبون هو من يفحص المنتج (Alpha وBeta وAcceptance كلها طرق لإشراك الزبون). الفخ: الخيار (b) Product is checked صحيح لغوياً لكنه لا يميّز Validation، ومفتاح الناشر هو (d).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.14",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3846,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.14; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q14",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "question": "Verification is",
+      "options": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specifications",
+        "checking the product with respect to the constraints of the project",
+        "all of the above"
+      ],
+      "options_en": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specifications",
+        "checking the product with respect to the constraints of the project",
+        "all of the above"
+      ],
+      "question_ar": "التحقق verification هو:",
+      "options_ar": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specifications",
+        "checking the product with respect to the constraints of the project",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Verification is checking the product with respect to its specifications: evaluating whether the products of a development phase satisfy the conditions imposed at the start of that phase.",
+      "explanation_ar": "والفخ الامتحاني:** Verification: مطابقة ناتج كل مرحلة مع المواصفات والشروط التي وُضعت في بدايتها. أما مطابقة توقعات الزبون فهي Validation.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.15",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3852,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.15; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q15",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "question": "Validation is",
+      "options": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specification",
+        "checking the product with respect to constraints of the project",
+        "all of the above"
+      ],
+      "options_en": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specification",
+        "checking the product with respect to constraints of the project",
+        "all of the above"
+      ],
+      "question_ar": "التحقق validation هو:",
+      "options_ar": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specification",
+        "checking the product with respect to constraints of the project",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Validation is checking the product with respect to the customer's expectation. The deck words it as evaluating the system during or at the end of development against the specified requirements; the key chooses the customer-expectation option.",
+      "explanation_ar": "والفخ الامتحاني:** Validation: مطابقة المنتج لتوقعات الزبون. تنبيه: صياغة السلايد 11 هي «specified requirements»، لكن مفتاح الناشر لهذا السؤال هو (a) فاعتمده.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.16",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3858,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.16; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q16",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "question": "Alpha testing is done by",
+      "options": [
+        "customer",
+        "tester",
+        "developer",
+        "all of the above"
+      ],
+      "options_en": [
+        "customer",
+        "tester",
+        "developer",
+        "all of the above"
+      ],
+      "question_ar": "اختبار Alpha يقوم به:",
+      "options_ar": [
+        "customer",
+        "tester",
+        "developer",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Alpha tests are conducted at the developer's site by some potential customers, in a controlled environment. The customer is therefore the keyed answer.",
+      "explanation_ar": "والفخ الامتحاني:** اختبار ألفا ينفذه زبائن محتملون في موقع المطور وبيئة متحكَّم بها. الفخ: لا تختر Developer لأن المفتاح (a) Customer.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.17",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3864,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.17; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q17",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "question": "Site for Alpha testing is",
+      "options": [
+        "software company",
+        "installation place",
+        "any where",
+        "none of the above"
+      ],
+      "options_en": [
+        "software company",
+        "installation place",
+        "any where",
+        "none of the above"
+      ],
+      "question_ar": "مكان اختبار Alpha هو:",
+      "options_ar": [
+        "software company",
+        "installation place",
+        "any where",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The site for Alpha testing is the developer's site. It takes place in a controlled development setting where developers can directly monitor runtime behavior and immediately record diagnostic anomaly traces.",
+      "explanation_ar": "والفخ الامتحاني:** الموقع الحصري لاختبار ألفا هو موقع المطور (Developer's site) وبيئته الداخلية المتحكم بها.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.18",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3870,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.18; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q18",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "question": "Site of Beta testing is",
+      "options": [
+        "software company",
+        "user’s site",
+        "any where",
+        "all of the above"
+      ],
+      "options_en": [
+        "software company",
+        "user’s site",
+        "any where",
+        "all of the above"
+      ],
+      "question_ar": "مكان اختبار Beta هو:",
+      "options_ar": [
+        "software company",
+        "user’s site",
+        "any where",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The site for Beta testing is the user's site. Software is distributed to real end users who execute it within their diverse, unmonitored production hardware and operating configurations.",
+      "explanation_ar": "والفخ الامتحاني:** موقع اختبار بيتا هو موقع المستخدم الفعلي (User's site) لضمان العمل على البيئات والأجهزة المتنوعة للعملاء.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.19",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3876,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.19; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q19",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "question": "Acceptance testing is done by",
+      "options": [
+        "developers",
+        "customers",
+        "testers",
+        "all of the above"
+      ],
+      "options_en": [
+        "developers",
+        "customers",
+        "testers",
+        "all of the above"
+      ],
+      "question_ar": "اختبار القبول acceptance testing يقوم به:",
+      "options_ar": [
+        "developers",
+        "customers",
+        "testers",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Acceptance testing is conducted by the end user or customer. It is used when the software is developed for a specific customer, who runs a series of tests to validate all requirements; these may range from ad hoc tests to a well-planned systematic series.",
+      "explanation_ar": "والفخ الامتحاني:** اختبار القبول ينفذه الزبون أو المستخدم النهائي عندما يُطوَّر النظام لزبون محدد، وقد يكون عشوائياً أو منظماً.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.20",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3882,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.20; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q20",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "question": "One fault may lead to",
+      "options": [
+        "one failure",
+        "no failure",
+        "many failures",
+        "all of the above. ### Batch 012: printed pages 453–458"
+      ],
+      "options_en": [
+        "one failure",
+        "no failure",
+        "many failures",
+        "all of the above. ### Batch 012: printed pages 453–458"
+      ],
+      "question_ar": "قد يؤدي Fault واحد إلى:",
+      "options_ar": [
+        "one failure",
+        "no failure",
+        "many failures",
+        "all of the above. ### Batch 012: printed pages 453–458"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "One fault in software may lead to: (a) no failure (if unexecuted or masked), (b) a single failure, or (c) multiple failures across different operational runs. The manifestation of a fault depends dynamically on input data combinations and execution environment state.",
+      "explanation_ar": "والفخ الامتحاني:** العيب البرمجي الواحد (Fault) قد لا يسبب أي فشل إن لم يُنفذ المسار أو تم تمويه النتيجة، أو قد يسبب فشلاً واحداً، أو يسبب انهيارات متعددة متكررة في بيئات مختلفة.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.21",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3888,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.21; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q21",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "question": "Test suite is",
+      "options": [
+        "set of test cases",
+        "set of inputs",
+        "set of outputs",
+        "none of the above"
+      ],
+      "options_en": [
+        "set of test cases",
+        "set of inputs",
+        "set of outputs",
+        "none of the above"
+      ],
+      "question_ar": "Test suite هو:",
+      "options_ar": [
+        "set of test cases",
+        "set of inputs",
+        "set of outputs",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A test suite is a collection or set of test cases designed to test a program or module. It bundles inputs, execution conditions, and expected outcomes to verify compliance with a defined scope of requirements.",
+      "explanation_ar": "والفخ الامتحاني:** حزمة الاختبار (Test Suite) هي مجموعة منظمة من حالات الاختبار (Set of test cases) تُجمع وتُنفذ سوياً للتحقق من وحدة أو نظام كامل.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.22",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3901,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.22; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q22",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "question": "Behavioural specifications are required for:",
+      "options": [
+        "modelling",
+        "verification",
+        "validation",
+        "none of the above"
+      ],
+      "options_en": [
+        "modelling",
+        "verification",
+        "validation",
+        "none of the above"
+      ],
+      "question_ar": "المواصفات السلوكية behavioural specifications مطلوبة لـ:",
+      "options_ar": [
+        "modelling",
+        "verification",
+        "validation",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Publisher key: behavioral specifications are required for verification. The deck gives no sentence explaining this item, so it is a keyed fact; a behavioral specification is the reference the product's observable behavior is checked against.",
+      "explanation_ar": "والفخ الامتحاني:** المفتاح الرسمي هو (b) Verification. السلايدات لا تشرح السبب بجملة صريحة، لذا لا تجادل المفتاح في الامتحان؛ تذكّر أن الخيار الذي يطابق حرفه هو Verification وليس Validation.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.23",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3907,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.23; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q23",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "question": "During the development phase, the following testing approach is not adopted",
+      "options": [
+        "unit testing",
+        "bottom up testing",
+        "integration testing",
+        "acceptance testing"
+      ],
+      "options_en": [
+        "unit testing",
+        "bottom up testing",
+        "integration testing",
+        "acceptance testing"
+      ],
+      "question_ar": "أثناء مرحلة التطوير، أي أسلوب اختبار لا يعتمد؟",
+      "options_ar": [
+        "unit testing",
+        "bottom up testing",
+        "integration testing",
+        "acceptance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Acceptance testing is not adopted during the development phase. Unit, bottom-up and integration testing are development-time approaches; acceptance testing involves the customer and is done after unit and integration testing.",
+      "explanation_ar": "والفخ الامتحاني:** أثناء التطوير تُستخدم Unit وBottom-up وIntegration. اختبار القبول (Acceptance) يخص الزبون ويأتي بعدها، لذلك هو الخيار غير المعتمد (d).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.24",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3913,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.24; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q24",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "question": "Which is not a functional testing technique?",
+      "options": [
+        "boundary value analysis",
+        "decision table",
+        "regression testing",
+        "none of the above"
+      ],
+      "options_en": [
+        "boundary value analysis",
+        "decision table",
+        "regression testing",
+        "none of the above"
+      ],
+      "question_ar": "أي مما يلي ليس تقنية اختبار وظيفي؟",
+      "options_ar": [
+        "boundary value analysis",
+        "decision table",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Regression testing is not a functional testing technique. Boundary value analysis and decision tables are functional (black-box) techniques; regression testing is re-testing after changes.",
+      "explanation_ar": "والفخ الامتحاني:** BVA وDecision table تقنيات وظيفية، أما Regression فهو إعادة اختبار بعد التعديل وليس تقنية لاشتقاق الحالات من المواصفات.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.25",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3919,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.25; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q25",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q13",
+      "bank_kind": "source",
+      "question": "Decision tables are useful for describing situations in which:",
+      "options": [
+        "an action is taken under varying sets of conditions",
+        "number of combinations of actions are taken under varying sets of conditions",
+        "no action is taken under varying sets of conditions",
+        "none of the above"
+      ],
+      "options_en": [
+        "an action is taken under varying sets of conditions",
+        "number of combinations of actions are taken under varying sets of conditions",
+        "no action is taken under varying sets of conditions",
+        "none of the above"
+      ],
+      "question_ar": "جداول القرار decision tables مفيدة لوصف حالات يكون فيها:",
+      "options_ar": [
+        "an action is taken under varying sets of conditions",
+        "number of combinations of actions are taken under varying sets of conditions",
+        "no action is taken under varying sets of conditions",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Decision tables are useful where a number of combinations of actions are taken under varying sets of conditions. They list conditions and actions as rules, so each combination of conditions is tied to its actions.",
+      "explanation_ar": "والفخ الامتحاني:** جداول القرار تناسب الحالات التي تتغير فيها مجموعة الشروط وتُنفَّذ تركيبات مختلفة من الإجراءات. الفخ: الخيار (a) يتحدث عن إجراء واحد فقط.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.26",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3925,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.26; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q26",
+      "bloom_level": "Remember"
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

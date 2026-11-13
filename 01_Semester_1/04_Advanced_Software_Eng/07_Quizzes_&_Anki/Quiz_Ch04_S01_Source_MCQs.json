@@ -1,0 +1,550 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch04_S01_Source_MCQs",
+  "topic": "Source MCQs — Batch 1",
+  "topic_ar": "أسئلة المصدر — الدفعة 1",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q01",
+      "bloom_level": "Remember",
+      "question": "After the finalisation of SRS, we may like to estimate",
+      "options_en": [
+        "size",
+        "cost",
+        "development time",
+        "all of the above"
+      ],
+      "options": [
+        "size",
+        "cost",
+        "development time",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.1",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4304,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.1; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Software project planning begins once the SRS is baseline-approved; the primary estimation objectives are software size, project cost/effort, development schedule/time, and required staffing. These estimates are related: size is an input to effort models, and effort and schedule estimates contribute to project planning and cost.",
+      "question_ar": "بعد تثبيت SRS، قد نرغب في تقدير:",
+      "options_ar": [
+        "الحجم",
+        "التكلفة",
+        "زمن التطوير",
+        "كل ما سبق"
+      ],
+      "explanation_ar": "تخطيط المشروع يبدأ بعد تثبيت SRS ويشمل تقدير الحجم والتكلفة وزمن التطوير."
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q02",
+      "bloom_level": "Remember",
+      "question": "Which one is not a size measure for software",
+      "options_en": [
+        "LOC",
+        "function Count",
+        "cyclomatic Complexity",
+        "halstead's program length"
+      ],
+      "options": [
+        "LOC",
+        "function Count",
+        "cyclomatic Complexity",
+        "halstead's program length"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.2",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4308,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.2; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Lines of Code (LOC), Function Count / Function-Point measures, and Halstead's Program Length ($N = N_1 + N_2$) are software-size measures. Function Count and the resulting Function Points are related steps, not interchangeable labels. Cyclomatic Complexity ($V(G) = e - n + 2P$), introduced by Thomas McCabe, is a structural complexity metric measuring the number of linearly independent paths through the control flow graph, not software size.",
+      "question_ar": "أي مما يلي ليس مقياس حجم للبرمجيات؟",
+      "options_ar": [
+        "LOC",
+        "Function Count",
+        "cyclomatic complexity",
+        "Halstead program length"
+      ],
+      "explanation_ar": "cyclomatic complexity مقياس تعقيد بنيوي وليس مقياس حجم."
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q03",
+      "bloom_level": "Remember",
+      "question": "Function count method was developed by",
+      "options_en": [
+        "B. Beizer",
+        "B. Bochm",
+        "M. Halstead",
+        "Alan Albrecht"
+      ],
+      "options": [
+        "B. Beizer",
+        "B. Bochm",
+        "M. Halstead",
+        "Alan Albrecht"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.3",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4318,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.3; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The Function Count / Function Point Analysis (FPA) method was originally developed by Allan J. Albrecht at IBM in 1979 to measure the functional size of software from the user's perspective, independent of programming language or implementation technology.",
+      "question_ar": "طريقة Function Count طورها:",
+      "options_ar": [
+        "B. Beizer",
+        "B. Bochm",
+        "M. Halstead",
+        "Alan Albrecht"
+      ],
+      "explanation_ar": "Alan Albrecht هو من طور طريقة Function Count."
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q04",
+      "bloom_level": "Remember",
+      "question": "Function point analysis (FPA) method decomposes the system into functional units. The total number of functional units are",
+      "options_en": [
+        "2",
+        "5",
+        "4",
+        "1"
+      ],
+      "options": [
+        "2",
+        "5",
+        "4",
+        "1"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.4",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4322,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.4; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Function Point Analysis decomposes a software system into five distinct functional information domain characteristics: External Inputs (EI), External Outputs (EO), External Inquiries (EQ), Internal Logical Files (ILF), and External Interface Files (EIF).",
+      "question_ar": "تحلل طريقة Function Point Analysis النظام إلى وحدات وظيفية. العدد الكلي للوحدات الوظيفية هو:",
+      "options_ar": [
+        "2",
+        "5",
+        "4",
+        "1"
+      ],
+      "explanation_ar": "تقسيم FPA يعتمد خمس وحدات وظيفية."
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q05",
+      "bloom_level": "Remember",
+      "question": "IFPUG Stand for",
+      "options_en": [
+        "initial function point uniform group",
+        "international function point uniform group",
+        "international function point user group",
+        "initial function point user group"
+      ],
+      "options": [
+        "initial function point uniform group",
+        "international function point uniform group",
+        "international function point user group",
+        "initial function point user group"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.5",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4326,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.5; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "IFPUG stands for the International Function Point Users Group.",
+      "question_ar": "اختصار IFPUG يعني:",
+      "options_ar": [
+        "initial function point uniform group",
+        "international function point uniform group",
+        "international function point user group",
+        "initial function point user group"
+      ],
+      "explanation_ar": "IFPUG تعني International Function Point User Group."
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q06",
+      "bloom_level": "Remember",
+      "question": "Function point can be calculated by",
+      "options_en": [
+        "UFP * CAF",
+        "UFP * FAC",
+        "UFP * Cost",
+        "UFP * Productivity"
+      ],
+      "options": [
+        "UFP * CAF",
+        "UFP * FAC",
+        "UFP * Cost",
+        "UFP * Productivity"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "4.6",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4330,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.6; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Final adjusted Function Points (FP) are calculated by multiplying Unadjusted Function Points (UFP) by the Complexity Adjustment Factor (CAF): $\\text{FP} = \\text{UFP} \\times \\text{CAF}$.",
+      "question_ar": "يمكن حساب Function Point بواسطة:",
+      "options_ar": [
+        "UFP * CAF",
+        "UFP * FAC",
+        "UFP * Cost",
+        "UFP * Productivity"
+      ],
+      "explanation_ar": "القيمة تحسب بضرب UFP في معامل التعديل CAF."
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q07",
+      "bloom_level": "Remember",
+      "question": "Putnam resource allocation model is based on",
+      "options_en": [
+        "function points",
+        "Norden/Rayleigh curve",
+        "Putnam theory of software management",
+        "Boehm's observations on manpower utilisation rate"
+      ],
+      "options": [
+        "function points",
+        "Norden/Rayleigh curve",
+        "Putnam theory of software management",
+        "Boehm's observations on manpower utilisation rate"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.7",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4334,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.7; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The Putnam Resource Allocation Model is founded directly upon Peter Norden's empirical observations at IBM, which established that manpower utilization throughout research and development projects follows a Rayleigh distribution curve over time.",
+      "question_ar": "نموذج Putnam لتخصيص الموارد يعتمد على:",
+      "options_ar": [
+        "function points",
+        "Norden/Rayleigh curve",
+        "Putnam theory of software management",
+        "Boehm's observations on manpower utilisation rate"
+      ],
+      "explanation_ar": "النموذج يستند إلى منحنى Norden/Rayleigh لتوزيع الجهد."
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q08",
+      "bloom_level": "Remember",
+      "question": "Manpower buildup for Putnam resource allocation model is",
+      "options_en": [
+        "K/t_d^2 persons/year^2",
+        "K/t_d^3 persons/year^2",
+        "K/t_d^2 persons/year",
+        "K/t_d^3 persons/year"
+      ],
+      "options": [
+        "K/t_d^2 persons/year^2",
+        "K/t_d^3 persons/year^2",
+        "K/t_d^2 persons/year",
+        "K/t_d^3 persons/year"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.8",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4340,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.8; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "In the Putnam resource allocation model, the difficulty metric is $D=K/t_d^2$, while the separate manpower build-up metric is $D_0=K/t_d^3$ (persons/year$^2$).",
+      "question_ar": "تراكم القوى العاملة في نموذج Putnam لتخصيص الموارد هو:",
+      "options_ar": [
+        "K/t_d^2 persons/year^2",
+        "K/t_d^3 persons/year^2",
+        "K/t_d^2 persons/year",
+        "K/t_d^3 persons/year"
+      ],
+      "explanation_ar": "صيغة Putnam تربط التراكم بالحجم K وزمن التطوير t_d."
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q09",
+      "bloom_level": "Remember",
+      "question": "COCOMO was developed initially by",
+      "options_en": [
+        "B.W. Bohem",
+        "Gregg Rothermal",
+        "B. Beizer",
+        "Rajeev Gupta"
+      ],
+      "options": [
+        "B.W. Bohem",
+        "Gregg Rothermal",
+        "B. Beizer",
+        "Rajeev Gupta"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "4.9",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4344,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.9; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "The Constructive Cost Model (COCOMO '81) was developed by Barry W. Boehm.",
+      "question_ar": "COCOMO طوره في البداية:",
+      "options_ar": [
+        "B.W. Bohem",
+        "Gregg Rothermal",
+        "B. Beizer",
+        "Rajeev Gupta"
+      ],
+      "explanation_ar": "Boehm هو صاحب نموذج COCOMO."
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q10",
+      "bloom_level": "Remember",
+      "question": "A COCOMO model is",
+      "options_en": [
+        "common cost estimation model",
+        "constructive cost estimation model",
+        "complete cost estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "options": [
+        "common cost estimation model",
+        "constructive cost estimation model",
+        "complete cost estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "source": {
+        "id": "4.10",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4348,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.10; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "COCOMO is an acronym for COnstructive COst MOdel, an algorithmic cost estimation model that estimates software effort, schedule, and team size based on project size (KLOC) and cost drivers.",
+      "question_ar": "نموذج COCOMO هو:",
+      "options_ar": [
+        "common cost estimation model",
+        "constructive cost estimation model",
+        "complete cost estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "explanation_ar": "COCOMO تعني Constructive Cost Model."
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q11",
+      "bloom_level": "Remember",
+      "question": "Estimation of software development effort for organic software in COCOMO is",
+      "options_en": [
+        "E = 2.4(KLOC)^1.05 PM",
+        "E = 3.4(KLOC)^1.06 PM",
+        "E = 2.0(KLOC)^1.05 PM",
+        "E = 2.4(KLOC)^1.07 PM"
+      ],
+      "options": [
+        "E = 2.4(KLOC)^1.05 PM",
+        "E = 3.4(KLOC)^1.06 PM",
+        "E = 2.0(KLOC)^1.05 PM",
+        "E = 2.4(KLOC)^1.07 PM"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "source": {
+        "id": "4.11",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4352,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.11; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "In Basic COCOMO '81, the nominal development effort equation for the Organic mode is $E = 2.4 \\times (\\text{KLOC})^{1.05} \\text{ PM}$.",
+      "question_ar": "تقدير جهد تطوير البرمجيات للبرمجيات organic في COCOMO هو:",
+      "options_ar": [
+        "E = 2.4(KLOC)^1.05 PM",
+        "E = 3.4(KLOC)^1.06 PM",
+        "E = 2.0(KLOC)^1.05 PM",
+        "E = 2.4(KLOC)^1.07 PM"
+      ],
+      "explanation_ar": "الصيغة الأساسية للنمط organic هي 2.4 في KLOC مرفوعة للقوة 1.05."
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q12",
+      "bloom_level": "Remember",
+      "question": "Estimation of size for a project is dependent on",
+      "options_en": [
+        "cost",
+        "schedule",
+        "time",
+        "none of the above"
+      ],
+      "options": [
+        "cost",
+        "schedule",
+        "time",
+        "none of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "source": {
+        "id": "4.12",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4356,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.12; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Software size is an intrinsic attribute of the system's requirements and functionality; it is independent of cost, schedule, or calendar time. In fact, cost and schedule are dependent variables estimated *from* the estimated size, not the other way around.",
+      "question_ar": "تقدير حجم المشروع يعتمد على:",
+      "options_ar": [
+        "التكلفة",
+        "الجدول الزمني",
+        "الوقت",
+        "لا شيء مما سبق"
+      ],
+      "explanation_ar": "الحجم يقدّر من خصائص المشروع لا من التكلفة أو الجدول مباشرة."
+    },
+    {
+      "id": "q13",
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch04_q13",
+      "bloom_level": "Remember",
+      "question": "In function point analysis, number of complexity adjustment factors are",
+      "options_en": [
+        "10",
+        "20",
+        "14",
+        "12"
+      ],
+      "options": [
+        "10",
+        "20",
+        "14",
+        "12"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "source": {
+        "id": "4.13",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+        "line": 4360,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.13; publisher key p. 498",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        }
+      },
+      "explanation": "Function Point Analysis defines exactly 14 General System Characteristics (GSCs) as complexity adjustment factors (such as data communications, distributed data processing, performance, transaction rate, online data entry, etc.), each rated from 0 to 5.",
+      "question_ar": "في Function Point Analysis، عدد عوامل تعديل التعقيد هو:",
+      "options_ar": [
+        "10",
+        "20",
+        "14",
+        "12"
+      ],
+      "explanation_ar": "هناك 14 عامل تعديل تعقيد في FPA."
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

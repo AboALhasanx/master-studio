@@ -154,6 +154,12 @@ def main() -> int:
             continue
         processed_banks += 1
         chapter_counts[chapter] += len(bank["questions"])
+        bank_kind = bank.get("bank_kind", "practice")
+        if bank_kind not in ("practice", "source"):
+            errors.append(f"{path.name}: invalid bank_kind {bank_kind!r}")
+            continue
+
+        is_source = (bank_kind == "source")
         en_only = str(bank.get("lang") or "").lower() == "en"
         local_ids: set[str] = set()
 
@@ -170,11 +176,11 @@ def main() -> int:
             concept = str(q.get("concept_id", "")).strip()
             if not concept:
                 errors.append(f"{label}: missing concept_id")
-            elif (chapter, concept) in seen_concepts:
-                old_path, old_qid = seen_concepts[(chapter, concept)]
-                errors.append(f"{label}: duplicate concept_id {concept!r} (also {old_path.name}/{old_qid})")
+            elif (chapter, concept, bank_kind) in seen_concepts:
+                old_path, old_qid = seen_concepts[(chapter, concept, bank_kind)]
+                errors.append(f"{label}: duplicate concept_id {concept!r} in {bank_kind} banks (also {old_path.name}/{old_qid})")
             else:
-                seen_concepts[(chapter, concept)] = (path, qid)
+                seen_concepts[(chapter, concept, bank_kind)] = (path, qid)
 
             stem = q.get("question")
             stem_ar = q.get("question_ar")
@@ -183,25 +189,39 @@ def main() -> int:
             if not en_only and (not isinstance(stem_ar, str) or not stem_ar.strip()):
                 errors.append(f"{label}: empty Arabic stem")
             if isinstance(stem, str) and (en_only or isinstance(stem_ar, str)):
-                key = (chapter, exact_key(stem))
+                # Genuine source questions can share a stem but differ in choices.
+                # Source-id uniqueness/fidelity is enforced by the source manifest.
+                src_meta = q.get("source")
+                source_id = src_meta.get("id", "") if is_source and isinstance(src_meta, dict) else ""
+                key = (chapter, exact_key(stem), bank_kind, source_id)
                 if key in seen_stems:
                     old_path, old_qid = seen_stems[key]
-                    errors.append(f"{label}: exact duplicate English stem (also {old_path.name}/{old_qid})")
+                    errors.append(f"{label}: exact duplicate English stem in {bank_kind} banks (also {old_path.name}/{old_qid})")
                 else:
                     seen_stems[key] = (path, qid)
                 ar_marks = stem_ar.count("؟") if isinstance(stem_ar, str) else 0
                 if stem.count("?") > 1 or ar_marks > 1:
                     warnings.append(f"{label}: multiple question marks; inspect for a compound stem")
 
+            is_disputed = False
+            if is_source:
+                src = q.get("source")
+                if isinstance(src, dict):
+                    is_disputed = (str(src.get("key_status", "")).strip().lower() == "disputed")
+
             correct = q.get("correct")
             answer = q.get("answer")
-            if not isinstance(correct, int) or isinstance(correct, bool) or correct not in range(4):
-                errors.append(f"{label}: correct must be integer 0..3")
-                correct = None
-            if answer not in LETTERS:
-                errors.append(f"{label}: answer must be A/B/C/D")
-            elif correct is not None and LETTERS[correct] != answer:
-                errors.append(f"{label}: answer/correct mismatch ({answer} vs {correct})")
+            if is_source and is_disputed:
+                if correct is not None or answer is not None:
+                    errors.append(f"{label}: disputed source item must have answer: null and correct: null (ungraded), got {answer!r}/{correct!r}")
+            else:
+                if not isinstance(correct, int) or isinstance(correct, bool) or correct not in range(4):
+                    errors.append(f"{label}: correct must be integer 0..3")
+                    correct = None
+                if answer not in LETTERS:
+                    errors.append(f"{label}: answer must be A/B/C/D")
+                elif correct is not None and LETTERS[correct] != answer:
+                    errors.append(f"{label}: answer/correct mismatch ({answer} vs {correct})")
 
             opt_fields = ("options", "options_en") if en_only else ("options", "options_en", "options_ar")
             for field in opt_fields:
@@ -212,14 +232,14 @@ def main() -> int:
                 normalized = [exact_key(x) for x in opts]
                 if len(set(normalized)) != 4:
                     errors.append(f"{label}: duplicate choices in {field}")
-                if field in ("options_en", "options_ar"):
+                if not is_source and field in ("options_en", "options_ar"):
                     lang = "ar" if field == "options_ar" else "en"
                     bank_padding[path].extend((lang, str(x)) for x in opts if isinstance(x, str))
             if isinstance(q.get("options"), list) and isinstance(q.get("options_en"), list):
                 if q["options"] != q["options_en"]:
                     errors.append(f"{label}: options and options_en differ")
 
-            if correct is not None:
+            if not is_source and correct is not None:
                 for field, cap in SPREAD_CAPS.items():
                     opts = q.get(field)
                     if isinstance(opts, list) and len(opts) == 4 and all(isinstance(x, str) for x in opts):

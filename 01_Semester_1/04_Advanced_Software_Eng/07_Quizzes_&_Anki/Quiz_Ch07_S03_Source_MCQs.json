@@ -1,0 +1,536 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch07_S03_Source_MCQs",
+  "topic": "Source MCQs — Batch 3",
+  "topic_ar": "أسئلة المصدر — الدفعة 3",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "question": "MTBF stands for",
+      "options": [
+        "mean time between failures",
+        "maximum time between failures",
+        "minimum time between failures",
+        "many time between failures"
+      ],
+      "options_en": [
+        "mean time between failures",
+        "maximum time between failures",
+        "minimum time between failures",
+        "many time between failures"
+      ],
+      "question_ar": "اختصار MTBF يعني:",
+      "options_ar": [
+        "mean time between failures",
+        "maximum time between failures",
+        "minimum time between failures",
+        "many time between failures"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "MTBF stands for Mean Time Between Failures. It represents the average elapsed operational time separating successive system failures in repairable systems, calculated as the sum of Mean Time To Failure (MTTF) and Mean Time To Repair (MTTR): $$MTBF = MTTF + MTTR$$",
+      "explanation_ar": "والفخ الامتحاني:** مصطلح MTBF يعني متوسط الزمن بين الانهيارات (Mean Time Between Failures) في الأنظمة القابلة للإصلاح.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.27",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2002,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.27; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q27",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "question": "CMM model is a technique to",
+      "options": [
+        "improve the software process",
+        "automatically develop the software",
+        "test the software",
+        "all of the above"
+      ],
+      "options_en": [
+        "improve the software process",
+        "automatically develop the software",
+        "test the software",
+        "all of the above"
+      ],
+      "question_ar": "نموذج CMM تقنية تهدف إلى:",
+      "options_ar": [
+        "improve the software process",
+        "automatically develop the software",
+        "test the software",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The Capability Maturity Model (SEI CMM) is an organizational framework designed specifically to assess the maturity of software processes and guide organizations through evolutionary stages of software process improvement. It does not automatically generate source code or function as an automated testing engine.",
+      "explanation_ar": "والفخ الامتحاني:** هدف CMM الأساسي هو تحسين نضج العملية البرمجية للمؤسسة (Improve the software process)، وليس توليد كود آلياً.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "7.28",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2007,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.28; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q28",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "question": "Total number of maturing levels in CMM are",
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "options_en": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "question_ar": "العدد الكلي لمستويات النضج في CMM هو:",
+      "options_ar": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The SEI Capability Maturity Model defines exactly five evolutionary maturity levels: 1. Level 1 — Initial: Chaotic, ad-hoc performance. 2. Level 2 — Repeatable: Basic project management controls. 3. Level 3 — Defined: Standardized, institutionalized engineering processes. 4. Level 4 — Managed: Quantitative process measurement and product quality metrics. 5. Level 5 — Optimizing: Continuous process improvement through feedback and technological innovation.",
+      "explanation_ar": "والفخ الامتحاني:** مستويات CMM الخمسة بالترتيب: 1- Initial ← 2- Repeatable ← 3- Defined ← 4- Managed ← 5- Optimizing.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.29",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2012,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.29; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q29",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "question": "Reliability of a software is dependent on number of errors",
+      "options": [
+        "removed",
+        "remaining",
+        "both",
+        "and"
+      ],
+      "options_en": [
+        "removed",
+        "remaining",
+        "both",
+        "and"
+      ],
+      "question_ar": "تعتمد موثوقية البرنامج على عدد الأخطاء:",
+      "options_ar": [
+        "removed",
+        "remaining",
+        "both",
+        "and"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Software reliability is determined strictly by the latent faults currently remaining in the code that can be encountered during execution, combined with the frequency of their activation under the operational profile. The historical count of faults removed during past debugging sessions does not dictate current system stability; a system from which 1,000 faults were removed may still fail immediately if critical residual faults remain in frequently executed pathways.",
+      "explanation_ar": "والفخ الامتحاني:** فخ امتحاني شهير: اعتمادية النظام تعتمد حصراً على عدد الأخطاء المتبقية (Remaining) في الكود أثناء التشغيل، ولا تعتمد على عدد الأخطاء التي تم إصلاحها في الماضي.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.30",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2017,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.30; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q30",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "question": "Reliability of software is usually estimated at",
+      "options": [
+        "analysis phase",
+        "design phase",
+        "coding phase",
+        "testing phase"
+      ],
+      "options_en": [
+        "analysis phase",
+        "design phase",
+        "coding phase",
+        "testing phase"
+      ],
+      "question_ar": "عادة تقدر موثوقية البرنامج عند:",
+      "options_ar": [
+        "analysis phase",
+        "design phase",
+        "coding phase",
+        "testing phase"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Dynamic software reliability models (such as Musa's models and Jelinski–Moranda) require executing the software under an operational profile and collecting dynamic failure timestamps and counts. Consequently, statistical estimation and measurement of software reliability take place primarily during system and integration testing, once an executable system exists.",
+      "explanation_ar": "والفخ الامتحاني:** تقدير الاعتمادية إحصائياً يحتاج إلى تشغيل الكود وتسجيل أزمنة الفشل، ولذلك يتم قياسها في مرحلة الاختبار (Testing phase).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.31",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2022,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.31; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q31",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "question": "CMM stands for",
+      "options": [
+        "capacity maturity model",
+        "capability maturity model",
+        "cost management model",
+        "comprehensive maintenance model"
+      ],
+      "options_en": [
+        "capacity maturity model",
+        "capability maturity model",
+        "cost management model",
+        "comprehensive maintenance model"
+      ],
+      "question_ar": "اختصار CMM يعني:",
+      "options_ar": [
+        "capacity maturity model",
+        "capability maturity model",
+        "cost management model",
+        "comprehensive maintenance model"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "CMM stands for Capability Maturity Model, developed by the Software Engineering Institute (SEI) at Carnegie Mellon University.",
+      "explanation_ar": "والفخ الامتحاني:** CMM اختصار لـ Capability Maturity Model.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.32",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2027,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.32; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q32",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "question": "Which level of CMM is for basic project management ?",
+      "options": [
+        "initial",
+        "repeatable",
+        "defined",
+        "managed"
+      ],
+      "options_en": [
+        "initial",
+        "repeatable",
+        "defined",
+        "managed"
+      ],
+      "question_ar": "أي مستوى من CMM مخصص لإدارة المشروع الأساسية؟",
+      "options_ar": [
+        "initial",
+        "repeatable",
+        "defined",
+        "managed"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Level 2 (Repeatable) of the Capability Maturity Model establishes fundamental project management controls, focusing on project planning, requirements management, project tracking, subcontract management, quality assurance, and configuration management to ensure realistic commitments based on past project successes.",
+      "explanation_ar": "والفخ الامتحاني:** المستوى الثاني (Repeatable) هو المستوى المسؤول عن إدارة المشاريع الأساسية (Basic project management).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.33",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2032,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.33; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q33",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "question": "Which level of CMM is for process control ?",
+      "options": [
+        "initial",
+        "repeatable",
+        "defined",
+        "optimizing"
+      ],
+      "options_en": [
+        "initial",
+        "repeatable",
+        "defined",
+        "optimizing"
+      ],
+      "question_ar": "أي مستوى من CMM مخصص لضبط العملية؟",
+      "options_ar": [
+        "initial",
+        "repeatable",
+        "defined",
+        "optimizing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Level 4 (Managed) uses quantitative measures to control process and product quality.",
+      "explanation_ar": "والفخ الامتحاني:** ضبط والتحكم في العمليات (Process control) كمياً هو ميزة المستوى الرابع (Managed). الشريحة 115 تكرر صياغة سؤال 7.35؛ صيغة هذا السؤال عن Process control.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.34",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2037,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.34; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q34",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "question": "Which level of CMM is for process management ?",
+      "options": [
+        "initial",
+        "defined",
+        "managed",
+        "optimizing"
+      ],
+      "options_en": [
+        "initial",
+        "defined",
+        "managed",
+        "optimizing"
+      ],
+      "question_ar": "أي مستوى من CMM مخصص لإدارة العملية؟",
+      "options_ar": [
+        "initial",
+        "defined",
+        "managed",
+        "optimizing"
+      ],
+      "answer": null,
+      "correct": null,
+      "explanation": "At Level 3 (Defined), standard software engineering and management processes are documented, standardized, and integrated into an organization-wide standard software process (institutional process management). Projects tailor these standard organizational processes to develop approved, managed project processes.",
+      "explanation_ar": "والفخ الامتحاني:** توثيق وإدارة العمليات المؤسسية القياسية (Process management) هو عنوان المستوى الثالث (Defined).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.35",
+        "key_status": "disputed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2042,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.35; publisher key p. 499",
+        "note": {
+          "ar": "مفتاح الناشر C يتعارض مع الحل المستنتج من النص؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "DISPUTED: Publisher key is C (managed = Level 4 Quantitative Process Management); T1 notes argue B (defined = Level 3 standard organizational processes)."
+        }
+      },
+      "concept_id": "ase_source_ch07_q35",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "question": "CMM was developed at",
+      "options": [
+        "Harvard University",
+        "Cambridge University",
+        "Carnegie Mellon University",
+        "Maryland University."
+      ],
+      "options_en": [
+        "Harvard University",
+        "Cambridge University",
+        "Carnegie Mellon University",
+        "Maryland University."
+      ],
+      "question_ar": "طور CMM في:",
+      "options_ar": [
+        "Harvard University",
+        "Cambridge University",
+        "Carnegie Mellon University",
+        "Maryland University."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The Capability Maturity Model (CMM) was developed by the Software Engineering Institute (SEI), a federally funded research and development center established at Carnegie Mellon University (CMU) in Pittsburgh, Pennsylvania.",
+      "explanation_ar": "والفخ الامتحاني:** طور معهد SEI نموذج CMM في جامعة كارنيغي ميلون (Carnegie Mellon University).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.36",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2047,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.36; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "normalizations": [
+          "remove_page_header_artifact"
+        ]
+      },
+      "concept_id": "ase_source_ch07_q36",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "question": "McCall has developed a",
+      "options": [
+        "quality model",
+        "process improvement model",
+        "requirement model",
+        "design model"
+      ],
+      "options_en": [
+        "quality model",
+        "process improvement model",
+        "requirement model",
+        "design model"
+      ],
+      "question_ar": "طور McCall:",
+      "options_ar": [
+        "quality model",
+        "process improvement model",
+        "requirement model",
+        "design model"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Jim McCall and his associates developed a landmark Software Quality Model in 1977 for the US Air Force, pioneering the decomposition of software quality into factors, criteria, and metrics.",
+      "explanation_ar": "والفخ الامتحاني:** وضع ماكول (McCall) نموذجاً لجودة البرمجيات (Quality model).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.37",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2058,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.37; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q37",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "question": "The model to measure the software process improvement is called",
+      "options": [
+        "ISO-9000",
+        "ISO-9126",
+        "CMM",
+        "spiral model"
+      ],
+      "options_en": [
+        "ISO-9000",
+        "ISO-9126",
+        "CMM",
+        "spiral model"
+      ],
+      "question_ar": "النموذج المستخدم لقياس تحسين عملية البرمجيات يسمى:",
+      "options_ar": [
+        "ISO-9000",
+        "ISO-9126",
+        "CMM",
+        "spiral model"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The Capability Maturity Model (CMM) provides a structured metric and staging framework specifically designed to evaluate organizational process capability and track continuous process improvement. ISO 9126 measures product quality, ISO 9000 is a baseline certification standard, and the Spiral model is a life-cycle methodology.",
+      "explanation_ar": "والفخ الامتحاني:** الموديل المخصص لقياس تحسين نضج العملية البرمجية وتدرجها هو CMM.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "7.38",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "line": 2063,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.38; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch07_q38",
+      "bloom_level": "Remember"
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

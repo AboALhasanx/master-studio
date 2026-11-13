@@ -74,6 +74,13 @@ def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str 
     letters = ["A", "B", "C", "D"]
     en_only = str(quiz_data.get("lang") or "").lower() == "en"
 
+    # 0. Resolve bank kind
+    bank_kind = quiz_data.get("bank_kind", "practice")
+    if bank_kind == "source":
+        # Source inputs must already be canonical. Never guess a key, pad,
+        # truncate or normalize original options before validation.
+        return quiz_data
+
     # 1. Resolve subject metadata
     subj_slug = subject_id or quiz_data.get("subject_id") or quiz_data.get("subject") or "00_STUDIO_HUB"
     meta = SUBJECT_METADATA.get(subj_slug, {})
@@ -137,19 +144,28 @@ def normalize_quiz_schema(quiz_data: dict, subject_id: str = None, quiz_id: str 
         opts_list = opts_list[:4]
         q["options"] = opts_list
 
+        q["bank_kind"] = q.get("bank_kind") or bank_kind
+        if isinstance(q.get("source"), dict):
+            q["source"] = dict(q["source"])
+
         # Answer & Correct index
         ans = q.get("answer")
         corr = q.get("correct")
-        if isinstance(ans, str) and ans.upper() in letters:
-            corr_idx = letters.index(ans.upper())
-        elif isinstance(corr, int) and 0 <= corr < 4:
-            corr_idx = corr
-        elif isinstance(ans, int) and 0 <= ans < 4:
-            corr_idx = ans
+        is_disputed = (bank_kind == "source" and isinstance(q.get("source"), dict) and str(q["source"].get("key_status", "")).strip().lower() == "disputed")
+        if is_disputed and (ans is None or corr is None):
+            q["correct"] = None
+            q["answer"] = None
         else:
-            corr_idx = 0
-        q["correct"] = corr_idx
-        q["answer"] = letters[corr_idx]
+            if isinstance(ans, str) and ans.upper() in letters:
+                corr_idx = letters.index(ans.upper())
+            elif isinstance(corr, int) and 0 <= corr < 4:
+                corr_idx = corr
+            elif isinstance(ans, int) and 0 <= ans < 4:
+                corr_idx = ans
+            else:
+                corr_idx = 0
+            q["correct"] = corr_idx
+            q["answer"] = letters[corr_idx]
 
         # Options AR / EN
         raw_opts_ar = q.get("options_ar")
@@ -203,6 +219,10 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
 
     if quiz_data.get("schema_version") != 2:
         errors.append(f"Invalid or missing 'schema_version': expected 2, got {quiz_data.get('schema_version')!r}")
+
+    bank_kind = quiz_data.get("bank_kind", "practice")
+    if bank_kind not in ("practice", "source"):
+        errors.append(f"Invalid 'bank_kind': expected 'practice' or 'source', got {bank_kind!r}")
 
     top_keys = [
         ("subject_id", str),
@@ -259,15 +279,55 @@ def validate_schema_v2(quiz_data: dict) -> tuple[bool, list[str]]:
                     if not isinstance(opt_item, str) or not opt_item.strip():
                         errors.append(f"Q{i+1} ({qid}): '{opt_key}[{idx}]' must be a non-empty string.")
 
-        ans = q.get("answer")
-        corr = q.get("correct")
-        if ans not in letters:
-            errors.append(f"Q{i+1} ({qid}): 'answer' must be one of {letters}, got {ans!r}.")
-        if not isinstance(corr, int) or corr not in range(4):
-            errors.append(f"Q{i+1} ({qid}): 'correct' must be an integer 0..3, got {corr!r}.")
-        if ans in letters and isinstance(corr, int) and 0 <= corr < 4:
-            if letters[corr] != ans:
-                errors.append(f"Q{i+1} ({qid}): Mismatch between 'correct' ({corr} -> {letters[corr]}) and 'answer' ({ans}).")
+        q_kind = q.get("bank_kind", bank_kind)
+        if q_kind not in ("practice", "source"):
+            errors.append(f"Q{i+1} ({qid}): Invalid question 'bank_kind' {q_kind!r}.")
+        if q_kind != bank_kind:
+            errors.append(f"Q{i+1} ({qid}): Question bank_kind does not match bank.")
+
+        if bank_kind == "source":
+            if q_kind != "source":
+                errors.append(f"Q{i+1} ({qid}): Question bank_kind {q_kind!r} does not match bank_kind 'source'.")
+            src = q.get("source")
+            if not isinstance(src, dict):
+                errors.append(f"Q{i+1} ({qid}): Missing required 'source' provenance metadata dict.")
+            else:
+                if not src.get("id"):
+                    errors.append(f"Q{i+1} ({qid}): Missing 'source.id' provenance identifier.")
+                if not src.get("reference"):
+                    errors.append(f"Q{i+1} ({qid}): Missing 'source.reference' provenance reference.")
+                k_status = src.get("key_status")
+                if k_status not in ("confirmed", "derived", "disputed"):
+                    errors.append(f"Q{i+1} ({qid}): Invalid 'source.key_status' {k_status!r}. Must be 'confirmed', 'derived', or 'disputed'.")
+                note = src.get("note")
+                if not isinstance(note, dict) or "ar" not in note or "en" not in note:
+                    errors.append(f"Q{i+1} ({qid}): 'source.note' must be an object with 'ar' and 'en' keys.")
+
+                if k_status == "disputed":
+                    if q.get("answer") is not None or q.get("correct") is not None:
+                        errors.append(f"Q{i+1} ({qid}): Disputed source item must have answer: null and correct: null (ungraded). Guessing a key is forbidden.")
+                    if not (isinstance(note, dict) and str(note.get("ar", "")).strip() and str(note.get("en", "")).strip()):
+                        errors.append(f"Q{i+1} ({qid}): Disputed source item requires nonempty bilingual 'source.note' explaining ambiguity.")
+                else:
+                    ans = q.get("answer")
+                    corr = q.get("correct")
+                    if ans not in letters:
+                        errors.append(f"Q{i+1} ({qid}): 'answer' must be one of {letters}, got {ans!r}.")
+                    if not isinstance(corr, int) or corr not in range(4):
+                        errors.append(f"Q{i+1} ({qid}): 'correct' must be an integer 0..3, got {corr!r}.")
+                    if ans in letters and isinstance(corr, int) and 0 <= corr < 4:
+                        if letters[corr] != ans:
+                            errors.append(f"Q{i+1} ({qid}): Mismatch between 'correct' ({corr} -> {letters[corr]}) and 'answer' ({ans}).")
+        else:
+            ans = q.get("answer")
+            corr = q.get("correct")
+            if ans not in letters:
+                errors.append(f"Q{i+1} ({qid}): 'answer' must be one of {letters}, got {ans!r}.")
+            if not isinstance(corr, int) or corr not in range(4):
+                errors.append(f"Q{i+1} ({qid}): 'correct' must be an integer 0..3, got {corr!r}.")
+            if ans in letters and isinstance(corr, int) and 0 <= corr < 4:
+                if letters[corr] != ans:
+                    errors.append(f"Q{i+1} ({qid}): Mismatch between 'correct' ({corr} -> {letters[corr]}) and 'answer' ({ans}).")
 
     return len(errors) == 0, errors
 
@@ -361,6 +421,10 @@ def balance_quiz(quiz_data: dict, seed: int = None, clean_bloat: bool = True) ->
     if seed is not None:
         random.seed(seed)
 
+    if quiz_data.get("bank_kind") == "source":
+        # Source questions require fixed option and question ordering; never permute choices or strip bloat.
+        return quiz_data
+
     questions = quiz_data.get("questions", [])
     total = len(questions)
     if total == 0:
@@ -449,6 +513,12 @@ def validate_strict_gate(quiz_data: dict, max_length_ratio: float = 1.30, max_le
     total = len(questions)
     if total == 0:
         return False, ["Quiz contains zero questions."]
+    bank_kind = quiz_data.get("bank_kind", "practice")
+    if bank_kind not in ("practice", "source"):
+        return False, [f"Invalid 'bank_kind': expected 'practice' or 'source', got {bank_kind!r}"]
+    if bank_kind == "source":
+        # Source banks are evaluated against quiz_source_gate.py; psychometric length/positional bias does not apply.
+        return validate_schema_v2(quiz_data)
     en_only = str(quiz_data.get("lang") or "").lower() == "en"
 
     # 1. Check length disparity
@@ -526,6 +596,11 @@ def main():
 
     with open(path, "r", encoding="utf-8") as f:
         quiz_data = json.load(f)
+    is_source = quiz_data.get("bank_kind") == "source"
+    if is_source and not args.check:
+        print("REFUSED: source banks must never be normalized or rebalanced. "
+              "Use quiz_source_gate.py for source validation.")
+        sys.exit(2)
 
     stats_before = analyze_quiz(quiz_data)
 
@@ -538,14 +613,22 @@ def main():
         bar = "█" * int(v["percentage"] / 4)
         print(f"  Option {k}: {v['count']:2d} ({v['percentage']:5.1f}%) {bar}")
 
+    if not stats_before.get("total"):
+        print("\nEmpty bank: nothing to balance.")
+        if args.check:
+            print("[Check mode only — no changes made]")
+        return
     dom_letter, dom_count = stats_before["dominant_letter"]
     dom_pct = round(dom_count / stats_before["total"] * 100, 1) if stats_before["total"] > 0 else 0
-    if dom_pct > 32.0:
+    if is_source:
+        print("\nSOURCE BANK: distribution and length metrics are informational only; "
+              "original wording/order is protected by quiz_source_gate.py.")
+    elif dom_pct > 32.0:
         print(f"\n⚠️  CRITICAL BIAS DETECTED: Option {dom_letter} accounts for {dom_pct}% of answers!")
         print("   (Standard: no option should exceed 30% in a balanced exam).")
 
     disparities = stats_before["length_disparities"]
-    if disparities:
+    if disparities and not is_source:
         print(f"\n⚠️  LENGTH BIAS DETECTED: {len(disparities)}/{stats_before['total']} questions have tell-tale longest correct options:")
         for d in disparities[:5]:
             print(f"   - Q{d['question_idx']} ({d['id']}): Correct={d['correct_len']} chars vs Distractors={d['avg_distractor_len']} chars ({d['ratio']}x longer)")

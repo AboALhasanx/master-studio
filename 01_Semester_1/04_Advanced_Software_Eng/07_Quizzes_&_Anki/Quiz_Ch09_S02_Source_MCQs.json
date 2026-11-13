@@ -1,0 +1,533 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch09_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "question": "In Boehm model, ACT stands for",
+      "options": [
+        "actual change time",
+        "actual change traffic",
+        "annual change traffic",
+        "annual change time"
+      ],
+      "options_en": [
+        "actual change time",
+        "actual change traffic",
+        "annual change traffic",
+        "annual change time"
+      ],
+      "question_ar": "في نموذج Boehm، اختصار ACT يعني:",
+      "options_ar": [
+        "actual change time",
+        "actual change traffic",
+        "annual change traffic",
+        "annual change time"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "ACT (Annual Change Traffic) represents the fraction of software lines of code modified or added in a typical year relative to total system size: $\\frac{\\text{KLOC}_{\\text{added}} + \\text{KLOC}_{\\text{modified}}}{\\text{KLOC}_{\\text{total}}}$.",
+      "explanation_ar": "ACT أي Annual Change Traffic هو نسبة أسطر الكود المعدلة أو المضافة في سنة نموذجية إلى حجم النظام الكلي.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.14",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 851,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.14; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q14",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "question": "Regression testing is known as",
+      "options": [
+        "the process of retesting the modified parts of the software",
+        "the process of testing the design documents",
+        "the process of reviewing the SRS",
+        "none of the above"
+      ],
+      "options_en": [
+        "the process of retesting the modified parts of the software",
+        "the process of testing the design documents",
+        "the process of reviewing the SRS",
+        "none of the above"
+      ],
+      "question_ar": "اختبار الانحدار regression testing يعرف باسم:",
+      "options_ar": [
+        "the process of retesting the modified parts of the software",
+        "the process of testing the design documents",
+        "the process of reviewing the SRS",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Regression testing validates modified components and dependent routines to ensure changes preserve previously established behavioral and reliability baselines.",
+      "explanation_ar": "اختبار الانحدار يتحقق من المكونات المعدلة والروتينات التابعة لها لضمان أن التغييرات لم تنتهك السلوك والموثوقية المعتمدين سابقاً.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "9.15",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 854,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.15; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q15",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "question": "The purpose of regression testing is to",
+      "options": [
+        "increase confidence in the correctness of the modified program",
+        "locate errors in the modified program",
+        "preserve the quality and reliability of software",
+        "all of the above"
+      ],
+      "options_en": [
+        "increase confidence in the correctness of the modified program",
+        "locate errors in the modified program",
+        "preserve the quality and reliability of software",
+        "all of the above"
+      ],
+      "question_ar": "الغرض من اختبار الانحدار هو:",
+      "options_ar": [
+        "increase confidence in the correctness of the modified program",
+        "locate errors in the modified program",
+        "preserve the quality and reliability of software",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Regression testing detects side-effect defects, verifies correct delta implementation, and maintains baseline software reliability across evolutionary releases.",
+      "explanation_ar": "اختبار الانحدار يكشف عيوب الآثار الجانبية ويتحقق من تنفيذ التغيير بشكل صحيح ويحافظ على خط أساس الموثوقية عبر الإصدارات.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "9.16",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 859,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.16; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q16",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "question": "Regression testing is related to",
+      "options": [
+        "maintenance of software",
+        "development of software",
+        "both",
+        "and"
+      ],
+      "options_en": [
+        "maintenance of software",
+        "development of software",
+        "both",
+        "and"
+      ],
+      "question_ar": "اختبار الانحدار يرتبط بـ:",
+      "options_ar": [
+        "maintenance of software",
+        "development of software",
+        "both",
+        "and"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Regression testing is essential during initial development (as new modules are integrated into growing builds) and throughout operational maintenance (as patches are deployed).",
+      "explanation_ar": "اختبار الانحدار ضروري أثناء التطوير الأول عند دمج وحدات جديدة، وأثناء الصيانة التشغيلية عند نشر الإصلاحات.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.17",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 864,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.17; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q17",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "question": "Which one is not a selective retest technique",
+      "options": [
+        "coverage technique",
+        "minimization technique",
+        "safe technique",
+        "maximization technique"
+      ],
+      "options_en": [
+        "coverage technique",
+        "minimization technique",
+        "safe technique",
+        "maximization technique"
+      ],
+      "question_ar": "أي مما يلي ليس تقنية إعادة اختبار انتقائية selective retest؟",
+      "options_ar": [
+        "coverage technique",
+        "minimization technique",
+        "safe technique",
+        "maximization technique"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Selective retest methods comprise coverage techniques, minimization techniques, and safe techniques. Maximization technique is non-existent.",
+      "explanation_ar": "طرائق إعادة الاختبار الانتقائي تشمل تقنيات التغطية والتقليل والسلامة. أما تقنية Maximization فهي غير موجودة.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.18",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 872,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.18; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q18",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "question": "Purpose of reverse engineering is to",
+      "options": [
+        "recover information from the existing code or any other intermediate document",
+        "redocumentation and/or document generation",
+        "understand the source code and associated documents",
+        "all of the above"
+      ],
+      "options_en": [
+        "recover information from the existing code or any other intermediate document",
+        "redocumentation and/or document generation",
+        "understand the source code and associated documents",
+        "all of the above"
+      ],
+      "question_ar": "الغرض من الهندسة العكسية reverse engineering هو:",
+      "options_ar": [
+        "recover information from the existing code or any other intermediate document",
+        "redocumentation and/or document generation",
+        "understand the source code and associated documents",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Reverse engineering supports information recovery from legacy implementations, automated redocumentation, and system comprehension.",
+      "explanation_ar": "الهندسة العكسية تدعم استعادة المعلومات من التطبيقات القديمة وإعادة التوثيق الآلي وفهم النظام.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "9.19",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 875,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.19; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q19",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "question": "Legacy systems are",
+      "options": [
+        "old systems",
+        "new systems",
+        "undeveloped systems",
+        "none of the above"
+      ],
+      "options_en": [
+        "old systems",
+        "new systems",
+        "undeveloped systems",
+        "none of the above"
+      ],
+      "question_ar": "الأنظمة القديمة legacy systems هي:",
+      "options_ar": [
+        "old systems",
+        "new systems",
+        "undeveloped systems",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Legacy systems are mature, established operational software products that remain critical to enterprise operations but present maintenance challenges due to aging technology stacks.",
+      "explanation_ar": "الأنظمة القديمة منتجات برمجية ناضجة وقائمة ما زالت حيوية لعمل المؤسسة، لكنها تواجه صعوبات صيانة بسبب تقادم التقنيات.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "9.20",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 880,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.20; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q20",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "question": "User documentation consists of",
+      "options": [
+        "system overview",
+        "installation guide",
+        "reference guide",
+        "all of the above"
+      ],
+      "options_en": [
+        "system overview",
+        "installation guide",
+        "reference guide",
+        "all of the above"
+      ],
+      "question_ar": "توثيق المستخدم user documentation يتكون من:",
+      "options_ar": [
+        "system overview",
+        "installation guide",
+        "reference guide",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "User documentation packages user-facing guidance into introductory overviews, step-by-step installation guides, and complete operational reference manuals.",
+      "explanation_ar": "توثيق المستخدم يجمع الإرشاد الموجه للمستخدم في نظرة تعريفية وأدلة تثبيت خطوة بخطوة وأدلة مرجعية تشغيلية كاملة.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "9.21",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 883,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.21; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q21",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "question": "Which one is not a user documentation?",
+      "options": [
+        "beginner's Guide",
+        "installation guide",
+        "SRS",
+        "system administration"
+      ],
+      "options_en": [
+        "beginner's Guide",
+        "installation guide",
+        "SRS",
+        "system administration"
+      ],
+      "question_ar": "أي مما يلي ليس من توثيق المستخدم؟",
+      "options_ar": [
+        "beginner's Guide",
+        "installation guide",
+        "SRS",
+        "system administration"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The Software Requirements Specification (SRS) is a technical development and system document establishing functional requirements, not an end-user guide.",
+      "explanation_ar": "وثيقة SRS وثيقة تطوير ونظام تحدد المتطلبات الوظيفية، وليست دليلاً للمستخدم النهائي.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.22",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 886,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.22; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q22",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "question": "System documentation may not have",
+      "options": [
+        "SRS",
+        "design document",
+        "acceptance Test Plan",
+        "system administration"
+      ],
+      "options_en": [
+        "SRS",
+        "design document",
+        "acceptance Test Plan",
+        "system administration"
+      ],
+      "question_ar": "توثيق النظام system documentation قد لا يحتوي على:",
+      "options_ar": [
+        "SRS",
+        "design document",
+        "acceptance Test Plan",
+        "system administration"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "System documentation records architectural and development specifications (SRS, SDD, Test Plans, Data Dictionaries). System administration is an operational user manual rather than an internal system design artifact.",
+      "explanation_ar": "توثيق النظام يسجل مواصفات البنية والتطوير مثل SRS وSDD وخطط الاختبار وقواميس البيانات. أما إدارة النظام فهي دليل تشغيلي للمستخدم لا وثيقة تصميم داخلية.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.23",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 889,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.23; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q23",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "question": "The process by which existing processes and methods are replaced by new techniques is :",
+      "options": [
+        "reverse engineering",
+        "business process re-engineering",
+        "software configuration management",
+        "technical feasibility"
+      ],
+      "options_en": [
+        "reverse engineering",
+        "business process re-engineering",
+        "software configuration management",
+        "technical feasibility"
+      ],
+      "question_ar": "العملية التي تستبدل بها العمليات والأساليب الحالية بتقنيات جديدة هي:",
+      "options_ar": [
+        "reverse engineering",
+        "business process re-engineering",
+        "software configuration management",
+        "technical feasibility"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Business Process Re-engineering (BPR) restructures fundamental operational workflows to achieve major gains in cost, quality, and speed.",
+      "explanation_ar": "إعادة هندسة عمليات الأعمال BPR تعيد تنظيم مسارات العمل الأساسية لتحقيق مكاسب كبيرة في التكلفة والجودة والسرعة.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.24",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 892,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.24; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q24",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "question": "The process of transforming a model into source code is",
+      "options": [
+        "reverse engineering",
+        "forward engineering",
+        "re-engineering",
+        "restructuring"
+      ],
+      "options_en": [
+        "reverse engineering",
+        "forward engineering",
+        "re-engineering",
+        "restructuring"
+      ],
+      "question_ar": "عملية تحويل النموذج model إلى كود مصدري source code هي:",
+      "options_ar": [
+        "reverse engineering",
+        "forward engineering",
+        "re-engineering",
+        "restructuring"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Forward engineering is the conventional development process that moves from abstract models and requirement specifications down to physical source code implementation.",
+      "explanation_ar": "الهندسة الأمامية Forward engineering هي عملية التطوير الاعتيادية التي تنتقل من النماذج المجردة ومواصفات المتطلبات إلى تنفيذ الكود المصدري.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "9.25",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "line": 895,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.25; publisher key p. 500",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch09_q25",
+      "bloom_level": "Remember"
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

@@ -175,6 +175,15 @@ def sync(args) -> int:
         print("no banks found in the vault")
         return 1
 
+    from quiz_source_gate import validate_source_collection
+    duplicate_sources = validate_source_collection(
+        [entry for entries in banks_by_subject.values() for entry in entries])
+    if duplicate_sources:
+        print("source bank problems:")
+        for problem in duplicate_sources[:10]:
+            print("  - " + problem)
+        return 2
+
     rows = []
     changed = 0
     problems = 0
@@ -189,7 +198,7 @@ def sync(args) -> int:
             old_payload = existing.get("payload") if existing else None
             merged = merge_bank(raw, old_payload)
 
-            issues = validate_bank(schema, merged, label)
+            issues = validate_bank(schema, merged, label, path=path)
             if issues:
                 problems += 1
                 print("  x %s" % label)
@@ -204,10 +213,11 @@ def sync(args) -> int:
             def fingerprint(bank):
                 if not bank:
                     return ""
-                parts = [{"topic": bank.get("topic")}]
+                parts = [{"topic": bank.get("topic"), "bank_kind": bank.get("bank_kind", "practice")}]
                 for q in bank.get("questions") or []:
-                    parts.append({"id": q.get("id"), "stem": q.get("stem"),
-                                  "options": q.get("options"), "answer": q.get("answer"),
+                    parts.append({"id": q.get("id"), "bank_kind": q.get("bank_kind", "practice"),
+                                  "stem": q.get("stem"), "options": q.get("options"),
+                                  "answer": q.get("answer"), "source": q.get("source"),
                                   "explanation": q.get("explanation")})
                 return json.dumps(parts, ensure_ascii=False, sort_keys=True)
 

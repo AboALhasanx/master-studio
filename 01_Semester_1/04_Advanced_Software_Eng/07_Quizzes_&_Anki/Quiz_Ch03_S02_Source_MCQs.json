@@ -1,0 +1,545 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch03_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ase_source_ch03_q14",
+      "bloom_level": "Remember",
+      "question": "DFD stands for",
+      "question_ar": "المصطلح DFD هو اختصار لـ:",
+      "options": [
+        "data flow design",
+        "descriptive functional design",
+        "data flow diagram",
+        "none of the above"
+      ],
+      "options_en": [
+        "data flow design",
+        "descriptive functional design",
+        "data flow diagram",
+        "none of the above"
+      ],
+      "options_ar": [
+        "Data flow design",
+        "Descriptive functional design",
+        "Data flow diagram",
+        "لا شيء مما سبق"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "DFD stands for Data Flow Diagram.",
+      "explanation_ar": "يرمز DFD إلى Data Flow Diagram (مخطط تدفق البيانات).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.14",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.14; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3301,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q2",
+      "concept_id": "ase_source_ch03_q15",
+      "bloom_level": "Understand",
+      "question": "Level-0 DFD is similar to",
+      "question_ar": "مخطط المستوى 0 مشابه لـ:",
+      "options": [
+        "use case diagram",
+        "context diagram",
+        "system diagram",
+        "none of the above"
+      ],
+      "options_en": [
+        "use case diagram",
+        "context diagram",
+        "system diagram",
+        "none of the above"
+      ],
+      "options_ar": [
+        "مخطط حالات الاستخدام",
+        "مخطط السياق",
+        "مخطط النظام",
+        "لا شيء مما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Level-0 DFD is synonymous with the Context Diagram, modeling the system as a single process surrounded by external entities.",
+      "explanation_ar": "مخطط تدفق البيانات من المستوى صفر هو نفسه مخطط السياق.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.15",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.15; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3307,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q3",
+      "concept_id": "ase_source_ch03_q16",
+      "bloom_level": "Remember",
+      "question": "ERD stands for",
+      "question_ar": "المصطلح ERD هو اختصار لـ:",
+      "options": [
+        "entity relationship diagram",
+        "exit related diagram",
+        "entity relationship design",
+        "exit related design"
+      ],
+      "options_en": [
+        "entity relationship diagram",
+        "exit related diagram",
+        "entity relationship design",
+        "exit related design"
+      ],
+      "options_ar": [
+        "Entity relationship diagram",
+        "Exit related diagram",
+        "Entity relationship design",
+        "Exit related design"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "ERD stands for Entity Relationship Diagram.",
+      "explanation_ar": "يرمز ERD إلى Entity Relationship Diagram (مخطط الكيان والعلاقة).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.16",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.16; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3313,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q4",
+      "concept_id": "ase_source_ch03_q17",
+      "bloom_level": "Understand",
+      "question": "Which is not a characteristic of a good SRS ?",
+      "question_ar": "أي مما يلي ليس من خصائص وثيقة SRS الجيدة؟",
+      "options": [
+        "correct",
+        "complete",
+        "consistent",
+        "brief"
+      ],
+      "options_en": [
+        "correct",
+        "complete",
+        "consistent",
+        "brief"
+      ],
+      "options_ar": [
+        "صحيحة",
+        "كاملة",
+        "متسقة",
+        "موجزة ومقتضبة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Standard SRS attributes (IEEE 830) require correctness, completeness, consistency, unambiguousness, etc. Brevity is not a requirement; thoroughness cannot be sacrificed for shortness.",
+      "explanation_ar": "خصائص وثيقة SRS القياسية تشمل الصحة والاكتمال والاتساق وعدم الغموض؛ أما الإيجاز فليس من معاييرها.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.17",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.17; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3319,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (d). IEEE 830 does not mandate brevity. Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q5",
+      "concept_id": "ase_source_ch03_q18",
+      "bloom_level": "Remember",
+      "question": "Outcome of requirements specification phase is",
+      "question_ar": "مخرج مرحلة توصيف المتطلبات هو:",
+      "options": [
+        "design document",
+        "software requirements specification",
+        "test document",
+        "none of the above"
+      ],
+      "options_en": [
+        "design document",
+        "software requirements specification",
+        "test document",
+        "none of the above"
+      ],
+      "options_ar": [
+        "وثيقة التصميم",
+        "مواصفات متطلبات البرمجيات",
+        "وثيقة الاختبار",
+        "لا شيء مما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The official deliverable and output of the requirements specification phase is the SRS document.",
+      "explanation_ar": "المخرج الرسمي المعتمد لمرحلة التوصيف هو وثيقة مواصفات متطلبات البرمجيات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.18",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.18; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3325,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q6",
+      "concept_id": "ase_source_ch03_q19",
+      "bloom_level": "Understand",
+      "question": "The basic concepts of ER model are:",
+      "question_ar": "المفاهيم الأساسية لنموذج الكيان والعلاقة هي:",
+      "options": [
+        "entity and relationship",
+        "relationships and keys",
+        "entity, effects and relationship",
+        "entity, relationship and attribute"
+      ],
+      "options_en": [
+        "entity and relationship",
+        "relationships and keys",
+        "entity, effects and relationship",
+        "entity, relationship and attribute"
+      ],
+      "options_ar": [
+        "الكيان والعلاقة",
+        "العلاقات والمفاتيح",
+        "الكيان والآثار والعلاقة",
+        "الكيان والعلاقة والخاصية"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The fundamental building blocks of the Entity-Relationship model are entities, relationships, and attributes.",
+      "explanation_ar": "اللبنات الجوهرية الثلاث في نموذج ER هي: الكيان، والعلاقة، والخاصية/السمة.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.19",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.19; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3331,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q7",
+      "concept_id": "ase_source_ch03_q20",
+      "bloom_level": "Understand",
+      "question": "The DFD depicts",
+      "question_ar": "يوضح مخطط تدفق البيانات:",
+      "options": [
+        "flow of data",
+        "flow of control",
+        "both (a) and (b)",
+        "none of the above"
+      ],
+      "options_en": [
+        "flow of data",
+        "flow of control",
+        "both (a) and (b)",
+        "none of the above"
+      ],
+      "options_ar": [
+        "تدفق البيانات",
+        "تدفق التحكم",
+        "كلاهما (a) و (b)",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "DFDs depict the flow and transformation of data through a system, deliberately omitting control flow, sequencing, and decision logic.",
+      "explanation_ar": "يوضح DFD مسار وتدفق البيانات وتحولاتها فقط، ولا يوضح تدفق التحكم أو المنطق الزمني.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.20",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.20; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3337,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q8",
+      "concept_id": "ase_source_ch03_q21",
+      "bloom_level": "Understand",
+      "question": "Product features are related to :",
+      "question_ar": "ترتبط ميزات المنتج بـ:",
+      "options": [
+        "functional requirements",
+        "non-functional requirements",
+        "interface requirements",
+        "none of the above"
+      ],
+      "options_en": [
+        "functional requirements",
+        "non-functional requirements",
+        "interface requirements",
+        "none of the above"
+      ],
+      "options_ar": [
+        "المتطلبات الوظيفية",
+        "المتطلبات غير الوظيفية",
+        "متطلبات الواجهة",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Product features define the functional capabilities and services the software must execute.",
+      "explanation_ar": "تعبر ميزات المنتج وخصائصه عن المتطلبات والخدمات الوظيفية التي يقدمها النظام.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.21",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.21; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3343,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q9",
+      "concept_id": "ase_source_ch03_q22",
+      "bloom_level": "Understand",
+      "question": "Which one is a quality attribute ?",
+      "question_ar": "أي مما يلي يُعد سمة من سمات الجودة؟",
+      "options": [
+        "reliability",
+        "availability",
+        "security",
+        "all of the above"
+      ],
+      "options_en": [
+        "reliability",
+        "availability",
+        "security",
+        "all of the above"
+      ],
+      "options_ar": [
+        "الموثوقية",
+        "التوافرية",
+        "الأمان",
+        "كل ما سبق"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Reliability, availability, and security are all canonical non-functional software quality attributes.",
+      "explanation_ar": "الموثوقية والتوافرية والأمان كلها سمات جودة غير وظيفية أساسية للبرمجيات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.22",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.22; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3349,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (d). Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q10",
+      "concept_id": "ase_source_ch03_q23",
+      "bloom_level": "Remember",
+      "question": "IEEE Std. for SRS is :",
+      "question_ar": "معيار IEEE القياسي لوثيقة SRS هو:",
+      "options": [
+        "837-1998",
+        "830-1998",
+        "832-1998",
+        "839-1998"
+      ],
+      "options_en": [
+        "837-1998",
+        "830-1998",
+        "832-1998",
+        "839-1998"
+      ],
+      "options_ar": [
+        "837-1998",
+        "830-1998",
+        "832-1998",
+        "839-1998"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "IEEE Std 830-1998 is the IEEE Recommended Practice for Software Requirements Specifications.",
+      "explanation_ar": "المعيار القياسي لمعهد مهندسي الكهرباء والإلكترونيات لوثائق SRS هو IEEE Std 830-1998.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.23",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.23; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3355,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b). Diamond mark in source text."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q11",
+      "concept_id": "ase_source_ch03_q24",
+      "bloom_level": "Understand",
+      "question": "Which is not a non-functional requirement ?",
+      "question_ar": "أي مما يلي ليس متطلباً غير وظيفي؟",
+      "options": [
+        "efficiency",
+        "reliability",
+        "product features",
+        "stability"
+      ],
+      "options_en": [
+        "efficiency",
+        "reliability",
+        "product features",
+        "stability"
+      ],
+      "options_ar": [
+        "الكفاءة",
+        "الموثوقية",
+        "ميزات المنتج",
+        "الاستقرار"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Product features are functional requirements; efficiency, reliability, and stability are non-functional quality attributes. In primary printed book, question is Which is not a non-functional requirement ?, making (c) the unique answer, confirmed by key p. 499. Note: Slide 132 mistakenly omitted non-, creating an ambiguity in the slide deck that led T1 to mark it No unique answer.",
+      "explanation_ar": "ميزات المنتج متطلب وظيفي، بينما الكفاءة والموثوقية والاستقرار متطلبات غير وظيفية. ورد السؤال في الكتاب المطبوع بصيغة Which is not a non-functional requirement ? والجواب الصحيح المؤكد هو (c). ورد خطأ في سلايد 132 بحذف كلمة non- مما سبب لبساً في مذكرات السلايدات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.24",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.24; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3361,
+        "note": {
+          "ar": "مفتاح الكتاب ص. 498 يعتمد (c). الكتاب المطبوع صواب، بينما سلايد 132 سقطت منه كلمة non-. أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (c). In the primary printed book (p. 136), the text is correctly printed as Which is not a non-functional requirement ?. Slide 132 mistakenly dropped non-. Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    },
+    {
+      "id": "q12",
+      "concept_id": "ase_source_ch03_q25",
+      "bloom_level": "Remember",
+      "question": "API's stands for",
+      "question_ar": "المصطلح APIs هو اختصار لـ:",
+      "options": [
+        "application performance Interfaces",
+        "application programming Interfaces",
+        "application programming integration",
+        "application performance integration"
+      ],
+      "options_en": [
+        "application performance Interfaces",
+        "application programming Interfaces",
+        "application programming integration",
+        "application performance integration"
+      ],
+      "options_ar": [
+        "Application performance Interfaces",
+        "Application programming Interfaces",
+        "Application programming integration",
+        "Application performance integration"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "APIs stands for Application Programming Interfaces.",
+      "explanation_ar": "يرمز APIs إلى Application Programming Interfaces (واجهات برمجة التطبيقات).",
+      "bank_kind": "source",
+      "source": {
+        "id": "3.25",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.25; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch03_Requirements.md",
+        "line": 3371,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). مرقم في الكتاب المطبوع ص. 137 برقم 3.25، بينما كرر السلايد 133 رقم 3.23 بالخطأ. أزيلت علامات المفتاح المضافة إلى الخيارات في التفريغ؛ فهي ليست مفتاحاً معتمداً.",
+          "en": "Textbook key confirms (b). Numbered 3.25 in printed book (p. 137). In companion slide 133, this question was mistakenly labelled as a duplicate 3.23. Transcript key marks were removed from the choices; they are not an answer key."
+        },
+        "normalizations": [
+          "remove_transcript_key_marks"
+        ]
+      }
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

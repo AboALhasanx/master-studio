@@ -10,21 +10,21 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-06T11:52:19+03:00
+> Generated at: 2026-11-13T15:17:58+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **110** |
-| Portal shell `VERSION` | **1.11.30** |
+| Live content version | **111** |
+| Portal shell `VERSION` | **1.12.0** |
 | Live manifest source | Supabase content_manifest (live) |
 
 > No git hash is recorded here on purpose: a commit would change it and make
 > `--check` report a false drift. Hashes belong in commit messages and session
 > logs, and must never be cited before they are on `origin/master`.
 
-**Totals:** vault 225 banks / 2281 questions · live 225 banks / 2281 questions · MATCH
+**Totals:** vault 246 banks / 2533 questions · live 246 banks / 2533 questions · MATCH
 
 ## By subject (vault = live)
 
@@ -33,11 +33,14 @@
 | `01_Cyber_Security` | 6 | 59 | 711 | 59 | 711 | — |
 | `02_English_Language` | 3 | 18 | 200 | 18 | 200 | — |
 | `03_Data_Mining` | 8 | 55 | 531 | 55 | 531 | — |
-| `04_Advanced_Software_Eng` | 7 | 72 | 661 | 72 | 661 | — |
+| `04_Advanced_Software_Eng` | 9 | 93 | 913 | 93 | 913 | — |
 | `05_Soft_Computing` | 5 | 17 | 158 | 17 | 158 | — |
 | `06_Artificial_Intelligence` | 2 | 4 | 20 | 4 | 20 | — |
 
 ## By subject and chapter — measured quality gates
+
+The following shape metrics and counts apply to **practice banks only**.
+Source banks are separately checked against their reviewed manifests below.
 
 `refs` = questions naming the handout (must be 0). `long/short` = correct option is the
 unique longest / shortest, EN then AR (cap 30% each). `fx` = options containing a
@@ -71,6 +74,8 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `04_Advanced_Software_Eng` | 05 | 24 | 198 | 3 | 53/43 | 23/19 | 0 | 0 | needs work |
 | `04_Advanced_Software_Eng` | 06 | 12 | 110 | 0 | 11/10 | 27/15 | 0 | 0 | clean |
 | `04_Advanced_Software_Eng` | 07 | 7 | 74 | 0 | 18/10 | 4/9 | 0 | 0 | clean |
+| `04_Advanced_Software_Eng` | 08 | 0 | 0 | 0 | 0/0 | 0/0 | 0 | 0 | not applicable |
+| `04_Advanced_Software_Eng` | 09 | 0 | 0 | 0 | 0/0 | 0/0 | 0 | 0 | not applicable |
 | `05_Soft_Computing` | 01 | 2 | 23 | 1 | 3/4 | 2/3 | 0 | 0 | needs work |
 | `05_Soft_Computing` | 02 | 1 | 10 | 0 | 1/1 | 0/2 | 0 | 0 | clean |
 | `05_Soft_Computing` | 03 | 4 | 39 | 0 | 2/3 | 1/0 | 0 | 0 | clean |
@@ -78,6 +83,23 @@ formula or backslash (must be 0). `spr` = option-length spread violations
 | `05_Soft_Computing` | 05 | 6 | 53 | 0 | 3/9 | 1/5 | 0 | 0 | clean |
 | `06_Artificial_Intelligence` | 01 | 2 | 10 | 0 | 3/0 | 1/2 | 0 | 2 | needs work |
 | `06_Artificial_Intelligence` | 02 | 2 | 10 | 0 | 2/5 | 0/0 | 0 | 5 | needs work |
+
+## Source track — local reviewed content
+
+A source item with an unresolved key remains ungraded. Shape exceptions do not waive fidelity checks.
+Local/live differences can be approved content awaiting publication; they are not permission to sync.
+
+| Subject | Ch | Source banks | Source questions | Ungraded | Manifest fidelity |
+|---|---:|---:|---:|---:|---|
+| `04_Advanced_Software_Eng` | 01 | 2 | 20 | 0 | clean |
+| `04_Advanced_Software_Eng` | 02 | 2 | 25 | 1 | clean |
+| `04_Advanced_Software_Eng` | 03 | 2 | 25 | 0 | clean |
+| `04_Advanced_Software_Eng` | 04 | 2 | 25 | 0 | clean |
+| `04_Advanced_Software_Eng` | 05 | 1 | 12 | 1 | clean |
+| `04_Advanced_Software_Eng` | 06 | 2 | 20 | 4 | clean |
+| `04_Advanced_Software_Eng` | 07 | 4 | 50 | 4 | clean |
+| `04_Advanced_Software_Eng` | 08 | 4 | 50 | 0 | clean |
+| `04_Advanced_Software_Eng` | 09 | 2 | 25 | 0 | clean |
 
 ## What remains
 

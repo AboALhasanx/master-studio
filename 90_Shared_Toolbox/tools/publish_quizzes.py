@@ -145,6 +145,10 @@ def merge_question(vault_q: dict, portal_q: dict) -> dict:
     out = dict(vault_q)
     if not portal_q:
         return out
+    if "bank_kind" in vault_q or "bank_kind" in portal_q:
+        out["bank_kind"] = vault_q.get("bank_kind", "practice")
+    if "source" in vault_q or "source" in portal_q:
+        out["source"] = vault_q.get("source")
     p = portal_flat(portal_q)
 
     # the arabic stem
@@ -182,6 +186,8 @@ def merge_bank(vault_bank: dict, portal_bank: dict) -> dict:
         return vault_bank
     by_id = {q.get("id"): q for q in portal_bank.get("questions") or []}
     merged = dict(vault_bank)
+    if "bank_kind" in vault_bank or "bank_kind" in portal_bank:
+        merged["bank_kind"] = vault_bank.get("bank_kind", "practice")
     merged["questions"] = [
         merge_question(q, by_id.get(q.get("id"))) for q in vault_bank.get("questions") or []
     ]
@@ -201,17 +207,29 @@ def merge_bank(vault_bank: dict, portal_bank: dict) -> dict:
 # --------------------------------------------------------------------------- #
 # validation
 # --------------------------------------------------------------------------- #
-def validate_bank(schema, raw: dict, label: str):
+def validate_bank(schema, raw: dict, label: str, path=None):
     problems = []
-    try:
-        ok, errs = validate_schema_v2(raw)
-        if not ok:
-            problems.extend("vault:%s" % e for e in errs)
-    except Exception as exc:
-        problems.append("vault-check-failed:%s" % exc)
+    bank_kind = raw.get("bank_kind", "practice")
+
+    if bank_kind == "source":
+        try:
+            from quiz_source_gate import validate_source_bank
+            ok, errs, warns = validate_source_bank(raw, path=Path(path) if path else None, check_publish=True)
+            if not ok:
+                problems.extend("source-gate:%s" % e for e in errs)
+        except Exception as exc:
+            problems.append("source-gate-failed:%s" % exc)
+    else:
+        try:
+            ok, errs = validate_schema_v2(raw)
+            if not ok:
+                problems.extend("vault:%s" % e for e in errs)
+        except Exception as exc:
+            problems.append("vault-check-failed:%s" % exc)
+
     try:
         v3 = schema.to_v3(raw)
-        problems.extend("v3:%s" % e for e in schema.validate_v3(v3))
+        problems.extend("v3:%s" % e for e in schema.validate_v3(v3, check_publish=True))
     except Exception as exc:
         problems.append("v3-failed:%s" % exc)
     return problems
@@ -229,6 +247,15 @@ def publish(args) -> int:
     if not banks_by_subject:
         print("no banks found in %s" % SEMESTER_DIR)
         return 1
+
+    from quiz_source_gate import validate_source_collection
+    duplicate_sources = validate_source_collection(
+        [entry for entries in banks_by_subject.values() for entry in entries])
+    if duplicate_sources:
+        print("source bank problems:")
+        for problem in duplicate_sources[:10]:
+            print("  - " + problem)
+        return 2
 
     written = []
     problems_total = []
@@ -249,13 +276,15 @@ def publish(args) -> int:
             if quiz_id in known:
                 _sid, subject_title, chapter_no, bank_path = known[quiz_id]
             else:
-                chapter_no = next_chapter
-                next_chapter += 1
+                match = re.search(r"(?:Ch|Quiz_)(\d+)", quiz_id) or re.search(r"(?:Ch|Quiz_)(\d+)", path.stem)
+                chapter_no = int(match.group(1)) if match else next_chapter
+                if match is None:
+                    next_chapter += 1
                 bank_path = "banks/%s_%s.json" % (sid, quiz_id)
 
             old = existing_bank(portal, bank_path)
             merged = merge_bank(raw, old)
-            problems = validate_bank(schema, merged, label)
+            problems = validate_bank(schema, merged, label, path=path)
             if problems:
                 problems_total.append((label, problems))
                 print("  x %s" % label)
@@ -283,10 +312,12 @@ def publish(args) -> int:
                 parts = []
                 # the topic is the title the student reads on the card, so it
                 # counts as content too
-                parts.append({"topic": bank.get("topic")})
+                parts.append({"topic": bank.get("topic"), "bank_kind": bank.get("bank_kind", "practice")})
                 for q in bank.get("questions") or []:
                     parts.append({
                         "id": q.get("id"),
+                        "bank_kind": q.get("bank_kind", "practice"),
+                        "source": q.get("source"),
                         "stem": q.get("stem"),
                         "options": q.get("options"),
                         "answer": q.get("answer"),
@@ -323,6 +354,7 @@ def publish(args) -> int:
             }
             store[quiz_id] = v3
 
+    partial = bool(problems_total)
     if problems_total:
         print("\n%d bank(s) have problems - they were left untouched." % len(problems_total))
         if not args.force:
@@ -377,6 +409,9 @@ def publish(args) -> int:
     print("\nindex version %s -> %s (%d subjects)" % (
         index.get("version"), new_index["version"], len(new_index["subjects"])))
 
+    if partial:
+        print("\nrefusing deploy/announce while some banks failed validation.")
+        return 2
     if args.deploy:
         return deploy(portal, written, new_index, announce_too=args.announce)
     if args.announce:

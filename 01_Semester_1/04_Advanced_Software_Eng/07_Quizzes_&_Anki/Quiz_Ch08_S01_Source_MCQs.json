@@ -1,0 +1,579 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch08_S01_Source_MCQs",
+  "topic": "Source MCQs — Batch 1",
+  "topic_ar": "أسئلة المصدر — الدفعة 1",
+  "questions": [
+    {
+      "id": "q1",
+      "bank_kind": "source",
+      "question": "Software testing is:",
+      "options": [
+        "the process of demonstrating that errors are not present",
+        "the process of establishing confidence that a program does what it is supposed to do",
+        "the process of executing a program to show that it is working as per specifications",
+        "the process of executing a program with the intent of finding errors"
+      ],
+      "options_en": [
+        "the process of demonstrating that errors are not present",
+        "the process of establishing confidence that a program does what it is supposed to do",
+        "the process of executing a program to show that it is working as per specifications",
+        "the process of executing a program with the intent of finding errors"
+      ],
+      "question_ar": "اختبار البرمجيات software testing هو:",
+      "options_ar": [
+        "the process of demonstrating that errors are not present",
+        "the process of establishing confidence that a program does what it is supposed to do",
+        "the process of executing a program to show that it is working as per specifications",
+        "the process of executing a program with the intent of finding errors"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Software testing is defined classically by Myers (1979) as the process of executing a program with the intent of finding errors. Testing demonstrates the presence of defects rather than their absolute absence.",
+      "explanation_ar": "والفخ الامتحاني:** تعريف مايرز الكلاسيكي (Glenford Myers, 1979): الاختبار هو عملية تنفيذ البرنامج بقصد اكتشاف الأخطاء والعيوب الكامنة، وليس إثبات خلوه التام من الأخطاء لأن الاختبار الشامل مستحيل حسابياً.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.1",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3763,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.1; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q01",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q2",
+      "bank_kind": "source",
+      "question": "Software mistakes during coding are known as:",
+      "options": [
+        "failures",
+        "defects",
+        "bugs",
+        "errors"
+      ],
+      "options_en": [
+        "failures",
+        "defects",
+        "bugs",
+        "errors"
+      ],
+      "question_ar": "أخطاء البرمجيات أثناء البرمجة coding تعرف باسم:",
+      "options_ar": [
+        "failures",
+        "defects",
+        "bugs",
+        "errors"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "When developers make mistakes while coding, these mistakes are called bugs. People make errors (a good synonym is mistake); a failure occurs only when a fault executes.",
+      "explanation_ar": "والفخ الامتحاني:** الخطأ البشري أثناء كتابة الكود يسمى «bug». لا تخلط بين الخيارين: errors هو الفعل البشري العام، أما bugs فهو الاسم الذي يطلقه المصدر على أخطاء الترميز.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.2",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3769,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.2; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED: Publisher key (C=bugs) reflects source-specific definition where coding mistakes by developers are termed 'bugs', distinct from human 'errors'."
+        }
+      },
+      "concept_id": "ase_source_ch08_q02",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q3",
+      "bank_kind": "source",
+      "question": "Functional testing is known as:",
+      "options": [
+        "structural testing",
+        "behaviour testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "options_en": [
+        "structural testing",
+        "behaviour testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "question_ar": "الاختبار الوظيفي functional testing يعرف باسم:",
+      "options_ar": [
+        "structural testing",
+        "behaviour testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Functional testing is known as behavioral testing or black-box testing. It treats the software component as a black box, deriving test inputs purely from requirements specifications without examining internal structural control flow.",
+      "explanation_ar": "والفخ الامتحاني:** الفحص الوظيفي (Functional Testing) يُعرف أيضاً بالفحص السلوكي (Behavioral Testing) أو فحص الصندوق الأسود (Black-box)؛ حيث تُبنى حالات الاختبار استناداً إلى المدخلات والمخرجات المطلوبة بالمواصفات دون النظر للكود الداخلي.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.3",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3775,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.3; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q03",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q4",
+      "bank_kind": "source",
+      "question": "For a function of n variables, boundary value analysis yields:",
+      "options": [
+        "4n + 3 test cases",
+        "4n + 1 test cases",
+        "n + 4 test cases",
+        "none of the above"
+      ],
+      "options_en": [
+        "4n + 3 test cases",
+        "4n + 1 test cases",
+        "n + 4 test cases",
+        "none of the above"
+      ],
+      "question_ar": "لدالة بعدد n من المتغيرات، تحليل القيم الحدودية boundary value analysis ينتج:",
+      "options_ar": [
+        "4n + 3 test cases",
+        "4n + 1 test cases",
+        "n + 4 test cases",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "For a function of $n$ variables, boundary value analysis (BVA) yields $4n + 1$ test cases. Under the single-fault assumption, each variable is tested at four boundary extremes ($min, min+, max-, max$) while holding other variables at nominal, plus one common baseline test case with all variables at nominal values: $4(n) + 1 = 4n + 1$.",
+      "explanation_ar": "والفخ الامتحاني:** تحليل القيم الحدية القياسي (BVA) يولد $4n+1$ حالة اختبار لعدد $n$ من المتغيرات اعتماداً على فرضية العيب المنفرد (Single-fault assumption)، حيث يُختبر كل متغير عند 4 قيم حدية وتبقى بقية المتغيرات عند قيمتها الطبيعية (Nominal)، بالإضافة لحالة اختبار مركزية واحدة.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.4",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3781,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.4; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q04",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q5",
+      "bank_kind": "source",
+      "question": "For a function of two variables, how many test cases will be generated by robustness testing ?",
+      "options": [
+        "9",
+        "13",
+        "25",
+        "42"
+      ],
+      "options_en": [
+        "9",
+        "13",
+        "25",
+        "42"
+      ],
+      "question_ar": "لدالة بمتغيرين، كم حالة اختبار ينتجها اختبار المتانة robustness testing؟",
+      "options_ar": [
+        "9",
+        "13",
+        "25",
+        "42"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "For a function of two variables ($n = 2$), robustness testing generates $6n + 1 = 6(2) + 1 = 13$ test cases. Robustness testing adds values just outside the valid boundaries ($min-$ and $max+$), testing 6 extreme points per variable plus the nominal center.",
+      "explanation_ar": "والفخ الامتحاني:** فحص المتانة (Robustness Testing) يختبر القيم الواقعة خارج الحدود مباشرة ($min-$ و $max+$) بالإضافة للحدود الأربعة، فيكون لكل متغير 6 قيم حدية بالإضافة للحالة الطبيعية ($6n+1$). لمتغيرين اثنين: $6(2)+1 = 13$ حالة اختبار.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.5",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3787,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.5; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q05",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q6",
+      "bank_kind": "source",
+      "question": "For a function of n variables robustness testing of boundary value analysis yields:",
+      "options": [
+        "4n + 1",
+        "4n + 3",
+        "6n + 1",
+        "none of the above"
+      ],
+      "options_en": [
+        "4n + 1",
+        "4n + 3",
+        "6n + 1",
+        "none of the above"
+      ],
+      "question_ar": "لدالة بعدد n من المتغيرات، اختبار المتانة لتحليل القيم الحدودية ينتج:",
+      "options_ar": [
+        "4n + 1",
+        "4n + 3",
+        "6n + 1",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "For a function of $n$ variables, robustness testing of boundary value analysis yields $6n + 1$ test cases. Each variable takes values $\\{min-, min, min+, nom, max-, max, max+\\}$, producing $6$ tests per variable held against nominal values of all other inputs, plus $1$ all-nominal test case.",
+      "explanation_ar": "والفخ الامتحاني:** قاعدة عدد حالات اختبار المتانة العامة لـ $n$ متغير هي $6n+1$، وهي امتداد لقاعدة BVA القياسية ($4n+1$) بإضافة نقطتين غير صالحتين لكل متغير لاختبار مناعة النظام ضد المدخلات غير المقبولة.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.6",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3793,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.6; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q06",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q7",
+      "bank_kind": "source",
+      "question": "Regression testing is primarily related to:",
+      "options": [
+        "functional testing",
+        "data flow testing",
+        "development testing",
+        "maintenance testing"
+      ],
+      "options_en": [
+        "functional testing",
+        "data flow testing",
+        "development testing",
+        "maintenance testing"
+      ],
+      "question_ar": "اختبار الانحدار regression testing يرتبط أساساً بـ:",
+      "options_ar": [
+        "functional testing",
+        "data flow testing",
+        "development testing",
+        "maintenance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Publisher key: regression testing is primarily related to maintenance testing, meaning re-testing after software has been changed.",
+      "explanation_ar": "والفخ الامتحاني:** اختبار الانحدار (Regression) يرتبط بمرحلة الصيانة: إعادة الفحص بعد أي تعديل. السلايدات لا تشرح هذا البند بجملة صريحة، فاحفظه كمفتاح الناشر.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.7",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3799,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.7; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q07",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q8",
+      "bank_kind": "source",
+      "question": "A node with indegree = 0 and outdegree ≠ 0 is called",
+      "options": [
+        "source node",
+        "destination node",
+        "transfer node",
+        "none of the above."
+      ],
+      "options_en": [
+        "source node",
+        "destination node",
+        "transfer node",
+        "none of the above."
+      ],
+      "question_ar": "العقدة التي indegree = 0 و outdegree ≠ 0 تسمى:",
+      "options_ar": [
+        "source node",
+        "destination node",
+        "transfer node",
+        "none of the above."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "In a control flow graph, a node with indegree $= 0$ and outdegree $\\ne 0$ is called a source node. It represents the entry point of the program or module.",
+      "explanation_ar": "والفخ الامتحاني:** في مخطط تدفق التحكم (Control Flow Graph)، العقدة التي لا يدخل إليها أي سهم ($indegree=0$) ويخرج منها مسار واحد أو أكثر ($outdegree \\ne 0$) تُسمى عقدة المصدر أو البداية (Source Node).",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.8",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3805,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.8; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "normalizations": [
+          "remove_page_header_artifact"
+        ]
+      },
+      "concept_id": "ase_source_ch08_q08",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q9",
+      "bank_kind": "source",
+      "question": "A node with indegree ≠ 0 and outdegree = 0 is called:",
+      "options": [
+        "source node",
+        "predicate node",
+        "destination node",
+        "none of the above"
+      ],
+      "options_en": [
+        "source node",
+        "predicate node",
+        "destination node",
+        "none of the above"
+      ],
+      "question_ar": "العقدة التي indegree ≠ 0 و outdegree = 0 تسمى:",
+      "options_ar": [
+        "source node",
+        "predicate node",
+        "destination node",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "In a control flow graph, a node with indegree $\\ne 0$ and outdegree $= 0$ is called a destination node (or sink node). It represents the exit point or termination of the control flow.",
+      "explanation_ar": "والفخ الامتحاني:** العقدة التي تدخل إليها مسارات ($indegree \\ne 0$) ولا يخرج منها أي مسار ($outdegree=0$) هي عقدة المقصد أو النهاية (Destination / Sink Node).",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'none of the above'",
+      "source": {
+        "id": "8.9",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3816,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.9; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q09",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q10",
+      "bank_kind": "source",
+      "question": "A decision table has",
+      "options": [
+        "four portions",
+        "three portions",
+        "five portions",
+        "two portions"
+      ],
+      "options_en": [
+        "four portions",
+        "three portions",
+        "five portions",
+        "two portions"
+      ],
+      "question_ar": "جدول القرار decision table يحتوي على:",
+      "options_ar": [
+        "four portions",
+        "three portions",
+        "five portions",
+        "two portions"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "A decision table has four distinct portions: (1) Condition Stub in the upper left, (2) Condition Entry in the upper right, (3) Action Stub in the lower left, and (4) Action Entry in the lower right.",
+      "explanation_ar": "والفخ الامتحاني:** جدول القرار (Decision Table) يتكون بنيوياً من 4 أرباع محددة: جذع الشروط (أعلى اليسار)، بنود الشروط (أعلى اليمين)، جذع الإجراءات (أسفل اليسار)، وبنود الإجراءات (أسفل اليمين).",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.10",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3822,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.10; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q10",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q11",
+      "bank_kind": "source",
+      "question": "Beta testing is carried out by",
+      "options": [
+        "users",
+        "developers",
+        "testers",
+        "all of the above"
+      ],
+      "options_en": [
+        "users",
+        "developers",
+        "testers",
+        "all of the above"
+      ],
+      "question_ar": "اختبار Beta يقوم به:",
+      "options_ar": [
+        "users",
+        "developers",
+        "testers",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "Beta testing is carried out by real end users or customers at external customer sites. It represents live operational evaluation in unconstrained, real-world user environments without active intervention from the development team.",
+      "explanation_ar": "والفخ الامتحاني:** اختبار بيتا (Beta testing) ينفذه المستخدمون الفعليون (Users/Customers) في مواقعهم وبيئات عملهم الواقعية دون رقابة مباشرة من فريق التطوير.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.11",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3828,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.11; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q11",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q12",
+      "bank_kind": "source",
+      "question": "Equivalence class partitioning is related to",
+      "options": [
+        "structural testing",
+        "blackbox testing",
+        "mutation testing",
+        "all of the above"
+      ],
+      "options_en": [
+        "structural testing",
+        "blackbox testing",
+        "mutation testing",
+        "all of the above"
+      ],
+      "question_ar": "تقسيم فئات التكافؤ equivalence class partitioning يرتبط بـ:",
+      "options_ar": [
+        "structural testing",
+        "blackbox testing",
+        "mutation testing",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Equivalence class partitioning is a black-box (functional) technique: the input domain is divided into classes from the specification, and test cases are chosen from each class without looking at the code.",
+      "explanation_ar": "والفخ الامتحاني:** تجزئة فئات التكافؤ تقنية صندوق أسود (Black-box) لأنها تُشتق من المواصفات فقط. الفخ: الخياران Structural وMutation يخصان عائلات أخرى، وليسا صحيحين.",
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (d) is 'all of the above'",
+      "source": {
+        "id": "8.12",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3834,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.12; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q12",
+      "bloom_level": "Remember"
+    },
+    {
+      "id": "q13",
+      "bank_kind": "source",
+      "question": "Cause-effect graphing technique is one form of",
+      "options": [
+        "maintenance testing",
+        "structural testing",
+        "function testing",
+        "regression testing"
+      ],
+      "options_en": [
+        "maintenance testing",
+        "structural testing",
+        "function testing",
+        "regression testing"
+      ],
+      "question_ar": "تقنية cause-effect graphing هي شكل من أشكال:",
+      "options_ar": [
+        "maintenance testing",
+        "structural testing",
+        "function testing",
+        "regression testing"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Cause-effect graphing is one form of functional (black-box) testing technique. It translates complex natural-language specifications into Boolean logical graphs relating input conditions (causes) to output responses (effects) to systematically generate decision tables.",
+      "explanation_ar": "والفخ الامتحاني:** مخطط السبب والنتيجة (Cause-Effect Graphing) هو تقنية متقدمة تابعة لفحوصات الصندوق الأسود الوظيفية (Functional Testing)، تهدف لتحويل العلاقات المنطقية بين المدخلات والمخرجات إلى جداول قرار دقيقة.",
+      "breaks_if_shuffled": false,
+      "shuffle_break_reason": null,
+      "source": {
+        "id": "8.13",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "line": 3840,
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.13; publisher key p. 499",
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        }
+      },
+      "concept_id": "ase_source_ch08_q13",
+      "bloom_level": "Remember"
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

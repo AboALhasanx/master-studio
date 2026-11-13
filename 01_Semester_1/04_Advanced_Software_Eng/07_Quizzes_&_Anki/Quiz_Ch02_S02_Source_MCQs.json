@@ -1,0 +1,509 @@
+{
+  "schema_version": 2,
+  "bank_kind": "source",
+  "subject_id": "04_Advanced_Software_Eng",
+  "subject_title": "هندسة البرمجيات",
+  "subject": "04_Advanced_Software_Eng",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "instructor_ar": "أ.م.د. علي فاهم نعمة",
+  "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+  "quiz_id": "Quiz_Ch02_S02_Source_MCQs",
+  "topic": "Source MCQs — Batch 2",
+  "topic_ar": "أسئلة المصدر — الدفعة 2",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "ase_source_ch02_q14",
+      "bloom_level": "Apply",
+      "question": "If limited user participation is available, which model is to be selected?",
+      "question_ar": "إذا كانت مشاركة المستخدمين محدودة ونادرة، فما هو النموذج الذي يمكن اختياره؟",
+      "options": [
+        "waterfall model",
+        "spiral model",
+        "iterative enhancement model",
+        "any of the above"
+      ],
+      "options_en": [
+        "waterfall model",
+        "spiral model",
+        "iterative enhancement model",
+        "any of the above"
+      ],
+      "options_ar": [
+        "نموذج الشلال",
+        "النموذج الحلزوني",
+        "نموذج التحسين التكراري",
+        "أي من النماذج المذكورة"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Models like waterfall, iterative enhancement, or spiral can proceed with minimal user involvement after the initial requirements phase, so any can be selected.",
+      "explanation_ar": "نماذج مثل الشلال أو التحسين التكراري أو الحلزوني تستطيع التقدم بعد تحديد المتطلبات الأولى حتى لو كانت مشاركة المستخدم نادرة، فيصح أي منها.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.14",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.14; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 825,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d)."
+        }
+      }
+    },
+    {
+      "id": "q2",
+      "concept_id": "ase_source_ch02_q15",
+      "bloom_level": "Apply",
+      "question": "If project is the enhancement of existing system, which model is best suited?",
+      "question_ar": "إذا كان المشروع عبارة عن ترقية وتوسيع لنظام موجود مسبقاً، فما هو النموذج الأنسب؟",
+      "options": [
+        "waterfall model",
+        "prototyping model",
+        "iterative enhancement model",
+        "spiral model"
+      ],
+      "options_en": [
+        "waterfall model",
+        "prototyping model",
+        "iterative enhancement model",
+        "spiral model"
+      ],
+      "options_ar": [
+        "نموذج الشلال",
+        "نموذج النماذج الأولية",
+        "نموذج التحسين التكراري",
+        "النموذج الحلزوني"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The iterative enhancement model is tailor-made for adding features and modifying existing systems in incremental release cycles.",
+      "explanation_ar": "نموذج التحسين التكراري مصمم خصيصاً لإضافة ميزات وترقية الأنظمة البرمجية القائمة دورة بعد أخرى.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.15",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.15; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 828,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c)."
+        }
+      }
+    },
+    {
+      "id": "q3",
+      "concept_id": "ase_source_ch02_q16",
+      "bloom_level": "Understand",
+      "question": "Which one is the most important feature of spiral model?",
+      "question_ar": "ما هي أهم ميزة جوهرية في النموذج الحلزوني؟",
+      "options": [
+        "quality management",
+        "risk management",
+        "performance management",
+        "efficiency management"
+      ],
+      "options_en": [
+        "quality management",
+        "risk management",
+        "performance management",
+        "efficiency management"
+      ],
+      "options_ar": [
+        "إدارة الجودة",
+        "إدارة المخاطر",
+        "إدارة الأداء",
+        "إدارة الكفاءة"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "Risk management is the central and distinguishing characteristic of Boehm’s spiral model.",
+      "explanation_ar": "إدارة المخاطر هي الميزة الأهم والركيزة الجوهرية للنموذج الحلزوني.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.16",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.16; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 831,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        }
+      }
+    },
+    {
+      "id": "q4",
+      "concept_id": "ase_source_ch02_q17",
+      "bloom_level": "Apply",
+      "question": "Most suitable model for new technology that is not well understood is:",
+      "question_ar": "النموذج الأنسب عند العمل بتقنية جديدة وغير مفهومة جيداً هو:",
+      "options": [
+        "waterfall model",
+        "RAD model",
+        "iterative enhancement model",
+        "evolutionary development model"
+      ],
+      "options_en": [
+        "waterfall model",
+        "RAD model",
+        "iterative enhancement model",
+        "evolutionary development model"
+      ],
+      "options_ar": [
+        "نموذج الشلال",
+        "نموذج RAD",
+        "نموذج التحسين التكراري",
+        "نموذج التطوير التطوري"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "The evolutionary development model allows exploration, progressive understanding, and gradual refinement when working with unfamiliar or emergent technologies.",
+      "explanation_ar": "نموذج التطوير التطوري يتيح التجربة والاستكشاف التدريجي عند بناء أنظمة تعتمد على تقنيات جديدة غير مألوفة.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.17",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.17; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 834,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). Evolutionary approaches accommodate high technical novelty."
+        }
+      }
+    },
+    {
+      "id": "q5",
+      "concept_id": "ase_source_ch02_q18",
+      "bloom_level": "Remember",
+      "question": "Statistically, the maximum percentage of errors belong to the following phase of SDLC",
+      "question_ar": "إحصائياً، النسبة المئوية القصوى من الأخطاء والعيوب تعود إلى أي مرحلة من مراحل SDLC؟",
+      "options": [
+        "coding",
+        "design",
+        "specifications",
+        "installation and maintenance"
+      ],
+      "options_en": [
+        "coding",
+        "design",
+        "specifications",
+        "installation and maintenance"
+      ],
+      "options_ar": [
+        "الترميز والبرمجة",
+        "التصميم",
+        "المواصفات والمتطلبات",
+        "التثبيت والصيانة"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "Empirical studies cited by Aggarwal demonstrate that 50-60% of all software defects originate during the requirements/specifications phase.",
+      "explanation_ar": "تؤكد الدراسات الإحصائية في هندسة البرمجيات أن أكثر من 50% إلى 60% من الأخطاء تقع في مرحلة تحديد المتطلبات والمواصفات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.18",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.18; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 837,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Requirements/specifications introduce the largest proportion of defects."
+        }
+      }
+    },
+    {
+      "id": "q6",
+      "concept_id": "ase_source_ch02_q19",
+      "bloom_level": "Understand",
+      "question": "Which phase is not available in software life cycle?",
+      "question_ar": "أي من المراحل التالية ليست مرحلة من مراحل دورة حياة البرمجيات؟",
+      "options": [
+        "coding",
+        "testing",
+        "maintenance",
+        "abstraction"
+      ],
+      "options_en": [
+        "coding",
+        "testing",
+        "maintenance",
+        "abstraction"
+      ],
+      "options_ar": [
+        "الترميز",
+        "الاختبار",
+        "الصيانة",
+        "التجريد"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "explanation": "Abstraction is a design and thinking principle, not a scheduled sequential phase of the software life cycle.",
+      "explanation_ar": "التجريد هو مبدأ تفكير وتصميم هندسي وليس مرحلة زمنية في دورة حياة البرمجيات.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.19",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.19; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 840,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d)."
+        }
+      }
+    },
+    {
+      "id": "q7",
+      "concept_id": "ase_source_ch02_q20",
+      "bloom_level": "Understand",
+      "question": "The development is supposed to proceed linearly through the phases in",
+      "question_ar": "يُفترض أن يسير التطوير خطياً وبشكل تسلسلي عبر المراحل في:",
+      "options": [
+        "spiral model",
+        "waterfall model",
+        "prototyping model",
+        "none of the above"
+      ],
+      "options_en": [
+        "spiral model",
+        "waterfall model",
+        "prototyping model",
+        "none of the above"
+      ],
+      "options_ar": [
+        "النموذج الحلزوني",
+        "نموذج الشلال",
+        "نموذج النماذج الأولية",
+        "لا شيء مما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The waterfall model is predicated on strictly linear, phase-by-phase progression from requirements down to maintenance.",
+      "explanation_ar": "يسير التطوير بشكل خطي ومتتابع مرحلة تلو الأخرى في نموذج الشلال.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.20",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.20; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 843,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        }
+      }
+    },
+    {
+      "id": "q8",
+      "concept_id": "ase_source_ch02_q21",
+      "bloom_level": "Remember",
+      "question": "Unified Process is maintained by",
+      "question_ar": "تتم صيانة وتطوير العملية الموحدة بواسطة:",
+      "options": [
+        "infosys",
+        "rational software corporation",
+        "SUN Microsystem",
+        "none of the above"
+      ],
+      "options_en": [
+        "infosys",
+        "rational software corporation",
+        "SUN Microsystem",
+        "none of the above"
+      ],
+      "options_ar": [
+        "شركة إنفوسيس",
+        "شركة راشونال",
+        "شركة صن ميكروسيستمز",
+        "لا شيء مما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The Unified Process (and RUP) was created and maintained by Rational Software Corporation (later acquired by IBM).",
+      "explanation_ar": "تم تطوير وصيانة العملية الموحدة بواسطة شركة Rational Software Corporation.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.21",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.21; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 846,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        }
+      }
+    },
+    {
+      "id": "q9",
+      "concept_id": "ase_source_ch02_q22",
+      "bloom_level": "Understand",
+      "question": "Unified Process is",
+      "question_ar": "العملية الموحدة هي عملية:",
+      "options": [
+        "interative",
+        "incremental",
+        "evolutionary",
+        "all of the above"
+      ],
+      "options_en": [
+        "interative",
+        "incremental",
+        "evolutionary",
+        "all of the above"
+      ],
+      "options_ar": [
+        "تكرارية",
+        "تزايدية",
+        "تطورية",
+        "كل ما سبق"
+      ],
+      "answer": null,
+      "correct": null,
+      "explanation": "The Unified Process integrates iterative, incremental, and evolutionary paradigms. Official textbook answer key p. 499 designates option (a) interative (preserving the printed typo), whereas companion slide 45 and T1 support (d) all of the above. Marked disputed per contract.",
+      "explanation_ar": "تتصف العملية الموحدة بأنها تكرارية وتزايدية وتطورية. يعتمد مفتاح الكتاب الرسمي ص. 499 الخيار (a) interative بالخطأ المطبعي، في حين تدعم شرائح الناشر ومذكرة T1 الخيار (d). مسجل كبند خلافي.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.22",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.22; publisher key p. 498",
+        "key_status": "disputed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 849,
+        "note": {
+          "ar": "مفتاح الناشر يحدد (a) interative، لكن نص Unified Process والشريحة 45 يدعمان (d) all of the above. بقي السؤال بلا درجة إلى حين حسم الاختلاف.",
+          "en": "The publisher key marks (a) iterative; the Unified Process text and slide 45 support (d) all of the above. No grade is assigned while the conflict remains."
+        }
+      }
+    },
+    {
+      "id": "q10",
+      "concept_id": "ase_source_ch02_q23",
+      "bloom_level": "Remember",
+      "question": "Who is not in the team of unified process development ?",
+      "question_ar": "من هو الشخص الذي ليس ضمن فريق تطوير العملية الموحدة؟",
+      "options": [
+        "I. Jacobson",
+        "G. Booch",
+        "B. Boehm",
+        "J. Rumbaugh"
+      ],
+      "options_en": [
+        "I. Jacobson",
+        "G. Booch",
+        "B. Boehm",
+        "J. Rumbaugh"
+      ],
+      "options_ar": [
+        "I. Jacobson",
+        "G. Booch",
+        "B. Boehm",
+        "J. Rumbaugh"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "explanation": "The Unified Process was created by the Three Amigos: Ivar Jacobson, Grady Booch, and James Rumbaugh. Barry Boehm was not part of the Rational team.",
+      "explanation_ar": "فريق تطوير العملية الموحدة هم رواد UML الثلاثة، بينما باري بوم هو مطور النموذج الحلزوني.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.23",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.23; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 852,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Boehm is the spiral model creator, not a Rational Three Amigo."
+        }
+      }
+    },
+    {
+      "id": "q11",
+      "concept_id": "ase_source_ch02_q24",
+      "bloom_level": "Remember",
+      "question": "How many phases are in the unified process ?",
+      "question_ar": "كم عدد المراحل في العملية الموحدة؟",
+      "options": [
+        "4",
+        "5",
+        "3",
+        "none of the above"
+      ],
+      "options_en": [
+        "4",
+        "5",
+        "3",
+        "none of the above"
+      ],
+      "options_ar": [
+        "4 مراحل",
+        "5 مراحل",
+        "3 مراحل",
+        "لا شيء مما سبق"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "explanation": "The Unified Process defines exactly four phases: Inception, Elaboration, Construction, and Transition.",
+      "explanation_ar": "تتألف العملية الموحدة من أربع مراحل رئيسية: البدء، والتفصيل، والإنشاء، والانتقال.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.24",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.24; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 855,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a). Four distinct phases."
+        }
+      }
+    },
+    {
+      "id": "q12",
+      "concept_id": "ase_source_ch02_q25",
+      "bloom_level": "Understand",
+      "question": "The outcome of construction phase can be treated as :",
+      "question_ar": "يمكن اعتبار المخرج الناتج عن مرحلة الإنشاء بمثابة:",
+      "options": [
+        "product release",
+        "beta release",
+        "alpha release",
+        "all of the above"
+      ],
+      "options_en": [
+        "product release",
+        "beta release",
+        "alpha release",
+        "all of the above"
+      ],
+      "options_ar": [
+        "إصدار نهائي للمنتج",
+        "إصدار تجريبي بيتا",
+        "إصدار ألفا",
+        "كل ما سبق"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "explanation": "The outcome of the Construction phase in the Unified Process is an operational product capability deployed as a beta release for testing.",
+      "explanation_ar": "المخرج النهائي لمرحلة الإنشاء هو الإصدار التجريبي بيتا الجاهز لمرحلة الانتقال والاختبار النهائي.",
+      "bank_kind": "source",
+      "source": {
+        "id": "2.25",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.25; publisher key p. 498",
+        "key_status": "confirmed",
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "line": 858,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). مخرج مرحلة الإنشاء هو Beta Release.",
+          "en": "Textbook key confirms (b). The transition phase subsequently yields the final product release."
+        }
+      }
+    }
+  ],
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

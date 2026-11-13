@@ -4,6 +4,11 @@
 
 **ملخص عربي:** هذا البروتوكول يحدد كيف تُكتب بنوك الأسئلة: الملفات في المجلد `07_Quizzes_&_Anki` بصيغة v2، والجابتر إما نموذجان (أ/ب) أو بنوك مواضيع مرقمة، والأسئلة عربية أولاً مع الإنجليزية، ومصدرها ملاحظات المادة، وتُفحص بأدوات `quiz_balancer` و`portal_content` قبل النشر.
 
+> **Approved alternate track (2026-11-13):** Source-faithful banks explicitly marked
+> `bank_kind: "source"` follow `SOURCE_QUIZ_PROTOCOL.md` for original wording,
+> order and source-specific validation. This is not an exemption for ordinary
+> practice banks; their rules and strict gates below remain unchanged.
+
 ## 1. Boot and coordinate
 
 1. Read `00_STUDIO_HUB/ACTIVE_STATE.md`, `HARNESS_REGISTRY.md`, today's `sessions/YYYY-MM-DD.md`, and this file. Sign in by name before editing (root `AGENTS.md` §8).

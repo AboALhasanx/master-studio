@@ -1,0 +1,4370 @@
+{
+  "schema_version": 1,
+  "subject_id": "04_Advanced_Software_Eng",
+  "review": "Source anchors and printed publisher key reviewed; unreviewed OCR is not claimed visually verified.",
+  "sources": {
+    "02_Raw_Materials/Aggarwal_SE_3rdEd_COMPLETE/Aggarwal_SE_3rdEd_Answers_printed498-500_OCR.pdf": "e7c4202fa3cafefa185dfd897463fff0ea8f582e761f4544d5f59436c4004223",
+    "02_Raw_Materials/New/Ch01_Introduction.md": "5cde7dec38c730abe4cc7c228cace4338d11aa9ec1745bfcb078f8e6fa293757",
+    "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md": "70d3dfc93a42480d34bb5110649a8a467a07dd9aded18ffcd427c37e2505daa6",
+    "02_Raw_Materials/New/Ch03_Requirements.md": "b63d10841852fb12cbb0f9d3f0fe3168c4ae5c688b0f9aec073f8115f1d65890",
+    "02_Raw_Materials/New/Ch04_Project_Planning.md": "a60eecdf17157ee34871adbc80298ca7e9b313d46c6e0eb08c85c09fa6f050d6",
+    "02_Raw_Materials/New/Ch05_Software_Design.md": "ac7696172e066fef68456879c62e2c70b9492b64d77bd693b21c7d73e24af789",
+    "02_Raw_Materials/New/Ch06_Software_Metrics.md": "299e3b7b8aaf9b5a5b26bccd13a756ac1a3a2a97c0a80b5bf11314806098ea60",
+    "02_Raw_Materials/New/Ch07_Software_Reliability.md": "49cf0679262b7d4b63c343431525f7d9471c257ca3a7178dc0d1cdf96abfcf38",
+    "02_Raw_Materials/New/Ch08_Software_Testing.md": "eba2104dd5023b54f11ccaf119d2c4698077f538ae2c347f7d6e86d8a5f44236",
+    "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md": "4fdd3200ce76b6855743aa504db7c7e78fd9a1c04c06f5c9552e9578e65b5885"
+  },
+  "items": {
+    "1.1": {
+      "question": "Software is",
+      "options": [
+        "superset of programs",
+        "subset of programs",
+        "set of programs",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 668,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.1; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.2": {
+      "question": "Which is NOT the part of operating procedure manuals?",
+      "options": [
+        "user manuals",
+        "operational manuals",
+        "documentation manuals",
+        "installation manuals"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 671,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.2; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.3": {
+      "question": "Which is NOT a software characteristic?",
+      "options": [
+        "software does not wear out",
+        "software is flexible",
+        "software is not manufactured",
+        "software is always correct"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 674,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.3; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.4": {
+      "question": "Product is",
+      "options": [
+        "deliverables",
+        "user expectations",
+        "organisation’s effort in development",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 677,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.4; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.5": {
+      "question": "To produce a good quality product, process should be",
+      "options": [
+        "complex",
+        "efficient",
+        "rigorous",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 680,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.5; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.6": {
+      "question": "Which is not a product metric?",
+      "options": [
+        "size",
+        "reliability",
+        "productivity",
+        "functionality"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 683,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.6; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.7": {
+      "question": "Which is not a process metric?",
+      "options": [
+        "productivity",
+        "functionality",
+        "quality",
+        "efficiency"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 691,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.7; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.8": {
+      "question": "Effort is measured in terms of:",
+      "options": [
+        "person-months",
+        "rupees",
+        "persons",
+        "months"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 694,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.8; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.9": {
+      "question": "UML stands for",
+      "options": [
+        "uniform modeling language",
+        "unified modeling language",
+        "unit modeling language",
+        "universal modeling language"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 697,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.9; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.10": {
+      "question": "An independently deliverable piece of functionality providing access to its services through interfaces is called",
+      "options": [
+        "software measurement",
+        "software composition",
+        "software measure",
+        "software component"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 700,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.10; publisher key p. 498",
+      "normalizations": [
+        "restore_ocr_unclear_from_context"
+      ]
+    },
+    "1.11": {
+      "question": "Infrastructure software are covered under",
+      "options": [
+        "generic products",
+        "customised products",
+        "generic and customised products",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 704,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.11; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.12": {
+      "question": "Management of software development is dependent on",
+      "options": [
+        "people",
+        "product",
+        "process",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 707,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.12; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.13": {
+      "question": "During software development, which factor is most crucial?",
+      "options": [
+        "people",
+        "product",
+        "process",
+        "project"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 710,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.13; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.14": {
+      "question": "Program is",
+      "options": [
+        "subset of software",
+        "super set of software",
+        "software",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 713,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.14; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.15": {
+      "question": "Milestones are used to",
+      "options": [
+        "know the cost of the project",
+        "know the status of the project",
+        "know user expectations",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 716,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.15; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.16": {
+      "question": "The term module used during design phase refers to",
+      "options": [
+        "function",
+        "procedure",
+        "sub program",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 719,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.16; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.17": {
+      "question": "Software consists of",
+      "options": [
+        "set of instructions + operating system",
+        "programs + documentation + operating procedures",
+        "programs + hardware manuals",
+        "set of programs"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 722,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.17; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.18": {
+      "question": "Software engineering approach is used to achieve:",
+      "options": [
+        "better performance of hardware",
+        "error free software",
+        "reusable software",
+        "quality software product"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 726,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.18; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.19": {
+      "question": "Concepts of software engineering are applicable to",
+      "options": [
+        "fortran language only",
+        "pascal language only",
+        "‘C’ language only",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 729,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.19; publisher key p. 498",
+      "normalizations": []
+    },
+    "1.20": {
+      "question": "CASE Tool is",
+      "options": [
+        "computer Aided Software Engineering",
+        "component Aided Software Engineering",
+        "constructive Aided Software Engineering",
+        "computer Analysis Software Engineering"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch01_Introduction.md",
+      "source_line": 737,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.20; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.1": {
+      "question": "Spiral Model was developed by",
+      "options": [
+        "Bev Littlewood",
+        "Berry Boehm",
+        "Roger Pressman",
+        "Victor Basili"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 781,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.1; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.2": {
+      "question": "Which model is most popular for student’s small projects?",
+      "options": [
+        "waterfall model",
+        "spiral model",
+        "quick and fix model",
+        "prototyping model"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 784,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.2; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.3": {
+      "question": "Which is not a software life cycle model?",
+      "options": [
+        "waterfall model",
+        "spiral model",
+        "prototyping model",
+        "capability maturity model"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 787,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.3; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.4": {
+      "question": "Project risk factor is considered in",
+      "options": [
+        "waterfall model",
+        "prototyping model",
+        "spiral model",
+        "iterative enhancement model"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 790,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.4; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.5": {
+      "question": "SDLC stands for",
+      "options": [
+        "software design life cycle",
+        "software development life cycle",
+        "system development life cycle",
+        "system design life cycle"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 793,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.5; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.6": {
+      "question": "Build and fix model has",
+      "options": [
+        "3 phases",
+        "1 phase",
+        "2 phases",
+        "4 phases"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 796,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.6; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.7": {
+      "question": "SRS Stands for",
+      "options": [
+        "software requirements specification",
+        "software requirements solutions",
+        "system requirements specification",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 799,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.7; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.8": {
+      "question": "Waterfall model is not suitable for",
+      "options": [
+        "small projects",
+        "accomodating change",
+        "complex projects",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 802,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.8; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.9": {
+      "question": "RAD stands for",
+      "options": [
+        "rapid application development",
+        "relative application development",
+        "ready application development",
+        "repeated application development"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 805,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.9; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.10": {
+      "question": "RAD model was proposed by",
+      "options": [
+        "Lucent Technologies",
+        "motorola",
+        "IBM",
+        "microsoft"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 808,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.10; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.11": {
+      "question": "If requirements are easily understandable and defined, which model is best suited?",
+      "options": [
+        "waterfall model",
+        "prototyping model",
+        "spiral model",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 811,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.11; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.12": {
+      "question": "If requirements are frequently changing, which model is to be selected",
+      "options": [
+        "waterfall",
+        "prototyping model",
+        "RAD model",
+        "iterative enhancement model"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 814,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.12; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.13": {
+      "question": "If user participation is available, which model is to be chosen?",
+      "options": [
+        "waterfall model",
+        "iterative enhancement model",
+        "spiral model",
+        "RAD model"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 817,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.13; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.14": {
+      "question": "If limited user participation is available, which model is to be selected?",
+      "options": [
+        "waterfall model",
+        "spiral model",
+        "iterative enhancement model",
+        "any of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 825,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.14; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.15": {
+      "question": "If project is the enhancement of existing system, which model is best suited?",
+      "options": [
+        "waterfall model",
+        "prototyping model",
+        "iterative enhancement model",
+        "spiral model"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 828,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.15; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.16": {
+      "question": "Which one is the most important feature of spiral model?",
+      "options": [
+        "quality management",
+        "risk management",
+        "performance management",
+        "efficiency management"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 831,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.16; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.17": {
+      "question": "Most suitable model for new technology that is not well understood is:",
+      "options": [
+        "waterfall model",
+        "RAD model",
+        "iterative enhancement model",
+        "evolutionary development model"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 834,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.17; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.18": {
+      "question": "Statistically, the maximum percentage of errors belong to the following phase of SDLC",
+      "options": [
+        "coding",
+        "design",
+        "specifications",
+        "installation and maintenance"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 837,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.18; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.19": {
+      "question": "Which phase is not available in software life cycle?",
+      "options": [
+        "coding",
+        "testing",
+        "maintenance",
+        "abstraction"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 840,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.19; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.20": {
+      "question": "The development is supposed to proceed linearly through the phases in",
+      "options": [
+        "spiral model",
+        "waterfall model",
+        "prototyping model",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 843,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.20; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.21": {
+      "question": "Unified Process is maintained by",
+      "options": [
+        "infosys",
+        "rational software corporation",
+        "SUN Microsystem",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 846,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.21; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.22": {
+      "question": "Unified Process is",
+      "options": [
+        "interative",
+        "incremental",
+        "evolutionary",
+        "all of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 849,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.22; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.23": {
+      "question": "Who is not in the team of unified process development ?",
+      "options": [
+        "I. Jacobson",
+        "G. Booch",
+        "B. Boehm",
+        "J. Rumbaugh"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 852,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.23; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.24": {
+      "question": "How many phases are in the unified process ?",
+      "options": [
+        "4",
+        "5",
+        "3",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 855,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.24; publisher key p. 498",
+      "normalizations": []
+    },
+    "2.25": {
+      "question": "The outcome of construction phase can be treated as :",
+      "options": [
+        "product release",
+        "beta release",
+        "alpha release",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+      "source_line": 858,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.25; publisher key p. 498",
+      "normalizations": []
+    },
+    "3.1": {
+      "question": "Which one is not a step of requirement engineering ?",
+      "options": [
+        "requirements elicitation",
+        "requirements analysis",
+        "requirements design ,",
+        "requirements documentation"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3217,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.1; publisher key p. 498",
+      "normalizations": []
+    },
+    "3.2": {
+      "question": "Requirements elicitation means",
+      "options": [
+        "gathering of requirements",
+        "capturing of requirements",
+        "understanding of requirements",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3223,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.2; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.3": {
+      "question": "SRS stands for",
+      "options": [
+        "software requirements specification",
+        "system requirements specification",
+        "systematic requirements specifications",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3229,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.3; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.4": {
+      "question": "SRS document is for",
+      "options": [
+        "“what” of a system ?",
+        "how to design the system ?",
+        "costing and scheduling of a system",
+        "system’s requirement"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3235,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.4; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks",
+        "restore_question_mark_from_source"
+      ]
+    },
+    "3.5": {
+      "question": "Requirements review process is carried out to",
+      "options": [
+        "spend time in requirements gathering",
+        "improve the quality of SRS",
+        "document the requirements",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3241,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.5; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.6": {
+      "question": "Which one of the statements is not correct during requirements engineering ?",
+      "options": [
+        "requirements are difficult to uncover",
+        "requirements are subject to change",
+        "requirements should be consistent",
+        "requirements are always precisely known"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3247,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.6; publisher key p. 498",
+      "normalizations": []
+    },
+    "3.7": {
+      "question": "Which one is not a type of requirements ?",
+      "options": [
+        "known requirements",
+        "unknown requirements",
+        "undreamt requirements",
+        "complex requirements"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3253,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.7; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.8": {
+      "question": "Which one is not a requirements elicitation technique",
+      "options": [
+        "interviews",
+        "the use case approach",
+        "FAST",
+        "data flow diagram"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3259,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.8; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.9": {
+      "question": "FAST stands for",
+      "options": [
+        "functional Application Specification Technique",
+        "fast Application Specification Technique",
+        "facilitated Application Specification Technique",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3265,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.9; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.10": {
+      "question": "QFD in requirement engineering stands for",
+      "options": [
+        "quality function design",
+        "quality factor design",
+        "quality function development",
+        "quality function deployment"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3271,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.10; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.11": {
+      "question": "Which is not a type of requirements under quality function deployment",
+      "options": [
+        "normal requirements",
+        "abnormal requirements",
+        "expected requirements",
+        "exciting requirements"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3283,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.11; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.12": {
+      "question": "Use case approach was developed by",
+      "options": [
+        "I. Jacobson and others",
+        "J.D. Musa and others",
+        "B. Littlewood",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3289,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.12; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.13": {
+      "question": "Context diagram explains",
+      "options": [
+        "the overview of the system",
+        "the internal view of the system",
+        "the entities of the system",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3295,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.13; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.14": {
+      "question": "DFD stands for",
+      "options": [
+        "data flow design",
+        "descriptive functional design",
+        "data flow diagram",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3301,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.14; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.15": {
+      "question": "Level-0 DFD is similar to",
+      "options": [
+        "use case diagram",
+        "context diagram",
+        "system diagram",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3307,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.15; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.16": {
+      "question": "ERD stands for",
+      "options": [
+        "entity relationship diagram",
+        "exit related diagram",
+        "entity relationship design",
+        "exit related design"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3313,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.16; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.17": {
+      "question": "Which is not a characteristic of a good SRS ?",
+      "options": [
+        "correct",
+        "complete",
+        "consistent",
+        "brief"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3319,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.17; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.18": {
+      "question": "Outcome of requirements specification phase is",
+      "options": [
+        "design document",
+        "software requirements specification",
+        "test document",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3325,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.18; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.19": {
+      "question": "The basic concepts of ER model are:",
+      "options": [
+        "entity and relationship",
+        "relationships and keys",
+        "entity, effects and relationship",
+        "entity, relationship and attribute"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3331,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.19; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.20": {
+      "question": "The DFD depicts",
+      "options": [
+        "flow of data",
+        "flow of control",
+        "both (a) and (b)",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3337,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.20; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.21": {
+      "question": "Product features are related to :",
+      "options": [
+        "functional requirements",
+        "non-functional requirements",
+        "interface requirements",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3343,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.21; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.22": {
+      "question": "Which one is a quality attribute ?",
+      "options": [
+        "reliability",
+        "availability",
+        "security",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3349,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.22; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.23": {
+      "question": "IEEE Std. for SRS is :",
+      "options": [
+        "837-1998",
+        "830-1998",
+        "832-1998",
+        "839-1998"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3355,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.23; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.24": {
+      "question": "Which is not a non-functional requirement ?",
+      "options": [
+        "efficiency",
+        "reliability",
+        "product features",
+        "stability"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3361,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.24; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "3.25": {
+      "question": "API's stands for",
+      "options": [
+        "application performance Interfaces",
+        "application programming Interfaces",
+        "application programming integration",
+        "application performance integration"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch03_Requirements.md",
+      "source_line": 3371,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 3.25; publisher key p. 498",
+      "normalizations": [
+        "remove_transcript_key_marks"
+      ]
+    },
+    "4.1": {
+      "question": "After the finalisation of SRS, we may like to estimate",
+      "options": [
+        "size",
+        "cost",
+        "development time",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4304,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.1; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.2": {
+      "question": "Which one is not a size measure for software",
+      "options": [
+        "LOC",
+        "function Count",
+        "cyclomatic Complexity",
+        "halstead's program length"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4308,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.2; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.3": {
+      "question": "Function count method was developed by",
+      "options": [
+        "B. Beizer",
+        "B. Bochm",
+        "M. Halstead",
+        "Alan Albrecht"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4318,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.3; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.4": {
+      "question": "Function point analysis (FPA) method decomposes the system into functional units. The total number of functional units are",
+      "options": [
+        "2",
+        "5",
+        "4",
+        "1"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4322,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.4; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.5": {
+      "question": "IFPUG Stand for",
+      "options": [
+        "initial function point uniform group",
+        "international function point uniform group",
+        "international function point user group",
+        "initial function point user group"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4326,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.5; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.6": {
+      "question": "Function point can be calculated by",
+      "options": [
+        "UFP * CAF",
+        "UFP * FAC",
+        "UFP * Cost",
+        "UFP * Productivity"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4330,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.6; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.7": {
+      "question": "Putnam resource allocation model is based on",
+      "options": [
+        "function points",
+        "Norden/Rayleigh curve",
+        "Putnam theory of software management",
+        "Boehm's observations on manpower utilisation rate"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4334,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.7; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.8": {
+      "question": "Manpower buildup for Putnam resource allocation model is",
+      "options": [
+        "K/t_d^2 persons/year^2",
+        "K/t_d^3 persons/year^2",
+        "K/t_d^2 persons/year",
+        "K/t_d^3 persons/year"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4340,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.8; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.9": {
+      "question": "COCOMO was developed initially by",
+      "options": [
+        "B.W. Bohem",
+        "Gregg Rothermal",
+        "B. Beizer",
+        "Rajeev Gupta"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4344,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.9; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.10": {
+      "question": "A COCOMO model is",
+      "options": [
+        "common cost estimation model",
+        "constructive cost estimation model",
+        "complete cost estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4348,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.10; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.11": {
+      "question": "Estimation of software development effort for organic software in COCOMO is",
+      "options": [
+        "E = 2.4(KLOC)^1.05 PM",
+        "E = 3.4(KLOC)^1.06 PM",
+        "E = 2.0(KLOC)^1.05 PM",
+        "E = 2.4(KLOC)^1.07 PM"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4352,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.11; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.12": {
+      "question": "Estimation of size for a project is dependent on",
+      "options": [
+        "cost",
+        "schedule",
+        "time",
+        "none of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4356,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.12; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.13": {
+      "question": "In function point analysis, number of complexity adjustment factors are",
+      "options": [
+        "10",
+        "20",
+        "14",
+        "12"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4360,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.13; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.14": {
+      "question": "COCOMO-II estimation model is based on",
+      "options": [
+        "complex approach",
+        "algorithmic approach",
+        "bottom up approach",
+        "top down approach"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4364,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.14; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.15": {
+      "question": "Cost estimation for a project may include",
+      "options": [
+        "software cost",
+        "hardware cost",
+        "personnel costs",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4368,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.15; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.16": {
+      "question": "In COCOMO model, if project size is typically 2 - 50 KLOC, then which mode is to be selected?",
+      "options": [
+        "organic",
+        "semidetached",
+        "embedded",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4376,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.16; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.17": {
+      "question": "COCOMO-II was developed at",
+      "options": [
+        "university of Maryland",
+        "university of Southern California",
+        "IBM",
+        "AT & T Bell labs"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4380,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.17; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.18": {
+      "question": "Which one is not a Category of COCOMO-II?",
+      "options": [
+        "end user programming",
+        "infrastructure sector",
+        "requirement sector",
+        "system Integration"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4384,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.18; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.19": {
+      "question": "Which one is not an infrastructure software?",
+      "options": [
+        "operating system",
+        "database management system",
+        "compilers",
+        "result management system"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4388,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.19; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.20": {
+      "question": "How many stages are in COCOMO-II?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4392,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.20; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.21": {
+      "question": "Which one is not a stage of COCOMO-II?",
+      "options": [
+        "application composition estimation model",
+        "early design estimation model",
+        "post architecture estimation model",
+        "comprehensive cost estimation model"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4396,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.21; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.22": {
+      "question": "In Putnam resource allocation model, Rayleigh curve is modeled by the equation",
+      "options": [
+        "m(t) = 2at e^-at^2",
+        "m(t) = 2Kt e^-at^2",
+        "m(t) = 2Kat e^-at^2",
+        "m(t) = 2Kbt e^-at^2"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4402,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.22; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.23": {
+      "question": "In Putnam resource allocation model, technology factor 'C' is defined as",
+      "options": [
+        "C = SK^-1/3t_d^-4/3",
+        "C = SK^1/3t_d^4/3",
+        "C = SK^1/3t_d^-4/3",
+        "C = SK^-1/3t_d^4/3"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4406,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.23; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.24": {
+      "question": "Risk management activities are divided in",
+      "options": [
+        "3 categories",
+        "2 categories",
+        "5 categories",
+        "10 categories"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4410,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.24; publisher key p. 498",
+      "normalizations": []
+    },
+    "4.25": {
+      "question": "Which one is not a risk management activity?",
+      "options": [
+        "risk assessment",
+        "risk control",
+        "risk generation",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch04_Project_Planning.md",
+      "source_line": 4414,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 4.25; publisher key p. 498",
+      "normalizations": []
+    },
+    "5.1": {
+      "question": "The most desirable form of coupling is",
+      "options": [
+        "control coupling",
+        "data coupling",
+        "common coupling",
+        "content coupling"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1238,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.1; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.2": {
+      "question": "The worst type of coupling is",
+      "options": [
+        "content coupling",
+        "common coupling",
+        "external coupling",
+        "data coupling"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1242,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.2; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.3": {
+      "question": "The most desirable form of cohesion is",
+      "options": [
+        "logical cohesion",
+        "procedural cohesion",
+        "functional cohesion",
+        "temporal cohesion"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1246,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.3; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.4": {
+      "question": "The worst type of cohesion is",
+      "options": [
+        "temporal cohesion",
+        "coincidental cohesion",
+        "logical cohesion",
+        "sequential cohesion"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1250,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.4; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.5": {
+      "question": "Which one is not a strategy for design ?",
+      "options": [
+        "bottom up design",
+        "top down design",
+        "embedded design",
+        "hybrid design"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1254,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.5; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.6": {
+      "question": "Temporal cohesion means",
+      "options": [
+        "cohesion between temporary variables",
+        "cohesion between local variables",
+        "cohesion with respect to time",
+        "coincidental cohesion"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1258,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.6; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.7": {
+      "question": "Functional cohesion means",
+      "options": [
+        "operations are part of single functional task and are placed in same procedures",
+        "operations are part of single functional task and are placed in multiple procedures",
+        "operations are part of multiple tasks",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1262,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.7; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.8": {
+      "question": "When two modules refer to the same global data area , they are related as",
+      "options": [
+        "external coupled",
+        "data coupled",
+        "content coupled",
+        "common coupled"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1268,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.8; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.9": {
+      "question": "The module in which instructions are related through flow of control is",
+      "options": [
+        "temporal cohesion",
+        "logical cohesion",
+        "procedural cohesion",
+        "functional cohesion"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1272,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.9; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.10": {
+      "question": "The relationship of data elements in a module is called",
+      "options": [
+        "coupling",
+        "cohesion",
+        "modularity",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1280,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.10; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.11": {
+      "question": "A system that does not interact with external environment is called",
+      "options": [
+        "closed system",
+        "logical system",
+        "open system",
+        "hierarichal system"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1284,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.11; publisher key p. 499",
+      "normalizations": []
+    },
+    "5.12": {
+      "question": "The extent to which different modules are dependent upon each other is called",
+      "options": [
+        "coupling",
+        "cohesion",
+        "modularity",
+        "stability"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+      "source_line": 1288,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.12; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.1": {
+      "question": "Which one is not a category of software metrics ?",
+      "options": [
+        "product metrics",
+        "process metrics",
+        "project metrics",
+        "people metrics"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1870,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.1; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.2": {
+      "question": "Software science measures are developed by",
+      "options": [
+        "M. Halstead",
+        "B. Littlewood",
+        "T.J. McCabe",
+        "G. Rothermal"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1873,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.2; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.3": {
+      "question": "Vocabulary of a program is defined as:",
+      "options": [
+        "$\\eta = \\eta_1 + \\eta_2$",
+        "$\\eta = \\eta_1 - \\eta_2$",
+        "$\\eta = \\eta_1 \\times \\eta_2$",
+        "$\\eta = \\eta_1 / \\eta_2$"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1876,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.3; publisher key p. 499",
+      "normalizations": [
+        "formula_ocr_cleaned_from_T1"
+      ]
+    },
+    "6.4": {
+      "question": "In Halstead theory of software science, volume is measured in bits. The bits are",
+      "options": [
+        "number of bits required to store the program",
+        "actual size of a program if a uniform binary encoding scheme for vocabulary is used",
+        "number of bits required to execute the program",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1879,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.4; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.5": {
+      "question": "In Halstead theory, effort is measured in",
+      "options": [
+        "parson-months",
+        "hours",
+        "elementary mental discriminations",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1884,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.5; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.6": {
+      "question": "Language level is defined as:",
+      "options": [
+        "$\\lambda = L^3 V$",
+        "$\\lambda = LV$",
+        "$\\lambda = L V^*$",
+        "$\\lambda = L^2 V$"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1894,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.6; publisher key p. 499",
+      "normalizations": [
+        "formula_ocr_cleaned_from_T1"
+      ]
+    },
+    "6.7": {
+      "question": "Program weakness is:",
+      "options": [
+        "$WM = \\overline{LV} \\times \\gamma$",
+        "$WM = \\overline{LV} / \\gamma$",
+        "$WM = \\overline{LV} + \\gamma$",
+        "None of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1897,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.7; publisher key p. 499",
+      "normalizations": [
+        "formula_ocr_cleaned_from_T1"
+      ]
+    },
+    "6.8": {
+      "question": "‘FAN IN’ of a component A is defined as",
+      "options": [
+        "count of the number of components that can call, or pass control, to component A",
+        "number of components related to component A",
+        "number of components dependent on component A",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1900,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.8; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.9": {
+      "question": "‘FAN OUT’ of a component A is defined as",
+      "options": [
+        "number of components related to component A",
+        "number of components dependent on component A",
+        "number of components that are called by component A",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1905,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.9; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.10": {
+      "question": "Which is not a size metric?",
+      "options": [
+        "LOC",
+        "function count",
+        "program length",
+        "cyclomatic complexity"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1910,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.10; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.11": {
+      "question": "Which one is not a measure of software science theory?",
+      "options": [
+        "vocabulary",
+        "volume",
+        "level",
+        "logic"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1913,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.11; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.12": {
+      "question": "A human mind is capable of making how many number of elementary mental descriminations per second (*i.e.*, stroud number)?",
+      "options": [
+        "5–20",
+        "20–40",
+        "1–10",
+        "40–80"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1916,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.12; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.13": {
+      "question": "Minimal implementation of any algorithm was given the following name by Halstead:",
+      "options": [
+        "volume",
+        "potential volume",
+        "effective volume",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1919,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.13; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.14": {
+      "question": "Program volume of a software product is:",
+      "options": [
+        "$V = N \\log_2 \\eta$",
+        "$V = (N/2) \\log_2 \\eta$",
+        "$V = 2N \\log_2 \\eta$",
+        "$V = N \\log_2 \\eta + 1$"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1922,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.14; publisher key p. 499",
+      "normalizations": [
+        "formula_ocr_cleaned_from_T1"
+      ]
+    },
+    "6.15": {
+      "question": "Which one is the international standard for size measure?",
+      "options": [
+        "LOC",
+        "function count",
+        "program length",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1925,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.15; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.16": {
+      "question": "Which one in not on object oriented metric ?",
+      "options": [
+        "RFC",
+        "CBO",
+        "DAC",
+        "OBC"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1928,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.16; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.17": {
+      "question": "Which metric also considers indirect connected methods ?",
+      "options": [
+        "TCC",
+        "LCC",
+        "both of the above",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1931,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.17; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.18": {
+      "question": "Depth of inheritance tree (DIT) can be measured by:",
+      "options": [
+        "number of ancestor classes",
+        "number of successor classes",
+        "number of failure classes",
+        "number of root classes"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1943,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.18; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.19": {
+      "question": "A dynamic page is:",
+      "options": [
+        "where contants are not dependent on the actions of the user",
+        "where contents are dependent on the actions of the user",
+        "where contents cannot be displayed",
+        "none of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1946,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.19; publisher key p. 499",
+      "normalizations": []
+    },
+    "6.20": {
+      "question": "Which one is not a size measure ?",
+      "options": [
+        "LOC",
+        "FP",
+        "cyclomatic complexity",
+        "program length"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+      "source_line": 1951,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.20; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.1": {
+      "question": "Which one is not a phase of \"bath tub curve\" of hardware reliability",
+      "options": [
+        "burn-in",
+        "useful life",
+        "wear-out",
+        "test-out"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1856,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.1; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.2": {
+      "question": "Software reliability is",
+      "options": [
+        "the probability of failure free operation of a program for a specified time in a specified envi- ronment",
+        "the probability of failure of a program for a specified time in a specified environment",
+        "the probability of success of a program for a specified time in any environment",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1861,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.2; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.3": {
+      "question": "Fault is",
+      "options": [
+        "defect in the program",
+        "mistake in the program",
+        "error in the program",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1867,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.3; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.4": {
+      "question": "One fault may lead to",
+      "options": [
+        "one failure",
+        "two failures",
+        "many failures",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1872,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.4; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.5": {
+      "question": "Which 'time' unit is not used in reliability studies",
+      "options": [
+        "execution time",
+        "machine time",
+        "clock time",
+        "calendar time"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1877,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.5; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.6": {
+      "question": "Failure occurrences can be represented as",
+      "options": [
+        "time to failure",
+        "time interval between failures",
+        "failures experienced in a time interval",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1882,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.6; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.7": {
+      "question": "Maximum possible value of reliability is",
+      "options": [
+        "100",
+        "10",
+        "1",
+        "0"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1887,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.7; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.8": {
+      "question": "Minimum possible value of reliability is",
+      "options": [
+        "100",
+        "10",
+        "1",
+        "0"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1892,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.8; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.9": {
+      "question": "As the reliability increases, failure intensity",
+      "options": [
+        "decreases",
+        "increases",
+        "no effect",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1897,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.9; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.10": {
+      "question": "If failure intensity is 0.005 failures/hour during 10 hours of operation of a software, its reliability can be expressed as",
+      "options": [
+        "0.90",
+        "0.92",
+        "0.95",
+        "0.98"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1902,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.10; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.11": {
+      "question": "Software Quality is",
+      "options": [
+        "conformance to requirements",
+        "fitness for the purpose",
+        "level of satisfaction",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1908,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.11; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.12": {
+      "question": "Defect rate is",
+      "options": [
+        "number of defects per million lines of source code",
+        "number of defects per function point",
+        "number of defects per unit of size of software",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1913,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.12; publisher key p. 499",
+      "normalizations": [
+        "remove_page_header_artifact"
+      ]
+    },
+    "7.13": {
+      "question": "How many product quality factors have been proposed in McCall quality model ?",
+      "options": [
+        "2",
+        "3",
+        "11",
+        "6"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1924,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.13; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.14": {
+      "question": "Which one is not a product quality factor of McCall quality model ?",
+      "options": [
+        "product revision",
+        "product operation",
+        "product specification",
+        "product transition"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1929,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.14; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.15": {
+      "question": "The second level of quality attributes in McCall quality model are termed as",
+      "options": [
+        "quality criteria",
+        "quality factors",
+        "quality guidelines",
+        "quality specifications"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1934,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.15; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.16": {
+      "question": "Which one is not a level in Boehm software quality model ?",
+      "options": [
+        "primary uses",
+        "intermediate constructs",
+        "primitive constructs",
+        "final constructs"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1939,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.16; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.17": {
+      "question": "Which one is not a software quality model ?",
+      "options": [
+        "McCall model",
+        "Boehm model",
+        "ISO-9000",
+        "ISO-9126"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1944,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.17; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.18": {
+      "question": "Basic execution time model was developed by",
+      "options": [
+        "Bev. Littlewood",
+        "J.D. Musa",
+        "R. Pressman",
+        "Victor Basili"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1949,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.18; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.19": {
+      "question": "NHPP stands for",
+      "options": [
+        "non homogeneous poisson process",
+        "non hetrogeneous poisson process",
+        "non homogeneous poisson product",
+        "non hetrogeneous poisson product"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1954,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.19; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.20": {
+      "question": "In basic execution time model, failure intensity is given by",
+      "options": [
+        "λ(μ) = λ₀ (1 - μ²/V₀)",
+        "λ(μ) = λ₀ (1 - μ/V₀)",
+        "λ(μ) = λ₀ (1 - V₀/μ)",
+        "λ(μ) = λ₀ (1 - V₀/μ²)"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1959,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.20; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.21": {
+      "question": "In basic execution time model, additional number of failures required to achieve a failure intensity objective (Δμ) is expressed as",
+      "options": [
+        "Δμ = V₀/λ₀ (λₚ - λ_F)",
+        "Δμ = V₀/λ₀ (λ_F - λₚ)",
+        "Δμ = λ₀/V₀ (λ_F - λₚ)",
+        "Δμ = λ₀/V₀ (λₚ - λ_F)"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1964,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.21; publisher key p. 499",
+      "normalizations": [
+        "join_ocr_linebreak_hyphen"
+      ]
+    },
+    "7.22": {
+      "question": "In basic execution time model, additional time required to achieve a failure intensity objective (Δτ) is given as",
+      "options": [
+        "Δτ = λ₀/V₀ Ln (λ_F/λₚ)",
+        "Δτ = λ₀/V₀ Ln (λₚ/λ_F)",
+        "Δτ = V₀/λ₀ Ln (λ_F/λₚ)",
+        "Δτ = V₀/λ₀ Ln (λₚ/λ_F)"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1970,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.22; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.23": {
+      "question": "Failure intensity function of Logarithmic Poisson execution model is given as",
+      "options": [
+        "λ(μ) = λ₀ Ln (-θμ)",
+        "λ(μ) = λ₀ exp (θμ)",
+        "λ(μ) = λ₀ exp (-θμ)",
+        "λ(μ) = λ₀ log (-θμ)"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1982,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.23; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.24": {
+      "question": "In Logarithmic Poisson execution model, 'θ' is known as",
+      "options": [
+        "failure intensity function parameter",
+        "failure intensity decay parameter",
+        "failure intensity measurement",
+        "failure intensity increment parameter"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1987,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.24; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.25": {
+      "question": "In Jelinski-Moranda model, failure intensity is defined as",
+      "options": [
+        "λ(t) = φ(N - i + 1)",
+        "λ(t) = φ(N + i + 1)",
+        "λ(t) = φ(N + i - 1)",
+        "λ(t) = φ(N - i - 1)"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1992,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.25; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.26": {
+      "question": "CMM level 1 has",
+      "options": [
+        "6 KPAs",
+        "2 KPAs",
+        "0 KPAs",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 1997,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.26; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.27": {
+      "question": "MTBF stands for",
+      "options": [
+        "mean time between failures",
+        "maximum time between failures",
+        "minimum time between failures",
+        "many time between failures"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2002,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.27; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.28": {
+      "question": "CMM model is a technique to",
+      "options": [
+        "improve the software process",
+        "automatically develop the software",
+        "test the software",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2007,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.28; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.29": {
+      "question": "Total number of maturing levels in CMM are",
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2012,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.29; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.30": {
+      "question": "Reliability of a software is dependent on number of errors",
+      "options": [
+        "removed",
+        "remaining",
+        "both",
+        "and"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2017,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.30; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.31": {
+      "question": "Reliability of software is usually estimated at",
+      "options": [
+        "analysis phase",
+        "design phase",
+        "coding phase",
+        "testing phase"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2022,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.31; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.32": {
+      "question": "CMM stands for",
+      "options": [
+        "capacity maturity model",
+        "capability maturity model",
+        "cost management model",
+        "comprehensive maintenance model"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2027,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.32; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.33": {
+      "question": "Which level of CMM is for basic project management ?",
+      "options": [
+        "initial",
+        "repeatable",
+        "defined",
+        "managed"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2032,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.33; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.34": {
+      "question": "Which level of CMM is for process control ?",
+      "options": [
+        "initial",
+        "repeatable",
+        "defined",
+        "optimizing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2037,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.34; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.35": {
+      "question": "Which level of CMM is for process management ?",
+      "options": [
+        "initial",
+        "defined",
+        "managed",
+        "optimizing"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2042,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.35; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.36": {
+      "question": "CMM was developed at",
+      "options": [
+        "Harvard University",
+        "Cambridge University",
+        "Carnegie Mellon University",
+        "Maryland University."
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2047,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.36; publisher key p. 499",
+      "normalizations": [
+        "remove_page_header_artifact"
+      ]
+    },
+    "7.37": {
+      "question": "McCall has developed a",
+      "options": [
+        "quality model",
+        "process improvement model",
+        "requirement model",
+        "design model"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2058,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.37; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.38": {
+      "question": "The model to measure the software process improvement is called",
+      "options": [
+        "ISO-9000",
+        "ISO-9126",
+        "CMM",
+        "spiral model"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2063,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.38; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.39": {
+      "question": "The number of clauses used in ISO-9001 are",
+      "options": [
+        "15",
+        "25",
+        "20",
+        "10"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2068,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.39; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.40": {
+      "question": "ISO-9126 contains definitions of",
+      "options": [
+        "quality characteristics",
+        "quality factors",
+        "quality attributes",
+        "all of the above"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2073,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.40; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.41": {
+      "question": "In ISO-9126, each characteristic is related to",
+      "options": [
+        "one attribute",
+        "two attributes",
+        "three attributes",
+        "four attributes"
+      ],
+      "answer": null,
+      "correct": null,
+      "key_status": "disputed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2078,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.41; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.42": {
+      "question": "In McCall quality model; product revision quality factor consist of",
+      "options": [
+        "maintainability",
+        "flexibility",
+        "testability",
+        "none of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2083,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.42; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.43": {
+      "question": "Which is not a software reliability model ?",
+      "options": [
+        "the Jelinski-Moranda Model",
+        "basic execution time model",
+        "spiral model",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2088,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.43; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.44": {
+      "question": "Each maturity model in CMM has",
+      "options": [
+        "one KPA",
+        "equal KPAs",
+        "several KPAs",
+        "no KPA"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2093,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.44; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.45": {
+      "question": "KPA in CMM stands for",
+      "options": [
+        "key Process Area",
+        "key Product Area",
+        "key Principal Area",
+        "key Performance Area"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2098,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.45; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.46": {
+      "question": "In reliability models, our emphasis is on",
+      "options": [
+        "errors",
+        "faults",
+        "failures",
+        "bugs"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2103,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.46; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.47": {
+      "question": "Software does not break or wearout like hardware. What is your opinion ?",
+      "options": [
+        "true",
+        "false",
+        "cannot say",
+        "not fixed"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2108,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.47; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.48": {
+      "question": "Software reliability is defined with respect to",
+      "options": [
+        "time",
+        "speed",
+        "quality",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2113,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.48; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.49": {
+      "question": "MTTF stands for",
+      "options": [
+        "mean time to failure",
+        "maximum time to failure",
+        "minimum time to failure",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2118,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.49; publisher key p. 499",
+      "normalizations": []
+    },
+    "7.50": {
+      "question": "ISO-9000 is a series of standards for quality management systems and has",
+      "options": [
+        "2 related standards",
+        "5 related standards",
+        "10 related standards",
+        "25 related standards"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+      "source_line": 2123,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.50; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.1": {
+      "question": "Software testing is:",
+      "options": [
+        "the process of demonstrating that errors are not present",
+        "the process of establishing confidence that a program does what it is supposed to do",
+        "the process of executing a program to show that it is working as per specifications",
+        "the process of executing a program with the intent of finding errors"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3763,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.1; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.2": {
+      "question": "Software mistakes during coding are known as:",
+      "options": [
+        "failures",
+        "defects",
+        "bugs",
+        "errors"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3769,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.2; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.3": {
+      "question": "Functional testing is known as:",
+      "options": [
+        "structural testing",
+        "behaviour testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3775,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.3; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.4": {
+      "question": "For a function of n variables, boundary value analysis yields:",
+      "options": [
+        "4n + 3 test cases",
+        "4n + 1 test cases",
+        "n + 4 test cases",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3781,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.4; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.5": {
+      "question": "For a function of two variables, how many test cases will be generated by robustness testing ?",
+      "options": [
+        "9",
+        "13",
+        "25",
+        "42"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3787,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.5; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.6": {
+      "question": "For a function of n variables robustness testing of boundary value analysis yields:",
+      "options": [
+        "4n + 1",
+        "4n + 3",
+        "6n + 1",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3793,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.6; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.7": {
+      "question": "Regression testing is primarily related to:",
+      "options": [
+        "functional testing",
+        "data flow testing",
+        "development testing",
+        "maintenance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3799,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.7; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.8": {
+      "question": "A node with indegree = 0 and outdegree ≠ 0 is called",
+      "options": [
+        "source node",
+        "destination node",
+        "transfer node",
+        "none of the above."
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3805,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.8; publisher key p. 499",
+      "normalizations": [
+        "remove_page_header_artifact"
+      ]
+    },
+    "8.9": {
+      "question": "A node with indegree ≠ 0 and outdegree = 0 is called:",
+      "options": [
+        "source node",
+        "predicate node",
+        "destination node",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3816,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.9; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.10": {
+      "question": "A decision table has",
+      "options": [
+        "four portions",
+        "three portions",
+        "five portions",
+        "two portions"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3822,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.10; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.11": {
+      "question": "Beta testing is carried out by",
+      "options": [
+        "users",
+        "developers",
+        "testers",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3828,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.11; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.12": {
+      "question": "Equivalence class partitioning is related to",
+      "options": [
+        "structural testing",
+        "blackbox testing",
+        "mutation testing",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3834,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.12; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.13": {
+      "question": "Cause-effect graphing technique is one form of",
+      "options": [
+        "maintenance testing",
+        "structural testing",
+        "function testing",
+        "regression testing"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3840,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.13; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.14": {
+      "question": "During validation:",
+      "options": [
+        "process is checked",
+        "product is checked",
+        "developer’s performance is evaluated",
+        "the customer checks the product"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3846,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.14; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.15": {
+      "question": "Verification is",
+      "options": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specifications",
+        "checking the product with respect to the constraints of the project",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3852,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.15; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.16": {
+      "question": "Validation is",
+      "options": [
+        "checking the product with respect to customer’s expectations",
+        "checking the product with respect to specification",
+        "checking the product with respect to constraints of the project",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3858,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.16; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.17": {
+      "question": "Alpha testing is done by",
+      "options": [
+        "customer",
+        "tester",
+        "developer",
+        "all of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3864,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.17; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.18": {
+      "question": "Site for Alpha testing is",
+      "options": [
+        "software company",
+        "installation place",
+        "any where",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3870,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.18; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.19": {
+      "question": "Site of Beta testing is",
+      "options": [
+        "software company",
+        "user’s site",
+        "any where",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3876,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.19; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.20": {
+      "question": "Acceptance testing is done by",
+      "options": [
+        "developers",
+        "customers",
+        "testers",
+        "all of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3882,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.20; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.21": {
+      "question": "One fault may lead to",
+      "options": [
+        "one failure",
+        "no failure",
+        "many failures",
+        "all of the above. ### Batch 012: printed pages 453–458"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3888,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.21; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.22": {
+      "question": "Test suite is",
+      "options": [
+        "set of test cases",
+        "set of inputs",
+        "set of outputs",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3901,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.22; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.23": {
+      "question": "Behavioural specifications are required for:",
+      "options": [
+        "modelling",
+        "verification",
+        "validation",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3907,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.23; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.24": {
+      "question": "During the development phase, the following testing approach is not adopted",
+      "options": [
+        "unit testing",
+        "bottom up testing",
+        "integration testing",
+        "acceptance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3913,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.24; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.25": {
+      "question": "Which is not a functional testing technique?",
+      "options": [
+        "boundary value analysis",
+        "decision table",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3919,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.25; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.26": {
+      "question": "Decision tables are useful for describing situations in which:",
+      "options": [
+        "an action is taken under varying sets of conditions",
+        "number of combinations of actions are taken under varying sets of conditions",
+        "no action is taken under varying sets of conditions",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3925,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.26; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.27": {
+      "question": "One weakness of boundary value analysis and equivalence partitioning is",
+      "options": [
+        "they are not effective",
+        "they do not explore combinations of input circumstances",
+        "they explore combinations of input circumstances",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3931,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.27; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.28": {
+      "question": "In cause effect graphing technique, cause and effect are related to",
+      "options": [
+        "input and output",
+        "output and input",
+        "destination and source",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3937,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.28; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.29": {
+      "question": "DD Path graph is called as",
+      "options": [
+        "design to design path graph",
+        "defect to defect path graph",
+        "destination to destination path graph",
+        "decision to decision path graph"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3943,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.29; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.30": {
+      "question": "An independent path is",
+      "options": [
+        "any path through the DD path graph that introduces at least one new set of processing statements or new conditions",
+        "any path through the DD Path graph that introduces at most one new set of processing statements or new conditions",
+        "any path through the DD Path graph that introduces one and only one new set of processing statements or new conditions",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3949,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.30; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.31": {
+      "question": "Cyclomatic complexity is developed by",
+      "options": [
+        "B.W. Boehm",
+        "T.J. McCabe",
+        "B.W. Littlewood",
+        "Victor Basili"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3955,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.31; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.32": {
+      "question": "Cyclomatic complexity is denoted by",
+      "options": [
+        "V(G) = e – n + 2P",
+        "V(G) = Π + 1",
+        "V(G) = number of regions of the graph",
+        "all of the above."
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3961,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.32; publisher key p. 499",
+      "normalizations": [
+        "remove_page_header_artifact"
+      ]
+    },
+    "8.33": {
+      "question": "The equation V(G) = Π + 1 of cyclomatic complexity is applicable only if every predicate node has",
+      "options": [
+        "two outgoing edges",
+        "three or more outgoing edges",
+        "no outgoing edges",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3972,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.33; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.34": {
+      "question": "The size of the graph matrix is",
+      "options": [
+        "number of edges in the flow graph",
+        "number of nodes in the flow graph",
+        "number of paths in the flow graph",
+        "number of independent paths in the flow graph"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3978,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.34; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.35": {
+      "question": "Every node is represented by",
+      "options": [
+        "one row and one column in graph matrix",
+        "two rows and two columns in graph matrix",
+        "one row and two columns in graph matrix",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3984,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.35; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.36": {
+      "question": "Cyclomatic complexity is equal to",
+      "options": [
+        "number of independent paths",
+        "number of paths",
+        "number of edges",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3990,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.36; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.37": {
+      "question": "Data flow testing is related to",
+      "options": [
+        "data flow diagrams",
+        "E-R diagrams",
+        "data dictionaries",
+        "none of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 3996,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.37; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.38": {
+      "question": "In data flow testing, objective is to find",
+      "options": [
+        "all dc-paths that are not du-paths",
+        "all du-paths",
+        "all du-paths that are not dc-paths",
+        "all dc-paths"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4002,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.38; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.39": {
+      "question": "Mutation testing is related to",
+      "options": [
+        "fault seeding",
+        "functional testing",
+        "fault checking",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4008,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.39; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.40": {
+      "question": "The overhead code required to be written for unit testing is called",
+      "options": [
+        "drivers",
+        "stubs",
+        "scaffolding",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4014,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.40; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.41": {
+      "question": "Which is not a debugging technique ?",
+      "options": [
+        "core dumps",
+        "traces",
+        "print statements",
+        "regression testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4020,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.41; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.42": {
+      "question": "A break in the working of a system is called",
+      "options": [
+        "defect",
+        "failure",
+        "fault",
+        "error"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4026,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.42; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.43": {
+      "question": "Alpha and Beta testing techniques are related to",
+      "options": [
+        "system testing",
+        "unit testing",
+        "acceptance testing",
+        "integration testing"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4032,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.43; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.44": {
+      "question": "Which one is not the verification activity ?",
+      "options": [
+        "reviews",
+        "path testing",
+        "walkthrough",
+        "acceptance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4038,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.44; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.45": {
+      "question": "Testing the software is basically",
+      "options": [
+        "verification",
+        "validation",
+        "verification and validation",
+        "none of the above"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4044,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.45; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.46": {
+      "question": "Integration testing techniques are",
+      "options": [
+        "topdown",
+        "bottom up",
+        "sandwich",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4055,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.46; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.47": {
+      "question": "Functionality of a software is tested by",
+      "options": [
+        "white box testing",
+        "black box testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4061,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.47; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.48": {
+      "question": "Top down approach is used for",
+      "options": [
+        "development",
+        "identification of faults",
+        "validation",
+        "functional Testing"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4067,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.48; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.49": {
+      "question": "Thread testing is used for testing",
+      "options": [
+        "real time systems",
+        "object oriented systems",
+        "event driven systems",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4073,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.49; publisher key p. 499",
+      "normalizations": []
+    },
+    "8.50": {
+      "question": "Testing of software with actual data and in the actual environment is called",
+      "options": [
+        "alpha testing",
+        "beta testing",
+        "regression testing",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+      "source_line": 4079,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.50; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.1": {
+      "question": "Process of generating analysis and design documents is called",
+      "options": [
+        "inverse Engineering",
+        "software Engineering",
+        "reverse Engineering",
+        "re-engineering"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 803,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.1; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.2": {
+      "question": "Regression testing is primarily related to",
+      "options": [
+        "functional testing",
+        "data flow testing",
+        "development testing",
+        "maintenance testing"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 806,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.2; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.3": {
+      "question": "Which one is not a category of maintenance ?",
+      "options": [
+        "corrective maintenance",
+        "effective maintenance",
+        "adaptive maintenance",
+        "perfective maintenance"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 809,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.3; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.4": {
+      "question": "The maintenance initiated by defects in the software is called",
+      "options": [
+        "corrective maintenance",
+        "adaptive maintenance",
+        "perfective maintenance",
+        "preventive maintenance"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 812,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.4; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.5": {
+      "question": "Patch is known as",
+      "options": [
+        "emergency fixes",
+        "routine fixes",
+        "critical fixes",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 815,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.5; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.6": {
+      "question": "Adaptive maintenance is related to",
+      "options": [
+        "modification in software due to failures",
+        "modification in software due to demand of new functionalities",
+        "modification in software due to increase in complexity",
+        "modification in software to match changes in the ever-changing environment"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 818,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.6; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.7": {
+      "question": "Perfective maintenance refers to enhancements",
+      "options": [
+        "making the product better",
+        "making the product faster and smaller",
+        "making the product with new functionalities",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 828,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.7; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.8": {
+      "question": "As per distribution of maintenance effort, which type of maintenance has consumed maximum share?",
+      "options": [
+        "adaptive",
+        "corrective",
+        "perfective",
+        "preventive"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 833,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.8; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.9": {
+      "question": "As per distribution of maintenance effort, which type of maintenance has consumed minimum share?",
+      "options": [
+        "adaptive",
+        "corrective",
+        "perfective",
+        "preventive"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 836,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.9; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.10": {
+      "question": "Which one is not a maintenance model?",
+      "options": [
+        "CMM",
+        "iterative Enhancement model",
+        "quick-fix model",
+        "reuse-oriented model"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 839,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.10; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.11": {
+      "question": "In which model, fixes are done without detailed analysis of the long-term effects?",
+      "options": [
+        "reuse oriented model",
+        "quick-fix model",
+        "taute maintenance model",
+        "none of the above"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 842,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.11; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.12": {
+      "question": "Iterative enhancement model is a",
+      "options": [
+        "three stage model",
+        "two stage model",
+        "four stage model",
+        "seven stage model"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 845,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.12; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.13": {
+      "question": "Taute maintenance model has",
+      "options": [
+        "two phases",
+        "six phases",
+        "eight phases",
+        "ten phases"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 848,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.13; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.14": {
+      "question": "In Boehm model, ACT stands for",
+      "options": [
+        "actual change time",
+        "actual change traffic",
+        "annual change traffic",
+        "annual change time"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 851,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.14; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.15": {
+      "question": "Regression testing is known as",
+      "options": [
+        "the process of retesting the modified parts of the software",
+        "the process of testing the design documents",
+        "the process of reviewing the SRS",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 854,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.15; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.16": {
+      "question": "The purpose of regression testing is to",
+      "options": [
+        "increase confidence in the correctness of the modified program",
+        "locate errors in the modified program",
+        "preserve the quality and reliability of software",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 859,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.16; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.17": {
+      "question": "Regression testing is related to",
+      "options": [
+        "maintenance of software",
+        "development of software",
+        "both",
+        "and"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 864,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.17; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.18": {
+      "question": "Which one is not a selective retest technique",
+      "options": [
+        "coverage technique",
+        "minimization technique",
+        "safe technique",
+        "maximization technique"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 872,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.18; publisher key p. 499",
+      "normalizations": []
+    },
+    "9.19": {
+      "question": "Purpose of reverse engineering is to",
+      "options": [
+        "recover information from the existing code or any other intermediate document",
+        "redocumentation and/or document generation",
+        "understand the source code and associated documents",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 875,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.19; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.20": {
+      "question": "Legacy systems are",
+      "options": [
+        "old systems",
+        "new systems",
+        "undeveloped systems",
+        "none of the above"
+      ],
+      "answer": "A",
+      "correct": 0,
+      "key_status": "confirmed",
+      "publisher_answer": "A",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 880,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.20; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.21": {
+      "question": "User documentation consists of",
+      "options": [
+        "system overview",
+        "installation guide",
+        "reference guide",
+        "all of the above"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 883,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.21; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.22": {
+      "question": "Which one is not a user documentation?",
+      "options": [
+        "beginner's Guide",
+        "installation guide",
+        "SRS",
+        "system administration"
+      ],
+      "answer": "C",
+      "correct": 2,
+      "key_status": "confirmed",
+      "publisher_answer": "C",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 886,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.22; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.23": {
+      "question": "System documentation may not have",
+      "options": [
+        "SRS",
+        "design document",
+        "acceptance Test Plan",
+        "system administration"
+      ],
+      "answer": "D",
+      "correct": 3,
+      "key_status": "confirmed",
+      "publisher_answer": "D",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 889,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.23; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.24": {
+      "question": "The process by which existing processes and methods are replaced by new techniques is :",
+      "options": [
+        "reverse engineering",
+        "business process re-engineering",
+        "software configuration management",
+        "technical feasibility"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 892,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.24; publisher key p. 500",
+      "normalizations": []
+    },
+    "9.25": {
+      "question": "The process of transforming a model into source code is",
+      "options": [
+        "reverse engineering",
+        "forward engineering",
+        "re-engineering",
+        "restructuring"
+      ],
+      "answer": "B",
+      "correct": 1,
+      "key_status": "confirmed",
+      "publisher_answer": "B",
+      "source_path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+      "source_line": 895,
+      "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.25; publisher key p. 500",
+      "normalizations": []
+    }
+  }
+}
