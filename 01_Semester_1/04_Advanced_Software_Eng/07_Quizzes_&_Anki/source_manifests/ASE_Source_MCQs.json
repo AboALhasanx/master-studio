@@ -3439,7 +3439,7 @@
         "one failure",
         "no failure",
         "many failures",
-        "all of the above. ### Batch 012: printed pages 453–458"
+        "all of the above"
       ],
       "answer": "D",
       "correct": 3,
@@ -3448,7 +3448,9 @@
       "source_path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
       "source_line": 3888,
       "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.21; publisher key p. 499",
-      "normalizations": []
+      "normalizations": [
+        "remove_transcript_batch_header_from_option_d"
+      ]
     },
     "8.22": {
       "question": "Test suite is",

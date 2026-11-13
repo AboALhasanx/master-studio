@@ -321,20 +321,20 @@
         "one failure",
         "no failure",
         "many failures",
-        "all of the above. ### Batch 012: printed pages 453–458"
+        "all of the above"
       ],
       "options_en": [
         "one failure",
         "no failure",
         "many failures",
-        "all of the above. ### Batch 012: printed pages 453–458"
+        "all of the above"
       ],
       "question_ar": "قد يؤدي Fault واحد إلى:",
       "options_ar": [
         "one failure",
         "no failure",
         "many failures",
-        "all of the above. ### Batch 012: printed pages 453–458"
+        "all of the above"
       ],
       "answer": "D",
       "correct": 3,
@@ -351,7 +351,10 @@
         "note": {
           "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
           "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
-        }
+        },
+        "normalizations": [
+          "remove_transcript_batch_header_from_option_d"
+        ]
       },
       "concept_id": "ase_source_ch08_q21",
       "bloom_level": "Remember"
