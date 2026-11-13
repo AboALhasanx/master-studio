@@ -38,7 +38,7 @@
       "answer": "C",
       "correct": 2,
       "explanation": "McCall's triangular quality framework categorizes its 11 factors into three broad operational categories: - Product Operation: Using the software to perform real-world tasks. - Product Revision: Modifying and debugging the software code. - Product Transition: Porting and adapting the software to new platforms. \"Product specification\" is an engineering phase, not one of McCall's three quality categories.",
-      "explanation_ar": "والفخ الامتحاني:** أبعاد ماكول الثلاثة الشهيرة هي: Product Operation وProduct Revision وProduct Transition. لا يوجد بعد باسم «Product specification».",
+      "explanation_ar": "أبعاد ماكول الثلاثة الشهيرة هي: Product Operation وProduct Revision وProduct Transition. لا يوجد بعد باسم «Product specification».",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -81,7 +81,7 @@
       "answer": "A",
       "correct": 0,
       "explanation": "McCall's quality model is structured in a strict hierarchical decomposition: 1. Top Level (High-level Factors): External quality factors representing management and customer viewpoints (e.g., Maintainability, Reliability). 2. Second Level (Quality Criteria): Intermediate software attributes representing software engineering viewpoints that directly affect the factors (e.g., modularity, conciseness, consistency, fault tolerance). 3. Third Level (Quality Metrics): Quantitative direct measurements used to calculate the criteria.",
-      "explanation_ar": "والفخ الامتحاني:** الهرمية في نموذج ماكول: العوامل (Factors) في القمة ← تليها المعايير الهندسية (Criteria) في المستوى الثاني ← تليها المقاييس الكمية المباشرة (Metrics).",
+      "explanation_ar": "الهرمية في نموذج ماكول: العوامل (Factors) في القمة ← تليها المعايير الهندسية (Criteria) في المستوى الثاني ← تليها المقاييس الكمية المباشرة (Metrics).",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -124,7 +124,7 @@
       "answer": "D",
       "correct": 3,
       "explanation": "Barry Boehm's hierarchical quality model (1978) structures quality across three explicit levels: 1. Primary uses / high-level characteristics: The figure links General Utility directly to Portability and Maintainability. As-is Utility links to Reliability, Efficiency, and Human Engineering; Maintainability links to Testability, Understandability, and Modifiability. 2. Intermediate constructs: Seven constructs, including Portability, Reliability, Efficiency, Human Engineering, Testability, Understandability, and Modifiability. 3. Primitive constructs: The model lists 12 lower-level characteristics. \"Final constructs\" is not a level in Boehm's taxonomy.",
-      "explanation_ar": "والفخ الامتحاني:** مستويات نموذج بويم (Boehm) الثلاثة هي: Primary uses ← تليها Intermediate constructs ← ثم Primitive constructs. لا توجد طبقة تسمى «Final constructs».",
+      "explanation_ar": "مستويات نموذج بويم (Boehm) الثلاثة هي: Primary uses ← تليها Intermediate constructs ← ثم Primitive constructs. لا توجد طبقة تسمى «Final constructs».",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -167,7 +167,7 @@
       "answer": "C",
       "correct": 2,
       "explanation": "McCall's model, Boehm's model, and ISO 9126 are product quality models that evaluate the internal attributes and external runtime characteristics of the software artifact itself. In contrast, ISO 9000 (and ISO 9001) is a Quality Management System (QMS) standard focused strictly on organizational development processes, management commitment, and procedural compliance, rather than evaluating software product attributes directly.",
-      "explanation_ar": "والفخ الامتحاني:** فرق جوهري: نماذج جودة المنتج البرمجي تشمل McCall وBoehm وISO 9126. أما ISO 9000 فهو معيار إدارة عمليات المنشأة (Process Standard) وليس مقياساً لجودة المنتج البرمجي ذاته.",
+      "explanation_ar": "فرق جوهري: نماذج جودة المنتج البرمجي تشمل McCall وBoehm وISO 9126. أما ISO 9000 فهو معيار إدارة عمليات المنشأة (Process Standard) وليس مقياساً لجودة المنتج البرمجي ذاته.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -210,7 +210,7 @@
       "answer": "B",
       "correct": 1,
       "explanation": "The Basic Execution Time Model was formulated and published by John D. Musa at Bell Laboratories in 1979. It represents one of the foundational Non-Homogeneous Poisson Process (NHPP) software reliability growth models based on execution time.",
-      "explanation_ar": "والفخ الامتحاني:** نموذج زمن التنفيذ الأساسي (Basic Execution Time Model) وضعه جون موسى (J.D. Musa) في مختبرات بيل عام 1979.",
+      "explanation_ar": "نموذج زمن التنفيذ الأساسي (Basic Execution Time Model) وضعه جون موسى (J.D. Musa) في مختبرات بيل عام 1979.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -253,7 +253,7 @@
       "answer": "A",
       "correct": 0,
       "explanation": "NHPP stands for Non-Homogeneous Poisson Process. In software reliability growth modeling, an NHPP is a generalized Poisson stochastic process whose failure rate (intensity function $\\lambda(t)$) varies dynamically over execution time rather than remaining constant.",
-      "explanation_ar": "والفخ الامتحاني:** مصطلح NHPP يعني عملية بواسون غير المتجانسة (Non-Homogeneous Poisson Process)، وتتميز بأن معدل حدوث الأخطاء فيها يتغير مع تقدم زمن الاختبار.",
+      "explanation_ar": "مصطلح NHPP يعني عملية بواسون غير المتجانسة (Non-Homogeneous Poisson Process)، وتتميز بأن معدل حدوث الأخطاء فيها يتغير مع تقدم زمن الاختبار.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -296,7 +296,7 @@
       "answer": "B",
       "correct": 1,
       "explanation": "In Musa's Basic Execution Time Model, the failure intensity $\\lambda(\\mu)$ decreases linearly as a function of the cumulative failures experienced ($\\mu$): $$\\lambda(\\mu) = \\lambda_0 \\left(1 - \\frac{\\mu}{v_0}\\right)$$ Where: - $\\lambda_0$: Initial failure intensity at the beginning of execution ($\\mu = 0$). - $v_0$: Total number of failures that would be experienced in infinite execution time. - $\\mu$: Cumulative number of failures experienced up to that point.",
-      "explanation_ar": "والفخ الامتحاني:** دالة شدة الفشل في النموذج الأساسي دالة خطية تنازلية: $\\lambda(\\mu) = \\lambda_0 (1 - \\mu/v_0)$. تنخفض الشدة خطياً مع ازدياد الأعطال المكتشفة والمصلحة.",
+      "explanation_ar": "دالة شدة الفشل في النموذج الأساسي دالة خطية تنازلية: $\\lambda(\\mu) = \\lambda_0 (1 - \\mu/v_0)$. تنخفض الشدة خطياً مع ازدياد الأعطال المكتشفة والمصلحة.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -339,7 +339,7 @@
       "answer": "A",
       "correct": 0,
       "explanation": "Rearranging the linear failure intensity relationship for the present intensity ($\\lambda_P$) and objective intensity ($\\lambda_F$): $$\\lambda_P = \\lambda_0 \\left(1 - \\frac{\\mu_P}{v_0}\\right), \\quad \\lambda_F = \\lambda_0 \\left(1 - \\frac{\\mu_F}{v_0}\\right)$$ Subtracting the two equations yields: $$\\lambda_P - \\lambda_F = \\frac{\\lambda_0}{v_0} (\\mu_F - \\mu_P) = \\frac{\\lambda_0}{v_0} \\Delta \\mu$$ Solving for $\\Delta \\mu$ gives: $$\\Delta \\mu = \\frac{v_0}{\\lambda_0} (\\lambda_P - \\lambda_F)$$",
-      "explanation_ar": "والفخ الامتحاني:** عدد الأعطال الإضافية اللازمة للوصول إلى هدف الاعتمادية هو: $\\Delta \\mu = \\frac{v_0}{\\lambda_0} (\\lambda_P - \\lambda_F)$. انتبه لطرح الهدف المنخفض من الشدة الحالية $(\\lambda_P - \\lambda_F)$.",
+      "explanation_ar": "عدد الأعطال الإضافية اللازمة للوصول إلى هدف الاعتمادية هو: $\\Delta \\mu = \\frac{v_0}{\\lambda_0} (\\lambda_P - \\lambda_F)$. انتبه لطرح الهدف المنخفض من الشدة الحالية $(\\lambda_P - \\lambda_F)$.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -385,7 +385,7 @@
       "answer": "D",
       "correct": 3,
       "explanation": "In the Basic execution time model, failure intensity decays exponentially with execution time $\\tau$: $$\\lambda(\\tau) = \\lambda_0 \\exp\\left(-\\frac{\\lambda_0}{v_0} \\tau\\right)$$ Evaluating between current intensity $\\lambda_P$ and target intensity $\\lambda_F$: $$\\frac{\\lambda_P}{\\lambda_F} = \\exp\\left(\\frac{\\lambda_0}{v_0} \\Delta \\tau\\right)$$ Taking the natural logarithm of both sides and solving for $\\Delta \\tau$: $$\\Delta \\tau = \\frac{v_0}{\\lambda_0} \\ln\\left(\\frac{\\lambda_P}{\\lambda_F}\\right)$$",
-      "explanation_ar": "والفخ الامتحاني:** زمن التنفيذ الإضافي المطلوب للوصول لهدف الاختبار: $\\Delta \\tau = \\frac{v_0}{\\lambda_0} \\ln(\\lambda_P / \\lambda_F)$. النسبة داخل اللوغاريتم هي القيمة الأكبر على الأصغر $(\\lambda_P / \\lambda_F)$ لضمان ناتج موجب.",
+      "explanation_ar": "زمن التنفيذ الإضافي المطلوب للوصول لهدف الاختبار: $\\Delta \\tau = \\frac{v_0}{\\lambda_0} \\ln(\\lambda_P / \\lambda_F)$. النسبة داخل اللوغاريتم هي القيمة الأكبر على الأصغر $(\\lambda_P / \\lambda_F)$ لضمان ناتج موجب.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -397,7 +397,10 @@
         "note": {
           "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
           "en": "CONFIRMED on raw source options. Publisher key (D) exactly matches raw option (D). T1 reordered or altered options, but raw source is preserved."
-        }
+        },
+        "normalizations": [
+          "strip_ocr_page_break"
+        ]
       },
       "concept_id": "ase_source_ch07_q22",
       "bloom_level": "Remember"
@@ -428,7 +431,7 @@
       "answer": "C",
       "correct": 2,
       "explanation": "In the Logarithmic Poisson execution time model (Musa–Okumoto, 1984), failure intensity decreases exponentially with respect to cumulative failures experienced ($\\mu$): $$\\lambda(\\mu) = \\lambda_0 \\exp(-\\theta \\mu)$$ Where $\\theta$ is the failure intensity decay parameter. This exponential decay captures the realistic observation that early faults contribute much more heavily to failure intensity than subtle faults discovered late in testing.",
-      "explanation_ar": "والفخ الامتحاني:** دالة شدة الفشل في نموذج بواسون اللوغاريتمي تنخفض أسياً مع عدد الأخطاء: $\\lambda(\\mu) = \\lambda_0 \\exp(-\\theta \\mu)$.",
+      "explanation_ar": "دالة شدة الفشل في نموذج بواسون اللوغاريتمي تنخفض أسياً مع عدد الأخطاء: $\\lambda(\\mu) = \\lambda_0 \\exp(-\\theta \\mu)$.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -471,7 +474,7 @@
       "answer": "B",
       "correct": 1,
       "explanation": "In the Logarithmic Poisson formulation, $\\theta$ is explicitly termed the failure intensity decay parameter (measured in $\\text{failure}^{-1}$). It quantifies the relative reduction in failure intensity per failure experienced: $$\\theta = -\\frac{d\\lambda / d\\mu}{\\lambda}$$",
-      "explanation_ar": "والفخ الامتحاني:** الرمز $\\theta$ في نموذج بواسون اللوغاريتمي يمثل معامل تلاشي شدة الفشل (Failure intensity decay parameter).",
+      "explanation_ar": "الرمز $\\theta$ في نموذج بواسون اللوغاريتمي يمثل معامل تلاشي شدة الفشل (Failure intensity decay parameter).",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -514,7 +517,7 @@
       "answer": "A",
       "correct": 0,
       "explanation": "The Jelinski–Moranda model (1972) assumes that software contains an initial total of $N$ faults, each contributing an equal hazard rate $\\phi$. When the $i$-th failure occurs, $(i - 1)$ faults have already been completely and perfectly removed without introducing new faults. Thus, during the interval between the $(i-1)$-th and $i$-th failure, the failure intensity is: $$\\lambda(t_i) = \\phi [N - (i - 1)]$$",
-      "explanation_ar": "والفخ الامتحاني:** معادلة جيلينسكي-موراندا: شدة الفشل عند العطل رقم $i$ تتناسب مع عدد الأخطاء المتبقية: $\\phi [N - (i - 1)]$.",
+      "explanation_ar": "معادلة جيلينسكي-موراندا: شدة الفشل عند العطل رقم $i$ تتناسب مع عدد الأخطاء المتبقية: $\\phi [N - (i - 1)]$.",
       "breaks_if_shuffled": false,
       "shuffle_break_reason": null,
       "source": {
@@ -557,7 +560,7 @@
       "answer": "C",
       "correct": 2,
       "explanation": "In the Capability Maturity Model (CMM), Level 1 (Initial) has exactly zero Key Process Areas (KPAs). At Level 1, processes are ad-hoc, chaotic, and undefined; project success depends solely on individual heroism and crisis management rather than repeatable institutional practices. KPAs appear beginning at Level 2 (which has 6 KPAs).",
-      "explanation_ar": "والفخ الامتحاني:** المستوى الأول في نموذج CMM (المستوى الابتدائي Initial) يحتوي على **صفر من مناطق العمليات الرئيسية (0 KPAs)** لأن العمل فيه فوضوي وغير خاضع لمعايير مؤسسية.",
+      "explanation_ar": "المستوى الأول في نموذج CMM (المستوى الابتدائي Initial) يحتوي على صفر من مناطق العمليات الرئيسية (0 KPAs) لأن العمل فيه فوضوي وغير خاضع لمعايير مؤسسية.",
       "breaks_if_shuffled": true,
       "shuffle_break_reason": "Option (d) is 'none of the above'",
       "source": {

@@ -10,13 +10,13 @@
 > `QUIZ_PUBLISH_RUNBOOK.md` must point here, never copy numbers out of it.
 > A table keyed only by `ChNN` is forbidden — every row carries its subject id.
 
-> Generated at: 2026-11-13T15:17:58+03:00
+> Generated at: 2026-11-13T15:51:03+03:00
 
 ## Current versions
 
 | Thing | Value |
 |---|---|
-| Live content version | **111** |
+| Live content version | **112** |
 | Portal shell `VERSION` | **1.12.0** |
 | Live manifest source | Supabase content_manifest (live) |
 

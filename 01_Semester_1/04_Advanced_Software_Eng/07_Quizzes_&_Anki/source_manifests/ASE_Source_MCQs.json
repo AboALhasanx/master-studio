@@ -2251,7 +2251,7 @@
     "7.2": {
       "question": "Software reliability is",
       "options": [
-        "the probability of failure free operation of a program for a specified time in a specified envi- ronment",
+        "the probability of failure free operation of a program for a specified time in a specified environment",
         "the probability of failure of a program for a specified time in a specified environment",
         "the probability of success of a program for a specified time in any environment",
         "none of the above"
@@ -2263,7 +2263,9 @@
       "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
       "source_line": 1861,
       "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.2; publisher key p. 499",
-      "normalizations": []
+      "normalizations": [
+        "join_ocr_linebreak_hyphen"
+      ]
     },
     "7.3": {
       "question": "Fault is",
@@ -2607,7 +2609,9 @@
       "source_path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
       "source_line": 1970,
       "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.22; publisher key p. 499",
-      "normalizations": []
+      "normalizations": [
+        "strip_ocr_page_break"
+      ]
     },
     "7.23": {
       "question": "Failure intensity function of Logarithmic Poisson execution model is given as",
@@ -2733,8 +2737,8 @@
       "options": [
         "removed",
         "remaining",
-        "both",
-        "and"
+        "both (a) and (b)",
+        "none of the above"
       ],
       "answer": "B",
       "correct": 1,
@@ -2836,7 +2840,7 @@
         "Harvard University",
         "Cambridge University",
         "Carnegie Mellon University",
-        "Maryland University."
+        "Maryland University"
       ],
       "answer": "C",
       "correct": 2,
