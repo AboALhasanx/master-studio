@@ -148,28 +148,28 @@
       "options": [
         "maintenance of software",
         "development of software",
-        "both",
-        "and"
+        "both (a) and (b)",
+        "none of the above"
       ],
       "options_en": [
         "maintenance of software",
         "development of software",
-        "both",
-        "and"
+        "both (a) and (b)",
+        "none of the above"
       ],
       "question_ar": "اختبار الانحدار يرتبط بـ:",
       "options_ar": [
         "maintenance of software",
         "development of software",
-        "both",
-        "and"
+        "both (a) and (b)",
+        "none of the above"
       ],
       "answer": "C",
       "correct": 2,
       "explanation": "Regression testing is essential during initial development (as new modules are integrated into growing builds) and throughout operational maintenance (as patches are deployed).",
       "explanation_ar": "اختبار الانحدار ضروري أثناء التطوير الأول عند دمج وحدات جديدة، وأثناء الصيانة التشغيلية عند نشر الإصلاحات.",
-      "breaks_if_shuffled": false,
-      "shuffle_break_reason": null,
+      "breaks_if_shuffled": true,
+      "shuffle_break_reason": "Option (c) references positional options (a) and (b)",
       "source": {
         "id": "9.17",
         "key_status": "confirmed",
