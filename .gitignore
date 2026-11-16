@@ -210,3 +210,69 @@ colab_input/
 # Generated output - regenerable, never part of the source tree
 /renders_temp/
 /scratch/
+
+# ------------------------------------------------------------------------------
+# 2026-11-16 sweep (OpenCode): the repo carried 2,607 untracked files. They were
+# NOT course content - they were agent scratch space, render intermediates, and
+# full-page renders of copyrighted textbooks. This repo is public, so the
+# copyright rules above are enforced folder-by-folder, not just for 02_Raw_Materials.
+# ------------------------------------------------------------------------------
+# Agent scratch space (never course content)
+tmp/
+/.agents/
+/.codex-finalizer/
+/00_STUDIO_HUB/scratch/
+/90_Shared_Toolbox/sandbox/
+**/.build_*/
+**/.build.*/
+
+# Full-page renders of copyrighted textbooks (AIMA, Aggarwal, Sommerville, ...).
+# The figures that are actually used in the study material are cropped and live
+# in 06_Diagrams_&_Mindmaps/ with a tracked name; these are the raw dumps.
+**/06_Diagrams_&_Mindmaps/extracted/
+**/source_visual_audit/
+**/Ch09_QA_expanded_v1/
+**/Ch09_QA_final_v1/
+**/Ch09_QA_pages/
+**/Ch09_QA_final_render*/
+**/contact_sheets/
+**/*.pdf.txt
+**/book_ch7_ocr.txt
+**/book_ch*_ocr.txt
+
+# Rendered page images for the A4 lecture-note decks (the PDF beside them is the
+# deliverable; the PNG pages are regenerable intermediate output).
+01_Semester_1/06_Artificial_Intelligence/05_Seminars_&_Slides/A4_Full_Lecture_Notes*/PNG/
+
+# Source materials parked inside a seminar / papers folder - same rule as
+# 02_Raw_Materials (kept in Google Drive, never published to the public repo).
+**/05_Seminars_&_Slides/*/sources/
+**/04_Academic_Papers/.candidate-review/
+
+# Full textbook-page renders kept for a source-matrix audit (page 147 of
+# Aggarwal, 2007 - the copyright line is printed inside the image itself).
+**/source_matrix_audit/
+
+# Verbatim text dumped out of a copyrighted textbook (the copyright header is
+# literally the first line of these files) - never published.
+**/raw_exercises.txt
+**/raw_mcqs.txt
+
+# Marp chart-data scratch folders (regenerated on every build).
+**/.chart-data-*/
+
+# Superseded revisions of the AI A4 image-only lecture notes (60 MB each, three
+# copies of the same document). Rev3 is the final deliverable and is tracked;
+# Rev1 and Rev2 were intermediate revisions and stay on disk (Google Drive) only.
+01_Semester_1/06_Artificial_Intelligence/05_Seminars_&_Slides/A4_Full_Lecture_Notes/
+01_Semester_1/06_Artificial_Intelligence/05_Seminars_&_Slides/A4_Full_Lecture_Notes_Rev2/
+
+# Root-level scratch renders dropped by agents while inspecting pages
+# (page crops, contact sheets, montages, a stray temp pdf).
+/p[0-9][0-9][0-9]_left.png
+/p[0-9][0-9][0-9]_right.png
+/qsk_u3_*.png
+/qsk_u3_tmp.pdf
+/toc_*.png
+/u2_reference_montage.png
+/fix_toast.py
