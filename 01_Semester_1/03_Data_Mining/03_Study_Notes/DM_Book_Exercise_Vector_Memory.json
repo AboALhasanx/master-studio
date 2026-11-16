@@ -1,0 +1,88 @@
+{
+  "schema": "dm-sparse-vector-memory-v2",
+  "description": "Compact chapter-level retrieval index for the combined, independently derived Han and Aggarwal end-of-chapter question pack aligned to local Data Mining Chapters 01-08.",
+  "tokenization": "Lowercase English technical tokens and formula aliases; vectors are sparse term-frequency maps; cosine similarity is the retrieval score.",
+  "fit_policy": "Every retained exercise/subpart was screened at 0.60-1.00 against local concepts, assumptions, required depth, and taught scope. See the Markdown coverage register for item-level source IDs and exclusions.",
+  "records": [
+    {
+      "id": "DM-BK-LOCAL-CH01",
+      "local_chapter": "01 Introduction",
+      "source_exercises": ["Han 1.1-1.10"],
+      "concepts": ["KDD", "data mining tasks", "database", "warehouse", "applications", "scalability", "outliers"],
+      "vector": {"kdd": 2, "mining": 3, "classification": 1, "regression": 1, "clustering": 1, "outlier": 2, "application": 2, "scalability": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-01--introduction",
+      "answer_summary": "Distinguishes KDD from its mining step; defines major mining tasks and compares operational databases/warehouses; gives application and scale challenges.",
+      "answer_confidence": 0.91
+    },
+    {
+      "id": "DM-BK-LOCAL-CH02",
+      "local_chapter": "02 Data Types and Preparation",
+      "source_exercises": ["Han 2.1-2.5", "Han 3.1-3.13 except 3.3(c)", "Aggarwal 2.1, 2.3, 2.10, 2.13"],
+      "concepts": ["statistics", "quartiles", "outliers", "missing values", "integration", "normalization", "binning", "discretization", "sampling", "wavelets"],
+      "vector": {"normalization": 3, "minmax": 2, "zscore": 2, "quartile": 2, "outlier": 2, "binning": 2, "missing": 1, "integration": 1, "discretization": 2, "sampling": 1, "wavelet": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-02--data-types--preparation",
+      "answer_summary": "Includes recomputed summary statistics, grouped median, bin means/IQR fence, four normalizations, hospital paired statistics, discretization, and sampling/wavelet methods.",
+      "answer_confidence": 0.93
+    },
+    {
+      "id": "DM-BK-LOCAL-CH03",
+      "local_chapter": "03 Feature Extraction and Portability",
+      "source_exercises": ["Aggarwal 2.2, 2.4-2.8, 2.11-2.12", "Aggarwal 3.1-3.8, 3.15"],
+      "concepts": ["representation", "heterogeneous data", "PCA", "SVD", "wavelet", "Lp distance", "Mahalanobis", "cosine", "Jaccard", "nearest neighbor"],
+      "vector": {"feature": 2, "representation": 2, "portability": 2, "pca": 1, "svd": 1, "wavelet": 1, "distance": 2, "mahalanobis": 1, "cosine": 2, "jaccard": 1, "nearest": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-03--feature-extraction--portability",
+      "answer_summary": "Gives exact Lp/set/cosine calculations and representation designs; dataset-specific UCI projects include method steps only unless the source dataset is supplied.",
+      "answer_confidence": 0.88
+    },
+    {
+      "id": "DM-BK-LOCAL-CH04",
+      "local_chapter": "04 Feature Selection",
+      "source_exercises": ["Han 3.10", "Aggarwal 10.1-10.2", "Aggarwal 7.4"],
+      "concepts": ["feature selection", "forward selection", "backward elimination", "wrapper", "entropy", "gini", "subspace clustering"],
+      "vector": {"selection": 3, "forward": 1, "backward": 1, "wrapper": 1, "entropy": 1, "gini": 1, "feature": 2, "subset": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-04--feature-selection",
+      "answer_summary": "Explains forward/backward/combined search and calculates Gini/entropy on the donation sample; notes overlap with decision-tree split selection.",
+      "answer_confidence": 0.91
+    },
+    {
+      "id": "DM-BK-LOCAL-CH05",
+      "local_chapter": "05 Association and Frequent Patterns",
+      "source_exercises": ["Han 6.1-6.8, 6.13-6.14", "Han 7.5, 7.6(a-b), 7.10", "Aggarwal 4.1-4.22", "Aggarwal 5.1-5.5"],
+      "concepts": ["support", "confidence", "Apriori", "FP-Growth", "frequent itemsets", "closed", "maximal", "lift", "Jaccard", "correlation"],
+      "vector": {"association": 2, "support": 3, "confidence": 3, "apriori": 3, "fp-growth": 2, "itemset": 3, "closed": 2, "maximal": 2, "lift": 2, "jaccard": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-05--association--frequent-patterns",
+      "answer_summary": "Contains Apriori proofs/traces, itemset counts, FP-tree/prefix workflows, closed/maximal sets, strong-rule confidences, and association measures.",
+      "answer_confidence": 0.94
+    },
+    {
+      "id": "DM-BK-LOCAL-CH06",
+      "local_chapter": "06 Classification Foundations",
+      "source_exercises": ["Han 8.1-8.5, 8.10-8.15", "Aggarwal 10.1-10.3, 10.9-10.12, 10.19"],
+      "concepts": ["decision tree", "pruning", "entropy", "gini", "confusion matrix", "F measure", "ROC", "cross validation"],
+      "vector": {"classification": 2, "decision": 2, "tree": 2, "pruning": 1, "entropy": 1, "gini": 1, "accuracy": 1, "roc": 2, "tpr": 1, "fmeasure": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-06--classification-foundations",
+      "answer_summary": "Gives confusion/ROC tables, sensitivity-specificity and F-score derivations, decision-tree methods, and paired cross-validation statistics.",
+      "answer_confidence": 0.93
+    },
+    {
+      "id": "DM-BK-LOCAL-CH07",
+      "local_chapter": "07 Classification Methods",
+      "source_exercises": ["Han 8.6-8.8", "Aggarwal 10.5, 10.7-10.8, 10.12"],
+      "concepts": ["Naive Bayes", "conditional independence", "Laplace smoothing", "rule-based classifier", "boosting", "multiclass"],
+      "vector": {"naive": 3, "bayes": 3, "probability": 2, "smoothing": 1, "rule": 2, "coverage": 1, "boosting": 1, "classifier": 2},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-07--classification-methods",
+      "answer_summary": "Derives Naive Bayes scores and classifies the employee query; compares rule/tree models and outlines smoothing, ensembles, and multi-label measures.",
+      "answer_confidence": 0.9
+    },
+    {
+      "id": "DM-BK-LOCAL-CH08",
+      "local_chapter": "08 Clustering",
+      "source_exercises": ["Han 10.1-10.8, 10.12-10.17", "Aggarwal 6.1-6.8, 6.9-6.11, 6.14, 6.17-6.19", "Aggarwal 7.3-7.4, 7.6"],
+      "concepts": ["K-means", "K-means++", "K-medoids", "hierarchical", "linkage", "DBSCAN", "GMM", "cluster evaluation", "initialization"],
+      "vector": {"clustering": 3, "kmeans": 3, "initialization": 2, "medoid": 1, "hierarchical": 2, "linkage": 1, "dbscan": 2, "density": 2, "gmm": 1, "evaluation": 1, "silhouette": 1},
+      "answer_pointer": "DM_Book_Exercise_Solutions.md#chapter-08--clustering",
+      "answer_summary": "Recomputes Han’s 2D K-means trace and 1D seed experiments; explains DBSCAN properties, linkage, EM/GMM, internal validation, and method selection.",
+      "answer_confidence": 0.92
+    }
+  ]
+}

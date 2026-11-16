@@ -49,10 +49,11 @@ def main() -> int:
     ap = argparse.ArgumentParser(description='Scaffold a canonical v2 quiz bank.')
     ap.add_argument('--subject', required=True, help='e.g. 03_Data_Mining')
     ap.add_argument('--chapter', required=True, type=int, help="the book's chapter number")
-    ap.add_argument('--kind', required=True, choices=('model', 'topic'))
+    ap.add_argument('--kind', required=True, choices=('model', 'topic', 'source'))
     ap.add_argument('--model', choices=('A', 'B'), help='for kind=model')
     ap.add_argument('--topic-num', type=int, help='for kind=topic (1, 2, …)')
-    ap.add_argument('--slug', required=True, help='Pascal_Slug, e.g. Data_Types')
+    ap.add_argument('--batch-num', type=int, default=1, help='for kind=source (1, 2, … -> S01, S02)')
+    ap.add_argument('--slug', default='', help='Pascal_Slug, e.g. Data_Types (optional for source)')
     ap.add_argument('--title-ar', required=True)
     ap.add_argument('--title-en', required=True)
     ap.add_argument('--questions', required=True, type=int,
@@ -72,6 +73,12 @@ def main() -> int:
         return fail('kind=model needs --model A|B')
     if args.kind == 'topic' and not (args.topic_num and args.topic_num >= 1):
         return fail('kind=topic needs --topic-num >= 1')
+    if args.kind == 'source' and not (args.batch_num and args.batch_num >= 1):
+        return fail('kind=source needs --batch-num >= 1')
+    if args.kind != 'source' and not args.slug:
+        return fail('--slug is required for practice banks')
+    if args.kind == 'source' and not 10 <= args.questions <= 15:
+        return fail('source batches must use the approved 10-15 question size')
 
     existing = load_existing_bank(args.subject)
     subject_title = (existing or {}).get('subject_title') or ''
@@ -83,11 +90,15 @@ def main() -> int:
         return fail('no instructor found: copy it from an existing bank of this subject')
 
     if args.kind == 'model':
-        quiz_id = 'Quiz_Ch%02d_Model%s_%s' % (args.chapter, args.model, args.slug)
+        quiz_id = 'Quiz_Ch%02d_Model%s_%s' % (args.chapter, args.model, args.slug or 'Model')
         topic = '%s — Model %s' % (args.title_en, args.model)
         topic_ar = '%s — النموذج %s' % (args.title_ar, 'أ' if args.model == 'A' else 'ب')
+    elif args.kind == 'source':
+        quiz_id = 'Quiz_Ch%02d_S%02d_Source_MCQs' % (args.chapter, args.batch_num)
+        topic = '%s — Source Batch %d' % (args.title_en, args.batch_num)
+        topic_ar = '%s — دفعة المصدر %d' % (args.title_ar, args.batch_num)
     else:
-        quiz_id = 'Quiz_Ch%02d_T%02d_%s' % (args.chapter, args.topic_num, args.slug)
+        quiz_id = 'Quiz_Ch%02d_T%02d_%s' % (args.chapter, args.topic_num, args.slug or 'Topic')
         topic, topic_ar = args.title_en, args.title_ar
 
     # the app already prints the subject chip and the موضوع badge — a title
@@ -102,10 +113,11 @@ def main() -> int:
         return fail('already exists: %s' % out.name)
 
     questions = []
+    is_source = (args.kind == 'source')
     for i in range(1, args.questions + 1):
-        questions.append({
+        q_obj = {
             'id': 'q%d' % i,
-            'concept_id': 'TODO_concept_%d' % i,
+            'concept_id': ('ase_source_ch%02d_q%02d' % (args.chapter, i)) if is_source else ('TODO_concept_%d' % i),
             'bloom_level': 'Understand',
             'question': 'TODO English stem %d' % i,
             'question_ar': 'TODO نص السؤال %d' % i,
@@ -116,10 +128,22 @@ def main() -> int:
             'correct': 0,
             'explanation': 'TODO English explanation %d' % i,
             'explanation_ar': 'TODO شرح %d' % i,
-        })
+        }
+        if is_source:
+            q_obj['answer'] = None
+            q_obj['correct'] = None
+            q_obj['bank_kind'] = 'source'
+            q_obj['source'] = {
+                'id': 'TODO_original_source_id_%d' % i,
+                'reference': 'TODO original source reference',
+                'key_status': 'disputed',
+                'note': {'ar': 'TODO لم يُراجع المفتاح بعد', 'en': 'TODO key not reviewed'}
+            }
+        questions.append(q_obj)
 
     bank = {
         'schema_version': 2,
+        'bank_kind': args.kind if args.kind == 'source' else 'practice',
         'subject_id': args.subject,
         'subject_title': subject_title,
         'semester': 1,
